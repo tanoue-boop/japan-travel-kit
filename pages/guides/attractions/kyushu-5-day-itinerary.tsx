@@ -666,7 +666,7 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
             )}
             {day.label === "Day 2" && (
               <p className={styles.bodyText} style={smallNote}>
-                See the <Link href="/guides/attractions/yufuin-beppu-tour-from-fukuoka">Yufuin and Beppu tour guide</Link> before
+                See the <Link href="/guides/attractions/yufuin-beppu-tour-from-fukuoka">Yufuin Beppu day trip from Fukuoka guide</Link> before
                 you choose.
               </p>
             )}

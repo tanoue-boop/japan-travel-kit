@@ -45,7 +45,23 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  * index because Klook answers automated reads with HTTP 403. No Klook price appears.
  */
 
+/*
+ * Re-read on 17 November 2026 (task-jtk-20261117-C01, "yufuin beppu day trip from fukuoka"):
+ *   jrkyushu.co.jp/trains/yufuinnomori/   timetable of 14 Mar 2026: Hakata 9:17→Yufuin 11:31,
+ *     10:11→12:32 (→Oita 13:20, Beppu 13:31), 14:38→16:50; back Yufuin 12:01→Hakata 14:19,
+ *     (Beppu 14:36) 15:56→18:10, 17:17→19:27. 通常のきっぷ 博多〜由布院 6,130円 (大人, 普通運賃＋
+ *     指定席特急料金, the charge varies by travel date); 九州ネットきっぷ 博多〜由布院 5,600円.
+ *     Matches the fare-revision guidebook reading of 15 Nov (¥5,600 + ¥530 おトク額 = ¥6,130);
+ *     the guidebook PDF itself reset the connection on 17 Nov.
+ *   www.klook.com search index: the Fukuoka Yufuin/Beppu day tours listed at 10 hr and
+ *     10 hr 30 min. No Klook price is used.
+ */
 const OWN = checkedLabel("2026-11-06");
+const LAST_CHECKED = "2026-11-17";
+const TODAY = checkedLabel(LAST_CHECKED);
+const YUFUIN_NO_MORI_FARE = "¥6,130";
+const YUFUIN_NET_FARE = "¥5,600";
+const JRK_TRAIN_URL = "https://www.jrkyushu.co.jp/trains/yufuinnomori/";
 
 const tourRows = [
   {
@@ -100,40 +116,60 @@ const tourRows = [
 
 const routeRows = [
   {
+    route: "Answer: both towns in one day → coach tour; Yufuin only or a night there → Yufuin no Mori",
+    time: "Tour 10 to 10.5 hours door to door; train 2 hours 12 to 2 hours 21 minutes to Yufuin",
+    detail: `Train ${YUFUIN_NO_MORI_FARE} one way (adult, fare + reserved-seat express charge), so about ¥12,260 return before the Beppu leg`,
+    source: "Klook listings; jrkyushu.co.jp",
+    checked: TODAY,
+  },
+  {
     route: "Coach tour, Fukuoka → Yufuin and Beppu → Fukuoka",
     time: "10 to 10.5 hours in total",
-    detail: "One booking, no changes",
+    detail: "One booking, no changes. Price per date on the listing",
     source: "Klook listings",
+    checked: TODAY,
   },
   {
     route: "Limited express Yufuin no Mori, Hakata → Yufuin",
-    time: "2 hours 12 to 2 hours 21 minutes",
-    detail: "All seats reserved. 3 trains each way, on the days of JR Kyushu's calendar",
+    time: "2 hours 12 to 2 hours 21 minutes (back: 2 hours 10 to 2 hours 18 minutes)",
+    detail: `${YUFUIN_NO_MORI_FARE} adult one way; ${YUFUIN_NET_FARE} as an online Kyushu Net ticket. The express charge varies by travel date. All seats reserved. 3 trains each way (Hakata 9:17, 10:11, 14:38), on the days of JR Kyushu's calendar`,
     source: "jrkyushu.co.jp",
+    checked: TODAY,
+  },
+  {
+    route: "Yufuin no Mori 3, Hakata → Beppu",
+    time: "3 hours 20 minutes (Hakata 10:11, Yufuin 12:32, Beppu 13:31)",
+    detail: "The one train that runs on to Oita and Beppu; No. 4 comes back from Beppu at 14:36",
+    source: "jrkyushu.co.jp",
+    checked: TODAY,
   },
   {
     route: "Limited express Sonic, Hakata ↔ Oita and Beppu line",
     time: "Shortest 2 hours 1 minute",
     detail: "31 trains a day each way. Online fares from ¥2,950, on the 3-day advance ticket",
     source: "jrkyushu.co.jp",
+    checked: OWN,
   },
   {
     route: "Oita → Yufuin, JR Kyudai Line",
     time: "About an hour",
     detail: "The JR link if you loop back through Oita",
     source: "japan.travel",
+    checked: OWN,
   },
   {
     route: "Highway bus, Tenjin → Yufuin Station",
     time: "About 2 hours 20 to 2 hours 25 minutes",
     detail: "Fare and seats on the operator's page",
     source: "nishitetsu.jp, kamenoibus.com",
+    checked: OWN,
   },
   {
     route: "Beppu Station → hells at Kannawa, Kamenoi bus",
     time: "About 20 minutes",
     detail: "Buses 2, 5, 24 and 41. Chinoike is a further bus, about 40 minutes and ¥390 from Beppu Station",
     source: "beppu-jigoku.com",
+    checked: OWN,
   },
 ];
 
@@ -164,18 +200,27 @@ const hellRows = [
   },
 ];
 
+/** The first five are the search questions and go into FAQPage; the rest stay on the page only. */
 const faqItems = [
   {
-    q: "Can you do Beppu and Yufuin in one day from Fukuoka?",
-    a: `Yes. That is what these coach tours sell, in 10 to 10.5 hours. By train it is possible but tight: about 2 hours 15 minutes to Yufuin, about 2 hours back from the Beppu and Oita line, and a cross-country leg between them. The hells close at 17:00, so plan around that. Read ${OWN}.`,
+    q: "Can you do a Yufuin and Beppu day trip from Fukuoka?",
+    a: `Yes. That is what the coach tours sell, in 10 to 10.5 hours with Beppu's hells and Yufuin in one booking. By train it is possible but tight: 2 hours 12 to 2 hours 21 minutes to Yufuin on the Yufuin no Mori, about 2 hours back from Beppu by Sonic, and a cross-country leg between them. The hells close at 17:00, so plan around that. Train times checked ${TODAY}.`,
+  },
+  {
+    q: "How much is the Yufuin no Mori from Fukuoka to Yufuin?",
+    a: `${YUFUIN_NO_MORI_FARE} one way for an adult from Hakata to Yufuin, fare plus reserved-seat express charge, on JR Kyushu's own Yufuin no Mori page (the charge varies by travel date). The online Kyushu Net ticket is ${YUFUIN_NET_FARE}. Every seat is reserved, and it runs three times each way on JR Kyushu's calendar days. Checked ${TODAY}.`,
+  },
+  {
+    q: "Is a Yufuin and Beppu tour better than the train?",
+    a: "For one day that covers both towns, yes. The tour removes the cross-country leg and gets you to the hells before they close. The train is better if you are staying overnight in Yufuin or Beppu, or if riding the Yufuin no Mori is the point of the trip. Note that it is all reserved and runs only on calendar days.",
+  },
+  {
+    q: "How long is a Yufuin and Beppu day tour from Fukuoka?",
+    a: `10 to 10.5 hours, as the Klook listings state them (checked ${TODAY}). One listing notes that Japanese law caps vehicle use at 10 hours a day, so guides may reorder or drop a stop for traffic or weather. Expect short stops rather than a slow day.`,
   },
   {
     q: "How far is Yufuin from Fukuoka?",
-    a: `About 2 hours 15 minutes by train and about 2 hours 20 to 2 hours 25 minutes by highway bus. The Yufuin no Mori takes 2 hours 12 to 2 hours 21 minutes from Hakata on the timetable of 14 March 2026. The bus runs from Tenjin to Yufuin Station. Read ${OWN}.`,
-  },
-  {
-    q: "Is a Yufuin tour better than the train?",
-    a: "For one day that covers both towns, yes. The tour removes the cross-country leg and gets you to the hells before they close. The train is better if you are staying overnight in Yufuin or Beppu, or if riding the Yufuin no Mori is the point of the trip. Note that it is all reserved and runs only on calendar days.",
+    a: `2 hours 12 to 2 hours 21 minutes from Hakata on the Yufuin no Mori (timetable of 14 March 2026, checked ${TODAY}), and about 2 hours 20 to 2 hours 25 minutes by highway bus from Tenjin to Yufuin Station (read ${OWN}). Beppu is 3 hours 20 minutes from Hakata on Yufuin no Mori 3, the one train that runs on past Yufuin.`,
   },
   {
     q: "Which Beppu hell is the best?",
@@ -207,10 +252,10 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Yufuin and Beppu Tour from Fukuoka (2026): Tours vs Train";
-const H1_LINE = "Yufuin and Beppu Tour from Fukuoka (2026):";
+const TITLE = "Yufuin Beppu Day Trip from Fukuoka (2026): Tour vs Train";
+const H1_LINE = "Yufuin Beppu Day Trip from Fukuoka (2026):";
 const DESCRIPTION =
-  "Yufuin and Beppu Tour from Fukuoka: a 10 to 10.5 hour coach day with Beppu's hells and Yufuin. Tours compared with the train, plus onsen time and refunds.";
+  "Yufuin Beppu day trip from Fukuoka: a coach tour takes 10–10.5 hours; the Yufuin no Mori train is 2h12–2h21 and ¥6,130 one way. Compare six tours on Klook.";
 
 const ROUTE = "/guides/attractions/yufuin-beppu-tour-from-fukuoka";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
@@ -250,7 +295,7 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -305,7 +350,7 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            {H1_LINE}<br />Tours, Trains and Onsen Time
+            {H1_LINE}<br />Tour vs Train, Times and Fares
           </h1>
           <p className={styles.heroSubtitle}>
             Two hot spring towns in one long day from Fukuoka. The choice is which stops your coach makes, and
@@ -334,12 +379,12 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
         {/* Lead paragraph: the whole answer, in the body rather than the hero. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            A <strong>Yufuin and Beppu Tour from Fukuoka</strong> is a shared coach day of about{" "}
-            <strong>10 to 10.5 hours</strong> that pairs Beppu&apos;s hot spring &ldquo;hells&rdquo;, usually Umi
-            Jigoku or Kamado Jigoku, with free time in Yufuin, where Kinrin Lake is about 15 minutes on foot from
-            the station. Most tours add Dazaifu or Nyoirin-ji. For one day, book the tour; by train it is{" "}
-            <strong>about 2 hours 15 minutes</strong> to Yufuin alone. Most tours include no bath, only a foot
-            bath at most. Read {OWN} from Klook, JR Kyushu and the Beppu hells&apos; own site.
+            A <strong>Yufuin Beppu day trip from Fukuoka</strong> takes <strong>10 to 10.5 hours</strong> on a
+            shared coach tour that covers Beppu&apos;s hot spring &ldquo;hells&rdquo; and free time in Yufuin in one
+            booking. By train, the limited express <strong>Yufuin no Mori</strong> runs Hakata to Yufuin in{" "}
+            <strong>2 hours 12 to 2 hours 21 minutes</strong> for <strong>{YUFUIN_NO_MORI_FARE}</strong> one way
+            (adult, JR Kyushu, checked {LAST_CHECKED}), and only one of its three daily trains goes on to Beppu. For
+            both towns in one day, book the tour; take the train for Yufuin alone or a night there.
           </p>
         </section>
 
@@ -356,7 +401,7 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Hakata to Yufuin by train</p>
-                <p className={styles.verdictStatValue}>2h12 to 2h21</p>
+                <p className={styles.verdictStatValue}>2h12 to 2h21, {YUFUIN_NO_MORI_FARE}</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Beppu hells</p>
@@ -466,9 +511,10 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
           <span className={styles.sectionLabel}>Tour or train</span>
           <h2 className={styles.sectionTitle}>Is a Yufuin Tour Better Than the Train?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            For both towns in one day, yes. For Yufuin alone, or with a night there, take the train. Yufuin is
-            about 2 hours 15 minutes out and Beppu about 2 hours back, so you would spend over four hours on
-            express trains alone, before the leg between the towns.
+            For both towns in one day, yes. For Yufuin alone, or with a night there, take the train. The Yufuin no
+            Mori is 2 hours 12 to 2 hours 21 minutes and {YUFUIN_NO_MORI_FARE} one way to Yufuin, and Beppu is about
+            2 hours back by Sonic, so you would spend over four hours on express trains alone, before the leg
+            between the towns.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -486,13 +532,19 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.route}</td>
                       <td style={{ fontSize: "0.86rem" }}>{row.time}</td>
                       <td style={{ fontSize: "0.86rem" }}>{row.detail}</td>
-                      <td style={{ fontSize: "0.82rem" }}>{row.source}, {OWN}</td>
+                      <td style={{ fontSize: "0.82rem" }}>{row.source}, {row.checked}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED} —{" "}
+            <a href={JRK_TRAIN_URL} target="_blank" rel="noopener">JR Kyushu Yufuin no Mori page</a>{" "}
+            (timetable of 14 March 2026, Hakata–Yufuin {YUFUIN_NO_MORI_FARE} adult fare). Tour lengths as the Klook
+            listings state them; open a listing for the price on your date.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>Going by train?</strong> Check the Yufuin no Mori calendar first, because it does not run
             every day and every seat is reserved. Some trains continue past Yufuin toward Beppu. For a stay of a

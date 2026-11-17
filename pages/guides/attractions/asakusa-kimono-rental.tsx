@@ -30,13 +30,50 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  * counts, size ranges, the 17:00 and 17:30 deadlines — are as that Klook listing
  * states them.
  *
- * No price appears anywhere on this page. Rental pricing moves by plan and season,
- * and Klook answers automated reads of its product pages with HTTP 403, so there is
- * no figure we could have verified.
+ * Re-read on 17 November 2026 (task-jtk-20261117-C01, "asakusa kimono rental"):
+ *
+ *   aiwafuku.com/shop/asakusa/en-kimono-rental-asakusa/   women from ¥4,300 (easy hair set
+ *       included), men from ¥4,000, couple from ¥7,300 for 2, all tax included, peak dates may
+ *       differ; Main Store and Premium Kaminarimon both 9:00–18:00; return 16:30 (arrive before
+ *       12:00) / 17:30 (12:00 or later); next-day return before 15:00 for ¥2,200; 45–60 minutes
+ *   ewha-yifu.com/en/shops/asakusa/kimono-planlist/basic-plan/   Rikawafuku Asakusa basic plan
+ *       ¥4,500 tax included (no hair service); 9:00–18:00, last dressing 16:00, last return 17:30
+ *       whatever the slot; 45–70 minutes
+ *   senso-ji.jp/about/   main hall 6:00–17:00 (6:30 from October to March)
+ *   t-navi.city.taito.lg.jp/spot/1007   Asakusa Culture Tourist Information Center 9:00–20:00,
+ *       8F terrace to 22:00
+ *
+ * Prices on this page are the shops' own published rates only. No Klook price appears;
+ * the four Klook listing details below are as stated on 21 October 2026.
  */
 
 const CHECKED_ISO = "2026-10-21";
 const CHECKED = checkedLabel(CHECKED_ISO);
+/** Facts re-read on the shops' and the temple's own sites. */
+const OFFICIAL_ISO = "2026-11-17";
+const OFFICIAL = checkedLabel(OFFICIAL_ISO);
+
+/** Official shop rates, hours and return times. First row is the answer. */
+const priceRows = [
+  {
+    shop: "Answer",
+    price: "Basic one-day plan from ¥4,000 to ¥4,500, tax included",
+    hours: "9:00–18:00",
+    ret: "Same day, by 16:30 or 17:30",
+  },
+  {
+    shop: "Aiwafuku (Main Store, 1-11-1 Hanakawado; Premium Kaminarimon, 2-17-9 Kaminarimon)",
+    price: "Women from ¥4,300 with an easy hair set; men from ¥4,000; couple from ¥7,300 for two",
+    hours: "9:00–18:00, both stores",
+    ret: "16:30 if you arrive before 12:00, 17:30 if you arrive at 12:00 or later. Next-day return before 15:00 costs ¥2,200",
+  },
+  {
+    shop: "Rikawafuku Asakusa (2-16-9 Kaminarimon, 6F)",
+    price: "Basic plan ¥4,500, hair set not included",
+    hours: "9:00–18:00; last dressing 16:00",
+    ret: "17:30, whatever time you start",
+  },
+];
 
 /** The four Asakusa listings, on the details that decide which one you book. */
 const shopRows = [
@@ -87,13 +124,13 @@ const spotRows = [
   {
     spot: "Senso-ji main hall and the five-storey pagoda",
     why: "The temple itself, and the pagoda that sits beside it — the backdrop everyone comes for",
-    hours: "Main hall 6:00 – 17:00; 6:30 – 17:00 from October to March",
+    hours: "Main hall 6:00–17:00; 6:30–17:00 from October to March",
     cost: "Free",
   },
   {
     spot: "Asakusa Culture Tourist Information Center, 8F terrace",
     why: "Directly opposite Kaminarimon, looking straight down Nakamise with Tokyo Skytree behind it",
-    hours: "8F terrace 9:00 – 22:00; 1F counter 9:00 – 20:00",
+    hours: "8F terrace 9:00–22:00; building 9:00–20:00",
     cost: "Free",
   },
 ];
@@ -161,28 +198,36 @@ const steps = [
 
 const faqItems = [
   {
-    q: "What time do you have to return an Asakusa kimono rental?",
-    a: `Earlier than almost everyone plans for, and the shops do not agree on the time. Kimono Rental Aiwafuku's Asakusa page sets the last return at 16:30 if you arrive by 12:00 and 17:30 if you arrive after 12:00, with next-day return offered if you need longer. One of the other Asakusa shops on Klook asks for the outfit back before 17:00 and closes its doors at 17:00, and another states 17:30. Treat the deadline as the fixed point of the day and plan the route back to the shop into it. Read off aiwafuku.com and the shop listings on ${CHECKED}.`,
+    q: "How much is Asakusa kimono rental?",
+    a: `A basic one-day Asakusa kimono rental costs from ¥4,000 to ¥4,500 at the shops' own published rates, tax included. Aiwafuku charges from ¥4,300 for women with an easy hair set, from ¥4,000 for men and from ¥7,300 for a couple, and says peak dates can cost more; Rikawafuku Asakusa's basic plan is ¥4,500 without a hair set. Upgrades such as lace, furisode or hakama are extra. Read on aiwafuku.com and ewha-yifu.com on ${OFFICIAL}.`,
   },
   {
-    q: "How long does getting dressed in a kimono take?",
-    a: `Allow three quarters of an hour to an hour at the shop before you step outside. Aiwafuku's own estimate for its Asakusa store is about 45 to 60 minutes covering the choice of kimono, the dressing and the hair set, varying with how busy the shop is. That is at the start of your slot, which is why the six-hour rental two of the Klook listings advertise is not six hours of sightseeing. Checked ${CHECKED}.`,
+    q: "What are Asakusa kimono rental shop hours?",
+    a: `Aiwafuku's Main Store and Premium Kaminarimon store and Rikawafuku Asakusa are all open 9:00 to 18:00, and Rikawafuku takes its last dressing at 16:00. Opening time matters more than closing time, because the outfit is due back by 16:30 or 17:30 and the shop closes at 18:00. Read on the shops' own sites on ${OFFICIAL}.`,
+  },
+  {
+    q: "What time do you have to return an Asakusa kimono rental?",
+    a: `Earlier than almost everyone plans for, and the shops do not agree on the time. Aiwafuku's Asakusa page sets the last return at 16:30 if you arrive before 12:00 and 17:30 if you arrive at 12:00 or later, with next-day return before 15:00 for ¥2,200; Rikawafuku Asakusa sets 17:30 whatever time you start. One of the Asakusa shops on Klook asks for the outfit back before 17:00, and another states 17:30. Treat the deadline as the fixed point of the day and plan the route back to the shop into it. Aiwafuku and Rikawafuku read on their own sites on ${OFFICIAL}; the Klook listings as stated on ${CHECKED}.`,
+  },
+  {
+    q: "Do you need to book Asakusa kimono rental in advance?",
+    a: `Yes in spring and autumn, and it is sensible the rest of the year. Aiwafuku takes same-day bookings when slots are open and welcomes walk-ins, but recommends booking online ahead, especially in busy seasons; Rikawafuku takes web bookings up to 10 minutes before the slot. In cherry-blossom and autumn-colour season the morning slots and the better designs go first. Booking through a reseller also gets you an English checkout and a confirmed slot time, which matters when your day has a 16:30 deadline in it. Booking terms read on the shops' own sites on ${OFFICIAL}.`,
   },
   {
     q: "Is a hair set included with Asakusa kimono rental?",
-    a: `Often, which is a difference from some Kyoto shops where it is a paid extra. Of the four Asakusa listings compared here, one includes hair styling in the plan, one advertises a free hair set, and one gives a free basic hairstyle on women's kimono reservations. Elaborate styling, makeup, a professional photo shoot and a rickshaw ride are the usual paid add-ons. Inclusions as the listings state them on ${CHECKED}.`,
+    a: `Often, but not always. Aiwafuku includes an easy hair set and hair ornaments in its women's plans, while Rikawafuku Asakusa's basic plan has no hair service. Of the four Asakusa Klook listings compared here, one includes hair styling in the plan, one advertises a free hair set, and one gives a free basic hairstyle on women's kimono reservations. Elaborate styling, makeup, a professional photo shoot and a rickshaw ride are the usual paid add-ons. Shop sites read on ${OFFICIAL}; listings as stated on ${CHECKED}.`,
+  },
+  {
+    q: "How long does getting dressed in a kimono take?",
+    a: `Allow three quarters of an hour to an hour at the shop before you step outside. Aiwafuku's own estimate for its Asakusa stores is about 45 to 60 minutes covering the choice of kimono, the dressing and the hair set, and Rikawafuku gives 45 to 70 minutes. That is at the start of your slot, which is why the six-hour rental two of the Klook listings advertise is not six hours of sightseeing. Read on the shops' own sites on ${OFFICIAL}.`,
   },
   {
     q: "Where are the best photo spots around Senso-ji?",
-    a: `Four, and they are all free. Kaminarimon, the great red lantern gate, is the first and the most recognisable — and the shops are minutes from it, so you reach it while the kimono is still freshly tied. Nakamise-dori, the stall-lined approach behind it, is near-empty first thing and shoulder-to-shoulder by late morning. The main hall and the five-storey pagoda are the classic backdrop, and the main hall is open 6:00 to 17:00, or 6:30 to 17:00 from October to March, with no admission fee. The one most people miss is the 8th-floor terrace of the Asakusa Culture Tourist Information Center directly opposite Kaminarimon: free, open 9:00 to 22:00, and it looks straight down Nakamise with Tokyo Skytree behind. Temple hours from senso-ji.jp and terrace hours from Taito City's own site, read on ${CHECKED}.`,
+    a: `Four, and they are all free. Kaminarimon, the great red lantern gate, is the first and the most recognisable — and the shops are minutes from it, so you reach it while the kimono is still freshly tied. Nakamise-dori, the stall-lined approach behind it, is near-empty first thing and shoulder-to-shoulder by late morning. The main hall and the five-storey pagoda are the classic backdrop, and the main hall is open 6:00 to 17:00, or 6:30 to 17:00 from October to March, with no admission fee. The one most people miss is the 8th-floor terrace of the Asakusa Culture Tourist Information Center directly opposite Kaminarimon: free, open 9:00 to 22:00, and it looks straight down Nakamise with Tokyo Skytree behind. Temple hours from senso-ji.jp and terrace hours from Taito City's official tourism site, read on ${OFFICIAL}.`,
   },
   {
     q: "Should you rent a kimono in Asakusa or Kyoto?",
     a: "Asakusa if it is an add-on to a Tokyo trip, Kyoto if the photographs are the trip. Asakusa puts a dense cluster of shops within a few minutes of Kaminarimon and Senso-ji, so the whole thing — dressing, temple, lunch, return — fits into a half day without leaving the city or moving your base. Kyoto's preserved streets around Gion and Kiyomizu-dera are more atmospheric and the rental shops there more often offer next-day or postal return, which buys you a longer day. Our nationwide kimono rental guide compares the two in full.",
-  },
-  {
-    q: "Do you need to book Asakusa kimono rental in advance?",
-    a: "Yes in spring and autumn, and it is sensible the rest of the year. A dressing appointment is a fixed slot with a dresser assigned to it, so shops run on reservations rather than walk-ins, and in cherry-blossom and autumn-colour season the morning slots and the better designs go first. Outside peak, a few days ahead usually covers a weekday. Booking through a reseller also gets you an English checkout and a confirmed slot time, which matters more than it sounds when your day has a 16:30 deadline in it.",
   },
   {
     q: "What happens if it rains?",
@@ -206,9 +251,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/asakusa-kimono-rental") },
 });
 
-const TITLE = "Asakusa Kimono Rental (2026): Return Times and Hair Sets";
+const TITLE = "Asakusa Kimono Rental 2026: Price, Hours & Booking";
 const DESC =
-  "Asakusa kimono rental in 2026: the return deadline is 16:30 or 17:30, dressing and hair take 45–60 minutes, and the shops sit minutes from Kaminarimon.";
+  "Asakusa kimono rental 2026: from ¥4,000–¥4,500 at shop rates, open 9:00–18:00, kimono back by 16:30 or 17:30. Compare 4 shops and book a slot on Klook.";
 
 export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -233,7 +278,7 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -298,14 +343,14 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Asakusa Kimono Rental (2026):<br />Return Times, Hair Sets and Where to Photograph
+            Asakusa Kimono Rental 2026:<br />Price, Hours, Return Time &amp; Booking
           </h1>
           <p className={styles.heroSubtitle}>
-            The deadline is the thing nobody checks until it is too late. Here is when the
-            outfit has to be back, how long the appointment takes, and what fits in between.
+            What a rental costs at the shops&apos; own rates, when they open, when the outfit has to
+            be back, and what fits in between.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Shop hours, dated", "Four free photo spots"].map((t) => (
+            {[`Updated ${updated.label}`, "Official shop prices", "Four free photo spots"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -323,6 +368,18 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* Lead paragraph: the whole answer, in the body rather than the hero. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>Asakusa kimono rental</strong> costs from ¥4,000 to ¥4,500 for a basic one-day plan
+            at the shops&apos; own published rates, tax included: Aiwafuku charges from ¥4,300 for women
+            (easy hair set included) and ¥4,000 for men, and Rikawafuku Asakusa ¥4,500 without a hair set.
+            Both shops are open 9:00 to 18:00 within a five-minute walk of Kaminarimon, and dressing takes
+            about 45 to 60 minutes (up to 70 at Rikawafuku). The kimono goes back the same day, by 16:30 if you start at Aiwafuku
+            before 12:00 and by 17:30 otherwise. Read on aiwafuku.com and ewha-yifu.com on {OFFICIAL}.
+          </p>
+        </section>
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
@@ -354,8 +411,9 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
               hair set takes roughly 45 to 60 minutes at the start, and the outfit has to be back the
               same day — 16:30 if you arrived by 12:00 and 17:30 if you arrived later at one
               shop, and before 17:00 at one of the others. Senso-ji itself is free and open from
-              6:00 (6:30 from October to March) to 17:00. Deadlines and hours read off aiwafuku.com,
-              senso-ji.jp and the shop listings on {CHECKED}.
+              6:00 (6:30 from October to March) to 17:00. Aiwafuku and Senso-ji hours read on
+              aiwafuku.com and senso-ji.jp on {OFFICIAL}; the other shop&apos;s deadline as its listing
+              stated on {CHECKED}.
             </p>
             <KlookLink
               href={asakusaKimonoAiwafukuNo2.url}
@@ -370,6 +428,51 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
         </div>
 
         <EsimCtaTop />
+
+        {/* Official price, hours and return time */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Price and hours</span>
+          <h2 className={styles.sectionTitle}>How Much Is Asakusa Kimono Rental, and When Are Shops Open?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            From ¥4,000 to ¥4,500 for a basic one-day plan, at shops open 9:00 to 18:00. These are the
+            shops&apos; own rates; Aiwafuku notes that peak dates can cost more, and upgrades such as lace,
+            furisode or hakama are extra.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Shop", "Price (tax included)", "Hours", "Return by"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {priceRows.map((row) => (
+                    <tr key={row.shop}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.shop}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.85rem" }}>{row.price}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.hours}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.ret}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {OFFICIAL_ISO}</strong> · Sources:
+            https://aiwafuku.com/shop/asakusa/en-kimono-rental-asakusa/,
+            https://ewha-yifu.com/en/shops/asakusa/kimono-planlist/basic-plan/. Klook prices change by
+            date and are not listed here: open a listing for the figure on yours.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={asakusaKimonoAiwafukuNo2.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check your date for Asakusa kimono rental on Klook →
+            </KlookLink>
+          </div>
+        </section>
 
         {/* Intro / scope */}
         <section className={styles.bodySection}>
@@ -386,8 +489,10 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
             This page assumes you have already settled on Asakusa. If you are still weighing it
             against Kyoto, or you want the general explanation of what a rental includes and how the
             pricing works, that is our{" "}
-            <Link href="/guides/attractions/kimono-rental-japan">kimono rental in Japan guide</Link>.
-            What follows here is the Asakusa detail: the return deadlines, which differ shop to shop
+            <Link href="/guides/attractions/kimono-rental-japan">kimono rental in Japan guide</Link>,
+            and if the photographs are the trip, our{" "}
+            <Link href="/guides/attractions/kyoto-kimono-rental">Kyoto kimono rental guide</Link> covers
+            Gion, Kiyomizu-dera and next-day return. What follows here is the Asakusa detail: the return deadlines, which differ shop to shop
             and are earlier than people expect, how long the appointment really takes, which station
             exit to use, and the four places worth photographing once you are dressed.
           </p>
@@ -427,10 +532,10 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Details as the four Klook listings state them, all confirmed live and on sale on {CHECKED},
-            with the Aiwafuku return deadlines cross-checked against that operator&apos;s own Asakusa page.
-            No price appears here: rental pricing moves by plan and season, and Klook prices change by
-            date, so open a listing for the figure on yours.
+            <strong>Last checked: {CHECKED_ISO}</strong> (Klook listings) and {OFFICIAL_ISO} (Aiwafuku
+            return times, https://aiwafuku.com/shop/asakusa/en-kimono-rental-asakusa/). Details as the
+            four Klook listings state them. Klook prices change by date, so open a listing for the
+            figure on yours; the shops&apos; own rates are in the price table above.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={asakusaKimonoKaminarimon.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -486,9 +591,8 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Senso-ji&apos;s main hall hours read off senso-ji.jp, and the Asakusa Culture Tourist
-            Information Center&apos;s terrace and counter hours off Taito City&apos;s own site, on {CHECKED}.
-            Both are free. Note the mismatch that matters: the temple closes at 17:00 and your kimono is
+            <strong>Last checked: {OFFICIAL_ISO}</strong> · Sources: https://www.senso-ji.jp/about/,
+            https://t-navi.city.taito.lg.jp/spot/1007 (Taito City&apos;s official tourism site). Both are free. Note the mismatch that matters: the temple closes at 17:00 and your kimono is
             due back at 16:30 or 17:30, so the temple is never the constraint — the shop is.
           </p>
         </section>

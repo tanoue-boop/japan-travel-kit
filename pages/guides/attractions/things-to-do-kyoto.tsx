@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
+import KlookLink from "../../../components/KlookLink";
 import CityGuideIndex from "../../../components/CityGuideIndex";
 import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
@@ -27,14 +28,63 @@ const NIJO = priceById("nijoCastle");
 
 const linkStyle = { color: "var(--red)", fontWeight: 600 } as const;
 
-const faqItems = [
+// One string for <title>, og, twitter and the Article headline, so the built title is never a slug.
+const TITLE = "Things to Do in Kyoto 2026: Top 5 Sights and What to Book";
+const DESC =
+  "Things to do in Kyoto 2026: Fushimi Inari (free), Kiyomizu-dera, Kinkaku-ji (¥500), Arashiyama and Gion. None needs booking; day-tour buttons go to Klook.";
+
+// Top-5 table: every figure re-read on the official page on TOP5_CHECKED (Nov 17 C01).
+const TOP5_CHECKED = "2026-11-17";
+const top5Rows = [
   {
-    q: "Do I need to book anything in advance for Kyoto?",
-    a: "Far less than for Tokyo, and that changes how you plan. Kyoto's headline sights — Fushimi Inari, Kiyomizu-dera, Kinkaku-ji, the Arashiyama bamboo grove, Gion, Nishiki Market — are walk-in temples, shrines, streets and markets with no timed entry to reserve. The things worth booking are the experiences that need a slot and a person: a kimono dressing appointment, a tea ceremony session, a guided day that covers several districts.",
+    sight: "Fushimi Inari Taisha",
+    price: "Free",
+    hours: "No closing time; open every day",
+    booking: "No",
+    source: "ja.kyoto.travel (Kyoto City official tourism guide)",
   },
   {
-    q: "What should I actually plan, then?",
-    a: `The route and the transport. Kyoto's famous sights sit on opposite sides of the city — Kinkaku-ji in the north, Kiyomizu-dera and Gion in the east, Arashiyama in the west — and most are reached by bus rather than subway. That is why the Subway & Bus 1-Day Pass at ¥1,100 for an adult and ¥550 for a child is the decision that actually matters: with a flat city-bus fare of ¥230 and subway fares from ¥210, about five rides break even, and a full temple day clears that by mid-afternoon. Figures checked ${CHECKED}.`,
+    sight: "Kiyomizu-dera",
+    price: "See the temple's site",
+    hours: "6:00–18:00 (18:30 in July and August)",
+    booking: "No",
+    source: "kiyomizudera.or.jp",
+  },
+  {
+    sight: "Kinkaku-ji (Golden Pavilion)",
+    price: "¥500 adult, ¥300 child (elementary and junior high)",
+    hours: "9:00–17:00, open every day",
+    booking: "No",
+    source: "shokoku-ji.jp",
+  },
+  {
+    sight: "Arashiyama: Tenryu-ji garden",
+    price: "¥500 adult (halls +¥300)",
+    hours: "8:30–17:00, last entry 16:50; from 7:30 on 14–30 November 2026",
+    booking: "No",
+    source: "tenryuji.com",
+  },
+  {
+    sight: "Gion",
+    price: "Free (public streets)",
+    hours: "—",
+    booking: "Streets no; a maiko dinner or guided night walk yes",
+    source: "—",
+  },
+];
+
+const faqItems = [
+  {
+    q: "What are the top things to do in Kyoto in 2026?",
+    a: "The top five are Fushimi Inari Taisha, Kiyomizu-dera, Kinkaku-ji, Arashiyama (the bamboo grove and Tenryu-ji) and Gion. Fushimi Inari is free with no closing time, Kinkaku-ji is ¥500 for an adult and Tenryu-ji's garden ¥500, all read on the official sites on 17 November 2026. Add Nishiki Market, a tea ceremony and a day trip to Nara if you have a third day.",
+  },
+  {
+    q: "Which things to do in Kyoto need booking in advance?",
+    a: "None of the top five, and far less than in Tokyo. Kyoto's headline sights — Fushimi Inari, Kiyomizu-dera, Kinkaku-ji, the Arashiyama bamboo grove, Gion, Nishiki Market — are walk-in temples, shrines, streets and markets with no timed entry to reserve. The things worth booking are the experiences that need a slot and a person: a kimono dressing appointment, a tea ceremony session, a guided day that covers several districts.",
+  },
+  {
+    q: "How much do Kyoto temples cost in 2026?",
+    a: `Most of the famous ones are ¥500 to ¥1,000 for an adult, paid at the gate. On the temples' own sites on 17 November 2026: Kinkaku-ji ¥500, Ginkaku-ji ¥1,000 and Tenryu-ji's garden ¥500 (¥300 more for the halls); Fushimi Inari Taisha charges nothing. Kodai-ji is ${KODAI.adult} and Nijo Castle ${NIJO.adult}, read on ${checkedLabel(KODAI.checked)}.`,
   },
   {
     q: "How many days do I need in Kyoto?",
@@ -43,6 +93,10 @@ const faqItems = [
   {
     q: "Is Fushimi Inari free, and when should I go?",
     a: "Yes — Fushimi Inari Taisha charges no admission and the mountain paths are open around the clock, which is exactly why it is the one sight where timing beats planning. The Senbon Torii gates fill up by mid-morning. Go at first light or after dark and you get the same shrine with a fraction of the people, at no cost and with no booking.",
+  },
+  {
+    q: "What should I actually plan, then?",
+    a: `The route and the transport. Kyoto's famous sights sit on opposite sides of the city — Kinkaku-ji in the north, Kiyomizu-dera and Gion in the east, Arashiyama in the west — and most are reached by bus rather than subway. That is why the Subway & Bus 1-Day Pass at ¥1,100 for an adult and ¥550 for a child is the decision that actually matters: with a flat city-bus fare of ¥230 and subway fares from ¥210, about five rides break even, and a full temple day clears that by mid-afternoon. Figures checked ${CHECKED}.`,
   },
   {
     q: "Is a guided Kyoto day tour worth it?",
@@ -56,28 +110,26 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
   return (
     <>
       <Head>
-        <title>Things to Do in Kyoto (2026): Temples, Timing and Booking</title>
-        <meta
-          name="description"
-          content="Things to do in Kyoto in 2026: almost nothing needs booking, so the plan is the route. How the districts fit together, and why the ¥1,100 day pass matters."
-        />
+        <title>{TITLE}</title>
+        <meta name="description" content={DESC} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/things-to-do-kyoto" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Things to Do in Kyoto (2026): Temples, Timing and What to Book" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/things-to-do-kyoto" />
-        <meta property="og:description" content="Things to do in Kyoto in 2026: almost nothing needs booking, so the plan is the route. How the districts fit together, and why the ¥1,100 day pass matters." />
+        <meta property="og:description" content={DESC} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Things to Do in Kyoto (2026): Temples, Timing and What to Book" />
-        <meta name="twitter:description" content="Things to do in Kyoto in 2026: almost nothing needs booking, so the plan is the route. How the districts fit together, and why the ¥1,100 day pass matters." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESC} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              // Visible FAQ keeps every question; JSON-LD carries the five that match search queries.
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -90,7 +142,8 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/things-to-do-kyoto",
-              headline: "Things to Do in Kyoto (2026): Temples, Timing and What to Book",
+              headline: TITLE,
+              description: DESC,
               updated,
             }),
           }}
@@ -138,7 +191,7 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Things to Do in Kyoto (2026):<br />Temples, Timing &amp; What to Book
+            Things to Do in Kyoto 2026:<br />Top 5 Sights and What to Book
           </h1>
           <p className={styles.heroSubtitle}>
             Kyoto needs almost no reservations. What it needs is a route: the famous sights sit on opposite
@@ -169,7 +222,61 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>In Kyoto, the Planning Is the Route</h2>
+          <h2 className={styles.sectionTitle}>What Are the Top Things to Do in Kyoto in 2026?</h2>
+          <p className={styles.bodyText}>
+            The top 5 things to do in Kyoto in 2026 are Fushimi Inari Taisha, Kiyomizu-dera, Kinkaku-ji,
+            Arashiyama and Gion. None of the five needs a booking: Fushimi Inari is free with no closing time,
+            and Kinkaku-ji and Tenryu-ji&apos;s garden in Arashiyama are ¥500 each for an adult at the gate. The
+            only things worth booking are slot-based experiences — a kimono dressing, a tea ceremony or a guided
+            day that joins the districts.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Sight", "Adult price", "Hours", "Book ahead?", "Official source"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>Verdict</td>
+                    <td colSpan={4} style={{ fontSize: "0.88rem" }}>
+                      <strong>None of the top 5 needs booking</strong> — Fushimi Inari and Gion are free, Kinkaku-ji
+                      and Tenryu-ji are ¥500 at the gate. Book only a kimono slot, a tea ceremony or a guided day.
+                    </td>
+                  </tr>
+                  {top5Rows.map((row) => (
+                    <tr key={row.sight}>
+                      <td className={styles.tdProvider}>{row.sight}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.price}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.hours}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.booking}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.source}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {TOP5_CHECKED}</strong> —{" "}
+            <a href="https://ja.kyoto.travel/tourism/single01.php?category_id=7&tourism_id=448" target="_blank" rel="noopener">Fushimi Inari (Kyoto City)</a>,{" "}
+            <a href="https://www.kiyomizudera.or.jp/news/open-hour.php" target="_blank" rel="noopener">Kiyomizu-dera hours</a>,{" "}
+            <a href="https://www.shokoku-ji.jp/kinkakuji/access/" target="_blank" rel="noopener">Kinkaku-ji</a>,{" "}
+            <a href="https://www.tenryuji.com/visit/" target="_blank" rel="noopener">Tenryu-ji</a>. Kiyomizu-dera&apos;s
+            admission is not published as text on its site, so no figure is given here.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={kyotoHighlightBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Guided Kyoto highlights day →
+            </KlookLink>
+            <KlookLink href={kyotoNaraArashiyamaTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Kyoto &amp; Nara day from Osaka →
+            </KlookLink>
+          </div>
           <p className={styles.bodyText}>
             Kyoto is the opposite of Tokyo to plan. Almost nothing here needs a reservation: Fushimi Inari,
             Kiyomizu-dera, Kinkaku-ji, the Arashiyama bamboo grove, Gion, Nishiki Market — they are temples,

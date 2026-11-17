@@ -195,7 +195,7 @@ const relatedGuides = [
   { href: "/guides/attractions/tokyo-disney-tickets", title: "Tokyo Disneyland Tickets 2026: Prices, Rules & DisneySea" },
   { href: "/guides/attractions/tokyo-itinerary-with-kids", title: "Tokyo Itinerary with Kids: 5 Days, Day by Day (2026)" },
   { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport" },
-  { href: "/guides/transport/tokyo-airport-limousine-bus", title: "Airport Limousine Bus Tokyo (2026): Narita & Haneda Fares, Times and Stops" },
+  { href: "/guides/transport/tokyo-airport-limousine-bus", title: "Airport Limousine Bus Tokyo 2026: Fares, Times & Booking" },
 ];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
@@ -632,7 +632,9 @@ export default function TokyoDisneyHotelsPage({ updated }: { updated: PageUpdate
             the resort gives about 80 minutes from Narita and about 50 minutes from Haneda to Maihama, changing
             at Tokyo Station. Partner Hotel guests can send bags from the counter in front of JR Maihama Station
             for ¥800 an item. See our{" "}
-            <Link href="/guides/transport/tokyo-airport-limousine-bus">Airport Limousine Bus guide</Link>.
+            <Link href="/guides/transport/tokyo-airport-limousine-bus">Airport Limousine Bus Tokyo guide</Link>, or the{" "}
+            <Link href="/guides/transport/tokyo-airport-transfer">Tokyo airport transfer guide</Link> for every train
+            from Narita to Tokyo and Haneda to Tokyo.
           </p>
         </section>
 

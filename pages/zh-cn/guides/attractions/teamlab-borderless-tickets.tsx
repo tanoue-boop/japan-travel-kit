@@ -413,7 +413,8 @@ export default function CnTeamLabBorderlessPage({ updated }: { updated: PageUpda
         <p className={styles.bodyText}>
           以上数字均来自 teamLab 官方网站及其常见问题，核查日期 {CHECKED}。还没决定去哪一座？请看{" "}
           <Link href="/zh-cn/guides/attractions/teamlab-tokyo-tickets">teamLab Planets 与 Borderless 对比</Link>；
-          本页专门讲怎么预订 Borderless（无界）。
+          本页专门讲怎么预订 Borderless（无界）。其他要先订的东京景点门票，整理在{" "}
+          <Link href="/zh-cn/guides/attractions/things-to-do-tokyo">东京必去景点与东京景点门票价格</Link>。
         </p>
 
         <div className={styles.verdictBox}>

@@ -1345,7 +1345,7 @@ teamLab 식물원 오사카 →
 눈축제를 위해 홋카이도로 가는 것이 나을까요?
 </h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-여행이 2월 상반기라면 진지하게 고려해 보세요. <strong>제77회 삿포로 눈축제는 2027년 2월 4~11일</strong> 행사장 3곳(오도리 니시 1~11초메, 스스키노 에키마에도리 미나미 4~6조, 쓰도무 행사장)에서 열리고 모두 무료 입장으로, 시라카와고 라이트업과 정반대입니다. 대신 필요한 것은 숙소와 항공편이고 둘 다 몇 달 전에 찹니다. <Link href="/ko/guides/attractions/sapporo-snow-festival-tours">삿포로 눈축제 투어 가이드</Link>에 행사장과 투어가 있습니다. 이 버전은 도쿄 일정은 그대로 두고 호쿠리쿠 구간을 홋카이도로 바꿉니다.
+여행이 2월 상반기라면 진지하게 고려해 보세요. <strong>제77회 삿포로 눈축제는 2027년 2월 4~11일</strong> 행사장 3곳(오도리 니시 1~11초메, 스스키노 에키마에도리 미나미 4~6조, 쓰도무 행사장)에서 열리고 모두 무료 입장으로, 시라카와고 라이트업과 정반대입니다. 대신 필요한 것은 숙소와 항공편이고 둘 다 몇 달 전에 찹니다. <Link href="/ko/guides/attractions/sapporo-snow-festival-tours">삿포로 눈축제 투어 가이드</Link>에 행사장과 투어가 있고, 섬 안에서 일주일을 보내는 <Link href="/ko/guides/attractions/hokkaido-7-day-itinerary">홋카이도 겨울 여행 코스</Link>는 삿포로 4박·후라노 2박의 일자별 일정입니다. 이 버전은 도쿄 일정은 그대로 두고 호쿠리쿠 구간을 홋카이도로 바꿉니다.
 </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

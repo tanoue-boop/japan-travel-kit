@@ -57,7 +57,10 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const LOCALE = "ko" as const;
 const ROUTE = "/ko/guides/attractions/hokkaido-7-day-itinerary";
-const trail: Crumb[] = [...TRAIL_BASE[LOCALE], { label: "홋카이도 7일 여행" }];
+const trail: Crumb[] = [...TRAIL_BASE[LOCALE], { label: "홋카이도 7일 일정" }];
+
+// Fares and pass prices re-read on JR Hokkaido's English fare and pass pages on this date.
+const RECHECKED_ISO = "2026-11-17";
 
 const OWN_ISO = "2026-11-01";
 const OWN = dateLabel(OWN_ISO, LOCALE);
@@ -174,6 +177,11 @@ const seasonRows = [
 ];
 
 const passRows = [
+  {
+    leg: "결론: 겨울 여행 코스 7일 철도 합계",
+    fare: TOTAL_WINTER,
+    note: `7일권 홋카이도 레일 패스 ${PASS_7}보다 ¥10,300 저렴합니다. 3~6일차에 4일권 삿포로–후라노 에어리어 패스 ${AREA_FURANO}을 쓰면 됩니다.`,
+  },
   {
     leg: "신치토세 공항 → 삿포로(1일차)",
     fare: AIRPORT_FARE,
@@ -586,7 +594,7 @@ const hokkaidoSameTrip: KlookTripPrepItem[] = [
   },
 ];
 
-const faqItems = [
+const faqBase = [
   {
     q: "홋카이도 7일이면 충분한가요?",
     a: `섬의 절반이라면 넉넉합니다. 6박 7일이면 삿포로, 오타루, 아사히카와, 비에이, 후라노를 서두르지 않고 돌 수 있고, 이 페이지의 경로가 그것입니다. 삿포로 4박, 후라노 2박입니다. 7일로 섬 전체는 볼 수 없습니다. 홋카이도는 오스트리아만 한 크기이고 동쪽의 시레토코, 구시로, 아칸호는 아사히카와에서 4~5시간 더 가야 하며 남쪽의 하코다테는 또 다른 방향입니다. 둘 중 하나라도 넣으면 일주일이 열차로 끝납니다. 2~3박에 숙박 거점 한 곳이 기준입니다. 숙박 거점 2곳이면 서쪽을 제대로 보고, 3곳이면 서둘러 보고, 4곳이면 휴가가 아니라 이동 일정이 됩니다.`,
@@ -629,9 +637,29 @@ const faqItems = [
   },
 ];
 
-const TITLE = "홋카이도 7일 여행(2027): 일자별 일정과 패스 계산";
+// Top five match the search queries (홋카이도 7일 일정, 홋카이도 겨울 여행 코스) and go to FAQPage JSON-LD;
+// the rest stay visible in their original order.
+const faqItems = [
+  {
+    q: "홋카이도 7일 일정은 어떻게 짜나요?",
+    a: `숙박 거점 2곳, 삿포로 4박과 후라노 2박이 기본입니다. 1일차 신치토세 도착 후 삿포로, 2일차 삿포로와 조잔케이 또는 눈축제, 3일차 오타루, 4일차 아사히카와와 아사히야마 동물원을 거쳐 후라노, 5일차 비에이와 후라노, 6일차 삿포로 복귀 후 스노 파크나 노보리베쓰, 7일차 신치토세 출국입니다. ${RECHECKED_ISO}에 확인한 JR 홋카이도 요금으로 겨울 코스 철도 합계는 ${TOTAL_WINTER}이고, 7일권 레일 패스 ${PASS_7} 대신 4일권 삿포로–후라노 에어리어 패스 ${AREA_FURANO}이 이득입니다.`,
+  },
+  {
+    q: "홋카이도 겨울 여행 코스는 어떻게 다른가요?",
+    a: `7일의 뼈대는 같고 4일의 내용이 달라집니다. 2일차는 2027년 2월 4~11일 삿포로 눈축제 행사장 또는 조잔케이 온천, 3일차는 해가 진 뒤의 오타루 운하와 2월 6~13일 눈빛 거리 축제, 5일차는 눈 덮인 비에이 언덕과 후라노 스키장입니다. 6일차는 라벤더 익스프레스가 없어 아사히카와 경유(${FURANO_WINTER})로 삿포로에 돌아온 뒤 스노 파크나 2027년 1월 30일~2월 23일 시코쓰호 얼음 축제를 넣습니다. 아사히야마 동물원 겨울 시간은 10:30–15:30(입장 마감 15:00)이고, 2월 삿포로 일 최고 평균은 ${FEB_MAX}입니다.`,
+  },
+  faqBase[0],
+  faqBase[2],
+  faqBase[4],
+  faqBase[1],
+  faqBase[3],
+  ...faqBase.slice(5),
+];
+
+// Queries 홋카이도 7일 일정 / 홋카이도 겨울 여행 코스 (Nov 17 C01). One string for <title>, og and headline.
+const TITLE = "홋카이도 7일 일정(2027): 겨울 여행 코스와 패스 계산";
 const DESC =
-  "홋카이도 7일 여행 일정: 삿포로, 오타루, 아사히카와, 비에이, 후라노의 일자별 일정표와 숙소 거점, 항공, 철도 패스 계산.";
+  "홋카이도 7일 일정: 삿포로 4박·후라노 2박 겨울 여행 코스, 철도 ¥17,700. 7일 패스 대신 4일 패스 ¥11,000. 투어는 클룩.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -642,7 +670,8 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
     <>
       <Head>
         {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
+        {/* Visible FAQ keeps every question; JSON-LD carries the five that match search queries. */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems.slice(0, 5)) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -660,7 +689,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
 업데이트 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-홋카이도 7일 여행:<br />일자별 추천 일정
+홋카이도 7일 일정(2027):<br />겨울 여행 코스와 패스 계산
 </h1>
           <p className={styles.heroSubtitle}>
 두 곳을 거점으로 6박, 일자별 일정표로 정리했습니다. JR 홋카이도 요금으로 계산한 철도 패스, 2월과 7월 버전 비교까지.
@@ -677,6 +706,10 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
 
       <div className={styles.content}>
                 <Disclosure />
+
+        <p className={styles.bodyText}>
+<strong>홋카이도 7일 일정</strong>은 삿포로 4박과 후라노 2박, 숙박 거점 2곳으로 삿포로 → 오타루 → 아사히카와 → 비에이·후라노 → 삿포로를 도는 코스입니다. <strong>홋카이도 겨울 여행 코스</strong>의 철도 요금은 1인 <strong>{TOTAL_WINTER}</strong>로 7일권 홋카이도 레일 패스 {PASS_7}보다 싸므로, 3~6일차에 4일권 삿포로–후라노 에어리어 패스 {AREA_FURANO}만 사면 됩니다(JR 홋카이도 공식 요금, {RECHECKED_ISO} 확인). 2027년 2월 4~11일 삿포로 눈축제 기간이라면 숙소와 비에이·요이치 당일 투어부터 예약하세요.
+</p>
 
         <WinterBookingTop
           heading={"홋카이도 7일 여행에서 어떤 투어를 예약할까요?"}
@@ -881,6 +914,9 @@ JR 홋카이도 패스 보기 →
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+<strong>최종 확인: {RECHECKED_ISO}</strong> — <a href="https://www.jrhokkaido.co.jp/global/english/ticket/regular/index.html" target="_blank" rel="noopener">JR 홋카이도 요금표</a>: 신치토세–삿포로 {AIRPORT_FARE}, 삿포로–오타루 {OTARU_FARE}, 삿포로–아사히카와 특급 지정석 {ASAHIKAWA_OW}, 아사히카와–후라노 보통열차 {FURANO_LOCAL}. <a href="https://www.jrhokkaido.co.jp/global/english/ticket/railpass/index.html" target="_blank" rel="noopener">JR 홋카이도 패스 페이지</a>: 레일 패스 사전 구매 5일 {PASS_5}·7일 {PASS_7}·10일 {PASS_10}, 삿포로–후라노 에어리어 패스 {AREA_FURANO}, 삿포로–노보리베쓰 에어리어 패스 {AREA_NOBORIBETSU}. 여름 라벤더 익스프레스 구간은 {OWN} 확인 수치입니다.
+</p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
 <strong>그렇다면 어떤 패스가 맞을까요?</strong> <strong>홋카이도 레일 패스</strong>는 사전 구매 기준 연속 5일 {PASS_5}, 7일 <strong>{PASS_7}</strong>, 10일 {PASS_10}이고 역 구매는 ¥1,000 더 비싸며 어린이는 절반, 플렉시블권은 없습니다. ¥18,000 미만의 요금과 비교하면 7일권은 약 ¥10,000 손해입니다. 연속 4일 <strong>{AREA_FURANO}</strong>의 <strong>삿포로–후라노 에어리어 패스</strong>가 이득입니다. 아사히카와와 후라노 특급 구간만 ¥11,720이고 신치토세, 삿포로, 오타루, 비에이도 포함되어 3~6일차에 쓰면 오타루 왕복까지 더해 본전을 넘습니다(도마무는 포함되지 않습니다). <strong>삿포로–노보리베쓰 에어리어 패스</strong> {AREA_NOBORIBETSU}는 내륙 대신 남쪽 경로용으로 신치토세, 삿포로, 오타루, 노보리베쓰를 포함하고 도야는 포함하지 않습니다. 2026년 10월 1일 개정 후 7일 ¥53,000, 14일 ¥84,000, 21일 ¥105,000인 전국 <strong>JR 패스</strong>는 홋카이도만 도는 여행에 맞지 않습니다. 언제 맞는지는 <Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR 패스 가이드(영어)</Link>를 보세요.
 </p>

@@ -308,7 +308,8 @@ export default function CnTeamLabPlanetsPage({ updated }: { updated: PageUpdated
         <p className={styles.bodyText}>
           还在两间东京美术馆之间犹豫？我们的{" "}
           <Link href="/zh-cn/guides/attractions/teamlab-tokyo-tickets">teamLab Planets 与无界比较</Link>{" "}
-          把两者并排列出。
+          把两者并排列出；想把 teamLab 和其他东京必去景点排进同一趟行程，请看{" "}
+          <Link href="/zh-cn/guides/attractions/things-to-do-tokyo">东京必去景点与门票价格</Link>。
         </p>
 
         <EsimCtaTop />

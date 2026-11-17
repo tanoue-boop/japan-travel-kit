@@ -43,9 +43,12 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 // 2026-11-07, section for section and block for block; no figures added beyond it.
 
 const ROUTE = "/zh-cn/guides/attractions/things-to-do-tokyo";
-const TITLE = "东京自由行景点 2026：必去清单与门票价格";
+// Queries 东京必去景点 / 东京景点门票 (Nov 17 C01). One string for <title>, og, twitter and the headline.
+const TITLE = "东京必去景点 2026：东京景点门票价格与预约清单";
 const DESC =
-  "2026 东京自由行景点与门票价格：涩谷SKY ¥2,700 起、teamLab Planets ¥3,800 起、迪士尼 ¥8,900 起，哪些要先订。";
+  "东京必去景点与东京景点门票：迪士尼成人 ¥8,900 起、teamLab Planets ¥3,800 起须先订，都厅观景台免费，按钮直达 Klook。";
+// Re-read on the official sites on this date: Disney ¥8,900~, teamLab Planets ¥3,800~, Tocho deck free at 202 m.
+const RECHECKED_ISO = "2026-11-17";
 
 const label = (iso: string) => dateLabel(iso, "zh-cn");
 const CHECKED_FREE = label("2026-11-07");
@@ -213,12 +216,24 @@ const bookingRows = [
 
 const faqItems: FaqItem[] = [
   {
-    q: "东京到底哪些需要提前订？",
+    q: "东京必去景点有哪些？",
+    a: "第一次去东京，必去的是 5 处：涩谷SKY（看日落）、teamLab Planets 或 teamLab 无界、东京迪士尼、东京晴空塔，以及免费的东京都厅观景室。再加上明治神宫、涩谷十字路口和一趟镰仓、日光或富士山一日游，三到四天就排满了。各景点的门票价格与要不要先订，都列在上方的门票价格表。",
+  },
+  {
+    q: "东京景点门票多少钱？",
+    a: `成人票方面，观景台或 teamLab 美术馆从 ¥1,500 到 ¥3,800 起，主题乐园或影城从 ¥3,900 到 ¥8,900 起。${RECHECKED_ISO} 在官网核查：东京迪士尼一日护照成人 ¥8,900 起、teamLab Planets 成人 ¥3,800 起，东京都厅观景室免费。其他景点的票价与各自的核查日期列在上方表格。`,
+  },
+  {
+    q: "东京哪些景点门票要提前订？",
     a: "其实就五件事：东京迪士尼（指定日期、门口不卖票）、两家 teamLab 美术馆（30 分钟指定时段）、涩谷SKY 的日落时段、华纳兄弟哈利波特影城，以及除了门票还要来园预约的三丽鸥彩虹乐园。大相扑也算，但只在你的日期落在 1 月、5 月或 9 月时。东京其他几乎所有东西——晴空塔、东京塔、神社、街区、免费的东京都厅观景台——都可以当天早上再决定。",
   },
   {
     q: "东京有免费的景点吗？",
     a: `有，而且其中一个是付费观景台的真正对手。新宿的东京都厅在 45 层、202 米处设有观景室，免费入场，晴空塔与东京塔都在视野里。神社、公园与整片街区都不用花钱就能逛，所以下面要付费的清单可以很短。高度与入场费读自 metro.tokyo.lg.jp，核查日期 ${TOCHO_CHECKED}。`,
+  },
+  {
+    q: "东京景点门票可以退款吗？",
+    a: "要看场馆。东京迪士尼、teamLab Planets 与华纳兄弟影城都不接受因个人原因退款，但各自有改期规则。涩谷SKY 官网线上票在入场日前可免费取消；晴空塔官网票提前 31 天以上取消免费，之后收 20%。第三方平台有自己的条款，请在结账时确认。",
   },
   {
     q: "为什么东京的官方售票网站刷不了我的卡？",
@@ -239,10 +254,6 @@ const faqItems: FaqItem[] = [
   {
     q: "东京迪士尼两座园区可以一天逛完吗？",
     a: `目前一张票不行。每张园区门票只限一座园区、一个日期，官方 FAQ 也写明一日跳园护照目前没有销售，所以两座园区就是两天。核查日期 ${label(TOKYO_GUIDE_PRICES.tokyoDisney.checked)}。`,
-  },
-  {
-    q: "东京景点门票可以退款吗？",
-    a: "要看场馆。东京迪士尼、teamLab Planets 与华纳兄弟影城都不接受因个人原因退款，但各自有改期规则。涩谷SKY 官网线上票在入场日前可免费取消；晴空塔官网票提前 31 天以上取消免费，之后收 20%。第三方平台有自己的条款，请在结账时确认。",
   },
 ];
 
@@ -292,7 +303,7 @@ const tours = [
 
 const trail: Crumb[] = [
   { href: "/zh-cn/guides/attractions", label: "日本景点门票" },
-  { label: "东京自由行景点" },
+  { label: "东京必去景点" },
 ];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
@@ -304,7 +315,8 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
     <>
       <Head>
         {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
+        {/* Visible FAQ keeps every question; JSON-LD carries the five that match search queries. */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems.slice(0, 5)) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -326,7 +338,7 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            东京自由行景点 2026：<br />必去清单与门票价格
+            东京必去景点 2026：<br />东京景点门票价格与预约清单
           </h1>
           <p className={styles.heroSubtitle}>
             东京热门景点的官方门票价格、哪些要先订、哪些免费，
@@ -350,12 +362,11 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>概要</span>
-          <h2 className={styles.sectionTitle}>东京哪些景点要先订票？</h2>
+          <h2 className={styles.sectionTitle}>东京必去景点与门票：哪些要先订？</h2>
           <p className={styles.bodyText}>
-            东京需要提前订票的只有几处：涩谷SKY（成人 {SKY_ONLINE_DAY} 起）、teamLab Planets（{zhPrice(PRICES.teamlabPlanets.adult)}）、
-            东京迪士尼（{zhPrice(TOKYO_GUIDE_PRICES.tokyoDisney.adult)}）、华纳兄弟哈利波特影城（{PRICES.wbStudioTour.adult}），
-            以及三丽鸥彩虹乐园的来园预约。其他都可以当天再决定；想看免费的景色，就去 202 米高的东京都厅观景室。
-            以上是官方票价，每个数字的核查日期都列在下表。
+            东京必去景点有 5 个：涩谷SKY、teamLab Planets、东京迪士尼、东京晴空塔，以及 202 米高、免费入场的东京都厅观景室。
+            东京景点门票里，东京迪士尼一日护照成人 ¥8,900 起、teamLab Planets 成人 ¥3,800 起，两者都必须提前在线订好（{RECHECKED_ISO} 官网核查）。
+            华纳兄弟哈利波特影城（{PRICES.wbStudioTour.adult}）与三丽鸥彩虹乐园的来园预约也要先订，其他景点大多可以当天再决定。
           </p>
           <p className={styles.bodyText}>
             这一页只谈东京。京都、大阪与儿童票价请看{" "}
@@ -400,6 +411,13 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
                   </tr>
                 </thead>
                 <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>结论</td>
+                    <td colSpan={6} style={{ fontSize: "0.88rem" }}>
+                      <strong>必须先订：</strong>东京迪士尼（成人 ¥8,900 起）、teamLab 两馆（Planets 成人 ¥3,800 起）、华纳兄弟影城、三丽鸥彩虹乐园；
+                      <strong>当天可买：</strong>晴空塔、东京塔、Joypolis；<strong>免费：</strong>东京都厅观景室。
+                    </td>
+                  </tr>
                   {priceRows.map((row) => (
                     <tr key={row.name}>
                       <td className={styles.tdProvider}>{row.name}</td>
@@ -425,6 +443,15 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>最后核查：{RECHECKED_ISO}</strong>——东京迪士尼一日护照成人 ¥8,900 起（
+            <a href="https://www.tokyodisneyresort.jp/ticket/index.html" target="_blank" rel="noopener">tokyodisneyresort.jp</a>）、
+            teamLab Planets 成人 ¥3,800 起（
+            <a href="https://teamlabplanets.dmm.com/en" target="_blank" rel="noopener">teamlabplanets.dmm.com</a>）、
+            东京都厅观景室 202 米、免费（
+            <a href="https://www.zaimu.metro.tokyo.lg.jp/tochousha/goannai/tenbou" target="_blank" rel="noopener">metro.tokyo.lg.jp</a>）。
+            其他各行以表内的核查日期为准。
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             以上是官方成人票价与条款，于核查日期读自运营方网站。Klook 有自己的价格与取消条款，请打开商品页查看你的日期。
             卡丁车价格是 Street Kart 官方价目表上的每人价格范围。

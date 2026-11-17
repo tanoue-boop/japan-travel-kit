@@ -66,34 +66,48 @@ const CHECKED = checkedLabel(CHECKED_ISO);
 const RECHECKED_ISO = "2026-11-09";
 const RECHECKED = checkedLabel(RECHECKED_ISO);
 
+/**
+ * Re-read on 17 Nov 2026 (task-jtk-20261117-C01) from the operator's English
+ * timetable pages (/en/timetable/detail/Narita-Shinjuku/, Narita-Tokyo,
+ * Haneda-Shinjuku, Haneda-Tokyo): the four main adult/child fares, the T1 → Shinjuku
+ * and T1 → Tokyo Station pairs from both airports, and the late-night access-bus
+ * fare and Terminal 3 0:20 → 0:48 pair. Only those cells carry this date.
+ */
+const TODAY_ISO = "2026-11-17";
+const TODAY = checkedLabel(TODAY_ISO);
+const LB_URL_NARITA_SHINJUKU = "https://www.limousinebus.co.jp/en/timetable/detail/Narita-Shinjuku/";
+const LB_URL_NARITA_TOKYO = "https://www.limousinebus.co.jp/en/timetable/detail/Narita-Tokyo/";
+const LB_URL_HANEDA_SHINJUKU = "https://www.limousinebus.co.jp/en/timetable/detail/Haneda-Shinjuku/";
+const LB_URL_HANEDA_TOKYO = "https://www.limousinebus.co.jp/en/timetable/detail/Haneda-Tokyo/";
+
 /** The train figures come from the sister guides, with the dates they were read there. */
 const TRAIN_CHECKED = checkedLabel("2026-11-03"); // skyliner-vs-nex: keisei.co.jp, jreast.co.jp
 const HANEDA_TRAIN_CHECKED = checkedLabel("2026-10-25"); // tokyo-airport-transfer: Keikyu, Tokyo Monorail
 
 /** Route-by-route summary: the answer to "how much and how long" in one table. */
 const routeRows = [
-  { route: "Narita → Shinjuku Station / Keio Dept. Store", adult: "¥3,600", child: "¥1,800", time: "1 h 45 min (T1 10:35 → 12:20)", checked: RECHECKED },
+  { route: "Narita → Shinjuku Station / Keio Dept. Store", adult: "¥3,600", child: "¥1,800", time: "1 h 45 min (T1 10:35 → 12:20)", checked: TODAY },
   { route: "Narita → Shinjuku Tokyu Kabukicho Tower", adult: "¥3,600", child: "¥1,800", time: "1 h 40 – 1 h 55 min (T1 19:40 → 21:20, 10:20 → 12:15)", checked: RECHECKED },
-  { route: "Narita → Tokyo Station (Yaesu North)", adult: "¥3,100", child: "¥1,550", time: "1 h 40 min (T1 7:25 → 9:05)", checked: RECHECKED },
+  { route: "Narita → Tokyo Station (Yaesu North)", adult: "¥3,100", child: "¥1,550", time: "1 h 40 min (T1 7:25 → 9:05)", checked: TODAY },
   { route: "Narita → Shibuya", adult: "¥3,600", child: "¥1,800", time: "See the line timetable", checked: CHECKED },
   { route: "Narita → Ikebukuro / Mejiro", adult: "¥3,100–3,600", child: "¥1,550–1,800", time: "See the line timetable", checked: RECHECKED },
   { route: "Narita → Ikebukuro (LCB line)", adult: "¥2,300", child: "¥1,150", time: "See the line timetable", checked: RECHECKED },
   { route: "Narita → Ginza / Hibiya area", adult: "¥3,100–3,600", child: "¥1,550–1,800", time: "See the line timetable", checked: RECHECKED },
   { route: "Narita → Tokyo Disney Resort", adult: "¥2,900", child: "¥1,450", time: "About 1 h 05 min (T3 7:50 → Tokyo Disneyland 8:56)", checked: `Fare ${RECHECKED}; time ${CHECKED}` },
-  { route: "Haneda → Shinjuku / Nakano area", adult: "¥1,400", child: "¥700", time: "40 min (T1 11:35 → Shinjuku Station 12:15)", checked: `Fare ${RECHECKED}; time ${CHECKED}` },
-  { route: "Haneda → Tokyo Station (Yaesu North)", adult: "¥1,200", child: "¥600", time: "See the line timetable", checked: RECHECKED },
+  { route: "Haneda → Shinjuku / Nakano area", adult: "¥1,400", child: "¥700", time: "40 min (T1 11:35 → Shinjuku Station 12:15)", checked: TODAY },
+  { route: "Haneda → Tokyo Station (Yaesu North)", adult: "¥1,200", child: "¥600", time: "40 min (T1 8:15 → 8:55)", checked: TODAY },
   { route: "Haneda → Shibuya area", adult: "¥1,300", child: "¥650", time: "See the line timetable", checked: CHECKED },
   { route: "Haneda → Tokyo Disney Resort", adult: "¥1,300", child: "¥650", time: "See the line timetable", checked: RECHECKED },
-  { route: "Haneda late-night access bus → Shinjuku / Ikebukuro", adult: "¥2,800", child: "¥1,400", time: "28 min to Shinjuku west exit (T3 0:20 → 0:48)", checked: `Fare ${RECHECKED}; time ${CHECKED}` },
+  { route: "Haneda late-night access bus → Shinjuku / Ikebukuro", adult: "¥2,800", child: "¥1,400", time: "28 min to Shinjuku Station (T3 0:20 → 0:48)", checked: TODAY },
 ];
 
 /** Bus against the airport trains — train figures reused from the sister guides. */
 const compareRows = [
-  { option: "Airport Limousine Bus", leg: "Narita → Shinjuku", time: "1 h 45 min on the timetable", fare: "¥3,600", change: "None — hotel and station stops", checked: `limousinebus.co.jp, ${RECHECKED}` },
-  { option: "Airport Limousine Bus", leg: "Narita → Tokyo Station", time: "1 h 40 min on the timetable", fare: "¥3,100", change: "None", checked: `limousinebus.co.jp, ${RECHECKED}` },
-  { option: "Narita Express (N'EX)", leg: "Narita → Tokyo Station / Shinjuku", time: "From 53 min to Tokyo Station; no single Shinjuku time published", fare: "¥3,140 Tokyo; ¥3,330 Shinjuku", change: "None to its stops", checked: `jreast.co.jp, ${TRAIN_CHECKED}` },
+  { option: "Airport Limousine Bus", leg: "Narita → Shinjuku", time: "1 h 45 min on the timetable", fare: "¥3,600", change: "None — hotel and station stops", checked: `limousinebus.co.jp, ${TODAY}` },
+  { option: "Airport Limousine Bus", leg: "Narita → Tokyo Station", time: "1 h 40 min on the timetable", fare: "¥3,100", change: "None", checked: `limousinebus.co.jp, ${TODAY}` },
+  { option: "Narita Express (N'EX)", leg: "Narita → Tokyo Station / Shinjuku", time: "From 53 min to Tokyo Station; no single Shinjuku time published", fare: "¥3,140 Tokyo; ¥3,330 Shinjuku", change: "None to its stops", checked: `jreast.co.jp, ${TODAY}` },
   { option: "Keisei Skyliner", leg: "Narita T2·3 → Nippori / Ueno", time: "36 min to Nippori, 41 to Ueno", fare: "¥2,580 (¥2,310 online)", change: "JR or subway change for the west side", checked: `keisei.co.jp, ${TRAIN_CHECKED}` },
-  { option: "Airport Limousine Bus", leg: "Haneda → Shinjuku", time: "40 min on the timetable", fare: "¥1,400", change: "None", checked: `limousinebus.co.jp, fare ${RECHECKED}, time ${CHECKED}` },
+  { option: "Airport Limousine Bus", leg: "Haneda → Shinjuku", time: "40 min on the timetable", fare: "¥1,400", change: "None", checked: `limousinebus.co.jp, ${TODAY}` },
   { option: "Keikyu Airport Line", leg: "Haneda T3 → Shinagawa / Shinjuku", time: "11 min to Shinagawa; 30 min to Shinjuku", fare: "¥330 to Shinagawa", change: "One change for Shinjuku", checked: `Keikyu, ${HANEDA_TRAIN_CHECKED}` },
   { option: "Tokyo Monorail", leg: "Haneda → Hamamatsucho", time: "13 min", fare: "¥520", change: "Change to the Yamanote Line", checked: `Tokyo Monorail, ${HANEDA_TRAIN_CHECKED}` },
 ];
@@ -257,16 +271,20 @@ const steps = [
 
 const faqItems = [
   {
-    q: "How much is the Tokyo airport limousine bus?",
-    a: `There is no single fare — the Airport Limousine prices each route separately. From Narita it is ¥3,600 for an adult to the Shinjuku area, Shibuya or Haneda Airport, ¥3,100 to Tokyo Station or the Tokyo City Air Terminal, ¥3,100–3,600 to Ikebukuro/Mejiro and Hibiya/Ginza depending on the stop, and ¥2,900 to the Tokyo Disney Resort. From Haneda the same network is far cheaper: ¥1,400 to Shinjuku/Nakano, ¥1,300 to Shibuya or the Disney resort, ¥1,200 to Tokyo Station and ¥1,000–1,200 to T-CAT. Child fares are half the adult fare on every route. All read off limousinebus.co.jp on ${CHECKED}.`,
+    q: "How much is the Airport Limousine Bus in Tokyo?",
+    a: `There is no single fare — the Airport Limousine prices each route separately. From Narita an adult pays ¥3,600 to the Shinjuku area (child ¥1,800) and ¥3,100 to Tokyo Station (child ¥1,550); from Haneda it is ¥1,400 to Shinjuku (child ¥700) and ¥1,200 to Tokyo Station (child ¥600) — those four re-read on the operator's English timetable pages on ${TODAY}. Other Narita routes run from ¥2,900 to the Tokyo Disney Resort up to ¥3,600 to Shibuya or Haneda Airport, with ¥3,100–3,600 to Ikebukuro/Mejiro and Hibiya/Ginza depending on the stop; other Haneda routes are ¥1,300 to Shibuya or the Disney resort and ¥1,000–1,200 to T-CAT (read on ${CHECKED}). Child fares are half the adult fare on every route.`,
   },
   {
-    q: "How long does the Tokyo airport limousine bus take?",
-    a: `It depends on the route and on the traffic, which is the honest answer and also the reason to look at the published timetable rather than a single number. On the operator's own schedules, a Narita Terminal 1 departure at 7:25 is booked into Tokyo Station Yaesu North at 9:05 — one hour forty. Narita Terminal 3 at 7:50 reaches Tokyo Disneyland at 8:56, about an hour. From Haneda, Terminal 1 at 11:35 is into Shinjuku Station at 12:15, about forty minutes. Allow longer than the timetable in the 7–9am and 5–8pm expressway peaks. Timetables read on ${CHECKED}.`,
+    q: "How long does the Airport Limousine Bus take from Narita and Haneda?",
+    a: `On the operator's own timetables, read on ${TODAY}: Narita Terminal 1 at 10:35 is booked into Shinjuku Station at 12:20 (1 hour 45 minutes), and Narita Terminal 1 at 7:25 into Tokyo Station Yaesu North at 9:05 (1 hour 40). From Haneda, Terminal 1 at 11:35 reaches Shinjuku Station at 12:15 and Terminal 1 at 8:15 reaches Tokyo Station at 8:55 — about 40 minutes each. The operator calls these times estimates; allow longer in the 7–9am and 5–8pm expressway peaks.`,
   },
   {
-    q: "Do you need to book the Tokyo airport limousine bus in advance?",
-    a: `Sometimes, and the operator is specific about it: some routes have reserved seating and others are unreserved, and whether a seat can be reserved may differ depending on the direction you are travelling. On a reserved route, bookings open at midnight one month before your travel date and close five minutes before departure. On an unreserved route you buy a time-designated boarding pass on the day and queue at the stop. Either way nothing sells out the way a dated attraction ticket does — booking buys you a guaranteed seat and no counter queue after a long flight. Read on ${CHECKED}.`,
+    q: "How do you book the Airport Limousine Bus in Tokyo?",
+    a: `Three ways. On the operator's own Limousine Web, reserved routes open for booking at midnight one month before your travel date and close five minutes before departure (read on ${CHECKED}). At the airport, the counters and ticket machines take cash, credit cards and transport IC cards. A reseller such as Klook sells the Narita and Haneda buses in English with a foreign card and a QR code. Some routes are unreserved — there you buy a time-designated boarding pass on the day and queue at the stop — so check your route before you rely on a booking.`,
+  },
+  {
+    q: "Is the limousine bus in Tokyo better than the train?",
+    a: "The bus wins on luggage and on transfers; the train wins on time and predictability. From Narita the bus is 1 hour 40 to 1 hour 45 to Tokyo Station or Shinjuku on the timetable and ¥3,100–3,600, and it shares the expressway with rush hour; the Narita Express reaches Tokyo Station in as little as 53 minutes for ¥3,140 but leaves you at a station with your cases. The rule of thumb that holds up: if you can carry everything you brought up a flight of stairs without stopping, take the train. If you cannot, take the bus. Our Tokyo airport transfer guide compares all of them, including the taxi.",
   },
   {
     q: "How much luggage can you take on the limousine bus?",
@@ -289,16 +307,8 @@ const faqItems = [
     a: "Yes. Every route publishes a child fare at half the adult fare, and Klook's Haneda listing states that children aged 0–5 travel free if they do not occupy a separate seat, with a child ticket required if they do. The same listing describes the vehicle as wheelchair-accessible and says a foldable wheelchair or pushchair may be brought along. With a pushchair and bags in the hold, the bus is usually the least painful arrival of the three options.",
   },
   {
-    q: "Limousine bus or the train from Narita?",
-    a: "The bus wins on luggage and on transfers; the train wins on time and predictability. From Narita the bus is roughly 90 minutes to two hours to central Tokyo and ¥2,900–3,600, and it shares the expressway with rush hour. A train is quicker and unaffected by traffic, but it leaves you at a station with your cases. The rule of thumb that holds up: if you can carry everything you brought up a flight of stairs without stopping, take the train. If you cannot, take the bus. Our Tokyo airport transfer guide compares all of them, including the taxi.",
-  },
-  {
     q: "What about the limousine bus from Haneda — is it better than the train there too?",
     a: "Haneda changes the question, because the trains are quick and cheap from there as well. The bus is ¥1,200–1,400 to central Tokyo and around forty minutes to Shinjuku on the timetable, so it is competing on comfort rather than on price. The case for it at Haneda is a hotel on the route, a pushchair, or an arrival too late for the trains — and the last of those has its own ¥2,800 access bus.",
-  },
-  {
-    q: "How do you pay for the limousine bus?",
-    a: "At the airport you can buy from a counter or an automatic ticket machine, entering your boarding date and time, destination and number of passengers; cash, credit cards and transport IC cards are all accepted. Online you can register on the operator's Limousine Web and pay by card. A reseller is the third route and the one that solves the two problems travellers actually hit — an English checkout and a foreign card that is accepted — and hands you a QR code instead of a counter visit.",
   },
   {
     q: "Is there a limousine bus between Narita and Haneda?",
@@ -318,9 +328,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/transport/tokyo-airport-limousine-bus") },
 });
 
-const TITLE = "Airport Limousine Bus Tokyo 2026: Narita & Haneda Fares";
+const TITLE = "Airport Limousine Bus Tokyo 2026: Fares, Times & Booking";
 const DESC =
-  "Airport Limousine Bus 2026: Narita to Shinjuku ¥3,600 in about 1h45, Haneda to Shinjuku ¥1,400 in about 40 min. Every route, night buses and how to book.";
+  "Airport Limousine Bus Tokyo: Narita to Shinjuku ¥3,600 (1h45), Tokyo Station ¥3,100 (1h40); Haneda ¥1,400 / ¥1,200 (40 min). Book the bus on Klook.";
 
 export default function TokyoAirportLimousineBusPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -345,7 +355,7 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -410,7 +420,7 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Airport Limousine Bus Tokyo (2026):<br />Narita &amp; Haneda Fares, Times and Stops
+            Airport Limousine Bus Tokyo 2026:<br />Fares, Times &amp; Booking
           </h1>
           <p className={styles.heroSubtitle}>
             The bus that takes your suitcases off you and stops at the hotel door. Every
@@ -439,14 +449,14 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
 
         {/* Answer first: the fare and time question, settled in one paragraph. */}
         <p className={styles.bodyText} style={{ fontSize: "1.05rem" }}>
-          The <strong>Airport Limousine Bus</strong> runs from Narita and Haneda to the main hotels
-          and stations of central Tokyo. <strong>Narita → Shinjuku</strong> takes about{" "}
-          <strong>1 hour 45 minutes</strong> on the timetable and costs <strong>¥3,600</strong> for
-          an adult; <strong>Haneda → Shinjuku</strong> takes about <strong>40 minutes</strong> and
-          costs <strong>¥1,400</strong> (official limousinebus.co.jp: fares and the Narita time
-          checked {RECHECKED}, the Haneda time {CHECKED}). Traffic on the expressway can make
-          either ride longer. Tickets are sold at the airport counters and ticket machines, online
-          on the operator&apos;s reservation site, and in advance on Klook.
+          The <strong>Airport Limousine Bus</strong> from <strong>Narita</strong> costs an adult{" "}
+          <strong>¥3,600 to Shinjuku</strong> (about <strong>1 hour 45 minutes</strong> on the
+          timetable) and <strong>¥3,100 to Tokyo Station</strong> (about <strong>1 hour 40</strong>).
+          From <strong>Haneda</strong> the same bus is <strong>¥1,400 to Shinjuku</strong> and{" "}
+          <strong>¥1,200 to Tokyo Station</strong>, each about <strong>40 minutes</strong> from
+          Terminal 1 (official limousinebus.co.jp English timetables, checked {TODAY}). Children pay
+          half, expressway traffic can make either ride longer, and tickets are sold at the airport
+          counters and machines, on the operator&apos;s reservation site, and in advance on Klook.
         </p>
 
         {/* Quick Answer Box */}
@@ -555,7 +565,13 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Source: limousinebus.co.jp line and timetable pages. The times are single scheduled
+            <strong>Last checked: {TODAY_ISO}</strong> for the Narita and Haneda → Shinjuku and → Tokyo
+            Station rows and the late-night row, on the official timetables:{" "}
+            <a href={LB_URL_NARITA_SHINJUKU} target="_blank" rel="noopener noreferrer">Narita–Shinjuku</a>,{" "}
+            <a href={LB_URL_NARITA_TOKYO} target="_blank" rel="noopener noreferrer">Narita–Tokyo Station</a>,{" "}
+            <a href={LB_URL_HANEDA_SHINJUKU} target="_blank" rel="noopener noreferrer">Haneda–Shinjuku</a>,{" "}
+            <a href={LB_URL_HANEDA_TOKYO} target="_blank" rel="noopener noreferrer">Haneda–Tokyo Station</a>;
+            other rows carry their own date. Source: limousinebus.co.jp line and timetable pages. The times are single scheduled
             departures, which the operator calls estimates for reference only — the same route can
             run longer in the morning and evening expressway peaks. &quot;See the line timetable&quot;
             means the official pages checked do not give one representative time for that route.
@@ -603,6 +619,13 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {TODAY_ISO}</strong> for the bus rows (
+            <a href={LB_URL_NARITA_SHINJUKU} target="_blank" rel="noopener noreferrer">limousinebus.co.jp timetables</a>)
+            and the N&apos;EX row (
+            <a href="https://www.jreast.co.jp/en/multi/nex/tickets/" target="_blank" rel="noopener noreferrer">jreast.co.jp</a>);
+            the other train rows keep the date in their last column.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             The bus suits you if you have <strong>large luggage</strong> (two pieces of up to 30 kg
             each go in the hold), if your <strong>hotel is a named stop</strong> on the Shinjuku,

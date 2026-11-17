@@ -682,8 +682,10 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText}>
             Arriving by plane, the pass does not cover the airport leg. Tokyo Metro&apos;s airport page lists
             bundles that add it: the Keisei Skyliner &amp; Tokyo Subway Ticket and the Limousine &amp; Subway Pass
-            from Narita, and the Limousine &amp; Subway Pass from Haneda.{" "}
-            <Link href="/guides/transport/tokyo-airport-transfer">Tokyo airport transfers</Link> compares the routes
+            from Narita, and the Limousine &amp; Subway Pass from Haneda. The{" "}
+            <Link href="/guides/transport/tokyo-airport-limousine-bus">Airport Limousine Bus Tokyo guide</Link> has the
+            bus half of that bundle — fares and timetable times by route — and the{" "}
+            <Link href="/guides/transport/tokyo-airport-transfer">Tokyo airport transfer guide</Link> compares the routes
             into town.
           </p>
           <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
@@ -888,7 +890,7 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Airport Limousine Bus Tokyo (2026): Narita &amp; Haneda Fares, Times and Stops</p>
+                <p className={styles.relatedTitle}>Airport Limousine Bus Tokyo 2026: Fares, Times &amp; Booking</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

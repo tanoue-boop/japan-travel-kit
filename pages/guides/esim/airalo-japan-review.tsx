@@ -378,6 +378,13 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
               </div>
             ))}
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            Installing a provider&apos;s QR code instead of the app, or using an Android phone? The guide to{" "}
+            <Link href="/guides/esim/how-to-set-up-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              how to set up an eSIM for Japan on iPhone and Android
+            </Link>{" "}
+            has the Settings paths for both and what to switch on when you land.
+          </p>
         </section>
 
         {/* Verdict */}

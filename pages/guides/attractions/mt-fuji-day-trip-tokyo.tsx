@@ -313,7 +313,10 @@ export default function MtFujiDayTripTokyoPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText}>
             This guide is about the first one. If the Fifth Station is what you pictured, read our{" "}
             <Link href="/guides/attractions/mt-fuji-day-tour-from-tokyo">Mt. Fuji day tour comparison</Link>{" "}
-            instead — it covers which coach itineraries go where and how long each day runs.
+            instead — it covers which coach itineraries go where and how long each day runs. If one try at a
+            clouded summit is not enough, our guide to the{" "}
+            <Link href="/guides/attractions/kawaguchiko-ryokan-mt-fuji-view">Kawaguchiko ryokan with a Mt Fuji view</Link>{" "}
+            compares six inns on which rooms face the mountain and which have a private onsen.
           </p>
         </section>
 
@@ -488,7 +491,7 @@ export default function MtFujiDayTripTokyoPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Kawaguchiko Ryokan with Mt Fuji View (2026): 6 Inns</p>
+                <p className={styles.relatedTitle}>Kawaguchiko Ryokan with Mt Fuji View &amp; Private Onsen 2026</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

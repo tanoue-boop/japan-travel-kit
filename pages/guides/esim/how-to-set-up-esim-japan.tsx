@@ -11,6 +11,42 @@ import { EsimCtaTop } from "../../../components/EsimCta";
 // Prices and affiliate links come from data/esim-prices.json (refreshed daily).
 const link = (id: EsimProviderId) => esimProviders.find((p) => p.id === id)?.affiliateUrl ?? "#";
 
+// One string each, so the built <title>, og/twitter tags and Article headline cannot drift apart.
+const TITLE = "How to Set Up an eSIM for Japan 2026: iPhone & Android Steps";
+const H1 = "How to Set Up an eSIM for Japan: iPhone & Android Steps";
+const DESCRIPTION =
+  "How to set up an eSIM for Japan in 4 steps on iPhone or Android: install it on Wi-Fi before you fly, switch it on when you land. Fixes and a Simbye deal.";
+
+/** iPhone vs Pixel setup, from Apple and Google support pages read on SETUP_CHECKED. First row is the answer. */
+const SETUP_CHECKED = "2026-11-17";
+const setupRows = [
+  {
+    step: "The answer",
+    iphone: "Install at home on Wi-Fi before you fly; turn the line on and choose it for data when you land",
+    android: "Same: install before you fly, then set it as the mobile data SIM in Japan",
+  },
+  {
+    step: "Which phones",
+    iphone: "iPhone XS, XS Max, XR or later",
+    android: "Pixel 3a or later can run a SIM card and an eSIM together; 2 eSIMs at once on Pixel 7 or later if the carrier allows",
+  },
+  {
+    step: "Check it is unlocked",
+    iphone: "Settings → General → About: Carrier Lock shows “No SIM Restrictions”",
+    android: "Ask your home carrier whether eSIM and dual SIM work on your phone",
+  },
+  {
+    step: "Add the eSIM",
+    iphone: "Scan the QR code with the Camera app → tap Cellular Plan Detected → Continue → Add Cellular Plan",
+    android: "Settings → Network & internet → SIMs → Add SIM → Set up an eSIM",
+  },
+  {
+    step: "In Japan: use it for data",
+    iphone: "Settings → Cellular → Cellular Data → pick the Japan line",
+    android: "Settings → Network & internet → SIMs → Mobile data → pick the Japan SIM",
+  },
+];
+
 const beforeYouStart = [
   "eSIM-compatible phone",
   "Unlocked phone (not carrier-locked)",
@@ -217,10 +253,28 @@ const esimRecommend = [
   { label: "Long stay",      name: "Sakura Mobile", detail: `From ${priceFromLabel("sakura")}`,          href: link("sakura") },
 ];
 
+// The first five match the searches that reach this page and are the ones sent as FAQPage
+// structured data (Apple and Google support pages, checked 17 Nov 2026).
 const faqItems = [
   {
-    q: "Can I set up eSIM before arriving in Japan?",
-    a: "Yes — and you should. You can scan the QR code and install the eSIM profile at home over WiFi. Just leave the plan switched off until your plane lands in Japan. This way you have instant 4G without queuing at airport SIM machines.",
+    q: "How do I set up an eSIM for Japan on iPhone?",
+    a: "On iPhone XS or later, connect to Wi-Fi, open the Camera app and scan the QR code from your eSIM provider, tap the Cellular Plan Detected notification, then tap Continue and Add Cellular Plan. With no QR code, go to Settings → Cellular → Add Cellular Plan → Enter Details Manually, or tap the provider's link on iOS 17.4 or later. Name the line \"Japan\" and, after landing, choose it under Settings → Cellular → Cellular Data (Apple Support, checked 17 Nov 2026).",
+  },
+  {
+    q: "When should I install my Japan eSIM — before I fly or after I land?",
+    a: "Install it before you fly, at home on Wi-Fi: Apple requires a Wi-Fi network or hotspot to activate an eSIM. Keep the line off, then turn it on and make it your data line when you land. On iOS 26 and later, a Turn On Travel eSIM notification can appear on arrival to do this for you. Check your provider's validity rule first: a few plans start counting days when you install, not when you arrive.",
+  },
+  {
+    q: "How long does it take to set up an eSIM for Japan?",
+    a: "A few minutes at home: 4 steps — check the phone is unlocked, scan the QR code on Wi-Fi, keep the line off, and switch it on for data when you land. The arrival step is one switch in Settings → Cellular → Cellular Data (iPhone) or Settings → Network & internet → SIMs → Mobile data (Pixel).",
+  },
+  {
+    q: "How do I set up an eSIM for Japan on Android?",
+    a: "On a Google Pixel, open Settings → Network & internet → SIMs → Add SIM → Set up an eSIM and follow the provider's instructions; in Japan, set it under SIMs → Mobile data. Pixel 3a and later can run a SIM card and an eSIM together, and Pixel 7 and later can run 2 eSIMs if the carrier allows (Google Pixel Help, checked 17 Nov 2026). Other brands, Samsung included, name the menus differently; their steps are on this page.",
+  },
+  {
+    q: "Does my iPhone support eSIM for Japan?",
+    a: "Apple lists iPhone XS, iPhone XS Max, iPhone XR and later. The iPhone must also be carrier-unlocked: go to Settings → General → About, and \"No SIM Restrictions\" next to Carrier Lock means it is. iPhones sold in mainland China are the exception — there Apple lists only iPhone 18 Pro, iPhone 18 Pro Max, iPhone Duo, iPhone 17e and iPhone Air as supporting eSIM (Apple Support, checked 17 Nov 2026).",
   },
   {
     q: "Will setting up eSIM delete my current SIM?",
@@ -228,19 +282,11 @@ const faqItems = [
   },
   {
     q: "Can I use two eSIMs at once?",
-    a: "Most modern iPhones (XS and later) and many Android devices support Dual SIM, allowing one physical SIM and one eSIM active simultaneously. Dual eSIM (two eSIMs active at once) is supported on iPhone 13 and later and select Android models.",
+    a: "Yes, on supported models. Apple says supported iPhone models can have two eSIMs active at the same time — one for your home number and one for Japan — and an iPhone with a SIM tray can use a physical SIM and an eSIM together. Google lists Pixel 7 and later for 2 eSIM profiles at once, if the carrier allows it (both checked 17 Nov 2026).",
   },
   {
     q: "What if my QR code expires?",
-    a: "Most eSIM QR codes expire after 30–90 days if unused. If yours expires before you travel, contact your provider — they will usually reissue the QR code or activation code free of charge.",
-  },
-  {
-    q: "Does eSIM work on all iPhones?",
-    a: "eSIM is supported on iPhone XS (2018) and all later models. iPhones purchased in mainland China do not support eSIM. iPhones bought through certain carriers may be eSIM-locked — contact your carrier to unlock before travelling.",
-  },
-  {
-    q: "Does my iPhone support eSIM for Japan?",
-    a: "iPhone XS and later (released 2018 onwards) support eSIM. This includes the XS, XS Max, XR, and all iPhone 11, 12, 13, 14, 15, and 16 models. To confirm, go to Settings → General → About and scroll down to find \"EID\" — if it's listed, your iPhone supports eSIM. Note: iPhones bought in mainland China do not support eSIM.",
+    a: "Some providers set a deadline for installing an unused eSIM; the plan's terms say how long. If yours runs out before you travel, contact the provider and ask for a new QR code or activation code.",
   },
   {
     q: "Can I use eSIM on a carrier-locked phone?",
@@ -290,27 +336,25 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
   return (
     <>
       <Head>
-        <title>How to Set Up a Japan eSIM 2026 | Japan Travel Kit</title>
-        <meta
-          name="description"
-          content="Step by step: installing your Japan eSIM on an iPhone, Android, iPad or tablet before you fly — plus what to try if it is not working on arrival."
-        />
+        <title>{TITLE}</title>
+        <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/how-to-set-up-esim-japan" />
-        <meta property="og:title" content="How to Set Up an eSIM in Japan (iPhone, Android & Tablet Guide 2026)" />
+        <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/how-to-set-up-esim-japan" />
-        <meta property="og:description" content="Step-by-step guide to installing your Japan eSIM on iPhone or Android before you fly. Activate in under 5 minutes and connect the moment you land." />
+        <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="How to Set Up an eSIM in Japan (iPhone & Android Guide 2026)" />
-        <meta name="twitter:description" content="Step-by-step guide to installing your Japan eSIM on iPhone or Android before you fly. Activate in under 5 minutes and connect the moment you land." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESCRIPTION} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              // Visible FAQ keeps every question; the structured data carries the five that match searches.
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -323,7 +367,7 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/esim/how-to-set-up-esim-japan",
-              headline: "How to Set Up an eSIM in Japan (iPhone & Android Guide 2026)",
+              headline: TITLE,
               updated,
             }),
           }}
@@ -356,10 +400,10 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            How to Set Up an eSIM in Japan<br />(Step-by-Step)
+            {H1}
           </h1>
           <p className={styles.heroSubtitle}>
-            Takes under 5 minutes. Do it before you fly and you&apos;ll have 4G the moment your plane lands.
+            Four steps and a few minutes on Wi-Fi. Install it before you fly, switch it on when your plane lands.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "iPhone, Android & Tablets", "Troubleshooting Included"].map((t) => (
@@ -374,6 +418,46 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
       <div className={styles.content}>
 
         <EsimPageAnswer route="/guides/esim/how-to-set-up-esim-japan" />
+
+        {/* Q: How do you set up an eSIM for Japan on iPhone and Android? */}
+        <section className={styles.comparisonSection} id="setup-at-a-glance">
+          <span className={styles.sectionLabel}>iPhone vs Android</span>
+          <h2 className={styles.sectionTitle}>How Do You Set Up an eSIM for Japan on iPhone and Android?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            The same way on both: add the eSIM at home while you are on Wi-Fi, then make it the data line
+            after landing. Apple requires a Wi-Fi network or hotspot to activate an eSIM, so do not leave the
+            install for the arrivals hall.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Step</th>
+                    <th>iPhone</th>
+                    <th>Android (Google Pixel)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {setupRows.map((r) => (
+                    <tr key={r.step}>
+                      <td className={styles.tdProvider}>{r.step}</td>
+                      <td>{r.iphone}</td>
+                      <td>{r.android}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>
+            Last checked: {SETUP_CHECKED} —{" "}
+            <a href="https://support.apple.com/en-us/118669" target="_blank" rel="noopener noreferrer">Apple: Set up eSIM on iPhone</a>,{" "}
+            <a href="https://support.apple.com/en-us/118227" target="_blank" rel="noopener noreferrer">Apple: Use eSIM while traveling internationally</a>,{" "}
+            <a href="https://support.google.com/pixelphone/answer/9449293" target="_blank" rel="noopener noreferrer">Google: Use dual SIMs on Pixel</a>.
+            Samsung and other Android brands name the menus differently; their steps are further down.
+          </p>
+        </section>
 
         <EsimDaysTable />
 
@@ -407,7 +491,7 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
             an &ldquo;Add eSIM&rdquo; (or &ldquo;Add mobile plan&rdquo;) option, you&apos;re good to go.
           </p>
           {[
-            { label: "iPhone", rows: iphoneModels, note: "iPhones bought in mainland China do not support eSIM. iPhone 14 and later sold in the US are eSIM-only." },
+            { label: "iPhone", rows: iphoneModels, note: "Apple lists iPhone XS, XS Max, XR and later. In mainland China only iPhone 18 Pro, 18 Pro Max, iPhone Duo, iPhone 17e and iPhone Air support eSIM (Apple Support, checked 17 Nov 2026). iPhone 14 and later sold in the US are eSIM-only." },
             { label: "Android phones", rows: androidModels, note: "Phones bought from a mobile carrier may be carrier-locked — confirm your handset is unlocked before travelling." },
             { label: "iPad", rows: ipadModels, note: "Only Wi-Fi + Cellular iPads have an eSIM. If Settings has no 'Cellular' menu, your iPad is Wi-Fi only." },
             { label: "Android tablets", rows: androidTabletModels, note: "Look for 'Add eSIM' under Connections → SIM Manager (Samsung) or Network & internet → SIMs (Pixel)." },

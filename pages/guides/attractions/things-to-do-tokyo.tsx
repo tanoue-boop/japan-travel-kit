@@ -719,7 +719,10 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             <Link href="/guides/attractions/tea-ceremony-japan" style={linkStyle}>tea ceremony in Tokyo</Link> runs under
             an hour and is taught in English at most visitor-facing listings, and a{" "}
             <Link href="/guides/attractions/samurai-ninja-experience-tokyo" style={linkStyle}>samurai and ninja experience</Link>{" "}
-            covers three fairly different things sold under one name.
+            covers three fairly different things sold under one name. For the shop prices, opening hours
+            and return times in one table, see our{" "}
+            <Link href="/guides/attractions/asakusa-kimono-rental" style={linkStyle}>Asakusa kimono rental</Link>{" "}
+            guide.
           </p>
         </section>
 
@@ -1000,7 +1003,7 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Asakusa Kimono Rental (2026): Return Times, Hair Sets and Where to Photograph</p>
+                <p className={styles.relatedTitle}>Asakusa Kimono Rental 2026: Price, Hours &amp; Booking</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

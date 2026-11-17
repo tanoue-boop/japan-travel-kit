@@ -608,7 +608,7 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
             If Yufuin and Beppu are your only day out of Fukuoka, a coach day covers both towns and the Beppu hells in
             one booking, without a pass. Our{" "}
             <Link href="/guides/attractions/yufuin-beppu-tour-from-fukuoka" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Yufuin and Beppu tour guide
+              Yufuin Beppu day trip from Fukuoka guide
             </Link>{" "}
             compares the routes. For a longer trip, the{" "}
             <Link href="/guides/attractions/kyushu-5-day-itinerary" style={{ color: "var(--red)", fontWeight: 600 }}>

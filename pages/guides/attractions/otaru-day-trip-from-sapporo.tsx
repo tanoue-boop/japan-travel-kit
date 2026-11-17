@@ -149,8 +149,20 @@ const SEASON = checkedLabel(SEASON_ISO);
 const FESTIVAL_CHECKED = checkedLabel("2026-10-30");
 const JMA_CHECKED = checkedLabel("2026-10-28");
 
+/**
+ * Re-read on 17 November 2026 (task-jtk-20261117-C01, "otaru day trip from sapporo"):
+ *   jrhokkaido.co.jp/global/english/ticket/regular/index.html  Sapporo–Otaru ¥800
+ *     non-reserved, ¥1,800 reserved; Rapid Airport non-reserved cars 1, 2, 3, 5, 6,
+ *     reserved car 4.
+ *   jrhokkaido.co.jp/global/english/travel/model/winter03.html  Sapporo Sta → Otaru Sta
+ *     35min, Rapid Airport.
+ * The old Sapporo↔Otaru page (travel/airport_otaru.html) still returns 404, so the
+ * earlier "33 minutes at fastest / 33 to 41 minutes" figures could not be re-read and
+ * now give way to the 35 minutes on the model-route page.
+ */
+const LAST_CHECKED = "2026-11-17";
 const JR_FARE = "¥800";
-const JR_FAST = "about 33 minutes";
+const JR_FAST = "about 35 minutes";
 const BUS_FARE = "¥730";
 const BUS_RETURN = "¥1,360";
 const CRUISE_DAY = "¥1,800";
@@ -163,16 +175,16 @@ const SNOW_LIGHT_PATH = "6 to 13 February 2027";
 /** Getting there, on the two operators' own published figures. */
 const transportRows = [
   {
-    leg: "Sapporo → Otaru, Rapid Airport (快速エアポート)",
-    time: `${JR_FAST} at fastest; 33 to 41 minutes depending on the service`,
-    fare: `${JR_FARE} adult. Five of the six cars are non-reserved; the uシート reserved seat is ¥1,000 more, or ¥800 ticketless`,
-    note: `The default answer. These are the same trains that run to New Chitose, so they come several times an hour and Kitaca, Suica and PASMO all work at the gate. Read ${OWN}.`,
+    leg: "Answer: Sapporo → Otaru by JR Rapid Airport (快速エアポート)",
+    time: "About 35 minutes",
+    fare: `${JR_FARE} adult one way, non-reserved; ¥1,800 in the reserved u-seat (car 4)`,
+    note: `The default answer, with nothing to book: cars 1, 2, 3, 5 and 6 are non-reserved. These are the same trains that run to New Chitose, so they come several times an hour and Kitaca, Suica and PASMO all work at the gate. Fare and time re-read on JR Hokkaido's site ${LAST_CHECKED}.`,
   },
   {
     leg: "Sapporo → Otaru, local train (普通)",
     time: "About 46 minutes",
     fare: `${JR_FARE} adult — the same fare as the Rapid`,
-    note: "Thirteen minutes slower for exactly the same money, so it is only the right train if it is the one standing at the platform. Figure read off the same JR Hokkaido page on 30 Oct 2026.",
+    note: "About ten minutes slower for exactly the same money, so it is only the right train if it is the one standing at the platform. Figure read off the same JR Hokkaido page on 30 Oct 2026.",
   },
   {
     leg: "Sapporo → Otaru, highway bus (高速おたる号)",
@@ -274,18 +286,31 @@ const shapeRows = [
   },
 ];
 
+/** The first five are the search questions and go into FAQPage; the rest stay on the page only. */
 const faqItems = [
   {
     q: "How do I get from Sapporo to Otaru?",
-    a: `Take the Rapid Airport (快速エアポート) from Sapporo Station: ${JR_FAST} at fastest and ${JR_FARE} for an adult, on JR Hokkaido's own figures read ${OWN}. The same page gives 33 to 41 minutes across the day depending on which service you catch, and notes that five of the six cars are non-reserved and that Kitaca, Suica and PASMO all work at the gate — so there is nothing to buy in advance and no seat to book. The uシート reserved car costs ¥1,000 more, or ¥800 reserved ticketless, and is only worth it with cases or ski bags. A local train is the same ${JR_FARE} and about 46 minutes, so take it only if it is the one standing at the platform. The alternative is Hokkaido Chuo Bus's 高速おたる号 at ${BUS_FARE} one way and ${BUS_RETURN} return, in about an hour to an hour and five minutes depending on the routing — cheaper by ¥70 and slower by a quarter of an hour each way, which is a bad trade unless you are starting from a stop the bus passes and the station does not.`,
+    a: `Take the JR Rapid Airport (快速エアポート) from Sapporo Station: ${JR_FAST} and ${JR_FARE} one way for an adult, on JR Hokkaido's own fare page and model route, re-read ${LAST_CHECKED}. Cars 1, 2, 3, 5 and 6 are non-reserved and Kitaca, Suica and PASMO work at the gate, so there is nothing to buy in advance. The reserved u-seat in car 4 makes it ¥1,800 in total, worth it only with cases or ski bags. A local train is the same ${JR_FARE} and about 46 minutes (read 30 October 2026), so take it only if it is the one standing at the platform.`,
   },
   {
-    q: "Is Otaru worth a day trip?",
-    a: `Yes, with one honest caveat about how long. It is the cheapest and shortest worthwhile day trip in Hokkaido — ${JR_FARE} and ${JR_FAST} each way on a train that runs several times an hour — and what is at the other end is a compact port town you walk rather than a sight you queue for: the canal and its gas lamps, the converted banks and warehouses of Sakaimachi-dori, the glass workshops and music-box shops, and the sushi of a working fishing port. The caveat is that the canal itself is a single view and about half an hour, so a reader who books an eight-hour coach day expecting the canal to fill it will be disappointed. Build the day round Sakaimachi and a meal, add the 40-minute canal cruise, and it is one of the better days of a Hokkaido week. Treat the canal as the destination and it is an hour.`,
+    q: "How long is the train from Sapporo to Otaru, and how much is it?",
+    a: `About 35 minutes on the JR Rapid Airport, for ${JR_FARE} one way and ¥1,600 for the return — JR Hokkaido's own figures, re-read ${LAST_CHECKED}. A reserved u-seat is ¥1,800 one way. No rail pass pays for a single Otaru day.`,
+  },
+  {
+    q: "Is Otaru worth a day trip from Sapporo?",
+    a: `Yes. It is the cheapest and shortest day trip from Sapporo — ${JR_FARE} and ${JR_FAST} each way, nothing to book — and the canal, Sakaimachi-dori and a sushi lunch fill half a day on foot. Plan around Sakaimachi and a meal rather than the canal alone, which is about half an hour. In the week of the Snow Light Path, ${SNOW_LIGHT_PATH}, stay into the evening.`,
   },
   {
     q: "How long do you need in Otaru?",
-    a: `Three to four hours in the town covers it; five to six makes it a good day. A workable half day is the canal on foot (30 to 45 minutes), Sakaimachi (an hour or two) and lunch — about four hours door to door from Sapporo, which leaves the rest of the day for the city. A full day adds the ${CRUISE_DAY}-adult canal cruise, which the operator puts at 40 minutes and asks you to arrive 15 minutes before, plus either the Tenguyama ropeway or the aquarium. Ten hours or more is only justified if you are adding the Nikka distillery at Yoichi. And the one thing almost nobody plans for: the canal is better after dark than in daylight, so the best version of this day finishes later than a day trip normally does, or becomes a night.`,
+    a: `Three to four hours in the town covers the canal, Sakaimachi and lunch; five to six makes it a full day with the ${CRUISE_DAY} 40-minute canal cruise and either the Tenguyama ropeway or the aquarium. Ten hours or more only makes sense if you add the Nikka distillery at Yoichi.`,
+  },
+  {
+    q: "Should I take a tour or the train for an Otaru day trip from Sapporo?",
+    a: `The train, if Otaru is the whole plan: ${JR_FARE} and ${JR_FAST} each way, and everything in town is walkable. Book a tour only when the day adds something hard to reach by train — the Nikka Yoichi distillery (advance reservation, few Otaru–Yoichi trains), a ski hill or a snow park. Compare those days on Klook from the buttons on this page.`,
+  },
+  {
+    q: "What is the cheapest way from Sapporo to Otaru?",
+    a: `The Hokkaido Chuo Bus 高速おたる号 at ${BUS_FARE} one way and ${BUS_RETURN} return (read ${OWN}), in about an hour to an hour and five minutes depending on the routing — cheaper than the ${JR_FARE} train by ¥70 and slower by about 25 to 30 minutes each way, which is a bad trade unless you are starting from a stop the bus passes and the station does not.`,
   },
   {
     q: "Is Otaru better in winter?",
@@ -351,9 +376,9 @@ const otaruSameTrip: KlookTripPrepItem[] = [
   },
 ];
 
-const TITLE = "Otaru Day Trip from Sapporo (2027): ¥800, 33 Min by JR";
+const TITLE = "Otaru Day Trip from Sapporo (2027): ¥800, 35 Min by JR";
 const DESCRIPTION =
-  "Otaru day trip from Sapporo: ¥800 and about 33 minutes by JR. The canal, Sakaimachi, glass and sushi in half a day, plus Yoichi and Snow Light Path dates.";
+  "Otaru day trip from Sapporo: about 35 min and ¥800 each way by JR, no booking. Canal, Sakaimachi and sushi in half a day; Yoichi and snow tours on Klook.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/otaru-day-trip-from-sapporo") },
@@ -381,7 +406,7 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -446,7 +471,7 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Otaru Day Trip from Sapporo:<br />the Fare, the Time and How Long to Stay
+            Otaru Day Trip from Sapporo:<br />¥800 and 35 Minutes by JR, and How Long to Stay
           </h1>
           <p className={styles.heroSubtitle}>
             {JR_FARE} and {JR_FAST} on a train that runs several times an hour. The canal is half an
@@ -471,6 +496,17 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* Lead paragraph (C01, 17 Nov 2026): the answer in the first body paragraph, ahead of the booking block. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            An <strong>Otaru day trip from Sapporo</strong> takes <strong>about 35 minutes</strong> each way on the JR
+            Rapid Airport and costs <strong>{JR_FARE}</strong> one way for an adult, with no seat to book (JR
+            Hokkaido, checked {LAST_CHECKED}). Half a day covers the canal, Sakaimachi-dori and a sushi lunch; a full
+            day adds the 40-minute canal cruise. Book a tour only if you add the Nikka distillery at Yoichi, a ski hill
+            or a snow park.
+          </p>
+        </section>
 
         <WinterBookingTop
           heading="Which Otaru Day Trip From Sapporo Should You Book This Winter?"
@@ -516,7 +552,7 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Train time</p>
-                <p className={styles.verdictStatValue}>{JR_FAST}, 33–41 min</p>
+                <p className={styles.verdictStatValue}>About 35 min (Rapid Airport)</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Fare, one way</p>
@@ -531,13 +567,11 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
                 <p className={styles.verdictStatValue}>No — except Yoichi and the cruise</p>
               </div>
             </div>
-            {/* Answer-first: the first body paragraph of the article, not the hero line. */}
             <p className={styles.verdictText}>
               An <strong>Otaru day trip from Sapporo</strong> is{" "}
               <strong>{JR_FARE} and {JR_FAST}</strong> each way on the Rapid Airport train, on JR
-              Hokkaido&apos;s own figures — <strong>33 to 41 minutes</strong> depending on the service,
-              with trains several times an hour and IC cards accepted at the gate, so there is nothing to
-              book. At the other end: the <strong>canal</strong> and its gas lamps, about a 10-minute walk
+              Hokkaido&apos;s own figures re-read {LAST_CHECKED}, with trains several times an hour and IC
+              cards accepted at the gate, so there is nothing to book. At the other end: the <strong>canal</strong> and its gas lamps, about a 10-minute walk
               downhill from the station and roughly <strong>half an hour</strong> to see;{" "}
               <strong>Sakaimachi-dori</strong>, the old merchant street of glass workshops, music-box shops
               and converted banks, which is where an hour or two actually goes; and the{" "}
@@ -547,7 +581,7 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
               child, <strong>40 minutes</strong> — and the night sailing is the better one, because this is
               a lamp-lit view rather than a daylight one. <strong>Half a day</strong> covers the town;{" "}
               <strong>a full day</strong> is the version most people should take; and only the{" "}
-              <strong>Nikka distillery at Yoichi</strong> justifies ten hours. All fares read {OWN}.
+              <strong>Nikka distillery at Yoichi</strong> justifies ten hours. Cruise fares read {OWN}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={yoichiOtaruWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -606,9 +640,13 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            JR fares and times are JR Hokkaido&apos;s own, from its Sapporo↔Otaru and airport pages; the
-            bus fares and routings are Hokkaido Chuo Bus&apos;s own. Both read {OWN}. The 46-minute local
-            train figure comes off the same JR Hokkaido page, read on 30 October 2026 for our{" "}
+            Last checked: {LAST_CHECKED} —{" "}
+            <a href="https://www.jrhokkaido.co.jp/global/english/ticket/regular/index.html" target="_blank" rel="noopener">JR Hokkaido fares</a>{" "}
+            (Sapporo–Otaru {JR_FARE}, reserved ¥1,800) and{" "}
+            <a href="https://www.jrhokkaido.co.jp/global/english/travel/model/winter03.html" target="_blank" rel="noopener">JR Hokkaido winter model route</a>{" "}
+            (Sapporo → Otaru 35 min, Rapid Airport). The New Chitose figure is from JR Hokkaido&apos;s airport
+            page and the bus fares and routings are Hokkaido Chuo Bus&apos;s own, both read {OWN}. The 46-minute
+            local train figure was read on 30 October 2026 for our{" "}
             <Link href="/guides/attractions/sapporo-snow-festival-tours" style={{ color: "var(--text)", fontWeight: 600 }}>
               Sapporo Snow Festival guide
             </Link>
@@ -889,7 +927,12 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
           <span className={styles.sectionLabel}>The rest of your winter</span>
           <h2 className={styles.sectionTitle}>What Should You Pair With a Winter Otaru Day?</h2>
           <p className={styles.bodyText}>
-            Otaru is a day, so it works best inside something longer. If you are in Hokkaido for the snow,
+            Otaru is a day, so it works best inside something longer. Our{" "}
+            <Link href="/guides/attractions/sapporo-3-day-itinerary">Sapporo 3 day itinerary</Link> makes it Day 2,
+            between a city day and a long coach day, and our{" "}
+            <Link href="/guides/attractions/hokkaido-winter-tours">Hokkaido winter tours from Sapporo</Link> guide
+            compares this day with the Asahiyama Zoo and Blue Pond light-up tour and the snow days. If you are in
+            Hokkaido for the snow,
             our <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours guide</Link> covers the
             resort side of the island, and Otaru makes the easy rest day between the airport and the
             mountain. Our{" "}

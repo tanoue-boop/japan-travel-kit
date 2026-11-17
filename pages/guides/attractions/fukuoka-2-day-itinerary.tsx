@@ -649,7 +649,7 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
             <strong>{YUFUIN_FARE}</strong> one way (¥5,600 online), every seat reserved and sold from one month ahead
             (JR Kyushu, {JR_TIME}). Coach tours from Fukuoka run 10 to 10.5 hours and add the Beppu hells, often with a
             stop at Dazaifu on the way. Six tours are compared in our{" "}
-            <Link href="/guides/attractions/yufuin-beppu-tour-from-fukuoka">Yufuin and Beppu tour guide</Link>.
+            <Link href="/guides/attractions/yufuin-beppu-tour-from-fukuoka">Yufuin and Beppu day trip from Fukuoka guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={yufuinBeppuNoMoriTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

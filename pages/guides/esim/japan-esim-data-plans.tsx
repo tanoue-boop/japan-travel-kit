@@ -944,7 +944,12 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
             Cellular → Add eSIM — see{" "}
             <Link href="/guides/esim/japan-esim-iphone" className={tools.inlineLink}>
               the iPhone compatibility and setup guide →
+            </Link>{" "}
+            For the Android menus too, see{" "}
+            <Link href="/guides/esim/how-to-set-up-esim-japan" className={tools.inlineLink}>
+              how to set up an eSIM for Japan, step by step
             </Link>
+            .
           </p>
           <KlookEsimSlot why="Buying late? Klook's Japan eSIM is delivered as a QR-code voucher, so it can be bought after you have booked everything else and scanned at the gate — the listing states no start rule, so open it and read the plan you pick before you install it." />
         </section>

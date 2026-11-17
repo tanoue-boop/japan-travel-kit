@@ -434,7 +434,11 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
               and the 5-day flexible format went with them. It covers every JR East line in ordinary-car reserved or
               non-reserved seats — the <strong>Tohoku, Akita, Yamagata and Joetsu shinkansen</strong> and the{" "}
               <strong>Hokuriku Shinkansen as far as Joetsumyoko</strong> (so Karuizawa and Nagano, not Kanazawa) —
-              plus the Narita Express, Tokyo Monorail and six partner railways. It does not cover the Tokaido or Hokkaido
+              plus the Narita Express, Tokyo Monorail and six partner railways (our{" "}
+              <Link href="/guides/transport/tokyo-airport-transfer" style={{ color: "var(--text)", fontWeight: 600 }}>
+                Tokyo airport transfer guide
+              </Link>{" "}
+              has the Narita to Tokyo and Haneda to Tokyo fares without a pass). It does not cover the Tokaido or Hokkaido
               shinkansen. JR East&apos;s own example, the N&apos;EX plus the Tohoku Shinkansen to Aomori via Sendai,
               costs about <strong>{MODEL_ROUTE}</strong> bought separately. This pass is the one for Tohoku and the long
               distances; for three days of Kanto day trips from Tokyo, the ¥16,000{" "}

@@ -42,12 +42,15 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const LOCALE = "zh-cn" as const;
 const ROUTE = "/zh-cn/guides/transport/tokyo-airport-transfer";
-const TITLE = "成田机场到东京交通（2026）：Skyliner、N'EX 与巴士";
+const TITLE = "东京机场交通2026：成田机场到东京、羽田机场到东京票价与时间";
 const DESC =
-  "成田机场到东京怎么走，羽田机场也一起比较：电车、巴士与出租车的价格、时间与方便度，附 2026 年票价。与英文版同一组数字。";
+  "东京机场交通：成田机场到东京¥1,060起，Skyliner 41分钟¥2,580；羽田机场到东京京急11分钟¥330。可在Klook订车票。";
 
 /** The day the operators' fares, times and frequencies were read. */
 const CHECKED = dateLabel("2026-10-25", LOCALE);
+/** Re-read on the operators' own sites for task-jtk-20261117-C01 — same rows as the English page's `fresh`. */
+const CHECKED_TODAY_ISO = "2026-11-17";
+const CHECKED_TODAY = dateLabel(CHECKED_TODAY_ISO, LOCALE);
 /** The day the taxi flat fares and the Skyliner first/last departures were read. */
 const CHECKED_TAXI = dateLabel("2026-10-28", LOCALE);
 
@@ -293,17 +296,17 @@ const nightRows = [
 
 /** Every option from both airports in one table. */
 const allOptionRows = [
-  { airport: "成田", option: "京成 Access 特急", time: "到浅草 50 分钟", fare: "到日暮里／京成上野 ¥1,280", source: "京成", taxi: false },
-  { airport: "成田", option: "京成本线特急", time: "未公布具体数字", fare: "到京成上野 ¥1,060", source: "京成", taxi: false },
-  { airport: "成田", option: "京成 Skyliner", time: "到京成上野 41 分钟", fare: "¥2,580（IC ¥2,567）", source: "京成", taxi: false },
-  { airport: "成田", option: "机场利木津巴士", time: "到东京站 1 小时 50 分", fare: "东京站 ¥3,100；新宿或涩谷 ¥3,600", source: "利木津巴士", taxi: false },
-  { airport: "成田", option: "成田特快 N'EX", time: "到东京站最快 53 分钟", fare: "东京 ¥3,140；品川／涩谷／新宿 ¥3,330", source: "JR 东日本", taxi: false },
-  { airport: "成田", option: "定额出租车", time: "视路况而定，未公布数字", fare: "按区域 ¥23,500～¥38,500，高速费另计", source: "成田机场", taxi: true },
-  { airport: "羽田", option: "京急机场线", time: "到品川 11 分钟（3 号航站楼）", fare: "到品川 ¥330（IC ¥327）", source: "京急", taxi: false },
-  { airport: "羽田", option: "东京单轨电车", time: "到滨松町 13 分钟", fare: "成人 ¥520、儿童 ¥260", source: "东京单轨电车", taxi: false },
-  { airport: "羽田", option: "机场利木津巴士", time: "视路况而定，按线路", fare: "东京站 ¥1,200；新宿 ¥1,400", source: "利木津巴士", taxi: false },
-  { airport: "羽田", option: "深夜接驳巴士", time: "机场发车 00:00～02:00", fare: "东京／银座／浅草 ¥1,900；新宿／池袋 ¥2,800", source: "利木津巴士", taxi: false },
-  { airport: "羽田", option: "定额出租车", time: "视路况而定，未公布数字", fare: "确认有定额制度，未公布金额", source: "羽田机场", taxi: true },
+  { airport: "成田", option: "京成本线特急", time: "未公布具体数字", fare: "到京成上野 ¥1,060", source: "京成", taxi: false, fresh: true },
+  { airport: "成田", option: "京成 Access 特急", time: "到浅草 50 分钟", fare: "到日暮里／京成上野 ¥1,280", source: "京成", taxi: false, fresh: false },
+  { airport: "成田", option: "京成 Skyliner", time: "到京成上野 41 分钟", fare: "¥2,580（IC ¥2,567）", source: "京成", taxi: false, fresh: true },
+  { airport: "成田", option: "机场利木津巴士", time: "到东京站 1 小时 40 分（1 号航站楼）～1 小时 50 分（3 号航站楼）", fare: "东京站 ¥3,100；新宿或涩谷 ¥3,600", source: "利木津巴士", taxi: false, fresh: false },
+  { airport: "成田", option: "成田特快 N'EX", time: "到东京站最快 53 分钟", fare: "东京 ¥3,140；品川／涩谷／新宿 ¥3,330", source: "JR 东日本", taxi: false, fresh: true },
+  { airport: "成田", option: "定额出租车", time: "视路况而定，未公布数字", fare: "按区域 ¥23,500～¥38,500，高速费另计", source: "成田机场", taxi: true, fresh: false },
+  { airport: "羽田", option: "京急机场线", time: "到品川 11 分钟（3 号航站楼）", fare: "到品川 ¥330（IC ¥327）", source: "京急", taxi: false, fresh: false },
+  { airport: "羽田", option: "东京单轨电车", time: "到滨松町 13 分钟", fare: "成人 ¥520、儿童 ¥260", source: "东京单轨电车", taxi: false, fresh: true },
+  { airport: "羽田", option: "机场利木津巴士", time: "时刻表上从 1 号航站楼到东京站或新宿约 40 分钟", fare: "东京站 ¥1,200；新宿 ¥1,400", source: "利木津巴士", taxi: false, fresh: true },
+  { airport: "羽田", option: "深夜接驳巴士", time: "机场发车 00:00～02:00", fare: "东京／银座／浅草 ¥1,900；新宿／池袋 ¥2,800", source: "利木津巴士", taxi: false, fresh: false },
+  { airport: "羽田", option: "定额出租车", time: "视路况而定，未公布数字", fare: "确认有定额制度，未公布金额", source: "羽田机场", taxi: true, fresh: false },
 ];
 
 /** Hotel area against airport — fastest, cheapest, and whether anything arrives without a transfer. */
@@ -527,8 +530,24 @@ const transferTips = [
 
 const faqItems: FaqItem[] = [
   {
+    q: "东京机场交通怎么选？成田和羽田哪种最好？",
+    a: `看机场和住处。从成田出发，去东京东侧坐京成 Skyliner 最快（到京成上野 41 分钟、¥2,580）；去东京站和东京西侧适合成田特快 N'EX（到东京站最快 53 分钟、¥3,140；到新宿 ¥3,330，持 JR Pass 免费）。从羽田出发，京急机场线（11 分钟到品川、¥330）或东京单轨电车（13 分钟到滨松町、¥520）在时间和价格上都领先。行李多的话，机场利木津巴士直达酒店与车站站点——成田到东京站 ¥3,100，羽田到东京站 ¥1,200。票价与时间于 ${CHECKED_TODAY} 核对自各运营商官网。`,
+  },
+  {
     q: "成田机场到东京最便宜的方式是什么？",
     a: `最便宜的电车是京成本线特急，到京成上野 ¥1,060（IC ¥1,052）——经京成成田的普通列车，虽然叫「特急」，但不收特急费。走较快的成田 Sky Access 线的 Access 特急，到日暮里或京成上野 ¥1,280（IC ¥1,267），到浅草 50 分钟。两者都不用订座。如果你持有 JR Pass，成田特快已经包括在内，是更好的选择。票价查询自京成，${CHECKED}。`,
+  },
+  {
+    q: "成田机场到东京要多久？",
+    a: `坐电车约 40 分钟到 1 小时，巴士更久。京成公布 Skyliner 从成田 2·3 号航站楼到京成上野 41 分钟；JR 东日本公布最快的成田特快到东京站 53 分钟。机场利木津巴士时刻表上，成田 1 号航站楼 7:25 发车、9:05 到东京站（1 小时 40 分），10:35 发车、12:20 到新宿站（1 小时 45 分），不含塞车。于 ${CHECKED_TODAY} 核对自各运营商官网。`,
+  },
+  {
+    q: "羽田机场到东京怎么走？",
+    a: `坐电车 11～13 分钟就到市区边缘。京急机场线从羽田 3 号航站楼到品川 11 分钟、¥330，部分列车直通新桥、银座、浅草方向；东京单轨电车的机场快速 13 分钟到滨松町、¥520（儿童 ¥260），可换乘 JR 山手线。机场利木津巴士到东京站 ¥1,200、到新宿 ¥1,400，时刻表上从 1 号航站楼各约 40 分钟，行李放车底。京急往品川的末班车 00:08 从 3 号航站楼发车。票价与时间于 ${CHECKED_TODAY} 核对自各运营商官网。`,
+  },
+  {
+    q: "东京机场交通需要提前预订吗？",
+    a: `电车方面，提前预订是为了价格而不是座位：Skyliner 优惠票单程 ¥2,310 而不是 ¥2,580，N'EX 东京往返车票 ¥5,200，而到新宿买两张单程要 ¥6,660，Skyliner ＋东京地铁通票组合从 ¥2,840 起。这些都要在机场领取，所以还是要预留柜台的时间。真正需要预订的是需要提前预约车辆的交通方式：旺季的利木津巴士指定线路，以及任何专车或拼车接送，尤其是末班车之后才落地的航班。查询于 ${CHECKED}。`,
   },
   {
     q: "成田特快和 Skyliner 哪个快？",
@@ -537,10 +556,6 @@ const faqItems: FaqItem[] = [
   {
     q: "羽田机场到新宿怎么走？",
     a: `三种方式。京急机场线最快——京急自家估计从 3 号航站楼到新宿 30 分钟、1·2 号航站楼 33 分钟，换乘一次；机场到品川这段 ¥330。东京单轨电车 13 分钟到滨松町、¥520，再坐山手线绕到新宿。机场利木津巴士直达新宿与中野站点 ¥1,400（儿童 ¥700），行李放车底。每人一个行李箱就坐电车；三个就坐巴士。查询于 ${CHECKED}。`,
-  },
-  {
-    q: "机场交通需要提前预订吗？",
-    a: `电车方面，提前预订是为了价格而不是座位：Skyliner 优惠票单程 ¥2,310 而不是 ¥2,580，N'EX 东京往返车票 ¥5,200，而到新宿买两张单程要 ¥6,660，Skyliner ＋东京地铁通票组合从 ¥2,840 起。这些都要在机场领取，所以还是要预留柜台的时间。真正需要预订的是需要提前预约车辆的交通方式：旺季的利木津巴士指定线路，以及任何专车或拼车接送，尤其是末班车之后才落地的航班。查询于 ${CHECKED}。`,
   },
   {
     q: "末班车之后才落地怎么办？",
@@ -602,7 +617,7 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
     <>
       <Head>
         {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems.slice(0, 5)) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -625,7 +640,7 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            东京机场交通 2026：<br />成田与羽田到东京市区，N&apos;EX vs Skyliner
+            东京机场交通2026：<br />成田机场到东京、羽田机场到东京票价与时间，N&apos;EX vs Skyliner
           </h1>
           <p className={styles.heroSubtitle}>
             以下所有票价和车程信息均来自各运营商官网，查询于 {CHECKED}；出租车定额价格与 Skyliner
@@ -646,15 +661,13 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
 
         {/* The answer first. */}
         <p className={styles.bodyText}>
-          从<strong>成田</strong>机场进入东京市区，最快的<strong>东京机场交通</strong>方式是乘坐<strong>京成 Skyliner</strong>——
-          <strong>41 分钟</strong>到京成上野、<strong>¥2,580</strong>；最便宜的是
-          <strong>京成本线特急，¥1,060</strong>。去<strong>东京站</strong>的话，
-          <strong>成田特快 N&apos;EX</strong> 是 <strong>¥3,140</strong>、<strong>最快 53 分钟</strong>，持 JR Pass
-          免费。从<strong>羽田</strong>出发，最快和最便宜的选择都是<strong>京急机场线</strong>：
-          <strong>11 分钟到品川、¥330</strong>，<strong>东京单轨电车</strong>则是
-          <strong>13 分钟到滨松町、¥520</strong>。以上是成人单程票价，于 {CHECKED} 查询自 JR 东日本、京成、京急、
-          东京单轨电车与机场利木津巴士（Airport Limousine Bus）；成田的定额出租车按区域为 <strong>¥23,500～¥38,500</strong>，高速费另计，
-          于 {CHECKED_TAXI} 查询自成田机场。
+          <strong>成田机场到东京</strong>最快的<strong>东京机场交通</strong>是<strong>京成 Skyliner</strong>——
+          <strong>41 分钟</strong>到京成上野、<strong>¥2,580</strong>；最便宜的是<strong>京成本线特急，¥1,060</strong>；
+          去<strong>东京站</strong>的<strong>成田特快 N&apos;EX</strong> <strong>最快 53 分钟、¥3,140</strong>，持 JR Pass
+          免费。<strong>羽田机场到东京</strong>，<strong>京急机场线</strong> <strong>11 分钟到品川、¥330</strong>，
+          <strong>东京单轨电车</strong> <strong>13 分钟到滨松町、¥520</strong>，<strong>机场利木津巴士</strong>从 1 号航站楼到东京站约 40 分钟、
+          <strong>¥1,200</strong>。以上均为成人单程票价，于 {CHECKED_TODAY} 核对自各运营商官网；成田的定额出租车按区域为{" "}
+          <strong>¥23,500～¥38,500</strong>，高速费另计（成田机场，{CHECKED_TAXI}）。
         </p>
 
         {/* Quick Answer Box */}
@@ -757,7 +770,7 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
                       <td style={{ fontSize: "0.88rem" }}>{row.time}</td>
                       <td className={styles.tdPrice} style={{ whiteSpace: "normal", fontSize: "0.88rem" }}>{row.fare}</td>
                       <td style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-                        {row.source}，{row.taxi ? CHECKED_TAXI : CHECKED}
+                        {row.source}，{row.taxi ? CHECKED_TAXI : row.fresh ? CHECKED_TODAY : CHECKED}
                       </td>
                     </tr>
                   ))}
@@ -765,6 +778,14 @@ export default function CnTokyoAirportTransferPage({ updated }: { updated: PageU
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {CHECKED_TODAY_ISO}</strong>（标注 {CHECKED_TODAY} 的各行），核对自运营商官网：{" "}
+            <a href="https://www.jreast.co.jp/en/multi/nex/tickets/" target="_blank" rel="noopener noreferrer">JR 东日本（N&apos;EX）</a>、
+            <a href="https://www.keisei.co.jp/keisei/tetudou/skyliner/jp/skyliner/ticket.php" target="_blank" rel="noopener noreferrer">京成（Skyliner）</a>、
+            <a href="https://www.keikyu.co.jp/ride/ticket/" target="_blank" rel="noopener noreferrer">京急</a>、
+            <a href="https://www.tokyo-monorail.co.jp/english/guidance/train_info.html" target="_blank" rel="noopener noreferrer">东京单轨电车</a>、
+            <a href="https://www.limousinebus.co.jp/en/timetable/list/" target="_blank" rel="noopener noreferrer">利木津巴士</a>。其他各行的日期见「资料来源」栏。
+          </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
             <KlookLink href={skylinerUrl} className={styles.verdictBtn} target="_blank" rel={KLOOK_REL}>
               在 Klook 订 Skyliner 车票 →

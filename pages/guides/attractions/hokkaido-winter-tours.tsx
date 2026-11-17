@@ -390,7 +390,8 @@ export default function HokkaidoWinterToursPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>What Are the Best Hokkaido Winter Tours From Sapporo?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             The winter Asahiyama and Blue Pond day, because both of its highlights exist only in winter. Otaru is the
-            easy day and works by train; a snow day suits travellers who came for the snow itself. Every{" "}
+            easy day and works by train (see our{" "}
+            <Link href="/guides/attractions/otaru-day-trip-from-sapporo">Otaru day trip from Sapporo</Link> guide); a snow day suits travellers who came for the snow itself. Every{" "}
             <strong>Hokkaido winter tour from Sapporo</strong> below meets in the city.
           </p>
           <div className={styles.tableWrap}>
@@ -511,7 +512,7 @@ export default function HokkaidoWinterToursPage({ updated }: { updated: PageUpda
             <a href="https://www.jrhokkaido.co.jp/global/english/travel/model/winter03.html" target="_blank" rel="noopener">JR Hokkaido winter route</a>,{" "}
             <a href="https://www.biei-hokkaido.jp/ja/shirogane-blue-pond/" target="_blank" rel="noopener">Biei Blue Pond access</a>. Adult
             one-way fares; children aged 6–11 pay half. The Otaru day in full is in our{" "}
-            <Link href="/guides/attractions/otaru-day-trip-from-sapporo">Otaru day trip guide</Link>.
+            <Link href="/guides/attractions/otaru-day-trip-from-sapporo">Otaru day trip from Sapporo guide</Link>.
           </p>
         </section>
 

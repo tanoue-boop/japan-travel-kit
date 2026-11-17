@@ -47,9 +47,24 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  * tattoo rule, so the page claims neither. Fujikawaguchiko Resort Hotel's own site could
  * not be reached, so it is described only from its Klook listing. No Klook price appears.
  * Nothing here is first-hand.
+ *
+ * Re-read on 17 November 2026 (task-jtk-20261117-C01, "kawaguchiko ryokan with mt fuji view",
+ * "private onsen"):
+ *
+ *   en.asafuji.jp           every room: Mt Fuji and Lake Kawaguchiko view; 6 min by car;
+ *                           shuttle for guests with advance reservations
+ *   go-kpgluxuryhotels.reservation.jp (Fufu)  all suites with a Fuji view; open-air natural hot
+ *                           spring baths in the guest rooms; 15:00–20:00 / 11:00; 15 min by taxi
+ *   dormy-hotels.com/.../la_kawaguchiko/hotspring/  4 private baths, no reservation, 24 hours
+ *   bus.fujikyu.co.jp/highway/fujisan/shinjuku-kawaguchiko/  about 1 h 45 min; ¥2,200, ¥2,000 web
+ *   fujikyu-railway.jp/fujikaiyuu/  fastest 1 h 53 min; ¥4,200 (¥2,580 + ¥1,620); 4 round trips
+ *
+ * mifujien.co.jp did not answer on 17 Nov, so its row keeps the 12 Nov reading.
  */
 
 const OWN = checkedLabel("2026-11-12");
+const TODAY_ISO = "2026-11-17";
+const TODAY = checkedLabel(TODAY_ISO);
 
 const inns = [
   {
@@ -150,19 +165,23 @@ const seasonRows = [
 const faqItems = [
   {
     q: "Which Kawaguchiko ryokan has the best Mt Fuji view?",
-    a: `On the inns' own sites, Hotel Asafuji says every room looks out on Mt Fuji and Lake Kawaguchi, Hotel Mifujien lists a Fuji and lake view for every room type, and Fufu Kawaguchiko's rooms are all suites with a Fuji view. At La Vista all but one room type has the view, and at Royal Hotel Kawaguchiko some rooms do not. Read ${OWN}.`,
+    a: `On the inns' own sites, Hotel Asafuji says every room looks out on Mt Fuji and Lake Kawaguchi, Hotel Mifujien lists a Fuji and lake view for every room type, and Fufu Kawaguchiko's rooms are all suites with a Fuji view. At La Vista all but one room type has the view, and at Royal Hotel Kawaguchiko some rooms do not. Asafuji and Fufu read ${TODAY}, the others ${OWN}.`,
   },
   {
     q: "Is there a Kawaguchiko ryokan with a private onsen in the room?",
-    a: `Yes, Fufu Kawaguchiko: its operator's booking page lists an open-air natural hot spring bath in the guest rooms. La Vista Fujikawaguchiko has four private baths you can use free when one is open, at any hour. Asafuji, Mifujien and Royal Hotel Kawaguchiko have shared hot spring baths. Read ${OWN}.`,
+    a: `Yes, Fufu Kawaguchiko: its operator's booking page lists open-air natural hot spring baths in the guest rooms, which are all suites with a Mt Fuji view. La Vista Fujikawaguchiko has four private baths you use without booking, whenever one is free, 24 hours a day. Asafuji, Mifujien and Royal Hotel Kawaguchiko have shared hot spring baths. Read ${TODAY}.`,
   },
   {
-    q: "How do I get to Kawaguchiko from Tokyo?",
-    a: `By highway bus from Busta Shinjuku, about 1 hour 45 minutes, from ¥2,200 (¥2,000 online). Or by the Fuji Excursion limited express from Shinjuku, fastest 1 hour 53 minutes, ¥4,200 including the limited express ticket. Both need a reserved seat. Read on bus.fujikyu.co.jp and fujikyu-railway.jp, ${OWN}.`,
+    q: "Can I use the onsen with tattoos at Kawaguchiko?",
+    a: "None of the six inns here states a tattoo rule on its own site, so ask before you book. A room with its own bath, as at Fufu Kawaguchiko, or a private bath, as at La Vista, avoids the question.",
   },
   {
     q: "When is Mt Fuji most visible from Lake Kawaguchi?",
     a: "In winter. The Fujikawaguchiko Town Tourism Federation describes winter as the season when the air is clear and Mt Fuji's outline is clearly visible, and Fujikyu's FUJIYAMA NAVI notes that clouds sit on the summit in summer. No source guarantees a view on a given day, so a two-night stay doubles your chances.",
+  },
+  {
+    q: "How do I get to Kawaguchiko from Tokyo?",
+    a: `By highway bus from Busta Shinjuku, about 1 hour 45 minutes, from ¥2,200 (¥2,000 online). Or by the Fuji Excursion limited express from Shinjuku, fastest 1 hour 53 minutes, ¥4,200 including the limited express ticket. Both need a reserved seat. Read on bus.fujikyu.co.jp and fujikyu-railway.jp, ${TODAY}.`,
   },
   {
     q: "Do Kawaguchiko ryokan have a shuttle from the station?",
@@ -172,16 +191,12 @@ const faqItems = [
     q: "What is the cancellation policy at Kawaguchiko ryokan?",
     a: `It depends on the inn and on where you book. On their own sites, Asafuji charges 30% from 5 days before and 100% on the day; Mifujien 20% from 3 days before, up to 100% on the day; and Fufu 20% from 7 days before, 80% from the day before. A Klook booking follows the terms shown on Klook for your room. Read ${OWN}.`,
   },
-  {
-    q: "Can I use the onsen with tattoos at Kawaguchiko?",
-    a: "None of the six inns here states a tattoo rule on its own site, so ask before you book. A room with its own bath, as at Fufu Kawaguchiko, or a private bath, as at La Vista, avoids the question.",
-  },
 ];
 
-const TITLE = "Kawaguchiko Ryokan with Mt Fuji View (2026): 6 Inns";
-const H1_LINE = "Kawaguchiko Ryokan with Mt Fuji View (2026):";
+const TITLE = "Kawaguchiko Ryokan with Mt Fuji View & Private Onsen 2026";
+const H1_LINE = "Kawaguchiko Ryokan with Mt Fuji View & Private Onsen 2026:";
 const DESCRIPTION =
-  "Kawaguchiko Ryokan with Mt Fuji View: 6 inns compared on rooms, baths and shuttles. Mt Fuji view hotel Kawaguchiko picks and Lake Kawaguchi onsen ryokan.";
+  "Kawaguchiko ryokan with Mt Fuji view: Asafuji, Mifujien and Fufu face Fuji from every room; only Fufu has a private onsen in-room. Check dates on Klook.";
 
 const ROUTE = "/guides/attractions/kawaguchiko-ryokan-mt-fuji-view";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
@@ -217,7 +232,7 @@ export default function KawaguchikoRyokanMtFujiViewPage({ updated }: { updated: 
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -272,7 +287,7 @@ export default function KawaguchikoRyokanMtFujiViewPage({ updated }: { updated: 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            {H1_LINE}<br />Which Rooms Face the Mountain
+            {H1_LINE}<br />6 Inns, Which Rooms Face the Mountain
           </h1>
           <p className={styles.heroSubtitle}>
             Six inns at Lake Kawaguchi, compared on what their own sites say about the view, the hot spring and
@@ -301,12 +316,14 @@ export default function KawaguchikoRyokanMtFujiViewPage({ updated }: { updated: 
         {/* Lead paragraph: the whole answer, in the body rather than the hero. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            For a <strong>Kawaguchiko Ryokan with Mt Fuji View</strong> from your own room, book an inn whose
-            own site says every room faces the mountain: <strong>Hotel Asafuji, Hotel Mifujien or Fufu
-            Kawaguchiko</strong>. Only Fufu also has an open-air hot spring bath in the room. Kawaguchiko
-            Station is about 1 hour 45 minutes from Shinjuku by highway bus, and most inns run a free shuttle
-            from there if you call or book ahead. Winter is the season the town&apos;s tourism federation names
-            for a clear view, so book those rooms early. Read {OWN}.
+            The <strong>Kawaguchiko ryokan with a Mt Fuji view</strong> from every room are Hotel Asafuji,
+            Hotel Mifujien and Fufu Kawaguchiko, going by each inn&apos;s own site, and Fufu is the only one
+            of the six compared here with a <strong>private onsen</strong>: an open-air natural hot spring
+            bath in every suite. La Vista Fujikawaguchiko has 4 private baths you use without booking, 24
+            hours a day, and Kawaguchiko Station is about 1 hour 45 minutes from Busta Shinjuku by highway
+            bus (¥2,200, or ¥2,000 booked online). Winter is the season the town&apos;s tourism federation
+            names for a clear view, so book those rooms early. Asafuji, Fufu, La Vista and Fujikyu read on{" "}
+            {TODAY}; Mifujien on {OWN}.
           </p>
         </section>
 
@@ -371,6 +388,14 @@ export default function KawaguchikoRyokanMtFujiViewPage({ updated }: { updated: 
                   </tr>
                 </thead>
                 <tbody>
+                  <tr>
+                    <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>Answer</td>
+                    <td style={{ fontSize: "0.86rem" }}>Every room: Fufu, Asafuji, Mifujien</td>
+                    <td style={{ fontSize: "0.86rem" }}>Private onsen in the room: Fufu only. 4 private baths: La Vista</td>
+                    <td style={{ fontSize: "0.86rem" }}>Most run a free shuttle if you call or book</td>
+                    <td style={{ fontSize: "0.86rem" }}>Mostly 15:00 / 10:00</td>
+                    <td style={{ fontSize: "0.82rem" }}>Inns&apos; own sites</td>
+                  </tr>
                   {inns.map((row) => (
                     <tr key={row.hotel.title}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>
@@ -390,8 +415,9 @@ export default function KawaguchikoRyokanMtFujiViewPage({ updated }: { updated: 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            <strong>Last checked: {OWN}</strong> · Sources: https://en.asafuji.jp/, https://mifujien.co.jp/,
-            https://go-kpgluxuryhotels.reservation.jp/en/hotels/fufukawaguchiko, https://dormy-hotels.com/resort/hotels/la_kawaguchiko/,
+            <strong>Last checked: {TODAY_ISO}</strong> (Fufu, Asafuji and La Vista views and baths) and
+            2026-11-12 (other rows) · Sources: https://en.asafuji.jp/, https://mifujien.co.jp/,
+            https://go-kpgluxuryhotels.reservation.jp/en/hotels/fufukawaguchiko, https://dormy-hotels.com/resort/hotels/la_kawaguchiko/hotspring/,
             https://fuji-royalhotel.jp/, https://kawaguchikohotel.com/. Fufu&apos;s own site did not load, so its
             row comes from its operator&apos;s booking page. La Vista&apos;s in-room view baths use heated water rather
             than hot spring water. Mifujien has no rooms with an open-air bath.
@@ -471,7 +497,7 @@ export default function KawaguchikoRyokanMtFujiViewPage({ updated }: { updated: 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            <strong>Last checked: {OWN}</strong> · Sources: https://bus.fujikyu.co.jp/highway/detail/id/1,
+            <strong>Last checked: {TODAY_ISO}</strong> · Sources: https://bus.fujikyu.co.jp/highway/fujisan/shinjuku-kawaguchiko/,
             https://www.fujikyu-railway.jp/fujikaiyuu/. Fujikyu shows no effective date for the train fare.
             From the station, use the inn&apos;s shuttle: most pick up only if you call or book.
           </p>

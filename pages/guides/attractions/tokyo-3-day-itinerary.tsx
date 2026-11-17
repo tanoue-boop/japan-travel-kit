@@ -608,7 +608,10 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             The Samurai Ninja Museum is a two-minute walk from Tawaramachi, one stop from Asakusa on the
             Ginza Line, and its basic ticket runs about 60 minutes indoors — our{" "}
             <Link href="/guides/attractions/samurai-ninja-experience-tokyo">samurai and ninja experience in Tokyo</Link>{" "}
-            guide compares it with the 2- and 3-hour sword sessions.
+            guide compares it with the 2- and 3-hour sword sessions. If you want to see Senso-ji in a
+            kimono, start early: our{" "}
+            <Link href="/guides/attractions/asakusa-kimono-rental">Asakusa kimono rental guide</Link>{" "}
+            has the shop prices, opening hours and the 16:30 or 17:30 return time that shapes the day.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

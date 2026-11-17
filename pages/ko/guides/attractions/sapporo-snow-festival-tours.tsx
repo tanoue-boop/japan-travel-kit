@@ -588,7 +588,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-직접 정해야 할 것이 두 가지 있습니다. 4호차 <strong>U시트 지정석</strong>은 요금에 ¥1,000 추가, 티켓리스 예약은 ¥800이며, 2월에는 일반 차량이 스키 가방을 든 승객으로 붐비기 때문에 값어치가 있습니다. <strong>JR 홋카이도 레일 패스</strong>는 시외로 나갈 때만 이득입니다. 공항 왕복은 약 ¥2,460이므로 패스는 공항이 아니라 오타루, 아사히카와, 노보리베쓰에 대한 판단입니다. 자신의 구간으로 계산해 보세요. 요금 확인일 {OWN}. <Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR 패스 가이드(영어)</Link>도 전국 패스에 같은 방법을 씁니다.
+직접 정해야 할 것이 두 가지 있습니다. 4호차 <strong>U시트 지정석</strong>은 요금에 ¥1,000 추가, 티켓리스 예약은 ¥800이며, 2월에는 일반 차량이 스키 가방을 든 승객으로 붐비기 때문에 값어치가 있습니다. <strong>JR 홋카이도 레일 패스</strong>는 시외로 나갈 때만 이득입니다. 공항 왕복은 약 ¥2,460이므로 패스는 공항이 아니라 오타루, 아사히카와, 노보리베쓰에 대한 판단입니다. 자신의 구간으로 계산해 보세요. 요금 확인일 {OWN}. 오타루·아사히카와·후라노를 도는 <Link href="/ko/guides/attractions/hokkaido-7-day-itinerary">홋카이도 7일 일정</Link>에 구간별 요금과 패스 계산이 있습니다. <Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR 패스 가이드(영어)</Link>도 전국 패스에 같은 방법을 씁니다.
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

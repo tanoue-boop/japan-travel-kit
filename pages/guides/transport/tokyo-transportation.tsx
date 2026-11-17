@@ -368,7 +368,11 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Last checked: {LAST_CHECKED}. Tokyo Subway Ticket price from{" "}
             <a href={METRO_PASSES} target="_blank" rel="noopener noreferrer">tokyometro.jp</a>. For the airport legs,
-            the shinkansen and the JR Pass, the{" "}
+            the{" "}
+            <Link href="/guides/transport/tokyo-airport-transfer" style={{ color: "var(--text)", fontWeight: 600 }}>Tokyo airport transfer guide</Link>{" "}
+            compares Narita to Tokyo and Haneda to Tokyo by train, bus and taxi, and the{" "}
+            <Link href="/guides/transport/tokyo-airport-limousine-bus" style={{ color: "var(--text)", fontWeight: 600 }}>Airport Limousine Bus Tokyo</Link>{" "}
+            page has every bus fare and timetable time; for the shinkansen and the JR Pass, the{" "}
             <Link href="/guides/transport" style={{ color: "var(--text)", fontWeight: 600 }}>Japan transportation guide</Link>{" "}
             has the nationwide fares; for a whole trip&apos;s numbers, see the{" "}
             <Link href="/guides/money/tokyo-trip-cost" style={{ color: "var(--text)", fontWeight: 600 }}>Tokyo trip cost</Link>{" "}
@@ -727,7 +731,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Airport Limousine Bus Tokyo (2026): Narita &amp; Haneda Fares, Times and Stops</p>
+                <p className={styles.relatedTitle}>Airport Limousine Bus Tokyo 2026: Fares, Times &amp; Booking</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

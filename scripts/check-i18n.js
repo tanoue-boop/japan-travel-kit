@@ -136,7 +136,8 @@ const SEARCH_TERMS = {
     ko: "일본 이심",
     th: "eSIM ญี่ปุ่น",
   },
-  "/guides/attractions/things-to-do-tokyo": { "zh-tw": "東京自由行", "zh-cn": "东京自由行" },
+  // zh-cn switched 2026-11-17 (C01) to the GSC query 东京必去景点 (pos 7.9, CTR 0% on 东京自由行 wording).
+  "/guides/attractions/things-to-do-tokyo": { "zh-tw": "東京自由行", "zh-cn": "东京必去景点" },
   // Added 2026-11-06 with the winter set. Chinese readers write 札幌雪祭 in both scripts;
   // the other four differ only by script, or by the 一日游 / 行程 wording each side uses.
   "/guides/attractions/jigokudani-snow-monkey-tour": {
@@ -160,7 +161,7 @@ const SEARCH_TERMS = {
   "/guides/attractions/hokkaido-7-day-itinerary": {
     "zh-tw": "北海道7天行程",
     "zh-cn": "北海道7日游",
-    ko: "홋카이도 7일 여행",
+    ko: "홋카이도 7일 일정", // GSC query, switched 2026-11-17 (C01)
     th: "เที่ยวฮอกไกโด 7 วัน",
   },
   "/guides/attractions/japan-winter-itinerary": {

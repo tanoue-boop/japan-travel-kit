@@ -492,7 +492,9 @@ export default function KyotoSubwayBusPassPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText}>
             Picture a classic Kyoto temple day: bus from Kyoto Station to Kinkakuji in the morning, across to
             Kiyomizudera by bus, down to Gion, then the subway back to your hotel — with a detour or two in between.
-            That&apos;s five or more rides.
+            That&apos;s five or more rides. Which of those stops charge admission, and which need booking, is
+            in our list of{" "}
+            <Link href="/guides/attractions/things-to-do-kyoto">things to do in Kyoto in 2026</Link>.
           </p>
           <p className={styles.bodyText}>
             At ¥230 a bus ride, those journeys add up to ¥1,150 or more on a pay-as-you-go card. The ¥1,100 Subway &amp;

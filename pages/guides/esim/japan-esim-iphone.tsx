@@ -849,7 +849,7 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
             The full dual-SIM walkthrough — including the Android equivalents and what to do when
             a profile disappears after a restart — is in our{" "}
             <Link href="/guides/esim/how-to-set-up-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              step-by-step eSIM setup guide for Japan
+              guide to setting up an eSIM for Japan, step by step
             </Link>. If you are still at the stage of asking{" "}
             <Link href="/guides/esim/does-esim-work-in-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               whether eSIM works in Japan at all

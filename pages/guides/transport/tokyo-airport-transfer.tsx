@@ -112,6 +112,22 @@ const CHECKED = checkedLabel(CHECKED_ISO);
 const CHECKED_TAXI_ISO = "2026-10-28";
 const CHECKED_TAXI = checkedLabel(CHECKED_TAXI_ISO);
 
+/**
+ * Re-read on 17 Nov 2026 (task-jtk-20261117-C01), on the operators' own pages:
+ *   - JR East /en/multi/nex/tickets/ (¥3,140 / ¥3,330 / ¥4,480) and /en/multi/nex/ ("just 53 minutes");
+ *   - Keisei jp/skyliner/ticket.php (fare ¥1,280 / IC ¥1,267 + Liner ¥1,300 = ¥2,580),
+ *     us/directions/ueno.php (41 min T2·3 → Keisei-Ueno) and the fare-table PDF
+ *     fare/pdf/144a.pdf (Keisei-Ueno ⇔ Narita Airport via Keisei-Narita ¥1,060 / IC ¥1,052);
+ *   - Keikyu ride/ticket/ (Shinagawa ⇔ Haneda T3 ¥330) and the Shinagawa page on
+ *     haneda-tokyo-access.com (11 min from T3);
+ *   - Tokyo Monorail english/guidance/train_info.html (¥520 / ¥260) and the
+ *     Hamamatsucho access page (13 min Haneda Express from T3);
+ *   - Airport Limousine English timetables (Narita/Haneda → Tokyo Station, Shinjuku).
+ * Rows with `fresh: true` carry this date; everything else keeps its own.
+ */
+const CHECKED_TODAY_ISO = "2026-11-17";
+const CHECKED_TODAY = checkedLabel(CHECKED_TODAY_ISO);
+
 // ---------------------------------------------------------------------------
 // The two master tables: every option, with the figure and the operator that
 // publishes it. These are the tables an AI answer can lift whole, so each row
@@ -324,17 +340,17 @@ const nightRows = [
  * price against a clock actually wants.
  */
 const allOptionRows = [
-  { airport: "Narita", option: "Keisei Access Express",            time: "50 min to Asakusa",                fare: "¥1,280 to Nippori / Keisei-Ueno", source: "Keisei" },
-  { airport: "Narita", option: "Keisei Main Line Limited Express", time: "Not published as a figure",         fare: "¥1,060 to Keisei-Ueno",           source: "Keisei" },
-  { airport: "Narita", option: "Keisei Skyliner",                  time: "41 min to Keisei-Ueno",             fare: "¥2,580 (IC ¥2,567)",              source: "Keisei" },
-  { airport: "Narita", option: "Airport Limousine Bus",            time: "1 h 50 min to Tokyo Station",       fare: "¥3,100 Tokyo Station; ¥3,600 Shinjuku or Shibuya", source: "Airport Limousine" },
-  { airport: "Narita", option: "Narita Express (N'EX)",            time: "From 53 min to Tokyo Station",      fare: "¥3,140 Tokyo; ¥3,330 Shinagawa / Shibuya / Shinjuku", source: "JR East" },
-  { airport: "Narita", option: "Flat-fare taxi",                   time: "Traffic-dependent, no published figure", fare: "¥23,500–¥38,500 by zone, expressway tolls extra", source: "Narita Airport" },
-  { airport: "Haneda", option: "Keikyu Airport Line",              time: "11 min to Shinagawa (T3)",          fare: "¥330 to Shinagawa (IC ¥327)",     source: "Keikyu" },
-  { airport: "Haneda", option: "Tokyo Monorail",                   time: "13 min to Hamamatsucho",            fare: "¥520 adult, ¥260 child",          source: "Tokyo Monorail" },
-  { airport: "Haneda", option: "Airport Limousine Bus",            time: "Traffic-dependent, by route",       fare: "¥1,200 Tokyo Station; ¥1,400 Shinjuku", source: "Airport Limousine" },
-  { airport: "Haneda", option: "Late-night access bus",            time: "Airport departures 00:00–02:00",    fare: "¥1,900 Tokyo / Ginza / Asakusa; ¥2,800 Shinjuku / Ikebukuro", source: "Airport Limousine" },
-  { airport: "Haneda", option: "Flat-fare taxi",                   time: "Traffic-dependent, no published figure", fare: "Flat-fare scheme confirmed, no fare published", source: "Haneda Airport" },
+  { airport: "Narita", option: "Keisei Main Line Limited Express", time: "Not published as a figure",         fare: "¥1,060 to Keisei-Ueno",           source: "Keisei", fresh: true },
+  { airport: "Narita", option: "Keisei Access Express",            time: "50 min to Asakusa",                fare: "¥1,280 to Nippori / Keisei-Ueno", source: "Keisei", fresh: false },
+  { airport: "Narita", option: "Keisei Skyliner",                  time: "41 min to Keisei-Ueno",             fare: "¥2,580 (IC ¥2,567)",              source: "Keisei", fresh: true },
+  { airport: "Narita", option: "Airport Limousine Bus",            time: "1 h 40 min (T1) to 1 h 50 min (T3) to Tokyo Station", fare: "¥3,100 Tokyo Station; ¥3,600 Shinjuku or Shibuya", source: "Airport Limousine", fresh: false },
+  { airport: "Narita", option: "Narita Express (N'EX)",            time: "From 53 min to Tokyo Station",      fare: "¥3,140 Tokyo; ¥3,330 Shinagawa / Shibuya / Shinjuku", source: "JR East", fresh: true },
+  { airport: "Narita", option: "Flat-fare taxi",                   time: "Traffic-dependent, no published figure", fare: "¥23,500–¥38,500 by zone, expressway tolls extra", source: "Narita Airport", fresh: false },
+  { airport: "Haneda", option: "Keikyu Airport Line",              time: "11 min to Shinagawa (T3)",          fare: "¥330 to Shinagawa (IC ¥327)",     source: "Keikyu", fresh: false },
+  { airport: "Haneda", option: "Tokyo Monorail",                   time: "13 min to Hamamatsucho",            fare: "¥520 adult, ¥260 child",          source: "Tokyo Monorail", fresh: true },
+  { airport: "Haneda", option: "Airport Limousine Bus",            time: "About 40 min from T1 to Tokyo Station or Shinjuku on the timetable", fare: "¥1,200 Tokyo Station; ¥1,400 Shinjuku", source: "Airport Limousine", fresh: true },
+  { airport: "Haneda", option: "Late-night access bus",            time: "Airport departures 00:00–02:00",    fare: "¥1,900 Tokyo / Ginza / Asakusa; ¥2,800 Shinjuku / Ikebukuro", source: "Airport Limousine", fresh: false },
+  { airport: "Haneda", option: "Flat-fare taxi",                   time: "Traffic-dependent, no published figure", fare: "Flat-fare scheme confirmed, no fare published", source: "Haneda Airport", fresh: false },
 ];
 
 /**
@@ -572,8 +588,24 @@ const transferTips = [
 
 const faqItems = [
   {
+    q: "What is the best Tokyo airport transfer from Narita and Haneda?",
+    a: `It depends on the airport and on where you sleep. From Narita, the Keisei Skyliner is fastest to east Tokyo (41 minutes to Keisei-Ueno, ¥2,580) and the Narita Express suits Tokyo Station and west Tokyo (from 53 minutes to Tokyo Station, ¥3,140; ¥3,330 to Shinjuku, free with a JR Pass). From Haneda, the Keikyu Airport Line (11 minutes to Shinagawa, ¥330) or the Tokyo Monorail (13 minutes to Hamamatsucho, ¥520) beat everything on time and price. With heavy luggage, the Airport Limousine Bus goes straight to hotel and station stops — ¥3,100 Narita to Tokyo Station, ¥1,200 Haneda to Tokyo Station. Fares and times checked on the operators' sites on ${CHECKED_TODAY}.`,
+  },
+  {
     q: "What is the cheapest way from Narita to Tokyo?",
     a: `The cheapest train is the Keisei Main Line Limited Express at ¥1,060 to Keisei-Ueno (IC ¥1,052) — the ordinary service via Keisei-Narita, with no limited-express surcharge despite the name. The Access Express, which runs the faster Narita Sky Access route, is ¥1,280 to Nippori or Keisei-Ueno (IC ¥1,267) and reaches Asakusa in 50 minutes. Neither needs a reservation. If you hold a JR Pass, the Narita Express is already paid for and is the better ride. Fares read from Keisei on ${CHECKED}.`,
+  },
+  {
+    q: "How long does it take from Narita to Tokyo?",
+    a: `About 40 minutes to an hour by train, longer by bus. Keisei puts the Skyliner at 41 minutes from Narita Terminal 2·3 to Keisei-Ueno; JR East says the fastest Narita Express reaches Tokyo Station in 53 minutes. The Airport Limousine Bus timetable books Narita Terminal 1 at 7:25 into Tokyo Station at 9:05 (1 hour 40) and Terminal 1 at 10:35 into Shinjuku Station at 12:20 (1 hour 45), before traffic. Checked on the operators' sites on ${CHECKED_TODAY}.`,
+  },
+  {
+    q: "How do I get from Haneda to Tokyo?",
+    a: `By train in 11–13 minutes to the city's edge. The Keikyu Airport Line runs from Haneda Terminal 3 to Shinagawa in 11 minutes for ¥330, with through trains on toward Shimbashi, Ginza and Asakusa; the Tokyo Monorail runs to Hamamatsucho in 13 minutes on the Haneda Express for ¥520 (child ¥260), for the JR Yamanote Line. The Airport Limousine Bus goes to Tokyo Station for ¥1,200 and to Shinjuku for ¥1,400, about 40 minutes each from Terminal 1 on the timetable, with your bags in the hold. The last Keikyu train to Shinagawa leaves Terminal 3 at 00:08. Fares and times checked on the operators' sites on ${CHECKED_TODAY}.`,
+  },
+  {
+    q: "Should I book a Tokyo airport transfer in advance?",
+    a: `For the trains, booking ahead is about price rather than availability: the Skyliner discount ticket is ¥2,310 one-way instead of ¥2,580, the N'EX TOKYO Round Trip Ticket is ¥5,200 instead of ¥6,660 in singles to Shinjuku, and the Skyliner + Tokyo Subway combination starts at ¥2,840. All of them are collected at the airport, so you still need to allow for the counter. The things that genuinely need booking are the ones with a fixed vehicle: reserved limousine bus routes in peak season, and any private or shared car transfer, especially for a flight landing after the last train. Read on ${CHECKED}.`,
   },
   {
     q: "Narita Express or Skyliner: which is faster?",
@@ -582,10 +614,6 @@ const faqItems = [
   {
     q: "How do I get from Haneda to Shinjuku?",
     a: `Three ways. The Keikyu Airport Line is the quickest — Keikyu's own estimate is 30 minutes from Terminal 3 to Shinjuku, 33 from Terminal 1·2, with one change; the airport-to-Shinagawa leg alone is ¥330. The Tokyo Monorail reaches Hamamatsucho in 13 minutes for ¥520, then the Yamanote loop round to Shinjuku. The Airport Limousine Bus runs straight to the Shinjuku and Nakano stops for ¥1,400 (¥700 child) with your bags in the hold. With one suitcase each, take the train; with three, take the bus. Read on ${CHECKED}.`,
-  },
-  {
-    q: "Should I book an airport transfer in advance?",
-    a: `For the trains, booking ahead is about price rather than availability: the Skyliner discount ticket is ¥2,310 one-way instead of ¥2,580, the N'EX TOKYO Round Trip Ticket is ¥5,200 instead of ¥6,660 in singles to Shinjuku, and the Skyliner + Tokyo Subway combination starts at ¥2,840. All of them are collected at the airport, so you still need to allow for the counter. The things that genuinely need booking are the ones with a fixed vehicle: reserved limousine bus routes in peak season, and any private or shared car transfer, especially for a flight landing after the last train. Read on ${CHECKED}.`,
   },
   {
     q: "What happens if I land after the last train?",
@@ -646,9 +674,9 @@ export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/tr
 // Bing bolds against this query — cheapest, fastest, prices, times — and three
 // numbers, because a top-ten result with no number in its snippet is what a
 // zero-CTR result looks like.
-const TITLE = "Tokyo Airport Transfer 2026: Narita & Haneda to Tokyo";
+const TITLE = "Tokyo Airport Transfer 2026: Narita & Haneda to Tokyo Fares";
 const DESC =
-  "Tokyo airport transfer prices and times, checked at source: the cheapest Narita to Tokyo is ¥1,060, the fastest 41 min; Haneda is ¥330 in 11 min.";
+  "Tokyo airport transfer: Narita to Tokyo from ¥1,060, Skyliner 41 min for ¥2,580, N'EX ¥3,140; Haneda to Tokyo ¥330 in 11 min. Book train tickets on Klook.";
 
 export default function TokyoAirportTransferPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -673,7 +701,7 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -734,7 +762,7 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Tokyo Airport Transfer 2026:<br />Narita &amp; Haneda to Tokyo, N&apos;EX vs Skyliner
+            Tokyo Airport Transfer 2026:<br />Narita &amp; Haneda to Tokyo Fares, N&apos;EX vs Skyliner
           </h1>
           <p className={styles.heroSubtitle}>
             Every fare and journey time below comes from the operators&apos; own sites, read on {CHECKED}; the taxi
@@ -765,17 +793,19 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             Fastest and cheapest for both airports, each with its time and its fare,
             because that is the pair of words the query is built out of. */}
         <p className={styles.bodyText}>
-          From <strong>Narita</strong>, the fastest <strong>Tokyo airport transfer</strong> is the{" "}
+          The fastest <strong>Tokyo airport transfer from Narita to Tokyo</strong> is the{" "}
           <strong>Keisei Skyliner</strong> — <strong>41 minutes</strong> to Keisei-Ueno for{" "}
-          <strong>¥2,580</strong> — and the cheapest is the{" "}
-          <strong>Keisei Main Line Limited Express at ¥1,060</strong>; for <strong>Tokyo Station</strong> the{" "}
-          <strong>Narita Express (N&apos;EX)</strong> is <strong>¥3,140</strong> in{" "}
-          <strong>as little as 53 minutes</strong>, and free with a JR Pass. From <strong>Haneda</strong> the
-          fastest and the cheapest are the same train: the <strong>Keikyu Airport Line</strong> reaches{" "}
-          <strong>Shinagawa in 11 minutes for ¥330</strong>, and the <strong>Tokyo Monorail</strong> reaches{" "}
-          <strong>Hamamatsucho in 13 minutes for ¥520</strong>. Those are one-way adult fares read from JR East,
-          Keisei, Keikyu, Tokyo Monorail and Airport Limousine on {CHECKED}; a flat-fare taxi from Narita is{" "}
-          <strong>¥23,500–¥38,500</strong> by zone with tolls on top, read from Narita Airport on {CHECKED_TAXI}.
+          <strong>¥2,580</strong> — the cheapest is the{" "}
+          <strong>Keisei Main Line Limited Express at ¥1,060</strong>, and the{" "}
+          <strong>Narita Express (N&apos;EX)</strong> reaches <strong>Tokyo Station</strong> in{" "}
+          <strong>as little as 53 minutes for ¥3,140</strong> (free with a JR Pass). From{" "}
+          <strong>Haneda to Tokyo</strong>, the <strong>Keikyu Airport Line</strong> reaches{" "}
+          <strong>Shinagawa in 11 minutes for ¥330</strong> and the <strong>Tokyo Monorail</strong> reaches{" "}
+          <strong>Hamamatsucho in 13 minutes for ¥520</strong>, while the{" "}
+          <strong>Airport Limousine Bus</strong> runs to Tokyo Station for <strong>¥1,200</strong> in about 40
+          minutes from Terminal 1. All are one-way adult fares checked on the operators&apos; own sites on{" "}
+          {CHECKED_TODAY}; a flat-fare taxi from Narita is <strong>¥23,500–¥38,500</strong> by zone with tolls on
+          top (Narita Airport, {CHECKED_TAXI}).
         </p>
 
         {/* Quick Answer Box */}
@@ -882,7 +912,7 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
                       <td style={{ fontSize: "0.88rem" }}>{row.time}</td>
                       <td className={styles.tdPrice} style={{ whiteSpace: "normal", fontSize: "0.88rem" }}>{row.fare}</td>
                       <td style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-                        {row.source}, {row.option === "Flat-fare taxi" ? CHECKED_TAXI : CHECKED}
+                        {row.source}, {row.option === "Flat-fare taxi" ? CHECKED_TAXI : row.fresh ? CHECKED_TODAY : CHECKED}
                       </td>
                     </tr>
                   ))}
@@ -890,6 +920,16 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {CHECKED_TODAY_ISO}</strong> for the rows dated {CHECKED_TODAY}, on the
+            operators&apos; own pages:{" "}
+            <a href="https://www.jreast.co.jp/en/multi/nex/tickets/" target="_blank" rel="noopener noreferrer">JR East (N&apos;EX)</a>,{" "}
+            <a href="https://www.keisei.co.jp/keisei/tetudou/skyliner/jp/skyliner/ticket.php" target="_blank" rel="noopener noreferrer">Keisei (Skyliner)</a>,{" "}
+            <a href="https://www.keikyu.co.jp/ride/ticket/" target="_blank" rel="noopener noreferrer">Keikyu</a>,{" "}
+            <a href="https://www.tokyo-monorail.co.jp/english/guidance/train_info.html" target="_blank" rel="noopener noreferrer">Tokyo Monorail</a>,{" "}
+            <a href="https://www.limousinebus.co.jp/en/timetable/list/" target="_blank" rel="noopener noreferrer">Airport Limousine</a>.
+            Other rows keep the date in their Source column.
+          </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
             <KlookLink href={keiseiSkylinerUrl} className={styles.verdictBtn} target="_blank" rel="sponsored nofollow noopener">
               Skyliner tickets on Klook →
@@ -1683,7 +1723,7 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Airport Limousine Bus Tokyo (2026): Narita &amp; Haneda Fares, Times and Stops</p>
+                <p className={styles.relatedTitle}>Airport Limousine Bus Tokyo 2026: Fares, Times &amp; Booking</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

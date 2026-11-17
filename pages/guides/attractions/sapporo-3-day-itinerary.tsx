@@ -593,7 +593,9 @@ export default function Sapporo3DayItineraryPage({ updated }: { updated: PageUpd
           <h2 className={styles.sectionTitle}>Is Otaru Worth a Day Trip From Sapporo?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Yes — it is the shortest good day trip in Hokkaido: <strong>35 minutes and {OTARU_FARE}</strong> each way on
-            the JR Rapid Airport, with nothing to book. The canal and Sakaimachi fill a day at walking pace. In the week of{" "}
+            the JR Rapid Airport, with nothing to book. The canal and Sakaimachi fill a day at walking pace (our{" "}
+            <Link href="/guides/attractions/otaru-day-trip-from-sapporo">Otaru day trip from Sapporo</Link> guide covers
+            half-day and full-day plans). In the week of{" "}
             <strong>6–13 February 2027</strong>, stay for the Snow Light Path after dark.
           </p>
           <StopTable rows={day2} />
@@ -602,7 +604,7 @@ export default function Sapporo3DayItineraryPage({ updated }: { updated: PageUpd
             <a href="https://www.jrhokkaido.co.jp/global/english/ticket/regular/index.html" target="_blank" rel="noopener">JR Hokkaido fares</a>,{" "}
             <a href="https://www.jrhokkaido.co.jp/global/english/travel/model/winter03.html" target="_blank" rel="noopener">JR Hokkaido winter route</a>. The
             walk to the canal, cruise fares and the Yoichi distillery are in our{" "}
-            <Link href="/guides/attractions/otaru-day-trip-from-sapporo">Otaru day trip guide</Link>.
+            <Link href="/guides/attractions/otaru-day-trip-from-sapporo">Otaru day trip from Sapporo guide</Link>.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>Train or tour?</strong> The train is cheap and flexible. A coach day makes sense only if you want

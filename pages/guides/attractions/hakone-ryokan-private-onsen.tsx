@@ -172,7 +172,7 @@ const ROUTE = "/guides/attractions/hakone-ryokan-private-onsen";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const relatedGuides = [
-  { href: "/guides/attractions/kawaguchiko-ryokan-mt-fuji-view", title: "Kawaguchiko Ryokan with Mt Fuji View (2026): 6 Inns" },
+  { href: "/guides/attractions/kawaguchiko-ryokan-mt-fuji-view", title: "Kawaguchiko Ryokan with Mt Fuji View & Private Onsen 2026" },
   { href: "/guides/attractions/hakone-free-pass", title: "Hakone Freepass (Free Pass) 2026: Price & Where to Buy" },
   { href: "/guides/attractions/hakone-day-trip-from-tokyo", title: "Hakone Day Trip From Tokyo (2026): Timed Itinerary, Cost and Tours" },
   { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport" },
@@ -424,6 +424,9 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
             Yes, if you have tattoos, want to bathe as a couple or a family, or want to bathe at any hour. If you
             only want one private soak, a reserved bath is the cheaper route, because you do not pay for the room
             type. Mikawaya&apos;s free family bath is the clearest example, open 5:00 to 10:00 and 15:00 to 24:00.
+            If you want Mt Fuji outside the window instead of the Hakone hills, our guide to the{" "}
+            <Link href="/guides/attractions/kawaguchiko-ryokan-mt-fuji-view">Kawaguchiko ryokan with Mt Fuji view and private onsen</Link>{" "}
+            does the same comparison for six inns at Lake Kawaguchi.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={hakoneKowakienMikawaya.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
