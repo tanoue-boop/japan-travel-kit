@@ -2543,6 +2543,29 @@ export const transportHubArrivalPrep: KlookTripPrepItem[] = [
   },
 ];
 
+// Money hub (/guides/money), added 17 Nov 2026 (task-jtk-20261117-R08).
+// "Pay before you arrive": the airport train (5%), a city pass (5%) and Klook eSIM (20%)
+// — yen costs that otherwise come out of the cash float, put on a card at home.
+// Existing constants only — no new Klook URL.
+export const moneyHubPrepaid: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "The first yen most visitors spend is the airport train; paid for here, it is off your card in your own currency before you reach an ATM.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "Landing at Kansai Airport instead: the Haruka to Osaka or Kyoto, settled the same way.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Tokyo Metro and Toei rides for 24, 48 or 72 hours on one prepaid ticket, so subway fares stop coming out of the cash float.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Card apps, bank one-time codes and ATM finders all need data from the arrivals hall, before the hotel Wi-Fi.",
+  },
+];
+
 // ---------------------------------------------------------------------------
 // Ten days in Japan, added 26 Oct 2026 for japan-10-day-itinerary.
 //

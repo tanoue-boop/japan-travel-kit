@@ -387,7 +387,9 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
             Market&apos;s shop directory lists shops that take cash only or set a ¥5,000 minimum on a card,
             and local buses outside the city tap schemes still want coins or an IC card — so
             ¥10,000–¥20,000 in your pocket, topped up at a convenience-store ATM rather than bought at an
-            exchange desk at home, is the amount that gets you through a day of those.
+            exchange desk at home, is the amount that gets you through a day of those. Every payment method,
+            where it works and what it costs, is in one table in our{" "}
+            <Link href="/guides/money" style={{ color: "var(--text)", fontWeight: 600 }}>money in Japan</Link> guide.
           </p>
         </section>
 

@@ -772,7 +772,9 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
             staying in Tokyo only, our <Link href="/guides/money/tokyo-trip-cost">Tokyo trip cost guide</Link> prices
             that on the city&apos;s own visitor survey instead. For a reality check on all of it: the Japan Tourism Agency&apos;s own inbound
             consumption survey put travel expenditure at <strong>¥234,000 per visitor</strong> for July–September
-            2026 (1st preliminary), across a total of ¥2,207.6 billion. Read on mlit.go.jp, {OWN}.
+            2026 (1st preliminary), across a total of ¥2,207.6 billion. Read on mlit.go.jp, {OWN}. How to pay
+            for it — card, cash or ATM — is in our{" "}
+            <Link href="/guides/money" style={{ color: "var(--text)", fontWeight: 600 }}>money in Japan</Link> guide.
           </p>
         </section>
 

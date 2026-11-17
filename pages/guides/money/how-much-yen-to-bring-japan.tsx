@@ -459,7 +459,9 @@ export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageU
               bring ¥10,000–¥20,000 in cash for the flight and the first day, then withdraw the rest
               from a 7-Eleven ATM (¥100,000 per withdrawal) or a post-office ATM (50,000 yen), caps
               checked {ATM_CHECKED}.
-            </strong>
+            </strong>{" "}
+            How the cash fits with the card, tax-free shopping and insurance is laid out in our{" "}
+            <Link href="/guides/money" style={{ color: "var(--text)", fontWeight: 600 }}>money in Japan</Link> guide.
           </p>
         </section>
 

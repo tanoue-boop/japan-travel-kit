@@ -283,7 +283,9 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
             per use) may apply&rdquo; to certain cards issued abroad, with post-office machines open Mon–Sat
             7:00–23:00. E-net (FamilyMart), Lawson Bank and AEON Bank also take foreign cards, and whatever
             the machine charges is separate from your own bank&apos;s fee — Seven Bank and Japan Post Bank
-            figures checked on their own sites on {RECHECKED}, the rest on {CHECKED}.
+            figures checked on their own sites on {RECHECKED}, the rest on {CHECKED}. Where an ATM fits next to the
+            card and the cash float is set out in our{" "}
+            <Link href="/guides/money" style={{ color: "var(--text)", fontWeight: 600 }}>money in Japan</Link> guide.
           </p>
         </section>
 
