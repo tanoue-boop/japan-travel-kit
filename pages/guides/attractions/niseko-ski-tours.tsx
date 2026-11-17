@@ -956,7 +956,10 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             Coming through Tokyo? If you have not skied before and want to test it before committing to
             Hokkaido, a{" "}
             <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo">GALA Yuzawa ski day from Tokyo</Link>{" "}
-            is the low-commitment version. For non-skiers in your party, the{" "}
+            is the low-commitment version. If the question is Niseko or Nagano, our{" "}
+            <Link href="/guides/attractions/hakuba-ski-tours">Hakuba ski tours</Link> and{" "}
+            <Link href="/guides/attractions/nozawa-onsen-ski">Nozawa Onsen ski</Link> guides cover the two
+            Nagano resorts you reach from Tokyo by shinkansen and bus rather than by plane. For non-skiers in your party, the{" "}
             <Link href="/guides/attractions/jigokudani-snow-monkey-tour">Jigokudani snow monkey tour</Link>{" "}
             and the{" "}
             <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go tour</Link>{" "}
@@ -999,6 +1002,24 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 17 Nov 2026: the two Nagano ski bases reached from Tokyo without a flight. */}
+            {[
+              { href: "/guides/attractions/hakuba-ski-tours", title: "Hakuba Ski Tours (2026-27): Tokyo Access, Lifts & Resorts" },
+              { href: "/guides/attractions/nozawa-onsen-ski", title: "Nozawa Onsen Ski (2026-27): Tokyo Access, Lifts & Onsen" },
+            ].map((r) => (
+              <Link key={r.href} href={r.href} className={styles.relatedCard}>
+                <div className={styles.relatedIcon}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 18l6-13 5 8 3-4 4 9z" />
+                    <line x1="2" y1="21" x2="22" y2="21" />
+                  </svg>
+                </div>
+                <div className={styles.relatedMeta}>
+                  <p className={styles.relatedTitle}>{r.title}</p>
+                  <span className={styles.relatedArrow}>Read guide →</span>
+                </div>
+              </Link>
+            ))}
             {/* Added 10 Nov 2026: a ski day out of a Sapporo hotel — Teine, Kiroro or Rusutsu. */}
             <Link href="/guides/attractions/sapporo-ski-day-trip" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

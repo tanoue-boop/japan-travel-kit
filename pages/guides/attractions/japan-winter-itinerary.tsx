@@ -1559,6 +1559,11 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours guide</Link>, which covers
             the transfers, the lessons and the four areas, with a peak-season adult 1-day All Mountain
             pass at ¥13,500 from 24 December 2026 to 28 February 2027 on Niseko United&apos;s own table.
+            For a ski week without the flight north, stay in Nagano instead: our{" "}
+            <Link href="/guides/attractions/hakuba-ski-tours">Hakuba ski tours guide</Link> covers the
+            shinkansen-and-bus run and the valley&apos;s resorts, and our{" "}
+            <Link href="/guides/attractions/nozawa-onsen-ski">Nozawa Onsen ski guide</Link> the
+            one-mountain village with its free public baths.
           </p>
           <div className={styles.pickCtaRow}>
             <KlookLink href={galaNaebaSkiDayTripTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

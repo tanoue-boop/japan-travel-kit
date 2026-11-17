@@ -685,7 +685,11 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
           <p className={styles.bodyText}>
             Lessons, transfers and lift passes are the bookings that fill first in peak weeks; see{" "}
             <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours</Link> for the four areas and the
-            transfer options.
+            transfer options. For Nagano, the same applies to the{" "}
+            <Link href="/guides/attractions/hakuba-ski-tours">Hakuba ski tours</Link> (the valley&apos;s
+            resorts, the bus from Nagano Station) and{" "}
+            <Link href="/guides/attractions/nozawa-onsen-ski">Nozawa Onsen ski</Link> (one mountain above a
+            hot-spring village) guides.
           </p>
         </section>
 

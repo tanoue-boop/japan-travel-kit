@@ -324,6 +324,24 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/hakuba-ski-tours",
+    badge: "Ski",
+    title: "Hakuba Ski Tours (2026-27): Tokyo Access, Lifts & Resorts",
+    desc: "Shinkansen to Nagano (about 80 min, ¥8,250) plus a 70-minute ¥3,500 Alpico bus, or 5 h 13 min direct from Shinjuku; the ¥11,100 Hakuba Valley ticket for 10 ski areas; Tsugaike and Happo-one open 1 Dec 2026.",
+    group: "daytrips",
+    // A Nagano stay rather than a Tokyo day out, so it sits with the nationwide pages.
+    city: "other",
+  },
+  {
+    href: "/guides/attractions/nozawa-onsen-ski",
+    badge: "Ski",
+    title: "Nozawa Onsen Ski (2026-27): Tokyo Access, Lifts & Onsen",
+    desc: "Shinkansen to Iiyama (around 1 h 45 min, ¥8,690) and the ¥600 Nozawa Onsen Liner; opening planned 28 Nov 2026, a ¥7,800 lift day, 40% beginner terrain and 13 donation-based public baths.",
+    group: "daytrips",
+    // Same call as hakuba-ski-tours.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/tokyo-snow-day-trip",
     badge: "Snow day trip",
     title: "Tokyo Snow Day Trip 2026-27: Fujiten, Yeti & Gala Compared",

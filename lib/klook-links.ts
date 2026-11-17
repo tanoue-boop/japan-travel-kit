@@ -10162,3 +10162,71 @@ export const nagoyaTwoDayTripPrep: KlookTripPrepItem[] = [
     why: "The Ghibli Park ticket is a QR code, the Grand Warehouse slot is timed, and the direct bus leaves from the fourth floor of a bus centre — all easier with data on your phone.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// hakuba-ski-tours and nozawa-onsen-ski (task-jtk-20261117-02). Confirmed live as
+// en-US pages through the www.klook.com search index on 17 Nov 2026:
+//   - 236446 Nagano Station ⇔ Hakuba shuttle bus (SNOWLINER; Hakuba 47, Happo,
+//     Iwatake and Tsugaike stops; ski and snowboard storage) — transport, 5%.
+//   - 17960 Hakuba express bus between Tokyo / Yokohama and Hakuba (Tokyo Station
+//     Kajibashi car park, a night bus option) — transport, 5%.
+//   - 179692 Tsugaike Kogen: round-trip bus from Tokyo + lift ticket + rental — 6.5%.
+//   - 99045 Nozawa Onsen Ski Resort rental (Mt'Dock NOZAWA, in front of the main
+//     gondola) — 6.5%.
+//   - 131852 Ryuo + Nozawa Onsen 2-day small-group tour from Tokyo — 6.5%.
+//   - 137340 Snow monkeys & Shibu Onsen afternoon tour, Nozawa Onsen departure — 6.5%.
+//   - Klook's hotel searches for Hakuba (p50304245) and Nozawa Onsen Snow Resort
+//     (p50053885) — 6.5%.
+//   - Klook's Tokyo → Nagano Hokuriku Shinkansen route page — rail ticket (2%),
+//     so it is only ever a secondary link beside the JR EAST PASS (5%, 1418).
+// Not used: 136277 (Nozawa lift ticket) and 138282 (Nozawa 2–5 day package from
+// Shinjuku) — the index carries them only on en-AU / default-locale URLs; 8118
+// (Hakuba Valley day pass) — en-AU only; 173258 (Tokyo → Iiyama shinkansen) —
+// default locale only. No prices.
+// ---------------------------------------------------------------------------
+
+export const naganoHakubaShuttleBus: KlookTour = {
+  title: "Nagano Station ⇔ Hakuba shuttle bus",
+  desc: "The SNOWLINER coach from Nagano Station's east exit to Hakuba 47, Happo, Iwatake and Tsugaike, with ski and snowboard storage",
+  url: klookLink("https://www.klook.com/en-US/activity/236446-nagano-station-hakuba-shuttle-bus/"),
+};
+
+export const hakubaExpressBusTokyo: KlookTour = {
+  title: "Hakuba express bus (Tokyo / Yokohama ⇔ Hakuba)",
+  desc: "A direct coach between Tokyo Station (Kajibashi car park) or Yokohama and the Hakuba ski-area stops, with a night-bus option",
+  url: klookLink("https://www.klook.com/en-US/activity/17960-hakuba-express-bus-ticket-yokohama-tokyo/"),
+};
+
+export const tsugaikeBusLiftRental: KlookTour = {
+  title: "Hakuba Tsugaike Kogen: round-trip bus from Tokyo + lift ticket + rental",
+  desc: "Tsugaike Kogen's lift ticket and a ski or snowboard set bundled with the round-trip coach from Tokyo, at the northern end of the Hakuba valley",
+  url: klookLink("https://www.klook.com/en-US/activity/179692-tsugaike-kogen-ski-resort-round-trip-from-tokyo-lift-ticket-gear/"),
+};
+
+export const hakubaHotelsUrl = klookLink("https://www.klook.com/en-US/destination/p50304245-hakuba/3-hotel/");
+
+export const nozawaOnsenSkiRental: KlookTour = {
+  title: "Nozawa Onsen ski & snowboard rental (Mt'Dock NOZAWA)",
+  desc: "Ski or snowboard sets reserved online from a shop in front of Nozawa Onsen's main gondola, shown as a voucher on your phone on the day",
+  url: klookLink("https://www.klook.com/en-US/activity/99045-rent-latest-items-ski-nozawa-onsen-ski-resort/"),
+};
+
+export const ryuoNozawaTwoDayTourTokyo: KlookTour = {
+  title: "Ryuo & Nozawa Onsen 2-day ski tour from Tokyo (small group)",
+  desc: "A two-day small-group trip out of Tokyo, up to 15 people, with Ryuo Ski Park and Nozawa Onsen on the same booking and an hour of instruction",
+  url: klookLink("https://www.klook.com/en-US/activity/131852-two-day-tour-of-nagano-ryuuou-ski-resort-nozawa-onsen-from-tokyo/"),
+};
+
+export const nozawaSnowMonkeyShibuOnsenTour: KlookTour = {
+  title: "Snow monkeys & Shibu Onsen afternoon tour (Nozawa Onsen departure)",
+  desc: "An afternoon off the slopes from Nozawa Onsen: the Jigokudani snow monkeys with priority entry and the old Shibu Onsen street",
+  url: klookLink("https://www.klook.com/en-US/activity/137340-snow-monkey-shibu-onsen-tour-in-nagano-nozawa-onsen-departure/"),
+};
+
+export const nozawaHotelsUrl = klookLink("https://www.klook.com/en-US/destination/p50053885-nozawa-onsen-ski-resort/3-hotel/");
+
+export const shinkansenTokyoNagano: KlookTour = {
+  title: "Tokyo → Nagano shinkansen tickets",
+  desc: "Klook's Hokuriku Shinkansen route page for Tokyo to Nagano, booked by date and seat class",
+  url: klookLink("https://www.klook.com/en-US/japan-rail/shinkansen/28-tokyo/26277-nagano/"),
+};

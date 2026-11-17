@@ -1167,7 +1167,12 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go light-up tour</Link>{" "}
             first and fit GALA around it, because the light-up runs on four fixed evenings and GALA runs
             all season. If a first day leaves you wanting a proper ski week, the next step up is{" "}
-            <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours</Link> in Hokkaido. A
+            <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours</Link> in Hokkaido — or,
+            without a flight, a few nights in Nagano: our{" "}
+            <Link href="/guides/attractions/hakuba-ski-tours">Hakuba ski tours</Link> guide covers the
+            shinkansen-and-bus run from Tokyo, and our{" "}
+            <Link href="/guides/attractions/nozawa-onsen-ski">Nozawa Onsen ski</Link> guide the
+            hot-spring village resort off Iiyama Station. A
             February trip north can be built around the{" "}
             <Link href="/guides/attractions/sapporo-snow-festival-tours">Sapporo Snow Festival tours</Link>{" "}
             on 4–11 February 2027, with an{" "}
