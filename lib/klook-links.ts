@@ -10109,3 +10109,56 @@ export const tokyoJoypolisAnswerCards: KlookSameDayCard[] = [
     why: "Joypolis publishes its hours on a calendar rather than as fixed times, and the evening tickets depend on them, so check the date on your phone before you set off.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Nagoya 2 day itinerary, added 17 Nov 2026 (task-jtk-20261117-01).
+//
+// Two new links, both confirmed as live en-US pages through the www.klook.com
+// search index on 17 Nov 2026: the Meitetsu Chubu Centrair Airport express
+// ticket (15411) and the private Centrair → Nagoya transfer (86288). Everything
+// else reuses the Ghibli Park, LEGOLAND, Nagoya Castle, Takayama/Shirakawa-go
+// (15800) and Nagoya hotel constants above. Tours and hotels 6.5%, airport
+// access 5%, eSIM 20%. No price.
+// ---------------------------------------------------------------------------
+
+/** Meitetsu train ticket from Centrair to Meitetsu Nagoya — the 5% airport leg. */
+export const centrairMeitetsuAirportTicket: KlookTour = {
+  title: "Meitetsu Chubu Centrair Airport express ticket",
+  desc: "The Meitetsu rail ticket between Chubu Centrair International Airport and Meitetsu Nagoya Station, one way or round trip; not sold to Japanese passport holders",
+  url: klookLink("https://www.klook.com/en-US/activity/15411-central-japan-international-airport-nagoya/"),
+};
+
+/** Private car from Centrair to a Nagoya hotel — sedan or van, priced per vehicle. */
+export const centrairPrivateTransfer: KlookTour = {
+  title: "Private Chubu Centrair Airport transfer to Nagoya",
+  desc: "A private one-way car between Centrair and a Nagoya hotel, priced per vehicle, with sedan and van sizes and their luggage limits on the listing",
+  url: klookLink("https://www.klook.com/en-US/activity/86288-private-chubu-centrair-international-airport-transfer-nagoya/"),
+};
+
+/** Book these on the same trip: 6.5% hotel and tours, 5% airport leg, 20% eSIM. */
+export const nagoyaTwoDayTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.hotelNagoya,
+    why: "The shinkansen, the Meitetsu bus to Ghibli Park, the Aonami Line to LEGOLAND and the airport trains all start at Nagoya Station, so two nights there make both mornings a walk.",
+  },
+  {
+    label: takayamaShirakawagoNagoyaDayTrip.title,
+    ctaLabel: "Check the Takayama & Shirakawa-go day →",
+    url: takayamaShirakawagoNagoyaDayTrip.url,
+    why: "The Day 2 swap if neither park suits you, or a third day: a coach from Nagoya Station with about two hours each in Shirakawa-go and the Takayama old town.",
+  },
+  {
+    ...tripPrepProducts.ghibliBusTour,
+    why: "Day 2 at Ghibli Park as one booking, with the Aichi Museum of Flight added — the version with no bus or Linimo connection to plan.",
+  },
+  {
+    label: centrairMeitetsuAirportTicket.title,
+    ctaLabel: "Check the Centrair airport train →",
+    url: centrairMeitetsuAirportTicket.url,
+    why: "If you fly into Nagoya rather than arrive by shinkansen, this is the train leg to Meitetsu Nagoya, beside the JR station.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The Ghibli Park ticket is a QR code, the Grand Warehouse slot is timed, and the direct bus leaves from the fourth floor of a bus centre — all easier with data on your phone.",
+  },
+];

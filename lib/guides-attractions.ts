@@ -1005,6 +1005,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/nagoya-2-day-itinerary",
+    badge: "Itinerary",
+    title: "Nagoya 2 Day Itinerary (2026): Ghibli Park or LEGOLAND",
+    desc: "Nagoya Castle (¥1,000), Osu and Sakae on Day 1; Ghibli Park (40 minutes by direct bus, tickets two months ahead) or LEGOLAND Japan (24 minutes by Aonami Line) on Day 2 — with the shinkansen times, a park comparison and where to stay.",
+    group: "cities",
+    // Nagoya sits outside the three city hubs, same call as nagoya-castle-tickets.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/takayama-shirakawago-tour",
     badge: "Day trip",
     title: "Takayama and Shirakawa-go Tour (2026): Which Departure, and the Bus If You Go Alone",

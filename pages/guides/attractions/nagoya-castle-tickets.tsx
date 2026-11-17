@@ -662,6 +662,7 @@ export default function NagoyaCastleTicketsPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
             {[
+              { href: "/guides/attractions/nagoya-2-day-itinerary", title: "Nagoya 2 Day Itinerary (2026): Ghibli Park or LEGOLAND" },
               { href: "/guides/transport/tokyo-to-nagoya-shinkansen", title: "Tokyo to Nagoya Shinkansen: Times, Fares, JR Pass" },
               { href: "/guides/attractions/ghibli-park-tickets", title: "Ghibli Park Tickets 2026: How to Book, Prices & Sale Dates" },
               { href: "/guides/attractions/legoland-japan-tickets", title: "LEGOLAND Japan Tickets (2026): Prices, Hours and Is It Worth It?" },

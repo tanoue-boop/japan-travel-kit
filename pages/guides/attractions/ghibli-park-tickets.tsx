@@ -667,6 +667,19 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
             Tokyo end, including the Ghibli Museum in Mitaka.
           </p>
           <div className={styles.relatedGrid}>
+            {/* Added 17 Nov 2026: the two-day Nagoya route this page is one day of. */}
+            <Link href="/guides/attractions/nagoya-2-day-itinerary" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Nagoya 2 Day Itinerary (2026): Ghibli Park or LEGOLAND</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             <Link href="/guides/transport/tokyo-to-nagoya-shinkansen" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
