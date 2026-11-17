@@ -8950,6 +8950,26 @@ export const kawaguchikoRyokanTripPrep: KlookTripPrepItem[] = [
   },
 ];
 
+/**
+ * kawaguchiko-day-trip-from-tokyo, directly under the tour and bus buttons in the
+ * answer (task-jtk-20261117-R03): Fujikawaguchiko hotels (6.5%) and the Klook eSIM
+ * (20%). Existing constants only, no new URL and no price.
+ */
+export const kawaguchikoAnswerCards: KlookSameDayCard[] = [
+  {
+    label: fujikawaguchikoHotels.title,
+    ctaLabel: "Check Fujikawaguchiko hotels →",
+    url: fujikawaguchikoHotels.url,
+    kind: "Hotel",
+    why: "In winter the sun sets at about 16:40 and the mountain is clearest in the morning, so one night at the lake gives you a second morning at the view instead of a single try between bus times.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    kind: "eSIM",
+    why: "The bus seat, the Fuji Excursion seat and the sightseeing bus timetable are all on your phone, and so is the forecast that decides which stop comes first.",
+  },
+];
+
 // ---------------------------------------------------------------------------
 // Same-day blocks under the shinkansen ticket button — added 13 Nov 2026 (task
 // jtk-20261113-04, daily PDCA Act). Klook pays 2% on a shinkansen ticket, so each

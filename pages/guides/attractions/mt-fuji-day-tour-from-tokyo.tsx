@@ -313,7 +313,9 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
             Mt. Fuji is about two hours from Tokyo by road and effectively unreachable by train at the point
             visitors want to stand. There is no station at the Fifth Station: the Fuji Subaru Line is a toll
             road, and getting up it independently means a bus connection from the Kawaguchiko area, running to a
-            timetable that does not forgive a late start.
+            timetable that does not forgive a late start. If the lake is all you need, the highway bus and the
+            Fuji Excursion train are compared with a tour in our{" "}
+            <Link href="/guides/attractions/kawaguchiko-day-trip-from-tokyo">Tokyo to Kawaguchiko</Link> guide.
           </p>
           <p className={styles.bodyText}>
             That is why the day-tour market around Fuji is so large, and why the tours look so similar at first
@@ -470,7 +472,7 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Kawaguchiko Day Trip From Tokyo (2026): Routes, Fares and What Fits in a Day</p>
+                <p className={styles.relatedTitle}>Tokyo to Kawaguchiko Day Trip (2026): Bus, Train or Tour?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

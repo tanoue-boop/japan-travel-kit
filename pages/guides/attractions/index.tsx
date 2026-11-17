@@ -253,7 +253,9 @@ export default function GuidesAttractionsPage({ updated, dates }: { updated: Pag
             <>
               Here you book the tour, not an entry slot; the{" "}
               <Link href="/guides/attractions/mt-fuji-day-tour-from-tokyo" style={L}>Mt. Fuji day tour from Tokyo</Link>{" "}
-              guide shows how to pick between the coach itineraries.
+              guide shows how to pick between the coach itineraries, and the{" "}
+              <Link href="/guides/attractions/kawaguchiko-day-trip-from-tokyo" style={L}>Tokyo to Kawaguchiko</Link>{" "}
+              guide sets that tour against the ¥2,200 highway bus and the Fuji Excursion train.
             </>
           ),
           experiences: (

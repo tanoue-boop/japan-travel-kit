@@ -351,7 +351,12 @@ export default function MtFujiDayTripTokyoPage({ updated }: { updated: PageUpdat
             your date. For how the Tokyo end of the journey works, see our{" "}
             <Link href="/guides/transport/tokyo-transportation" style={{ color: "var(--red)", fontWeight: 600 }}>
               Getting Around Tokyo guide
-            </Link>.
+            </Link>. For the official bus and train fares side by side, with a day at the lake by the
+            clock, see our{" "}
+            <Link href="/guides/attractions/kawaguchiko-day-trip-from-tokyo" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Tokyo to Kawaguchiko
+            </Link>{" "}
+            guide.
           </p>
         </section>
 
@@ -533,7 +538,7 @@ export default function MtFujiDayTripTokyoPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Kawaguchiko Day Trip From Tokyo (2026): Routes, Fares and What Fits in a Day</p>
+                <p className={styles.relatedTitle}>Tokyo to Kawaguchiko Day Trip (2026): Bus, Train or Tour?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

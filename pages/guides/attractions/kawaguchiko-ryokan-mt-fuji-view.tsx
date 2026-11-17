@@ -187,7 +187,7 @@ const ROUTE = "/guides/attractions/kawaguchiko-ryokan-mt-fuji-view";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const relatedGuides = [
-  { href: "/guides/attractions/kawaguchiko-day-trip-from-tokyo", title: "Kawaguchiko Day Trip From Tokyo (2026): Routes, Fares and What Fits in a Day" },
+  { href: "/guides/attractions/kawaguchiko-day-trip-from-tokyo", title: "Tokyo to Kawaguchiko Day Trip (2026): Bus, Train or Tour?" },
   { href: "/guides/attractions/mt-fuji-day-trip-tokyo", title: "Mt. Fuji Day Trip From Tokyo (2026): How to Get There Yourself" },
   { href: "/guides/attractions/hakone-ryokan-private-onsen", title: "Hakone Ryokan with Private Onsen (2026): 4 Inns Compared" },
   { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary: 12 Days, Day by Day (2027)" },
@@ -564,7 +564,8 @@ export default function KawaguchikoRyokanMtFujiViewPage({ updated }: { updated: 
           <p className={styles.bodyText}>
             Stay if the view is the point. A night gives you the evening and the next morning at the lake, while
             a day trip gives you one try at the mountain between the bus times. For the day-out version, see our{" "}
-            <Link href="/guides/attractions/kawaguchiko-day-trip-from-tokyo">Kawaguchiko day trip guide</Link> and
+            <Link href="/guides/attractions/kawaguchiko-day-trip-from-tokyo">Tokyo to Kawaguchiko day trip guide</Link> (bus,
+            train or tour) and
             our <Link href="/guides/attractions/mt-fuji-day-tour-from-tokyo">Mt Fuji day tour guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>

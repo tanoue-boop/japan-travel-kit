@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
+import KlookSameDayCards from "../../../components/KlookSameDayCards";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -9,6 +10,7 @@ import { hreflangLinks } from "../../../components/Hreflang";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import {
   fujiPhotographyDayTour,
+  kawaguchikoAnswerCards,
   kawaguchikoPrivateDayTour,
   kawaguchikoYamanakakoBusTour,
   mtFujiPass,
@@ -32,20 +34,179 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  *
  * No Klook price appears: Klook answers automated reads of its product pages with HTTP
  * 403, so there is no figure here we could have verified.
+ *
+ * Re-read on 17 November 2026 (task-jtk-20261117-R03, "Tokyo to Kawaguchiko"):
+ *
+ *   bus.fujikyu.co.jp/en/highway/fujisan/shinjuku-kawaguchiko/ and /highway/detail/id/1
+ *       Fujikyu Bus + Keio Bus; Busta Shinjuku → Kawaguchiko Sta. approx 1h45; ¥2,200 adult,
+ *       ¥2,000 paid online; child half; reserved seats, sales from one month before until
+ *       10 min before departure; arrivals may be delayed by road conditions and extreme
+ *       weather with no refund for a late arrival. Timetable JSON on the Japanese page:
+ *       first 06:45 → 08:30, 07:15 → 09:00; last back Kawaguchiko 20:15 → 22:00
+ *   fujikyu-railway.jp/fujikaiyuu/   Fuji Excursion: Shinjuku → Kawaguchiko fastest 1h53;
+ *       ¥4,200 one way (fare ¥2,580 + limited express ¥1,620); Shinjuku → Shimoyoshida
+ *       ¥4,010; four round trips a day plus a seasonal one (93/94 weekdays 22 Oct–29 Dec and
+ *       12 Jan–26 Feb, not 4–8 Jan; 81/78 weekends and holidays 24 Oct–28 Feb); all seats
+ *       reserved; on sale one month before from 10:00. Weekday down 7:30/8:30/9:30/10:30 →
+ *       9:28/10:26/11:28/12:24; No. 36 Shimoyoshida 15:12 → Shinjuku 16:59 (16:58 weekends)
+ *   jreast.co.jp/en/multi/fuji/about.html   JR East's own Fuji page (Fuji Excursion to
+ *       Kawaguchiko Station)
+ *   mtfujiropeway.jp   closed 7–18 Dec 2026 for annual inspection; short hours 25–26 Nov
+ *       (last up 15:00); snow or ice can delay opening or close it for the day
+ *   eco.mtk.nao.ac.jp/koyomi (NAOJ, Kofu)   sunset 16:39 on 15 Nov, 16:33 on 1 Dec,
+ *       16:34 on 15 Dec, 16:55 on 15 Jan, 17:27 on 15 Feb
+ *   japan.travel (JNTO) Lake Kawaguchi + Fuji Five Lakes itinerary   winter is the best time
+ *       to see Mt. Fuji clearly; mornings, before haze and cloud build
+ *   Klook listing 100747 (www.klook.com search index)   Chureito Pagoda, Oishi Park,
+ *       Oshino Hakkai, the Lawson and the Hikawa clock shop — five stops, from Tokyo
  */
 
 /** Everything on this page except the Mt. Fuji Pass was read off its operator on this date. */
 const CHECKED_ISO = "2026-10-21";
 const CHECKED = checkedLabel(CHECKED_ISO);
+/** The transport, sunset and ropeway figures re-read for R03. */
+const NOW = checkedLabel("2026-11-17");
+const LAST_CHECKED = "2026-11-17";
+
+const OFFICIAL = [
+  { label: "Fujikyu Bus (Shinjuku–Kawaguchiko line, run with Keio Bus)", href: "https://bus.fujikyu.co.jp/en/highway/fujisan/shinjuku-kawaguchiko/" },
+  { label: "Keio Highway Bus reservations", href: "https://www.highwaybus.com/gp/index" },
+  { label: "Fujikyu Railway, Fuji Excursion fares and timetable", href: "https://www.fujikyu-railway.jp/fujikaiyuu/" },
+  { label: "JR East, Mt. Fuji", href: "https://www.jreast.co.jp/en/multi/fuji/about.html" },
+];
+
+/** Table 1 (R03): the three ways from Tokyo to Kawaguchiko, verdict first. */
+const compareRows = [
+  {
+    item: "Verdict",
+    bus: "Best for most day trips: cheapest, and a bus every 10–30 minutes",
+    train: "Best if the Chureito Pagoda is the point, or the road may be slow",
+    tour: "Best for five stops in one day with no timetable to manage",
+  },
+  {
+    item: "Tokyo → Kawaguchiko",
+    bus: "About 1 hr 45 min, Busta Shinjuku → Kawaguchiko Station, no change",
+    train: "1 hr 53 min at fastest, Shinjuku → Kawaguchiko, no change (Fuji Excursion)",
+    tour: "One coach from a Tokyo meeting point; the itinerary sets the day",
+  },
+  {
+    item: "One-way fare (adult)",
+    bus: "¥2,200, or ¥2,000 paid online; child half",
+    train: "¥4,200 (fare ¥2,580 + limited express ¥1,620)",
+    tour: "Sold as a day package; see the listing for your date",
+  },
+  {
+    item: "How often",
+    bus: "First bus 06:45; last back from Kawaguchiko 20:15",
+    train: "Four a day each way, plus one on set winter dates; last back 17:41",
+    tour: "One morning departure",
+  },
+  {
+    item: "Do you need to book?",
+    bus: "Yes, seats are reserved; on sale one month ahead, to 10 min before",
+    train: "Yes, every seat is reserved; on sale one month ahead from 10:00",
+    tour: "Yes; the listing shows its cancellation terms",
+  },
+  {
+    item: "Winter note",
+    bus: "Snow or traffic can delay arrival, and the fare is not refunded for it",
+    train: "Off the road, so a snow day hits it less than the bus",
+    tour: "Fixed times: if Fuji is in cloud, the coach still moves on",
+  },
+];
+
+/** Table 2 (R03): a weekday by the clock, bus out and Fuji Excursion back. */
+const itineraryRows = [
+  {
+    time: "Answer",
+    what: "Bus out at 07:15, the lake in the morning, the pagoda after lunch, and the 15:12 Fuji Excursion home before dark",
+    note: "Out ¥2,000–¥2,200, back ¥4,010",
+  },
+  {
+    time: "07:15 → 09:00",
+    what: "Highway bus, Busta Shinjuku (4th floor, south exit) → Kawaguchiko Station",
+    note: "Reserved seat; the 06:45 gets in at 08:30",
+  },
+  {
+    time: "09:10",
+    what: "Red Line sightseeing bus to the ropeway or Oishi Park, while the mountain is most often clear",
+    note: "From ¥180 a ride; ¥1,500 day pass",
+  },
+  {
+    time: "12:00",
+    what: "Lunch by the lake, then the lake boat if there is time",
+    note: "Boat ¥1,000 adult",
+  },
+  {
+    time: "13:30",
+    what: "Fujikyu train from Kawaguchiko a few stops to Shimoyoshida",
+    note: "Local train, no booking",
+  },
+  {
+    time: "14:00",
+    what: "Chureito Pagoda, 398 steps up in Arakurayama Sengen Park",
+    note: "About 25 min on foot from Shimoyoshida Station",
+  },
+  {
+    time: "15:12 → 16:59",
+    what: "Fuji Excursion 36, Shimoyoshida → Shinjuku (16:58 at weekends)",
+    note: "¥4,010; book the seat with the bus",
+  },
+  {
+    time: "Back-up",
+    what: "Missed it? Buses leave Kawaguchiko Station for Shinjuku until 20:15",
+    note: "Reserved seat, so book from your phone",
+  },
+];
+
+/** Table 3 (R03): winter, December to February. */
+const winterRows = [
+  {
+    item: "Answer",
+    detail: "Leave early and plan to be heading home by about 16:30: the sun sets around 16:33–16:43 in December",
+    source: "NAOJ (Kofu)",
+  },
+  {
+    item: "Sunset",
+    detail: "16:39 on 15 Nov, 16:34 on 15 Dec, 16:55 on 15 Jan, 17:27 on 15 Feb",
+    source: "eco.mtk.nao.ac.jp",
+  },
+  {
+    item: "When Fuji is easiest to see",
+    detail: "Winter is the clearest season, and mornings beat afternoons, before haze and cloud build",
+    source: "japan.travel (JNTO)",
+  },
+  {
+    item: "Roads",
+    detail: "Bus arrivals can run late in snow, ice, accidents or traffic, with no refund for a late arrival, so the train is the safer leg on a snow day",
+    source: "bus.fujikyu.co.jp",
+  },
+  {
+    item: "Ropeway",
+    detail: "Closed 7–18 December 2026 for inspection; short hours 25–26 November (last ride up 15:00); snow or ice can delay the opening or close it for the day",
+    source: "mtfujiropeway.jp",
+  },
+  {
+    item: "Extra Fuji Excursion",
+    detail: "No. 93/94 on weekdays 22 Oct–29 Dec and 12 Jan–26 Feb (not 4–8 Jan); No. 81/78 at weekends and holidays 24 Oct–28 Feb",
+    source: "fujikyu-railway.jp",
+  },
+];
 /** The pass keeps the date from the guide that verified it. */
 const PASS_CHECKED = checkedLabel(PRICES.mtFujiPass.checked);
 
 const routeRows = [
   {
-    route: "Highway bus, Shinjuku → Kawaguchiko Station",
+    route: "Answer: highway bus, Busta Shinjuku → Kawaguchiko Station",
     time: "Listed as approximately 1 hr 45 min",
     fare: "¥2,200 adult (¥2,000 booked online); child ¥1,100 / ¥1,000",
-    notes: "The default. Direct, no transfer, and the most departures of any route on the list",
+    notes: "The default. Direct, no transfer, first bus 06:45, and the most departures of any route on the list",
+  },
+  {
+    route: "Train: Fuji Excursion limited express, Shinjuku → Kawaguchiko",
+    time: "1 hr 53 min at fastest, no change",
+    fare: "¥4,200 adult (fare ¥2,580 + limited express ¥1,620)",
+    notes: "Four a day each way, all seats reserved; stops at Shimoyoshida for the Chureito Pagoda",
   },
   {
     route: "Highway bus, Tokyo Station / Ueno",
@@ -66,7 +227,7 @@ const routeRows = [
     notes: "Goes straight from the airport, which saves a city transfer on an arrival day",
   },
   {
-    route: "Train: JR Chuo Line to Otsuki, then Fujikyu Railway",
+    route: "Train: JR Chuo Line to Otsuki, then change to the Fujikyu Railway",
     time: "Fujikyu leg Otsuki → Kawaguchiko",
     fare: "¥1,170 adult, ¥590 child; limited express supplement ¥400 adult / ¥200 child",
     notes: "The Fujikyu portion is a private line, so a JR Pass stops at Otsuki and you pay this part",
@@ -201,14 +362,39 @@ const steps = [
   },
 ];
 
+/** The five questions in FAQPage (R03). */
 const faqItems = [
   {
-    q: "How do you get from Tokyo to Kawaguchiko?",
-    a: `The highway bus is the simplest route: Shinjuku to Kawaguchiko Station is listed at approximately 1 hour 45 minutes, direct, at ¥2,200 for an adult or ¥2,000 if you book online, with child fares at ¥1,100 and ¥1,000. The same operator runs buses from Tokyo Station and Ueno (about 130 minutes, from ¥2,300), Shibuya (about 120 minutes, from ¥2,300), Akihabara and Ikebukuro (from ¥2,200) and Haneda Airport via Shinagawa (about 180 minutes, from ¥2,300). By rail you take the JR Chuo Line to Otsuki and change to the Fujikyu Railway, where Otsuki to Kawaguchiko is ¥1,170 for an adult and ¥590 for a child, plus a ¥400 limited express supplement. All figures read off the Fujikyu bus and Fujikyu Railway sites on ${CHECKED}.`,
+    q: "How do I get from Tokyo to Kawaguchiko?",
+    a: `By highway bus from Busta Shinjuku: Fujikyu and Keio list it at approximately 1 hour 45 minutes to Kawaguchiko Station with no change, for ¥2,200 an adult or ¥2,000 paid online, with the first bus at 06:45. By train, the Fuji Excursion limited express runs from Shinjuku to Kawaguchiko in 1 hour 53 minutes at its fastest for ¥4,200 one way, four times a day. The cheaper rail route is the JR Chuo Line to Otsuki and the Fujikyu Railway from there, ¥1,170 for the Fujikyu leg. Checked ${NOW}.`,
   },
+  {
+    q: "Is the bus or train better to Kawaguchiko?",
+    a: `The bus, for most day trips. It is ¥2,200 against ¥4,200 on the Fuji Excursion, about 8 minutes quicker on paper when the road is clear, and leaves Shinjuku every 10 to 30 minutes from 06:45, while the train runs four times a day. Take the train if the Chureito Pagoda matters most, because it stops at Shimoyoshida below the pagoda, or on a snow or holiday-traffic day, because it is off the road. A good split is bus out and the 15:12 Fuji Excursion back from Shimoyoshida. Checked ${NOW}.`,
+  },
+  {
+    q: "Can you do Kawaguchiko as a day trip from Tokyo?",
+    a: `Yes. The 07:15 bus from Shinjuku reaches Kawaguchiko Station at 09:00, which leaves time for the lake in the morning and the Chureito Pagoda after lunch, and buses back to Shinjuku run until 20:15. Plan on two or three stops, not five. In winter the sun sets at about 16:33 to 16:43 in December, so aim to be on your way home by then. Checked ${NOW}.`,
+  },
+  {
+    q: "Do I need to book the Kawaguchiko bus?",
+    a: `Yes, book it. Every seat on the Shinjuku–Kawaguchiko highway bus is reserved; sales open one month before the travel date and close 10 minutes before departure, and paying online is ¥200 cheaper than the counter. Book the return at the same time as the outbound, because it is the leg that decides when your day ends. The Fuji Excursion train is reserved-only too, on sale from 10:00 one month ahead. Checked ${NOW}.`,
+  },
+  {
+    q: "Is a Mt Fuji day tour worth it?",
+    a: `Yes, if you want more than two stops or the Fifth Station, and do not want to manage buses. A Kawaguchiko-area tour such as Klook's scenic photography day tour covers five stops in one day, including the Chureito Pagoda, Oishi Park and Oshino Hakkai, which is hard to match by public transport. On your own, the bus costs ¥2,200 each way and you choose when to leave. For which tour goes where, see our Mt. Fuji day tour comparison. Stops as listed on ${NOW}.`,
+  },
+];
+
+/** Kept on the page, outside FAQPage. */
+const moreFaqItems = [
   {
     q: "Is Kawaguchiko worth a day trip from Tokyo?",
     a: "Yes, if you want to look at Mt. Fuji rather than stand on it. The north shore of Lake Kawaguchi is where the photographs come from — the Chureito Pagoda above Fujiyoshida, the lake at Oishi Park, the spring-fed ponds at Oshino Hakkai — and all of it is reachable on public transport in a day. What a day trip here does not give you is the mountain itself: the Fuji Subaru Line Fifth Station is a separate journey up a toll road with no station, and that is the thing coach tours exist for.",
+  },
+  {
+    q: "Can I take the bus from Tokyo Station, Shibuya or Haneda instead?",
+    a: `Yes. The same operator runs buses from Tokyo Station and Ueno (about 130 minutes, from ¥2,300), Shibuya (about 120 minutes, from ¥2,300), Akihabara and Ikebukuro (from ¥2,200) and Haneda Airport via Shinagawa (about 180 minutes, from ¥2,300). Shinjuku has by far the most departures. Read off the Fujikyu bus site on ${CHECKED}.`,
   },
   {
     q: "How long does a Kawaguchiko day trip take?",
@@ -248,9 +434,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/kawaguchiko-day-trip-from-tokyo") },
 });
 
-const TITLE = "Kawaguchiko Day Trip From Tokyo 2026: ¥2,200 Bus or Tour";
+const TITLE = "Tokyo to Kawaguchiko Day Trip 2026: Bus, Train or Tour?";
 const DESC =
-  "A Kawaguchiko day trip from Tokyo: the ¥2,200 highway bus from Shinjuku in 1 hr 45 min, or a guided tour. See fares and stops, then compare and book one.";
+  "Tokyo to Kawaguchiko: the Shinjuku bus is ¥2,200 and 1h45, the Fuji Excursion train ¥4,200 and 1h53, or take a day tour. Compare, then book a seat or tour.";
 
 export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -307,7 +493,7 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
                 {
                   "@type": "ListItem",
                   position: 4,
-                  name: "Kawaguchiko Day Trip From Tokyo",
+                  name: "Tokyo to Kawaguchiko Day Trip",
                   item: "https://www.japan-travel-kit.com/guides/attractions/kawaguchiko-day-trip-from-tokyo",
                 },
               ],
@@ -331,7 +517,7 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
-          <span className={styles.breadCurrent}>Kawaguchiko Day Trip From Tokyo</span>
+          <span className={styles.breadCurrent}>Tokyo to Kawaguchiko Day Trip</span>
         </div>
       </div>
 
@@ -340,14 +526,14 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Kawaguchiko Day Trip From Tokyo (2026):<br />Routes, Fares and What Fits in a Day
+            Tokyo to Kawaguchiko Day Trip (2026):<br />Bus, Train or Tour?
           </h1>
           <p className={styles.heroSubtitle}>
-            The north shore of Lake Kawaguchi is about 1 hour 45 minutes and ¥2,200 from Shinjuku by
-            bus. Here is what that buys, and how many stops a single day really holds.
+            A Kawaguchiko day trip from Tokyo by highway bus, Fuji Excursion train or coach tour: the
+            official times and fares, a day by the clock, and what changes in winter.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Official fares, dated", "Chureito, lake & Oshino Hakkai"].map((t) => (
+            {[`Updated ${updated.label}`, "Official fares, dated", "Bus vs train vs tour"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -366,6 +552,19 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
           </p>
         </div>
 
+        {/* Answer first (R03) */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            The highway bus from Busta Shinjuku to Kawaguchiko Station takes about 1 hour 45 minutes and
+            costs ¥2,200 one way (¥2,000 paid online), with the first bus at 06:45 and the last back at 20:15.
+            The JR–Fujikyu limited express Fuji Excursion runs from Shinjuku to Kawaguchiko in 1 hour 53
+            minutes at its fastest for ¥4,200, four times a day with every seat reserved. A Kawaguchiko day
+            tour from Tokyo covers about five stops in one day, such as the Chureito Pagoda, Oishi Park and
+            Oshino Hakkai, against two or three on your own. Fares and times read off Fujikyu Bus, Keio and
+            Fujikyu Railway on {NOW}.
+          </p>
+        </section>
+
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -374,30 +573,28 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
           <div className={styles.verdictBody}>
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Shinjuku → Kawaguchiko</p>
-                <p className={styles.verdictStatValue}>~1 hr 45 min, ¥2,200 one way</p>
+                <p className={styles.verdictStatLabel}>Bus, Shinjuku → Kawaguchiko</p>
+                <p className={styles.verdictStatValue}>~1 hr 45 min, ¥2,200 (¥2,000 online)</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Booked online</p>
-                <p className={styles.verdictStatValue}>¥2,000 adult, ¥1,000 child</p>
+                <p className={styles.verdictStatLabel}>Fuji Excursion train</p>
+                <p className={styles.verdictStatValue}>1 hr 53 min, ¥4,200</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Local bus pass</p>
-                <p className={styles.verdictStatValue}>¥1,500 a day (child ¥750)</p>
+                <p className={styles.verdictStatLabel}>Day tour</p>
+                <p className={styles.verdictStatValue}>About five stops in one day</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Stops that fit in a day</p>
-                <p className={styles.verdictStatValue}>Two or three, not five</p>
+                <p className={styles.verdictStatLabel}>On your own</p>
+                <p className={styles.verdictStatValue}>Two or three stops, not five</p>
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>In short:</strong> a Kawaguchiko day trip from Tokyo is a direct highway bus of
-              about 1 hour 45 minutes from Shinjuku, listed at ¥2,200 for an adult or ¥2,000 booked
-              online, and a day on the north shore of the lake. Pick two or three of the five things
-              there — the Chureito Pagoda, Oishi Park, the Mt. Fuji Panoramic Ropeway, the lake boat and
-              Oshino Hakkai — because they are spread across a railway line, a lake shore and an inland
-              bus route. The local sightseeing bus is from ¥180 a ride, or ¥1,500 for a day of unlimited
-              rides. Fares read off the Fujikyu bus site on {CHECKED}.
+              <strong>In short:</strong> for a Kawaguchiko day trip from Tokyo, take the bus out of Shinjuku
+              in the morning and book the return at the same time — the bus to 20:15, or the 15:12 Fuji
+              Excursion from Shimoyoshida after the Chureito Pagoda. Take a tour if you want five stops
+              without managing a single timetable. Both the bus and the train sell reserved seats from one
+              month ahead. Checked {NOW}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={fujiPhotographyDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -410,7 +607,74 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
           </div>
         </div>
 
+        <KlookSameDayCards
+          heading="Booking the day: a night at the lake, and data for the bus times"
+          cards={kawaguchikoAnswerCards}
+          footnote={
+            <>
+              For the inns themselves, see our{" "}
+              <Link href="/guides/attractions/kawaguchiko-ryokan-mt-fuji-view">Kawaguchiko ryokan with a Mt Fuji view</Link>.
+            </>
+          }
+        />
+
         <EsimCtaTop />
+
+        {/* Table 1 (R03): bus vs train vs tour */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Bus vs train vs tour</span>
+          <h2 className={styles.sectionTitle}>Is the Bus or Train Better to Kawaguchiko?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            The bus, for most people: it is ¥2,000 cheaper than the Fuji Excursion and runs every 10 to 30
+            minutes. The train wins for the Chureito Pagoda and on snow days, and a tour wins when you want
+            more stops than buses allow.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["", "Highway bus (Shinjuku)", "Train (Fuji Excursion)", "Day tour"].map((h) => (
+                      <th key={h || "item"}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {compareRows.map((row) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.item}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.bus}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.train}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.tour}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED}. Official sources:{" "}
+            {OFFICIAL.map((o, i) => (
+              <span key={o.href}>
+                <a href={o.href} target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)" }}>{o.label}</a>
+                {i < OFFICIAL.length - 1 ? "; " : "."}
+              </span>
+            ))}{" "}
+            Tour stops as shown on the Klook listing for its scenic photography day tour. For the tours that
+            add the Fifth Station, see our{" "}
+            <Link href="/guides/attractions/mt-fuji-day-tour-from-tokyo" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Mt. Fuji day tour comparison
+            </Link>.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Book the Tokyo–Kawaguchiko bus on Klook →
+            </KlookLink>
+            <KlookLink href={kawaguchikoYamanakakoBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Or a Kawaguchiko day tour →
+            </KlookLink>
+          </div>
+        </section>
 
         {/* Intro / scope */}
         <section className={styles.bodySection}>
@@ -425,21 +689,27 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
             and the spring-water ponds at Oshino Hakkai, inland.
           </p>
           <p className={styles.bodyText}>
-            This guide is deliberately narrower than the two either side of it. If you want the
-            independent route to the Fuji area in general — the direct limited express, what the Mt.
-            Fuji Pass covers, which season gives the best odds of a clear summit — that is our{" "}
+            This guide is the Tokyo to Kawaguchiko journey and the day at the lake, and it is deliberately
+            narrower than the three around it. If you want the Fuji area in general on your own — what the
+            Mt. Fuji Pass covers and the viewpoints you can reach alone — that is our{" "}
             <Link href="/guides/attractions/mt-fuji-day-trip-tokyo">Mt. Fuji day trip guide</Link>. If
             you want the Fuji Subaru Line Fifth Station, on the mountain itself, there is no train to it
             and a coach is the sensible route: our{" "}
             <Link href="/guides/attractions/mt-fuji-day-tour-from-tokyo">Mt. Fuji day tour comparison</Link>{" "}
-            covers which itineraries go where. This page is the lake.
+            covers which itineraries go where. And if one day is not enough, our{" "}
+            <Link href="/guides/attractions/kawaguchiko-ryokan-mt-fuji-view">Kawaguchiko ryokan guide</Link>{" "}
+            covers the night at the lake. This page is the day.
           </p>
         </section>
 
         {/* Routes */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Getting there</span>
-          <h2 className={styles.sectionTitle}>How Do You Get From Tokyo to Kawaguchiko?</h2>
+          <h2 className={styles.sectionTitle}>How Do I Get From Tokyo to Kawaguchiko?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Most directly by the highway bus from Busta Shinjuku or the Fuji Excursion train from Shinjuku,
+            both without a change. Every route from Tokyo is below, with the time and the one-way fare.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -464,8 +734,9 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Bus times and fares read off the Fujikyu bus site, and the Otsuki–Kawaguchiko fares off the
-            Fujikyu Railway site, on {CHECKED}. Subject to change — confirm when you book. Note that the
+            Last checked: {LAST_CHECKED} for the Shinjuku bus and the Fuji Excursion (Fujikyu Bus and
+            Fujikyu Railway); the other bus terminals and the Otsuki–Kawaguchiko fares read on {CHECKED}.
+            Subject to change — confirm when you book. Note that the
             Fujikyu Railway is a private line, so a Japan Rail Pass covers you only as far as Otsuki; our{" "}
             <Link href="/guides/transport/jr-pass-guide" style={{ color: "var(--text)", fontWeight: 600 }}>
               JR Pass guide
@@ -477,6 +748,52 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
               Tokyo–Kawaguchiko bus on Klook →
             </KlookLink>
           </div>
+        </section>
+
+        {/* Table 2 (R03): a day by the clock */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Itinerary</span>
+          <h2 className={styles.sectionTitle}>Can You Do Kawaguchiko as a Day Trip From Tokyo?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Yes, with two or three stops. The plan below takes the bus out and the Fuji Excursion back from
+            Shimoyoshida, so the pagoda comes last and you are on the train before sunset in winter.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Time (weekday)", "What", "Ticket / note"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {itineraryRows.map((row) => (
+                    <tr key={row.time}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.time}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.what}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED}. Bus times from the Fujikyu Bus timetable for the Shinjuku–Kawaguchiko
+            line (some departures do not run on days Fuji-Q Highland is closed); train times and the ¥4,010
+            Shinjuku–Shimoyoshida fare from{" "}
+            <a href="https://www.fujikyu-railway.jp/fujikaiyuu/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)" }}>
+              Fujikyu Railway&apos;s Fuji Excursion page
+            </a>{" "}
+            (timetable from 14 March 2026). Sightseeing bus and boat fares read on {CHECKED}. Staying the night
+            instead? Our{" "}
+            <Link href="/guides/attractions/kawaguchiko-ryokan-mt-fuji-view" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Kawaguchiko ryokan guide
+            </Link>{" "}
+            lists inns with the view from the room.
+          </p>
         </section>
 
         {/* Which version */}
@@ -535,6 +852,61 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
               Japan attraction ticket prices table
             </Link>.
           </p>
+        </section>
+
+        {/* Table 3 (R03): winter */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Winter</span>
+          <h2 className={styles.sectionTitle}>What Changes on a Winter Day Trip to Kawaguchiko?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            The days are short and the mountain is at its clearest. Start early, put the views in the
+            morning, and settle the ride home before about 16:30 in December.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["", "What to know", "Source"].map((h) => (
+                      <th key={h || "item"}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {winterRows.map((row) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.item}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.detail}</td>
+                      <td style={{ fontSize: "0.82rem" }}>{row.source}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED}. Sunset for Kofu, Yamanashi&apos;s prefectural capital, from the{" "}
+            <a href="https://eco.mtk.nao.ac.jp/koyomi/dni/2026/s2012.html" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)" }}>
+              National Astronomical Observatory of Japan tables
+            </a>
+            ; visibility from{" "}
+            <a href="https://www.japan.travel/en/spot/1329/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)" }}>
+              JNTO&apos;s Lake Kawaguchi page
+            </a>
+            ; ropeway notice from{" "}
+            <a href="https://www.mtfujiropeway.jp/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)" }}>
+              mtfujiropeway.jp
+            </a>
+            . For snow rather than views, see our{" "}
+            <Link href="/guides/attractions/tokyo-snow-day-trip" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Tokyo snow day trip guide
+            </Link>.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={fujiPhotographyDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Kawaguchiko day tour from Tokyo →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Local transport */}
@@ -615,9 +987,9 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>
-          <h2 className={styles.sectionTitle}>Common Questions</h2>
+          <h2 className={styles.sectionTitle}>Tokyo to Kawaguchiko: Common Questions</h2>
           <div className={styles.faqList}>
-            {faqItems.map((item, i) => (
+            {[...faqItems, ...moreFaqItems].map((item, i) => (
               <details key={item.q} className={styles.faqItem}>
                 <summary className={styles.faqSummary}>
                   <span>{i + 1}. {item.q}</span>
