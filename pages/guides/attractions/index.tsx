@@ -406,7 +406,10 @@ export default function GuidesAttractionsPage({ updated, dates }: { updated: Pag
             <Link href="/guides/attractions/teamlab-kyoto-tickets" style={L}>teamLab Kyoto tickets</Link> start at
             ¥3,800, seven minutes&apos; walk from Kyoto Station. For a day out on your own, the{" "}
             <Link href="/guides/attractions/nara-day-trip" style={L}>Nara day trip guide</Link> has the trains from
-            Osaka and Kyoto (about 34 minutes on the Kintetsu from Osaka-Namba) and Todai-ji at ¥800, and the{" "}
+            Osaka and Kyoto (about 34 minutes on the Kintetsu from Osaka-Namba) and Todai-ji at ¥800; further
+            north, the{" "}
+            <Link href="/guides/attractions/amanohashidate-ine-day-trip" style={L}>Amanohashidate day trip</Link>{" "}
+            guide sets a tour against the 2h14 limited express from Kyoto and the bus to Ine; and the{" "}
             <Link href="/guides/attractions/fuji-q-highland-tickets" style={L}>Fuji-Q Highland tickets guide</Link>{" "}
             explains the free entry, the date-priced 1-Day Pass and the Q Pack with the highway bus from Tokyo. Picking
             a base in the Kansai? Our{" "}

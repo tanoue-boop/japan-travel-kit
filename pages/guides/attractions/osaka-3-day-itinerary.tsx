@@ -669,6 +669,10 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
             works as a long Day 3 rather than an overnight trip. The fares, the trains a JR Pass
             covers and the JR West pass that fits this trip are in the{" "}
             <Link href="/guides/transport/osaka-to-hiroshima-shinkansen">Osaka to Hiroshima Shinkansen guide</Link>.
+            Northwards, the sandbar and the Ine boathouses on the Sea of Japan are a 9 to 11-hour coach day,
+            and some tours leave from Osaka; the{" "}
+            <Link href="/guides/attractions/amanohashidate-ine-day-trip">Amanohashidate day trip</Link> guide
+            compares the tour with the train from Osaka.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={kyotoNaraKiyomizuTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

@@ -276,7 +276,7 @@ const relatedGuides = [
   { href: "/guides/attractions/arashiyama-bamboo-forest-tour", title: "Arashiyama Bamboo Forest Tour (2026): Best Time, Tours and Routes From Kyoto" },
   { href: "/guides/attractions/kyoto-2-day-itinerary", title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book" },
   { href: "/guides/attractions/osaka-kyoto-3-day-itinerary", title: "Osaka Kyoto 3 Day Itinerary (2026): Day by Day & Bookings" },
-  { href: "/guides/attractions/amanohashidate-ine-day-trip", title: "Amanohashidate Day Trip (2026): Ine Boathouses, Tours and Trains From Kyoto" },
+  { href: "/guides/attractions/amanohashidate-ine-day-trip", title: "Amanohashidate Day Trip from Kyoto 2026: Tour vs Train & Ine" },
   { href: "/guides/attractions/nara-day-trip", title: "Nara Day Trip (2026): From Osaka or Kyoto, and What Todai-ji Costs" },
   { href: "/guides/attractions/fushimi-inari-tour", title: "Fushimi Inari Tour 2026: Hike Time, Hours & Best Time" },
   { href: "/guides/attractions/gion-night-walking-tour", title: "Gion Night Walking Tour 2026: Times, Types & Photo Rules" },

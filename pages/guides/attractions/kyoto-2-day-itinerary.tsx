@@ -858,6 +858,12 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/sagano-romantic-train-tickets">Sagano Romantic Train tickets</Link>{" "}
             guide shows when each date goes on sale and the November and December running days.
           </p>
+          <p className={styles.bodyText}>
+            If a third day turns up, the furthest trip that still fits in one from a Kyoto hotel is the Sea
+            of Japan coast: our{" "}
+            <Link href="/guides/attractions/amanohashidate-ine-day-trip">Amanohashidate day trip</Link> guide
+            sets a 9 to 11-hour tour with the Ine boathouses against the limited express and the bus.
+          </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={saganoHozugawaGuaranteedTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Sagano day on Klook →
@@ -1103,7 +1109,7 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Amanohashidate Day Trip (2026): Ine Boathouses, Tours and Trains From Kyoto</p>
+                <p className={styles.relatedTitle}>Amanohashidate Day Trip from Kyoto 2026: Tour vs Train &amp; Ine</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

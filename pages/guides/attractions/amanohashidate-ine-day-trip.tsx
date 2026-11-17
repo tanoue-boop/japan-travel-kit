@@ -4,9 +4,11 @@ import BookingEsimCard from "../../../components/BookingEsimCard";
 import KlookLink from "../../../components/KlookLink";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import KlookSameDayCards from "../../../components/KlookSameDayCards";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import {
+  amanohashidateAnswerCards,
   amanohashidateIneBayScenicTour,
   amanohashidateIneChionjiTour,
   amanohashidateIneFullDayTour,
@@ -41,9 +43,29 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  *
  * Tour rows come from Klook listings as shown in the www.klook.com search index,
  * because Klook answers automated reads with HTTP 403. No Klook price appears.
+ *
+ * Re-read on 17 November 2026 (task-jtk-20261117-R02):
+ *
+ *   tankai.jp/highwaybus/kyotoline   revised 1 Oct 2026: Kyoto Station 07:20 → Amanohashidate
+ *                                    Station 09:25; back 16:20 → 18:30, 17:10 → 19:20; six round
+ *                                    trips; ¥3,400–¥3,900 adult by date, ¥1,800 child
+ *   tankai.jp/highwaybus/osakaline   first bus Osaka (Hankyu Sanbangai) 09:30 → Amanohashidate
+ *                                    12:18; last back 16:45; ¥3,400–¥3,900
+ *   uminokyoto.jp news nid=1247      sightseeing express bus Amanohashidate Station → Ine 09:50,
+ *                                    10:50, 12:50; Ine → 12:30, 14:30, 15:50; 1 Oct–20 Dec 2026
+ *                                    daily; ¥1,200 one way, ¥1,500 one-day ticket for that bus
+ *   uminokyoto.jp spid=85            Hashidate 2h14, ¥4,790 (unchanged); Kounotori 2h28, ¥5,680;
+ *                                    bus from Amanohashidate Station to Ine about 1 hour
+ *   tankai.jp/routebus/timetable     route bus Amanohashidate Station → Ine stop about 55–60 min
+ *   tankai.jp/trip/ineboat           boat unchanged: ¥1,200, 9:00–16:00 every 30 min, ~25 min
+ *   tankai.jp/trip/cable             cable car to 17:30 in November, 17:00 Dec–Jan; lift 10:00–
+ *                                    16:00 from 1 Dec to 5 Jan; notice of a park closure on 18 Dec
+ *   ine-kankou.jp/access             Kyoto about 3 hours, Osaka about 3.5 by train and bus
  */
 
 const OWN = checkedLabel("2026-11-06");
+const NOW = checkedLabel("2026-11-17");
+const LAST_CHECKED = "2026-11-17";
 
 const tourRows = [
   {
@@ -119,63 +141,192 @@ const officialRows = [
 
 const routeRows = [
   {
-    route: "Kyoto Station → Amanohashidate, limited express Hashidate",
+    route: "Answer: Kyoto Station → Amanohashidate, limited express Hashidate",
     time: "2 hours 14 minutes, no change",
     fare: "¥4,790 adult, ¥2,400 child, reserved seat (reference example)",
     source: "uminokyoto.jp",
-  },
-  {
-    route: "Osaka Station → Amanohashidate, Kounotori then Hashidate",
-    time: "2 hours 28 minutes, one change at Fukuchiyama",
-    fare: "¥5,680 adult, ¥2,840 child, reserved seat (reference example)",
-    source: "uminokyoto.jp",
+    checked: NOW,
   },
   {
     route: "Kyoto Station → Amanohashidate, Tankai highway bus",
-    time: "About 2 hours 5 minutes; six round trips a day",
+    time: "2 hours 5 minutes (07:20 → 09:25); six round trips a day",
     fare: "¥3,400–¥3,900 adult by date, ¥1,800 child",
     source: "tankai.jp",
+    checked: NOW,
   },
   {
-    route: "Osaka → Amanohashidate, Tankai highway bus",
-    time: "About 3 hours 18 to 3 hours 26 minutes",
-    fare: "By date, on the operator's timetable page",
-    source: "tankai.jp",
+    route: "Amanohashidate Station → Ine, sightseeing express bus (1 Oct–20 Dec 2026)",
+    time: "Leaves 09:50, 10:50, 12:50; back from Ine 12:30, 14:30, 15:50",
+    fare: "¥1,200 one way (child half); ¥1,500 one-day ticket for this bus",
+    source: "uminokyoto.jp",
+    checked: NOW,
   },
   {
     route: "Amanohashidate Station → Ine, Tankai route bus",
-    time: "About 60 minutes",
-    fare: "On the operator's timetable page",
-    source: "westjr.co.jp",
+    time: "About 1 hour; board for Kamairi or Ine Yubinkyoku-mae",
+    fare: "On the operator's fare table",
+    source: "tankai.jp, uminokyoto.jp",
+    checked: NOW,
   },
   {
     route: "Kyoto → Ine, door to door by train and bus",
     time: "About 3 hours (about 3.5 from Osaka)",
     fare: "Sum of the legs above",
     source: "ine-kankou.jp",
+    checked: NOW,
   },
 ];
 
+/** Table 1 (R02): tour against the two do-it-yourself routes, one adult, Kyoto return. */
+const tourVsSelfRows = [
+  {
+    item: "Verdict",
+    tour: "Best for one day: both places and the boat with no timetable to manage",
+    bus: "Cheapest on your own, until 20 Dec 2026 while the express bus runs",
+    train: "Most flexible on your own; best with a night in the area",
+  },
+  {
+    item: "Kyoto → Ine",
+    tour: "One coach, with Amanohashidate on the way",
+    bus: "2h05 highway bus, then the 09:50 or 10:50 express bus",
+    train: "2h14 limited express, then about 1 hour by route bus; about 3 hours in all",
+  },
+  {
+    item: "Length of the day",
+    tour: "9–11 hours on the listings (07:30 to about 17:30 for the Ine Bay tour)",
+    bus: "07:20 to 18:30 or 19:20 back at Kyoto Station",
+    train: "Set by the train you choose; about 6 hours of it is travel",
+  },
+  {
+    item: "Transport cost, adult return",
+    tour: "In the tour price — check the listing for your date",
+    bus: "¥8,300–¥9,300 (bus ¥3,400–¥3,900 each way + ¥1,500 express-bus day ticket)",
+    train: "¥9,580 by train (¥4,790 each way) + the bus to Ine",
+  },
+  {
+    item: "Changes each way",
+    tour: "None",
+    bus: "1 (Amanohashidate Station)",
+    train: "1 (Amanohashidate Station)",
+  },
+  {
+    item: "Ine Bay boat (¥1,200)",
+    tour: "Included on some packages; an add-on on others",
+    bus: "Pay at Hide pier",
+    train: "Pay at Hide pier",
+  },
+];
+
+/** Table 2 (R02): one day, by the clock. */
+const dayPlanRows = [
+  {
+    time: "Whole day",
+    self: "07:20–18:30 from Kyoto Station, on the highway and express buses",
+    tour: "07:30 to about 17:30 at Kyoto Station (about 18:30 at Dotonbori)",
+  },
+  {
+    time: "07:20",
+    self: "Highway bus leaves Kyoto Station (stop C2)",
+    tour: "07:30 departure",
+  },
+  {
+    time: "09:25",
+    self: "Amanohashidate Station. Viewland is about 7 minutes on foot, Chion-ji about 5",
+    tour: "Coach towards Amanohashidate",
+  },
+  {
+    time: "10:50",
+    self: "Sightseeing express bus to Ine (also 09:50 and 12:50)",
+    tour: "Amanohashidate stop",
+  },
+  {
+    time: "Midday",
+    self: "Ine: boathouses, lunch, and the 25-minute Ine Bay boat from Hide (every 30 minutes, last 16:00)",
+    tour: "Ine boathouses; Ine Bay boat around 13:30",
+  },
+  {
+    time: "14:30",
+    self: "Express bus back from Ine (last one 15:50)",
+    tour: "Coach back",
+  },
+  {
+    time: "16:20",
+    self: "Highway bus from Amanohashidate Station, Kyoto Station 18:30 (next 17:10 → 19:20)",
+    tour: "About 17:30 at Kyoto Station",
+  },
+];
+
+/** Table 3 (R02): Kyoto or Osaka as the start. */
+const fromCityRows = [
+  {
+    item: "Verdict",
+    kyoto: "The easier start: a direct train and a 07:20 bus",
+    osaka: "Take the train or a tour; the first bus arrives too late for Ine",
+  },
+  {
+    item: "Limited express",
+    kyoto: "Hashidate, 2h14, no change, ¥4,790",
+    osaka: "Kounotori then Hashidate, 2h28, change at Fukuchiyama, ¥5,680",
+  },
+  {
+    item: "Highway bus",
+    kyoto: "2h05; 07:20 → 09:25; ¥3,400–¥3,900",
+    osaka: "09:30 from Hankyu Sanbangai → 12:18; last bus back 16:45; ¥3,400–¥3,900",
+  },
+  {
+    item: "To Ine by train and bus",
+    kyoto: "About 3 hours",
+    osaka: "About 3 hours 30 minutes",
+  },
+  {
+    item: "Day tours",
+    kyoto: "Kyoto departures listed",
+    osaka: "Osaka departures listed; the Ine Bay tour lets you board in one city and leave in the other",
+  },
+];
+
+const SOURCES = [
+  "https://www.uminokyoto.jp/feature/detail.php?spid=85",
+  "https://www.tankai.jp/highwaybus/kyotoline/",
+  "https://www.tankai.jp/highwaybus/osakaline/",
+  "https://www.uminokyoto.jp/news/detail.php?nid=1247",
+  "https://www.tankai.jp/routebus/timetable/",
+  "https://www.tankai.jp/trip/ineboat/",
+  "https://www.ine-kankou.jp/access",
+];
+
+/** The five questions in FAQPage (R02). The rest stay on the page under "More questions". */
 const faqItems = [
+  {
+    q: "How do I get to Amanohashidate from Kyoto?",
+    a: `By the limited express Hashidate from Kyoto Station: 2 hours 14 minutes with no change, about ¥4,790 for a reserved seat on the regional tourism site's reference example. The Tankai highway bus is cheaper and about as fast, 2 hours 5 minutes from Kyoto Station to Amanohashidate Station at ¥3,400 to ¥3,900 by date, with six round trips a day; the first leaves at 07:20 and arrives at 09:25. Checked ${NOW}.`,
+  },
+  {
+    q: "Can you do Amanohashidate and Ine in one day?",
+    a: `Yes. A day tour does both, with the Ine Bay boat, in 9 to 11 hours from Kyoto or Osaka. On your own from Kyoto it is about 3 hours each way by train and bus. Until 20 December 2026 a sightseeing express bus leaves Amanohashidate Station for Ine at 09:50, 10:50 and 12:50 and returns at 12:30, 14:30 and 15:50 (¥1,200 one way), so the 07:20 highway bus from Kyoto and the 16:20 bus back make a full day. The last Ine boat is at 16:00. Checked ${NOW}.`,
+  },
+  {
+    q: "Is an Amanohashidate day tour worth it?",
+    a: `For a single day, yes, because Ine is the hard part: it has no railway, and on your own the day is built around a handful of bus departures. A tour covers Amanohashidate, the Ine Funaya boathouses and usually the Ine Bay boat with no changes. Going on your own costs about ¥8,300 to ¥9,300 in transport by bus, before the ¥1,200 boat, and suits you if you want more time at either place or are staying the night.`,
+  },
+  {
+    q: "How long is the Ine boat ride?",
+    a: `About 25 minutes around Ine Bay. Boats leave Hide pier on the hour and half-hour from 9:00 to 16:00, every day of the year, and cost ¥1,200 for adults and ¥600 for ages 6 to 12, with one under-6 free per adult. No advance booking is needed for an individual visit. They can stop in wind of 10 m/s, waves of 0.8 m or visibility under 300 m. Checked ${NOW}.`,
+  },
+  {
+    q: "What is Amanohashidate like in winter?",
+    a: `Quieter, with shorter hours. The Kasamatsu cable car runs to 17:00 in December and January, and the lift from 10:00 to 16:00 between 1 December and 5 January, then only on weekends and holidays to the end of February. Viewland closes at 16:30 from 16 November to 15 February. The Ine boat runs all year. The sightseeing express bus to Ine ends on 20 December 2026, so from then the route bus is the way to Ine on your own. Snow cannot be booked, so choose winter for the quiet, not a guaranteed white view.`,
+  },
+];
+
+const moreFaqItems = [
   {
     q: "Is Amanohashidate worth a day trip from Kyoto?",
     a: `Yes, if you add Ine and accept a long day. Amanohashidate on its own is a 3.6 km pine-covered sandbar, and JR West counts more than 5,000 pines on it. Paired with the roughly 230 boathouses at Ine, it gives you a side of Kyoto Prefecture that the city does not have. The cost is time: 2 hours 14 minutes each way on the limited express, or a tour day of 9 to 11 hours. With only two days in Kyoto, stay in the city. With three or more, this is a strong candidate for the spare day. Read ${OWN}.`,
   },
   {
-    q: "How do I get from Kyoto to Amanohashidate?",
-    a: `By limited express Hashidate from Kyoto Station, 2 hours 14 minutes with no change, about ¥4,790 for a reserved seat on the regional tourism site's reference example. The Tankai highway bus takes about 2 hours 5 minutes from Kyoto Station to Amanohashidate Station, runs six round trips a day and costs ¥3,400 to ¥3,900 by date. The bus is cheaper; the train has the fixed reserved seat. Read ${OWN}.`,
-  },
-  {
     q: "How do I get from Amanohashidate to Ine?",
-    a: `By Tankai route bus from Amanohashidate Station, which JR West puts at about 60 minutes. Ine's tourism association tells visitors to board a bus for Kamairi or Ine Yubinkyoku-mae. Tankai's own trip page shows 30 minutes for the same pair, but only the hour fits Ine's published total of about 3 hours from Kyoto, so plan on 60. Check the number of buses a day on the operator's timetable before you set off, because that number decides whether the trip works on your own.`,
-  },
-  {
-    q: "Can you do Amanohashidate and Ine in one day?",
-    a: `Yes. It is what every tour here sells, in 9 to 11 hours. On your own it is about 3 hours each way from Kyoto by train and bus, so about 6 hours of travel. The fixed points are the last Ine boat at 16:00 and Viewland's last tickets at 17:00 until 15 November, with a 16:30 close after that. Start with the earliest departure you can manage, and work back from the bus timetable.`,
-  },
-  {
-    q: "Is a tour better than going on your own?",
-    a: `For most people visiting from Kyoto or Osaka for one day, yes, because Ine is the difficult leg. A tour removes the route bus and its timetable, so you cover both places without planning the day around that bus. Go on your own if you want more than a short stop at either place, want to stay until late afternoon, or are staying overnight in the area. If you do, the Klook 2-day sightseeing pass covers the boats, viewpoints and local buses, but not the train from Kyoto.`,
+    a: `Until 20 December 2026, by the sightseeing express bus from Amanohashidate Station at 09:50, 10:50 or 12:50 (¥1,200 one way, or a ¥1,500 one-day ticket for that bus). At any time of year, by Tankai route bus for Kamairi or Ine Yubinkyoku-mae, about an hour on the regional tourism site and Tankai's timetable. Coming back, the express bus leaves Ine at 12:30, 14:30 and 15:50. Checked ${NOW}.`,
   },
   {
     q: "What is the best time to visit Amanohashidate?",
@@ -199,10 +350,10 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Amanohashidate Day Trip (2026): Ine Funaya, Tours & Trains";
-const H1_LINE = "Amanohashidate Day Trip (2026):";
+const TITLE = "Amanohashidate Day Trip from Kyoto 2026: Tour vs Train & Ine";
+const H1_LINE = "Amanohashidate Day Trip from Kyoto (2026):";
 const DESCRIPTION =
-  "Amanohashidate day trip from Kyoto: 2h14 by limited express or a 9–11 hour tour with the Ine boathouses and the ¥1,200 Ine Bay boat. Which tour to book.";
+  "Amanohashidate day trip from Kyoto: 2h14 by limited express (¥4,790) or a 9–11 hour day tour with the Ine Funaya boathouses and boat. Tour vs train.";
 
 const ROUTE = "/guides/attractions/amanohashidate-ine-day-trip";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
@@ -295,14 +446,14 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            {H1_LINE}<br />Ine Boathouses, Tours and Trains From Kyoto
+            {H1_LINE}<br />Day Tour vs Train, and the Ine Funaya Boathouses
           </h1>
           <p className={styles.heroSubtitle}>
             A pine sandbar and a bay of boathouses on the Sea of Japan. The hard part is the last hour of the
             journey, so that is what this guide is built around.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Official fares & hours, dated", "Five tours compared", "Tour or train"].map((t) => (
+            {["Official fares & hours, dated", "Tour vs train table", "Hour-by-hour day plan", "From Kyoto or Osaka"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -329,12 +480,14 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
           <div className={styles.verdictBody}>
             {/* Answer-first: the first body paragraph of the article, not the hero line. */}
             <p className={styles.verdictText}>
-              <strong>Amanohashidate</strong> is about <strong>2 hours 14 minutes</strong> from Kyoto on the
-              Hashidate limited express (about <strong>¥4,790</strong>), and <strong>Ine</strong> is about another
-              hour by local bus, so the simplest way to do both in one day is a guided tour from Kyoto or Osaka
-              (about <strong>9 to 11 hours</strong>). The core stops are the Kasamatsu Park or Amanohashidate
-              Viewland lookout, the Ine boathouses and the roughly 25-minute Ine Bay cruise (adult{" "}
-              <strong>¥1,200</strong>). Checked {OWN}.
+              <strong>Amanohashidate</strong> is <strong>2 hours 14 minutes</strong> from Kyoto Station on the
+              Hashidate limited express with no change (about <strong>¥4,790</strong>), or 2 hours 5 minutes on
+              the Tankai highway bus (<strong>¥3,400–¥3,900</strong>). <strong>Ine</strong> is about another hour
+              by Tankai route bus, or a <strong>¥1,200</strong> sightseeing express bus that runs three times a
+              day until 20 December 2026. An <strong>Amanohashidate day tour</strong> from Kyoto or Osaka covers
+              the sandbar, the Ine Funaya boathouses and the 25-minute Ine Bay boat (<strong>¥1,200</strong>) in{" "}
+              <strong>9 to 11 hours</strong> with no changes, which is why it is the simpler choice for one day.
+              Checked {NOW}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={amanohashidateIneFullDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -364,6 +517,103 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
             </div>
           </div>
         </div>
+
+        {/* R02: the 6.5% hotel and the 20% eSIM, directly under the tour buttons. */}
+        <KlookSameDayCards heading="Book Around Your Amanohashidate Day" cards={amanohashidateAnswerCards} />
+
+        {/* R02 table 1: tour vs on your own, conclusion first. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Tour vs train</span>
+          <h2 className={styles.sectionTitle}>Is an Amanohashidate Day Tour Worth It, or Should You Take the Train?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            For one day, book the tour: it is the only way to see Amanohashidate, the Ine Funaya and the
+            Ine Bay boat without a change or a bus timetable. Going on your own costs about ¥8,300 to ¥9,300
+            in transport by bus and suits a slower day or a night in the area.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["", "Day tour", "On your own: highway bus + express bus", "On your own: limited express + route bus"].map((h) => (
+                      <th key={h || "row"}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {tourVsSelfRows.map((row, i) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{i === 0 ? <strong>{row.item}</strong> : row.item}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{i === 0 ? <strong>{row.tour}</strong> : row.tour}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{row.bus}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{row.train}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED}. Official sources:{" "}
+            {SOURCES.slice(0, 2).concat(SOURCES[3], SOURCES[5]).map((s, i, a) => (
+              <span key={s}>
+                <a href={s} target="_blank" rel="noopener noreferrer">{s.replace("https://www.", "")}</a>
+                {i < a.length - 1 ? ", " : "."}
+              </span>
+            ))}{" "}
+            Tour lengths and inclusions are the Klook listings as read {OWN}; the price for your date is on the listing.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={amanohashidateIneFullDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check the Amanohashidate day tour →
+            </KlookLink>
+            <KlookLink href={amanohashidateIneBayScenicTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Tour with the Ine Bay boat →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* R02 table 2: the day by the clock. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Itinerary</span>
+          <h2 className={styles.sectionTitle}>What Does a 1-Day Amanohashidate and Ine Itinerary Look Like?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            On your own, leave Kyoto Station on the 07:20 highway bus and be back at 18:30; a tour runs from
+            about 07:30 to 17:30. Until 20 December 2026 the express bus to Ine makes the self-guided day work
+            without a car.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Time", "On your own (to 20 Dec 2026)", "Ine Bay day tour (listing)"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {dayPlanRows.map((row, i) => (
+                    <tr key={row.time}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{i === 0 ? <strong>{row.time}</strong> : row.time}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{i === 0 ? <strong>{row.self}</strong> : row.self}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{row.tour}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED}. Bus times from{" "}
+            <a href={SOURCES[1]} target="_blank" rel="noopener noreferrer">tankai.jp</a> (timetable revised 1 October
+            2026) and the{" "}
+            <a href={SOURCES[3]} target="_blank" rel="noopener noreferrer">Kyoto by the Sea DMO notice</a>; boat from{" "}
+            <a href={SOURCES[5]} target="_blank" rel="noopener noreferrer">tankai.jp</a>. The tour column is the Ine
+            Bay scenic tour listing as read {OWN}. After 20 December, use the route bus to Ine and check its
+            weekday and holiday times on Tankai&apos;s timetable.
+          </p>
+        </section>
 
         <EsimCtaTop />
 
@@ -449,7 +699,8 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
           <p className={styles.bodyText}>
             Yes, and that is what these tours are for. The Ine Bay scenic tour lists a 7:30 departure, a boat
             around 13:30, and a return to Kyoto Station at about 17:30 or Dotonbori at about 18:30. On your own
-            it is about 3 hours each way from Kyoto, so about 6 hours of the day goes on travel.
+            it is about 3 hours each way from Kyoto, so about 6 hours of the day goes on travel; the
+            itinerary table above shows how the buses fit together.
           </p>
           <p className={styles.bodyText}>
             Three clock times shape the day: the last Ine boat at <strong>16:00</strong>, the Kasamatsu lift
@@ -460,13 +711,14 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
 
         {/* Tour or not */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Tour or train</span>
-          <h2 className={styles.sectionTitle}>Is a Tour Better Than Going on Your Own?</h2>
+          <span className={styles.sectionLabel}>Getting there</span>
+          <h2 className={styles.sectionTitle}>How Do You Get to Amanohashidate From Kyoto?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            For a single day, yes. Reaching Amanohashidate on your own is easy; Ine is the difficult part. It
-            has no railway, and you depend on a route bus. Ine&apos;s tourism association tells visitors to
-            board a bus for <strong>Kamairi</strong> or <strong>Ine Yubinkyoku-mae</strong>. Check the number
-            of buses a day on the operator&apos;s timetable before you commit.
+            Take the limited express Hashidate from Kyoto Station: 2 hours 14 minutes, no change, about
+            ¥4,790. Reaching Amanohashidate is easy; Ine is the difficult part. It has no railway, so you
+            need the sightseeing express bus (to 20 December 2026) or a route bus for{" "}
+            <strong>Kamairi</strong> or <strong>Ine Yubinkyoku-mae</strong>, as Ine&apos;s tourism association
+            advises.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -484,13 +736,62 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.route}</td>
                       <td style={{ fontSize: "0.86rem" }}>{row.time}</td>
                       <td className={styles.tdPrice} style={{ fontSize: "0.86rem" }}>{row.fare}</td>
-                      <td style={{ fontSize: "0.82rem" }}>{row.source}, {OWN}</td>
+                      <td style={{ fontSize: "0.82rem" }}>{row.source}, {row.checked}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED}. Official sources:{" "}
+            {[SOURCES[0], SOURCES[1], SOURCES[3], SOURCES[4], SOURCES[6]].map((s, i, a) => (
+              <span key={s}>
+                <a href={s} target="_blank" rel="noopener noreferrer">{s.replace("https://www.", "")}</a>
+                {i < a.length - 1 ? ", " : "."}
+              </span>
+            ))}
+          </p>
+
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.2rem", marginTop: "2rem" }}>
+            Is Amanohashidate Easier From Kyoto or From Osaka?
+          </h3>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            From Kyoto. It has the direct limited express and a 07:20 highway bus; from Osaka the train needs a
+            change at Fukuchiyama and the first highway bus reaches Amanohashidate at 12:18, too late to add Ine.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["", "From Kyoto", "From Osaka"].map((h) => (
+                      <th key={h || "row"}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {fromCityRows.map((row, i) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{i === 0 ? <strong>{row.item}</strong> : row.item}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{i === 0 ? <strong>{row.kyoto}</strong> : row.kyoto}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{i === 0 ? <strong>{row.osaka}</strong> : row.osaka}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED}. Official sources:{" "}
+            {[SOURCES[0], SOURCES[1], SOURCES[2], SOURCES[6]].map((s, i, a) => (
+              <span key={s}>
+                <a href={s} target="_blank" rel="noopener noreferrer">{s.replace("https://www.", "")}</a>
+                {i < a.length - 1 ? ", " : "."}
+              </span>
+            ))}{" "}
+            Tour departure cities are the Klook listings as read {OWN}.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Going on your own makes sense if you want to stay past the point a coach leaves, or to spend a night
             in the area. The Klook 2-day pass suits that plan: it covers the Amanohashidate sightseeing boat, the
@@ -504,8 +805,8 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Train fares are the regional tourism site&apos;s reference examples and it asks readers to treat
-            them as a guide. Tankai&apos;s own trip page shows 30 minutes between Amanohashidate and Ine; this guide uses
-            JR West&apos;s 60 because it is the figure that fits Ine&apos;s 3-hour total from Kyoto.
+            them as a guide. For the route bus between Amanohashidate Station and Ine this guide uses about an
+            hour, the figure on the regional tourism site and on Tankai&apos;s current timetable.
           </p>
         </section>
 
@@ -565,8 +866,11 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
             holidays, from 10:00 to 16:00.
           </p>
           <p className={styles.bodyText}>
-            The cable car and the Ine boat run all year, so a winter tour is workable. Snow itself cannot be
-            planned for, so we would not book only for it. If the tour date is flexible, check the
+            Two dates matter this season: Tankai has posted a notice of a Kasamatsu Park closure on{" "}
+            <strong>18 December</strong>, and the sightseeing express bus to Ine stops after{" "}
+            <strong>20 December 2026</strong>, leaving the route bus (read {NOW}). The cable car and the Ine
+            boat run all year, so a winter tour is workable. Snow itself cannot be
+            planned for, so do not book only for it. If the tour date is flexible, check the
             forecast for northern Kyoto before you lock it in, and use a listing with free cancellation.
           </p>
         </section>
@@ -632,6 +936,20 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
               <details key={item.q} className={styles.faqItem}>
                 <summary className={styles.faqSummary}>
                   <span>{i + 1}. {item.q}</span>
+                  <svg className={styles.faqChevron} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className={styles.faqBody}>{item.a}</div>
+              </details>
+            ))}
+          </div>
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.2rem", marginTop: "2rem" }}>More Questions</h3>
+          <div className={styles.faqList}>
+            {moreFaqItems.map((item, i) => (
+              <details key={item.q} className={styles.faqItem}>
+                <summary className={styles.faqSummary}>
+                  <span>{faqItems.length + i + 1}. {item.q}</span>
                   <svg className={styles.faqChevron} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                   </svg>

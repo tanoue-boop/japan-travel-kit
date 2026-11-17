@@ -6906,6 +6906,24 @@ export const amanohashidateTripPrep: KlookTripPrepItem[] = [
   },
 ];
 
+/**
+ * amanohashidate-ine-day-trip, directly under the tour buttons in the answer
+ * (task-jtk-20261117-R02): the Kyoto Station hotel search (6.5%) and the Klook
+ * eSIM (20%). Existing constants only, no new URL and no price.
+ */
+export const amanohashidateAnswerCards: KlookSameDayCard[] = [
+  {
+    ...tripPrepProducts.hotelKyotoStation,
+    kind: "Hotel",
+    why: "The 07:20 highway bus and the limited express leave from Kyoto Station, and the Ine Bay tour lists its return there at about 17:30, so the night before is best spent within walking distance of it.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    kind: "eSIM",
+    why: "On your own the day hangs on three bus departures from Ine; on a tour, on finding the coach at the meeting point. Both are on your phone.",
+  },
+];
+
 // ---------------------------------------------------------------------------
 // Arashiyama and Yufuin/Beppu entry pages, added 6 Nov 2026
 // (task jtk-20261106-02). Klook answers automated reads of its product pages

@@ -328,7 +328,10 @@ export default function KyotoDayTripFromTokyoPage({ updated }: { updated: PageUp
             hours 20 minutes on the shinkansen, plus the time to reach Tokyo Station. It suits a trip with no
             Kyoto night. If you have a night to spare, our{" "}
             <Link href="/guides/attractions/kyoto-2-day-itinerary" style={LINK}>two-day Kyoto itinerary</Link>{" "}
-            is the better version. For other ways to make the journey, see{" "}
+            is the better version. The coast north of Kyoto is not a same-day trip from Tokyo; from a Kyoto
+            hotel it is, and our{" "}
+            <Link href="/guides/attractions/amanohashidate-ine-day-trip" style={LINK}>Amanohashidate day trip</Link>{" "}
+            guide compares the tour with the train. For other ways to make the journey, see{" "}
             <Link href="/guides/transport/tokyo-to-kyoto" style={LINK}>Tokyo to Kyoto compared</Link>.
           </p>
         </section>
