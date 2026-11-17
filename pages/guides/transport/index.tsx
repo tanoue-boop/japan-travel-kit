@@ -180,6 +180,12 @@ const passRows: PassRow[] = [
     guide: <Link href="/guides/transport/hokuriku-arch-pass" style={L}>Hokuriku Arch Pass</Link>,
   },
   {
+    trip: "Tohoku (Sendai, Aomori, Akita), Niigata or Nagano over 5–10 days",
+    pass: "JR EAST PASS (one pass since 14 March 2026)",
+    price: "¥35,000 for 5 days / ¥50,000 for 10 days",
+    guide: <Link href="/guides/transport/jr-east-pass" style={L}>JR East Pass</Link>,
+  },
+  {
     trip: "Fukuoka, Beppu, Nagasaki or Kagoshima",
     pass: "JR Kyushu Rail Pass",
     price: "Northern ¥15,000 / ¥17,000; All Kyushu ¥22,000–¥26,000",
@@ -425,7 +431,8 @@ export default function GuidesTransportPage({ updated, dates }: { updated: PageU
               </div>
               <p className={styles.bodyText} style={muted}>
                 Last checked: {CHECKED} for the JAPAN RAIL PASS (japanrailpass.net/en/purchase/price/) and the JR TOKYO Wide
-                Pass (jreast.co.jp/multi/en/nex/tickets/). Other prices as dated on each linked guide: tokyometro.jp,
+                Pass (jreast.co.jp/multi/en/nex/tickets/); the JR EAST PASS on 2026-11-17
+                (jreast.co.jp/en/multi/pass/eastpass.html). Other prices as dated on each linked guide: tokyometro.jp,
                 westjr.co.jp, jrkyushu.co.jp, subway.osakametro.co.jp, city.kyoto.lg.jp/kotsu. The ¥28,250 loop is
                 Tokyo–Kyoto ¥13,850 plus Shin-Osaka–Tokyo ¥14,400 at JR&apos;s window fares on the Hikari.
               </p>
@@ -471,7 +478,9 @@ export default function GuidesTransportPage({ updated, dates }: { updated: PageU
               <Link href="/guides/transport/tokyo-to-kanazawa" style={L}>Tokyo to Kanazawa shinkansen guide</Link>{" "}
               weighs it against the{" "}
               <Link href="/guides/transport/hokuriku-arch-pass" style={L}>Hokuriku Arch Pass</Link>{" "}
-              on the Kagayaki — the 7-day pass for a Tokyo → Kanazawa → Osaka loop. For a stay
+              on the Kagayaki — the 7-day pass for a Tokyo → Kanazawa → Osaka loop. Heading north instead, the{" "}
+              <Link href="/guides/transport/jr-east-pass" style={L}>JR East Pass</Link>{" "}
+              covers the Tohoku, Joetsu and Hokuriku (to Joetsumyoko) shinkansen for 5 or 10 days. For a stay
               based in the capital, the{" "}
               <PartnerTextLink href={tokyoSubwayTicket.url}>Tokyo Subway Ticket</PartnerTextLink> covers all Tokyo Metro
               and Toei Subway lines for 24, 48 or 72 hours;{" "}

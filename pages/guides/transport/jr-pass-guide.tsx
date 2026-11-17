@@ -679,7 +679,8 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass</Link> for Kyoto, Osaka and Nara,
             the <Link href="/guides/transport/tokyo-wide-pass">JR Tokyo Wide Pass</Link> for Kanto day trips, or
             the <Link href="/guides/transport/hokuriku-arch-pass">Hokuriku Arch Pass</Link> ({"¥35,000"}, 7 days) for a Tokyo → Kanazawa → Kyoto and Osaka loop, which
-            skips the Tokaido Shinkansen.
+            skips the Tokaido Shinkansen, or the <Link href="/guides/transport/jr-east-pass">JR East Pass</Link>{" "}
+            ({"¥35,000"} for 5 consecutive days, {"¥50,000"} for 10) for Tohoku, Niigata and Nagano.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -912,6 +913,17 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
               Kyoto to Tokyo train guide
             </Link>{" "}
             shows which trains the pass covers leaving Kyoto and what the Nozomi ticket costs.
+          </p>
+          <p className={styles.bodyText}>
+            The JR Pass alternative for a trip north of Tokyo is the{" "}
+            <Link href="/guides/transport/jr-east-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
+              JR East Pass
+            </Link>
+            : since 14 March 2026 one pass at ¥35,000 for 5 consecutive days or ¥50,000 for 10 covers every JR East
+            line, including the Tohoku, Akita, Yamagata and Joetsu shinkansen and the Hokuriku Shinkansen as far as
+            Joetsumyoko. The old Tohoku-area and Nagano/Niigata-area passes stopped being sold on 13 March 2026. It does
+            not cover the Tokaido Shinkansen, so it is the cheaper choice only when the trip stays in eastern Japan
+            (JR East, checked 2026-11-17).
           </p>
           <p className={styles.bodyText}>
             In winter the JR Pass also covers a ski day out of Tokyo: the Joetsu Shinkansen runs direct

@@ -346,7 +346,12 @@ const days: Day[] = [
         guide has the direct shinkansen times, the JR Pass rules and the lift prices in full. If you would rather look at snow than ski on it,
         our{" "}
         <Link href="/guides/attractions/jigokudani-snow-monkey-tour">Jigokudani snow monkey tour guide</Link>{" "}
-        covers the winter day out on the Nagano side, which fits this same slot. One thing to settle
+        covers the winter day out on the Nagano side, which fits this same slot. If the snow part of the trip
+        goes further — Yuzawa and Niigata on the Joetsu Shinkansen, Nagano on the Hokuriku Shinkansen, or Zao and
+        Ginzan Onsen off the Yamagata Shinkansen — the{" "}
+        <Link href="/guides/transport/jr-east-pass">JR East Pass</Link>{" "}
+        covers all three shinkansen lines for ¥35,000 over 5 consecutive days, though not the local buses at the
+        far end (JR East, checked 2026-11-17). One thing to settle
         before you go: standard travel insurance treats on-piste and off-piste completely differently, which
         our{" "}
         <Link href="/guides/money/japan-ski-travel-insurance">ski travel insurance comparison</Link>{" "}

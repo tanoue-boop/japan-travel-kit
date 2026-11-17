@@ -58,8 +58,11 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  * ---------------------------------------------------------------------------
  */
 
-const CHECKED_ISO = "2026-11-03";
+const CHECKED_ISO = "2026-11-17";
 const CHECKED = checkedLabel(CHECKED_ISO);
+// The ¥52,000 worked example, the partner-railway list and the buying steps were read on 3 Nov 2026;
+// the prices, the consecutive-day rule and the 13 March 2026 end of the area passes were re-read on 17 Nov.
+const FIRST_READ = checkedLabel("2026-11-03");
 const WIDE_CHECKED = checkedLabel("2026-10-30");
 const ARCH_CHECKED = checkedLabel("2026-10-26");
 
@@ -67,7 +70,7 @@ const PASS_5 = "¥35,000";
 const PASS_10 = "¥50,000";
 const MODEL_ROUTE = "¥52,000";
 
-const TITLE = "JR East Pass (2026): Price, Coverage and Is It Worth It?";
+const TITLE = "JR East Pass 2026: Price, Coverage & Is It Worth It?";
 const DESCRIPTION =
   "JR East Pass 2026: ¥35,000 for 5 days or ¥50,000 for 10, one pass for Tohoku and Nagano-Niigata since March 2026. Shinkansen covered, Kanazawa not.";
 
@@ -157,7 +160,7 @@ const fareRows = [
   {
     journey: "JR East's own example: Narita Express + Tohoku Shinkansen to Aomori via Sendai, reserved",
     fare: `About ${MODEL_ROUTE}`,
-    source: `JR East, checked ${CHECKED}`,
+    source: `JR East, checked ${FIRST_READ}`,
     note: `Against ${PASS_5} for the 5-day pass — about ¥17,000 saved.`,
   },
   {
@@ -232,7 +235,7 @@ const passRows = [
 const buySteps = [
   {
     title: "Buy online before you fly",
-    desc: `Through JR East's JR-EAST Train Reservation site or a reseller such as Klook, whose voucher is exchanged at a major JR East station. Checked ${CHECKED}.`,
+    desc: `Through JR East's JR-EAST Train Reservation site or a reseller such as Klook, whose voucher is exchanged at a major JR East station. Checked ${FIRST_READ}.`,
   },
   {
     title: "Collect it with your original passport",
@@ -251,7 +254,7 @@ const buySteps = [
 const faqItems = [
   {
     q: "How much is the JR East Pass?",
-    a: "The JR EAST PASS costs ¥35,000 for 5 consecutive days (child ¥17,500) or ¥50,000 for 10 consecutive days (child ¥25,000). These are JR East's prices since 14 March 2026, checked on 3 November 2026.",
+    a: "The JR EAST PASS costs ¥35,000 for 5 consecutive days (child ¥17,500) or ¥50,000 for 10 consecutive days (child ¥25,000). These are JR East's prices since 14 March 2026, checked on 17 November 2026.",
   },
   {
     q: "Which JR East Pass should I buy, Tohoku or Nagano-Niigata?",
@@ -376,7 +379,7 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            JR East Pass (2026):<br />Price, Coverage &amp; Is It Worth It?
+            JR East Pass 2026:<br />Price, Coverage &amp; Is It Worth It?
           </h1>
           <p className={styles.heroSubtitle}>
             One pass for all of eastern Japan since March 2026 — what JR East charges, where it stops, and when the
@@ -504,8 +507,9 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            JR East&apos;s pass page and its 28 January 2026 press release, read on {CHECKED}. The under-six rule is
-            as Klook&apos;s listing states it.
+            Last checked: {CHECKED_ISO}. JR East&apos;s pass page (jreast.co.jp/en/multi/pass/eastpass.html) and its
+            28 January 2026 press release (jreast.co.jp/e/press/pdf/0128_pass_en.pdf). The under-six rule is as
+            Klook&apos;s listing states it.
           </p>
         </section>
 
@@ -574,7 +578,7 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Lines and partner railways as JR East lists them, read on {CHECKED}. Check the boundary stations on JR
+            Lines and partner railways as JR East lists them, read on {FIRST_READ}. Check the boundary stations on JR
             East&apos;s official map if your trip goes near the edge.
           </p>
         </section>

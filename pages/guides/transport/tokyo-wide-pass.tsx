@@ -596,11 +596,11 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
             <p className={styles.verdictText}>
               It never covers the Tokaido Shinkansen, the Tokyo Metro or a city bus, and it is sold only to holders of a
               non-Japanese passport, collected in Japan on that passport. This page is the three-day Kanto pass; for
-              Tohoku, Niigata, Nagano and five or ten days of long-distance travel, see the{" "}
+              Tohoku, Niigata, Nagano and five or ten days of long-distance travel, the{" "}
               <Link href="/guides/transport/jr-east-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
-                JR EAST PASS guide
-              </Link>
-              .
+                JR East Pass
+              </Link>{" "}
+              is ¥35,000 for 5 consecutive days or ¥50,000 for 10 (JR East, checked 2026-11-17).
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink

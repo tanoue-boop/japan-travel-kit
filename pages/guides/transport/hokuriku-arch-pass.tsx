@@ -814,11 +814,12 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             The Arch Pass, by ¥15,000 against the official-site JR Pass and ¥18,000 against an overseas agency. The JR
             Pass earns the extra only if the week uses the Tokaido or Sanyo line. For the eastern side of the same map,
-            see our{" "}
+            the{" "}
             <Link href="/guides/transport/jr-east-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
-              JR East Pass guide
-            </Link>
-            .
+              JR East Pass
+            </Link>{" "}
+            covers Tohoku, Niigata and Nagano for ¥35,000 (5 days), but its Hokuriku Shinkansen coverage ends at
+            Joetsumyoko, so it does not reach Kanazawa (JR East, checked 2026-11-17).
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
