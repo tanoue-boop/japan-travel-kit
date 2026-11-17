@@ -4,10 +4,158 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import BookingEsimCard from "../../../components/BookingEsimCard";
-import { kyotoArrivalShinkansenPrep, osakaArrivalShinkansenPrep } from "../../../lib/klook-links";
+import { shinkansenGuideSameDayPrep, shinkansenTokyoKyoto, shinkansenTokyoOsaka } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+
+/**
+ * 17 Nov 2026 (task jtk-20261117-03, daily PDCA queue F): answer-first rebuild around
+ * "how to buy shinkansen tickets", with the bookings an AI answer cannot make for the
+ * reader — the Klook shinkansen ticket (2%) and, directly under it, the Kyoto / Osaka
+ * tours and hotels (6.5%), the Kansai passes (5%) and the Klook eSIM (20%).
+ *
+ * Read on 17 Nov 2026:
+ *  - smart-ex.jp/en/product/plan/service/ and its price-list PDFs ("As of April 1, 2025",
+ *    still the current lists): Nozomi reserved from Tokyo ¥11,100 Nagoya, ¥13,970 Kyoto,
+ *    ¥14,520 Shin-Osaka, ¥19,560 Hiroshima; Shin-Osaka–Hiroshima ¥10,750; Hikari/Kodama
+ *    reserved ¥10,890 Nagoya, ¥13,650 Kyoto, ¥14,200 Shin-Osaka; non-reserved Tokyo–Kyoto
+ *    ¥13,320. On sale from 5:30 one year ahead to 4 minutes before departure, seats
+ *    confirmed after 8:00 one month ahead, free changes within 3 months of purchase,
+ *    ¥320 refund fee, QR ticket or IC card boarding, ±¥200 / +¥400 season rule;
+ *  - smart-ex.jp/en/faq/: membership is registered with a credit card;
+ *  - japanrailpass.net price page: 7-day Ordinary ¥50,000 online, ¥53,000 from an overseas
+ *    agency (14-day ¥80,000 / ¥84,000, 21-day ¥100,000 / ¥105,000), paid in yen online;
+ *    special-ticket page: NOZOMI/MIZUHO ticket ¥4,180 Tokyo–Nagoya, ¥4,960 Tokyo–Kyoto
+ *    and Tokyo–Shin-Osaka, ¥6,500 Tokyo–Hiroshima, sold from one month before boarding at
+ *    JR station machines and ticket offices;
+ *  - global.jr-central.co.jp/en/info/oversized-baggage/: 160 cm or less in racks or the
+ *    deck storage, 161–250 cm needs a "seat with an oversized baggage area" (no extra
+ *    charge), ¥1,000 including tax without one, over 250 cm not allowed.
+ * Taken from the route guides, with their own check dates: the window fares (¥14,400
+ * Hikari, ¥14,720 Nozomi, JR Group / JR Central, 12 Nov), the all-reserved Nozomi
+ * periods (JR Central, 12 Nov), the Tokyo–Kanazawa fare (JR West, 11 Nov) and the
+ * journey times. No Klook price is printed.
+ */
+
+const CHECKED = "2026-11-17";
+
+/** Table 1 — ways to buy. First row is the answer. */
+const buyRows = [
+  {
+    way: "Best for most visitors: smartEX (JR's own site and app)",
+    language: "English",
+    payment: "Registered credit card, charged when you book",
+    seat: "Yes, from a seat map; ¥200 under the window price on reserved seats",
+    change: "Free changes until 4 min before departure (within 3 months of purchase); refund fee ¥320",
+  },
+  {
+    way: "JR ticket office (Midori-no-madoguchi) or ticket machine",
+    language: "Staffed counter or machine; English help varies by station",
+    payment: "Paid at the station",
+    seat: "Yes; reserved seats go on sale at 10:00 one month before",
+    change: "Handled at the ticket office",
+  },
+  {
+    way: "Klook (shinkansen rail pages)",
+    language: "English, booked before you fly",
+    payment: "At Klook's checkout",
+    seat: "Pick the date, train and seat class (non-reserved, reserved, Green Car)",
+    change: "Klook's own terms, shown before you pay",
+  },
+  {
+    way: "JAPAN RAIL PASS (7, 14 or 21 days)",
+    language: "English (japanrailpass.net)",
+    payment: "¥50,000 for 7 days online, paid in yen; ¥53,000 from an overseas agency",
+    seat: "Hikari and Kodama included; Nozomi/Mizuho need a ¥4,180–¥6,500 ticket per ride",
+    change: "Per the pass terms on japanrailpass.net",
+  },
+];
+
+/** Table 2 — main routes. First row is the answer (the busiest route). */
+const routeRows = [
+  {
+    route: "Tokyo → Shin-Osaka",
+    href: "/guides/transport/tokyo-to-osaka-shinkansen",
+    anchor: "Tokyo to Osaka shinkansen",
+    time: "2h 21m fastest (Nozomi), about 3h Hikari",
+    nozomi: "¥14,520",
+    hikari: "¥14,200",
+    pass: "Hikari yes; Nozomi + ¥4,960",
+  },
+  {
+    route: "Tokyo → Kyoto",
+    href: "/guides/transport/kyoto-to-tokyo-shinkansen",
+    anchor: "Kyoto to Tokyo shinkansen",
+    time: "About 2h 15m (Nozomi), about 2h 40m Hikari",
+    nozomi: "¥13,970",
+    hikari: "¥13,650",
+    pass: "Hikari yes; Nozomi + ¥4,960",
+  },
+  {
+    route: "Tokyo → Hiroshima",
+    href: "/guides/transport/tokyo-to-hiroshima-shinkansen",
+    anchor: "Tokyo to Hiroshima shinkansen",
+    time: "3h 39m fastest, direct Nozomi",
+    nozomi: "¥19,560",
+    hikari: "—",
+    pass: "Hikari + Sakura with a change; Nozomi + ¥6,500",
+  },
+  {
+    route: "Tokyo → Nagoya",
+    href: "/guides/transport/tokyo-to-nagoya-shinkansen",
+    anchor: "Tokyo to Nagoya shinkansen",
+    time: "1h 26m fastest (Nozomi)",
+    nozomi: "¥11,100",
+    hikari: "¥10,890",
+    pass: "Hikari yes; Nozomi + ¥4,180",
+  },
+  {
+    route: "Tokyo → Kanazawa (Hokuriku line)",
+    href: "/guides/transport/tokyo-to-kanazawa",
+    anchor: "Tokyo to Kanazawa shinkansen",
+    time: "About 2h 30m (Kagayaki, all reserved)",
+    nozomi: "¥14,400 reserved (JR East/West line, not on smartEX)",
+    hikari: "—",
+    pass: "Yes, Kagayaki and Hakutaka",
+  },
+  {
+    route: "Shin-Osaka → Hiroshima",
+    href: "/guides/transport/osaka-to-hiroshima-shinkansen",
+    anchor: "Osaka to Hiroshima shinkansen",
+    time: "1h 20m fastest (Nozomi / Mizuho)",
+    nozomi: "¥10,750",
+    hikari: "—",
+    pass: "Sakura and Hikari yes; Nozomi/Mizuho need the extra ticket",
+  },
+];
+
+/** Table 3 — luggage. First row is the answer. */
+const luggageRows = [
+  {
+    size: "161–250 cm (length + width + height): a large suitcase",
+    rule: "Reserve a “seat with an oversized baggage area” (Tokaido, Sanyo and Kyushu Shinkansen)",
+    cost: "No extra charge; ¥1,000 including tax if you board without one",
+  },
+  {
+    size: "160 cm or less",
+    rule: "Overhead rack, at your feet, or the baggage storage on the deck",
+    cost: "No reservation needed",
+  },
+  {
+    size: "Over 250 cm",
+    rule: "Not allowed on board",
+    cost: "Cannot be carried on, with or without a reservation",
+  },
+];
+
+/** The Nozomi all-reserved periods still ahead, as JR Central listed them (read 12 Nov 2026). */
+const nozomiAllReservedPeriods = [
+  "21–23 November 2026",
+  "25 December 2026 – 5 January 2027",
+  "9–11 January 2027",
+  "20–22 March 2027",
+];
 
 const shinkansenLines = [
   { line: "Tokaido", route: "Tokyo – Osaka", speed: "285 km/h" },
@@ -15,14 +163,6 @@ const shinkansenLines = [
   { line: "Tohoku", route: "Tokyo – Sapporo", speed: "320 km/h" },
   { line: "Hokuriku", route: "Tokyo – Kanazawa", speed: "260 km/h" },
   { line: "Kyushu", route: "Fukuoka – Kagoshima", speed: "260 km/h" },
-];
-
-const ticketPrices = [
-  { route: "Tokyo → Kyoto", nonReserved: "¥13,320", reserved: "¥13,850" },
-  { route: "Tokyo → Osaka", nonReserved: "¥13,870", reserved: "¥14,400" },
-  { route: "Tokyo → Hiroshima", nonReserved: "¥18,490", reserved: "¥19,080" },
-  { route: "Tokyo → Fukuoka", nonReserved: "¥22,220", reserved: "¥22,750" },
-  { route: "Tokyo → Sapporo", nonReserved: "¥22,690", reserved: "¥23,430" },
 ];
 
 const ticketTypes = [
@@ -57,9 +197,9 @@ const jrPassPros = [
 
 const jrPassCons = [
   "Nozomi and Mizuho (the fastest Tokaido / Sanyo services) are excluded",
-  "The 7-day pass costs ~¥50,000 — only worth it for multi-route itineraries",
-  "Must be purchased outside Japan (or at select airports on arrival)",
-  "Hikari adds 15–30 min to Tokyo–Osaka vs Nozomi — a trade-off for pass users",
+  "The 7-day Ordinary pass is ¥50,000 online (¥53,000 from an overseas agency) — more than a Tokyo–Kyoto–Hiroshima–Tokyo loop at smartEX prices",
+  "A Nozomi ride on the pass needs a separate ticket: ¥4,960 Tokyo–Kyoto or Shin-Osaka, ¥6,500 Tokyo–Hiroshima",
+  "Hikari takes about 3 hours Tokyo–Shin-Osaka against 2h 21m on the fastest Nozomi — a trade-off for pass users",
 ];
 
 const buyingSteps = [
@@ -77,7 +217,7 @@ const buyingSteps = [
   },
   {
     title: "Pass through the Shinkansen gate",
-    desc: "Insert your paper ticket or pass into the gate — it returns automatically. IC cards (Suica / Pasmo) do not cover Shinkansen fares; you always need a separate Shinkansen ticket regardless of IC balance.",
+    desc: "Insert your paper ticket or pass into the gate — it returns automatically. A Suica or Pasmo balance does not pay a Shinkansen fare on its own; a smartEX booking boards with its QR ticket or with the IC card you link to it.",
   },
 ];
 
@@ -87,8 +227,8 @@ const firstTimerTips = [
     desc: "Shinkansen services fill up quickly on weekends, public holidays, and during peak seasons (Golden Week in late April–May, Obon in mid-August, New Year). Book as soon as your dates are confirmed.",
   },
   {
-    title: "Sit in seat D or E for Mount Fuji views",
-    desc: "Travelling from Tokyo toward Osaka or Kyoto on the Tokaido Shinkansen? Mount Fuji appears on the right side of the train (seats D and E, window side). It's best seen around Shin-Fuji station, roughly 40 minutes from Tokyo.",
+    title: "Sit in seat E for Mount Fuji views",
+    desc: "Travelling from Tokyo toward Kyoto or Osaka on the Tokaido Shinkansen? Mount Fuji appears on the right side of the train, so ask for the E (window) seat when you reserve. It is best seen around Shin-Fuji station.",
   },
   {
     title: "Buy ekiben and drinks before boarding",
@@ -96,54 +236,74 @@ const firstTimerTips = [
   },
   {
     title: "Oversized luggage requires advance booking",
-    desc: "Bags with a total dimension over 160cm (length + width + height) must be stored in a designated oversized baggage space. This is free but must be reserved when you buy your ticket — it cannot be done on the day.",
+    desc: "Bags with a total dimension over 160cm (length + width + height) need a reserved seat with an oversized baggage area. It costs nothing extra, but those seats are limited per train, and boarding without one costs ¥1,000.",
   },
 ];
 
 const faqItems = [
   {
-    q: "Can I use the JR Pass on the Shinkansen?",
-    a: "Yes — the JR Pass covers most Shinkansen services, including Hikari and Kodama on the Tokaido Shinkansen. However, it does not cover Nozomi or Mizuho (the fastest and most frequent services on the Tokyo–Osaka corridor). If you plan to use the JR Pass, book Hikari services, which add only 15–30 minutes compared to Nozomi.",
+    q: "How do I buy shinkansen tickets as a tourist?",
+    a: "Book on JR's own smartEX site or app for the Tokaido, Sanyo and Kyushu lines (English, a registered credit card, QR-ticket boarding, ¥200 off every reserved seat), buy at a JR ticket office or machine at the station, or book on Klook before you fly. A reserved Nozomi seat from Tokyo costs ¥13,970 to Kyoto and ¥14,520 to Shin-Osaka on smartEX. Checked on smart-ex.jp, 17 Nov 2026.",
   },
   {
-    q: "Do I need to book Shinkansen tickets in advance?",
-    a: "For reserved seats, yes — especially during peak travel periods. Non-reserved carriages are available without advance booking, but you risk standing on a busy service. On the Tokaido Shinkansen (Tokyo–Osaka), trains run every few minutes, so if one non-reserved carriage is full, the next departure is rarely far away.",
+    q: "Can I buy shinkansen tickets on the day?",
+    a: "Yes. smartEX sells seats until 4 minutes before departure, and stations sell reserved and non-reserved tickets on the day. Non-reserved seats need no booking, except that every Nozomi car is reserved-only in JR Central's peak periods (next: 21–23 Nov 2026, 25 Dec 2026 – 5 Jan 2027, 9–11 Jan and 20–22 Mar 2027). Book ahead for a large suitcase, a group or a fixed connection.",
   },
   {
-    q: "Can I take luggage on the Shinkansen?",
-    a: "Yes. Standard luggage goes in the overhead rack above your seat. Bags with a total dimension exceeding 160cm (length + width + height) must be pre-booked into a designated oversized baggage space — free of charge, but must be reserved when you buy your ticket. There is no luggage check-in or storage service on the train.",
+    q: "Is the JR Pass still worth it in 2026?",
+    a: "Only for several long legs in one week. The 7-day Ordinary pass is ¥50,000 online (¥53,000 from an overseas agency), and a Nozomi ride needs a ¥4,960 ticket (Tokyo–Kyoto or Shin-Osaka) or ¥6,500 (Tokyo–Hiroshima) on top. A Tokyo–Kyoto return is ¥27,940 and a Tokyo–Kyoto–Hiroshima–Tokyo loop ¥45,270 on smartEX's reserved Nozomi prices, both under the pass. Checked on japanrailpass.net and smart-ex.jp, 17 Nov 2026.",
   },
   {
-    q: "Is the Shinkansen faster than flying within Japan?",
-    a: "For most routes under 4 hours, yes — once you factor in airport check-in, security, and city-centre transit time. Tokyo to Osaka takes about 2h 15min on Nozomi vs 3–4 hours door-to-door by plane. For routes over 5 hours (e.g. Tokyo–Sapporo), flying is faster in the air, but total journey times can still be comparable.",
+    q: "Do I need to reserve oversized luggage space?",
+    a: "Yes, if the bag's length + width + height is 161 to 250 cm. On the Tokaido, Sanyo and Kyushu Shinkansen you must reserve a seat with an oversized baggage area; it costs nothing extra, and boarding without one costs ¥1,000 including tax. Bags of 160 cm or less need no reservation, and anything over 250 cm cannot be carried on. Checked on JR Central's luggage page, 17 Nov 2026.",
   },
   {
-    q: "Can I eat on the Shinkansen?",
-    a: "Yes — eating on the Shinkansen is perfectly normal and part of Japanese travel culture. Station bento boxes (ekiben) are sold on platforms and in station buildings. Some services also have a food trolley in the aisle. Green Car and Gran Class passengers receive meal service on select routes.",
+    q: "How early should I book the shinkansen?",
+    a: "smartEX opens at 5:30 one year before the travel date and confirms the seat after 8:00 one month before; station and other reserved-seat sales start at 10:00 one month before. On an ordinary weekday a few days ahead is usually enough; book as soon as sales open for New Year, the peak periods above, or a seat with an oversized baggage area, which is limited per train.",
   },
 ];
 
-export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/transport/shinkansen-guide") } });
+const TITLE = "How to Buy Shinkansen Tickets 2026: Shinkansen Guide";
+const H1 = "Shinkansen Guide 2026: How to Buy Shinkansen Tickets, Prices & JR Pass";
+const DESCRIPTION =
+  "Shinkansen guide: how to buy shinkansen tickets on smartEX, at JR stations or on Klook. Tokyo–Kyoto ¥13,970, about 2h15. JR Pass ¥50,000 vs single fares.";
+const ROUTE = "/guides/transport/shinkansen-guide";
+const URL = `https://www.japan-travel-kit.com${ROUTE}`;
+
+export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
+
+function LastChecked({ sources }: { sources: { label: string; href: string }[] }) {
+  return (
+    <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+      Last checked: {CHECKED}.{" "}
+      {sources.map((src, i) => (
+        <span key={src.href}>
+          {i > 0 ? " · " : ""}
+          <a href={src.href} target="_blank" rel="noopener noreferrer">
+            {src.label}
+          </a>
+        </span>
+      ))}
+    </p>
+  );
+}
 
 export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
-        <title>Shinkansen Guide 2026 | Japan Travel Kit</title>
-        <meta
-          name="description"
-          content="Everything you need to know about Japan's bullet train. We cover ticket types, prices, JR Pass tips, and how to book — before your first ride."
-        />
-        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/shinkansen-guide" />
+        <title>{TITLE}</title>
+        <meta name="description" content={DESCRIPTION} />
+        <link rel="canonical" href={URL} />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Shinkansen Guide 2026 | Japan Travel Kit" />
-        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/shinkansen-guide" />
-        <meta property="og:description" content="Everything you need to know about Japan's bullet train. We cover ticket types, prices, JR Pass tips, and how to book — before your first ride." />
+        <meta property="og:title" content={TITLE} />
+        <meta property="og:url" content={URL} />
+        <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Shinkansen Guide 2026 | Japan Travel Kit" />
-        <meta name="twitter:description" content="Everything you need to know about Japan's bullet train. We cover ticket types, prices, JR Pass tips, and how to book — before your first ride." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESCRIPTION} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -162,8 +322,9 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
-              route: "/guides/transport/shinkansen-guide",
-              headline: "Shinkansen Guide 2026: Tickets, Passes & Tips for First-Timers",
+              route: ROUTE,
+              headline: H1,
+              description: DESCRIPTION,
               updated,
             }),
           }}
@@ -178,7 +339,7 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
                 { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
                 { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
                 { "@type": "ListItem", position: 3, name: "Transport & Getting Around", item: "https://www.japan-travel-kit.com/guides/transport" },
-                { "@type": "ListItem", position: 4, name: "Shinkansen Guide", item: "https://www.japan-travel-kit.com/guides/transport/shinkansen-guide" },
+                { "@type": "ListItem", position: 4, name: "Shinkansen Guide", item: URL },
               ],
             }),
           }}
@@ -211,14 +372,14 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Shinkansen Guide 2026:<br />Tickets, Passes &amp; Tips for First-Timers
+            Shinkansen Guide 2026:<br />How to Buy Shinkansen Tickets, Prices &amp; JR Pass
           </h1>
           <p className={styles.heroSubtitle}>
-            Japan&apos;s bullet train is fast, punctual, and easy to use —
-            once you know how. Here&apos;s everything you need before you board.
+            Where to buy, what each main route costs on JR&apos;s own smartEX, whether the JR Pass pays,
+            and when a seat has to be booked ahead.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "All Shinkansen Lines", "Beginner Friendly"].map((t) => (
+            {[`Updated ${updated.label}`, "JR's own fares, dated", "How-to-buy table", "Big-luggage rules"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -238,57 +399,243 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
           </p>
         </div>
 
-        {/* Quick Answer Box */}
+        {/* Lead paragraph: the whole answer, before anything else. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            To <strong>buy shinkansen tickets</strong> as a tourist, book on JR&apos;s own <strong>smartEX</strong>{" "}
+            site or app (English, credit card, QR-ticket boarding, from one year ahead to 4 minutes before
+            departure), at a JR ticket office or machine at the station, or on <strong>Klook</strong> before you
+            fly. On smartEX a reserved Nozomi seat from Tokyo costs <strong>¥13,970 to Kyoto</strong> (about 2h 15m),{" "}
+            <strong>¥14,520 to Shin-Osaka</strong> (2h 21m) and <strong>¥19,560 to Hiroshima</strong> (3h 39m). The
+            7-day JR Pass is now <strong>¥50,000</strong> online and leaves out the Nozomi, so a Tokyo–Kyoto return
+            (¥27,940) and even a Tokyo–Kyoto–Hiroshima–Tokyo loop (¥45,270) cost less as single tickets. Fares
+            checked on smart-ex.jp and japanrailpass.net, 17 Nov 2026.
+          </p>
+        </section>
+
+        {/* Quick Answer Box — main Klook shinkansen CTA */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
             <span className={styles.verdictLabel}>Quick Answer</span>
           </div>
           <div className={styles.verdictBody}>
-            <div className={styles.verdictGrid}>
+            <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Top Speed</p>
-                <p className={styles.verdictStatValue}>Up to 320 km/h</p>
+                <p className={styles.verdictStatLabel}>Cheapest way to book</p>
+                <p className={styles.verdictStatValue}>smartEX, ¥200 off reserved</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Tokyo → Kyoto</p>
-                <p className={styles.verdictStatValue}>~2h 15min</p>
+                <p className={styles.verdictStatLabel}>Tokyo → Kyoto, Nozomi</p>
+                <p className={styles.verdictStatValue}>About 2h 15m, ¥13,970</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Most Tourist-Friendly</p>
-                <p className={styles.verdictStatValue}>Tokaido Shinkansen</p>
+                <p className={styles.verdictStatLabel}>7-day JR Pass</p>
+                <p className={styles.verdictStatValue}>¥50,000 online</p>
+              </div>
+              <div className={styles.verdictStat}>
+                <p className={styles.verdictStatLabel}>Suitcase over 160 cm</p>
+                <p className={styles.verdictStatValue}>Reserve the seat, or pay ¥1,000</p>
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>Key rule:</strong> Nozomi and Mizuho (the fastest services) are <strong>not covered by the JR Pass</strong>.
-              Book reserved seats in advance for peak dates — services fill quickly on weekends and holidays.
+              <strong>What an answer box cannot do for you:</strong> hold the seat. Every Nozomi car is reserved-only
+              on 21–23 Nov, 25 Dec – 5 Jan, 9–11 Jan and 20–22 Mar, and seats with an oversized baggage area are
+              limited per train — book those dates and bags first.
             </p>
-            <KlookLink
-              href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
-              className={styles.verdictBtn}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-            >
-              Book Shinkansen Tickets on Klook →
-            </KlookLink>
+            <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+              <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+                Book Tokyo → Kyoto Shinkansen on Klook →
+              </KlookLink>
+              <KlookLink href={shinkansenTokyoOsaka.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+                Tokyo → Osaka tickets on Klook →
+              </KlookLink>
+              <KlookLink
+                href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
+                className={styles.pickCta}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+              >
+                Check the JR Pass on Klook →
+              </KlookLink>
+            </div>
           </div>
         </div>
 
         <KlookTripPrep
           headingLevel={3}
-          label="Book with the train"
-          heading="What to Book in Kyoto or Osaka With Your Seat"
-          intro="The Tokaido Shinkansen from Tokyo stops at Kyoto and ends at Shin-Osaka. The hotel at the other end, a city pass and a guided day are the bookings to settle in the same sitting."
-          items={[
-            kyotoArrivalShinkansenPrep[0],
-            kyotoArrivalShinkansenPrep[2],
-            osakaArrivalShinkansenPrep[0],
-            osakaArrivalShinkansenPrep[1],
-          ]}
+          label="Book the same day"
+          heading="What to Book for Your Arrival City the Same Day"
+          intro="The Tokaido Shinkansen from Tokyo stops at Kyoto and ends at Shin-Osaka. Tours in Kyoto and Osaka, the hotel by the station, a Kansai pass and the eSIM are the bookings to settle while the train is open in the next tab."
+          items={shinkansenGuideSameDayPrep}
         />
 
         <BookingEsimCard />
 
         <EsimCtaTop />
+
+        {/* Q1 — how to buy */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Booking</span>
+          <h2 className={styles.sectionTitle}>How Do I Buy Shinkansen Tickets as a Tourist?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Use smartEX for the Tokyo–Kyoto–Osaka–Hiroshima line: it is in English, takes ¥200 off every reserved
+            seat and lets you change trains free until 4 minutes before departure. Buy at the station if you are
+            already in Japan and flexible, and on Klook if you want the seat settled before you fly.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Way to buy", "Language", "Payment", "Seat choice", "Changes & refunds"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {buyRows.map((row) => (
+                    <tr key={row.way}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.way}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.language}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.payment}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.seat}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.change}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <LastChecked
+            sources={[
+              { label: "smartEX Service (JR Central / JR West / JR Kyushu)", href: "https://smart-ex.jp/en/product/plan/service/" },
+              { label: "JAPAN RAIL PASS prices", href: "https://japanrailpass.net/en/purchase/price/" },
+              { label: "NOZOMI/MIZUHO ticket for pass holders", href: "https://japanrailpass.net/en/use/special-ticket/" },
+            ]}
+          />
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            The station sale time (10:00 one month before) is from JR Central, read 12 Nov 2026. smartEX covers the
+            Tokaido, Sanyo and Kyushu Shinkansen only; the Hokuriku and Tohoku lines are booked through JR East or
+            JR West. No Klook price is printed here, because Klook&apos;s prices change by date.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Tokyo → Kyoto tickets on Klook →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* Q2 — routes, time and fare */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Price &amp; time</span>
+          <h2 className={styles.sectionTitle}>How Much Is the Shinkansen and How Long Does It Take?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            ¥14,520 and 2h 21m from Tokyo to Shin-Osaka on a reserved Nozomi seat booked on smartEX, the route most
+            visitors ride first. The Hikari is a few hundred yen cheaper and slower, and it is the train a JR Pass
+            covers without an extra ticket. Prices are one adult, regular season; reserved seats cost ¥200 more on
+            peak dates, ¥400 more in the top season and ¥200 less off-peak.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Route", "Time", "Nozomi reserved (smartEX)", "Hikari reserved (smartEX)", "On a JR Pass?"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {routeRows.map((row) => (
+                    <tr key={row.route}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>
+                        <Link href={row.href} style={{ color: "var(--red)", fontWeight: 600 }} title={row.anchor}>
+                          {row.route}
+                        </Link>
+                      </td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.time}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.86rem" }}>{row.nozomi}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.86rem" }}>{row.hikari}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.pass}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <LastChecked
+            sources={[
+              { label: "smartEX price lists (reserved, “As of April 1, 2025”)", href: "https://smart-ex.jp/en/product/plan/service/pdf/service_fares_reserved.pdf" },
+              { label: "JAPAN RAIL PASS NOZOMI/MIZUHO ticket", href: "https://japanrailpass.net/en/use/special-ticket/" },
+            ]}
+          />
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Times and the Tokyo–Kanazawa fare come from each route guide, where the source and date are listed:
+            the{" "}
+            <Link href="/guides/transport/tokyo-to-osaka-shinkansen">Tokyo to Osaka shinkansen guide</Link>,{" "}
+            <Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo shinkansen guide</Link>,{" "}
+            <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen">Tokyo to Hiroshima shinkansen guide</Link>,{" "}
+            <Link href="/guides/transport/tokyo-to-nagoya-shinkansen">Tokyo to Nagoya shinkansen guide</Link>,{" "}
+            <Link href="/guides/transport/tokyo-to-kanazawa">Tokyo to Kanazawa guide</Link> and{" "}
+            <Link href="/guides/transport/osaka-to-hiroshima-shinkansen">Osaka to Hiroshima shinkansen guide</Link>.
+            A non-reserved seat Tokyo–Kyoto is ¥13,320 on smartEX.
+          </p>
+        </section>
+
+        {/* Q3 — luggage */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Luggage</span>
+          <h2 className={styles.sectionTitle}>Do I Need to Reserve Oversized Luggage Space?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Yes, if your suitcase measures 161 to 250 cm in length + width + height: on the Tokaido, Sanyo and
+            Kyushu Shinkansen you must reserve a seat with an oversized baggage area. It costs nothing extra, but
+            board without one and JR charges ¥1,000, and when those seats are gone the answer is another train.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Bag size (3 sides)", "Where it goes", "Reservation & cost"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {luggageRows.map((row) => (
+                    <tr key={row.size}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.size}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.rule}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.cost}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <LastChecked
+            sources={[
+              { label: "JR Central luggage information", href: "https://global.jr-central.co.jp/en/info/oversized-baggage/" },
+            ]}
+          />
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Ask for the seat by name at a ticket office, choose it on a reserved-seat machine, or pick it in smartEX.
+            If you miss the reserved train, a non-reserved seat on a later train does not allow the oversized bag.
+          </p>
+        </section>
+
+        {/* Q4 — on the day / how early */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Timing</span>
+          <h2 className={styles.sectionTitle}>Can I Buy Shinkansen Tickets on the Day, and How Early Should I Book?</h2>
+          <p className={styles.bodyText}>
+            Yes on most days: smartEX sells until 4 minutes before departure and every station sells on the day.
+            Book as soon as sales open — 5:30 one year ahead on smartEX, 10:00 one month ahead at stations — for
+            the dates when every Nozomi car is reserved-only ({nozomiAllReservedPeriods.join("; ")}, as JR Central
+            listed them on 12 Nov 2026), for a seat with an oversized baggage area, and for a group that wants to
+            sit together.
+          </p>
+        </section>
 
         {/* What Is the Shinkansen? */}
         <section className={styles.bodySection}>
@@ -390,48 +737,16 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
           </div>
         </section>
 
-        {/* Prices */}
-        <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Costs</span>
-          <h2 className={styles.sectionTitle}>How Much Does the Shinkansen Cost?</h2>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["Route", "Non-reserved", "Reserved"].map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {ticketPrices.map((row) => (
-                    <tr key={row.route}>
-                      <td className={styles.tdProvider}>{row.route}</td>
-                      <td className={styles.tdPrice}>{row.nonReserved}</td>
-                      <td style={{ fontWeight: 600, color: "var(--sumi)" }}>{row.reserved}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Prices are for Nozomi services on the Tokaido Shinkansen (ordinary class).
-            Fares include the base fare and express surcharge. Green Car and Gran Class cost significantly more.
-            JR Pass holders travel at no additional charge on most services except Nozomi and Mizuho.
-            For the busiest route, the{" "}
-            <Link href="/guides/transport/tokyo-to-osaka-shinkansen" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Tokyo to Osaka shinkansen price and time guide
-            </Link>{" "}
-            lists every seat class on the Nozomi, Hikari and Kodama and where to book.
-          </p>
-        </section>
-
         {/* JR Pass vs Individual Tickets */}
         <section className={styles.prosConsSection}>
-          <span className={styles.sectionLabel}>Planning</span>
-          <h2 className={styles.sectionTitle}>JR Pass vs Buying Individual Tickets</h2>
+          <span className={styles.sectionLabel}>JR Pass</span>
+          <h2 className={styles.sectionTitle}>Is the JR Pass Still Worth It in 2026?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1.5rem" }}>
+            Only for several long legs in the same week. The 7-day Ordinary pass is ¥50,000 online and ¥53,000
+            from an overseas agency, while a Tokyo–Kyoto return is ¥27,940 and a Tokyo–Kyoto–Hiroshima–Tokyo loop
+            ¥45,270 on smartEX&apos;s reserved Nozomi prices — and the pass needs a ¥4,960 or ¥6,500 ticket on top
+            for each Nozomi ride. Checked on japanrailpass.net and smart-ex.jp, 17 Nov 2026.
+          </p>
           <div className={styles.pickGrid}>
             <div className={styles.pickPros}>
               <p className={styles.pickListLabel}>JR Pass makes sense if…</p>
@@ -451,20 +766,18 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.5rem" }}>
-            The JR Pass 7-day ordinary pass costs around ¥50,000. A round trip Tokyo–Kyoto on Nozomi costs
-            roughly ¥27,700 — so a pass only pays off if your itinerary includes multiple long-distance legs.
-            Use the{" "}
+            Add Kanazawa, Tohoku or a second Hiroshima trip and the sum can pass ¥50,000. Use the{" "}
             <Link href="/guides/transport/jr-pass-guide" style={{ color: "var(--red)", fontWeight: 600 }}>
               JR Pass Guide
             </Link>{" "}
-            to calculate your specific itinerary cost.
+            to price your own legs against the pass.
           </p>
         </section>
 
         {/* How to Buy */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Booking</span>
-          <h2 className={styles.sectionTitle}>How to Buy Shinkansen Tickets</h2>
+          <h2 className={styles.sectionTitle}>How to Buy Shinkansen Tickets, Step by Step</h2>
           <div className={styles.stepsList}>
             {buyingSteps.map((step, i) => (
               <div key={i} className={styles.stepCard}>
@@ -483,7 +796,7 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
             rel="noopener noreferrer nofollow"
             style={{ marginTop: "1.5rem", display: "inline-block" }}
           >
-            Book Shinkansen Tickets on Klook →
+            Check the JR Pass on Klook →
           </KlookLink>
         </section>
 
@@ -507,7 +820,7 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>
-          <h2 className={styles.sectionTitle}>Common Questions</h2>
+          <h2 className={styles.sectionTitle}>Shinkansen Ticket Questions</h2>
           <div className={styles.faqList}>
             {faqItems.map((item, i) => (
               <details key={item.q} className={styles.faqItem}>
@@ -707,15 +1020,18 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>Book your Shinkansen tickets now</h2>
             <p className={styles.ctaBannerDesc}>
-              Reserve your seats before you fly — popular services fill up fast on weekends and public holidays.
+              Reserve your seats before you fly — all Nozomi cars are reserved-only on peak dates, and oversized-baggage seats are limited per train.
             </p>
+            <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
+              Book Shinkansen Tickets on Klook →
+            </KlookLink>{" "}
             <KlookLink
               href="https://affiliate.klook.com/redirect?aid=119070&aff_adid=1264855&k_site=https%3A%2F%2Fwww.klook.com%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass%2F"
               className={styles.ctaBannerBtn}
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
-              Book on Klook →
+              Check the JR Pass on Klook →
             </KlookLink>
           </div>
         </div>

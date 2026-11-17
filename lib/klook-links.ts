@@ -9066,6 +9066,46 @@ export const kyotoArrivalShinkansenPrep: KlookTripPrepItem[] = [
   },
 ];
 
+/**
+ * shinkansen-guide, directly under its main Klook shinkansen button — added 17 Nov 2026
+ * (task jtk-20261117-03, daily PDCA queue F). The ticket itself pays 2%, so the block
+ * lists what to settle for the arrival city on the same day: Kyoto and Osaka tours and
+ * hotels (6.5%), the Kansai passes (5%) and the Klook eSIM (20%). No new Klook ids:
+ * every url reads out of an existing constant.
+ */
+export const shinkansenGuideSameDayPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.kyotoHighlightTour,
+    why: "Kinkaku-ji, Fushimi Inari and Arashiyama sit on different sides of Kyoto, so a guided day removes three transfers from the first full day after the train.",
+  },
+  {
+    ...tripPrepProducts.kyotoNaraTour,
+    why: "Kiyomizu-dera, Fushimi Inari and Nara Park in one guided booking, if Kyoto is the stop and Nara is the side trip.",
+  },
+  {
+    ...tripPrepProducts.hotelKyotoStation,
+    why: "Every Tokaido Shinkansen train stops at Kyoto Station, so the room is minutes from the platform on arrival and on the morning you leave.",
+  },
+  {
+    ...tripPrepProducts.hotelOsakaUmeda,
+    why: "Umeda is two Midosuji Line stops from Shin-Osaka, where the Nozomi from Tokyo ends.",
+  },
+  {
+    label: jrKansaiAreaPass.title,
+    ctaLabel: "Check the Kansai pass →",
+    url: jrKansaiAreaPass.url,
+    why: "JR West trains between Kyoto, Osaka, Nara and Kobe for 1 to 4 days, for the days after the shinkansen when every ride is short.",
+  },
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "Osaka Metro and city buses from the moment you leave Shin-Osaka, with the castle and the river cruises on the same pass.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The QR ticket, the seat change before departure and the hotel map at the other end are all on your phone, so data from the platform onward matters.",
+  },
+];
+
 /** Arriving in Hiroshima (tokyo-to-hiroshima-shinkansen, osaka-to-hiroshima-shinkansen). */
 export const hiroshimaArrivalShinkansenPrep: KlookTripPrepItem[] = [
   {

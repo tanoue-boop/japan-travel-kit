@@ -901,7 +901,11 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             ))}
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            For a deeper look at buying single tickets and using the Shinkansen, see our{" "}
+            If the sums say single tickets, the step-by-step on{" "}
+            <Link href="/guides/transport/shinkansen-guide" style={{ color: "var(--red)", fontWeight: 600 }}>
+              how to buy shinkansen tickets
+            </Link>{" "}
+            compares smartEX, the station and Klook. For a deeper look at using the Shinkansen, see our{" "}
             <Link href="/guides/transport/shinkansen-guide" style={{ color: "var(--red)", fontWeight: 600 }}>
               Shinkansen guide
             </Link>{" "}

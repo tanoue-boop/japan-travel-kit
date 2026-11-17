@@ -444,7 +444,9 @@ export default function GuidesTransportPage({ updated, dates }: { updated: PageU
               <p className={styles.bodyText}>
                 {faqItems[1].a} The{" "}
                 <Link href="/guides/transport/shinkansen-guide" style={L}>shinkansen guide</Link> explains Nozomi, Hikari
-                and reserved seats; the pass only covers the Nozomi with the extra NOZOMI MIZUHO Ticket.
+                and reserved seats; the pass only covers the Nozomi with the extra NOZOMI MIZUHO Ticket. Its table of{" "}
+                <Link href="/guides/transport/shinkansen-guide" style={L}>how to buy shinkansen tickets</Link> sets
+                smartEX, the station counter, Klook and the pass side by side on language, payment and refunds.
               </p>
             </section>
             <section className={styles.bodySection}>

@@ -631,7 +631,9 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
             <Link href="/guides/transport/tokyo-to-kyoto">Tokyo to Kyoto guide</Link> compares the bus and the
             train for that leg, and the{" "}
             <Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo shinkansen guide</Link> covers
-            the ride back.
+            the ride back. For every other leg, the{" "}
+            <Link href="/guides/transport/shinkansen-guide">how to buy shinkansen tickets</Link> table compares
+            smartEX, the station, Klook and the JR Pass, with the big-luggage seat rules.
           </p>
 
           <h3 className={styles.sectionTitle} style={{ fontSize: "1.1rem", marginTop: "1.5rem" }}>

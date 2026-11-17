@@ -411,7 +411,10 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
             <strong>Foreign cards on smartEX.</strong> smartEX accepts Visa, Mastercard, JCB, American Express,
             Diners Club and Discover, and you can book from outside Japan. The card must work with 3-D Secure,
             and debit or prepaid cards may be refused. If yours will not register, Klook sells the same route
-            by date and seat class.
+            by date and seat class. The{" "}
+            <Link href="/guides/transport/shinkansen-guide">how to buy shinkansen tickets</Link> table in our
+            shinkansen guide compares smartEX, the station counter, Klook and the JR Pass on payment, seat choice
+            and refunds.
           </p>
           <p className={styles.bodyText}>
             Going further along the line? Our{" "}
