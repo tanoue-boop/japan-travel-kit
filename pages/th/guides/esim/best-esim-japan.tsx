@@ -570,7 +570,7 @@ export default function ThBestEsimJapanPage({ updated }: { updated: PageUpdated 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>ตรวจสอบราคา {pricesCheckedAt}｜อัปเดต {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            eSIM ญี่ปุ่น 2026:<br />เทียบ 6 เจ้า (ตารางราคา)
+            eSIM ญี่ปุ่น 2026: <br />เทียบ 6 เจ้า (ตารางราคา)
           </h1>
           <p className={styles.heroSubtitle}>
             เทียบเครือข่าย ราคา 10 GB เน็ตไม่จำกัด เบอร์โทรญี่ปุ่น และการแชร์เน็ตของ eSIM ญี่ปุ่น 6 เจ้า พร้อมบอกว่าทริปแบบไหนควรเลือกเจ้าไหน

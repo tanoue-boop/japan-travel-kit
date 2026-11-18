@@ -564,7 +564,7 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>价格核查时间 {pricesCheckedAt}</p>
           <h1 className={styles.heroTitle}>
-            日本eSIM推荐 2026：<br />6 家流量卡对比（价格表）
+            日本eSIM推荐 2026： <br />6 家流量卡对比（价格表）
           </h1>
           <p className={styles.heroSubtitle}>
             6 家日本 eSIM 的网络、10 GB 价格、无限流量、电话号码与热点共享一次对比，并告诉你哪种行程该选哪一家。

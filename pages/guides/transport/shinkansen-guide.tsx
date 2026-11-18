@@ -352,15 +352,15 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/transport" className={styles.breadLink}>Transport</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Shinkansen Guide</span>
         </div>
       </div>
@@ -372,7 +372,7 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Shinkansen Guide 2026:<br />How to Buy Shinkansen Tickets, Prices &amp; JR Pass
+            Shinkansen Guide 2026: <br />How to Buy Shinkansen Tickets, Prices &amp; JR Pass
           </h1>
           <p className={styles.heroSubtitle}>
             Where to buy, what each main route costs on JR&apos;s own smartEX, whether the JR Pass pays,

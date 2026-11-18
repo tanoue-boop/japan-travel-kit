@@ -453,15 +453,15 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Otaru Day Trip from Sapporo</span>
         </div>
       </div>
@@ -471,7 +471,7 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Otaru Day Trip from Sapporo:<br />¥800 and 35 Minutes by JR, and How Long to Stay
+            Otaru Day Trip from Sapporo: <br />¥800 and 35 Minutes by JR, and How Long to Stay
           </h1>
           <p className={styles.heroSubtitle}>
             {JR_FARE} and {JR_FAST} on a train that runs several times an hour. The canal is half an

@@ -392,7 +392,7 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <h1 className={styles.heroTitle}>
-            澀谷 SKY（SHIBUYA SKY）門票（2026）：<br />票價、開放時間與日落時段
+            澀谷 SKY（SHIBUYA SKY）門票（2026）： <br />票價、開放時間與日落時段
           </h1>
           <p className={styles.heroSubtitle}>
             東京最佳的屋頂觀景視野——澀谷十字路口上方 229 公尺。兩種時段票價、提前兩週開放購票，

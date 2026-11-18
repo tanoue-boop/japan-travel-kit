@@ -338,7 +338,7 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            东京必去景点 2026：<br />东京景点门票价格与预约清单
+            东京必去景点 2026： <br />东京景点门票价格与预约清单
           </h1>
           <p className={styles.heroSubtitle}>
             东京热门景点的官方门票价格、哪些要先订、哪些免费，

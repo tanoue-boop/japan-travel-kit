@@ -402,7 +402,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <h1 className={styles.heroTitle}>
-            涩谷SKY门票 2026：<br />价格、预约时间与日落时段
+            涩谷SKY门票 2026： <br />价格、预约时间与日落时段
           </h1>
           <p className={styles.heroSubtitle}>
             东京最好的露天观景体验，位于涩谷十字路口上方 229 米。票价分为两档，提前两周开放预订，

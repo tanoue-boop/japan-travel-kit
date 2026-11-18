@@ -629,7 +629,7 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>價格查詢日期：{pricesCheckedAt}</p>
           <h1 className={styles.heroTitle}>
-            日本 eSIM 推薦 2026：<br />Klook 網卡與 6 家日本 eSIM 比較
+            日本 eSIM 推薦 2026： <br />Klook 網卡與 6 家日本 eSIM 比較
           </h1>
           <p className={styles.heroSubtitle}>
             日本 eSIM 比較：Klook 網卡的買法，加上 6 家日本 eSIM 的 7 天／15 天價格、網路、吃到飽、電話號碼與熱點分享，告訴你哪種行程該選哪一家。

@@ -332,15 +332,15 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Yufuin and Beppu Tour from Fukuoka</span>
         </div>
       </div>
@@ -350,7 +350,7 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            {H1_LINE}<br />Tour vs Train, Times and Fares
+            {H1_LINE} <br />Tour vs Train, Times and Fares
           </h1>
           <p className={styles.heroSubtitle}>
             Two hot spring towns in one long day from Fukuoka. The choice is which stops your coach makes, and

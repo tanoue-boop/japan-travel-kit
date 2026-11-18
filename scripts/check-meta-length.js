@@ -1,6 +1,6 @@
 /**
- * Title and meta-description length audit. Runs at the end of every build and never
- * fails it.
+ * Title and meta-description length audit, plus a glued-H1/breadcrumb text check (see
+ * the note in the loop). Runs at the end of every build and never fails it.
  *
  *   npm run build                       # runs this as the last step
  *   node scripts/check-meta-length.js   # re-run against the existing build output
@@ -117,6 +117,7 @@ function len(s) {
 const files = walk(BUILD_DIR).filter((f) => !SKIP.has(routeOf(f)));
 const rows = [];
 const warnings = [];
+const glue = [];
 
 for (const file of files.sort()) {
   const route = routeOf(file);
@@ -143,6 +144,18 @@ for (const file of files.sort()) {
   else if (titleLen > budget.title) {
     warnings.push(`${route}: title ${titleLen} > ${budget.title} (${locale}) — "${title}"`);
   }
+
+  // Glued text before the body copy (Nov 2026). Google rewrites a result title from the
+  // page's leading text when it distrusts <title>, and both of these read as one run-on
+  // string once tags are stripped: "Shibuya Sky Tickets 2026:Price, …" from an H1 split
+  // by a bare <br />, and "HomeGuidesThings to Do…" from a breadcrumb separated only by
+  // SVG chevrons. Fix: a space before the <br /> in the H1, and
+  // <span className="sr-only"> / </span> right after each styles.breadSep chevron.
+  const body = (markup.split("<body")[1] || "").replace(/<script[\s\S]*?<\/script>/g, "");
+  const h1 = (body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/) || [])[1] || "";
+  if (/[^\s>]<br ?\/?>[^\s<]/.test(h1)) glue.push(`${route}: H1 text glued across <br />`);
+  const crumb = (body.match(/class="[^"]*breadcrumbInner[^"]*"[^>]*>([\s\S]*?)<\/div>/) || [])[1] || "";
+  if (/<\/svg>(?!<span class="sr-only">)/.test(crumb)) glue.push(`${route}: breadcrumb chevron without sr-only separator`);
 
   if (!desc) warnings.push(`${route}: no meta description`);
   else if (descLen < budget.descMin || descLen > budget.descMax) {
@@ -186,6 +199,14 @@ if (warnings.length) {
   console.warn("");
 } else {
   console.log("  ✓ every title and description is within its budget\n");
+}
+
+if (glue.length) {
+  console.warn(`! ${glue.length} page(s) with glued H1/breadcrumb text:`);
+  for (const line of glue) console.warn(`  - ${line}`);
+  console.warn("");
+} else {
+  console.log("  ✓ no glued H1 or breadcrumb text\n");
 }
 
 process.exit(0);

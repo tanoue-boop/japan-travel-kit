@@ -287,7 +287,7 @@ export default function ZhDotonboriRiverCruisePage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新於 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            道頓堀遊船（2026）：<br />票價、班次時間與とんぼり那一艘
+            道頓堀遊船（2026）： <br />票價、班次時間與とんぼり那一艘
           </h1>
           <p className={styles.heroSubtitle}>
             成人 ¥2,000、約 20 分鐘，11:00 到 21:00 之間從太左衛門橋碼頭每半小時一班——只要在傍晚的船

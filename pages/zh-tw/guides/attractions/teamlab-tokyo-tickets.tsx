@@ -153,7 +153,7 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新於 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            teamLab Planets 與無界比較（2026）：<br />東京該訂哪一間
+            teamLab Planets 與無界比較（2026）： <br />東京該訂哪一間
           </h1>
           <p className={styles.heroSubtitle}>
             東京有兩間 teamLab 美術館，門票各自分開。這裡整理兩間的差別，以及該訂哪一間。

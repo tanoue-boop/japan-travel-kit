@@ -473,15 +473,15 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/attractions" className={styles.breadLink}>Things to Do</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Shibuya Sky Tickets</span>
         </div>
       </div>
@@ -493,7 +493,7 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Shibuya Sky Tickets 2026:<br />Price, Sunset Slots &amp; How to Book
+            Shibuya Sky Tickets 2026: <br />Price, Sunset Slots &amp; How to Book
           </h1>
           <p className={styles.heroSubtitle}>
             Tokyo&apos;s best rooftop view — 229 metres above the Scramble Crossing. Two price bands, a

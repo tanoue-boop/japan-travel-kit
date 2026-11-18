@@ -742,15 +742,15 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
           <Link href="/" className={styles.breadLink}>Home</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides" className={styles.breadLink}>Guides</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <Link href="/guides/transport" className={styles.breadLink}>Transport</Link>
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          </svg><span className="sr-only"> / </span>
           <span className={styles.breadCurrent}>Tokyo Airport Transfer</span>
         </div>
       </div>
@@ -762,7 +762,7 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Tokyo Airport Transfer 2026:<br />Narita &amp; Haneda to Tokyo Fares, N&apos;EX vs Skyliner
+            Tokyo Airport Transfer 2026: <br />Narita &amp; Haneda to Tokyo Fares, N&apos;EX vs Skyliner
           </h1>
           <p className={styles.heroSubtitle}>
             Every fare and journey time below comes from the operators&apos; own sites, read on {CHECKED}; the taxi

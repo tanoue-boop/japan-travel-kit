@@ -326,7 +326,7 @@ export default function ZhThingsToDoTokyoPage({ updated }: { updated: PageUpdate
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新於 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            東京自由行景點 2026：<br />必去清單與門票價格
+            東京自由行景點 2026： <br />必去清單與門票價格
           </h1>
           <p className={styles.heroSubtitle}>
             東京熱門景點的官方門票價格、哪些要先訂、哪些免費，

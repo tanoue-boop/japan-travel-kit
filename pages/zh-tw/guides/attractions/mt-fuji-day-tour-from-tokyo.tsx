@@ -218,7 +218,7 @@ export default function ZhMtFujiDayTourPage({ updated }: { updated: PageUpdated 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新於 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            富士山一日遊（東京出發．2026）：<br />行程怎麼選、實際會看到什麼
+            富士山一日遊（東京出發．2026）： <br />行程怎麼選、實際會看到什麼
           </h1>
           <p className={styles.heroSubtitle}>
             每一個行程都會停 Subaru Line 五合目。差別在於這一天剩下的時間給了富士山還是箱根——
