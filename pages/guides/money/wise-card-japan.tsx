@@ -383,6 +383,9 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
           </div>
         </div>
 
+        {/* Moved up from after "How to Use Wise in Japan" (task jtk-20261118-P01): Simbye 25%, Klook eSIM 20%. */}
+        <BookingEsimCard lead="Card sorted? Get mobile data before you land." />
+
         {/* The allowance table — the part a one-line AI answer cannot get right */}
         <section className={styles.comparisonSection} id="atm-fees">
           <span className={styles.sectionLabel}>Country by country</span>
@@ -635,8 +638,6 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
             Visit Wise →
           </a>
         </section>
-
-        <BookingEsimCard lead="Card sorted? Get mobile data before you land." />
 
         {/* Pros & Cons */}
         <section className={styles.prosConsSection}>

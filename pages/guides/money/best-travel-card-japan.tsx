@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -566,6 +567,9 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
             Open a Wise account →
           </a>
         </section>
+
+        {/* eSIM card next to the answer (task jtk-20261118-P01): Simbye 25%, Klook eSIM 20%. */}
+        <BookingEsimCard lead="Card chosen? Get mobile data before you land." />
 
         {/* What to Look For */}
         <section className={styles.installSection}>

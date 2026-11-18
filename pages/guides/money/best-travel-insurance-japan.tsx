@@ -5,6 +5,8 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import KlookTripPrep from "../../../components/KlookTripPrep";
+import { japanTravelInsuranceTripPrep } from "../../../lib/klook-links";
 
 // SafetyWing is the only approved insurance affiliate. Heymondo and World Nomads stay plain.
 const SAFETYWING_URL = "https://safetywing.com/nomad-insurance?referenceID=26614156&utm_source=26614156&utm_medium=Ambassador";
@@ -427,6 +429,15 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
             <a href={WORLDNOMADS_URL} target="_blank" rel={PLAIN_REL}>World Nomads</a>.
           </p>
         </section>
+
+        {/* Arrival-day bookings next to the answer (task jtk-20261118-P01): airport trains 5%, Klook eSIM 20%. */}
+        <KlookTripPrep
+          label="Book on the same trip"
+          heading="What Else to Book Before You Fly to Japan"
+          intro="Insurance covers the trip going wrong. These cover arrival day: a reserved train from the airport and data on your phone for the assistance line and the hospital search."
+          items={japanTravelInsuranceTripPrep}
+          headingLevel={3}
+        />
 
         {/* 2. Prices. */}
         <section className={styles.comparisonSection}>

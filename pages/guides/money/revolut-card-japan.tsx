@@ -347,6 +347,9 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
           </p>
         </section>
 
+        {/* Moved up from after "How to Use Revolut in Japan" (task jtk-20261118-P01): Simbye 25%, Klook eSIM 20%. */}
+        <BookingEsimCard lead="Revolut ready? Get mobile data before you land." />
+
         {/* Fee table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Fees</span>
@@ -499,8 +502,6 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
             Visit Revolut →
           </a>
         </section>
-
-        <BookingEsimCard lead="Revolut ready? Get mobile data before you land." />
 
         {/* Pros & Cons */}
         <section className={styles.prosConsSection}>

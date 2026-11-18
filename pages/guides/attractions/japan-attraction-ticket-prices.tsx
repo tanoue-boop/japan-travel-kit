@@ -22,7 +22,9 @@ import {
   type AttractionPrice,
   type PriceGroup,
 } from "../../../lib/attraction-prices";
+import KlookTripPrep from "../../../components/KlookTripPrep";
 import {
+  attractionsHubSameTripPrep,
   fujiHakoneDayTour,
   hakoneFreepass,
   hakoneLoopBusTour,
@@ -622,6 +624,15 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
             </p>
           </div>
         </div>
+
+        {/* Bookings next to the answer (task jtk-20261118-P01): day tours 6.5%, Osaka Amazing Pass 5%, Klook eSIM 20%. */}
+        <KlookTripPrep
+          label="Book on the same trip"
+          heading="Tours, Passes and Data to Book With Your Tickets"
+          intro="If you are booking the advance-only tickets in the answer above, these are the other parts of the same trip that can be booked online before you fly:"
+          items={attractionsHubSameTripPrep}
+          headingLevel={3}
+        />
 
         <EsimCtaTop />
 
