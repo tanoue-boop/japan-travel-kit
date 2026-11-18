@@ -57,7 +57,7 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  *
  * Carried with their own dates: Nagoya Castle ¥1,000, 9:00–16:30, keep closed, Nagoyajo Exit 7
  * 5 min, Osu Kannon Exit 2 3 min, Nagoya → Kyoto 33 min / Shin-Osaka 47 min, smartEX ¥5,710 /
- * ¥6,480 (14 Nov 2026, nagoya-castle-tickets); Tokyo → Nagoya 1h26m fastest and smartEX ¥11,100
+ * ¥6,480 (14 Nov 2026, nagoya-castle-tickets); Tokyo → Nagoya 1h33m fastest and smartEX ¥11,100
  * (28 Oct 2026, tokyo-to-nagoya-shinkansen); Ghibli Park Tuesday closure (12 Nov 2026); Meitetsu
  * direct bus 40 min / ¥1,200, Linimo ¥400, Aonami Line 24 min / ¥360, LEGOLAND from ¥4,900~ and
  * its 2–12 target age (26 Oct 2026, ghibli-park-tickets and legoland-japan-tickets).
@@ -167,7 +167,7 @@ const day1: Stop[] = [
   {
     time: "14:00",
     place: "Arrive from Tokyo instead? Start here: castle after lunch, Osu after",
-    allow: "Tokyo → Nagoya 1h26m on the fastest NOZOMI",
+    allow: "Tokyo → Nagoya 1h33m on the fastest NOZOMI",
     getting: "Tokaido Shinkansen, then the subway from Nagoya Station",
     booking: `A reserved seat (smartEX ${SMART_EX_TOKYO})`,
   },
@@ -246,7 +246,7 @@ const day2Lego: Stop[] = [
 const transportRows = [
   {
     route: "Tokyo → Nagoya, Tokaido Shinkansen",
-    time: "1h26m fastest NOZOMI, no change",
+    time: "1h33m fastest NOZOMI, no change",
     fare: `${SMART_EX_TOKYO} smartEX NOZOMI reserved, regular season`,
     note: "JR Pass covers the HIKARI, not the NOZOMI",
     source: RAIL,
@@ -341,7 +341,7 @@ const faqItems = [
   },
   {
     q: "Is Nagoya worth visiting?",
-    a: "Yes, as a stop between Tokyo and Kyoto rather than a detour: it is 1h26m from Tokyo and 33 minutes from Kyoto on the fastest NOZOMI. It has Ghibli Park and LEGOLAND Japan, and the castle's rebuilt Hommaru Palace is open even though the keep is closed.",
+    a: "Yes, as a stop between Tokyo and Kyoto rather than a detour: it is 1h33m from Tokyo and 33 minutes from Kyoto on the fastest NOZOMI. It has Ghibli Park and LEGOLAND Japan, and the castle's rebuilt Hommaru Palace is open even though the keep is closed.",
   },
   {
     q: "Can you do Ghibli Park as a day trip from Nagoya?",
@@ -361,7 +361,7 @@ const faqItems = [
   },
   {
     q: "How do I get from Tokyo to Nagoya?",
-    a: `By Tokaido Shinkansen: 1h26m on the fastest NOZOMI, ${SMART_EX_TOKYO} for a reserved seat on smartEX in the regular season (${RAIL}). A JR Pass covers the HIKARI, not the NOZOMI.`,
+    a: `By Tokaido Shinkansen: 1h33m on the fastest NOZOMI, ${SMART_EX_TOKYO} for a reserved seat on smartEX in the regular season (${RAIL}). A JR Pass covers the HIKARI, not the NOZOMI.`,
   },
   {
     q: "What food should I eat in Nagoya?",
@@ -530,7 +530,7 @@ export default function Nagoya2DayItineraryPage({ updated }: { updated: PageUpda
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>From Tokyo</p>
-                <p className={styles.verdictStatValue}>1h26m by NOZOMI, {SMART_EX_TOKYO}</p>
+                <p className={styles.verdictStatValue}>1h33m by NOZOMI, {SMART_EX_TOKYO}</p>
               </div>
             </div>
             {/* Answer-first: the first body paragraph, not the hero line. */}
@@ -540,7 +540,7 @@ export default function Nagoya2DayItineraryPage({ updated }: { updated: PageUpda
               the Osu arcades, then Sakae and a dinner of hitsumabushi or miso-katsu. On <strong>Day 2</strong>, go to{" "}
               <strong>Ghibli Park — 40 minutes by direct bus from Nagoya Station</strong> — or{" "}
               <strong>LEGOLAND Japan, 24 minutes on the Aonami Line</strong>. From Tokyo, the NOZOMI takes{" "}
-              <strong>1h26m</strong> at <strong>{SMART_EX_TOKYO}</strong> reserved. Ghibli Park tickets go on sale two
+              <strong>1h33m</strong> at <strong>{SMART_EX_TOKYO}</strong> reserved. Ghibli Park tickets go on sale two
               months ahead on the 10th at 14:00 JST — February 2027 dates on 10 December 2026. Park figures read on the
               official sites {OWN}; castle {CASTLE}; rail {RAIL}.
             </p>
@@ -809,8 +809,10 @@ export default function Nagoya2DayItineraryPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>Worth it?</span>
           <h2 className={styles.sectionTitle}>Is Nagoya Worth Visiting?</h2>
           <p className={styles.bodyText}>
-            Yes, as a stop on the Tokyo–Kyoto line rather than a detour: Nagoya is 1h26m from Tokyo and 33 minutes
-            from Kyoto on the fastest NOZOMI. It has Ghibli Park and LEGOLAND Japan, the country&apos;s only LEGOLAND resort, and a castle
+            Yes, as a stop on the Tokyo–Kyoto line rather than a detour: Nagoya is from 1h33m from Tokyo on a NOZOMI
+            (JR Central&apos;s timetable, 18 Nov 2026) and 33 minutes from Kyoto on the fastest NOZOMI — our{" "}
+            <Link href="/guides/transport/tokyo-to-nagoya-shinkansen">Tokyo to Nagoya Shinkansen</Link> guide has
+            every train type and the ¥11,100 smartEX fare. It has Ghibli Park and LEGOLAND Japan, the country&apos;s only LEGOLAND resort, and a castle
             whose palace you can go into. If you get off here, buy separate tickets for each leg — Tokyo to Nagoya,
             then Nagoya to Kyoto or Shin-Osaka.
           </p>

@@ -93,7 +93,7 @@ const boatRows = [
 const whoFor = [
   {
     title: "Book a yakatabune if…",
-    desc: `The meal is the point and you want the traditional version. The Tokyo Yakatabune Cooperative lists cruising times of 2 to 2 hours 30 minutes from ¥13,000 per person, with the yakatabune meal and free-flowing drinks in the price, and departures at a time you choose between 11:00 and 20:00. The catch is the group size: a charter needs 15 people from Monday to Thursday and 20 from Friday to Sunday, so couples and pairs book a joined boat (noriai), which takes bookings from two people. Read off the cooperative's own site on ${CHECKED}.`,
+    desc: `The meal is the point and you want the traditional version. The Tokyo Yakatabune Cooperative lists cruising times of 2 to 2 hours 30 minutes from ¥13,000 per person, with the yakatabune meal and free-flowing drinks in the price, and departures at a time you choose between 11:00 and 20:00. The catch is the group size: a charter takes 10 to 120 adults, with a higher minimum at weekends and in July–September, so couples and pairs book a joined boat (noriai), which takes bookings from two people. Read off the cooperative's own site on ${CHECKED}.`,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 17h18l-2 4H5z" />
@@ -137,7 +137,7 @@ const steps = [
   },
   {
     title: "Check the group minimum before you plan a yakatabune",
-    desc: `Two people cannot charter a houseboat. The cooperative publishes minimums of 15 people Monday to Thursday and 20 from Friday to Sunday for a private boat, and sells joined boats — where your group shares the vessel with others at a separate table — from two people. If you are a couple, the joined boat is the booking, and the listings on Klook are mostly that format.`,
+    desc: `Two people cannot charter a houseboat. The cooperative publishes a range of 10 to 120 adults for a private boat, with a higher minimum at weekends and in July–September, and sells joined boats — where your group shares the vessel with others at a separate table — from two people. If you are a couple, the joined boat is the booking, and the listings on Klook are mostly that format.`,
   },
   {
     title: "Book the dates that sell out, early",
@@ -153,10 +153,78 @@ const steps = [
   },
 ];
 
+/** Re-read on the operators' own sites for the 18 Nov 2026 pass (task R-series, Nov 18). */
+const FARES_ISO = "2026-11-18";
+const FARES_CHECKED = checkedLabel(FARES_ISO);
+
+/**
+ * The fare table at the top of the page. First row is the answer. Every figure was read on
+ * 18 Nov 2026 off suijobus.co.jp/en/price/ (Tokyo Cruise), the Symphony's afternoon and
+ * dinner plan pages on symphony-cruise.co.jp, and yakatabune-kumiai.jp.
+ */
+const fareRows = [
+  {
+    boat: "Cheapest Tokyo Bay cruise: Tokyo Cruise water bus, Hinode Pier → Odaiba Seaside Park",
+    fare: "¥600 adult / ¥300 child",
+    time: "About 20 min",
+    source: "suijobus.co.jp",
+  },
+  {
+    boat: "Tokyo Cruise water bus, Asakusa → Hinode Pier",
+    fare: "¥1,000 adult / ¥500 child (¥1,400 on Hotaluna)",
+    time: "About 40 min",
+    source: "suijobus.co.jp",
+  },
+  {
+    boat: "Tokyo Cruise Hotaluna or Emeraldas, Asakusa → Odaiba Seaside Park",
+    fare: "¥2,000 adult / ¥1,000 child",
+    time: "About 55–60 min",
+    source: "suijobus.co.jp",
+  },
+  {
+    boat: "Tokyo Cruise Himiko, Asakusa → Toyosu",
+    fare: "¥2,600 adult / ¥1,300 child",
+    time: "About 90 min",
+    source: "suijobus.co.jp",
+  },
+  {
+    boat: "Symphony afternoon cruise, boarding only (Hinode Pier)",
+    fare: "¥1,800 adult / ¥900 child",
+    time: "15:00–15:50",
+    source: "symphony-cruise.co.jp",
+  },
+  {
+    boat: "Symphony dinner cruise, boarding only (Hinode Pier)",
+    fare: "¥4,400 adult / ¥2,200 child",
+    time: "19:00–21:30",
+    source: "symphony-cruise.co.jp",
+  },
+  {
+    boat: "Symphony dinner cruise with an Italian course",
+    fare: "From ¥14,000 Mon–Fri, ¥15,000 weekends and holidays",
+    time: "19:00–21:30",
+    source: "symphony-cruise.co.jp",
+  },
+  {
+    boat: "Yakatabune houseboat (Tokyo Yakatabune Cooperative)",
+    fare: "Usually ¥13,000 adult, meal and free-flowing drinks included",
+    time: "About 2 hr to 2 hr 30 min",
+    source: "yakatabune-kumiai.jp",
+  },
+];
+
 const faqItems = [
   {
-    q: "How much does a Tokyo Bay cruise cost?",
-    a: `It depends entirely on which boat, and the range is wide. On the Symphony, the cruising restaurant at Hinode Pier, a boarding-only ticket is ¥1,800 for an adult and ¥900 for a child on the 50-minute afternoon sailing, ¥3,600 and ¥1,800 on the lunch and sunset sailings, and ¥4,400 and ¥2,200 on the dinner sailing. Add a meal and the cheapest plans are ¥2,800 for the afternoon tea-time plan on a weekday and ¥9,000 for the lunch Italian course, rising to ¥14,000 on a weekday dinner. A yakatabune houseboat starts at ¥13,000 per person with the meal and free-flowing drinks included. If you only want to be on the water, the Tokyo Cruise water bus from Hinode Pier to Odaiba Seaside Park is ¥600. All read off the operators' own sites on ${CHECKED}.`,
+    q: "How much is a Tokyo Bay cruise?",
+    a: `From ¥600 to about ¥15,000 per adult, depending on the boat. The Tokyo Cruise water bus from Hinode Pier to Odaiba Seaside Park is ¥600 (about 20 minutes); the Symphony sells boarding-only seats from ¥1,800 on its 50-minute afternoon sailing to ¥4,400 on its dinner sailing, with a dinner course from ¥14,000 on weekdays; and a yakatabune houseboat is usually ¥13,000 with the meal and drinks included. Read on the operators' own sites on ${FARES_CHECKED}.`,
+  },
+  {
+    q: "Which Tokyo Bay cruise goes to Odaiba?",
+    a: `The Tokyo Cruise water bus. Hinode Pier to Odaiba Seaside Park is ¥600 and about 20 minutes, and Asakusa to Odaiba Seaside Park on the Hotaluna or Emeraldas is ¥2,000 and about 55 to 60 minutes. The Tokyo Mizube Line also runs an Asakusa–Odaiba cruise, normally Wednesday to Sunday, with cashless-only tickets at Odaiba Seaside Park. Read ${FARES_CHECKED}.`,
+  },
+  {
+    q: "What is the Gozabune Atakemaru samurai cruise?",
+    a: `It is a boat built in the style of a shogun's barge that Tokyo Cruise used to list in its fleet. On ${FARES_CHECKED}, Tokyo Cruise's own fleet page listed ten boats without the Atakemaru, and no Atakemaru sailing or fare appeared on its timetable and fares page, so there is no current official fare to quote. For a traditional wooden boat on the bay, a yakatabune houseboat is the bookable option today.`,
   },
   {
     q: "What is the difference between a yakatabune and the Symphony?",
@@ -167,32 +235,8 @@ const faqItems = [
     a: `The Symphony sails four times a day from Hinode Pier: lunch at 11:50 returning 14:00, afternoon at 15:00 returning 15:50, sunset at 16:20 returning 18:20 and dinner at 19:00 returning 21:30. The operator notes these can shift slightly with sea conditions. Yakatabune are more flexible — the cooperative says a chartered boat can leave at a time you specify between 11:00 and 20:00, while a joined boat leaves at the boathouse's set time. The water buses run to a published daytime timetable. Read off the operators' sites on ${CHECKED}.`,
   },
   {
-    q: "How long does a Tokyo Bay cruise take?",
-    a: `Between 50 minutes and two and a half hours, and you should choose deliberately. The Symphony's afternoon sailing is 50 minutes, its sunset sailing two hours and its dinner sailing two and a half; a yakatabune is listed at 2 to 2 hours 30 minutes; the one-hour small-boat sunset cruise on Klook is the short no-meal option. Add travel to the pier and a 15 to 30-minute boarding window, so a dinner cruise realistically owns your whole evening. Checked ${CHECKED}.`,
-  },
-  {
-    q: "Which sailing has the best view — day, sunset or dinner?",
-    a: "Sunset, if the date allows it. A sunset sailing gives you daylight over the bay, the sky going over, and the Rainbow Bridge and the Odaiba skyline lit, all inside one two-hour run — three views for one ticket. A dinner cruise is entirely a night cruise, which is the better choice if the lit skyline is what you came for and you want a long meal with it. A lunch or afternoon sailing is the clearest for photographs of the bridge and the waterfront, and on a clear winter day it is the one with any chance of Mt. Fuji on the horizon.",
-  },
-  {
-    q: "Where do Tokyo Bay cruises depart from?",
-    a: `Most of the large boats go from Hinode Pier in Minato-ku, at 2-7-104 Kaigan. It is a one-minute walk from Hinode Station on the Yurikamome line, about 12 minutes on foot from the south exit of Hamamatsucho on the JR Yamanote Line, and about 15 minutes from Daimon on the Toei Oedo Line; there is no parking, so the operator assumes you arrive by train. Yakatabune are different: the cooperative says boats leave from each boathouse&apos;s own pier, which is free to use, or from a public pier for a fee — so the boarding point belongs to the individual boat rather than to the city, and it is the first thing to check on a listing. One of the Klook small-boat listings boards at Shibaura instead. Access details read off the operators' sites on ${CHECKED}.`,
-  },
-  {
     q: "Do you need to book a Tokyo Bay cruise in advance?",
-    a: "For anything with a meal, yes — the galley has to know numbers, so dinner cruises and yakatabune close their bookings well before the day rather than selling at the gangway. A boarding-only Symphony ticket and a water-bus fare are the two that tolerate a late decision. Peak dates are a different question again: cherry-blossom sailings on the Sumida, the summer fireworks nights and the Christmas and New Year cruises sell out and are often priced as separate special itineraries, so book those as early as you book the flight.",
-  },
-  {
-    q: "Can you do a Tokyo Bay cruise with children?",
-    a: "Yes, and the fares are built for it. The Symphony publishes a child price on every sailing — ¥900 on the afternoon cruise, ¥1,800 on lunch and sunset, ¥2,200 on dinner for a boarding-only ticket — and the 50-minute afternoon sailing is the right length for a young child. A yakatabune is a long sit-down meal with free-flowing drinks, which suits older children and adults more than toddlers. The water bus is the easy option with a buggy: short, cheap and you can get off at Odaiba Seaside Park.",
-  },
-  {
-    q: "What happens if it rains, and what should you wear?",
-    a: "Rain matters less than you would think on the big boats and more than you would like on the small ones. The Symphony and the yakatabune are enclosed, so a wet evening costs you the open deck rather than the cruise; scheduled water-bus services, by contrast, can be cancelled at short notice in bad weather, which the operator states on its own site. Dress for the water rather than the city — it is noticeably colder and windier out in the bay after dark, and the Klook listing for the Symphony dinner cruise tells you to bring a coat for exactly that reason. There is no formal dress code on the sightseeing sailings, though a yakatabune is a tatami-floored boat, so shoes come off.",
-  },
-  {
-    q: "Is a Tokyo Bay cruise worth it, or is an observation deck better?",
-    a: "They are not the same view, and if you only do one, pick by what you want to look at. A deck like Shibuya Sky or Skytree puts you above the city looking down at the sprawl; a bay cruise puts you at water level looking back at the skyline, with the Rainbow Bridge overhead and Tokyo Tower and Skytree in the same frame. A cruise is also an evening rather than an hour, and it comes with dinner. Our Tokyo observation decks comparison covers the view-from-above option, including the free one in Shinjuku.",
+    a: `For anything with a meal, yes: dinner cruises and yakatabune close bookings before the day, and Tokyo Cruise takes online reservations only until 17:00 the day before. The Hinode Pier to Odaiba Seaside Park water bus is sold at the pier counter on the day only. Read ${FARES_CHECKED}.`,
   },
 ];
 
@@ -200,9 +244,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/tokyo-bay-cruise") },
 });
 
-const TITLE = "Tokyo Bay Cruise 2026: Prices, Night Cruises, Dinner Boats";
+const TITLE = "Tokyo Bay Cruise Price 2026: Odaiba, Symphony, Water Bus";
 const DESC =
-  "Tokyo Bay cruise prices: water bus from ¥600, Symphony from ¥1,800 boarding only, yakatabune dinner boats from ¥13,000 (operators, Oct–Nov 2026).";
+  "Tokyo Bay cruise prices: water bus Hinode–Odaiba ¥600, Symphony from ¥1,800 boarding only, yakatabune ¥13,000. Book on Klook or with the operator.";
 /** The water-bus fares in the hero, re-read on suijobus.co.jp/en/price/ for task jtk-20261110-C01. */
 const WATER_BUS_CHECKED = checkedLabel("2026-11-10");
 
@@ -294,7 +338,7 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tokyo Bay Cruise (2026): <br />Prices, Night Cruises and Dinner Boats
+            Tokyo Bay Cruise (2026): <br />Prices, Odaiba Boats and Dinner Cruises
           </h1>
           <p className={styles.heroSubtitle}>
             To ride cheaply, take the Tokyo Cruise water bus (Hinode Pier to Odaiba Seaside Park, ¥600, about
@@ -322,6 +366,80 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* Answer-first block, added 18 Nov 2026: opening answer, official fare table, landing-query H2s. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>A Tokyo Bay cruise costs ¥600 to about ¥15,000 per adult</strong>, depending on the boat.
+            The cheapest is the Tokyo Cruise water bus from Hinode Pier to Odaiba Seaside Park at{" "}
+            <strong>¥600 for about 20 minutes</strong>; the Symphony restaurant ship sells boarding-only seats
+            from <strong>¥1,800</strong> (50-minute afternoon sailing) to <strong>¥4,400</strong> (dinner
+            sailing), and a yakatabune houseboat is usually <strong>¥13,000</strong> with dinner and drinks
+            included. Fares read on the operators&apos; own sites on {FARES_CHECKED}.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Boat and route", "Adult fare", "Time", "Operator site"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {fareRows.map((row) => (
+                    <tr key={row.boat}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.boat}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.88rem" }}>{row.fare}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.time}</td>
+                      <td style={{ fontSize: "0.82rem" }}>{row.source}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-18. Official sources:{" "}
+            <a href="https://www.suijobus.co.jp/en/price/" target="_blank" rel="noopener noreferrer">suijobus.co.jp/en/price</a>,{" "}
+            <a href="https://www.symphony-cruise.co.jp/cruising_plan/dinner/dinner_2025/" target="_blank" rel="noopener noreferrer">symphony-cruise.co.jp</a>,{" "}
+            <a href="https://www.yakatabune-kumiai.jp/" target="_blank" rel="noopener noreferrer">yakatabune-kumiai.jp</a>.
+            One-way fares; child fares are for ages 6 to 11.
+          </p>
+
+          <h2 className={styles.sectionTitle}>How Much Is a Tokyo Bay Cruise?</h2>
+          <p className={styles.bodyText}>
+            ¥600 at the bottom and about ¥15,000 at the top for an adult. A seat with no meal costs ¥600 to
+            ¥2,600 on the Tokyo Cruise water buses and ¥1,800 to ¥4,400 on the Symphony; with dinner, the
+            Symphony&apos;s Italian course starts at ¥14,000 on weekdays (¥15,000 at weekends) and a yakatabune
+            is usually ¥13,000 including drinks. All read {FARES_CHECKED}.
+          </p>
+
+          <h2 className={styles.sectionTitle}>Which Tokyo Bay Cruise Goes to Odaiba?</h2>
+          <p className={styles.bodyText}>
+            The Tokyo Cruise water bus: Hinode Pier to Odaiba Seaside Park is ¥600 and about 20 minutes, and
+            Asakusa to Odaiba Seaside Park on the Hotaluna or Emeraldas is ¥2,000 and about 55 to 60 minutes.
+            The Tokyo Mizube Line also runs an Asakusa–Odaiba cruise, normally Wednesday to Sunday, and its
+            Odaiba Seaside Park counter is cashless only (
+            <a href="https://www.tokyo-park.or.jp/water/waterbus/" target="_blank" rel="noopener noreferrer">tokyo-park.or.jp</a>,
+            read {FARES_CHECKED}; its fare is shown by a calculator, so it is not quoted here).
+          </p>
+
+          <h2 className={styles.sectionTitle}>What Is the Gozabune Atakemaru Samurai Cruise?</h2>
+          <p className={styles.bodyText}>
+            It is a boat built in the style of a shogun&apos;s barge that Tokyo Cruise used to list in its
+            fleet. On {FARES_CHECKED}, Tokyo Cruise&apos;s own fleet page listed ten boats without the
+            Atakemaru, and no Atakemaru sailing or fare appeared on its timetable, so there is no current
+            official fare to quote. For a traditional wooden boat on the bay, the yakatabune houseboat below
+            is the bookable option.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={tokyoBayYakatabuneDinnerCruise.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check yakatabune and bay cruises on Klook →
+            </KlookLink>
+          </div>
+        </section>
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
@@ -352,8 +470,8 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
               cruising restaurant at Hinode Pier with four sailings a day — 11:50, 15:00, 16:20 and
               19:00 — and a boarding-only ticket from ¥1,800 for an adult, or a meal plan from ¥2,800.
               A yakatabune is a traditional wooden houseboat, listed at 2 to 2 hours 30 minutes from
-              ¥13,000 a head with dinner and free-flowing drinks included, and it needs 15 to 20 people
-              to charter — couples book a joined boat instead. Prices and times read off
+              ¥13,000 a head with dinner and free-flowing drinks included, and a charter takes 10 to 120 adults
+              — couples book a joined boat instead. Prices and times read off
               symphony-cruise.co.jp and yakatabune-kumiai.jp on {CHECKED}.
             </p>
             <KlookLink
@@ -439,7 +557,7 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
         {/* Symphony prices */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
-          <h2 className={styles.sectionTitle}>How Much Does a Tokyo Bay Cruise Cost?</h2>
+          <h2 className={styles.sectionTitle}>Symphony Cruise Prices by Sailing</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             The Symphony is the one operator that publishes a full price list for every sailing, which
             makes it the useful benchmark. Note the boarding-only column: it is the cheapest way onto a

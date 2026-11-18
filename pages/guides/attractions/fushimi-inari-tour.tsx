@@ -780,7 +780,9 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
         />
 
         <p className={styles.bodyText}>
-          Pairing Fushimi Inari with Nara? Our <Link href="/guides/attractions/nara-day-trip">Nara day trip guide</Link> has the trains from Kyoto, the walking order and the one ticket you pay for.
+          Pairing Fushimi Inari with Nara? Our <Link href="/guides/attractions/nara-day-trip">Nara day trip guide</Link> has the trains from Kyoto, the walking order and the one ticket you pay for. Staying in Osaka? A{" "}
+          <Link href="/guides/attractions/kyoto-nara-day-tour-from-osaka">Kyoto and Nara day tour from Osaka</Link>{" "}
+          usually ends at Fushimi Inari after Nara Park, in a day of about 9 hours.
         </p>
 
         <EsimCtaBottom />

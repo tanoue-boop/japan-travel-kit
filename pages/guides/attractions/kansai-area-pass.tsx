@@ -843,6 +843,9 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
             <strong>Where it fails.</strong> A trip with a gap day in the middle of the pass window, or one
             that reaches Nara on the Kintetsu and Arashiyama on the Hankyu, or one that includes a shinkansen
             leg to Tokyo. In all three the arithmetic is lost before you start. Fares checked {CHECKED}.
+            If you only want one day out, a{" "}
+            <Link href="/guides/attractions/kyoto-nara-day-tour-from-osaka">Kyoto and Nara day tour from Osaka</Link>{" "}
+            includes the coach, so no rail pass is needed for that day.
           </p>
         </section>
 

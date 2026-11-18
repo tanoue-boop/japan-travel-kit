@@ -51,10 +51,17 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  *    up to 250 cm, a reserved seat with a baggage area required, no surcharge
  *    for that seat, and a ¥1,000 fee including tax without one — from JR
  *    Central's own luggage page;
- *  - the "1h 26m" shortest and "2h 26m" average journey, "0 transfer(s)",
- *    "451 trains scheduled on Nov. 03, 2026", the 06:00 first and 22:10 last
- *    departure and the three seat classes, from Klook's own Tokyo–Nagoya rail
- *    page, which unlike its /activity/ pages answers automated reads;
+ *  - the three seat classes Klook's own Tokyo–Nagoya rail page lists.
+ *
+ * Re-checked 18 Nov 2026 (SEO pass): the ¥11,100 / ¥10,890 smartEX fares were
+ * re-read off smart-ex.jp's service_fares_reserved.pdf ("As of April 1, 2025"),
+ * and the journey times were replaced with JR Central's own figures — the
+ * Tokyo westbound departure list and per-train stop times that
+ * traininfo.jr-central.co.jp serves for 18 Nov 2026: 119 NOZOMI calling at
+ * Nagoya, Tokyo→Nagoya 93–101 min (most 95–100), the first at 06:00; 30 HIKARI
+ * at 101–119 min; 29 KODAMA at 156–166 min. The earlier "1h 26m" and "451
+ * trains" figures were Klook's and did not match JR Central's timetable, so
+ * they are gone.
  *  - the 2h45m reservation-required Nohi Bus run between Takayama and the
  *    Meitetsu Bus Center at Nagoya Station, from nouhibus.co.jp;
  *  - the Kintetsu-Nagoya 10:25 → Iseshi 11:40 / Ujiyamada 11:42 Shimakaze
@@ -93,11 +100,43 @@ const NOZOMI_TICKET = "¥4,180";
 const JR_PASS_7 = "¥50,000";
 const KINTETSU_PASS_1 = "¥1,900";
 
+/** Re-checked on 18 Nov 2026 against JR Central and smart-ex.jp (see header). */
+const LAST_CHECKED = "2026-11-18";
+const JRC_TRAININFO_URL = "https://traininfo.jr-central.co.jp/shinkansen/pc/en/ti04.html?station=1&bound=2";
+const SMART_EX_PDF_URL = "https://smart-ex.jp/en/product/plan/service/pdf/service_fares_reserved.pdf";
+const NOZOMI_FASTEST = "1h 33m";
+const NOZOMI_RANGE = "1h 33m–1h 41m";
+const HIKARI_RANGE = "1h 41m–1h 59m";
+const KODAMA_RANGE = "2h 36m–2h 46m";
+const NOZOMI_PER_DAY = 119;
+
+/** The answer table at the top: one row per train, official figures only. */
+const answerRows = [
+  {
+    train: "NOZOMI (fastest — the answer)",
+    time: `${NOZOMI_RANGE}, direct`,
+    fare: SMART_EX_NOZOMI,
+    note: `${NOZOMI_PER_DAY} a day from Tokyo stop at Nagoya, first at 06:00. Not covered by a JR Pass`,
+  },
+  {
+    train: "HIKARI",
+    time: `${HIKARI_RANGE}, direct`,
+    fare: SMART_EX_HIKARI,
+    note: "30 a day from Tokyo. Covered by a JAPAN RAIL PASS",
+  },
+  {
+    train: "KODAMA",
+    time: `${KODAMA_RANGE}, direct`,
+    fare: SMART_EX_HIKARI,
+    note: "29 a day from Tokyo; stops at every station",
+  },
+];
+
 /**
  * The 2026–27 periods in which JR Central runs every NOZOMI car as a reserved
  * car. Straight off railway.jr-central.co.jp/nozomi/, read on 28 Oct 2026 — and
  * the one rule on this route that turns a walk-up plan into a missed train,
- * because the NOZOMI is the only service that does Tokyo to Nagoya in 1h 26m.
+ * because the NOZOMI is the fastest service from Tokyo to Nagoya.
  */
 const nozomiAllReservedPeriods = [
   "24 April – 6 May 2026 (Golden Week)",
@@ -113,28 +152,28 @@ const nozomiAllReservedPeriods = [
 /** The route, as the operators and the booking page state it. */
 const routeRows = [
   {
-    item: "Shortest Tokyo → Nagoya journey",
-    value: "1 hour 26 minutes",
-    detail: 'A direct NOZOMI. Klook\'s own rail page for the route gives this as the shortest departure and states the route "features 0 transfer(s)"',
-    source: `klook.com rail page, ${OWN}`,
+    item: "Fastest Tokyo → Nagoya journey",
+    value: `${NOZOMI_FASTEST} on a NOZOMI`,
+    detail: `Direct, no change. Most NOZOMI take 1h 35m to 1h 40m; the full range on the day checked was ${NOZOMI_RANGE}`,
+    source: `JR Central train information, ${LAST_CHECKED}`,
   },
   {
-    item: "Average journey on the same page",
-    value: "2 hours 26 minutes",
-    detail: "The average across the whole day, which is an hour longer than the fastest — because that average includes the KODAMA, which stops everywhere between Tokyo and Nagoya",
-    source: `klook.com rail page, ${OWN}`,
+    item: "NOZOMI departures from Tokyo that stop at Nagoya",
+    value: `${NOZOMI_PER_DAY} a day, first at 06:00`,
+    detail: "Every NOZOMI calls at Nagoya. With a train every few minutes at most hours, you plan around which train your ticket lets you board, not around the timetable",
+    source: `JR Central train information, ${LAST_CHECKED}`,
   },
   {
-    item: "Departures per day",
-    value: "451 trains, 06:00 to 22:10",
-    detail: "Klook's count for a sample date (3 November 2026). This is the densest intercity rail corridor in the world: you do not plan around the timetable, you plan around which train your ticket lets you board",
-    source: `klook.com rail page, ${OWN}`,
+    item: "Pass-eligible route (HIKARI)",
+    value: `${HIKARI_RANGE}, no transfer`,
+    detail: "A JAPAN RAIL PASS does not cover the NOZOMI, but it does cover the HIKARI, which runs Tokyo to Nagoya straight through — 30 a day from Tokyo. You lose minutes, not an hour, which is why this route is the kindest Tokaido leg to a pass holder",
+    source: `JR Central train information, ${LAST_CHECKED}`,
   },
   {
-    item: "Pass-eligible route (HIKARI or KODAMA)",
-    value: `About ${Math.floor(tokyoNagoya.minutes / 60)}h ${tokyoNagoya.minutes % 60}m, no transfer`,
-    detail: "A JAPAN RAIL PASS does not cover the NOZOMI, but it does cover the HIKARI, which runs Tokyo to Nagoya straight through. You lose roughly a quarter of an hour, not an hour — which is why this route is the kindest Tokaido leg to a pass holder",
-    source: `Our own JR dataset, as of ${FARE_AS_OF} — a rounded reference value`,
+    item: "KODAMA (all stations)",
+    value: KODAMA_RANGE,
+    detail: "The stopping train — 29 a day from Tokyo. Covered by a pass, but only worth boarding if you are going to a smaller station on the way",
+    source: `JR Central train information, ${LAST_CHECKED}`,
   },
   {
     item: "Seat classes sold for the route",
@@ -196,7 +235,7 @@ const compareRows = [
   {
     option: "A single reserved NOZOMI ticket each way",
     cost: `${SMART_EX_NOZOMI} one way on smartEX`,
-    gets: "The 1h 26m direct train, no transfer, and nothing else to buy or plan.",
+    gets: `The fastest direct train (from ${NOZOMI_FASTEST}), no transfer, and nothing else to buy or plan.`,
     pick: "The default. Two singles are about ¥22,200 against ¥50,000 for a 7-day pass — a there-and-back trip to Nagoya does not come close to justifying the pass.",
   },
   {
@@ -215,7 +254,7 @@ const compareRows = [
     option: "Non-reserved Ordinary",
     cost: "Less than reserved; the saving is the reserved-seat charge",
     gets: "Walk up and board whichever train comes — except in the eight peak periods below, when every NOZOMI car is reserved.",
-    pick: "Outside peak dates and travelling light. On a corridor with 451 departures a day this is a genuinely workable plan, which it is not on a route with thirty.",
+    pick: `Outside peak dates and travelling light. With ${NOZOMI_PER_DAY} NOZOMI a day from Tokyo alone, this is a genuinely workable plan, which it is not on a route with thirty.`,
   },
   {
     option: "Shoryudo Highway Bus Pass",
@@ -273,49 +312,29 @@ const fromNagoyaRows = [
 const faqItems = [
   {
     q: "How long is the shinkansen from Tokyo to Nagoya?",
-    a: `One hour twenty-six minutes, direct, on a NOZOMI. Klook's own rail page for the route gives the shortest departure as 1 hour 26 minutes, the average across the day as 2 hours 26 minutes, and states the route "features 0 transfer(s)"; read on ${OWN}. The spread between those two numbers is entirely about which train you board — a NOZOMI makes a handful of stops, a KODAMA makes all of them. The useful thing about this particular leg is that a JAPAN RAIL PASS barely changes the answer: the HIKARI also runs Tokyo to Nagoya straight through, and our own dataset puts it at about ${Math.floor(tokyoNagoya.minutes / 60)} hours ${tokyoNagoya.minutes % 60} minutes. That is a quarter of an hour, not the hour and a quarter a pass costs you on the run to Hiroshima.`,
+    a: `${NOZOMI_FASTEST} at the fastest, direct, on a NOZOMI — and ${NOZOMI_RANGE} across the ${NOZOMI_PER_DAY} NOZOMI that leave Tokyo for Nagoya each day, on JR Central's own train information checked ${LAST_CHECKED}. The HIKARI, which a JAPAN RAIL PASS covers, takes ${HIKARI_RANGE} and also needs no change; the all-stations KODAMA takes ${KODAMA_RANGE}.`,
   },
   {
-    q: "How much is the Tokyo to Nagoya shinkansen?",
-    a: `${SMART_EX_NOZOMI} one way for a reserved Ordinary seat on a NOZOMI, which is JR's own smartEX online price for one adult in the regular season, read on ${OWN}. The same official table prices the identical seat on a HIKARI, KODAMA, SAKURA or TSUBAME at ${SMART_EX_HIKARI} — ¥210 less for about fifteen minutes more. Two singles therefore come to roughly ¥22,200, which is the number to hold against the ${JR_PASS_7} a 7-day Ordinary JAPAN RAIL PASS costs online: the pass loses badly on this route alone. If you are buying at a station window rather than online, our own rounded reference figure for the HIKARI is ${yen(tokyoNagoya.fareYen)}, labelled as ours because JR Central does not publish the window fare as a static table.`,
-  },
-  {
-    q: "Is Nagoya worth a stop?",
-    a: "As a base, yes; as a sightseeing city, it depends what you came for. The honest case for Nagoya is that it is the only station from which four genuinely good days are each under three hours away: Ghibli Park is a 40-minute bus from the Bus Center in the station complex, LEGOLAND Japan is 24 minutes on the Aonami Line from the same building, Shirakawa-go and Takayama are a reservation-only mountain bus ride north, and Ise Jingu is about an hour and a quarter east on the Kintetsu network. None of those is reachable in a day from Tokyo without a lot of train. The city itself — the castle, Osu, the Toyota and SCMaglev museums — is a solid half-day rather than a reason to come. So the answer most trips land on is one or two nights in Nagoya built around one of those four days, rather than a stop on the way to Kyoto.",
-  },
-  {
-    q: "Can I visit Ghibli Park as a day trip from Tokyo?",
-    a: `Physically yes, and it is a long day. The shinkansen is 1h 26m each way and the Meitetsu direct bus from Nagoya Station is 40 minutes on the operator's own figure, so the travelling alone is about four and a half hours. The problem is not the distance, it is the ticket: Ghibli Park sells date- and time-specified passes, with a designated entry time for Ghibli's Grand Warehouse, and they go on sale two months ahead. Pair a 9 a.m. Warehouse slot with a shinkansen from Tokyo and you are leaving before 06:00. A night in Nagoya — or at one of the Nagakute hotels out by the Linimo — removes that problem entirely, which is why our Ghibli Park guide argues for it. Access figures read ${PARKS}, train figures ${OWN}.`,
-  },
-  {
-    q: "Is the JR Pass worth it for Tokyo to Nagoya?",
-    a: `Not for the round trip, no — but Nagoya is the best-value stop on a pass you are buying anyway. A 7-day Ordinary JAPAN RAIL PASS is ${JR_PASS_7} online and ¥53,000 as an Exchange Order from an overseas agency; two reserved singles to Nagoya and back are about ¥22,200 on JR's own smartEX price. Nothing about that arithmetic works. What does work is the time cost: because the HIKARI runs Tokyo to Nagoya through without a change, a pass holder here gives up roughly fifteen minutes, against an hour and a quarter on the Hiroshima run. So if you already hold a pass for Kyoto, Kanazawa or Hiroshima, adding Nagoya is nearly free. And the ${NOZOMI_TICKET} NOZOMI ticket, which is genuinely worth buying on the long legs, is the one thing you can safely skip here. All pass figures from japanrailpass.net, ${OWN}.`,
-  },
-  {
-    q: "Do I need to reserve a seat?",
-    a: `Usually no — this is the one Japanese intercity route where turning up works, with 451 departures on Klook's sample date — and on eight sets of dates absolutely yes. JR Central's own page lists the periods in which every NOZOMI car runs as a reserved car with no non-reserved section at all: ${nozomiAllReservedPeriods.join("; ")}. Through those windows JR Central states that trains other than the NOZOMI — the HIKARI, KODAMA, MIZUHO, SAKURA and TSUBAME — "will maintain standard non-reserved seating", so the slower train is the walk-up fallback. Reserved seats go on sale at 10:00 one month before the day the train leaves its originating station. If you hold a rail pass the reservation itself is free, so there is no reason not to make one. Read on ${OWN}.`,
-  },
-  {
-    q: "What are the luggage rules on this train?",
-    a: `A case whose three dimensions add up to more than 160 cm needs its own reserved seat, and arriving without one costs ¥1,000 including tax. JR Central's own luggage page defines oversized baggage as a total of three dimensions between 161 and 250 cm, requires it to go in the baggage space behind a seat with an oversized baggage area, and is explicit that the seat costs nothing extra: tickets are "the same price as reserved seats in ordinary cars and green cars". You ask for it at a ticket office, at a reserved-seat machine, or online by selecting the seat with a baggage area. Read on ${OWN}. Most airline-checked cases come in under 160 cm; it is ski bags, golf covers, oversized hold cases and bagged pushchairs that trip people up — and note that the baggage seats are reserved-car seats, so a non-reserved ticket is not a way around the rule.`,
-  },
-  {
-    q: "Can I do Shirakawa-go and Takayama from Nagoya?",
-    a: `Yes, and Nagoya is the usual starting point for it. Nohi Bus runs between the Meitetsu Bus Center at Nagoya Station and the Takayama Nohi Bus Center in 2 hours 45 minutes, reservation required, on its own published figure read ${OWN}. From Takayama, Shirakawa-go is a further bus. The reason most visitors book the guided version instead is that the day is two bus connections rather than one, and Klook's Nagoya departures are listed at about 11 hours with roughly two hours in Shirakawa-go and two in the Takayama old town — which is what the day actually looks like if you do it and come back the same night. Our Takayama and Shirakawa-go guide compares the Nagoya, Kanazawa and Takayama departures and carries the Nohi Bus and Hokuriku Railroad fares.`,
-  },
-  {
-    q: "Is there a cheaper way from Tokyo to Nagoya?",
-    a: `Yes, and the honest list is short. Overnight and daytime highway coaches run Tokyo to Nagoya for a fraction of ${SMART_EX_NOZOMI} and take roughly six hours; no JR pass covers them. On the rails, the cheap options are the non-reserved Ordinary seat, which saves you the reserved-seat charge, and the ¥210 you save by taking a HIKARI or KODAMA instead of the NOZOMI — plus the discounted advance products JR sells through smartEX and EX Reservation for specific trains and dates. Flying is not a serious option on this route: Chubu Centrair is nearly an hour from the city, which eats the whole advantage over a 1h 26m train. If price is the binding constraint, price the coach against the non-reserved shinkansen seat rather than against a reserved NOZOMI.`,
+    q: "How much is the shinkansen from Tokyo to Nagoya?",
+    a: `${SMART_EX_NOZOMI} one way for a reserved Ordinary seat on a NOZOMI, on JR's own smartEX fare table (one adult, checked ${LAST_CHECKED}). The same seat on a HIKARI or KODAMA is ${SMART_EX_HIKARI}, ¥210 less. Two NOZOMI singles come to ¥22,200, against ${JR_PASS_7} for a 7-day Ordinary JAPAN RAIL PASS bought online.`,
   },
   {
     q: "Which train should I take — Nozomi, Hikari or Kodama?",
-    a: `NOZOMI if you are buying a ticket, HIKARI if you are holding a pass, and KODAMA only by accident. The NOZOMI is the fastest at 1h 26m and costs ${SMART_EX_NOZOMI} reserved; the HIKARI also runs through to Nagoya without a change, costs ${SMART_EX_HIKARI}, and takes about a quarter of an hour longer. The KODAMA stops at every station on the Tokaido line and is the reason Klook's average for the route is a full hour longer than its fastest departure — it is a local service in shinkansen clothing. The decision is really made by your ticket rather than your preference: a JAPAN RAIL PASS covers the HIKARI and the KODAMA but not the NOZOMI, and on this particular leg that restriction costs you very little.`,
+    a: `NOZOMI if you are buying a ticket, HIKARI if you are holding a pass, and KODAMA only for a small station on the way. The NOZOMI takes ${NOZOMI_RANGE} for ${SMART_EX_NOZOMI} reserved; the HIKARI takes ${HIKARI_RANGE} for ${SMART_EX_HIKARI} and also runs through without a change; the KODAMA takes ${KODAMA_RANGE}. A JAPAN RAIL PASS covers the HIKARI and KODAMA but not the NOZOMI — and on this leg that restriction costs a pass holder only minutes.`,
+  },
+  {
+    q: "Is the JR Pass worth it for Tokyo to Nagoya?",
+    a: `Not for the round trip, no — but Nagoya is the best-value stop on a pass you are buying anyway. A 7-day Ordinary JAPAN RAIL PASS is ${JR_PASS_7} online and ¥53,000 as an Exchange Order from an overseas agency; two reserved singles to Nagoya and back are about ¥22,200 on JR's own smartEX price. Nothing about that arithmetic works. What does work is the time cost: because the HIKARI runs Tokyo to Nagoya through without a change, a pass holder here gives up only minutes (${HIKARI_RANGE} against ${NOZOMI_RANGE} on JR Central's timetable), against an hour and a quarter on the Hiroshima run. So if you already hold a pass for Kyoto, Kanazawa or Hiroshima, adding Nagoya is nearly free. And the ${NOZOMI_TICKET} NOZOMI ticket, which is genuinely worth buying on the long legs, is the one thing you can safely skip here. All pass figures from japanrailpass.net, ${OWN}.`,
+  },
+  {
+    q: "Do I need to reserve a seat?",
+    a: `Usually no — this is the one Japanese intercity route where turning up works, with ${NOZOMI_PER_DAY} NOZOMI a day from Tokyo alone on JR Central's timetable — and on eight sets of dates absolutely yes. JR Central's own page lists the periods in which every NOZOMI car runs as a reserved car with no non-reserved section at all: ${nozomiAllReservedPeriods.join("; ")}. Through those windows JR Central states that trains other than the NOZOMI — the HIKARI, KODAMA, MIZUHO, SAKURA and TSUBAME — "will maintain standard non-reserved seating", so the slower train is the walk-up fallback. Reserved seats go on sale at 10:00 one month before the day the train leaves its originating station. If you hold a rail pass the reservation itself is free, so there is no reason not to make one. Read on ${OWN}.`,
   },
 ];
 
-const TITLE = "Tokyo to Nagoya Shinkansen: Times, Fares, JR Pass";
+const TITLE = "Tokyo to Nagoya Shinkansen: 1h33m, ¥11,100 (2026)";
 const DESCRIPTION =
-  "Tokyo to Nagoya Shinkansen: 1h26m direct on a Nozomi, ¥11,100 reserved on smartEX. A JR Pass covers the Hikari here, so it costs 15 minutes, not an hour.";
+  "Tokyo to Nagoya Shinkansen: Nozomi from 1h33m direct, ¥11,100 reserved (JR Central, Nov 2026). A JR Pass covers the Hikari (1h41m+). Book seats on Klook.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/transport/tokyo-to-nagoya-shinkansen") },
@@ -416,8 +435,8 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
             Tokyo to Nagoya Shinkansen: <br />Times, Fares and the JR Pass
           </h1>
           <p className={styles.heroSubtitle}>
-            Ninety minutes, 451 trains a day — and the one Tokaido leg where a rail pass costs you a
-            quarter of an hour instead of an hour and a quarter.
+            About an hour and a half, a NOZOMI every few minutes — and the one Tokaido leg where a rail
+            pass costs you minutes instead of an hour and a quarter.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "smartEX & JR Group figures, dated", "Pass break-even included", "What Nagoya reaches"].map((t) => (
@@ -448,7 +467,7 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Fastest journey</p>
-                <p className={styles.verdictStatValue}>1h 26m, no transfer</p>
+                <p className={styles.verdictStatValue}>{NOZOMI_FASTEST} (NOZOMI), no transfer</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Reserved Ordinary</p>
@@ -456,29 +475,21 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>On a JR Pass (Hikari)</p>
-                <p className={styles.verdictStatValue}>Covered, about 1h 40m</p>
+                <p className={styles.verdictStatValue}>Covered, {HIKARI_RANGE}</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Departures a day</p>
-                <p className={styles.verdictStatValue}>451, 06:00–22:10</p>
+                <p className={styles.verdictStatLabel}>NOZOMI from Tokyo a day</p>
+                <p className={styles.verdictStatValue}>{NOZOMI_PER_DAY}, first 06:00</p>
               </div>
             </div>
             {/* Answer-first: the first body paragraph of the article, not the hero line. */}
             <p className={styles.verdictText}>
-              The <strong>Tokyo to Nagoya Shinkansen</strong> takes{" "}
-              <strong>1 hour 26 minutes</strong> on a direct NOZOMI — Klook&apos;s own rail page gives that
-              as the shortest departure, with <strong>&ldquo;0 transfer(s)&rdquo;</strong> and{" "}
-              <strong>451 trains</strong> on its sample date, from 06:00 to 22:10. A reserved Ordinary seat is{" "}
-              <strong>{SMART_EX_NOZOMI}</strong> one way on JR&apos;s own smartEX price, or{" "}
-              <strong>{SMART_EX_HIKARI}</strong> for the same seat on a HIKARI or KODAMA. The thing that makes
-              this leg different from every other Tokaido run: a{" "}
-              <strong>JAPAN RAIL PASS does not cover the NOZOMI, but the HIKARI goes straight through to
-              Nagoya anyway</strong>, so a pass holder loses about <strong>fifteen minutes</strong> rather than
-              the hour and a quarter the Hiroshima run costs — and the {NOZOMI_TICKET} NOZOMI ticket is the one
-              you can safely skip. Two singles are roughly ¥22,200 against <strong>{JR_PASS_7}</strong> for a
-              7-day pass, so a there-and-back trip does not justify a pass on its own. Nagoya earns the stop
-              for what it reaches: Ghibli Park, LEGOLAND Japan, Shirakawa-go and Ise. Operator figures read on{" "}
-              {OWN}.
+              The <strong>Tokyo to Nagoya Shinkansen</strong> takes <strong>{NOZOMI_FASTEST}</strong> at the
+              fastest on a direct NOZOMI ({NOZOMI_RANGE} across its {NOZOMI_PER_DAY} daily runs from Tokyo), and a
+              reserved Ordinary seat costs <strong>{SMART_EX_NOZOMI}</strong> one way on JR&apos;s own smartEX
+              fare. A JAPAN RAIL PASS does not cover the NOZOMI, but the HIKARI it does cover runs straight
+              through in <strong>{HIKARI_RANGE}</strong> for {SMART_EX_HIKARI} without a pass. Figures from JR
+              Central and smart-ex.jp, checked {LAST_CHECKED}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={shinkansenTokyoNagoya.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -490,6 +501,66 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
             </div>
           </div>
         </div>
+
+        {/* Landing-query answers (18 Nov 2026): the two questions searchers ask, answered with
+            JR Central's own timetable and the smartEX fare table, before anything else. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>The answer</span>
+          <h2 className={styles.sectionTitle}>How Long Is the Shinkansen from Tokyo to Nagoya?</h2>
+          <p className={styles.bodyText}>
+            {NOZOMI_FASTEST} at the fastest and {NOZOMI_RANGE} on almost every NOZOMI, with no change of
+            train — JR Central&apos;s own timetable shows {NOZOMI_PER_DAY} NOZOMI from Tokyo calling at Nagoya
+            on {LAST_CHECKED}, the first at 06:00. The HIKARI takes {HIKARI_RANGE} and the all-stations KODAMA{" "}
+            {KODAMA_RANGE}.
+          </p>
+          <h2 className={styles.sectionTitle}>How Much Is the Shinkansen from Tokyo to Nagoya?</h2>
+          <p className={styles.bodyText}>
+            {SMART_EX_NOZOMI} one way for a reserved Ordinary seat on a NOZOMI, and {SMART_EX_HIKARI} for the
+            same seat on a HIKARI or KODAMA — JR&apos;s own smartEX fares for one adult. A return on the NOZOMI
+            is therefore ¥22,200, less than half the {JR_PASS_7} of a 7-day JAPAN RAIL PASS.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Train", "Tokyo → Nagoya time", "Reserved seat (smartEX)", "Notes"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {answerRows.map((row) => (
+                    <tr key={row.train}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.train}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.time}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.88rem" }}>{row.fare}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED}. Times:{" "}
+            <a href={JRC_TRAININFO_URL} target="_blank" rel="noopener">JR Central train information (Tokyo, westbound)</a>;
+            fares:{" "}
+            <a href={SMART_EX_PDF_URL} target="_blank" rel="noopener">smartEX reserved-seat fare table (smart-ex.jp)</a>.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            Staying the night? Our{" "}
+            <Link href="/guides/attractions/nagoya-2-day-itinerary">Nagoya 2 day itinerary</Link> turns the
+            arrival into two days, and our{" "}
+            <Link href="/guides/attractions/nagoya-castle-tickets">Nagoya Castle tickets</Link> guide covers the
+            half day most visitors spend in the city itself.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={shinkansenTokyoNagoya.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Book Tokyo → Nagoya seats →
+            </KlookLink>
+          </div>
+        </section>
 
         <KlookTripPrep
           headingLevel={3}
@@ -510,8 +581,8 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
           <p className={styles.bodyText}>
             Because most people treat it as the city the Kyoto train passes through. On the timetable it is
             about a third of the way down the Tokaido Shinkansen from Tokyo to Shin-Osaka, which makes it the
-            easiest long leg in Japan: <strong>1h 26m</strong> on a NOZOMI, no transfer, and more departures
-            per day than most countries run in a week.
+            easiest long leg in Japan: from <strong>{NOZOMI_FASTEST}</strong> on a NOZOMI, no transfer, and{" "}
+            {NOZOMI_PER_DAY} NOZOMI a day from Tokyo alone.
           </p>
           <p className={styles.bodyText}>
             The ticket decision is also the simplest on the whole line, and for a reason worth saying out
@@ -534,11 +605,11 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
         {/* Route table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The train</span>
-          <h2 className={styles.sectionTitle}>How Long Is the Shinkansen From Tokyo to Nagoya?</h2>
+          <h2 className={styles.sectionTitle}>Nozomi, Hikari or Kodama: Journey Times Compared</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            One hour twenty-six minutes at the fastest, direct. Every figure below carries its source and the
-            date it was read — including the row that explains why a pass holder&apos;s journey here is barely
-            different from everybody else&apos;s.
+            {NOZOMI_FASTEST} at the fastest, direct. Every figure below carries its source and the date it was
+            read — including the row that explains why a pass holder&apos;s journey here is barely different
+            from everybody else&apos;s.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -582,7 +653,7 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
         {/* Prices */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Prices</span>
-          <h2 className={styles.sectionTitle}>How Much Is the Tokyo to Nagoya Shinkansen?</h2>
+          <h2 className={styles.sectionTitle}>Every Tokyo to Nagoya Fare and Pass Price</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             {SMART_EX_NOZOMI} one way for a reserved Ordinary seat on a NOZOMI, and {SMART_EX_HIKARI} for the
             same seat on a HIKARI or KODAMA. Both are JR&apos;s own online prices, read off smart-ex.jp&apos;s
@@ -680,7 +751,8 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
           <span className={styles.sectionLabel}>Reservations</span>
           <h2 className={styles.sectionTitle}>Do I Need to Reserve a Seat?</h2>
           <p className={styles.bodyText}>
-            Most of the year, genuinely no. With 451 departures on Klook&apos;s sample date, this is the one
+            Most of the year, genuinely no. With {NOZOMI_PER_DAY} NOZOMI a day from Tokyo on JR Central&apos;s
+            timetable, this is the one
             Japanese intercity route where showing up at the gates and taking the next train is a reasonable
             plan rather than a gamble. On eight sets of dates, though, there is no choice: JR Central runs{" "}
             <strong>every NOZOMI car as a reserved car</strong> in the peak periods below, which means the fast
@@ -817,10 +889,10 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
           <span className={styles.sectionLabel}>Day trip or night</span>
           <h2 className={styles.sectionTitle}>Can I Visit Ghibli Park as a Day Trip From Tokyo?</h2>
           <p className={styles.bodyText}>
-            You can, and the maths is tighter than it looks. The shinkansen is <strong>1h 26m</strong> each
-            way and the Meitetsu direct bus from the Bus Center at Nagoya Station is{" "}
-            <strong>40 minutes</strong> on the operator&apos;s own figure, so you are looking at about four and
-            a half hours of travelling around whatever time you spend in the park.
+            You can, and the maths is tighter than it looks. The shinkansen is about{" "}
+            <strong>1h 35m</strong> each way on a NOZOMI and the Meitetsu direct bus from the Bus Center at Nagoya Station is{" "}
+            <strong>40 minutes</strong> on the operator&apos;s own figure, so you are looking at well over four
+            and a half hours of travelling around whatever time you spend in the park.
           </p>
           <p className={styles.bodyText}>
             The real constraint is not distance but the ticket. Ghibli Park sells date- and time-specified
@@ -1043,7 +1115,7 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
         {/* CTA Banner */}
         <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>
-            <h2 className={styles.ctaBannerTitle}>Ninety minutes, and then the decision that matters</h2>
+            <h2 className={styles.ctaBannerTitle}>An hour and a half, and then the decision that matters</h2>
             <p className={styles.ctaBannerDesc}>
               Book the NOZOMI if you are buying a ticket and the HIKARI if you are holding a pass — on this leg
               the difference is about fifteen minutes. Then settle the thing Nagoya is actually for: a Ghibli

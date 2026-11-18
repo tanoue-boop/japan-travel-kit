@@ -53,8 +53,22 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  * method the Klook listing is confirmed by on every page of this site, and it is why
  * each table carries its check date. Nothing here is first-hand, and no Klook price
  * appears anywhere.
+ *
+ * Re-checked 18 Nov 2026 (SEO pass). The exhibition page's server-rendered
+ * __NEXT_DATA__ carries the full ticket and hours data, so it was read directly:
+ * adult ¥1,800 / 6–15 ¥500 / disability ¥900 / preschool free, all marked as
+ * fluctuating ("Dynamic pricing system is in place"), on-site +¥200 / +¥100;
+ * hours 9 Nov 2026 – 31 Jan 2027 18:00–21:30 (last entry 20:30) and 9–28 Feb
+ * 2027 18:30–21:30 (last entry 20:30); closed "Irregular", 14 Dec 2026, 18 Jan
+ * 2027 and 1–8 Feb 2027; Midosuji Line Nagai Station, 10 minutes from Exit 3.
+ * The FAQ page was re-read the same day for the rain rule, the three date
+ * changes and cancellation until 21:00, and "re-entry is not permitted". The
+ * earlier "no limit on how long you stay" line is not on today's FAQ, so it was
+ * removed. October-only hours and past closures were dropped from the tables.
  */
-const CHECKED = checkedLabel("2026-10-28");
+const CHECKED = checkedLabel("2026-11-18");
+const LAST_CHECKED = "2026-11-18";
+const OFFICIAL_URL = "https://www.teamlab.art/e/botanicalgarden/";
 
 const TEAMLAB_URL = teamlabBotanicalGardenOsakaTicket.url;
 
@@ -68,12 +82,10 @@ const priceRows = [
 
 /** The hours, as the official page publishes them — period by period. */
 const hoursRows = [
-  { period: "1–9 October 2026", open: "18:15–21:30", last: "20:30" },
-  { period: "10–27 October 2026", open: "18:00–21:30", last: "20:30" },
-  { period: "28 October – 1 November 2026", open: "18:00–22:30", last: "21:30" },
-  { period: "2 November 2026", open: "18:00–21:30", last: "20:30" },
-  { period: "3–8 November 2026", open: "18:00–22:30", last: "21:30" },
-  { period: "9 November 2026 – 31 January 2027", open: "18:00–21:30", last: "20:30" },
+  { period: "9 November 2026 – 31 January 2027 (now)", open: "18:00–21:30", last: "20:30" },
+  { period: "14 December 2026 and 18 January 2027", open: "Closed", last: "—" },
+  { period: "1–8 February 2027", open: "Closed", last: "—" },
+  { period: "9–28 February 2027", open: "18:30–21:30", last: "20:30" },
 ];
 
 /** The booking rules an AI answer stops short of. */
@@ -96,7 +108,7 @@ const bookingRows = [
   },
   {
     q: "Which days is it closed?",
-    a: "The official page lists 26 October 2026, 14 December 2026 and 18 January 2027. Osaka Metro's own listing adds 14 and 28 September 2026 — all of them Mondays, so check your own date against the official calendar rather than assuming a weekly pattern.",
+    a: "The official page lists closures as irregular: 14 December 2026, 18 January 2027 and the whole week of 1–8 February 2027. There is no weekly closing day, so check your own date against the official calendar rather than assuming a pattern.",
   },
 ];
 
@@ -106,7 +118,7 @@ const venueRows = [
     venue: "teamLab Botanical Garden Osaka",
     where: "Nagai Botanical Garden, Higashisumiyoshi-ku, Osaka",
     indoors: "Outdoors, in a working botanical garden",
-    when: "Night only — opens 18:00 or 18:15, closes 21:30 or 22:30 by period",
+    when: "Night only — 18:00–21:30 to 31 Jan 2027, 18:30–21:30 from 9 Feb 2027",
     adult: "¥1,800 (dynamic)",
   },
   {
@@ -128,11 +140,11 @@ const venueRows = [
 const steps = [
   {
     title: "Check whether your date is one of the closed ones",
-    desc: "Before anything else. The official page publishes the closures individually — 26 October 2026, 14 December 2026, 18 January 2027 — and they fall on Mondays, so a Monday evening in Osaka is the one to verify rather than assume.",
+    desc: "Before anything else. The official page publishes the closures individually — 14 December 2026, 18 January 2027 and 1–8 February 2027 — so verify your evening rather than assume it is open.",
   },
   {
     title: "Look up the hours for your own period, not the venue's 'usual' hours",
-    desc: "This is a night venue whose opening follows sunset, and it changes every few weeks. From 9 November 2026 to 31 January 2027 it is 18:00–21:30 with last entry 20:30; a week earlier it closed an hour later. Your last entry, not the closing time, is the deadline that matters.",
+    desc: "This is a night venue whose opening follows sunset, and it changes through the year. From 9 November 2026 to 31 January 2027 it is 18:00–21:30 with last entry 20:30; from 9 to 28 February 2027 it opens at 18:30. Your last entry, not the closing time, is the deadline that matters.",
   },
   {
     title: "Buy in advance rather than at the gate",
@@ -151,49 +163,33 @@ const steps = [
 const faqItems = [
   {
     q: "How much are teamLab Botanical Garden Osaka tickets?",
-    a: `An adult aged 16 or over is ¥1,800 and a child aged 6 to 15 is ¥500 on teamLab's own published prices, with a ¥900 disability rate and free entry for preschool children. Buying on site costs more — ¥200 extra for an adult, ¥100 extra for a child or disability ticket — and the official page states that same-day tickets may sell out. teamLab also runs dynamic pricing here, so treat ¥1,800 as the published figure rather than a fixed one and confirm the price for your own date at the checkout. Read on ${CHECKED}.`,
+    a: `¥1,800 for an adult aged 16 or over and ¥500 for a child aged 6 to 15 on teamLab's official page, with a ¥900 disability rate and free entry for preschool children. teamLab runs dynamic pricing, so the figure can move with the date, and buying at the venue costs ¥200 more per adult and ¥100 more per child. Checked ${LAST_CHECKED}.`,
+  },
+  {
+    q: "What are the opening hours of teamLab Botanical Garden Osaka?",
+    a: `18:00 to 21:30 with last entry at 20:30, every open evening from 9 November 2026 to 31 January 2027, on the official schedule checked ${LAST_CHECKED}. From 9 to 28 February 2027 it opens later, at 18:30, and still closes at 21:30. Entry is not permitted after the last entry time.`,
+  },
+  {
+    q: "Is teamLab Botanical Garden Osaka open in winter?",
+    a: `Yes — it runs 18:00–21:30 right through December and January, and 18:30–21:30 from 9 February 2027. The exceptions are the published closures: 14 December 2026, 18 January 2027 and the whole of 1–8 February 2027. It is entirely outdoors, and January's mean daily minimum in Osaka is 3.0°C on the Japan Meteorological Agency's 1991–2020 normals, so dress for an hour or more outside.`,
   },
   {
     q: "Is teamLab Botanical Garden Osaka open in the rain?",
-    a: `Yes — teamLab's official FAQ states the exhibition will be open even if it rains, while adding that it may close or close temporarily depending on conditions at the venue. The exception is severe weather: if a storm warning, a heavy-rain warning or a thunder advisory is in effect, opening can be delayed or the garden can shut. Buying from the official ticket site has one practical advantage here — closure notices are emailed to the address used at purchase. The whole venue is outdoors and unsheltered, so a wet evening is a different visit from a dry one even when the gate is open. Read on ${CHECKED}.`,
-  },
-  {
-    q: "How long do you need at teamLab Botanical Garden Osaka?",
-    a: `As long as you want: teamLab's official FAQ states there is no limit on the length of your stay once you have been admitted. What is limited is the window — last entry is 20:30 in most periods and 21:30 in the late-closing ones, so the practical constraint is arriving in time rather than being moved on. Plan the walk around the closing time published for your own date and give yourself more than the gap between last entry and closing, which is one hour.`,
+    a: `Yes — teamLab's official FAQ states the venue will be open even if it rains, though it may close or close temporarily depending on conditions. If a storm warning, heavy-rain warning or thunder advisory is in effect, opening can be delayed or the garden can close. Checked ${LAST_CHECKED}.`,
   },
   {
     q: "How do I get to teamLab Botanical Garden Osaka?",
-    a: `Nagai Station on the Osaka Metro Midosuji Line — station M26 — then about ten minutes on foot from Exit 3, which is Osaka Metro's own published figure for the venue. The exhibition sits inside Nagai Botanical Garden in Nagai Park, at 1-23 Nagaikoen, Higashisumiyoshi-ku. From Namba the Midosuji Line runs straight there with no change, which is the reason a Namba or Shinsaibashi base works well for a visit that finishes after 21:00. Read on ${CHECKED}.`,
-  },
-  {
-    q: "Is it worth it with kids?",
-    a: "On price, clearly: ages 6 to 15 pay ¥500 and preschool children nothing, which is the cheapest teamLab admission in Japan by a wide margin. On practicalities, think about the hours rather than the art — nothing opens before 18:00, so this is an after-dark outing on paths through a park, and the youngest children will be doing it at or past bedtime. Klook's listing states the activity is stroller and wheelchair accessible and warns that there may be flashing lights and loud noises, which is the thing to weigh for a child who is sensitive to either.",
-  },
-  {
-    q: "What time does teamLab Botanical Garden Osaka open and close?",
-    a: `It changes through the year, because the venue only opens after dark. On the official schedule read on ${CHECKED}: 18:15–21:30 from 1 to 9 October 2026, 18:00–21:30 from 10 to 27 October, 18:00–22:30 from 28 October to 1 November, 18:00–21:30 on 2 November, 18:00–22:30 from 3 to 8 November, then 18:00–21:30 from 9 November 2026 all the way to 31 January 2027. Last entry is one hour before closing in every one of those periods.`,
+    a: `Nagai Station on the Osaka Metro Midosuji Line, then 10 minutes on foot from Exit 3, on teamLab's official access notes checked ${LAST_CHECKED}; JR Hanwa Line Nagai Station is 12 minutes from its East Exit. The exhibition is inside Nagai Botanical Garden at 1-23 Nagaikoen, Higashisumiyoshi-ku, and the Midosuji Line runs there from Namba with no change.`,
   },
   {
     q: "Do you need to book teamLab Botanical Garden Osaka in advance?",
-    a: "Not strictly — the venue does sell same-day tickets on site — but there are two good reasons to. It is ¥200 cheaper per adult and ¥100 cheaper per child bought ahead, and teamLab's own page warns that on-site tickets may sell out. The flexibility argument also runs the other way from most attractions: a ticket bought on the official site can have its date changed up to three times until 21:00 on the admission day, so booking early costs you very little optionality.",
-  },
-  {
-    q: "How is this different from teamLab Planets or Borderless?",
-    a: "Three ways that matter before you book. It is outdoors, in a real botanical garden, rather than inside a building. It is night-only — nothing before 18:00, where both Tokyo venues run through the day. And it is far cheaper: ¥1,800 for an adult against from ¥3,800 at Planets in Toyosu and from ¥3,400 at Borderless in Azabudai Hills. It is also in Osaka, which is the practical difference for most trips: if you are choosing between them rather than doing both, the choice is usually made by which city you are sleeping in.",
-  },
-  {
-    q: "Which days is teamLab Botanical Garden Osaka closed?",
-    a: `The official page lists 26 October 2026, 14 December 2026 and 18 January 2027, and Osaka Metro's own spot listing adds 14 and 28 September 2026. Every one of those is a Monday, but they are published as individual dates rather than as a rule, so check your own date against the official calendar instead of working from a pattern. Read on ${CHECKED}.`,
-  },
-  {
-    q: "Is there anything else to know before you go?",
-    a: `Two things off the official pages. First, the garden warns that sound and light from concerts and rehearsals at the adjacent stadium may affect the viewing environment of certain artworks — it names 28 October to 1 November and 3 to 8 November 2026, between 18:00 and 20:15 — so if your evening falls in one of those windows, later is better. Second, this is a park at night in winter: January's mean daily minimum in Osaka is 3.0°C on the Japan Meteorological Agency's 1991–2020 normals, and you will be walking outdoors in it for an hour or more.`,
+    a: "Not strictly — the venue sells same-day tickets on site — but booking ahead is ¥200 cheaper per adult and ¥100 per child, and teamLab's own page warns that on-site tickets may sell out. A ticket bought on the official site can also have its date changed up to three times until 21:00 on the admission day, so booking early costs very little flexibility.",
   },
 ];
 
 const TITLE = "teamLab Botanical Garden Osaka Tickets 2026: Price & Hours";
 const DESCRIPTION =
-  "teamLab Botanical Garden Osaka tickets: adult ¥1,800, ages 6–15 ¥500; open 18:00–21:30, last entry 20:30, to 31 Jan 2027 (teamLab, 28 Oct 2026).";
+  "teamLab Botanical Garden Osaka tickets: adult ¥1,800, ages 6–15 ¥500; open 18:00–21:30 in winter, closed 1–8 Feb 2027. Book on Klook or the official site.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/teamlab-botanical-garden-osaka-tickets") },
@@ -302,8 +298,8 @@ export default function TeamlabBotanicalGardenOsakaTicketsPage({ updated }: { up
           <p className={styles.heroSubtitle}>
             Tickets are ¥1,800 for an adult and ¥500 for ages 6–15 when bought in advance, and the garden is open
             18:00–21:30 (last entry 20:30) from 9 November 2026 to 31 January 2027. The nearest station is
-            Nagai on the Osaka Metro Midosuji Line, about ten minutes on foot from Exit 3 (teamLab and Osaka
-            Metro, read on {CHECKED}).
+            Nagai on the Osaka Metro Midosuji Line, about ten minutes on foot from Exit 3 (teamLab, checked{" "}
+            {CHECKED}).
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Official prices, checked", "Night-only hours", "vs Planets & Borderless"].map((t) => (
@@ -329,16 +325,11 @@ export default function TeamlabBotanicalGardenOsakaTicketsPage({ updated }: { up
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             <strong>teamLab Botanical Garden Osaka tickets</strong> are <strong>¥1,800</strong> for an adult
-            aged 16 or over and <strong>¥500</strong> for a child aged 6 to 15, with a ¥900 disability rate and
-            free entry for preschool children — and ¥200 more per adult, ¥100 more per child, if you buy at the
-            gate instead. It is a <strong>night-only, outdoor</strong> exhibition inside Nagai Botanical Garden,
-            about <strong>ten minutes on foot from Exit 3 at Nagai Station</strong> on the Midosuji Line, and
-            nothing opens before 18:00: from 9 November 2026 to 31 January 2027 the published hours are
-            18:00–21:30 with <strong>last entry at 20:30</strong>. There is no limit on how long you stay once
-            you are in, teamLab prices the venue dynamically so ¥1,800 moves with the date, and the garden
-            opens in rain — though a storm, heavy-rain or thunder warning can delay or close it. All figures
-            read on {CHECKED} off teamLab&apos;s own exhibition page and FAQ, with the access figure from Osaka
-            Metro&apos;s official listing.
+            aged 16 or over and <strong>¥500</strong> for a child aged 6 to 15 (dynamic pricing; ¥200 / ¥100
+            more at the gate). The outdoor night exhibition is open <strong>18:00–21:30, last entry 20:30</strong>,
+            right through winter from 9 November 2026 to 31 January 2027, then 18:30–21:30 from 9 February
+            2027 — closed 14 December, 18 January and <strong>1–8 February 2027</strong>. Figures from
+            teamLab&apos;s official page, checked {LAST_CHECKED}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -396,9 +387,9 @@ export default function TeamlabBotanicalGardenOsakaTicketsPage({ updated }: { up
           <span className={styles.sectionLabel}>Price</span>
           <h2 className={styles.sectionTitle}>How Much Are teamLab Botanical Garden Osaka Tickets?</h2>
           <p className={styles.bodyText}>
-            ¥1,800 for an adult, ¥500 for a child aged 6 to 15 — and ¥200 or ¥100 more respectively if you buy
-            at the venue on the day. That makes this the cheapest teamLab admission in Japan by a long way, and
-            it is the single most useful thing to know before comparing it with the Tokyo venues.
+            ¥1,800 for an adult (16+), ¥500 for a child aged 6 to 15, ¥900 with a disability certificate and free
+            for preschool children — and ¥200 or ¥100 more if you buy at the venue on the day. teamLab marks
+            every paid tier as dynamically priced, so confirm your own date at checkout.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -422,6 +413,10 @@ export default function TeamlabBotanicalGardenOsakaTicketsPage({ updated }: { up
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED} —{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener">teamLab Botanical Garden Osaka official page (teamlab.art)</a>.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Prices read on {CHECKED} off teamLab&apos;s own exhibition page for the venue, which also states
             that a dynamic pricing system is in place — so the adult figure can differ by date, and the
@@ -440,11 +435,11 @@ export default function TeamlabBotanicalGardenOsakaTicketsPage({ updated }: { up
         {/* Q2 — hours */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Hours</span>
-          <h2 className={styles.sectionTitle}>What Time Does teamLab Botanical Garden Osaka Open and Close?</h2>
+          <h2 className={styles.sectionTitle}>What Are the Opening Hours of teamLab Botanical Garden Osaka?</h2>
           <p className={styles.bodyText}>
-            After dark, and not at a fixed time. This is the detail that trips people up: the garden is a
-            night venue whose opening follows sunset, so the hours are published period by period rather than
-            as one line, and last entry is an hour before closing in every period.
+            18:00–21:30 with last entry at 20:30, from 9 November 2026 to 31 January 2027. The garden is a
+            night venue whose opening follows sunset, so hours are published period by period — from 9 to 28
+            February 2027 it opens at 18:30 instead.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -468,14 +463,29 @@ export default function TeamlabBotanicalGardenOsakaTicketsPage({ updated }: { up
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Hours as the official exhibition page publishes them, read on {CHECKED}. The same page lists the
-            closures individually — 26 October 2026, 14 December 2026 and 18 January 2027 — and Osaka
-            Metro&apos;s own spot listing adds 14 and 28 September 2026. It also carries a notice that sound
-            and light from the adjacent stadium may affect certain artworks between 18:00 and 20:15 on 28
-            October to 1 November and 3 to 8 November 2026. Anything beyond 31 January 2027 is not published
-            yet, so check the calendar for your own date.
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED} —{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener">teamLab Botanical Garden Osaka official page (teamlab.art)</a>.
+            The page lists closures as irregular and states that hours vary with the season; nothing after 28
+            February 2027 is published yet, so check the calendar for your own date.
           </p>
+        </section>
+
+        {/* Q2b — winter (landing query, 18 Nov 2026) */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Winter</span>
+          <h2 className={styles.sectionTitle}>Is teamLab Botanical Garden Osaka Open in Winter?</h2>
+          <p className={styles.bodyText}>
+            Yes — it opens every evening through December and January at 18:00–21:30, except the published
+            closures on 14 December 2026 and 18 January 2027. The one winter gap is <strong>1–8 February
+            2027</strong>, when the garden is closed, before reopening at 18:30 from 9 February. It is entirely
+            outdoors, so dress for an hour or more in an Osaka winter evening.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check winter dates on Klook →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Q3 — booking rules and the CTA. The part an AI answer does not finish:

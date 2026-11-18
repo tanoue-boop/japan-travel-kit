@@ -649,7 +649,9 @@ export default function OsakaToHiroshimaShinkansenPage({ updated }: { updated: P
             <strong>181 trains</strong> across the day on Klook&apos;s count mean you choose your hours
             rather than having them chosen for you. Hiroshima city itself is walkable and tram-served: the
             Peace Memorial Park, the Atomic Bomb Dome and the museum sit together, and the museum is{" "}
-            {PRICES.peaceMuseum.adult} with the park and the Dome free.
+            {PRICES.peaceMuseum.adult} with the park and the Dome free. If you would rather walk it with a
+            guide, our <Link href="/guides/attractions/hiroshima-peace-memorial-tours">Hiroshima Peace Memorial tours</Link>{" "}
+            guide compares the 2- to 5-hour options and the museum slots that need booking.
           </p>
           <p className={styles.bodyText}>
             Miyajima is the decision. The island is a local JR train on to Miyajimaguchi plus a ferry, and

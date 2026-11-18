@@ -279,14 +279,37 @@ const bookingWindow = [
   },
 ];
 
+/** Official re-read for the 18 Nov 2026 pass: snowfes.com/news/948.html and snowfes.com/faq/. */
+const TODAY = checkedLabel("2026-11-18");
+
+/** The festival-facts table at the top. First row is the answer. */
+const factRows = [
+  {
+    item: "Sapporo Snow Festival 2027 (77th)",
+    fact: "4 (Thu) to 11 (Thu, holiday) February 2027, 8 days. Free entry at all three sites, no ticket",
+  },
+  { item: "Odori site", fact: "West 1 to West 11 in Odori Park; viewable at any time, lit until 22:00" },
+  { item: "Susukino site", fact: "Ekimae-dori from South 4 to South 6; viewable at any time, lit until 23:00 (22:00 on the final day)" },
+  { item: "Tsudome site", fact: "10:00–16:00; free entry, some attractions charged; attraction reception may close early when crowded" },
+  { item: "Linked event", fact: "Sapporo Snow Sports Park 2027, 12 to 14 February 2027, Daiwa House Premist Dome" },
+];
+
 const faqItems = [
   {
-    q: "When is the Sapporo Snow Festival 2027?",
-    a: `4 to 11 February 2027 — eight days. The organising committee's own announcement reads 「2027年2月4日（木）から11日（木・祝）の8日間」, so the dates are confirmed rather than estimated, and they cover all three sites. A linked event, さっぽろスノースポーツパーク2027, follows on 12 to 14 February 2027. One thing worth knowing about the Tsudome site: it is the only one with a closing time, 10:00 to 16:00, rather than a lighting time. Read on ${OWN}. The committee publishes the following year's dates as it closes each edition — the 2027 dates were announced on 11 February 2026 — so if you are reading this for 2028, that notice is where it will appear first.`,
+    q: "How much do Sapporo Snow Festival tours cost?",
+    a: `The festival itself costs nothing: the organising committee's FAQ says all venues are free (「全会場無料です」), with charges only for some attractions such as those at the Tsudome site. What you pay for is a guided day out around the festival, and those are priced per date on Klook, so open the listing for your date. Read on snowfes.com on ${TODAY}.`,
   },
   {
-    q: "Is the Sapporo Snow Festival free?",
-    a: `Yes. The committee's own FAQ answers it in three characters — 「全会場無料です」, all venues free — and nothing on the festival requires a ticket. The practical version, read on ${OWN}: the Odori site is a public park, viewable at any time during the eight days, with the sculptures lit until 22:00. The Susukino site is a public street, viewable at any time, illuminated until 23:00 and until 22:00 on the final day. The Tsudome site is free to enter and open 10:00 to 16:00, with some of the activities inside charged separately and attraction reception liable to close early when it is crowded. So the money on a festival trip goes on the room, the flight and the days out — not on the festival.`,
+    q: "How far ahead should I book Sapporo Snow Festival activities?",
+    a: `Book the hotel first, as soon as your dates are fixed: the 2027 dates, 4 to 11 February, have been public since 11 February 2026. Hold seasonal day tours such as Otaru, Asahiyama Zoo or the Lake Shikotsu ice festival by about 31 December, while you can still check and change their cancellation terms. The festival sites themselves need no booking at all.`,
+  },
+  {
+    q: "Do you need tickets for the Sapporo Snow Festival?",
+    a: `No. The committee's FAQ answers 「全会場無料です」, all venues free. Odori is a public park viewable at any time with the sculptures lit until 22:00, Susukino is a street lit until 23:00 (22:00 on the final day), and Tsudome is free to enter from 10:00 to 16:00 with some paid attractions inside. Read ${TODAY}.`,
+  },
+  {
+    q: "When is the Sapporo Snow Festival 2027?",
+    a: `4 to 11 February 2027 — eight days. The organising committee's own announcement reads 「2027年2月4日（木）から11日（木・祝）の8日間」, so the dates are confirmed rather than estimated, and they cover all three sites. A linked event, さっぽろスノースポーツパーク2027, follows on 12 to 14 February 2027. One thing worth knowing about the Tsudome site: it is the only one with a closing time, 10:00 to 16:00, rather than a lighting time. Re-read on snowfes.com on ${TODAY}. The committee publishes the following year's dates as it closes each edition — the 2027 dates were announced on 11 February 2026 — so if you are reading this for 2028, that notice is where it will appear first.`,
   },
   {
     q: "Do I need a tour for the Sapporo Snow Festival?",
@@ -295,34 +318,6 @@ const faqItems = [
   {
     q: "Where should I stay for the Snow Festival?",
     a: `Sapporo Station or Susukino, and the difference is which end of the evening you care about. Sapporo Station is one subway stop from Odori and much of the walk between the two is underground, which matters more than any view when the mean February daily maximum is ${FEB_MAX} — and it is where the Rapid Airport from New Chitose puts you down. Susukino puts the ice-sculpture site on the street outside: that site runs along Ekimae-dori between South 4 and South 6 and is lit until 23:00, so the late half of the festival ends in a walk rather than a last train. Otaru — 33 to 41 minutes out on the JR Hakodate Line by Rapid Airport and ¥800 on JR Hokkaido's own figures — is the sensible fallback if Sapporo is full, and runs its own Snow Light Path in the same weeks. Whatever you choose, the dates have been public since February 2026, so this is the booking to settle first.`,
-  },
-  {
-    q: "How cold is Sapporo in February and what should I wear?",
-    a: `Cold enough that it changes what you pack, but not expedition cold. On the Japan Meteorological Agency's 1991–2020 normals for Sapporo, February averages ${FEB_MEAN} for the month, with a mean daily maximum of ${FEB_MAX} and a mean daily minimum of ${FEB_MIN}, and ${FEB_SNOW} of snowfall in the month. Read ${JMA_CHECKED}. Three things follow. The daily maximum sits at about freezing, so the snow sculptures are not melting and the ground is not wet — it is hard-packed and slippery, which makes footwear with grip the single most useful item. Every building, shop, train and subway concourse is heated hard, so layers you can shed beat one thick coat you cannot. And the sculptures are best after dark, which is when the temperature is at its minimum rather than its mean: that evening hour at Odori is the coldest part of the trip and the reason gloves, a hat and something over your face are not optional.`,
-  },
-  {
-    q: "How do I get from New Chitose Airport to Sapporo?",
-    a: `The Rapid Airport train, in 33 to 37 minutes for ${AIRPORT_FARE}. JR Hokkaido's own figures, read ${OWN}: the Special Rapid is 33 minutes at fastest and the Rapid 37, with six services an hour through the middle of the day — one Special Rapid, three Rapid and two Section Rapid. Car 4 is the reserved uシート, which costs ¥1,000 on top of the fare or ¥800 if you reserve it ticketless, and is worth it in February precisely because the ordinary cars fill with ski bags. The alternative is a booked road transfer, which has one genuine advantage for a festival trip: it ends at your hotel door rather than at a station with cases in the snow. It is bought before you fly, and the terms are per vehicle on Klook's page.`,
-  },
-  {
-    q: "How do you get between the three festival sites?",
-    a: `Odori and Susukino on foot, Tsudome by subway and shuttle. Odori and Susukino are a few blocks apart on the same street, one Namboku Line stop if the weather is against you, and Sapporo Station is one stop the other way with an underground concourse most of the distance. A one-zone subway ride is ${SUBWAY_FARE} for an adult and ¥110 for a child. Tsudome is the outlier: the Toho Line to Eiwamachi and then a shuttle bus, which in 2026 was ${SHUTTLE_FARE} for an adult one way, cash only, and free for children of elementary age and under, for over-65s and for disabled visitors — with no transfer discount from the subway. The 2027 shuttle has not been announced. If you are making three or more subway rides in a day, the Transportation Bureau's day tickets are ${SUBWAY_DAY_PASS} on a weekday and ${DONICHIKA} at weekends and on public holidays. All fares read ${OWN} except the shuttle, which is the 2026 notice.`,
-  },
-  {
-    q: "How many days do you need for the Sapporo Snow Festival?",
-    a: `Three nights is the honest minimum and four is better. The festival itself is two half-days: an afternoon at Odori to see the carving detail and an evening at Odori and Susukino to see them lit, which are genuinely different experiences of the same sculptures. Tsudome is a third half-day and only worth it with children, because it closes at 16:00 and is the furthest out. That leaves the rest of your days for the things that are only sold in this season — the Otaru canal day, the Asahiyama Zoo winter departure, the Lake Shikotsu ice festival evening, a Jozankei onsen afternoon. Two nights works but spends one of them on the airport legs; five lets you add Noboribetsu or Lake Toya without giving up a lit evening.`,
-  },
-  {
-    q: "Is the Snow Festival good for children?",
-    a: `The Tsudome site is built for them, and it is the one with rules attached. It is free to enter, open 10:00 to 16:00, and the snow slides and snow rafting are the point of it — but some attractions inside are paid and the committee's own FAQ warns that reception can close earlier than 16:00 when it is crowded, so this is a morning rather than an afternoon. The Odori and Susukino sites are free, open at any hour and fine with children, with the obvious caveat that the best viewing is after dark at the coldest point of the day. Two cost notes: the Tsudome shuttle was free for children of elementary age and under in 2026, and a child's subway day ticket is ¥420 on a weekday and ¥260 at a weekend against a ¥110 one-zone ride.`,
-  },
-  {
-    q: "Is the JR Hokkaido Rail Pass worth it for a festival trip?",
-    a: `Only if the trip leaves Sapporo. The airport leg is ${AIRPORT_FARE} each way on JR Hokkaido's own figure, so a return airport run is about ¥2,460 — nowhere near a pass. The pass starts to pay when Otaru, Asahikawa or Noboribetsu are also on the plan as independent trips rather than as booked coach days, because those are the legs with real fares attached. A festival trip that stays in the city and buys two guided days does not need it at all: the guided days include their own transport, and inside Sapporo the Transportation Bureau's ${SUBWAY_DAY_PASS} weekday and ${DONICHIKA} weekend subway tickets are the only pass that does anything. Price it against your own legs before you buy — that is the whole method, and it is the same one our JR Pass guide uses for the national pass.`,
-  },
-  {
-    q: "What else is on in Hokkaido during festival week?",
-    a: `Three things, all with published dates. The committee's own announcement adds さっぽろスノースポーツパーク2027 on 12 to 14 February 2027 at Daiwa House Premist Dome, immediately after the festival closes, so a trip that arrives late in the eight days catches both. The Lake Shikotsu ice festival runs 30 January to 23 February 2027 on its organisers' own site, open 10:00 to 20:00 and lit from 16:30, at ¥1,000 on weekdays and ¥3,000 at weekends and on public holidays from junior-high age, free below that. That makes Thursday 11 February, a public holiday, a ¥3,000 day. The organisers say the dates can move with the weather. The third is Otaru's Snow Light Path, 6 to 13 February 2027 on the Otaru Tourism Association's page, the same 33 to 41 minutes west; its hours and venues are awaiting the official announcement. All read on ${SEASON}.`,
   },
 ];
 
@@ -354,9 +349,9 @@ const festivalSameTrip: KlookTripPrepItem[] = [
   },
 ];
 
-const TITLE = "Sapporo Snow Festival 2027 Tours: Dates 4–11 Feb, Hotels";
+const TITLE = "Sapporo Snow Festival Tours 2027: Dates, Cost, Tickets";
 const DESCRIPTION =
-  "Sapporo Snow Festival 2027 runs 4–11 February at three free sites. Book hotels now and day tours by 31 December: Otaru, Asahiyama Zoo and more on Klook.";
+  "Sapporo Snow Festival 2027 runs 4–11 February and is free to enter, so no tickets are needed. Book hotels now and day tours by 31 Dec on Klook.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/sapporo-snow-festival-tours") },
@@ -450,7 +445,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Sapporo Snow Festival 2027 Tours: <br />Dates (4–11 Feb), Free Sites and What to Book
+            Sapporo Snow Festival Tours 2027: <br />Dates (4–11 Feb), Cost, Tickets and What to Book
           </h1>
           <p className={styles.heroSubtitle}>
             Eight days, three sites, no ticket. The tours worth booking are the days around the festival —
@@ -475,6 +470,68 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* Answer-first block, added 18 Nov 2026: opening answer, official facts table, landing-query H2s. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            The <strong>Sapporo Snow Festival 2027</strong> runs <strong>4 to 11 February 2027</strong> (8 days)
+            at three sites, Odori, Susukino and Tsudome, and <strong>entry is free with no ticket</strong>, so{" "}
+            <strong>Sapporo Snow Festival tours</strong> are optional day trips around it. Book the hotel first
+            and any day tour by about 31 December. Dates and admission from the organising committee&apos;s
+            site, read on {TODAY}.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["What", "Official answer"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {factRows.map((row) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.item}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.fact}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-18. Official sources:{" "}
+            <a href="https://www.snowfes.com/news/948.html" target="_blank" rel="noopener noreferrer">snowfes.com (2027 outline)</a>{" "}
+            and{" "}
+            <a href="https://www.snowfes.com/faq/" target="_blank" rel="noopener noreferrer">snowfes.com FAQ</a>.
+          </p>
+
+          <h2 className={styles.sectionTitle}>How Much Do Sapporo Snow Festival Tours Cost?</h2>
+          <p className={styles.bodyText}>
+            The festival itself costs ¥0: the committee&apos;s FAQ says all venues are free
+            (「全会場無料です」), with charges only for some attractions such as those at the Tsudome site. What
+            you pay for is a guided day out around the festival, such as Otaru, Asahiyama Zoo or the Lake
+            Shikotsu ice festival, and those are priced per date on Klook, so open the listing for your dates.
+          </p>
+
+          <h2 className={styles.sectionTitle}>How Far Ahead Should I Book Sapporo Snow Festival Activities?</h2>
+          <p className={styles.bodyText}>
+            Book the hotel first, as soon as your dates are fixed: the 8 nights of 4 to 11 February 2027 have
+            been public since 11 February 2026. Hold seasonal day tours by about 31 December, while you can
+            still check and change their cancellation terms, and leave the festival sites themselves unbooked,
+            because there is nothing to book.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={sapporoSnowFestivalStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check Sapporo hotels for 4–11 Feb →
+            </KlookLink>
+            <KlookLink href={otaruSnowParkDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              The Otaru day tour →
+            </KlookLink>
+          </div>
+        </section>
 
         <WinterBookingTop
           heading="Which Sapporo Snow Festival Tours Should You Book for February 2027?"
@@ -538,7 +595,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             {/* Answer-first: the first body paragraph of the article, not the hero line. */}
             <p className={styles.verdictText}>
               The <strong>Sapporo Snow Festival 2027</strong>, the 77th, runs <strong>4 to 11 February 2027</strong>{" "}
-              (dates on snowfes.com, re-read on 11 November 2026), and all three sites are free, so{" "}
+              (dates on snowfes.com, re-read on {TODAY}), and all three sites are free, so{" "}
               <strong>Sapporo Snow Festival tours</strong> are optional. Book the hotel now and any day tour by
               31 December. The eight days run across three sites — <strong>Odori Park from West 1 to West 11</strong>,{" "}
               <strong>Susukino on Ekimae-dori between South 4 and South 6</strong>, and the{" "}
@@ -623,7 +680,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
         {/* Free, and no tour needed */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Is it free?</span>
-          <h2 className={styles.sectionTitle}>Is the Sapporo Snow Festival Free, and Do You Need a Tour?</h2>
+          <h2 className={styles.sectionTitle}>Do You Need Sapporo Snow Festival Tickets, or a Tour?</h2>
           <p className={styles.bodyText}>
             Free, and no. The committee&apos;s FAQ answers the fee question in one line —{" "}
             <strong>「全会場無料です」</strong>, all venues free — and nothing about the festival requires a

@@ -560,7 +560,9 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
           <h2 className={styles.sectionTitle}>Which Tokyo observation deck should I choose for my trip?</h2>
           <p className={styles.bodyText}>
             First visit or sunset: SHIBUYA SKY. Rain, height or Mt. Fuji: Tokyo Skytree. Late night or a
-            cheaper ticket: Tokyo Tower. No budget at all: Tocho.
+            cheaper ticket: Tokyo Tower. No budget at all: Tocho. For the skyline from water level instead,
+            a <Link href="/guides/attractions/tokyo-bay-cruise">Tokyo Bay cruise</Link> starts at ¥600 on the
+            Hinode Pier to Odaiba water bus.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

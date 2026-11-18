@@ -355,7 +355,10 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
             <strong>approximately 30 minutes</strong>, and from Universal City Station the USJ gates are{" "}
             <strong>about 5 minutes</strong> on foot. The fourth option, <strong>Tennoji</strong>, is the
             shortest Haruka leg from the airport and the fastest run to Nara (
-            <strong>approximately 36 minutes</strong> to JR Nara).
+            <strong>approximately 36 minutes</strong> to JR Nara). A Midosuji Line base also makes an evening
+            at Nagai easy — our{" "}
+            <Link href="/guides/attractions/teamlab-botanical-garden-osaka-tickets">teamLab Botanical Garden Osaka tickets</Link>{" "}
+            guide has the price and the after-dark hours of the garden, 10 minutes on foot from Nagai Station.
           </p>
           <p className={styles.bodyText}>
             What follows is the comparison behind that, and what it leaves out on purpose. There are no hotel

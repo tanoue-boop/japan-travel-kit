@@ -421,7 +421,9 @@ export default function HiroshimaMiyajimaDayTripPage({ updated }: { updated: Pag
             Ropeway only runs up until 16:00, so an afternoon arrival on the island often means skipping Mt.
             Misen entirely. The Peace Memorial Museum&apos;s extended early and late hours need an online
             reservation, and it closes on 30 and 31 December and for a spell in mid-February. And the tides
-            decide what the great torii looks like on the day you arrive. Checked {CHECKED}.
+            decide what the great torii looks like on the day you arrive. Checked {CHECKED}. Which slots
+            need booking, and why Hiroshima Castle has nothing to book since its keep closed, are set out
+            in our <Link href="/guides/attractions/hiroshima-peace-memorial-tours">Hiroshima Peace Memorial tours</Link> guide.
           </p>
           <p className={styles.bodyText}>
             For bullet-train classes, seat reservations and where a rail pass does and does not apply, see our{" "}

@@ -15,9 +15,12 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
-// Tour contents and durations are as the Klook listings describe them; Todai-ji figures are from
-// todaiji.or.jp. Both checked 19 Oct 2026.
+// Tour contents and durations are as the Klook listings describe them, checked 19 Oct 2026.
+// Todai-ji fees and Great Buddha Hall hours re-read on todaiji.or.jp/en/information/haikan/ on 18 Nov 2026.
 const CHECKED = "19 October 2026";
+const TODAIJI_CHECKED = "18 November 2026";
+const TODAIJI_CHECKED_ISO = "2026-11-18";
+const TODAIJI_URL = "https://www.todaiji.or.jp/en/information/haikan/";
 
 const tourRows = [
   {
@@ -51,10 +54,12 @@ const tourRows = [
 ];
 
 const todaijiRows = [
-  { ticket: "Daibutsuden (Great Buddha Hall), adult", price: "¥800" },
+  { ticket: "What most tour guests need: Daibutsuden (Great Buddha Hall), adult", price: "¥800" },
   { ticket: "Daibutsuden, ages 6–12", price: "¥400" },
   { ticket: "Combined pass: Daibutsuden + Museum, adult", price: "¥1,200" },
   { ticket: "Combined pass, ages 6–12", price: "¥600" },
+  { ticket: "Daibutsuden hours, April–October", price: "7:30–17:30" },
+  { ticket: "Daibutsuden hours, November–March", price: "8:00–17:00" },
 ];
 
 const whoFor = [
@@ -99,11 +104,11 @@ const steps = [
   },
   {
     title: "Check whether the tour enters Todai-ji",
-    desc: `Nara Park is free to walk through and the deer are the photograph most people come for, but the Great Buddha itself sits inside the Daibutsuden, which charges ¥800 for an adult and ¥400 for ages 6–12. Some tours include that admission, some stop at the park. Prices checked ${CHECKED}.`,
+    desc: `Nara Park is free to walk through and the deer are the photograph most people come for, but the Great Buddha itself sits inside the Daibutsuden, which charges ¥800 for an adult and ¥400 for ages 6–12. Some tours include that admission, some stop at the park. Prices checked ${TODAIJI_CHECKED}.`,
   },
   {
     title: "Mind the Daibutsuden's closing time",
-    desc: `The Great Buddha Hall closes at 17:30 from April to October and at 17:00 from November to March. A late-running tour on a short winter day can arrive after the doors shut, which is worth asking about if Todai-ji is your reason for going. Checked ${CHECKED}.`,
+    desc: `The Great Buddha Hall closes at 17:30 from April to October and at 17:00 from November to March. A late-running tour on a short winter day can arrive after the doors shut, which is worth asking about if Todai-ji is your reason for going. Checked ${TODAIJI_CHECKED}.`,
   },
   {
     title: "Confirm the departure point and the length of the day",
@@ -125,28 +130,20 @@ const faqItems = [
     a: `Expect a full day. One of the listings here is given as 8 hr 55 min to 9 hr 05 min, and the others describe a full-day itinerary departing central Osaka in the morning. Several offer a Kyoto departure as an alternative, which saves an hour or so if you are already staying in Kyoto. Durations as listed on ${CHECKED}.`,
   },
   {
+    q: "Which Kyoto and Nara tour package from Osaka should I pick?",
+    a: "For most first-timers, the Arashiyama, Kinkaku-ji and Nara Todai-ji tour, because it is the one of the four that goes inside the Great Buddha Hall. If you want the Sagano scenic railway through the Hozugawa valley, take the Sagano railway tour; for eastern Kyoto around Kiyomizu-dera, take the Kiyomizu-dera tour; and to add Uji with Byodo-in, take the three-city tour at the cost of less time anywhere.",
+  },
+  {
     q: "How much is admission to Todai-ji in Nara?",
-    a: `The Great Buddha Hall (Daibutsuden) is ¥800 for an adult and ¥400 for ages 6–12. A combined pass covering the Daibutsuden and the Todaiji Museum is ¥1,200 for an adult and ¥600 for ages 6–12. Groups of 30 or more pay less. Nara Park itself, including the deer, is free to walk through. Prices read off Todai-ji's official site on ${CHECKED}.`,
+    a: `The Great Buddha Hall (Daibutsuden) is ¥800 for an adult and ¥400 for ages 6–12. A combined pass covering the Daibutsuden and the Todaiji Museum is ¥1,200 for an adult and ¥600 for ages 6–12. Nara Park itself, including the deer, is free to walk through. Prices read off Todai-ji's official site on ${TODAIJI_CHECKED}.`,
   },
   {
     q: "What are Todai-ji's opening hours?",
-    a: `The Great Buddha Hall is open 7:30–17:30 from April to October and 8:00–17:00 from November to March. The Todaiji Museum runs 9:30–17:30 with last admission at 17:00 in the April–October period, and 9:30–17:00 with last admission at 16:30 from November to March. Hokke-do and Senju-do keep 8:30–16:00 year round. Checked ${CHECKED}.`,
-  },
-  {
-    q: "Which Kyoto and Nara tour should I pick?",
-    a: "If you want the Sagano scenic railway through the Hozugawa valley, only one of these itineraries includes it. If seeing the Great Buddha matters more than the gardens, take the tour that goes into Todai-ji and Kinkaku-ji. If you would rather have eastern Kyoto — Kiyomizu-dera and the approach streets — there is an itinerary built around that instead. And if you want to add Uji, with Byodo-in and the matcha street, the three-city tour covers it at the cost of less time anywhere.",
+    a: `The Great Buddha Hall is open 7:30–17:30 from April to October and 8:00–17:00 from November to March, so a winter tour needs to reach Nara before 17:00. Checked on Todai-ji's official site on ${TODAIJI_CHECKED}.`,
   },
   {
     q: "Are temple entry fees included in these tours?",
     a: "It varies by listing, and it is the detail most worth checking before you compare prices. Fushimi Inari and Nara Park are free, so no tour charges for them. Todai-ji's Great Buddha Hall (¥800 adult), Kinkaku-ji and Kiyomizu-dera all have their own admissions, and some tours include them while others leave you to pay at the gate. Read the inclusions on the listing rather than assuming.",
-  },
-  {
-    q: "Do I need a JR Pass for a Kyoto and Nara day tour?",
-    a: "No. These are coach tours and the transport is in the price, so a rail pass buys you nothing on the day. A pass is a question about the rest of your trip — the long-distance legs between cities — not about this. If you are deciding, our JR Pass guide notes that a Kansai-only itinerary rarely justifies one.",
-  },
-  {
-    q: "Is Nara worth visiting at all?",
-    a: "Yes, and it is one of the better-value stops in Kansai: the park is free, the deer are genuinely a spectacle, and Todai-ji's Great Buddha Hall is one of the largest wooden buildings in the world for ¥800. If you would rather not spend the day on a coach, Nara is an easy half-day from Osaka on its own — the Kintetsu and JR Nara lines both run there, and an IC card covers the fare.",
   },
 ];
 
@@ -158,7 +155,7 @@ export const getStaticProps = () => ({
 // /guides/attractions/nara-day-trip — keep the two titles and openings apart.
 const TITLE = "Kyoto and Nara Day Tour from Osaka (2026): 4 Tours Compared";
 const DESC =
-  "Kyoto and Nara day tour from Osaka: about 9 hours on Klook listings, with Fushimi Inari, Nara Park and Arashiyama or Kiyomizu-dera. How to pick the route.";
+  "Kyoto and Nara day tour from Osaka: about 9 hours, Nara Park, Fushimi Inari and Arashiyama or Kiyomizu-dera. Todai-ji is ¥800. Compare 4 tours on Klook.";
 
 export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -275,6 +272,40 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
           </p>
         </div>
 
+        {/* Opening answer (18 Nov 2026). */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>
+              A Kyoto and Nara day tour from Osaka fits both cities into one day of about 9 hours: one Klook
+              listing gives 8 hr 55 min to 9 hr 05 min, leaving central Osaka in the morning.
+            </strong>{" "}
+            A typical route takes in Arashiyama or Kiyomizu-dera, the free deer park in Nara and Fushimi Inari,
+            and Todai-ji&apos;s Great Buddha Hall costs ¥800 for an adult if the tour goes inside. Of the four
+            tours compared here, pick the Arashiyama, Kinkaku-ji and Nara Todai-ji itinerary unless the Sagano
+            railway or Uji matters more to you.
+          </p>
+        </section>
+
+        <section className={styles.bodySection}>
+          <h2 className={styles.sectionTitle}>Can You Do Kyoto and Nara in One Day from Osaka?</h2>
+          <p className={styles.bodyText}>
+            Yes on a tour: Osaka sits between the two, so a coach covers a slice of Kyoto and Nara Park in about 9
+            hours. On your own it means two separate out-and-back rail trips on different railway lines,
+            plus local buses at each end. Either
+            way, each city gets a few hours rather than a full day.
+          </p>
+        </section>
+
+        <section className={styles.bodySection}>
+          <h2 className={styles.sectionTitle}>How Long Is a Kyoto and Nara Day Tour from Osaka?</h2>
+          <p className={styles.bodyText}>
+            A full day. One of the four listings compared here is given as 8 hr 55 min to 9 hr 05 min, and the
+            others describe a full-day itinerary leaving central Osaka in the morning (as listed on {CHECKED}).
+            From November to March, Todai-ji&apos;s Great Buddha Hall shuts at 17:00 rather than 17:30, so check
+            when a winter tour reaches Nara.
+          </p>
+        </section>
+
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -348,6 +379,17 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
                   </tr>
                 </thead>
                 <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>
+                      <strong>Which to pick:</strong>{" "}
+                      <KlookLink href={arashiyamaNaraTodaijiTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.tdLink}>
+                        Arashiyama, Kinkaku-ji &amp; Nara Todai-ji
+                      </KlookLink>
+                    </td>
+                    <td style={{ fontSize: "0.88rem" }}>The only one of the four that goes inside Todai-ji&apos;s Great Buddha Hall</td>
+                    <td style={{ fontSize: "0.88rem" }}>8 hr 55 min – 9 hr 05 min</td>
+                    <td style={{ fontSize: "0.88rem" }}>Most first-timers; choose the Sagano railway tour for scenery, the Uji tour for three cities</td>
+                  </tr>
                   {tourRows.map((row) => (
                     <tr key={row.tour}>
                       <td className={styles.tdProvider}>
@@ -383,7 +425,7 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Ticket", "Price"].map((h) => (
+                    {["Ticket or hours", "Price / time"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -399,13 +441,19 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {TODAIJI_CHECKED_ISO}</strong>. Official page:{" "}
+            <a href={TODAIJI_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)" }}>
+              Todai-ji opening hours and admission fees (todaiji.or.jp)
+            </a>
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Hours matter as much as price on a tour day: the Great Buddha Hall closes at 17:30 from April to
             October and at 17:00 from November to March. On a short winter day, a tour that reaches Nara late
             can arrive after the doors have shut — worth asking about if Todai-ji is the reason you are going.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Read off Todai-ji&apos;s official site on {CHECKED}. Subject to change — confirm before you go.
+            Read off Todai-ji&apos;s official site on {TODAIJI_CHECKED}. Subject to change — confirm before you go.
           </p>
         </section>
 

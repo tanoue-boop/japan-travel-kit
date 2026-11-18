@@ -342,6 +342,10 @@ const passRows = [
 
 const faqItems = [
   {
+    q: "What is a good 5-day itinerary for Japan including Tokyo and Kyoto?",
+    a: `Three nights in Tokyo and one in Kyoto, flying in to Tokyo and home from Kansai. Days 1 to 3 are Tokyo (arrival, then Harajuku and Shibuya, then Senso-ji and teamLab Planets), Day 4 is the Tokaido Shinkansen to Kyoto, which JR Central gives as 130 minutes, with Kiyomizu-dera and Gion in the afternoon, and Day 5 is Fushimi Inari and Arashiyama before the Haruka to Kansai Airport.`,
+  },
+  {
     q: "Is 5 days enough for Japan?",
     a: `Yes, for two cities. Five days covers Tokyo and Kyoto properly on a first trip, because the Tokaido Shinkansen joins them in about 130 minutes and most of what you came for is walk-in. It is not enough for a third base: every extra city takes a morning of packing and a transfer. Add Osaka and you are on our 7-day route instead.`,
   },
@@ -358,30 +362,21 @@ const faqItems = [
     a: `The transport and tickets on this plan come to from ${yen(PLAN_TOTAL)} per adult, before hotels and food. That is ${yen(TOKYO_IN_KANSAI_OUT)} of trains and ${yen(TICKETS)} of tickets, each dated in the table on this page. No hotel or food average is given here, because those move by season and party size; our Japan travel budget guide works through them.`,
   },
   {
-    q: "Where should I stay for 5 days in Japan?",
-    a: `Three nights at one Tokyo address and one night beside Kyoto Station. In Tokyo, Tokyo Station or Marunouchi puts the Day 4 train under your hotel, Shinjuku suits evenings, and Ueno or Asakusa suits the Skyliner and the Day 3 early start. In Kyoto, one night makes Kyoto Station the only sensible choice, since the shinkansen, the Fushimi Inari train and the Haruka all use it.`,
-  },
-  {
     q: "What should I book before a 5-day trip to Japan?",
     a: `Five things: the SHIBUYA SKY slot (dates open 00:00 Japan time two weeks ahead), teamLab Planets (popular times sell out 2–3 weeks ahead), the Day 4 shinkansen seat, your hotels and an eSIM. Everything else on this plan is walk-in, including every temple and shrine.`,
   },
-  {
-    q: "How is this different from a Tokyo 5-day itinerary?",
-    a: `This page splits the five days between Tokyo and Kyoto. Our Tokyo 5-day itinerary stays in one hotel in Tokyo and uses day trips to Kawaguchiko and Kamakura, and our first-time Japan itinerary spreads Tokyo, Kyoto and Osaka over nine days.`,
-  },
-  {
-    q: "Can I do this 5-day Japan itinerary with kids?",
-    a: `Yes, with fewer stops a day rather than fewer days. Keep the timed ticket in the morning and drop the night tours. Children aged 6 to 12 at SHIBUYA SKY pay ¥1,200 at the counter, not online, and teamLab Planets is ${PRICES.teamlabPlanets.child} for ages 4 to 12. The shinkansen move is the easy part, with a seat each and room for the cases.`,
-  },
-  {
-    q: "What if it rains on a 5-day Japan trip?",
-    a: `Swap the order within the city. teamLab Planets is indoors, so Day 3 works in any weather. Rain hurts SHIBUYA SKY most, because the open-air rooftop can close in high wind, lightning or heavy rain; Klook's listing states free cancellation up to 24 hours before. In Kyoto, Fushimi Inari has no ticket to lose, so it can move to whichever morning is drier.`,
-  },
 ];
 
-const TITLE = "Japan Itinerary 5 Days (2026): Tokyo and Kyoto Plan";
+/** Tokyo–Kyoto figures for the answer table, read on JR Central's own sites on 18 Nov 2026:
+ *  "130 minutes from Tokyo to Kyoto" on global.jr-central.co.jp/en/onlinebooking/contents/shinkansen/;
+ *  ¥13,970 Nozomi reserved seat from the smartEX Ordinary Car price list (smart-ex.jp/en/product/plan/
+ *  service/), the same-day read carried in kyoto-to-tokyo-shinkansen. */
+const RAIL_CHECKED_ISO = "2026-11-18";
+const SMARTEX_NOZOMI = 13970;
+
+const TITLE = "5-Day Japan Itinerary: Tokyo and Kyoto, Day by Day 2026";
 const DESCRIPTION =
-  "Japan itinerary 5 days: Tokyo on Days 1–3, shinkansen to Kyoto on Day 4, Fushimi Inari on Day 5. Skip the ¥50,000 JR Pass and buy single tickets.";
+  "5-day Japan itinerary for Tokyo and Kyoto: Days 1–3 Tokyo, Day 4 shinkansen to Kyoto (130 min), Day 5 Fushimi Inari. Book seats on Klook.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
@@ -462,7 +457,7 @@ export default function Japan5DayItineraryPage({ updated }: { updated: PageUpdat
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Japan Itinerary 5 Days (2026): <br />Tokyo and Kyoto Plan, Day by Day
+            5-Day Japan Itinerary: Tokyo and Kyoto <br />(2026), Day by Day
           </h1>
           <p className={styles.heroSubtitle}>
             Three nights in Tokyo, one in Kyoto, out from Kansai: what to do each day and what to book for it.
@@ -489,10 +484,14 @@ export default function Japan5DayItineraryPage({ updated }: { updated: PageUpdat
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             <strong>
-              Japan itinerary, 5 days: Tokyo on Days 1 to 3 (Harajuku and Shibuya, then Senso-ji and teamLab),
-              the Tokaido Shinkansen to Kyoto on Day 4, and Fushimi Inari and Arashiyama on Day 5 before you
-              fly home from Kansai.
-            </strong>{" "}
+              Day 1: land in Tokyo, check in and walk one neighbourhood such as Shinjuku or Asakusa. Day 2: Meiji
+              Jingu, Harajuku and Shibuya, ending at SHIBUYA SKY for sunset. Day 3: Senso-ji early, the Tsukiji
+              Outer Market, then teamLab Planets. Day 4: the Tokaido Shinkansen to Kyoto, 130 minutes on JR
+              Central&apos;s figure, then Kiyomizu-dera and Gion. Day 5: Fushimi Inari at dawn and Arashiyama,
+              then the Haruka to Kansai Airport, about 80 minutes.
+            </strong>
+          </p>
+          <p className={styles.bodyText}>
             Skip the JR Pass: the 7-day pass is ¥50,000 online (japanrailpass.net, read on 11 November 2026),
             and this plan&apos;s three JR rides come to about {yen(TOKYO_IN_KANSAI_OUT)}. That is three hotel
             nights in Tokyo and one in Kyoto, one <strong>130-minute</strong> shinkansen ride, and about 80
@@ -503,6 +502,57 @@ export default function Japan5DayItineraryPage({ updated }: { updated: PageUpdat
             if you have nine, our{" "}
             <Link href="/guides/attractions/japan-first-time-itinerary" style={linkStyle}>first-time Japan itinerary</Link>{" "}
             adds Osaka and two day trips.
+          </p>
+        </section>
+
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>The answer</span>
+          <h2 className={styles.sectionTitle}>What Is a Good 5-Day Itinerary for Japan Including Tokyo and Kyoto?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Three nights in Tokyo and one in Kyoto, flying in to Tokyo and home from Kansai, so the only long
+            move is one 130-minute shinkansen on Day 4. A Nozomi reserved seat is {yen(SMARTEX_NOZOMI)} on
+            JR Central&apos;s smartEX price list, which leaves Days 1 to 3 for Tokyo and Days 4 and 5 for Kyoto.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Question", "Answer", "Official source"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>Best split (conclusion)</td>
+                    <td style={{ fontSize: "0.88rem" }}>Tokyo Days 1–3, shinkansen on Day 4, Kyoto Days 4–5, fly out of Kansai</td>
+                    <td style={{ fontSize: "0.82rem" }}>This plan</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>Tokyo to Kyoto, Tokaido Shinkansen</td>
+                    <td className={styles.tdPrice}>130 minutes</td>
+                    <td style={{ fontSize: "0.82rem" }}>JR Central</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>Nozomi reserved seat on smartEX, Tokyo to Kyoto</td>
+                    <td className={styles.tdPrice}>{yen(SMARTEX_NOZOMI)}</td>
+                    <td style={{ fontSize: "0.82rem" }}>smartEX (JR Central)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {RAIL_CHECKED_ISO}</strong>. Official pages:{" "}
+            <a href="https://global.jr-central.co.jp/en/onlinebooking/contents/shinkansen/" target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)" }}>
+              JR Central Tokaido Shinkansen
+            </a>{" "}
+            and{" "}
+            <a href="https://smart-ex.jp/en/product/plan/service/" target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)" }}>
+              smartEX fares
+            </a>
+            . smartEX fares move by season, so confirm yours at booking.
           </p>
         </section>
 

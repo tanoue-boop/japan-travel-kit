@@ -90,50 +90,61 @@ const tourRows = [
   { title: hiroshimaPeaceHalfDayTour.title, url: hiroshimaPeaceHalfDayTour.url, hours: "5 hours", type: "Group, English and Japanese" },
 ];
 
+/** Official re-read for the 18 Nov 2026 pass: hpmmuseum.jp page_id=47 and hiroshimacastle.jp. */
+const TODAY = checkedLabel("2026-11-18");
+
+/** The advance-booking table. First row is the answer. */
+const bookingRows = [
+  {
+    site: "Answer: only the Peace Memorial Museum's extended hours",
+    booking: "Online reservation required for 7:30–8:30 and the evening slot",
+    fee: "Museum ¥200 adult",
+    hours: "Evening slot 17:30–18:30 (Sep–Nov), 16:30–17:30 (Dec–Feb)",
+  },
+  {
+    site: "Peace Memorial Museum, regular hours",
+    booking: "Not required; buy at the museum or online",
+    fee: "¥200 adult, ¥100 high school, free junior high and younger",
+    hours: "7:30–19:00 (Sep–Nov), 7:30–18:00 (Dec–Feb); closed 30–31 Dec and mid-February",
+  },
+  {
+    site: "Hiroshima Castle main keep",
+    booking: "Nothing to book: closed since March 2026",
+    fee: "–",
+    hours: "Exterior viewing only",
+  },
+  {
+    site: "Hiroshima Castle Ninomaru (restored buildings)",
+    booking: "Not required",
+    fee: "Free",
+    hours: "9:00–16:30 (Oct–Mar), 9:00–17:30 (Apr–Sep); last entry 30 min before; closed 8 Dec and 29–31 Dec",
+  },
+];
+
 const faqItems = [
+  {
+    q: "Which Hiroshima memorial sites require advance booking?",
+    a: `Only the Hiroshima Peace Memorial Museum, and only for its extended hours: entry from 7:30 to 8:30 and in the evening slot (17:30–18:30 from September to November, 16:30–17:30 from December to February) needs an online reservation. In regular hours you can buy the ¥200 ticket at the museum. Read on hpmmuseum.jp on ${TODAY}.`,
+  },
+  {
+    q: "How far ahead should I book Hiroshima Castle tours?",
+    a: `There is no castle ticket to book. Hiroshima Castle's main keep closed in March 2026 for safety reasons and can only be viewed from outside, while the restored Ninomaru buildings are free and open 9:00 to 16:30 from October to March. A guided walking tour that includes the castle grounds only needs booking once your Hiroshima date is fixed. Read on hiroshimacastle.jp on ${TODAY}.`,
+  },
   {
     q: "How long is a Hiroshima Peace Memorial tour?",
     a: `Klook's guided tours of the Peace Memorial Park, Atomic Bomb Dome and museum run from 2 to 5 hours. Read ${CHECKED}. Check the listing for what is included.`,
   },
   {
-    q: "Do I need a guide for the Hiroshima Peace Memorial Park?",
-    a: "No. The park is open to walk, and the museum has labels and a ¥500 audio guide. A guide helps if you want history explained and questions answered. Free volunteer park tours run on set dates, but are not offered from July to September.",
-  },
-  {
-    q: "How long do you need at the Hiroshima Peace Memorial Museum?",
-    a: `The museum's audio guide runs about 70 minutes, which is a useful minimum. We suggest allowing about 2 hours for the museum and 1 hour for the park; that is our planning allowance, not an official figure. Read ${CHECKED}.`,
-  },
-  {
-    q: "Do you need to book the Peace Memorial Museum in advance?",
-    a: `Only for the extended early and late slots, which require an online reservation. For regular hours you can buy at the museum, but it says the busiest time is about 11:00 to 15:00 and ticket queues can be long, so a web ticket is sensible. On very busy dates entry can be online-only, as it was during Obon 2026. Read ${CHECKED}.`,
-  },
-  {
     q: "How much does the Hiroshima Peace Memorial Museum cost?",
-    a: `¥200 for an adult, ¥100 for a high school student, and free for junior high students and younger. Visitors aged 65 and over pay ¥100 with their passport. Read on the museum's site on ${CHECKED}.`,
+    a: `¥200 for an adult, ¥100 for a high school student, and free for junior high students and younger. Visitors aged 65 and over pay ¥100 with their passport. Read on the museum's site on ${TODAY}.`,
   },
   {
     q: "What time does the Peace Memorial Museum open and close?",
-    a: `It opens at 7:30 all year. It closes at 19:00 from March to July and September to November, at 18:00 from December to February, and at 20:00 in August, or 21:00 on 5 and 6 August. Last entry is 30 minutes before closing. It is closed on 30 and 31 December and from 15 to 20 February 2027. Read ${CHECKED}.`,
+    a: `It opens at 7:30 all year. It closes at 19:00 from March to July and September to November, at 18:00 from December to February, and at 20:00 in August, or 21:00 on 5 and 6 August. Last entry is 30 minutes before closing. It is closed on 30 and 31 December and in mid-February. Read ${TODAY}.`,
   },
   {
-    q: "Can you do Hiroshima and Miyajima in one day?",
-    a: "Yes. Allow the morning for the park and museum, then take the ferry to Miyajima, which is about 10 minutes. Join-in day tours on Klook cover both. Our Hiroshima and Miyajima guide has the full plan.",
-  },
-  {
-    q: "Can you go inside the Atomic Bomb Dome?",
-    a: "No. The Dome is preserved as a memorial, and visitors view it from outside in the park. Tours stop beside it rather than going in.",
-  },
-  {
-    q: "Is the Peace Memorial Museum suitable for children?",
-    a: "The official sources checked give no age limit, and junior high students and younger enter free. Some exhibits show injured and dead people, and one Klook listing warns the imagery may disturb young children. Parents can decide by looking at the museum's site first. It also runs a peace education website for children.",
-  },
-  {
-    q: "Can you bring a stroller to the Peace Memorial Museum?",
-    a: "Yes. Strollers are allowed, and the museum lends 4 free of charge. Visitors with preschool children can ask staff at the entrance for priority entry. Nursing rooms and nappy-changing facilities are available.",
-  },
-  {
-    q: "Is the Hiroshima Peace Memorial Tour worth doing in the rain?",
-    a: "The museum is indoors, so it works in rain, and the park is outdoors. Check your tour's weather terms. Volunteer park tours are also cancelled on days with a heat stroke alert.",
+    q: "Do I need a guide for the Hiroshima Peace Memorial Park?",
+    a: "No. The park is open to walk, and the museum has labels and a ¥500 audio guide. A guide helps if you want history explained and questions answered. Free volunteer park tours run on set dates, but are not offered from July to September.",
   },
 ];
 
@@ -146,10 +157,10 @@ const relatedLinks = [
   { href: "/guides/attractions/kansai-area-pass", title: "Kansai Area Pass" },
 ];
 
-const TITLE = "Hiroshima Peace Memorial Tours (2026): Guides and Booking";
+const TITLE = "Hiroshima Peace Memorial Tours 2026: Advance Booking";
 const H1 = "Hiroshima Peace Memorial Tours";
 const DESCRIPTION =
-  "Hiroshima Peace Memorial tours take 2–5 hours with English-speaking guides. The ¥200 museum needs booking only for early and late entry. Tours on Klook.";
+  "Hiroshima Peace Memorial tours: the ¥200 museum needs booking only for early and late slots; the castle keep closed March 2026. Tours on Klook.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
@@ -254,19 +265,62 @@ export default function HiroshimaPeaceMemorialToursPage({ updated }: { updated: 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             <strong>Hiroshima Peace Memorial tours</strong> cover the Peace Memorial Park, the Atomic Bomb
-            Dome and usually the museum, and guided tours on Klook run from <strong>2 to 5 hours</strong>,
-            in English (some also in Japanese).
-            Museum admission is <strong>¥200 for adults</strong>, it opens at 7:30, and it is busiest from
-            about 11:00 to 15:00, so a morning start is easiest. Everything is in central Hiroshima, about 25
-            minutes by tram from Hiroshima Station. Museum details read on hpmmuseum.jp on {CHECKED}.
+            Dome and usually the museum, and guided tours on Klook run from <strong>2 to 5 hours</strong>.
+            The museum costs <strong>¥200 for adults</strong>, opens at 7:30, and needs an advance online
+            reservation <strong>only for its 7:30–8:30 and evening slots</strong>; Hiroshima Castle&apos;s main
+            keep has been closed since March 2026, so there is no castle ticket to book. Read on hpmmuseum.jp
+            and hiroshimacastle.jp on {TODAY}.
           </p>
           <h2 className={styles.sectionTitle}>Which Hiroshima Memorial Sites Require Advance Booking?</h2>
           <p className={styles.bodyText}>
-            Only the Peace Memorial Museum, and only for its extended slots: entry from 7:30 to 8:30, and in
-            the evening (17:30 onward from March to November), needs an online reservation on hpmmuseum.jp.
-            In regular hours you can buy at the door, and the Peace Memorial Park and the Atomic Bomb Dome are
-            open-air and free with no booking (museum notice re-read on 11 November 2026).
+            Only the Peace Memorial Museum, and only for its extended hours: entry from 7:30 to 8:30, and the
+            evening slot (17:30–18:30 from September to November, 16:30–17:30 from December to February), needs
+            an online reservation. In regular hours you can buy the ¥200 ticket at the museum, and the Peace
+            Memorial Park and the Atomic Bomb Dome are open-air with no booking. Read on hpmmuseum.jp on {TODAY}.
           </p>
+          <h2 className={styles.sectionTitle}>How Far Ahead Should I Book Hiroshima Castle Tours?</h2>
+          <p className={styles.bodyText}>
+            There is nothing to book at the castle itself. Its official site says the main keep closed in March
+            2026 because of concrete deterioration and ageing facilities and can be viewed only from outside,
+            while the restored Ninomaru buildings stay open free of charge, 9:00–16:30 from October to March
+            (last entry 30 minutes before closing). A guided walking tour that includes the castle grounds
+            only needs booking once your Hiroshima date is fixed; check that its route does not promise the
+            keep&apos;s interior.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Site", "Advance booking?", "Admission", "Hours"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {bookingRows.map((row) => (
+                    <tr key={row.site}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.site}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.booking}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.88rem" }}>{row.fee}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.hours}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-18. Official sources:{" "}
+            <a href="https://hpmmuseum.jp/modules/info/index.php?action=PageView&page_id=47&lang=eng" target="_blank" rel="noopener noreferrer" style={LINK}>hpmmuseum.jp (Hours and Admission)</a>{" "}
+            and{" "}
+            <a href="https://hiroshimacastle.jp/" target="_blank" rel="noopener noreferrer" style={LINK}>hiroshimacastle.jp</a>.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={hiroshimaPrivateWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check the walking tour with the castle grounds →
+            </KlookLink>
+          </div>
         </section>
 
         <div className={styles.verdictBox}>

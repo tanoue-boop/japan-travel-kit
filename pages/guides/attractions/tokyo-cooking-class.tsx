@@ -22,9 +22,9 @@ const CHECKED = "19 October 2026";
 // listing on LIVE JAPAN (livejapan.com, ac0122869): klook.com itself answers automated reads with 403.
 const TERMS_CHECKED = "10 November 2026";
 
-const TITLE = "Tokyo Cooking Class (2026): Beginner-Friendly Sushi & Ramen";
+const TITLE = "Tokyo Cooking Class 2026: Beginner Sushi-Making & Ramen";
 const DESC =
-  "Tokyo cooking class for beginners: sushi classes run 1.5 hours, sushi and ramen combos 2.5–3, often in English. Read the cancellation terms, then book.";
+  "Tokyo cooking classes suit beginners: a sushi-making class runs 1.5 hours, sushi and ramen combos 2.5–3 hours, often in English. Book on Klook.";
 
 const typeRows = [
   {
@@ -105,28 +105,24 @@ const steps = [
 
 const faqItems = [
   {
-    q: "How much does a Tokyo cooking class cost?",
-    a: "There is no price band here for Tokyo cooking classes, because the formats are too different for one to mean anything — a 90-minute single-dish group class and a three-hour combo with a market tour and sake pairing are not the same product. What drives the figure is the number of dishes, the session length, the group size and the extras. Open a listing for the price on your date; Klook prices change by date, so no figure is quoted here.",
+    q: "Are cooking classes in Tokyo suitable for beginners?",
+    a: "Yes. The common formats assume no cooking experience: the Shinbashi sushi-making class compared here is a 1 hour 30 minute join-in group class with English-speaking staff and two courses, maki with temari sushi or maki with nigiri. Many classes also welcome children, often from around age five; confirm the minimum age on the listing for your date.",
+  },
+  {
+    q: "How long do cooking classes in Tokyo usually last?",
+    a: "Between 1.5 and 3 hours. A single-dish class such as the Shinbashi sushi-making class runs 1 hour 30 minutes, a sushi-and-ramen combo typically runs 2.5 to 3 hours, and a class that starts with a market shop runs longer still.",
+  },
+  {
+    q: "What can I learn in a cooking class in Tokyo?",
+    a: "Usually one or two signature dishes from scratch. A sushi class covers seasoning the rice and shaping maki, nigiri or temari sushi; a combo adds ramen broth and noodles; other formats teach gyoza, or wagashi sweets with matcha. Most finish with you eating everything you made.",
+  },
+  {
+    q: "Where can I book a sushi-making class in Tokyo?",
+    a: "The Shinbashi sushi-making class compared on this page is booked on Klook, which checks out in English and takes foreign cards. Its listing shows Instant Confirmation and No cancellation (terms read on 10 November 2026), so book a date you are sure of. Open the listing for the price on your date.",
   },
   {
     q: "Are Tokyo cooking classes in English?",
     a: "Many are taught entirely in English and are designed for international visitors, but not every class is, so it's worth confirming before you book — especially for smaller neighbourhood studios. Listings usually state the language of instruction. If English matters to you, choose a class that explicitly advertises an English-speaking instructor.",
-  },
-  {
-    q: "What will I cook in a sushi and ramen class?",
-    a: "A typical sushi-and-ramen combo class covers seasoning the sushi rice and hand-shaping nigiri, then making a ramen broth from dashi along with the noodles. Some classes add gyoza, and many finish with you eating everything you've made. Sessions usually last around 2.5 to 3 hours from start to finish.",
-  },
-  {
-    q: "Are Tokyo cooking classes suitable for children?",
-    a: "Often yes — many classes welcome children, frequently from around age five, and the hands-on shaping and folding keeps younger cooks involved. Minimum ages and child pricing vary by studio, so check the listing and confirm when you book if you're bringing kids.",
-  },
-  {
-    q: "Where are cooking classes held in Tokyo?",
-    a: "Classes run across the city, with popular clusters around Tsukiji, Asakusa, Shinjuku and Tsukishima. Some begin with a walk through a local or the Tsukiji outer market to buy ingredients before cooking. Pick a class in an area you're already visiting so it slots neatly into your day.",
-  },
-  {
-    q: "Can cooking classes cater to dietary requirements?",
-    a: "Some can — vegetarian, halal and allergy-friendly options are available at certain studios, but they aren't universal. Because ingredients like dashi and pork are common in ramen and gyoza, it's important to ask about substitutions when you book rather than on the day, so the studio can prepare accordingly.",
   },
 ];
 
@@ -216,7 +212,7 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Tokyo Cooking Class (2026): <br />Beginner-Friendly Sushi &amp; Ramen
+            Tokyo Cooking Class (2026): <br />Beginner Sushi-Making &amp; Ramen
           </h1>
           <p className={styles.heroSubtitle}>
             Most Tokyo cooking classes are built for beginners: you cook from scratch with a local instructor,
@@ -243,17 +239,66 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
           </p>
         </div>
 
+        {/* Opening answer (18 Nov 2026): the landing queries in one paragraph. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>
+              A Tokyo cooking class is built for beginners: the Shinbashi sushi-making class compared here runs
+              1 hour 30 minutes as a join-in group with English-speaking staff, and a sushi-and-ramen combo runs
+              2.5 to 3 hours.
+            </strong>{" "}
+            You learn to season sushi rice and shape maki, nigiri or temari sushi, then eat what you made. The
+            sushi-making class is booked on Klook, where the listing shows instant confirmation and no
+            cancellation.
+          </p>
+        </section>
+
         <EsimCtaTop />
 
-        {/* The question this page is most often found for, answered before anything else. */}
+        {/* The questions this page is most often found for, answered before anything else. */}
         <section className={styles.bodySection}>
           <h2 className={styles.sectionTitle}>Are Cooking Classes in Tokyo Suitable for Beginners?</h2>
           <p className={styles.bodyText}>
             Yes. The common formats assume no cooking experience: the sushi-making listing compared here is a
-            join-in group class with English-speaking staff, and its two courses are maki with temari sushi or
-            maki with nigiri. Confirm the language and minimum age on the listing for
-            your date. Details as listed on {CHECKED}.
+            1 hour 30 minute join-in group class with English-speaking staff, with two courses, maki with
+            temari sushi or maki with nigiri. Many classes also welcome children, often from around age five,
+            so confirm the language and minimum age on the listing for your date (details as listed on{" "}
+            {CHECKED}).
           </p>
+        </section>
+
+        <section className={styles.bodySection}>
+          <h2 className={styles.sectionTitle}>How Long Do Cooking Classes in Tokyo Usually Last?</h2>
+          <p className={styles.bodyText}>
+            Between 1.5 and 3 hours. A single-dish class such as the Shinbashi sushi-making class runs 1 hour 30
+            minutes, while a sushi-and-ramen combo typically runs 2.5 to 3 hours. A class that starts with a
+            market shop runs longer, so it is best kept to a morning with nothing fixed straight after.
+          </p>
+        </section>
+
+        <section className={styles.bodySection}>
+          <h2 className={styles.sectionTitle}>What Can You Learn in a Cooking Class in Tokyo?</h2>
+          <p className={styles.bodyText}>
+            One or two signature dishes from scratch. A sushi class covers seasoning the rice and shaping maki,
+            nigiri or temari sushi; a combo adds ramen broth and noodles, and other formats teach gyoza or
+            wagashi sweets with matcha. Most of the 1.5 to 3 hours is hands-on, and the class ends with you
+            eating what you made.
+          </p>
+        </section>
+
+        <section className={styles.bodySection}>
+          <h2 className={styles.sectionTitle}>Where Can You Book a Sushi-Making Class in Tokyo?</h2>
+          <p className={styles.bodyText}>
+            The Shinbashi sushi-making class compared here is booked on Klook, which checks out in English and
+            takes foreign cards. Its listing shows Instant Confirmation and No cancellation (terms read on{" "}
+            {TERMS_CHECKED}), so pick a date you are sure of and open the listing for the price on your date.
+            GetYourGuide lists a second set of Tokyo kitchens if your date is full.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={TOKYO_COOKING_CLASS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Book the sushi-making class on Klook →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Quick Answer Box */}

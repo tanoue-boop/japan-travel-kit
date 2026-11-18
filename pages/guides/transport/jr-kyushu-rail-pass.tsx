@@ -618,7 +618,12 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
             <Link href="/guides/attractions/fukuoka-2-day-itinerary" style={{ color: "var(--red)", fontWeight: 600 }}>
               Fukuoka 2-day itinerary
             </Link>{" "}
-            shows why two days in the city rarely need one.
+            shows why two days in the city rarely need one. A rail pass does not cover the Fukuoka City Subway to
+            Tojinmachi either, so for the museum by the dome see our{" "}
+            <Link href="/guides/attractions/teamlab-fukuoka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
+              teamLab Fukuoka tickets
+            </Link>{" "}
+            guide for the price, hours and the hour it takes.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={yufuinBeppuNoMoriTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>

@@ -623,7 +623,10 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
             timetable is not listed here, so check JR Hokkaido&apos;s before you plan. The Furano Lavender Express is
             a summer train, and the Norokko sightseeing train made its last run in September 2026. JR
             Hokkaido says Biei-bound locals are usually one car. Last winter it reported crowding on evening
-            trains from Biei, and added a train and extra cars through February.
+            trains from Biei, and added a train and extra cars through February. If your February trip is
+            built around the snow festival, our{" "}
+            <Link href="/guides/attractions/sapporo-snow-festival-tours">Sapporo Snow Festival tours</Link> guide
+            has the 2027 dates (4 to 11 February) and what to book first.
           </p>
           <p className={styles.bodyText}>
             On the Furano Line between Asahikawa and Furano you cannot use Kitaca or other IC cards. Last

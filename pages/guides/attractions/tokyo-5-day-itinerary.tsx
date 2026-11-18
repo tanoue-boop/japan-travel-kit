@@ -1148,7 +1148,10 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/transport/tokyo-to-kyoto">Tokyo to Kyoto guide</Link> compares the train
             types and fares, and our{" "}
             <Link href="/guides/attractions/japan-14-day-itinerary">Japan 14-day itinerary</Link> shows
-            what the unhurried version of Tokyo-plus-Kansai actually looks like.
+            what the unhurried version of Tokyo-plus-Kansai actually looks like. If five days is all you
+            have and Kyoto is a must, our{" "}
+            <Link href="/guides/attractions/japan-5-day-itinerary">5-day Japan itinerary</Link> splits them
+            as three nights in Tokyo and one in Kyoto, flying home from Kansai.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

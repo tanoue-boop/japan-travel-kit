@@ -540,7 +540,8 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
             Skytree is the altitude pick. If what you actually want is the Scramble Crossing photograph,{" "}
             <Link href="/guides/attractions/shibuya-sky-tickets">Shibuya Sky tickets</Link> are the better buy, and if you
             want a city panorama for nothing at all, the Tokyo Metropolitan Government Building in Shinjuku is
-            free.
+            free. To see Skytree from the water instead, a <Link href="/guides/attractions/tokyo-bay-cruise">Tokyo Bay cruise</Link>{" "}
+            from Asakusa to Hinode Pier is ¥1,000 on the Tokyo Cruise water bus.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

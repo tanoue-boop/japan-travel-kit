@@ -223,7 +223,9 @@ export default function GuidesAttractionsPage({ updated, dates }: { updated: Pag
               <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
                 Booking windows read on each official site on {CHECKED}. What each ticket costs is in the{" "}
                 <Link href="/guides/attractions/japan-attraction-ticket-prices" style={L}>Japan attraction ticket prices</Link>{" "}
-                table ({attractionPrices.length} sights, official admissions, dated).
+                table ({attractionPrices.length} sights, official admissions, dated). eSIM, money and transport sit
+                alongside these in the full index of{" "}
+                <Link href="/guides" style={L}>Japan travel guides</Link>.
               </p>
             </section>
             <KlookTripPrep

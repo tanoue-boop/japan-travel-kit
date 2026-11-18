@@ -558,7 +558,10 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
           <p className={styles.bodyText}>
             For Shibuya, Meguro or a hotel tea room, none of which lists a kimono, rent one first: our{" "}
             <Link href="/guides/attractions/asakusa-kimono-rental" style={linkStyle}>Asakusa kimono rental</Link>{" "}
-            guide compares return times, which decide how late a ceremony slot can be.
+            guide compares return times, which decide how late a ceremony slot can be. To make food rather
+            than tea, a{" "}
+            <Link href="/guides/attractions/tokyo-cooking-class" style={linkStyle}>Tokyo cooking class</Link>{" "}
+            teaches sushi in about 1.5 hours, and some formats add wagashi sweets with matcha.
           </p>
         </section>
 

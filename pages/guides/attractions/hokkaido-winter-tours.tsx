@@ -556,7 +556,9 @@ export default function HokkaidoWinterToursPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>Which Winter Events Can a Sapporo Tour Reach?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Early to mid-February is the busiest stretch: the Snow Festival, the Lake Shikotsu Ice Festival and the
-            Otaru Snow Light Path all overlap, and rooms in Sapporo go first.
+            Otaru Snow Light Path all overlap, and rooms in Sapporo go first. The festival itself is free and
+            needs no ticket, so our <Link href="/guides/attractions/sapporo-snow-festival-tours">Sapporo Snow Festival tours</Link>{" "}
+            guide covers what is worth booking around 4 to 11 February 2027 instead.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

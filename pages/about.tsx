@@ -198,7 +198,9 @@ export default function AboutPage({ updated }: { updated: PageUpdated }) {
             things that have to be decided before you land or in the first hour after you do: getting online
             (eSIMs, SIM cards and pocket WiFi), getting around (rail passes, IC cards, airport transfers), paying
             for things (cards, cash and ATMs that accept foreign cards), and the attraction tickets that cannot be
-            bought at the gate.
+            bought at the gate. Every one of the{" "}
+            <Link href="/guides" style={{ color: "var(--text)", fontWeight: 600 }}>Japan travel guides</Link>{" "}
+            on the site is listed on one index page, grouped under those four topics.
           </p>
           <p className={styles.text}>
             It is written in English, for people who have not been to Japan before. The aim is narrow and

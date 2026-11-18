@@ -105,7 +105,7 @@ const routeRows = [
     route: "Tokyo → Nagoya",
     href: "/guides/transport/tokyo-to-nagoya-shinkansen",
     anchor: "Tokyo to Nagoya shinkansen",
-    time: "1h 26m fastest (Nozomi)",
+    time: "1h 33m fastest (Nozomi)",
     nozomi: "¥11,100",
     hikari: "¥10,890",
     pass: "Hikari yes; Nozomi + ¥4,180",

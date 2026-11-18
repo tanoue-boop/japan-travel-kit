@@ -556,7 +556,11 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
             Japan&apos;s legal drinking age is 20, and any tour that includes alcohol — which covers most izakaya
             and bar-hopping crawls — is therefore limited to guests aged 20 and over. If your group includes
             under-20s, pick a daytime market food walk such as Tsukiji, or confirm a non-alcoholic alternative
-            with the operator before you book.
+            with the operator before you book. A{" "}
+            <Link href="/guides/attractions/tokyo-cooking-class" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Tokyo cooking class
+            </Link>{" "}
+            is another alcohol-free option: a sushi-making class runs about 1.5 hours and you eat what you make.
           </p>
           <p className={styles.bodyText}>
             The other practical point is cash: the smallest, most characterful bars often don&apos;t take cards, so

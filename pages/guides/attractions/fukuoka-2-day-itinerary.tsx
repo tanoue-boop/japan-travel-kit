@@ -562,7 +562,9 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Hakata and Canal City around arrival, Tenjin or teamLab Forest in the afternoon, and the yatai at night.
             The subway joins all of it: about 5 minutes from the airport to Hakata, and a {SUBWAY_DAY} day pass covers
-            every line.
+            every line. The operator puts teamLab Forest at about an hour inside — prices, hours and peak dates are
+            in our{" "}
+            <Link href="/guides/attractions/teamlab-fukuoka-tickets">teamLab Fukuoka tickets</Link> guide.
           </p>
           <StopTable rows={day1} />
           <p className={styles.bodyText} style={noteStyle}>

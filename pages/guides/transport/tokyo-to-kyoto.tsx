@@ -576,7 +576,9 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
             <Link href="/guides/transport/kyoto-transportation">getting around Kyoto</Link> covers the buses and
             trains. Only have one day? This page compares ways to travel, while our{" "}
             <Link href="/guides/attractions/kyoto-day-trip-from-tokyo">Kyoto day trip from Tokyo</Link> plans the
-            sightseeing.
+            sightseeing. With five days for both cities, our{" "}
+            <Link href="/guides/attractions/japan-5-day-itinerary">5-day Japan itinerary</Link> puts this train on
+            Day 4, after three nights in Tokyo.
           </p>
         </section>
 

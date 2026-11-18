@@ -235,7 +235,11 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
             has the entrance fee, the hours and the winter sunset times. For a complete change of mood,
             <strong> Shinsekai</strong> is a retro, slightly ramshackle quarter around the <strong>Tsutenkaku</strong>{" "}
             tower, packed with kushikatsu (deep-fried skewer) joints and a nostalgic, mid-century atmosphere. Round
-            it off at the <strong>Kuromon Ichiba</strong> market and the buzzing streets of Namba.
+            it off at the <strong>Kuromon Ichiba</strong> market and the buzzing streets of Namba. For an
+            evening further south on the Midosuji Line, our{" "}
+            <Link href="/guides/attractions/teamlab-botanical-garden-osaka-tickets" style={linkStyle}>teamLab Botanical Garden Osaka tickets</Link>{" "}
+            guide has the ¥1,800 adult price and the 18:00–21:30 winter hours of the outdoor night exhibition
+            in Nagai Botanical Garden.
           </p>
         </section>
 

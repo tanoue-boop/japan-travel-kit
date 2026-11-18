@@ -91,6 +91,28 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  */
 const CHECKED = checkedLabel("2026-10-29");
 
+/*
+ * Re-checked 18 Nov 2026 (SEO pass), from server-rendered HTML rather than a
+ * search index this time:
+ *   teamlab.art/e/forest/ (__NEXT_DATA__): Adults 16+ ¥2,400, high school /
+ *     university students ¥2,000, children 4–15 ¥1,000, 3 and under free, all
+ *     paid tiers flagged as fluctuating, "the price may differ during the high
+ *     season"; hours "Weekdays: 11:00 - 19:00 / Saturdays, Sundays, Holidays:
+ *     10:00 - 19:00", subject to change.
+ *   e-zofukuoka.com/teamlabforest/ (operator, JA): ピーク 2,700円 / レギュラー
+ *     2,400円 adult, 2,200 / 2,000 student, 1,200 / 1,000 child 4–15, 3 and
+ *     under free with a guardian; peak or regular per date on the price calendar.
+ *   e-zofukuoka.com/group/ (operator, JA): teamLab Forest Fukuoka
+ *     「所要時間：約1時間」 — the official duration used in the new H2 answer.
+ * Not re-verified on 18 Nov: the "last entry 30 minutes before closing" rule
+ * (operator pages are client-rendered), so it stays only in prose with its
+ * 29 Oct date and is no longer in the hours table.
+ */
+const LAST_CHECKED = "2026-11-18";
+const OFFICIAL_URL = "https://www.teamlab.art/e/forest/";
+const OPERATOR_URL = "https://e-zofukuoka.com/teamlabforest/";
+const OPERATOR_GROUP_URL = "https://e-zofukuoka.com/group/";
+
 const TEAMLAB_URL = teamlabForestFukuokaTicket.url;
 
 const ADULT_REGULAR = "¥2,400";
@@ -109,7 +131,7 @@ const priceRows = [
     ticket: "Student, high school / university / vocational",
     regular: "¥2,000",
     peak: "¥2,200",
-    note: "A student ID has to be shown at the entrance for this tier",
+    note: "teamLab limits this tier to students at a Japanese high school or university, with student ID shown at the entrance",
   },
   {
     ticket: "Child, ages 4–15",
@@ -133,14 +155,9 @@ const hoursRows = [
     note: "An hour earlier than a weekday, which is the opposite of what most visitors assume",
   },
   {
-    item: "Last entry",
-    value: "30 minutes before closing",
-    note: "The operator's rule rather than a fixed clock time, so it moves whenever the day's hours do — on a standard 19:00 close that is 18:30",
-  },
-  {
     item: "How long to allow",
-    value: "About 60 minutes",
-    note: "The operator's own figure. Klook's listing suggests 1 to 2 hours, which is the more realistic allowance with children in the Athletics Forest",
+    value: "About 1 hour",
+    note: "BOSS E・ZO FUKUOKA's own stated time required (所要時間：約1時間). Allow longer with children in the Athletics Forest",
   },
   {
     item: "Closed days",
@@ -244,15 +261,15 @@ const accessRows = [
 const faqItems = [
   {
     q: "How much are teamLab Fukuoka tickets?",
-    a: `An adult aged 16 and over is ${ADULT_REGULAR} on a regular date and ${ADULT_PEAK} on a peak one. High school, university and vocational students are ¥2,000 and ¥2,200 with a student ID, children aged 4 to 15 are ${CHILD_REGULAR} and ¥1,200, and children of 3 and under enter free. teamLab publishes the adult tier as "from" and states that prices may differ during the high season, so ${ADULT_REGULAR} is the floor rather than a fixed price — check the date you want on the official ticket calendar. All tiers read on ${CHECKED}.`,
+    a: `${ADULT_REGULAR} for an adult aged 16 and over on a regular date and ${ADULT_PEAK} on a peak one, and ${CHILD_REGULAR} (peak ¥1,200) for ages 4 to 15; 3 and under are free. Students at a Japanese high school or university pay ¥2,000 (peak ¥2,200) with ID. Which dates are peak is shown on the operator's price calendar — checked ${LAST_CHECKED} on teamlab.art and e-zofukuoka.com.`,
   },
   {
-    q: "How long do you need at teamLab Fukuoka?",
-    a: `About an hour on the operator's own figure, and one to two on Klook's listing. The honest answer depends on who is with you: the Catching and Collecting Forest is an app-driven space you can pass through in twenty minutes, while the Athletics Forest is a physical space children do not leave quickly. This is by some distance the shortest visit of the five teamLab venues in Japan — teamLab Biovortex Kyoto has over fifty artworks across four floors and no time limit at all — so plan it as part of an afternoon rather than as the afternoon. Being inside BOSS E・ZO FUKUOKA helps here: the rest of the complex is on the same site.`,
+    q: "How long does teamLab Fukuoka take?",
+    a: `About 1 hour — BOSS E・ZO FUKUOKA, the building's operator, states the time required as 約1時間 (about one hour), checked ${LAST_CHECKED}. Allow longer with children, who tend to stay in the Athletics Forest, and plan it as one block of an afternoon at BOSS E・ZO rather than a whole outing.`,
   },
   {
-    q: "What time is teamLab Fukuoka open, and when is last entry?",
-    a: `11:00 to 19:00 on weekdays and 10:00 to 19:00 on Saturdays, Sundays and public holidays — an hour earlier at the weekend, which is the opposite of most visitors' assumption. Last entry is 30 minutes before closing, which on a standard 19:00 close means 18:30. Both are the published figures as read on ${CHECKED}, and both are subject to change: BOSS E・ZO FUKUOKA adjusts its hours seasonally and around Fukuoka PayPay Dome events, and there is no weekly closing day to rely on. Check your own date on the official ticket calendar before you build an evening on it.`,
+    q: "What time is teamLab Fukuoka open?",
+    a: `11:00 to 19:00 on weekdays and 10:00 to 19:00 on Saturdays, Sundays and public holidays, on teamLab's official page checked ${LAST_CHECKED}. Hours are subject to change, and BOSS E・ZO FUKUOKA adjusts them around Mizuho PayPay Dome events, so check your own date before you go.`,
   },
   {
     q: "How do I get to teamLab Fukuoka?",
@@ -262,31 +279,11 @@ const faqItems = [
     q: "Do I need to book teamLab Fukuoka in advance?",
     a: "For a weekend, a public holiday, a school vacation period or any date the dome next door has an event on, yes. For an ordinary weekday afternoon, usually not. Tickets are sold at the door while admission capacity remains — but teamLab is explicit that once a date has sold out in advance there is nothing at the counter, and the dates that sell out are exactly the ones you are most likely to be visiting on. Booking also fixes the price you pay, which matters here because the adult tier moves between regular and peak dates.",
   },
-  {
-    q: "Is teamLab Fukuoka good for kids?",
-    a: `It is the most child-oriented of the five teamLab venues in Japan, and the pricing and the rules both reflect that. The Athletics Forest is a space you move through physically rather than look at, and the Catching and Collecting Forest is built around catching animals in teamLab's own app and then reading about them — which is a game before it is an artwork. Children aged 4 to 15 are ${CHILD_REGULAR} on a regular date and 3 and under are free. One rule to plan around: children of 12 and under must be accompanied by a guardian, at one adult per three children, and the guardian needs a ticket too — so a party of six children needs two paying adults, not one.`,
-  },
-  {
-    q: "Which teamLab venue should you visit — Fukuoka, Tokyo, Kyoto or Osaka?",
-    a: `They are genuinely different products, not branches. Fukuoka's is the physical, app-driven one and the cheapest adult tier of the five, from ${ADULT_REGULAR}. teamLab Planets in Toyosu is the barefoot one, where you wade through water. teamLab Borderless in Azabudai Hills is the maze, with works that move between rooms. teamLab Biovortex Kyoto is the biggest by a wide margin — four floors, over 10,000 square metres, more than fifty artworks — and the one to pick if you want a half-day rather than an hour. teamLab Botanical Garden Osaka is open-air and night-only. If you are visiting more than one, do not expect the second to feel like a repeat.`,
-  },
-  {
-    q: "Is there a cheaper ticket, or a pass that covers it?",
-    a: "There are two routes worth checking and one dead end. BOSS E・ZO FUKUOKA has run Fukuoka-resident and Kyushu-resident price tickets for limited periods, but they are sold only on the official ticket site and are not available to a visitor from abroad. Klook sells a multi-attraction Klook Pass Fukuoka, which is worth pricing if the teamLab hour is one of three or four paid stops rather than the whole reason you are in the city. And the Fukuoka Tourist City Pass is transport rather than admissions — unlimited subway, Nishitetsu and Showa buses, JR, Nishitetsu trains and the municipal ferry, collected at the airport international terminal; its own listing states it is not sold to Japanese passport holders.",
-  },
-  {
-    q: "What else is there to do at BOSS E・ZO FUKUOKA?",
-    a: "Rather a lot, and it is the reason a 60-minute museum works as a plan here at all. The complex is an entertainment building rather than a mall: teamLab Forest is the 5th-floor facility, with other attractions on the floors around it and a food hall in the same building, and the whole thing is joined to Mizuho PayPay Dome by a third-floor deck. That also means the day has a variable: on a dome event day the complex gets busy, direct buses appear from Tenjin and Hakata, and the hours can shift. Check the dome's schedule alongside the ticket calendar if you want the quiet version.",
-  },
-  {
-    q: "Can you do teamLab Fukuoka and a day trip on the same day?",
-    a: "Comfortably, and this is the shape most Fukuoka trips should take. The standard day out from the city — Dazaifu Tenmangu and the Yanagawa canals, often with the Itoshima coast — runs as a round-trip coach from Hakata Station, which is a direct subway ride from Tojinmachi on the same Airport Line. A museum slot in the late afternoon slots onto the end of that without a transfer. There is also one Klook listing that puts the teamLab visit inside a wider Fukuoka bus day, which is the version to take if you would rather not build the join yourself.",
-  },
 ];
 
-const TITLE = "teamLab Fukuoka Tickets (2026): Forest Price and Hours";
+const TITLE = "teamLab Fukuoka Tickets 2026: Price, Hours & Time Needed";
 const DESCRIPTION =
-  "teamLab Forest Fukuoka tickets: ¥2,400 adult (¥2,700 peak), ¥1,000 ages 4–15. Open 11:00–19:00, weekends from 10:00, BOSS E・ZO FUKUOKA 5F. Book on Klook.";
+  "teamLab Fukuoka tickets: ¥2,400 adult (¥2,700 peak), ¥1,000 ages 4–15; open 11:00–19:00 (weekends 10:00), about 1 hour inside. Book on Klook.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/teamlab-fukuoka-tickets") },
@@ -409,13 +406,15 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             <strong>
-              teamLab Fukuoka tickets are for teamLab Forest Fukuoka: {ADULT_REGULAR} for an adult
-              ({ADULT_PEAK} on peak dates) and {CHILD_REGULAR} for ages 4–15, open 11:00–19:00 on weekdays
-              and 10:00–19:00 at weekends and on holidays.
+              teamLab Fukuoka tickets (teamLab Forest Fukuoka) are {ADULT_REGULAR} for an adult ({ADULT_PEAK}
+              on peak dates) and {CHILD_REGULAR} for ages 4–15, and a visit takes about 1 hour.
             </strong>{" "}
-            It is on the 5th floor of BOSS E・ZO FUKUOKA beside Fukuoka PayPay Dome, and weekend and
-            dome-event dates are the ones worth booking ahead (prices and hours read on {CHECKED} from
-            teamlab.art and the venue operator&apos;s site). The separate night show at the castle,{" "}
+            It is open 11:00–19:00 on weekdays and 10:00–19:00 at weekends and on holidays, on the 5th floor of
+            BOSS E・ZO FUKUOKA beside Mizuho PayPay Dome (teamLab and the operator&apos;s official pages,
+            checked {LAST_CHECKED}).
+          </p>
+          <p className={styles.bodyText}>
+            The separate night show at the castle,{" "}
             <em>teamLab: Digitized Fukuoka Castle Ruins 2026-2027</em>, runs at Maizuru Park from 30 October
             2026 to 11 January 2027 on its own ticket (dates from teamlab.art, read on 11 November 2026).
           </p>
@@ -505,11 +504,10 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
           <span className={styles.sectionLabel}>Price</span>
           <h2 className={styles.sectionTitle}>How Much Are teamLab Fukuoka Tickets?</h2>
           <p className={styles.bodyText}>
-            {ADULT_REGULAR} for an adult on a regular date and {ADULT_PEAK} on a peak one — which makes this
-            the cheapest adult admission of the five teamLab venues in Japan, roughly a third less than
-            Biovortex Kyoto. The two-tier structure is the part most guides miss: teamLab publishes the adult
-            price as a &ldquo;from&rdquo; figure and states plainly that prices may differ during the high
-            season.
+            {ADULT_REGULAR} for an adult on a regular date and {ADULT_PEAK} on a peak one, and {CHILD_REGULAR}{" "}
+            (peak ¥1,200) for ages 4 to 15 — the cheapest adult admission of the five teamLab venues in Japan.
+            Whether your date is regular or peak is set on the operator&apos;s price calendar, and teamLab
+            states that prices may differ during the high season.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -534,10 +532,16 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED} —{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener">teamLab Forest Fukuoka official page (teamlab.art)</a>{" "}
+            and{" "}
+            <a href={OPERATOR_URL} target="_blank" rel="noopener">BOSS E・ZO FUKUOKA&apos;s teamLab Forest page</a>{" "}
+            (regular and peak prices).
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Every tier read on {CHECKED} from teamLab&apos;s own page for the venue and from BOSS E・ZO
-            FUKUOKA, the operator of the building it sits in. Which dates count as peak is published on the
-            official ticket calendar rather than as a rule, so confirm your own date before you budget for it.
+            Which dates count as peak is published on the official ticket calendar rather than as a rule, so
+            confirm your own date before you budget for it.
             These figures sit alongside every other attraction checked in our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
@@ -545,24 +549,38 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
           </p>
         </section>
 
+        {/* Landing query 「チームラボ 福岡 所要時間」 (18 Nov 2026) */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Time needed</span>
+          <h2 className={styles.sectionTitle}>How Long Does teamLab Fukuoka Take?</h2>
+          <p className={styles.bodyText}>
+            About 1 hour: BOSS E・ZO FUKUOKA, which runs the building, states the time required for teamLab
+            Forest Fukuoka as 約1時間 (about one hour). Allow longer with children, who tend to linger in the
+            Athletics Forest, and plan the visit as one block of an afternoon at BOSS E・ZO rather than a whole
+            outing.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED} —{" "}
+            <a href={OPERATOR_GROUP_URL} target="_blank" rel="noopener">BOSS E・ZO FUKUOKA attractions and time required</a>.
+          </p>
+        </section>
+
         <BookingEsimCard lead="teamLab Fukuoka booked? Get mobile data before you land." />
 
-        {/* Q2 — hours and duration */}
+        {/* Q2 — hours */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Hours &amp; duration</span>
-          <h2 className={styles.sectionTitle}>What Time Is It Open, and How Long Do You Need at teamLab Fukuoka?</h2>
+          <span className={styles.sectionLabel}>Hours</span>
+          <h2 className={styles.sectionTitle}>What Time Is teamLab Fukuoka Open?</h2>
           <p className={styles.bodyText}>
-            11:00 to 19:00 on a weekday, 10:00 to 19:00 at the weekend, and about an hour inside. Both halves
-            of that are worth saying twice. The weekend opens <em>earlier</em>, not later, which is the
-            opposite of what most people assume — and sixty minutes is short enough that the museum should be
-            a block of an afternoon rather than the reason for one.
+            11:00 to 19:00 on weekdays and 10:00 to 19:00 on Saturdays, Sundays and holidays. The weekend opens{" "}
+            <em>earlier</em>, not later, and teamLab publishes both as subject to change.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["", `teamLab Forest Fukuoka (read ${CHECKED})`, "Notes"].map((h) => (
+                    {["", "teamLab Forest Fukuoka", "Notes"].map((h) => (
                       <th key={h || "blank"}>{h}</th>
                     ))}
                   </tr>
@@ -579,11 +597,15 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED} —{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener">teamLab Forest Fukuoka official page (teamlab.art)</a>{" "}
+            (hours) and{" "}
+            <a href={OPERATOR_GROUP_URL} target="_blank" rel="noopener">BOSS E・ZO FUKUOKA</a> (time required).
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Hours are teamLab&apos;s own, published as subject to change; the last-entry rule and the
-            approximately 60-minute visit are BOSS E・ZO FUKUOKA&apos;s, read on {CHECKED}. Because the
-            last-entry rule is relative rather than a fixed clock time, it moves whenever the day&apos;s hours
-            do — and the complex adjusts its hours seasonally and around Fukuoka PayPay Dome events, so a
+            Last entry was published by BOSS E・ZO FUKUOKA as 30 minutes before closing when read on{" "}
+            {CHECKED}. The complex adjusts its hours seasonally and around Fukuoka PayPay Dome events, so a
             date-specific check is the only safe one.
           </p>
         </section>

@@ -33,9 +33,28 @@ const categories: { category: GuideCategory; blurb: string }[] = [
 const totalGuides = categories.reduce((n, c) => n + c.category.articles.length, 0);
 
 // A single string: JSX children inside <title> render as "All <!-- -->173<!-- --> Guides".
-const TITLE = "Japan Travel Guides 2026: eSIM, Money, Transport, Tickets";
+// Site name first: the page's largest query is the navigational "japan-travel-kit.com", and the
+// home page (/) leads with "Japan Travel Kit | Tickets, Tours…", so the two titles still differ after it.
+const TITLE = "Japan Travel Kit: Japan Travel Guides for 2026";
 const DESC =
-  "Japan travel guides 2026: eSIM (Simbye for most trips), cash (¥10,000–¥20,000 a day), transport and rail passes, and attraction tickets to book ahead.";
+  "Japan Travel Kit's guide index: every Japan travel guide for 2026 in four topics — eSIM, money, transport and attraction tickets to book before you fly.";
+
+// Questions this page is reached for (GSC, Oct–Nov 2026), answered in one or two sentences each
+// and linked to the guide that carries the detail.
+const faqItems = [
+  {
+    q: "What is Japan Travel Kit?",
+    a: "Japan Travel Kit (japan-travel-kit.com) is an independent English-language site of Japan travel guides on eSIM, money, transport and attraction tickets. Prices and hours are taken from official sites and each guide shows the date it was last updated.",
+  },
+  {
+    q: "What is the best eSIM for Japan?",
+    a: "For most trips, Simbye: it has the lowest list price for 10 GB of the six eSIMs compared in the best eSIM for Japan guide. Sakura Mobile is the only one of the six that comes with a Japanese phone number.",
+  },
+  {
+    q: "What is the best pocket WiFi for Japan, or is an eSIM better?",
+    a: "For one or two travellers an eSIM is cheaper and there is nothing to collect or return. A pocket WiFi pays off when three or more people or devices share one router; the pocket WiFi guide compares Sakura Mobile, Ninja WiFi and Japan Wireless per day.",
+  },
+];
 
 // ItemList of every guide, in the order this page renders them, so an AI crawler reading
 // one page gets the whole site's contents rather than four hub links.
@@ -83,6 +102,20 @@ export default function GuidesIndexPage() {
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: faqItems.map((item) => ({
+                "@type": "Question",
+                name: item.q,
+                acceptedAnswer: { "@type": "Answer", text: item.a },
+              })),
+            }),
+          }}
+        />
       </Head>
 
       {/* Breadcrumb */}
@@ -103,7 +136,7 @@ export default function GuidesIndexPage() {
           <h1 className={styles.heroTitle}>Japan Travel Guides 2026: eSIM, Money, Transport and Tickets</h1>
           <div className={styles.heroRule} />
           <p className={styles.heroDesc}>
-            All {totalGuides} guides sit in four topics below: <Link href="/guides/esim" style={{ color: "inherit", textDecoration: "underline" }}>eSIM</Link>,{" "}
+            Japan Travel Kit has {totalGuides} Japan travel guides for 2026, and all of them sit in four topics below: <Link href="/guides/esim" style={{ color: "inherit", textDecoration: "underline" }}>eSIM</Link>,{" "}
             <Link href="/guides/money" style={{ color: "inherit", textDecoration: "underline" }}>money</Link>,{" "}
             <Link href="/guides/transport" style={{ color: "inherit", textDecoration: "underline" }}>transport</Link> and{" "}
             <Link href="/guides/attractions" style={{ color: "inherit", textDecoration: "underline" }}>tickets and things to do</Link>.
@@ -131,6 +164,30 @@ export default function GuidesIndexPage() {
             </Link>
           ))}
         </div>
+
+        {/* Visible copy of faqItems (FAQPage above), with links to the guide behind each answer. */}
+        <section style={{ marginTop: "2.5rem" }}>
+          <p className={styles.sectionLabel}>Quick answers</p>
+          <h2 className={styles.sectionTitle}>What Is Japan Travel Kit?</h2>
+          <p className={styles.catDesc} style={{ display: "block", marginBottom: "1.5rem" }}>
+            Japan Travel Kit (japan-travel-kit.com) is an independent English-language site of {totalGuides} Japan
+            travel guides on eSIM, money, transport and attraction tickets. Prices and hours are taken from official
+            sites, and each guide shows the date it was last updated.
+          </p>
+          <h2 className={styles.sectionTitle}>What Is the Best eSIM for Japan?</h2>
+          <p className={styles.catDesc} style={{ display: "block", marginBottom: "1.5rem" }}>
+            For most trips, Simbye: it has the lowest list price for 10 GB of the six eSIMs compared in the{" "}
+            <Link href="/guides/esim/best-esim-japan" style={{ textDecoration: "underline" }}>best eSIM for Japan</Link>{" "}
+            guide. Sakura Mobile is the only one of the six that comes with a Japanese phone number.
+          </p>
+          <h2 className={styles.sectionTitle}>What Is the Best Pocket WiFi for Japan, or Is an eSIM Better?</h2>
+          <p className={styles.catDesc} style={{ display: "block", marginBottom: "1.5rem" }}>
+            For one or two travellers an eSIM is cheaper and there is nothing to collect or return. A pocket WiFi pays
+            off when three or more people or devices share one router; the{" "}
+            <Link href="/guides/esim/best-pocket-wifi-japan" style={{ textDecoration: "underline" }}>best pocket WiFi for Japan</Link>{" "}
+            guide compares Sakura Mobile, Ninja WiFi and Japan Wireless per day.
+          </p>
+        </section>
 
         <PartnerPick
           label="Before you land"

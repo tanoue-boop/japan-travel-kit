@@ -541,10 +541,12 @@ export default function NagoyaCastleTicketsPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>Getting there</span>
           <h2 className={styles.sectionTitle}>Is Nagoya Worth a Stop Between Tokyo and Kyoto?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            For half a day, yes. Nagoya is about 1 h 26 min from Tokyo by NOZOMI and 33 minutes short of Kyoto,
-            so a morning train, the castle and Osu, and an evening train on to Kyoto fit in one day. Buy two
-            tickets: JR Central allows a stopover on the basic fare, but the shinkansen&apos;s limited express
-            ticket cannot be broken, and smartEX allows none.
+            For half a day, yes. Nagoya is from 1 h 33 min from Tokyo by NOZOMI (JR Central&apos;s timetable, 18
+            Nov 2026) and 33 minutes short of Kyoto, so a morning train, the castle and Osu, and an evening train
+            on to Kyoto fit in one day. Buy two tickets: JR Central allows a stopover on the basic fare, but the
+            shinkansen&apos;s limited express ticket cannot be broken, and smartEX allows none — our{" "}
+            <Link href="/guides/transport/tokyo-to-nagoya-shinkansen">Tokyo to Nagoya Shinkansen</Link> guide
+            compares the NOZOMI, HIKARI and KODAMA times and fares.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
