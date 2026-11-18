@@ -474,9 +474,9 @@ export default function GuidesTransportPage({ updated, dates }: { updated: PageU
               Once{" "}
               <Link href="/guides/transport/jr-pass-guide" style={L}>our JR Pass guide</Link>{" "}
               has shown the pass pays off on your route, Klook sells the{" "}
-              <PartnerTextLink href={jrPassWholeJapan.url}>7, 14 or 21 day JAPAN RAIL PASS</PartnerTextLink>. Our{" "}
-              <Link href="/guides/transport/kyoto-to-tokyo-shinkansen" style={L}>Kyoto to Tokyo train guide</Link>{" "}
-              shows what the pass covers on the busiest single leg, with the Nozomi ticket priced, and our{" "}
+              <PartnerTextLink href={jrPassWholeJapan.url}>7, 14 or 21 day JAPAN RAIL PASS</PartnerTextLink>. The{" "}
+              <Link href="/guides/transport/kyoto-to-tokyo-shinkansen" style={L}>Kyoto to Tokyo train</Link>{" "}
+              guide shows what the pass covers on the busiest single leg, with the Nozomi ticket priced, and our{" "}
               <Link href="/guides/transport/tokyo-to-kanazawa" style={L}>Tokyo to Kanazawa shinkansen guide</Link>{" "}
               weighs it against the{" "}
               <Link href="/guides/transport/hokuriku-arch-pass" style={L}>Hokuriku Arch Pass</Link>{" "}

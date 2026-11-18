@@ -15,7 +15,6 @@ import {
   klookEsim,
   kyotoToTokyoArrivalStayAreas,
   kyotoToTokyoTripPrep,
-  tokyoArrivalShinkansenPrep,
   naritaLimousineBus,
   shinkansenKyotoTokyo,
   tokyoPrivateAirportTransfer,
@@ -108,12 +107,48 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  *    to the north "Central Exit"; Central Transfer gate for JR local lines; the
  *    city-bus terminal in front of the north Central Exit), from kyoto.travel, the
  *    site of the Kyoto City Tourism Association.
+ *
+ * 18 Nov 2026 (task-jtk-20261118-R07, "kyoto to tokyo train" at 16th). Title and H1
+ * now lead with "Kyoto to Tokyo Train 2026" and carry "Kyoto to Tokyo shinkansen";
+ * FAQ cut to five questions; a buying-options table (smartEX / station / Klook) added.
+ * Re-read on 18 November 2026:
+ *  - smartEX price PDFs ("As of April 1, 2025", still the current lists): Kyoto–Tokyo
+ *    ¥13,970 Nozomi reserved, ¥13,650 Hikari/Kodama reserved, ¥13,320 non-reserved;
+ *    off-peak −¥200, peak +¥200, super-peak +¥400 for a Tokaido-only trip;
+ *  - smart-ex.jp/en/product/plan/service/: sales from 5:30 a.m. one year before (train and
+ *    seat confirmed after 8:00 a.m. one month before), up to 4 minutes before departure;
+ *    changes free; refund fee ¥320 before departure; QR ticket or IC card at the gate;
+ *  - the station price: JR Central's own 30 May 2023 release (jr-central.co.jp/news/
+ *    release/_pdf/000042742.pdf) gives ¥14,170 as the standard Tokyo/Shinagawa–Kyoto
+ *    Nozomi fare, regular season. JR Central/JR West's 16 Oct 2026 release (…/000046069.pdf)
+ *    raises the Nozomi/Mizuho reserved limited-express charge for Tokyo–Kyoto by ¥700 for
+ *    tickets bought from 1 July 2027 and leaves non-reserved unchanged — so ¥14,170 is
+ *    the current station price until then;
+ *  - japanrailpass.net: NOZOMI MIZUHO Ticket Tokyo–Kyoto ¥4,960; 7-day Ordinary ¥50,000
+ *    online / ¥53,000 Exchange Order.
+ * data/jr-fares.json keeps 13970 for tokyo-kyoto: it equals the official smartEX Nozomi
+ * figure, and no operator page gives a Hikari station price for the pair (the ¥13,850
+ * seen elsewhere comes from jr-group.jp, which states it is a private site), so there is
+ * no official number to change it to. Journey times stay the 11 Nov timetable reads.
  */
 
 const OWN_ISO = "2026-10-29";
 const OWN = checkedLabel(OWN_ISO);
 const NOW_ISO = "2026-11-11";
 const NOW = checkedLabel(NOW_ISO);
+const TODAY_ISO = "2026-11-18";
+const TODAY = checkedLabel(TODAY_ISO);
+
+/** Official pages behind the fares and the JR Pass rule, re-read on TODAY_ISO. */
+const FARE_SOURCES = [
+  { label: "smartEX fares (JR Central)", href: "https://smart-ex.jp/en/product/plan/service/" },
+  { label: "JR Central fare release", href: "https://jr-central.co.jp/news/release/_pdf/000046069.pdf" },
+  { label: "JAPAN RAIL PASS NOZOMI MIZUHO Ticket", href: "https://japanrailpass.net/en/use/special-ticket/" },
+  { label: "JR West Kyoto timetable", href: "https://timetable.jr-odekake.net/" },
+];
+
+/** Station-price constant: JR Central's standard Nozomi fare, valid until 1 July 2027 purchases. */
+const STATION_NOZOMI = "¥14,170";
 
 /** smartEX, "As of April 1, 2025", regular season, one adult, read on 11 Nov 2026. */
 const NOZOMI_RESERVED = "¥13,970";
@@ -147,6 +182,13 @@ const nozomiAllReservedPeriods = [
  * on JR West's Kyoto timetable for 11 Nov 2026; fares are smartEX regular season.
  */
 const trainTypeRows = [
+  {
+    train: "Bottom line: take a Nozomi",
+    example: "The fastest of the three; no change of train",
+    time: "2h 11m",
+    fare: `${NOZOMI_RESERVED} reserved on smartEX (${STATION_NOZOMI} at the station)`,
+    pass: `JR Pass holders: Hikari at no extra cost, or Nozomi plus the ${NOZOMI_TICKET} ticket`,
+  },
   {
     train: "Nozomi",
     example: "Nozomi 76: Kyoto 08:13 → Tokyo 10:24",
@@ -305,7 +347,14 @@ const priceRows = [
     price: NOZOMI_RESERVED,
     covers:
       "One adult, one way, regular season, on JR Central's smartEX service. The off-peak price is ¥200 lower and peak-season prices are higher, on smartEX's own season rules",
-    source: `smart-ex.jp price list "As of April 1, 2025", ${NOW}`,
+    source: `smart-ex.jp price list "As of April 1, 2025", ${TODAY}`,
+  },
+  {
+    item: "Nozomi, reserved Ordinary seat, bought at the station",
+    price: STATION_NOZOMI,
+    covers:
+      "JR Central's standard Tokyo/Shinagawa–Kyoto fare on a Nozomi, regular season, at a ticket machine or JR ticket office. JR Central and JR West have announced that the Nozomi reserved-seat charge on this pair rises by ¥700 for tickets bought from 1 July 2027; the non-reserved charge does not change",
+    source: `jr-central.co.jp releases of 30 May 2023 and 16 Oct 2026, ${TODAY}`,
   },
   {
     item: "Hikari or Kodama, reserved Ordinary seat",
@@ -385,78 +434,111 @@ const compareRows = [
   },
 ];
 
+/**
+ * (b, 18 Nov 2026) Where to buy the ticket. smartEX terms from smart-ex.jp/en/product/plan/
+ * service/, the station price from JR Central's releases, the Klook classes from its
+ * own rail page. No Klook price: it changes by date.
+ */
+const buyRows = [
+  {
+    way: "Bottom line: smartEX for most visitors",
+    price: `${NOZOMI_RESERVED} Nozomi reserved — ¥200 under the ${STATION_NOZOMI} station price`,
+    when: "Book in advance, pick the seat on a map, change for free; Klook if you would rather pay before you fly",
+    board: "QR ticket or a registered IC card",
+  },
+  {
+    way: "smartEX (JR Central's own site and app, in English)",
+    price: `${NOZOMI_RESERVED} Nozomi / ${HIKARI_RESERVED} Hikari or Kodama / ${NON_RESERVED} non-reserved`,
+    when: "From 5:30 a.m. one year before (train and seat confirmed one month before) up to 4 minutes before departure. Changes free before departure; refund fee ¥320",
+    board: "QR ticket or IC card straight through the shinkansen gate",
+  },
+  {
+    way: "Station ticket machine or JR ticket office",
+    price: `${STATION_NOZOMI} Nozomi reserved, regular season`,
+    when: "Reserved seats go on sale one month before the day of travel; this is also where JR Pass holders reserve and buy the NOZOMI MIZUHO ticket",
+    board: "Paper ticket through the gate",
+  },
+  {
+    way: "Klook (Kyoto–Tokyo rail page)",
+    price: "Shown for your date on the listing (not quoted here)",
+    when: "Book in English before the trip; the route page sells non-reserved, reserved Ordinary and reserved Green",
+    board: "Follow the listing's own collection or boarding instructions",
+  },
+];
+
 /** Tokyo, Shinagawa or Shin-Yokohama — the decision this page exists for. */
 const arrivalRows = [
+  {
+    station: "Bottom line: Tokyo Station",
+    forWho: "Most travellers — Shinagawa instead if you are heading to Haneda, Shibuya or Odaiba",
+    why: "The terminus, so there is no stop to watch for; Shinagawa comes one stop earlier",
+    transfer: "See the two rows below",
+    source: `JR Central station index, ${OWN}`,
+  },
   {
     station: "Tokyo Station",
     forWho: "Marunouchi, Ginza, Nihonbashi, Asakusa, Ueno — and anyone flying out of Narita",
     why: "The terminus, so nobody has to watch for the stop. The Narita Express and the Marunouchi, Yamanote, Chuo and Keiyo lines all leave from the same complex, and the Tokaido platforms are inside the building",
+    transfer: "Narita Express, JR Yamanote, Chuo and Keiyo lines, Tokyo Metro Marunouchi Line",
     source: `JR Central station index, ${OWN}`,
   },
   {
     station: "Shinagawa",
     forWho: "Shibuya, Meguro, Odaiba, Yokohama — and anyone flying out of Haneda",
     why: "The stop before the terminus, which saves the last stretch into Tokyo Station and its crowds. Keikyu to Haneda runs from the same station, and the Yamanote reaches Shibuya in a few stops",
+    transfer: "JR Yamanote Line; Keikyu Line to Haneda Airport",
     source: `JR Central station index, ${OWN}`,
   },
   {
     station: "Shin-Yokohama",
     forWho: "Yokohama, Minato Mirai, Kamakura and the whole south-west side",
     why: "Two stops before Tokyo. If your night is in Yokohama rather than Tokyo, getting off here saves a double-back of the better part of an hour with the cases",
+    transfer: "Local lines into Yokohama",
     source: `JR Central station index, ${OWN}`,
   },
 ];
 
 const faqItems = [
   {
-    q: "How Long Is the Train from Kyoto to Tokyo?",
-    a: `About 2 hours 10 minutes on the fastest train, a Nozomi, with no change. On JR West's own Kyoto timetable for 11 November 2026, Nozomi 76 leaves Kyoto at 08:13 and reaches Tokyo at 10:24 (2h 11m); Hikari 642 leaves at 08:33 and arrives at 11:12 (2h 39m); and Kodama 808, which stops at every station, leaves at 08:10 and arrives at 11:48 (3h 38m). JR Central's own Tokaido Shinkansen page gives the fastest run as "130 minutes". The first Tokyo-bound train that day was at 06:14 and the last at 21:38, arriving 23:45. Read on ${NOW}; times vary slightly by train and date.`,
+    q: "How long is the train from Kyoto to Tokyo?",
+    a: `About 2 hours 11 minutes on the fastest train, a Nozomi, with no change. On JR West's own Kyoto timetable for 11 November 2026, Nozomi 76 leaves Kyoto at 08:13 and reaches Tokyo at 10:24 (2h 11m); Hikari 642 leaves at 08:33 and arrives at 11:12 (2h 39m); and Kodama 808, which stops at every station, leaves at 08:10 and arrives at 11:48 (3h 38m). The first Tokyo-bound train that day was at 06:14 and the last at 21:38, arriving 23:45. Read on ${NOW}; times vary slightly by train and date.`,
   },
   {
-    q: "How Much Is the Shinkansen from Kyoto to Tokyo?",
-    a: `${NOZOMI_RESERVED} one way for a reserved Ordinary seat on a Nozomi, ${HIKARI_RESERVED} on a Hikari or Kodama, and ${NON_RESERVED} for a non-reserved seat on any of them — JR Central's smartEX prices for one adult in the regular season, from its price list "As of April 1, 2025", read on ${NOW}. smartEX's own season rule puts the off-peak price ¥200 lower and peak-season prices higher, and a Green Car seat costs more. With a JAPAN RAIL PASS the Hikari and Kodama cost nothing extra, and the Nozomi needs the ${NOZOMI_TICKET} NOZOMI/MIZUHO ticket (japanrailpass.net).`,
+    q: "How much is the Kyoto to Tokyo shinkansen?",
+    a: `${NOZOMI_RESERVED} one way for a reserved seat on a Nozomi on JR Central's smartEX, ${HIKARI_RESERVED} on a Hikari or Kodama, and ${NON_RESERVED} non-reserved — one adult, regular season, from smartEX's price list "As of April 1, 2025", checked on ${TODAY}. At a station ticket machine or office the Nozomi reserved seat is ${STATION_NOZOMI}, JR Central's standard fare. Off-peak dates are ¥200 cheaper and peak dates ¥200–¥400 dearer for a reserved seat. JR Central has announced that the Nozomi reserved-seat charge for Tokyo–Kyoto rises by ¥700 for tickets bought from 1 July 2027; non-reserved does not change.`,
   },
   {
-    q: "Which Side Has the Mt. Fuji View from Kyoto to Tokyo?",
-    a: `On your left in the direction of travel — and the seat letter to book is the same one as in the other direction. JR Central's own Shinkansen Perfect Guide says it plainly: "For the best view of Mt. Fuji, choose Seat E in Standard Class or Seat D in Green Class." It gives no direction with that advice, and it does not need to: seat letters are fixed to the carriage, not to which way the train is pointing, so the E and D windows look out at the same physical side of the train whichever end of the line you started from. Heading west out of Tokyo that side is on your right; heading east out of Kyoto it is on your left. On the eastbound run the mountain comes up late — Mt Fuji sits between Shizuoka and Mishima on JR Central's own station order, so you want to be awake for the last third rather than the first. And the obvious caveat: Fuji is often not visible at all. Clear winter mornings are the best odds, summer afternoons the worst. Read on ${OWN}.`,
+    q: "Can I use the JR Pass from Kyoto to Tokyo?",
+    a: `Yes. The JAPAN RAIL PASS covers the Hikari and Kodama between Kyoto and Tokyo at no extra charge, with free seat reservations. For a Nozomi you buy the ${NOZOMI_TICKET} NOZOMI MIZUHO Ticket for each ride, the same price for Green, reserved or non-reserved seats (japanrailpass.net, checked on ${TODAY}). For this one leg the pass does not pay: a 7-day Ordinary pass is ${JR_PASS_7} online or ¥53,000 as an Exchange Order, against a one-way smartEX fare of ${NOZOMI_RESERVED}. It starts to make sense when the same week includes Hiroshima, Kanazawa or Tohoku.`,
   },
   {
-    q: "Do I Need to Book the Shinkansen in Advance?",
-    a: `Most of the year, no — reserved seats go on sale one month before the day of travel, and on eight sets of dates booking the Nozomi is not optional. With 352 eastbound departures on Klook's sample date, walking up and taking the next train with a non-reserved ticket genuinely works on an ordinary weekday. But JR Central runs every NOZOMI car as a reserved car through the peak periods, which means the fast train to Tokyo has no non-reserved section at all on those days: ${nozomiAllReservedPeriods.join("; ")}. JR Central's English wording is "During the peak periods, Nozomi trains do not have non-reserved seat setting available", while "Hikari, Kodama, Mizuho, Sakura, and Tsubame trains have non-reserved seats as usual" — with the warning that non-reserved seating on the HIKARI and KODAMA "may be overcrowded during the peak periods". Two reasons to reserve anyway on this particular leg: a Kyoto departure is usually the last morning of a trip, with a booked Tokyo night or a flight at the other end, and you are carrying more luggage than you arrived with. If you hold a rail pass the reservation itself is free. Read on ${OWN}.`,
+    q: "Which side to sit for Mt Fuji from Kyoto to Tokyo?",
+    a: `The left side in the direction of travel — book seat E in an Ordinary car or seat D in the Green Car. JR Central's own Shinkansen Perfect Guide says "For the best view of Mt. Fuji, choose Seat E in Standard Class or Seat D in Green Class"; seat letters are fixed to the carriage, so heading east from Kyoto that window is on your left. The mountain comes late on this run, on the Shizuoka–Shin-Fuji–Mishima stretch in the last third of the journey, and it is often hidden by cloud. Read on ${OWN}.`,
   },
   {
-    q: "Can I Use the JR Pass from Kyoto to Tokyo?",
-    a: `Yes. The JAPAN RAIL PASS covers the Hikari and Kodama between Kyoto and Tokyo with no extra charge and a free seat reservation; for a Nozomi you buy the ${NOZOMI_TICKET} NOZOMI/MIZUHO ticket each time, the same price for Green, reserved or non-reserved (japanrailpass.net, read on ${NOW}). Whether the pass is worth buying is a separate question, and for this leg on its own it is not. A 7-day Ordinary JAPAN RAIL PASS is ${JR_PASS_7} bought online through JR's own reservation site, or ¥53,000 as an Exchange Order from an overseas agency — against a one-way reserved fare of ${NOZOMI_RESERVED} on a Nozomi or ${HIKARI_RESERVED} on a Hikari. Even a Tokyo–Kyoto–Tokyo round trip lands well under the pass. Where the pass starts to make sense is when the same week includes Hiroshima, Kanazawa, Nikko or Tohoku, or when you will lean on JR inside Tokyo — the Yamanote and the Narita Express are both covered, which is worth real money on an arrival and departure day. One catch specific to this route: the pass does not cover the NOZOMI, so a pass holder rides a HIKARI, which is direct but slower, or buys the ${NOZOMI_TICKET} NOZOMI/MIZUHO ticket for Tokyo–Kyoto. JR prices that ticket identically for Green, reserved and non-reserved seats, so there is no upgrade logic to work out — if the fast train matters on your last morning, buy it.`,
-  },
-  {
-    q: "Where do I put large luggage on the shinkansen?",
-    a: `Anything whose three dimensions add up to 160 cm or less goes in the overhead rack or at your feet, with no booking and no fee. Over that, JR Central's own luggage page requires a reserved seat with an oversized baggage area: baggage totalling "between 161 and 250 cm" has to go in the baggage space behind one of those seats. The seat does not cost extra — JR states the tickets are "the same price as reserved seats in ordinary cars and green cars" — and you book it at a ticket office by asking for a seat with an oversized baggage area, at a reserved-seat vending machine, or online. Board with an oversized case and no reservation and there is a ${BAGGAGE_FEE} baggage fee including tax. The rule covers the Tokaido, Sanyo and Kyushu Shinkansen, which is exactly this journey. Read on ${OWN}. This matters more leaving Kyoto than arriving: most airline-checked cases are under 160 cm, but a trip's worth of shopping, a bagged pushchair or a ski bag will not be — and the baggage seats only exist in reserved cars, so a non-reserved ticket is not a way round it.`,
-  },
-  {
-    q: "Which platform does the Tokyo train leave from at Kyoto Station?",
-    a: `Track 11 or 12. Every Tokyo-bound train on JR West's own Kyoto Station timetable for 11 November 2026 is listed on one of those two tracks, read on ${NOW}; the timetable notes a track can change on the day, so check the departure board. The platforms sit behind their own shinkansen gates on the Hachijo — south — side of the station, the opposite side from the north Central Exit, the city-bus terminal and Kyoto Tower. The Kyoto City Tourism Association's own guide points out that the "Shinkansen Central Exit" leads to the Hachijo Exit and is not the north "Central Exit". From a JR local train, use the Central Transfer gate and you never leave the paid area. Crossing the station from the north side with cases is a walk of several minutes through a very busy concourse.`,
-  },
-  {
-    q: "Should I get off at Tokyo, Shinagawa or Shin-Yokohama?",
-    a: `Whichever is nearest your bed or your flight — all three are stops on the way in, in that reverse order. On JR Central's own station index the line runs Shin-Yokohama, then Shinagawa, then Tokyo. Get off at Tokyo Station for Marunouchi, Ginza, Nihonbashi, Asakusa and Ueno, and for the Narita Express, which leaves from the same complex. Get off at Shinagawa for Shibuya, Meguro, Odaiba and anything on the Keikyu Line — including Haneda Airport, which is a direct run from the same station and saves you going into Tokyo Station and back out again. Get off at Shin-Yokohama if your night is in Yokohama or Minato Mirai, which saves the better part of an hour of doubling back. One practical note: the terminus is the easy option precisely because you cannot miss it, so if you are tired, carrying a lot, or travelling with children, Tokyo Station is not the wrong answer even when Shinagawa is technically closer.`,
-  },
-  {
-    q: "What time is the last shinkansen from Kyoto to Tokyo?",
-    a: `21:38, on JR West's own Kyoto timetable for 11 November 2026: Nozomi 64 leaves Kyoto at 21:38 and reaches Tokyo at 23:45. The four eastbound departures after it that evening run only as far as Nagoya. The first Tokyo-bound train that day was Nozomi 230 at 06:14. Read on ${NOW}. That late-evening cut-off is the one piece of eastbound asymmetry worth planning around: a long last dinner in Gion and a same-night arrival in Tokyo do not reliably both fit, and the final departures of the day are not always the fast ones. If your flight out of Narita or Haneda is an early morning one, the usual answer is to take an afternoon or early-evening train and sleep on the Tokyo side rather than squeeze the last train — which is also why the Tokyo Station and Shinagawa-adjacent areas are the ones worth paying for on that single night. Check the live timetable for your own date; seasonal and special-schedule days move the last departure.`,
-  },
-  {
-    q: "Can I use a Suica or ICOCA to ride the shinkansen?",
-    a: `Not as a fare. An IC card taps you through local and subway gates, but the Tokaido Shinkansen needs its own ticket — a basic fare ticket plus a limited express ticket, or a single combined ticket, or a QR code if you booked online. What the card is genuinely useful for on this trip is everything either side of the train: the Kyoto city buses and subway on your last morning, and the Yamanote, Metro and Keikyu once you are off at Tokyo or Shinagawa. ICOCA works in Tokyo and Suica works in Kyoto — the ten major cards are interoperable across the networks, which our IC card guide sets out card by card. Charge it before you leave Kyoto so the Tokyo end is a tap rather than a queue.`,
-  },
-  {
-    q: "What do I do with my suitcases after checking out in Kyoto?",
-    a: `Three options, in order of how little effort each takes. Leave the cases in your hotel's luggage room after checkout, go and do your last Kyoto morning, and collect them on the way to the station — almost every hotel will hold them for the day and it costs nothing. Or take them to Kyoto Station and use the coin lockers or the staffed luggage service there, which is the better plan if the morning ends on the Hachijo side anyway. Or forward them: a takkyubin courier counter will send cases to a Tokyo hotel, usually for next-day arrival, which is what people with more luggage than hands do and what saves you the oversized-baggage reservation on the train entirely. Sizes, fees and cut-off times vary by hotel and counter, so they are not quoted here — ask at your hotel desk the night before, which is also when to confirm they will accept a delivery at the Tokyo end.`,
+    q: "Do I need to reserve a seat?",
+    a: `Not on most days — every Nozomi, Hikari and Kodama has non-reserved cars outside the peak periods, at ${NON_RESERVED}. But on JR Central's peak dates every Nozomi car is reserved (remaining 2026–27 dates: 21–23 Nov 2026; 25 Dec 2026 – 5 Jan 2027; 9–11 Jan 2027; 20–22 Mar 2027), and a case over 160 cm needs a reserved seat with an oversized baggage area or a ${BAGGAGE_FEE} fee. Reserved seats go on sale one month before the day of travel at stations; smartEX takes requests up to a year ahead. On a last Kyoto morning with a flight or a booked Tokyo night, reserve. Read on ${OWN} and ${TODAY}.`,
   },
 ];
 
-const TITLE = "Kyoto to Tokyo Train (2026): Shinkansen Time and Price";
+const TITLE = "Kyoto to Tokyo Train 2026: Shinkansen Time, Price & Tickets";
 const DESCRIPTION =
-  "Kyoto to Tokyo train: 2h11 on a Nozomi, ¥13,970 reserved on smartEX (checked 11 Nov 2026). JR Pass: Hikari free, Nozomi +¥4,960. Book a month ahead.";
+  "Kyoto to Tokyo train: fastest Kyoto to Tokyo shinkansen 2h11 (Nozomi), ¥13,970 reserved on smartEX (18 Nov 2026). JR Pass: Hikari free, Nozomi +¥4,960.";
+
+/** "Last checked … Official pages: …" under each table. */
+function SourcesLine({ what }: { what: string }) {
+  return (
+    <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+      <strong>Last checked: {TODAY_ISO}</strong> ({what}). Official pages:{" "}
+      {FARE_SOURCES.map((s, i) => (
+        <span key={s.href}>
+          <a href={s.href} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)" }}>{s.label}</a>
+          {i < FARE_SOURCES.length - 1 ? ", " : "."}
+        </span>
+      ))}
+    </p>
+  );
+}
 const CANONICAL = "https://www.japan-travel-kit.com/guides/transport/kyoto-to-tokyo-shinkansen";
 
 export const getStaticProps = () => ({
@@ -550,11 +632,11 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Kyoto to Tokyo Train (2026): <br />Shinkansen Time, Price and the JR Pass
+            Kyoto to Tokyo Train 2026: <br />Kyoto to Tokyo Shinkansen Time, Price &amp; Tickets
           </h1>
           <p className={styles.heroSubtitle}>
-            Leaving from Kyoto Station: the Nozomi, Hikari and Kodama compared, the platforms and gates,
-            and when to book the seat back to Tokyo.
+            Leaving from Kyoto Station: the Nozomi, Hikari and Kodama compared, smartEX against the station
+            and Klook, and which Tokyo stop to get off at.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "smartEX fares, dated", "Kyoto Station tracks 11–12", "Tokyo, Shinagawa or Shin-Yokohama"].map((t) => (
@@ -603,15 +685,16 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
             </div>
             {/* Answer-first: the first body paragraph of the article, not the hero line. */}
             <p className={styles.verdictText}>
-              The <strong>Kyoto to Tokyo train</strong> is the Tokaido Shinkansen: about{" "}
-              <strong>2 hours 11 minutes on a Nozomi</strong>, with no change, and a reserved seat is{" "}
-              <strong>{NOZOMI_RESERVED}</strong> one way on JR Central&apos;s smartEX (adult, regular season,{" "}
-              {HIKARI_RESERVED} on a Hikari or Kodama, read on {NOW}). With a <strong>JAPAN RAIL PASS</strong>{" "}
-              the Hikari and Kodama cost nothing extra, and the Nozomi is allowed with a{" "}
-              <strong>{NOZOMI_TICKET}</strong> NOZOMI/MIZUHO ticket bought for each ride (japanrailpass.net, 2026).
-              The Tokyo-bound trains leave from <strong>tracks 11 and 12</strong>, behind the shinkansen gates on
-              Kyoto Station&apos;s <strong>Hachijo (south) side</strong>, and the last one is{" "}
-              <strong>21:38</strong>. This page is the eastbound trip from Kyoto; going the other way, see{" "}
+              The <strong>Kyoto to Tokyo train</strong> is the Tokaido Shinkansen, and the fastest one, a Nozomi,
+              takes <strong>about 2 hours 11 minutes</strong> with no change (JR West timetable, {NOW}). A reserved
+              seat costs <strong>{NOZOMI_RESERVED}</strong> one way on JR Central&apos;s smartEX ({STATION_NOZOMI} at
+              the station; {HIKARI_RESERVED} on a Hikari or Kodama; adult, regular season, checked {TODAY}). With
+              a <strong>JAPAN RAIL PASS</strong> the Hikari and Kodama cost nothing extra, while the Nozomi needs
+              a <strong>{NOZOMI_TICKET}</strong> NOZOMI MIZUHO Ticket for each ride (japanrailpass.net, {TODAY}).
+            </p>
+            <p className={styles.verdictText}>
+              Trains leave from tracks 11 and 12 on Kyoto Station&apos;s Hachijo (south) side, and the last one
+              to Tokyo is 21:38. This page is the eastbound trip; going the other way, see{" "}
               <Link href="/guides/transport/tokyo-to-kyoto">Tokyo to Kyoto</Link>.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
@@ -628,9 +711,9 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
         <KlookTripPrep
           headingLevel={3}
           label="Book with the train"
-          heading="What to Book in Tokyo With Your Seat"
-          intro="The train ends inside Tokyo Station. A room near it and a subway ticket for the days after are the two bookings the shinkansen ticket does not cover."
-          items={tokyoArrivalShinkansenPrep}
+          heading="Book the Same Day: Tokyo Hotel, Subway Ticket, eSIM"
+          intro="The train ends inside Tokyo Station. A room near it, a subway ticket for the days after and data for the journey are the three bookings the shinkansen ticket does not cover."
+          items={kyotoToTokyoTripPrep}
         />
 
         <BookingEsimCard />
@@ -699,10 +782,9 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
               </table>
             </div>
           </div>
+          <SourcesLine what={`smartEX fares and the JR Pass ticket; example train times from JR West's timetable for ${NOW_ISO}`} />
           <p className={styles.bodyText} style={{ margin: "1rem 0" }}>
-            Sources: timetable.jr-odekake.net (JR West), smart-ex.jp price list &ldquo;As of April 1,
-            2025&rdquo; (JR Central), japanrailpass.net — all read on {NOW}. The rest of the route, with
-            the first and last trains and the stations before Tokyo:
+            The rest of the route, with the first and last trains and the stations before Tokyo:
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -746,13 +828,14 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
         {/* Prices */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Prices</span>
-          <h2 className={styles.sectionTitle}>How Much Is the Shinkansen from Kyoto to Tokyo?</h2>
+          <h2 className={styles.sectionTitle}>How Much Is the Kyoto to Tokyo Shinkansen?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             <strong>{NOZOMI_RESERVED}</strong> one way for a reserved Ordinary seat on a Nozomi,{" "}
             <strong>{HIKARI_RESERVED}</strong> on a Hikari or Kodama and <strong>{NON_RESERVED}</strong>{" "}
             non-reserved — JR Central&apos;s smartEX prices for one adult in the regular season, from its own
-            price list dated &ldquo;As of April 1, 2025&rdquo; and read on {NOW}. The pass-holder rows are
-            japanrailpass.net&apos;s own figures.
+            price list dated &ldquo;As of April 1, 2025&rdquo; and checked again on {TODAY}. At a station
+            machine or ticket office the Nozomi reserved seat is <strong>{STATION_NOZOMI}</strong>. The
+            pass-holder rows are japanrailpass.net&apos;s own figures.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -780,9 +863,58 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Subject to change — confirm before buying. smartEX prices are for one adult, one way; on
             smartEX&apos;s own season rule the off-peak reserved price is ¥200 lower and peak-season prices are
-            higher, and the station ticket-office price can differ from the online one. No Klook price appears
-            on this page: Klook prices change by date, so check the listing for your date.
+            higher. No Klook price appears on this page: Klook prices change by date, so check the listing
+            for your date.
           </p>
+          <SourcesLine what="smartEX price lists, JR Central's fare releases and japanrailpass.net" />
+        </section>
+
+        {/* Buying options */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Tickets</span>
+          <h2 className={styles.sectionTitle}>Where Do I Buy Kyoto to Tokyo Shinkansen Tickets?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            On JR Central&apos;s smartEX for the lowest regular fare — {NOZOMI_RESERVED} against {STATION_NOZOMI}{" "}
+            for the same Nozomi seat at the station — or on Klook if you want it settled before you fly. The
+            station machines and ticket offices are where JR Pass holders reserve, and where anyone can buy on
+            the day.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Where to buy", "Price (adult, regular season)", "Booking window and changes", "At the gate"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {buyRows.map((row) => (
+                    <tr key={row.way}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.way}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.86rem" }}>{row.price}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.when}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.board}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <SourcesLine what="smartEX booking rules, station fare and JR Pass ticket; Klook seat classes from its rail page, 29 Oct 2026" />
+          <p className={styles.bodyText}>
+            The things a quick answer leaves out: on the peak dates further down every Nozomi seat is reserved,
+            so book as soon as the date is fixed; smartEX changes are free until departure, while a refund before
+            departure costs ¥320; and a case over 160 cm needs a seat with an oversized baggage area, which JR
+            Central sells at ticket offices, reserved-seat machines and online. For how each ticket type works,
+            see the <Link href="/guides/transport/shinkansen-guide">shinkansen guide</Link>.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={shinkansenKyotoTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check Kyoto → Tokyo seats on Klook →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Pass comparison */}
@@ -845,7 +977,7 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
         {/* Mt Fuji */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The view</span>
-          <h2 className={styles.sectionTitle}>Which Side Has the Mt. Fuji View from Kyoto to Tokyo?</h2>
+          <h2 className={styles.sectionTitle}>Which Side to Sit for Mt Fuji from Kyoto to Tokyo?</h2>
           <p className={styles.bodyText}>
             <strong>On your left</strong> in the direction of travel — and the seat to book is the same letter
             as in the other direction. JR Central&apos;s own Shinkansen Perfect Guide puts it without any
@@ -941,7 +1073,7 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Get off at", "Best for", "Why", "Source & date checked"].map((h) => (
+                    {["Get off at", "Best for", "Why", "Change to", "Source & date checked"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -952,6 +1084,7 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.station}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.forWho}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.why}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.transfer}</td>
                       <td style={{ fontSize: "0.82rem" }}>{row.source}</td>
                     </tr>
                   ))}
@@ -959,6 +1092,12 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {OWN_ISO}</strong> (station order on the Tokaido Shinkansen). Official page:{" "}
+            <a href="https://global.jr-central.co.jp/en/" target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)" }}>
+              JR Central (global.jr-central.co.jp)
+            </a>.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             One practical note against all of the above: the terminus is the easy option precisely because you
             cannot miss it. If you are tired, carrying a lot, or travelling with children, Tokyo Station is
@@ -973,7 +1112,7 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
         {/* Reservations */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Reservations</span>
-          <h2 className={styles.sectionTitle}>Do I Need to Book the Shinkansen in Advance?</h2>
+          <h2 className={styles.sectionTitle}>Do I Need to Reserve a Seat from Kyoto to Tokyo?</h2>
           <p className={styles.bodyText}>
             Most of the year, no — but book as soon as your date is fixed on the peak dates below, or if a
             case is over 160 cm. Reserved seats go on sale one month before the day of travel.
@@ -1041,13 +1180,6 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
             </KlookLink>
           </div>
         </section>
-
-        <KlookTripPrep
-          label="Arriving in Tokyo"
-          heading="What to Book for the Tokyo End"
-          intro="Once the seat is booked, the next three things a Kyoto to Tokyo day needs: a room near the platform, a subway pass for the days after, and data for the journey itself."
-          items={kyotoToTokyoTripPrep}
-        />
 
         {/* Luggage */}
         <section className={styles.bodySection}>

@@ -573,7 +573,7 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
             Times and the Tokyo–Kanazawa fare come from each route guide, where the source and date are listed:
             the{" "}
             <Link href="/guides/transport/tokyo-to-osaka-shinkansen">Tokyo to Osaka shinkansen guide</Link>,{" "}
-            <Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo shinkansen guide</Link>,{" "}
+<Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo train</Link> guide,{" "}
             <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen">Tokyo to Hiroshima shinkansen guide</Link>,{" "}
             <Link href="/guides/transport/tokyo-to-nagoya-shinkansen">Tokyo to Nagoya shinkansen guide</Link>,{" "}
             <Link href="/guides/transport/tokyo-to-kanazawa">Tokyo to Kanazawa guide</Link> and{" "}

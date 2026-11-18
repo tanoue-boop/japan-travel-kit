@@ -292,8 +292,8 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
               highway bus, <strong>from {BUS_FROM}</strong> on West JR Bus&apos;s limited lowest fare. A 7-day
               JR Pass is <strong>¥53,000</strong> from an overseas agent, so it does not pay for a Tokyo–Kyoto
               round trip alone, which is {ROUND_TRIP_NOZOMI} on smartEX. This page is the westbound trip
-              from Tokyo; for the train back, leaving from Kyoto Station, see our{" "}
-              <Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo train guide</Link>.
+              from Tokyo; for the train back, leaving from Kyoto Station, see the{" "}
+              <Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo train</Link> guide.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>

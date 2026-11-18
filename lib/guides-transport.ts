@@ -78,8 +78,8 @@ export const transportArticles: GuideArticle[] = [
   {
     href: "/guides/transport/kyoto-to-tokyo-shinkansen",
     badge: "Guide",
-    title: "Kyoto to Tokyo Train (2026): Shinkansen Time and Price",
-    desc: "Leaving Kyoto: 2h11 on a Nozomi at ¥13,970 reserved on smartEX, Hikari and Kodama compared, the JR Pass Nozomi ticket, Kyoto Station's Hachijo-side gates and platforms 11 and 12, and the last train to Tokyo at 21:38.",
+    title: "Kyoto to Tokyo Train 2026: Shinkansen Time, Price & Tickets",
+    desc: "Leaving Kyoto: 2h11 on a Nozomi at ¥13,970 reserved on smartEX (¥14,170 at the station), Nozomi, Hikari and Kodama compared, smartEX vs station vs Klook, the JR Pass Nozomi ticket, and Tokyo or Shinagawa at the end.",
     group: "passes",
     city: "kyoto",
   },
