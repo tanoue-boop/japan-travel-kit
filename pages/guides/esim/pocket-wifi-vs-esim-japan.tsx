@@ -354,9 +354,9 @@ export default function PocketWifiVsEsimPage({ updated }: { updated: PageUpdated
             Klook as of {ratesCheckedAt} and are a floor rather than a quote; the rest was read off
             the listings {specsCheckedAt}. Our{" "}
             <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              best pocket WiFi in Japan guide
+              pocket WiFi Japan
             </Link>{" "}
-            takes that choice apart in full, with the cost of each by trip length.
+            guide compares rental prices per day, company by company, with the total for 5, 7 and 14 days.
           </p>
           <div className={styles.picksList}>
             {pocketWifis.map((item) => {
@@ -575,7 +575,7 @@ export default function PocketWifiVsEsimPage({ updated }: { updated: PageUpdated
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best Pocket WiFi in Japan (2026): Rental Prices &amp; Pickup Compared</p>
+                <p className={styles.relatedTitle}>Pocket WiFi Japan 2026: Rental Prices Compared (Per Day)</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

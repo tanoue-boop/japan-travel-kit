@@ -571,9 +571,10 @@ export default function JapanAirportSimCardsPage({ updated }: { updated: PageUpd
               Sakura Mobile
             </a>{" "}
             offers airport pickup at Narita, Haneda, Kansai and Fukuoka counters and at post offices at New Chitose
-            and Chubu Centrair. If several people need data, a{" "}
-            <Link href="/guides/esim/best-pocket-wifi-japan" style={linkStyle}>pocket WiFi rental</Link>{" "}
-            may cost less overall, and our{" "}
+            and Chubu Centrair. If several people need data, a pocket WiFi rental may cost less overall
+            — airport pickup counters and per-day prices are in{" "}
+            <Link href="/guides/esim/best-pocket-wifi-japan" style={linkStyle}>pocket WiFi Japan</Link>{" "}
+            — and our{" "}
             <Link href="/guides/esim/japan-sim-card-vs-esim-2026" style={linkStyle}>SIM card vs eSIM guide</Link>{" "}
             goes through the choice.
           </p>

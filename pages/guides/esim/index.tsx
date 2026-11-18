@@ -501,7 +501,8 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
             before you buy. Then pick by what matters most: the{" "}
             <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--text)", fontWeight: 600 }}>cheapest eSIM for Japan</Link>, an{" "}
             <Link href="/guides/esim/japan-esim-unlimited" style={{ color: "var(--text)", fontWeight: 600 }}>unlimited eSIM</Link>, a{" "}
-            <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "var(--text)", fontWeight: 600 }}>pocket WiFi rental</Link> for a group, or a{" "}
+            pocket WiFi rental for a group (per-day prices in{" "}
+            <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "var(--text)", fontWeight: 600 }}>pocket WiFi Japan</Link>), or a{" "}
             <Link href="/guides/esim/japan-airport-sim-cards" style={{ color: "var(--text)", fontWeight: 600 }}>SIM card at the airport</Link> if your
             phone cannot take an eSIM. Not sure it can?{" "}
             <Link href="/guides/esim/does-esim-work-in-japan" style={{ color: "var(--text)", fontWeight: 600 }}>Does eSIM work in Japan?</Link>{" "}

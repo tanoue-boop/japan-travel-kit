@@ -1085,7 +1085,8 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             <Link href="/guides/esim/best-esim-japan-reddit" className={tools.inlineLink}>Reddit advice check</Link>. If your
             phone cannot take an eSIM, see{" "}
             <Link href="/guides/esim/japan-airport-sim-cards" className={tools.inlineLink}>airport SIM cards</Link> or{" "}
-            <Link href="/guides/esim/best-pocket-wifi-japan" className={tools.inlineLink}>pocket WiFi rental</Link>.
+            a pocket WiFi rental — per-day prices are compared in{" "}
+            <Link href="/guides/esim/best-pocket-wifi-japan" className={tools.inlineLink}>pocket WiFi Japan</Link>.
           </p>
           <KlookEsimSlot why="If the tickets and transport for this trip are already in a Klook basket, its own Japan eSIM goes on the same checkout — per-day plans on SoftBank 5G, total-data plans on IIJ (Docomo) 4G LTE, tethering allowed. It is unranked here because its US$1.05 from-price names no plan, so open it to see the current options." />
         </section>
