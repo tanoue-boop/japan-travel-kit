@@ -974,7 +974,7 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
               for how each provider&apos;s price has moved day by day, the{" "}
               <Link href="/guides/esim/japan-esim-price-tracker" className={tools.inlineLink}>Japan eSIM price tracker</Link>{" "}
               (nine more providers included); for what travellers recommend, the{" "}
-              <Link href="/guides/esim/best-esim-japan-reddit" className={tools.inlineLink}>Japan eSIMs Reddit recommends</Link>; and for every
+              <Link href="/guides/esim/best-esim-japan-reddit" className={tools.inlineLink}>best eSIM for Japan reddit</Link> page; and for every
               eSIM and SIM guide on this site, the{" "}
               <Link href="/guides/esim" className={tools.inlineLink}>Japan eSIM guide (how to get an eSIM in Japan)</Link>.
             </span>

@@ -14,6 +14,7 @@ import {
   findPlansForTrip,
   formatUsd,
   getProvider,
+  latestCheckedAt,
   priceFrom,
   priceFromLabel,
   pricesCheckedLabel,
@@ -25,6 +26,7 @@ import {
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd, itemListJsonLd } from "../../../lib/structured-data";
 import { EsimCtaTop } from "../../../components/EsimCta";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 
 // Every price quoted on this page is read from data/esim-prices.json (refreshed daily),
 // so the figures the threads argue over are always checked against today's catalogue.
@@ -55,13 +57,93 @@ function cheapestAllowanceFor(days: number, gb: number) {
 
 const siteCheapestPlan = siteCheapest();
 const weekUnlimited = cheapestUnlimitedAcross(7);
+/** "2026-11-17" — the day the price feed was last read, for the Last checked lines. */
+const pricesCheckedIso = (latestCheckedAt() ?? "").slice(0, 10);
 
-// The three trip lengths people actually ask about in the threads. "Data to budget" is a
-// planning rule of thumb (roughly 1 GB a day), not a measurement — the prices are live.
+/** The cheapest plan of exactly `days` validity, allowance or unlimited. */
+function planAt(id: EsimProviderId, days: number, unlimited: boolean): EsimPlan | null {
+  const plans = getProvider(id).plans.filter((p) => p.days === days && p.unlimited === unlimited);
+  return plans.length ? plans.reduce((a, b) => (b.priceUsd < a.priceUsd ? b : a)) : null;
+}
+
+/** "$1.99 (1 GB) · unlimited $19.99" for one provider and trip length. */
+function priceCell(id: EsimProviderId, days: number): string {
+  const small = planAt(id, days, false);
+  const unl = planAt(id, days, true);
+  const parts: string[] = [];
+  if (small) parts.push(`${formatUsd(small.priceUsd)} (${small.name.replace(/ \/ \d+ days?$/, "")})`);
+  if (unl) parts.push(`unlimited ${formatUsd(unl.priceUsd)}`);
+  return parts.length ? parts.join(" · ") : "—";
+}
+
+const simbye7 = planAt("simbye", 7, false);
+const simbye7Unl = planAt("simbye", 7, true);
+const airalo7 = planAt("airalo", 7, false);
+const esimgo7 = planAt("esimgo", 7, false);
+/** True while Simbye sells the cheapest 7-day plan and the cheapest 7-day unlimited of the five. */
+const simbyeCheapestWeek = (["airalo", "esimgo", "holafly", "sakura"] as EsimProviderId[]).every((id) => {
+  const a = planAt(id, 7, false);
+  const u = planAt(id, 7, true);
+  return (!a || !simbye7 || simbye7.priceUsd <= a.priceUsd) && (!u || !simbye7Unl || simbye7Unl.priceUsd <= u.priceUsd);
+});
+
+/**
+ * Table 1. Prices are the providers' own (data/esim-prices.json, read daily); tethering and
+ * phone-number terms are from lib/esim-specs.ts (each provider's own site, 22 Oct / 5 Nov 2026).
+ * Klook's row carries the listing's own spec lines and no price.
+ */
+const redditTableRows: { id: EsimProviderId; label: string; why: string; buyLabel: string; buyHref: string }[] = [
+  {
+    id: "simbye",
+    label: simbyeCheapestWeek ? "Our pick: Simbye" : "Simbye",
+    why: simbyeCheapestWeek ? "Lowest 7-day price here, allowance and unlimited" : "Low entry price; data only",
+    buyLabel: "Get Simbye →",
+    buyHref: link("simbye"),
+  },
+  { id: "airalo", label: "Airalo", why: "Easy app install; not the cheapest", buyLabel: "Get Airalo →", buyHref: link("airalo") },
+  { id: "esimgo", label: "eSIM Go (Breeze)", why: "Low entry price; docomo among its networks", buyLabel: "Get eSIM Go →", buyHref: link("esimgo") },
+  { id: "holafly", label: "Holafly", why: "Unlimited only; hotspot capped at 1 GB/day", buyLabel: "Airalo unlimited instead →", buyHref: link("airalo") },
+  { id: "sakura", label: "Sakura Mobile", why: "Large allowances; the only Japanese-number plan here", buyLabel: "Get Sakura Mobile →", buyHref: link("sakura") },
+];
+
+/**
+ * Table 2. What goes wrong with a travel eSIM in Japan, and the fix. Each cause is a plan
+ * term the provider or listing states itself; no forum comment is quoted or counted.
+ */
+const problemRows = [
+  {
+    problem: "The data runs out mid-trip",
+    cause: `The smallest plans are small: ${simbye7 ? `Simbye's 7-day entry plan is ${simbye7.name.replace(/ \/ \d+ days?$/, "")}` : "entry plans start at 1 GB"}${esimgo7 ? `, eSIM Go's ${esimgo7.name.replace(/ \/ \d+ days?$/, "")}` : ""}.`,
+    fix: "Budget about 1 GB a day for maps, trains and messaging; buy the next size up, or unlimited if you tether or stream.",
+  },
+  {
+    problem: "“Unlimited” slows down",
+    cause: "Unlimited plans carry a daily high-speed cap or a fair-use rule: Klook's is 10 GB/day, then 128 kbps; eSIM Go's Unlimited Essential slows after a daily allowance; Airalo applies a fair-use policy.",
+    fix: "Read the daily high-speed figure on the plan page, not the word unlimited.",
+  },
+  {
+    problem: "The hotspot stops sharing",
+    cause: "Holafly caps shareable data at 1 GB/day; Sakura Mobile's unlimited plans carry one hotspot allowance per trip (6 GB on 7 days, 15 GB on 15 days).",
+    fix: "If a laptop or a companion will share it, pick a provider that states tethering on every Japan plan: Simbye, or eSIM Go at no extra cost.",
+  },
+  {
+    problem: "Weak signal outside the cities",
+    cause: "Each eSIM resells docomo, au (KDDI) or SoftBank; Airalo and Holafly lean on SoftBank, which is strongest in the cities.",
+    fix: "For a rural route, pick a plan that names docomo: Simbye, eSIM Go, Sakura Mobile's 3 GB/day plans, or Klook's IIJ (docomo) total-data plans.",
+  },
+  {
+    problem: "It will not install on arrival",
+    cause: "Installing needs an internet connection, and a phone still locked to its home carrier may refuse the profile.",
+    fix: "Install at home on Wi-Fi before you fly, leave the line off, and switch it on (with data roaming) when you land.",
+  },
+];
+
+// Trip lengths for table 3. "Data to budget" is a planning rule of thumb (roughly 1 GB a
+// day), not a measurement — the prices are live.
 const TRIP_LENGTHS = [
-  { days: 5, gb: 5, label: "5 days", use: "A short Tokyo or Kansai trip: maps, trains, messaging." },
-  { days: 7, gb: 7, label: "7 days", use: "One week, two cities: add photo uploads and some video." },
+  { days: 7, gb: 7, label: "7 days", use: "One week, one or two cities: maps, trains, messaging, some photos." },
   { days: 14, gb: 14, label: "14 days", use: "Two weeks, several cities: the length most itineraries land on." },
+  { days: 30, gb: 30, label: "30 days", use: "A month, or a long stay: buy on per-GB price, or look at unlimited." },
 ];
 
 const tripRows = TRIP_LENGTHS.map((t) => ({
@@ -216,17 +298,6 @@ const redditQAs = [
  */
 const askedQuestions = [
   {
-    q: "Can this page tell me what Reddit recommends?",
-    a: (
-      <>
-        Not directly: Reddit blocks automated reads, so no thread is quoted or counted here. What this page
-        does is check common Japan eSIM advice against current prices — see the{" "}
-        <Link href="#claim-check" className={tools.inlineLink}>claim check below</Link> — and link the
-        Reddit searches so you can read the threads yourself.
-      </>
-    ),
-  },
-  {
     q: "What is the best eSIM for Japan?",
     a: (
       <>
@@ -282,8 +353,8 @@ const askedQuestions = [
         Budget roughly 1 GB a day — about 14 GB — if you are using maps, trains, messaging and the odd
         video, and double that if you tether a laptop or stream. On current prices the cheapest plan that
         covers 14 days at that level is{" "}
-        {tripRows[2].allowance
-          ? `${tripRows[2].allowance.provider}'s ${tripRows[2].allowance.name} at ${formatUsd(tripRows[2].allowance.priceUsd)}`
+        {tripRows[1].allowance
+          ? `${tripRows[1].allowance.provider}'s ${tripRows[1].allowance.name} at ${formatUsd(tripRows[1].allowance.priceUsd)}`
           : "listed in the table below"}
         . Our{" "}
         <Link href="/guides/esim/japan-esim-2-weeks" className={tools.inlineLink}>two-week Japan eSIM guide</Link>{" "}
@@ -296,32 +367,33 @@ const askedQuestions = [
 const faqItems = [
   {
     q: "What is the best eSIM for Japan according to Reddit?",
-    a: `Reddit threads cannot be read or quoted here (Reddit blocks automated reads), so this is our price-checked answer instead: Simbye, from ${priceFrom("simbye")}, data only. eSIM Go starts at ${priceFrom("esimgo")} and Airalo at ${priceFrom("airalo")}; Sakura Mobile is the one to look at for a Japanese phone number or a long stay. Prices from each provider's own site, checked ${pricesCheckedAt}.`,
+    a: `Reddit has no official ranking, and prices quoted in old threads go stale. Checked against each provider's own site on ${pricesCheckedAt}, Simbye is the best value: ${simbye7 ? `${formatUsd(simbye7.priceUsd)} for ${simbye7.name}` : `from ${priceFrom("simbye")}`}${simbye7Unl ? ` or ${formatUsd(simbye7Unl.priceUsd)} for unlimited 7 days` : ""}, on ${getProvider("simbye").network}. Airalo${airalo7 ? ` (${formatUsd(airalo7.priceUsd)} for ${airalo7.name})` : ""} is the easy-app default on SoftBank, and Klook eSIM suits travellers who already book their trip on Klook.`,
   },
   {
-    q: "Is Airalo good for Japan?",
-    a: `Yes as an easy default, not as the cheapest. Its Japan page shows SoftBank as the primary network plus two others it does not name (checked 1 Nov 2026), and it installs from its own app. It is data-only, with no voice calls or Japanese number, and it starts at ${priceFrom("airalo")}, above Simbye (${priceFrom("simbye")}) and eSIM Go (${priceFrom("esimgo")}).`,
+    q: "Is Klook eSIM good for Japan?",
+    a: `Yes, if you already book tickets or transport on Klook. Its listing "${klookEsim.listingTitle}" runs per-day plans on SoftBank 5G and total-data plans on IIJ (docomo) 4G LTE, with ${klookEsim.specData.toLowerCase()}. Tethering is supported and it is data only, with no phone number (listing checked ${klookEsim.specsCheckedAt}). Klook prices change by date, so check the listing for today's options.`,
   },
   {
-    q: "Is Holafly good for Japan?",
-    a: `Holafly sells unlimited plans only, from ${unlimitedFromLabel("holafly")}, on KDDI / SoftBank per its Japan page. Two things to check before buying: the 1 GB/day hotspot cap, and that Airalo (${unlimitedFromLabel("airalo")}) and eSIM Go (${unlimitedFromLabel("esimgo")}) both sell unlimited Japan data for less.`,
+    q: "Which network is best for an eSIM in Japan?",
+    a: "docomo, if your route leaves the cities: it has the widest reach in rural areas. SoftBank and au (KDDI) are strong in the cities and along the main tourist corridors. Simbye, eSIM Go, Sakura Mobile's 3 GB/day plans and Klook's total-data plans name docomo; Airalo names SoftBank as its primary network and Holafly KDDI / SoftBank (each provider's own page, checked 22 Oct–1 Nov 2026).",
   },
   {
-    q: "Which Japan eSIM runs on docomo?",
-    a: `eSIM Go (sold to consumers as Breeze), whose Japan page names NTT docomo among its networks, and Sakura Mobile's 3 GB/day data plans. Klook's Japan eSIM listing also states docomo 4G LTE for its total-data plans. Holafly runs on SoftBank/KDDI instead, and Airalo's Japan page names SoftBank as the primary network with two unnamed others. Checked against each provider's own site on 22 Oct 2026 (Airalo re-read 1 Nov 2026).`,
+    q: "Do I need unlimited data in Japan?",
+    a: `Usually not. About 1 GB a day covers maps, trains and messaging, and an allowance plan costs less: ${simbye7 && simbye7Unl ? `Simbye's ${simbye7.name} is ${formatUsd(simbye7.priceUsd)} against ${formatUsd(simbye7Unl.priceUsd)} for unlimited 7 days` : "allowance plans start well below unlimited"}. Unlimited is worth it if you stream video, tether a laptop or share with a companion, and even then a daily high-speed cap applies (Klook: 10 GB/day, then 128 kbps).`,
   },
   {
-    q: "Does Klook sell a Japan eSIM?",
-    a: `Yes — it is listed as "${klookEsim.listingTitle}". The listing names ${klookEsim.specData.toLowerCase()}, ${klookEsim.specNetwork}, tethering supported and no phone number (listing checked on ${klookEsim.specsCheckedAt}). No price is quoted for it here: Klook prices change by date, so open the listing to see the current options.`,
+    q: "When should I install my Japan eSIM?",
+    a: "Before you fly, at home on Wi-Fi: installing needs an internet connection. Leave the new line switched off, then on landing turn it on and enable data roaming for it. Check on the plan page whether validity starts at installation or at first connection in Japan, and install accordingly.",
   },
 ];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/best-esim-japan-reddit") } });
 
-const TITLE = `Best eSIM for Japan Reddit 2026: What Holds Up, From ${priceFrom("simbye")}`;
+const TITLE = "Best eSIM for Japan Reddit 2026: Picks, Networks, Prices";
 const META_DESCRIPTION =
-  `Best eSIM for Japan Reddit advice, price-checked: our pick is Simbye from ${priceFrom("simbye")}; ` +
-  `eSIM Go from ${priceFrom("esimgo")}, Airalo from ${priceFrom("airalo")}. Compare, then buy.`;
+  `Best eSIM for Japan reddit question, price-checked: Simbye from ${priceFrom("simbye")}, ` +
+  `Airalo ${airalo7 ? `${formatUsd(airalo7.priceUsd)} a week` : `from ${priceFrom("airalo")}`}, Klook eSIM on SoftBank/docomo. ` +
+  `Compare networks, caps, fixes.`;
 
 export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -393,7 +465,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg><span className="sr-only"> / </span>
-          <span className={styles.breadCurrent}>Best eSIM Japan Reddit</span>
+          <span className={styles.breadCurrent}>Best eSIM for Japan Reddit</span>
         </div>
       </div>
 
@@ -404,12 +476,11 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Best eSIM for Japan Reddit 2026: <br />Which Advice Still Holds
+            Best eSIM for Japan Reddit 2026: <br />Picks, Networks, Prices
           </h1>
           <p className={styles.heroSubtitle}>
-            Our pick is Simbye, from {priceFrom("simbye")}. Common Japan eSIM advice is checked here against
-            this month&apos;s actual prices and plan terms, plus networks, plans by trip length,
-            and whether your phone can take an eSIM at all.
+            The eSIMs travellers weigh up for Japan, checked against official prices: networks, 7- and
+            15-day costs, common problems and their fixes, and which plan fits 7, 14 or 30 days.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Claims checked against live prices", "Official prices, checked daily"].map((t) => (
@@ -439,8 +510,17 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           </div>
           <div className={styles.verdictBody}>
             <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-              Our pick for the best eSIM for Japan is <strong>Simbye</strong>, from {priceFrom("simbye")}, data
-              only. The cheapest unlimited week on current prices is{" "}
+              If you searched Reddit for the best eSIM for Japan, the answer on today&apos;s official prices is{" "}
+              <strong>Simbye</strong>:{" "}
+              {simbye7 ? `${formatUsd(simbye7.priceUsd)} for ${simbye7.name}` : `from ${priceFrom("simbye")}`}
+              {simbye7Unl ? ` or ${formatUsd(simbye7Unl.priceUsd)} for unlimited 7 days` : ""}, on{" "}
+              {getProvider("simbye").network}. <strong>Airalo</strong> costs{" "}
+              {airalo7 ? `${formatUsd(airalo7.priceUsd)} for ${airalo7.name}` : `from ${priceFrom("airalo")}`} on
+              SoftBank, and <strong>Klook eSIM</strong> runs on SoftBank 5G or IIJ (docomo), the easy add-on if
+              the rest of your trip is already booked on Klook.
+            </p>
+            <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+              The cheapest unlimited week on current prices is{" "}
               <strong>
                 {weekUnlimited
                   ? `${weekUnlimited.provider} at ${formatUsd(weekUnlimited.plan.priceUsd)} (${weekUnlimited.plan.name})`
@@ -490,34 +570,74 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
-        {/* Price-checked shortlist, up top, our pick first. No Reddit-frequency claims: Reddit
-            cannot be read automatically, so nothing here is attributed to it. */}
-        <EsimCtaTop />
+        {/* The two high-rate options (Simbye 25%, Klook eSIM 20%) straight after the answer. */}
+        <BookingEsimCard lead="Get online the moment you land in Japan" />
 
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Shortlist</span>
-          <h2 className={styles.sectionTitle}>Which eSIM should you get for Japan?</h2>
+          <span className={styles.sectionLabel}>Compared</span>
+          <h2 className={styles.sectionTitle}>Which Japan eSIM is best for a 7- or 15-day trip?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Simbye, for a data-only trip: it has the lowest entry price of the five eSIMs this page covers.
-            Pick Sakura Mobile instead if you need a Japanese phone number.
+            {simbyeCheapestWeek
+              ? "Simbye: it has the lowest 7-day price of the five, both for a small allowance and for unlimited."
+              : "Simbye has the lowest entry price of the five."}{" "}
+            Pick Sakura Mobile instead if you need a Japanese phone number, and Klook eSIM if the rest of the trip
+            is in a Klook basket.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Provider", "Price from", "Network", "Verdict"].map((h) => (
+                    {["eSIM", "Network", "7 days", "15 days", "Japanese number", "Tethering", "Why pick it", "Buy"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {shortlistRows.map((row) => (
+                  {redditTableRows.slice(0, 1).map((row) => (
                     <tr key={row.id}>
                       <td className={styles.tdProvider}>{row.label}</td>
-                      <td className={styles.tdPrice}>{row.priceFrom}</td>
-                      <td className={styles.tdNetwork}>{row.network}</td>
-                      <td>{row.verdict}</td>
+                      <td className={styles.tdNetwork}>{getProvider(row.id).network}</td>
+                      <td className={styles.tdPrice}>{priceCell(row.id, 7)}</td>
+                      <td className={styles.tdPrice}>{priceCell(row.id, 15)}</td>
+                      <td>{esimSpec(row.id).phoneNumberShort}</td>
+                      <td>{esimSpec(row.id).tetheringShort}</td>
+                      <td>{row.why}</td>
+                      <td>
+                        <a href={row.buyHref} target="_blank" rel="sponsored nofollow noopener" className={tools.inlineLink}>
+                          {row.buyLabel}
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                  <tr>
+                    <td className={styles.tdProvider}>Klook eSIM</td>
+                    <td className={styles.tdNetwork}>{klookEsim.specNetwork}</td>
+                    <td className={tools.tdMuted}>{klookEsim.priceUnknownLabel}</td>
+                    <td className={tools.tdMuted}>{klookEsim.priceUnknownLabel}</td>
+                    <td>{klookEsim.specPhoneNumber}</td>
+                    <td>{klookEsim.specTethering}</td>
+                    <td>One checkout with your Klook tickets and transport</td>
+                    <td>
+                      <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={tools.inlineLink}>
+                        Check Klook eSIM →
+                      </KlookLink>
+                    </td>
+                  </tr>
+                  {redditTableRows.slice(1).map((row) => (
+                    <tr key={row.id}>
+                      <td className={styles.tdProvider}>{row.label}</td>
+                      <td className={styles.tdNetwork}>{getProvider(row.id).network}</td>
+                      <td className={styles.tdPrice}>{priceCell(row.id, 7)}</td>
+                      <td className={styles.tdPrice}>{priceCell(row.id, 15)}</td>
+                      <td>{esimSpec(row.id).phoneNumberShort}</td>
+                      <td>{esimSpec(row.id).tetheringShort}</td>
+                      <td>{row.why}</td>
+                      <td>
+                        <a href={row.buyHref} target="_blank" rel="sponsored nofollow noopener" className={tools.inlineLink}>
+                          {row.buyLabel}
+                        </a>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -525,7 +645,8 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Last checked: {pricesCheckedAt}, from each provider&apos;s own Japan page:{" "}
+            Last checked: {pricesCheckedIso}. Prices are each provider&apos;s cheapest allowance and unlimited plan
+            of exactly 7 or 15 days, from its own Japan page:{" "}
             {shortlistRows.map((row, i) => (
               <span key={row.id}>
                 <a href={row.sourceUrl} target="_blank" rel="sponsored nofollow noopener noreferrer" className={tools.inlineLink}>
@@ -534,25 +655,72 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
                 {i < shortlistRows.length - 1 ? ", " : "."}
               </span>
             ))}{" "}
-            Reddit blocks automated reads, so no thread is quoted or counted here; open the threads yourself
-            from the searches in the{" "}
-            <Link href="#read-it-yourself" className={tools.inlineLink}>section below</Link>.
+            Number and tethering terms from the same sites (22 Oct 2026; Simbye 5 Nov 2026). Klook eSIM: network,
+            tethering and number from its{" "}
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={tools.inlineLink}>
+              listing
+            </KlookLink>{" "}
+            ({klookEsim.specsCheckedAt}); Klook prices change by date, so none is printed.
           </p>
           <a href={link("simbye")} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
             Get Simbye Japan eSIM from {priceFrom("simbye")} →
           </a>
         </section>
 
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Common problems</span>
+          <h2 className={styles.sectionTitle}>What goes wrong with a Japan eSIM, and how do you avoid it?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Most failures come down to three things: a data allowance that is too small, a network that is thin
+            on your route, and installing too late. Each fix below is a plan term you can check before paying.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Problem", "Why it happens", "How to avoid it"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {problemRows.map((row) => (
+                    <tr key={row.problem}>
+                      <td className={styles.tdProvider}>{row.problem}</td>
+                      <td>{row.cause}</td>
+                      <td>{row.fix}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {pricesCheckedIso} (plan sizes); caps, hotspot and network terms from{" "}
+            <a href={getProvider("holafly").sourceUrl} target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>Holafly</a>,{" "}
+            <a href={getProvider("sakura").sourceUrl} target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>Sakura Mobile</a>,{" "}
+            <a href={getProvider("esimgo").sourceUrl} target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>eSIM Go</a>,{" "}
+            <a href={getProvider("simbye").sourceUrl} target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>Simbye</a>{" "}
+            and{" "}
+            <a href={getProvider("airalo").sourceUrl} target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>Airalo</a>{" "}
+            (22 Oct–5 Nov 2026) and the Klook listing ({klookEsim.specsCheckedAt}). Setup steps:{" "}
+            <Link href="/guides/esim/how-to-set-up-esim-japan" className={tools.inlineLink}>how to set up an eSIM for Japan</Link>.
+          </p>
+        </section>
+
+        <EsimCtaTop />
+
         <EsimUseCaseTable copy={esimPicksCopy.en} checkedLabel={pricesCheckedAt} />
 
         {/* Where the opinions come from */}
         <section className={styles.bodySection} id="read-it-yourself">
           <span className={styles.sectionLabel}>Read it yourself</span>
-          <h2 className={styles.sectionTitle}>Where to Read the Reddit Threads Yourself</h2>
+          <h2 className={styles.sectionTitle}>Where can you read the Reddit threads yourself?</h2>
           <p className={styles.bodyText}>
-            This page quotes no one and does not report what Reddit recommends; it checks common Japan eSIM
-            advice against current prices <Link href="#claim-check" className={tools.inlineLink}>further down</Link>. To
-            read the threads themselves, these searches open on Reddit:
+            In the Japan travel subreddits, sorted by top posts. This page quotes no comment and does not count
+            votes; it checks common Japan eSIM advice against current prices{" "}
+            <Link href="#claim-check" className={tools.inlineLink}>further down</Link>. These searches open on Reddit:
           </p>
           <ul className={styles.bodyList}>
             {redditSearches.map((s) => (
@@ -602,9 +770,10 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
         {/* Networks */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Networks</span>
-          <h2 className={styles.sectionTitle}>Which Network Each eSIM Rides: docomo, SoftBank or KDDI</h2>
+          <h2 className={styles.sectionTitle}>Which network is best for an eSIM in Japan: docomo, SoftBank or KDDI?</h2>
           <p className={styles.bodyText}>
-            Japan has three national networks, and no travel eSIM has one of its own — every provider
+            docomo, if your route leaves the cities; in the cities all three are strong. Japan has three
+            national networks, and no travel eSIM has one of its own — every provider
             here resells one or two of them. That is why &ldquo;which eSIM&rdquo; and &ldquo;which
             network&rdquo; are not the same question, and why two eSIMs at very different prices can
             behave identically on the same train. Each line below is what the provider&apos;s own site
@@ -636,9 +805,12 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
         {/* Plans by trip length */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>By trip length</span>
-          <h2 className={styles.sectionTitle}>Which Plan to Buy for 5, 7 or 14 Days</h2>
+          <h2 className={styles.sectionTitle}>Which eSIM plan should you buy for 7, 14 or 30 days?</h2>
           <p className={styles.bodyText}>
-            This is the decision that settles what you actually pay. Budget roughly <strong>1 GB a day</strong>{" "}
+            {tripRows[0].allowance
+              ? `For a week, ${tripRows[0].allowance.provider}'s ${tripRows[0].allowance.name} at ${formatUsd(tripRows[0].allowance.priceUsd)} is the cheapest plan that covers it; `
+              : ""}
+            this is the decision that settles what you actually pay. Budget roughly <strong>1 GB a day</strong>{" "}
             for maps, trains, messaging and the occasional video, and double it if you stream or tether a
             laptop. The two right-hand columns are the cheapest plan on the whole site that covers each
             trip, read from the providers&apos; own sites on {pricesCheckedAt}.
@@ -675,6 +847,16 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {pricesCheckedIso}, across Simbye, Airalo, eSIM Go, Holafly and Sakura Mobile (official
+            pages:{" "}
+            <a href={getProvider("simbye").sourceUrl} target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>simbye.com</a>,{" "}
+            <a href={getProvider("airalo").sourceUrl} target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>airalo.com</a>,{" "}
+            <a href={getProvider("esimgo").sourceUrl} target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>breezesim.com</a>,{" "}
+            <a href={getProvider("holafly").sourceUrl} target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>holafly.com</a>,{" "}
+            <a href={getProvider("sakura").sourceUrl} target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>sakuramobile.jp</a>).
+            &ldquo;Data to budget&rdquo; is a rule of thumb of about 1 GB a day.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Two notes on reading that table. A plan with more validity than your trip is often cheaper than
             the one sized to it — a 30-day allowance regularly undercuts the 7-day version of the same
@@ -685,8 +867,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           </p>
           <p className={styles.bodyText}>
             Buy it before you fly, not at the airport. Install the profile at home on your own Wi-Fi, leave
-            it switched off, and turn it on when you land — the one piece of thread advice nobody argues
-            with. Our{" "}
+            it switched off, and turn it on when you land. Our{" "}
             <Link href="/guides/esim/how-to-set-up-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               step-by-step eSIM setup guide
             </Link>{" "}
@@ -721,7 +902,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
         {/* How to choose */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>How to choose</span>
-          <h2 className={styles.sectionTitle}>Unlimited or an Allowance? Phone Number? Tethering?</h2>
+          <h2 className={styles.sectionTitle}>Do you need unlimited data, a phone number or tethering?</h2>
           <p className={styles.bodyText}>
             Three questions settle almost every Japan eSIM choice. Everything in the table is what each provider&apos;s own
             site or help centre states, checked 22 Oct 2026 — no prices here, because the terms are what
@@ -785,8 +966,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>Check Your Phone Takes an eSIM — and Is Not Locked</h2>
           <p className={styles.bodyText}>
             Two conditions, both checkable in under a minute, and failing either one makes the rest of this
-            page academic. This is the step the thread summaries skip, and it is the single most common
-            reason a Japan eSIM will not activate on landing.
+            page academic. Both are worth checking before you pay, not in the arrivals hall.
           </p>
           <div className={styles.stepsList}>
             <div className={styles.stepCard}>
@@ -1018,7 +1198,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
                     <td style={{ fontWeight: 700, color: "var(--sumi)" }}>{klookEsim.specData}</td>
                     <td className={styles.tdNetwork}>{klookEsim.specNetwork}</td>
                     <td>
-                      Unranked: from US$1.05, no plan named.{" "}
+                      Unranked: Klook prices change by date.{" "}
                       <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
                         Open →
                       </KlookLink>
@@ -1030,10 +1210,9 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Prices are each provider&apos;s cheapest plan, read from its official site on {pricesCheckedAt}.
-            The Klook row shows only the from-price on its listing (read {klookEsim.specsCheckedAt}), which
-            comes before you choose days and data and names no plan, so it is not ranked here and no claim
-            is made about whether a given plan undercuts the four above. Its data tiers and networks are what the listing itself states, checked
-            on {klookEsim.specsCheckedAt}.
+            The Klook row carries no price, because Klook prices change with the date and plan you choose, so
+            it is not ranked against the others. Its data tiers and networks are what the listing itself
+            states, checked on {klookEsim.specsCheckedAt}.
           </p>
         </section>
 

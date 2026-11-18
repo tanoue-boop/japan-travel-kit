@@ -512,8 +512,8 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
             lists which models take an eSIM (Pixel 3 and Galaxy S20 onward) and the menu to install it from. Staying a month or more, or need a Japanese phone number? Read our{" "}
             <Link href="/guides/esim/sakura-mobile-review" style={{ color: "var(--text)", fontWeight: 600 }}>Sakura Mobile review</Link>.
             Read advice on a forum? The{" "}
-            <Link href="/guides/esim/best-esim-japan-reddit" style={{ color: "var(--text)", fontWeight: 600 }}>best eSIM for Japan Reddit check</Link>{" "}
-            tests common Japan eSIM advice against today&apos;s prices.
+            <Link href="/guides/esim/best-esim-japan-reddit" style={{ color: "var(--text)", fontWeight: 600 }}>best eSIM for Japan reddit</Link>{" "}
+            page tests common Japan eSIM advice against today&apos;s prices.
           </PartnerPick>
 
           <section className={styles.faqSection} style={{ marginTop: "3rem" }}>

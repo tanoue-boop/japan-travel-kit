@@ -828,7 +828,7 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan Reddit 2026: Which Advice Still Holds</p>
+                <p className={styles.relatedTitle}>Best eSIM for Japan Reddit 2026: Picks, Networks, Prices</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

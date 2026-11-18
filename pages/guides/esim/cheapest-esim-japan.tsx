@@ -447,7 +447,7 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
             <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>best eSIM for Japan</Link> comparison
             (network, unlimited, phone number and tethering side by side); for
             what travellers say, our{" "}
-            <Link href="/guides/esim/best-esim-japan-reddit" className={tools.inlineLink}>Reddit advice check</Link>; and if
+            <Link href="/guides/esim/best-esim-japan-reddit" className={tools.inlineLink}>best eSIM for Japan reddit</Link> check; and if
             you need no cap at all, the{" "}
             <Link href="/guides/esim/japan-esim-unlimited" className={tools.inlineLink}>unlimited eSIM comparison</Link>.
             New to eSIMs? The{" "}
@@ -984,7 +984,7 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan Reddit (2026): Which Advice Still Holds</p>
+                <p className={styles.relatedTitle}>Best eSIM for Japan Reddit 2026: Picks, Networks, Prices</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -529,7 +529,10 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
             covers it in full, and Sakura Mobile&apos;s Japan-based support and voice SIM are in our{" "}
             <Link href="/guides/esim/sakura-mobile-review" style={{ color: "var(--accent)", fontWeight: 600 }}>Sakura Mobile review</Link>.
             The wider comparison, fixed plans included, is in our{" "}
-            <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>best eSIM for Japan guide</Link>, and if a fixed
+            <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>best eSIM for Japan guide</Link>; whether
+            the common &ldquo;go unlimited&rdquo; forum advice holds up is checked on the{" "}
+            <Link href="/guides/esim/best-esim-japan-reddit" style={{ color: "var(--accent)", fontWeight: 600 }}>best eSIM for Japan reddit</Link>{" "}
+            page; and if a fixed
             plan is enough, our{" "}
             <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>cheapest eSIM for Japan</Link>{" "}
             ranking sorts them by price per GB and shows what an eSIM costs in Japan at 1 GB, 10 GB and unlimited, and the{" "}

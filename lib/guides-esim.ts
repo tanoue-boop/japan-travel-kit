@@ -85,8 +85,8 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/best-esim-japan-reddit",
     badge: "Comparison",
-    title: "Best eSIM for Japan Reddit (2026): Which Advice Still Holds",
-    desc: "r/JapanTravel recommends the same four eSIMs every time. We check each claim against this month's prices — three hold up, and one is badly out of date.",
+    title: "Best eSIM for Japan Reddit 2026: Picks, Networks, Prices",
+    desc: "The Japan eSIMs travellers weigh up on Reddit, checked against official prices: networks, 7- and 15-day costs, common problems and fixes.",
     group: "compare",
     city: "other",
   },

@@ -588,6 +588,8 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
             for how much data a trip needs, the{" "}
             <Link href="/guides/esim/japan-esim-data-plans" className={tools.inlineLink}>Japan eSIM data plans guide</Link>; and for
             fair-use limits, the <Link href="/guides/esim/japan-esim-unlimited" className={tools.inlineLink}>unlimited eSIM comparison</Link>.
+            To check forum advice against these prices, see the{" "}
+            <Link href="/guides/esim/best-esim-japan-reddit" className={tools.inlineLink}>best eSIM for Japan reddit</Link> page.
           </p>
         </section>
 
