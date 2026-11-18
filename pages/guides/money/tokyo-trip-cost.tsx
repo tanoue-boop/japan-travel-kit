@@ -715,6 +715,12 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
             teamLab Planets sells only timed slots with nothing at the door. The airport train, the subway pass and
             an eSIM can all be bought ahead and collected or activated on arrival. There is no fixed sell-out date
             for rooms or slots, because it moves with the season and the weekday; check the listing for your date.
+            Which of the big tickets — Disney, Ghibli, teamLab, the decks — sell nothing at the gate is set out in
+            one table on our{" "}
+            <Link href="/guides/attractions/japan-attraction-ticket-prices">
+              Japan attraction ticket prices
+            </Link>{" "}
+            page.
           </p>
         </section>
 

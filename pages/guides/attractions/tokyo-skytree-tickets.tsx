@@ -333,7 +333,12 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
               <strong>In short:</strong> book a date-specified ticket online. Skytree charges a ¥500 service fee
               per ticket at the same-day counter, so advance booking is cheaper by a published amount rather
               than by luck. If you might want the Floor 450 skywalk, buy the combo up front — adding it on site
-              afterwards costs ¥1,400 more. Prices read off the official site on {CHECKED}.
+              afterwards costs ¥1,400 more. Prices read off the official site on {CHECKED}. Against Shibuya Sky,
+              teamLab and Disney — which of them sell out and which sell at the gate — see our{" "}
+              <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
+                Japan attraction ticket prices
+              </Link>{" "}
+              table.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={skytreeTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>

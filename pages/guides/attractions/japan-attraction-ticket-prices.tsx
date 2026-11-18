@@ -24,8 +24,17 @@ import {
 } from "../../../lib/attraction-prices";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import {
+  attractionPricesSameTripPrep,
   attractionsHubSameTripPrep,
   fujiHakoneDayTour,
+  ghibliParkTicket,
+  shibuyaSkyTicketUrl,
+  skytreeTicket,
+  teamlabBorderlessTicketUrl,
+  teamlabPlanetsTicketUrl,
+  tokyoDisneyOneDayPassport,
+  tokyoTowerTicket,
+  usjStudioPassUrl,
   hakoneFreepass,
   hakoneLoopBusTour,
   hiroshimaMiyajimaMultiCityDayTour,
@@ -65,9 +74,160 @@ const REVISED_2026 = S.revisedIn(2026).sort((a, b) => (a.revisedOn! < b.revisedO
 const WITH_HISTORY = priceRows.filter((r) => r.previousChecked);
 const AS_OF = d(S.lastChecked);
 
-const TITLE = `Japan Attraction Ticket Prices 2026: ${ROW_COUNT} Official Prices`;
-const H1 = `Japan Attraction Ticket Prices 2026: ${ROW_COUNT} Official Prices, Updated Monthly`;
-const DESC = `Official adult and child prices for ${ROW_COUNT} Japan attractions: median ${yen(S.medianAdultYen)}, ${S.mustBook.length} need booking, 2026 increases. Free CSV, checked monthly.`;
+const TITLE = "Japan Attraction Ticket Prices 2026: Disney, teamLab & More";
+const H1 = `Japan Attraction Ticket Prices 2026: ${ROW_COUNT} Official Prices and What to Book Ahead`;
+const DESC =
+  "Japan attraction ticket prices 2026: Disney ¥8,900–¥12,400, teamLab from ¥3,400, Shibuya Sky ¥2,700, Ghibli Park ¥3,300. What sells out, and what to book.";
+
+/**
+ * The headline tickets, added 18 Nov 2026 (task-jtk-20261118-03) for the question
+ * "how much are attraction tickets in Japan", which an AI answer can close on its own:
+ * the price is answered here in one table, and the part an AI answer does not carry —
+ * which ones sell out, when each date opens and whether the gate sells anything — sits
+ * in the same row, next to the booking link.
+ *
+ * Every figure is the operator's own. Read on 18 Nov 2026: Tokyo Disney Resort's price
+ * calendar (tokyodisneyresort.jp, ¥8,900 lowest and ¥12,400 highest adult 1-Day Passport
+ * for 18 Nov 2026 – 6 Feb 2027, the same values as the Tokyo Disney guide), teamLab's
+ * Borderless and Planets pages (teamlab.art), Tokyo Skytree (tokyo-skytree.jp), Tokyo
+ * Tower (tokyotower.co.jp), Ghibli Park (ghibli-park.jp), Shibuya Sky's ticket page
+ * (through the shibuya-scramble-square.com search index, the live page being
+ * client-rendered) and USJ's ticket page, whose 1-Day Studio Pass price is left blank
+ * because USJ prices by date. Sale-opening times are from the guides that read them:
+ * Disney 18 Nov, Ghibli Park 26 Oct, Ghibli Museum 11 Nov, USJ 27 Oct, teamLab
+ * Borderless and Shibuya Sky in their own guides.
+ */
+const MAJOR_CHECKED = "2026-11-18";
+const MAJOR_ROWS = [
+  {
+    name: "Tokyo Disneyland / DisneySea",
+    href: "/guides/attractions/tokyo-disney-tickets",
+    ticket: "1-Day Passport, one park",
+    adult: "¥8,900–¥12,400 by date",
+    gate: "No — no gate sales",
+    sellOut:
+      "Dates open 2 months ahead at 14:00 JST on the official site; the ¥12,400 top price falls on some weekends and on 25–26 December.",
+    klookUrl: tokyoDisneyOneDayPassport.url,
+    klookLabel: "Disney 1-Day Passport",
+  },
+  {
+    name: "Universal Studios Japan",
+    href: "/guides/attractions/usj-tickets-express-pass",
+    ticket: "1-Day Studio Pass",
+    adult: "Priced by date — no fixed figure published",
+    gate: "Date-specified tickets only",
+    sellOut:
+      "On sale about 2 months ahead (USJ's own release); the price for your date shows at checkout.",
+    klookUrl: usjStudioPassUrl,
+    klookLabel: "USJ Studio Pass",
+  },
+  {
+    name: "Ghibli Park",
+    href: "/guides/attractions/ghibli-park-tickets",
+    ticket: "O-Sanpo Day Pass Standard",
+    adult: "¥3,300 weekday / ¥3,800 weekend",
+    gate: "No — nothing sold in the park",
+    sellOut: "One release a month: every date in the month opens on the 10th at 14:00 JST, two months ahead.",
+    klookUrl: ghibliParkTicket.url,
+    klookLabel: "Ghibli Park ticket",
+  },
+  {
+    name: "Ghibli Museum, Mitaka",
+    href: "/guides/attractions/japan-first-time-itinerary",
+    ticket: "Date and entry-time ticket",
+    adult: "¥1,000",
+    gate: "No — nothing sold at the museum",
+    sellOut: "Overseas visitors buy on Lawson Ticket; the next month opens on the 10th at 10:00 JST.",
+    klookUrl: null,
+    klookLabel: null,
+  },
+  {
+    name: "teamLab Planets TOKYO",
+    href: "/guides/attractions/teamlab-planets-tickets",
+    ticket: "30-minute entry slot",
+    adult: "from ¥3,800 (dynamic)",
+    gate: "No — official store sells nothing on site",
+    sellOut: "Slots are date and time-specific; teamLab warns they may sell out.",
+    klookUrl: teamlabPlanetsTicketUrl,
+    klookLabel: "teamLab Planets ticket",
+  },
+  {
+    name: "teamLab Borderless",
+    href: "/guides/attractions/teamlab-borderless-tickets",
+    ticket: "Date and time slot",
+    adult: "from ¥3,400 (dynamic)",
+    gate: "Yes if not sold out, at a higher price on site",
+    sellOut: "On sale around the 1st of the month, two months ahead; teamLab advises buying once your dates are fixed.",
+    klookUrl: teamlabBorderlessTicketUrl,
+    klookLabel: "teamLab Borderless ticket",
+  },
+  {
+    name: "Shibuya Sky",
+    href: "/guides/attractions/shibuya-sky-tickets",
+    ticket: "20-minute entry slot",
+    adult: "¥2,700 before 15:00 / ¥3,400 from 15:00 online",
+    gate: "Counter ¥3,000 / ¥3,700 — none once online is sold out",
+    sellOut: "Each date opens at 00:00 JST two weeks ahead. Sunset slots sell out first; the rest of the day usually does not.",
+    klookUrl: shibuyaSkyTicketUrl,
+    klookLabel: "Shibuya Sky ticket",
+  },
+  {
+    name: "Tokyo Skytree",
+    href: "/guides/attractions/tokyo-skytree-tickets",
+    ticket: "Floor 350 deck",
+    adult: "from ¥1,800",
+    gate: "Yes — same-day counter adds ¥500",
+    sellOut: "Rarely sells out; booking ahead avoids the counter fee.",
+    klookUrl: skytreeTicket.url,
+    klookLabel: "Skytree ticket",
+  },
+  {
+    name: "Tokyo Tower",
+    href: "/guides/attractions/tokyo-tower-tickets",
+    ticket: "Main Deck (150 m)",
+    adult: "¥1,500",
+    gate: "Yes — same price at the door",
+    sellOut: "Walk up; open to 23:00.",
+    klookUrl: tokyoTowerTicket.url,
+    klookLabel: "Tokyo Tower ticket",
+  },
+];
+
+const MAJOR_SOURCES = [
+  { label: "tokyodisneyresort.jp", url: "https://www.tokyodisneyresort.jp/en/ticket/index.html" },
+  { label: "usj.co.jp", url: "https://www.usj.co.jp/web/en/us/tickets" },
+  { label: "ghibli-park.jp", url: "https://ghibli-park.jp/en/ticket/" },
+  { label: "ghibli-museum.jp", url: "https://www.ghibli-museum.jp/en/tickets/" },
+  { label: "teamlab.art (Planets)", url: "https://www.teamlab.art/e/planets/" },
+  { label: "teamlab.art (Borderless)", url: "https://www.teamlab.art/e/borderless-azabudai/" },
+  { label: "shibuya-scramble-square.com", url: "https://www.shibuya-scramble-square.com/sky/ticket/" },
+  { label: "tokyo-skytree.jp", url: "https://en.tokyo-skytree.jp/ticket/" },
+  { label: "tokyotower.co.jp", url: "https://www.tokyotower.co.jp/fee/" },
+];
+
+/** "Do I need to book in advance?" — one line per answer, first row the conclusion. */
+const PREBOOK_ROWS = [
+  {
+    answer: "Yes, before you fly",
+    which: "Tokyo Disneyland and DisneySea, Universal Studios Japan, Ghibli Park, the Ghibli Museum, teamLab Planets",
+    why: "No gate sales, or date-specified tickets only — without a ticket for the day you do not get in.",
+  },
+  {
+    answer: "Yes, for the slot you want",
+    which: "Shibuya Sky at sunset, teamLab Borderless, teamLab Biovortex Kyoto",
+    why: "Timed slots the operators say can sell out — Kyoto's especially on weekends and holidays. Same-day tickets exist only while slots are left.",
+  },
+  {
+    answer: "Optional — online is cheaper",
+    which: "Tokyo Skytree (¥500 counter fee), Shibuya Sky (¥300 less online)",
+    why: "Same-day tickets exist, but cost more at the counter.",
+  },
+  {
+    answer: "No — walk up",
+    which: "Tokyo Tower Main Deck, and most temples, castles, gardens and museums in the tables below",
+    why: "Same price at the door and no entry slot.",
+  },
+];
 
 /** The answer-first sentence, also the short form under "Cite this data". */
 const ANSWER = `The official admission prices of ${ROW_COUNT} Japanese attractions were checked on each operator's own website (${FRESH} of them on ${AS_OF}). Across the ${S.paidCount} that charge, the median lowest adult ticket is ${yen(S.medianAdultYen)}; ${S.mustBook.length} must be booked before you arrive and ${S.freeCount} are free.`;
@@ -237,18 +397,22 @@ function groupRange(group: PriceGroup): string {
 const faqItems = [
   {
     q: "How much do attraction tickets cost in Japan?",
-    a: `Across the ${S.paidCount} paid attractions in the table on this page, the median lowest adult ticket is ${yen(S.medianAdultYen)}, read off each operator's own site (most recently on ${AS_OF}). The cheapest is ${names(S.cheapestPaid)} at ${yen(S.minPaidYen)}; the highest starting price is ${names(S.dearest)} at ${yen(S.maxPaidYen)}${S.dearest[0]?.pricing === "variable" ? " and up, priced by date" : ""}. By type: ${GROUP_ORDER.map((g) => `${PRICE_GROUP_LABELS[g].label.toLowerCase()} ${groupRange(g)}`).join("; ")}. ${S.freeCount} attractions here charge nothing at all, and many public museums, zoos, gardens and castles let children in free.`,
+    a: `The headline tickets run from ¥1,500 to ¥12,400 for an adult: Tokyo Tower ¥1,500, Tokyo Skytree from ¥1,800, Shibuya Sky ¥2,700 online before 15:00, Ghibli Park ¥3,300 on a weekday, teamLab Borderless from ¥3,400 and teamLab Planets from ¥3,800, and a Tokyo Disneyland or DisneySea 1-Day Passport ¥8,900–¥12,400 by date (official sites, checked 18 November 2026); Universal Studios Japan prices its Studio Pass by date and publishes no fixed figure. Across the ${S.paidCount} paid attractions in the full table on this page, the median lowest adult ticket is ${yen(S.medianAdultYen)}, read off each operator's own site (most recently on ${AS_OF}). The cheapest is ${names(S.cheapestPaid)} at ${yen(S.minPaidYen)}; the highest starting price is ${names(S.dearest)} at ${yen(S.maxPaidYen)}${S.dearest[0]?.pricing === "variable" ? " and up, priced by date" : ""}. By type: ${GROUP_ORDER.map((g) => `${PRICE_GROUP_LABELS[g].label.toLowerCase()} ${groupRange(g)}`).join("; ")}. ${S.freeCount} attractions here charge nothing at all, and many public museums, zoos, gardens and castles let children in free.`,
   },
   {
-    q: "Which Japanese attractions have to be booked in advance?",
-    a: `${S.mustBook.length} of the ${ROW_COUNT} here sell only a date- or time-specified ticket that has to be bought before you arrive: ${names(S.mustBook)}. ${S.noSameDay.length ? `${names(S.noSameDay)} sell no same-day tickets at the gate at all. ` : ""}Another ${attractionPrices.filter((p) => p.booking === "Advised").length} are worth booking — slots sell out or online is cheaper — and the other ${S.noBooking.length} are walk-up. Universal Studios Japan also sells date-specified Studio Passes only; it is listed below the table because its official price calendar could not be read.`,
+    q: "Which Japan attractions sell out?",
+    a: "Three kinds: Shibuya Sky's sunset slots, which go first after each date opens at 00:00 JST two weeks ahead; teamLab's timed slots, which teamLab itself says can sell out — Biovortex Kyoto especially on weekends and holidays; and the Ghibli tickets, where Ghibli Park opens a whole month of dates on the 10th at 14:00 JST two months ahead and the Ghibli Museum sells nothing at the door. Tokyo Disney and Universal Studios Japan sell date-specified tickets only, with no gate sales at Disney, so a ticket for your date is the entry itself. Tokyo Tower and Tokyo Skytree sell same-day tickets.",
+  },
+  {
+    q: "Do I need to book Japan attraction tickets in advance?",
+    a: `For the big ones, yes: Tokyo Disneyland and DisneySea, Universal Studios Japan, Ghibli Park, the Ghibli Museum and teamLab Planets sell only date-specified tickets or nothing at the gate, so book them before you fly. Shibuya Sky needs booking only for a sunset slot, and Tokyo Skytree is ¥500 cheaper booked ahead. ${S.mustBook.length} of the ${ROW_COUNT} here sell only a date- or time-specified ticket that has to be bought before you arrive: ${names(S.mustBook)}. ${S.noSameDay.length ? `${names(S.noSameDay)} sell no same-day tickets at the gate at all. ` : ""}Another ${attractionPrices.filter((p) => p.booking === "Advised").length} are worth booking — slots sell out or online is cheaper — and the other ${S.noBooking.length} are walk-up. Universal Studios Japan also sells date-specified Studio Passes only; it is listed below the table because its official price calendar could not be read.`,
   },
   {
     q: "Which Japanese attractions raised prices in 2026?",
     a: `${REVISED_2026.length} in this table have a 2026 fee revision announced on their own official site: ${REVISED_2026.map((r) => `${r.name} (${r.revisionNote}, from ${d(r.revisedOn)})`).join("; ")}. The table lists only revisions the operator itself publishes.`,
   },
   {
-    q: "Are tickets cheaper online than at the gate in Japan?",
+    q: "Is it cheaper to buy attraction tickets online?",
     a: `Sometimes, and the difference is smaller than people expect. Shibuya Sky is ${PRICES.shibuyaSky.adult} online against ${PRICES.shibuyaSky.atDoor} at the counter (before / from 15:00). Tokyo Skytree's same-day counter adds a ¥500 fee, the Hakone Open-Air Museum is ¥200 cheaper online, and Matsumoto Castle's e-ticket is ¥100 below paper. But Tokyo Tower's Main Deck is ${PRICES.tokyoTower.adult} either way, and most temple and museum admissions have no online price at all. Online booking is usually about securing a slot, not saving money.`,
   },
   {
@@ -268,6 +432,14 @@ const faqItems = [
     a: `Every row carries the date its figures were read and a link to the official page. ${FRESH} of ${ROW_COUNT} were read on ${AS_OF}; the rest keep their last official reading because the operator's page could not be read that day, and say so. ${PRICE_UPDATE_POLICY} The full table is a free CSV under CC BY 4.0 — cite the page URL and check date.`,
   },
 ];
+
+/** FAQPage carries the four questions this page is built to answer; the visible list keeps all of them. */
+const FAQ_SCHEMA_QS = new Set([
+  "How much do attraction tickets cost in Japan?",
+  "Which Japan attractions sell out?",
+  "Is it cheaper to buy attraction tickets online?",
+  "Do I need to book Japan attraction tickets in advance?",
+]);
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
@@ -511,7 +683,7 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.filter((item) => FAQ_SCHEMA_QS.has(item.q)).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -577,6 +749,19 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
       </section>
 
       <div className={styles.content}>
+        {/* Answer first (task-jtk-20261118-03): the headline prices and the pre-book call, in the first paragraph. */}
+        <p className={styles.bodyText} style={{ fontSize: "1.02rem" }}>
+          Japan&apos;s best-known attraction tickets cost ¥1,500 to ¥12,400 for an adult: Tokyo Tower ¥1,500, Tokyo
+          Skytree from ¥1,800, Shibuya Sky ¥2,700 (¥3,400 from 15:00), Ghibli Park ¥3,300 on a weekday, teamLab
+          Borderless from ¥3,400, teamLab Planets from ¥3,800 and a Tokyo Disneyland or DisneySea 1-Day Passport
+          ¥8,900–¥12,400 by date, on each operator&apos;s own site on {checkedLabel(MAJOR_CHECKED)}. Book Tokyo Disney,
+          Universal Studios Japan, Ghibli Park, the Ghibli Museum and teamLab Planets before you fly — all five sell
+          date-specified tickets only, and four of them sell nothing at the gate — and Shibuya Sky only if you want the sunset slot; Tokyo Tower and
+          Skytree can be bought on the day. For what these add up to across a whole trip, see the{" "}
+          <Link href="/guides/money/japan-travel-budget" className={tools.inlineLink}>Japan travel budget</Link> and{" "}
+          <Link href="/guides/money/tokyo-trip-cost" className={tools.inlineLink}>Tokyo trip cost</Link> guides.
+        </p>
+
         {/* Disclosure */}
         <div className={styles.disclosure}>
           <p className={styles.disclosureText}>
@@ -587,6 +772,133 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* Headline tickets (task-jtk-20261118-03) */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>The big tickets</span>
+          <h2 className={styles.sectionTitle}>How much are attraction tickets in Japan?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            ¥1,500 for Tokyo Tower up to ¥8,900–¥12,400 for a Tokyo Disney 1-Day Passport, with the deck and teamLab
+            tickets in between at ¥1,800–¥3,800. The price is the easy part; what decides your plans is the last two
+            columns — whether the gate sells anything, and when your date opens.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Attraction", "Adult (official)", "Ticket on the day?", "When it opens / what sells out", "Book"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colSpan={5} style={{ fontSize: "0.9rem", background: "var(--paper-alt, #f6f5f2)" }}>
+                      <strong>Bottom line: what sells out is the sunset slots, the weekends and Ghibli.</strong> Shibuya
+                      Sky&apos;s sunset entries go first, teamLab warns its slots can sell out (in Kyoto especially on weekends and holidays), and
+                      both Ghibli venues sell nothing at the door — so book those the day your date opens, and buy the
+                      towers on the day.
+                    </td>
+                  </tr>
+                  {MAJOR_ROWS.map((row) => (
+                    <tr key={row.name}>
+                      <td className={styles.tdProvider}>
+                        <Link href={row.href} style={{ color: "var(--text)", fontWeight: 600 }}>
+                          {row.name}
+                        </Link>
+                        <span style={muted}>{row.ticket}</span>
+                      </td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.9rem" }}>{row.adult}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{row.gate}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{row.sellOut}</td>
+                      <td style={{ fontSize: "0.82rem" }}>
+                        {row.klookUrl ? (
+                          <KlookLink
+                            href={row.klookUrl}
+                            target="_blank"
+                            rel="sponsored nofollow noopener"
+                            style={{ color: "var(--accent)", fontWeight: 600 }}
+                          >
+                            {row.klookLabel} on Klook →
+                          </KlookLink>
+                        ) : (
+                          <span style={{ color: "var(--text-muted)" }}>Official channel only</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {MAJOR_CHECKED}</strong> (Ghibli Museum 2026-11-11). Official pages:{" "}
+            {MAJOR_SOURCES.map((s, i) => (
+              <span key={s.url}>
+                {i > 0 && " · "}
+                <a href={s.url} target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>
+                  {s.label}
+                </a>
+              </span>
+            ))}
+            . Prices are the operators&apos; own; the Book column goes to Klook, which pays us a commission at no extra
+            cost to you, and no Klook price is quoted because it changes by date. Every other attraction is in the full
+            tables below and on the{" "}
+            <Link href="/guides/attractions" className={tools.inlineLink}>what to book in advance hub</Link>.
+          </p>
+        </section>
+
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Book ahead or not</span>
+          <h2 className={styles.sectionTitle}>Do I need to book Japan attraction tickets in advance?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            For the theme parks, Ghibli and teamLab Planets, yes — before you fly. For the observation decks, only for a
+            sunset slot or to skip a counter fee, and for most temples, castles and museums, no.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Book in advance?", "Which attractions", "Why"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {PREBOOK_ROWS.map((row, i) => (
+                    <tr key={row.answer}>
+                      <td className={styles.tdProvider}>{i === 0 ? <strong>{row.answer}</strong> : row.answer}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.which}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{row.why}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {MAJOR_CHECKED}</strong>, on the same official pages as the table above (teamLab
+            Biovortex Kyoto:{" "}
+            <a href="https://art.team-lab.cn/en/e/kyoto" target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>
+              teamLab&apos;s Kyoto page
+            </a>
+            , 2026-11-11). Sale dates for each ticket are in its own guide —{" "}
+            <Link href="/guides/attractions/shibuya-sky-tickets" className={tools.inlineLink}>Shibuya Sky</Link>,{" "}
+            <Link href="/guides/attractions/ghibli-park-tickets" className={tools.inlineLink}>Ghibli Park</Link>,{" "}
+            <Link href="/guides/attractions/tokyo-disney-tickets" className={tools.inlineLink}>Tokyo Disney</Link> and{" "}
+            <Link href="/guides/attractions/usj-tickets-express-pass" className={tools.inlineLink}>USJ</Link>.
+          </p>
+        </section>
+
+        <KlookTripPrep
+          label="Book on the same trip"
+          heading="What to Book on the Same Trip as Your Tickets"
+          intro="Most attraction tickets are one part of the trip. These are the other parts that can be booked online before you fly, for the same dates:"
+          items={attractionPricesSameTripPrep}
+          headingLevel={3}
+        />
 
         {/* Quick answer */}
         <div className={styles.verdictBox}>

@@ -664,7 +664,9 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
             <Link href="/guides/attractions/japan-10-day-itinerary">Japan 10 day itinerary</Link> passes
             through Nagoya on the Tokaido Shinkansen between Tokyo and Kyoto, and{" "}
             <Link href="/guides/attractions/things-to-do-tokyo">things to do in Tokyo</Link> covers the
-            Tokyo end, including the Ghibli Museum in Mitaka.
+            Tokyo end, including the Ghibli Museum in Mitaka. How the park&apos;s price and its no-gate-sales rule
+            compare with Disney, teamLab and the Tokyo decks is in one table on our{" "}
+            <Link href="/guides/attractions/japan-attraction-ticket-prices">Japan attraction ticket prices</Link> page.
           </p>
           <div className={styles.relatedGrid}>
             {/* Added 17 Nov 2026: the two-day Nagoya route this page is one day of. */}

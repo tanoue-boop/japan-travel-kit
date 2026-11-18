@@ -2519,6 +2519,36 @@ export const attractionsHubSameTripPrep: KlookTripPrepItem[] = [
   },
 ];
 
+// Japan attraction ticket prices (/guides/attractions/japan-attraction-ticket-prices),
+// added 18 Nov 2026 (task-jtk-20261118-03): most attraction tickets on that page pay 2%,
+// so the block under its price tables carries the rest of the same trip — a hotel and a
+// day tour (6.5%), the Tokyo Subway Ticket and Osaka Amazing Pass (5%) and Klook eSIM
+// (20%). Existing constants only — no new Klook URL.
+export const attractionPricesSameTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels around Shinjuku Station",
+    ctaLabel: "Check Shinjuku hotels on Klook →",
+    url: tokyoStayAreas[0].url,
+    why: "The dates on a Disney, Ghibli or teamLab ticket are fixed once bought, so the room for those nights is the other booking that has to match them.",
+  },
+  {
+    ...tripPrepProducts.fujiHakoneTour,
+    why: "A coach day to Mt. Fuji and Hakone is sold by date like the timed tickets, so it fits the same booking session.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Shibuya Sky, Skytree, Tokyo Tower and both teamLab museums in Tokyo are subway rides apart; the 72-hour ticket covers every Tokyo Metro and Toei line.",
+  },
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "In Osaka the pass covers Osaka Castle, the Umeda Sky Building and the river cruises with the subway — but not Universal Studios Japan, which is its own ticket.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Disney, Ghibli Park, teamLab and USJ tickets bought online open as QR codes on your phone at the gate, so data has to work from the day you land.",
+  },
+];
+
 // Transport hub (/guides/transport), added 16 Nov 2026 (task-jtk-20261116-R06).
 // "Book before you land": the airport train at each end (5%), a regional JR pass (5%)
 // and Klook eSIM (20%). Existing constants only — no new Klook URL.
