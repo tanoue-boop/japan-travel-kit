@@ -492,7 +492,13 @@ export default function JapanSimCardWorkingHolidayPage({ updated }: { updated: P
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             A resident Voice + Data plan. Below is the full published grid for both of Sakura Mobile&apos;s
             resident plans, because a working holiday signs a tier for a year rather than buying a plan for a
-            trip — and the second column is what a Japanese phone number costs at every size.
+            trip — and the second column is what a Japanese phone number costs at every size. Whether the
+            company behind the grid is worth signing with — its English support, eSIM and cancellation terms —
+            is in the{" "}
+            <Link href="/guides/esim/sakura-mobile-review" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Sakura Mobile review
+            </Link>
+            .
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

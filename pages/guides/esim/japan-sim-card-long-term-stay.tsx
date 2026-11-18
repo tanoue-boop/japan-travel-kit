@@ -618,7 +618,12 @@ export default function JapanSimCardLongTermStayPage({ updated }: { updated: Pag
             Sakura Mobile sells its travel products as <strong>&ldquo;Up to 90 Days&rdquo;</strong> and its
             resident plans as <strong>&ldquo;90+ Days&rdquo;</strong>, which is the same line the immigration
             categories draw. A stay of &ldquo;three months or more&rdquo; therefore runs out of travel product
-            at precisely the moment it becomes a long stay.
+            at precisely the moment it becomes a long stay. Both sides of that line, priced plan by plan, are
+            in the{" "}
+            <Link href="/guides/esim/sakura-mobile-review" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Sakura Mobile SIM card and eSIM review
+            </Link>
+            .
           </p>
           <p className={styles.bodyText}>
             The second problem is the one the price comparison hides. Every tourist eSIM compared here is{" "}

@@ -526,7 +526,12 @@ export default function JapanHomeInternetForForeignersPage({ updated }: { update
             <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "var(--text)", fontWeight: 600 }}>
               best pocket WiFi for Japan
             </Link>{" "}
-            compares the two short-term rentals we link.
+            compares the two short-term rentals we link. For the company itself — its travel eSIM, monthly
+            SIM and phone-number plans alongside the home internet — see the{" "}
+            <Link href="/guides/esim/sakura-mobile-review" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Sakura Mobile review
+            </Link>
+            .
           </p>
           <p className={styles.bodyText} style={{ marginTop: "0.4rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Last checked: {LAST_CHECKED_ISO}. Official pages: www.sakuramobile.jp/monthly/home-internet/,

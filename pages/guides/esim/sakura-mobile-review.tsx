@@ -7,7 +7,7 @@ import ProviderPlanTable from "../../../components/ProviderPlanTable";
 import KlookLink from "../../../components/KlookLink";
 import { klookEsim } from "../../../lib/klook-links";
 import { esimLink } from "../../../lib/esim-specs";
-import { SIMBYE_DISCOUNT_CODE } from "../../../lib/simbye";
+import { SIMBYE_DISCOUNT_CODE, SIMBYE_DISCOUNT_PERCENT } from "../../../lib/simbye";
 import {
   formatUsd,
   getProvider,
@@ -50,6 +50,75 @@ const TRUSTPILOT_URL = "https://www.trustpilot.com/review/sakuramobile.jp";
 const TRUSTPILOT_CHECKED = "11 November 2026";
 
 const SAKURA_AFFILIATE = "https://p.sakuramobile.jp/idevaffiliate.php?id=486";
+
+// Task jtk-20261118-R01: the plan-by-product table, the application-steps table,
+// the opening answer and the five FAQ answers were read on this date off
+// /travel/esim/, /travel/sim/, /travel/wifi/, /monthly/price/, /monthly/voice/
+// and /monthly/home-internet/. The travel eSIM 7/14/30-day prices above were
+// unchanged on it. The travel Voice+Data eSIM prices are not quoted: the
+// /travel/esim/ table prints pre-tax and tax-included figures for it that do not
+// reconcile at 10% (e.g. 18,050 JPY shown as 18,855 tax incl.), so the page
+// sends readers to the official table for that one product.
+const PLANS_CHECKED = "18 November 2026";
+const PLANS_CHECKED_ISO = "2026-11-18";
+const SAKURA_MONTHLY_PRICE_URL = "https://www.sakuramobile.jp/monthly/price/";
+const SAKURA_SIM_URL = "https://www.sakuramobile.jp/travel/sim/";
+const SAKURA_WIFI_URL = "https://www.sakuramobile.jp/travel/wifi/";
+const SAKURA_VOICE_URL = "https://www.sakuramobile.jp/monthly/voice/";
+
+// Every Sakura row is tax included, as printed on the official pages on PLANS_CHECKED.
+const productRows = [
+  { product: "Travel eSIM — 3 GB/day (docomo)", length: "1–90 days", data: "3 GB a day, then 200 kbps", price: "¥4,620 / 7 days · ¥9,900 / 30 days", calls: "No — data only" },
+  { product: "Travel eSIM — Unlimited (au)", length: "1–90 days", data: "Unlimited on the phone", price: "¥5,775 / 7 days · ¥14,575 / 30 days", calls: "No — data only" },
+  { product: "Travel Voice+Data eSIM (au)", length: "Up to 90 days", data: "3 GB a day", price: "See the official table", calls: "Yes — Japanese number, up to 480 min domestic calls; in-person ID check" },
+  { product: "Travel SIM card", length: "4–93 days", data: "3 GB/day or unlimited", price: "From ¥3,850", calls: "No — data only" },
+  { product: "Travel pocket WiFi rental", length: "Per day", data: "Shared WiFi for any device", price: "From ¥329 a day", calls: "No" },
+  { product: "Monthly Voice+Data SIM / eSIM (docomo)", length: "Month to month", data: "5–100 GB a month", price: "¥3,278–¥12,078 a month + ¥5,500 activation", calls: "Yes — 070/080/090 number; calls 16.5 JPY per 30 sec" },
+  { product: "Monthly Data Only SIM / eSIM (docomo)", length: "Month to month", data: "5–100 GB a month", price: "¥2,728–¥11,528 a month + ¥5,500 activation", calls: "No" },
+  { product: "Monthly pocket WiFi (SoftBank)", length: "Month to month", data: "100 GB or 200 GB", price: "¥5,478 or ¥7,128 a month + ¥5,500 activation", calls: "No" },
+  { product: "Home WiFi / fibre", length: "No annual contract", data: "Unlimited", price: "¥7,678 a month (Home WiFi, 1 Gbps fibre) · ¥10,428 (10 Gbps)", calls: "No" },
+];
+
+// Sakura Mobile against the three data-only eSIMs this site earns most from.
+// Sakura and Klook cells are from their own pages; Simbye and Airalo prices from
+// the daily tracker; the phone-number cells from lib/esim-specs and klookEsim.
+const SIMBYE_FROM = priceFromLabel("simbye");
+const SIMBYE_UNLIMITED_7 = unlimitedFromLabel("simbye", 7);
+const AIRALO_UNLIMITED_7 = unlimitedFromLabel("airalo", 7);
+
+// From order to connection, product by product — all read on PLANS_CHECKED.
+const orderRows = [
+  {
+    product: "Travel eSIM (data)",
+    order: "Order online, any time before you fly",
+    receive: "Email with a link to your eSIM page; you issue the QR code there — no pickup",
+    starts: "3 GB/day: the day you install it. Unlimited: the day the phone connects in Japan",
+  },
+  {
+    product: "Travel Voice+Data eSIM",
+    order: "Order online",
+    receive: "In-person pickup at a counter for the ID check; the eSIM is not emailed",
+    starts: "The day the QR code is issued after the ID check",
+  },
+  {
+    product: "Travel SIM card",
+    order: "Order at least 3 days before the pickup date",
+    receive: "Narita, Haneda, Kansai or Fukuoka airport counter, the Shinjuku office, a hotel, a post office or a residential address",
+    starts: "Insert, set the APN; no return — dispose of the SIM after use",
+  },
+  {
+    product: "Pocket WiFi rental",
+    order: "Order online",
+    receive: "Narita, Haneda, Kansai, Fukuoka or New Chitose airport, a post office, or your accommodation",
+    starts: "Return in the prepaid envelope via any Japan Post mailbox",
+  },
+  {
+    product: "Monthly SIM / eSIM",
+    order: "Apply online in English; no Japanese bank account needed",
+    receive: "With a residence card or My Number card: online ID check, then eSIM QR by email or SIM by post. Passport only: pick up at an airport counter or the Shinjuku office",
+    starts: "Month to month, no lock-in",
+  },
+];
 
 const FROM = priceFromLabel("sakura");
 const THIRTY_DAY = priceAtLeastLabel("sakura", 90);
@@ -250,50 +319,36 @@ const setupSteps = [
   },
 ];
 
+// The five questions the brand searcher actually types, answered only from
+// sakuramobile.jp (read PLANS_CHECKED) and Trustpilot's own page (TRUSTPILOT_CHECKED).
 const faqItems = [
   {
-    q: "Is Sakura Mobile worth it?",
-    a: "For long stays, rural routes, phones that need a physical SIM card, or travellers who need a Japanese phone number, yes. For a short data-only trip, no: a 7-day Sakura Mobile eSIM is ¥4,620 on 3 GB/day (docomo) or ¥5,775 unlimited (au), tax included, which is more than data-only travel eSIMs charge for a week. Prices read from sakuramobile.jp/travel/esim/ on 11 November 2026. On Trustpilot it holds a 4.8 TrustScore from 1,586 reviews (read the same day).",
+    q: "Is Sakura Mobile good?",
+    a: `For a stay of a month or more, for anyone who needs a Japanese phone number, and for phones that need a physical SIM card, yes: it is a Japanese provider with English sign-up, an English support team in Japan, airport counters at Narita, Haneda, Kansai and Fukuoka, and plans on docomo and au. For a one- or two-week data-only trip it is not the cheap option — a 7-day travel eSIM is ¥4,620 (3 GB/day) or ¥5,775 (unlimited), tax included, read on sakuramobile.jp on ${PLANS_CHECKED}. On Trustpilot it holds a 4.8 TrustScore from 1,586 reviews (read ${TRUSTPILOT_CHECKED}).`,
   },
   {
-    q: "Can I use Sakura Mobile for hotspot/tethering?",
-    a: "Yes. Every travel eSIM and SIM card plan lists hotspot as available. The catch is on the Unlimited plan, where the on-device data is unlimited but the hotspot is not: you get one hotspot allowance for the whole trip, sized by plan length — 2 GB on 1–3 day plans, 3 GB on 4 days, 6 GB on 7 days, 9 GB on 10 days, 15 GB on 15 days and 30 GB on 27–31 day plans. The 3 GB/day plan lists hotspot as available without a separate figure. Read from Sakura Mobile's eSIM plan page on 25 October 2026.",
+    q: "How much does Sakura Mobile cost?",
+    a: `Tax included, as printed on sakuramobile.jp on ${PLANS_CHECKED}: the monthly Voice+Data SIM or eSIM with a Japanese number is ¥3,278 a month for 5 GB up to ¥12,078 for 100 GB, and Data Only is ¥2,728 to ¥11,528, each plus a ¥5,500 activation fee. The travel eSIM is ¥4,620 for 7 days or ¥9,900 for 30 days on 3 GB/day, and ¥5,775 or ¥14,575 unlimited. The travel SIM card starts at ¥3,850, pocket WiFi rental at ¥329 a day, and Home WiFi at ¥7,678 a month.`,
   },
   {
-    q: "When does the plan start counting days?",
-    a: "It depends which plan you buy. For the Unlimited eSIM, the usage period starts once you arrive in Japan, and you can install the eSIM in advance from your country of departure. For the 3 GB/day data eSIM, the usage period starts once you install the eSIM — Sakura Mobile says to install it on the day you want to start using it. For the 3 GB/day Voice+Data eSIM, the period starts after you arrive in Japan and complete the in-person ID verification; it cannot be activated before you arrive. Read from Sakura Mobile's eSIM plan page on 25 October 2026.",
+    q: "Does Sakura Mobile have eSIM?",
+    a: `Yes. The travel eSIM is sold for 1 to 90 days as a 3 GB/day plan on docomo, an Unlimited plan on au, or a 3 GB/day Voice+Data eSIM with a Japanese number; the data eSIMs arrive by email with no pickup. The monthly Voice+Data and Data Only plans are also available as an eSIM. The phone must be SIM-free, and the China, Hong Kong and Macau versions of iPhones and Apple Watches are not compatible with eSIM. Read on sakuramobile.jp on ${PLANS_CHECKED}.`,
   },
   {
-    q: "Does Sakura Mobile work with an iPhone bought in China or Hong Kong?",
-    a: "Not as an eSIM. Sakura Mobile's compatibility note is explicit: the China, Hong Kong and Macau versions of Apple Watches and iPhones are not compatible with eSIM. Those handsets ship without eSIM hardware, so this is a device limit rather than a Sakura Mobile one. The physical travel SIM card is the way round it, provided the phone is SIM-free (unlocked), and a pocket WiFi rental works with any device. Read from Sakura Mobile's eSIM plan page on 25 October 2026.",
+    q: "Does Sakura Mobile give you a Japanese phone number?",
+    a: `Only on its Voice+Data plans. The monthly Voice+Data SIM or eSIM gives a normal 070, 080 or 090 number, which Sakura Mobile says can be used to open a bank account and rent an apartment; domestic calls are 16.5 JPY per 30 seconds. The travel 3 GB/day Voice+Data eSIM adds a number and up to 480 minutes of domestic calls on the longest plans, but needs an in-person ID check at a counter before it starts. The travel data eSIMs and SIM cards are data only. Read on sakuramobile.jp on ${PLANS_CHECKED}.`,
   },
   {
-    q: "Does Sakura Mobile have English support?",
-    a: "Yes, and it is the clearest reason to pay the premium. Sakura Mobile is a Japanese company that sells to visitors in English: the plan pages, the checkout, the device compatibility checker, the eSIM setup guides and the help centre at support.sakuramobile.jp are all English-language. Most Japanese prepaid SIMs assume you read Japanese, which is where a mid-trip problem turns expensive.",
-  },
-  {
-    q: "Can I make phone calls with Sakura Mobile?",
-    a: "Only on one specific plan. The Unlimited and 3 GB/day data plans — eSIM and physical SIM alike — are marked \"No phone number, data only\". The 3 GB/day Voice+Data eSIM is the one that gives you a Japanese number, SMS and domestic calls: up to 120 minutes on plans of 10 days or less, 240 minutes from 11 to 30 days, 360 minutes from 31 to 60 days and 480 minutes from 61 to 90 days. Japanese law requires an in-person ID check before it starts. Read 25 October 2026.",
-  },
-  {
-    q: "Is Sakura Mobile good for rural Japan?",
-    a: "The 3 GB/day plan is the one to take if rural coverage is the priority, because that is the plan on docomo — the carrier with the broadest rural reach in Japan. The Unlimited plan runs on au (KDDI) instead, which is strong but not the rural benchmark. If your itinerary is Tohoku, rural Hokkaido, the Noto Peninsula or inland Shikoku, the plan you pick matters as much as the provider.",
-  },
-  {
-    q: "Where does the physical SIM card reach me?",
-    a: "Four ways, all inside Japan: an airport counter at Narita, Haneda, Kansai or Fukuoka International Airport; any hotel in Japan; a local post office, available nationwide and suggested for Airbnb stays; or a residential address. Sakura Mobile asks you to order at least 3 days before your pickup date so it arrives on time, and nothing needs to be posted back afterwards. Read from Sakura Mobile's SIM card page on 25 October 2026.",
-  },
-  {
-    q: "How long can a Sakura Mobile plan run?",
-    a: "The travel eSIM is sold in single-day steps from 1 to 90 days, and the physical SIM card in fixed lengths up to 93 days. Buying the length you need up front is also cheaper than stacking short plans, and buying two or more at once takes 10% off automatically — Sakura Mobile applies that to both eSIMs and SIM cards. Read 25 October 2026.",
+    q: "Can I cancel Sakura Mobile?",
+    a: `Yes. The monthly plans are month-to-month with no lock-in, and Sakura Mobile says you can cancel online in English; Home WiFi has no early-termination penalty. A travel eSIM order can be cancelled for a full refund at any time before the eSIM QR code has been made visible to you, by emailing contact@sakuramobile.jp. Read on sakuramobile.jp on ${PLANS_CHECKED}.`,
   },
 ];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/sakura-mobile-review") } });
 
-const TITLE = "Sakura Mobile Review 2026: eSIM & SIM Card Prices, Worth It?";
+const TITLE = "Sakura Mobile Review 2026: SIM Card & eSIM Plans, Worth It?";
 const DESCRIPTION =
-  "Sakura Mobile review: eSIM ¥4,620/week on 3 GB/day (docomo) or ¥5,775 unlimited (au). Worth it for long stays or a Japanese number, not a cheap week.";
+  "Sakura Mobile review 2026: monthly SIM card or eSIM with a Japanese number from ¥3,278, travel eSIM ¥4,620/week. Best for 1+ month stays, not a cheap week.";
 
 export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -369,14 +424,11 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
             Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
-            Sakura Mobile Review 2026: <br />eSIM &amp; SIM Card Prices, Is It Worth It?
+            Sakura Mobile Review 2026: <br />SIM Card &amp; eSIM Plans, Worth It?
           </h1>
           <p className={styles.heroSubtitle}>
-            Sakura Mobile&apos;s eSIM costs ¥4,620 for 7 days on 3 GB a day (docomo) or ¥5,775 unlimited (au),
-            and ¥9,900 or ¥14,575 for 30 days, tax included on sakuramobile.jp as of {OPENING_PRICES_CHECKED}.
-            It is worth it for stays of a month or more, rural routes, phones that need a physical SIM card,
-            and anyone who needs a Japanese phone number. It is not worth it for a short, data-only city trip,
-            where a data-only eSIM such as Simbye costs less.
+            Monthly plans with a Japanese number for residents, travel eSIMs and SIM cards for visitors, and
+            the price of each, read on sakuramobile.jp on {PLANS_CHECKED}.
           </p>
           <div className={styles.heroBadges}>
             {["Prices checked daily", "Independently Reviewed", "Physical SIM & eSIM"].map((t) => (
@@ -398,6 +450,32 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* Answer first: what it is, what it costs, who it is for — in the first body paragraph. */}
+        <p className={styles.bodyText}>
+          <strong>Sakura Mobile</strong> is a Japanese provider that sells both short-term travel plans — a{" "}
+          <strong>Sakura Mobile eSIM</strong> from <strong>¥4,620 for 7 days</strong> or a SIM card from ¥3,850 —
+          and month-to-month resident plans, where a <strong>Sakura Mobile SIM card</strong> or eSIM with a
+          070/080/090 Japanese number costs from <strong>¥3,278 a month</strong> on docomo plus a ¥5,500
+          activation fee (tax included, sakuramobile.jp, {PLANS_CHECKED}). Take the monthly plan if you are
+          staying three months or more — study, a working holiday or a job — and the travel eSIM for a few weeks
+          to a month; for one or two weeks of data only, a data-only eSIM such as Simbye or Klook&apos;s costs less.
+        </p>
+        <div className={styles.pickCtaRow} style={{ marginBottom: "0.6rem" }}>
+          <a href={SAKURA_AFFILIATE} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
+            Get Sakura Mobile →
+          </a>
+          <a href={esimLink("simbye")} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
+            Short trip: Simbye eSIM →
+          </a>
+          <KlookLink href={klookEsim.url} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
+            Short trip: Klook eSIM →
+          </KlookLink>
+        </div>
+        <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", margin: "0 0 1.5rem", lineHeight: 1.6 }}>
+          Cheapest Simbye plan {SIMBYE_FROM} before its code <strong>{SIMBYE_DISCOUNT_CODE}</strong> (price feed
+          checked {pricesCheckedAt}). No Klook price is shown — it changes by date.
+        </p>
 
         {/* Quick Verdict — first thing under the hero, because the "sakura mobile" searcher
             wants three things before anything else: what it costs, whether it suits them,
@@ -459,22 +537,67 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
 
         <EsimBrandCompare brand="sakura" />
 
-        {/* Answer first. The hero subtitle above sells the page; this paragraph answers it. */}
-        <p className={styles.bodyText}>
-          <strong>Sakura Mobile</strong> is a Japanese company that sells prepaid data to visitors — as an
-          eSIM, as a physical SIM card, or as a pocket WiFi rental — and it sells that data in two shapes:{" "}
-          <strong>Unlimited</strong> on au (KDDI) 5G, or <strong>3 GB a day</strong> on docomo 5G, both of them
-          data only, with a separate <strong>3 GB/day Voice+Data eSIM</strong> if you need an actual Japanese
-          phone number. Budget roughly <strong>¥2,750 for 3 days</strong> and <strong>¥9,900 for 30</strong> on
-          the 3 GB/day plan, or <strong>¥3,245</strong> and <strong>¥14,575</strong> for the same two lengths
-          unlimited. That price makes it the right call for a long stay, for rural Japan, for a phone that
-          cannot take an eSIM, and for anyone who needs a number to give a restaurant — and the wrong call if
-          you want a week of data as cheaply as possible. Plan details read from sakuramobile.jp on{" "}
-          {OFFICIAL_CHECKED}; yen prices re-checked {YEN_PRICES_CHECKED}; USD prices tracked daily, last
-          checked {pricesCheckedAt}.
-        </p>
-
         <EsimCtaTop />
+
+        {/* Every plan, one table. The first row is the decision; the rest is the price list. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Plans &amp; prices</span>
+          <h2 className={styles.sectionTitle}>What does Sakura Mobile sell, and how much does each plan cost?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Two families of products: travel plans you buy by the day, and monthly plans for people who
+            live in Japan. The monthly Voice+Data SIM or eSIM starts at <strong>¥3,278 a month</strong> with a
+            Japanese number; a week on the travel eSIM is <strong>¥4,620</strong>. All prices tax included.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Length</th>
+                    <th>Data</th>
+                    <th>Price (tax incl.)</th>
+                    <th>Phone number &amp; calls</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.ftFeature}>Which one?</td>
+                    <td className={styles.ftEsim} colSpan={4}>
+                      <strong>In Japan for a month or more → the monthly SIM or eSIM. Two weeks or less, data only →
+                      compare a data-only eSIM first.</strong> Between the two, the travel eSIM.
+                    </td>
+                  </tr>
+                  {productRows.map((row) => (
+                    <tr key={row.product}>
+                      <td className={styles.ftFeature}>{row.product}</td>
+                      <td className={styles.ftSim}>{row.length}</td>
+                      <td className={styles.ftSim}>{row.data}</td>
+                      <td className={styles.tdPrice}>{row.price}</td>
+                      <td className={styles.ftSim}>{row.calls}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {PLANS_CHECKED_ISO} —{" "}
+            <a href={SAKURA_ESIM_URL} target="_blank" rel="noopener noreferrer" className={tools.inlineLink}>travel eSIM</a>,{" "}
+            <a href={SAKURA_SIM_URL} target="_blank" rel="noopener noreferrer" className={tools.inlineLink}>travel SIM card</a>,{" "}
+            <a href={SAKURA_WIFI_URL} target="_blank" rel="noopener noreferrer" className={tools.inlineLink}>pocket WiFi rental</a>{" "}
+            and{" "}
+            <a href={SAKURA_MONTHLY_PRICE_URL} target="_blank" rel="noopener noreferrer" className={tools.inlineLink}>monthly price list</a>{" "}
+            on sakuramobile.jp. Fibre also carries an initial fee of ¥3,300–¥25,300 depending on the building;
+            Home WiFi&apos;s is ¥5,500. Students get ¥1,100 off the monthly activation fee with the code
+            &ldquo;studentdiscount&rdquo;. Which monthly tier fits a long stay is covered in{" "}
+            <Link href="/guides/esim/japan-sim-card-long-term-stay" className={tools.inlineLink}>Japan SIM card for a long-term stay</Link>,{" "}
+            the residence-card order of things in{" "}
+            <Link href="/guides/esim/japan-sim-card-working-holiday" className={tools.inlineLink}>the working holiday SIM guide</Link>,{" "}
+            and the home line in{" "}
+            <Link href="/guides/esim/japan-home-internet-for-foreigners" className={tools.inlineLink}>home internet for foreigners</Link>.
+          </p>
+        </section>
 
         {/* What is Sakura Mobile */}
         <section className={styles.bodySection}>
@@ -645,8 +768,16 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>Calls &amp; SMS</span>
           <h2 className={styles.sectionTitle}>Does Sakura Mobile give you a Japanese phone number?</h2>
           <p className={styles.bodyText}>
-            Only on one plan. The Unlimited and 3 GB/day data plans — eSIM and physical SIM alike — are marked
-            &ldquo;No phone number, data only&rdquo;. The plan that does give you a number is the{" "}
+            Yes, on two products: the monthly <strong>Voice+Data SIM or eSIM</strong> for residents, and the
+            travel <strong>3 GB/day Voice+Data eSIM</strong> for visitors. The monthly plan gives a normal
+            070, 080 or 090 number — Sakura Mobile says it can be used to open a bank account and rent an
+            apartment — from ¥3,278 a month, with domestic calls at 16.5 JPY per 30 seconds and incoming calls
+            free in Japan (read {PLANS_CHECKED}). How it compares with the other ways to get a number is in{" "}
+            <Link href="/guides/esim/japan-phone-number-for-foreigners" className={tools.inlineLink}>Japan phone number for foreigners</Link>.
+          </p>
+          <p className={styles.bodyText}>
+            On the travel side, the Unlimited and 3 GB/day data plans — eSIM and physical SIM alike — are marked
+            &ldquo;No phone number, data only&rdquo;. The travel plan that does give you a number is the{" "}
             <strong>3 GB/day Voice+Data eSIM</strong>, which runs on au 5G and adds a Japanese number, SMS and
             domestic calling on top of the same 3 GB a day.
           </p>
@@ -767,6 +898,59 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
           </p>
         </section>
 
+        {/* Order to connection */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>How to order</span>
+          <h2 className={styles.sectionTitle}>How do you sign up for Sakura Mobile, and how does it reach you?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Online, in English, for every product. The data eSIM arrives by email with nothing to collect; the
+            physical SIM card needs ordering at least 3 days before pickup; anything with a Japanese number needs
+            an ID check — online if you already have a residence card with a registered address, in person at a
+            counter if you only have a passport.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Ordering</th>
+                    <th>How you receive it</th>
+                    <th>When it starts / returning it</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.ftFeature}>Fastest route</td>
+                    <td className={styles.ftEsim} colSpan={3}>
+                      <strong>Data-only travel eSIM: order, open the email, issue the QR code — no pickup and no ID check.</strong>
+                    </td>
+                  </tr>
+                  {orderRows.map((row) => (
+                    <tr key={row.product}>
+                      <td className={styles.ftFeature}>{row.product}</td>
+                      <td className={styles.ftSim}>{row.order}</td>
+                      <td className={styles.ftSim}>{row.receive}</td>
+                      <td className={styles.ftSim}>{row.starts}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {PLANS_CHECKED_ISO} —{" "}
+            <a href={SAKURA_ESIM_URL} target="_blank" rel="noopener noreferrer" className={tools.inlineLink}>travel eSIM</a>,{" "}
+            <a href={SAKURA_SIM_URL} target="_blank" rel="noopener noreferrer" className={tools.inlineLink}>travel SIM card</a>,{" "}
+            <a href={SAKURA_WIFI_URL} target="_blank" rel="noopener noreferrer" className={tools.inlineLink}>pocket WiFi rental</a>{" "}
+            and{" "}
+            <a href={SAKURA_VOICE_URL} target="_blank" rel="noopener noreferrer" className={tools.inlineLink}>monthly Voice+Data</a>{" "}
+            pages. Students arriving on a study visa: the{" "}
+            <Link href="/guides/esim/japan-sim-card-for-students" className={tools.inlineLink}>Japan SIM card for students</Link>{" "}
+            guide sets the residence-card timing against term dates.
+          </p>
+        </section>
+
         {/* Pickup */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Collection</span>
@@ -872,14 +1056,13 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
             checkouts directly underneath it, because this is where the decision gets made. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Comparison</span>
-          <h2 className={styles.sectionTitle}>Sakura Mobile vs Airalo vs Klook eSIM: which is cheaper?</h2>
+          <h2 className={styles.sectionTitle}>Sakura Mobile vs Klook eSIM, Simbye and Airalo: which should you buy?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Airalo, on price. A month of Airalo data starts at {priceAtLeastLabel("airalo", 5)} against
-            Sakura Mobile&apos;s {THIRTY_DAY}, and that gap is the whole argument: Airalo is a data-only eSIM
-            marketplace, Sakura Mobile is a Japanese carrier reseller with airport counters, physical SIMs and
-            an optional phone number. Klook sells a Japan eSIM of its own, which is worth opening if you are
-            already booking Japan tickets there — no price is quoted for it here, because Klook prices
-            change by date.
+            For a short, data-only trip, one of the three eSIMs: Simbye starts at {SIMBYE_FROM} and Airalo at{" "}
+            {AIRALO_FROM}, against Sakura Mobile&apos;s {FROM}. Sakura Mobile is the one of the four with a physical SIM card, airport counters, English
+            in-person help in Japan and a Japanese phone number — which is what the price buys. A month of
+            Airalo data starts at {priceAtLeastLabel("airalo", 5)} against Sakura Mobile&apos;s {THIRTY_DAY}.
+            Klook prices change by date, so none is quoted here.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -888,48 +1071,78 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
                   <tr>
                     <th></th>
                     <th>Sakura Mobile</th>
-                    <th>Airalo</th>
                     <th>{klookEsim.name}</th>
+                    <th>Simbye</th>
+                    <th>Airalo</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td className={styles.ftFeature}>SIM type</td>
-                    <td className={styles.ftEsim}>Physical SIM + eSIM</td>
+                    <td className={styles.ftFeature}>Pick it if</td>
+                    <td className={styles.ftEsim}>A month or more, a Japanese number, or a phone that needs a SIM card</td>
+                    <td className={styles.ftSim}>You are already booking Japan tickets on Klook</td>
+                    <td className={styles.ftSim}>A short data-only trip, with a {SIMBYE_DISCOUNT_PERCENT}% code</td>
+                    <td className={styles.ftSim}>A short trip and you already use the Airalo app</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.ftFeature}>Cheapest plan</td>
+                    <td className={styles.ftEsim}>{FROM}</td>
+                    <td className={tools.tdMuted}>{klookEsim.priceUnknownLabel}</td>
+                    <td className={styles.ftSim}>{SIMBYE_FROM}</td>
+                    <td className={styles.ftSim}>{AIRALO_FROM}</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.ftFeature}>Unlimited, 7 days</td>
+                    <td className={styles.ftEsim}>¥5,775 ({usdFor(7, true)})</td>
+                    <td className={tools.tdMuted}>{klookEsim.priceUnknownLabel}</td>
+                    <td className={styles.ftSim}>{SIMBYE_UNLIMITED_7}</td>
+                    <td className={styles.ftSim}>{AIRALO_UNLIMITED_7}</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.ftFeature}>Japanese phone number</td>
+                    <td className={styles.ftEsim}>Yes on Voice+Data (travel or monthly); data plans have none</td>
+                    <td className={styles.ftSim}>{klookEsim.specPhoneNumber}</td>
+                    <td className={styles.ftSim}>No — data only</td>
+                    <td className={styles.ftSim}>No — data only</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.ftFeature}>How you get it</td>
+                    <td className={styles.ftEsim}>eSIM by email link, or SIM card at an airport, hotel or post office</td>
+                    <td className={styles.ftSim}>eSIM by QR code voucher</td>
                     <td className={styles.ftSim}>eSIM only</td>
                     <td className={styles.ftSim}>eSIM only</td>
                   </tr>
                   <tr>
                     <td className={styles.ftFeature}>Network</td>
-                    <td className={styles.ftEsim}>{getProvider("sakura").network}</td>
-                    <td className={styles.ftSim}>{getProvider("airalo").network}</td>
+                    <td className={styles.ftEsim}>docomo (3 GB/day, monthly) or au (Unlimited)</td>
                     <td className={styles.ftSim}>{klookEsim.specNetwork}</td>
+                    <td className={styles.ftSim}>{getProvider("simbye").network}</td>
+                    <td className={styles.ftSim}>{getProvider("airalo").network}</td>
                   </tr>
                   <tr>
-                    <td className={styles.ftFeature}>Japanese phone number</td>
-                    <td className={styles.ftEsim}>Data only, but a Voice+Data eSIM is sold separately</td>
-                    <td className={styles.ftSim}>✗ Data only</td>
-                    <td className={styles.ftSim}>{klookEsim.specPhoneNumber}</td>
-                  </tr>
-                  <tr>
-                    <td className={styles.ftFeature}>Price (30 days)</td>
-                    <td className={styles.ftEsim}>{THIRTY_DAY} · unlimited {UNLIMITED_30}</td>
-                    <td className={styles.ftSim}>{priceAtLeastLabel("airalo", 5)}</td>
-                    <td className={tools.tdMuted}>{klookEsim.priceUnknownLabel}</td>
-                  </tr>
-                  <tr>
-                    <td className={styles.ftFeature}>Best for</td>
-                    <td className={styles.ftEsim}>Long stays, rural routes, a phone number</td>
-                    <td className={styles.ftSim}>Short data-only trips</td>
-                    <td className={styles.ftSim}>Travellers already booking Japan on Klook</td>
+                    <td className={styles.ftFeature}>Support</td>
+                    <td className={styles.ftEsim}>English team in Japan, plus in-person help at airport counters and the Shinjuku office</td>
+                    <td className={styles.ftSim}>Online, through Klook</td>
+                    <td className={styles.ftSim}>Online</td>
+                    <td className={styles.ftSim}>Online, in the app</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {PLANS_CHECKED_ISO} for the Sakura Mobile column (
+            <a href={SAKURA_ESIM_URL} target="_blank" rel="noopener noreferrer" className={tools.inlineLink}>sakuramobile.jp/travel/esim/</a>
+            ). USD prices from the daily tracker, checked {pricesCheckedAt}; Klook listing specs read{" "}
+            {klookEsim.specsCheckedAt}. The general ranking of every Japan eSIM is in{" "}
+            <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>the best eSIM for Japan comparison</Link>.
+          </p>
 
-          {/* Both checkouts, side by side, split by reader rather than by commission. */}
+          {/* Checkouts, highest commission first for the short-trip reader. */}
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
+            <a href={esimLink("simbye")} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
+              Check Simbye eSIM →
+            </a>
             <KlookLink href={klookEsim.url} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
               {klookEsim.ctaLabel}
             </KlookLink>
