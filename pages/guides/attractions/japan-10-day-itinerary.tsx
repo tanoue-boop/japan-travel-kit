@@ -1591,7 +1591,9 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             For a first trip, Tokyo, Hakone, Kyoto, Nara and Osaka in that order, on three hotel
             bases. Here is the whole Japan itinerary for 10 days, one line per day; each day has its
-            own hour-by-hour table further down.
+            own hour-by-hour table further down. With nine days rather than ten, our{" "}
+            <Link href="/guides/attractions/japan-first-time-itinerary">first time in Japan itinerary</Link>{" "}
+            keeps the same three bases and sets out what to book before you fly.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

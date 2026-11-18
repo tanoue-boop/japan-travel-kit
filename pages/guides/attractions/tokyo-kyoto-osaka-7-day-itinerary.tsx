@@ -1157,7 +1157,9 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
             than seven, our{" "}
             <Link href="/guides/attractions/japan-10-day-itinerary">Japan itinerary for 10 days</Link>{" "}
             keeps the same three bases and adds a fourth Tokyo day, a Hakone day on the way west and
-            Nara. The city round-ups
+            Nara. If this is your first time in Japan and you can stretch to nine days, our{" "}
+            <Link href="/guides/attractions/japan-first-time-itinerary">first time Japan itinerary</Link>{" "}
+            adds a Hakone or Nikko day and a Nara day, and starts from how many days you need. The city round-ups
             for <Link href="/guides/attractions/things-to-do-tokyo">Tokyo</Link>,{" "}
             <Link href="/guides/attractions/things-to-do-kyoto">Kyoto</Link> and{" "}
             <Link href="/guides/attractions/things-to-do-osaka">Osaka</Link> each list what to book

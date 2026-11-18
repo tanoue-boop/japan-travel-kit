@@ -500,7 +500,9 @@ export default function GuidesTransportPage({ updated, dates }: { updated: PageU
               <Link href="/guides/attractions/kansai-area-pass" style={L}>JR Kansai Area Pass guide</Link>{" "}
               prices the 1-to-4-day pass, HARUKA included, against the singles. For the train out to Nara, the{" "}
               <Link href="/guides/attractions/nara-day-trip" style={L}>Nara day trip guide</Link>{" "}
-              compares the Kintetsu and JR runs from Osaka and Kyoto. In Osaka, our{" "}
+              compares the Kintetsu and JR runs from Osaka and Kyoto, and the{" "}
+              <Link href="/guides/transport/kintetsu-rail-pass" style={L}>Kintetsu Rail Pass guide</Link>{" "}
+              shows whether the ¥1,900 1day pass beats single Kintetsu fares from Osaka-Namba or Kyoto to Nara. In Osaka, our{" "}
               <Link href="/guides/transport/osaka-metro-pass" style={L}>Osaka Metro Pass and Enjoy Eco Card guide</Link>{" "}
               works out how many subway rides the 1-day pass needs to pay off.
             </PartnerPick>

@@ -895,7 +895,12 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/transport/osaka-transportation" style={{ color: "var(--text)", fontWeight: 600 }}>
               getting around Osaka guide
             </Link>{" "}
-            explains how the Midosuji Line and IC cards fit together.
+            explains how the Midosuji Line and IC cards fit together. A Namba base also puts Kintetsu at the door
+            if you stretch the trip to a Nara day: our{" "}
+            <Link href="/guides/transport/kintetsu-rail-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Kintetsu Rail Pass guide
+            </Link>{" "}
+            shows when the 1day pass beats the single fares from Osaka-Namba.
           </p>
         </section>
 

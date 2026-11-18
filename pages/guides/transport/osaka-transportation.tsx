@@ -506,6 +506,13 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
             Many visitors base themselves in Osaka and day-trip to Kyoto.
           </p>
           <p className={styles.bodyText}>
+            <strong>To Nara:</strong> Kintetsu runs from Osaka-Namba to Kintetsu-Nara. If you will ride Kintetsu more than once, our{" "}
+            <Link href="/guides/transport/kintetsu-rail-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Kintetsu Rail Pass guide
+            </Link>{" "}
+            prices the 1day, 2day and 5day passes against single tickets.
+          </p>
+          <p className={styles.bodyText}>
             <strong>From Kansai Airport (KIX):</strong> The JR Haruka express reaches Shin-Osaka in 50 minutes (¥3,640)
             or Tennoji in 33 minutes. The Nankai Rapi:t reaches Namba in 38 minutes for ¥1,450 — better value if
             your accommodation is in or around Namba. Pre-book the Rapi:t on Klook for guaranteed seating and

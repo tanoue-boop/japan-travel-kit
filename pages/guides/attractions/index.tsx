@@ -442,7 +442,9 @@ export default function GuidesAttractionsPage({ updated, dates }: { updated: Pag
             the <Link href="/guides/attractions/japan-10-day-itinerary" style={L}>Japan 10 day itinerary</Link>, the{" "}
             <Link href="/guides/attractions/japan-14-day-itinerary" style={L}>Japan 14 day itinerary for 2 weeks in Japan</Link>{" "}
             and the <Link href="/guides/attractions/japan-3-week-itinerary" style={L}>Japan 3 week itinerary</Link> each
-            set out how many nights to spend in each city.
+            set out how many nights to spend in each city. Going for the first time and not sure how long? The{" "}
+            <Link href="/guides/attractions/japan-first-time-itinerary" style={L}>first time Japan itinerary</Link>{" "}
+            answers that first: 9 days across Tokyo, Kyoto and Osaka, with what to book before you fly.
           </PartnerPick>
 
           <section className={styles.faqSection} style={{ marginTop: "3rem" }}>

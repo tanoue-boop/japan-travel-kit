@@ -770,7 +770,9 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
             rather than a daily one: a {yen(tokyoKyoto.fareYen)} shinkansen to Kyoto, and a 7-day JR Pass at{" "}
             {yen(JR_PASS_7_ONLINE)} that only pays off on a route busier than the Golden Route loop. If you are
             staying in Tokyo only, our <Link href="/guides/money/tokyo-trip-cost">Tokyo trip cost guide</Link> prices
-            that on the city&apos;s own visitor survey instead. For a reality check on all of it: the Japan Tourism Agency&apos;s own inbound
+            that on the city&apos;s own visitor survey instead, and if this is your first trip, our{" "}
+            <Link href="/guides/attractions/japan-first-time-itinerary">first time Japan itinerary</Link> lays out
+            a nine-day route to multiply these daily figures across. For a reality check on all of it: the Japan Tourism Agency&apos;s own inbound
             consumption survey put travel expenditure at <strong>¥234,000 per visitor</strong> for July–September
             2026 (1st preliminary), across a total of ¥2,207.6 billion. Read on mlit.go.jp, {OWN}. How to pay
             for it — card, cash or ATM — is in our{" "}
