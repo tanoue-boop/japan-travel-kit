@@ -716,8 +716,9 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
                 <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
                   Prices and sales rules are Tokyo Disney Resort&apos;s own, carried from our{" "}
                   <Link href="/guides/attractions/tokyo-disney-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>
-                    Tokyo Disney tickets guide
+                    Tokyo Disneyland tickets
                   </Link>{" "}
+                  guide
                   (read {DISNEY_CHECKED}). Stroller rental read on the resort&apos;s own pages on {CHECKED}.
                 </p>
                 <KlookTripPrep
@@ -984,7 +985,7 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
             {[
-              { href: "/guides/attractions/tokyo-disney-tickets", title: "Tokyo Disneyland Tickets 2026: Prices, Rules & DisneySea" },
+              { href: "/guides/attractions/tokyo-disney-tickets", title: "Tokyo Disneyland Tickets 2026: Prices, Dates & How to Buy" },
               { href: "/guides/attractions/tokyo-disney-hotels", title: "Tokyo Disney Hotels (2026): Closest, Official & Budget" },
               { href: "/guides/attractions/sanrio-puroland-tickets", title: "Sanrio Puroland Tickets 2026: Prices by Date & How to Book" },
               { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport" },

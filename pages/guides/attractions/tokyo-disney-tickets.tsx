@@ -66,34 +66,93 @@ const CHECKED = checkedLabel("2026-10-28");
  *     Hotel, MiraCosta) 5–15 min early, not on check-in day (/en/hotel/topics/info/happy_entry.html)
  * No Premier Access yen figure is printed: the resort's own page could not be read on 11 Nov 2026.
  */
-const LAST_CHECKED_PRICES = "2026-10-28";
 const LAST_CHECKED_RULES = "2026-11-11";
 
-/** Where to buy — first row is the recommendation. Validity from the resort's FAQ. */
+/*
+ * 18 Nov 2026 (R04): prices re-read on the resort's own ticket page and its price calendar
+ * (www.tokyodisneyresort.jp/en/ticket/index.html and /en/ticket/index/202612/, /202701/, both
+ * parks), status "As of 3:35 p.m., November 18, 2026":
+ *   - published minimums unchanged: 1-Day Passport 8,900 / 7,400 / 5,300; After 3 7,900 / 6,600 /
+ *     4,400; After 5 5,400 / 4,600 / 3,600; 1-Day Passport for Guests with Disabilities 7,100 /
+ *     5,900 / 4,200; Campus Day Passport 7,900 / 6,600
+ *   - adult 1-Day Passport on the calendar for 18 Nov 2026 – 6 Feb 2027: lowest 8,900 (6–8 Jan
+ *     2027), highest 12,400 (several Nov/Dec weekend dates and 25–26 Dec); Disneyland and DisneySea
+ *     identical. Press reports of an October 2026 revision adding a 12,400 level match the calendar,
+ *     but only the calendar values are printed.
+ *   - change rules (/en/ticket/change/howto.html): online changes only for tickets bought on the
+ *     official website; date and age category can change, no fee, within validity, even after the
+ *     original date; park, ticket type and expiry date cannot; not into a sold-out date; the new
+ *     ticket is charged in full and the old one refunded in full; no refunds for personal reasons.
+ *   - validity (faq-en answer/680ba03d01fdf7431bafb1d5, re-read the same day): unchanged.
+ */
+const LAST_CHECKED_PRICES = "2026-11-18";
+const LAST_CHECKED_CHANGES = "2026-11-18";
+const PRICE_CHECKED = checkedLabel(LAST_CHECKED_PRICES);
+const PRICE_MIN = "¥8,900";
+const PRICE_MAX = "¥12,400";
+const CALENDAR_SPAN = "18 November 2026 to 6 February 2027";
+
+/** Where to buy — first row is the recommendation. Validity and change rules from the resort. */
 const sellerRows = [
   {
     where: "Our pick: official website or app (tokyodisneyresort.jp)",
-    best: "Anyone whose card the official checkout accepts",
+    language: "English website",
+    payment: "Card online; some foreign-issued cards are declined",
+    change: "Online, no fee, within validity — date and age only, not the park or ticket type",
+    cancel: "No refund for personal reasons",
     validity: "Same date one year after purchase",
-    note: "Date and age changes online, no fee, as often as you like within validity — each change settles at the new date's price.",
   },
   {
     where: "Authorized overseas online travel agency (e.g. Klook)",
-    best: "Visitors whose foreign card the official site rejects",
+    language: "English checkout",
+    payment: "Foreign cards accepted",
+    change: "Not in the resort's online change tool (official-site tickets only) — contact the seller within validity",
+    cancel: "Set by the seller — read the product terms before paying",
     validity: "Same date one month after the admission date",
-    note: "English checkout and foreign cards. Worth a second check when a date shows sold out on the official site. Note the shorter validity.",
   },
   {
     where: "Travel agencies and convenience stores in Japan",
-    best: "Residents and visitors already in Japan",
+    language: "Varies by outlet",
+    payment: "At the outlet",
+    change: "Contact the issuing office within validity",
+    cancel: "Set by the issuing office",
     validity: "Same date one month after the admission date",
-    note: "Sold as reservation vouchers. If you miss your date, contact the issuing office before the voucher expires.",
   },
   {
     where: "At the park gates",
-    best: "Nobody — not sold",
-    validity: "—",
-    note: "Park tickets are not sold at Tokyo Disneyland or Tokyo DisneySea. Only Disney Hotel guests can buy a same-day ticket at their hotel.",
+    language: "—",
+    payment: "—",
+    change: "—",
+    cancel: "—",
+    validity: "Not sold: park tickets are not sold at Tokyo Disneyland or Tokyo DisneySea",
+  },
+];
+
+/** Validity and date changes — first row is the answer. Official sources, read 18 Nov 2026. */
+const changeRows = [
+  {
+    q: "Can I change the date?",
+    a: "Yes, for a ticket bought on the official website or app: online, no fee, within its validity — even after the original date has passed. The answer is no for a refund.",
+  },
+  {
+    q: "How long is it valid?",
+    a: "Official website or app: until the same date one year after the date of purchase (not after the admission date). Travel agency, convenience store or overseas online travel agency: until the same date one month after the admission date.",
+  },
+  {
+    q: "What can be changed",
+    a: "The date of admission and the age category (for example Child to Junior), one at a time.",
+  },
+  {
+    q: "What cannot be changed",
+    a: "The park (Tokyo Disneyland to Tokyo DisneySea or back), the ticket type, and the expiry date. A date that is sold out cannot be chosen.",
+  },
+  {
+    q: "What happens to the price",
+    a: "The ticket you change to is charged in full and the one you change from is refunded in full, so a cheaper or dearer date settles automatically.",
+  },
+  {
+    q: "Cancellation and refund",
+    a: "Not available for personal reasons. Tickets bought elsewhere are changed through the issuing seller, not the resort's online tool.",
   },
 ];
 
@@ -121,12 +180,18 @@ const accessRows = [
   },
 ];
 
-/** The published minimums, by the resort's own age bands. */
+/**
+ * Ticket type × age band. First row is the answer. Adult 1-Day Passport is the range on the
+ * official calendar; every other figure is the resort's published minimum ("from").
+ */
 const priceRows = [
-  { band: "Adult (大人)", who: "18 and over", price: "From ¥8,900" },
-  { band: "Junior (中人)", who: "12–17 — junior and senior high school age", price: "From ¥7,400" },
-  { band: "Child (小人)", who: "4–11 — preschool and elementary age", price: "From ¥5,300" },
-  { band: "Infant", who: "3 and under", price: "Free" },
+  { ticket: "1-Day Passport (full day, from opening) — the usual ticket", adult: `${PRICE_MIN}–${PRICE_MAX}`, junior: "From ¥7,400", child: "From ¥5,300" },
+  { ticket: "After 3 Passport (weekends and holidays, from 15:00)", adult: "From ¥7,900", junior: "From ¥6,600", child: "From ¥4,400" },
+  { ticket: "After 5 Passport (weekdays, from 17:00)", adult: "From ¥5,400", junior: "From ¥4,600", child: "From ¥3,600" },
+  { ticket: "1-Day Passport for Guests with Disabilities", adult: "From ¥7,100", junior: "From ¥5,900", child: "From ¥4,200" },
+  { ticket: "Campus Day Passport (limited period, students)", adult: "From ¥7,900", junior: "From ¥6,600", child: "—" },
+  { ticket: "2-Day or multi-day passport", adult: "Not sold", junior: "Not sold", child: "Not sold" },
+  { ticket: "Ages 3 and under", adult: "—", junior: "—", child: "Free" },
 ];
 
 /** Which passports exist, and when each one lets you through the gate. */
@@ -138,9 +203,9 @@ const ticketRows = [
     note: "One park for one day, with the date and the park fixed when you buy. This is the ordinary ticket.",
   },
   {
-    ticket: "After 3 Passport (holidays only)",
+    ticket: "After 3 Passport (weekends and holidays)",
     entry: "From 15:00",
-    dates: "Holiday dates",
+    dates: "Saturdays, Sundays and holidays",
     note: "A cheaper way into one park for an evening, on the dates it is offered.",
   },
   {
@@ -203,14 +268,6 @@ const buyingRows = [
   {
     q: "Any exception to that?",
     a: "Disney Hotel guests, who can buy a same-day ticket at their hotel. Otherwise the website and the app are the only same-day route, alongside some travel agents and convenience stores for tickets bought ahead.",
-  },
-  {
-    q: "Can I cancel for a refund?",
-    a: "No. Cancellation and refund for your own reasons are not available, and the FAQ covering bad weather, an earthquake or any other reason for not visiting on the designated date points at the same rule.",
-  },
-  {
-    q: "Can I move the date instead?",
-    a: "Yes, and this is the flexibility that exists. An online ticket can be changed within its validity period, before or after the designated entry date, with no limit on the number of changes — each change settles at the new date's price. Changes are made on the website or in the app, not at the parks.",
   },
   {
     q: "My date is sold out — is that final?",
@@ -293,41 +350,29 @@ const steps = [
 const faqItems = [
   {
     q: "How much are Tokyo Disneyland tickets in 2026?",
-    a: `There is no single price: Tokyo Disney Resort states plainly that park tickets are priced by the visit date. What it publishes are the minimums for a 1-Day Passport — from ¥8,900 for an adult (18 and over), from ¥7,400 for a junior (12–17), from ¥5,300 for a child (4–11), and free for 3 and under — with the actual figure for your date shown once you select it. Read on ${CHECKED}. A peak date, and especially a DisneySea 25th-anniversary date, sits well above the floor.`,
-  },
-  {
-    q: "Where should you buy Tokyo Disneyland tickets?",
-    a: "On the official Tokyo Disney Resort website or app if it accepts your card: a ticket bought there is valid until the same date one year after purchase and its date can be changed online without a fee. If the official checkout rejects a foreign card, an authorized overseas online travel agency such as Klook sells the same dated 1-Day Passports, but the resort's FAQ gives those tickets a shorter validity — the same date one month after the admission date. Neither park sells tickets at the gate. Last checked: 2026-11-11.",
-  },
-  {
-    q: "How long are Tokyo Disneyland tickets valid for?",
-    a: "A park ticket bought on the official website or app is valid until the same date one year after the date of purchase — not one year after the admission date. A ticket bought through a travel agency, a convenience store or an overseas online travel agency is valid until the same date one month after the admission date. Within validity you can move the date; after it expires the ticket is invalid. Last checked: 2026-11-11.",
-  },
-  {
-    q: "What is Disney Premier Access, and do you need it?",
-    a: "Disney Premier Access is a paid add-on, separate from the park ticket, that books a time slot for an eligible attraction or a viewing area for an eligible show. You buy it in the official Tokyo Disney Resort app after entering the park; it is limited in number and can sell out. You do not need it: every attraction can still be ridden by queuing, and the free Standby Pass and Entry Request remain. The free 40th Anniversary Priority Pass ended on 31 August 2026. Last checked: 2026-11-11.",
-  },
-  {
-    q: "When do Tokyo Disney tickets go on sale?",
-    a: `Tickets for the same date two months ahead go on sale every day from 14:00 Japan time — a 1 March visit opens at 14:00 on 1 January — and where the month has no matching date, sale starts at 14:00 on the 1st of the following month. Up to ten tickets can be bought per order, and sales for a date can be suspended without notice once that day's number is reached. Read on ${CHECKED}.`,
+    a: `An adult 1-Day Passport costs ${PRICE_MIN} to ${PRICE_MAX} depending on the date: those are the lowest and highest prices on Tokyo Disney Resort's official price calendar for ${CALENDAR_SPAN}, and Tokyo DisneySea is priced the same. Juniors (12–17) pay from ¥7,400, children (4–11) from ¥5,300, and ages 3 and under are free. The weekday-evening After 5 Passport starts at ¥5,400 for an adult. Last checked: ${LAST_CHECKED_PRICES}.`,
   },
   {
     q: "Are the dates on Tokyo Disneyland tickets flexible?",
-    a: `The date is fixed when you buy, but it can be moved; there is no refund. Cancellation and refund for your own reasons are not available — the FAQ covering bad weather, an earthquake or any other reason for not going on the designated date points at the same rule. An online ticket can be changed within its validity period, before or after the designated date, with no limit on the number of changes, each settling at the new date's price, through the official website or app rather than at the parks. Read on ${CHECKED}.`,
+    a: `Yes, within limits. The date is fixed when you buy, but a ticket bought on the official website or app can be moved to another date online, with no fee, any time within its validity — even after the original date. The park and the ticket type cannot be changed, a sold-out date cannot be chosen, and the new date's price applies (the new ticket is charged in full and the old one refunded in full). There is no refund for personal reasons. Tickets bought from a reseller are changed through that seller. Last checked: ${LAST_CHECKED_CHANGES}.`,
   },
   {
-    q: "My date is sold out — can I still get in?",
-    a: "Not with a gate ticket — a sold-out date cannot be entered. But the resort's FAQ says sold-out park tickets may go back on sale without notice, and that when a guest changes their ticket to another date, the slot they leave becomes available for purchase again online, on the official website and in the app. Checking back is worth doing, and so is checking an authorized reseller. Last checked: 2026-11-11.",
+    q: "How long are Tokyo Disneyland tickets valid for?",
+    a: `A ticket bought on the official website or app is valid until the same date one year after the date of purchase — not one year after the admission date. A ticket bought from a travel agency, a convenience store or an overseas online travel agency such as Klook is valid until the same date one month after the admission date. After that it is invalid. Last checked: ${LAST_CHECKED_CHANGES}.`,
   },
   {
-    q: "Which should you choose, Tokyo Disneyland or Tokyo DisneySea?",
-    a: "A 1-Day Passport covers one park, so you pick. Tokyo Disneyland is the classic castle park — parades and family-friendly attractions that suit first-timers and families with younger children. Tokyo DisneySea is nautical-themed, more unique to Tokyo, leans more adult, serves alcohol, and is marking its 25th anniversary from April 2026 to March 2027. First visit with kids, Disneyland; something distinctive, DisneySea.",
+    q: "Is it worth buying Tokyo Disneyland tickets from an authorised reseller?",
+    a: `Yes when the official checkout rejects your card or your date shows sold out there; otherwise the official site is the better buy. Klook is an authorised seller with an English checkout that accepts foreign cards and issues a QR code you can link to the official app, and it sells the same dated 1-Day Passports. The trade-offs are set by the resort: reseller tickets are valid only until one month after the admission date, and date changes go through the seller rather than the resort's online tool. Last checked: ${LAST_CHECKED_CHANGES}.`,
+  },
+  {
+    q: "Can I buy Tokyo Disneyland tickets at the gate?",
+    a: `No. Park tickets are not sold at Tokyo Disneyland or Tokyo DisneySea. A same-day ticket can only be bought on the official website or app while allocation remains, or at the hotel by Disney Hotel guests — and if the date is sold out, you cannot enter. Last checked: ${LAST_CHECKED_RULES}.`,
   },
 ];
 
-const TITLE = "Tokyo Disneyland Tickets 2026: Prices, Where to Buy & Rules";
+const TITLE = "Tokyo Disneyland Tickets 2026: Prices, Dates & How to Buy";
 const DESCRIPTION =
-  "Tokyo Disneyland tickets 2026: 1-Day Passport from ¥8,900, priced by date, no gate sales, on sale 2 months ahead at 14:00 JST. Where to buy, then book.";
+  "Tokyo Disneyland tickets 2026: adult ticket price ¥8,900–¥12,400 by date. Dates can be changed free, no refunds, no gate sales. Where to buy, then book.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/tokyo-disney-tickets") } });
 
@@ -415,11 +460,11 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Tokyo Disneyland Tickets 2026: <br />Prices, Where to Buy &amp; Rules
+            Tokyo Disneyland Tickets 2026: <br />Ticket Prices, Dates &amp; How to Buy
           </h1>
           <p className={styles.heroSubtitle}>
-            Date-specified tickets, variable pricing, no gate sales and no refunds. Here is what a passport
-            costs, where to buy it, when your date goes on sale, and which park to pick.
+            Date-specified tickets, variable pricing, free date changes, no gate sales and no refunds. Here is
+            what a passport costs, how flexible the date is, and where to buy it.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Official prices and rules", "Sale opens 2 months ahead", "Foreign cards via Klook"].map((t) => (
@@ -444,19 +489,23 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
         {/* Lead paragraph — the whole answer, before anything else on the page. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>Tokyo Disneyland tickets</strong> in 2026 cost from <strong>¥8,900</strong> for an adult
-            1-Day Passport, from <strong>¥7,400</strong> for ages 12–17 and from <strong>¥5,300</strong> for
-            ages 4–11 (free for 3 and under), and the actual price depends on the visit date.
-            Tickets are not sold at either park&apos;s gate, so you buy on the official Tokyo Disney Resort
-            website or app — or an authorized seller such as Klook if the official site rejects your card —
-            from <strong>two months ahead, daily at 14:00 Japan time</strong>.
-            One ticket covers one park on one date: Tokyo Disneyland suits a first visit and younger
-            children, Tokyo DisneySea suits adults and its 25th anniversary year (April 2026 – March 2027).
+            <strong>Tokyo Disneyland tickets</strong> cost <strong>{PRICE_MIN} to {PRICE_MAX}</strong> for an
+            adult 1-Day Passport depending on the date — the lowest and highest prices on Tokyo Disney
+            Resort&apos;s official calendar for {CALENDAR_SPAN}, checked {PRICE_CHECKED} — with Tokyo DisneySea
+            priced the same, ages 12–17 from ¥7,400, ages 4–11 from ¥5,300 and ages 3 and under free.
+            The date is fixed when you buy, but a ticket bought on the official website or app can be moved
+            to another date online <strong>with no fee</strong> any time within its validity (one year from
+            purchase); the park and ticket type cannot be changed, and there are no refunds.
+            You buy on the official Tokyo Disney Resort website or app from <strong>two months ahead, daily
+            at 14:00 Japan time</strong>, or from an authorized seller such as Klook if the official checkout
+            rejects your card — neither park sells tickets at the gate.
           </p>
           <p className={styles.bodyText}>
-            A sold-out date cannot be entered, refunds are not available, and the date can be moved as often
-            as you like within validity. Prices and age bands read on the resort&apos;s ticket page on{" "}
-            {CHECKED}; validity and in-park rules read on its FAQ on 11 November 2026. Planning more of
+            One ticket covers one park on one date: Tokyo Disneyland suits a first visit and younger
+            children, Tokyo DisneySea suits adults and its 25th anniversary year (April 2026 – March 2027).
+            A sold-out date cannot be entered. Validity and date-change rules re-checked on the
+            resort&apos;s own pages on {PRICE_CHECKED}; in-park rules read on its FAQ on 11 November 2026.
+            Planning more of
             Tokyo? Compare the city&apos;s other dated tickets in our{" "}
             <Link href="/guides/attractions/teamlab-tokyo-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>
               teamLab Tokyo tickets comparison
@@ -478,11 +527,11 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>1-Day Passport</p>
-                <p className={styles.verdictStatValue}>From ¥8,900 adult</p>
+                <p className={styles.verdictStatValue}>{PRICE_MIN}–{PRICE_MAX} adult</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Pricing</p>
-                <p className={styles.verdictStatValue}>Varies by visit date</p>
+                <p className={styles.verdictStatLabel}>Date changes</p>
+                <p className={styles.verdictStatValue}>Free, online, within validity</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>On sale</p>
@@ -508,6 +557,16 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
           </div>
         </div>
 
+        {/* Same-day bookings next to the answer (R04): Maihama/Urayasu hotels 6.5%, limousine bus 5%,
+            Klook eSIM 20% — the existing tokyoDisneyTripPrep constant, moved up from lower on the page. */}
+        <KlookTripPrep
+          label="Book on the same trip"
+          heading="Should You Stay Near Tokyo Disney Resort?"
+          intro="If your date is a weekend or an anniversary date, yes — the resort is 15 to 20 minutes out of Tokyo Station on the JR Keiyo Line, which is a commute to make before the gates open and again after the night parade. Staying at Maihama or one stop out buys back both ends of the day, and the airport bus can drop you at the resort with your luggage."
+          items={tokyoDisneyTripPrep}
+          headingLevel={3}
+        />
+
         <BookingEsimCard />
 
         <EsimCtaTop />
@@ -517,27 +576,31 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>Price</span>
           <h2 className={styles.sectionTitle}>How Much Are Tokyo Disneyland Tickets in 2026?</h2>
           <p className={styles.bodyText}>
-            From ¥8,900 for an adult — and &ldquo;from&rdquo; is doing real work in that sentence. Tokyo Disney
-            Resort states that park tickets are on variable pricing and that the fee differs by visit date, so
-            the published figures are floors rather than prices. The day&apos;s actual number appears when you
-            select the date on the official ticket page.
+            {PRICE_MIN} to {PRICE_MAX} for an adult 1-Day Passport, depending on the date. Tokyo Disney Resort
+            prices park tickets by visit date and shows each day&apos;s adult price on its official calendar;
+            on {PRICE_CHECKED} the calendar for {CALENDAR_SPAN} ran from {PRICE_MIN} (6–8 January 2027) to{" "}
+            {PRICE_MAX} (several weekend dates in November and December, and 25–26 December), with Tokyo
+            Disneyland and Tokyo DisneySea priced the same. Most weekdays in that span were ¥9,900 or ¥10,900.
+            For the other tickets and age bands the resort publishes the lowest price, so those are
+            &ldquo;from&rdquo; figures.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Age band", "Who it covers", "1-Day Passport, one park"].map((h) => (
+                    {["Ticket (one park)", "Adult (18+)", "Junior (12–17)", "Child (4–11)"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {priceRows.map((row) => (
-                    <tr key={row.band}>
-                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.band}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.who}</td>
-                      <td className={styles.tdPrice}>{row.price}</td>
+                    <tr key={row.ticket}>
+                      <td className={styles.tdProvider}>{row.ticket}</td>
+                      <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>{row.adult}</td>
+                      <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{row.junior}</td>
+                      <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{row.child}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -546,12 +609,11 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             <strong>Last checked: {LAST_CHECKED_PRICES}</strong> · Source: https://www.tokyodisneyresort.jp/en/ticket/index.html
-            (prices) and https://faq-en.tokyodisneyresort.jp/ (rules).{" "}
-            Published minimums and age bands from the official park-ticket page, read on {CHECKED}; the
-            variable-pricing rule is the resort&apos;s own FAQ wording. No ceiling is quoted here because the
-            resort publishes none as a standing figure — a weekend or a DisneySea 25th-anniversary date costs
-            materially more than the floor. Tokyo&apos;s other dated tickets, with a check date each, are in
-            our{" "}
+            (published minimums and the daily adult price calendar).{" "}
+            The adult 1-Day Passport range is the lowest and highest price shown on the calendar for{" "}
+            {CALENDAR_SPAN}; later dates can differ, so check your own date before you buy. Prices are in
+            yen and set by the resort; the multi-day row reflects the FAQ on ticket types, read on {CHECKED}.
+            Tokyo&apos;s other dated tickets, with a check date each, are in our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
             </Link>.
@@ -640,18 +702,20 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
         {/* Where to buy — added 11 Nov 2026 (R08). First row is the recommendation. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Where to buy</span>
-          <h2 className={styles.sectionTitle}>Where Should You Buy Tokyo Disneyland Tickets?</h2>
+          <h2 className={styles.sectionTitle}>Is It Worth Buying From an Authorised Tokyo Disneyland Reseller?</h2>
           <p className={styles.bodyText}>
-            On the official Tokyo Disney Resort website or app if it accepts your card — tickets bought there
-            stay valid for a year from purchase. If it rejects a foreign card, an authorized overseas seller
-            such as Klook sells the same dated passports, valid until one month after the admission date.
+            Only if the official site will not take your card or your date shows sold out there. The official
+            Tokyo Disney Resort website or app gives the longest validity (one year from purchase) and free
+            online date changes; an authorized overseas seller such as Klook sells the same dated passports
+            with an English checkout and foreign cards, valid until one month after the admission date, with
+            changes handled by the seller.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Where to buy", "Best for", "Ticket valid until", "Notes"].map((h) => (
+                    {["Where to buy", "Language", "Payment", "Date change", "Cancellation", "Valid until"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -660,9 +724,11 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
                   {sellerRows.map((row) => (
                     <tr key={row.where}>
                       <td className={styles.tdProvider}>{row.where}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.best}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.language}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.payment}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.change}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.cancel}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.validity}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.note}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -670,15 +736,54 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            <strong>Last checked: {LAST_CHECKED_RULES}</strong> · Source:
-            https://faq-en.tokyodisneyresort.jp/answer/680ba03d01fdf7431bafb1d5/ (validity) and the resort&apos;s
-            FAQ on park tickets (no gate sales, same-day purchase, Disney Hotel exception).
+            <strong>Last checked: {LAST_CHECKED_CHANGES}</strong> · Source:
+            https://faq-en.tokyodisneyresort.jp/answer/680ba03d01fdf7431bafb1d5/ (validity),
+            https://www.tokyodisneyresort.jp/en/ticket/change/howto.html (changes and refunds) and the
+            resort&apos;s FAQ on park tickets (no gate sales, Disney Hotel exception, read {LAST_CHECKED_RULES}).
+            A reseller&apos;s own cancellation terms are shown on its product page.
           </p>
           <div className={styles.pickCtaRow}>
             <KlookLink href={DISNEY_TICKET_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.pickCta}>
               Official site rejected your card? Check Klook →
             </KlookLink>
           </div>
+        </section>
+
+        {/* Validity and date changes — added 18 Nov 2026 (R04). First row is the answer. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Date changes</span>
+          <h2 className={styles.sectionTitle}>Are the Dates on Tokyo Disneyland Tickets Flexible?</h2>
+          <p className={styles.bodyText}>
+            Yes, within limits: a ticket bought on the official website or app can be moved to another date
+            online with no fee, any time within its validity of one year from purchase. The park and ticket
+            type stay fixed, the new date&apos;s price applies, and nothing is refunded for a change of plans.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Question", "Tokyo Disney Resort's rule"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {changeRows.map((row) => (
+                    <tr key={row.q}>
+                      <td className={styles.tdProvider}>{row.q}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.a}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {LAST_CHECKED_CHANGES}</strong> · Source:
+            https://www.tokyodisneyresort.jp/en/ticket/change/howto.html and
+            https://faq-en.tokyodisneyresort.jp/answer/680ba03d01fdf7431bafb1d5/.
+          </p>
         </section>
 
         {/* Q4 — the booking window, sell-outs and refunds, then the CTA stack.
@@ -851,13 +956,7 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
           </div>
         </section>
 
-        {/* Klook: the stay and the days either side. The ticket CTAs above are unchanged. */}
-        <KlookTripPrep
-          label="Around the park day"
-          heading="Should You Stay Near Tokyo Disney Resort?"
-          intro="If your date is a weekend or an anniversary date, yes — the resort is 15 to 20 minutes out of Tokyo Station on the JR Keiyo Line, which is a commute to make before the gates open and again after the night parade. Staying at Maihama or one stop out buys back both ends of the day."
-          items={tokyoDisneyTripPrep}
-        />
+        {/* The stay-near-the-resort block (tokyoDisneyTripPrep) now sits right after the answer (R04). */}
         <p className={styles.bodyText}>
           Flying straight in? The Airport Limousine Bus runs direct from Narita (¥2,900 adult) and
           Haneda (¥1,300) to the Disney resort hotels and parks, with your cases in the hold — fares

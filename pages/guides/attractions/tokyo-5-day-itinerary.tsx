@@ -1248,9 +1248,9 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
           </p>
           <p className={styles.bodyText}>
             The three obvious swaps are all a straight substitution for Day 4 or Day 5.{" "}
-            <Link href="/guides/attractions/tokyo-disney-tickets">Tokyo Disneyland and DisneySea</Link>{" "}
-            sell date-specified tickets with no gate sales, so that one has to be decided before you
-            fly.{" "}
+            <Link href="/guides/attractions/tokyo-disney-tickets">Tokyo Disneyland tickets</Link>{" "}
+            (and DisneySea&apos;s) are date-specified with no gate sales, so that one has to be decided
+            before you fly.{" "}
             <Link href="/guides/attractions/sanrio-puroland-tickets">Sanrio Puroland</Link> at Tama
             Center is indoors and prices by date, which means choosing the day saves more than choosing
             the seller.{" "}

@@ -87,8 +87,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/tokyo-disney-tickets",
     badge: "Tickets",
-    title: "Tokyo Disneyland Tickets 2026: Prices, Rules & DisneySea",
-    desc: "A 1-Day Passport starts at ¥8,900 for an adult and is priced by date. No gate sales at either park, your date opens two months ahead at 14:00 JST, and refunds do not exist — but the date can be changed.",
+    title: "Tokyo Disneyland Tickets 2026: Prices, Dates & How to Buy",
+    desc: "An adult 1-Day Passport costs ¥8,900–¥12,400 by date (official calendar, checked 18 Nov 2026). No gate sales at either park, your date opens two months ahead at 14:00 JST, and refunds do not exist — but the date can be changed for free.",
     group: "parks",
     city: "tokyo",
   },

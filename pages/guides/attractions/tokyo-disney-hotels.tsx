@@ -192,7 +192,7 @@ const ROUTE = "/guides/attractions/tokyo-disney-hotels";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const relatedGuides = [
-  { href: "/guides/attractions/tokyo-disney-tickets", title: "Tokyo Disneyland Tickets 2026: Prices, Rules & DisneySea" },
+  { href: "/guides/attractions/tokyo-disney-tickets", title: "Tokyo Disneyland Tickets 2026: Prices, Dates & How to Buy" },
   { href: "/guides/attractions/tokyo-itinerary-with-kids", title: "Tokyo Itinerary with Kids: 5 Days, Day by Day (2026)" },
   { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport" },
   { href: "/guides/transport/tokyo-airport-limousine-bus", title: "Airport Limousine Bus Tokyo 2026: Fares, Times & Booking" },
@@ -565,8 +565,8 @@ export default function TokyoDisneyHotelsPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Cancellation terms depend on where you book, so read the terms shown for your room on Klook before
             you pay. The park ticket is a separate booking: see our{" "}
-            <Link href="/guides/attractions/tokyo-disney-tickets">Tokyo Disney tickets guide</Link> for the
-            rules on dates and changes.
+            <Link href="/guides/attractions/tokyo-disney-tickets">Tokyo Disneyland tickets</Link> guide for
+            the prices by date and the rules on date changes.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={tokyoDisneyResortHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
