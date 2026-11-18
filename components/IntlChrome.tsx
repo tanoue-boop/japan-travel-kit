@@ -88,7 +88,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
     disclosureLink: "ข้อความเปิดเผยฉบับเต็ม (ภาษาอังกฤษ) →",
     faqHeading: "คำถามที่พบบ่อย",
     relatedLabel: "อ่านต่อ",
-    relatedTitle: "ไกด์อื่น ๆ",
+    relatedTitle: "คู่มือเที่ยวอื่น ๆ",
     relatedArrow: "ดูไกด์ →",
     crumbSep: " / ",
     labelSep: ": ",

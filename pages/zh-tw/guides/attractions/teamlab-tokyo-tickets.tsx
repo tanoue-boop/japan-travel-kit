@@ -74,8 +74,8 @@ const whoFor = [
     desc: "你想看藝術，而不是涉水走過它。這裡沒有固定路線，作品在房間之間移動，你可以照自己的步調逛。",
   },
   {
-    title: "兩間都去，如果…",
-    desc: "你有兩個空的半天，也喜歡 teamLab。兩間在城市的不同區域，需要分別購買指定時間的門票，所以請把行程分開。",
+    title: "兩座都去，如果…",
+    desc: "你有兩個半天的空檔，而且喜歡 teamLab。兩座美術館位於東京不同區域，需要分別購買指定時間的門票，因此請分開安排行程。",
   },
 ];
 
@@ -94,7 +94,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "Planets 和無界可以同一天去嗎？",
-    a: "可以，因為兩張票各有自己的日期與時間。不過兩間在城市的不同區域，每一間都要花不少時間，分成兩個半天會比較輕鬆。",
+    a: "可以，因為兩張票各有自己的日期與時間。不過兩座美術館位於東京不同區域，每一間都要花不少時間，分成兩個半天會比較輕鬆。",
   },
   {
     q: "哪一間 teamLab 比較適合小孩？",
@@ -109,7 +109,7 @@ const tours = [
   }),
   withKlookLocale(tokyoSightseeingBusTour, LOCALE, {
     title: "東京觀光巴士一日遊",
-    desc: "附導覽的環狀行程，走訪皇居庭園、淺草與東京晴空塔，提供多語語音導覽",
+    desc: "附導覽的環狀觀光路線，走訪皇居庭園、淺草與東京晴空塔，提供多語語音導覽",
   }),
   withKlookLocale(fujiDayTour, LOCALE, {
     title: "東京出發富士山一日遊",
@@ -233,7 +233,7 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Planets 資料讀自 teamlab.art 與官方售票網站，查核日 {PLANETS_CHECKED}；無界資料讀自 teamlab.art，
-            查核日 {BORDERLESS_CHECKED}。兩間的成人票都依日期與時段定價，請確認你自己的日期。
+            查核日 {BORDERLESS_CHECKED}。兩座的成人票都依日期與時段定價，請確認你自己的日期。
           </p>
         </section>
 
@@ -256,7 +256,7 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
 
         <KlookTourPicks
           heading="同一趟旅程可以一起訂的行程"
-          intro="兩間美術館都只佔東京一天的一部分。這三項涵蓋地鐵、附導覽的市區一日遊，以及離開東京的一日遊。Klook 價格依日期而變，所以請打開頁面查看你那一天的金額。"
+          intro="兩座美術館都只會佔用東京一天中的一部分時間。以下三項包括地鐵通票、附導覽的東京市區一日遊，以及從東京出發的一日遊。Klook 價格依日期而變，所以請打開頁面查看你那一天的金額。"
           tours={tours}
         />
 

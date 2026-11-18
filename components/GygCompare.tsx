@@ -43,7 +43,7 @@ const LISTING_COPY: Partial<Record<Locale, Record<string, ListingCopy>>> = {
     "https://www.getyourguide.com/tokyo-l193/day-trips-tc360/mount-fuji-tl7924/": { title: "东京出发的富士山一日游", what: "GetYourGuide 上从东京出发的富士山一日游汇总，大巴团与包车都有" },
     "https://www.getyourguide.com/mount-fuji-l7924/bus-minivan-tours-tc4/": { title: "富士山大巴与小巴行程", what: "富士山周边的拼团大巴与小巴行程，集中在同一页" },
     "https://www.getyourguide.com/tokyo-l193/": { title: "东京", what: "GetYourGuide 在东京销售的所有项目，可按日期搜索——Klook 售罄时的第二个选择" },
-    "https://www.getyourguide.com/tokyo-l193/entry-tickets-tc123/": { title: "东京景点门票", what: "东京目录中只有门票的部分，对应本页介绍的景点" },
+    "https://www.getyourguide.com/tokyo-l193/entry-tickets-tc123/": { title: "东京景点门票", what: "东京商品目录中的景点门票专区，对应本页介绍的景点" },
   },
   ko: {
     "https://www.getyourguide.com/tokyo-disney-resort-l104703/entry-tickets-tc123/": { title: "도쿄 디즈니 리조트", what: "도쿄 디즈니랜드와 디즈니씨 입장권을 한 페이지에서, 모두 날짜・파크 지정" },

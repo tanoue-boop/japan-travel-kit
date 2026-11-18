@@ -68,7 +68,7 @@ const priceRows = [
     name: "涩谷SKY",
     adult: `15 点前 ${SKY_ONLINE_DAY}、15 点起 ${SKY_ONLINE_LATE}（网上购票）`,
     book: "建议：日落场会售罄",
-    sameDay: `有，可在 14 楼售票柜台购买：${SKY_DOOR_DAY}／${SKY_DOOR_LATE}`,
+    sameDay: `可以，在 14 楼售票柜台购买：${SKY_DOOR_DAY}／${SKY_DOOR_LATE}`,
     change: "官网线上票：入场日前可免费取消",
     checked: SKY.checked,
     href: "/zh-cn/guides/attractions/shibuya-sky-tickets",
@@ -78,7 +78,7 @@ const priceRows = [
     name: "东京迪士尼（一日护照）",
     adult: `${zhPrice(TOKYO_GUIDE_PRICES.tokyoDisney.adult)}，按日期`,
     book: "必须",
-    sameDay: "门口不卖票；仅官网或 App，有票才能买",
+    sameDay: "入口处不售票；只能通过官网或 App 购买，售完即止",
     change: "不可退款；可线上改期，按新日期票价",
     checked: TOKYO_GUIDE_PRICES.tokyoDisney.checked,
     href: "/zh-cn/guides/attractions/tokyo-disney-tickets",
@@ -105,10 +105,10 @@ const priceRows = [
     klook: PRICES.teamlabBorderless.klook.url,
   },
   {
-    name: "华纳兄弟哈利波特影城",
+    name: "华纳兄弟哈利·波特影城",
     adult: PRICES.wbStudioTour.adult,
     book: "必须",
-    sameDay: "现场设有售票处，但日期与时段可能售罄",
+    sameDay: "现场设有售票处，但部分日期和时段的门票可能售罄",
     change: "不可退款；每次改日期或时段 ¥1,500",
     checked: PRICES.wbStudioTour.checked,
     href: PRICES.wbStudioTour.href,
@@ -206,12 +206,12 @@ const freeRows = [
 const bookingRows = [
   { thing: "东京迪士尼乐园／迪士尼海洋", when: "提前数周", why: "指定日期票，门口完全不卖票" },
   { thing: "teamLab Planets／无界", when: "提前数天到数周", why: "30 分钟指定时段，会售罄" },
-  { thing: "涩谷SKY", when: "日落场请提前数天", why: "日落场最先售罄；其他时段比较好订" },
-  { thing: "华纳兄弟哈利波特影城", when: "提前数周", why: "指定时段、不可重复入场，且要逛四小时" },
+  { thing: "涩谷SKY", when: "日落场请提前数天", why: "日落时段最先售罄，其他时段相对容易预订" },
+  { thing: "华纳兄弟哈利·波特影城", when: "提前数周", why: "需按预约时段入场，不可重复入场，参观约需四小时" },
   { thing: "大相扑赛事", when: "开售当天", why: "东京只有 1 月、5 月与 9 月有" },
-  { thing: "卡丁车", when: "出国前", why: "要处理的不是预订——是国际驾照" },
-  { thing: "东京晴空塔、东京塔", when: "当天就可以", why: "网上预订省一点；名额通常不是问题" },
-  { thing: "东京都厅免费观景台、神社、街区", when: "直接去", why: "没有票可以订" },
+  { thing: "卡丁车", when: "出国前", why: "需要提前办理的不是门票预订，而是国际驾照" },
+  { thing: "东京晴空塔、东京塔", when: "当天就可以", why: "网上预订能省一些钱；通常不用担心名额不足" },
+  { thing: "东京都厅免费观景台、神社、街区", when: "直接去", why: "无需预约门票" },
 ];
 
 const faqItems: FaqItem[] = [
@@ -221,11 +221,11 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "东京景点门票多少钱？",
-    a: `成人票方面，观景台或 teamLab 美术馆从 ¥1,500 到 ¥3,800 起，主题乐园或影城从 ¥3,900 到 ¥8,900 起。${RECHECKED_ISO} 在官网核查：东京迪士尼一日护照成人 ¥8,900 起、teamLab Planets 成人 ¥3,800 起，东京都厅观景室免费。其他景点的票价与各自的核查日期列在上方表格。`,
+    a: `成人票方面，观景台或 teamLab 美术馆的票价为 ¥1,500 起至 ¥3,800 起，主题乐园或影城从 ¥3,900 到 ¥8,900 起。${RECHECKED_ISO} 在官网核查：东京迪士尼一日护照成人 ¥8,900 起、teamLab Planets 成人 ¥3,800 起，东京都厅观景室免费。其他景点的票价与各自的核查日期列在上方表格。`,
   },
   {
     q: "东京哪些景点门票要提前订？",
-    a: "其实就五件事：东京迪士尼（指定日期、门口不卖票）、两家 teamLab 美术馆（30 分钟指定时段）、涩谷SKY 的日落时段、华纳兄弟哈利波特影城，以及除了门票还要来园预约的三丽鸥彩虹乐园。大相扑也算，但只在你的日期落在 1 月、5 月或 9 月时。东京其他几乎所有东西——晴空塔、东京塔、神社、街区、免费的东京都厅观景台——都可以当天早上再决定。",
+    a: "其实就五件事：东京迪士尼（指定日期、门口不卖票）、两家 teamLab 美术馆（30 分钟指定时段）、涩谷SKY 的日落时段、华纳兄弟哈利·波特影城，以及除了门票还要来园预约的三丽鸥彩虹乐园。大相扑也算，但只在你的日期落在 1 月、5 月或 9 月时。东京其他几乎所有东西——晴空塔、东京塔、神社、街区、免费的东京都厅观景台——都可以当天早上再决定。",
   },
   {
     q: "东京有免费的景点吗？",
@@ -237,15 +237,15 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "为什么东京的官方售票网站刷不了我的卡？",
-    a: "部分日本景点的支付系统无法顺利处理境外发行的信用卡，东京迪士尼是最有名的例子。这就是为什么从海外订票时，走第三方平台常常更顺利——即使官网理论上对你开放。这些平台提供易于操作、支持境外银行卡付款的结算流程，而不是更便宜的票。我们每一篇景点攻略都会说明那个场馆适合走哪条渠道。",
+    a: "部分日本景点的支付系统无法顺利处理境外发行的信用卡，东京迪士尼是最有名的例子。这就是为什么从海外订票时，通过第三方平台购票通常更顺利——即使官网理论上对你开放。这些平台提供易于操作、支持境外银行卡付款的结算流程，而不是更便宜的票。我们每一篇景点攻略都会说明那个场馆适合走哪条渠道。",
   },
   {
     q: "东京的景点需要几天？",
-    a: "三到四天就够把两个大型售票景点——比如一座主题乐园加一个影城——配上一个观景台、一个体验项目，以及一趟出城的一日游。顺序比天数重要：先把指定时段的日期定死，因为那是唯一不能挪动的东西，再用可以现场去的观光填空档。",
+    a: "三到四天就够把两个大型售票景点——比如一座主题乐园加一个影城——配上一个观景台、一个体验项目，以及一趟出城的一日游。顺序比天数重要：先确定需要预约的日期和时段，因为那是唯一不能挪动的东西，再用无需预约的观光填补空档。",
   },
   {
     q: "从东京出发有哪些值得的一日游？",
-    a: "其中四个尤其值得考虑，而且四天的体验各不相同。镰仓最轻松——一条 JR 线不到一小时，有露天大佛与海边寺院。日光是 UNESCO 世界遗产的神社加山景，往北两小时。箱根是温泉与火山谷，一张周游券涵盖整个环线。河口湖是去看富士山的地方。每一个在下面都有单独的攻略。",
+    a: "其中四个尤其值得考虑，而且这四条线路的体验各不相同。镰仓最轻松——乘坐 JR 列车不到一小时即可到达，有露天大佛与海边寺院。日光是 UNESCO 世界遗产的神社加山景，往北两小时。箱根是温泉与火山谷，一张周游券即可覆盖整条环线的交通。河口湖是去看富士山的地方。每一个在下面都有单独的攻略。",
   },
   {
     q: "涩谷SKY 和东京晴空塔选哪一个？",
@@ -253,14 +253,14 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "东京迪士尼两座园区可以一天逛完吗？",
-    a: `目前一张票不行。每张园区门票只限一座园区、一个日期，官方 FAQ 也写明一日跳园护照目前没有销售，所以两座园区就是两天。核查日期 ${label(TOKYO_GUIDE_PRICES.tokyoDisney.checked)}。`,
+    a: `目前一张门票无法游玩两个园区。每张园区门票只限一座园区、一个日期，官方 FAQ 也写明一日跳园护照目前没有销售，所以两座园区就是两天。核查日期 ${label(TOKYO_GUIDE_PRICES.tokyoDisney.checked)}。`,
   },
 ];
 
 const tours = [
   withKlookLocale(tokyoSubwayTicket, "zh-cn", {
     title: "东京地铁通票（24／48／72 小时）",
-    desc: "东京 Metro 与都营地铁全线不限次乘坐，抵达后领取，不必排队现场买",
+    desc: "东京 Metro 与都营地铁全线不限次乘坐，抵达后领取，无需现场排队购票",
   }),
   withKlookLocale(skytreeTicket, "zh-cn", {
     title: "东京晴空塔门票",
@@ -276,19 +276,19 @@ const tours = [
   }),
   withKlookLocale(shinjukuNightFoodWalkingTour, "zh-cn", {
     title: "新宿夜间美食导览",
-    desc: "三小时拼团步行，走回忆横丁、歌舞伎町与黄金街",
+    desc: "3 小时拼团徒步游，走回忆横丁、歌舞伎町与黄金街",
   }),
   withKlookLocale(
-    { title: "新宿酒店", desc: "位于山手线上，也是中央线、小田急与京王线的起点", url: tokyoStayAreas[0].url },
+    { title: "新宿酒店", desc: "位于山手线沿线，也是中央线、小田急线和京王线的起点", url: tokyoStayAreas[0].url },
     "zh-cn",
   ),
   withKlookLocale(
-    { title: "东京站／丸之内酒店", desc: "山手线车站，也是新干线起点，最适合常跑一日游的人", url: tokyoStayAreas[1].url },
+    { title: "东京站／丸之内酒店", desc: "山手线车站，也是新干线起点，最适合经常参加一日游的游客", url: tokyoStayAreas[1].url },
     "zh-cn",
   ),
   withKlookLocale(naritaLimousineBus, "zh-cn", {
     title: "成田机场－东京利木津巴士",
-    desc: "往返成田三座航站楼与东京的酒店、车站，凭二维码上车",
+    desc: "往返成田三座航站楼与东京的酒店、车站，扫描二维码乘车",
   }),
   withKlookLocale(hanedaLimousineBus, "zh-cn", {
     title: "羽田机场－东京利木津巴士",
@@ -296,9 +296,9 @@ const tours = [
   }),
   withKlookLocale(klookPassGreaterTokyo, "zh-cn", {
     title: "Klook Pass Greater Tokyo",
-    desc: "Klook 的多景点通票，可从清单选 2 到 7 个景点；确定三、四个付费景点后再比价",
+    desc: "Klook 的多景点通票，可从清单选 2 到 7 个景点；确定三四个收费景点后再比较价格",
   }),
-  withKlookLocale({ title: "Klook 日本 eSIM", desc: "落地就有网络，和门票在同一个结账流程买好", url: klookEsim.url }, "zh-cn"),
+  withKlookLocale({ title: "Klook 日本 eSIM", desc: "落地后即可上网，还能和门票一起结算", url: klookEsim.url }, "zh-cn"),
 ];
 
 const trail: Crumb[] = [
@@ -342,7 +342,7 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           </h1>
           <p className={styles.heroSubtitle}>
             东京热门景点的官方门票价格、哪些要先订、哪些免费，
-            以及哪些行程可以当天吃早饭时再决定。
+            以及哪些行程可以当天吃早餐时再决定。
           </p>
           <div className={styles.heroBadges}>
             {[`更新于 ${updatedLabel}`, "附核查日期的官方票价", "按紧迫性排序"].map((t) => (
@@ -364,9 +364,9 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>概要</span>
           <h2 className={styles.sectionTitle}>东京必去景点与门票：哪些要先订？</h2>
           <p className={styles.bodyText}>
-            东京必去景点有 5 个：涩谷SKY、teamLab Planets、东京迪士尼、东京晴空塔，以及 202 米高、免费入场的东京都厅观景室。
+            东京有 5 个必去景点：涩谷SKY、teamLab Planets、东京迪士尼、东京晴空塔，以及 202 米高、免费入场的东京都厅观景室。
             东京景点门票里，东京迪士尼一日护照成人 ¥8,900 起、teamLab Planets 成人 ¥3,800 起，两者都必须提前在线订好（{RECHECKED_ISO} 官网核查）。
-            华纳兄弟哈利波特影城（{PRICES.wbStudioTour.adult}）与三丽鸥彩虹乐园的来园预约也要先订，其他景点大多可以当天再决定。
+            华纳兄弟哈利·波特影城（{PRICES.wbStudioTour.adult}）与三丽鸥彩虹乐园的入园预约也要提前办理，其他景点大多可以当天再决定。
           </p>
           <p className={styles.bodyText}>
             这一页只谈东京。京都、大阪与儿童票价请看{" "}
@@ -397,7 +397,7 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>门票价格</span>
           <h2 className={styles.sectionTitle}>东京景点门票多少钱？</h2>
           <p className={styles.bodyText}>
-            成人票方面，观景台或 teamLab 美术馆从 ¥1,500 到 ¥3,800 起，主题乐园或影城从 ¥3,900 到 ¥8,900 起。
+            成人票方面，观景台或 teamLab 美术馆的票价为 ¥1,500 起至 ¥3,800 起，主题乐园或影城从 ¥3,900 到 ¥8,900 起。
             有几处票价按日期变动，所以“起”指的是官方公布的最低价。
           </p>
           <div className={styles.tableWrap}>
@@ -468,7 +468,7 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
 
         <KlookTourPicks
           heading="值得提前订好的东京项目"
-          intro="交通通票、一日游、夜间美食导览、住宿、机场交通、多景点通票与手机网络，再加上观景台门票与富士山大巴一日游。打开商品页查看你那天的实时价格。"
+          intro="交通通票、一日游、夜间美食导览、住宿、机场接送、多景点通票和手机上网服务，再加上观景台门票与富士山大巴一日游。打开商品页查看你那天的实时价格。"
           tours={tours}
         />
 
@@ -478,12 +478,12 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <h2 className={styles.sectionTitle}>东京必去景点有哪些？</h2>
           <p className={styles.bodyText}>
             东京必去的体验包括在观景台看日落、参观一家 teamLab 美术馆、花一天玩主题乐园，以及晚上去小店吃喝。
-            再加上神社、庭园与一趟一日游，第一次去东京就排满了。
+            再加上神社、庭园与一趟一日游，第一次去东京的行程就排满了。
           </p>
           <ul className={styles.bodyList}>
             <li><strong>高处的视野：</strong>日落时的<Link href="/zh-cn/guides/attractions/shibuya-sky-tickets" style={linkStyle}>涩谷SKY</Link>，或不必预订的<Link href="/guides/attractions/tokyo-tower-tickets" style={linkStyle}>东京塔（英文）</Link>。</li>
             <li><strong>数字艺术：</strong><Link href="/zh-cn/guides/attractions/teamlab-planets-tickets" style={linkStyle}>teamLab Planets</Link> 或 <Link href="/zh-cn/guides/attractions/teamlab-borderless-tickets" style={linkStyle}>teamLab 无界</Link>。</li>
-            <li><strong>一天乐园：</strong><Link href="/zh-cn/guides/attractions/tokyo-disney-tickets" style={linkStyle}>东京迪士尼</Link>、<Link href="/guides/attractions/sanrio-puroland-tickets" style={linkStyle}>三丽鸥彩虹乐园（英文）</Link>或室内的<Link href="/guides/attractions/tokyo-joypolis-tickets" style={linkStyle}>东京 Joypolis（英文）</Link>。</li>
+            <li><strong>玩一整天的主题乐园：</strong><Link href="/zh-cn/guides/attractions/tokyo-disney-tickets" style={linkStyle}>东京迪士尼</Link>、<Link href="/guides/attractions/sanrio-puroland-tickets" style={linkStyle}>三丽鸥彩虹乐园（英文）</Link>或室内的<Link href="/guides/attractions/tokyo-joypolis-tickets" style={linkStyle}>东京 Joypolis（英文）</Link>。</li>
             <li><strong>夜晚：</strong>走回忆横丁与黄金街的<Link href="/guides/attractions/tokyo-night-food-tour" style={linkStyle}>夜间美食导览（英文）</Link>。</li>
             <li><strong>动手体验：</strong>持有合格驾照文件的话，可以参加<Link href="/guides/attractions/tokyo-go-kart" style={linkStyle}>东京卡丁车（英文）</Link>。</li>
           </ul>
@@ -559,7 +559,7 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <h2 className={styles.sectionTitle}>东京地铁通票划算吗？</h2>
           <p className={styles.bodyText}>
             72 小时票通常划算，24 小时票则需要乘坐较多次地铁才划算。24 小时 {PRICES.tokyoSubwayTicket.adult}、48 小时 ¥1,500、
-            72 小时 ¥2,000，最长的票平均每天约 ¥667；用 IC 卡每趟 ¥178 到 ¥324，大约四趟短程就回本。24 小时票则要五到六趟。
+            72 小时 ¥2,000，最长的票平均每天约 ¥667；用 IC 卡每趟 ¥178 到 ¥324，乘坐约四次短途地铁就能值回票价。24 小时票则要五到六趟。
           </p>
           <p className={styles.bodyText}>
             它涵盖东京 Metro 与都营地铁，但不含 JR，所以山手线不能坐。完整的回本计算请看{" "}
@@ -578,7 +578,7 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>规划</span>
           <h2 className={styles.sectionTitle}>东京要玩几天？</h2>
           <p className={styles.bodyText}>
-            三天可以走完主要景点，五天还能排两趟出城的一日游。先把指定时段的票排好，再用可以现场去的行程填空档。
+            三天可以走完主要景点，五天还能排两趟出城的一日游。先把指定时段的票排好，再用无需预约的行程填补空档。
             我们的{" "}
             <Link href="/guides/attractions/tokyo-3-day-itinerary" style={linkStyle}>东京三天行程（英文）</Link>{" "}
             与{" "}
@@ -605,14 +605,14 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText}>
             <strong>涩谷SKY</strong> 是涩谷十字路口上方的露天屋顶，也是唯一一个“入场时段比门票本身更重要”的观景台：
             成人网上预订 15 点前入场 {SKY_ONLINE_DAY}、15 点起 {SKY_ONLINE_LATE}；14 楼售票柜台则是 {SKY_DOOR_DAY} 与{" "}
-            {SKY_DOOR_LATE}（官方票价，核查日期 {SKY_CHECKED}）。日落一定落在较晚的时段，而会售罄的正是这些时段。详见我们的{" "}
+            {SKY_DOOR_LATE}（官方票价，核查日期 {SKY_CHECKED}）。日落时间一定对应较晚的入场时段，而会售罄的正是这些时段。详见我们的{" "}
             <Link href="/zh-cn/guides/attractions/shibuya-sky-tickets" style={linkStyle}>涩谷SKY 门票攻略</Link>。{" "}
             想从更高处俯瞰东京，就选<strong>东京晴空塔</strong>，350 米天望甲板 {priceLabel(PRICES.tokyoSkytree.adult, "zh-cn")}——
             <Link href="/zh-cn/guides/attractions/tokyo-skytree-tickets" style={linkStyle}>我们的晴空塔门票攻略</Link>
             解释了为什么一开始就加购 450 米观景台，比到现场再加购便宜。
           </p>
           <p className={styles.bodyText}>
-            在为任何一个付钱之前，先看看我们的{" "}
+            在购买任何一处观景台的门票之前，先看看我们的{" "}
             <Link href="/guides/attractions/tokyo-observation-decks" style={linkStyle}>东京观景台对比（英文）</Link>，
             它把四座观景台放在一起比较——包括新宿的东京都厅，那里 202 米高的观景室是免费的。
           </p>
@@ -624,9 +624,9 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <h2 className={styles.sectionTitle}>teamLab 美术馆订哪一家？</h2>
           <p className={styles.bodyText}>
             东京有两家 teamLab 数字艺术美术馆——丰洲的 Planets 与麻布台的无界——
-            两家都提供可步入其中的沉浸式体验，实行分时段入场，门票也很快售罄。我们的{" "}
+            两家都提供可以走进作品内部的沉浸式体验，实行分时段入场，门票也很快售罄。我们的{" "}
             <Link href="/zh-cn/guides/attractions/teamlab-planets-tickets" style={linkStyle}>teamLab 门票攻略</Link>{" "}
-            对比了两家，说明哪一家适合你的行程，以及怎么在售罄之前订到。
+            对比了两家，说明哪一家更适合你的行程安排，以及怎么在售罄之前订到。
           </p>
         </section>
 
@@ -638,8 +638,8 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
             <strong>东京迪士尼</strong>（乐园与海洋）用的是指定日期票，提前数周就会售罄，而且门口完全不卖票——
             官网还可能拒绝境外信用卡。我们的{" "}
             <Link href="/zh-cn/guides/attractions/tokyo-disney-tickets" style={linkStyle}>东京迪士尼门票攻略</Link>{" "}
-            说明怎么买以及两座园区怎么选。哈利波特迷的话，<strong>华纳兄弟哈利波特影城东京</strong>
-            是位于练马的哈利波特影城，指定时段、不可重复入场，要预留大约四小时——详情见我们的{" "}
+            说明怎么买以及两座园区怎么选。如果你是哈利·波特迷，<strong>华纳兄弟哈利·波特影城东京</strong>
+            是位于练马区的哈利·波特影城，指定时段、不可重复入场，要预留大约四小时——详情见我们的{" "}
             <Link href="/guides/attractions/warner-bros-studio-tour-tokyo-tickets" style={linkStyle}>影城攻略（英文）</Link>。
           </p>
         </section>
@@ -649,7 +649,7 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>体验</span>
           <h2 className={styles.sectionTitle}>东京有哪些值得订的体验？</h2>
           <p className={styles.bodyText}>
-            动手类的体验大多可以很晚才订，只有一个例外。<strong>街头卡丁车</strong>让你穿着角色服装开上东京的公共道路，
+            动手体验类项目大多可以临近出发时再预订，只有一个例外。<strong>街头卡丁车</strong>让你穿着角色服装开上东京的公共道路，
             但它需要国际驾照，而国际驾照必须在出国前、在你自己的国家办理——我们的{" "}
             <Link href="/guides/attractions/tokyo-go-kart" style={linkStyle}>卡丁车攻略（英文）</Link>{" "}
             说明谁能办、谁不能办。想看日本的国技，我们的{" "}
@@ -659,11 +659,11 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText}>
             比较安静的选择方面，浅草的{" "}
             <Link href="/guides/attractions/kimono-rental-japan" style={linkStyle}>和服租赁（英文）</Link>{" "}
-            是要投入半天、有固定归还时间的行程，而不只是租件衣服；{" "}
+            是要投入半天、有固定归还时间的行程，而不只是简单租一套和服；{" "}
             <Link href="/guides/attractions/tea-ceremony-japan" style={linkStyle}>茶道体验（英文）</Link>{" "}
             不到一小时，大多数面向游客的项目都用英文教学；而{" "}
             <Link href="/guides/attractions/samurai-ninja-experience-tokyo" style={linkStyle}>武士与忍者体验（英文）</Link>{" "}
-            其实是用同一个名字在卖三种相当不同的东西。
+            实际上，这个名称下包含三种差别很大的体验项目。
           </p>
         </section>
 
@@ -672,10 +672,10 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>美食</span>
           <h2 className={styles.sectionTitle}>东京美食导览值得订吗？</h2>
           <p className={styles.bodyText}>
-            在东京，最好吃的东西常常藏在一扇你自己不会推开的门后——回忆横丁只有六个座位的居酒屋吧台、
+            在东京，最好吃的美食往往藏在那些你自己不会主动走进去的小店里——回忆横丁只有六个座位的居酒屋吧台、
             黄金街的小酒吧。这才是参加{" "}
             <Link href="/guides/attractions/tokyo-food-tour" style={linkStyle}>美食导览（英文）</Link>{" "}
-            真正的理由：不是食物本身（那你自己也找得到），而是那些店。如果你更想带点什么回家，{" "}
+            的真正理由：不是食物本身（那你自己也找得到），而是那些店。如果你更想带点什么回家，{" "}
             <Link href="/guides/attractions/tokyo-cooking-class" style={linkStyle}>料理课（英文）</Link>{" "}
             用英文授课、大约两个小时，结束后你能自己再做一次那道菜。
           </p>
@@ -686,11 +686,11 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>出城</span>
           <h2 className={styles.sectionTitle}>从东京出发有哪些值得的一日游？</h2>
           <p className={styles.bodyText}>
-            如果只想花一个早上做攻略，就选{" "}
-            <Link href="/guides/attractions/kamakura-day-trip" style={linkStyle}>镰仓（英文）</Link>：一条 JR 线不到一小时、JR Pass 本来就涵盖，
+            如果只想花一个上午规划行程，就选{" "}
+            <Link href="/guides/attractions/kamakura-day-trip" style={linkStyle}>镰仓（英文）</Link>：乘坐 JR 列车不到一小时即可到达，JR Pass 本来就涵盖，
             露天大佛与长谷寺相隔几分钟。{" "}
             <Link href="/guides/attractions/nikko-day-trip" style={linkStyle}>日光（英文）</Link>{" "}
-            往北两小时，看 UNESCO 世界遗产的神社与山中瀑布，两者之间的巴士是要提前规划的部分。
+            往北两小时，看 UNESCO 世界遗产的神社与山中瀑布，两处之间的巴士交通需要提前规划。
           </p>
           <p className={styles.bodyText}>
             富士山其实是两个不同的问题。想去河口湖一带的观景点，我们的{" "}
@@ -699,7 +699,7 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
             <Link href="/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo" style={linkStyle}>富士山一日游行程对比</Link>{" "}
             把各种行程整理清楚。想泡温泉的话，可以改去{" "}
             <Link href="/guides/attractions/hakone-day-trip-from-tokyo" style={linkStyle}>箱根（英文）</Link>，
-            一张周游券涵盖整个环线。
+            一张周游券即可覆盖整条环线的交通。
           </p>
         </section>
 
@@ -714,7 +714,7 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
         <GygCompare
           slug="zh-cn-things-to-do-tokyo"
           heading="同一城市的另一个旅游产品预订平台"
-          intro="这一页没有任何东西只依赖单一卖家。如果你在排日期时，上面某样已经售罄——涩谷SKY 的时段、富士山大巴、teamLab 的入场——GetYourGuide 的东京商品目录是另一个可以按日期搜索的地方，而且有部分 Klook 上没有的旅游项目。"
+          intro="本页介绍的项目都不只依赖单一平台预订。如果你在排日期时，上面介绍的某个项目已经售罄——涩谷SKY 的时段、富士山大巴、teamLab 的入场——GetYourGuide 的东京商品目录是另一个可以按日期搜索的地方，而且有部分 Klook 上没有的旅游项目。"
           listings={[gygTokyo, gygTokyoEntryTickets]}
         />
 

@@ -81,7 +81,7 @@ const stayAreas = [
 const tripPrep = [
   withKlookLocale(tokyoAirportTripPrep[0], LOCALE, {
     label: "Klook 日本 eSIM",
-    why: "月台、巴士乘車處與飯店 check-in，在您通關時網路就已經能用的話都會順很多，不必先去排 SIM 卡櫃台。",
+    why: "如果通關時就能上網，找月台、巴士乘車處以及辦理飯店入住都會順利許多，不必先去排 SIM 卡櫃台。",
     ctaLabel: "在 Klook 查看 eSIM 方案 →",
   }),
   withKlookLocale(tokyoAirportTripPrep[1], LOCALE, {
@@ -140,7 +140,7 @@ const naritaMasterRows = [
     option: "定額計程車",
     time: "視路況而定，未公布數字",
     fare: "依區域 ¥23,500～¥38,500，高速公路過路費另計",
-    often: "隨叫隨走",
+    often: "隨時可搭乘",
     lands: "您的飯店地址",
     source: "成田機場",
   },
@@ -183,7 +183,7 @@ const hanedaMasterRows = [
     option: "定額計程車",
     time: "視路況而定，未公布數字",
     fare: "機場確認有定額制度，但未公布金額",
-    often: "隨叫隨走",
+    often: "隨時可搭乘",
     lands: "您的飯店地址",
     source: "羽田機場",
   },
@@ -433,13 +433,13 @@ const nexGuidePoints = [
   },
   {
     title: "每 30 分鐘一班，車資隨季節浮動",
-    desc: `JR 東日本表示，往東京、新宿與橫濱的列車一天中大部分時段每 30 分鐘一班；車資中的指定席部分淡季便宜 ¥200、旺季貴 ¥200。所以 ¥3,140 與 ¥3,330 是平常期的數字。查詢於 ${CHECKED}。`,
+    desc: `JR 東日本表示，往東京、新宿與橫濱的列車一天中大部分時段每 30 分鐘一班；車資中的指定席費用，淡季便宜 ¥200，旺季則貴 ¥200。所以 ¥3,140 與 ¥3,330 是平常期的數字。查詢於 ${CHECKED}。`,
   },
 ];
 
 const skylinerPoints = [
   {
-    title: "京成進城最快的列車",
+    title: "京成電鐵前往東京市區最快的列車",
     desc: `京成公布 Skyliner 從機場第 2·3 航廈站到京成上野站需 41 分鐘，並形容到東京市中心「最快只要 36 分鐘」。在日暮里轉乘 JR 或地下鐵，就能到東京大部分區域。查詢於 ${CHECKED}。`,
   },
   {
@@ -448,11 +448,11 @@ const skylinerPoints = [
   },
   {
     title: "JR Pass 不能搭",
-    desc: "Skyliner 屬於京成電鐵這家民營鐵路，不是 JR。持 JR Pass 不能搭。京成另有 Skyliner ＋東京地鐵 24／48／72 小時的組合票，如果您打算靠地下鐵逛東京，這個更划算。",
+    desc: "Skyliner 屬於京成電鐵這家民營鐵路，不是 JR。持 JR Pass 不能搭。京成另有 Skyliner ＋東京地鐵 24／48／72 小時的組合票，如果您打算以地鐵作為東京市區的主要交通工具，這種套票更划算。",
   },
   {
     title: "每小時 3 班，事先買還更便宜",
-    desc: `京成表示 Skyliner 每小時 3 班。它自家的優惠票單程 ¥2,310、來回 ¥4,500，櫃台原價則是 ¥2,580 與 ¥5,160；可以買電子票，或在機場 Skyliner 櫃台兌換。查詢於 ${CHECKED}。`,
+    desc: `京成表示 Skyliner 每小時 3 班。京成官方販售的優惠票，單程 ¥2,310、來回 ¥4,500，櫃台原價則是 ¥2,580 與 ¥5,160；可以買電子票，或在機場 Skyliner 櫃台兌換。查詢於 ${CHECKED}。`,
   },
   {
     title: "最適合前往東京東側或北側的旅客",
@@ -478,7 +478,7 @@ const destinationRows = [
   { dest: "東京車站", pick: "N'EX", note: "最快 53 分鐘直達，不用換車，¥3,140。" },
   { dest: "澀谷", pick: "N'EX", note: "同一班車直達，¥3,330。" },
   { dest: "新宿", pick: "N'EX", note: "直達——不用拖著行李轉車——¥3,330。" },
-  { dest: "橫濱", pick: "N'EX", note: "直達 ¥4,480，往東京以南的明顯選擇。" },
+  { dest: "橫濱", pick: "N'EX", note: "直達車資 ¥4,480，是前往東京以南地區的首選。" },
 ];
 
 const busFareRows = [
@@ -489,7 +489,7 @@ const busFareRows = [
 const busPoints = [
   {
     title: "攜帶大型或沉重行李時最適合",
-    desc: "機場利木津巴士把行李放進車底行李艙——您不必把包包拖過車廂、扛上電扶梯。帶家人、帶滑雪裝備，或拉大型行李箱的人特別有用。",
+    desc: "機場利木津巴士把行李放進車底行李艙——您不必拖著行李穿過車廂，也不用扛著行李搭手扶梯。帶家人、帶滑雪裝備，或拉大型行李箱的人特別有用。",
   },
   {
     title: "直達主要飯店",
@@ -512,7 +512,7 @@ const busPoints = [
 const transferTips = [
   {
     title: "落地前先把 IC 卡準備好",
-    desc: "事先在手機上（Suica 或 PASMO App）設定好的交通 IC 卡，讓您一抵達就能直接刷進閘門，不用在售票機前排隊。如果您沒有，成田與羽田的 IC 卡機器都有英文介面。京成提醒一點：IC 卡只能付 Skyliner 的 ¥1,280 乘車券部分，¥1,300 的 Liner 券要另外購買。",
+    desc: "事先在手機上（Suica 或 PASMO App）設定好的交通 IC 卡，讓您一抵達就能直接刷進閘門，不用在售票機前排隊。如果您還沒有 IC 卡，成田與羽田機場的 IC 卡售票機都有英文介面。京成提醒一點：IC 卡只能付 Skyliner 的 ¥1,280 乘車券部分，¥1,300 的 Liner 券要另外購買。",
   },
   {
     title: "深夜抵達的選項有限",
@@ -520,11 +520,11 @@ const transferTips = [
   },
   {
     title: "持 JR Pass 的人：上車前先完成啟用",
-    desc: "如果您帶著 JR Pass 兌換券抵達成田，請先在入境大廳的 JR 東日本旅行服務中心換成正式的周遊券，再去搭 N'EX。光有兌換券進不了閘門。",
+    desc: "如果您帶著 JR Pass 兌換券抵達成田，請先在入境大廳的 JR 東日本旅行服務中心換成正式的周遊券，再去搭 N'EX。只有兌換券，無法通過驗票閘門。",
   },
   {
     title: "考慮行李宅配（宅急便）",
-    desc: "日本的宅急便服務（最常見的是黑貓大和運輸）可以把行李從機場送到您的飯店，通常隔天送達。這讓您可以輕裝搭電車，不用把重箱子拖過車站。價格由宅配業者訂定，而不是上述任何一家交通業者，所以請到入境大廳的櫃台依您的行李尺寸確認。",
+    desc: "日本的宅急便服務（最常見的是黑貓大和運輸）可以把行李從機場送到您的飯店，通常隔天送達。這讓您可以輕裝搭電車，不用拖著沉重的行李箱穿越車站。價格由宅配業者訂定，而不是上述任何一家交通業者，所以請到入境大廳的櫃台依您的行李尺寸確認。",
   },
 ];
 
@@ -547,7 +547,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "東京機場交通需要事先預訂嗎？",
-    a: `電車方面，事先預訂是為了價格而不是座位：Skyliner 優惠票單程 ¥2,310 而不是 ¥2,580，N'EX 東京來回車票 ¥5,200，而到新宿買兩張單程要 ¥6,660，Skyliner ＋東京地鐵通票組合從 ¥2,840 起。這些都要在機場領取，所以還是要預留櫃台的時間。真正需要預訂的是需要事先預約車輛的交通方式：旺季的利木津巴士指定路線，以及任何專車或共乘接送，尤其是末班車之後才落地的航班。查詢於 ${CHECKED}。`,
+    a: `電車方面，事先預訂是為了價格而不是座位：Skyliner 優惠票單程 ¥2,310 而不是 ¥2,580，N'EX 東京來回車票 ¥5,200，而到新宿買兩張單程要 ¥6,660，Skyliner ＋東京地鐵通票組合從 ¥2,840 起。這些都要在機場領取，所以還是要預留櫃台的時間。真正需要提前安排的，是必須事先預約車輛的接送服務：旺季的利木津巴士指定路線，以及任何專車或共乘接送，尤其是末班車之後才落地的航班。查詢於 ${CHECKED}。`,
   },
   {
     q: "成田特快和 Skyliner 哪個快？",
@@ -571,7 +571,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "成田特快 N'EX 值得搭嗎？",
-    a: `如果您有 JR Pass，絕對值得——它免費、含指定席，也是最舒服的選項。沒有周遊券的話，到東京車站 ¥3,140、到品川、澀谷或新宿 ¥3,330，換到的是不用換車的直達；如果回程也從成田飛，¥5,200 的來回車票又更划算。車資中的指定席部分淡季便宜 ¥200、旺季貴 ¥200。查詢於 ${CHECKED}。`,
+    a: `如果您有 JR Pass，絕對值得——它免費、含指定席，也是最舒服的選項。沒有周遊券的話，到東京車站 ¥3,140、到品川、澀谷或新宿 ¥3,330，換到的是不用換車的直達；如果回程也從成田飛，¥5,200 的來回車票又更划算。車資中的指定席費用，淡季便宜 ¥200，旺季則貴 ¥200。查詢於 ${CHECKED}。`,
   },
   {
     q: "成田機場到新宿怎麼走？",
@@ -579,7 +579,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "Skyliner 可以用 JR Pass 嗎？",
-    a: "不行。Skyliner 屬於京成電鐵這家民營鐵路，日本鐵路周遊券不涵蓋。持 JR Pass 的人應該搭 N'EX，它是 JR 東日本的列車，持周遊券免費，含指定席。如果您沒有 JR Pass，Skyliner 對往東京東側來說是很強的選項。",
+    a: "不行。Skyliner 屬於京成電鐵這家民營鐵路，日本鐵路周遊券不涵蓋。持 JR Pass 的人應該搭 N'EX，它是 JR 東日本的列車，持周遊券免費，含指定席。如果您沒有 JR Pass，前往東京東側時，Skyliner 是很有競爭力的選擇。",
   },
   {
     q: "在東京，機場利木津巴士比電車好嗎？",
@@ -705,8 +705,8 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
           <span className={styles.sectionLabel}>依飯店區域</span>
           <h2 className={styles.sectionTitle}>我的飯店區域適合哪一種東京機場交通？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            如果您已經知道要住哪裡，看這張表就能掌握各區域的交通選擇。找到您的區域往右看：最快的選項、最便宜的選項，
-            以及有沒有不必拖著行李箱轉車就能到的方式。從成田出發，前往東京西側適合搭 N&apos;EX，前往東側則適合搭京成電鐵；
+            如果您已經知道要住哪裡，看這張表就能掌握各區域的交通選擇。找到您的住宿區域後，往右查看最快、最便宜的交通方式，
+            以及是否有不必拖著行李箱轉車的選項。從成田出發，前往東京西側適合搭 N&apos;EX，前往東側則適合搭京成電鐵；
             從羽田出發，搭京急線都能前往這五個區域。
           </p>
           <div className={styles.tableWrap}>
@@ -738,8 +738,8 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
             不含轉乘本身的時間。還在挑房間？我們的{" "}
             <Link href="/guides/attractions/where-to-stay-in-tokyo">東京住宿區域指南（英文）</Link>依路線與機場
             比較同樣這些區域，{" "}
-            <Link href="/guides/attractions/tokyo-5-day-itinerary">東京 5 天行程（英文）</Link>則告訴您較長的行程
-            實際上多半在山手線的哪一側度過。
+            <Link href="/guides/attractions/tokyo-5-day-itinerary">東京 5 天行程（英文）</Link>則會告訴您，較長的行程
+            實際上多半在山手線的哪一側活動。
           </p>
         </section>
 
@@ -748,7 +748,7 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
           <span className={styles.sectionLabel}>價格與時間</span>
           <h2 className={styles.sectionTitle}>東京機場交通要多少錢、要多久？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            兩座機場共十一個選項，大人單程車資對照業者自家公布的車程，各機場內由便宜到貴排列。光看票價差距就很清楚：
+            兩座機場共十一種交通選項，列出成人單程票價與各業者公布的車程，並依各機場的票價由低到高排列。光看票價差距就很清楚：
             從成田出發，價格範圍是 <strong>¥1,060 到 ¥38,500</strong>；從羽田出發，最便宜的進城方式只要{" "}
             <strong>¥330</strong>。業者沒有公布數字的地方，表格會直接註明。
           </p>
@@ -795,8 +795,8 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
             </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Klook 頁面會在新分頁開啟。本頁不列 Klook 價格：Klook 價格依日期而變，請在商品頁查看您那天的金額。
-            上面的鐵路車資是櫃台價——兩家業者都有賣更便宜的旅客票，請見下方的{" "}
+            Klook 頁面會在新分頁中開啟。本頁不列 Klook 價格：Klook 價格依日期而變，請在商品頁查看您那天的金額。
+            上述鐵路票價為櫃檯售價——兩家業者都有販售價格更優惠的旅客票券，請見下方的{" "}
             <a href="#prebuy" style={{ color: "var(--text)", fontWeight: 600 }}>預購票一覽表</a>。
           </p>
         </section>
@@ -806,8 +806,8 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
           <span className={styles.sectionLabel}>成田機場（NRT）</span>
           <h2 className={styles.sectionTitle}>成田機場到東京市中心怎麼走？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            共有六種方式，老實說該依您住哪裡來排名，而不是依速度。成田在東京市區以東約 60～70 公里，因此選擇哪種
-            交通方式都值得仔細考慮：最快的電車 41 分鐘，最便宜的 ¥1,060。車資為大人單程；業者沒有公布數字的地方，表格直接註明，
+            共有六種交通方式，排名應依您的住宿地點，而不是依速度。成田機場位於東京市區以東約 60～70 公里，因此值得仔細
+            比較各種交通方式：最快的電車 41 分鐘，最便宜的 ¥1,060。車資為大人單程；業者沒有公布數字的地方，表格直接註明，
             不做猜測。
           </p>
           <div className={styles.tableWrap}>
@@ -847,8 +847,8 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
           <span className={styles.sectionLabel}>羽田機場（HND）</span>
           <h2 className={styles.sectionTitle}>羽田機場到東京市中心怎麼走？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            羽田距離東京市中心 15～20 公里，進城只是一趟市內移動，不是長途跋涉：¥330、11 分鐘就到山手線上的品川。
-            在羽田，問題幾乎從來不是速度——而是行李，以及您的班機幾點落地。
+            羽田距離東京市中心 15～20 公里，前往市區就像一般市內交通，不是長途跋涉：¥330、11 分鐘就到山手線上的品川。
+            從羽田進市區，要考慮的幾乎從來不是車程，而是行李多寡，以及班機的抵達時間。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -887,14 +887,14 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
           <h2 className={styles.sectionTitle}>成田機場到東京最便宜的方式是什麼？</h2>
           <p className={styles.bodyText}>
             <strong>京成本線特急，¥1,060</strong> 到京成上野（IC ¥1,052）。它是一般通勤用的特急，不是高級列車，
-            所以雖然叫「特急」，卻不收特急費、也不用劃位——直接上車。京成未公布這班列車的固定車程；除了行李空間，
-            這是選擇它時唯一需要取捨的地方。
+            所以雖然叫「特急」，但不需另外支付特急費，也不用劃位，直接上車即可。京成未公布這班列車的固定車程；除了行李空間之外，
+            車程不固定是選擇它時唯一需要取捨的地方。
           </p>
           <ul className={styles.bodyList}>
-            <li><strong>¥1,060——京成本線特急</strong>到京成上野，經京成成田與船橋。從機場出發最便宜的電車，沒有之一。</li>
+            <li><strong>¥1,060——京成本線特急</strong>到京成上野，經京成成田與船橋。從機場出發，票價最低的電車就是這班。</li>
             <li><strong>¥1,280——京成 Access 特急</strong>到日暮里或京成上野（IC ¥1,267），走較快的成田 Sky Access 線。京成公布直通淺草 50 分鐘，並且不用換車繼續開往日本橋、新橋與品川。</li>
-            <li><strong>¥2,580——京成 Skyliner</strong>，用京成自家優惠票是 ¥2,310。您多付的 ¥1,300 Liner 券買到的是指定席、行李架與 41 分鐘。</li>
-            <li><strong>¥0——持 JR Pass 搭 N&apos;EX。</strong>指定席也包含在內，對持周遊券的人來說，這是遙遙領先、最便宜又舒適的選擇。</li>
+            <li><strong>¥2,580——京成 Skyliner</strong>，用京成自家優惠票是 ¥2,310。多付 ¥1,300 購買 Liner 券，就能享有對號座位、行李架，以及 41 分鐘的車程。</li>
+            <li><strong>¥0——持 JR Pass 搭 N&apos;EX。</strong>連對號座位也包含在內，對持有周遊券的旅客來說，這是遙遙領先的最划算又舒適的選擇。</li>
           </ul>
           <p className={styles.bodyText}>
             各種交通方式的價格差異就是如此：¥1,060 買到最慢的車，¥2,580 買到最快的車，而如果您在乎錢、不在乎指定席，¥1,280 的
@@ -979,8 +979,8 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             <strong>Skyliner</strong> 車程較短，票價也比較便宜——依京成自家數字，<strong>41 分鐘</strong>到京成上野、
             <strong>¥2,580</strong>，N&apos;EX 則是 <strong>¥3,140</strong>、到東京車站<strong>「最快 53 分鐘」</strong>。
-            但它只到兩個車站。如果您的飯店在新宿、澀谷、品川或橫濱，<strong>N&apos;EX</strong> <em>到飯店</em>反而比較快，
-            因為它不用轉車就到——而且持 JR Pass 免費，對持有 JR Pass 的旅客來說，就不用再猶豫了。
+            不過，Skyliner 只停靠兩個車站。如果您的飯店在新宿、澀谷、品川或橫濱，搭 <strong>N&apos;EX</strong> <em>前往飯店</em>反而比較快，
+            因為不需要轉車——而且持 JR Pass 免費，對持有 JR Pass 的旅客來說，就不用再猶豫了。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -1005,7 +1005,7 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-            <strong>還有一個沒人比較的第三選項：</strong>兩種列車從機場出發走的是不同路線，而兩條路線上的便宜列車也
+            <strong>還有一個經常被忽略的第三種選擇：</strong>兩種列車從機場出發走的是不同路線，而兩條路線上的便宜列車也
             不一樣。成田 Sky Access 線跑的是 Skyliner 與 Access 特急；京成本線跑的是一般特急。同一家業者、同一座機場，
             乘車券差 ¥220——Access 特急到日暮里 ¥1,280，本線特急到京成上野 ¥1,060。如果您在比的是 Sky Access 線對本線，
             而不是 Skyliner 對 N&apos;EX，差別就只有這樣：多付 ¥220 換較快的路線，兩者都沒有指定席。
@@ -1021,8 +1021,8 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
           <span className={styles.sectionLabel}>依目的地</span>
           <h2 className={styles.sectionTitle}>您的飯店該搭哪一班？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            選和您飯店相符的那一列，而不是最快的那班車。拖著兩個行李箱轉一次車，花掉的時間比 Skyliner 與 N&apos;EX
-            之間的 12 分鐘還多。
+            選和您飯店相符的那一列，而不是最快的那班車。拖著兩個行李箱轉車一次，花費的時間比 Skyliner 與 N&apos;EX
+            相差的 12 分鐘還長。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -1089,7 +1089,7 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             京急的預估車程，查詢於 {CHECKED}。不含轉乘時間，其中幾個目的地需要轉一次車。¥330（IC ¥327）是第 3 航廈到
             品川的車資；之後的車資依轉乘路線而定，用{" "}
-            <Link href="/guides/transport/ic-cards-japan">IC 卡（英文指南）</Link>就能全部搞定，不必用售票機。
+            <Link href="/guides/transport/ic-cards-japan">IC 卡（英文指南）</Link>就能支付全部車資，不必操作售票機。
           </p>
         </section>
 
@@ -1098,7 +1098,7 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
           <span className={styles.sectionLabel}>機場巴士</span>
           <h2 className={styles.sectionTitle}>機場利木津巴士比電車好嗎？</h2>
           <p className={styles.bodyText}>
-            如果比起車程，更在意搬運行李的便利性，巴士會更適合。每人可將兩件行李放入巴士下方的行李艙，直到您下車前都不用再碰，而且很多路線
+            如果您比起車程，更在意行李搬運是否方便，搭巴士會更適合。每人可將兩件行李放入巴士下方的行李艙，直到您下車前都不用再碰，而且很多路線
             的終點是飯店門口，而不是車站大廳。尖峰時段巴士就比較不利，因為同樣會受到高速公路塞車影響。每座機場沒有單一
             車資——業者依路線定價。
           </p>
@@ -1237,13 +1237,13 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
             <strong>那門到門的接送車什麼時候真的勝出？</strong>依公布的數字，有四種情況，而且關鍵在「門口」而不是價格：
           </p>
           <ul className={styles.bodyList}>
-            <li><strong>您在末班車之後落地。</strong>羽田是 00:08 之後；成田的 Skyliner 末班車平日 23:00、週末 22:40 從機場開出。在那之後，只有車能把您送到地址，而不是站牌。</li>
-            <li><strong>您的飯店不在巴士路線上。</strong>巴士每人 ¥3,600 的前提是它停在您門口附近；否則您付的是巴士加計程車。</li>
-            <li><strong>行李多到雙手都拿不下。</strong>兩大兩小、四個行李箱加一台嬰兒車，在日暮里轉車會非常吃力，而 ¥1,280 的 Access 特急省下的錢，在第一次有人扛著行李箱爬樓梯時就沒了。</li>
+            <li><strong>您在末班車之後落地。</strong>羽田是 00:08 之後；成田的 Skyliner 末班車平日 23:00、週末 22:40 從機場開出。在那之後，只有專車才能直接送您到指定地址，而不只是車站或站牌。</li>
+            <li><strong>您的飯店不在巴士路線上。</strong>巴士每人 ¥3,600，但前提是停靠站就在飯店附近；否則還得另外支付計程車費。</li>
+            <li><strong>行李多到雙手都拿不下。</strong>兩大兩小、四個行李箱加一台嬰兒車，在日暮里轉車會非常吃力，而 ¥1,280 的 Access 特急省下的錢，只要有人得扛著行李箱爬一次樓梯，就沒了。</li>
             <li><strong>您一行有 5 人以上。</strong>巴士與電車按座位計價、人數一多就線性增加；7 人座或 10 人座按車計價，所以每人分攤的金額會持續下降，車票則不會。</li>
           </ul>
           <p className={styles.bodyText}>
-            要在出發前訂，而不是到排班處才叫：預約接送的重點是司機會追蹤您的航班號碼，這在入境大廳是安排不了的。請拿您一行
+            要在出發前預訂，而不是到計程車排班區才叫車：預約接送的重點是司機會追蹤您的航班號碼，這在入境大廳是安排不了的。請拿您一行
             人數的報價和上表的「每人」欄比較——如果沒有比巴士便宜，就搭巴士。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
@@ -1265,8 +1265,8 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
           <span className={styles.sectionLabel}>預訂</span>
           <h2 className={styles.sectionTitle}>機場交通需要事先預訂嗎？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            電車方面，事先預訂買到的是比較低的價格，而不是一個否則會被搶光的座位：兩家業者都賣比櫃台價便宜的旅客票，
-            而且兩者都還是要到機場領取。真正需要預訂的是需要事先預約車輛的交通方式——旺季的巴士指定路線，或是電車收班後才落地的
+            電車方面，事先預訂是為了享有較低的票價，而不是為了搶座位：兩家業者都賣比櫃台價便宜的旅客票，
+            而且兩者都還是要到機場領取。真正需要提前安排的，是必須事先預約車輛的接送服務——旺季的巴士指定路線，或是電車收班後才落地的
             航班要用的車。以下整理各種票券的價格與領取方式。
           </p>
           <div className={styles.tableWrap}>
@@ -1298,10 +1298,10 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
             業者表示羽田機場不販售）。
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-            <strong>付款前先確認三件事。</strong>第一，是電子票還是要兌換的憑證：Skyliner 與巴士都可以是直接掃描的
+            <strong>付款前，請先確認以下三件事。</strong>第一，是電子票還是要兌換的憑證：Skyliner 與巴士都可以是直接掃描的
             QR code，而 N&apos;EX 來回車票必須帶護照到機場車站領取，長途飛行後還要再排一次隊。第二，取消期限——在第三方預訂平台上
             是依各商品而定，不是鐵路公司訂的，請確認您那天日期顯示的規定。第三，您幾點落地：23:40 抵達羽田，離末班車只剩
-            28 分鐘（第 3 航廈 00:08 發車，依京急深夜時段資訊頁，查核日 2026年11月1日），事先買什麼都改變不了這一點，除了一台車。
+            28 分鐘（第 3 航廈 00:08 發車，依京急深夜時段資訊頁，查核日 2026年11月1日），事先買什麼票都改變不了這一點，唯一的例外是預約專車接送。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
             <KlookLink href={skylinerUrl} className={styles.verdictBtn} target="_blank" rel={KLOOK_REL}>
@@ -1321,7 +1321,7 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
             </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Klook 頁面會在新分頁開啟。本頁不列 Klook 價格：Klook 價格依日期而變——
+            Klook 頁面會在新分頁中開啟。本頁不列 Klook 價格：Klook 價格依日期而變——
             請在結帳時確認您那天的現價與取消規定。如果您在市區的日子以地鐵為主，可以看看{" "}
             <KlookLink href={busSubwayComboUrl} target="_blank" rel={KLOOK_REL} style={{ color: "var(--text)", fontWeight: 600 }}>
               巴士＋東京地鐵通票組合
@@ -1371,7 +1371,7 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
             <li><strong>07:00 前起飛：</strong>羽田從 05:26 往回推、市區首班巴士約 04:00 往回推，或住在機場附近。清晨接駁巴士 03:35 從池袋、04:00 從新宿高速巴士總站（Busta 新宿）發車。</li>
           </ul>
           <p className={styles.bodyText}>
-            這些選項中只有車能送您到地址而不是站點，這正是為什麼它在凌晨 1 點值得花錢、在下午 2 點則是浪費。請在出發前
+            這些選項中只有專車才能直接送您到指定地址，而不只是車站或站牌，這正是為什麼凌晨 1 點搭專車值得多花這筆錢，下午 2 點則是浪費。請在出發前
             預訂——司機會追蹤您的航班號碼才是重點，這在入境大廳是安排不了的。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
@@ -1415,7 +1415,7 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
         {/* Klook: two things the transfer ticket does not cover */}
         <KlookTripPrep
           heading="機場票沒涵蓋的兩件事"
-          intro="機場票只送您到第一個車站。這兩項負責它的前後："
+          intro="機場交通票券只負責到第一個車站，以下兩項可補足前後的行程："
           items={tripPrep}
         />
 

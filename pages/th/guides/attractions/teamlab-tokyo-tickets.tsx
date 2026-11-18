@@ -53,39 +53,39 @@ const BORDERLESS_URL = thTeamlabBorderless.url;
 
 const compareRows = [
   { factor: "ที่ตั้ง", planets: "โทโยสุ (เขตโคโต)", borderless: "อาซาบุไดฮิลส์ (เขตมินาโตะ)" },
-  { factor: "เป็นแบบไหน", planets: "เดินเท้าเปล่า ลุยน้ำ", borderless: "ผลงานกว่า 50 ชิ้นในเขาวงกตไร้แผนที่" },
-  { factor: "เหมาะกับ", planets: "ครอบครัว คนที่ไปครั้งแรก คนที่อยากใช้ร่างกาย", borderless: "คนรักศิลปะ คนที่อยากเดินช้า ๆ คนชอบถ่ายรูป" },
+  { factor: "ลักษณะการชม", planets: "เดินเท้าเปล่า ลุยน้ำ", borderless: "ผลงานศิลปะกว่า 50 ชิ้นในพื้นที่คล้ายเขาวงกตที่ไม่มีแผนที่" },
+  { factor: "เหมาะกับ", planets: "ครอบครัว ผู้ที่ไปครั้งแรก และผู้ที่ชอบกิจกรรมที่ได้เคลื่อนไหวร่างกาย", borderless: "คนรักศิลปะ ผู้ที่ชอบเดินชมแบบไม่เร่งรีบ และผู้ที่ชอบถ่ายรูป" },
   { factor: "ตั๋วผู้ใหญ่", planets: P_ADULT, borderless: B_ADULT },
   { factor: "ตั๋วเด็ก", planets: `${P_CHILD} (อายุ 4–12 ปี ต่ำกว่า 4 ปีฟรี)`, borderless: `${B_CHILD} (อายุ 4–12 ปี ต่ำกว่า 4 ปีฟรี)` },
-  { factor: "เวลาเปิด", planets: "08:00–22:00 (31 ธ.ค.–2 ม.ค. เปิด 08:00–20:00)", borderless: "ประกาศไว้ 08:30–21:00 เปลี่ยนตามวัน" },
-  { factor: "การเข้าชม", planets: "ระบุวันและเวลาเข้าชม", borderless: "รอบระบุเวลา หรือ Flexible Pass ที่ไม่ระบุเวลา" },
-  { factor: "ตั๋วหน้างาน", planets: "ไม่มีขายหน้างาน", borderless: "ซื้อหน้างานแพงกว่า ¥200" },
+  { factor: "เวลาเปิด", planets: "08:00–22:00 (31 ธ.ค.–2 ม.ค. เปิด 08:00–20:00)", borderless: "เวลาเปิดทำการที่ประกาศไว้คือ 08:30–21:00 เปลี่ยนตามวัน" },
+  { factor: "การเข้าชม", planets: "ระบุวันและเวลาเข้าชม", borderless: "ตั๋วแบบระบุรอบเวลา หรือ Flexible Pass แบบไม่ระบุเวลา" },
+  { factor: "ตั๋วหน้างาน", planets: "ไม่มีขายหน้างาน", borderless: "ซื้อตั๋วหน้างานราคาแพงกว่า ¥200" },
   { factor: "ระยะเวลาจัดแสดง", planets: "ถึงสิ้นปี 2027", borderless: "ถาวร" },
 ];
 
 const whoFor = [
   {
     title: "เลือก Planets ถ้า…",
-    desc: "คุณมากับเด็ก อยากได้ประสบการณ์ที่ใช้ร่างกาย และไม่ติดที่เท้าจะเปียก คุณจะเดินเท้าเปล่าลุยน้ำที่สูงถึงระดับเข่าผู้ใหญ่",
+    desc: "คุณมากับเด็ก อยากทำกิจกรรมที่ได้เคลื่อนไหวร่างกาย และไม่กังวลว่าเท้าจะเปียก คุณจะได้เดินเท้าเปล่าลุยน้ำที่ลึกถึงระดับเข่าของผู้ใหญ่",
   },
   {
     title: "เลือก Borderless ถ้า…",
-    desc: "คุณอยากดูงานศิลปะมากกว่าเดินลุยน้ำ ที่นี่ไม่มีเส้นทางตายตัว ผลงานเคลื่อนย้ายระหว่างห้อง และคุณเดินได้ตามจังหวะของตัวเอง",
+    desc: "คุณอยากดูงานศิลปะมากกว่าเดินลุยน้ำ ที่นี่ไม่มีเส้นทางตายตัว ผลงานศิลปะเคลื่อนที่ไปมาระหว่างห้อง และคุณเดินได้ตามจังหวะของตัวเอง",
   },
   {
     title: "ไปทั้งสองแห่ง ถ้า…",
-    desc: "คุณมีเวลาว่างสองครึ่งวันและชอบ teamLab ทั้งสองแห่งอยู่คนละย่านและต้องจองตั๋วระบุเวลาแยกกัน จึงควรเว้นระยะให้ห่าง",
+    desc: "คุณมีเวลาว่างครึ่งวันสองช่วง และชอบ teamLab ทั้งสองแห่งอยู่คนละย่านและต้องจองตั๋วระบุเวลาแยกกัน จึงควรเว้นเวลาระหว่างสองแห่งให้เพียงพอ",
   },
 ];
 
 const faqItems: FaqItem[] = [
   {
     q: "teamLab ในโตเกียว Planets หรือ Borderless แห่งไหนดีกว่า?",
-    a: "ไม่มีแห่งไหนดีกว่าในทุกด้าน Planets เหมาะกับครอบครัวและคนที่ไปครั้งแรกซึ่งอยากได้ประสบการณ์ที่ใช้ร่างกาย คุณจะเดินเท้าเปล่าลุยน้ำ ส่วน Borderless เหมาะกับคนรักศิลปะที่อยากเดินสำรวจช้า ๆ ไม่มีแผนที่และไม่มีเส้นทางตายตัว ถ้ามีเวลาแห่งเดียวและมากับเด็ก ให้เลือก Planets",
+    a: "ไม่มีแห่งไหนดีกว่าอีกแห่งในทุกด้าน Planets เหมาะกับครอบครัวและคนที่ไปครั้งแรกซึ่งอยากได้ประสบการณ์ที่ใช้ร่างกาย คุณจะเดินเท้าเปล่าลุยน้ำ ส่วน Borderless เหมาะกับคนรักศิลปะที่อยากเดินสำรวจช้า ๆ ไม่มีแผนที่และไม่มีเส้นทางตายตัว ถ้ามีเวลาไปได้เพียงแห่งเดียวและมากับเด็ก ให้เลือก Planets",
   },
   {
     q: "teamLab Planets กับ teamLab Borderless ใช้ตั๋วเดียวกันไหม?",
-    a: "ไม่ใช่ ทั้งสองเป็นพิพิธภัณฑ์แยกกัน ตั๋วแยกกัน และอยู่คนละย่านของโตเกียว ตั๋ว Planets เข้า Borderless ไม่ได้ และตั๋ว Borderless ก็เข้า Planets ไม่ได้",
+    a: "ไม่ใช่ ทั้งสองแห่งเป็นพิพิธภัณฑ์คนละแห่ง ตั๋วแยกกัน และอยู่คนละย่านของโตเกียว ตั๋ว Planets เข้า Borderless ไม่ได้ และตั๋ว Borderless ก็เข้า Planets ไม่ได้",
   },
   {
     q: "ตั๋ว teamLab ในโตเกียวราคาเท่าไร?",
@@ -93,26 +93,26 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "ไป Planets และ Borderless ในวันเดียวกันได้ไหม?",
-    a: "ได้ เพราะตั๋วแต่ละใบระบุวันและเวลาของตัวเอง แต่ทั้งสองแห่งอยู่คนละย่านของเมือง และแต่ละแห่งใช้เวลานาน การแยกไปคนละครึ่งวันจะง่ายกว่า",
+    a: "ได้ เพราะตั๋วของแต่ละแห่งระบุวันและเวลาเข้าชมแยกกัน แต่ทั้งสองแห่งอยู่คนละย่านของเมือง และแต่ละแห่งใช้เวลานาน การแบ่งไปแห่งละครึ่งวันจะสะดวกกว่า",
   },
   {
     q: "teamLab แห่งไหนเหมาะกับเด็กมากกว่า?",
-    a: "Planets เด็กอายุต่ำกว่า 4 ปีเข้าฟรีทั้งสองแห่ง แต่ Planets ใช้เวลาไม่นาน ได้ใช้ร่างกาย และเด็กตามได้ง่าย ควรเตรียมเสื้อผ้าสำรองเพราะโซนน้ำทำให้ทุกคนเปียก และรถเข็นเด็กเข้าด้านในไม่ได้",
+    a: "Planets เด็กอายุต่ำกว่า 4 ปีเข้าฟรีทั้งสองแห่ง แต่ Planets ใช้เวลาเข้าชมไม่นาน มีกิจกรรมที่ได้เคลื่อนไหวร่างกาย และเด็ก ๆ ร่วมสนุกได้ง่าย ควรเตรียมเสื้อผ้าสำรองเพราะโซนน้ำทำให้ทุกคนเปียก และรถเข็นเด็กเข้าด้านในไม่ได้",
   },
 ];
 
 const tripTours = [
   withKlookLocale(tokyoSubwayTicket, "th", {
     title: "Tokyo Subway Ticket (24 / 48 / 72 ชั่วโมง)",
-    desc: "นั่งได้ไม่จำกัดทุกสายของ Tokyo Metro และ Toei Subway รับตั๋วเมื่อมาถึงแทนการต่อคิวซื้อ",
+    desc: "นั่งได้ไม่จำกัดทุกสายของ Tokyo Metro และ Toei Subway รับตั๋วเมื่อเดินทางมาถึงได้โดยไม่ต้องต่อคิวซื้อ",
   }),
   withKlookLocale(tokyoSightseeingBusTour, "th", {
     title: "ทัวร์รถบัสชมเมืองโตเกียว 1 วัน",
-    desc: "ทัวร์มีไกด์วนชมสวนพระราชวังอิมพีเรียล อาซากุสะ และโตเกียวสกายทรี พร้อมออดิโอไกด์หลายภาษา",
+    desc: "ทัวร์พร้อมไกด์พาชมสวนพระราชวังอิมพีเรียล อาซากุสะ และโตเกียวสกายทรี พร้อมระบบบรรยายเสียงหลายภาษา",
   }),
   withKlookLocale(fujiDayTour, "th", {
     title: "ทัวร์ภูเขาไฟฟูจิ 1 วันจากโตเกียว",
-    desc: "นั่งรถโค้ชเต็มวันไปสถานีที่ 5 ของฟูจิ ทะเลสาบคาวากุจิ และโอชิโนะฮักไก กลับถึงโตเกียวเย็นวันเดียวกัน",
+    desc: "นั่งรถบัสเที่ยวเต็มวันไปยังสถานีที่ 5 ของภูเขาไฟฟูจิ ทะเลสาบคาวากุจิ และโอชิโนะฮักไก กลับถึงโตเกียวในช่วงเย็นของวันเดียวกัน",
   }),
 ];
 
@@ -152,10 +152,10 @@ export default function ThTeamLabTokyoPage({ updated }: { updated: PageUpdated }
             teamLab Planets หรือ Borderless (2026): <br />ไปที่ไหนดี และควรจองแห่งไหน
           </h1>
           <p className={styles.heroSubtitle}>
-            โตเกียวมีพิพิธภัณฑ์ teamLab สองแห่ง แต่ละแห่งมีตั๋วของตัวเอง นี่คือความต่างของทั้งสองแห่ง และแห่งที่ควรจอง
+            โตเกียวมีพิพิธภัณฑ์ teamLab สองแห่ง โดยแต่ละแห่งต้องซื้อตั๋วแยกกัน มาดูความแตกต่างของทั้งสองแห่งและแห่งที่ควรจอง
           </p>
           <div className={styles.heroBadges}>
-            {[`อัปเดต ${updatedLabel}`, "ราคาทางการ", "เทียบกันทุกข้อ"].map((t) => (
+            {[`อัปเดต ${updatedLabel}`, "ราคาทางการ", "เปรียบเทียบทุกด้าน"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -173,7 +173,7 @@ export default function ThTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           </div>
           <div className={styles.verdictBody}>
             <p className={styles.verdictText}>
-              ตั๋ว teamLab ในโตเกียวคือการเลือกระหว่างสองพิพิธภัณฑ์ <strong>จอง Planets</strong> ถ้าคุณมากับเด็กหรืออยากเดินลุยน้ำ <strong>จอง Borderless</strong> ถ้าอยากเดินชมงานศิลปะช้า ๆ แต่ละแห่งมีตั๋วของตัวเอง ตั๋วผู้ใหญ่ของ Planets {P_ADULT} และของ Borderless {B_ADULT}
+              การจองตั๋ว teamLab ในโตเกียวคือการเลือกระหว่างพิพิธภัณฑ์สองแห่ง <strong>จอง Planets</strong> ถ้าคุณมากับเด็กหรืออยากเดินลุยน้ำ <strong>จอง Borderless</strong> ถ้าอยากใช้เวลาเดินชมงานศิลปะอย่างช้า ๆ แต่ละแห่งมีตั๋วของตัวเอง ตั๋วผู้ใหญ่ของ Planets {P_ADULT} และของ Borderless {B_ADULT}
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={PLANETS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
@@ -187,7 +187,7 @@ export default function ThTeamLabTokyoPage({ updated }: { updated: PageUpdated }
         </div>
 
         <p className={styles.bodyText}>
-          ตัดสินใจแล้ว? ดู<Link href="/th/guides/attractions/teamlab-planets-tickets">ไกด์ตั๋ว teamLab Planets</Link> สำหรับเวลาเปิด การจอง และการเดินทาง หรือ<Link href="/th/guides/attractions/teamlab-borderless-tickets">ไกด์ตั๋ว teamLab Borderless</Link>
+          ถ้าตัดสินใจได้แล้ว ดูรายละเอียดได้ที่<Link href="/th/guides/attractions/teamlab-planets-tickets">ไกด์ตั๋ว teamLab Planets</Link> สำหรับเวลาเปิด การจอง และการเดินทาง หรือ<Link href="/th/guides/attractions/teamlab-borderless-tickets">ไกด์ตั๋ว teamLab Borderless</Link>
         </p>
 
         <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
@@ -195,7 +195,7 @@ export default function ThTeamLabTokyoPage({ updated }: { updated: PageUpdated }
         <EsimCtaTop />
 
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>เทียบกันข้าง ๆ</span>
+          <span className={styles.sectionLabel}>เปรียบเทียบแบบเคียงข้างกัน</span>
           <h2 className={styles.sectionTitle}>teamLab Planets หรือ Borderless: ควรจองแห่งไหน?</h2>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -220,7 +220,7 @@ export default function ThTeamLabTokyoPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            ข้อมูล Planets ตรวจสอบจาก teamlab.art และเว็บขายตั๋วทางการเมื่อ {PLANETS_CHECKED} ข้อมูล Borderless ตรวจสอบจาก teamlab.art เมื่อ {BORDERLESS_CHECKED} ทั้งสองแห่งตั้งราคาตั๋วผู้ใหญ่ตามวันและเวลา จึงควรยืนยันด้วยวันที่คุณจะไป
+            ข้อมูลของ Planets ตรวจสอบจาก teamlab.art และเว็บไซต์จำหน่ายตั๋วอย่างเป็นทางการเมื่อ {PLANETS_CHECKED} ข้อมูล Borderless ตรวจสอบจาก teamlab.art เมื่อ {BORDERLESS_CHECKED} ราคาตั๋วผู้ใหญ่ของทั้งสองแห่งแตกต่างกันตามวันและเวลา จึงควรตรวจสอบราคาตามวันที่คุณจะไป
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={PLANETS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
@@ -233,7 +233,7 @@ export default function ThTeamLabTokyoPage({ updated }: { updated: PageUpdated }
         </section>
 
         <section className={styles.whoForSection}>
-          <span className={styles.sectionLabel}>แห่งไหนเหมาะกับคุณ</span>
+          <span className={styles.sectionLabel}>ที่ไหนเหมาะกับคุณ</span>
           <h2 className={styles.sectionTitle}>ควรเลือก teamLab แห่งไหน?</h2>
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
@@ -251,7 +251,7 @@ export default function ThTeamLabTokyoPage({ updated }: { updated: PageUpdated }
 
         <KlookTourPicks
           heading="จองไว้สำหรับทริปเดียวกัน"
-          intro="ไม่ว่าเลือกแห่งไหนก็ใช้เวลาเพียงส่วนหนึ่งของวันในโตเกียว รายการเหล่านี้ครอบคลุมรถไฟใต้ดิน ทัวร์ชมเมืองพร้อมไกด์ และทัวร์ 1 วันออกนอกเมือง ราคาของ Klook เปลี่ยนตามวันที่ จึงควรเปิดหน้าสินค้าเพื่อดูราคาในวันของคุณ"
+          intro="ไม่ว่าจะเลือกแห่งไหน การเข้าชมก็ใช้เวลาเพียงส่วนหนึ่งของวันเที่ยวโตเกียว ตัวเลือกเหล่านี้มีทั้งตั๋วรถไฟใต้ดิน ทัวร์ชมเมืองพร้อมไกด์ และทัวร์ 1 วันนอกเมือง ราคาของ Klook เปลี่ยนตามวันที่ จึงควรเปิดหน้าสินค้าเพื่อดูราคาในวันของคุณ"
           tours={tripTours}
         />
 
