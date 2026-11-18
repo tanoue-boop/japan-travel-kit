@@ -257,6 +257,7 @@ const related = [
   { href: "/guides/attractions/nozawa-onsen-ski", title: "Nozawa Onsen Ski (2026-27): Tokyo Access, Lifts & Onsen" },
   { href: "/guides/attractions/niseko-ski-tours", title: "Niseko Ski Tours (2027): Transfers, Lessons & 4 Areas" },
   { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "Tokyo to Gala Yuzawa 2026-27: Shinkansen Day Trip & JR Pass" },
+  { href: "/guides/attractions/japan-ski-trip-itinerary", title: "Japan Ski Trip Itinerary: 7 & 10 Days, Hakuba to Niseko" },
   { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary: 12 Days, Day by Day (2027)" },
   { href: "/guides/money/japan-ski-travel-insurance", title: "Japan Ski Travel Insurance: What Standard Policies Exclude" },
   { href: "/guides/attractions/jigokudani-snow-monkey-tour", title: "Snow Monkey Tour from Tokyo: Jigokudani Park Guide 2027" },
@@ -707,7 +708,9 @@ export default function HakubaSkiToursPage({ updated }: { updated: PageUpdated }
             <Link href="/guides/attractions/jigokudani-snow-monkey-tour">Jigokudani snow monkey tour</Link>,
             which makes a good rest day. For a second resort on the same trip, the{" "}
             <Link href="/guides/attractions/nozawa-onsen-ski">Nozawa Onsen ski</Link> guide covers the
-            village off Iiyama, one stop beyond Nagano on the shinkansen. For a whole winter route, see our{" "}
+            village off Iiyama, one stop beyond Nagano on the shinkansen, and the{" "}
+            <Link href="/guides/attractions/japan-ski-trip-itinerary">Japan ski trip itinerary</Link> sets out
+            7- and 10-day plans with the nights in each. For a whole winter route, see our{" "}
             <Link href="/guides/attractions/japan-winter-itinerary">Japan winter itinerary</Link>, and the{" "}
             <Link href="/guides/transport/jr-east-pass">JR East Pass guide</Link> for whether the pass pays.
           </p>

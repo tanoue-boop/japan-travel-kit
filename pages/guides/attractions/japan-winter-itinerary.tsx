@@ -1563,7 +1563,10 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             <Link href="/guides/attractions/hakuba-ski-tours">Hakuba ski tours guide</Link> covers the
             shinkansen-and-bus run and the valley&apos;s resorts, and our{" "}
             <Link href="/guides/attractions/nozawa-onsen-ski">Nozawa Onsen ski guide</Link> the
-            one-mountain village with its free public baths.
+            one-mountain village with its free public baths. This page is a sightseeing winter with snow
+            in it; when skiing is the main reason for the trip, the{" "}
+            <Link href="/guides/attractions/japan-ski-trip-itinerary">Japan ski trip itinerary</Link> gives
+            7- and 10-day plans built around four or more nights at a resort.
           </p>
           <div className={styles.pickCtaRow}>
             <KlookLink href={galaNaebaSkiDayTripTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

@@ -342,6 +342,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/japan-ski-trip-itinerary",
+    badge: "Ski itinerary",
+    title: "Japan Ski Trip Itinerary: 7 & 10 Days, Hakuba to Niseko",
+    desc: "7 days skiing in Japan: 1 night in Tokyo, 4 in Hakuba or Nozawa Onsen, 2 in Tokyo — Hokuriku Shinkansen about 80 min to Nagano plus a 70-min bus; Niseko adds a flight and a 2.5-hour coach. 10-day plans and 2026-27 lift prices from ¥7,800 to ¥13,500.",
+    group: "daytrips",
+    // Spans Nagano, Niigata and Hokkaido, so it sits with the nationwide ski pages.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/tokyo-snow-day-trip",
     badge: "Snow day trip",
     title: "Tokyo Snow Day Trip 2026-27: Fujiten, Yeti & Gala Compared",

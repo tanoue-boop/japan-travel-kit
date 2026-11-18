@@ -959,7 +959,9 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             is the low-commitment version. If the question is Niseko or Nagano, our{" "}
             <Link href="/guides/attractions/hakuba-ski-tours">Hakuba ski tours</Link> and{" "}
             <Link href="/guides/attractions/nozawa-onsen-ski">Nozawa Onsen ski</Link> guides cover the two
-            Nagano resorts you reach from Tokyo by shinkansen and bus rather than by plane. For non-skiers in your party, the{" "}
+            Nagano resorts you reach from Tokyo by shinkansen and bus rather than by plane, and the{" "}
+            <Link href="/guides/attractions/japan-ski-trip-itinerary">Japan ski trip itinerary</Link> sets a
+            10-day Niseko plan beside a 7-day Nagano one. For non-skiers in your party, the{" "}
             <Link href="/guides/attractions/jigokudani-snow-monkey-tour">Jigokudani snow monkey tour</Link>{" "}
             and the{" "}
             <Link href="/guides/attractions/takayama-shirakawago-tour">Takayama and Shirakawa-go tour</Link>{" "}
@@ -1006,6 +1008,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             {[
               { href: "/guides/attractions/hakuba-ski-tours", title: "Hakuba Ski Tours (2026-27): Tokyo Access, Lifts & Resorts" },
               { href: "/guides/attractions/nozawa-onsen-ski", title: "Nozawa Onsen Ski (2026-27): Tokyo Access, Lifts & Onsen" },
+              { href: "/guides/attractions/japan-ski-trip-itinerary", title: "Japan Ski Trip Itinerary: 7 & 10 Days, Hakuba to Niseko" },
             ].map((r) => (
               <Link key={r.href} href={r.href} className={styles.relatedCard}>
                 <div className={styles.relatedIcon}>

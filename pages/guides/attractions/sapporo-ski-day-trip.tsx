@@ -613,6 +613,7 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
               { href: "/guides/attractions/hokkaido-7-day-itinerary", title: "Hokkaido 7-Day Itinerary" },
               { href: "/guides/money/japan-ski-travel-insurance", title: "Japan Ski Travel Insurance" },
               { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary" },
+              { href: "/guides/attractions/japan-ski-trip-itinerary", title: "Japan Ski Trip Itinerary" },
               { href: "/guides/attractions", title: "More Things to Do in Japan →" },
             ].map((r) => (
               <Link key={r.href} href={r.href} className={styles.relatedCard}>

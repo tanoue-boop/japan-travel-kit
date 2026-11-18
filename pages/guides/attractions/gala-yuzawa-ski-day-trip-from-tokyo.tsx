@@ -1172,7 +1172,9 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             <Link href="/guides/attractions/hakuba-ski-tours">Hakuba ski tours</Link> guide covers the
             shinkansen-and-bus run from Tokyo, and our{" "}
             <Link href="/guides/attractions/nozawa-onsen-ski">Nozawa Onsen ski</Link> guide the
-            hot-spring village resort off Iiyama Station. A
+            hot-spring village resort off Iiyama Station. The{" "}
+            <Link href="/guides/attractions/japan-ski-trip-itinerary">Japan ski trip itinerary</Link> lays
+            out how many nights go where on a 7- or 10-day ski week. A
             February trip north can be built around the{" "}
             <Link href="/guides/attractions/sapporo-snow-festival-tours">Sapporo Snow Festival tours</Link>{" "}
             on 4–11 February 2027, with an{" "}

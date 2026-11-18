@@ -689,7 +689,9 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
             <Link href="/guides/attractions/hakuba-ski-tours">Hakuba ski tours</Link> (the valley&apos;s
             resorts, the bus from Nagano Station) and{" "}
             <Link href="/guides/attractions/nozawa-onsen-ski">Nozawa Onsen ski</Link> (one mountain above a
-            hot-spring village) guides.
+            hot-spring village) guides, and the{" "}
+            <Link href="/guides/attractions/japan-ski-trip-itinerary">Japan ski trip itinerary</Link> shows
+            how many nights a 7- or 10-day ski trip spends at each.
           </p>
         </section>
 

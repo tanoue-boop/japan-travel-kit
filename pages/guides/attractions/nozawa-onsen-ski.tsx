@@ -233,6 +233,7 @@ const related = [
   { href: "/guides/attractions/hakuba-ski-tours", title: "Hakuba Ski Tours (2026-27): Tokyo Access, Lifts & Resorts" },
   { href: "/guides/attractions/niseko-ski-tours", title: "Niseko Ski Tours (2027): Transfers, Lessons & 4 Areas" },
   { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "Tokyo to Gala Yuzawa 2026-27: Shinkansen Day Trip & JR Pass" },
+  { href: "/guides/attractions/japan-ski-trip-itinerary", title: "Japan Ski Trip Itinerary: 7 & 10 Days, Hakuba to Niseko" },
   { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary: 12 Days, Day by Day (2027)" },
   { href: "/guides/money/japan-ski-travel-insurance", title: "Japan Ski Travel Insurance: What Standard Policies Exclude" },
   { href: "/guides/attractions/jigokudani-snow-monkey-tour", title: "Snow Monkey Tour from Tokyo: Jigokudani Park Guide 2027" },
@@ -690,7 +691,9 @@ export default function NozawaOnsenSkiPage({ updated }: { updated: PageUpdated }
             The <Link href="/guides/attractions/jigokudani-snow-monkey-tour">Jigokudani snow monkey tour</Link>{" "}
             is the classic rest day from northern Nagano. For a second resort, the{" "}
             <Link href="/guides/attractions/hakuba-ski-tours">Hakuba ski tours</Link> guide covers the valley
-            reached by bus from Nagano, one stop back towards Tokyo on the shinkansen. For a whole winter
+            reached by bus from Nagano, one stop back towards Tokyo on the shinkansen. To fit both into one
+            trip, the <Link href="/guides/attractions/japan-ski-trip-itinerary">Japan ski trip itinerary</Link>{" "}
+            lays out 7- and 10-day plans with the nights in each place. For a whole winter
             route, see the <Link href="/guides/attractions/japan-winter-itinerary">Japan winter itinerary</Link>,
             and the <Link href="/guides/transport/jr-east-pass">JR East Pass guide</Link> for whether the pass
             pays.
