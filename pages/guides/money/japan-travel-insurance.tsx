@@ -328,9 +328,9 @@ export default function JapanTravelInsurancePage({ updated }: { updated: PageUpd
         </div>
 
         <p className={styles.bodyText}>
-          Already know you want cover and need to pick a policy?{" "}
+          Already know you want cover and need to pick a policy? Compare the{" "}
           <Link href="/guides/money/best-travel-insurance-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
-            Compare the best travel insurance for Japan
+            best travel insurance for Japan
           </Link>{" "}
           by trip type, price and medical limit.
         </p>
@@ -514,9 +514,9 @@ export default function JapanTravelInsurancePage({ updated }: { updated: PageUpd
           </p>
           <p className={styles.bodyText}>
             Price is only half of it. Which policy fits a family, a long stay, a ski week or a trip with lots of
-            prepaid bookings is on our page to{" "}
+            prepaid bookings is on our page comparing the{" "}
             <Link href="/guides/money/best-travel-insurance-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
-              compare the best travel insurance for Japan
+              best travel insurance for Japan
             </Link>
             , and the two insurers most readers end up choosing between are set side by side in{" "}
             <Link href="/guides/money/safetywing-vs-heymondo-japan">SafetyWing vs Heymondo for Japan</Link>.

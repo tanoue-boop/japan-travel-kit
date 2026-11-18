@@ -55,65 +55,141 @@ const PLAIN_REL = "noopener noreferrer nofollow";
  *                                       only; no payment needed with cash-free insurance.
  *   hokeniryo.metro.tokyo.lg.jp (medical_info_eng/insurance)  "medical expenses can become
  *                                       extremely high"; sufficient private cover "essential".
+ *
+ * Read on 18 Nov 2026 (task jtk-20261118-R02):
+ *   safetywing.com/nomad-insurance      US$62.72 per 4 weeks at 10–39, US$177.50 a month Complete at
+ *                                       18–39, Essential US$250,000 limit, evacuation US$100,000
+ *                                       lifetime, luggage US$500 per item / US$3,000 per plan. Complete
+ *                                       lists trip cancellation US$300 per trip. All unchanged.
+ *   safetywing.com/nomad-insurance/faq  Essential to age 69; fixed dates 5–364 days; one child (14 days
+ *                                       to 9 years) free per adult, at most two per group (the page said
+ *                                       "two per adult" before; corrected); skiing and snowboarding
+ *                                       covered except off-piste; Essential has no search and rescue.
+ *   heymondo.com/travel-insurance-international/  medical up to US$10,000,000, luggage US$2,500,
+ *                                       cancellation US$7,000 if bought within 7 days of the first
+ *                                       booking, search and rescue US$10,000; skiing not named.
+ *   jnto.go.jp/emergency/eng/mi_guide.html  ¥7.5 million and ¥10 million cases; cannot choose the
+ *                                       hospital an ambulance takes you to; clinics generally cash only.
+ *   hokeniryo.metro.tokyo.lg.jp medical_info_eng/system  foreign travellers are not covered by Japan's
+ *                                       public health insurance.
+ *   mhlw.go.jp/content/10800000/001694667.pdf  guidebook for hospitals: visitors' care is uninsured
+ *                                       (jiyu shinryo), priced by each hospital, and even one visit can be
+ *                                       costly; pay-and-claim policyholders pay in full at the hospital.
+ *   pref.ibaraki.jp ... sentei_ryoyohi.html  since 2 Dec 2024, 23 large hospitals charge ¥2,200–¥13,200
+ *                                       (¥7,700 at 19 of them) after a non-urgent ambulance call; the
+ *                                       ambulance itself is not charged; non-residents included.
  * /guides/money/japan-travel-insurance was a 301 to this page until 13 Nov 2026, when it was restored
  * (task-jtk-20261113-03) as the requirements-and-cost page: "do I need it, is it mandatory, what
  * does care cost". This page keeps "which policy". Ski cover is the ski page's query.
  */
 const CALC_CHECKED = checkedLabel("2026-11-09");
-const CHECKED = checkedLabel("2026-11-06");
-const RECHECKED = checkedLabel("2026-11-11");
-const LAST_CHECKED = "2026-11-11";
+const CHECKED = checkedLabel("2026-11-18");
+const RECHECKED = checkedLabel("2026-11-18");
+const LAST_CHECKED = "2026-11-18";
 
-type Row = { who: string; pick: string; why: string; button: boolean };
+const SW_PLAN_URL = "https://safetywing.com/nomad-insurance";
+const SW_FAQ_URL = "https://safetywing.com/nomad-insurance/faq";
+const HEYMONDO_PLAN_URL = "https://heymondo.com/travel-insurance-international/";
 
-/** The button is left off the rows whose need SafetyWing does not meet. */
+type Row = {
+  who: string;
+  pick: string;
+  cover: string;
+  price: string;
+  url: string;
+  urlLabel: string;
+  button: boolean;
+  ski?: boolean;
+  conclusion?: boolean;
+};
+
+/**
+ * Use-case table. Row 1 is the conclusion. The SafetyWing button is left off the rows whose need
+ * SafetyWing does not meet; ski rows also link to the ski insurance guide.
+ */
 const answerRows: Row[] = [
   {
-    who: "First trip, 1 to 3 weeks",
-    pick: "SafetyWing Essential, fixed dates",
-    why: "US$250,000 limit and no deductible. Fixed-date plans start at 5 days.",
-    button: true,
-  },
-  {
-    who: "More than 4 weeks, or no return date",
-    pick: "SafetyWing Essential, subscription",
-    why: "Extends every 28 days, up to 364 days. You can start it after you have left home.",
-    button: true,
-  },
-  {
-    who: "Family with young children",
+    who: "Our pick for most trips",
     pick: "SafetyWing Essential",
-    why: "Children aged 14 days to 9 years are added free, up to two per adult.",
+    cover: "US$250,000 medical, US$100,000 evacuation, no deductible",
+    price: "US$31.36 for 14 days (ages 10–39)",
+    url: SW_PLAN_URL,
+    urlLabel: "safetywing.com",
+    button: true,
+    conclusion: true,
+  },
+  {
+    who: "Short trip, 1 to 3 weeks",
+    pick: "SafetyWing Essential, fixed dates",
+    cover: "Paid upfront for 5 to 364 days; lost luggage US$500 per item",
+    price: "US$15.68 for 7 days, US$31.36 for 14 days (ages 10–39)",
+    url: SW_PLAN_URL,
+    urlLabel: "safetywing.com",
+    button: true,
+  },
+  {
+    who: "Long stay or digital nomad",
+    pick: "SafetyWing Essential, subscription",
+    cover: "Renews every 28 days up to 364 days; you can start it after leaving home",
+    price: "US$62.72 per 4 weeks (ages 10–39); Complete US$177.50 a month (18–39)",
+    url: SW_PLAN_URL,
+    urlLabel: "safetywing.com",
     button: true,
   },
   {
     who: "Skiing or snowboarding on marked runs",
     pick: "SafetyWing Essential",
-    why: "Both are covered on piste if you wear a helmet. Search and rescue is not covered.",
+    cover: "Skiing and snowboarding covered except off-piste; no search and rescue on Essential",
+    price: "Same as the trip price above (US$31.36 for 14 days at 10–39)",
+    url: SW_FAQ_URL,
+    urlLabel: "SafetyWing FAQ",
     button: true,
+    ski: true,
   },
   {
     who: "Backcountry or off-piste",
     pick: "World Nomads Explorer",
-    why: "SafetyWing excludes off-piste on every plan. See our ski insurance guide.",
+    cover: "SafetyWing excludes off-piste on every plan, even with the add-on",
+    price: "No published price. Quote only",
+    url: WORLDNOMADS_URL,
+    urlLabel: "worldnomads.com",
     button: false,
+    ski: true,
   },
   {
-    who: "You want trip cancellation cover",
+    who: "Family with young children",
+    pick: "SafetyWing Essential",
+    cover: "One child aged 14 days to 9 years free per adult, at most two per group",
+    price: "Adults pay their age price; those children pay nothing",
+    url: SW_FAQ_URL,
+    urlLabel: "SafetyWing FAQ",
+    button: true,
+  },
+  {
+    who: "Expensive prepaid trip (cancellation cover)",
     pick: "Heymondo",
-    why: "Lists up to US$7,000. SafetyWing Essential does not list cancellation cover.",
+    cover: "Medical up to US$10,000,000; cancellation up to US$7,000 if bought within 7 days of your first booking",
+    price: "No published price. Quote only",
+    url: HEYMONDO_PLAN_URL,
+    urlLabel: "heymondo.com",
     button: false,
   },
   {
     who: "Aged 70 or over",
     pick: "Get a quote and check the age limit",
-    why: "SafetyWing Essential is sold up to age 69, so it is not an option here.",
+    cover: "SafetyWing Essential is sold up to age 69",
+    price: "Quote only",
+    url: SW_FAQ_URL,
+    urlLabel: "SafetyWing FAQ",
     button: false,
   },
   {
     who: "You have a pre-existing condition",
     pick: "Ask each insurer in writing",
-    why: "SafetyWing Essential does not cover pre-existing conditions.",
+    cover: "Neither SafetyWing nor Heymondo covers pre-existing conditions",
+    price: "Quote only",
+    url: SW_FAQ_URL,
+    urlLabel: "SafetyWing FAQ",
     button: false,
   },
 ];
@@ -128,26 +204,42 @@ const priceRows = [
   { plan: "SafetyWing Essential, subscription", age: "40–49", period: "4 weeks", price: "US$102.76" },
   { plan: "SafetyWing Essential, subscription", age: "50–59", period: "4 weeks", price: "US$161.28" },
   { plan: "SafetyWing Essential, subscription", age: "60–69", period: "4 weeks", price: "US$218.96" },
-  { plan: "SafetyWing Essential", age: "Under 10", period: "4 weeks", price: "Free with an adult, up to two per adult" },
+  { plan: "SafetyWing Essential", age: "Under 10", period: "4 weeks", price: "Free: one per adult, at most two per group" },
   { plan: "SafetyWing Complete", age: "18–39", period: "Month, 12-month commitment", price: "US$177.50" },
   { plan: "Adventure sports add-on", age: "Any", period: "4 weeks, subscriptions only", price: "+US$10" },
   { plan: "Heymondo", age: "Any", period: "Any", price: "No published price. Quote only" },
   { plan: "World Nomads", age: "Any", period: "Any", price: "No published price. Quote only" },
 ];
 
+/** Japan's medical costs for visitors, public sources only. Row 1 is the conclusion. */
 const japanRows = [
   {
-    what: "Bicycle collision with a collapsed lung and broken ribs",
-    figure: "¥7.5 million: surgery, 19 days in hospital, doctor escort and a business-class flight home",
+    what: "Worst case on record (inpatient)",
+    figure: "¥10 million for a heart attack: surgery, 45 days in hospital, doctor escort and a business-class flight home",
+    source: "JNTO, Tokyo Metropolitan Government",
+  },
+  {
+    what: "Inpatient, injury",
+    figure: "¥7.5 million after a bicycle collision (collapsed lung, broken ribs): surgery, 19 days in hospital, doctor escort and a flight home",
+    source: "JNTO, Tokyo Metropolitan Government",
+  },
+  {
+    what: "Outpatient (clinic or hospital visit)",
+    figure: "Visitors are not covered by Japan's public health insurance, so every visit is uninsured care priced by the hospital itself; a single visit can be expensive",
+    source: "Tokyo Metropolitan Government, MHLW guidebook for hospitals",
+  },
+  {
+    what: "Ambulance (call 119)",
+    figure: "You cannot choose which hospital the ambulance takes you to",
     source: "JNTO",
   },
   {
-    what: "Heart attack",
-    figure: "¥10 million: surgery, 45 days in hospital, doctor escort and a business-class flight home",
-    source: "JNTO",
+    what: "Ambulance, non-urgent call (Ibaraki)",
+    figure: "The ride itself is not charged, but 23 large hospitals charge ¥2,200–¥13,200 (¥7,700 at 19 of them) if the call was not urgent, visitors from outside the prefecture included",
+    source: "Ibaraki Prefecture",
   },
   {
-    what: "Paying the hospital",
+    what: "Paying the bill",
     figure: "Credit cards are accepted only at major hospitals; clinics generally accept cash only",
     source: "JNTO",
   },
@@ -157,24 +249,14 @@ const japanRows = [
     source: "JNTO",
   },
   {
-    what: "Tokyo's advice",
-    figure: "Medical expenses can become extremely high; sufficient private health insurance is essential",
-    source: "Tokyo Metropolitan Government",
+    what: "With pay-and-claim insurance",
+    figure: "Hospitals treat you as a self-pay patient and ask for the full amount on the spot; many card-linked policies work this way",
+    source: "MHLW guidebook for hospitals",
   },
   {
     what: "Unpaid hospital bills",
     figure: "JNTO warns that visitors who do not pay may be denied entry in future. The health ministry warns of stricter immigration screening",
     source: "JNTO, MHLW",
-  },
-  {
-    what: "Japan's advice",
-    figure: "The health ministry strongly recommends private health insurance with adequate cover",
-    source: "MHLW",
-  },
-  {
-    what: "If you are already in Japan",
-    figure: "JNTO says private medical insurance you can buy after entering Japan provides sufficient cover during your stay",
-    source: "JNTO",
   },
   {
     what: "Finding a hospital",
@@ -183,16 +265,17 @@ const japanRows = [
   },
 ];
 
+/** Cover by item: medical, evacuation, belongings, cancellation, winter sports first. Row 1 is the conclusion. */
 const compareRows = [
   { factor: "Best for", safetywing: "Our pick: most trips up to 69", heymondo: "Trip cancellation cover", worldnomads: "Backcountry skiing (Explorer)" },
-  { factor: "Medical limit", safetywing: "US$250,000 (Essential)", heymondo: "Up to US$10,000,000", worldnomads: "Shown after you enter your residence" },
+  { factor: "Medical", safetywing: "US$250,000 (Essential), no deductible", heymondo: "Up to US$10,000,000", worldnomads: "Shown after you enter your residence" },
+  { factor: "Evacuation", safetywing: "US$100,000 lifetime", heymondo: "Medical transport included", worldnomads: "By plan" },
+  { factor: "Belongings (lost luggage)", safetywing: "US$500 per item, US$3,000 per plan", heymondo: "Up to US$2,500", worldnomads: "By plan" },
+  { factor: "Trip cancellation", safetywing: "Not listed on Essential (Complete: US$300 per trip)", heymondo: "Up to US$7,000, buy within 7 days of your first trip booking", worldnomads: "By plan" },
+  { factor: "Winter sports", safetywing: "Skiing and snowboarding on piste; off-piste excluded", heymondo: "Skiing not named on the plan page", worldnomads: "On every plan; backcountry on Explorer" },
+  { factor: "Search and rescue", safetywing: "Not on Essential", heymondo: "Up to US$10,000 if lost during the trip", worldnomads: "By plan" },
   { factor: "Published price", safetywing: "US$62.72 per 4 weeks, ages 10–39", heymondo: "None", worldnomads: "None" },
   { factor: "Deductible", safetywing: "None on either plan", heymondo: "“Our Heymondo insurances don't have a deductible”", worldnomads: "Varies by plan" },
-  { factor: "Evacuation", safetywing: "US$100,000 lifetime", heymondo: "Medical transport included", worldnomads: "By plan" },
-  { factor: "Search and rescue", safetywing: "Not on Essential", heymondo: "Up to US$10,000 if lost during the trip", worldnomads: "By plan" },
-  { factor: "Trip cancellation", safetywing: "Not listed on Essential", heymondo: "Up to US$7,000, buy within 7 days of your first trip booking", worldnomads: "By plan" },
-  { factor: "Lost luggage", safetywing: "US$500 per item, US$3,000 per plan", heymondo: "Up to US$2,500", worldnomads: "By plan" },
-  { factor: "Skiing", safetywing: "On piste with a helmet", heymondo: "Skiing not named on the plan page", worldnomads: "On every plan; backcountry on Explorer" },
   { factor: "COVID-19", safetywing: "Treatment, tests and mandated quarantine covered like any illness", heymondo: "Not named on the plan page", worldnomads: "Check the policy wording" },
   { factor: "Pre-existing conditions", safetywing: "Not covered (Essential looks back 180 days)", heymondo: "Not covered", worldnomads: "Check the policy wording" },
   { factor: "Paying the hospital", safetywing: "Pay and claim; direct billing on request", heymondo: "24/7 assistance usually handles the bill", worldnomads: "Check the policy wording" },
@@ -200,29 +283,33 @@ const compareRows = [
 
 const faqItems = [
   {
-    q: "Do you need travel insurance for Japan?",
-    a: `Japan's health ministry strongly recommends it for visitors, and the Japan National Tourism Organization (JNTO) lists treatment cases of ¥7.5 million and ¥10 million, flights home included. JNTO also warns that visitors who do not pay their medical bills may be denied entry in future. Read on ${CHECKED}.`,
+    q: "What is the best travel insurance for Japan?",
+    a: `For most visitors it is SafetyWing Essential: a US$250,000 medical limit, US$100,000 for evacuation, no deductible, and US$31.36 for a 14-day trip at ages 10–39. Use the same plan as a 4-week subscription (US$62.72 at 10–39) for a long stay, and it covers skiing on marked runs. Choose Heymondo for trip cancellation cover and World Nomads Explorer for backcountry skiing. Read on ${RECHECKED}.`,
+  },
+  {
+    q: "Do I need travel insurance for Japan?",
+    a: `You should have it. Japan's health ministry strongly recommends private medical insurance for visitors, travellers are not covered by Japan's public health insurance, and JNTO lists hospital cases of ¥7.5 million and ¥10 million, flights home included. JNTO also warns that visitors who do not pay their medical bills may be denied entry in future. Read on ${CHECKED}.`,
   },
   {
     q: "How much is travel insurance to Japan?",
-    a: `For a typical two-week trip, SafetyWing Essential with fixed dates costs US$31.36 at ages 10–39, US$51.38 at 40–49, US$80.64 at 50–59 and US$109.48 at 60–69; one week at 10–39 is US$15.68. As a 4-week subscription it is US$62.72 at 10–39, rising to US$218.96 at 60–69. Heymondo and World Nomads publish no price. Read off SafetyWing's calculator on ${CALC_CHECKED}.`,
-  },
-  {
-    q: "What is the best travel insurance for Japan?",
-    a: "For most visitors, a medical policy with a high limit and no deductible, which is why SafetyWing Essential is our pick for ordinary trips. Choose Heymondo if you want cancellation cover, and World Nomads Explorer if you ride the backcountry.",
+    a: `For a typical two-week trip, SafetyWing Essential with fixed dates costs US$31.36 at ages 10–39, US$51.38 at 40–49, US$80.64 at 50–59 and US$109.48 at 60–69; one week at 10–39 is US$15.68. As a 4-week subscription it is US$62.72 at 10–39, rising to US$218.96 at 60–69. Heymondo and World Nomads publish no price. Read off SafetyWing's calculator on ${CALC_CHECKED}; the 4-week price was rechecked on ${RECHECKED}.`,
   },
   {
     q: "Does travel insurance cover skiing in Japan?",
-    a: "It depends on the plan and the terrain. SafetyWing covers skiing and snowboarding on piste with a helmet and excludes off-piste. Our Japan ski insurance guide compares the wording of each insurer.",
+    a: `On marked runs, usually yes. SafetyWing covers skiing and snowboarding except off-piste, and its Essential plan does not cover search and rescue. Heymondo's plan page does not name skiing. World Nomads Explorer is the option for backcountry. Our Japan ski insurance guide compares the wording of each insurer. Read on ${RECHECKED}.`,
   },
   {
-    q: "Can you buy travel insurance after arriving in Japan?",
-    a: `Yes. JNTO says insurance you can buy after entering Japan provides sufficient cover during your stay, and SafetyWing lets you sign up during your travels. Anything you already have when you buy will not be covered. Read on ${CHECKED}.`,
+    q: "What travel insurance suits an expensive long-haul Japan trip?",
+    a: `One that pays for the flight home and protects what you prepaid. JNTO's ¥10 million heart-attack case included a doctor escort and a business-class flight home, so check the medical and evacuation limits first: SafetyWing Essential lists US$250,000 and US$100,000, Heymondo up to US$10,000,000 for medical. For prepaid flights and hotels, Heymondo lists cancellation up to US$7,000 if bought within 7 days of your first booking; SafetyWing Essential lists no cancellation cover. Read on ${RECHECKED}.`,
   },
 ];
 
 /** Asked often enough to answer under a question heading, but kept out of FAQPage (3–5 there). */
 const moreQuestions = [
+  {
+    q: "Can you buy travel insurance after arriving in Japan?",
+    a: `Yes. JNTO says private medical insurance you can buy after entering Japan provides sufficient cover during your stay, and SafetyWing lets you sign up during your travels. Anything you already have when you buy will not be covered. Read on ${CHECKED}.`,
+  },
   {
     q: "What is the best travel health insurance for Japan?",
     a: `Check the medical limit and evacuation line first. SafetyWing Essential lists US$250,000 for treatment and hospital stays and US$100,000 lifetime for evacuation. Heymondo lists medical expenses up to US$10,000,000. Both clear the ¥10 million case JNTO publishes. Read on ${RECHECKED}.`,
@@ -233,7 +320,7 @@ const moreQuestions = [
   },
   {
     q: "Is credit card travel insurance enough for Japan?",
-    a: "Check your own card's limit and evacuation cover against the ¥10 million case JNTO publishes, and whether the trip must be paid on that card. Card benefits vary, so there is no single answer.",
+    a: `Check your own card's limit and evacuation cover against the ¥10 million case JNTO publishes, and whether the trip must be paid on that card. A guidebook for Japanese hospitals on the health ministry's website notes that many card-linked policies are pay-and-claim, so the hospital asks you to pay in full first. Card benefits vary, so there is no single answer. Read on ${RECHECKED}.`,
   },
   {
     q: "Does SafetyWing cover Japan if I live there?",
@@ -241,9 +328,9 @@ const moreQuestions = [
   },
 ];
 
-const TITLE = "Best Travel Insurance for Japan 2026: Compared, From $15.68";
+const TITLE = "Best Travel Insurance for Japan 2026: Plans Compared by Cost";
 const DESCRIPTION =
-  "Best travel insurance for Japan: SafetyWing Essential, US$31.36 for two weeks at 10–39, US$250,000 limit. Japan travel insurance compared. Get a quote.";
+  "Best travel insurance for Japan by trip: SafetyWing Essential US$31.36 for 2 weeks (10–39), long-stay and ski picks, Japan hospital costs. Get a quote.";
 const ROUTE = "/guides/money/best-travel-insurance-japan";
 const PAGE_URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
@@ -345,13 +432,11 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Best Travel Insurance for Japan (2026): <br />Compared by Cost and Medical Cover
+            Best Travel Insurance for Japan 2026: <br />Plans Compared by Cost and Medical Cover
           </h1>
           <p className={styles.heroSubtitle}>
-            The best travel insurance for Japan for most visitors is SafetyWing Essential, which costs US$31.36
-            for a two-week trip at ages 10–39 with a US$250,000 medical limit and no deductible. Japan travel
-            insurance matters because JNTO lists hospital cases of ¥7.5 million and ¥10 million. Choose Heymondo
-            for trip cancellation cover and World Nomads Explorer for backcountry skiing.
+            Which policy to buy for a short trip, a long stay or a ski holiday in Japan, what each costs, and what
+            a hospital in Japan can charge a visitor, from the insurers&apos; own pages and Japan&apos;s public sources.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Published prices only", "JNTO and MHLW figures"].map((t) => (
@@ -380,10 +465,12 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
           </div>
           <div className={styles.verdictBody}>
             <p className={styles.verdictText}>
-              For most visitors, the best travel insurance for Japan is <strong>SafetyWing Essential</strong>:
-              a US$250,000 limit, no deductible, and <strong>US$62.72 per 4 weeks</strong> at ages 10–39. Choose
-              Heymondo if you need trip cancellation cover, and World Nomads Explorer if you ride the
-              backcountry. Read on {RECHECKED}.
+              The best travel insurance for Japan for a short trip is <strong>SafetyWing Essential</strong> with
+              fixed dates: <strong>US$31.36 for 14 days</strong> at ages 10–39, a US$250,000 medical limit and no
+              deductible. For a long stay take the same plan as a subscription (US$62.72 per 4 weeks, up to 364
+              days); for skiing it covers marked runs, and backcountry riders need World Nomads Explorer. Cover
+              matters because visitors are outside Japan&apos;s public health insurance and JNTO lists hospital
+              bills of ¥7.5 million and ¥10 million (read on {RECHECKED}).
             </p>
             <SafetyWingButton label="Check SafetyWing for your dates →" className={styles.verdictBtn} />
           </div>
@@ -394,23 +481,39 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
         {/* 1. Conclusion, by traveller. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The answer</span>
-          <h2 className={styles.sectionTitle}>Japan Travel Insurance: Who Should Buy What</h2>
+          <h2 className={styles.sectionTitle}>Which Travel Insurance Is Best for Your Japan Trip?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            SafetyWing Essential fits short trips, long stays, families and skiing on marked runs. Heymondo fits an
+            expensive prepaid trip that needs cancellation cover, and World Nomads Explorer fits the backcountry.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Your trip", "Our pick", "Why", ""].map((h) => (
+                    {["Your trip", "Plan", "Main cover", "Price guide", "Official page", ""].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {answerRows.map((row) => (
-                    <tr key={row.who}>
+                    <tr key={row.who} style={row.conclusion ? { fontWeight: 700, background: "var(--paper)" } : {}}>
                       <td className={styles.tdProvider}>{row.who}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.pick}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.why}</td>
+                      <td style={{ fontSize: "0.88rem" }}>
+                        {row.cover}
+                        {row.ski && (
+                          <>
+                            {" "}
+                            <Link href="/guides/money/japan-ski-travel-insurance">Ski insurance guide →</Link>
+                          </>
+                        )}
+                      </td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.88rem" }}>{row.price}</td>
+                      <td style={{ fontSize: "0.82rem" }}>
+                        <a href={row.url} target="_blank" rel={PLAIN_REL}>{row.urlLabel}</a>
+                      </td>
                       <td style={{ fontSize: "0.88rem" }}>
                         {row.button && <SafetyWingButton label="Check SafetyWing →" className={styles.pickCta} />}
                       </td>
@@ -422,9 +525,11 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Last checked: {LAST_CHECKED} on{" "}
-            <a href="https://safetywing.com/nomad-insurance/faq" target="_blank" rel={PLAIN_REL}>SafetyWing&apos;s FAQ</a> and{" "}
-            <a href="https://heymondo.com/travel-insurance-international/" target="_blank" rel={PLAIN_REL}>Heymondo&apos;s plan page</a>.
-            SafetyWing has no button on four rows because it does not meet that need. Quotes:{" "}
+            <a href={SW_PLAN_URL} target="_blank" rel={PLAIN_REL}>safetywing.com/nomad-insurance</a>,{" "}
+            <a href={SW_FAQ_URL} target="_blank" rel={PLAIN_REL}>SafetyWing&apos;s FAQ</a> and{" "}
+            <a href={HEYMONDO_PLAN_URL} target="_blank" rel={PLAIN_REL}>Heymondo&apos;s plan page</a>; 7-day and
+            14-day prices from SafetyWing&apos;s calculator on 2026-11-09. World Nomads from its own pages on
+            2026-10-25. SafetyWing has no button on four rows because it does not meet that need. Quotes:{" "}
             <a href={HEYMONDO_URL} target="_blank" rel={PLAIN_REL}>Heymondo</a> and{" "}
             <a href={WORLDNOMADS_URL} target="_blank" rel={PLAIN_REL}>World Nomads</a>.
           </p>
@@ -490,10 +595,10 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
           <span className={styles.sectionLabel}>In Japan</span>
           <h2 className={styles.sectionTitle}>How Much Does a Hospital Cost in Japan Without Insurance?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            JNTO publishes two real cases: ¥7.5 million after a bicycle collision and ¥10 million after a heart
-            attack, each including the flight home. Without cash-free insurance you pay the hospital yourself, and
-            clinics generally take cash only. Whether a policy is required for entry, and what it should cover, is
-            answered in{" "}
+            Up to ¥10 million: JNTO publishes ¥7.5 million after a bicycle collision and ¥10 million after a heart
+            attack, each including the flight home. Visitors are outside Japan&apos;s public health insurance, so even
+            an outpatient visit is priced by the hospital, and without cash-free insurance you pay it yourself.
+            Whether a policy is required for entry, and what it should cover, is answered in{" "}
             <Link href="/guides/money/japan-travel-insurance">Do you need travel insurance for Japan?</Link>
           </p>
           <div className={styles.tableWrap}>
@@ -521,9 +626,13 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Last checked: {LAST_CHECKED}. Sources:{" "}
             <a href="https://www.jnto.go.jp/emergency/eng/mi_guide.html" target="_blank" rel={PLAIN_REL}>JNTO, guide for travellers who fall ill</a>,{" "}
-            <a href="https://www.mhlw.go.jp/stf/newpage_46516.html" target="_blank" rel={PLAIN_REL}>MHLW (Ministry of Health, Labour and Welfare)</a>{" "}
+            <a href="https://www.mhlw.go.jp/stf/newpage_46516.html" target="_blank" rel={PLAIN_REL}>MHLW (Ministry of Health, Labour and Welfare)</a>,{" "}
+            <a href="https://www.mhlw.go.jp/content/10800000/001694667.pdf" target="_blank" rel={PLAIN_REL}>MHLW-funded guidebook for hospitals on foreign visitor patients (Japanese, PDF)</a>,{" "}
+            <a href="https://www.hokeniryo.metro.tokyo.lg.jp/iryo/iryo_hoken/medical_info_eng/insurance" target="_blank" rel={PLAIN_REL}>Tokyo Metropolitan Government, medical insurance</a>,{" "}
+            <a href="https://www.hokeniryo.metro.tokyo.lg.jp/iryo/iryo_hoken/medical_info_eng/system" target="_blank" rel={PLAIN_REL}>Tokyo Metropolitan Government, Japan&apos;s medical system</a>{" "}
             and{" "}
-            <a href="https://www.hokeniryo.metro.tokyo.lg.jp/iryo/iryo_hoken/medical_info_eng/insurance" target="_blank" rel={PLAIN_REL}>Tokyo Metropolitan Government, medical insurance</a>.
+            <a href="https://www.pref.ibaraki.jp/hokenfukushi/iryo/iryo/isei/sentei_ryoyohi.html" target="_blank" rel={PLAIN_REL}>Ibaraki Prefecture, fees after non-urgent ambulance calls (Japanese)</a>.
+            Each hospital sets its own price for visitors, so there is no single outpatient fee to quote.
             If you may need to pay a hospital yourself and claim later, see our{" "}
             <Link href="/guides/money/best-travel-card-japan">best travel card for Japan</Link> guide, carry some
             yen (<Link href="/guides/money/how-much-yen-to-bring-japan">how much yen to bring</Link>), and keep every
@@ -558,11 +667,12 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
         {/* Side by side. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Side by side</span>
-          <h2 className={styles.sectionTitle}>Japan Travel Insurance Compared: SafetyWing vs Heymondo vs World Nomads</h2>
+          <h2 className={styles.sectionTitle}>What Does Each Policy Cover? SafetyWing vs Heymondo vs World Nomads</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             SafetyWing is the only one of the three that publishes a price, and it has no deductible. Heymondo lists
-            the higher medical limit (US$10,000,000) and cancellation cover. Neither SafetyWing nor Heymondo covers
-            pre-existing conditions.
+            the higher medical limit (US$10,000,000) and cancellation cover up to US$7,000. For winter sports,
+            SafetyWing covers marked runs and World Nomads Explorer the backcountry. Neither SafetyWing nor
+            Heymondo covers pre-existing conditions.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

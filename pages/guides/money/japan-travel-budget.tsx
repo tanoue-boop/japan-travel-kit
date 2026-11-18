@@ -1093,6 +1093,11 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
             Japan eSIM listing; no Klook price appears anywhere on this page, because Klook prices change by
             date.
           </p>
+          <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Travel insurance is the other one-off left out of the daily figures. What a policy costs for your
+            trip length and age, and which one to pick, is on our guide to the{" "}
+            <Link href="/guides/money/best-travel-insurance-japan">best travel insurance for Japan</Link>.
+          </p>
         </section>
 
         {/* Q3 — "how much do things cost in japan": the quick-reference table. */}
