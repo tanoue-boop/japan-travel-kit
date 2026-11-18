@@ -10300,3 +10300,156 @@ export const shinkansenTokyoNagano: KlookTour = {
   desc: "Klook's Hokuriku Shinkansen route page for Tokyo to Nagano, booked by date and seat class",
   url: klookLink("https://www.klook.com/en-US/japan-rail/shinkansen/28-tokyo/26277-nagano/"),
 };
+
+// ---------------------------------------------------------------------------
+// Kusatsu Onsen day trip and Okinawa whale watching, added 18 Nov 2026
+// (task-jtk-20261118-02).
+//
+// Confirmed as live en-US pages through the www.klook.com search index on
+// 18 Nov 2026: the Ikebukuro Kusatsu day bus tour with a bath ticket (121668),
+// the Ikebukuro bus tour with one night at Hotel Village (169992), the Kusatsu
+// Onsen hotel search (p60271899) and Kusatsu Onsen Ryokan Yoshinoya (55515);
+// the Naha whale watching cruise (51365), the Naha / Chatan / Motobu whale
+// watching tour (2492) and the Kerama water-activity day with a whale watching
+// option (32489). Tours and hotels are the 6.5% band. No ad id assigned:
+// data/klook-adids.json spare is 0, so these use ?aid=119070.
+// Not used: 92577 (Daruma painting day tour) surfaced only as en-IN / en-SG;
+// 242473, 6340 and 139164 (other Naha whale tours) only without en-US; the
+// Karuizawa shinkansen route page only without an en-US locale. No Klook
+// listing for the Tokyo–Kusatsu highway bus surfaced. No price anywhere.
+// ---------------------------------------------------------------------------
+
+/** The day trip as one booking: bus from Ikebukuro and a bath ticket. */
+export const kusatsuDayBusTourTokyo: KlookTour = {
+  title: "Kusatsu Onsen day trip bus tour from Tokyo (Ikebukuro), bath ticket included",
+  desc: "A round-trip coach from Ikebukuro to Kusatsu Onsen in Gunma with a day-bathing ticket included; departure time and time in town are on the listing",
+  url: klookLink("https://www.klook.com/en-US/activity/121668-from-ikebukuro-tokyo-kusatsu-onsen-day-trip-bus-tour-hot-spring/"),
+};
+
+/** The same coach idea with one night in Kusatsu. */
+export const kusatsuOvernightBusTour: KlookTour = {
+  title: "Kusatsu Onsen bus tour from Ikebukuro with 1 night at Hotel Village",
+  desc: "A direct round-trip bus from Ikebukuro, one night at Hotel Village with a buffet dinner, and a free shuttle to Yubatake",
+  url: klookLink("https://www.klook.com/en-US/activity/169992-kusatsu-onsen-bus-tour-from-ikebukuro-1-night-stay-at-hotel-village/"),
+};
+
+export const kusatsuHotels: KlookTour = {
+  title: "Hotels and ryokan in Kusatsu Onsen",
+  desc: "Klook's hotel search for Kusatsu Onsen, for picking a ryokan around Yubatake on your own dates",
+  url: klookLink("https://www.klook.com/en-US/destination/p60271899-kusatsu-onsen/3-hotel/"),
+};
+
+export const kusatsuYoshinoyaKlook: KlookTour = {
+  title: "Kusatsu Onsen Ryokan Yoshinoya",
+  desc: "A 14-room ryokan with its own hot spring bath; the listing states children are not accepted",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/55515-kusatsu-onsen-ryokan-yoshinoya/"),
+};
+
+/** Where to sleep if the day trip becomes a night. */
+export const kusatsuStayAreas: KlookStayArea[] = [
+  {
+    area: "Kusatsu Onsen town (all ryokan and hotels)",
+    why: "The town is small enough that the inns sit within a walk of Yubatake and the bus terminal — and the evening, when the square is lit and the big baths stay open to 20:00–21:00, is what a day visitor misses.",
+    url: kusatsuHotels.url,
+  },
+  {
+    area: "Kusatsu Onsen Ryokan Yoshinoya",
+    why: "A small inn with its own spring bath, for a quiet night between the Yubatake walk and the bus back. Adults only on the listing.",
+    url: kusatsuYoshinoyaKlook.url,
+  },
+  {
+    area: "Hotel Village (bus tour with one night)",
+    why: "The bus and the bed in one booking: the tour's round-trip coach from Ikebukuro, dinner, and a free shuttle to Yubatake.",
+    url: kusatsuOvernightBusTour.url,
+  },
+];
+
+/** Book these on the same trip: 6.5% tour and ryokan, 5% pass, 20% eSIM. */
+export const kusatsuTripPrep: KlookTripPrepItem[] = [
+  {
+    label: kusatsuDayBusTourTokyo.title,
+    ctaLabel: "Check the Kusatsu day bus tour →",
+    url: kusatsuDayBusTourTokyo.url,
+    why: "The day trip as one booking: the coach both ways from Ikebukuro and a bath ticket, with no bus seats or train connections to fix yourself.",
+  },
+  {
+    label: kusatsuHotels.title,
+    ctaLabel: "Check Kusatsu ryokan on Klook →",
+    url: kusatsuHotels.url,
+    why: "Four hours each way by bus makes a night the easier trip — the lit Yubatake and the evening baths are what a day visitor misses.",
+  },
+  {
+    label: jrTokyoWidePass.title,
+    ctaLabel: "Check the JR TOKYO Wide Pass →",
+    url: jrTokyoWidePass.url,
+    why: "Only if Kusatsu is one of several long JR days: the listing names Karuizawa, the shinkansen half of the Karuizawa route. The bus on from Karuizawa is not JR.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The bus QR ticket, the return departure times and any snow notice on the road all reach you on your phone.",
+  },
+];
+
+/** Okinawa whale watching: two Naha boats and a Kerama day. */
+export const okinawaWhaleWatchingNaha: KlookTour = {
+  title: "Whale watching in Okinawa, departing from Naha",
+  desc: "A winter whale watching cruise from Naha into the waters toward the Kerama Islands; meeting point, session times and the weather rules are on the listing",
+  url: klookLink("https://www.klook.com/en-US/activity/51365-whale-watching-okinawa-cruise-tour/"),
+};
+
+export const okinawaWhaleWatchingThreePorts: KlookTour = {
+  title: "Okinawa whale watching: Naha, Chatan or Motobu departure (free photos)",
+  desc: "Choose the port nearest your hotel — Naha, Chatan or Motobu — for a winter whale watching boat with photos included; the listing sets out a refund window if no whales are seen",
+  url: klookLink("https://www.klook.com/en-US/activity/2492-winter-whale-watching-okinawa/"),
+};
+
+export const keramaWhaleWatchingIslandDay: KlookTour = {
+  title: "Kerama Islands water activities with whale watching or an island trip",
+  desc: "A Kerama Islands day from Okinawa combining time on the water with either whale watching or an island visit; which option runs on your date is on the listing",
+  url: klookLink("https://www.klook.com/en-US/activity/32489-kerama-island-water-activities-whale-watching-island-trip-okinawa/"),
+};
+
+/** Where to sleep for a Naha whale boat. */
+export const okinawaWhaleStayAreas: KlookStayArea[] = [
+  {
+    area: "Kokusai-dori (Naha)",
+    why: "The Naha whale boats leave from Naha's ports and Tomari Port for the Zamami boats is a short taxi ride. Klook's search for hotels on and around the street.",
+    url: kokusaiStreetHotelsUrl,
+  },
+  {
+    area: "Daiwa Roynet Hotel Naha-Kokusaidori",
+    why: "Listed on Klook with a covered skybridge to Makishi Station, for the monorail from the airport the night before an early boat.",
+    url: daiwaRoynetNahaKokusaidoriUrl,
+  },
+  {
+    area: "Hotel Rocore Naha (Kencho-mae)",
+    why: "About two minutes from Kencho-mae Station on the listing, at the end of Kokusai-dori nearest the airport.",
+    url: hotelRocoreNahaUrl,
+  },
+];
+
+/** Book these on the same trip: 6.5% tours and hotels, 5% airport bus, 20% eSIM. */
+export const okinawaWhaleTripPrep: KlookTripPrepItem[] = [
+  {
+    label: okinawaWhaleWatchingThreePorts.title,
+    ctaLabel: "Check the whale watching tour →",
+    url: okinawaWhaleWatchingThreePorts.url,
+    why: "Pick Naha, Chatan or Motobu to match your hotel. The refund window is on the listing — book a date inside it if seeing a whale is the point of the trip.",
+  },
+  {
+    label: "Hotels near Kokusai-dori",
+    ctaLabel: "Check Kokusai-dori hotels →",
+    url: kokusaiStreetHotelsUrl,
+    why: "One base for a Naha boat, a Zamami boat from Tomari Port and the monorail to the airport.",
+  },
+  {
+    label: nahaAirportLimousineBus.title,
+    ctaLabel: "Check the Naha Airport bus →",
+    url: nahaAirportLimousineBus.url,
+    why: "Arrival day to your hotel without a car, so the morning boat is the only thing left to plan.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Boats and the Zamami ferries can be confirmed or cancelled on the morning for weather — you need data at the hotel and on the pier.",
+  },
+];

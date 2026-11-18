@@ -647,6 +647,7 @@ export default function GinzanOnsenTourPage({ updated }: { updated: PageUpdated 
               { href: "/guides/attractions/zao-snow-monsters-tour", title: "Zao Snow Monsters Tour (2026–27): Season, Ropeway and Tours" },
               { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary" },
               { href: "/guides/attractions/jigokudani-snow-monkey-tour", title: "Jigokudani Snow Monkey Tour" },
+              { href: "/guides/attractions/kusatsu-onsen-day-trip", title: "Kusatsu Onsen Day Trip from Tokyo: Bus, Baths & Winter" },
               { href: "/guides/transport/jr-east-pass", title: "JR East Pass (2026): Price, Coverage and Is It Worth It?" },
               { href: "/guides/attractions", title: "More Things to Do in Japan →" },
             ].map((r) => (

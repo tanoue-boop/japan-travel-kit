@@ -816,7 +816,10 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
             beach was open 1 April to 31 October in 2026 (read {BEACH}), so plan a winter Day 3 around a boat or
             the south rather than a swim. Our{" "}
             <Link href="/guides/attractions/japan-winter-itinerary">Japan winter itinerary</Link> covers the snow
-            side of the same season.
+            side of the same season. From January to March, a whale watching boat is the winter Day 3 on the same
+            Kerama waters — see{" "}
+            <Link href="/guides/attractions/okinawa-whale-watching">Okinawa whale watching</Link> for the season,
+            Naha against Zamami, and the refund window.
           </p>
           <h3 className={styles.sectionTitle} style={{ fontSize: "1.1rem", marginTop: "1.25rem" }}>
             When Is Typhoon Season in Okinawa?
@@ -930,6 +933,7 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
             {[
               { href: "/guides/attractions/okinawa-day-tours", title: "Okinawa Day Tours from Naha: North vs South Compared (2026)" },
               { href: "/guides/attractions/okinawa-churaumi-aquarium-tickets", title: "Okinawa Churaumi Aquarium Tickets 2026: Price, Hours, Access" },
+              { href: "/guides/attractions/okinawa-whale-watching", title: "Okinawa Whale Watching 2027: Season, Kerama & Naha Tours" },
               { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary: Kanazawa, Shirakawa-go and Takayama" },
               { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day" },
               { href: "/guides/attractions/hiroshima-2-day-itinerary", title: "Hiroshima 2 Day Itinerary (2026): Peace Park and Miyajima" },

@@ -964,6 +964,24 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/kusatsu-onsen-day-trip",
+    badge: "Day trip",
+    title: "Kusatsu Onsen Day Trip from Tokyo: Bus, Baths & Winter",
+    desc: "About 4 hours from Shinjuku on the Joshu Yumeguri bus (from ¥3,700 from 1 Dec 2026) or 2h20m by Kusatsu-Shima plus a 25-minute bus; Sainokawara ¥800, Goza-no-yu ¥900, three free public baths, a timed day trip and the winter Yubatake illumination.",
+    group: "daytrips",
+    // Sold as a day out of Tokyo (task definition: city tokyo).
+    city: "tokyo",
+  },
+  {
+    href: "/guides/attractions/okinawa-whale-watching",
+    badge: "Day tour",
+    title: "Okinawa Whale Watching 2027: Season, Kerama & Naha Tours",
+    desc: "Humpbacks around the Kerama Islands in winter: Naha boats of about 3 hours from roughly December to April, Zamami's own boats from 8 Jan 2027 at ¥7,700, the February – mid-March refund window, and the 50-minute Queen Zamami.",
+    group: "daytrips",
+    // Okinawa sits outside the three city hubs, same call as okinawa-day-tours.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/himeji-castle-day-trip",
     badge: "Day trip",
     title: "Himeji Castle Day Trip (2026): ¥2,500 Admission, and Times From Osaka & Kyoto",
