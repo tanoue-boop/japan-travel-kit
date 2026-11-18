@@ -659,7 +659,7 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
             <a href={OFFICIAL_1DAY} target="_blank" rel="noopener">Tokyo Metro 24-hour Ticket and Common One-day Ticket</a>,{" "}
             <a href={OFFICIAL_FARES} target="_blank" rel="noopener">single fares</a>. The Common One-day Ticket was ¥900
             until 13 March 2026. How Suica and PASMO work for visitors is in our{" "}
-            <Link href="/guides/transport/ic-cards-japan">guide to Japanese IC cards</Link>.
+            <Link href="/guides/transport/ic-cards-japan">IC card Japan</Link> guide.
           </p>
         </section>
 

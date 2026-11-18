@@ -506,8 +506,9 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
             number of taxis and restaurants. Adding Suica to Apple Wallet works on iPhone 7 and later, and on
             most modern Android phones that support NFC. For the deposit, refunds and top-up mechanics, see our{" "}
             <Link href="/guides/transport/ic-cards-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              IC cards in Japan guide
-            </Link>.
+              IC card Japan
+            </Link>{" "}
+            guide — transit IC cards only, card by card.
           </p>
           <KlookLink
             href={SUICA_URL}

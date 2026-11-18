@@ -452,8 +452,8 @@ export default function GuidesTransportPage({ updated, dates }: { updated: PageU
             <section className={styles.bodySection}>
               <h2 className={styles.sectionTitle}>Do I need an IC card in Japan?</h2>
               <p className={styles.bodyText}>
-                {faqItems[2].a} Which card to get at which airport is in{" "}
-                <Link href="/guides/transport/ic-cards-japan" style={L}>IC cards in Japan</Link>.
+                {faqItems[2].a} Which card to get at which airport — Suica vs PASMO vs ICOCA — is in our{" "}
+                <Link href="/guides/transport/ic-cards-japan" style={L}>IC card Japan</Link> guide.
               </p>
             </section>
             <section className={styles.bodySection}>

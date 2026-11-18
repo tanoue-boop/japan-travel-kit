@@ -474,7 +474,9 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
             <a href={OFFICIAL_ZONES_URL} target="_blank" rel="noopener" style={{ fontWeight: 600 }}>
               Osaka Metro&apos;s zone table
             </a>{" "}
-            (PDF, in Japanese). Only taking two or three rides? Pay as you go on an ICOCA instead.
+            (PDF, in Japanese). Only taking two or three rides? Pay as you go on an ICOCA instead — where to buy one
+            and how the deposit works is in our{" "}
+            <Link href="/guides/transport/ic-cards-japan" style={{ fontWeight: 600 }}>IC card Japan</Link> guide.
           </p>
         </section>
 

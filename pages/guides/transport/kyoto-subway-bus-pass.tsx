@@ -346,8 +346,8 @@ export default function KyotoSubwayBusPassPage({ updated }: { updated: PageUpdat
             <a href={`${KOTSU}0000028337.html`} target="_blank" rel={OFFICIAL_REL}>Bus 1-Day Pass (withdrawn)</a>,{" "}
             <a href="https://www2.city.kyoto.lg.jp/kotsu/webguide/ja/fare/fare_bus.html" target="_blank" rel={OFFICIAL_REL}>city bus fares</a>,{" "}
             <a href="https://www2.city.kyoto.lg.jp/kotsu/webguide/ja/fare/fare_tika.html" target="_blank" rel={OFFICIAL_REL}>subway fares</a>.
-            The pass is a separate card ticket, not something loaded on to an IC card. For IC cards, see our{" "}
-            <Link href="/guides/transport/ic-cards-japan" style={{ fontWeight: 600 }}>IC card guide</Link>.
+            The pass is a separate card ticket, not something loaded on to an IC card. For Suica vs PASMO vs ICOCA, see our{" "}
+            <Link href="/guides/transport/ic-cards-japan" style={{ fontWeight: 600 }}>IC card Japan</Link> guide.
           </p>
         </section>
 
