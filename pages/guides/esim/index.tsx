@@ -499,8 +499,8 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
             comparison (which one to pick for each kind of trip) or every provider&apos;s price per GB in the{" "}
             <Link href="/guides/esim/japan-esim-price-tracker" style={{ color: "var(--text)", fontWeight: 600 }}>Japan eSIM price tracker</Link>{" "}
             before you buy. Then pick by what matters most: the{" "}
-            <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--text)", fontWeight: 600 }}>cheapest eSIM for Japan</Link>, an{" "}
-            <Link href="/guides/esim/japan-esim-unlimited" style={{ color: "var(--text)", fontWeight: 600 }}>unlimited eSIM</Link>, a{" "}
+            <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--text)", fontWeight: 600 }}>cheapest eSIM for Japan</Link>, a{" "}
+            <Link href="/guides/esim/japan-esim-unlimited" style={{ color: "var(--text)", fontWeight: 600 }}>Japan eSIM unlimited data</Link> plan, a{" "}
             pocket WiFi rental for a group (per-day prices in{" "}
             <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "var(--text)", fontWeight: 600 }}>pocket WiFi Japan</Link>), or a{" "}
             <Link href="/guides/esim/japan-airport-sim-cards" style={{ color: "var(--text)", fontWeight: 600 }}>SIM card at the airport</Link> if your

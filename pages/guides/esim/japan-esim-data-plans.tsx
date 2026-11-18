@@ -898,10 +898,9 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
             {SPECS_CHECKED}; the Klook figures from its listing data of {klookEsim.specsCheckedAt}.
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
-            The case for unlimited is a tethered laptop, daily video calls or a trip you cannot plan the days of.{" "}
-            <Link href="/guides/esim/japan-esim-unlimited" className={tools.inlineLink}>
-              Best unlimited eSIM for Japan, with the fine print →
-            </Link>
+            The case for unlimited is a tethered laptop, daily video calls or a trip you cannot plan the days of. Plans,
+            fair-use limits and networks are compared under{" "}
+            <Link href="/guides/esim/japan-esim-unlimited" className={tools.inlineLink}>Japan eSIM unlimited data</Link>.
           </p>
         </section>
 

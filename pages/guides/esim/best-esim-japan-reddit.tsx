@@ -952,7 +952,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           </p>
           <p className={styles.bodyText}>
             This page checks common advice against prices. For every unlimited plan by price and daily limit, see our{" "}
-            <Link href="/guides/esim/japan-esim-unlimited" style={{ color: "var(--accent)", fontWeight: 600 }}>unlimited eSIM comparison</Link>; for
+            <Link href="/guides/esim/japan-esim-unlimited" style={{ color: "var(--accent)", fontWeight: 600 }}>Japan eSIM unlimited data</Link> comparison; for
             the lowest price at each size, our{" "}
             <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>cheapest eSIM for Japan</Link> ranking; and for a
             group sharing one connection, our{" "}

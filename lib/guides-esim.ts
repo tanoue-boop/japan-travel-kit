@@ -45,8 +45,8 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/japan-esim-unlimited",
     badge: "Comparison",
-    title: "Unlimited eSIM for Japan (2026): Prices, Daily Limits & Tethering",
-    desc: "What each unlimited Japan plan costs for 7, 15 and 30 days, how much data runs at full speed, and which one you can tether a laptop to.",
+    title: "Japan eSIM Unlimited Data 2026: Is It Really Unlimited?",
+    desc: "What each unlimited Japan plan costs for 7, 15 and 30 days, how much runs at full speed before it slows, which network it uses, and which one you can tether a laptop to.",
     group: "compare",
     city: "other",
   },
