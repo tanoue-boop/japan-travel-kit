@@ -590,9 +590,9 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
             Osaka Amazing Pass&apos;s own list, Umeda Sky Building entry applies only until 15:00, with 10% off after that.
             Our{" "}
             <Link href="/guides/attractions/osaka-attractions-pass" style={{ fontWeight: 600 }}>
-              Osaka Amazing Pass guide
+              Osaka Amazing Pass
             </Link>{" "}
-            goes through what is included.
+            guide goes through what is included.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginTop: "0.5rem" }}>
             <KlookLink href={osakaAmazingPass.url} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">

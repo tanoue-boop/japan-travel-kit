@@ -1132,7 +1132,7 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: ¥3,500 Price, Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: ¥3,500, Worth It? + 1-Day Plan</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

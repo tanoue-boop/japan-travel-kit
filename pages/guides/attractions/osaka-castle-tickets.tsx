@@ -605,7 +605,7 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
             explains why the pass only covers that observatory <strong>before 15:00</strong>, which
             is the detail that decides the order of a pass day: Umeda deck in the morning, castle in
             the afternoon, not the reverse. Our{" "}
-            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass guide</Link>{" "}
+            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass</Link> guide
             has the full 40-plus inclusion list, the two-day price and the two big exclusions, and{" "}
             <Link href="/guides/attractions/things-to-do-osaka">things to do in Osaka</Link> lays out
             how to split a two or three-day trip around them. Facility list read on {CHECKED}.
@@ -762,7 +762,7 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: ¥3,500 Price, Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: ¥3,500, Worth It? + 1-Day Plan</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

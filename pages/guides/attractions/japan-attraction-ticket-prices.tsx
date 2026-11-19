@@ -1263,7 +1263,7 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
               },
               {
                 href: "/guides/attractions/osaka-attractions-pass",
-                title: "Osaka Amazing Pass 2026: ¥3,500 Price, Is It Worth It?",
+                title: "Osaka Amazing Pass 2026: ¥3,500, Worth It? + 1-Day Plan",
               },
               { href: "/about", title: "How we check the prices on this site" },
             ].map((link) => (

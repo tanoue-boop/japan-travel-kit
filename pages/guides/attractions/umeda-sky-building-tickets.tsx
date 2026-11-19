@@ -865,7 +865,7 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
           <LastChecked url={OFFICIAL_URL} label="skybldg.co.jp/en/observatory/ (official)" />
           <p className={styles.bodyText} style={{ marginTop: "0.5rem" }}>
             For the full list of what the pass covers and the 1-day versus 2-day arithmetic, see the{" "}
-            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass guide</Link>.
+            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass</Link> guide.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
             <KlookLink href={umedaSkyBuildingTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -993,7 +993,7 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: ¥3,500 Price, Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: ¥3,500, Worth It? + 1-Day Plan</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

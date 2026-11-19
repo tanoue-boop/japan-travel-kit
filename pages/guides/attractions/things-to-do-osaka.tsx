@@ -249,7 +249,7 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
           <h2 className={styles.sectionTitle}>The Pass, and Three Days Out</h2>
           <p className={styles.bodyText}>
             Our{" "}
-            <Link href="/guides/attractions/osaka-attractions-pass" style={linkStyle}>Osaka Amazing Pass price and break-even guide</Link>{" "}
+            <Link href="/guides/attractions/osaka-attractions-pass" style={linkStyle}>Osaka Amazing Pass</Link> price and break-even guide
             works through the ¥3,500 and ¥5,000 prices against what the inclusions are individually
             worth, and lists the exclusions in full. If the pass does not suit your days, our{" "}
             <Link href="/guides/transport/osaka-metro-pass" style={linkStyle}>Osaka Metro pass guide</Link>{" "}
@@ -559,7 +559,7 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: ¥3,500 Price, Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: ¥3,500, Worth It? + 1-Day Plan</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

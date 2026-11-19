@@ -847,8 +847,8 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
             price, checked 9 November 2026), the cruise (¥2,000) plus Osaka Castle&apos;s main tower
             (¥1,200) is ¥3,200 of admissions — just under the pass — and the Umeda deck before 15:00
             takes it to ¥5,200. Our{" "}
-            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass price and break-even table</Link>{" "}
-            has the full inclusion list, the two-day price and the exclusions, and our{" "}
+            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass</Link> price and break-even
+            table has the full inclusion list, the two-day price and the exclusions, and our{" "}
             <Link href="/guides/attractions/things-to-do-osaka">things to do in Osaka guide</Link>{" "}
             lays out which parts of a city day the pass pays for and which it does not.
             Conditions read on {CHECKED}.
@@ -927,7 +927,7 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: ¥3,500 Price, Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: ¥3,500, Worth It? + 1-Day Plan</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

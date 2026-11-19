@@ -913,7 +913,7 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/osaka-attractions-pass",
     badge: "Pass",
-    title: "Osaka Amazing Pass 2026: ¥3,500 Price, Is It Worth It?",
+    title: "Osaka Amazing Pass 2026: ¥3,500, Worth It? + 1-Day Plan",
     desc: "¥3,500 for 1 day, ¥5,000 for 2 on the official site, a break-even table for three pass days, when to activate it, and the two big names it leaves out.",
     group: "passes",
     city: "osaka",

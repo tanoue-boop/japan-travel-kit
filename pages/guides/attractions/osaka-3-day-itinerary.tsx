@@ -394,7 +394,7 @@ const crumbSep = (
 const related = [
   { href: "/guides/attractions/osaka-2-day-itinerary", title: "Osaka 2 Day Itinerary (2026): Day by Day, and What to Book" },
   { href: "/guides/attractions/osaka-kyoto-3-day-itinerary", title: "Osaka Kyoto 3 Day Itinerary (2026): Day by Day & Bookings" },
-  { href: "/guides/attractions/osaka-attractions-pass", title: "Osaka Amazing Pass 2026: ¥3,500 Price, Is It Worth It?" },
+  { href: "/guides/attractions/osaka-attractions-pass", title: "Osaka Amazing Pass 2026: ¥3,500, Worth It? + 1-Day Plan" },
   { href: "/guides/attractions/usj-tickets-express-pass", title: "Universal Studios Japan Express Pass 2026: Types & Prices" },
   { href: "/guides/attractions/usj-hotels", title: "USJ Hotels (2026): Official Hotels Near Universal Studios Japan" },
   { href: "/guides/attractions/osaka-aquarium-kaiyukan-tickets", title: "Osaka Aquarium Kaiyukan Tickets" },
@@ -773,7 +773,7 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Pass price from osaka-amazing-pass.com, checked {PASS_CHECKED}. If you do want the pass and
             the Kaiyukan in one checkout, Klook sells a combo. The full break-even is in the{" "}
-            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass guide</Link>.
+            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass</Link> guide.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

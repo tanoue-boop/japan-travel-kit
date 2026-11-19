@@ -12,8 +12,11 @@ import {
   kyotoHighlightBusTour,
   osakaAmazingPassUrl,
   osakaAmazingPassTripPrep,
+  dotonboriDaytimeFoodTour,
+  hotelKintetsuUniversalCityKlook,
+  parkFrontHotelUsjKlook,
 } from "../../../lib/klook-links";
-import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
+import { PRICES } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
@@ -35,15 +38,26 @@ const KAIYUKAN_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1
  * The 2025 edition was also ¥3,500 / ¥5,000 (Hankyu Hanshin Holdings' pass page,
  * enjoy-osaka-kyoto-kobe.com, 9 Nov 2026), so there was no 2026 price rise to describe:
  * the ¥2,500 / ¥3,300 this page carried until 9 Nov 2026 was simply out of date.
- * The 1-day price and check date are owned by lib/attraction-prices.ts.
+ *
+ * Re-read 19 Nov 2026 (R05): info.html (prices, sale period, purchase rules) and
+ * service_free.html (fees for the castle ¥1,200, Umeda Sky ¥2,000 until 15:00, HEP FIVE
+ * ¥1,000, Tombori ¥2,000, Tsutenkaku ¥1,500) unchanged; Osaka Metro's Enjoy Eco Card page
+ * still ¥820 / ¥620 / child ¥310. The "price increase" readers search for is the 2025
+ * edition: the official site's own info.html as archived on 1 Nov 2024
+ * (web.archive.org/web/20241101000000/https://osaka-amazing-pass.com/en/info.html) lists the
+ * 2024 QR edition (on sale 17 Jun 2024 – 31 Mar 2025) at ¥3,300 / ¥5,500. So 1 day went
+ * ¥3,300 → ¥3,500 and 2 days ¥5,500 → ¥5,000 from 25 Mar 2025, and the 2026 edition
+ * (25 Mar 2026 –) kept both prices.
+ * The 1-day price is owned by lib/attraction-prices.ts.
  */
 const PASS_1_DAY = PRICES.osakaAmazingPass.adult;
 const PASS_2_DAY = "¥5,000";
-const CHECKED = checkedLabel(PRICES.osakaAmazingPass.checked);
-const METRO_CHECKED = "4 November 2026";
-const TITLE = "Osaka Amazing Pass 2026: ¥3,500 Price, Is It Worth It?";
+const CHECKED = "19 November 2026";
+const METRO_CHECKED = "19 November 2026";
+const FARE_CHECKED = "4 November 2026";
+const TITLE = "Osaka Amazing Pass 2026: ¥3,500, Worth It? + 1-Day Plan";
 const DESCRIPTION =
-  "Osaka Amazing Pass price 2026: ¥3,500 for 1 day, ¥5,000 for 2 (checked 9 Nov). Is it worth it? Break-even table, when to activate, what's excluded.";
+  "Osaka Amazing Pass 2026: ¥3,500 for 1 day, ¥5,000 for 2 (official, 19 Nov). Worth it after the price rise? Break-even 1-day plan vs Eco Card and ICOCA.";
 
 const officialLink = { color: "var(--red)", fontWeight: 600 } as const;
 
@@ -72,6 +86,7 @@ const facilityRows = [
 
 /** What a day costs without the pass: admissions plus a weekday Enjoy Eco Card (¥820). */
 const breakEvenRows = [
+  { day: "Rule of thumb", sums: "Admissions over ¥2,680", admissions: "¥2,680+", without: "¥3,500+", verdict: "Pass pays on a subway day" },
   { day: "Castle, Umeda Sky (before 15:00), Tombori cruise", sums: "¥1,200 + ¥2,000 + ¥2,000", admissions: "¥5,200", without: "¥6,020", verdict: "Pass ahead by ¥2,520" },
   { day: "Castle, Umeda Sky, HEP FIVE wheel", sums: "¥1,200 + ¥2,000 + ¥1,000", admissions: "¥4,200", without: "¥5,020", verdict: "Pass ahead by ¥1,520" },
   { day: "Castle keep, Gozabune boat, Nishinomaru Garden", sums: "¥1,200 + ¥1,800 + ¥300", admissions: "¥3,300", without: "¥4,120", verdict: "Pass ahead by ¥620" },
@@ -79,7 +94,27 @@ const breakEvenRows = [
   { day: "Castle keep only, then shopping", sums: "¥1,200", admissions: "¥1,200", without: "¥2,020", verdict: "Skip the pass: ¥1,480 dearer" },
 ];
 
+/** 1-day vs 2-day, with the verdict as the first row. */
+const passVsRows = [
+  { item: "Verdict", one: "Buy for one sightseeing day with more than ¥2,680 of admissions", two: "Buy only if both days have paid stops: it beats a 1-day pass + ¥820 Enjoy Eco Card once day two has more than ¥680 of admissions" },
+  { item: "Price", one: "¥3,500", two: "¥5,000 (¥2,500 a day)" },
+  { item: "Transport", one: "Osaka Metro, city buses (some routes excluded), New Tram, and Hankyu, Hanshin, Keihan, Kintetsu and Nankai mainly within Osaka city", two: "The same, on two consecutive days" },
+  { item: "Attractions", one: "About 40 free, each once", two: "About 40 free, each once across the two days" },
+  { item: "Valid", one: "One day, 3:00 to 2:59 the next morning", two: "Two consecutive days" },
+  { item: "Start by", one: "Within 3 months of purchase, by 31 Mar 2027", two: "Within 3 months of purchase, by 31 Mar 2027" },
+];
+
+/** A 1-day route on the pass. Regular adult fees from the official attraction list. */
+const planRows = [
+  { when: "Day total", stop: "4 admissions + subway", fee: "¥6,200 + ¥820 Enjoy Eco Card = ¥7,020", note: "The ¥3,500 pass saves ¥3,520" },
+  { when: "Morning", stop: "Umeda Sky Building Kuchu-Teien Observatory", fee: "¥2,000", note: "Free only until 15:00, so go first; opens 9:30" },
+  { when: "Late morning", stop: "HEP FIVE Ferris Wheel", fee: "¥1,000", note: "Also in Umeda; HEP FIVE lists boarding from 11:00" },
+  { when: "Afternoon", stop: "Osaka Castle Museum (main tower)", fee: "¥1,200", note: "Subway from Umeda; 9:00–18:00, last entry 17:30. The Gozabune moat boat (¥1,800) runs to 16:30 if you add it" },
+  { when: "Evening", stop: "Tombori River Cruise, Dotonbori", fee: "¥2,000", note: "Every 30 min, 11:00–21:00. Exchange the pass for a time slot at the counter in the daytime: the official list warns evening cruises sell out" },
+];
+
 const compareRows = [
+  { item: "Verdict", one: "Buy when the day has paid stops", two: "Buy when both days have paid stops", eco: "Transport only, 4+ rides: the cheapest", ic: "Transport only, 1–3 rides" },
   { item: "Price", one: "¥3,500", two: "¥5,000", eco: "¥820 weekdays, ¥620 weekends and holidays", ic: "Pay per ride (¥240 for 3–7 km)" },
   { item: "Rides", one: "Osaka Metro, city buses, New Tram, and Hankyu, Hanshin, Keihan, Kintetsu and Nankai mainly within Osaka city", two: "Same, on two consecutive days", eco: "Osaka Metro and city buses", ic: "Any line, including JR" },
   { item: "Admissions", one: "About 40 free", two: "About 40 free, on either day", eco: "Discounts at some venues", ic: "None" },
@@ -90,7 +125,7 @@ const compareRows = [
 const whoFor = [
   {
     title: "Worth it if…",
-    desc: `Your day has three paid stops from the list — Osaka Castle, the Umeda Sky Building before 15:00 and the Tombori River Cruise is the strongest combination at ¥5,200 — plus the subway between them. At ${PASS_1_DAY} the pass needs more than it used to, and three paid stops is where it starts to pay.`,
+    desc: `Your day has more than ¥2,680 of admissions from the list plus the subway between them — the Umeda Sky Building before 15:00 and the Tombori River Cruise (¥2,000 each) already do it. At ${PASS_1_DAY} one ¥1,200 castle visit is not enough.`,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M20 6L9 17l-5-5" />
@@ -124,7 +159,7 @@ const whoFor = [
 const steps = [
   {
     title: "Buy online with a credit card",
-    desc: "The official pass is sold online through SURUTTO QRtto; the only counter sale is at the Kansai Tourist Information Center. Payment is by credit card only — debit cards are not accepted — and one purchase covers up to four passes. Klook also sells it with an English checkout.",
+    desc: "The official pass is sold online through SURUTTO QRtto; the only counter sale is at the Kansai Tourist Information Center. Payment is by credit card only — debit cards are not accepted — and one purchase covers up to four passes. Unused, still-valid passes can be refunded with no fee; once used, they cannot. Klook also sells it with an English checkout.",
   },
   {
     title: "Use a smartphone, not a screenshot",
@@ -146,36 +181,20 @@ const faqItems = [
     a: `The 1-day pass is ${PASS_1_DAY} and the 2-day pass is ${PASS_2_DAY}, on sale from 25 March 2026 to 31 March 2027. The Itami Airport version is ¥3,800 / ¥5,400 and the Kansai Airport 28-hour ticket is ¥5,300. Prices read off osaka-amazing-pass.com on ${CHECKED}.`,
   },
   {
-    q: "Is the Osaka Amazing Pass worth it?",
-    a: `For a day with three paid stops, yes. Osaka Castle (¥1,200), the Umeda Sky Building observatory before 15:00 (¥2,000) and the Tombori River Cruise (¥2,000) come to ¥5,200 at regular fees, against ${PASS_1_DAY} with the subway included. A day with one or two paid stops, or one built around USJ or the Kaiyukan, does not pay. Fees from the pass's official attraction list, ${CHECKED}.`,
+    q: "Is the Osaka Amazing Pass worth it after the price increase?",
+    a: `Yes, on a day with more than ¥2,680 of admissions. The rise came with the 2025 edition — the 1-day pass went from ¥3,300 to ¥3,500, while the 2-day pass fell from ¥5,500 to ¥5,000 — and the 2026 edition kept those prices. Against ${PASS_1_DAY}, a weekday of subway rides costs ¥820 on an Enjoy Eco Card, so admissions above ¥2,680 put the pass ahead: the Umeda Sky Building before 15:00 and the Tombori River Cruise (¥2,000 each) do it, Osaka Castle alone (¥1,200) does not. Checked ${CHECKED}.`,
   },
   {
-    q: "What's included in the Osaka Amazing Pass?",
-    a: `Unlimited rides on Osaka Metro, city buses (some routes excluded), the New Tram, and Hankyu, Hanshin, Keihan, Kintetsu and Nankai trains mainly within Osaka city, plus free entry to about 40 attractions — the official list had 41 entries on ${CHECKED}, including Osaka Castle Museum, the Umeda Sky observatory, Tsutenkaku and the Tombori River Cruise.`,
+    q: "What is included in the Osaka Amazing Pass?",
+    a: `Unlimited rides on Osaka Metro, city buses (some routes excluded), the New Tram, and Hankyu, Hanshin, Keihan, Kintetsu and Nankai trains mainly within Osaka city, plus one free entry each to about 40 attractions, including Osaka Castle Museum, the Umeda Sky observatory (until 15:00), Tsutenkaku and the Tombori River Cruise. Universal Studios Japan, the Kaiyukan, JR and reserved-seat limited express trains are not included. Checked ${CHECKED}.`,
   },
   {
-    q: "Does the Osaka Amazing Pass include USJ or Kaiyukan?",
-    a: "No. Universal Studios Japan and the Osaka Aquarium Kaiyukan are not on the pass's attraction list. Each sells its own ticket: USJ through its Studio Pass and Kaiyukan on a date-based price calendar. If one of them is the reason you are in Osaka, give it its own day and do not buy a pass for that day.",
+    q: "1-day or 2-day Osaka Amazing Pass?",
+    a: `The 1-day pass (${PASS_1_DAY}) for one full sightseeing day; the 2-day pass (${PASS_2_DAY}, two consecutive days) only if both days have paid stops. The 2-day pass beats a 1-day pass plus a ¥820 Enjoy Eco Card on the second day once that day has more than ¥680 of admissions. If day two is USJ or the Kaiyukan, buy the 1-day pass.`,
   },
   {
-    q: "Is the Osaka Amazing Pass digital?",
-    a: `Yes, e-ticket only: there is no paper pass. You show a live QR code on a smartphone at gates and attractions, and the official site says screenshots and printouts are not accepted. Checked ${CHECKED}.`,
-  },
-  {
-    q: "Should I get the 1-day or 2-day Osaka Amazing Pass?",
-    a: `The 2-day pass (${PASS_2_DAY}) covers two consecutive days. It beats a 1-day pass plus a ¥820 Enjoy Eco Card on the second day once that day has more than ¥680 of paid admissions. If day two is USJ or the Kaiyukan, buy the 1-day pass.`,
-  },
-  {
-    q: "Does the Osaka Amazing Pass include transport?",
-    a: "Yes: Osaka Metro, city buses (some routes excluded), the New Tram, and the five private railways mainly within Osaka city. Reserved-seat limited express trains cost extra, and airport limousine buses are not covered. JR is not on the official list of participating lines.",
-  },
-  {
-    q: "Is there a child Osaka Amazing Pass?",
-    a: `No. The official FAQ states that passes for children are not sold, and the price is the same for adults and children, so a child pays ${PASS_1_DAY} too. For children, Osaka Metro's Enjoy Eco Card is ¥310 (Osaka Metro, ${METRO_CHECKED}). Checked ${CHECKED}.`,
-  },
-  {
-    q: "Does the Osaka Amazing Pass cover the train from Kansai Airport?",
-    a: "The standard pass does not. The Kansai Airport version (¥5,300, 28 hours from first use) includes one Nankai ride from Kansai Airport Station to Namba — not the return — and a reserved-seat limited express such as the Rapi:t still needs an extra ticket. The Itami Airport version is not usable at Kansai Airport.",
+    q: "Where do I buy the Osaka Amazing Pass?",
+    a: `Online: the official pass is sold through SURUTTO QRtto, by credit card only (no debit cards), up to four per purchase, and the only counter sale is at the Kansai Tourist Information Center. Klook also sells it with an English checkout. It is an e-ticket only — screenshots and printouts are not accepted — and must be started within three months of purchase and by 31 March 2027. Checked ${CHECKED}.`,
   },
 ];
 
@@ -282,14 +301,14 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Osaka Amazing Pass 2026: <br />¥3,500 Price — Is It Worth It?
+            Osaka Amazing Pass 2026: <br />¥3,500 — Worth It? + 1-Day Plan
           </h1>
           <p className={styles.heroSubtitle}>
             {PASS_1_DAY} for one day, {PASS_2_DAY} for two: unlimited city trains and buses plus about 40 free
-            admissions. It pays on a day with three paid stops — and not at USJ or the Kaiyukan.
+            admissions. It pays once a day&apos;s admissions pass ¥2,680 — and not at USJ or the Kaiyukan.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Official prices", "Break-even table"].map((t) => (
+            {[`Updated ${updated.label}`, "Official prices", "1-day break-even plan"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -315,11 +334,14 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
           </div>
           <div className={styles.verdictBody}>
             <p className={styles.verdictText} style={{ marginTop: 0 }}>
-              <strong>The Osaka Amazing Pass is {PASS_1_DAY} for one day and {PASS_2_DAY} for two in 2026</strong>{" "}
-              (official site, checked {CHECKED}). It gives unlimited rides on Osaka Metro, city buses and the private
-              railways within Osaka city, and free entry to about 40 attractions. It pays on a day with three or more
-              paid stops — for example Osaka Castle, the Umeda Sky Building and the Tombori River Cruise, ¥5,200 at
-              regular fees. Universal Studios Japan and the Kaiyukan are not included.
+              <strong>The Osaka Amazing Pass costs {PASS_1_DAY} for one day and {PASS_2_DAY} for two consecutive days</strong>{" "}
+              in the 2026 edition, on sale 25 March 2026 to 31 March 2027 — the same as 2025, when the 1-day pass rose
+              from ¥3,300 and the 2-day pass fell from ¥5,500 (official site, checked {CHECKED}). The 1-day pass covers
+              unlimited rides on Osaka Metro, city buses, the New Tram and five private railways within Osaka city, plus
+              free entry to about 40 attractions. It pays once the day&apos;s admissions pass ¥2,680 (¥3,500 minus an
+              ¥820 Enjoy Eco Card): two ¥2,000 stops such as the Umeda Sky Building before 15:00 and the Tombori River
+              Cruise already do it, and the four-stop plan below is worth ¥7,020. Universal Studios Japan and the
+              Kaiyukan are not included.
             </p>
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)", marginTop: "1rem" }}>
               <div className={styles.verdictStat}>
@@ -349,6 +371,12 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
             </div>
           </div>
         </div>
+
+        <KlookTourPicks
+          heading="What the Pass Does Not Cover: Food and a USJ Bed"
+          intro="The pass covers rides and admissions, not meals or the USJ day. A Dotonbori food tour covers the meal near the Tombori pier, and a hotel at Universal City puts the separate USJ day at the gate. Open a listing for the current price on your date."
+          tours={[dotonboriDaytimeFoodTour, hotelKintetsuUniversalCityKlook, parkFrontHotelUsjKlook]}
+        />
 
         <EsimCtaTop />
 
@@ -384,11 +412,16 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <SourceNote>
-            Read off{" "}
+            Last checked: 2026-11-19. Read off{" "}
             <a href="https://osaka-amazing-pass.com/en/info.html" target="_blank" rel="noopener noreferrer">
               osaka-amazing-pass.com/en/info.html
             </a>{" "}
-            and the official version page on {CHECKED}. Older guides quoting ¥2,500 and ¥3,300 are out of date.
+            and the official version page on {CHECKED}. The 2024 edition (on sale 17 June 2024 to 31 March 2025) was
+            ¥3,300 / ¥5,500, as the same official page showed in its{" "}
+            <a href="https://web.archive.org/web/20241101000000/https://osaka-amazing-pass.com/en/info.html" target="_blank" rel="noopener noreferrer">
+              1 November 2024 archived copy
+            </a>
+            ; older guides quoting ¥2,500 are further out of date.
           </SourceNote>
         </section>
 
@@ -397,9 +430,10 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>Is it worth it?</span>
           <h2 className={styles.sectionTitle}>Is the Osaka Amazing Pass Worth It After the Price Increase?</h2>
           <p className={styles.bodyText}>
-            Yes, on a day with three paid stops; no, on a day with one. The official figures show no rise in 2026 — the
-            2025 edition was also ¥3,500 / ¥5,000 — but against the ¥2,500 that older guides still print, the pass now
-            needs a fuller day before it pays.
+            Yes, on a day with more than ¥2,680 of admissions; no, on a day with one ¥1,200 castle visit. The increase
+            came with the 2025 edition — the 1-day pass went from ¥3,300 to ¥3,500 and the 2-day pass fell from ¥5,500 to
+            ¥5,000 — and the 2026 edition kept both prices, so the {PASS_1_DAY} pass needs ¥200 more of a day than it did
+            in 2024.
           </p>
           <p className={styles.bodyText}>
             The table prices each day without the pass: the regular admissions plus a weekday Enjoy Eco Card (¥820) for the
@@ -430,11 +464,11 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <SourceNote>
-            Admission fees are the regular adult fees on the pass&apos;s official attraction list,{" "}
+            Last checked: 2026-11-19. Admission fees are the regular adult fees on the pass&apos;s official attraction list,{" "}
             <a href="https://osaka-amazing-pass.com/en/service_free.html" target="_blank" rel="noopener noreferrer">
               osaka-amazing-pass.com/en/service_free.html
             </a>
-            , read {CHECKED}; the Umeda Sky, Tsutenkaku and HEP FIVE figures match the venues&apos; own sites the same day.
+            , read {CHECKED}; the Umeda Sky, Tsutenkaku and HEP FIVE figures matched the venues&apos; own sites on 9 November 2026, and HEP FIVE&apos;s ¥1,000 again on {CHECKED}.
             Enjoy Eco Card price from Osaka Metro, {METRO_CHECKED}. At the weekend the card is ¥620, which narrows each margin
             by ¥200.
           </SourceNote>
@@ -461,6 +495,56 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
               </div>
             ))}
           </div>
+        </section>
+
+        {/* 1-day plan */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>1-day plan</span>
+          <h2 className={styles.sectionTitle}>What Is a Good Osaka Amazing Pass 1-Day Itinerary?</h2>
+          <p className={styles.bodyText}>
+            Umeda in the morning, Osaka Castle in the afternoon and Dotonbori in the evening: four admissions worth ¥6,200
+            at regular fees, plus the subway, against a {PASS_1_DAY} pass. The order follows the pass&apos;s own limits —
+            the Umeda Sky Building is free only until 15:00, and the Tombori cruise runs to 21:00.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["When", "Stop", "Regular adult fee", "Timing"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {planRows.map((row) => (
+                    <tr key={row.when}>
+                      <td className={styles.tdProvider}>{row.when}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.stop}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.fee}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <SourceNote>
+            Last checked: 2026-11-19. Fees and hours from the official attraction list,{" "}
+            <a href="https://osaka-amazing-pass.com/en/service_free.html" target="_blank" rel="noopener noreferrer">
+              osaka-amazing-pass.com/en/service_free.html
+            </a>
+            ; Enjoy Eco Card ¥820 (weekday) from{" "}
+            <a href="https://subway.osakametro.co.jp/en/guide/page/enjoy-eco.php" target="_blank" rel="noopener noreferrer">
+              Osaka Metro
+            </a>
+            . The{" "}
+            <Link href="/guides/attractions/dotonbori-river-cruise" style={officialLink}>
+              Dotonbori river cruise guide
+            </Link>{" "}
+            covers the pier and time-slot exchange.
+          </SourceNote>
+          <PassCta />
         </section>
 
         {/* Facility table */}
@@ -496,7 +580,11 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <SourceNote>
-            Fees and conditions from the official attraction list, read {CHECKED}. The list changes during the year, so
+            Last checked: 2026-11-19. Fees and conditions from the official attraction list,{" "}
+            <a href="https://osaka-amazing-pass.com/en/service_free.html" target="_blank" rel="noopener noreferrer">
+              osaka-amazing-pass.com/en/service_free.html
+            </a>
+            . The list changes during the year, so
             check it for your date.
           </SourceNote>
         </section>
@@ -509,6 +597,46 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
             Take the 1-day pass for one full sightseeing day, the 2-day pass only if both days have paid stops, and an Enjoy
             Eco Card or ICOCA on days that are mostly rides. The 2-day pass beats a 1-day pass plus an ¥820 Enjoy Eco Card
             once the second day has more than ¥680 of paid admissions.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["", "Amazing Pass 1 day", "Amazing Pass 2 day"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {passVsRows.map((row) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider}>{row.item}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.one}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.two}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <SourceNote>
+            Last checked: 2026-11-19.{" "}
+            <a href="https://osaka-amazing-pass.com/en/info.html" target="_blank" rel="noopener noreferrer">
+              osaka-amazing-pass.com/en/info.html
+            </a>{" "}
+            and{" "}
+            <a href="https://osaka-amazing-pass.com/en/howto_about_1day.html" target="_blank" rel="noopener noreferrer">
+              the 1day/2day version page
+            </a>
+            .
+          </SourceNote>
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.15rem", marginTop: "1.75rem" }}>
+            Amazing Pass vs Enjoy Eco Card vs ICOCA: Which Is Cheaper for Transport Only?
+          </h3>
+          <p className={styles.bodyText}>
+            For rides alone, the Enjoy Eco Card: ¥820 on weekdays (¥620 at weekends) pays from the fourth ¥240 subway ride,
+            while the Amazing Pass only beats it once admissions are added. With one to three rides, pay as you go on ICOCA.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -535,8 +663,15 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <SourceNote>
-            Amazing Pass figures from the official site, {CHECKED}. Enjoy Eco Card and fare from Osaka Metro, {METRO_CHECKED};
-            the full comparison is in our{" "}
+            Last checked: 2026-11-19. Amazing Pass figures from{" "}
+            <a href="https://osaka-amazing-pass.com/en/info.html" target="_blank" rel="noopener noreferrer">
+              osaka-amazing-pass.com
+            </a>
+            ; Enjoy Eco Card from{" "}
+            <a href="https://subway.osakametro.co.jp/en/guide/page/enjoy-eco.php" target="_blank" rel="noopener noreferrer">
+              Osaka Metro
+            </a>{" "}
+            ({METRO_CHECKED}); the ¥240 fare from Osaka Metro, {FARE_CHECKED}. The full comparison is in our{" "}
             <Link href="/guides/transport/osaka-metro-pass" style={officialLink}>
               Osaka Metro pass vs Enjoy Eco Card guide
             </Link>
@@ -600,7 +735,12 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
         {/* How to buy */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Step-by-step</span>
-          <h2 className={styles.sectionTitle}>How Do You Buy and Use the Osaka Amazing Pass?</h2>
+          <h2 className={styles.sectionTitle}>Where Do You Buy the Osaka Amazing Pass?</h2>
+          <p className={styles.bodyText}>
+            Online, by credit card: the official SURUTTO QRtto site or Klook, with the Kansai Tourist Information Center as
+            the only counter. The pass is an e-ticket on your phone, so buy it before the day and start it on the morning
+            you use it.
+          </p>
           <div className={styles.stepsList}>
             {steps.map((step, i) => (
               <div key={i} className={styles.stepCard}>
