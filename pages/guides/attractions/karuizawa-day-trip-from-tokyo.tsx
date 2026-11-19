@@ -489,7 +489,12 @@ export default function KaruizawaDayTripFromTokyoPage({ updated }: { updated: Pa
             <Link href="/guides/transport/jr-pass-guide" style={{ color: "var(--text)", fontWeight: 600 }}>
               JR Pass guide
             </Link>{" "}
-            works through whether a pass earns its price across a whole trip.
+            works through whether a pass earns its price across a whole trip, and the{" "}
+            <Link href="/guides/transport/tokyo-wide-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
+              JR Tokyo Wide Pass
+            </Link>{" "}
+            covers this shinkansen for three consecutive days — that guide prices the Tokyo–Karuizawa round trip
+            from JR East&apos;s own e-ticket fare tables and shows when a second day trip makes the pass cheaper.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shinkansenTokyoKaruizawa.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -732,7 +737,7 @@ export default function KaruizawaDayTripFromTokyoPage({ updated }: { updated: Pa
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>JR Tokyo Wide Pass (2026): Price, Coverage and Is It Worth It?</p>
+                <p className={styles.relatedTitle}>JR Tokyo Wide Pass 2026: Price, Map &amp; Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -677,7 +677,7 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             sold only in Japan, from one month before the train, with a limited number of seats per train. And
             if your trip stays in one region, the cheaper pass is usually a regional one: the{" "}
             <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass</Link> for Kyoto, Osaka and Nara,
-            the <Link href="/guides/transport/tokyo-wide-pass">JR Tokyo Wide Pass</Link> for Kanto day trips, or
+            the <Link href="/guides/transport/tokyo-wide-pass">JR Tokyo Wide Pass</Link> ({"¥16,000"}, 3 consecutive days) for Kanto day trips to Kawaguchiko, Nikko or Karuizawa, or
             the <Link href="/guides/transport/hokuriku-arch-pass">Hokuriku Arch Pass</Link> ({"¥35,000"}, 7 days) for a Tokyo → Kanazawa → Kyoto and Osaka loop, which
             skips the Tokaido Shinkansen, or the <Link href="/guides/transport/jr-east-pass">JR East Pass</Link>{" "}
             ({"¥35,000"} for 5 consecutive days, {"¥50,000"} for 10) for Tohoku, Niigata and Nagano.
@@ -1259,7 +1259,7 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>JR Tokyo Wide Pass (2026): Price, Coverage and Is It Worth It?</p>
+                <p className={styles.relatedTitle}>JR Tokyo Wide Pass 2026: Price, Map &amp; Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -741,7 +741,12 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
             <Link href="/guides/transport/jr-pass-guide" style={{ color: "var(--text)", fontWeight: 600 }}>
               JR Pass guide
             </Link>{" "}
-            works through whether a pass earns its price across the rest of a trip.
+            works through whether a pass earns its price across the rest of a trip. The{" "}
+            <Link href="/guides/transport/tokyo-wide-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
+              JR Tokyo Wide Pass
+            </Link>{" "}
+            is the exception: it covers the whole Fujikyu Railway, so the Fuji Excursion runs from Shinjuku to
+            Kawaguchiko on it — worth it once the same three days hold a second day trip.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -1036,7 +1041,7 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>JR Tokyo Wide Pass (2026): Price, Coverage and Is It Worth It?</p>
+                <p className={styles.relatedTitle}>JR Tokyo Wide Pass 2026: Price, Map &amp; Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

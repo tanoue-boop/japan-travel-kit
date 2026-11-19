@@ -856,7 +856,7 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
               </div>
             </Link>
             {[
-              { href: "/guides/transport/tokyo-wide-pass", title: "JR Tokyo Wide Pass (2026): Price and Is It Worth It?" },
+              { href: "/guides/transport/tokyo-wide-pass", title: "JR Tokyo Wide Pass 2026: Price, Map & Is It Worth It?" },
               { href: "/guides/transport/jr-pass-guide", title: "JR Pass Cost 2026: New Prices & Is It Worth It?" },
               { href: "/guides/transport/tokyo-to-kanazawa", title: "Tokyo to Kanazawa Shinkansen (2026): Time, Price, Passes" },
               { href: "/guides/transport/hokkaido-rail-pass", title: "Hokkaido Rail Pass (2026): Price and Is It Worth It?" },

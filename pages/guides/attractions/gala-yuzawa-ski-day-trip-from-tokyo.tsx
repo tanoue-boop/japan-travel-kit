@@ -735,7 +735,7 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             <strong>What no AI answer can settle for you</strong> is whether the train you want runs
             through to GALA Yuzawa on your date: the extra early Tanigawa 71 runs only on selected January
             and February weekends and holidays. Book the seat by date, or price a pass in the{" "}
-            <Link href="/guides/transport/tokyo-wide-pass">TOKYO Wide Pass guide</Link> if GALA is one of
+            <Link href="/guides/transport/tokyo-wide-pass">JR Tokyo Wide Pass</Link> guide if GALA is one of
             two day trips.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
@@ -1081,7 +1081,7 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             and buy a point-to-point ticket if it is the only one. The seasonal catch: GALA Yuzawa station
             operates only in winter and spring, so outside the season the same pass takes you to
             Echigo-Yuzawa instead. Our{" "}
-            <Link href="/guides/transport/tokyo-wide-pass">TOKYO Wide Pass guide</Link> works the
+            <Link href="/guides/transport/tokyo-wide-pass">JR Tokyo Wide Pass</Link> guide works the
             break-even across every Kanto day trip, and the{" "}
             <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link> does the same for the
             national pass.
@@ -1284,7 +1284,7 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>JR Tokyo Wide Pass (2026): ¥16,000 for 3 Days — Worth It?</p>
+                <p className={styles.relatedTitle}>JR Tokyo Wide Pass 2026: Price, Map &amp; Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
