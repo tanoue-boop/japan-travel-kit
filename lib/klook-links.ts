@@ -10591,3 +10591,158 @@ export const okinawaWhaleTripPrep: KlookTripPrepItem[] = [
     why: "Boats and the Zamami ferries can be confirmed or cancelled on the morning for weather — you need data at the hotel and on the pier.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Tokyo photoshoot and Tokyo bike tour — added 19 Nov 2026 (task-jtk-20261119-02).
+//
+// Every listing below was confirmed as a live en-US page through the www.klook.com
+// search index on 19 Nov 2026 (Klook answers automated page reads with HTTP 403, so
+// the descriptions repeat only what that index shows). All are tours/experiences,
+// the 6.5% band. No Klook price appears on either page. No new ad id: data/klook-
+// adids.json has spare 0, so these links fall back to ?aid=119070.
+// ---------------------------------------------------------------------------
+
+/** The snapshot session: one hour, 100+ originals and 10 retouched picks. */
+export const tokyoSnapshotPhotoshoot: KlookTour = {
+  title: "Tokyo snapshot photography — private 1-hour photoshoot",
+  desc: "A one-hour private session anywhere in Tokyo (meeting point listed at the Asakusa Culture Tourist Information Center), with over 100 original photos and 10 retouched photos of your choice, delivered within a week; suburban locations cost extra",
+  url: klookLink("https://www.klook.com/en-US/activity/86631-private-photoshoot-experience-tokyo/"),
+};
+
+/** Day or night, one or two locations — the listing that names Shinjuku's yokocho. */
+export const tokyoDayNightPhotoshoot: KlookTour = {
+  title: "Photoshoot with a professional photographer in Tokyo (day or night)",
+  desc: "A one-hour shoot by day or by night at one or two locations, with Shinjuku Station and the yokocho alleys among the suggested routes; at least 10 edited photos, downloadable within 7 days",
+  url: klookLink("https://www.klook.com/en-US/activity/121235-photoshoot-with-professional-photographer-in-tokyo/"),
+};
+
+/** The stroll format: a photographer who also guides, edited images by email. */
+export const tokyoPrivatePhotoshootGuide: KlookTour = {
+  title: "Tokyo private photoshoot with a professional photographer",
+  desc: "About an hour walking Tokyo with a local photographer-guide, edited images sent by email afterwards; the listing calls it kid-friendly and open to groups",
+  url: klookLink("https://www.klook.com/en-US/activity/90358-private-photoshoot-experience-tokyo/"),
+};
+
+/** Groups of up to eight, 48-hour gallery. */
+export const tokyoGroupPhotoshoot: KlookTour = {
+  title: "Exclusive private photoshoot experience in Tokyo",
+  desc: "A private shoot for a group of up to 8, with the edited photos delivered as a digital gallery link within 48 hours",
+  url: klookLink("https://www.klook.com/en-US/activity/95472-private-photoshoot-tokyo/"),
+};
+
+/** Kimono + studio + photographer by Senso-ji — the kimono photoshoot CTA. */
+export const hanayakaKimonoPhotoshoot: KlookTour = {
+  title: "HANAYAKA Asakusa kimono commemorative photo shoot",
+  desc: "2 to 3 hours from a studio about three minutes' walk from Senso-ji: over 500 kimono and yukata, hair styling in every plan, staff photographers, and couple, family and friends plans",
+  url: klookLink("https://www.klook.com/en-US/activity/97260-kimono-photoshoot-experience-hanayaka-tokyo/"),
+};
+
+/** Photo and video in kimono, Asakusa. */
+export const asakusaKimonoVideoPhotoShoot: KlookTour = {
+  title: "Private video & photo shoot in Asakusa (kimono included)",
+  desc: "1.5 to 2.5 hours in Asakusa wearing a traditional kimono, with edited photos and video; English and Japanese listed",
+  url: klookLink("https://www.klook.com/en-US/activity/91551-private-video-photo-shoot-experience-asakusa-tokyo/"),
+};
+
+/** The main bike tour: 3 hours, cross bike or e-bike, Shiba Park to Shibuya. */
+export const tokyoCentralBikeTour: KlookTour = {
+  title: "3-hour bike / e-bike tour of central Tokyo",
+  desc: "Shiba Park to Jinnan by Shibuya via Zojo-ji, the Imperial Palace, Tokyo Station, Akasaka Palace, the National Stadium and Harajuku; 10:00 and 14:00 starts, cross bike or e-bike, ages 14+",
+  url: klookLink("https://www.klook.com/en-US/activity/135851-3-hours-bike-e-bike-tour-of-the-central-city-areas-in-tokyo/"),
+};
+
+/** E-bike only, Tokyo Station and the Imperial Palace plus side streets. */
+export const tokyoEbikeHiddenGemsTour: KlookTour = {
+  title: "Tokyo: 3-hour guided e-bike tour of the city's hidden gems",
+  desc: "Three hours on an e-bike past Tokyo Station and the Imperial Palace and into lesser-known streets; no licence needed",
+  url: klookLink("https://www.klook.com/en-US/activity/115642-3-hour-bike-tour-of-tokyo-s-highlights-and-hidden-gems-tokyo/"),
+};
+
+/** Two hours after dark on neon-lit bikes, from Shibuya. */
+export const tokyoNightBikeTour: KlookTour = {
+  title: "Tokyo: 2-hour night bike tour of the city's hidden gems",
+  desc: "Two hours after dark on bikes fitted with neon lights, meeting in Shibuya, past illuminated spots with an English-speaking guide",
+  url: klookLink("https://www.klook.com/en-US/activity/138396-2-hours-neon-bike-tour-of-the-city-s-hidden-gems-in-tokyo/"),
+};
+
+/** The short one: Shibuya, Harajuku and Meiji Jingu on ordinary bicycles. */
+export const shibuyaBicycleTour: KlookTour = {
+  title: "Tokyo: Shibuya bicycle tour",
+  desc: "1 hour 10 to 1 hour 30 on ordinary bicycles around Shibuya Crossing, Meiji Jingu, Harajuku and Shinjuku",
+  url: klookLink("https://www.klook.com/en-US/activity/161658-tokyo-shibuya-bicycle-tour/"),
+};
+
+/** Private e-bike: your own guide, Shinjuku, Shibuya and Akihabara. */
+export const tokyoPrivateEbikeTour: KlookTour = {
+  title: "Shinjuku, Shibuya & Akihabara 2-hour private e-bike tour",
+  desc: "A private e-bike tour with an English-speaking guide through Shinjuku, Shibuya and Akihabara, bookable for one person; ages 10+",
+  url: klookLink("https://www.klook.com/en-US/activity/180617-shinjuku-shibuya-and-akihabara-2-hour-private-electric-bike-tour/"),
+};
+
+/** Imperial Palace and Shibuya, 10:00 or 14:00 departures. */
+export const tokyoImperialPalaceShibuyaBikeTour: KlookTour = {
+  title: "Tokyo Imperial Palace & Shibuya bike tour with guide",
+  desc: "A 3-hour guided ride through the historic sites around the Imperial Palace to Shibuya, with 10:00 and 14:00 departures",
+  url: klookLink("https://www.klook.com/en-US/activity/139756-3-hours-bike-tour-of-the-city-s-historic-sites-in-tokyo/"),
+};
+
+/** Hotels for a photoshoot day — existing destination searches, reasons written for this page. */
+export const tokyoPhotoshootStayAreas: KlookStayArea[] = [
+  {
+    area: "Ueno / Asakusa",
+    why: "Senso-ji is at its quietest early in the morning, and the snapshot listing meets in Asakusa — a hotel here makes the early slot a walk.",
+    url: tokyoStayAreas[2].url,
+  },
+  {
+    area: "Shibuya",
+    why: "For a Scramble Crossing shoot: the crossing is on the doorstep, and Shinjuku's yokocho for a night shoot are two stops away.",
+    url: tokyoFiveDayStayAreas[3].url,
+  },
+  {
+    area: "Shinjuku",
+    why: "Omoide Yokocho and the lights of Kabukicho are the night locations, and both are on foot from Shinjuku Station.",
+    url: tokyoStayAreas[0].url,
+  },
+];
+
+/** "Book these on the same visit" for a Tokyo photoshoot: 6.5% hotel and kimono, 5% pass, 20% eSIM. */
+export const tokyoPhotoshootTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels around Ueno / Asakusa",
+    ctaLabel: "Check Asakusa-area hotels on Klook →",
+    url: tokyoStayAreas[2].url,
+    why: "Senso-ji is quietest early, and an early shoot is easier from a hotel on the Ginza Line.",
+  },
+  {
+    label: asakusaKimonoAiwafukuNo1.title,
+    ctaLabel: "Check Asakusa kimono rental →",
+    url: asakusaKimonoAiwafukuNo1.url,
+    why: "For a photographer-only booking with no outfit included: rent the kimono with hair styling first, then meet the photographer in it.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Asakusa, Shibuya and Shinjuku are all on Tokyo Metro, so a shoot in one district and dinner in another fit one day pass.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Photographers send the meeting point and any change of plan by message, and the photo gallery link arrives online.",
+  },
+];
+
+/** "Book these on the same visit" for a Tokyo bike tour: 6.5% hotel, 5% pass, 20% eSIM. */
+export const tokyoBikeTourTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels around Shibuya",
+    ctaLabel: "Check Shibuya hotels on Klook →",
+    url: tokyoFiveDayStayAreas[3].url,
+    why: "The central-Tokyo ride ends in Jinnan by Shibuya and the night ride meets in Shibuya, so a hotel there means no train after the tour.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "The 3-hour central tour starts by Shiba Park, a subway ride from most hotels, and the ticket covers the rest of the day after the ride.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The meeting point is a map pin, and any weather change to the tour reaches you on the morning, away from hotel Wi-Fi.",
+  },
+];

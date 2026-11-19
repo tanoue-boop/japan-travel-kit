@@ -895,6 +895,22 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/tokyo-photoshoot",
+    badge: "Experience",
+    title: "Tokyo Photoshoot (2026): Spots, Kimono Shoots & How to Book",
+    desc: "A Tokyo photographer for 1 hour, or 2–3 hours as a kimono shoot in Asakusa: 10 edited to 100+ photos, Shibuya vs Asakusa vs Shinjuku at night, and which plan for solo, couples and families.",
+    group: "experiences",
+    city: "tokyo",
+  },
+  {
+    href: "/guides/attractions/tokyo-bike-tour",
+    badge: "Experience",
+    title: "Tokyo Bike Tour (2026): E-Bike, Night Rides & Bike Rules",
+    desc: "3 hours from Shiba Park past the Imperial Palace to Shibuya by bike or e-bike, a 2-hour night ride, and the fixed fines cyclists have faced in Japan since 1 April 2026.",
+    group: "experiences",
+    city: "tokyo",
+  },
+  {
     href: "/guides/attractions/tokyo-cooking-class",
     badge: "Food",
     title: "Tokyo Cooking Class (2026): Sushi and Ramen Making — What to Expect",

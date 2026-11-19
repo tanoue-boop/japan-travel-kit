@@ -805,6 +805,34 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 19 Nov 2026: the central sights by bicycle, and Japan's bike rules. */}
+            <Link href="/guides/attractions/tokyo-bike-tour" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="6" cy="17" r="3.5" />
+                  <circle cx="18" cy="17" r="3.5" />
+                  <path d="M6 17l4-8h5l3 8M10 9l2 8h-6" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Tokyo Bike Tour (2026): E-Bike, Night Rides &amp; Bike Rules</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            {/* Added 19 Nov 2026: a photographer for Shibuya, Asakusa or Shinjuku at night. */}
+            <Link href="/guides/attractions/tokyo-photoshoot" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="6" width="18" height="14" rx="2" />
+                  <circle cx="12" cy="13" r="3.5" />
+                  <path d="M8 6l2-2h4l2 2" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Tokyo Photoshoot (2026): Spots, Kimono Shoots &amp; How to Book</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 15 Nov 2026: the same sights from a bus, guided or hop-on hop-off. */}
             <Link href="/guides/attractions/tokyo-sightseeing-bus-tour" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

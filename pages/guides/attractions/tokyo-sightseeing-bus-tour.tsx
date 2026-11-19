@@ -526,7 +526,11 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
             <Link href="/guides/attractions/tokyo-2-day-itinerary" style={bodyLink}>
               Tokyo 2-day itinerary
             </Link>
-            .
+            . To see the Imperial Palace, Akasaka and Shibuya at street level instead of from a seat, a{" "}
+            <Link href="/guides/attractions/tokyo-bike-tour" style={bodyLink}>
+              Tokyo bike tour
+            </Link>{" "}
+            covers them in 3 hours.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -586,6 +590,7 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
           <div className={styles.relatedGrid}>
             {[
               { href: "/guides/attractions/things-to-do-tokyo", title: "Things to Do in Tokyo 2026: Top Picks and Ticket Prices" },
+              { href: "/guides/attractions/tokyo-bike-tour", title: "Tokyo Bike Tour (2026): E-Bike, Night Rides & Bike Rules" },
               { href: "/guides/attractions/tokyo-2-day-itinerary", title: "Tokyo 2 Day Itinerary" },
               { href: "/guides/attractions/tokyo-subway-ticket", title: "Tokyo Subway Ticket" },
               { href: "/guides/attractions/tokyo-itinerary-with-kids", title: "Tokyo Itinerary With Kids" },
