@@ -503,8 +503,11 @@ export default function SaganoRomanticTrainTicketsPage({ updated }: { updated: P
 
         {/* Same-day booking block, straight under the answer. Rates: the torokko ticket is
             a rail ticket (assume the 5% transport band); the guided days and the walk are
-            tours (6.5%); the Hozugawa boat is an activity ticket; the Klook eSIM pays 20%. */}
+            tours (6.5%); the Hozugawa boat is an activity ticket; the Klook eSIM pays 20%.
+            19 Nov 2026 (task-jtk-20261119-04, Act): position checked — already directly under the
+            answer — and given the "Book this trip" label shared by the other AI-landing pages. */}
         <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Book this trip</span>
           <h2 className={styles.sectionTitle} style={{ fontSize: "1.15rem" }}>
             Book the Torokko Seat and the Rest of the Day
           </h2>

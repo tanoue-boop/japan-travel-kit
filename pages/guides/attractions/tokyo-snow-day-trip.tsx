@@ -263,6 +263,16 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
           </p>
         </section>
 
+        {/* Book this trip, straight under the answer (19 Nov 2026, Act): Yeti day trip and
+            Shinjuku hotels 6.5%, Haneda limousine bus 5%, Klook eSIM 20%. */}
+        <KlookTripPrep
+          label="Book this trip"
+          heading="Book Your Snow Day Trip"
+          intro="The tour, a bed by the Shinjuku departure, the airport bus and data. Klook prices change by date, so open a listing for the figure on your dates."
+          items={tokyoSnowDayTripPrep}
+          headingLevel={3}
+        />
+
         {/* Quick Answer */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -307,13 +317,6 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
             </div>
           </div>
         </div>
-
-        <KlookTripPrep
-          label="Book with the tour"
-          heading="Book These on the Same Day as Your Snow Day Trip"
-          intro="A hotel by the Shinjuku departure, the airport bus and data. Klook prices change by date, so open a listing for the figure on your dates."
-          items={tokyoSnowDayTripPrep}
-        />
 
         <EsimCtaTop />
 

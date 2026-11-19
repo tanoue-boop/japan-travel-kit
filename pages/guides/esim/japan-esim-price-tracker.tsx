@@ -5,11 +5,11 @@ import tools from "../../../styles/Tools.module.css";
 import EsimPriceTrackerTable, { TrackerBuyButton, type BuyLink } from "../../../components/EsimPriceTrackerTable";
 import raw from "../../../data/esim-prices.json";
 import { buildRows, summarize, type TrackerRow } from "../../../lib/esim-tracker-core";
-import { formatDate, getProvider } from "../../../lib/esim-prices";
+import { cheapestPlan, formatDate, getProvider } from "../../../lib/esim-prices";
 import { klookEsim } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { ORGANIZATION_ID, SITE_NAME, SITE_URL, articleJsonLd } from "../../../lib/structured-data";
-import { EsimCtaTop } from "../../../components/EsimCta";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 
 /**
  * Japan eSIM price tracker — the site's primary price data, laid out to be cited.
@@ -112,6 +112,7 @@ const providersListed = providerLines.length + unpriced.length;
 const nonUsd = Array.from(new Set(rows.filter((r) => r.currency !== "USD").map((r) => r.currency)));
 const perGbTop = sum.cheapestPerGb;
 const unl7Top = sum.cheapestUnlimited7All;
+const simbyeFrom = cheapestPlan("simbye");
 const cheapest7Fixed = minBy(rows.filter((r) => r.days === 7 && !r.unlimited), (r) => r.priceUsd);
 
 const ANSWER = `Lowest price per GB: ${perGbTop ? `${perGbTop.provider} ${perGbTop.plan} at ${usd(perGbTop.perGbUsd)}/GB` : "—"}. Cheapest 7-day unlimited: ${
@@ -289,7 +290,8 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Simbye, Sakura Mobile and Klook pay us a commission on purchases through
             their buttons below. That changes the button, never the order: every table here is sorted by price, and the other
-            providers get a plain link to their official site.{" "}
+            providers get a plain link to their official site. The &quot;Answer&quot; row names our overall pick separately from
+            the price ranking.{" "}
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
@@ -327,6 +329,10 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
             From {usd(len7.any?.priceUsd)} for 7 days and {usd(len15.any?.priceUsd)} for 15 days at the last update; the
             table gives the lowest price on each trip-length tab and the day that price was read.
           </p>
+          {/* Buy block directly above the first table (19 Nov 2026, Act): Simbye 25% and Klook
+              eSIM 20%. Replaces the EsimCtaTop box that sat under the summary, so the same
+              pair does not appear twice in the first screens. */}
+          <BookingEsimCard lead="Bought the cheapest plan in the table? Set it up before you fly." />
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -338,8 +344,20 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
                   </tr>
                 </thead>
                 <tbody>
-                  {lengthLines.map((l, i) => (
-                    <tr key={l.days} style={i === 0 ? { fontWeight: 700, background: "var(--paper)" } : {}}>
+                  {/* Row 1 is the conclusion: the cheapest plan and the overall pick (19 Nov 2026). */}
+                  <tr style={{ fontWeight: 700, background: "var(--paper)" }}>
+                    <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>Answer</td>
+                    <td colSpan={4} style={{ fontSize: "0.88rem" }}>
+                      {`Cheapest 7-day plan: ${rowLabel(len7.any)}${
+                        perGbTop ? `; lowest per GB: ${perGbTop.provider} ${perGbTop.plan} at ${usd(perGbTop.perGbUsd)}/GB` : ""
+                      }. Overall pick: Simbye${simbyeFrom ? ` (from ${usd(simbyeFrom.priceUsd)})` : ""}, on ${
+                        getProvider("simbye").network
+                      } — the pick for most trips in our `}
+                      <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>best Japan eSIM guide</Link>.
+                    </td>
+                  </tr>
+                  {lengthLines.map((l) => (
+                    <tr key={l.days}>
                       <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{l.days} days</td>
                       {[l.any, l.tenGb, l.unl].map((r, j) => (
                         <td key={j} className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>
@@ -401,8 +419,6 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
             </div>
           </div>
         </div>
-
-        <EsimCtaTop />
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>By plan</span>

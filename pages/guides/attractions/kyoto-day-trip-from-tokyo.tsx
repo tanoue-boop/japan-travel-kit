@@ -280,6 +280,17 @@ export default function KyotoDayTripFromTokyoPage({ updated }: { updated: PageUp
           </p>
         </section>
 
+        {/* Book this trip, straight under the answer (19 Nov 2026, Act; moved up from under the
+            plan table): Kyoto day tour and Kyoto Station hotels 6.5%, Tokyo Subway Ticket 5%,
+            Klook eSIM 20%. The shinkansen stays the Quick Answer's main button. */}
+        <KlookTripPrep
+          label="Book this trip"
+          heading="What Should You Book for a Kyoto Day Trip?"
+          intro="Book the shinkansen both ways first, because your return time sets the length of the day. These can follow it on the same evening."
+          items={kyotoDayTripPrep}
+          headingLevel={3}
+        />
+
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
             <span className={styles.verdictLabel}>Quick Answer</span>
@@ -424,13 +435,6 @@ export default function KyotoDayTripFromTokyoPage({ updated }: { updated: PageUp
             City&apos;s travel guide and the temple&apos;s site, read {KYOTO_READ}.
           </p>
         </section>
-
-        <KlookTripPrep
-          label="Book for this day"
-          heading="What Should You Book for a Kyoto Day Trip?"
-          intro="The train comes first, because your return time sets the length of the day. Everything else can follow it."
-          items={kyotoDayTripPrep}
-        />
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Tour or not</span>

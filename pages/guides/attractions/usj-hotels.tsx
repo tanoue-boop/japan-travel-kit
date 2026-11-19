@@ -362,11 +362,15 @@ export default function UsjHotelsPage({ updated }: { updated: PageUpdated }) {
           </div>
         </div>
 
+        {/* Book this trip, straight under the answer (19 Nov 2026, Act): Universal City hotels and
+            Hotel Kintetsu Universal City 6.5%, Kansai Airport limousine bus 5%, Klook eSIM 20%. The
+            Studio Pass and Express Pass buttons sit in the early-entry section below. */}
         <KlookTripPrep
-          label="Book on the same trip"
-          heading="What to Book With a USJ Hotel"
-          intro="The room, the park ticket for the same date, the airport bus and data. Klook prices change by date, so open a listing for the figure on yours."
+          label="Book this trip"
+          heading="Book Your USJ Hotel Stay"
+          intro="The room, the airport bus and data. The Park Front Hotel opens online bookings six months ahead and Hotel Universal Port up to a year ahead; Klook prices change by date, so open a listing for the figure on yours."
           items={usjHotelsTripPrep}
+          headingLevel={3}
         />
 
         <EsimCtaTop />

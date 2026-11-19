@@ -6785,14 +6785,14 @@ export const hiroshimaPeaceMuseumTicket: KlookTour = {
   url: klookLink("https://www.klook.com/en-US/activity/106604-hiroshima-peace-memorial-museum-permanent-exhibitions-admission/"),
 };
 
-/** Under the plan table: the train first, because that is what closes first. */
+/**
+ * kyoto-day-trip-from-tokyo's "Book this trip" block. 19 Nov 2026 (task-jtk-20261119-04,
+ * Act): moved from under the plan table to directly under the answer paragraph. The
+ * shinkansen line left the block (it stays as the Quick Answer's main button, a low-band
+ * ticket) and the Tokyo Subway Ticket came in: two 6.5% lines (the Kyoto day tour, Kyoto
+ * Station hotels), one 5% (the subway ticket) and the 20% eSIM. Existing constants only.
+ */
 export const kyotoDayTripPrep: KlookTripPrepItem[] = [
-  {
-    label: shinkansenTokyoKyoto.title,
-    ctaLabel: "Check Tokyo → Kyoto shinkansen →",
-    url: shinkansenTokyoKyoto.url,
-    why: "The return leg decides the length of your day. Klook sells it by date and seat class, with QR boarding, so fix the way back at the same time.",
-  },
   {
     label: kyotoCityFushimiArashiyamaTour.title,
     ctaLabel: "Check the Kyoto day tour →",
@@ -6800,14 +6800,18 @@ export const kyotoDayTripPrep: KlookTripPrepItem[] = [
     why: "The way to see the most in one day without planning buses. It meets at JR Kyoto Station, where your shinkansen arrives.",
   },
   {
-    ...tripPrepProducts.esim,
-    why: "A self-planned Kyoto day runs on bus routes and maps, so have data working before you leave Tokyo.",
-  },
-  {
     label: "Hotels around Kyoto Station",
     ctaLabel: "Check Kyoto Station hotels on Klook →",
     url: kyotoStayAreas[0].url,
     why: "If the plan outgrows one day, a night here keeps you beside the morning train back and turns the return into a choice rather than a deadline.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "For the Tokyo days either side of the trip. The Marunouchi Line stops at Tokyo Station, where the Nozomi leaves.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "A self-planned Kyoto day runs on bus routes and maps, so have data working before you leave Tokyo.",
   },
 ];
 
@@ -8751,8 +8755,18 @@ export const yetiDestinationUrl = klookLink("https://www.klook.com/en-US/destina
  * Tokyo snow day trip — what to book on the same day: a Shinjuku hotel (6.5%,
  * the Yeti coaches and the liner bus leave from Shinjuku), the Haneda bus (5%)
  * and the eSIM (20%). No new URLs.
+ *
+ * 19 Nov 2026 (task-jtk-20261119-04, Act): moved up to directly under the page's answer
+ * paragraph as its "Book this trip" block, with the Yeti day trip (6.5%) added first so
+ * the block carries two 6.5% lines, one 5% and the 20% eSIM.
  */
 export const tokyoSnowDayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: yetiSnowDayTripFromTokyo.title,
+    ctaLabel: "Check the Yeti day trip →",
+    url: yetiSnowDayTripFromTokyo.url,
+    why: "Coach from Tokyo Station or Shinjuku, with ski, snowboard, sledding or shuttle-only packages. Yeti was already operating on 16 November, so it is the one snow day you can book for early-season dates.",
+  },
   {
     label: "Hotels around Shinjuku",
     ctaLabel: "Check Shinjuku hotels on Klook →",
@@ -9178,14 +9192,32 @@ export const kawaguchikoRyokanTripPrep: KlookTripPrepItem[] = [
  * kawaguchiko-day-trip-from-tokyo, directly under the tour and bus buttons in the
  * answer (task-jtk-20261117-R03): Fujikawaguchiko hotels (6.5%) and the Klook eSIM
  * (20%). Existing constants only, no new URL and no price.
+ *
+ * 19 Nov 2026 (task-jtk-20261119-04, Act): moved up to directly under the answer
+ * paragraph as the page's "Book this trip" block, with the scenic day tour (6.5%) first
+ * and the Tokyo–Mt. Fuji highway bus seat (5%) added: two 6.5%, one 5%, the 20% eSIM.
  */
 export const kawaguchikoAnswerCards: KlookSameDayCard[] = [
+  {
+    label: fujiPhotographyDayTour.title,
+    ctaLabel: "Check the Kawaguchiko day tour →",
+    url: fujiPhotographyDayTour.url,
+    kind: "Tour",
+    why: "Chureito Pagoda, Oishi Park on Lake Kawaguchi and Oshino Hakkai in one coach day from Tokyo, with no bus or train times to manage.",
+  },
   {
     label: fujikawaguchikoHotels.title,
     ctaLabel: "Check Fujikawaguchiko hotels →",
     url: fujikawaguchikoHotels.url,
     kind: "Hotel",
     why: "In winter the sun sets at about 16:40 and the mountain is clearest in the morning, so one night at the lake gives you a second morning at the view instead of a single try between bus times.",
+  },
+  {
+    label: tokyoMtFujiHighwayBus.title,
+    ctaLabel: "Check the Fuji highway bus →",
+    url: tokyoMtFujiHighwayBus.url,
+    kind: "Bus",
+    why: "The direct coach from Tokyo to Kawaguchiko Station, booked as a seat. Book the return at the same time as the outward bus.",
   },
   {
     ...tripPrepProducts.esim,
@@ -9605,7 +9637,13 @@ export const usjExpressSameDayPrep: KlookTripPrepItem[] = [
   },
 ];
 
-/** USJ hotels: the room, the park ticket, the airport bus, data. */
+/**
+ * USJ hotels: the rooms, the airport bus, data — the page's "Book this trip" block,
+ * directly under the answer. 19 Nov 2026 (task-jtk-20261119-04, Act): the Studio Pass
+ * and Express Pass lines left this block (low-band tickets; both keep their buttons in
+ * the page's early-entry section) and Hotel Kintetsu Universal City came in, so the
+ * block is two 6.5% hotel lines, the 5% airport bus and the 20% eSIM.
+ */
 export const usjHotelsTripPrep: KlookTripPrepItem[] = [
   {
     label: "Hotels near Universal Studios Japan (Universal City)",
@@ -9614,16 +9652,10 @@ export const usjHotelsTripPrep: KlookTripPrepItem[] = [
     why: "Every official hotel on one search, so you can compare the ones still open on your date.",
   },
   {
-    label: "Universal Studios Japan e-ticket (Studio Pass)",
-    ctaLabel: "Check the Studio Pass →",
-    url: usjStudioPassUrl,
-    why: "The hotel does not include park entry. Studio Pass prices change by date, so fix the date and the room together.",
-  },
-  {
-    label: "Universal Express Pass",
-    ctaLabel: "Check Express Pass →",
-    url: usjExpressPassUrl,
-    why: "Optional and limited per day; on busy dates it sells out before the rooms do.",
+    label: hotelKintetsuUniversalCityKlook.title,
+    ctaLabel: "Check Hotel Kintetsu Universal City →",
+    url: hotelKintetsuUniversalCityKlook.url,
+    why: "An official hotel about 1 minute on foot from the park, for when The Park Front Hotel is full on your date.",
   },
   {
     label: kansaiAirportLimousineBus.title,

@@ -354,7 +354,7 @@ export const attractionArticles: GuideArticle[] = [
     href: "/guides/attractions/tokyo-snow-day-trip",
     badge: "Snow day trip",
     title: "Tokyo Snow Day Trip 2026-27: Fujiten, Yeti & Gala Compared",
-    desc: "Sledding and snow play on Mt. Fuji without skiing: Yeti's liner bus is 2 h 30 min from Shinjuku, Fujiten opens mid-December, and the snow play areas open in December — with tours, kids and what to wear.",
+    desc: "Yeti is already open, 2 h 30 min from Shinjuku by its liner bus; Fujiten opens mid-December and GALA Yuzawa on 19 December, 71 min by shinkansen. Snow play without skiing, tours, kids and what to wear.",
     group: "daytrips",
     // A day out from Tokyo, same group and city as gala-yuzawa-ski-day-trip-from-tokyo.
     city: "tokyo",
@@ -370,8 +370,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/kawaguchiko-day-trip-from-tokyo",
     badge: "Day trip",
-    title: "Kawaguchiko Day Trip From Tokyo (2026): Routes, Fares and What Fits in a Day",
-    desc: "The north shore of Lake Kawaguchi is about 1 hr 45 min and ¥2,200 from Shinjuku by bus. Official fares for the ropeway, the lake boat and the sightseeing bus — and why a day holds two or three stops, not five.",
+    title: "Tokyo to Kawaguchiko Day Trip 2026: Bus, Train or Tour?",
+    desc: "The highway bus from Shinjuku is about 1 hr 45 min and ¥2,200 (¥2,000 online); the Fuji Excursion train 1 hr 53 min and ¥4,200. A tour covers about five stops, two or three on your own — with a day by the clock and winter changes.",
     group: "daytrips",
     // The lake, not Tokyo: the day is spent in Yamanashi, like fuji-q-highland-tickets.
     city: "other",

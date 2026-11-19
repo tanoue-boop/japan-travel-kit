@@ -565,6 +565,20 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
           </p>
         </section>
 
+        {/* Book this trip, straight under the answer (19 Nov 2026, Act; moved up from under the
+            Quick Answer): scenic day tour and Fujikawaguchiko hotels 6.5%, highway bus 5%,
+            Klook eSIM 20%. */}
+        <KlookSameDayCards
+          heading="Book this trip: the tour or the bus, a night at the lake, and data"
+          cards={kawaguchikoAnswerCards}
+          footnote={
+            <>
+              For the inns themselves, see our{" "}
+              <Link href="/guides/attractions/kawaguchiko-ryokan-mt-fuji-view">Kawaguchiko ryokan with a Mt Fuji view</Link>.
+            </>
+          }
+        />
+
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -606,17 +620,6 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
             </div>
           </div>
         </div>
-
-        <KlookSameDayCards
-          heading="Booking the day: a night at the lake, and data for the bus times"
-          cards={kawaguchikoAnswerCards}
-          footnote={
-            <>
-              For the inns themselves, see our{" "}
-              <Link href="/guides/attractions/kawaguchiko-ryokan-mt-fuji-view">Kawaguchiko ryokan with a Mt Fuji view</Link>.
-            </>
-          }
-        />
 
         <EsimCtaTop />
 
