@@ -906,7 +906,7 @@ export default function OsakaAttractionsPassPage({ updated }: { updated: PageUpd
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Aquarium Kaiyukan Tickets (2026): Prices, Hours and Time Slots</p>
+                <p className={styles.relatedTitle}>Osaka Aquarium Kaiyukan Tickets 2026: Price, Best Time to Go</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

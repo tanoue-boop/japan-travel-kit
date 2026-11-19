@@ -1143,6 +1143,30 @@ export const kaiyukanLegolandCombo: KlookTour = {
   url: klookLink("https://www.klook.com/en-US/activity/31500-legoland-discovery-center-osaka-aquarium-kaiyukan-ticket-combo-package/"),
 };
 
+/**
+ * Santa Maria day cruise round Osaka Harbour, boarding at Kaiyukan Nishi Hatoba next
+ * to the aquarium (task-jtk-20261119-R08). Confirmed live in its en-US form through
+ * the www.klook.com search index on 19 Nov 2026 ("Osaka Bay Cruise Santa Maria Day
+ * Cruise Ticket", meeting point Kaiyukan West Pier). No price on the page.
+ */
+export const santaMariaDayCruise: KlookTour = {
+  title: "Osaka Bay cruise: Santa Maria day cruise",
+  desc: "The sailing-ship replica's roughly 45-minute loop of Osaka Harbour, boarding at the pier beside Kaiyukan",
+  url: klookLink("https://www.klook.com/en-US/activity/72049-osaka-bay-cruise-santa-maria/"),
+};
+
+/**
+ * Osaka Metro 1-day / 2-day tourist pass (task-jtk-20261119-R08). The Enjoy Eco Card
+ * itself is a station-machine card and is not sold on Klook; this is the digital day
+ * pass for the same subway and city-bus network. Confirmed live in its en-US form
+ * through the www.klook.com search index on 19 Nov 2026. No price on the page.
+ */
+export const osakaMetroDayPass: KlookTour = {
+  title: "Osaka Metro 1-day / 2-day pass",
+  desc: "Unlimited Osaka Metro and city bus rides as a digital pass, for a day that is mostly travel rather than paid sights",
+  url: klookLink("https://www.klook.com/en-US/activity/11515-osaka-metro-1-2-day-pass-osaka/"),
+};
+
 // ---------------------------------------------------------------------------
 // Umeda Sky Building and Osaka Castle, added 23 Oct 2026
 //
@@ -7729,27 +7753,32 @@ export const teamlabTokyoSameDayCards: KlookSameDayCard[] = [
   },
 ];
 
+// Re-ordered 19 Nov 2026 (task-jtk-20261119-R08): the Tempozan half of the day first —
+// the Santa Maria harbour cruise boards beside the aquarium, a Universal City room sits
+// one Captain Line crossing away, and the Amazing Pass covers the wheel, the cruise and
+// the Captain Line but not Kaiyukan. The private tour and the food tour move down to
+// the page's lower Klook blocks, which filter out whatever is up here.
 export const kaiyukanSameDayCards: KlookSameDayCard[] = [
+  {
+    label: santaMariaDayCruise.title,
+    kind: "Cruise",
+    ctaLabel: "Check the Santa Maria cruise →",
+    url: santaMariaDayCruise.url,
+    why: "About 45 minutes round Osaka Harbour from the pier beside the aquarium; day sailings leave on the hour.",
+  },
   {
     label: "Hotels near Universal Studios Japan (Universal City)",
     kind: "Hotel",
     ctaLabel: "Check Universal City hotels →",
     url: usjStayAreas[0].url,
-    why: "The Captain Line boat crosses from Universal City Port to the aquarium's door.",
+    why: "The Captain Line boat crosses from Universal City Port to the aquarium's door in about 10 minutes.",
   },
   {
-    label: osakaPrivateWalkingTour.title,
-    kind: "Private tour",
-    ctaLabel: "Check the private Osaka tour →",
-    url: osakaPrivateWalkingTour.url,
-    why: "The other half of the day: a private guide for Osaka Castle, Den-Den Town and Dotonbori.",
-  },
-  {
-    label: dotonboriDaytimeFoodTour.title,
-    kind: "Food tour",
-    ctaLabel: "Check the Dotonbori food tour →",
-    url: dotonboriDaytimeFoodTour.url,
-    why: "Listed at 11:00–14:00, so it fits before a late-afternoon aquarium slot.",
+    label: osakaAmazingPass.title,
+    kind: "Pass",
+    ctaLabel: "Check the Osaka Amazing Pass →",
+    url: osakaAmazingPass.url,
+    why: "Not valid at Kaiyukan, but it covers the Tempozan Ferris wheel, the Santa Maria and the Captain Line next door.",
   },
 ];
 

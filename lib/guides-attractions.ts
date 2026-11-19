@@ -103,7 +103,7 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/osaka-aquarium-kaiyukan-tickets",
     badge: "Tickets",
-    title: "Osaka Aquarium Kaiyukan Tickets (2026): Prices, Hours and Time Slots",
+    title: "Osaka Aquarium Kaiyukan Tickets 2026: Price, Best Time to Go",
     desc: "The admission moves by date — ¥2,700 to ¥3,200 for an adult — and the e-ticket books a 15-minute entry slot from 30 days out. Plus the hours, the walk from Osakako, and the re-entry rule that ended in June 2026.",
     group: "tickets",
     city: "osaka",

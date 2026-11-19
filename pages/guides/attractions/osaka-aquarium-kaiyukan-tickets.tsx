@@ -17,7 +17,9 @@ import {
   osakaAmazingPassKaiyukanCombo,
   osakaAquariumKaiyukanTicket,
   osakaPrivateWalkingTour,
+  osakaMetroDayPass,
   osakaSkyVistaHalfDayBusTour,
+  santaMariaDayCruise,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
@@ -40,8 +42,12 @@ const notInTopCards = (item: { url: string }) => !kaiyukanSameDayCards.some((c) 
  *   nursing room, lockers, wheelchair loan, cafe) and /thv/general/ (Ferris wheel 112.5 m).
  * - Last read 22 Oct 2026 and not re-printed on the pages above on 8 Nov: the 15-minute
  *   entry unit, the three official set tickets and the Santa Maria details.
- * - Not given on any official page checked on 8 Nov: a visit length, a crowd forecast,
- *   stroller rules, or November–New Year prices as text (the calendar is per date).
+ * - Re-checked 19 Nov 2026 (task-jtk-20261119-R08): all of the above except the
+ *   15-minute unit, plus the group page's "90–120 minutes for one lap", the Santa Maria
+ *   fares and Kaiyukan set price on suijo-bus.osaka, and the Amazing Pass participating
+ *   list (no Kaiyukan; wheel, Santa Maria, Captain Line and LEGOLAND listed).
+ * - Not given on any official page checked on 19 Nov: a crowd forecast, stroller rules,
+ *   or November–New Year prices as text (the calendar is per date).
  *
  * Three things that would be easy to get wrong and are deliberately spelled out:
  *
@@ -59,55 +65,128 @@ const notInTopCards = (item: { url: string }) => !kaiyukanSameDayCards.some((c) 
  * most days anyway.
  */
 
-/** Prices, hours, access, re-entry and facilities: re-checked on kaiyukan.com on this date. */
-const CHECKED_ISO = "2026-11-08";
+/**
+ * Prices, booking rules, access, evening hours, the 90–120 minute lap and the three set
+ * tickets: re-checked on kaiyukan.com on this date (task-jtk-20261119-R08). Same day:
+ * suijo-bus.osaka/intro/santamaria/ (Santa Maria fares and the Kaiyukan set price) and
+ * osaka-amazing-pass.com/en/service_free.html (Kaiyukan not listed; the wheel, the
+ * Santa Maria, the Captain Line and LEGOLAND are).
+ */
+const CHECKED_ISO = "2026-11-19";
 const CHECKED = checkedLabel(CHECKED_ISO);
-/** Set tickets and the 15-minute entry unit: last read on kaiyukan.com on this date. */
+/** The 15-minute entry unit and the 10:00 / 20:00 hours pattern: last read on this date. */
 const SET_CHECKED = checkedLabel("2026-10-22");
 
+const OFFICIAL = {
+  bands: "https://www.kaiyukan.com/info/group/",
+  ticket: "https://www.kaiyukan.com/info/ticket/",
+  calendar: "https://www.kaiyukan.com/info/ticket/kaiyukan/",
+  night: "https://www.kaiyukan.com/program/night/",
+  access: "https://www.kaiyukan.com/info/access/",
+  harbor: "https://www.kaiyukan.com/thv/general/",
+  captainLine: "https://www.kaiyukan.com/thv/captline/",
+  santaMaria: "https://suijo-bus.osaka/intro/santamaria/",
+  amazingPass: "https://osaka-amazing-pass.com/en/service_free.html",
+};
+
+/** Ticket type × age × price. Row 1 is the answer most readers need. */
 const priceRows = [
   {
-    tier: "Adult (大人) — high-school age or 16 and over",
+    ticket: "Best buy: admission e-ticket (date and time)",
+    who: "Adult (大人) — high-school age or 16 and over",
     price: "¥2,700 – ¥3,200",
-    what: "The band that moves most. Dates in the top ¥3,200 tier accept bookings from 15:00 only",
+    what: "Price set per date; e-tickets on sale from about 30 days before. The operator's booking notes: ¥3,200 dates take reservations from 15:00 only, ¥3,500 dates take none",
   },
   {
-    tier: "Child (こども) — elementary and junior-high pupils",
+    ticket: "Admission",
+    who: "Child (こども) — elementary and junior-high pupils",
     price: "¥1,400 – ¥1,650",
     what: "Roughly half the adult rate across the band",
   },
   {
-    tier: "Infant (幼児) — 3 and over",
+    ticket: "Admission",
+    who: "Infant (幼児) — 3 and over",
     price: "¥700 – ¥800",
     what: "A quarter of the adult rate",
   },
   {
-    tier: "2 and under",
+    ticket: "Admission",
+    who: "2 and under",
     price: "Free",
     what: "No ticket needed",
   },
   {
-    tier: "Disability certificate holder",
+    ticket: "Admission, disability discount",
+    who: "Certificate holder plus one carer",
     price: "Half the fee above",
-    what: "Plus one free carer ticket. A booklet, the Mirairo ID app or My Number Portal all count as proof",
+    what: "A booklet, the Mirairo ID app or My Number Portal all count as proof; screenshots do not",
+  },
+  {
+    ticket: "Kaiyukan + Santa Maria day cruise set",
+    who: "Adult / junior high / elementary",
+    price: "From ¥4,200 / ¥2,900 / ¥2,150",
+    what: "Against ¥4,700 / ¥3,400 / ¥2,400 bought separately at the lowest admission; the cruise operator notes the set price may change in busy periods",
   },
 ];
 
-const comboRows = [
+/** When to go: only what the operator's own pages say, then what it means. Row 1 is the answer. */
+const timingRows = [
   {
-    combo: "Santa Maria set ticket",
-    what: "Admission plus the sailing-ship cruise around Osaka Harbour — about 45 minutes, boarding any day cruise on the hour",
-    note: "Weather and sea dependent, and Santa Maria has a maintenance closure from 13 January to 6 February",
+    when: "Best bet",
+    official: "Admission is a variable price set per date, to match demand",
+    means: "Pick a date at the low end of the price calendar, ideally a weekday out of school holidays, and an entry time from mid-afternoon",
   },
   {
-    combo: "Captain Line set ticket",
-    what: "Admission plus the shuttle boat to Universal City Port — about a 10-minute crossing",
-    note: "The link between the aquarium and Universal Studios Japan that skips the subway",
+    when: "Busiest (top-priced) dates",
+    official: "¥3,200 adult dates: reservations from 15:00 only. ¥3,500 adult dates: no reservations taken",
+    means: "A high calendar price is the crowd warning. On those dates plan an afternoon visit",
   },
   {
-    combo: "LEGOLAND Discovery Center Osaka set ticket",
-    what: "Admission plus the indoor LEGO attraction, which is in the same Tempozan complex",
-    note: "LEGOLAND does not admit adults-only or children-only groups",
+    when: "Turning up without a ticket",
+    official: "The window sells same-day tickets only, from opening to last admission; you may not get your preferred time and may have to wait",
+    means: "Buy the date-and-time e-ticket instead, from about 30 days before",
+  },
+  {
+    when: "From 17:00",
+    official: "Evening programme 17:00–20:00, last admission 19:00; times change by season",
+    means: "The same ticket with the lights and music changed — the late slot most people skip",
+  },
+  {
+    when: "One lap",
+    official: "90–120 minutes round the one-way route; re-entry ended on 15 June 2026",
+    means: "Leave two hours inside, and eat before or after rather than halfway through",
+  },
+];
+
+/** Nearby things to pair with the aquarium, with time and the official price. Row 1 is the answer. */
+const nearbyRows = [
+  {
+    what: "Easiest pairing: Santa Maria day cruise",
+    time: "About 45 min; day sailings 11:00–16:00, every hour",
+    price: "Adult ¥2,000, elementary ¥1,000 (one preschooler free per adult)",
+    pass: "Yes",
+    note: "Boards at Kaiyukan Nishi Hatoba beside the aquarium. Closed 31 Dec and 12 Jan – 5 Feb; weather and sea dependent",
+  },
+  {
+    what: "Tempozan Giant Ferris Wheel (112.5 m)",
+    time: "Next door; open 10:00–21:00 weekdays, 10:00–22:00 weekends and holidays",
+    price: "¥1,000 (the pass's listed regular fee)",
+    pass: "Yes",
+    note: "Separate operator, so no Kaiyukan + wheel set ticket. The cruise operator sells a wheel + Santa Maria set",
+  },
+  {
+    what: "Captain Line boat to Universal Studios Japan",
+    time: "About 10 min crossing; 9:30–20:00, timetable changes by month",
+    price: "¥1,700 round trip (the pass's listed regular fee)",
+    pass: "Yes",
+    note: "Universal City Port is about 5 min on foot from Universal City Station (JR Yumesaki Line). Kaiyukan sells a Captain Line set ticket",
+  },
+  {
+    what: "LEGOLAND Discovery Center Osaka",
+    time: "Same complex; weekdays 10:00–18:00 (last entry 16:00), weekends 10:00–19:00 (last entry 17:00)",
+    price: "See the operator's site",
+    pass: "Listed dates only, with advance reservation",
+    note: "No adults-only or children-only groups. Kaiyukan sells a LEGOLAND set ticket",
   },
 ];
 
@@ -225,14 +304,35 @@ const steps = [
   },
 ];
 
+/** The five questions in the FAQPage markup (task-jtk-20261119-R08). */
 const faqItems = [
   {
-    q: "How much are Osaka Aquarium Kaiyukan tickets?",
-    a: `There is no single price, because Kaiyukan prices by date. The bands the operator publishes are ¥2,700–3,200 for an adult (high-school age or 16 and over), ¥1,400–1,650 for a child at elementary or junior-high school, ¥700–800 for an infant aged 3 and over, and free for anyone 2 or under. Holders of a disability certificate pay half, with one carer admitted free. The operator also notes that dates in the ¥3,200 adult tier accept reservations only from 15:00, and that dates in a ¥3,500 tier accept none. Check the price calendar for your own date. All read off kaiyukan.com on ${CHECKED}.`,
+    q: "How much are Kaiyukan tickets?",
+    a: `Kaiyukan tickets cost ¥2,700–¥3,200 for an adult (high-school age or 16 and over), ¥1,400–¥1,650 for an elementary or junior-high child and ¥700–¥800 for an infant aged 3 and over; anyone 2 or under is free. The aquarium uses dynamic pricing, so the exact figure is set per date on its price calendar and busier dates sit at the top of the band. Disability certificate holders and one carer pay half. The Kaiyukan + Santa Maria cruise set starts at ¥4,200 for an adult. Read off kaiyukan.com and suijo-bus.osaka on ${CHECKED}.`,
   },
   {
+    q: "Do you need to book Osaka Aquarium tickets in advance?",
+    a: `Not compulsory, but advised. Entry is by date and time; the ticket window sells same-day tickets only and warns that you may not get your preferred time and may have to wait, while the official e-ticket fixes your slot and goes on sale from about 30 days before your visit. On its top-priced dates the operator's booking notes are stricter: ¥3,200 adult dates take reservations from 15:00 only and ¥3,500 dates take none. Read on ${CHECKED}.`,
+  },
+  {
+    q: "How long do you need at Kaiyukan?",
+    a: `The aquarium itself puts one lap of its one-way route at 90–120 minutes. The route takes you to the top floor and spirals down past the tanks, including the Pacific tank with the whale sharks, so you walk it once. Since re-entry ended on 15 June 2026, plan it as one unbroken block and add time for the Santa Maria cruise (about 45 minutes) or the Ferris wheel next door. Read on ${CHECKED}.`,
+  },
+  {
+    q: "What is the best time to visit Kaiyukan?",
+    a: `A weekday date at the low end of the price calendar, entering from mid-afternoon. The operator does not publish a crowd forecast, but the price is set to match demand, its top-priced (¥3,200) dates take reservations from 15:00 only, and the evening programme runs 17:00–20:00 with last admission at 19:00 (times change by season). Read on ${CHECKED}.`,
+  },
+  {
+    q: "Is the Osaka Amazing Pass valid at Kaiyukan?",
+    a: `No. Kaiyukan is not on the Osaka Amazing Pass list of participating attractions checked on ${CHECKED}. The pass (¥3,500 for 1 day) does cover three things right next to it — the Tempozan Giant Ferris Wheel, the Santa Maria day cruise and the Captain Line boat to Universal City Port — so it can still pay on a Tempozan day if you add those. Klook also sells an Amazing Pass + Kaiyukan bundle as one checkout.`,
+  },
+];
+
+/** Further questions shown on the page but kept out of the FAQPage markup. */
+const moreFaqItems = [
+  {
     q: "Why does the Kaiyukan ticket price change by date?",
-    a: `Because the aquarium chose to. Kaiyukan states that it has introduced 価格変動制 — dynamic pricing — in order to set a "fair price" matching demand and so admit more visitors. In practice that means a quiet Tuesday in February and a Golden Week Saturday are different products at different prices, and no fixed figure on any third-party page can be right for both. It also means the price itself is a crowd signal: if your date is at the top of the band, it is going to be busy. The stated reason read on ${SET_CHECKED}; the variable-price notice re-checked on ${CHECKED}.`,
+    a: `Because the aquarium chose to. Kaiyukan states that it has introduced 価格変動制 — dynamic pricing — in order to set a "fair price" matching demand and so admit more visitors. In practice that means a quiet Tuesday in February and a Golden Week Saturday are different products at different prices, and no fixed figure on any third-party page can be right for both. It also means the price itself is a crowd signal: if your date is at the top of the band, it is going to be busy. The stated reason and the variable-price notice read on ${CHECKED}.`,
   },
   {
     q: "What are the Osaka Aquarium Kaiyukan opening hours?",
@@ -247,18 +347,6 @@ const faqItems = [
     a: `Check the calendar for your date, because the official pages checked on ${CHECKED} do not print November-to-New-Year prices as text — each date's figure appears only on the price calendar. What the operator does publish is the shape of the top end: adult dates at ¥3,200 accept bookings from 15:00 only, and adult dates at ¥3,500 accept no bookings at all. If your date is in a holiday period, look it up as soon as e-tickets open, about 30 days ahead.`,
   },
   {
-    q: "How long do you need at Kaiyukan?",
-    a: `Allow two to three hours. The official pages checked on ${CHECKED} do not give a visit length, so that figure is planning advice rather than an operator number: the route runs you up to the top floor and then spirals down past the tanks in one direction, so you walk it once rather than wandering. Two hours is a brisk visit; three lets you stop at the Pacific tank for the whale sharks. Since re-entry ended on 15 June 2026, plan the whole visit as one block — you cannot step out and come back.`,
-  },
-  {
-    q: "Do you need to book Kaiyukan tickets in advance?",
-    a: `Strongly advised rather than mandatory, and for two separate reasons. The operator recommends buying its date-and-time e-ticket in advance and warns that a same-day ticket may not get you in at the time you want — the window sells same-day tickets only, and you may have to queue for one. Beyond the queue, booking is how you pick an entry time, which is the main thing you control. E-tickets open from, in principle, 30 days before your visit date. Read on ${CHECKED}.`,
-  },
-  {
-    q: "What is the quietest time to visit Kaiyukan?",
-    a: `Late in the day, and the ticketing structure points you there. From 17:00 the lighting and music change for the evening programme — the same tanks, a different experience — and the last admission on a 20:00-closing day is 19:00. The price calendar backs it up: dates in the top ¥3,200 adult tier accept bookings only from 15:00, which is the operator steering demand away from the morning on its busiest days. If you have a choice of date at all, a weekday out of the school holidays beats any time-of-day trick. Checked ${CHECKED}.`,
-  },
-  {
     q: "How do you get to Osaka Aquarium Kaiyukan?",
     a: `The main route is Osaka Metro's Chuo Line to Osakako Station — officially 大阪港駅（海遊館前）, "Osakako, in front of Kaiyukan" — then Exit 1 and about a five-minute walk. From the Universal Studios side, the Captain Line shuttle boat lands at Kaiyukan Nishi Hatoba, right at the door. Osaka City Bus stops at Tempozan Harbor Village and Nankai Bus at Kaiyukan (Tempozan), and there are around 1,000 parking spaces. All read off kaiyukan.com/info/access/ on ${CHECKED}.`,
   },
@@ -267,16 +355,12 @@ const faqItems = [
     a: `No, not any more — and this is the detail most guides still get wrong. Kaiyukan announced that it would end re-entry from 15 June 2026, giving as its reason that it wanted to hold visitor numbers steady within each time slot so people could look at the exhibits at their own pace. Eat before you go in or after you come out; the Tempozan Marketplace next door is where most people do, and your admission ticket also works as a discount coupon there. Read on ${CHECKED}.`,
   },
   {
-    q: "Is Kaiyukan included in the Osaka Amazing Pass?",
-    a: "No, and it is the single most expensive omission on the pass. The Osaka Amazing Pass covers unlimited Osaka Metro and city buses plus free entry to more than 40 facilities — Osaka Castle, the Umeda Sky Building, Tsutenkaku, the river cruises — but not Kaiyukan and not Universal Studios Japan. The practical consequence is scheduling: give Kaiyukan its own half-day rather than buying a second pass day for it. If you want both in one purchase, Klook sells an Amazing Pass and Kaiyukan combo, which is the only single checkout that covers the two.",
-  },
-  {
     q: "Can you combine Kaiyukan with the Tempozan Ferris wheel or the Santa Maria?",
-    a: `Partly, and the distinction matters when you are buying. The aquarium sells official set tickets for three things: the Santa Maria, a sailing-ship replica that cruises Osaka Harbour in about 45 minutes with day sailings on the hour; the Captain Line shuttle to Universal City Port, about ten minutes across the water; and LEGOLAND Discovery Center Osaka in the same complex. The Tempozan Giant Ferris Wheel — 112.5 metres, in the same Harbor Village — is not on that list and is run by a separate operator, so there is no official aquarium-and-wheel ticket. Buy that one on the day. Set tickets read off kaiyukan.com on ${SET_CHECKED}; the wheel's 112.5 m height on ${CHECKED}.`,
+    a: `Partly, and the distinction matters when you are buying. The aquarium sells official set tickets for three things: the Santa Maria, a sailing-ship replica that cruises Osaka Harbour in about 45 minutes (adult set from ¥4,200); the Captain Line shuttle to Universal City Port, about ten minutes across the water; and LEGOLAND Discovery Center Osaka in the same complex. The Tempozan Giant Ferris Wheel — 112.5 metres, in the same Harbor Village — is not on that list and is run by a separate operator, so there is no official aquarium-and-wheel ticket; buy that one on the day, or use the Osaka Amazing Pass, which covers it. All read on ${CHECKED}.`,
   },
   {
     q: "Is Kaiyukan worth it with small children?",
-    a: `It is one of the easier major attractions in Osaka for a family, with the caveats being practical rather than about enjoyment. Entry is free under 3 and ¥700–800 for a 3-year-old and up, the route is a single one-way walk rather than a maze, and the headline exhibits — the whale sharks in the Pacific tank, the Antarctic penguins — are the ones small children actually want. The building has a baby care room with changing beds and a formula-water dispenser, plus a nursing room. The things to plan around are the end of re-entry, which makes the visit one unbroken block, and the fact that the shortest realistic stay is about two hours. The official pages checked do not set out stroller rules, so ask at the entrance if you need to know before you go. Prices and facilities read on ${CHECKED}.`,
+    a: `It is one of the easier major attractions in Osaka for a family, with the caveats being practical rather than about enjoyment. Entry is free under 3 and ¥700–800 for a 3-year-old and up, the route is a single one-way walk rather than a maze, and the headline exhibits — the whale sharks in the Pacific tank, the Antarctic penguins — are the ones small children actually want. The building has a baby care room with changing beds and a formula-water dispenser, plus a nursing room. The things to plan around are the end of re-entry, which makes the visit one unbroken block, and the operator's own 90–120 minutes for one lap. The official pages checked do not set out stroller rules, so ask at the entrance if you need to know before you go. Prices and facilities read on ${CHECKED}.`,
   },
   {
     q: "Is Kaiyukan a good rainy-day option in Osaka?",
@@ -288,9 +372,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/osaka-aquarium-kaiyukan-tickets") },
 });
 
-const TITLE = "Osaka Aquarium Kaiyukan Tickets (2026): Price, Hours, Slots";
+const TITLE = "Osaka Aquarium Kaiyukan Tickets 2026: Price, Best Time to Go";
 const DESC =
-  "Kaiyukan ticket price 2026: Osaka aquarium tickets are dated and priced by day, adult ¥2,700–3,200, child ¥1,400–1,650, under 3 free. Hours and re-entry.";
+  "Kaiyukan tickets 2026: Osaka Aquarium adults ¥2,700–3,200 by date, kids ¥1,400–1,650, age 3+ ¥700–800. Timed e-tickets 30 days ahead; Osakako 5 min.";
 
 export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -380,12 +464,12 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Osaka Aquarium Kaiyukan Tickets (2026): <br />Price, Hours and Time Slots
+            Osaka Aquarium Kaiyukan Tickets 2026: <br />Price &amp; Best Time to Go
           </h1>
           <p className={styles.heroSubtitle}>
-            Kaiyukan tickets are dated and priced by day: ¥2,700–3,200 for an adult, with your
-            entry time chosen when you book. Below: the official price bands, the best time to go,
-            how long to allow, and the re-entry rule that changed in June 2026.
+            Kaiyukan tickets by age, the official signals on when it is busy, how long one lap takes,
+            and what to pair with it at Tempozan — the Ferris wheel, the Santa Maria cruise and the
+            boat to Universal Studios.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Official price bands, dated", "Re-entry rule explained"].map((t) => (
@@ -410,17 +494,39 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
         {/* Answer-first opening paragraph */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>Osaka Aquarium Kaiyukan tickets are date-and-time tickets with a price that changes
-            by date:</strong> an adult pays <strong>¥2,700–¥3,200</strong>, a child at elementary or
-            junior-high school <strong>¥1,400–¥1,650</strong>, an infant aged 3 and over{" "}
-            <strong>¥700–¥800</strong>, and anyone 2 or under nothing (kaiyukan.com, checked {CHECKED}).
-            It is about a five-minute walk from Exit 1 of Osakako Station on the Chuo Line, and two to
-            three hours is enough for the one-way route. On the busiest dates the price sits at the top
-            of the band and the booking window narrows — ¥3,200 adult dates take reservations from
-            15:00 only and ¥3,500 dates take none — so pick your date and entry time and buy the
-            e-ticket ahead, which goes on sale about 30 days before.
+            <strong>Osaka Aquarium Kaiyukan tickets cost ¥2,700–¥3,200 for an adult, ¥1,400–¥1,650
+            for an elementary or junior-high child and ¥700–¥800 for an infant aged 3 and over, and
+            under-3s go free</strong> — the price is set per date under the aquarium&apos;s dynamic
+            pricing, so busier dates sit at the top of the band (kaiyukan.com, checked {CHECKED}).
+            Entry is by date and time: booking is not compulsory, but the window sells same-day tickets
+            only and may not have your time, so the official e-ticket, on sale from about 30 days
+            before, is the safe route. Kaiyukan is about a 5-minute walk from Exit 1 of Osakako Station
+            on the Osaka Metro Chuo Line, and the aquarium puts one lap of its one-way route at 90–120
+            minutes.
           </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={osakaAquariumKaiyukanTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Check Kaiyukan tickets for your date on Klook →
+            </KlookLink>
+          </div>
         </section>
+
+        <KlookSameDayCards
+          heading="What to book for the same Kaiyukan day"
+          cards={kaiyukanSameDayCards}
+          footnote={
+            <>
+              Riding the subway more than seeing paid sights?{" "}
+              <KlookLink href={osakaMetroDayPass.url} adPlacement="same-day-cards" target="_blank" rel="sponsored nofollow noopener">
+                The Osaka Metro 1-day / 2-day pass on Klook →
+              </KlookLink>{" "}
+              (the Enjoy Eco Card is the station-machine version — compared in our{" "}
+              <Link href="/guides/transport/osaka-metro-pass">Osaka Metro pass guide</Link>).
+            </>
+          }
+        />
+
+        <EsimCtaTop />
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
@@ -435,7 +541,7 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>How long to allow</p>
-                <p className={styles.verdictStatValue}>2–3 hours, one way round</p>
+                <p className={styles.verdictStatValue}>90–120 min, one way round</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Getting there</p>
@@ -454,7 +560,8 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
               under-3s nothing. Buy the official date-and-time e-ticket, which fixes your entry time
               and opens about <strong>30 days</strong> before your visit — the ticket window sells
               same-day only, so that is also how you skip the queue.
-              Allow <strong>two to three hours</strong> and plan it as one unbroken block:{" "}
+              Allow <strong>90–120 minutes</strong> (the aquarium&apos;s own figure for one lap) and plan
+              it as one unbroken block:{" "}
               <strong>re-entry ended on 15 June 2026</strong>. It is a five-minute walk from Exit 1
               at Osakako on the Chuo Line, and it is <strong>not</strong> covered by the Osaka
               Amazing Pass. All read off kaiyukan.com on {CHECKED}.
@@ -469,10 +576,6 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
             </div>
           </div>
         </div>
-
-        <KlookSameDayCards heading="What else to book for a Kaiyukan day" cards={kaiyukanSameDayCards} />
-
-        <EsimCtaTop />
 
         {/* Intro */}
         <section className={styles.bodySection}>
@@ -498,27 +601,27 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
         {/* Price table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
-          <h2 className={styles.sectionTitle}>How much is Osaka Aquarium Kaiyukan in 2026?</h2>
+          <h2 className={styles.sectionTitle}>How Much Are Kaiyukan Tickets in 2026?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            An adult ticket costs ¥2,700 to ¥3,200 and a child&apos;s ¥1,400 to ¥1,650, depending on
-            the date — Kaiyukan states that admission is a variable price (入館料は変動価格), and the
-            figure for your day appears on its price calendar. These are the published bands, checked
-            on {CHECKED}:
+            An adult Kaiyukan ticket costs ¥2,700 to ¥3,200 and a child&apos;s ¥1,400 to ¥1,650,
+            depending on the date — Kaiyukan states that admission is a variable price (入館料は変動価格),
+            and the figure for your day appears on its price calendar. Ticket type by age:
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Who", "Admission", "Notes"].map((h) => (
+                    {["Ticket", "Who", "Price (official)", "Notes"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {priceRows.map((row) => (
-                    <tr key={row.tier}>
-                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.tier}</td>
+                    <tr key={row.ticket + row.who}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.ticket}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.who}</td>
                       <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>{row.price}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.what}</td>
                     </tr>
@@ -527,15 +630,18 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {CHECKED_ISO} — <a href={OFFICIAL.bands} target="_blank" rel="noopener">kaiyukan.com/info/group/</a>{" "}
+            (price bands and booking notes), <a href={OFFICIAL.calendar} target="_blank" rel="noopener">kaiyukan.com/info/ticket/kaiyukan/</a>{" "}
+            (dynamic pricing, price calendar, disability rule) and{" "}
+            <a href={OFFICIAL.santaMaria} target="_blank" rel="noopener">suijo-bus.osaka/intro/santamaria/</a> (set ticket).
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Bands read off kaiyukan.com on {CHECKED} — the group-booking page is the one that prints
-            them as text, while the main ticket page shows the exact figure only once you pick a
-            date on its calendar. The operator adds two notes worth knowing: dates in the ¥3,200
-            adult tier accept reservations from 15:00 only, and dates in a ¥3,500 tier accept no
-            reservations at all. The pages checked do not print November-to-New-Year prices as text,
-            so look up holiday dates on the calendar itself. Subject to change — confirm your own date
-            before you buy. For admissions across the rest of Japan, each with its own check date, see
-            our{" "}
+            The group-booking page is the one that prints the bands as text, while the main ticket
+            page shows the exact figure only once you pick a date on its calendar. The pages checked
+            do not print November-to-New-Year prices as text, so look up holiday dates on the calendar
+            itself. Subject to change — confirm your own date before you buy. For admissions across
+            the rest of Japan, each with its own check date, see our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
             </Link>.
@@ -616,11 +722,39 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
           <span className={styles.sectionLabel}>Hours and crowds</span>
           <h2 className={styles.sectionTitle}>What Is the Best Time to Visit Kaiyukan?</h2>
           <p className={styles.bodyText}>
-            <strong>Late afternoon on a weekday outside the school holidays.</strong> The official pages
-            checked on {CHECKED} do not publish a crowd forecast, but the booking rules point the same
-            way: on its top-priced adult dates (¥3,200) Kaiyukan takes reservations from 15:00 only, and
-            the evening programme runs <strong>17:00–20:00 with last admission at 19:00</strong>, with
-            times changing by season.
+            <strong>A weekday date at the low end of the price calendar, entering from mid-afternoon.</strong>{" "}
+            The official pages checked on {CHECKED} do not publish a crowd forecast, but the booking rules
+            point the same way: on its top-priced adult dates (¥3,200) Kaiyukan takes reservations from
+            15:00 only, and the evening programme runs <strong>17:00–20:00 with last admission at
+            19:00</strong>, with times changing by season.
+          </p>
+          <div className={styles.tableWrap} style={{ margin: "1rem 0" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["When", "What the official pages say", "What it means for you"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {timingRows.map((row) => (
+                    <tr key={row.when}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.when}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.official}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.means}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {CHECKED_ISO} — <a href={OFFICIAL.calendar} target="_blank" rel="noopener">kaiyukan.com/info/ticket/kaiyukan/</a>,{" "}
+            <a href={OFFICIAL.bands} target="_blank" rel="noopener">kaiyukan.com/info/group/</a> (booking notes and the
+            90–120 minute lap), <a href={OFFICIAL.ticket} target="_blank" rel="noopener">kaiyukan.com/info/ticket/</a>{" "}
+            (window sales) and <a href={OFFICIAL.night} target="_blank" rel="noopener">kaiyukan.com/program/night/</a>.
           </p>
           <p className={styles.bodyText}>
             Opening hours sit on the same calendar as the prices, published per date, and the site asks
@@ -637,18 +771,20 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
           <span className={styles.sectionLabel}>Time needed</span>
           <h2 className={styles.sectionTitle}>How Long Do You Need at Kaiyukan?</h2>
           <p className={styles.bodyText}>
-            <strong>Two to three hours.</strong> The official pages checked on {CHECKED} do not give a
-            visit length, so treat that as planning advice: the route takes you to the top of the
-            building and then down past the tanks in one direction, so you walk it once. Two hours is a
-            brisk lap; three leaves time at the Pacific tank for the whale sharks and a stop at Cafe
-            R.O.F, which sits behind the Japan Trench tank with some seats facing it.
+            <strong>90–120 minutes, by the aquarium&apos;s own count.</strong> Kaiyukan&apos;s group page
+            gives that time for one lap of the building (read on {CHECKED}): the route takes you to the top
+            floor and then down past the tanks in one direction, so you walk it once. Add time if you
+            want to stand at the Pacific tank for the whale sharks or stop at Cafe R.O.F, which sits
+            behind the Japan Trench tank with some seats facing it.
           </p>
           <p className={styles.bodyText}>
-            That leaves half a day. Tempozan is out on the bay, so the simplest pairing is the other
+            That leaves most of the day. Tempozan is out on the bay, so the simplest pairing is the other
             half of the waterfront — the Ferris wheel or the Santa Maria — or Universal Studios Japan
             across the water. Our{" "}
             <Link href="/guides/attractions/osaka-2-day-itinerary">Osaka 2-day itinerary</Link> puts
-            Kaiyukan into a full day with the routing worked out, and the{" "}
+            Kaiyukan into a full day with the routing worked out, the{" "}
+            <Link href="/guides/attractions/osaka-3-day-itinerary">Osaka 3-day itinerary</Link> gives it
+            the bay-side afternoon, and the{" "}
             <Link href="/guides/attractions/osaka-kyoto-3-day-itinerary">Osaka and Kyoto 3-day
             itinerary</Link> uses it as the rainy-day or child-led option for Day 3.
           </p>
@@ -696,7 +832,13 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
         {/* Booking */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Step-by-step</span>
-          <h2 className={styles.sectionTitle}>How to Book Osaka Aquarium Kaiyukan Tickets</h2>
+          <h2 className={styles.sectionTitle}>Do You Need to Book Osaka Aquarium Tickets in Advance?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            <strong>Not compulsory, but advised.</strong> The ticket window sells same-day tickets only
+            and warns that you may not get your preferred entry time, while the official date-and-time
+            e-ticket goes on sale from about 30 days before (kaiyukan.com/info/ticket/, read on{" "}
+            {CHECKED}). How to book it, step by step:
+          </p>
           <div className={styles.stepsList}>
             {steps.map((step, i) => (
               <div key={i} className={styles.stepCard}>
@@ -725,26 +867,30 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
         {/* Combos */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Combos</span>
-          <h2 className={styles.sectionTitle}>What Can You Combine Kaiyukan With?</h2>
+          <h2 className={styles.sectionTitle}>What Can You Combine With Kaiyukan Nearby?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            The aquarium sells official set tickets for exactly three things. Prices for all of them
-            sit on the same date calendar as the admission, so there is no fixed figure to quote:
+            <strong>The Santa Maria harbour cruise is the easiest pairing:</strong> it boards at the pier
+            beside the aquarium and takes about 45 minutes. The aquarium sells official set tickets for
+            three things — the Santa Maria, the Captain Line boat and LEGOLAND — and the Osaka Amazing
+            Pass covers the wheel, the cruise and the Captain Line, though not Kaiyukan itself:
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Set ticket", "What it adds", "Worth knowing"].map((h) => (
+                    {["What", "Time", "Price (official)", "Amazing Pass?", "Worth knowing"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {comboRows.map((row) => (
-                    <tr key={row.combo}>
-                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.combo}</td>
-                      <td style={{ fontSize: "0.85rem" }}>{row.what}</td>
+                  {nearbyRows.map((row) => (
+                    <tr key={row.what}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.what}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.time}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.price}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.pass}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.note}</td>
                     </tr>
                   ))}
@@ -752,18 +898,34 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {CHECKED_ISO} — <a href={OFFICIAL.santaMaria} target="_blank" rel="noopener">suijo-bus.osaka/intro/santamaria/</a>{" "}
+            (cruise fares, length, pier), <a href={OFFICIAL.amazingPass} target="_blank" rel="noopener">osaka-amazing-pass.com/en/service_free.html</a>{" "}
+            (hours, closures, listed fees and pass coverage), <a href={OFFICIAL.captainLine} target="_blank" rel="noopener">kaiyukan.com/thv/captline/</a>{" "}
+            and <a href={OFFICIAL.harbor} target="_blank" rel="noopener">kaiyukan.com/thv/general/</a> (crossing time, wheel height).
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={santaMariaDayCruise.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Santa Maria cruise on Klook →
+            </KlookLink>
+            <KlookLink href={kaiyukanLegolandCombo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Kaiyukan + LEGOLAND on Klook →
+            </KlookLink>
+          </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            Note what is <strong>not</strong> on that list. The <strong>Tempozan Giant Ferris
-            Wheel</strong> — 112.5 metres above the ground and one of the largest in the world, in
-            the same Harbor Village as the aquarium — is run by a separate operator, so there is no
-            official aquarium-and-wheel combination. Buy that ticket on the day. The{" "}
+            Note what is <strong>not</strong> on the aquarium&apos;s set-ticket list. The <strong>Tempozan
+            Giant Ferris Wheel</strong> — 112.5 metres above the ground and one of the largest in the
+            world, in the same Harbor Village as the aquarium — is run by a separate operator, so there is
+            no official aquarium-and-wheel combination. Buy that ticket on the day. The{" "}
             <strong>Captain Line</strong> set ticket is the one worth a second look if your trip
             includes Universal Studios Japan: it is a ten-minute boat crossing from Universal City
             Port straight to the aquarium&apos;s door, which turns two attractions on opposite sides
             of the water into one afternoon. Our{" "}
             <Link href="/guides/attractions/usj-tickets-express-pass">USJ tickets and Express Pass guide</Link>{" "}
-            covers what the park itself needs booking-wise. Set tickets read off kaiyukan.com on{" "}
-            {SET_CHECKED}; the wheel&apos;s 112.5 m height re-checked on {CHECKED}.
+            covers what the park itself needs booking-wise, and our{" "}
+            <Link href="/guides/attractions/usj-hotels">USJ hotels guide</Link> compares the Universal
+            City rooms one crossing away. Set tickets and the wheel&apos;s 112.5 m height read off
+            kaiyukan.com on {CHECKED}.
           </p>
         </section>
 
@@ -794,13 +956,15 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
         {/* The pass question */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The pass question</span>
-          <h2 className={styles.sectionTitle}>Is Kaiyukan on the Osaka Amazing Pass?</h2>
+          <h2 className={styles.sectionTitle}>Is the Osaka Amazing Pass Valid at Kaiyukan?</h2>
           <p className={styles.bodyText}>
-            <strong>No</strong> — and this is the single most expensive thing the Osaka Amazing Pass
-            leaves out. The pass bundles unlimited Osaka Metro and city bus travel with free entry to
-            more than 40 facilities, including Osaka Castle, the Umeda Sky Building observatory,
-            Tsutenkaku and the river cruises. Kaiyukan is not one of them, and neither is Universal
-            Studios Japan. Our{" "}
+            <strong>No</strong> — Kaiyukan is not on the pass&apos;s list of participating attractions
+            (osaka-amazing-pass.com, read on {CHECKED}), and it is the single most expensive thing the
+            pass leaves out. The pass (¥3,500 for 1 day, ¥5,000 for 2 days) bundles unlimited Osaka Metro
+            and city bus travel with free entry to about 40 facilities, including Osaka Castle, the Umeda
+            Sky Building observatory and the river cruises — and, right next to the aquarium, the
+            Tempozan Giant Ferris Wheel, the Santa Maria day cruise and the Captain Line. Universal
+            Studios Japan is not on it either. Our{" "}
             <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass guide</Link>{" "}
             has the full inclusion list and the break-even arithmetic.
           </p>
@@ -830,9 +994,9 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>
-          <h2 className={styles.sectionTitle}>Common Questions</h2>
+          <h2 className={styles.sectionTitle}>Kaiyukan Tickets: Common Questions</h2>
           <div className={styles.faqList}>
-            {faqItems.map((item, i) => (
+            {[...faqItems, ...moreFaqItems].map((item, i) => (
               <details key={item.q} className={styles.faqItem}>
                 <summary className={styles.faqSummary}>
                   <span>{i + 1}. {item.q}</span>

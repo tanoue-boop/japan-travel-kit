@@ -245,7 +245,9 @@ export default function GuidesAttractionsPage({ updated, dates }: { updated: Pag
             <>
               Start with{" "}
               <Link href="/guides/attractions/shibuya-sky-tickets" style={L}>Shibuya Sky tickets</Link>: the clearest
-              example of a timed slot that opens two weeks ahead and also sells at the counter.
+              example of a timed slot that opens two weeks ahead and also sells at the counter. In Osaka,{" "}
+              <Link href="/guides/attractions/osaka-aquarium-kaiyukan-tickets" style={L}>Kaiyukan tickets</Link> work
+              the same way from about 30 days out, with the price set by date.
             </>
           ),
           parks: (

@@ -207,7 +207,10 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
             On the waterfront, the <strong>Kaiyukan</strong> is one of the world&apos;s great aquariums, built
             around a giant central tank with whale sharks — a superb option for families or a rainy day. Both
             of these are the attractions the Amazing Pass excludes, and both sell their own tickets, so treat
-            whichever you choose as its own day and its own budget line.
+            whichever you choose as its own day and its own budget line. The price by age, the best time to go
+            and the Tempozan pairings are in our{" "}
+            <Link href="/guides/attractions/osaka-aquarium-kaiyukan-tickets" style={linkStyle}>Kaiyukan tickets</Link>{" "}
+            guide.
           </p>
           <p className={styles.bodyText}>
             For the budget line itself: the Kaiyukan&apos;s own site prices an adult at {priceById("kaiyukan").adult}{" "}
@@ -521,7 +524,7 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Aquarium Kaiyukan Tickets (2026): Prices, Hours and Time Slots</p>
+                <p className={styles.relatedTitle}>Osaka Aquarium Kaiyukan Tickets 2026: Price, Best Time to Go</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

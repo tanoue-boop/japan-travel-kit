@@ -636,7 +636,10 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
           <h2 className={styles.sectionTitle}>Day 3 — the Kaiyukan and Umeda, or a Day Trip</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             <strong>Option A: the bay and Umeda.</strong> The better choice in rain or with children. The
-            Kaiyukan has no re-entry, so have lunch at Tempozan after the visit. For the deck at the end
+            Kaiyukan has no re-entry, so have lunch at Tempozan after the visit; the price by date and the
+            quieter entry times are in our{" "}
+            <Link href="/guides/attractions/osaka-aquarium-kaiyukan-tickets">Kaiyukan tickets</Link> guide.
+            For the deck at the end
             of the day, the{" "}
             <Link href="/guides/attractions/umeda-sky-building-tickets">Umeda Sky Building tickets guide</Link>{" "}
             lists the sunset time by month and the 15:00 pass cut-off.

@@ -487,7 +487,11 @@ export default function UsjHotelsPage({ updated }: { updated: PageUpdated }) {
             <a href="https://www.kate.co.jp/timetable/detail/NU" target="_blank" rel="noopener">kate.co.jp</a>. Fares
             are not printed for the trains. Our{" "}
             <Link href="/guides/attractions/where-to-stay-in-osaka">where to stay in Osaka guide</Link> compares
-            Namba, Umeda and Tennoji in full.
+            Namba, Umeda and Tennoji in full. A Universal City room also puts the Osaka Aquarium one boat ride
+            away: the Captain Line crosses from Universal City Port to Kaiyukan in about 10 minutes (kaiyukan.com,
+            read 2026-11-19), and our{" "}
+            <Link href="/guides/attractions/osaka-aquarium-kaiyukan-tickets">Kaiyukan tickets</Link> guide has the
+            price by date and the timed entry.
           </p>
         </section>
 
