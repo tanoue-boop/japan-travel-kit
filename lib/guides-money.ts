@@ -21,8 +21,8 @@ export const moneyArticles: GuideArticle[] = [
   {
     href: "/guides/money/wise-card-japan",
     badge: "Guide",
-    title: "Wise Card in Japan (2026): ATM Fees, Free Limits & Which ATMs Take It",
-    desc: "Yes, the Wise card works at Japanese ATMs. Free withdrawals to 250 USD/GBP/EUR or 400 AUD a month, then 2.69% — plus the ¥220 Japan Post Bank adds per use.",
+    title: "Wise Card in Japan (2026): Fees, Free ATM Limits & Where It Works",
+    desc: "Yes, the Wise card works in Japan. Free ATM cash to 250 USD/GBP/EUR or 400 AUD a month, then 2.69%; about 0.4% to convert to yen; physical Suica takes cash only.",
     group: "cards",
     city: "other",
   },

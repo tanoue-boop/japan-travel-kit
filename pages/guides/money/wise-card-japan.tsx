@@ -4,7 +4,7 @@ import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import KlookLink from "../../../components/KlookLink";
-import { klookEsim, naritaExpressRoundTripUrl, tokyoSubwayTicket, wiseCardTripPrep } from "../../../lib/klook-links";
+import { klookEsim, naritaExpressRoundTripUrl, tokyoSubwayTicket, wiseCardPayBeforeLand, wiseCardTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { wiseLink, WISE_REL, WISE_PRICING_URL } from "../../../lib/wise-links";
@@ -29,9 +29,131 @@ const CHECKED = "26 October 2026";
  * (wise.com/{us,gb,de,au,jp}/pricing/card-fees) and the two Japanese ATM operators'
  * overseas-card pages behind japanAtms (limits, fee wording, Visa/Mastercard hours).
  */
-const LAST_CHECKED = "2026-11-11";
+const LAST_CHECKED = "2026-11-19";
 const SEVEN_BANK_URL = "https://www.sevenbank.co.jp/intlcard/service.html";
 const JAPAN_POST_URL = "https://www.jp-bank.japanpost.jp/en/ias/en_ias_index.html";
+const WISE_CARD_FEES_GB_URL = "https://wise.com/gb/pricing/card-fees";
+const WISE_CONVERT_GB_JPY_URL = "https://wise.com/gb/pricing/send-money?source=GBP&target=JPY";
+const WISE_SUICA_GUIDE_URL = "https://wise.com/sg/blog/suica-card-japan";
+const JR_EAST_SUICA_URL = "https://www.jreast.co.jp/multi/en/pass/suica.html";
+const SEVEN_ELEVEN_PAYMENT_URL = "https://www.sej.co.jp/in/en/payment/";
+const REVOLUT_ABROAD_URL = "https://www.revolut.com/blog/post/using-revolut-abroad/";
+
+/**
+ * Table (1): Wise's fees for a trip to Japan, row 1 the verdict. Conversion figures are
+ * the balance-to-balance price Wise's own calculator returns for 1,000 units of each
+ * currency into JPY on 2026-11-19 (GBP 3.99 = 0.40%, USD 3.59 = 0.36%, EUR 5.08 = 0.51%,
+ * AUD 3.79 = 0.38%); the rest is the card-fees page for each country, same date.
+ */
+const japanFeeTable = [
+  {
+    item: "The answer",
+    wise: "Cheap for card spending, free for the first 250 GBP / EUR / USD (400 AUD) of ATM cash a month",
+    note: "The Japanese ATM operator may add its own per-withdrawal fee on top",
+  },
+  {
+    item: "Converting to yen",
+    wise: "About 0.40% from GBP, 0.36% from USD, 0.51% from EUR, 0.38% from AUD",
+    note: "Mid-market rate; Wise prices conversions per currency (UK pricing page: \"From 0.24%\")",
+  },
+  {
+    item: "Spending a yen balance",
+    wise: "Free",
+    note: "Wise: free to spend a currency you already hold",
+  },
+  {
+    item: "Free ATM cash a month",
+    wise: "250 GBP · 250 EUR · 250 USD · 400 AUD · 25,000 JPY",
+    note: "Set by where the card was issued, not where you withdraw",
+  },
+  {
+    item: "Above the allowance",
+    wise: "2.69% of the excess (UK, Eurozone, Australia)",
+    note: "US card: 1.95 USD + 1.95% per withdrawal; Japan card: 100 JPY + 1.75%",
+  },
+  {
+    item: "Japanese ATM operator fee",
+    wise: "Not a Wise fee",
+    note: "Japan Post Bank: ¥220 including tax per use; Seven Bank publishes no amount",
+  },
+  {
+    item: "Card fee",
+    wise: "7 GBP · 7 EUR · 9 USD · 10 AUD · 1,200 JPY, one-off",
+    note: "No subscription fee; digital card free",
+  },
+];
+
+/** Table (2): where the card works, by situation. Each row cites the page it rests on. */
+const whereItWorks = [
+  {
+    place: "The answer",
+    works: "Anywhere that takes Visa, plus Seven Bank and Japan Post Bank ATMs",
+    note: "Physical Suica top-ups are the one common gap: JR East takes cash only",
+  },
+  {
+    place: "Convenience stores",
+    works: "Yes",
+    note: "7-Eleven lists Visa and Mastercard (and Apple Pay, Google Pay) among accepted payments; some stores may not take every method",
+  },
+  {
+    place: "Train IC card top-up",
+    works: "Physical Suica: no. Welcome Suica app on iPhone: yes, via Apple Pay",
+    note: "JR East: card top-ups \"can only be made using cash\". Wise's own Suica guide walks through topping up the app with a Wise card in Apple Wallet",
+  },
+  {
+    place: "Hotels",
+    works: "Yes, where the hotel takes Visa",
+    note: "Wise: use the card wherever Visa is accepted. Pay in yen if offered your home currency",
+  },
+  {
+    place: "Taxis",
+    works: "Only if the cab takes Visa",
+    note: "Check before the ride; keep yen for the fare otherwise",
+  },
+  {
+    place: "ATMs",
+    works: "Yes: Seven Bank (7-Eleven) and Japan Post Bank",
+    note: "¥100,000 per withdrawal at Seven Bank (¥30,000 on a magnetic-stripe read), ¥50,000 at Japan Post Bank",
+  },
+];
+
+/**
+ * Table (3): Wise vs Revolut vs cash. Revolut figures are its UK Standard plan as it
+ * prints them on revolut.com; the Japanese and other plan figures live on
+ * wise-vs-revolut-japan.
+ */
+const wiseRevolutCash = [
+  {
+    item: "Best for",
+    wise: "Most visitors: one published fee, no weekend surcharge",
+    revolut: "Heavy cash users on a paid plan",
+    cash: "Small restaurants, temples and anywhere card-free",
+  },
+  {
+    item: "Free ATM cash a month",
+    wise: "250 GBP",
+    revolut: "£200 or 5 withdrawals, whichever comes first",
+    cash: "—",
+  },
+  {
+    item: "Above the allowance",
+    wise: "2.69% of the excess",
+    revolut: "2% (minimum £1)",
+    cash: "—",
+  },
+  {
+    item: "Converting to yen",
+    wise: "About 0.40% from GBP, any day",
+    revolut: "No extra fee Mon–Fri to £1,000 a month; 1% at weekends",
+    cash: "The exchange counter's own rate",
+  },
+  {
+    item: "Physical Suica top-up",
+    wise: "No (cash only)",
+    revolut: "No (cash only)",
+    cash: "Yes",
+  },
+];
 
 /**
  * The table this page exists for. There is no single answer to "how much does Wise
@@ -100,34 +222,6 @@ const japanAtms = [
   },
 ];
 
-/** Wise's own fee lines, each one a quote or a figure from a Wise page read on CHECKED. */
-const feeRows = [
-  {
-    item: "Monthly / annual fee",
-    detail: "None. Wise charges a one-off fee when the card is issued — 9 USD, 7 GBP, 7 EUR, 10 AUD or 1,200 JPY depending on your country.",
-  },
-  {
-    item: "Exchange rate",
-    detail: "The mid-market rate. Wise's pricing page puts it as \"the one you can check on Google\".",
-  },
-  {
-    item: "Conversion fee",
-    detail: "Varies by currency. Wise headlines it as \"From 0.23%\" on its US pricing page and \"From 0.24%\" on its UK one.",
-  },
-  {
-    item: "Spending a yen balance",
-    detail: "Free. Wise's UK pricing page lists paying with the card from a balance in the same currency as free — in store, online and abroad.",
-  },
-  {
-    item: "ATM withdrawals",
-    detail: "Free up to your country's monthly allowance, then 2.69% of the excess (1.95 USD + 1.95% per withdrawal on a US card, ¥100 + 1.75% on a Japanese one).",
-  },
-  {
-    item: "Japanese ATM operator fee",
-    detail: "Separate from Wise, and added by the machine. Wise's own Japan guide says that if you see an operator fee, \"it's charged by the ATM owner, not Wise\".",
-  },
-];
-
 const howToSteps = [
   {
     title: "Order and fund the card before you fly",
@@ -165,15 +259,32 @@ const cons = [
   "Requires the smartphone app to set up and manage",
 ];
 
+/** The five questions in FAQPage (task jtk-20261119-03). */
 const faqItems = [
   {
-    q: "Can I use my Wise card in Japan?",
-    a: "Yes. Wise's UK card page says to use the physical card \"wherever they accept Visa\", and Wise's own Japan guide names Seven Bank ATMs inside 7-Eleven stores and Japan Post Bank ATMs for withdrawing yen. Japan is still partly a cash country, so use the card for hotels, chain stores and convenience stores and keep some cash for smaller venues. Checked 26 October 2026.",
+    q: "Does the Wise card work in Japan?",
+    a: "Yes. Wise says to use the card wherever Visa is accepted, and it withdraws yen at Seven Bank ATMs inside 7-Eleven and at Japan Post Bank ATMs. 7-Eleven lists Visa among its accepted payments. The common gap is a physical Suica card, which JR East says can only be topped up with cash. Checked 19 November 2026.",
   },
   {
-    q: "How much does Wise charge for ATM withdrawals in Japan?",
-    a: "Nothing up to your monthly allowance, which is set by the country your card was issued in: 250 GBP on a UK card, 250 EUR in the Eurozone, 250 USD on a US card, 400 AUD in Australia and 25,000 JPY on a Japan-issued card. Above that, Wise charges 2.69% of the excess in the UK, the Eurozone and Australia; 1.95 USD + 1.95% on each withdrawal on a US card; and 100 JPY + 1.75% on a Japanese one. The Japanese ATM operator may add a fee of its own on top. All figures read off Wise's own country card-fee pages on 11 November 2026.",
+    q: "How much can I withdraw from a Japanese ATM with Wise for free?",
+    a: "Wise charges nothing up to a monthly allowance set by the country your card was issued in: 250 GBP on a UK card, 250 EUR in the Eurozone, 250 USD on a US card, 400 AUD in Australia and 25,000 JPY on a Japan-issued card. Above that it is 2.69% of the excess (UK, Eurozone, Australia), 1.95 USD + 1.95% per withdrawal on a US card, or 100 JPY + 1.75% on a Japanese card. The ATM operator can add its own fee: Japan Post Bank publishes ¥220 including tax per use. Wise card-fee pages checked 19 November 2026.",
   },
+  {
+    q: "Should I hold yen or my home currency on Wise in Japan?",
+    a: "Either works. Spending a yen balance is free, and converting pounds to yen in the account cost about 0.40% on Wise's calculator on 19 November 2026 (0.36% from USD, 0.51% from EUR). If you do not hold yen, Wise converts at the time of payment. Holding yen fixes your rate before the trip; it does not avoid the conversion fee, which is paid when you convert.",
+  },
+  {
+    q: "Can I top up Suica with a Wise card?",
+    a: "Not a physical Suica: JR East states that Suica top-ups can only be made using cash. The Welcome Suica app on iPhone is different: Wise's own Suica guide describes adding the Wise card to Apple Wallet and topping up the app with Apple Pay. Checked 19 November 2026.",
+  },
+  {
+    q: "Is Wise better than Revolut for Japan?",
+    a: "For most short trips, yes: Wise charges about 0.40% to convert GBP to yen on any day and gives 250 GBP of free ATM cash a month. Revolut's UK Standard plan adds 1% to weekend exchanges and gives £200 or 5 free withdrawals, but charges 2% above that against Wise's 2.69%, so heavy cash users can come out ahead on Revolut. Checked 19 November 2026; the full comparison is on our Wise vs Revolut for Japan page.",
+  },
+];
+
+/** Earlier questions, still shown on the page but outside FAQPage. */
+const moreFaqItems = [
   {
     q: "Which ATMs in Japan work with the Wise card?",
     a: "Use a Seven Bank ATM inside 7-Eleven first. Seven Bank lists Visa, Mastercard (including Maestro and Cirrus), UnionPay, American Express, JCB, Discover and Diners Club for cards issued abroad, allows ¥100,000 per withdrawal (¥30,000 on a magnetic-stripe read) and runs Visa and Mastercard withdrawals 00:00–24:00. Japan Post Bank ATMs at post offices also take Visa and Mastercard cards issued abroad, up to ¥50,000 per withdrawal. Checked 11 November 2026.",
@@ -190,9 +301,9 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/wise-card-japan") } });
 
-const TITLE = "Wise Card Japan 2026: Free ATM to 250/mo, Then 2.69%";
+const TITLE = "Wise Card Japan 2026: Fees, Free ATM Limits & Where It Works";
 const DESCRIPTION =
-  "Yes, the Wise card works in Japan: no Wise fee on the first 250 GBP/EUR/USD of ATM cash a month, then 2.69% (UK/EU); Japan Post adds ¥220. Order now.";
+  "Wise card in Japan: free ATM cash to 250 GBP/EUR/USD a month, then 2.69%; about 0.4% to convert to yen; works at 7-Eleven and Japan Post ATMs. Fee table.";
 
 export default function WiseCardJapanPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -278,14 +389,14 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Wise Card Japan 2026: <br />Free ATM Limit, Fees After It &amp; Which ATMs Take It
+            Wise Card in Japan (2026): <br />Fees, Free ATM Limits &amp; Where It Works
           </h1>
           <p className={styles.heroSubtitle}>
             Free withdrawals to 250 USD, GBP or EUR a month, 2.69% above that, and a separate fee from the
             Japanese machine. Every figure below comes from Wise or the ATM operator itself.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Free to 250/mo", `Figures checked ${CHECKED}`].map((t) => (
+            {[`Updated ${updated.label}`, "Free to 250/mo", `Fees checked ${LAST_CHECKED}`].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -312,22 +423,34 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
 
         {/* Answer first — the paragraph that has to settle the search before the reader scrolls */}
         <section className={styles.bodySection} style={{ marginBottom: "2.5rem" }}>
-          <h2 className={styles.sectionTitle}>Can I Use My Wise Card in Japan?</h2>
+          <h2 className={styles.sectionTitle}>Does the Wise Card Work in Japan?</h2>
           <p className={styles.bodyText}>
             <strong>
-              Yes — the Wise card works in Japan: it pays wherever Visa is accepted and withdraws yen at Seven Bank
-              ATMs inside 7-Eleven and at Japan Post Bank ATMs.
+              Yes — the Wise card works in Japan wherever Visa is accepted, and it withdraws yen at Seven Bank ATMs
+              inside 7-Eleven (up to ¥100,000 a time) and at Japan Post Bank ATMs (up to ¥50,000).
             </strong>{" "}
-            Wise charges no ATM fee on the first 250 GBP a month on a UK card, 250 EUR on a Eurozone card, 250 USD
-            on a US card or 400 AUD on an Australian card, then 2.69% of the excess (1.95 USD + 1.95% per withdrawal
-            on a US card), according to Wise&apos;s own card-fee pages checked {LAST_CHECKED}. The Japanese machine
-            charges separately: Japan Post Bank publishes ¥220 including tax per use, and Seven Bank does not publish
-            an amount.
+            Wise charges no ATM fee on the first 250 GBP, 250 EUR or 250 USD a month (400 AUD on an Australian
+            card), then 2.69% of the excess (1.95 USD + 1.95% per withdrawal on a US card), and converting pounds
+            to yen costs about 0.40% (0.36% from USD, 0.51% from EUR), per Wise&apos;s own pricing pages checked{" "}
+            {LAST_CHECKED}. A physical Suica card can only be topped up with cash, according to JR East, but
+            Wise&apos;s own Suica guide shows the Welcome Suica app topped up with a Wise card through Apple Pay;
+            separately, Japan Post Bank adds ¥220 including tax per withdrawal.
           </p>
           <a href={WISE_URL} className={styles.verdictBtn} target="_blank" rel={WISE_REL} style={{ display: "inline-block", marginTop: "0.5rem" }}>
             Order a Wise card →
           </a>
-          <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
+        </section>
+
+        {/* Pay before you land (task jtk-20261119-03): directly under the answer and the Wise CTA. */}
+        <KlookTripPrep
+          label="Pay before you land"
+          heading="What Can You Pay for on the Card Before You Land?"
+          intro="Every booking settled at home is one less arrival-day cost drawing on your free ATM allowance or on the Japanese machine's per-withdrawal fee. These six are all bookable on Klook before you fly; choose the airport line for the airport you land at:"
+          items={wiseCardPayBeforeLand}
+        />
+
+        <section className={styles.bodySection} style={{ marginBottom: "2.5rem" }}>
+          <p className={styles.bodyText}>
             That makes it a strong card for a visitor who wants the mid-market rate on card payments and two or
             three large cash withdrawals, and a poor one for anyone planning to take out ¥10,000 at a time. To size
             those withdrawals, see{" "}
@@ -343,9 +466,10 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
             The ATM allowances and the Japanese ATM limits and fees were re-read on Wise&apos;s and the operators&apos; own
-            pages on {LAST_CHECKED}; the other Wise lines (conversion fee, phone wallets) were read on {CHECKED}. Where an operator does not publish a
+            pages on {LAST_CHECKED}, along with the conversion fees and the Suica top-up rules; the phone-wallet
+            country lists were read on {CHECKED}. Where an operator does not publish a
             number, this page says so rather than guessing one.{" "}
-            <a href="#atm-fees" style={{ color: "var(--accent)", fontWeight: 600 }}>Jump to the fee table ↓</a>
+            <a href="#wise-fees-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>Jump to the fee table ↓</a>
           </p>
         </section>
 
@@ -385,6 +509,51 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
 
         {/* Moved up from after "How to Use Wise in Japan" (task jtk-20261118-P01): Simbye 25%, Klook eSIM 20%. */}
         <BookingEsimCard lead="Card sorted? Get mobile data before you land." />
+
+        {/* Table (1): Wise's fees in Japan, verdict first */}
+        <section className={styles.comparisonSection} id="wise-fees-japan">
+          <span className={styles.sectionLabel}>Fees</span>
+          <h2 className={styles.sectionTitle}>How Much Does the Wise Card Cost in Japan?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1.25rem" }}>
+            About 0.4% to convert to yen, nothing on the first 250 GBP, EUR or USD of ATM cash a month, and a one-off
+            card fee. There is no monthly fee; the only Japanese charge is the ATM operator&apos;s own.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Fee", "Wise", "Detail"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {japanFeeTable.map((row, i) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{i === 0 ? <strong>{row.item}</strong> : row.item}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.88rem" }}>{i === 0 ? <strong>{row.wise}</strong> : row.wise}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {LAST_CHECKED}.</strong> Sources:{" "}
+            <a href={WISE_CARD_FEES_GB_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>wise.com/gb/pricing/card-fees</a>{" "}
+            (and the /us, /de, /au and /jp versions), and Wise&apos;s{" "}
+            <a href={WISE_CONVERT_GB_JPY_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>GBP to JPY calculator</a>{" "}
+            for 1,000 units converted between balances. Wise prices conversions per currency, with volume discounts on large
+            amounts, and the app shows the exact fee before you confirm. Operator fee:{" "}
+            <a href={JAPAN_POST_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>Japan Post Bank</a>.
+            For how this compares with changing cash at an airport counter, see our{" "}
+            <Link href="/guides/money/currency-exchange-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              currency exchange guide
+            </Link>.
+          </p>
+        </section>
 
         {/* The allowance table — the part a one-line AI answer cannot get right */}
         <section className={styles.comparisonSection} id="atm-fees">
@@ -512,29 +681,30 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
           </a>
         </section>
 
-        {/* Wise's own fees */}
-        <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Fees</span>
-          <h2 className={styles.sectionTitle}>What Does the Wise Card Cost to Use?</h2>
+        {/* Table (2): where it works, by situation */}
+        <section className={styles.comparisonSection} id="where-it-works">
+          <span className={styles.sectionLabel}>Where it works</span>
+          <h2 className={styles.sectionTitle}>Where Can You Use the Wise Card in Japan?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1.25rem" }}>
-            There is no monthly fee and no foreign transaction fee in the usual sense. What you pay is a one-off
-            cost for the card, a conversion fee when money changes currency, and the ATM charges above.
+            Anywhere that takes Visa, which includes 7-Eleven, plus the Seven Bank and Japan Post Bank ATMs. The one
+            everyday gap is a physical Suica card, which JR East tops up with cash only.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Item", "Detail"].map((h) => (
+                    {["Where", "Does the Wise card work?", "Detail"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {feeRows.map((row) => (
-                    <tr key={row.item}>
-                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.item}</td>
-                      <td style={{ fontSize: "0.9rem" }}>{row.detail}</td>
+                  {whereItWorks.map((row, i) => (
+                    <tr key={row.place}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{i === 0 ? <strong>{row.place}</strong> : row.place}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.88rem" }}>{i === 0 ? <strong>{row.works}</strong> : row.works}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.note}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -542,11 +712,17 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Wise pages read {CHECKED}. The conversion fee is per currency rather than a single headline number,
-            which is why Wise prints it as a &ldquo;from&rdquo; figure and shows the exact amount in the app before you
-            convert. For how Wise compares with changing cash at an airport counter, see our{" "}
-            <Link href="/guides/money/currency-exchange-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              currency exchange guide
+            <strong>Last checked: {LAST_CHECKED}.</strong> Sources:{" "}
+            <a href={SEVEN_ELEVEN_PAYMENT_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>7-Eleven in-store payment</a>,{" "}
+            <a href={JR_EAST_SUICA_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>JR East Suica</a>,{" "}
+            <a href={WISE_SUICA_GUIDE_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>Wise&apos;s Suica guide</a>,{" "}
+            <a href={SEVEN_BANK_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>Seven Bank</a>{" "}
+            and{" "}
+            <a href={JAPAN_POST_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>Japan Post Bank</a>.
+            At any terminal or ATM that offers your home currency, choose yen: the rate on the other option is set
+            by the merchant, not Wise. For tickets, passes and IC cards city by city, see our{" "}
+            <Link href="/guides/transport/tokyo-transportation" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Tokyo transportation guide
             </Link>.
           </p>
         </section>
@@ -564,12 +740,14 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
             currently available if your card was issued in Japan&rdquo;. Wise&apos;s UK card page also lists paying by
             QR code alongside Apple and Google Pay.
           </p>
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.15rem", marginTop: "1.5rem" }}>Can I top up Suica with a Wise card?</h3>
           <p className={styles.bodyText}>
-            A phone tap is still a card payment, though, and that is not the same thing as an IC card. Suica is
-            issued by JR East rather than by Wise, and Wise does not list Suica or Mobile Suica anywhere in its
-            card documentation — so this page will not tell you that a Wise card tops one up. Treat the two as
-            separate tools: the Wise card for shops, hotels and ATM withdrawals, and an IC card for the ticket
-            gates that take nothing else. Our{" "}
+            Not a physical Suica card: JR East states that Suica top-ups &ldquo;can only be made using cash&rdquo; and
+            that Suica &ldquo;cannot be topped up using a credit card&rdquo;. The Welcome Suica app on iPhone is the
+            exception — Wise&apos;s own{" "}
+            <a href={WISE_SUICA_GUIDE_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>Suica guide</a>{" "}
+            walks through adding the Wise card to Apple Wallet and tapping &ldquo;Top Up with Apple Pay&rdquo; in the
+            app. Checked {LAST_CHECKED}. Our{" "}
             <Link href="/guides/transport/ic-cards-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               IC cards in Japan guide
             </Link>{" "}
@@ -584,12 +762,43 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
         {/* Wise or Revolut */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Head to head</span>
-          <h2 className={styles.sectionTitle}>Wise or Revolut for Japan?</h2>
+          <h2 className={styles.sectionTitle}>Is Wise Better Than Revolut or Cash for Japan?</h2>
           <p className={styles.bodyText}>
             Wise if you want one rate and one published fee with nothing to manage; Revolut if you are willing to
             work around a plan structure to get a larger free ATM allowance. The two differ most in how they
             package it — Wise charges the same conversion fee whatever day of the week it is, while Revolut&apos;s
             allowances and weekend rate depend on the tier you are on.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1.25rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["", "Wise (UK card)", "Revolut Standard (UK)", "Cash"].map((h) => (
+                      <th key={h || "row"}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {wiseRevolutCash.map((row, i) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{i === 0 ? <strong>{row.item}</strong> : row.item}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{i === 0 ? <strong>{row.wise}</strong> : row.wise}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.revolut}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.cash}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {LAST_CHECKED}.</strong> Sources:{" "}
+            <a href={WISE_CARD_FEES_GB_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>Wise UK card fees</a>,{" "}
+            <a href={REVOLUT_ABROAD_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>Revolut: using Revolut abroad</a>{" "}
+            and{" "}
+            <a href={JR_EAST_SUICA_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>JR East Suica</a>.
+            Revolut&apos;s weekend fee does not apply to spending from yen you exchanged on a weekday.
           </p>
           <p className={styles.bodyText}>
             The comparison is long enough to deserve its own page, with both fee tables side by side:{" "}
@@ -700,9 +909,9 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
         {/* FAQ */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>
-          <h2 className={styles.sectionTitle}>Common Questions</h2>
+          <h2 className={styles.sectionTitle}>Wise Card in Japan: Common Questions</h2>
           <div className={styles.faqList}>
-            {faqItems.map((item, i) => (
+            {[...faqItems, ...moreFaqItems].map((item, i) => (
               <details key={item.q} className={styles.faqItem}>
                 <summary className={styles.faqSummary}>
                   <span>{i + 1}. {item.q}</span>

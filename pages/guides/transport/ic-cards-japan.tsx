@@ -996,6 +996,14 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
             are generally not compatible, and Welcome Suica Mobile is iPhone-only until the Samsung Galaxy version JR
             East plans for the first half of 2027. Checked {RECHECKED}.
           </p>
+          <p className={styles.bodyText}>
+            The app is also the way round the cash-only rule for plastic cards: a phone Suica is topped up from the
+            payment card in Wallet. If that card is a Wise card, our{" "}
+            <Link href="/guides/money/wise-card-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Wise card in Japan guide
+            </Link>{" "}
+            covers the conversion fee and free ATM allowance that apply.
+          </p>
           <div className={styles.whoForGrid}>
             {mobileSections.map((item) => (
               <div key={item.title} className={styles.whoForCard}>

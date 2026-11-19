@@ -1976,6 +1976,39 @@ export const wiseCardTripPrep: KlookTripPrepItem[] = [
   },
 ];
 
+/**
+ * Wise Card — "Pay before you land" (19 Nov 2026, task jtk-20261119-03). Sits directly
+ * under the answer, below the Wise CTA: the things a card-in-Japan reader can settle on
+ * the card at home, so less of the free ATM allowance goes on arrival-day costs.
+ * No new products: every URL is an existing tracking link.
+ */
+export const wiseCardPayBeforeLand: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "The Wise app is where you freeze the card, see each conversion and check your ATM allowance, so data that works at the arrivals gate matters more than for most cards.",
+  },
+  {
+    ...tripPrepProducts.skyliner,
+    why: "Narita to Ueno or Nippori, paid in advance on the card instead of in yen at a ticket machine after landing.",
+  },
+  {
+    ...tripPrepProducts.naritaLimousine,
+    why: "A coach from Narita to central Tokyo stops and hotels, with the fare settled before departure.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "For Kansai Airport arrivals: the JR Haruka to Kyoto or Osaka, bought before you fly rather than at the JR counter.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Unlimited Tokyo Metro and Toei rides for 24, 48 or 72 hours, so no IC card balance to keep topping up in cash.",
+  },
+  {
+    ...tripPrepProducts.fujiHakoneTour,
+    why: "A coach seat on a fixed departure that has to be booked ahead anyway, and one of the larger single bills of a Tokyo trip to settle at a rate you can see.",
+  },
+];
+
 /** Cash vs Card — the reader wants to know what to carry. */
 export const cashVsCardTripPrep: KlookTripPrepItem[] = [
   {
