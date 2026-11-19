@@ -60,11 +60,11 @@
       "booking": "Advised",
       "bookingNote": "The same-day counter adds a ¥500 service fee per ticket, so booking ahead is simply cheaper.",
       "sameDay": "Yes",
-      "hours": "10:00–22:00 (last admission 21:00) on 11 Nov 2026; hours vary by date",
+      "hours": "10:00–22:00 (last admission 21:00) on 19 Nov 2026; hours vary by date",
       "revised": null,
       "source": "tokyo-skytree.jp",
       "sourceUrl": "https://en.tokyo-skytree.jp/ticket/",
-      "checked": "2026-11-11",
+      "checked": "2026-11-19",
       "klook": {
         "label": "Klook: TOKYO SKYTREE ticket",
         "ref": "skytreeTicket"

@@ -176,8 +176,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/tokyo-skytree-tickets",
     badge: "Tickets",
-    title: "Tokyo Skytree Tickets (2026): Prices, Floor 350 vs 450 & How to Book",
-    desc: "Official prices for Floor 350 and the Floor 450 combo, the ¥500 service fee the same-day counter adds, and why buying the skywalk up front is cheaper than adding it on site.",
+    title: "Tokyo Skytree Tickets 2026: Prices, 350 vs 450 Deck & Booking",
+    desc: "Tokyo Skytree tickets price: Tembo Deck (350 m) from ¥1,800, 350 + 450 m combo from ¥3,000 online, +¥500 on the day — and whether the 450 m skywalk is worth it.",
     group: "tickets",
     city: "tokyo",
   },

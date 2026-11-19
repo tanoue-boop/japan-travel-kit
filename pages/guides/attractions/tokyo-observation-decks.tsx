@@ -733,7 +733,7 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
             generally easier to book than Shibuya Sky, but the same-day counter adds a ¥500 service fee, so
             buying online still saves money as well as time — our{" "}
             <Link href="/guides/attractions/tokyo-skytree-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Skytree tickets guide
+              Tokyo Skytree tickets guide
             </Link>{" "}
             has the full tier table.
           </p>
@@ -1053,7 +1053,7 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo Skytree Tickets (2026): Prices, Floor 350 vs 450 &amp; How to Book</p>
+                <p className={styles.relatedTitle}>Tokyo Skytree Tickets 2026: Prices, 350 vs 450 Deck &amp; Booking</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

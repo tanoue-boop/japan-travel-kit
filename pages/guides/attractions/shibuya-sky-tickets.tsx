@@ -933,7 +933,9 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Shibuya Sky wins on the iconic crossing shot, but it is neither the highest deck in Tokyo nor the
             cheapest — and since the April 2025 revision a 15:00 entry costs more than Tokyo Tower&apos;s Top
-            Deck tour. Skytree is the pick for sheer altitude and Mt. Fuji views, Tokyo Tower for the retro
+            Deck tour. Skytree is the pick for sheer altitude and Mt. Fuji views (our{" "}
+            <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree tickets</Link> guide has the 350 m
+            vs 450 m prices), Tokyo Tower for the retro
             landmark, and Tocho in Shinjuku if you want a panorama for nothing.
           </p>
           <div className={styles.tableWrap}>
@@ -1107,7 +1109,7 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo Skytree Tickets (2026): Prices, Floor 350 vs 450 &amp; How to Book</p>
+                <p className={styles.relatedTitle}>Tokyo Skytree Tickets 2026: Prices, 350 vs 450 Deck &amp; Booking</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

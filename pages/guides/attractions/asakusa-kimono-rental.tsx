@@ -617,8 +617,10 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
             wider Tokyo day. A{" "}
             <Link href="/guides/attractions/tea-ceremony-japan">tea ceremony in Tokyo</Link> is the natural
             indoor pairing and runs under an hour;{" "}
-            <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree</Link> is across the
-            river and stays open long after the kimono is back; the Samurai Ninja Museum in
+            Tokyo Skytree is across the
+            river and stays open long after the kimono is back (book{" "}
+            <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree tickets</Link> online — the
+            counter adds ¥500 a ticket); the Samurai Ninja Museum in
             Nishi-Asakusa is the other indoor hour nearby, and our{" "}
             <Link href="/guides/attractions/samurai-ninja-experience-tokyo">samurai and ninja experience in Tokyo</Link>{" "}
             guide compares its sessions by length and minimum age; and our{" "}
@@ -724,7 +726,7 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo Skytree Tickets (2026): Prices, Floor 350 vs 450 &amp; How to Book</p>
+                <p className={styles.relatedTitle}>Tokyo Skytree Tickets 2026: Prices, 350 vs 450 Deck &amp; Booking</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

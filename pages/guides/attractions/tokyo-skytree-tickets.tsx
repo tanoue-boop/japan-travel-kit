@@ -33,14 +33,67 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 const P = PRICES.tokyoSkytree;
 const CHECKED = checkedLabel(P.checked);
 
+// R02 (19 Nov 2026): prices re-read on en.tokyo-skytree.jp/ticket/ and www.tokyo-skytree.jp/ticket/
+// (unchanged: from ¥1,800 / ¥900, combo from ¥3,000 / ¥1,500, Tembo Galleria add-on ¥1,400 / ¥700,
+// +¥500 per ticket at the 4F counter and machines). Neither page publishes a weekday / weekend
+// table — both say the price for your date is shown on the web booking site — so the weekday
+// and weekend columns below carry the same "from" figure and say so. Hours and sunset for
+// 19 Nov 2026 from en.tokyo-skytree.jp/open-hours/day_hours/ (10:00–22:00, last 21:00, sunset
+// 16:31). Tokyo Tower from tokyotower.co.jp/fee/ the same day.
+const SKYTREE_TICKET_URL = "https://en.tokyo-skytree.jp/ticket/";
+const SKYTREE_HOURS_URL = "https://en.tokyo-skytree.jp/open-hours/day_hours/";
+const TOKYO_TOWER_FEE_URL = "https://www.tokyotower.co.jp/fee/";
+const SHIBUYA_SKY_CHECKED = checkedLabel(PRICES.shibuyaSky.checked);
+
 const priceRows = [
-  { ticket: "Tembo Deck (350 m) — adult (15+)", advance: P.adult, sameDay: "Date price + ¥500 fee" },
-  { ticket: "Tembo Deck (350 m) — child (6–14)", advance: P.child, sameDay: "Date price + ¥500 fee" },
-  { ticket: "Combo, 350 m + 450 m — adult", advance: "from ¥3,000", sameDay: "Date price + ¥500 fee" },
-  { ticket: "Combo, 350 m + 450 m — child", advance: "from ¥1,500", sameDay: "Date price + ¥500 fee" },
-  { ticket: "Tembo Galleria (450 m) added on site — adult", advance: "Not sold on its own", sameDay: "¥1,400 (no fee)" },
-  { ticket: "Tembo Galleria (450 m) added on site — child", advance: "Not sold on its own", sameDay: "¥700 (no fee)" },
-  { ticket: "Age 5 and under", advance: "Free", sameDay: "Free" },
+  {
+    ticket: "Bottom line: combo (350 m + 450 m) online, adult",
+    weekday: "from ¥3,000",
+    weekend: "from ¥3,000",
+    sameDay: "Your date's price + ¥500",
+  },
+  { ticket: "Tembo Deck (350 m) — adult (15+)", weekday: P.adult, weekend: P.adult, sameDay: "Your date's price + ¥500" },
+  { ticket: "Tembo Deck (350 m) — child (6–14)", weekday: P.child, weekend: P.child, sameDay: "Your date's price + ¥500" },
+  { ticket: "Combo, 350 m + 450 m — child (6–14)", weekday: "from ¥1,500", weekend: "from ¥1,500", sameDay: "Your date's price + ¥500" },
+  { ticket: "Tembo Galleria (450 m) added on site — adult", weekday: "Not sold on its own", weekend: "Not sold on its own", sameDay: "¥1,400 (no fee)" },
+  { ticket: "Tembo Galleria (450 m) added on site — child", weekday: "Not sold on its own", weekend: "Not sold on its own", sameDay: "¥700 (no fee)" },
+  { ticket: "Age 5 and under", weekday: "Free", weekend: "Free", sameDay: "Free" },
+];
+
+const floorRows = [
+  { item: "Bottom line", deck: "Enough for the view", galleria: "Worth it if height is the point; buy it in the combo" },
+  { item: "Height", deck: "Floors 340, 345 and 350", galleria: "Floors 445 and 450; highest point 451.2 m (Sorakara Point)" },
+  { item: "How you get in", deck: "Included in every ticket", galleria: "Tembo Shuttle from Floor 350; needs a Tembo Deck ticket first" },
+  { item: "Adult price", deck: "from ¥1,800", galleria: "+¥1,200 in the online combo (from ¥3,000), or +¥1,400 added on the day" },
+  { item: "Crowds and sell-outs", deck: "On-site times depend on the day; there may be a queue", galleria: "On-day add-on sale can be paused for capacity; the combo holds your entry" },
+  { item: "Fee on the day", deck: "+¥500 per ticket at the counter and machines", galleria: "No fee on the add-on" },
+];
+
+const towerRows = [
+  {
+    deck: "Bottom line",
+    price: "Skytree for height, Shibuya Sky for the open-air sunset, Tokyo Tower for the cheapest and latest",
+    hours: "",
+    sunset: "",
+  },
+  {
+    deck: "Tokyo Skytree (350 m / 450 m)",
+    price: "from ¥1,800 (350 m); from ¥3,000 (350 m + 450 m); +¥500 on the day",
+    hours: "10:00–22:00, last admission 21:00 (19 Nov 2026; varies by date)",
+    sunset: "Indoors behind glass; sunset 16:31 on 19 Nov 2026",
+  },
+  {
+    deck: "SHIBUYA SKY (229 m rooftop)",
+    price: `${PRICES.shibuyaSky.adult} online (before / from 15:00)`,
+    hours: "10:00–22:30, last entry 21:20",
+    sunset: "Open-air; sunset slots fall in the higher band",
+  },
+  {
+    deck: "Tokyo Tower (150 m / 250 m)",
+    price: "¥1,500 Main Deck; Top Deck Tour ¥3,300 web / ¥3,500 counter",
+    hours: "Main Deck 9:00–23:00, last entry 22:30",
+    sunset: "Indoor decks; open latest of the three",
+  },
 ];
 
 // Hours, change and cancellation rules and access, read off en.tokyo-skytree.jp
@@ -89,37 +142,6 @@ const whoFor = [
   },
 ];
 
-const deckRows = [
-  {
-    deck: "Tokyo Skytree",
-    height: "Floor 350 and Floor 450",
-    price: "from ¥1,800 (Floor 350) · from ¥3,000 combo",
-    highlight: "The highest decks in Tokyo, and the only glass skywalk",
-    area: "Oshiage / Tokyo Skytree Station",
-  },
-  {
-    deck: "Shibuya Sky",
-    height: "~229 m rooftop",
-    price: `${PRICES.shibuyaSky.adult} online`,
-    highlight: "Open-air rooftop over the Scramble Crossing — the photo, not the altitude",
-    area: "Shibuya Station",
-  },
-  {
-    deck: "Tokyo Tower",
-    height: "~150 m and ~250 m decks",
-    price: "approx ¥3,300 (Top Deck tour)",
-    highlight: "The 1958 landmark, and a view that includes Skytree",
-    area: "Shiba-koen / Akabanebashi",
-  },
-  {
-    deck: "Tokyo Metropolitan Gov. Building",
-    height: "~202 m",
-    price: "Free",
-    highlight: "No ticket at all — the best-value city panorama in Tokyo",
-    area: "Shinjuku",
-  },
-];
-
 const steps = [
   {
     title: "Decide Floor 350 or the combo before you book",
@@ -139,15 +161,32 @@ const steps = [
   },
 ];
 
+// The five questions in FAQPage (task-jtk-20261119-R02). The older answers stay on the page
+// under "More questions" but are not in the structured data.
 const faqItems = [
   {
     q: "How much are Tokyo Skytree tickets?",
-    a: `Date-specified tickets on the official site start from ¥1,800 for an adult (15+) and ¥900 for a child aged 6–14 for Floor 350, the main observation deck. The combo ticket covering Floor 350 and Floor 450 starts from ¥3,000 for an adult and ¥1,500 for a child. Children aged 5 and under are free. These are "from" prices and the figure for a specific date can be higher. Figures checked on the official site on ${CHECKED}.`,
+    a: `Tokyo Skytree tickets cost from ¥1,800 for an adult (15+) and from ¥900 for a child aged 6–14 for the Tembo Deck (350 m), and from ¥3,000 / ¥1,500 for the combo with the Tembo Galleria (450 m), booked online with a date and time. Buying on the day at the tower adds ¥500 per ticket. Children aged 5 and under are free. These are "from" prices: the official site publishes no separate weekday and weekend table, and the price for your date shows at checkout. Checked on the official site on ${CHECKED}.`,
   },
   {
-    q: "Is it cheaper to buy Tokyo Skytree tickets in advance?",
-    a: `Yes, and the saving is explicit rather than a matter of fluctuating demand. Buying on the day at the 4th-floor ticket counter or the ticket machines adds a ¥500 service fee per ticket on top of the admission price. For a family of four that is ¥2,000 of avoidable cost. Booking a date-specified ticket online, either on the official site or through a reseller, skips the fee and the counter queue. Checked ${CHECKED}.`,
+    q: "Is the 450m Tembo Galleria worth it?",
+    a: `Worth it if height itself is why you are going up: it adds a sloping glass skywalk at 445–450 m, with the highest point at 451.2 m, for ¥1,200 more than the Tembo Deck alone in the online combo (from ¥3,000 against from ¥1,800 for an adult). If the view is the point, the 350 m deck already covers it. If you are unsure, buy the combo: adding the 450 m on the day costs ¥1,400 and the official site says that sale can be paused for capacity. Checked ${CHECKED}.`,
   },
+  {
+    q: "Should I book Tokyo Skytree tickets in advance?",
+    a: `Yes. Buying on the day at the 4th-floor counter or the ticket machines adds a ¥500 service fee per ticket — ¥2,000 for a family of four — and the official site says the times available on the day depend on the day. A date- and time-specified ticket booked online skips both the fee and the counter queue. Note the change rule: official tickets cannot be changed, only cancelled, free up to 31 days before the visit and at 20% from 30 days before. Checked ${CHECKED}.`,
+  },
+  {
+    q: "What time is best to visit Tokyo Skytree?",
+    a: `For a quieter deck, a weekday afternoon or the first slot of the morning; for the night view, the hour or two before closing — the three windows the official crowd forecast page points to. On ${CHECKED} the decks were open 10:00–22:00 with last admission at 21:00 and sunset was at 16:31, so a 16:00 slot catches the light change. Hours are set per date, so check the calendar for yours.`,
+  },
+  {
+    q: "Tokyo Skytree or Shibuya Sky?",
+    a: `Skytree for height and reach — 350 m and 450 m decks indoors behind glass, from ¥1,800 for an adult. SHIBUYA SKY for the open-air rooftop 229 m above the Scramble Crossing at sunset, at ${PRICES.shibuyaSky.adult} online depending on entry time. If you are picking one for a first visit with clear weather, Skytree gives the wider panorama; for the photo everyone recognises, Shibuya Sky. Skytree prices checked ${CHECKED}; Shibuya Sky ${SHIBUYA_SKY_CHECKED}.`,
+  },
+];
+
+const moreQuestions = [
   {
     q: "What is the difference between Floor 350 and Floor 450?",
     a: "Floor 350 is the Tembo Deck, the main three-storey observation level and the one every ticket includes. Floor 450 is the Tembo Galleria, a sloping glass-walled skywalk that spirals up to the tower's highest accessible point. Floor 450 cannot be visited on its own: you need a Floor 350 ticket first, either as part of an online combo or by adding it on site for ¥1,400 (adult) at the ticket machines.",
@@ -159,10 +198,6 @@ const faqItems = [
   {
     q: "What are Tokyo Skytree's opening hours?",
     a: `Skytree runs a per-date calendar rather than one fixed timetable, and the official site notes that "opening hours may change without prior notice" and that the last admission is one hour before closing. On the date checked, the observation decks were open 10:00–22:00 with last admission at 21:00. Check the calendar for your own date before you build an evening around it. Checked ${CHECKED}.`,
-  },
-  {
-    q: "Tokyo Skytree or Shibuya Sky — which is better?",
-    a: "They answer different questions. Skytree is about altitude and reach: Floor 350 and Floor 450 are the highest decks in Tokyo, the view covers the whole Kanto plain, and on a clear day Mt. Fuji is in it. Shibuya Sky is about the photograph: an open-air rooftop at about 229 m directly above the Scramble Crossing, best at sunset, and more atmosphere than altitude. If you are picking one, go Skytree for the panorama and Shibuya Sky for the shot everyone recognises.",
   },
   {
     q: "Can you see Mt. Fuji from Tokyo Skytree?",
@@ -188,9 +223,9 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/tokyo-skytree-tickets") } });
 
-const TITLE = "Tokyo Skytree Tickets 2026: Price, 350 vs 450 and Booking";
+const TITLE = "Tokyo Skytree Tickets 2026: Prices, 350 vs 450 & Booking";
 const DESC =
-  "Tokyo Skytree tickets price, checked 10 Nov 2026: Tembo Deck (350 m) from ¥1,800, 350 m + 450 m combo from ¥3,000, +¥500 a ticket on the day.";
+  "Tokyo Skytree tickets price, checked 19 Nov 2026: Tembo Deck (350 m) from ¥1,800, 350 + 450 m combo from ¥3,000 online, +¥500 per ticket on the day.";
 
 export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -276,7 +311,7 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Tokyo Skytree Tickets 2026: <br />Price, 350 vs 450 and How to Book
+            Tokyo Skytree Tickets 2026: <br />Prices, 350 vs 450 Deck and How to Book
           </h1>
           <p className={styles.heroSubtitle}>
             Tokyo Skytree tickets cost from ¥1,800 for an adult for the Tembo Deck (350 m) and from ¥3,000 for
@@ -304,6 +339,16 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* R02: the answer in the first body paragraph, ahead of the boxes */}
+        <p className={styles.bodyText}>
+          Tokyo Skytree tickets cost from ¥1,800 for an adult for the Tembo Deck (350 m) and from ¥3,000 for the
+          Tembo Deck + Tembo Galleria (450 m) combo, booked online with a date and time on the official site
+          (checked {CHECKED}); a child aged 6–14 pays from ¥900 or from ¥1,500. Buying on the day at the tower
+          costs your date&apos;s price plus ¥500 per ticket, and the official site publishes no separate weekday
+          and weekend table — the price for your date shows at checkout. Buy the combo online if you might want
+          the 450 m skywalk: adding it on the day costs ¥1,400 more and that sale can be paused for capacity.
+        </p>
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
@@ -351,7 +396,7 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
 
         {/* P01: the 6.5% / 5% bookings of the same day, directly under the 2% ticket CTA. */}
         <KlookSameDayCards
-          heading="Book the Asakusa Half of Your Skytree Day"
+          heading="Book These for the Same Day as Your Skytree Slot"
           cards={skytreeSameDayCards}
           footnote={
             <>
@@ -405,21 +450,19 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
-                <caption style={{ captionSide: "bottom", fontSize: "0.8rem", color: "var(--text-muted)", paddingTop: "0.5rem" }}>
-                  Official prices, en.tokyo-skytree.jp/ticket, checked {CHECKED}.
-                </caption>
                 <thead>
                   <tr>
-                    {["Ticket", "Date-specified online", "On the day"].map((h) => (
+                    {["Ticket", "Online, weekday", "Online, weekend / holiday", "On the day at the tower"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {priceRows.map((row) => (
-                    <tr key={row.ticket}>
+                  {priceRows.map((row, i) => (
+                    <tr key={row.ticket} style={i === 0 ? { fontWeight: 700 } : undefined}>
                       <td className={styles.tdProvider}>{row.ticket}</td>
-                      <td className={styles.tdPrice}>{row.advance}</td>
+                      <td className={styles.tdPrice}>{row.weekday}</td>
+                      <td className={styles.tdPrice}>{row.weekend}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.sameDay}</td>
                     </tr>
                   ))}
@@ -428,11 +471,11 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Read off the official Tokyo Skytree site on {CHECKED}. The official page lists these as
-            &ldquo;from&rdquo; prices, so the figure for a specific date can be higher — confirm at booking. The
-            official sources checked do not publish a separate weekday and weekend table; the price shown for
-            your date at checkout is the one that applies. The ¥500 on-site service fee applies per ticket at
-            the 4th-floor counter and the ticket machines; the Tembo Galleria add-on carries no fee.
+            Last checked: {P.checked} — <a href={SKYTREE_TICKET_URL} target="_blank" rel="noopener">{SKYTREE_TICKET_URL}</a>.
+            The official page lists &ldquo;from&rdquo; prices and does not publish a separate weekday and
+            weekend table, so both columns carry the same starting figure; the price shown for your date at
+            checkout is the one that applies. The ¥500 on-site service fee applies per ticket at the 4th-floor
+            counter and the ticket machines; the Tembo Galleria add-on carries no fee.
           </p>
         </section>
 
@@ -445,6 +488,33 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
             (from ¥3,000 against from ¥1,800) and lifts you from 350 m to a glass ramp running 445–450 m, with the
             highest point at 451.2 m. If you are unsure, buy the combo online — adding 450 m on the day costs
             ¥1,400 and the official site says that sale can be suspended for capacity.
+          </p>
+          <div className={styles.tableWrap} style={{ marginBottom: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["", "Tembo Deck (350 m)", "Tembo Galleria (450 m)"].map((h) => (
+                      <th key={h || "item"}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {floorRows.map((row, i) => (
+                    <tr key={row.item} style={i === 0 ? { fontWeight: 700 } : undefined}>
+                      <td className={styles.tdProvider}>{row.item}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.deck}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.galleria}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {P.checked} — <a href={SKYTREE_TICKET_URL} target="_blank" rel="noopener">{SKYTREE_TICKET_URL}</a>{" "}
+            (prices, add-on and capacity note); floor heights from the official Tembo Galleria floor page,
+            read 10 Nov 2026.
           </p>
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
@@ -503,8 +573,9 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText}>
             For a quiet deck, a weekday afternoon or the first slot of the morning; for the night view, the hour
             or two before closing. Those are the three windows the official crowd forecast page singles out, and
-            it warns that New Year, Golden Week and spring break run busier. Sunset changes through the year, so
-            match an evening slot to the sunset time for your date. If Skytree is one stop in a short stay, the{" "}
+            it warns that New Year, Golden Week and spring break run busier. Sunset changes through the year —
+            the official day-hours page gave 16:31 on {CHECKED} — so match an evening slot to the sunset time
+            for your date. If Skytree is one stop in a short stay, the{" "}
             <Link href="/guides/attractions/tokyo-2-day-itinerary">Tokyo 2-day itinerary</Link> pairs it with
             Asakusa on the same day, and{" "}
             <Link href="/guides/attractions/things-to-do-tokyo">things to do in Tokyo</Link> lists what else
@@ -540,12 +611,14 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
         {/* vs other decks */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Compare</span>
-          <h2 className={styles.sectionTitle}>How Does Skytree Compare With Tokyo&apos;s Other Decks?</h2>
+          <h2 className={styles.sectionTitle}>Tokyo Skytree vs Shibuya Sky vs Tokyo Tower: Which Ticket?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Skytree is the altitude pick. If what you actually want is the Scramble Crossing photograph,{" "}
-            <Link href="/guides/attractions/shibuya-sky-tickets">Shibuya Sky tickets</Link> are the better buy, and if you
-            want a city panorama for nothing at all, the Tokyo Metropolitan Government Building in Shinjuku is
-            free. To see Skytree from the water instead, a <Link href="/guides/attractions/tokyo-bay-cruise">Tokyo Bay cruise</Link>{" "}
+            Skytree is the altitude pick, from ¥1,800 for the 350 m deck. If what you actually want is the
+            open-air Scramble Crossing sunset,{" "}
+            <Link href="/guides/attractions/shibuya-sky-tickets">Shibuya Sky tickets</Link> are the better buy; if you
+            want the cheapest paid deck and the latest entry,{" "}
+            <Link href="/guides/attractions/tokyo-tower-tickets">Tokyo Tower tickets</Link> start at ¥1,500. To see
+            Skytree from the water instead, a <Link href="/guides/attractions/tokyo-bay-cruise">Tokyo Bay cruise</Link>{" "}
             from Asakusa to Hinode Pier is ¥1,000 on the Tokyo Cruise water bus.
           </p>
           <div className={styles.tableWrap}>
@@ -553,28 +626,42 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Deck", "Height", "Price (approx)", "Highlight", "Area"].map((h) => (
+                    {["Deck", "Adult price", "Hours", "Sunset and night"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {deckRows.map((row) => (
-                    <tr key={row.deck}>
-                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.deck}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.height}</td>
-                      <td className={styles.tdPrice} style={{ fontSize: "0.88rem" }}>{row.price}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.highlight}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.area}</td>
-                    </tr>
-                  ))}
+                  {towerRows.map((row, i) =>
+                    i === 0 ? (
+                      <tr key={row.deck} style={{ fontWeight: 700 }}>
+                        <td className={styles.tdProvider}>{row.deck}</td>
+                        <td colSpan={3} style={{ fontSize: "0.88rem" }}>{row.price}</td>
+                      </tr>
+                    ) : (
+                      <tr key={row.deck}>
+                        <td className={styles.tdProvider}>{row.deck}</td>
+                        <td className={styles.tdPrice} style={{ fontSize: "0.88rem" }}>{row.price}</td>
+                        <td style={{ fontSize: "0.88rem" }}>{row.hours}</td>
+                        <td style={{ fontSize: "0.88rem" }}>{row.sunset}</td>
+                      </tr>
+                    ),
+                  )}
                 </tbody>
               </table>
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Skytree and Shibuya Sky figures are from the operators&apos; own sites; Tokyo Tower and Tocho are
-            approximate and subject to change. Confirm at booking.
+            Last checked: Skytree {P.checked} — <a href={SKYTREE_HOURS_URL} target="_blank" rel="noopener">{SKYTREE_HOURS_URL}</a>;
+            Tokyo Tower 2026-11-19 — <a href={TOKYO_TOWER_FEE_URL} target="_blank" rel="noopener">{TOKYO_TOWER_FEE_URL}</a>;
+            SHIBUYA SKY prices {PRICES.shibuyaSky.checked} —{" "}
+            <a href={PRICES.shibuyaSky.sourceUrl} target="_blank" rel="noopener">{PRICES.shibuyaSky.sourceUrl}</a>{" "}
+            (hours from gotokyo.org, 14 Nov 2026).
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem" }}>
+            Still choosing a tower? The{" "}
+            <Link href="/guides/attractions/tokyo-observation-decks">Tokyo observation decks comparison</Link>{" "}
+            sets all of them side by side, free decks included — this page stays on buying the Skytree ticket.
           </p>
         </section>
 
@@ -613,6 +700,20 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
               <details key={item.q} className={styles.faqItem}>
                 <summary className={styles.faqSummary}>
                   <span>{i + 1}. {item.q}</span>
+                  <svg className={styles.faqChevron} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className={styles.faqBody}>{item.a}</div>
+              </details>
+            ))}
+          </div>
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.1rem", marginTop: "1.5rem" }}>More questions</h3>
+          <div className={styles.faqList}>
+            {moreQuestions.map((item, i) => (
+              <details key={item.q} className={styles.faqItem}>
+                <summary className={styles.faqSummary}>
+                  <span>{faqItems.length + i + 1}. {item.q}</span>
                   <svg className={styles.faqChevron} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                   </svg>

@@ -45,9 +45,12 @@ const ROUTE = "/zh-cn/guides/attractions/tokyo-skytree-tickets";
 // Re-synced with the English guide on 2026-11-10 (answer-first opening, question headings,
 // hours and cancellation table, three FAQs). Figures from lib/attraction-prices.ts and
 // en.tokyo-skytree.jp, read 10 Nov 2026.
+// R02 (19 Nov 2026): re-synced with the English rewrite — answer-first body paragraph, the
+// weekday / weekend price table, the 350 vs 450 table, the Skytree vs Shibuya Sky vs Tokyo
+// Tower table and the five-question FAQPage. Figures as on the English page.
 const TITLE = "东京晴空塔门票价格 2026：350 米 vs 450 米与预订";
 const DESC =
-  "东京晴空塔门票价格（2026/11 官网核查）：350 米天望甲板 ¥1,800 起，350 米＋450 米套票 ¥3,000 起，现场购票每张加 ¥500。";
+  "东京晴空塔门票价格（2026年11月19日官网确认）：350 米天望甲板 ¥1,800 起，350＋450 米套票在线 ¥3,000 起，现场每张加 ¥500。";
 
 const LOCALE = "zh-cn" as const;
 const P = PRICES.tokyoSkytree;
@@ -58,14 +61,64 @@ const FREE = priceLabel("Free", LOCALE);
 
 const SKYTREE_URL = klookFor(skytreeTicket.url, LOCALE);
 
+// Official sources, as on the English page (R02, 19 Nov 2026).
+const SKYTREE_TICKET_URL = "https://en.tokyo-skytree.jp/ticket/";
+const SKYTREE_HOURS_URL = "https://en.tokyo-skytree.jp/open-hours/day_hours/";
+const TOKYO_TOWER_FEE_URL = "https://www.tokyotower.co.jp/fee/";
+const SHIBUYA_SKY_CHECKED = dateLabel(PRICES.shibuyaSky.checked, LOCALE);
+
+const SAME_DAY = "所选日期票价＋¥500";
+const NOT_SOLD = "不单独销售";
+
 const priceRows = [
-  { ticket: "350 米天望甲板 — 成人（15 岁以上）", advance: ADULT, sameDay: "另加服务费 ¥500" },
-  { ticket: "350 米天望甲板 — 儿童（6～14 岁）", advance: CHILD, sameDay: "另加服务费 ¥500" },
-  { ticket: "350 米＋450 米观景台套票 — 成人", advance: "¥3,000 起", sameDay: "另加服务费 ¥500" },
-  { ticket: "350 米＋450 米观景台套票 — 儿童", advance: "¥1,500 起", sameDay: "另加服务费 ¥500" },
-  { ticket: "现场加购 450 米天望回廊 — 成人", advance: "不单独销售", sameDay: "¥1,400（无服务费）" },
-  { ticket: "现场加购 450 米天望回廊 — 儿童", advance: "不单独销售", sameDay: "¥700（无服务费）" },
-  { ticket: "5 岁以下", advance: FREE, sameDay: FREE },
+  {
+    ticket: "结论：350 米＋450 米套票线上购买，成人",
+    weekday: "¥3,000 起",
+    weekend: "¥3,000 起",
+    sameDay: SAME_DAY,
+  },
+  { ticket: "350 米天望甲板 — 成人（15 岁以上）", weekday: ADULT, weekend: ADULT, sameDay: SAME_DAY },
+  { ticket: "350 米天望甲板 — 儿童（6～14 岁）", weekday: CHILD, weekend: CHILD, sameDay: SAME_DAY },
+  { ticket: "350 米＋450 米套票 — 儿童（6～14 岁）", weekday: "¥1,500 起", weekend: "¥1,500 起", sameDay: SAME_DAY },
+  { ticket: "现场加购 450 米天望回廊 — 成人", weekday: NOT_SOLD, weekend: NOT_SOLD, sameDay: "¥1,400（无服务费）" },
+  { ticket: "现场加购 450 米天望回廊 — 儿童", weekday: NOT_SOLD, weekend: NOT_SOLD, sameDay: "¥700（无服务费）" },
+  { ticket: "5 岁以下", weekday: FREE, weekend: FREE, sameDay: FREE },
+];
+
+const floorRows = [
+  { item: "结论", deck: "看风景已经足够", galleria: "如果登高本身就是目的就值得；请在套票里一起买" },
+  { item: "高度", deck: "340、345、350 三个楼层", galleria: "445 和 450 两个楼层；最高点 451.2 米（Sorakara Point）" },
+  { item: "怎么进入", deck: "每张门票都包含", galleria: "从 350 米乘天望回廊专用电梯（Tembo Shuttle）；须先有天望甲板门票" },
+  { item: "成人票价", deck: "¥1,800 起", galleria: "线上套票多 ¥1,200（¥3,000 起），或当天加购多 ¥1,400" },
+  { item: "拥挤与售罄", deck: "现场能买到的时段视当天情况而定；可能要排队", galleria: "当天加购可能因人数限制暂停销售；套票已保留入场" },
+  { item: "当天服务费", deck: "柜台和售票机每张加 ¥500", galleria: "加购不收服务费" },
+];
+
+const towerRows = [
+  {
+    deck: "结论",
+    price: "要高度选晴空塔，要露天看日落选 SHIBUYA SKY，要最便宜、开到最晚选东京塔",
+    hours: "",
+    sunset: "",
+  },
+  {
+    deck: "东京晴空塔（350 米／450 米）",
+    price: "¥1,800 起（350 米）；¥3,000 起（350 米＋450 米）；当天购票加 ¥500",
+    hours: "10:00–22:00，最晚入场 21:00（2026 年 11 月 19 日；按日期变动）",
+    sunset: "室内玻璃窗后；2026 年 11 月 19 日日落 16:31",
+  },
+  {
+    deck: "SHIBUYA SKY（229 米屋顶）",
+    price: `线上 ${priceLabel(PRICES.shibuyaSky.adult, LOCALE)}（15:00 前／15:00 起）`,
+    hours: "10:00–22:30，最晚入场 21:20",
+    sunset: "露天；日落时段属于较高的价位档",
+  },
+  {
+    deck: "东京塔（150 米／250 米）",
+    price: "Main Deck ¥1,500；Top Deck Tour 网购 ¥3,300／柜台 ¥3,500",
+    hours: "Main Deck 9:00–23:00，最晚入场 22:30",
+    sunset: "室内观景台；三者中开放到最晚",
+  },
 ];
 
 // Same rows as the English guide's visitRows, read off en.tokyo-skytree.jp on 10 Nov 2026.
@@ -112,37 +165,6 @@ const whoFor = [
   },
 ];
 
-const deckRows = [
-  {
-    deck: "东京晴空塔",
-    height: "350 米与 450 米",
-    price: "¥1,800 起（350 米）・套票 ¥3,000 起",
-    highlight: "东京最高的观景台，也是唯一的玻璃空中回廊",
-    area: "押上／东京晴空塔站",
-  },
-  {
-    deck: "SHIBUYA SKY",
-    height: "约 229 米屋顶",
-    price: `线上预购 ${priceLabel(PRICES.shibuyaSky.adult, LOCALE)}`,
-    highlight: "涩谷十字路口正上方的露天屋顶——特色是那张经典照片，而不是高度",
-    area: "涩谷站",
-  },
-  {
-    deck: "东京塔",
-    height: "约 150 米与约 250 米两层",
-    price: "约 ¥3,300（Top Deck Tour）",
-    highlight: "1958 年建成的地标，而且视野里能看到晴空塔",
-    area: "芝公园／赤羽桥",
-  },
-  {
-    deck: "东京都厅",
-    height: "约 202 米",
-    price: FREE,
-    highlight: "完全不用买票——免费欣赏东京城市全景，性价比最高",
-    area: "新宿",
-  },
-];
-
 const steps = [
   {
     title: "订票前先决定只买 350 米天望甲板还是买套票",
@@ -162,15 +184,32 @@ const steps = [
   },
 ];
 
+// The five questions in FAQPage (task-jtk-20261119-R02), as on the English page. The older
+// answers stay on the page under 更多问题 but are not in the structured data.
 const faqItems: FaqItem[] = [
   {
     q: "东京晴空塔门票多少钱？",
-    a: `官网的指定日期门票，主观景台 350 米天望甲板成人（15 岁以上）${ADULT}，6～14 岁儿童 ${CHILD}。包含 350 米和 450 米观景台的套票成人 ¥3,000 起、儿童 ¥1,500 起。5 岁以下免费。这些都是「起」价，所选日期的实际票价可能更高。官网核查日 ${CHECKED}。`,
+    a: `线上预订指定日期和时段的门票，350 米天望甲板（Tembo Deck）成人（15 岁以上）¥1,800 起、6～14 岁儿童 ¥900 起；加上 450 米天望回廊（Tembo Galleria）的套票成人 ¥3,000 起、儿童 ¥1,500 起。当天在塔内现场购票，每张加 ¥500。5 岁以下免费。这些都是「起」价：官网没有另列工作日与周末的票价表，所选日期的价格会在结账时显示。官网核查日 ${CHECKED}。`,
   },
   {
-    q: "东京晴空塔门票提前买更便宜吗？",
-    a: `是的，而且节省的金额是明确公布的，不随当天客流变化。当天在 4 楼售票柜台或售票机购买，门票之外每张还要加 ¥500 服务费。一家四口提前在线购票，就能省下 ¥2,000 的服务费。线上预订指定日期门票，不管是官网还是票务平台，都能同时省掉这笔费用和柜台排队。核查日 ${CHECKED}。`,
+    q: "450 米天望回廊值得去吗？",
+    a: `如果登高本身就是你上去的理由，就值得：它多了一条位于 445–450 米的倾斜玻璃空中回廊，最高点 451.2 米；线上套票成人比只买天望甲板多 ¥1,200（¥3,000 起 vs ¥1,800 起）。如果只是想看风景，350 米天望甲板已经足够。拿不定主意就买套票：当天加购 450 米要 ¥1,400，而且官网表示这项销售可能因人数限制暂停。核查日 ${CHECKED}。`,
   },
+  {
+    q: "东京晴空塔门票需要提前买吗？",
+    a: `需要。当天在 4 楼售票柜台或售票机购买，每张票要加 ¥500 服务费——一家四口就是 ¥2,000——而且官网说明当天能买到的时段视当天情况而定。线上预订指定日期和时段的门票，可以同时省掉服务费和柜台排队。注意更改规则：官方门票不能更改，只能取消；参观日 31 天前及更早取消免费，30 天前起收 20%。核查日 ${CHECKED}。`,
+  },
+  {
+    q: "什么时候去东京晴空塔最好？",
+    a: `想避开人流，选工作日下午或早上第一个时段；想看夜景，选闭馆前的一两个小时——这是官方拥挤预测页指出的三个时段。${CHECKED} 当天观景台开放时间为 10:00–22:00，最晚入场 21:00，日落时间是 16:31，所以 16:00 的时段正好能看到光线变化。开放时间按日期公布，请查看你参观当天的日历。`,
+  },
+  {
+    q: "东京晴空塔和 SHIBUYA SKY 选哪个？",
+    a: `要高度和远眺视野选晴空塔——350 米和 450 米观景台都在室内玻璃窗后，成人 ¥1,800 起。要在涩谷十字路口上方 229 米的露天屋顶看日落选 SHIBUYA SKY，线上 ${priceLabel(PRICES.shibuyaSky.adult, LOCALE)}，按入场时段而定。第一次去、天气晴朗、只能选一个的话，晴空塔的全景更开阔；想拍那张人人都认得出的照片，选 SHIBUYA SKY。晴空塔票价核查日 ${CHECKED}；SHIBUYA SKY ${SHIBUYA_SKY_CHECKED}。`,
+  },
+];
+
+const moreQuestions: FaqItem[] = [
   {
     q: "350 米和 450 米观景台有什么区别？",
     a: "350 米处是 Tembo Deck（天望甲板），由三个楼层组成的主观景台，每张门票都包含。450 米处是 Tembo Galleria（天望回廊），一条沿玻璃幕墙螺旋上升的空中回廊，通往塔内游客能到达的最高点。450 米天望回廊不能单独参观：必须先有 350 米天望甲板的门票，要么买线上套票，要么在现场售票机加购（成人 ¥1,400）。",
@@ -182,10 +221,6 @@ const faqItems: FaqItem[] = [
   {
     q: "东京晴空塔的营业时间是几点到几点？",
     a: `晴空塔采用逐日营业日历，而不是一张固定时间表，官网也注明「营业时间可能不经预告变更」，最后入场为闭馆前一小时。在核查当天，观景台营业时间为 10:00–22:00，最后入场 21:00。如果要围绕它安排整个晚上，请先按参观日期查一下日历。核查日 ${CHECKED}。`,
-  },
-  {
-    q: "东京晴空塔和 SHIBUYA SKY 选哪个？",
-    a: "两者适合不同的游览需求。晴空塔的特色是高度和远眺视野：350 米和 450 米观景台是东京最高的观景台，视野覆盖整个关东平原，天气晴朗时还能看到富士山。SHIBUYA SKY 的特色是拍照：约 229 米高的露天屋顶，就在涩谷十字路口正上方，日落时最美，胜在氛围而不是高度。只能选一个的话，看全景选晴空塔，拍那张人人都认得出的经典照片选 SHIBUYA SKY。",
   },
   {
     q: "在东京晴空塔能看到富士山吗？",
@@ -240,6 +275,7 @@ const sameDayCards: KlookSameDayCard[] = [
   withKlookLocale(skytreeSameDayCards[0], "zh-cn", {"kind":"导览","label":"浅草・浅草寺半日步行导览","ctaLabel":"查看浅草步行导览 →","why":"由英语导游带你走雷门、仲见世通和浅草寺；从晴空塔所在的押上站坐浅草线，两站就到。"}),
   withKlookLocale(skytreeSameDayCards[1], "zh-cn", {"kind":"和服","label":"和服租赁＋发型设计（爱和服 浅草1号店）","ctaLabel":"查看浅草和服租赁 →","why":"含发型设计的 6 小时租赁，店在离晴空塔两站的浅草。"}),
   { ...withKlookLocale(skytreeSameDayCards[2], "zh-cn"), label: tripPrepItems[3].label, ctaLabel: tripPrepItems[3].ctaLabel, kind: "票券", why: "押上站有半藏门线和都营浅草线，用 24／48／72 小时通票就能往返晴空塔和浅草。" },
+  withKlookLocale(skytreeSameDayCards[3], "zh-cn", {"kind":"游船","label":"浅草－台场游船（东京水边线）","ctaLabel":"查看隅田川游船 →","why":"从晴空塔对岸的浅草出发，沿隅田川一路开到台场——看完观景台后的下一站。"}),
 ];
 const aroundTowerItems = tripPrepItems.filter((item) => !sameDayCards.some((card) => card.url === item.url));
 
@@ -292,7 +328,7 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            东京晴空塔门票价格（2026）： <br />350 米和 450 米怎么选？如何预订？
+            东京晴空塔门票价格 2026： <br />350 米 vs 450 米与预订
           </h1>
           <p className={styles.heroSubtitle}>
             东京晴空塔门票：350 米天望甲板成人 ¥1,800 起，加上 450 米天望回廊的套票 ¥3,000 起（官网核查日
@@ -311,6 +347,14 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
 
       <div className={styles.content}>
         <Disclosure />
+
+        {/* R02: the answer in the first body paragraph, ahead of the boxes */}
+        <p className={styles.bodyText}>
+          东京晴空塔门票：350 米天望甲板（Tembo Deck）成人 ¥1,800 起，天望甲板＋450 米天望回廊（Tembo
+          Galleria）套票 ¥3,000 起，均为在官网线上预订指定日期和时段的价格（核查日 {CHECKED}）；6～14 岁儿童分别为
+          ¥900 起和 ¥1,500 起。当天在塔内现场购票，价格为所选日期票价再加每张 ¥500；官网没有另列工作日与周末的票价表，
+          所选日期的价格会在结账时显示。如果有可能想登上 450 米空中回廊，就线上买套票：当天加购要多付 ¥1,400，而且这项销售可能因人数限制暂停。
+        </p>
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
@@ -385,21 +429,19 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
-                <caption style={{ captionSide: "bottom", fontSize: "0.8rem", color: "var(--text-muted)", paddingTop: "0.5rem" }}>
-                  官网票价（en.tokyo-skytree.jp/ticket），核查日 {CHECKED}。
-                </caption>
                 <thead>
                   <tr>
-                    {["门票类型", "线上指定日期", "当天现场"].map((h) => (
+                    {["门票类型", "线上・工作日", "线上・周末／节假日", "当天在塔内现场"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {priceRows.map((row) => (
-                    <tr key={row.ticket}>
+                  {priceRows.map((row, i) => (
+                    <tr key={row.ticket} style={i === 0 ? { fontWeight: 700 } : undefined}>
                       <td className={styles.tdProvider}>{row.ticket}</td>
-                      <td className={styles.tdPrice}>{row.advance}</td>
+                      <td className={styles.tdPrice}>{row.weekday}</td>
+                      <td className={styles.tdPrice}>{row.weekend}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.sameDay}</td>
                     </tr>
                   ))}
@@ -408,9 +450,9 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            数据来自东京晴空塔官网，核查日 {CHECKED}。官方页面把这些标为「起」价，所以所选日期的实际票价可能更高，
-            请在下单时确认。核查的官方资料没有另列工作日与节假日票价表，结账时显示的当日金额就是实际票价。¥500
-            现场服务费按每张票收取，4 楼售票柜台和售票机都适用；450 米加购票不收服务费。
+            最后确认：{P.checked} — <a href={SKYTREE_TICKET_URL} target="_blank" rel="noopener">{SKYTREE_TICKET_URL}</a>。
+            官方页面列出的是「起」价，没有另列工作日与周末的票价表，所以两栏填的是同一个起价；结账时显示的所选日期价格才是实际票价。¥500
+            现场服务费按每张票收取，4 楼售票柜台和售票机都适用；450 米天望回廊加购票不收服务费。
           </p>
         </section>
 
@@ -422,6 +464,32 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
             只有特别想登上更高处时才值得。成人套票比只买天望甲板贵 ¥1,200（¥3,000 起 vs ¥1,800 起），
             从 350 米继续登上位于 445–450 米的玻璃回廊，最高点 451.2 米。拿不定主意就线上买套票——当天再加购 450 米要
             ¥1,400，而且官网表示人多时可能暂停销售。
+          </p>
+          <div className={styles.tableWrap} style={{ marginBottom: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["", "天望甲板（350 米）", "天望回廊（450 米）"].map((h) => (
+                      <th key={h || "item"}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {floorRows.map((row, i) => (
+                    <tr key={row.item} style={i === 0 ? { fontWeight: 700 } : undefined}>
+                      <td className={styles.tdProvider}>{row.item}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.deck}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.galleria}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            最后确认：{P.checked} — <a href={SKYTREE_TICKET_URL} target="_blank" rel="noopener">{SKYTREE_TICKET_URL}</a>{" "}
+            （票价、加购及人数限制说明）；楼层高度依官方天望回廊楼层介绍页（2026 年 11 月 10 日）。
           </p>
           <div className={styles.whoForGrid}>
             {whoFor.map((item) => (
@@ -473,7 +541,7 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
           <h2 className={styles.sectionTitle}>什么时候去东京晴空塔最好？</h2>
           <p className={styles.bodyText}>
             想避开人流，可选择工作日下午或早上第一个时段；想看夜景，选闭馆前的一两个小时。这是官方拥挤预测页点名的三个时段，
-            并提醒新年、黄金周和春假期间人更多。日落时间随季节变化，傍晚时段请对照参观当天的日落时间。
+            并提醒新年、黄金周和春假期间人更多。日落时间随季节变化——官方当日营业时间页显示 {CHECKED} 的日落为 16:31——傍晚时段请对照参观当天的日落时间。
             想把晴空塔排进东京行程，可以看{" "}
             <Link href="/zh-cn/guides/attractions/things-to-do-tokyo">东京必玩清单</Link>{" "}
             里还有哪些需要预约时段的景点。
@@ -507,38 +575,57 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
         {/* vs other decks */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>对比<span className="sr-only">：</span></span>
-          <h2 className={styles.sectionTitle}>晴空塔和东京其他观景台有什么不同？</h2>
+          <h2 className={styles.sectionTitle}>东京晴空塔、SHIBUYA SKY 还是东京塔：买哪张票？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            晴空塔的优势在于高度。如果你真正想拍的是涩谷十字路口那张经典照片，
-            <Link href="/zh-cn/guides/attractions/shibuya-sky-tickets">SHIBUYA SKY（涩谷天空）</Link>{" "}
-            更值得买；如果想免费欣赏城市全景，新宿的东京都厅展望室是免费的。
+            晴空塔是看高度的选择，350 米天望甲板 ¥1,800 起。如果你真正想要的是露天俯瞰涩谷十字路口的日落，
+            <Link href="/zh-cn/guides/attractions/shibuya-sky-tickets">SHIBUYA SKY（涩谷天空）门票</Link>
+            更值得买；如果想要最便宜的收费观景台、入场时间最晚，
+            <Link href="/guides/attractions/tokyo-tower-tickets">东京塔门票（英文）</Link>
+            ¥1,500 起。想从水上看晴空塔，
+            <Link href="/guides/attractions/tokyo-bay-cruise">东京湾游船（英文）</Link>
+            里的 Tokyo Cruise 水上巴士从浅草到日之出栈桥 ¥1,000。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["观景台", "高度", "票价（约）", "亮点", "区域"].map((h) => (
+                    {["观景台", "成人票价", "开放时间", "日落与夜景"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {deckRows.map((row) => (
-                    <tr key={row.deck}>
-                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.deck}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.height}</td>
-                      <td className={styles.tdPrice} style={{ fontSize: "0.88rem" }}>{row.price}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.highlight}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.area}</td>
-                    </tr>
-                  ))}
+                  {towerRows.map((row, i) =>
+                    i === 0 ? (
+                      <tr key={row.deck} style={{ fontWeight: 700 }}>
+                        <td className={styles.tdProvider}>{row.deck}</td>
+                        <td colSpan={3} style={{ fontSize: "0.88rem" }}>{row.price}</td>
+                      </tr>
+                    ) : (
+                      <tr key={row.deck}>
+                        <td className={styles.tdProvider}>{row.deck}</td>
+                        <td className={styles.tdPrice} style={{ fontSize: "0.88rem" }}>{row.price}</td>
+                        <td style={{ fontSize: "0.88rem" }}>{row.hours}</td>
+                        <td style={{ fontSize: "0.88rem" }}>{row.sunset}</td>
+                      </tr>
+                    ),
+                  )}
                 </tbody>
               </table>
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            晴空塔和 SHIBUYA SKY 的数据来自运营方官网；东京塔和都厅为大致数字，可能有变动。请在下单时确认。
+            最后确认：晴空塔 {P.checked} — <a href={SKYTREE_HOURS_URL} target="_blank" rel="noopener">{SKYTREE_HOURS_URL}</a>；
+            东京塔 2026-11-19 — <a href={TOKYO_TOWER_FEE_URL} target="_blank" rel="noopener">{TOKYO_TOWER_FEE_URL}</a>；
+            SHIBUYA SKY 票价 {PRICES.shibuyaSky.checked} —{" "}
+            <a href={PRICES.shibuyaSky.sourceUrl} target="_blank" rel="noopener">{PRICES.shibuyaSky.sourceUrl}</a>
+            （开放时间依 gotokyo.org，2026 年 11 月 14 日）。
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem" }}>
+            还在选观景台？
+            <Link href="/guides/attractions/tokyo-observation-decks">东京观景台对比（英文）</Link>
+            把所有观景台并排对比，包括免费观景台——本页只讲怎么买晴空塔门票。
           </p>
         </section>
 
@@ -572,6 +659,24 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
         <EsimCtaBottom />
 
         <FaqList items={faqItems} />
+
+        {/* Older questions, kept on the page but not in the FAQPage JSON-LD (R02) */}
+        <section className={styles.faqSection} style={{ paddingTop: 0 }}>
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.1rem" }}>更多问题</h3>
+          <div className={styles.faqList}>
+            {moreQuestions.map((item, i) => (
+              <details key={item.q} className={styles.faqItem}>
+                <summary className={styles.faqSummary}>
+                  <span>{faqItems.length + i + 1}. {item.q}</span>
+                  <svg className={styles.faqChevron} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className={styles.faqBody}>{item.a}</div>
+              </details>
+            ))}
+          </div>
+        </section>
 
         <KlookTourPicks
           heading="和当天其他行程一起订"

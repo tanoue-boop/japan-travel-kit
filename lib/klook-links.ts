@@ -5661,6 +5661,17 @@ export const shibuyaSkyAnswerCards: KlookSameDayCard[] = [
   },
 ];
 
+/**
+ * Tokyo Mizube Line water bus between Asakusa and Odaiba — added 19 Nov 2026
+ * (task-jtk-20261119-R02) as the Sumida River leg of a Skytree day. The en-US
+ * activity page (24275) was confirmed through the www.klook.com search index that day.
+ */
+export const asakusaOdaibaMizubeCruise: KlookTour = {
+  title: "Asakusa–Odaiba cruise on the Tokyo Mizube Line",
+  desc: "A water-bus ride down the Sumida River between Asakusa and Odaiba, booked one way in either direction",
+  url: klookLink("https://www.klook.com/en-US/activity/24275-cruise-asakusa-odaiba-mizube-line-tokyo/"),
+};
+
 export const skytreeSameDayCards: KlookSameDayCard[] = [
   {
     label: asakusaSensojiWalkingTour.title,
@@ -5680,6 +5691,15 @@ export const skytreeSameDayCards: KlookSameDayCard[] = [
     ...tripPrepProducts.subway,
     kind: "Pass",
     why: "Oshiage is on the Hanzomon and Toei Asakusa lines, so a 24, 48 or 72-hour ticket covers the tower and Asakusa.",
+  },
+  // Index 3 (added R02, 19 Nov 2026). The translated pages read this array by index, so new
+  // cards go on the end.
+  {
+    label: asakusaOdaibaMizubeCruise.title,
+    kind: "Cruise",
+    ctaLabel: "Check the Sumida River cruise →",
+    url: asakusaOdaibaMizubeCruise.url,
+    why: "Leaves from Asakusa, the riverbank across from the tower, and runs down the Sumida River to Odaiba — the way on after the deck.",
   },
 ];
 

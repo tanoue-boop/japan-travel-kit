@@ -689,7 +689,7 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo Skytree Tickets (2026): Prices, Floor 350 vs 450 &amp; How to Book</p>
+                <p className={styles.relatedTitle}>Tokyo Skytree Tickets 2026: Prices, 350 vs 450 Deck &amp; Booking</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
