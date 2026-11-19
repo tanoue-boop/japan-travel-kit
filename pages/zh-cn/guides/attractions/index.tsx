@@ -22,9 +22,20 @@ import { JSONLD_LANG, TRANSLATED_PAGES, editionGuideCount, editionPageCount, zhD
 const ROUTE = "/zh-cn/guides/attractions";
 // task-jtk-20261116-R02: same structure as the English hub — "which Japan attraction
 // tickets to book in advance, and when" — title, answer, booking-window table and FAQ.
-const TITLE = "日本景点门票 2026：哪些要提前预约、何时开售与票价";
+// task-jtk-20261119-C01: "东京・大阪・京都" added to title, description and H1, and the five
+// most-read zh-cn guides linked above the fold.
+const TITLE = "日本景点门票 2026：东京・大阪・京都哪些要提前预约与票价";
 const DESC =
-  "日本景点门票哪些要提前预约：吉卜力美术馆每月10日开售、东京迪士尼与环球影城约2个月前、SHIBUYA SKY 2周前。按城市整理成表，附官方来源。";
+  "日本景点门票（东京・大阪・京都）：吉卜力美术馆每月10日开售，迪士尼与环球影城约2个月前，SHIBUYA SKY 2周前开售。按城市整理开售日与官方票价。";
+
+/** The five zh-cn guides readers open most, linked at the top of the hub. */
+const popularLinks = [
+  { href: "/zh-cn/guides/attractions/usj-tickets-express-pass", label: "大阪：日本环球影城门票与快速通关" },
+  { href: "/zh-cn/guides/attractions/shibuya-sky-tickets", label: "东京：SHIBUYA SKY 门票" },
+  { href: "/zh-cn/guides/attractions/tokyo-disney-tickets", label: "东京：东京迪士尼门票" },
+  { href: "/zh-cn/guides/attractions/teamlab-borderless-tickets", label: "东京：teamLab 无界门票" },
+  { href: "/zh-cn/guides/attractions/things-to-do-tokyo", label: "东京必去景点与订票时间" },
+];
 
 /** Booking windows read on each official site on this date (same sources as the English hub). */
 const CHECKED = "2026-11-16";
@@ -193,7 +204,7 @@ export default function CnAttractionsHubPage({ dates }: { dates: Record<string, 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>简体中文版</p>
           <h1 className={styles.heroTitle}>
-            日本景点门票 2026： <br />哪些要提前预约、何时开售
+            日本景点门票 2026： <br />东京・大阪・京都哪些要提前预约与票价
           </h1>
           <p className={styles.heroSubtitle}>
             按“需要提前多久购票”整理的日本景点门票：开售日、当天能不能买、官方票价与核查日期。
@@ -212,6 +223,18 @@ export default function CnAttractionsHubPage({ dates }: { dates: Record<string, 
         <Disclosure />
 
         <section className={styles.bodySection}>
+          <h2 className={styles.sectionTitle}>东京・大阪・京都的景点门票，先看哪几篇？</h2>
+          <p className={styles.bodyText}>
+            <strong>先看下面 5 篇：东京迪士尼与日本环球影城约 2 个月前开售、门口不卖票，SHIBUYA SKY 在入场日 2 周前开售</strong>
+            （{CHECKED} 于各官网核查）；京都多数知名寺院则可以直接前往。
+          </p>
+          <ul style={{ margin: "0.5rem 0 1rem 1.25rem", lineHeight: 1.9 }}>
+            {popularLinks.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} style={inline}>{l.label}</Link>
+              </li>
+            ))}
+          </ul>
           <p className={styles.bodyText}>
             日本最热门的景点中有四个<strong>不在现场售票</strong>，出发前就要买好：<strong>吉卜力美术馆</strong>每月 10 日
             10:00 开售下个月、<strong>吉卜力公园</strong>在 2 个月前的 10 日 14:00 开售、<strong>东京迪士尼</strong>每天 14:00

@@ -165,6 +165,10 @@ const steps = [
 
 const faqItems = [
   {
+    q: "Which Tokyo night food tour includes Golden Gai?",
+    a: "Four of the six evening formats compared here go into Golden Gai: the 3-hour Shinjuku night food walk (one drink at a Golden Gai izakaya), the 3-hour Shinjuku bar hop (bars in Kabukicho and Golden Gai with all food and drinks included), the 3-hour Golden Gai food tasting (yakitori and ramen, ending inside Golden Gai) and the private Shinjuku evening. The Shinjuku sushi-and-wagyu foodie tour and the Shibuya bar hop do not name it.",
+  },
+  {
     q: "What is a Tokyo night food tour?",
     a: "A two- to three-hour small-group walk after dark through Tokyo's izakaya alleys with an English-speaking guide, eating and drinking at three or more venues rather than sitting down at one. In Shinjuku, the standard route is Omoide Yokocho, then Kabukicho, then Golden Gai. The format splits into two: food-led walks, where you eat at three local spots and have one drink at the end, and bar hops, where all food and drinks across three bars are included and the drinking is the point. Both run about three hours on the listings compared here.",
   },
@@ -193,7 +197,7 @@ const faqItems = [
     a: "Izakaya food: yakitori (grilled chicken skewers), gyoza, grilled vegetables and karaage, usually with local beer and sake, which is exactly what one of the Shinjuku bar-hopping listings names. The Golden Gai food tasting adds a bowl of ramen; the Shinjuku foodie tour is built instead around sushi at a hidden restaurant and wagyu beef. Exact dishes move with the venue and the season. Flag any dietary requirement when you book — these are tiny kitchens with short menus, and the private tour is the format with the most room to adapt.",
   },
   {
-    q: "How much does a Tokyo night food tour cost?",
+    q: "How much is an izakaya food tour in Tokyo?",
     a: `No figure is quoted here: Klook prices change by date, and the headline number is the least comparable part of these listings anyway. Compare what moves it — how many venues, whether all drinks are included or only one, whether a sit-down course is part of it, and the group cap. A crawl with all food and drinks across three bars is a different product from a walk with three tastings and a nightcap. Open a listing for the current price on your date. Checked ${CHECKED}.`,
   },
   {
@@ -204,9 +208,12 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/tokyo-night-food-tour") } });
 
-const TITLE = "Tokyo Night Food Tour (2026): Omoide Yokocho, Golden Gai";
+// 19 Nov 2026 (C01): the page's search terms are "golden gai food tour", "shinjuku izakaya
+// food tour" and "izakaya food tour", so the title leads with them word for word.
+const TITLE = "Shinjuku Izakaya & Golden Gai Food Tour: Tokyo Night Guide";
 const DESCRIPTION =
-  "A Tokyo night food tour runs about 3 hours through Omoide Yokocho, Kabukicho and Golden Gai — roughly 280 tiny bars, most opening around 20:00. 20+ only.";
+  "Tokyo night food tour: a Shinjuku izakaya & Golden Gai food tour runs about 3 hours via Omoide Yokocho and Golden Gai's ~280 bars. Ages 20+ if alcohol.";
+const LISTINGS_LAST_CHECKED_ISO = "2026-10-27";
 
 export default function TokyoNightFoodTourPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -290,7 +297,7 @@ export default function TokyoNightFoodTourPage({ updated }: { updated: PageUpdat
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tokyo Night Food Tour (2026): <br />Omoide Yokocho, Golden Gai and the 20+ Rule
+            Shinjuku Izakaya &amp; Golden Gai Food Tour: <br />Tokyo Night Food Tours Compared (2026)
           </h1>
           <p className={styles.heroSubtitle}>
             Red lanterns, six-seat bars and yakitori smoke — the Shinjuku alleys are a different city after dark.
@@ -323,6 +330,11 @@ export default function TokyoNightFoodTourPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>The short answer</span>
           <h2 className={styles.sectionTitle}>What Is a Tokyo Night Food Tour?</h2>
           <p className={styles.bodyText}>
+            <strong>
+              A Shinjuku izakaya and Golden Gai food tour runs about 3 hours with an English-speaking guide and
+              3 or more stops, ending in Golden Gai&apos;s block of approximately 280 bars, and any departure that
+              includes alcohol is for ages 20 and over.
+            </strong>{" "}
             A <strong>Tokyo night food tour</strong> is a roughly <strong>three-hour</strong> small-group evening
             walk through Shinjuku&apos;s izakaya alleys with an English-speaking guide, eating and drinking at
             three or more venues: <strong>Omoide Yokocho</strong> by the station&apos;s West Exit — about 80
@@ -390,9 +402,16 @@ export default function TokyoNightFoodTourPage({ updated }: { updated: PageUpdat
         {/* Comparison table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Compare</span>
-          <h2 className={styles.sectionTitle}>Which Tokyo Night Food Tour Should I Book?</h2>
+          <h2 className={styles.sectionTitle}>Which Tokyo Night Food Tour Includes Golden Gai?</h2>
           <p className={styles.bodyText}>
-            Every row below is what the Klook listing itself publishes — length, the areas it names, what it states
+            <strong>
+              4 of the 6 evening formats below go into Golden Gai: the 3-hour Shinjuku night food walk (one
+              drink at a Golden Gai izakaya), the 3-hour Shinjuku bar hop (bars in Kabukicho and Golden Gai,
+              all food and drinks included), the 3-hour Golden Gai food tasting (it ends inside Golden Gai) and
+              the private Shinjuku evening.
+            </strong>{" "}
+            The Shinjuku foodie tour (sushi and wagyu) and the Shibuya bar hop do not name Golden Gai on their
+            listings. Every row below is what the Klook listing itself publishes — length, the areas it names, what it states
             is included, and the age line where it carries one. Nothing is inferred.
           </p>
           <div className={styles.tableWrap}>
@@ -423,12 +442,50 @@ export default function TokyoNightFoodTourPage({ updated }: { updated: PageUpdat
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.6rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LISTINGS_LAST_CHECKED_ISO} · Sources: the Klook listings linked on this page (read through
+            the www.klook.com search index); Golden Gai figures from{" "}
+            <a href="https://www.gotokyo.org/en/spot/62/index.html" target="_blank" rel="noopener" style={{ color: "var(--text)" }}>gotokyo.org (Tokyo Metropolitan Government)</a>.
+          </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.1rem" }}>
             <KlookLink href={goldenGaiFoodTastingExperience.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Open the Golden Gai tasting →
             </KlookLink>
             <KlookLink href={shinjukuPrivateNightFoodTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Open the private evening →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* Price question (19 Nov 2026, C01), answered without printing a Klook price */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Price</span>
+          <h2 className={styles.sectionTitle}>How Much Is an Izakaya Food Tour in Tokyo?</h2>
+          <p className={styles.bodyText}>
+            <strong>
+              An izakaya food tour in Tokyo has no single price: Klook prices each listing by date, so this page
+              prints none, and what moves the figure is whether you get 3 tastings and 1 drink, all food and
+              drinks across 3 bars, or 2 sit-down courses.
+            </strong>{" "}
+            Compare those inclusions first, then open the listing for the price on your date. Two costs sit
+            outside every listing: Golden Gai bars are small independent businesses, many cash-first, and some
+            charge their own seating fee if you go back on your own; and the ride home after a late finish,
+            which a{" "}
+            <Link href="/guides/attractions/tokyo-subway-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Tokyo Subway Ticket
+            </Link>{" "}
+            covers until the last train. For a daytime alternative at the same kind of counters, the{" "}
+            <Link href="/guides/attractions/tsukiji-market-food-tour" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Tsukiji market food tour
+            </Link>{" "}
+            is open to all ages.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={shinjukuBarHoppingNightTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Price the all-inclusive bar hop →
+            </KlookLink>
+            <KlookLink href={shinjukuNightFoodWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Price the food walk →
             </KlookLink>
           </div>
         </section>

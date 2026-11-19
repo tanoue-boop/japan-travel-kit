@@ -528,9 +528,10 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Osaka and Kyoto 3 Day Itinerary (2026): Day-by-Day Plan";
+// 19 Nov 2026 (C01): title in the "Osaka & Kyoto 3-Day Itinerary (From Kansai Airport)" form.
+const TITLE = "Osaka & Kyoto 3-Day Itinerary 2026 (From Kansai Airport)";
 const DESCRIPTION =
-  "An Osaka and Kyoto 3 day itinerary: Osaka on Day 1, Kyoto 30 minutes away on Day 2, Nara or USJ on Day 3. Dated admissions, plus passes and tours on Klook.";
+  "Osaka & Kyoto 3-day itinerary from Kansai Airport: Osaka on Day 1, Kyoto (about 30 min by train) on Day 2, Nara or USJ on Day 3, with dated admissions.";
 
 /** The three days in one table; the first row is the answer. */
 const glanceRows = [
@@ -631,7 +632,7 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Osaka and Kyoto 3 Day Itinerary (2026): <br />Day-by-Day Plan, and What to Book
+            Osaka &amp; Kyoto 3-Day Itinerary 2026 <br />(From Kansai Airport): Day-by-Day Plan
           </h1>
           <p className={styles.heroSubtitle}>
             Two cities thirty minutes apart, in and out of Kansai Airport. The plan is decided by two
@@ -660,8 +661,8 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
         {/* Opening answer: the first body paragraph, then the three days as a table. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            An <strong>Osaka and Kyoto 3 day itinerary</strong> gives one day to each city and keeps the third
-            free: <strong>Day 1 in Osaka</strong>, <strong>Day 2 in Kyoto</strong>, about{" "}
+            An <strong>Osaka &amp; Kyoto 3-day itinerary from Kansai Airport</strong> gives 1 day to each city
+            and keeps the third free: <strong>Day 1 in Osaka</strong>, <strong>Day 2 in Kyoto</strong>, about{" "}
             <strong>30 minutes</strong> away on the JR Special Rapid, and <strong>Day 3</strong> for Nara,
             Arashiyama or Universal Studios Japan. Sleep in Osaka all three nights unless two of your days are
             Kyoto and Nara, and book USJ, which sells by date, before you fly. Kansai&apos;s other day plans are
@@ -758,7 +759,22 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
         {/* Overview */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>How Should You Split 3 Days Between Osaka and Kyoto?</h2>
+          <h2 className={styles.sectionTitle}>Is 3 Days Enough for Osaka and Kyoto?</h2>
+          <p className={styles.bodyText}>
+            <strong>
+              Yes — 3 days is enough for 1 full day in Osaka, 1 full day in Kyoto and 1 day of your choice,
+              because Osaka Station is about 30 minutes from Kyoto Station on the JR Special Rapid; it is not
+              enough to add Nara, Himeji and Universal Studios Japan on top.
+            </strong>{" "}
+            Pick one of those for Day 3 and let the others go; if you want Kyoto done thoroughly, the{" "}
+            <Link href="/guides/attractions/kyoto-3-day-itinerary">Kyoto 3-day itinerary</Link> gives it all three
+            days, and{" "}
+            <Link href="/guides/attractions/where-to-stay-in-kyoto">where to stay in Kyoto</Link> covers the base
+            if you split the nights.
+          </p>
+          <h3 className={styles.pickName} style={{ marginTop: "1.25rem", marginBottom: "0.6rem" }}>
+            How should you split 3 days between Osaka and Kyoto?
+          </h3>
           <p className={styles.bodyText}>
             One day each, and one day you choose. That is not a compromise — it is what the geography
             allows. The official Kyoto travel guide puts <strong>Osaka Station about 30 minutes from
@@ -1087,6 +1103,10 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
           <span className={styles.sectionLabel}>Getting there</span>
           <h2 className={styles.sectionTitle}>How Do You Get From Kansai Airport to Osaka and Kyoto?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            <strong>
+              From Kansai Airport, take the JR HARUKA to Kyoto (two singles are ¥5,400 from 1 November 2026)
+              or to Shin-Osaka and Tennoji, or Nankai&apos;s Rapi:t to Namba.
+            </strong>{" "}
             Three days in Kansai is almost always in and out of Kansai Airport, so the arrival is the HARUKA
             to Kyoto, Shin-Osaka or Tennoji, or Nankai&apos;s Rapi:t to Namba. Every figure below is the
             operator&apos;s or the official tourism body&apos;s own published number — and one of them changes

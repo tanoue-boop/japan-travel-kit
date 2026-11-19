@@ -42,12 +42,12 @@ const pickHeymondo = [
 
 const faqItems = [
   {
-    q: "SafetyWing or Heymondo for Japan — which is better?",
-    a: "It depends on your trip. Heymondo lists the higher medical limit, 24/7 in-app doctor chat and trip cancellation cover. SafetyWing publishes its price and suits long or open-ended stays because its subscription can stop when you leave. Match the model to your trip.",
+    q: "Heymondo vs SafetyWing: which is better for Japan?",
+    a: "Heymondo for a fixed-date trip of a few days to a few weeks, SafetyWing for a stay of 4 weeks or more without a fixed return date. Heymondo lists medical cover up to US$10,000,000, trip cancellation up to US$7,000 and 24/7 in-app doctor chat; SafetyWing publishes its price (US$62.72 per 4 weeks at ages 10–39) and its subscription stops when you cancel. Read on both insurers' sites on 19 Nov 2026.",
   },
   {
     q: "Is SafetyWing or Heymondo cheaper for Japan?",
-    a: "There is no way to tell in advance, because only one publishes a price. SafetyWing Essential is US$62.72 per 4 weeks at ages 10–39, and rises with age. Heymondo gives no price without a quote. Get a quote for your exact dates and compare the cover as well as the price. Read on 6 Nov 2026.",
+    a: "There is no way to tell in advance, because only one publishes a price. SafetyWing Essential is US$62.72 per 4 weeks at ages 10–39 and Complete US$177.50 per month at ages 18–39, both rising with age. Heymondo gives no price without a quote. Get a quote for your exact dates and compare the cover as well as the price. Read on 19 Nov 2026.",
   },
   {
     q: "Does Heymondo or SafetyWing cover skiing in Japan?",
@@ -63,10 +63,28 @@ const faqItems = [
   },
 ];
 
-const TITLE = "SafetyWing vs Heymondo for Japan (2026): Price and Cover";
+const TITLE = "SafetyWing vs Heymondo for Japan (2026): Price & Coverage";
 // "Heymondo vs SafetyWing" is the order the searches arrive in, so the description leads with it.
 const DESC =
-  "Heymondo vs SafetyWing for Japan: SafetyWing costs US$62.72 per 4 weeks at ages 10–39 (6 Nov 2026), Heymondo is quote only. Which fits which trip.";
+  "Heymondo vs SafetyWing for Japan: SafetyWing is US$62.72 per 4 weeks at ages 10–39 (checked 19 Nov 2026); Heymondo is quote only. Which fits which trip.";
+
+/**
+ * Re-read on 19 Nov 2026 (task jtk-20261119-C01): safetywing.com/nomad-insurance — Essential
+ * US$62.72 / 4 weeks at ages 10–39, Complete US$177.50 / month at ages 18–39, Essential
+ * overall limit US$250,000; heymondo.com/travel-insurance/ — medical expenses up to
+ * US$10,000,000, trip cancellation up to US$7,000, no published price.
+ */
+const PRICE_CHECKED_ISO = "2026-11-19";
+const SAFETYWING_PRICING_URL = "https://safetywing.com/nomad-insurance";
+const HEYMONDO_PLAN_URL = "https://www.heymondo.com/travel-insurance/";
+
+/** The price question in one table; the first row is the answer. */
+const priceRows = [
+  { plan: "Answer", price: "Only SafetyWing publishes a price; Heymondo needs a quote for your dates", fits: "Get both quotes for the same dates and age" },
+  { plan: "SafetyWing Essential", price: "US$62.72 per 4 weeks, ages 10–39", fits: "Long or open-ended stays; billed every 4 weeks until you stop it" },
+  { plan: "SafetyWing Complete", price: "US$177.50 per month, ages 18–39", fits: "Higher US$1,500,000 overall limit, renewable indefinitely" },
+  { plan: "Heymondo (single trip)", price: "No published price — quote only", fits: "Fixed-date trips; medical up to US$10,000,000, cancellation up to US$7,000" },
+];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/safetywing-vs-heymondo-japan") } });
 
@@ -154,13 +172,13 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            SafetyWing vs Heymondo for Japan (2026): <br />Price and Cover
+            SafetyWing vs Heymondo for Japan (2026): <br />Price &amp; Coverage
           </h1>
           <p className={styles.heroSubtitle}>
             SafetyWing Essential costs US$62.72 per 4 weeks at ages 10–39 and can stop when you leave, which
             suits a long or undated stay in Japan; Heymondo publishes no price, only a quote, but lists up to
-            US$10,000,000 in medical cover and trip cancellation, which suits a fixed-date trip. Both read on
-            the insurers&apos; own sites on 6 Nov 2026.
+            US$10,000,000 in medical cover and trip cancellation, which suits a fixed-date trip. Both re-read on
+            the insurers&apos; own sites on 19 Nov 2026.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Subscription vs Trip Cover", "Head-to-Head"].map((t) => (
@@ -211,9 +229,13 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>In short:</strong> Heymondo lists the higher limits and cancellation cover. SafetyWing
-              publishes its price and suits long or undated stays. Get a quote for your exact dates before
-              deciding.
+              <strong>
+                SafetyWing suits a long or open-ended stay in Japan at US$62.72 per 4 weeks for ages 10–39,
+                while Heymondo suits a fixed-date trip that needs higher cover — up to US$10,000,000 medical and
+                US$7,000 trip cancellation — but publishes no price without a quote.
+              </strong>{" "}
+              Both figures were read on the insurers&apos; own sites on {PRICE_CHECKED_ISO}. Get a quote for your
+              exact dates and age before deciding.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <a href={SAFETYWING_URL} target="_blank" rel="sponsored nofollow noopener noreferrer" className={styles.verdictBtn}>
@@ -274,15 +296,85 @@ export default function SafetyWingVsHeymondoJapanPage({ updated }: { updated: Pa
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Read on both insurers&apos; own pages on 6 Nov 2026. Details vary by plan, country of residence and
-            date, so confirm on each provider&apos;s site before you buy.
+            Last checked: {PRICE_CHECKED_ISO} for the price, medical-limit and cancellation rows (
+            <a href={SAFETYWING_PRICING_URL} target="_blank" rel="noopener" style={{ color: "var(--text)" }}>safetywing.com/nomad-insurance</a>,{" "}
+            <a href={HEYMONDO_PLAN_URL} target="_blank" rel="noopener" style={{ color: "var(--text)" }}>heymondo.com/travel-insurance</a>);
+            the other rows were read on both insurers&apos; own pages on 6 Nov 2026. Details vary by plan, country
+            of residence and date, so confirm on each provider&apos;s site before you buy.
           </p>
+        </section>
+
+        {/* Price question (19 Nov 2026, C01) */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Price</span>
+          <h2 className={styles.sectionTitle}>Is SafetyWing or Heymondo Cheaper for Japan?</h2>
+          <p className={styles.bodyText}>
+            <strong>
+              Only SafetyWing can be compared in advance: its Essential plan is US$62.72 per 4 weeks at ages
+              10–39, while Heymondo publishes no price and quotes per trip.
+            </strong>{" "}
+            SafetyWing&apos;s price rises with age, and Heymondo&apos;s quote depends on your age, dates and
+            plan, so the honest comparison is two quotes for the same dates — and the cover you get for each.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Plan", "Published price", "What it fits"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {priceRows.map((row, i) => (
+                    <tr key={row.plan}>
+                      <td className={styles.tdProvider}>{i === 0 ? <strong>{row.plan}</strong> : row.plan}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{i === 0 ? <strong>{row.price}</strong> : row.price}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.fits}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {PRICE_CHECKED_ISO} ·{" "}
+            <a href={SAFETYWING_PRICING_URL} target="_blank" rel="noopener" style={{ color: "var(--text)" }}>safetywing.com/nomad-insurance</a> ·{" "}
+            <a href={HEYMONDO_PLAN_URL} target="_blank" rel="noopener" style={{ color: "var(--text)" }}>heymondo.com/travel-insurance</a>.
+            For what a Japanese hospital bill can reach without cover, see{" "}
+            <Link href="/guides/money/japan-travel-insurance" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Japan travel insurance requirements and cost
+            </Link>
+            .
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <a href={SAFETYWING_URL} target="_blank" rel="sponsored nofollow noopener noreferrer" className={styles.verdictBtn}>
+              Check SafetyWing&apos;s price for your age →
+            </a>
+          </div>
         </section>
 
         {/* Who should pick which */}
         <section className={styles.prosConsSection}>
           <span className={styles.sectionLabel}>The verdict</span>
-          <h2 className={styles.sectionTitle}>Which Should You Choose?</h2>
+          <h2 className={styles.sectionTitle}>Heymondo vs SafetyWing: Which Is Better for Japan?</h2>
+          <p className={styles.bodyText}>
+            <strong>
+              Heymondo is the better fit for a fixed-date trip of a few days to a few weeks, and SafetyWing for a
+              stay of 4 weeks or more without a fixed return date.
+            </strong>{" "}
+            Heymondo lists the higher limits (medical up to US$10,000,000) and trip cancellation; SafetyWing bills
+            every 4 weeks and stops when you cancel. For every other insurer, see the{" "}
+            <Link href="/guides/money/best-travel-insurance-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              best travel insurance for Japan
+            </Link>
+            ; for cards, cash and the rest of the trip budget, the{" "}
+            <Link href="/guides/money" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Japan money guides
+            </Link>
+            .
+          </p>
           <div className={styles.pickGrid}>
             <div className={styles.pickPros}>
               <p className={styles.pickListLabel}>Pick SafetyWing if…</p>

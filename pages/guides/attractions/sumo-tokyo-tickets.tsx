@@ -15,24 +15,59 @@ const SUMO_TOURNAMENT_URL = "https://affiliate.klook.com/redirect?aid=119070&k_s
 // Klook affiliate redirect.
 const SUMO_PRACTICE_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1307055&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F130115-sumo-morning-practice-viewing-tour-tokyo%2F";
 
+/**
+ * Re-read on 19 Nov 2026 (task jtk-20261119-C01), replacing the 2026 dates (all three Tokyo
+ * tournaments of 2026 are over) and the unsourced "about 400 same-day tickets at ¥2,200":
+ *
+ * - sumo.pia.jp/en/ (Ticket Oosumo, the official seller linked from sumo.or.jp): 2027
+ *   January 10–24 (Tokyo, advance sales from Sat 5 Dec 2026), May 9–23 (Tokyo, from Sat
+ *   10 Apr 2027), September 12–26 (Tokyo, from Sat 7 Aug 2027).
+ * - sumo.pia.jp/en/sumo01.jsp (2027 January tournament): English site on sale 5 Dec 10:00
+ *   JST, credit card only, ¥2,000 service fee per ticket, tickets printed at 7-Eleven in
+ *   Japan, no changes or refunds; prices incl. tax by weekday / weekend & holiday / 14th and
+ *   final day; box seats for 4 guests; "If tickets are sold out by the day of the event, no
+ *   tickets will be sold on the day"; doors 8:45 (10:30 on 22–23 Jan, 10:00 on 24 Jan);
+ *   top-division bouts from about 14:00, finish about 18:00; re-entry once, by 17:00.
+ * - sumo.or.jp/EnTicket/ (Japan Sumo Association, How to Buy): box seats priced per box of
+ *   four, chair seats priced per seat.
+ */
+const SUMO_CHECKED_ISO = "2026-11-19";
+const TICKET_OOSUMO_URL = "https://sumo.pia.jp/en/";
+const TICKET_OOSUMO_JAN_URL = "https://sumo.pia.jp/en/sumo01.jsp";
+const JSA_HOW_TO_BUY_URL = "https://www.sumo.or.jp/EnTicket/";
+
 const scheduleRows = [
-  { basho: "January (Hatsu)", dates: "11–25 Jan 2026", days: "15 days" },
-  { basho: "May (Natsu)", dates: "10–24 May 2026", days: "15 days" },
-  { basho: "September (Aki)", dates: "13–27 Sep 2026", days: "15 days" },
+  { basho: "Answer: next Tokyo basho", dates: "Sun 10 – Sun 24 Jan 2027", sale: "Sat 5 Dec 2026, 10:00 JST" },
+  { basho: "January (Hatsu) 2027", dates: "10–24 Jan 2027", sale: "5 Dec 2026" },
+  { basho: "May (Natsu) 2027", dates: "9–23 May 2027", sale: "10 Apr 2027" },
+  { basho: "September (Aki) 2027", dates: "12–26 Sep 2027", sale: "7 Aug 2027" },
+];
+
+/** January 2027 tournament prices incl. tax, as Ticket Oosumo lists them. */
+const priceRows = [
+  { seat: "Answer: price range", weekday: "Chair ¥5,000–¥11,000 · Box ¥38,000–¥72,000", weekend: "Chair ¥6,000–¥12,000 · Box ¥42,000–¥80,000", finalDays: "Chair ¥7,000–¥13,000 · Box ¥46,000–¥88,000" },
+  { seat: "Chair seat C (per seat)", weekday: "¥5,000", weekend: "¥6,000", finalDays: "¥7,000" },
+  { seat: "Chair seat B (per seat)", weekday: "¥6,000", weekend: "¥7,000", finalDays: "¥8,000" },
+  { seat: "Chair seat A (per seat)", weekday: "¥10,000", weekend: "¥11,000", finalDays: "¥12,000" },
+  { seat: "Chair seat S (per seat)", weekday: "¥11,000", weekend: "¥12,000", finalDays: "¥13,000" },
+  { seat: "Box seat C (box for 4)", weekday: "¥38,000", weekend: "¥42,000", finalDays: "¥46,000" },
+  { seat: "Box seat B (box for 4)", weekday: "¥44,000", weekend: "¥50,000", finalDays: "¥56,000" },
+  { seat: "Box seat A (box for 4)", weekday: "¥60,000", weekend: "¥66,000", finalDays: "¥72,000" },
+  { seat: "Box seat S (box for 4, Japanese site only)", weekday: "¥72,000", weekend: "¥80,000", finalDays: "¥88,000" },
 ];
 
 const seatRows = [
   {
     seat: "Masuseki (box seats)",
-    detail: "Floor-level boxes near the ring, seated on cushions (zabuton). The traditional, closest experience.",
+    detail: "Floor-level boxes near the ring: you remove your shoes and sit on cushions, and boxes are sold whole, for four guests.",
   },
   {
     seat: "Isu-seki (chair seats)",
-    detail: "Western-style chairs on the upper tiers. More comfortable for longer sessions and generally cheaper.",
+    detail: "Western-style chairs on the upper tiers, sold per seat. More comfortable for a long day and the cheaper way in.",
   },
   {
-    seat: "Same-day tickets",
-    detail: "Around 400 are sold each tournament day, roughly ¥2,200, on a first-come basis early in the morning.",
+    seat: "On the day",
+    detail: "Ticket Oosumo states that if tickets are sold out by the day of the event, no tickets are sold on the day — so do not plan around the box office.",
   },
 ];
 
@@ -59,8 +94,8 @@ const whoFor = [
     ),
   },
   {
-    title: "Try same-day tickets if…",
-    desc: "You're flexible and don't mind queuing. About 400 same-day tickets (roughly ¥2,200) are released each tournament day, sold first-come early in the morning. It's the budget route in if advance tickets have already sold out.",
+    title: "Don't count on the day if…",
+    desc: "Advance tickets are already gone. Ticket Oosumo states that when tickets sell out before the day, none are sold on the day, so the realistic fallbacks are a guided tour that includes tournament admission or a morning practice outside the arena.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -78,34 +113,34 @@ const steps = [
   },
   {
     title: "Buy from the official seller — and only the official seller",
-    desc: "Advance tickets go on sale roughly one month before each tournament and sell out fast. The official, legitimate channel is Ticket Oosumo (sumo.pia.jp/en). Avoid resale sites such as Viagogo and StubHub, which are not official and are widely cautioned against.",
+    desc: "Advance tickets for the January 2027 basho go on sale at 10:00 JST on Saturday 5 December 2026 — about five weeks ahead — on Ticket Oosumo (sumo.pia.jp/en), the official seller. The English site takes credit cards only, adds a ¥2,000 service fee per ticket, and tickets cannot be changed or refunded. Avoid resale sites: the organiser prohibits unauthorised resale and may refuse entry.",
   },
   {
     title: "Choose your seat type",
     desc: "Box seats (masuseki) put you at floor level on cushions for the closest, most traditional experience, while chair seats (isu-seki) on the upper tiers are more comfortable and usually cheaper. Pick based on budget and how long you plan to stay.",
   },
   {
-    title: "If it's sold out, consider a tour or same-day tickets",
-    desc: "When official tickets are gone, a guided tour that includes tournament admission is a practical fallback. Alternatively, around 400 same-day tickets (about ¥2,200) are sold each day on a first-come basis early in the morning — be prepared to queue.",
+    title: "If it's sold out, consider a tour or a morning practice",
+    desc: "When official tickets are gone, a guided tour that includes tournament admission is a practical fallback in season. Do not plan on the box office: Ticket Oosumo states that if tickets are sold out by the day of the event, none are sold on the day.",
   },
 ];
 
 const faqItems = [
   {
-    q: "When are the 2026 sumo tournaments in Tokyo?",
-    a: "Tokyo hosts three of the six annual grand tournaments in 2026: the January (Hatsu) basho on 11–25 January, the May (Natsu) basho on 10–24 May, and the September (Aki) basho on 13–27 September. Each runs for 15 days at Ryogoku Kokugikan in Sumida. The other three tournaments are held in Osaka, Nagoya, and Fukuoka.",
+    q: "When is the next sumo tournament in Tokyo?",
+    a: `The January 2027 (Hatsu) basho, Sunday 10 to Sunday 24 January 2027 at Ryogoku Kokugikan. The other Tokyo tournaments of 2027 are 9–23 May and 12–26 September; the remaining three are in Osaka (March), Nagoya (July) and Fukuoka (November). Ticket Oosumo schedule checked ${SUMO_CHECKED_ISO}.`,
   },
   {
-    q: "How do I buy official sumo tickets?",
-    a: "Advance tickets go on sale roughly one month before each tournament and tend to sell out quickly. The official, legitimate seller is Ticket Oosumo (sumo.pia.jp/en) — buy there. Steer clear of resale platforms like Viagogo and StubHub, which are not official channels and are widely warned against for sumo tickets.",
+    q: "When do sumo tickets go on sale?",
+    a: `For the January 2027 basho, at 10:00 JST on Saturday 5 December 2026 on Ticket Oosumo (sumo.pia.jp/en), the official seller. May 2027 tickets go on sale on 10 April 2027 and September 2027 tickets on 7 August 2027. The English site takes credit cards only, charges a ¥2,000 service fee per ticket, and purchased tickets cannot be changed or cancelled. Checked ${SUMO_CHECKED_ISO}.`,
   },
   {
-    q: "What seat types are available, and how much do they cost?",
-    a: "There are two main types: masuseki (traditional floor-level box seats where you sit on cushions, closest to the ring) and isu-seki (Western-style chair seats on the upper tiers, more comfortable and usually cheaper). Exact prices vary by seat and tournament, so check current rates on the official site. Same-day tickets run about ¥2,200.",
+    q: "How much are sumo tickets in Tokyo?",
+    a: `For the January 2027 basho, chair seats are ¥5,000 to ¥13,000 per seat and box seats ¥38,000 to ¥88,000 per box for four, including tax; prices rise from weekdays to weekends and holidays and again on the 14th and final days. The cheapest is chair seat C at ¥5,000 on a weekday. The English site adds a ¥2,000 service fee per ticket. Ticket Oosumo, checked ${SUMO_CHECKED_ISO}.`,
   },
   {
     q: "Can I get same-day sumo tickets?",
-    a: "Yes. Around 400 same-day tickets, priced at roughly ¥2,200, are released each tournament day and sold on a first-come basis early in the morning. They're the budget way in and a useful backup if advance tickets have sold out — but expect to queue, especially on popular days.",
+    a: `Not if the day has sold out. Ticket Oosumo states that if tickets are sold out by the day of the event, no tickets are sold on the day at the Kokugikan box office, so buy in advance from the sale date. If you miss out, a guided tour that includes tournament admission or a morning practice tour is the fallback. Checked ${SUMO_CHECKED_ISO}.`,
   },
   {
     q: "What if I'm not visiting during a tournament?",
@@ -123,21 +158,21 @@ export default function SumoTokyoTicketsPage({ updated }: { updated: PageUpdated
   return (
     <>
       <Head>
-        <title>Sumo in Tokyo (2026): Tournament Tickets vs Practice</title>
+        <title>Sumo Tickets in Tokyo (2026–27): Dates, Prices & How to Book</title>
         <meta
           name="description"
-          content="Sumo in Tokyo 2026: the January, May and September tournament dates, how to buy official tickets and avoid resale scams, seat types and practice tours."
+          content="Sumo tickets in Tokyo: the Jan 2027 basho runs 10–24 Jan at Ryogoku, on sale 5 Dec 2026. Chair seats ¥5,000–¥13,000, 4-person boxes ¥38,000–¥88,000."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/sumo-tokyo-tickets" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Sumo in Tokyo (2026): Tournament Tickets vs Practice" />
+        <meta property="og:title" content="Sumo Tickets in Tokyo (2026–27): Dates, Prices & How to Book" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/sumo-tokyo-tickets" />
-        <meta property="og:description" content="Sumo in Tokyo 2026: the January, May and September tournament dates, how to buy official tickets and avoid resale scams, seat types and practice tours." />
+        <meta property="og:description" content="Sumo tickets in Tokyo: the Jan 2027 basho runs 10–24 Jan at Ryogoku, on sale 5 Dec 2026. Chair seats ¥5,000–¥13,000, 4-person boxes ¥38,000–¥88,000." />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Sumo in Tokyo (2026): Tournament Tickets vs Practice" />
-        <meta name="twitter:description" content="Sumo in Tokyo 2026: the January, May and September tournament dates, how to buy official tickets and avoid resale scams, seat types and practice tours." />
+        <meta name="twitter:title" content="Sumo Tickets in Tokyo (2026–27): Dates, Prices & How to Book" />
+        <meta name="twitter:description" content="Sumo tickets in Tokyo: the Jan 2027 basho runs 10–24 Jan at Ryogoku, on sale 5 Dec 2026. Chair seats ¥5,000–¥13,000, 4-person boxes ¥38,000–¥88,000." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -157,7 +192,7 @@ export default function SumoTokyoTicketsPage({ updated }: { updated: PageUpdated
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/attractions/sumo-tokyo-tickets",
-              headline: "Sumo in Tokyo (2026): Tournament Tickets vs Practice",
+              headline: "Sumo Tickets in Tokyo (2026–27): Dates, Prices & How to Book",
               updated,
             }),
           }}
@@ -205,7 +240,7 @@ export default function SumoTokyoTicketsPage({ updated }: { updated: PageUpdated
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Sumo in Tokyo (2026): <br />Tournament Tickets vs Morning Practice
+            Sumo Tickets in Tokyo (2026–27): <br />Dates, Prices &amp; How to Book
           </h1>
           <p className={styles.heroSubtitle}>
             Tokyo hosts three 15-day grand tournaments a year at Ryogoku Kokugikan. Here&apos;s when they run,
@@ -256,9 +291,15 @@ export default function SumoTokyoTicketsPage({ updated }: { updated: PageUpdated
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>In short:</strong> If your dates hit a January, May, or September basho, buy from the
-              official seller (Ticket Oosumo) the day tickets release — and avoid resale sites. Outside those
-              months, a sumo stable morning practice tour gets you ringside year-round.
+              <strong>
+                The next Tokyo sumo tournament is the January 2027 basho, 10–24 January 2027 at Ryogoku
+                Kokugikan, with advance tickets on sale from 10:00 JST on Saturday 5 December 2026 on Ticket
+                Oosumo, the official seller.
+              </strong>{" "}
+              Chair seats cost ¥5,000–¥13,000 per seat and box seats ¥38,000–¥88,000 per box of four,
+              depending on class and day, and the English site adds a ¥2,000 service fee per ticket. If a day
+              sells out, no tickets are sold at the door — outside January, May and September, a morning
+              practice tour is the year-round alternative (Ticket Oosumo, checked {SUMO_CHECKED_ISO}).
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink href={SUMO_TOURNAMENT_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
@@ -285,31 +326,49 @@ export default function SumoTokyoTicketsPage({ updated }: { updated: PageUpdated
             in the months between tournaments.
           </p>
           <p className={styles.bodyText}>
-            Which one fits depends mostly on your dates. Below we cover the 2026 Tokyo tournament schedule, how to
-            buy tickets safely, the seat types and prices, and how the morning practice alternative works.
+            Which one fits depends mostly on your dates. Below are the 2027 Tokyo tournament dates and sale dates,
+            the official seat prices, how to buy safely, and how the morning practice alternative works. If the
+            tournament is one evening of a longer stay, our{" "}
+            <Link href="/guides/attractions/things-to-do-tokyo" style={{ color: "var(--text)", fontWeight: 600 }}>
+              things to do in Tokyo
+            </Link>{" "}
+            guide lists which other sights need booking ahead, and Ryogoku is on the Toei Oedo Line, one of the
+            lines covered by the{" "}
+            <Link href="/guides/attractions/tokyo-subway-ticket" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Tokyo Subway Ticket
+            </Link>
+            .
           </p>
         </section>
 
         {/* Schedule table */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>2026 schedule</span>
-          <h2 className={styles.sectionTitle}>Tokyo Grand Tournaments in 2026</h2>
+          <span className={styles.sectionLabel}>2027 schedule</span>
+          <h2 className={styles.sectionTitle}>When Is the Next Sumo Tournament in Tokyo?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            <strong>
+              The January 2027 basho, 10–24 January 2027 at Ryogoku Kokugikan, with advance tickets on sale from
+              10:00 JST on Saturday 5 December 2026.
+            </strong>{" "}
+            Each Tokyo tournament runs 15 days; doors open at 8:45 (later on the last three days), top-division bouts start around 14:00 and the
+            day finishes around 18:00, and one ticket covers the whole day (Ticket Oosumo, January 2027 page).
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Tournament", "Dates", "Length"].map((h) => (
+                    {["Tokyo tournament", "Dates (15 days)", "Advance sales open"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {scheduleRows.map((row) => (
+                  {scheduleRows.map((row, i) => (
                     <tr key={row.basho}>
-                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.basho}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.dates}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.days}</td>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{i === 0 ? <strong>{row.basho}</strong> : row.basho}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{i === 0 ? <strong>{row.dates}</strong> : row.dates}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{i === 0 ? <strong>{row.sale}</strong> : row.sale}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -317,8 +376,57 @@ export default function SumoTokyoTicketsPage({ updated }: { updated: PageUpdated
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Dates as of 2026 — confirm on the official site before booking travel. The remaining three of the
-            year&apos;s six grand tournaments are held in Osaka, Nagoya, and Fukuoka.
+            Last checked: {SUMO_CHECKED_ISO} · Source:{" "}
+            <a href={TICKET_OOSUMO_URL} target="_blank" rel="noopener" style={{ color: "var(--text)" }}>Ticket Oosumo (sumo.pia.jp/en, official)</a>.
+            The other three of the year&apos;s six grand tournaments are in Osaka (March), Nagoya (July) and
+            Fukuoka (November).
+          </p>
+        </section>
+
+        {/* Price table (19 Nov 2026, C01) */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Prices</span>
+          <h2 className={styles.sectionTitle}>How Much Are Sumo Tickets in Tokyo?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            <strong>
+              For the January 2027 basho, chair seats cost ¥5,000–¥13,000 per seat and box seats
+              ¥38,000–¥88,000 per box for four, including tax.
+            </strong>{" "}
+            Prices step up from weekdays to weekends and holidays, and again on the 14th and final days; Ticket
+            Oosumo English adds a ¥2,000 service fee per ticket, takes credit cards only, and tickets cannot be
+            changed or refunded.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Seat", "Weekday", "Weekend & holiday", "14th & final day"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {priceRows.map((row, i) => (
+                    <tr key={row.seat}>
+                      <td className={styles.tdProvider}>{i === 0 ? <strong>{row.seat}</strong> : row.seat}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{i === 0 ? <strong>{row.weekday}</strong> : row.weekday}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{i === 0 ? <strong>{row.weekend}</strong> : row.weekend}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{i === 0 ? <strong>{row.finalDays}</strong> : row.finalDays}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {SUMO_CHECKED_ISO} · Sources:{" "}
+            <a href={TICKET_OOSUMO_JAN_URL} target="_blank" rel="noopener" style={{ color: "var(--text)" }}>Ticket Oosumo, 2027 January tournament</a>{" "}
+            and{" "}
+            <a href={JSA_HOW_TO_BUY_URL} target="_blank" rel="noopener" style={{ color: "var(--text)" }}>Japan Sumo Association, How to Buy</a>{" "}
+            (which prices box seats per box of four and chair seats per seat). Box seat S and ¥20,000 ringside
+            seats are sold only on the Japanese Ticket Oosumo site. Children aged 4 and over need a ticket, with no
+            child discount.
           </p>
         </section>
 
@@ -357,15 +465,16 @@ export default function SumoTokyoTicketsPage({ updated }: { updated: PageUpdated
             Sumo tickets are in high demand, and that draws resellers. The only official, legitimate channel is{" "}
             <strong>Ticket Oosumo</strong> (sumo.pia.jp/en). Resale platforms such as Viagogo and StubHub are not
             official sellers and are widely cautioned against — tickets there can be heavily marked up or invalid.
-            Buy from the official site the day tickets go on sale, roughly a month before the tournament, since
-            they sell out quickly.
+            Buy from the official site the day tickets go on sale — 5 December 2026 for the January 2027
+            tournament — since they sell out quickly; Ticket Oosumo&apos;s own notice says the November 2026
+            tournament in Fukuoka was sold out on all dates.
           </p>
           <p className={styles.bodyText}>
             Tournament tickets for the Tokyo basho (held at Ryogoku Kokugikan in January, May, and September) are
             bought from the official Ticket Oosumo site. Klook&apos;s ticket-inclusive spectator tours are listed
             only intermittently, during the Tokyo tournament season — so if official tickets are gone, such a
-            guided tour is a reasonable in-season fallback, as is queuing for one of the roughly 400 same-day
-            tickets (about ¥2,200) released each morning.
+            guided tour is a reasonable in-season fallback. The box office is not: Ticket Oosumo states that if
+            tickets are sold out by the day of the event, no tickets are sold on the day.
           </p>
         </section>
 

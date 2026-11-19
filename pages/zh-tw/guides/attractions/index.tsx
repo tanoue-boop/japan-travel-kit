@@ -22,9 +22,20 @@ import { JSONLD_LANG, TRANSLATED_PAGES, editionGuideCount, editionPageCount, zhD
 const ROUTE = "/zh-tw/guides/attractions";
 // task-jtk-20261116-R02: same structure as the English hub — "which Japan attraction
 // tickets to book in advance, and when" — title, answer, booking-window table and FAQ.
-const TITLE = "日本景點門票 2026：哪些要提前預約、何時開賣與票價";
+// task-jtk-20261119-C01: "東京・大阪・京都" added to title, description and H1, and the five
+// most-read zh-tw guides linked above the fold.
+const TITLE = "日本景點門票 2026：東京・大阪・京都哪些要提前預約與票價";
 const DESC =
-  "日本景點門票哪些要提前預約：吉卜力美術館每月10日開賣、東京迪士尼與環球影城約2個月前、澀谷SKY 2週前。依城市整理成表，附官方來源。";
+  "日本景點門票（東京・大阪・京都）：吉卜力美術館每月10日開賣，迪士尼與環球影城約2個月前，澀谷SKY 2週前開賣。依城市整理開賣日、當天能否購票與官方票價。";
+
+/** The five zh-tw guides readers open most, linked at the top of the hub. */
+const popularLinks = [
+  { href: "/zh-tw/guides/attractions/usj-tickets-express-pass", label: "大阪：日本環球影城門票與快速通關" },
+  { href: "/zh-tw/guides/attractions/shibuya-sky-tickets", label: "東京：澀谷SKY 門票" },
+  { href: "/zh-tw/guides/attractions/tokyo-disney-tickets", label: "東京：東京迪士尼門票" },
+  { href: "/zh-tw/guides/attractions/tokyo-skytree-tickets", label: "東京：晴空塔門票" },
+  { href: "/zh-tw/guides/attractions/things-to-do-tokyo", label: "東京必去景點與購票時間" },
+];
 
 /** Booking windows read on each official site on this date (same sources as the English hub). */
 const CHECKED = "2026-11-16";
@@ -196,7 +207,7 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>繁體中文版</p>
           <h1 className={styles.heroTitle}>
-            日本景點門票 2026： <br />哪些要提前預約、何時開賣
+            日本景點門票 2026： <br />東京・大阪・京都哪些要提前預約與票價
           </h1>
           <p className={styles.heroSubtitle}>
             依照「需要提前多久買票」整理的日本景點門票資訊：開賣日、當天能不能買、官方票價與查核日期。
@@ -215,6 +226,18 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
         <Disclosure />
 
         <section className={styles.bodySection}>
+          <h2 className={styles.sectionTitle}>東京・大阪・京都的景點門票，先看哪幾篇？</h2>
+          <p className={styles.bodyText}>
+            <strong>先看下面 5 篇：東京迪士尼與日本環球影城約 2 個月前開賣、門口不賣票，澀谷SKY 在入場日 2 週前開賣</strong>
+            （{CHECKED} 於各官網查核）；京都多數知名寺院則可以直接前往。
+          </p>
+          <ul style={{ margin: "0.5rem 0 1rem 1.25rem", lineHeight: 1.9 }}>
+            {popularLinks.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} style={inline}>{l.label}</Link>
+              </li>
+            ))}
+          </ul>
           <p className={styles.bodyText}>
             日本最熱門的景點中有四個<strong>不提供現場售票</strong>，出發前就要買好：<strong>吉卜力美術館</strong>每月 10 日
             10:00 開賣次月門票、<strong>吉卜力公園</strong>在 2 個月前的 10 日 14:00 開賣、<strong>東京迪士尼</strong>每天 14:00

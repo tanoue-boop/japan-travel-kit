@@ -80,7 +80,14 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  * - eco.mtk.nao.ac.jp/koyomi/dni/2026/s2811, s2812, s2801, s2802 (Osaka, 34.6833°N
  *   135.4833°E): the November–February sunset rows below.
  */
-const LAST_CHECKED_ISO = "2026-11-12";
+/**
+ * Re-checked on 19 Nov 2026 (task jtk-20261119-C01): skybldg.co.jp/en/observatory/ (fees,
+ * 9:30–22:30 / last admission 22:00, Amazing Pass free 9:30–15:00 and 10% off 15:00–22:00,
+ * cash and credit cards at the 39F counter, rooftop may close in heavy rain, special
+ * business days on a special ticket), abenoharukas-300.jp/observatory/ticket/ (¥2,200 / ¥900,
+ * web ¥1,980 / ¥810) and eco.mtk.nao.ac.jp/koyomi/dni/2026/s2811 (November sunsets).
+ */
+const LAST_CHECKED_ISO = "2026-11-19";
 const LAST_CHECKED = checkedLabel(LAST_CHECKED_ISO);
 const OFFICIAL_URL = "https://www.skybldg.co.jp/en/observatory/";
 const HARUKAS_URL = "https://www.abenoharukas-300.jp/observatory/ticket/";
@@ -297,26 +304,29 @@ const faqItems = [
     a: `The Kuchu Teien Observatory is open 9:30 to 22:30 with last admission at 22:00, and no regular closing day is printed on the operator's site. Allow one to two hours (Klook's estimate for its listing). Special event days such as the Yodogawa fireworks run on special tickets and hours, and the open-air rooftop may close in heavy rain. Hours last checked ${LAST_CHECKED}.`,
   },
   {
-    q: "Do I need to book Umeda Sky Building in advance?",
+    q: "When do Umeda Sky Building tickets release?",
+    a: `There is no release date. The observatory has no timed entry slots, and the 39th-floor counter sells same-day tickets from 9:30 until last admission at 22:00 — ¥2,000 for an adult and ¥500 for ages 4 to 12. Only special business days, such as the Yodogawa fireworks, need a special ticket for the set hours. Official site checked ${LAST_CHECKED_ISO}.`,
+  },
+  {
+    q: "Do you need to book Umeda Sky Building in advance?",
     a: "No. There is no timed-entry slot and tickets are sold on the day at the 39th-floor counter. Booking ahead is about convenience: an English checkout on a foreign card through Klook, which the operator's English site links to. The busy hours are the one before sunset and the run-up to the 15:00 pass cut-off; the quietest are mid-morning and after 21:00. If you hold an Osaka Amazing Pass and arrive before 15:00, you do not buy a ticket at all.",
   },
   {
     q: "What time is sunset at Umeda Sky Building?",
     a: "From November to February, sunset in Osaka falls between 16:47 and 17:53, according to the National Astronomical Observatory of Japan's 2026 table for Osaka: 17:05 on 1 November, 16:54 on 15 November, 16:47 on 30 November and 1 December, 16:57 on 31 December, 17:10 on 15 January and 17:41 on 15 February. In summer it is as late as 19:15 (1 July). Enter 30 to 45 minutes before sunset to see daylight, golden hour and the night view on one ticket.",
   },
-  {
-    q: "Is Umeda Sky Building worth it vs Abeno Harukas?",
-    a: `They are different products at a similar price. Umeda is ¥2,000, an open-air 360-degree rooftop, open until 22:30 (last entry 22:00), seven minutes from JR Osaka Station and free on the Amazing Pass before 15:00. Harukas 300 at Abeno Harukas is ¥2,200 at the counter or ¥1,980 as a web advance ticket, open 9:00 to 22:00 (last entry 21:30), higher, and not on the Amazing Pass list. Pick Umeda for the open rooftop, the late close and the Osaka Station location; pick Harukas for height. Both operators' prices last checked ${LAST_CHECKED}.`,
-  },
+  // 19 Nov 2026 (C01): the Harukas comparison FAQ was dropped to keep the FAQ at five
+  // questions; the same answer stays in the "Is Umeda Sky Building Worth It vs Abeno
+  // Harukas?" section of the body.
 ];
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/umeda-sky-building-tickets") },
 });
 
-const TITLE = "Umeda Sky Building Tickets 2026: Price, Hours & Sunset Times";
+const TITLE = "Umeda Sky Building Tickets 2026: Price, Hours & Sunset Time";
 const DESC =
-  "Umeda Sky Building tickets: entrance fee ¥2,000 adult, ¥500 ages 4–12. Open 9:30–22:30, last entry 22:00. Sunset times by month, plus a Klook ticket link.";
+  "Umeda Sky Building tickets: entrance fee ¥2,000 adult, ¥500 ages 4–12; open 9:30–22:30, last entry 22:00. No release date or time slots. Klook ticket link.";
 
 export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -406,7 +416,7 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Umeda Sky Building Tickets 2026: <br />Price, Hours &amp; Sunset Times
+            Umeda Sky Building Tickets 2026: <br />Price, Hours &amp; Sunset Time
           </h1>
           <p className={styles.heroSubtitle}>
             The open-air rooftop ring 173 metres above Umeda, seven minutes from Osaka Station.
@@ -458,12 +468,14 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
               </div>
             </div>
             <p className={styles.verdictText}>
-              The Umeda Sky Building entrance fee is <strong>¥2,000 for an adult</strong> and{" "}
-              <strong>¥500 for a child aged 4 to 12</strong>, with under-4s free. The Kuchu Teien
-              Observatory is open <strong>9:30 to 22:30, last entry 22:00</strong>, and a visit
-              takes <strong>1 to 2 hours</strong>. Tickets are sold on the day with no time slots,
-              and the <strong>Osaka Amazing Pass gets you in free only from 9:30 to 15:00</strong>.
-              Official figures last checked {LAST_CHECKED}.
+              The Umeda Sky Building ticket price is <strong>¥2,000 for an adult</strong> and{" "}
+              <strong>¥500 for a child aged 4 to 12</strong>, and the Kuchu Teien Observatory is
+              open <strong>9:30 to 22:30 with last entry at 22:00</strong> (official site
+              skybldg.co.jp, checked {LAST_CHECKED_ISO}). Tickets have no release date and no time
+              slots: the 39th-floor counter sells them on the day for cash or credit card, and a
+              visit takes <strong>1 to 2 hours</strong>. The <strong>Osaka Amazing Pass gets you in
+              free only from 9:30 to 15:00</strong>, and in November Osaka&apos;s sunset falls
+              between 16:47 and 17:05.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={umedaSkyBuildingTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -553,6 +565,34 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
             {CHECKED}. The Japanese page names Lumi Sky Walk on the rooftop floor without describing
             it, so this page does not either.
           </p>
+        </section>
+
+        {/* Release question (19 Nov 2026, C01): the question searchers type, answered in the first line */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Release date</span>
+          <h2 className={styles.sectionTitle}>When Do Umeda Sky Building Tickets Release?</h2>
+          <p className={styles.bodyText}>
+            <strong>Umeda Sky Building tickets have no release date:</strong> there are no timed entry
+            slots, and the 39th-floor counter sells same-day tickets from 9:30 until last admission at
+            22:00 for ¥2,000 (adult) and ¥500 (ages 4–12). The only exceptions are special business
+            days such as the Yodogawa fireworks, when the operator states a special ticket is required
+            for the set hours (skybldg.co.jp, checked {LAST_CHECKED_ISO}).
+          </p>
+          <p className={styles.bodyText}>
+            Online, the operator&apos;s Japanese site sells a date-specific web ticket through asoview,
+            and Klook sells the same admission in English on a foreign card — book whichever you like
+            once your Osaka day is fixed; there is no sale date to wait for. If the deck is one stop in a
+            longer Kansai trip, our{" "}
+            <Link href="/guides/attractions/osaka-kyoto-3-day-itinerary">Osaka and Kyoto 3-day itinerary</Link>{" "}
+            puts it on the Osaka day, and the{" "}
+            <Link href="/guides/attractions/japan-attraction-ticket-prices">Japan attraction ticket prices table</Link>{" "}
+            lists which other sights do sell out in advance.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={umedaSkyBuildingTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Umeda Sky Building ticket for your date on Klook →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Price table */}
@@ -812,7 +852,7 @@ export default function UmedaSkyBuildingTicketsPage({ updated }: { updated: Page
         {/* Booking */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Step-by-step</span>
-          <h2 className={styles.sectionTitle}>Do I Need to Book Umeda Sky Building in Advance?</h2>
+          <h2 className={styles.sectionTitle}>Do You Need to Book Umeda Sky Building in Advance?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             <strong>No.</strong> There is no timed-entry slot, and the 39th-floor counter sells
             tickets on the day for cash or credit card. Book ahead only for convenience: Klook for

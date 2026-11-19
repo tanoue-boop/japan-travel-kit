@@ -5,9 +5,27 @@ import PartnerPick, { PartnerTextLink } from "../components/PartnerPick";
 import { klookEsim } from "../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../lib/page-dates";
 
-const TITLE = "About Japan Travel Kit: Who Writes It, How We Check Prices";
+const TITLE = "About Japan Travel Kit – Independent Japan Trip Guides";
 const DESC =
-  "Japan Travel Kit is written by mjo Inc. in Tokyo. Every price is read off the official site and shown with its check date; affiliate links are disclosed.";
+  "Japan Travel Kit (japan-travel-kit.com) is an independent Japan trip guide site run by mjo Inc. in Tokyo. Prices come from official sites with check dates.";
+
+/**
+ * The site's hubs and five most-read guides, linked from the top so a reader who searched
+ * the site's name lands one click from what they came for (task jtk-20261119-C01).
+ */
+const hubLinks = [
+  { href: "/guides/esim", label: "Japan eSIM & SIM guides" },
+  { href: "/guides/transport", label: "Japan transport & rail pass guides" },
+  { href: "/guides/money", label: "Money, cards & tax-free guides" },
+  { href: "/guides/attractions", label: "Things to do & attraction tickets" },
+];
+const popularGuides = [
+  { href: "/guides/esim/best-esim-japan", label: "Best eSIM for Japan" },
+  { href: "/guides/attractions/japan-attraction-ticket-prices", label: "Japan attraction ticket prices table" },
+  { href: "/guides/attractions/shibuya-sky-tickets", label: "Shibuya Sky tickets" },
+  { href: "/guides/attractions/usj-tickets-express-pass", label: "USJ tickets & Express Pass" },
+  { href: "/guides/money/tax-free-shopping-japan", label: "Tax-free shopping in Japan (2026 refund system)" },
+];
 
 /** What is checked, where and how often; the first row is the answer. */
 const checkRows = [
@@ -19,6 +37,10 @@ const checkRows = [
 ];
 
 const faqItems = [
+  {
+    q: "What is japan-travel-kit.com?",
+    a: "Japan Travel Kit (japan-travel-kit.com) is an independent English-language site of Japan trip guides for first-time visitors, grouped into 4 hubs: eSIMs, transport, money and attraction tickets. It is run by mjo Inc. in Tokyo, earns affiliate commission on some links, and prints every official price with the date it was checked.",
+  },
   {
     q: "Who runs Japan Travel Kit?",
     a: "mjo Inc., a company based in Tokyo working in inbound tourism and e-commerce consulting. The site has no paid placements or sponsored posts, and no provider sees a guide before it is published. Corrections go to info@japan-travel-kit.com.",
@@ -136,20 +158,45 @@ export default function AboutPage({ updated }: { updated: PageUpdated }) {
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <span className={styles.eyebrow}>About</span>
-          <h1 className={styles.title}>About Japan Travel Kit: Who Writes It and How We Check Prices</h1>
+          <h1 className={styles.title}>About Japan Travel Kit – Independent Japan Trip Guides</h1>
         </div>
       </section>
 
       <div className={styles.body}>
         <div className={styles.highlight}>
           <p className={styles.text}>
-            <strong>In short:</strong> Japan Travel Kit is written and published by <strong>mjo Inc.</strong>, a
-            company based in Tokyo, and every price in its guides is read off the operator&apos;s official site and
-            shown with the date it was checked. eSIM prices are re-fetched <strong>daily</strong>; ticket, fare and
-            pass prices are re-read whenever a page is revised. Some links are affiliate links, mostly to Klook and
-            eSIM providers, and commission does not decide rankings.
+            <strong>In short:</strong> Japan Travel Kit (japan-travel-kit.com) is an independent English-language
+            site of Japan trip guides covering <strong>4 topics</strong> — eSIMs, transport, money and attraction
+            tickets — for first-time visitors. It is run by <strong>mjo Inc.</strong>, a company based in Tokyo, and
+            earns its money from affiliate commission on some links (mostly Klook and eSIM providers) at no extra
+            cost to you, with no paid placements. Every price is read off the operator&apos;s official site and
+            printed with the date it was checked; eSIM prices are re-fetched <strong>daily</strong>.
           </p>
         </div>
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>What is Japan Travel Kit, and where should you start?</h2>
+          <p className={styles.text}>
+            It is a planning site for the decisions you make before landing in Japan, organised into 4 hubs; most
+            readers start with one of the 5 guides below. Each guide prints the official price and the date it was
+            read.
+          </p>
+          <ul className={styles.list}>
+            {hubLinks.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} style={{ color: "var(--text)", fontWeight: 600 }}>{l.label}</Link>
+              </li>
+            ))}
+          </ul>
+          <p className={styles.text} style={{ fontWeight: 700, marginBottom: "0.25rem" }}>Most-read guides</p>
+          <ul className={styles.list}>
+            {popularGuides.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} style={{ color: "var(--text)", fontWeight: 600 }}>{l.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>How are prices checked, and how often?</h2>
@@ -210,7 +257,7 @@ export default function AboutPage({ updated }: { updated: PageUpdated }) {
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Who publishes it</h2>
+          <h2 className={styles.sectionTitle}>Who runs Japan Travel Kit?</h2>
           <p className={styles.text}>
             Japan Travel Kit is operated by <strong>mjo Inc.</strong>, a Japan-based company in Tokyo working in
             inbound tourism and e-commerce consulting. Being in Japan is what makes the sourcing below workable: the
