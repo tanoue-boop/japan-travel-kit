@@ -620,11 +620,11 @@ const faqItems = [
   },
   {
     q: "Is Japan expensive for tourists in 2026?",
-    a: `Not on the daily lines: a Tokyo subway ride is ¥178, a chain bowl of chuka soba ¥420, a Yoshinoya beef bowl ¥498, and the Tokyo Metropolitan Government Building decks are free. The room and long-distance rail are the expensive lines — a ¥13,970 shinkansen to Kyoto, a ¥50,000 7-day JR Pass. At ¥${FX_YEN_PER_USD} to the dollar (${FX_RATE_DATE}), a standard day of ${yen(ALLIN_MID_LOW)}–${yen(ALLIN_MID_HIGH)} is ${usd(ALLIN_MID_LOW)}–${usd(ALLIN_MID_HIGH)}.`,
+    a: `Not on the daily lines: a Tokyo subway ride is ¥178, a chain bowl of chuka soba ¥420, a Yoshinoya beef bowl ¥498, and the Tokyo Metropolitan Government Building decks are free. The room and long-distance rail are the expensive lines — a ¥13,970 shinkansen to Kyoto, a 7-day JR Pass at ¥50,000 online or ¥53,000 from an agency since the October 2026 price rise. At ¥${FX_YEN_PER_USD} to the dollar (${FX_RATE_DATE}), a standard day of ${yen(ALLIN_MID_LOW)}–${yen(ALLIN_MID_HIGH)} is ${usd(ALLIN_MID_LOW)}–${usd(ALLIN_MID_HIGH)}.`,
   },
   {
     q: "How can I save money in Japan?",
-    a: `Keep the Tokyo room under ¥10,000 a person, which removes the lodging tax; buy timed admissions online (Shibuya Sky is ${PRICES.shibuyaSky.adult} online against ${PRICES.shibuyaSky.atDoor} at the door); put city days on a pass — a ¥2,000 72-hour Tokyo Subway Ticket beats ¥178 rides from the twelfth ride; eat at chains that publish their prices; price the JR Pass against your actual legs, because the Tokyo–Kyoto–Hiroshima–Tokyo loop comes to less than the ¥50,000 pass; and buy data before you fly instead of at an airport counter.`,
+    a: `Keep the Tokyo room under ¥10,000 a person, which removes the lodging tax; buy timed admissions online (Shibuya Sky is ${PRICES.shibuyaSky.adult} online against ${PRICES.shibuyaSky.atDoor} at the door); put city days on a pass — a ¥2,000 72-hour Tokyo Subway Ticket beats ¥178 rides from the twelfth ride; eat at chains that publish their prices; price the JR Pass against your actual legs, because the Tokyo–Kyoto–Hiroshima–Tokyo loop comes to less than even the ¥50,000 online price of the 7-day pass (¥53,000 from an agency); and buy data before you fly instead of at an airport counter.`,
   },
   {
     q: "Is the JR Pass worth it for my budget?",

@@ -1018,7 +1018,7 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
             and 1 in Osaka</strong>, flying home from Kansai on Day 7. Tokyo to Kyoto is about{" "}
             <strong>130 minutes</strong> on the Tokaido Shinkansen and Kyoto to Osaka about{" "}
             <strong>30 minutes</strong> on the JR Special Rapid, so the 7-day JR Pass at{" "}
-            <strong>¥50,000</strong> rarely pays on this route. Book the shinkansen seat in our{" "}
+            <strong>¥50,000</strong> online (¥53,000 from an agency since 1 October 2026) rarely pays on this route. Book the shinkansen seat in our{" "}
             <Link href="/guides/transport/tokyo-to-kyoto" style={{ color: "var(--red)", fontWeight: 600 }}>Tokyo to Kyoto guide</Link>{" "}
             and compare the pass in the{" "}
             <Link href="/guides/transport/jr-pass-guide" style={{ color: "var(--red)", fontWeight: 600 }}>JR Pass guide</Link>.

@@ -573,8 +573,8 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
           />
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
             14- and 21-day Ordinary passes are ¥80,000 / ¥100,000 online and ¥84,000 / ¥105,000 from an agency.
-            Our <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link> works the break-even against
-            your own legs.
+            Our <Link href="/guides/transport/jr-pass-guide">JR Pass price</Link> guide has the October 2026
+            price rise and works the break-even against your own legs.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -827,7 +827,7 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
               { href: "/guides/transport/tokyo-to-kyoto", title: "Tokyo to Kyoto (2026): Cheapest & Fastest Ways to Get There" },
               { href: "/guides/transport/kyoto-to-tokyo-shinkansen", title: "Kyoto to Tokyo Shinkansen" },
               { href: "/guides/transport/tokyo-to-nagoya-shinkansen", title: "Tokyo to Nagoya Shinkansen: Times, Fares, JR Pass" },
-              { href: "/guides/transport/jr-pass-guide", title: "JR Pass Cost 2026: New Prices & Is It Worth It?" },
+              { href: "/guides/transport/jr-pass-guide", title: "JR Pass Price 2026: New Prices From Oct 1 & Is It Worth It?" },
             ].map((card) => (
               <Link key={card.href} href={card.href} className={styles.relatedCard}>
                 <div className={styles.relatedIcon}>

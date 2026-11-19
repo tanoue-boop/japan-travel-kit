@@ -587,7 +587,8 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
               the pass only pays with long side trips; until 5 May 2027 it also unlocks JR East&apos;s holder
               discounts at sights in Toyama, Ishikawa and Fukui. Read off JR West&apos;s and JR East&apos;s pages on{" "}
               {RECHECKED}. It is ¥15,000 to ¥18,000 cheaper than a 7-day{" "}
-              <Link href="/guides/transport/jr-pass-guide">JR Pass</Link> (¥50,000 or ¥53,000).
+              JR Pass (¥50,000 online or ¥53,000 from an agency; see the{" "}
+              <Link href="/guides/transport/jr-pass-guide">JR Pass price</Link> guide for the October 2026 rise).
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink
@@ -1039,7 +1040,7 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
               { href: "/guides/transport/tokyo-to-kanazawa", title: "Tokyo to Kanazawa by Shinkansen" },
               { href: "/guides/attractions/kanazawa-2-day-itinerary", title: "Kanazawa 2 Day Itinerary: Kanazawa and Shirakawa-go" },
               { href: "/guides/transport/jr-east-pass", title: "JR East Pass (2026): Price, Coverage and Is It Worth It?" },
-              { href: "/guides/transport/jr-pass-guide", title: "JR Pass Guide 2026: Prices, Is It Worth It and How to Buy" },
+              { href: "/guides/transport/jr-pass-guide", title: "JR Pass Price 2026: New Prices From Oct 1 & Is It Worth It?" },
               { href: "/guides/attractions/takayama-shirakawago-tour", title: "Takayama and Shirakawa-go Tours" },
               { href: "/guides/attractions/karuizawa-day-trip-from-tokyo", title: "Karuizawa Day Trip From Tokyo" },
               { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary" },

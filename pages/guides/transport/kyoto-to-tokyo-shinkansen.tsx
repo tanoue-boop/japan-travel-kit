@@ -959,8 +959,8 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
             car&rdquo;. For Tokyo–Kyoto that ticket is <strong>{NOZOMI_TICKET}</strong>, and it is sold
             &ldquo;from one month prior to the day of boarding the train to the day of boarding the
             train&rdquo; at reserved-seat machines, JR ticket offices and Travel Centers. Our{" "}
-            <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link> works the break-even against
-            your own legs, and{" "}
+            <Link href="/guides/transport/jr-pass-guide">JR Pass price</Link> guide sets the October 2026
+            prices against your own legs, and{" "}
             <Link href="/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary">our 7-day Tokyo–Kyoto–Osaka
             itinerary</Link> is the trip shape where it most often does pay.
           </p>

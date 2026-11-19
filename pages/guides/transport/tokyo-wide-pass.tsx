@@ -859,10 +859,11 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
             </a>
             . Prices re-checked on JR East&apos;s own pass page on {FARE_CHECKED}; validity and eligibility read on {CHECKED}; the ¥15,000 to{" "}
             {ADULT} change comes from its 28 January 2026 press release on new and revised passes. The under-six rule is
-            as Klook&apos;s listing states it. For the nationwide pass and its break-even calculator, see our{" "}
+            as Klook&apos;s listing states it. For the nationwide pass, its October 2026 price rise and its break-even calculator, see our{" "}
             <Link href="/guides/transport/jr-pass-guide" style={{ color: "var(--text)", fontWeight: 600 }}>
-              JR Pass guide
-            </Link>
+              JR Pass price
+            </Link>{" "}
+            guide
             .
           </p>
         </section>

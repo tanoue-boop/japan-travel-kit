@@ -266,7 +266,7 @@ const faqItems = [
 const TITLE = "How to Buy Shinkansen Tickets 2026: Shinkansen Guide";
 const H1 = "Shinkansen Guide 2026: How to Buy Shinkansen Tickets, Prices & JR Pass";
 const DESCRIPTION =
-  "Shinkansen guide: how to buy shinkansen tickets on smartEX, at JR stations or on Klook. Tokyo–Kyoto ¥13,970, about 2h15. JR Pass ¥50,000 vs single fares.";
+  "Shinkansen guide: how to buy shinkansen tickets on smartEX, at stations or on Klook. Tokyo–Kyoto ¥13,970, about 2h15. JR Pass from ¥50,000 vs single fares.";
 const ROUTE = "/guides/transport/shinkansen-guide";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
@@ -768,9 +768,9 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText} style={{ marginTop: "1.5rem" }}>
             Add Kanazawa, Tohoku or a second Hiroshima trip and the sum can pass ¥50,000. Use the{" "}
             <Link href="/guides/transport/jr-pass-guide" style={{ color: "var(--red)", fontWeight: 600 }}>
-              JR Pass Guide
+              JR Pass price
             </Link>{" "}
-            to price your own legs against the pass.
+            guide, with the October 2026 price rise, to price your own legs against the pass.
           </p>
         </section>
 

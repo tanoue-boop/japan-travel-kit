@@ -337,7 +337,7 @@ const compareRows = [
     option: "A single reserved NOZOMI ticket each way",
     cost: `${SMART_EX_TOKYO} one way on Smart EX`,
     gets: "The 3h 39m direct train, no transfer, and nothing else to buy or plan.",
-    pick: "The default. If Hiroshima is a there-and-back from Tokyo, two singles are about ¥39,000 against ¥50,000 for a 7-day pass — the pass loses.",
+    pick: "The default. If Hiroshima is a there-and-back from Tokyo, two singles are about ¥39,000 against ¥50,000 (official site) or ¥53,000 (agency) for a 7-day pass — the pass loses.",
   },
   {
     option: "JAPAN RAIL PASS, 7-day Ordinary, on HIKARI and SAKURA",

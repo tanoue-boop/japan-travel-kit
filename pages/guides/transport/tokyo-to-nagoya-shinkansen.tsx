@@ -236,7 +236,7 @@ const compareRows = [
     option: "A single reserved NOZOMI ticket each way",
     cost: `${SMART_EX_NOZOMI} one way on smartEX`,
     gets: `The fastest direct train (from ${NOZOMI_FASTEST}), no transfer, and nothing else to buy or plan.`,
-    pick: "The default. Two singles are about ¥22,200 against ¥50,000 for a 7-day pass — a there-and-back trip to Nagoya does not come close to justifying the pass.",
+    pick: "The default. Two singles are about ¥22,200 against ¥50,000 (official site) or ¥53,000 (agency) for a 7-day pass — a there-and-back trip to Nagoya does not come close to justifying the pass.",
   },
   {
     option: "JAPAN RAIL PASS, 7-day Ordinary, on the HIKARI",

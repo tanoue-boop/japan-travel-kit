@@ -212,7 +212,7 @@ const faqItems = [
   },
   {
     q: "Is the JR Pass worth it in 2026?",
-    a: "Only for a week of long JR legs. The 7-day Ordinary pass is ¥53,000 as an Exchange Order from an overseas agency (¥50,000 bought on the official site, read on japanrailpass.net on 2026-11-16), while a Tokyo–Kyoto–Osaka–Tokyo loop on the Hikari is about ¥28,250 in shinkansen fares. The pass pays off when the covered JR fares in that week pass ¥53,000 — for example Tokyo ⇄ Hiroshima plus Tokyo ⇄ Kanazawa.",
+    a: "Only for a week of long JR legs. The 7-day Ordinary pass is ¥53,000 as an Exchange Order from an overseas agency (¥50,000 bought on the official site, read on japanrailpass.net on 2026-11-16), while a Tokyo–Kyoto–Osaka–Tokyo loop on the Hikari is ¥27,850 in shinkansen fares on smartEX (read 2026-11-19). The pass pays off when the covered JR fares in that week pass ¥53,000 — for example Tokyo ⇄ Hiroshima plus Tokyo ⇄ Kanazawa.",
   },
   {
     q: "Do I need an IC card in Japan?",
@@ -433,8 +433,9 @@ export default function GuidesTransportPage({ updated, dates }: { updated: PageU
                 Last checked: {CHECKED} for the JAPAN RAIL PASS (japanrailpass.net/en/purchase/price/) and the JR TOKYO Wide
                 Pass (jreast.co.jp/multi/en/nex/tickets/); the JR EAST PASS on 2026-11-17
                 (jreast.co.jp/en/multi/pass/eastpass.html). Other prices as dated on each linked guide: tokyometro.jp,
-                westjr.co.jp, jrkyushu.co.jp, subway.osakametro.co.jp, city.kyoto.lg.jp/kotsu. The ¥28,250 loop is
-                Tokyo–Kyoto ¥13,850 plus Shin-Osaka–Tokyo ¥14,400 at JR&apos;s window fares on the Hikari.
+                westjr.co.jp, jrkyushu.co.jp, subway.osakametro.co.jp, city.kyoto.lg.jp/kotsu. The ¥27,850 loop is
+                Tokyo–Kyoto ¥13,650 plus Shin-Osaka–Tokyo ¥14,200, smartEX reserved prices on the Hikari
+                (smart-ex.jp, read 2026-11-19).
               </p>
             </section>
 
@@ -472,8 +473,8 @@ export default function GuidesTransportPage({ updated, dates }: { updated: PageU
               cta={{ href: jrPassWholeJapan.url, label: "Check JR Pass options on Klook →" }}
             >
               Once{" "}
-              <Link href="/guides/transport/jr-pass-guide" style={L}>our JR Pass guide</Link>{" "}
-              has shown the pass pays off on your route, Klook sells the{" "}
+              our <Link href="/guides/transport/jr-pass-guide" style={L}>JR Pass price</Link>{" "}
+              guide has shown the pass pays off on your route, Klook sells the{" "}
               <PartnerTextLink href={jrPassWholeJapan.url}>7, 14 or 21 day JAPAN RAIL PASS</PartnerTextLink>. The{" "}
               <Link href="/guides/transport/kyoto-to-tokyo-shinkansen" style={L}>Kyoto to Tokyo train</Link>{" "}
               guide shows what the pass covers on the busiest single leg, with the Nozomi ticket priced, and our{" "}
