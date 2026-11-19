@@ -1025,7 +1025,7 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/ghibli-park-tickets",
     badge: "Tickets",
-    title: "Ghibli Park Tickets 2026: How to Book, Prices & Sale Dates",
+    title: "Ghibli Park Tickets 2026: How to Buy, Prices & Release Dates",
     desc: "Tickets go on sale on the 10th at 14:00 JST, two months ahead, from LAWSON TICKET or Klook overseas, with no gate sales. Standard ¥3,300–¥3,800, Premium ¥7,300–¥7,800; 40 minutes by direct bus from Nagoya Station.",
     group: "parks",
     // Nagakute, Aichi — east of Nagoya, so none of the three city buckets.

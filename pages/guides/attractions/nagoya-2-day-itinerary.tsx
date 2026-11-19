@@ -540,7 +540,8 @@ export default function Nagoya2DayItineraryPage({ updated }: { updated: PageUpda
               the Osu arcades, then Sakae and a dinner of hitsumabushi or miso-katsu. On <strong>Day 2</strong>, go to{" "}
               <strong>Ghibli Park — 40 minutes by direct bus from Nagoya Station</strong> — or{" "}
               <strong>LEGOLAND Japan, 24 minutes on the Aonami Line</strong>. From Tokyo, the NOZOMI takes{" "}
-              <strong>1h33m</strong> at <strong>{SMART_EX_TOKYO}</strong> reserved. Ghibli Park tickets go on sale two
+              <strong>1h33m</strong> at <strong>{SMART_EX_TOKYO}</strong> reserved.{" "}
+              <Link href="/guides/attractions/ghibli-park-tickets">Ghibli Park tickets</Link> go on sale two
               months ahead on the 10th at 14:00 JST — February 2027 dates on 10 December 2026. Park figures read on the
               official sites {OWN}; castle {CASTLE}; rail {RAIL}.
             </p>
@@ -889,7 +890,7 @@ export default function Nagoya2DayItineraryPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
             {[
-              { href: "/guides/attractions/ghibli-park-tickets", title: "Ghibli Park Tickets 2026: How to Book, Prices & Sale Dates" },
+              { href: "/guides/attractions/ghibli-park-tickets", title: "Ghibli Park Tickets 2026: How to Buy, Prices & Release Dates" },
               { href: "/guides/attractions/legoland-japan-tickets", title: "LEGOLAND Japan Tickets (2026): Prices, Hours and Is It Worth It?" },
               { href: "/guides/attractions/nagoya-castle-tickets", title: "Nagoya Castle Tickets 2026: Price, Hours & Can You Go Inside" },
               { href: "/guides/transport/tokyo-to-nagoya-shinkansen", title: "Tokyo to Nagoya Shinkansen: Times, Fares, JR Pass" },

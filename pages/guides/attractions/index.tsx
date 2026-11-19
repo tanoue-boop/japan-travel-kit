@@ -213,7 +213,11 @@ export default function GuidesAttractionsPage({ updated, dates }: { updated: Pag
               <p className={styles.bodyText}>
                 Four of Japan&apos;s best-known attractions sell <strong>no tickets at the gate</strong>, so book them
                 before you fly: the <strong>Ghibli Museum</strong> goes on sale at 10:00 JST on the 10th for the following
-                month, <strong>Ghibli Park</strong> at 14:00 JST on the 10th two months ahead, and{" "}
+                month,{" "}
+                <Link href="/guides/attractions/ghibli-park-tickets">
+                  <strong>Ghibli Park tickets</strong>
+                </Link>{" "}
+                at 14:00 JST on the 10th two months ahead, and{" "}
                 <strong>Tokyo Disney</strong> daily from 14:00 JST for the same date two months later.{" "}
                 <strong>Universal Studios Japan</strong> sells about two months ahead and has had no gate sales since 6 May
                 2025. <strong>teamLab Borderless</strong> opens around the 1st of the month two months ahead and{" "}

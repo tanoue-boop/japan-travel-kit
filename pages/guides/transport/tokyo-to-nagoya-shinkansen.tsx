@@ -895,7 +895,8 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
             and a half hours of travelling around whatever time you spend in the park.
           </p>
           <p className={styles.bodyText}>
-            The real constraint is not distance but the ticket. Ghibli Park sells date- and time-specified
+            The real constraint is not distance but the ticket.{" "}
+            <Link href="/guides/attractions/ghibli-park-tickets">Ghibli Park tickets</Link> are date- and time-specified
             passes with a designated entry time for Ghibli&apos;s Grand Warehouse, and the morning slots are
             the ones that go first. Pair a 9 a.m. Warehouse entry with a train from Tokyo and you are leaving
             before 06:00 — and the Meitetsu direct bus does not run on park closure days, which include
@@ -1009,7 +1010,7 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Ghibli Park Tickets 2026: How to Book, Prices &amp; Sale Dates</p>
+                <p className={styles.relatedTitle}>Ghibli Park Tickets 2026: How to Buy, Prices &amp; Release Dates</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -393,7 +393,8 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
           <p className={styles.bodyText}>
             On closed days the answer is unusual for a Japanese theme park: on LEGOLAND&apos;s own
             facility closure page as checked on {OWN}, <strong>no park-wide closure days were listed at all</strong> —
-            unlike Ghibli Park an hour east, which closes every Tuesday. What the page does list is individual
+            unlike Ghibli Park an hour east, which closes every Tuesday and sells{" "}
+            <Link href="/guides/attractions/ghibli-park-tickets">Ghibli Park tickets</Link> only in advance. What the page does list is individual
             attractions out of service, and those are the dates actually worth checking before you commit.
           </p>
           <div className={styles.tableWrap}>
@@ -599,7 +600,7 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Ghibli Park Tickets (2026): Prices, When They Go On Sale and How to Buy From Overseas</p>
+                <p className={styles.relatedTitle}>Ghibli Park Tickets 2026: How to Buy, Prices &amp; Release Dates</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

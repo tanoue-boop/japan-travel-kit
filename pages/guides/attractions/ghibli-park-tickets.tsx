@@ -15,6 +15,8 @@ import {
   ghibliParkTicket,
   ghibliParkTicketHotelPackage,
   ghibliParkTripPrep,
+  nagoyaParkStayAreas,
+  shinkansenNagoyaOsaka,
   shinkansenTokyoNagoya,
   shoryudoHighwayBusPass,
 } from "../../../lib/klook-links";
@@ -42,15 +44,34 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  *                                 Center; service counts; cashless)
  *
  * Carried from the 26 Oct 2026 read and dated as such on the page: Meitetsu's own
- * 40 minutes and ¥1,200 / ¥600 for the direct bus, and Linimo's ¥400 / ¥200 fare.
+ * 40 minutes and ¥1,200 / ¥600 for the direct bus.
  * No Linimo journey time and no Klook or GetYourGuide price appear on this page.
+ *
+ * Re-read 19 Nov 2026 (task jtk-20261119-R07, title moved to "How to Buy ... Release Dates"):
+ *   ghibli-park.jp/en/ticket/ and /ticket/  prices, sale rule and the January 2027 release
+ *                                 unchanged; the Japanese page also lists area tickets
+ *                                 (Satoyama Sanpo etc.) sold only through Boo-Woo Ticket
+ *   ghibli-park.jp/en/directions/, /access/  bus stop, service counts, cashless trips unchanged
+ *   linimo.jp fare table + the 1 Sep 2026 revision PDF  Fujigaoka → Ai-Chikyuhaku Kinen Koen
+ *                                 ¥400 adult / ¥200 child in the revised table too
+ *   kotsu.city.nagoya.jp          subway fares by distance ¥210–¥340 (adult); Higashiyama first
+ *                                 train Nagoya 5:38 → Fujigaoka 6:05 (27 min). The Nagoya →
+ *                                 Fujigaoka distance band was not published in a readable
+ *                                 form, so no single subway fare is printed.
+ *   Release months after January 2027 are the park's stated rule applied forward and are
+ *   labelled that way; the park itself had announced only January 2027 on 19 Nov 2026.
+ * Carried from sibling pages with their own dates: Tokyo → Nagoya 1h33m fastest NOZOMI (JR
+ * Central, 18 Nov 2026) and smartEX ¥11,100 (28 Oct 2026); Nagoya ↔ Shin-Osaka 47 min and
+ * ¥6,480 (14 Nov 2026); Nagoya Castle ¥1,000, 9:00–16:30 (14 Nov 2026); Aonami Line 24 min /
+ * ¥360 (26 Oct 2026).
  */
 
 /** Today's read of the park's own pages. */
-const CHECKED_ISO = "2026-11-12";
+const CHECKED_ISO = "2026-11-19";
 const OWN = checkedLabel(CHECKED_ISO);
-/** The earlier read of the bus and Linimo operators' figures. */
+/** The earlier read of the Meitetsu bus figures. */
 const OPERATOR = checkedLabel("2026-10-26");
+const HOTEL_NAGOYA_URL = nagoyaParkStayAreas[0].url;
 
 const officialLink = { color: "var(--text)", fontWeight: 600 } as const;
 
@@ -100,19 +121,44 @@ const priceRows = [
     adult: "—",
     child: "Free",
   },
+  {
+    pass: "Area tickets, e.g. Satoyama Sanpo (Japan purchase only)",
+    covers:
+      "Listed only on the park's Japanese ticket page and sold through Boo-Woo Ticket; the English overseas page sells just the two day passes above",
+    adult: "See the Japanese page",
+    child: "—",
+  },
 ];
+
+/** Release months after January 2027 follow the park's stated rule; only January had been announced on 19 Nov 2026. */
+const RULE_NOTE = "By the park's two-month rule; not yet announced on its ticket page";
 
 /** Table 2 — the sale schedule, only what the park itself publishes. */
 const saleRows = [
   {
-    what: "The rule for every month",
+    what: "Any month (the rule)",
     when: "The 10th of the month, two months before your visit month, at 14:00 Japan time (JST)",
     note: "One release per month: every date in that month opens at the same moment. The park notes sale dates may change",
   },
   {
     what: "January 2027 visits",
-    when: "On sale from Tuesday 10 November 2026, 14:00 JST",
-    note: "The release the park's ticket page lists on 12 Nov 2026",
+    when: "On sale since Tuesday 10 November 2026, 14:00 JST",
+    note: "The release the park's ticket page lists on 19 Nov 2026",
+  },
+  {
+    what: "February 2027 visits",
+    when: "Thursday 10 December 2026, 14:00 JST",
+    note: RULE_NOTE,
+  },
+  {
+    what: "March 2027 visits",
+    when: "Sunday 10 January 2027, 14:00 JST",
+    note: RULE_NOTE,
+  },
+  {
+    what: "April 2027 visits",
+    when: "Wednesday 10 February 2027, 14:00 JST",
+    note: RULE_NOTE,
   },
   {
     what: "Aichi Prefectural Residents' Day (27 Jan 2027)",
@@ -151,16 +197,50 @@ const accessRows = [
       "From stop 24, 4th floor of the Meitetsu Bus Center. 9 weekday departures (7 non-stop) and 10 at weekends and holidays (all non-stop). Runs only on park opening days, and some trips are cashless only",
   },
   {
-    route: "Higashiyama subway to Fujigaoka, then the Linimo",
-    time: "Linimo publishes no journey time",
-    fare: "Linimo leg ¥400 adult / ¥200 child",
-    catch: "Get off at Ai-Chikyuhaku Kinen Koen; the park is immediately outside Exit 2",
+    route: "Higashiyama subway Nagoya → Fujigaoka, then the Linimo",
+    time: "Subway 27 min on the first-train timetable (5:38 → 6:05); Linimo publishes no journey time",
+    fare: "Subway ¥210–¥340 by distance + Linimo ¥400 adult / ¥200 child",
+    catch: "Get off the Linimo at Ai-Chikyuhaku Kinen Koen; the park is immediately outside Exit 2",
   },
   {
     route: "From Tokyo or Osaka",
     time: "Tokaido Shinkansen to Nagoya, then one of the two above",
     fare: "See the shinkansen guide",
     catch: "A Tuesday arrival is a closed day, and the direct bus does not run on closed days either",
+  },
+];
+
+/** Table 4 — the Nagoya trip around the park day. Figures carried from sibling pages with their own dates. */
+const nagoyaRows = [
+  {
+    plan: "Best fit: one night at Nagoya Station",
+    what: "Park day from the Meitetsu Bus Center (stop 24) — the shinkansen arrives in the same station",
+    figure: "Bus 40 min / ¥1,200",
+    guide: { href: "/guides/attractions/nagoya-2-day-itinerary", label: "Nagoya 2 day itinerary" },
+  },
+  {
+    plan: "Day before or after: Nagoya Castle",
+    what: "The rebuilt Hommaru Palace is open while the keep is closed; tickets at the gate",
+    figure: "¥1,000 adult, 9:00–16:30 (checked 14 Nov 2026)",
+    guide: { href: "/guides/attractions/nagoya-castle-tickets", label: "Nagoya Castle tickets" },
+  },
+  {
+    plan: "Second park day: LEGOLAND Japan",
+    what: "Aonami Line from Nagoya Station to Kinjofuto",
+    figure: "24 min / ¥360 (checked 26 Oct 2026)",
+    guide: { href: "/guides/attractions/legoland-japan-tickets", label: "LEGOLAND Japan tickets" },
+  },
+  {
+    plan: "Arriving from Tokyo",
+    what: "Tokaido Shinkansen NOZOMI to Nagoya",
+    figure: "1h33m fastest (18 Nov 2026); smartEX ¥11,100 reserved (28 Oct 2026)",
+    guide: { href: "/guides/transport/tokyo-to-nagoya-shinkansen", label: "Tokyo to Nagoya shinkansen" },
+  },
+  {
+    plan: "To or from Osaka",
+    what: "Tokaido Shinkansen NOZOMI between Nagoya and Shin-Osaka",
+    figure: "Nagoya → Shin-Osaka 47 min fastest; smartEX ¥6,480 reserved (14 Nov 2026)",
+    guide: { href: "/guides/transport/shinkansen-guide", label: "Shinkansen guide" },
   },
 ];
 
@@ -178,18 +258,18 @@ const faqItems = [
     a: `Buy the Premium O-Sanpo Day Pass (¥7,300 weekday / ¥7,800 weekend for an adult) if you want to go inside Howl's Castle, Satsuki and Mei's House or the other building interiors, or to see Hill of Youth and Dondoko Forest at all. Buy the Standard pass (¥3,300 / ¥3,800) if Ghibli's Grand Warehouse, Mononoke Village and Valley of Witches are enough; Standard holders can add same-day tickets for three buildings inside Valley of Witches, but those are limited and first come, first served. Checked on ${OWN}.`,
   },
   {
-    q: "How do I get to Ghibli Park from Nagoya?",
-    a: `The fastest way is Meitetsu's direct bus from stop 24 on the 4th floor of the Meitetsu Bus Center at Nagoya Station: 40 minutes and ¥1,200 for an adult on the operator's own figures (checked ${OPERATOR}), running only on days the park is open. The rail route is the Higashiyama subway to Fujigaoka, then the Linimo to Ai-Chikyuhaku Kinen Koen, where the park is outside Exit 2; the Linimo leg is ¥400. From Tokyo, take the Tokaido Shinkansen to Nagoya first.`,
+    q: "How do you get to Ghibli Park from Nagoya?",
+    a: `The fastest way is Meitetsu's direct bus from stop 24 on the 4th floor of the Meitetsu Bus Center at Nagoya Station: 40 minutes and ¥1,200 for an adult on the operator's own figures (checked ${OPERATOR}), running only on days the park is open. The rail route is the Higashiyama subway from Nagoya to Fujigaoka (27 minutes on the first-train timetable, fare ¥210–¥340 by distance), then the Linimo to Ai-Chikyuhaku Kinen Koen for ¥400, where the park is outside Exit 2. Checked on ${OWN}.`,
   },
   {
-    q: "What time does Ghibli Park open and when is it closed?",
-    a: `10:00 to 17:00 on weekdays and 9:00 to 17:00 at weekends and on public holidays. It is closed every Tuesday (the next weekday when a Tuesday is a public holiday), over New Year and on designated maintenance days. The 9 a.m. Grand Warehouse slot exists only on days the park opens at 9. The park's own calendar, checked on ${OWN}.`,
+    q: "Can I visit Ghibli Park as a day trip from Tokyo or Osaka?",
+    a: `From Osaka, yes: the fastest NOZOMI between Nagoya and Shin-Osaka takes 47 minutes, and the direct bus adds 40 minutes each way. From Tokyo it is possible but long — 1h33m on the fastest NOZOMI each way plus the bus — and a 9 a.m. Grand Warehouse slot means a very early train out of Tokyo, so a night in Nagoya is the easier plan from Tokyo. The park closes at 17:00 and every Tuesday, and the direct bus does not run on closed days. Rail times from JR Central's timetable (18 Nov 2026 for Tokyo, 14 Nov 2026 for Osaka).`,
   },
 ];
 
-const TITLE = "Ghibli Park Tickets 2026: How to Book, Prices & Sale Dates";
+const TITLE = "Ghibli Park Tickets 2026: How to Buy, Prices & Release Dates";
 const DESCRIPTION =
-  "Ghibli Park tickets go on sale 2 months ahead on the 10th, 14:00 JST. Standard ¥3,300–¥3,800, Premium ¥7,300–¥7,800. Who sells them, the bus from Nagoya.";
+  "Ghibli Park tickets: Standard ¥3,300–¥3,800, Premium ¥7,300–¥7,800 (adult). On sale 2 months ahead on the 10th, 14:00 JST, via Klook or LAWSON TICKET.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/ghibli-park-tickets") } });
 
@@ -281,11 +361,11 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Ghibli Park Tickets 2026: <br />How to Book, Prices &amp; Sale Dates
+            Ghibli Park Tickets 2026: <br />How to Buy, Prices &amp; Release Dates
           </h1>
           <p className={styles.heroSubtitle}>
-            The Standard and Premium pass prices, the monthly 14:00 JST release, who is allowed to sell the
-            ticket, and the bus from Nagoya Station.
+            The Standard and Premium pass prices, the release date for each month, how to buy from overseas,
+            and the way there from Nagoya Station.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Official prices", "Sale date & time"].map((t) => (
@@ -301,13 +381,29 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
         {/* Answer first */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            Ghibli Park tickets go on sale online on the 10th of each month at 14:00 Japan time, two months
-            before the visit month, from LAWSON TICKET or Klook for overseas buyers (Boo-Woo Ticket inside
-            Japan), and none are sold at the park. The O-Sanpo Day Pass Standard costs ¥3,300 on a weekday and
-            ¥3,800 at a weekend for an adult, and the Premium pass, which adds the building interiors, ¥7,300
-            and ¥7,800. From Nagoya Station the Meitetsu direct bus takes 40 minutes to the park. Official
-            figures, checked {OWN}; the bus figures {OPERATOR}.
+            Ghibli Park tickets for overseas visitors are two O-Sanpo Day Passes: Standard costs ¥3,300 on a
+            weekday and ¥3,800 at a weekend for an adult (¥1,650 / ¥1,900 for ages 4–12), and Premium, which
+            adds every building interior, costs ¥7,300 / ¥7,800 (¥3,650 / ¥3,900 for children), with under-4s
+            free. Each month&apos;s dates go on sale online at 14:00 Japan time on the 10th, two months ahead —
+            January 2027 opened on 10 November 2026 — and no tickets are sold at the park. From overseas, buy
+            from LAWSON TICKET or Klook, the two sellers the park&apos;s English page names, or as a
+            ticket-plus-hotel package arranged by Sunrise Tours (JTB) and sold through JTB, Viator, KKday and
+            other agencies. Official figures, checked {OWN}.
           </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={ghibliParkTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Check Ghibli Park tickets on Klook →
+            </KlookLink>
+            <KlookLink href={ghibliParkNagoyaBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check the bus tour from Nagoya →
+            </KlookLink>
+            <KlookLink href={HOTEL_NAGOYA_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check Nagoya Station hotels →
+            </KlookLink>
+            <KlookLink href={shinkansenTokyoNagoya.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check Tokyo → Nagoya shinkansen →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Disclosure */}
@@ -409,8 +505,8 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
           <h2 className={styles.sectionTitle}>When do Ghibli Park tickets go on sale?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             <strong>At 14:00 Japan time on the 10th, two months before the month you want to visit.</strong>{" "}
-            January 2027 dates opened on Tuesday 10 November 2026; every date in a month opens at the same
-            moment.
+            January 2027 dates opened on Tuesday 10 November 2026, and by the same rule February 2027 dates
+            open on Thursday 10 December 2026; every date in a month opens at the same moment.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -537,11 +633,12 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
         {/* Getting there */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Getting there</span>
-          <h2 className={styles.sectionTitle}>How do I get to Ghibli Park from Nagoya?</h2>
+          <h2 className={styles.sectionTitle}>How do you get to Ghibli Park from Nagoya?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             <strong>Take Meitetsu&apos;s direct bus from Nagoya Station: 40 minutes and ¥1,200</strong> on the
             operator&apos;s own figures, on park opening days only. The rail alternative is the Higashiyama
-            subway to Fujigaoka and the Linimo to Ai-Chikyuhaku Kinen Koen.
+            subway from Nagoya to Fujigaoka (27 minutes on the first-train timetable) and the Linimo (¥400) to
+            Ai-Chikyuhaku Kinen Koen.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -573,9 +670,19 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
             ]}
           />
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            The 40-minute time and ¥1,200 / ¥600 bus fare are Meitetsu Bus&apos;s own figures and the ¥400 /
-            ¥200 Linimo fare is Aichi Rapid Transit&apos;s fare table, both last checked {OPERATOR}
-            (meitetsu-bus.co.jp, linimo.jp). Linimo publishes no journey time for the leg, so none is given here.
+            The 40-minute time and ¥1,200 / ¥600 bus fare are Meitetsu Bus&apos;s own figures, last checked{" "}
+            {OPERATOR} (meitetsu-bus.co.jp). The ¥400 / ¥200 Linimo fare is Aichi Rapid Transit&apos;s fare
+            table, unchanged in its 1 September 2026 revision, and the subway&apos;s ¥210–¥340 distance fares and
+            Higashiyama Line first-train times are the Nagoya City Transportation Bureau&apos;s, both checked{" "}
+            {OWN} (
+            <a href="https://www.linimo.jp/use/2018020913465509.html" target="_blank" rel="noopener" style={officialLink}>
+              linimo.jp
+            </a>
+            ,{" "}
+            <a href="https://www.kotsu.city.nagoya.jp/rp/subway/trp0000172.htm" target="_blank" rel="noopener" style={officialLink}>
+              kotsu.city.nagoya.jp
+            </a>
+            ). Linimo publishes no journey time for its leg, so none is given here.
           </p>
           <p className={styles.bodyText}>
             Coming from Tokyo, the first leg is the Tokaido Shinkansen to Nagoya — our{" "}
@@ -587,6 +694,89 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shinkansenTokyoNagoya.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Tokyo → Nagoya shinkansen tickets →
+            </KlookLink>
+            <KlookLink href={ghibliParkNagoyaBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check the guided day from Nagoya →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* Nagoya trip around the park day */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Nagoya trip</span>
+          <h2 className={styles.sectionTitle}>How do I fit Ghibli Park into a Nagoya trip?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            <strong>Sleep at Nagoya Station and give the park its own day</strong>: the direct bus, the subway
+            and the shinkansen all start there, and Nagoya Castle or LEGOLAND Japan fill the day either side.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Plan", "What it is", "Time / price", "Guide"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {nagoyaRows.map((row) => (
+                    <tr key={row.plan}>
+                      <td className={styles.tdProvider}>{row.plan}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.what}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.85rem" }}>{row.figure}</td>
+                      <td style={{ fontSize: "0.85rem" }}>
+                        <Link href={row.guide.href}>{row.guide.label}</Link>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <LastChecked
+            date="2026-11-18 (Tokyo rail time; castle and Osaka rail 2026-11-14, Tokyo fare 2026-10-28, bus and Aonami Line 2026-10-26)"
+            sources={[
+              { label: "nagoyajo.city.nagoya.jp", href: "https://www.nagoyajo.city.nagoya.jp/en/" },
+              { label: "smart-ex.jp", href: "https://smart-ex.jp/en/" },
+              { label: "aonamiline.co.jp", href: "https://www.aonamiline.co.jp/" },
+            ]}
+          />
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={HOTEL_NAGOYA_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Check Nagoya Station hotels →
+            </KlookLink>
+            <KlookLink href={ghibliParkTicketHotelPackage.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check the ticket + Nagoya hotel package →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* Day trip */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Day trip</span>
+          <h2 className={styles.sectionTitle}>Can I visit Ghibli Park as a day trip from Tokyo or Osaka?</h2>
+          <p className={styles.bodyText}>
+            <strong>From Osaka, yes; from Tokyo, it is possible but a very long day.</strong> The fastest NOZOMI
+            takes 47 minutes between Nagoya and Shin-Osaka and 1h33m from Tokyo, and the direct bus adds 40
+            minutes each way on top.
+          </p>
+          <p className={styles.bodyText}>
+            The ticket decides it more than the distance. A 9 a.m. Grand Warehouse slot exists only on 9 a.m.
+            opening days and you must be inside within an hour of it, which from Tokyo means a very early train; the
+            park closes at 17:00. A night at Nagoya Station turns that into a normal morning — and if the park is
+            the only reason for the trip, the guided bus day from Nagoya removes the Linimo connection entirely.
+            Rail times from JR Central&apos;s timetable as carried on our{" "}
+            <Link href="/guides/transport/tokyo-to-nagoya-shinkansen">Tokyo to Nagoya shinkansen guide</Link> (18
+            Nov 2026) and{" "}
+            <Link href="/guides/attractions/nagoya-castle-tickets">Nagoya Castle guide</Link> (14 Nov 2026).
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={shinkansenTokyoNagoya.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Check Tokyo → Nagoya shinkansen →
+            </KlookLink>
+            <KlookLink href={shinkansenNagoyaOsaka.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check Nagoya → Osaka shinkansen →
             </KlookLink>
             <KlookLink href={ghibliParkNagoyaBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check the guided day from Nagoya →

@@ -453,7 +453,8 @@ export default function NagoyaCastleTicketsPage({ updated }: { updated: PageUpda
           </h3>
           <p className={styles.bodyText}>
             The parts with limited places. A guided after-hours tour of the Hommaru Palace runs only on the dates
-            its listing offers; Ghibli Park tickets are released on the 10th of the month two months ahead at 14:00 JST
+            its listing offers;{" "}
+            <Link href="/guides/attractions/ghibli-park-tickets">Ghibli Park tickets</Link> are released on the 10th of the month two months ahead at 14:00 JST
             and are never sold at the gate; and guided days to Inuyama or Shirakawa-go run on fixed departures
             with their own cancellation deadlines on each listing. Read the cancellation terms before you pay
             — a stop that depends on a train connection is the one most likely to change.
@@ -666,7 +667,7 @@ export default function NagoyaCastleTicketsPage({ updated }: { updated: PageUpda
             {[
               { href: "/guides/attractions/nagoya-2-day-itinerary", title: "Nagoya 2 Day Itinerary (2026): Ghibli Park or LEGOLAND" },
               { href: "/guides/transport/tokyo-to-nagoya-shinkansen", title: "Tokyo to Nagoya Shinkansen: Times, Fares, JR Pass" },
-              { href: "/guides/attractions/ghibli-park-tickets", title: "Ghibli Park Tickets 2026: How to Book, Prices & Sale Dates" },
+              { href: "/guides/attractions/ghibli-park-tickets", title: "Ghibli Park Tickets 2026: How to Buy, Prices & Release Dates" },
               { href: "/guides/attractions/legoland-japan-tickets", title: "LEGOLAND Japan Tickets (2026): Prices, Hours and Is It Worth It?" },
               { href: "/guides/attractions/takayama-shirakawago-tour", title: "Takayama and Shirakawa-go Tour (2027): Which Departure" },
               { href: "/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary", title: "Tokyo Kyoto Osaka Itinerary (2026): 7 Days in Japan" },
