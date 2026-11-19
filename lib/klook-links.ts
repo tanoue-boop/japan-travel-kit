@@ -8022,6 +8022,26 @@ export const sanrioPurolandTripPrep: KlookTripPrepItem[] = [
   },
 ];
 
+/**
+ * sanrio-puroland-tickets, directly under the ticket button in the answer
+ * (task-jtk-20261119-R03): Shinjuku hotels (6.5%) and the Klook eSIM (20%).
+ * No new URLs — both reuse constants confirmed when first added. No prices.
+ */
+export const sanrioPurolandAnswerCards: KlookSameDayCard[] = [
+  {
+    label: "Hotels around Shinjuku",
+    ctaLabel: "Check Shinjuku hotels on Klook →",
+    url: tokyoStayAreas[0].url,
+    kind: "Hotel",
+    why: "The Keio Line limited express to Keio Tama Center starts at Shinjuku and takes about 30 minutes, so a Shinjuku bed puts the park train at your own station for an 8:30 or 9:30 opening.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    kind: "eSIM",
+    why: "Show times, the digital greeting ticket and same-day arrival-reservation slots are all on your phone at Puroland, so you need data inside the park, not only hotel Wi-Fi.",
+  },
+];
+
 /** Osaka Castle — an admission that takes about half a day, between Umeda and Namba. */
 export const osakaCastleTripPrep: KlookTripPrepItem[] = [
   {

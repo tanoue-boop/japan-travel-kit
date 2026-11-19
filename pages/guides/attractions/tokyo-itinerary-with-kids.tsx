@@ -742,8 +742,9 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
                 <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
                   Passport range from puroland.jp, carried from our{" "}
                   <Link href="/guides/attractions/sanrio-puroland-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>
-                    Sanrio Puroland tickets guide
+                    Sanrio Puroland tickets
                   </Link>{" "}
+                  guide
                   (read {checkedLabel(SANRIO.checked)}). Stroller rules from the park&apos;s own baby-guide and FAQ
                   pages, read {CHECKED}.
                 </p>
@@ -987,7 +988,7 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             {[
               { href: "/guides/attractions/tokyo-disney-tickets", title: "Tokyo Disneyland Tickets 2026: Prices, Dates & How to Buy" },
               { href: "/guides/attractions/tokyo-disney-hotels", title: "Tokyo Disney Hotels (2026): Closest, Official & Budget" },
-              { href: "/guides/attractions/sanrio-puroland-tickets", title: "Sanrio Puroland Tickets 2026: Prices by Date & How to Book" },
+              { href: "/guides/attractions/sanrio-puroland-tickets", title: "Sanrio Puroland Tickets 2026: Price, Skip-the-Line & Booking" },
               { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport" },
               { href: "/guides/attractions/tokyo-5-day-itinerary", title: "Tokyo 5-Day Itinerary (2026): 5 Days in Tokyo, Day by Day" },
               { href: "/guides/attractions/tokyo-3-day-itinerary", title: "Tokyo 3 Day Itinerary (2026): What to Book, and in What Order" },

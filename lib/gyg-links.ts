@@ -401,6 +401,18 @@ export const gygKyotoEntryTickets: GygListing = {
  * search index the same day. It sits beside the Klook ticket, a special-activity
  * band product.
  */
+/**
+ * Sanrio Puroland — the attraction's own GetYourGuide listing (l46585), added
+ * 19 Nov 2026 (task jtk-20261119-R03) and confirmed live through the
+ * getyourguide.com search index that day. It sits beside the Klook passport,
+ * a bare park admission. No price.
+ */
+export const gygSanrioPuroland: GygListing = {
+  title: "Sanrio Puroland",
+  what: "The park's own GetYourGuide listing, with the dated entry ticket for overseas visitors",
+  url: "https://www.getyourguide.com/sanrio-puroland-l46585/",
+};
+
 export const gygWarnerBrosStudioTourTokyo: GygListing = {
   title: "Warner Bros. Studio Tour Tokyo",
   what: "The same date- and time-specified admission, sold by another authorised distributor",

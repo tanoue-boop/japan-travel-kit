@@ -897,6 +897,14 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
             </Link>{" "}
             covers the trains, subway and IC cards you&apos;ll use to get there.
           </p>
+          <p className={styles.bodyText}>
+            If the Disney dates you want are gone or the budget is tight, the indoor Hello Kitty park in Tama is
+            the other character day in Tokyo: our{" "}
+            <Link href="/guides/attractions/sanrio-puroland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Sanrio Puroland tickets
+            </Link>{" "}
+            guide has the passport price for each date and the 30-minute Keio Line ride from Shinjuku.
+          </p>
         </section>
 
         {/* Premier Access — added 11 Nov 2026 (R08). First row is the recommendation. */}
@@ -1105,7 +1113,7 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Sanrio Puroland Tickets (2026): Prices, Variable Pricing &amp; How to Book</p>
+                <p className={styles.relatedTitle}>Sanrio Puroland Tickets 2026: Price, Skip-the-Line &amp; Booking</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

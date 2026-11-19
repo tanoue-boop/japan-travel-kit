@@ -535,6 +535,15 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
             is one of the easiest things in Tokyo to add. The decisions worth getting right are which
             of the four tickets to buy, and whether everyone in your group clears the height limits.
           </p>
+          <p className={styles.bodyText}>
+            If the group would rather watch shows and meet characters than ride, Tokyo&apos;s other big indoor
+            park is Sanrio Puroland at Tama Center. Unlike Joypolis it sells a dated passport that also needs an
+            arrival reservation, so read{" "}
+            <Link href="/guides/attractions/sanrio-puroland-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Sanrio Puroland tickets
+            </Link>{" "}
+            before you pick the day.
+          </p>
         </section>
 
         {/* Price table */}
@@ -946,7 +955,7 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Sanrio Puroland Tickets (2026): Prices, Variable Pricing &amp; How to Book</p>
+                <p className={styles.relatedTitle}>Sanrio Puroland Tickets 2026: Price, Skip-the-Line &amp; Booking</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
