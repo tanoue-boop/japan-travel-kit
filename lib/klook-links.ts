@@ -8908,6 +8908,66 @@ export const tokyoSevenDayTripPrep: KlookTripPrepItem[] = [
 ];
 
 // ---------------------------------------------------------------------------
+// Tokyo 4-day itinerary — added 19 Nov 2026 (task-jtk-20261119-01).
+//
+// No new listing ids. Every product below is an existing constant, re-confirmed
+// as a live en-US page through the www.klook.com search index on 19 Nov 2026:
+//   1552    Tokyo Subway Ticket (24 / 48 / 72 hour)            5%
+//   100747  Mt. Fuji scenic photography day tour from Tokyo    6.5%
+//   5618    Nikko World Heritage day tour from Tokyo           6.5%
+//   2274    Narita Airport – Tokyo limousine bus               5%
+// Hotels are the existing `tokyoStayAreas` searches (6.5%); the Skyliner is the
+// existing tracking link (5%). No Klook price appears on the page.
+// ---------------------------------------------------------------------------
+
+/** Hotels for four nights in Tokyo — the `tokyoStayAreas` URLs, with reasons written for this plan. */
+export const tokyoFourDayStayAreas: KlookStayArea[] = [
+  {
+    area: "Shinjuku",
+    why: "Day 2 ends here, and the Kawaguchiko highway bus for Day 3 leaves from Busta Shinjuku — the one day of the trip with an early start begins on foot.",
+    url: tokyoStayAreas[0].url,
+  },
+  {
+    area: "Tokyo Station / Marunouchi",
+    why: "Walking distance to Ginza and a few stops from Tsukiji for Day 4, with the Narita Express underneath for the flight home.",
+    url: tokyoStayAreas[1].url,
+  },
+  {
+    area: "Ueno / Asakusa",
+    why: "Day 1 is on the doorstep, Tobu trains to Nikko leave from Asakusa, and the Keisei Skyliner from Narita arrives at Ueno.",
+    url: tokyoStayAreas[2].url,
+  },
+];
+
+/** "Book these on the same visit" for four days in Tokyo: 6.5% hotel and tour, 5% pass and airport, 20% eSIM. */
+export const tokyoFourDayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels around Shinjuku",
+    ctaLabel: "Check Shinjuku hotels on Klook →",
+    url: tokyoStayAreas[0].url,
+    why: "Four nights in one hotel. Shinjuku is where Day 2 ends and where the Kawaguchiko bus and the Mt. Fuji tours start on Day 3.",
+  },
+  {
+    label: fujiPhotographyDayTour.title,
+    ctaLabel: "Check the Mt. Fuji day tour →",
+    url: fujiPhotographyDayTour.url,
+    why: "Day 3 as one booking: Chureito Pagoda, Oishi Park on Lake Kawaguchi and Oshino Hakkai without the local buses between them.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Buy the 72-hour version for Days 1, 2 and the morning of Day 4. It covers Tokyo Metro and Toei, not JR or the Yurikamome.",
+  },
+  {
+    ...tripPrepProducts.skyliner,
+    why: "Landing at Narita: the Skyliner is a reserved-seat train to Nippori and Keisei-Ueno, the stations for Day 1's Ueno and Asakusa.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Four days of maps, timed QR tickets for Skytree, SHIBUYA SKY and teamLab, and a tour meeting point on Day 3.",
+  },
+];
+
+// ---------------------------------------------------------------------------
 // Tokyo Disney hotels — added 12 Nov 2026 (task-jtk-20261112-02).
 //
 // Every hotel and hotel-search page below was confirmed in its en-US form through

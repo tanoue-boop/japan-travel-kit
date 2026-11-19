@@ -267,6 +267,7 @@ const crumbSep = (
 
 const related = [
   { href: "/guides/attractions/tokyo-5-day-itinerary", title: "Tokyo 5-Day Itinerary (2026): 5 Days in Tokyo, Day by Day" },
+  { href: "/guides/attractions/tokyo-4-day-itinerary", title: "Tokyo 4 Day Itinerary (2026): Day by Day, Day Trip & Costs" },
   { href: "/guides/attractions/tokyo-3-day-itinerary", title: "Tokyo 3 Day Itinerary" },
   { href: "/guides/attractions/tokyo-2-day-itinerary", title: "Tokyo 2 Day Itinerary" },
   { href: "/guides/attractions/hakone-day-trip-from-tokyo", title: "Hakone Day Trip From Tokyo 2026: Itinerary, Cost, Tours" },
@@ -441,7 +442,8 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
             </p>
             <p className={styles.verdictText} style={{ marginTop: "0.75rem" }}>
               Only five days? See the{" "}
-              <Link href="/guides/attractions/tokyo-5-day-itinerary">Tokyo 5 day itinerary</Link>. Three? See the{" "}
+              <Link href="/guides/attractions/tokyo-5-day-itinerary">Tokyo 5 day itinerary</Link>. Four? See the{" "}
+              <Link href="/guides/attractions/tokyo-4-day-itinerary">Tokyo 4 day itinerary</Link>. Three? See the{" "}
               <Link href="/guides/attractions/tokyo-3-day-itinerary">Tokyo 3 day itinerary</Link>.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>

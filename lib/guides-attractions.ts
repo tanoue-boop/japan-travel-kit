@@ -699,6 +699,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/tokyo-4-day-itinerary",
+    badge: "Itinerary",
+    title: "Tokyo 4 Day Itinerary (2026): Day by Day, Day Trip & Costs",
+    desc: "Asakusa, Shibuya, a Kawaguchiko or Nikko day trip, then Tsukiji and Odaiba — on one ¥2,000 72-hour subway ticket, with day-trip fares compared, a 4-day cost table and what to book first.",
+    group: "cities",
+    city: "tokyo",
+  },
+  {
     href: "/guides/attractions/tokyo-2-day-itinerary",
     badge: "Itinerary",
     title: "Tokyo 2 Day Itinerary (2026): Day by Day, and What to Book",
