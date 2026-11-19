@@ -84,7 +84,7 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  *                              weekday 地下鉄専用1日乗車券 at ¥830 and ¥420, and
  *                              the weekend-and-holiday ドニチカキップ at ¥520 and
  *                              ¥260.
- *   snowfes.com/news/842.html  the Tsudome shuttle as run in 2026: Eiwamachi
+ *   snowfes.com/news/842.html  the Tsudome shuttle as run in 2026: Sakaemachi
  *                              (栄町) subway station to the site, ¥200 adult one
  *                              way, cash only, free for children of elementary
  *                              age and under, for over-65s and for disabled
@@ -248,7 +248,7 @@ const transportRows = [
   },
   {
     leg: "Sapporo → Tsudome site",
-    time: "Toho subway line to Eiwamachi, then a shuttle bus",
+    time: "Toho subway line to Sakaemachi, then a shuttle bus",
     fare: `In 2026 the shuttle was ${SHUTTLE_FARE} adult one way, cash only; free for children of elementary age and under, over-65s and disabled visitors`,
     note: "The 2026 arrangement, from the committee's own notice — the 2027 shuttle has not been announced. There was no subway-to-shuttle transfer discount, and the site closes at 16:00.",
   },

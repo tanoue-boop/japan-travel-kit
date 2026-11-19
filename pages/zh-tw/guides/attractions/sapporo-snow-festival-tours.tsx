@@ -90,17 +90,17 @@ const siteRows = [
   },
   {
     site: "薄野會場（すすきの会場）",
-    where: "站前通南 4 條到南 6 條，穿過夜生活區的大馬路",
+    where: "站前通南 4 條到南 6 條，穿越夜生活區的主要道路",
     when: "隨時可看；點燈到 23:00，最後一天到 22:00",
     cost: "免費",
     what: "這裡展示的是冰雕而非雪雕，作品就設在酒吧林立的街道旁。三個會場中最晚結束，從大通走一小段或搭一站地鐵就到",
   },
   {
     site: "Tsudome 會場（つどーむ会場）",
-    where: "札幌市體育交流設施「つどーむ」，位於地鐵東豐線東北側的終點附近",
+    where: "札幌市體育交流設施「つどーむ」，位於地鐵東豐線東北端的終點站附近",
     when: "僅 10:00–16:00。人多時體驗項目可能提早截止受理",
     cost: "免費入場；部分體驗項目收費",
-    what: "雪上滑梯、雪上泛舟等親子體驗，是家庭會場，也是唯一有固定閉館時間的會場",
+    what: "雪上滑梯、雪上泛舟等親子體驗，是適合親子同遊的會場，也是唯一有固定閉館時間的會場",
   },
 ];
 
@@ -121,25 +121,25 @@ const tourRows = [
     tour: "支笏湖冰濤祭：半日遊、接駁座位或 Tomamu 一日遊",
     adds: "北海道另一項 2 月的冰雪活動，2027 年 1 月 30 日到 2 月 23 日，16:30 到 20:00 點燈",
     fits: "半天或一個晚上，正好適合雪祭當天預留的下午",
-    note: "有三種預訂方式：導覽半日遊、單純的來回巴士座位，以及結合 Tomamu 冰之村的十小時行程。門票平日 ¥1,000、週末與國定假日 ¥3,000，Tomamu 商品註明不含門票，其他請自行確認",
+    note: "有三種預訂方式：導覽半日遊、單純預訂來回巴士座位，以及結合 Tomamu 冰之村的十小時行程。門票平日 ¥1,000、週末與國定假日 ¥3,000，Tomamu 商品註明不含門票，其他請自行確認",
   },
   {
     tour: "定山溪：溫泉一日遊或頭大佛一日遊",
     adds: "市區以南不到一小時的峽谷溫泉鄉，或同一趟加上安藤忠雄的頭大佛和白色戀人公園",
     fits: "依商品不同，半天或一整天",
-    note: "雪祭會場都在戶外，這是解決這趟旅程實際問題的最佳方式：讓一天的中段待在室內",
+    note: "雪祭會場都在戶外，這類行程是解決這趟旅程實際問題（需要室內時段）的最佳方式：讓一天的中段待在室內",
   },
   {
     tour: "Wonderland Sapporo 雪上樂園半日遊",
     adds: "市郊的雪上樂園，含飯店接送和成吉思汗烤肉",
     fits: "半天",
-    note: "這款商品專為不帶雪具的旅客設計，雪祭旅客大多如此",
+    note: "這款商品專為不帶雪具的旅客設計，多數雪祭旅客也不會自備雪具",
   },
   {
     tour: "登別、洞爺湖與小樽一日遊",
-    adds: "往南往西的全景路線：溫泉谷、火山口湖和運河小鎮一天走完",
+    adds: "一路往南、往西串聯景點的路線：溫泉谷、火山口湖和運河小鎮一天走完",
     fits: "一整天的長途行程，適合多出一天的旅程",
-    note: "四天以上的旅程值得。三天的話，就會失去一個無法補回的雪祭夜晚",
+    note: "四天以上的旅程值得。如果只待三天，就會失去一個無法補回的雪祭夜晚",
   },
 ];
 
@@ -172,7 +172,7 @@ const transportRows = [
     leg: "札幌 → Tsudome 會場",
     time: "地鐵東豐線到榮町，再搭接駁巴士",
     fare: `2026 年接駁車成人單程 ${SHUTTLE_FARE}，僅收現金；小學生以下、65 歲以上與身障者免費`,
-    note: "以上是執行委員會公告的 2026 年安排，2027 年接駁車尚未公布。地鐵轉接駁沒有折扣，會場 16:00 關閉。",
+    note: "以上是執行委員會公告的 2026 年安排，2027 年接駁車尚未公布。地鐵轉乘接駁巴士沒有轉乘優惠，會場 16:00 關閉。",
   },
   {
     leg: "地鐵一日券",
@@ -197,7 +197,7 @@ const bookingWindow = [
   },
   {
     title: "完全不用訂：雪祭本身",
-    desc: "依執行委員會的常見問題，三個會場全部免費。大通和薄野是隨時都能進入的公園和街道，Tsudome 免費入場，內部部分體驗收費。沒有門票、沒有時段，也沒有什麼要預訂。",
+    desc: "依執行委員會的常見問題，三個會場全部免費。大通和薄野是隨時都能進入的公園和街道，Tsudome 免費入場，內部部分體驗收費。不需要門票，也沒有分時段入場，完全不需要預訂。",
   },
 ];
 
@@ -205,8 +205,8 @@ const factRows = [
   { item: "2027 札幌雪祭（第 77 屆）", fact: "2027 年 2 月 4 日（四）至 11 日（四・國定假日），共 8 天。三個會場全部免費入場，不需門票" },
   { item: "大通會場", fact: "大通公園西 1 至西 11 丁目；期間隨時可參觀，點燈至 22:00" },
   { item: "薄野會場", fact: "站前通南 4 條至南 6 條；隨時可參觀，點燈至 23:00（最後一天 22:00）" },
-  { item: "Tsudome 會場", fact: "10:00–16:00；免費入場，部分體驗收費；人多時體驗受理可能提前截止" },
-  { item: "特別連動活動", fact: "札幌 Snow Sports Park 2027，2027 年 2 月 12–14 日，大和房屋 Premist 巨蛋" },
+  { item: "Tsudome 會場", fact: "10:00–16:00；免費入場，部分體驗收費；人潮眾多時，體驗項目可能提前停止受理" },
+  { item: "特別相關活動", fact: "札幌 Snow Sports Park 2027，2027 年 2 月 12–14 日，大和房屋 Premist 巨蛋" },
 ];
 
 const faqItems = [
@@ -216,7 +216,7 @@ const faqItems = [
   },
   {
     q: "札幌雪祭的行程要提前多久預訂？",
-    a: "日期一確定就先訂住宿：2027 年 2 月 4–11 日的會期自 2026 年 2 月 11 日起就已公布。小樽、旭山動物園、支笏湖冰濤祭等季節限定一日遊，建議在 12 月 31 日前訂好，趁還能確認與更改取消條款。雪祭會場本身不需要預訂。",
+    a: "日期一確定就先訂住宿：2027 年 2 月 4–11 日的會期自 2026 年 2 月 11 日起就已公布。小樽、旭山動物園、支笏湖冰濤祭等季節限定一日遊，建議在 12 月 31 日前訂好，趁還能確認取消條款並調整預訂。雪祭會場本身不需要預訂。",
   },
   {
     q: "札幌雪祭需要門票嗎？",
@@ -228,11 +228,11 @@ const faqItems = [
   },
   {
     q: "札幌雪祭需要參加旅行團嗎？",
-    a: `不需要，而且任何標榜雪祭團的商品都要小心。三個會場都免費、可直接入場，大通和薄野是相隔幾個街區的公園與街道，Tsudome 則是搭地鐵再加一小段接駁。不需要排隊入場，也沒有門票要先拿。這趟旅程真正用得上行程的，是每天雪祭以外的時間：會場全在戶外，而 2 月平均最高溫是 ${FEB_MAX}，多數人白天想去室內或郊外，晚上再看點燈的大通。這一頁的商品正是這些：小樽運河、旭山動物園冬季行程、支笏湖冰濤祭夜晚、定山溪溫泉半日遊、雪上樂園。沒有一個是雪祭本身的旅行團，因為根本不存在，也不需要。`,
+    a: `不需要，而且任何標榜雪祭團的商品都要小心。三個會場都免費、可直接入場，大通和薄野是相隔幾個街區的公園與街道，Tsudome 則是搭地鐵再加一小段接駁。不需要排隊入場，也沒有門票要先拿。這趟旅程真正用得上的，是每天參觀雪祭以外時段的行程：會場全在戶外，而 2 月平均最高溫是 ${FEB_MAX}，多數人白天想去室內或郊外，晚上再看點燈的大通。這一頁的商品正是這些：小樽運河、旭山動物園冬季行程、支笏湖冰濤祭夜晚、定山溪溫泉半日遊、雪上樂園。沒有一個是雪祭本身的旅行團，因為根本不存在，也不需要。`,
   },
   {
     q: "雪祭期間住哪裡好？",
-    a: `札幌站或薄野，差別在您更重視晚上的哪一段行程。札幌站距離大通一站地鐵，大多可走地下，2 月平均最高溫 ${FEB_MAX} 時，這比任何景觀都重要，而且新千歲來的快速 Airport 就停這裡。薄野的門外就是冰雕會場：會場沿站前通南 4 條到南 6 條，點燈到 23:00，晚場看完走回去就好，不用趕末班車。如果札幌訂滿，小樽是合理的備案：依 JR 北海道的數字，搭快速 Airport 33 到 41 分鐘、¥800，同一時期還有小樽雪燈之路。不論選哪裡，日期從 2026 年 2 月就公開了，這是最該先確定的預訂。`,
+    a: `札幌站或薄野，差別在於您晚上更重視哪個會場。札幌站距離大通一站地鐵，大部分路段都可走地下通道，2 月平均最高溫 ${FEB_MAX} 時，這比任何景觀都重要，而且新千歲來的快速 Airport 就停這裡。薄野的門外就是冰雕會場：會場沿站前通南 4 條到南 6 條，點燈到 23:00，晚場看完走回去就好，不用趕末班車。如果札幌訂滿，小樽是合理的備案：依 JR 北海道的數字，搭快速 Airport 33 到 41 分鐘、¥800，同一時期還有小樽雪燈之路。不論選哪裡，日期從 2026 年 2 月就公開了，這是最該先確定的預訂。`,
   },
 ];
 
@@ -241,7 +241,7 @@ const festivalSameTrip: KlookTripPrepItem[] = [
     label: "Klook 日本 eSIM",
     ctaLabel: "在 Klook 查看 eSIM →",
     url: klookFor(klookEsim.url, LOCALE),
-    why: "三個戶外會場、2027 年時刻表尚未公布的 Tsudome 接駁車，再加上平均最高溫 0.4°C 的一個月：會場公告與天氣變化都會透過手機發布，而不是在櫃台公告。",
+    why: "三個戶外會場、2027 年時刻表尚未公布的 Tsudome 接駁車，再加上平均最高溫只有 0.4°C 的月份：會場公告與天氣變化都會透過手機發布，而不是在櫃台公告。",
   },
   {
     label: "新千歲機場接送（包車與共乘）",
@@ -297,10 +297,10 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 札幌雪祭 2027 旅行團：日期 2/4–11・ <br />費用、門票與預訂時間
 </h1>
           <p className={styles.heroSubtitle}>
-八天、三個會場、不用門票。值得預訂的是雪祭前後的行程，而住宿是唯一訂不到就沒有退路的項目。
+為期八天、三個會場，全部免費、不用門票。值得預訂的是雪祭前後的行程，而住宿是唯一訂不到就沒有退路的項目。
 </p>
           <div className={styles.heroBadges}>
-            {[`更新於 ${monthLabel(updated.iso, LOCALE)}`, "執行委員會公布的 2027 日期", "三會場全免費", "票價與時間，附查核日期"].map((t) => (
+            {[`更新於 ${monthLabel(updated.iso, LOCALE)}`, "執行委員會公布的 2027 年日期", "三個會場全部免費", "票價與時間，附查核日期"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -315,7 +315,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
         {/* Answer-first block, added 18 Nov 2026. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>札幌雪祭 2027</strong> 於 <strong>2027 年 2 月 4 日至 11 日</strong>舉行，共 8 天，分大通、薄野、Tsudome 三個會場，<strong>全部免費入場、不需門票</strong>。因此<strong>札幌雪祭旅行團</strong>只是雪祭前後可選的一日遊：先訂住宿，一日遊在 12 月 31 日前訂好。執行委員會官網查核日：{FEST_CHECKED}。
+            <strong>札幌雪祭 2027</strong> 於 <strong>2027 年 2 月 4 日至 11 日</strong>舉行，共 8 天，分大通、薄野、Tsudome 三個會場，<strong>全部免費入場、不需門票</strong>。因此所謂<strong>札幌雪祭旅行團</strong>，其實是雪祭前後可選擇的一日遊：先訂住宿，一日遊在 12 月 31 日前訂好。執行委員會官網查核日：{FEST_CHECKED}。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -349,7 +349,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 
           <h2 className={styles.sectionTitle}>札幌雪祭的行程要提前多久預訂？</h2>
           <p className={styles.bodyText}>
-            日期一確定就先訂住宿：2027 年 2 月 4–11 日這 8 晚自 2026 年 2 月 11 日起就已公布。季節限定一日遊建議在 12 月 31 日前訂好，趁還能確認與更改取消條款；雪祭會場本身沒有任何需要預訂的東西。
+            日期一確定就先訂住宿：2027 年 2 月 4–11 日這 8 晚自 2026 年 2 月 11 日起就已公布。季節限定一日遊建議在 12 月 31 日前訂好，趁還能確認取消條款並調整預訂；雪祭會場本身沒有任何需要預訂的東西。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={klookFor(sapporoSnowFestivalStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -436,7 +436,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
               </div>
             </div>
                         <p className={styles.verdictText}>
-<strong>札幌雪祭 2027（第 77 屆）的日期是 2027 年 2 月 4 日（四）到 11 日（四・國定假日），共 8 天</strong>，大通、薄野、Tsudome 三個會場都免費入場（官網 snowfes.com，{FEST_CHECKED} 查核）。交通上，新千歲機場搭 JR 快速 Airport 到札幌 <strong>{AIRPORT_FARE}</strong>、最快 <strong>33 分鐘</strong>，大通和薄野之間只差地鐵一站，所以<strong>札幌雪祭不必參加旅行團</strong>。要先訂的是 8 晚的住宿，以及雪祭以外時段的半日遊或一日遊行程，一日遊在 12 月 31 日前訂好；一整週的安排可參考<Link href="/zh-tw/guides/attractions/hokkaido-7-day-itinerary">北海道7天行程</Link>。三個會場的範圍是：<strong>大通公園西 1 到西 11 丁目</strong>、<strong>薄野站前通南 4 到南 6 條</strong>，以及 <strong>Tsudome</strong> 市立體育設施，執行委員會的常見問題寫明全部<strong>免費</strong>。大通隨時可看，雪雕點燈到 <strong>22:00</strong>；薄野到 <strong>23:00</strong>（最後一天 22:00）；Tsudome <strong>10:00–16:00</strong>開放，內部部分活動收費。沒有門票、沒有時段，也不需要排隊入場。值得預訂的是雪祭前後這一週：唯一訂不到就沒有退路的住宿，以及只有這個季節才有的近郊行程，例如小樽、旭山動物園、支笏湖冰濤祭和下午到定山溪泡溫泉。2 月札幌平均最高溫 <strong>{FEB_MAX}</strong>，所以每個雪祭日的中段都要待在室內。雪祭資訊查核日：{OWN}；氣溫平年值：{JMA_CHECKED}。
+<strong>札幌雪祭 2027（第 77 屆）的日期是 2027 年 2 月 4 日（四）到 11 日（四・國定假日），共 8 天</strong>，大通、薄野、Tsudome 三個會場都免費入場（官網 snowfes.com，{FEST_CHECKED} 查核）。交通上，新千歲機場搭 JR 快速 Airport 到札幌 <strong>{AIRPORT_FARE}</strong>、最快 <strong>33 分鐘</strong>，大通和薄野之間只隔一站地鐵，所以<strong>札幌雪祭不必參加旅行團</strong>。要先訂的是 8 晚的住宿，以及雪祭以外時段的半日遊或一日遊行程，一日遊在 12 月 31 日前訂好；一整週的安排可參考<Link href="/zh-tw/guides/attractions/hokkaido-7-day-itinerary">北海道7天行程</Link>。三個會場的範圍是：<strong>大通公園西 1 到西 11 丁目</strong>、<strong>薄野站前通南 4 到南 6 條</strong>，以及 <strong>Tsudome</strong> 市立體育設施，執行委員會的常見問題寫明全部<strong>免費</strong>。大通隨時可看，雪雕點燈到 <strong>22:00</strong>；薄野到 <strong>23:00</strong>（最後一天 22:00）；Tsudome <strong>10:00–16:00</strong>開放，內部部分活動收費。不需要門票，也沒有分時段入場，也不需要排隊入場。值得預訂的是雪祭前後這一週：唯一訂不到就沒有退路的住宿，以及只有這個季節才有的近郊行程，例如小樽、旭山動物園、支笏湖冰濤祭和下午到定山溪泡溫泉。2 月札幌平均最高溫 <strong>{FEB_MAX}</strong>，所以每天參觀雪祭時，中間都要安排一段室內時間。雪祭資訊查核日：{OWN}；氣溫平年值：{JMA_CHECKED}。
 </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={klookFor(sapporoSnowFestivalStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -452,7 +452,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
                 <KlookTripPrep
           label={"同一趟旅程要訂的"}
           heading={"出發去雪祭前要預訂什麼"}
-          intro={"八天之外還有四項要訂：網路、以專車接送取代火車的機場交通、依搭乘路線計算是否划算的鐵路周遊券，以及一年前就定好日期、訂不到就沒有退路的住宿。"}
+          intro={"除了雪祭本身，還有四項要預訂：網路、以專車接送取代火車的機場交通、依搭乘路線評估是否划算的鐵路周遊券，以及一年前就定好日期、訂不到就沒有退路的住宿。"}
           items={festivalSameTrip}
         />
 
@@ -466,7 +466,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 2027 年札幌雪祭在何時、何地舉行？
 </h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-依執行委員會公告，<strong>2027 年 2 月 4 日到 11 日</strong>，共八天（「2027年2月4日（木）から11日（木・祝）の8日間」）。這是確定日期，不是依往年推估，同一份公告也列出三個會場與範圍。相關活動札幌 Snow Sports Park 接著於 <strong>2027 年 2 月 12 到 14 日</strong>在大和房屋 Premist 巨蛋舉行。
+依執行委員會公告，<strong>2027 年 2 月 4 日到 11 日</strong>，共八天（「2027年2月4日（木）から11日（木・祝）の8日間」）。這是確定日期，不是依往年推估，同一份公告也列出三個會場與範圍。相關活動「札幌 Snow Sports Park」接著於 <strong>2027 年 2 月 12 到 14 日</strong>在大和房屋 Premist 巨蛋舉行。
 </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -511,10 +511,10 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 免費，也不需要跟團。執行委員會的常見問題用一句話回答票價：<strong>「全会場無料です」</strong>，所有會場免費，雪祭沒有任何部分需要門票。大通會場是八天內隨時能進入的公園，薄野會場是公共街道。Tsudome 會場免費入場，內部部分活動另收費，委員會也提醒人多時受理可能在 16:00 前截止。查核日：{OWN}。
 </p>
           <p className={styles.bodyText}>
-這讓它在本站介紹的活動中很特別：不需要排隊入場，也沒有分時段入場，所以也不存在有意義的「免排隊」商品。Klook 上沒有販售札幌雪祭本身的商品，也不應該有。雪祭旅程真正需要付費預訂的，是<strong>每天雪祭以外的時間</strong>。會場全在戶外，日本氣象廳平年值的平均最高溫是 <strong>{FEB_MAX}</strong>，雪雕又以天黑後最美，所以理想的雪祭日是上午去郊外或下午待室內，晚上再看大通和薄野的點燈。下面的商品就是前半段。
+這讓它在本站介紹的活動中很特別：不需要排隊入場，也沒有分時段入場，所以也就沒有實際意義上的「免排隊」商品。Klook 上沒有販售札幌雪祭本身的商品，也不應該有。雪祭旅程真正需要付費預訂的，是<strong>每天參觀雪祭以外時段的行程</strong>。會場全在戶外，日本氣象廳平年值的平均最高溫是 <strong>{FEB_MAX}</strong>，雪雕又以天黑後最美，所以理想的雪祭日是上午去郊外或下午待室內，晚上再看大通和薄野的點燈。下面的商品就是前半段。
 </p>
           <p className={styles.bodyText}>
-有一張票因為位置值得一提：<strong>札幌電視塔</strong>展望台位在西 1 丁目，正是大通會場十一個街區雪雕的起點，也是雪祭期間唯一能看到步行時看不到的景色的付費項目：整個會場點燈後連成一直線。<KlookLink href={klookFor(sapporoTvTowerMoiwaSetTicket.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>查看電視塔與藻岩山套票 →</KlookLink>
+有一項門票因為位置特殊，值得一提：<strong>札幌電視塔</strong>展望台位在西 1 丁目，正是大通會場十一個街區雪雕的起點，也是雪祭期間唯一能從地面走不到的角度欣賞會場的付費項目：整個會場點燈後連成一直線。<KlookLink href={klookFor(sapporoTvTowerMoiwaSetTicket.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>查看電視塔與藻岩山套票 →</KlookLink>
 </p>
         </section>
 
@@ -526,7 +526,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 雪祭週哪些行程值得訂？
 </h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-只有這個季節才推出的行程，以及能在戶外的一天中安排室內時段的行程。下列商品都於 {SEASON} 用 Klook 搜尋索引重新確認；沒有一個是雪祭本身的旅行團，每一列都寫明它實際增加什麼、適合怎樣的一天。表格不列價格，因為 Klook 價格依日期而變。本頁最上方的起價是索引顯示的數字，您的日期請打開商品頁查看。
+只有這個季節才推出的行程，以及能在戶外的一天中安排室內時段的行程。下列商品都於 {SEASON} 用 Klook 搜尋索引重新確認；沒有一個是雪祭本身的旅行團，每一列都寫明這項行程實際多了什麼、適合怎樣的一天。表格不列價格，因為 Klook 價格依日期而變。本頁最上方的起價是索引顯示的數字，您的日期請打開商品頁查看。
 </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -578,7 +578,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 雪祭期間住哪裡好？
 </h2>
           <p className={styles.bodyText}>
-<strong>札幌站或薄野</strong>，取決於您更重視晚上的哪一段行程。札幌站距離大通一站地鐵，大多可走地下，新千歲來的快速 Airport 也停這裡；八天戶外、平均最高溫 {FEB_MAX}，能在會場之間回到室內比景觀更有價值。<strong>薄野</strong>門外就是冰雕會場，點燈到 23:00，晚場看完走回去就好。<strong>小樽</strong>搭 JR 函館本線快速 Airport 往西 33 到 41 分鐘，是札幌訂滿時的備案，同時期還有小樽雪燈之路。
+<strong>札幌站或薄野</strong>，取決於您晚上更重視哪個會場。札幌站距離大通一站地鐵，大部分路段都可走地下通道，新千歲來的快速 Airport 也停這裡；八天戶外、平均最高溫 {FEB_MAX}，能在會場之間回到室內比景觀更有價值。<strong>薄野</strong>門外就是冰雕會場，點燈到 23:00，晚場看完走回去就好。<strong>小樽</strong>搭 JR 函館本線快速 Airport 往西 33 到 41 分鐘，是札幌訂滿時的備案，同時期還有小樽雪燈之路。
 </p>
           <p className={styles.bodyText}>
 關於時間，以下清楚區分已確認和未確認的部分。<strong>日期從 2026 年 2 月 11 日就公開了</strong>，執行委員會在第 76 屆閉幕公告中公布 2027 年日期，這八個晚上的日期，早在八個月前就已確定，這是提早預訂最強的理由。這裡刻意不寫住房率或售罄數字：官方沒有公布，因此不做推估。把住宿當成訂不到就沒有退路的預訂，其他都可以彈性調整。
@@ -586,9 +586,9 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
         </section>
 
         <KlookStayAreas
-          heading={"上述三個住宿區域的飯店搜尋"}
-          intro={"還有哪些房間、多少錢要看日期，所以每個據點都連到 Klook 的飯店搜尋。雪祭期間要比較的不是每晚房價，而是住宿離有暖氣的室內有多遠，每一項的說明就是在講這件事。"}
-          areas={sapporoSnowFestivalStayAreas.map((item, i) => withKlookLocale(item, LOCALE, ([{ why: "到大通一站地鐵或走有遮蔽的路，新千歲來的快速 Airport 也停這裡。2 月的八天裡，這比任何景觀都重要，因為這個據點讓您能在會場之間回到室內。", area: "札幌站" }, { why: "門外的街道就是冰雕會場：薄野會場沿站前通南 4 到南 6 條，點燈到 23:00，晚場看完走回去就好，不用趕末班地鐵。", area: "薄野" }, { why: "札幌訂滿時的備案，本身也是目的地：小樽搭 JR 函館本線快速 Airport 33 到 41 分鐘，同樣在 2 月舉辦小樽雪燈之路。", area: "小樽站" }] as Partial<typeof item>[])[i]))}
+          heading={"搜尋上述三個住宿區域的飯店"}
+          intro={"還有哪些房間、多少錢要看日期，所以每個住宿區域都連到 Klook 的飯店搜尋。雪祭期間要比較的不是每晚房價，而是住宿離有暖氣的室內有多遠，每一項的說明就是在講這件事。"}
+          areas={sapporoSnowFestivalStayAreas.map((item, i) => withKlookLocale(item, LOCALE, ([{ why: "到大通一站地鐵或走有遮蔽的路，新千歲來的快速 Airport 也停這裡。2 月的八天裡，這比任何景觀都重要，因為這個住宿區域讓您能在會場之間回到室內。", area: "札幌站" }, { why: "門外的街道就是冰雕會場：薄野會場沿站前通南 4 到南 6 條，點燈到 23:00，晚場看完走回去就好，不用趕末班地鐵。", area: "薄野" }, { why: "札幌訂滿時的備案，本身也是目的地：小樽搭 JR 函館本線快速 Airport 33 到 41 分鐘，同樣在 2 月舉辦小樽雪燈之路。", area: "小樽站" }] as Partial<typeof item>[])[i]))}
         />
 
                 <section className={styles.bodySection}>
@@ -602,7 +602,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 依日本氣象廳 1991–2020 年札幌平年值，2 月月均溫 <strong>{FEB_MEAN}</strong>，<strong>平均最高 {FEB_MAX}</strong>，<strong>平均最低 {FEB_MIN}</strong>，全月降雪量 <strong>{FEB_SNOW}</strong>。查核日：{JMA_CHECKED}。
 </p>
           <p className={styles.bodyText}>
-這些數字帶來三個實際結論。第一，最高溫約在冰點，腳下的積雪被踩得又硬又滑，而不是濕軟的，所以鞋底的防滑比防水更重要，這一點最不能馬虎。第二，札幌的建築、列車和地下通道暖氣都很強，方便穿脫的多層次穿搭，比一件厚外套更好；札幌站到大通的地下通道正是為此而建，也是規劃雪祭夜晚的一部分。第三，雪雕在天黑後最美，這時氣溫接近最低，所以您最想在外面的時間就是一天中最冷的時候，手套、帽子和遮臉衣物不是可有可無。<Link href="/zh-tw/guides/attractions/japan-winter-itinerary">日本冬季行程</Link>把東京、京都、大阪和札幌的氣象廳平年值放在一起，可以看出北海道為什麼要穿得不一樣。
+這些數字帶來三個實際結論。第一，最高溫約在冰點，腳下的積雪被踩得又硬又滑，而不是濕軟的，所以鞋底的防滑比防水更重要，這一點最不能馬虎。第二，札幌的建築、列車和地下通道暖氣都很強，方便穿脫的多層次穿搭，比一件厚外套更好；札幌站到大通的地下通道正是為了冬季而建，也是規劃雪祭夜晚的一部分。第三，雪雕在天黑後最美，這時氣溫接近最低，所以您最想在外面的時間就是一天中最冷的時候，手套、帽子和遮臉衣物不是可有可無。<Link href="/zh-tw/guides/attractions/japan-winter-itinerary">日本冬季行程</Link>把東京、京都、大阪和札幌的氣象廳平年值放在一起，可以看出北海道為什麼要穿得不一樣。
 </p>
         </section>
 
@@ -614,7 +614,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 新千歲機場怎麼到札幌？
 </h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-<strong>搭快速 Airport，33 到 37 分鐘，{AIRPORT_FARE}</strong>。這是 JR 北海道的數字，幾乎適用所有抵達的旅客。下表補上其他資訊：對號座費用、如何前往各會場，以及兩種地鐵一日券，都附業者官方票價。
+<strong>搭快速 Airport，33 到 37 分鐘，{AIRPORT_FARE}</strong>。以上時間與票價來自 JR 北海道，幾乎適用所有抵達的旅客。下表補上其他資訊：指定席費用、如何前往各會場，以及兩種地鐵一日券，都附業者官方票價。
 </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -640,7 +640,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-有兩件事要自己決定。4 號車的 <strong>U-Seat（uシート）指定席</strong>票價外加 ¥1,000，以無紙化車票（ticketless）預約加 ¥800，2 月普通車廂常被雪具塞滿，所以值得。<strong>JR 北海道周遊券</strong>只有離開市區才划算：機場來回約 ¥2,460，所以周遊券要看的是小樽、旭川和登別，而不是機場。請用自己的路段計算。票價查核日：{OWN}；<Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR Pass 攻略（英文）</Link>用同樣方法計算全國版。
+有兩件事要自己決定。4 號車的 <strong>U-Seat（uシート）指定席</strong>需另加 ¥1,000，以無紙化車票（ticketless）預約加 ¥800，2 月普通車廂常被雪具塞滿，所以值得。<strong>JR 北海道周遊券</strong>只有離開市區才划算：機場來回約 ¥2,460，所以周遊券要看的是小樽、旭川和登別，而不是機場。請用自己的路段計算。票價查核日：{OWN}；<Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR Pass 攻略（英文）</Link>用同樣方法計算全國版。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -703,7 +703,7 @@ JR 北海道周遊券 →
                 <KlookTourPicks
           heading={"只有這個季節才有的一日遊"}
           intro={"四個札幌出發的行程，適合安排在雪祭期間不在大通的半天。冬季路線和夏季不同，所以請在抵達前就打開來看，不要等到當天早上。"}
-          tours={[withKlookLocale(otaruSnowParkDayTour, LOCALE, { title: "小樽、白色戀人公園與雪上樂園一日遊", desc: "結合小樽運河、蒸汽時鐘、白色戀人公園和玩雪的北海道一日遊" }), withKlookLocale(asahiyamaBieiHighlightsTour, LOCALE, { title: "札幌出發旭山動物園、美瑛青池與精靈露台一日遊", desc: "從札幌前往旭山動物園、美瑛青池和精靈露台的一日巴士，有多條路線，冬季可加購雪上摩托車" }), withKlookLocale(sapporoJozankeiBuddhaDayTour, LOCALE, { title: "札幌、定山溪與頭大佛一日遊", desc: "結合定山溪峽谷、安藤忠雄頭大佛、白色戀人公園和啤酒博物館的全日導覽，適合當作雪祭會場以外的札幌一日行程" }), withKlookLocale(noboribetsuToyaOtaruDayTour, LOCALE, { title: "札幌出發登別、洞爺湖與小樽一日遊", desc: "走訪札幌南方與西方景點的跟團行程，適合多一天、又不想在大通度過第四晚的雪祭旅程" })]}
+          tours={[withKlookLocale(otaruSnowParkDayTour, LOCALE, { title: "小樽、白色戀人公園與雪上樂園一日遊", desc: "結合小樽運河、蒸汽時鐘、白色戀人公園和玩雪的北海道一日遊" }), withKlookLocale(asahiyamaBieiHighlightsTour, LOCALE, { title: "札幌出發旭山動物園、美瑛青池與精靈露台一日遊", desc: "從札幌前往旭山動物園、美瑛青池和精靈露台的一日巴士，有多條路線，冬季可加購雪上摩托車" }), withKlookLocale(sapporoJozankeiBuddhaDayTour, LOCALE, { title: "札幌、定山溪與頭大佛一日遊", desc: "結合定山溪峽谷、安藤忠雄頭大佛、白色戀人公園和啤酒博物館的全日導覽，適合當作雪祭會場以外的札幌一日行程" }), withKlookLocale(noboribetsuToyaOtaruDayTour, LOCALE, { title: "札幌出發登別、洞爺湖與小樽一日遊", desc: "走訪札幌南方與西方景點的跟團行程，適合多留一天、又不想把第四個晚上花在大通的旅客" })]}
         />
 
                 <Related items={[{ href: "/guides/transport/hokkaido-rail-pass", title: "北海道周遊券（2026）：價格與是否划算 （英文）" }, { href: "/zh-tw/guides/attractions/niseko-ski-tours", title: "二世谷滑雪（2027）：接送、滑雪課程（雙板與單板）與四大區域" }, { href: "/zh-tw/guides/attractions/hokkaido-7-day-itinerary", title: "北海道7天行程 2026：札幌・小樽・富良野・冬季雪祭" }, { href: "/guides/attractions/otaru-day-trip-from-sapporo", title: "札幌出發小樽一日遊（2027）：¥800，JR 33 分鐘 （英文）" }, { href: "/zh-tw/guides/attractions/japan-winter-itinerary", title: "日本冬季行程：12 天逐日安排（2027）" }, { href: "/guides/money/japan-ski-travel-insurance", title: "日本滑雪旅遊保險（2027）：該保什麼 （英文）" }, { href: "/guides/attractions/tokyo-illumination-tours", title: "東京燈飾行程：日期、免費景點與該訂什麼 （英文）" }, { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "東京出發 GALA 湯澤滑雪一日遊：71 分鐘，纜車 ¥8,000 （英文）" }, { href: "/zh-tw/guides/attractions/jigokudani-snow-monkey-tour", title: "地獄谷野猿公苑 2026：交通・門票・東京出發一日遊" }, { href: "/guides/attractions/takayama-shirakawago-tour", title: "高山與白川鄉行程（2027）：該從哪裡出發 （英文）" }, { href: "/guides/transport/jr-pass-guide", title: "JR Pass 攻略（2026）：價格、範圍與是否划算 （英文）" }, { href: "/zh-tw/guides/esim/best-esim-japan", title: "日本 eSIM 推薦（2026）：業者、價格與怎麼選" }, { href: "/zh-tw/guides/attractions", title: "更多日本景點 →" }]} />

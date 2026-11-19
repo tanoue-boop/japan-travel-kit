@@ -5207,7 +5207,7 @@ export const otaruAsarigawaSkiDayTour: KlookTour = {
 export const hokkaidoSevenDayStayAreas: KlookStayArea[] = [
   {
     area: "Sapporo Station",
-    why: "Three or four of the seven nights, because every inland and coastal day on this route starts here: the Rapid Airport from New Chitose, the Lilac and Kamui to Asahikawa and, in summer, the Furano Lavender Express all leave from this building, and Odori is one subway stop or a covered walk.",
+    why: "Three or four of the six nights, because every inland and coastal day on this route starts here: the Rapid Airport from New Chitose, the Lilac and Kamui to Asahikawa and, in summer, the Furano Lavender Express all leave from this building, and Odori is one subway stop or a covered walk.",
     url: japanWinterStayAreas[6].url,
   },
   {
@@ -5254,7 +5254,7 @@ export const hokkaidoSevenDayTripPrep: KlookTripPrepItem[] = [
     label: "Hotels around Sapporo Station",
     ctaLabel: "Check Sapporo hotels on Klook →",
     url: japanWinterStayAreas[6].url,
-    why: "The booking with the least slack in it on this route: three or four of the seven nights sit here, and the February week the island is busiest is a set of fixed dates announced a year ahead by the Snow Festival committee.",
+    why: "The booking with the least slack in it on this route: three or four of the six nights sit here, and the February week the island is busiest is a set of fixed dates announced a year ahead by the Snow Festival committee.",
   },
   {
     label: nisekoResortShuttleBus.title,

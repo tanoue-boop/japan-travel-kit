@@ -432,7 +432,7 @@ const days: Day[] = [
         time: "Afternoon",
         place: "Jozankei onsen or the Hill of the Buddha — or, 4–11 February 2027, the Tsudome festival site",
         allow: "Half a day",
-        getting: "Jotetsu bus or a booked coach; Tsudome is the Toho Line to Eiwamachi plus a shuttle",
+        getting: "Jotetsu bus or a booked coach; Tsudome is the Toho Line to Sakaemachi plus a shuttle",
         booking: "Advised for a guided half day; nothing for the festival sites, which are free",
       },
       {

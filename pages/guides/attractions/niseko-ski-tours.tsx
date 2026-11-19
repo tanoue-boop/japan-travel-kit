@@ -307,7 +307,7 @@ const faqItems = [
   },
   {
     q: "How much is a Niseko lift pass?",
-    a: `A one-day All Mountain Pass covering all four areas is ${PEAK_DAY} for an adult in peak season, ${REGULAR_DAY} in regular season and ${EARLY_DAY} in early or spring season, dropping to ¥6,300 for the final weeks — Niseko United's own prices, read ${OWN}. Children aged 4 to 12 are ¥8,100 at peak, ¥7,600 regular, ¥5,300 early or spring and ¥3,800 final. Youths aged 13 to 15 and seniors aged 65 and over pay the same as each other: ¥11,500 peak, ¥10,700 regular, ¥7,500 early or spring, ¥5,400 final. The periods are the thing to plan around rather than the prices: peak runs ${PEAK_FROM} to ${PEAK_TO}, which swallows Christmas, New Year, the whole of January and all of February. One operational detail worth knowing — the early-season pass, for 28 November to 11 December 2026, is not sold online, so the cheapest week of the winter is a counter purchase.`,
+    a: `A one-day All Mountain Pass covering all four areas is ${PEAK_DAY} for an adult in peak season, ${REGULAR_DAY} in regular season and ${EARLY_DAY} in early or spring season, dropping to ¥6,300 for the final weeks — Niseko United's own prices, read ${OWN}. Children aged 4 to 12 are ¥8,100 at peak, ¥7,600 regular, ¥5,300 early or spring and ¥3,800 final. Youths aged 13 to 15 and seniors aged 65 and over pay the same as each other: ¥11,500 peak, ¥10,700 regular, ¥7,500 early or spring, ¥5,400 final. The periods are the thing to plan around rather than the prices: peak runs ${PEAK_FROM} to ${PEAK_TO}, which swallows Christmas, New Year, the whole of January and all of February. One operational detail worth knowing — the early-season pass, for 28 November to 11 December 2026, is not sold online, so the cheapest stretch of the winter is a counter purchase.`,
   },
   {
     q: "Do you need a tour for Niseko, or can you do it yourself?",
@@ -720,7 +720,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>One operational detail that changes a plan.</strong> The early-season pass — the
-            cheapest week of the winter, 28 November to 11 December 2026 — is{" "}
+            cheapest stretch of the winter, 28 November to 11 December 2026 — is{" "}
             <strong>not sold online</strong> on Niseko United&apos;s own note. So the cheapest skiing of
             the season is a counter purchase on arrival, which is fine, but it is not something you can
             lock in from home. Multi-day passes run to seven days and a 50-hour online-only ticket exists;

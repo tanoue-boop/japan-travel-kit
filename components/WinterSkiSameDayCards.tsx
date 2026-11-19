@@ -74,7 +74,7 @@ const P: Record<string, Product> = {
       en: { kind: "Airport transfer", label: "Niseko shuttle bus from New Chitose", ctaLabel: "Check the Niseko shuttle →", why: "A direct coach between New Chitose Airport and Niseko, with ski equipment and one piece of luggage per person in the booking." },
       ko: { kind: "공항 이동", label: "신치토세 공항–니세코 셔틀버스", ctaLabel: "니세코 셔틀 보기 →", why: "신치토세 공항과 니세코를 잇는 직행 버스로, 스키 장비와 1인 1개 짐이 예약에 포함됩니다." },
       "zh-tw": { kind: "機場接送", label: "新千歲機場–二世谷接駁巴士", ctaLabel: "查看二世谷接駁 →", why: "新千歲機場與二世谷之間的直達巴士，預訂已含滑雪裝備與每人 1 件行李。" },
-      "zh-cn": { kind: "机场接送", label: "新千岁机场–二世谷接驳巴士", ctaLabel: "查看二世谷接驳 →", why: "新千岁机场与二世谷之间的直达巴士，预订包含滑雪装备及每人 1 件行李。" },
+      "zh-cn": { kind: "机场接送", label: "新千岁机场–二世谷接驳巴士", ctaLabel: "查看二世谷接驳 →", why: "新千岁机场与二世谷之间的直达巴士，可携带滑雪装备及每人 1 件行李。" },
       th: { kind: "รถรับส่งสนามบิน", label: "รถบัสรับส่งสนามบินนิวชิโตเสะ–นิเซโกะ", ctaLabel: "ดูรถรับส่งนิเซโกะ →", why: "รถบัสตรงระหว่างสนามบินนิวชิโตเสะกับนิเซโกะ รวมอุปกรณ์สกีและกระเป๋า 1 ใบต่อคนในการจอง" },
     },
   },
@@ -93,9 +93,9 @@ const P: Record<string, Product> = {
     text: {
       en: { kind: "Lift + rental", label: nisekoLiftTicketGearDelivery.title, ctaLabel: "Check Niseko lift + rental →", why: "A Hirafu and Hanazono lift ticket with a ski or snowboard set; the shop brings the gear to your Niseko hotel after a call the day before." },
       ko: { kind: "리프트＋렌털", label: "니세코 리프트권＋장비 배달 렌털", ctaLabel: "니세코 리프트＋렌털 보기 →", why: "히라후·하나조노 공통 리프트권과 스키 또는 스노보드 세트입니다. 전날 가게에 전화하면 니세코 숙소로 장비를 가져다줍니다." },
-      "zh-tw": { kind: "纜車＋租借", label: "二世谷纜車券＋裝備送到住宿", ctaLabel: "查看二世谷纜車＋租借 →", why: "比羅夫與花園共通纜車券加滑雪或單板裝備；前一天打電話給店家，就會把裝備送到你在二世谷的住宿。" },
-      "zh-cn": { kind: "缆车票＋雪具租赁", label: "二世谷缆车券＋装备送到住处", ctaLabel: "查看二世谷缆车票＋雪具租赁 →", why: "比罗夫与花园共通缆车券加滑雪或单板装备；前一天给店家打电话，就会把装备送到你在二世谷的住处。" },
-      th: { kind: "ลิฟต์ + เช่าอุปกรณ์", label: "ตั๋วลิฟต์นิเซโกะ + เช่าอุปกรณ์ส่งถึงที่พัก", ctaLabel: "ดูตั๋วลิฟต์ + เช่านิเซโกะ →", why: "ตั๋วลิฟต์ร่วม Hirafu และ Hanazono พร้อมชุดสกีหรือสโนว์บอร์ด โทรหาร้านล่วงหน้า 1 วัน แล้วร้านจะนำอุปกรณ์ไปส่งที่พักในนิเซโกะ" },
+      "zh-tw": { kind: "纜車＋租借", label: "二世谷纜車券＋裝備送到住宿", ctaLabel: "查看二世谷纜車＋租借 →", why: "比羅夫與花園共通纜車券，加雙板或單板滑雪裝備；前一天打電話給店家，店家就會把裝備送到你在二世谷的住宿地點。" },
+      "zh-cn": { kind: "缆车票＋雪具租赁", label: "二世谷缆车券＋装备送到住处", ctaLabel: "查看二世谷缆车票＋雪具租赁 →", why: "比罗夫与花园通用缆车票，加双板或单板滑雪装备；前一天给店家打电话，就会把装备送到你在二世谷的住处。" },
+      th: { kind: "ลิฟต์ + เช่าอุปกรณ์", label: "ตั๋วลิฟต์นิเซโกะ + เช่าอุปกรณ์ส่งถึงที่พัก", ctaLabel: "ดูตั๋วลิฟต์ + เช่านิเซโกะ →", why: "บัตรลิฟต์ที่ใช้ได้ทั้ง Hirafu และ Hanazono พร้อมอุปกรณ์สกีหรือสโนว์บอร์ด โทรหาร้านล่วงหน้า 1 วัน แล้วร้านจะนำอุปกรณ์ไปส่งที่พักในนิเซโกะ" },
     },
   },
   nisekoRental: {
@@ -103,9 +103,9 @@ const P: Record<string, Product> = {
     text: {
       en: { kind: "Rental", label: "Niseko ski & snowboard rental (Hirafu)", ctaLabel: "Check Niseko rental →", why: "Ski or snowboard, boots and outerwear reserved before you fly, collected in Hirafu at the foot of the lifts." },
       ko: { kind: "렌털", label: "니세코 스키·스노보드 렌털(히라후)", ctaLabel: "니세코 렌털 보기 →", why: "스키 또는 스노보드, 부츠, 스키복을 출국 전에 예약하고 리프트 아래 히라후에서 받습니다." },
-      "zh-tw": { kind: "裝備租借", label: "二世谷滑雪・單板裝備租借（比羅夫）", ctaLabel: "查看二世谷租借 →", why: "滑雪板或單板、雪靴與雪衣出發前訂好，在纜車下方的比羅夫取件。" },
-      "zh-cn": { kind: "装备租赁", label: "二世谷滑雪及单板装备租赁（比罗夫）", ctaLabel: "查看二世谷租赁 →", why: "滑雪板或单板、雪靴与雪服出发前订好，在缆车下方的比罗夫取件。" },
-      th: { kind: "เช่าอุปกรณ์", label: "เช่าชุดสกีและสโนว์บอร์ดนิเซโกะ (ฮิราฟุ)", ctaLabel: "ดูร้านเช่านิเซโกะ →", why: "จองสกีหรือสโนว์บอร์ด รองเท้า และชุดกันหนาวก่อนบิน แล้วรับที่ฮิราฟุใกล้ลิฟต์" },
+      "zh-tw": { kind: "裝備租借", label: "二世谷滑雪・單板裝備租借（比羅夫）", ctaLabel: "查看二世谷租借 →", why: "出發前訂好雙板或單板、雪靴與雪衣，在纜車下方的比羅夫取件。" },
+      "zh-cn": { kind: "装备租赁", label: "二世谷滑雪及单板装备租赁（比罗夫）", ctaLabel: "查看二世谷租赁 →", why: "滑雪板或单板、雪靴与雪服出发前订好，在比罗夫缆车站下方领取装备。" },
+      th: { kind: "เช่าอุปกรณ์", label: "เช่าชุดสกีและสโนว์บอร์ดนิเซโกะ (ฮิราฟุ)", ctaLabel: "ดูร้านเช่านิเซโกะ →", why: "จองเช่าสกีหรือสโนว์บอร์ด รองเท้า และชุดกันหนาวก่อนบิน แล้วรับที่ฮิราฟุใกล้ลิฟต์" },
     },
   },
   asahiyama: {
@@ -159,7 +159,7 @@ const HEADING: Record<Page, Record<Locale, string>> = {
     ko: "니세코 첫날 같이 예약해 둘 것: 공항 버스, 리프트, 렌털",
     "zh-tw": "二世谷第一天要一起訂的：機場巴士、纜車與裝備",
     "zh-cn": "二世谷第一天要一起订的：机场巴士、缆车与装备",
-    th: "วันแรกที่นิเซโกะ: รถบัสสนามบิน ลิฟต์ และอุปกรณ์ที่ควรจองพร้อมกัน",
+    th: "วันแรกที่นิเซโกะ: รถบัสสนามบิน บัตรลิฟต์สกี และอุปกรณ์ที่ควรจองพร้อมกัน",
   },
   hokkaido7: {
     en: "Doing the Winter Version? Book the Asahiyama Day and the Airport Run Together",
@@ -211,7 +211,7 @@ function footnote(page: Page, locale: Locale): ReactNode {
       : {
           en: ["Three nights in Sapporo rather than a week? Our ", "Sapporo 3-day itinerary", " fits Otaru and Asahiyama around one city base."],
           ko: ["일주일이 아니라 삿포로 3박이라면 ", "삿포로 3일 일정(영어)", "에서 도시 숙소 하나로 오타루와 아사히야마를 다녀오는 방법을 정리했습니다."],
-          "zh-tw": ["如果只在札幌住三晚而不是一週，", "札幌 3 日行程（英文）", "以市區一個住處安排小樽與旭山。"],
+          "zh-tw": ["如果只在札幌住三晚，而不是安排一週行程，", "札幌 3 日行程（英文）", "以市區一個住處安排小樽與旭山。"],
           "zh-cn": ["如果只在札幌住三晚而不是一周，", "札幌 3 日行程（英文）", "以市区一个住处安排小樽与旭山。"],
           th: ["ถ้าพักซัปโปโร 3 คืนแทนหนึ่งสัปดาห์ ", "แผนเที่ยวซัปโปโร 3 วัน (ภาษาอังกฤษ)", " จัดโอตารุและอาซาฮิยามะจากที่พักในเมืองแห่งเดียว"],
         };
