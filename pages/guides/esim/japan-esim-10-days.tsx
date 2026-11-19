@@ -998,7 +998,7 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day</p>
+                <p className={styles.relatedTitle}>Japan Itinerary 10 Days: Tokyo, Kyoto, Osaka &amp; Hakone (2026)</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -760,7 +760,7 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
               { href: "/guides/attractions/okinawa-3-day-itinerary", title: "Okinawa 3 Day Itinerary (2026): Naha, Churaumi and Kerama" },
               { href: "/guides/attractions/okinawa-whale-watching", title: "Okinawa Whale Watching 2027: Season, Kerama & Naha Tours" },
               { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day" },
-              { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day" },
+              { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days: Tokyo, Kyoto, Osaka & Hakone (2026)" },
               { href: "/guides/attractions", title: "More Things to Do in Japan →" },
             ].map((r) => (
               <Link key={r.href} href={r.href} className={styles.relatedCard}>

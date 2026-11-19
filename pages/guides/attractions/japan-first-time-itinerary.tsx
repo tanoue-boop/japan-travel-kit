@@ -517,7 +517,7 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
             Nine, if you can. Seven days covers the three cities and nothing else; nine adds Hakone or Nikko and
             Nara without adding a fourth hotel. Our{" "}
             <Link href="/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary">7-day Tokyo, Kyoto and Osaka itinerary</Link>,{" "}
-            <Link href="/guides/attractions/japan-10-day-itinerary">Japan 10-day itinerary</Link> and{" "}
+            <Link href="/guides/attractions/japan-10-day-itinerary">10-day Japan itinerary</Link> and{" "}
             <Link href="/guides/attractions/japan-14-day-itinerary">Japan 14-day itinerary</Link> cover the other lengths.
           </p>
           <div className={styles.tableWrap}>
@@ -780,7 +780,7 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
             {[
               { href: "/guides/attractions/japan-5-day-itinerary", title: "Japan 5 Day Itinerary: Tokyo and Kyoto, Day by Day (2026)" },
               { href: "/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary", title: "Tokyo Kyoto Osaka Itinerary (2026): 7 Days in Japan, Day by Day" },
-              { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day" },
+              { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days: Tokyo, Kyoto, Osaka & Hakone (2026)" },
               { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day" },
               { href: "/guides/attractions/japan-3-week-itinerary", title: "Japan 3 Week Itinerary (2026): 21 Days, JR Pass & Bookings" },
               { href: "/guides/attractions/tokyo-3-day-itinerary", title: "Tokyo 3 Day Itinerary (2026): What to Book, and in What Order" },

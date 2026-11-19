@@ -1155,7 +1155,7 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
             <Link href="/guides/attractions/japan-14-day-itinerary">Japan 14 day itinerary (2 weeks in Japan)</Link> adds
             a night at Mt. Fuji, Nara and a Hiroshima day to this same corridor. With ten days rather
             than seven, our{" "}
-            <Link href="/guides/attractions/japan-10-day-itinerary">Japan itinerary for 10 days</Link>{" "}
+            <Link href="/guides/attractions/japan-10-day-itinerary">10-day Japan itinerary</Link>{" "}
             keeps the same three bases and adds a fourth Tokyo day, a Hakone day on the way west and
             Nara. If this is your first time in Japan and you can stretch to nine days, our{" "}
             <Link href="/guides/attractions/japan-first-time-itinerary">first time Japan itinerary</Link>{" "}
@@ -1705,7 +1705,7 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day</p>
+                <p className={styles.relatedTitle}>Japan Itinerary 10 Days: Tokyo, Kyoto, Osaka &amp; Hakone (2026)</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

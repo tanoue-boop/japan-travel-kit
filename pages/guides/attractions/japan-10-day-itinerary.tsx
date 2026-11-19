@@ -104,7 +104,9 @@ const OWN = checkedLabel(OWN_CHECKED);
  * 14-day ¥80,000 / ¥84,000, Green ¥70,000 / ¥74,000 and ¥110,000 / ¥116,000 —
  * unchanged from the 26 Oct read.
  */
-const PASS_CHECKED_ISO = "2026-11-09";
+// Re-read 19 Nov 2026 (task-jtk-20261119-R06): online ¥50,000 / ¥80,000, Exchange Order
+// ¥53,000 / ¥84,000 (the post-1-October-2026 figures), Green ¥70,000 / ¥74,000 — unchanged.
+const PASS_CHECKED_ISO = "2026-11-19";
 const PASS_CHECKED = checkedLabel(PASS_CHECKED_ISO);
 
 /** JR Central's Tokaido figures and the Kyoto–Osaka times, from the 25 Oct 2026 read. */
@@ -1166,18 +1168,22 @@ const bookingWindow = [
   },
 ];
 
-/** The ten days on one screen: one row per day, before the per-day tables. */
+/**
+ * The ten days on one screen: one row per day, before the per-day tables. Each row
+ * carries the move, what has to be booked, and one Klook product for that day — a
+ * hotel (6.5%), a day tour (6.5%) or a train/pass (5%). Added 19 Nov 2026 (R06).
+ */
 const overviewRows = [
-  { day: "Day 1", where: "Tokyo", stops: "Land at Narita or Haneda, transfer in, one neighbourhood on foot", sleep: "Tokyo" },
-  { day: "Day 2", where: "Tokyo (west)", stops: "Meiji Jingu, Harajuku, Shinjuku, Shibuya and SHIBUYA SKY at sunset", sleep: "Tokyo" },
-  { day: "Day 3", where: "Tokyo (east)", stops: "Senso-ji early, Tokyo Skytree, teamLab Planets", sleep: "Tokyo" },
-  { day: "Day 4", where: "Tokyo or a day out", stops: "Tokyo Disney, Kamakura and Enoshima, or Nikko", sleep: "Tokyo" },
-  { day: "Day 5", where: "Hakone → Kyoto", stops: "Romancecar to Hakone, the loop and Lake Ashi, then the shinkansen west from Odawara", sleep: "Kyoto" },
-  { day: "Day 6", where: "Kyoto (east)", stops: "Fushimi Inari at dawn, Kiyomizu-dera, Gion and Pontocho", sleep: "Kyoto" },
-  { day: "Day 7", where: "Nara (day trip)", stops: "Nara Park and the deer, Todai-ji, Kasuga Taisha", sleep: "Kyoto" },
-  { day: "Day 8", where: "Kyoto → Osaka", stops: "Arashiyama and Kinkaku-ji in the morning, Dotonbori in the evening", sleep: "Osaka" },
-  { day: "Day 9", where: "Osaka", stops: "Osaka Castle and the bay — or Universal Studios Japan instead", sleep: "Osaka" },
-  { day: "Day 10", where: "Osaka → home", stops: "Kuromon Market, then the train to Kansai Airport", sleep: "—" },
+  { day: "Day 1", where: "Tokyo", stops: "Land at Narita or Haneda, transfer in, one neighbourhood on foot", move: "Airport → Tokyo, 40 min–1.5 h", book: "Tokyo hotel (4 nights), airport transfer", sleep: "Tokyo", pick: { label: "Shinjuku hotels", url: japanTenDayStayAreas[0].url } },
+  { day: "Day 2", where: "Tokyo (west)", stops: "Meiji Jingu, Harajuku, Shinjuku, Shibuya and SHIBUYA SKY at sunset", move: "JR Yamanote Line", book: "SHIBUYA SKY sunset slot", sleep: "Tokyo", pick: { label: "SHIBUYA SKY ticket", url: shibuyaSkyTicketUrl } },
+  { day: "Day 3", where: "Tokyo (east)", stops: "Senso-ji early, Tokyo Skytree, teamLab Planets", move: "Metro / Toei, Yurikamome", book: "teamLab Planets (required), Skytree", sleep: "Tokyo", pick: { label: "teamLab Planets ticket", url: teamlabPlanetsTicketUrl } },
+  { day: "Day 4", where: "Tokyo or a day out", stops: "Tokyo Disney, Kamakura and Enoshima, or Nikko", move: "JR Yokosuka Line to Kamakura, about 1 h", book: "Disney ticket only if you pick Disney", sleep: "Tokyo", pick: { label: "Kamakura & Enoshima day tour", url: kamakuraEnoshimaDayTourUrl } },
+  { day: "Day 5", where: "Hakone → Kyoto", stops: "Romancecar to Hakone, the loop and Lake Ashi, then the shinkansen west from Odawara", move: "Romancecar approx. 80 min; Tokaido Shinkansen west", book: "Hakone Freepass, Romancecar + shinkansen seats, Kyoto hotel (3 nights)", sleep: "Kyoto", pick: { label: "Tokyo → Kyoto shinkansen", url: shinkansenTokyoKyoto.url } },
+  { day: "Day 6", where: "Kyoto (east)", stops: "Fushimi Inari at dawn, Kiyomizu-dera, Gion and Pontocho", move: "JR Nara Line, city bus 100 / 206", book: "Nothing — kimono slot optional", sleep: "Kyoto", pick: { label: "Kyoto Station hotels", url: japanTenDayStayAreas[3].url } },
+  { day: "Day 7", where: "Nara (day trip)", stops: "Nara Park and the deer, Todai-ji, Kasuga Taisha", move: "Kintetsu approx. 34 min / JR approx. 41 min", book: "Nothing — Todai-ji is paid at the gate", sleep: "Kyoto", pick: { label: "Kyoto & Nara day tour", url: kyotoNaraArashiyamaTour.url } },
+  { day: "Day 8", where: "Kyoto → Osaka", stops: "Arashiyama and Kinkaku-ji in the morning, Dotonbori in the evening", move: "JR Special Rapid about 30 min", book: "Osaka hotel (2 nights); Sagano train in autumn", sleep: "Osaka", pick: { label: "Namba hotels", url: japanTenDayStayAreas[6].url } },
+  { day: "Day 9", where: "Osaka", stops: "Osaka Castle and the bay — or Universal Studios Japan instead", move: "Osaka Metro", book: "Amazing Pass, or a USJ date", sleep: "Osaka", pick: { label: "Osaka Amazing Pass", url: osakaAmazingPass.url } },
+  { day: "Day 10", where: "Osaka → home", stops: "Kuromon Market, then the train to Kansai Airport", move: "Rapi:t min. 34 min / HARUKA", book: "Airport train seat", sleep: "—", pick: { label: "JR Haruka ticket", url: jrHarukaUrl } },
 ];
 
 /** smart-ex.jp Tokyo–Kyoto reserved Nozomi fare, carried from kyoto-day-trip-from-tokyo. */
@@ -1203,18 +1209,39 @@ const costRows = [
 const COST_TOTAL = costRows.reduce((sum, row) => sum + row.price, 0);
 const COST_TOTAL_LABEL = `¥${COST_TOTAL.toLocaleString("en-US")}`;
 
-/** Three other shapes for the same ten days, each against the base route. */
+/**
+ * Three routes for the same ten days (first trip / nature and onsen / winter and
+ * ski), then two swaps against the base route. Reorganised 19 Nov 2026 (R06); the
+ * Hakuba figures are carried from japan-ski-trip-itinerary (JR East and Alpico,
+ * read 17 Nov 2026).
+ */
 const routeOptions = [
   {
-    route: "Base route (first trip)",
+    route: "1. First trip (the base route on this page)",
     nights: "Tokyo 4 · Kyoto 3 · Osaka 2",
-    gives: "—",
+    gives: "— (Hakone on the way west, Nara as a day trip)",
     leg: "Tokyo → Kyoto about 130 minutes on the Tokaido Shinkansen",
     source: "global.jr-central.co.jp",
     checked: "2026-10-25",
   },
   {
-    route: "Add Hiroshima and Miyajima",
+    route: "2. Nature and onsen",
+    nights: "Tokyo 3 · Hakone 1 (ryokan) · Kyoto 3 · Osaka 2",
+    gives: "The fourth Tokyo day, for a night at the hot springs instead of a day trip",
+    leg: "Shinjuku → Hakone-Yumoto approx. 80 minutes by Odakyu Romancecar; on to Kyoto from Odawara",
+    source: "odakyu-global.com",
+    checked: OWN_CHECKED,
+  },
+  {
+    route: "3. Winter and ski (December–March)",
+    nights: "Tokyo 3 · Hakuba 4 · Tokyo 2, flying home from Tokyo",
+    gives: "Kyoto, Nara and Osaka — Kansai becomes a second trip",
+    leg: "Tokyo → Nagano about 80 minutes on the Hokuriku Shinkansen (¥8,250 reserved, regular season), then the Alpico bus to Hakuba, 70 minutes (¥3,500, reservation required)",
+    source: "media.jreast.co.jp, alpico.co.jp",
+    checked: "2026-11-17",
+  },
+  {
+    route: "Swap: add Hiroshima and Miyajima",
     nights: "Tokyo 4 · Kyoto 2 · Hiroshima 1 · Osaka 2",
     gives: "The Nara day, or the fourth Tokyo day",
     leg: "Shin-Osaka → Hiroshima: ¥10,750 reserved Nozomi/Mizuho, regular season, one adult one way",
@@ -1222,20 +1249,64 @@ const routeOptions = [
     checked: "2026-10-28",
   },
   {
-    route: "Add Kanazawa",
+    route: "Swap: add Kanazawa",
     nights: "Tokyo 3 · Kanazawa 2 · Kyoto 2 · Osaka 2",
     gives: "The Hakone day and one Tokyo day",
     leg: "Tokyo → Kanazawa 2 hours 28 minutes on the Hokuriku Shinkansen; Kanazawa → Kyoto changes at Tsuruga",
     source: "westjr.co.jp, jr-odekake.net",
     checked: "2026-10-27",
   },
+];
+
+/**
+ * 10-day cost by travel style (R06, 19 Nov 2026). The per-day inputs are the ones
+ * our Japan travel budget guide uses (tax.metro.tokyo.lg.jp room bands and the
+ * operator food/transport/sight prices, read 27 Oct and 16 Nov 2026), so the two
+ * pages agree: food + city transport + one sight per day, times ten, round ¥100.
+ * Rooms are nine nights at the bottom of each Tokyo lodging-tax band (tax included).
+ * The long trains are this route's own official figures.
+ */
+const STYLE_FOOD_TRANSPORT_SIGHT = {
+  save: [15700, 18500],
+  standard: [39300, 54400],
+  comfort: [149100, 344000],
+};
+const STYLE_ROOM_9_NIGHTS = { save: 90000, standardLow: 90900, standardHigh: 135900, comfort: 136800 };
+/** Shinkansen ¥13,970 + Hakone Freepass ¥7,100 + Romancecar ¥1,200 + HARUKA ¥1,900. */
+const LONG_TRAINS = 13970 + 7100 + 1200 + 1900;
+const FX_YEN_PER_USD = 158.23; // Federal Reserve H.10, 6 Nov 2026 — the budget guide's rate
+const yen = (n: number) => `¥${n.toLocaleString("en-US")}`;
+const usd = (n: number) => `US$${Math.round(n / FX_YEN_PER_USD).toLocaleString("en-US")}`;
+const STYLE_TOTAL = {
+  save: STYLE_ROOM_9_NIGHTS.save + STYLE_FOOD_TRANSPORT_SIGHT.save[1] + LONG_TRAINS,
+  standardLow: STYLE_ROOM_9_NIGHTS.standardLow + STYLE_FOOD_TRANSPORT_SIGHT.standard[0] + LONG_TRAINS,
+  standardHigh: STYLE_ROOM_9_NIGHTS.standardHigh + STYLE_FOOD_TRANSPORT_SIGHT.standard[1] + LONG_TRAINS,
+  comfort: STYLE_ROOM_9_NIGHTS.comfort + STYLE_FOOD_TRANSPORT_SIGHT.comfort[0] + LONG_TRAINS,
+};
+const styleCostRows = [
   {
-    route: "Hokkaido instead (winter)",
-    nights: "Tokyo 4 · Sapporo 3 · Osaka 2, with Kyoto as a day out",
-    gives: "The Hakone day, the Nara day and the Kyoto nights",
-    leg: "A domestic flight Tokyo → Sapporo (New Chitose) and Sapporo → Kansai; the Sapporo Snow Festival runs 4–11 February 2027",
-    source: "snowfes.com",
-    checked: "2026-10-30",
+    line: "Total for 10 days, per person",
+    save: `Under about ${yen(STYLE_TOTAL.save)} (${usd(STYLE_TOTAL.save)})`,
+    standard: `About ${yen(STYLE_TOTAL.standardLow)}–${yen(STYLE_TOTAL.standardHigh)} (${usd(STYLE_TOTAL.standardLow)}–${usd(STYLE_TOTAL.standardHigh)})`,
+    comfort: `From about ${yen(STYLE_TOTAL.comfort)} (${usd(STYLE_TOTAL.comfort)})`,
+  },
+  {
+    line: "Rooms, 9 nights (one person's share)",
+    save: `Under ${yen(STYLE_ROOM_9_NIGHTS.save)} — rooms under ¥10,000 a night`,
+    standard: `${yen(STYLE_ROOM_9_NIGHTS.standardLow)}–${yen(STYLE_ROOM_9_NIGHTS.standardHigh)} — ¥10,000–¥15,000 a night + ¥100 Tokyo tax`,
+    comfort: `From ${yen(STYLE_ROOM_9_NIGHTS.comfort)} — ¥15,000+ a night + ¥200 Tokyo tax`,
+  },
+  {
+    line: "Food, city transport and one paid sight a day, × 10",
+    save: `${yen(STYLE_FOOD_TRANSPORT_SIGHT.save[0])}–${yen(STYLE_FOOD_TRANSPORT_SIGHT.save[1])}`,
+    standard: `${yen(STYLE_FOOD_TRANSPORT_SIGHT.standard[0])}–${yen(STYLE_FOOD_TRANSPORT_SIGHT.standard[1])}`,
+    comfort: `${yen(STYLE_FOOD_TRANSPORT_SIGHT.comfort[0])}–${yen(STYLE_FOOD_TRANSPORT_SIGHT.comfort[1])}`,
+  },
+  {
+    line: "Long trains on this route (shinkansen, Hakone Freepass + Romancecar, HARUKA)",
+    save: yen(LONG_TRAINS),
+    standard: yen(LONG_TRAINS),
+    comfort: `${yen(LONG_TRAINS)} (Green car extra)`,
   },
 ];
 
@@ -1319,66 +1390,31 @@ const bookFirstItems: KlookTripPrepItem[] = [
   },
 ];
 
+/**
+ * FAQ set to the five questions in task-jtk-20261119-R06 (19 Nov 2026). The nine
+ * earlier questions are answered in the body sections they came from (Tokyo-first,
+ * Hakone or Fuji, Nara, bookings, where to stay, rain, kids, eSIM, season).
+ */
 const faqItems = [
   {
-    q: "What is the best Japan itinerary for 10 days?",
-    a: `Three bases and nine nights, split 4 / 3 / 2 — four nights in Tokyo, three in Kyoto and two in Osaka, with one mountain day doing double duty as the move between the first two, and the flight home out of Kansai on Day 10. The shape matters more than the sights: at ten days you can afford a fourth Tokyo day and a Nara day trip without adding a fourth hotel bill, and every extra base costs a morning of packing and an afternoon of travelling. The one piece of geography that makes it work is that Odawara, the gateway station for Hakone, sits on the Tokaido Shinkansen — so a Hakone day ends on a westbound train rather than back where it started. Tokyo to Kyoto is about 130 minutes on JR Central's own figure and Kyoto to Osaka about 30 minutes on the JR Special Rapid, both read ${RAIL_CHECKED}.`,
+    q: "Is 10 days enough for Japan?",
+    a: `Yes for a first trip on the Tokyo–Kyoto–Osaka corridor: 10 days in Japan is nine nights split Tokyo 4, Kyoto 3 and Osaka 2, which leaves room for a Hakone day on the way west and a Nara day trip without a fourth hotel. It is not enough to add Hiroshima, Kanazawa or Hokkaido on top — each of those is a swap that costs the Nara day, the Hakone day or a Tokyo day, as the route table on this page sets out. The one long train is Tokyo to Kyoto, about 130 minutes on JR Central's own figure (read ${RAIL_CHECKED}); Kyoto to Osaka is about 30 minutes. With seven days, drop the fourth Tokyo day and Nara; with fourteen, add a mountain night and Hiroshima.`,
   },
   {
-    q: "Is 10 days in Japan enough?",
-    a: "Enough for the Tokyo–Kyoto–Osaka corridor done properly, with a mountain day and a day trip in it, and not enough to add Hiroshima or Hokkaido on top without taking something out. That is the honest edge of a ten-day trip: it buys you three full Tokyo days plus an airport day, one mountain day, two full Kyoto days plus a Nara day, and one full Osaka day plus a departure morning. A second region is a swap rather than an addition — Hiroshima costs the Nara day or the fourth Tokyo day, and anything north of Tokyo costs Hakone and a Kyoto night; the route-options table near the top of this page sets out each swap. If you have fourteen nights, the fortnight version adds the mountain overnight, Hiroshima and genuine slack; if you only have seven, drop the fourth Tokyo day and the Nara day rather than compressing everything.",
+    q: "What is the best 10-day Japan itinerary for first-timers?",
+    a: "Tokyo for four nights (Shibuya Sky at sunset, Senso-ji and teamLab Planets, then Disney, Kamakura or Nikko on Day 4), Hakone on Day 5 with the shinkansen west from Odawara that evening, Kyoto for three nights (Fushimi Inari at dawn, Kiyomizu-dera, Gion and a Nara day trip), and Osaka for two nights (Arashiyama on the way, Dotonbori, then Osaka Castle or Universal Studios Japan), flying home from Kansai on Day 10. It works because the mountain day doubles as the move west, so ten days costs three hotel check-ins rather than four. Book the three hotels, teamLab Planets, the Shibuya Sky sunset slot and the Day 5 train seats before you fly.",
   },
   {
-    q: "Should I get a JR Pass for 10 days in Japan?",
-    a: `Almost certainly not on this route, and it is worth settling first because it decides whether you buy single tickets or a pass. The 7-day Ordinary JAPAN RAIL PASS is ¥50,000 bought online and ¥53,000 as an overseas Exchange Order for an adult; the 14-day is ¥80,000 and ¥84,000, and the Green car versions are ¥70,000 / ¥74,000 and ¥110,000 / ¥116,000, with child prices half the adult ones. All read off japanrailpass.net on ${PASS_CHECKED}. Now count what this itinerary actually asks a JR pass to do: one long Tokaido leg, a 41-minute Nara rapid, a 30-minute Kyoto–Osaka hop and the Haruka to the airport. Everything else on the plan is a private railway a JR pass does not touch at all — the Odakyu Romancecar to Hakone, the Kintetsu to Nara, the Hankyu and Keihan to Osaka, the Nankai Rapi:t to the airport. And a 7-day pass does not even span ten days, so you would be choosing which week to cover. There is one more catch for this specific leg: the pass does not cover the Nozomi without a supplementary ticket issued only to pass holders, so it would put you on the slower Hikari. Our JR Pass guide works the break-even properly.`,
+    q: "Do I need a JR Pass for 10 days in Japan?",
+    a: `No, not on this route. The 7-day JAPAN RAIL PASS is ¥50,000 bought on the official site and ¥53,000 as an Exchange Order from an overseas agency after the 1 October 2026 revision (japanrailpass.net, read ${PASS_CHECKED}); the 14-day pass is ¥80,000 / ¥84,000. The two long JR legs on this itinerary — the Tokyo–Kyoto shinkansen at ¥13,970 for a reserved Nozomi seat (smart-ex.jp, read 5 Nov 2026) and the HARUKA to Kansai Airport at ¥1,900 (westjr.co.jp) — add up to ¥15,870, less than a third of the cheapest pass. A 7-day pass also cannot span ten days, the Romancecar, Kintetsu, Hankyu, Keihan and Nankai are private lines it does not cover, and it needs a supplementary ticket for the Nozomi. A pass starts to pay when you add Hiroshima and travel back to Tokyo; our JR Pass guide works the break-even.`,
   },
   {
-    q: "How much does 10 days in Japan cost?",
-    a: `For tickets and transport, from ${COST_TOTAL_LABEL} per adult on the base route — the sum of the official prices for the 72-hour subway ticket, SHIBUYA SKY, Tokyo Skytree, teamLab Planets, the Hakone Freepass and Romancecar surcharge, the Tokyo–Kyoto shinkansen (¥13,970 reserved Nozomi on smart-ex.jp, checked 5 November 2026), Todai-ji, Kinkaku-ji, the Osaka Amazing Pass and the HARUKA to Kansai Airport. It leaves out the arrival transfer, the short Nara and Kyoto–Osaka fares, Kyoto buses and whatever Day 4 becomes. That is much less than most people expect, because most of Kyoto and much of Tokyo is free to walk into, and the free things on this plan include Meiji Jingu, the Tocho decks, Fushimi Inari, the Arashiyama bamboo grove, Nara Park and the deer, and the Dotonbori streets. What you actually pay for is a 72-hour subway ticket, two or three Tokyo tickets, the Hakone Freepass and the Romancecar surcharge, one temple in Kyoto and one hall in Nara, a city pass and a castle in Osaka, the long train west, and the run to the airport. Every one of those figures is in the dated table above against the operator's own site and the date it was read. No hotel, food or shopping estimate appears here at all, on purpose: those move by season, city and party size, and an invented average is worse than none — our Japan travel budget guide covers what moves them.`,
+    q: "How much does a 10-day trip to Japan cost?",
+    a: `About ${yen(STYLE_TOTAL.standardLow)}–${yen(STYLE_TOTAL.standardHigh)} (${usd(STYLE_TOTAL.standardLow)}–${usd(STYLE_TOTAL.standardHigh)}) per person on a standard budget, excluding international flights: nine nights in ¥10,000–¥15,000 rooms, food, city transport and one paid sight a day using the same inputs as our Japan travel budget guide, plus ${yen(LONG_TRAINS)} for this route's long trains (the Tokyo–Kyoto shinkansen, the Hakone Freepass and Romancecar surcharge, and the HARUKA). A saving trip in rooms under ¥10,000 comes to under about ${yen(STYLE_TOTAL.save)}, and a comfort trip from about ${yen(STYLE_TOTAL.comfort)}. The fixed ticket and transport prices on the base route alone add up to from ${COST_TOTAL_LABEL} per adult, all from operators' own sites with the date each was read.`,
   },
   {
-    q: "Tokyo, Kyoto or Osaka first?",
-    a: "Tokyo first if your ticket lets you fly into Narita or Haneda and home from Kansai, which is what this itinerary assumes — it means no leg is retraced and the last day is a 34-minute run to the airport rather than a long train plus a transfer. An open-jaw ticket sometimes costs a little more than a return into one city, and against most of a day of travelling and a tenth night near an airport line it is usually worth it. There is a second reason to put Tokyo first on a ten-day trip specifically: jet lag lands on the days you have the most slack, and Tokyo is where the slack is. If your return is fixed to Tokyo, run the plan in reverse — Osaka, Kyoto, Hakone, Tokyo — so the long train happens on Day 6 rather than on the morning you fly.",
-  },
-  {
-    q: "How many days should you spend in Tokyo on a 10 day trip?",
-    a: "Four nights, which is three full days plus an airport day. Three full days covers the city's headline sights comfortably — the west side of the Yamanote loop with a rooftop slot, the east side with Senso-ji and teamLab Planets, and a fourth day that can be a theme park, a coast or a shrine town. A fifth Tokyo night only earns its place if the Day 4 answer is Tokyo Disney and you want to sleep at Maihama, or if you are swapping Hakone for Kawaguchiko, whose highway buses run back to Shinjuku rather than to a shinkansen station. Less than four and the fourth-day choice disappears, which is the main thing a ten-day trip has that a seven-day one does not.",
-  },
-  {
-    q: "Hakone or Mt. Fuji on a 10 day Japan itinerary?",
-    a: `Hakone, if the mountain day is also the day you move to Kyoto — and that is the whole argument. Odawara, the gateway station for Hakone, is on the Tokaido Shinkansen, so the day can end on a westbound train; Kawaguchiko's highway buses run back to Shinjuku, which costs you an extra Tokyo night and a Day 6 morning on a train. The Odakyu Romancecar reaches Hakone-Yumoto in approx. 80 minutes from Shinjuku, and the Hakone Freepass is ${PRICES.hakoneFreepass.adult} for two days with a ¥1,200 adult Romancecar surcharge on top — both read on ${OWN}. Mt. Fuji wins on one thing only, which is seeing Mt. Fuji: Hakone shows it to you on a clear day and the Five Lakes show it to you properly. If that is the point of the trip, take the Fuji version and accept the extra Tokyo night. Our Hakone day trip and Mt. Fuji day trip guides lay out both.`,
-  },
-  {
-    q: "Is a Nara day trip worth it from Kyoto?",
-    a: `Yes, and it is the cheapest day on this plan. On Nara Prefecture's own official travel guide, read ${OWN}, Kyoto Station to Kintetsu-Nara is approx. 34 minutes on the Kintetsu Limited Express and Kyoto Station to JR Nara approx. 41 minutes on the JR Rapid — so the whole round trip is under an hour and a half of travelling. Nara Park and the 1,000-plus free-roaming deer cost nothing, Kasuga Taisha's grounds are largely free, and Todai-ji's Great Buddha Hall at ${PRICES.todaiji.adult} for an adult is the only admission a standard Nara day pays. Watch the closing time rather than the opening one: the hall shuts at 17:30 from April to October and 17:00 from November to March, which bites on a short winter afternoon.`,
-  },
-  {
-    q: "What has to be booked in advance on a 10 day Japan trip?",
-    a: "Five things, and everything else can be decided on the morning. The three hotels, because nine nights across three cities has nowhere to absorb a mistake. teamLab Planets, which is a 30-minute entry slot with nothing sold on site. The SHIBUYA SKY sunset window, which goes by time of day rather than by date. The Day 5 Romancecar and westbound shinkansen seats, with the oversized-baggage row reserved separately if you have a large case. And a theme park date — Tokyo Disney on Day 4 or Universal Studios Japan on Day 9 — if either is in the plan, because both are date-specified and neither sells at the gate on the day. Everything in Kyoto and everything in Nara can be left until breakfast.",
-  },
-  {
-    q: "Where should you stay for a 10 day Japan itinerary?",
-    a: "Beside a station that is also an interchange, in each city, and chosen around the two moving days rather than around the sights. In Tokyo: Shinjuku, because the Kawaguchiko and Fuji buses and the Odakyu line to Hakone all leave from under it; Tokyo Station if you would rather have the shinkansen under the hotel; or Ueno and Asakusa if you are arriving on the Keisei Skyliner. In Kyoto: Kyoto Station for the shinkansen and the Nara trains, Shijo-Kawaramachi for the evenings and the private lines to Osaka, or Gion — which only earns its place at three nights, and then it is the best of the three, because Kiyomizu-dera at six in the morning is a walk rather than a bus. In Osaka: Namba, which is the Nankai terminus the Day 10 airport run leaves from, or Umeda if you come down from Kyoto by JR or Hankyu. The section above links Klook's hotel search for each.",
-  },
-  {
-    q: "What do you do on a rainy day on this itinerary?",
-    a: "Swap within the day rather than between days, because ten days has slack but not that much slack. In Tokyo, Day 3 is already weatherproof — teamLab Planets is indoors throughout and Solamachi under Skytree is a mall — and Day 2 is the vulnerable one, because an observation deck in low cloud shows you cloud; move the rooftop slot to another Tokyo evening rather than sitting it out. Day 5 is the day rain genuinely costs you something: the Hakone ropeway closes in high wind and the Lake Ashi boat in rough weather, so a wet forecast is the argument for the guided coach version or for the Fuji swap. In Kyoto, Nishiki Market's arcade and the Kyoto Railway Museum are the indoor hours and Sanjusangendo is the wet-weather temple, because the whole visit happens inside one long hall; Fushimi Inari is better in rain than in sun and the bamboo grove is not. In Osaka, the Shinsaibashi arcade runs covered for most of a kilometre into Dotonbori, and the Kaiyukan is the indoor version of the bay.",
-  },
-  {
-    q: "Does a 10 day Japan itinerary work with kids?",
-    a: "Better than a seven-day one, and that is the main reason to add the three days. Cut the stops per day rather than the days — four a day instead of six, with the timed ticket in the morning while everyone is fresh — and use the fourth Tokyo day and the Nara day as the two the children choose. Three swaps work without moving anything else: Tokyo Skytree and Solamachi in place of a second shrine, the Kyoto Railway Museum in place of Kinkaku-ji, and on Day 9 either the Kaiyukan or Universal Studios Japan instead of the castle-and-arcades day. The Hakone loop is unusually good with children because it is six different vehicles in one day rather than a walk. Child rates are published for most of the ticketed stops here and are in the dated table above.",
-  },
-  {
-    q: "Do you need an eSIM or pocket WiFi for 10 days in Japan?",
-    a: "You need working data, and for ten days across three cities an eSIM is the simplest way to have it. Every timed ticket on this plan arrives as a QR code in an inbox, the Kyoto bus network is the part of the trip where a map earns its keep, and the Day 5 Hakone loop and the Day 10 airport run are both timetables you will check from a platform. Activate it before you fly rather than queueing at an airport counter. Our Japan eSIM data plans guide works out how much data ten days of maps, tickets and messaging actually uses, and our best eSIM for Japan guide compares the providers.",
-  },
-  {
-    q: "Can you add Hiroshima or Kanazawa to 10 days in Japan?",
-    a: "Yes, as a swap rather than an extra. Hiroshima and Miyajima fit as one night between Kyoto and Osaka — Tokyo 4, Kyoto 2, Hiroshima 1, Osaka 2 — and cost you the Nara day or the fourth Tokyo day; JR West's own Smart EX page put Shin-Osaka to Hiroshima at ¥10,750 for a reserved Nozomi or Mizuho seat, regular season, one adult one way, read 28 October 2026. Kanazawa fits as two nights between Tokyo and Kyoto — Tokyo 3, Kanazawa 2, Kyoto 2, Osaka 2 — and costs you the Hakone day and one Tokyo day; JR West gives 2 hours 28 minutes Tokyo to Kanazawa on the Hokuriku Shinkansen, and the onward run to Kyoto changes at Tsuruga, read 27 October 2026. In winter, Hokkaido can replace Hakone and the Kyoto nights — Tokyo 4, Sapporo 3, Osaka 2 with Kyoto as a day out — with a domestic flight each way; the Sapporo Snow Festival runs 4 to 11 February 2027 on its organisers' own site, read 30 October 2026.",
-  },
-  {
-    q: "What changes for 10 days in Japan in November or December?",
-    a: "Three things, all on official sources. Kyoto's autumn colour: the Kyoto City official guide's table of peak viewing in previous years runs from 30 October to 11 December, and some temples hold evening light-ups in the season (read 9 November 2026) — expect the Day 6 and Day 8 temples to be at their busiest, which is the argument for Fushimi Inari at dawn. Reserved trains: JR Central makes every Nozomi car reserved-seat only on 21–23 November 2026 and from 25 December 2026 to 5 January 2027 (read 9 November 2026), so the Day 5 seat has to be booked. Year-end closures: Osaka Castle's main tower is shut from 28 December to 1 January (read 23 October 2026) and the Sagano Romantic Train does not run from 30 December 2026 to 28 February 2027 (read 29 October 2026). Other sights set their own New Year days, so check each one you are building a day around.",
+    q: "Should I add Hiroshima or Hakone to a 10-day trip?",
+    a: `Hakone, if you only have room for one. Odawara, the gateway to Hakone, is on the Tokaido Shinkansen, so a Hakone day can end on the train to Kyoto and costs no extra night; the Romancecar reaches Hakone-Yumoto from Shinjuku in approx. 80 minutes and the 2-day Hakone Freepass is ${PRICES.hakoneFreepass.adult} plus a ¥1,200 Romancecar surcharge (odakyu-global.com, read ${OWN}). Hiroshima is a swap rather than an add-on: one night between Kyoto and Osaka (Tokyo 4, Kyoto 2, Hiroshima 1, Osaka 2) that costs the Nara day or the fourth Tokyo day, and Shin-Osaka to Hiroshima is ¥10,750 for a reserved Nozomi or Mizuho seat (JR West, read 28 Oct 2026). Choose Hiroshima if the Peace Memorial and Miyajima matter more to you than a mountain day; choose both and the trip wants fourteen days.`,
   },
 ];
 
@@ -1389,9 +1425,12 @@ export const getStaticProps = () => ({
 // Title, H1 and meta changed 9 Nov 2026 (task-jtk-20261109-R03) to the search order
 // "japan itinerary 10 days" and "10 days in Japan". Was "Japan 10 Day Itinerary (2026):
 // 10 Days, Day by Day".
-const TITLE = "Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day";
+// 19 Nov 2026 (task-jtk-20261119-R06): title to the "Japan Itinerary 10 Days: <cities>" shape
+// the top results use, 60 characters. Hakone rather than Hiroshima, because Hakone is on the
+// base route and Hiroshima is a swap. Was "Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day".
+const TITLE = "Japan Itinerary 10 Days: Tokyo, Kyoto, Osaka & Hakone (2026)";
 const DESC =
-  "Japan itinerary 10 days: Tokyo 4, Kyoto 3, Osaka 3 via Hakone and Nara. 10 days in Japan day by day, with costs, route options and the JR Pass checked.";
+  "Japan itinerary 10 days: Tokyo 4 nights, Kyoto 3, Osaka 2, Hakone and Nara on the way. 10 days in Japan day by day, 3 routes, costs and JR Pass verdict.";
 const ROUTE = "/guides/attractions/japan-10-day-itinerary";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
@@ -1478,7 +1517,7 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Japan Itinerary 10 Days (2026): <br />10 Days in Japan, Day by Day
+            Japan Itinerary 10 Days (2026): <br />10 Days in Japan &mdash; Tokyo, Kyoto, Osaka &amp; Hakone
           </h1>
           <p className={styles.heroSubtitle}>
             Nine nights, three hotel bills and four days&apos; worth of bases &mdash; planned around
@@ -1511,21 +1550,27 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
           </div>
           <div className={styles.verdictBody}>
             <p className={styles.verdictText}>
-              <strong>10 days in Japan: Tokyo for 4 days, then Hakone on the way west, Kyoto for 3
-              days with a Nara day trip, and Osaka for 3 days, flying home from Kansai on Day 10.</strong>{" "}
-              That is three hotel bases &mdash; 4 nights in Tokyo, 3 in Kyoto, 2 in Osaka. The one long
-              move is the Tokaido Shinkansen: Tokyo to Kyoto is <strong>about 130 minutes</strong>{" "}
-              (JR Central, checked {RAIL_CHECKED}) and <strong>¥13,970</strong> for a reserved Nozomi
-              seat in the regular season (smart-ex.jp, checked{" "}
-              {checkedLabel(SHINKANSEN_FARE_CHECKED_ISO)}); on the Hakone version it leaves from
-              Odawara instead. A 7-day JR Pass is <strong>¥50,000 online / ¥53,000</strong> as an
-              overseas Exchange Order (japanrailpass.net, checked {PASS_CHECKED}), and on this route it
-              does not pay for itself: a 7-day pass cannot span ten days, and the official ticket and
-              transport prices for the whole base route add up to{" "}
-              <strong>from {COST_TOTAL_LABEL} per adult</strong>, of which the two long JR legs
-              &mdash; the shinkansen and the HARUKA to the airport &mdash; are ¥15,870. <strong>Five things need booking before you fly</strong>: the three hotels,
-              teamLab Planets, the SHIBUYA SKY sunset slot, the Day 5 train seats, and a theme-park
-              date if you want one.
+              <strong>The best Japan itinerary for 10 days is Tokyo for 4 nights, Kyoto for 3 and Osaka
+              for 2, with Hakone on the way west and Nara as a day trip from Kyoto (Hiroshima fits as a
+              swap for the Nara day), flying home from Kansai on Day 10.</strong>{" "}
+              The one long move is the Tokaido Shinkansen: Tokyo to Kyoto is{" "}
+              <strong>about 130 minutes (2 hours 10 minutes)</strong> on the Nozomi (JR Central,
+              checked {RAIL_CHECKED}) and <strong>¥13,970</strong> for a reserved seat in the regular
+              season (smart-ex.jp, checked {checkedLabel(SHINKANSEN_FARE_CHECKED_ISO)}), and Kyoto to
+              Osaka is about 30 minutes on the JR Special Rapid. You do not need a JR Pass: after the
+              1 October 2026 revision the 7-day pass is <strong>¥53,000</strong> as an overseas
+              Exchange Order and ¥50,000 bought on the official site (japanrailpass.net, checked{" "}
+              {PASS_CHECKED}), while the two long JR legs on this route &mdash; the shinkansen and the
+              HARUKA to the airport &mdash; add up to <strong>¥15,870</strong>, and a 7-day pass cannot
+              span ten days anyway.
+            </p>
+            <p className={styles.verdictText} style={{ marginTop: "0.75rem", fontSize: "0.92rem" }}>
+              Shorter or longer trip? Our{" "}
+              <Link href="/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary">7-day Tokyo, Kyoto and Osaka itinerary</Link>{" "}
+              drops the fourth Tokyo day, Hakone and Nara, and our{" "}
+              <Link href="/guides/attractions/japan-14-day-itinerary">14-day Japan itinerary</Link> adds a
+              mountain night and Hiroshima. For a five-day version, see the{" "}
+              <Link href="/guides/attractions/japan-5-day-itinerary">Japan 5 day itinerary</Link>.
             </p>
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
@@ -1557,6 +1602,9 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        {/* Data for the ten days, directly under the answer (Klook eSIM, 20%). */}
+        <EsimCtaTop />
+
         {/* Contents — the page is long, so the jump links come first */}
         <nav aria-label="On this page" className={styles.bodySection} style={{ paddingTop: 0 }}>
           <span className={styles.sectionLabel}>On this page</span>
@@ -1564,8 +1612,8 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
             {[
               ["#ten-days-at-a-glance", "The 10 days at a glance"],
               ["#book-first", "What to book first"],
-              ["#cost", "How much 10 days in Japan costs"],
-              ["#route-options", "Is 10 days enough? Other routes"],
+              ["#cost", "How much 10 days in Japan costs, by travel style"],
+              ["#route-options", "Is 10 days enough? Three routes"],
               ["#seasons", "November, December and New Year"],
               ["#split", "Nights per base"],
               ["#day-1", "Day 1 to Day 10, hour by hour"],
@@ -1581,8 +1629,6 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
             ))}
           </ol>
         </nav>
-
-        <EsimCtaTop />
 
         {/* The ten days, one row each */}
         <section id="ten-days-at-a-glance" className={styles.comparisonSection}>
@@ -1600,24 +1646,44 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Day", "Where", "Main stops", "Sleep in"].map((h) => (
+                    {["Day", "Base / where", "Main stops", "Getting there", "Book ahead", "Sleep in", "On Klook"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
+                  <tr>
+                    <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}><strong>Answer</strong></td>
+                    <td colSpan={6} style={{ fontSize: "0.88rem" }}>
+                      <strong>Tokyo 4 nights → Hakone on the way → Kyoto 3 nights (Nara day trip) → Osaka 2 nights, out from Kansai on Day 10.</strong>
+                    </td>
+                  </tr>
                   {overviewRows.map((row) => (
                     <tr key={row.day}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.day}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.where}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.stops}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.move}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.book}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.sleep}</td>
+                      <td style={{ fontSize: "0.85rem" }}>
+                        <KlookLink href={row.pick.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                          {row.pick.label} →
+                        </KlookLink>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {PASS_CHECKED_ISO}. Official sources: <a href="https://global.jr-central.co.jp/en/" target="_blank" rel="noopener noreferrer">global.jr-central.co.jp</a>,{" "}
+            <a href="https://www.odakyu-global.com/" target="_blank" rel="noopener noreferrer">odakyu-global.com</a>,{" "}
+            <a href="https://www.visitnara.jp/" target="_blank" rel="noopener noreferrer">visitnara.jp</a>,{" "}
+            <a href="https://www.nankai.co.jp/en/" target="_blank" rel="noopener noreferrer">nankai.co.jp</a>,{" "}
+            <a href="https://www.westjr.co.jp/global/en/" target="_blank" rel="noopener noreferrer">westjr.co.jp</a>.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Journey times behind this order: Shinjuku to Hakone-Yumoto approx. 80 minutes by Romancecar
             (odakyu-global.com, checked {OWN}); Tokyo to Kyoto about 130 minutes and Kyoto to Osaka
@@ -1644,11 +1710,8 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             <strong>Transport and tickets on the base route: from {COST_TOTAL_LABEL} per adult.</strong>{" "}
             That is the sum of the official prices below. It leaves out the arrival transfer, the
-            short Nara and Kyoto&ndash;Osaka fares, Kyoto buses and whatever Day 4 becomes, and it
-            includes no hotel, food or shopping figure &mdash; those move by season, city and party
-            size, and our{" "}
-            <Link href="/guides/money/japan-travel-budget">Japan travel budget guide</Link> covers
-            what moves them.
+            short Nara and Kyoto&ndash;Osaka fares, Kyoto buses and whatever Day 4 becomes. Hotels
+            and food are in the travel-style table that follows.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -1677,6 +1740,12 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {PASS_CHECKED_ISO} for the JR Pass; each row above carries its own read date.
+            Official sources: <a href="https://smart-ex.jp/en/" target="_blank" rel="noopener noreferrer">smart-ex.jp</a>,{" "}
+            <a href="https://www.odakyu-global.com/" target="_blank" rel="noopener noreferrer">odakyu-global.com</a>,{" "}
+            <a href="https://japanrailpass.net/en/purchase/price/" target="_blank" rel="noopener noreferrer">japanrailpass.net</a>.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Against that, a 7-day JAPAN RAIL PASS is ¥50,000 online (japanrailpass.net, checked{" "}
             {PASS_CHECKED}) &mdash; more than the whole table, and it would only cover the shinkansen,
@@ -1686,16 +1755,74 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
             <a href="#ticket-prices" style={{ color: "var(--accent)", fontWeight: 600 }}>dated price table</a>{" "}
             further down.
           </p>
+
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.2rem", marginTop: "2rem" }}>
+            How Much Is 10 Days in Japan by Travel Style, Hotels Included?
+          </h3>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            <strong>
+              About {yen(STYLE_TOTAL.standardLow)}–{yen(STYLE_TOTAL.standardHigh)} per person on a
+              standard budget, excluding international flights.
+            </strong>{" "}
+            The daily food, city-transport and sight figures and the room bands are the same ones our{" "}
+            <Link href="/guides/money/japan-travel-budget">Japan travel budget per day guide</Link> uses,
+            multiplied out for nine nights and ten days, plus this route&apos;s own long trains.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Per person", "Saving", "Standard", "Comfort"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {styleCostRows.map((row, i) => (
+                    <tr key={row.line}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{i === 0 ? <strong>{row.line}</strong> : row.line}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{i === 0 ? <strong>{row.save}</strong> : row.save}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{i === 0 ? <strong>{row.standard}</strong> : row.standard}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{i === 0 ? <strong>{row.comfort}</strong> : row.comfort}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-16 (budget guide inputs, read 27 October–16 November 2026) and {SHINKANSEN_FARE_CHECKED_ISO} (shinkansen). Room
+            bands from the Tokyo lodging tax (<a href="https://www.tax.metro.tokyo.lg.jp/english/" target="_blank" rel="noopener noreferrer">tax.metro.tokyo.lg.jp</a>);
+            Kyoto and Osaka tax rooms differently, as the budget guide sets out. Trains from{" "}
+            <a href="https://smart-ex.jp/en/" target="_blank" rel="noopener noreferrer">smart-ex.jp</a>,{" "}
+            <a href="https://www.odakyu-global.com/" target="_blank" rel="noopener noreferrer">odakyu-global.com</a> and{" "}
+            <a href="https://www.westjr.co.jp/global/en/" target="_blank" rel="noopener noreferrer">westjr.co.jp</a>.
+            US$ at the Federal Reserve H.10 rate for 6 November 2026 (¥158.23). Rooms are not priced
+            here beyond these bands &mdash; the live rate is on the hotel search for each base.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={japanTenDayStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Shinjuku hotels on Klook →
+            </KlookLink>
+            <KlookLink href={japanTenDayStayAreas[3].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Kyoto Station hotels →
+            </KlookLink>
+            <KlookLink href={japanTenDayStayAreas[6].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Namba hotels →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Other routes for the same ten days */}
         <section id="route-options" className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Route options</span>
-          <h2 className={styles.sectionTitle}>Is 10 Days in Japan Enough? Three Other Routes</h2>
+          <h2 className={styles.sectionTitle}>Is 10 Days in Japan Enough? Three Routes, and Two Swaps</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Enough for Tokyo, Kyoto and Osaka with a mountain day and a day trip; a fourth region is a
-            swap, not an extra. These are the three swaps that keep the trip at nine nights, against
-            the base route, with the one journey each adds.
+            swap, not an extra. Here are three ways to spend the same nine nights &mdash; a first trip,
+            a nature-and-onsen trip and a winter ski trip &mdash; then the two swaps people ask about
+            most, each with what it costs you and the one journey it adds.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -1721,7 +1848,21 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {PASS_CHECKED_ISO} (each row carries its own read date). Official sources:{" "}
+            <a href="https://global.jr-central.co.jp/en/" target="_blank" rel="noopener noreferrer">global.jr-central.co.jp</a>,{" "}
+            <a href="https://www.odakyu-global.com/" target="_blank" rel="noopener noreferrer">odakyu-global.com</a>,{" "}
+            <a href="https://www.jreast.co.jp/multi/en/" target="_blank" rel="noopener noreferrer">jreast.co.jp</a>,{" "}
+            <a href="https://www.alpico.co.jp/traffic/express/nagano_hakuba/" target="_blank" rel="noopener noreferrer">alpico.co.jp</a>,{" "}
+            <a href="https://www.westjr.co.jp/global/en/" target="_blank" rel="noopener noreferrer">westjr.co.jp</a>.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            For the onsen night, our{" "}
+            <Link href="/guides/attractions/hakone-ryokan-private-onsen">Hakone ryokan with private onsen guide</Link>{" "}
+            compares four inns; for the ski version, our{" "}
+            <Link href="/guides/attractions/japan-ski-trip-itinerary">Japan ski trip itinerary</Link>{" "}
+            covers Hakuba, Nozawa Onsen and Niseko, and in Hokkaido the Sapporo Snow Festival runs 4–11
+            February 2027 (snowfes.com, read 30 October 2026).
             For the Hiroshima night, our{" "}
             <Link href="/guides/attractions/hiroshima-2-day-itinerary">Hiroshima 2 day itinerary</Link>{" "}
             and{" "}
@@ -2038,8 +2179,9 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
             Less than most people expect for the sightseeing, because most of what is on this plan is
             free to walk into. Every figure below is an operator&apos;s own published price with the
             site it was read off and the date it was read &mdash; not an estimate, and not a Klook
-            price. There are no hotel, food or shopping figures here at all, deliberately: those move
-            by season, city and party size, and an invented average is worse than none.
+            price. Hotels and food are in the{" "}
+            <a href="#cost" style={{ color: "var(--accent)", fontWeight: 600 }}>travel-style cost table</a>{" "}
+            near the top.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -2230,7 +2372,7 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
         {/* FAQ */}
         <section id="faq" className={styles.faqSection}>
           <span className={styles.sectionLabel}>FAQ</span>
-          <h2 className={styles.sectionTitle}>Common Questions</h2>
+          <h2 className={styles.sectionTitle}>10 Days in Japan: Questions People Ask</h2>
           <div className={styles.faqList}>
             {faqItems.map((item, i) => (
               <details key={item.q} className={styles.faqItem}>

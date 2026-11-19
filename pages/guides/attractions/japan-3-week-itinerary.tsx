@@ -303,7 +303,7 @@ const crumbSep = (
 
 const related = [
   { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day" },
-  { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day" },
+  { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days: Tokyo, Kyoto, Osaka & Hakone (2026)" },
   { href: "/guides/attractions/japan-first-time-itinerary", title: "Japan First-Time Itinerary" },
   { href: "/guides/transport/jr-pass-guide", title: "JR Pass Guide: Prices After October 2026 and the Break-Even" },
   { href: "/guides/transport/tokyo-to-kanazawa", title: "Tokyo to Kanazawa Shinkansen" },

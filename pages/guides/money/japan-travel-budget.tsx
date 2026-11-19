@@ -1035,7 +1035,9 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
             Per person, one night counted per day, and excluding international flights and long-distance rail. The
             three tier columns are the sums of the per-category table below; the room column is the bottom of each
             Tokyo lodging-tax band with the tax added. Every input is a published price read on {OWN} or carried
-            from our own dated price records — the sources are in each table.
+            from our own dated price records — the sources are in each table. For the 10-day row laid out as a
+            route — nine nights on Tokyo, Kyoto and Osaka with the long trains priced in — see our{" "}
+            <Link href="/guides/attractions/japan-10-day-itinerary">10-day Japan itinerary</Link>.
           </p>
         </section>
 
@@ -1707,7 +1709,7 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Japan Itinerary 10 Days (2026): 10 Days in Japan, Day by Day</p>
+                <p className={styles.relatedTitle}>Japan Itinerary 10 Days: Tokyo, Kyoto, Osaka &amp; Hakone (2026)</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
