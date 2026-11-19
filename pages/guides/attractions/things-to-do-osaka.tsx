@@ -258,7 +258,10 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
             <Link href="/guides/transport/osaka-metro-pass" style={linkStyle}>Osaka Metro pass guide</Link>{" "}
             covers the transport-only options and{" "}
             <Link href="/guides/transport/osaka-transportation" style={linkStyle}>getting around Osaka</Link>{" "}
-            covers the Midosuji Line and IC cards.
+            covers the Midosuji Line and IC cards. Most of these sights sit along that one line, so the base
+            matters less than you might think — our guide to{" "}
+            <Link href="/guides/attractions/where-to-stay-in-osaka" style={linkStyle}>where to stay in Osaka</Link>{" "}
+            compares Namba, Shinsaibashi and Umeda by the train to Kansai Airport and Shin-Osaka.
           </p>
           <p className={styles.bodyText}>
             Osaka is the best base in Kansai for days out.{" "}
@@ -423,7 +426,7 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Where to Stay in Osaka 2026: Namba vs Umeda vs USJ, the Best Areas Compared</p>
+                <p className={styles.relatedTitle}>Where to Stay in Osaka 2026: Namba vs Umeda vs Shinsaibashi</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

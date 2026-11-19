@@ -311,6 +311,15 @@ export const whereToStayOsakaAreas: KlookStayArea[] = [
     why: "Walking distance to the Universal Studios Japan gates, which is the one thing no Osaka Metro pass or Midosuji base can buy you — the park is reached on the JR Yumesaki Line, not the subway.",
     url: klookLink("https://www.klook.com/en-US/destination/p50014852-universal-studios-japan/3-hotel/"),
   },
+  // Added 19 Nov 2026 (task jtk-20261119-I01): the page now compares Shinsaibashi as
+  // its own area. Index 4, so the [0]–[3] references elsewhere are unchanged. The
+  // destination id p50039917 was confirmed live on 21 Oct 2026 for the shopping
+  // guide, whose entry now reads its URL from here.
+  {
+    area: "Shinsaibashi",
+    why: "One Midosuji stop north of Namba: the covered Shinsaibashi-suji arcade runs down into Dotonbori, and the Osaka Convention & Tourism Bureau's own listings put Shin-Osaka approximately 12 minutes away on the same line.",
+    url: klookLink("https://www.klook.com/en-US/destination/p50039917-shinsaibashi-station/3-hotel/"),
+  },
 ];
 
 /**
@@ -883,7 +892,7 @@ export const shoppingDistrictStayAreas: KlookStayArea[] = [
   {
     area: "Shinsaibashi, Osaka",
     why: "A covered arcade that runs for most of a kilometre into Dotonbori, so a wet afternoon of shopping does not need a train at all.",
-    url: klookLink("https://www.klook.com/en-US/destination/p50039917-shinsaibashi-station/3-hotel/"),
+    url: whereToStayOsakaAreas[4].url,
   },
   {
     area: "Namba, Osaka",

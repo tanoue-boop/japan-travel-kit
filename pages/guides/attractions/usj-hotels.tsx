@@ -608,7 +608,7 @@ export default function UsjHotelsPage({ updated }: { updated: PageUpdated }) {
           <div className={styles.relatedGrid}>
             {[
               { href: "/guides/attractions/usj-tickets-express-pass", title: "Universal Studios Japan Express Pass 2026: Types, Prices & Is It Worth It" },
-              { href: "/guides/attractions/where-to-stay-in-osaka", title: "Where to Stay in Osaka 2026: Namba vs Umeda vs USJ" },
+              { href: "/guides/attractions/where-to-stay-in-osaka", title: "Where to Stay in Osaka 2026: Namba vs Umeda vs Shinsaibashi" },
               { href: "/guides/attractions/osaka-3-day-itinerary", title: "Osaka 3 Day Itinerary (2026): Day by Day, and What to Book" },
               { href: "/guides/attractions/tokyo-disney-hotels", title: "Tokyo Disney Hotels (2026): Closest, Official & Budget" },
               { href: "/guides/transport/osaka-airport-transfer", title: "Osaka Airport Transfer: Kansai Airport to the City" },

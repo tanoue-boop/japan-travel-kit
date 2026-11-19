@@ -422,9 +422,10 @@ export default function GuidesAttractionsPage({ updated, dates }: { updated: Pag
             guide sets a tour against the 2h14 limited express from Kyoto and the bus to Ine; and the{" "}
             <Link href="/guides/attractions/fuji-q-highland-tickets" style={L}>Fuji-Q Highland tickets guide</Link>{" "}
             explains the free entry, the date-priced 1-Day Pass and the Q Pack with the highway bus from Tokyo. Picking
-            a base in the Kansai? Our{" "}
-            <Link href="/guides/attractions/where-to-stay-in-osaka" style={L}>where to stay in Osaka guide</Link>{" "}
-            compares Namba, Umeda and Universal City.
+            a base in the Kansai? Our guide to{" "}
+            <Link href="/guides/attractions/where-to-stay-in-osaka" style={L}>where to stay in Osaka</Link>{" "}
+            compares Namba, Shinsaibashi, Umeda, Tennoji and Universal City by the train to Kansai Airport and
+            Shin-Osaka.
           </PartnerPick>
           {/* Winter route, added 6 Nov 2026 (jtk-20261106-A21). */}
           <PartnerPick
