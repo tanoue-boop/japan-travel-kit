@@ -521,7 +521,7 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             If you already hold a JR West regional pass, the JR leg is covered and the question answers
             itself — our{" "}
-            <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass guide</Link> sets out which
+            <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass</Link> guide sets out which
             version covers what, including the WEST QR replacement for the pass JR West stopped selling on
             30 September 2026. For the Osaka end of the journey, our{" "}
             <Link href="/guides/transport/osaka-transportation">getting around Osaka guide</Link> explains

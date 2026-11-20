@@ -947,7 +947,10 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
             passport holders entering as temporary visitors rises on <strong>1 November 2026</strong> — Tennoji
             from ¥1,300 to ¥1,600, Osaka and Shin-Osaka from ¥1,800 to ¥1,900, and Kyoto from ¥2,200 to
             ¥2,700. If your trip straddles that date, the ticket you buy for the inbound leg and the one you
-            buy for the outbound may not be the same price. Read on {OWN}. Our{" "}
+            buy for the outbound may not be the same price. Read on {OWN}. If both airport runs fall inside
+            two consecutive days, price the JR West{" "}
+            <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass</Link> against the two
+            singles, since it includes the HARUKA. Our{" "}
             <Link href="/guides/transport/haruka-vs-nankai-rapit">HARUKA vs Nankai Rapi:t comparison</Link>{" "}
             sets the two airport trains against each other, and our{" "}
             <Link href="/guides/transport/osaka-airport-transfer">Osaka airport transfer guide</Link> covers

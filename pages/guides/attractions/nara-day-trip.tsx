@@ -284,8 +284,8 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
             A <strong>Nara day trip from Kyoto or Osaka</strong> takes <strong>about 34 minutes each way</strong> by
             Kintetsu: the Kintetsu Express from Osaka-Namba is <strong>¥680</strong>, and the Kintetsu Limited Express
             from Kyoto is ¥760 plus a ¥520 limited express ticket. From Kyoto the JR Nara Line Rapid takes about 41
-            minutes, and from Tennoji the JR Yamatoji Line Rapid about 36, both covered by a JR Pass or Kansai Area
-            Pass. Nara Park and the deer are free and Todai-ji&apos;s Great Buddha Hall is ¥800 for an adult, so a
+            minutes, and from Tennoji the JR Yamatoji Line Rapid about 36, both covered by a JR Pass or{" "}
+            <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass</Link>. Nara Park and the deer are free and Todai-ji&apos;s Great Buddha Hall is ¥800 for an adult, so a
             half-day covers the park and Todai-ji and a full day adds Kasuga Taisha. Times from Nara Prefecture&apos;s
             travel guide ({TIMES_CHECKED}), Kintetsu fares ({FARES_CHECKED}), Todai-ji ({CHECKED}).
           </p>

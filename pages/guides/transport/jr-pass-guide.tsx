@@ -1161,8 +1161,9 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             cannot carry you on the HARUKA, so it only beats the Area Pass if you are happy to do the airport
             run on the slow Kansai-Airport Rapid — our{" "}
             <Link href="/guides/attractions/kansai-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Kansai Area Pass guide
+              Kansai Area Pass
             </Link>{" "}
+            guide{" "}
             works that break-even through, and if your hotel is in Namba rather than on JR, the{" "}
             <Link href="/guides/transport/haruka-vs-nankai-rapit" style={{ color: "var(--red)", fontWeight: 600 }}>
               Haruka vs Nankai Rapi:t comparison

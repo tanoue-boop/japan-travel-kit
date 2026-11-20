@@ -1207,7 +1207,7 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
             genuinely common, because those lines land closer to Gion and to Minami — the pass covers none of
             it. And if the airport run is your only JR ride at all, the ¥3,000 Kansai Mini Pass or two singles
             are cheaper. Our{" "}
-            <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass guide</Link> has the full price
+            <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass</Link> guide has the full price
             table, the line-by-line coverage and the 1 October 2026 switch to the WEST QR version.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>

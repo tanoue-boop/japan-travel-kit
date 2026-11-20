@@ -1003,7 +1003,10 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             Two things on this table are date-sensitive rather than fixed. The <strong>Haruka</strong>{" "}
             discounted one-way to Kyoto rises from ¥2,200 to ¥2,700 on{" "}
             <strong>1 November 2026</strong> on JR West&apos;s own announcement, so a trip straddling that
-            date pays two different prices for the same journey. And the nationwide{" "}
+            date pays two different prices for the same journey — and from then on the Kyoto single costs
+            the same as a 1-day JR West{" "}
+            <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass</Link>, which includes the
+            Haruka. And the nationwide{" "}
             <strong>JR Pass does not cover Nozomi</strong>, which is the fast Tokyo–Kyoto service — on a
             two-day Kyoto stop inside a wider trip, that is usually the fact that decides whether a pass is
             worth it at all. Our{" "}

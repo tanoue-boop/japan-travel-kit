@@ -868,7 +868,10 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
             or Shin-Osaka, take the JR HARUKA; the discounted one-way for foreign visitors is ¥1,600 to
             Tennoji and ¥1,900 to Osaka or Shin-Osaka from 1 November 2026 (JR West, checked {OSAKA_OWN}).
             Neither is on the Amazing Pass. See{" "}
-            <Link href="/guides/transport/haruka-vs-nankai-rapit">HARUKA vs Nankai Rapi:t</Link>.
+            <Link href="/guides/transport/haruka-vs-nankai-rapit">HARUKA vs Nankai Rapi:t</Link>. If Day 3
+            is Kobe or Himeji by JR, a JR West{" "}
+            <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass</Link> covers the HARUKA and
+            those JR hops on the same days.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={nankaiRapitUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
