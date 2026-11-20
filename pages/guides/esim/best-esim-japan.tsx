@@ -1084,7 +1084,7 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             what travellers themselves report, the{" "}
             <Link href="/guides/esim/best-esim-japan-reddit" className={tools.inlineLink}>Reddit advice check</Link>. If your
             phone cannot take an eSIM, see{" "}
-            <Link href="/guides/esim/japan-airport-sim-cards" className={tools.inlineLink}>airport SIM cards</Link> or{" "}
+            <Link href="/guides/esim/japan-airport-sim-cards" className={tools.inlineLink}>buying a SIM card at the airport</Link> or{" "}
             a pocket WiFi rental — per-day prices are compared in{" "}
             <Link href="/guides/esim/best-pocket-wifi-japan" className={tools.inlineLink}>pocket WiFi Japan</Link>.
           </p>

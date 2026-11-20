@@ -818,6 +818,14 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
               </div>
             ))}
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            Need a SIM card at the airport before the train? Kansai Terminal 1 lists SIM vending machines on 1F, two of
+            them open 24 hours, and SIM counters open 06:00–23:00; our{" "}
+            <Link href="/guides/esim/japan-airport-sim-cards" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              SIM card at the airport guide
+            </Link>{" "}
+            lists every counter and machine by terminal (checked 20 Nov 2026).
+          </p>
         </section>
 
         <BookingEsimCard lead="Landing at Kansai? Get mobile data before you fly." />

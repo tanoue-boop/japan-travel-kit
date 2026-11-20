@@ -609,7 +609,7 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
             update date, so check a counter&apos;s hours against your flight. All are before security, so a return at
             the counter has to come before you go through. For prepaid SIM cards at the same airports, see our{" "}
             <Link href="/guides/esim/japan-airport-sim-cards" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              airport SIM card guide
+              SIM card at the airport guide
             </Link>.
           </p>
         </section>

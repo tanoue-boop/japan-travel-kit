@@ -606,6 +606,9 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
             fair-use limits, the <Link href="/guides/esim/japan-esim-unlimited" className={tools.inlineLink}>Japan eSIM unlimited data</Link> comparison.
             To check forum advice against these prices, see the{" "}
             <Link href="/guides/esim/best-esim-japan-reddit" className={tools.inlineLink}>best eSIM for Japan reddit</Link> page.
+            Weighing these prices against a{" "}
+            <Link href="/guides/esim/japan-airport-sim-cards" className={tools.inlineLink}>SIM card at the airport</Link>{" "}
+            in Narita, Haneda or Kansai? That guide has each terminal&apos;s counters, vending machines and hours.
           </p>
         </section>
 

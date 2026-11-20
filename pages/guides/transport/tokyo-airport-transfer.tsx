@@ -1643,7 +1643,7 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             Need mobile data before you board the train? Narita and Haneda both list SIM vending machines and
             counters in the arrivals areas; our{" "}
             <Link href="/guides/esim/japan-airport-sim-cards" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              Japan airport SIM card and eSIM guide
+              SIM card at Narita or Haneda airport guide
             </Link>{" "}
             has each terminal&apos;s locations and opening hours.
           </p>

@@ -6,7 +6,7 @@ import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { cheapestAtLeastGb, getProvider, plansFor, pricesCheckedLabel, siteCheapestFrom } from "../../../lib/esim-prices";
 import { formatUsd } from "../../../lib/esim-prices";
-import { klookEsim } from "../../../lib/klook-links";
+import { jrHarukaUrl, keiseiSkylinerUrl, klookEsim, nankaiRapitUrl, naritaExpressRoundTripUrl } from "../../../lib/klook-links";
 import { pocketWifi } from "../../../lib/pocket-wifi";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
@@ -30,9 +30,20 @@ import { EsimCtaTop } from "../../../components/EsimCta";
  * Changes from the 6 Nov reading: Haneda now lists AnyFone JAPAN SIM vending machines in
  * Terminals 1 and 2 (05:00–24:00); its Terminal 3 Mobile Center 2F opens 06:30, not 06:00.
  * Vending-machine prices are published on none of the airport pages, so none is printed.
+ *
+ * Re-read 20 Nov 2026 (jtk-20261120-R05) for "sim card at Narita / Haneda airport" and
+ * "eSIM at Japan airports". Narita T1 now also lists JAL ABC on North Wing 1F (06:30 to 1 hour
+ * after the last international arrival); Kansai T1 lists a fifth GLOBAL WiFi SIM machine at its
+ * pickup lockers and a North counter opening 06:30. Added New Chitose and Fukuoka from:
+ *   hokkaido-airports.com/en/new-chitose/service/internet-fax-copy/sim-card/  (no prices; no floors)
+ *   fukuoka-airport.jp/en/service/{globalwifi-sim-intl,globalsim-for-japan-intl,journey-sim,
+ *     og-wifi-intl,telecomsquare-intl}.html
+ * The Global WiFi machine page at Fukuoka says "24/7" in its text but lists 05:00～22:40 as its
+ * hours; the listed hours are used. Sakura Mobile prices (SIM ¥3,850, eSIM ¥1,375 tax incl.) and
+ * pickup counters unchanged on 20 Nov.
  */
-const CHECKED = "13 Nov 2026";
-const CHECKED_ISO = "2026-11-13";
+const CHECKED = "20 Nov 2026";
+const CHECKED_ISO = "2026-11-20";
 const ROUTE = "/guides/esim/japan-airport-sim-cards";
 const SAKURA_URL = "https://p.sakuramobile.jp/idevaffiliate.php?id=486";
 
@@ -59,7 +70,7 @@ const airportRows: AirportRow[] = [
     airport: "Narita (NRT)",
     terminal: "Terminal 1",
     vending: "GPA SIM vending machines: 1F Central Building, 1F South Wing (no hours listed)",
-    counters: "AnyFone JAPAN, SoftBank Global Rental, J WiFi & Mobile, XCom Global, Telecomsquare (1F Central); Rakuten Mobile (4F Central); JAL ABC (1F South)",
+    counters: "AnyFone JAPAN, SoftBank Global Rental, J WiFi & Mobile, XCom Global, Telecomsquare (1F Central); Rakuten Mobile (4F Central); JAL ABC (1F North Wing and 1F South Wing)",
     hours: "Most 07:00–21:00; Rakuten Mobile 08:00–20:00; JAL ABC 1F 06:30 to 1 hour after the last international arrival",
   },
   {
@@ -100,9 +111,9 @@ const airportRows: AirportRow[] = [
   {
     airport: "Kansai (KIX)",
     terminal: "Terminal 1",
-    vending: "GLOBAL WiFi North and JTB SIM vending machines (24 hours); GLOBAL WiFi Central and South machines, all 1F",
-    counters: "Sakura Mobile, Telecom Square, GLOBAL WiFi (1F)",
-    hours: "Vending 24 hours (North, JTB); counters 06:00–23:00",
+    vending: "GLOBAL WiFi North and JTB SIM vending machines (24 hours); GLOBAL WiFi Central, South and pickup-locker machines, all 1F",
+    counters: "Sakura Mobile, Telecom Square, GLOBAL WiFi Central and North (1F)",
+    hours: "Vending 24 hours (North, JTB); Sakura Mobile, Telecom Square, GLOBAL WiFi Central 06:00–23:00; GLOBAL WiFi North 06:30–23:00",
   },
   {
     airport: "Kansai (KIX)",
@@ -123,9 +134,15 @@ const compareRows: CompareRow[] = [
     esim: "Least effort: connected when you switch off flight mode",
   },
   {
+    label: "Published price",
+    airport: "None of the five airport listings prints a counter or vending-machine price",
+    pickup: "Sakura Mobile Travel SIM from ¥3,850; Travel eSIM from ¥1,375 (tax incl.)",
+    esim: `From ${ESIM_FROM} in this site's eSIM price check (checked ${pricesCheckedAt})`,
+  },
+  {
     label: "When you can get it",
     airport: "Counters 06:00–23:00 at best (most of Narita 07:00–21:00); some vending machines 24 hours (KIX T1) or 05:00–24:00 (Haneda T1, T2)",
-    pickup: "Sakura Mobile counters: KIX T1 06:00–23:00; Haneda T2 07:00–22:00; Haneda T3 closed 01:00–04:00; Narita T1/T2 06:30 to 1 hour after the last international arrival",
+    pickup: "Sakura Mobile counters: KIX T1 06:00–23:00; Haneda T2 07:00–22:00; Haneda T3 closed 01:00–04:00; Narita T1/T2 06:30 to 1 hour after the last international arrival; Fukuoka international 07:00–21:00",
     esim: "Any time, from home; install over home WiFi",
   },
   {
@@ -148,38 +165,86 @@ const compareRows: CompareRow[] = [
   },
 ];
 
-const FAQ_Q_ESIM = "Can you buy an eSIM at the airport in Japan?";
-const FAQ_Q_WHERE = "Where can I buy a SIM card at Narita or Haneda?";
-const FAQ_Q_PRICE = "Is it cheaper to buy a SIM card at the airport or online?";
-const FAQ_Q_VENDING = "Are there SIM card vending machines at Japanese airports?";
+/** Table 3: the five airports a traveller is most likely to land at, on one row each. */
+type FiveRow = { airport: string; vending: string; esim: string; sakura: string };
+
+const fiveAirportRows: FiveRow[] = [
+  {
+    airport: "Narita (NRT)",
+    vending: "Yes: GPA machines in T1 (Central, South Wing 1F), T2 (1F, and 4 on 2F before customs), T3 1F; no hours listed",
+    esim: "Not on the airport's listing",
+    sakura: "JAL ABC counter, T1 South Wing 1F and T2 1F, 06:30 to 1 hour after the last international arrival (T3: collect at T2)",
+  },
+  {
+    airport: "Haneda (HND)",
+    vending: "Yes: AnyFone JAPAN, T1 B1F and T2 B1F, 05:00–24:00; none listed in T3",
+    esim: "Not on the airport's listing",
+    sakura: "T2 Mobile Center 3F, 07:00–22:00; T3 JAL ABC counter 2F, closed 01:00–04:00",
+  },
+  {
+    airport: "Kansai (KIX)",
+    vending: "Yes: GLOBAL WiFi and JTB machines in T1 1F (North and JTB 24 hours); GLOBAL WiFi machine in T2 1F",
+    esim: "Not on the airport's listing",
+    sakura: "Sakura Mobile counter, T1 1F, 06:00–23:00 (T2: collect at T1)",
+  },
+  {
+    airport: "New Chitose (CTS)",
+    vending: "Yes: prepaid SIM vending machines in the Domestic and International terminal buildings",
+    esim: "Yes: the machines list eSIM plans (JOURNEY SIM, AnyFone JAPAN and a Japan/world data eSIM)",
+    sakura: "Post office pickup only: New Chitose Airport Post Office, Domestic Terminal Center Plaza 2F, 09:00–17:00",
+  },
+  {
+    airport: "Fukuoka (FUK)",
+    vending: "Yes: Global WiFi and GLOBAL SIM For JAPAN machines, International Terminal 1F, 05:00–22:40",
+    esim: "Yes: JOURNEY SIM / eSIM (physical SIM and eSIM), International Terminal 1F, 05:00–22:40",
+    sakura: "Sakura Mobile counter, International Terminal arrival lobby 1F, 07:00–21:00",
+  },
+];
+
+const FIVE_SOURCES = [
+  "https://www.narita-airport.jp/en/service/internet/rental/",
+  "https://tokyo-haneda.com/en/service/facilities/cellular_phone_rental.html",
+  "https://www.kansai-airport.or.jp/en/service/internet/rental-wifi-sim",
+  "https://www.hokkaido-airports.com/en/new-chitose/service/internet-fax-copy/sim-card/",
+  "https://www.fukuoka-airport.jp/en/service/journey-sim.html",
+  "https://www.fukuoka-airport.jp/en/service/globalwifi-sim-intl.html",
+  "https://www.fukuoka-airport.jp/en/service/globalsim-for-japan-intl.html",
+  "https://www.sakuramobile.jp/travel/pickup-return/",
+];
+
+const FAQ_Q_NARITA = "Can you buy a SIM card at Narita Airport?";
+const FAQ_Q_HANEDA = "Is there a SIM card vending machine at Haneda?";
+const FAQ_Q_CHEAPER = "Is it cheaper to buy an eSIM before landing in Japan?";
+const FAQ_Q_WHICH = "Which Japan airports sell eSIMs?";
+const FAQ_Q_SAKURA = "Can I pick up a Sakura Mobile SIM at the airport?";
 const FAQ_Q_LATE = "What if I land after the SIM counters close?";
 
 const faqItems = [
   {
-    q: FAQ_Q_ESIM,
-    a: `Not at a counter, in most cases. The Narita, Haneda and Kansai listings cover physical SIM cards and router rentals, not eSIM sales. Sakura Mobile lets you collect an eSIM QR code at its airport pickup counters if you order ahead, and any travel eSIM can be bought online after landing over the free airport WiFi that Haneda and Kansai list. The least effort is to buy and install it before you fly. Checked ${CHECKED}.`,
+    q: FAQ_Q_NARITA,
+    a: `Yes. Narita lists GPA SIM vending machines in all three terminals (Terminal 1 Central Building and South Wing 1F; Terminal 2 1F, plus four on 2F before customs; Terminal 3 1F) and counters such as AnyFone JAPAN, SoftBank Global Rental, J WiFi & Mobile and Telecomsquare, most open 07:00–21:00, all before departure passport control. The listing gives no vending-machine hours or prices. Checked ${CHECKED}.`,
   },
   {
-    q: FAQ_Q_WHERE,
-    a: `Narita lists GPA SIM vending machines in all three terminals and counters such as AnyFone JAPAN, SoftBank Global Rental and J WiFi & Mobile, most open 07:00–21:00, all before passport control. At Haneda, international arrivals in Terminal 3 have AnyFone JAPAN's prepaid SIM counter on 2F (06:00–23:00) and Mobile Center (06:30–23:00); Terminals 1 and 2 have AnyFone SIM vending machines on B1F, 05:00–24:00. From each airport's listing, checked ${CHECKED}.`,
+    q: FAQ_Q_HANEDA,
+    a: `Yes, in Terminals 1 and 2: Haneda lists AnyFone JAPAN SIM vending machines on B1F of Terminal 1 (Marketplace North) and Terminal 2 (Terminal Lobby North), open 05:00–24:00. International Terminal 3 lists no machine; there, AnyFone JAPAN's counter in the 2F arrival lobby sells prepaid SIMs 06:00–23:00. Checked ${CHECKED}.`,
   },
   {
-    q: FAQ_Q_PRICE,
-    a: `Online is usually cheaper. None of the airports publishes vending-machine or counter prices. Sakura Mobile, which sells both, lists its Travel SIM from ¥3,850 and its Travel eSIM from ¥1,375 including tax (checked ${CHECKED}), and the cheapest eSIM in this site's comparison is ${ESIM_FROM} (checked ${pricesCheckedAt}).`,
+    q: FAQ_Q_CHEAPER,
+    a: `Usually, and it is faster. None of the airport listings publishes a counter or vending-machine price. Sakura Mobile, which sells both, lists its Travel eSIM from ¥1,375 against ¥3,850 for its Travel SIM card, tax included (checked ${CHECKED}), and the cheapest eSIM in this site's price check is ${ESIM_FROM} (checked ${pricesCheckedAt}). An eSIM installed at home connects when you switch off flight mode, with no counter hours or queue.`,
   },
   {
-    q: FAQ_Q_VENDING,
-    a: `Yes. Narita lists GPA SIM vending machines in Terminals 1, 2 and 3, including four on Terminal 2's 2F before customs. Haneda lists AnyFone JAPAN machines on B1F of Terminals 1 and 2 (05:00–24:00). Kansai lists four in Terminal 1, two of them open 24 hours, and one in Terminal 2. Prices are not published by the airports. Checked ${CHECKED}.`,
+    q: FAQ_Q_WHICH,
+    a: `Of Narita, Haneda, Kansai, New Chitose and Fukuoka, only New Chitose and Fukuoka name eSIM plans on their own listings, sold from machines: New Chitose's prepaid SIM vending machines (JOURNEY SIM, AnyFone JAPAN and a Japan/world data eSIM) and Fukuoka's JOURNEY SIM / eSIM point in International Terminal 1F, 05:00–22:40. The Narita, Haneda and Kansai listings cover physical SIM cards and rentals. Sakura Mobile hands over an eSIM QR code at its airport counters if you order ahead. Checked ${CHECKED}.`,
   },
   {
-    q: FAQ_Q_LATE,
-    a: `Use a vending machine or an eSIM. Kansai Terminal 1 lists two SIM vending machines open 24 hours; Haneda's Terminal 1 and 2 machines run until 24:00, and Haneda's Terminal 3 counters close at 23:00. Narita's counters mostly close at 21:00 and its listing gives no hours for the vending machines. An eSIM installed before you fly works whenever you land. Checked ${CHECKED}.`,
+    q: FAQ_Q_SAKURA,
+    a: `Yes, if you order ahead (orders can be changed up to 3 days before pickup). Sakura Mobile's pickup points are the JAL ABC counters at Narita Terminal 1 (South Wing 1F) and Terminal 2 (1F), 06:30 to 1 hour after the last international arrival; Mobile Center at Haneda Terminal 2 (3F, 07:00–22:00) and the JAL ABC counter at Terminal 3 (2F, closed 01:00–04:00); its own counters at Kansai Terminal 1 (1F, 06:00–23:00) and Fukuoka International Terminal (1F, 07:00–21:00); and post offices at New Chitose and Chubu Centrair. There is no counter at Narita Terminal 3 or Kansai Terminal 2. Checked ${CHECKED}.`,
   },
 ];
 
-const TITLE = "Japan Airport SIM Cards & eSIM (2026): Narita, Haneda, KIX";
+const TITLE = "Japan Airport SIM Card & eSIM: Narita, Haneda, KIX Counters";
 const DESCRIPTION =
-  "Buy a SIM card at a Japan airport: counters, vending machines and hours at Narita, Haneda and KIX, and why an eSIM bought before you fly is easier.";
+  "SIM card at Narita or Haneda airport and eSIM at Japan airports: counters, vending machines, hours by terminal, and why an eSIM before landing is cheaper.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
@@ -289,14 +354,14 @@ export default function JapanAirportSimCardsPage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Japan Airport SIM Cards &amp; eSIM (2026): <br />Where to Buy at Narita, Haneda and Kansai
+            Japan Airport SIM Card &amp; eSIM 2026: <br />Narita, Haneda and KIX Counters
           </h1>
           <p className={styles.heroSubtitle}>
-            Every SIM counter and vending machine by terminal, with opening hours from each airport&apos;s own
-            listing, and when an eSIM bought before you fly is the better move.
+            Where to buy a SIM card at Narita or Haneda airport, every counter and vending machine by terminal, and
+            which Japan airports sell an eSIM, with hours from each airport&apos;s own listing.
           </p>
           <div className={styles.heroBadges}>
-            {[`Checked ${CHECKED}`, "From airport listings", "Narita, Haneda, Kansai"].map((t) => (
+            {[`Checked ${CHECKED}`, "From airport listings", "Narita, Haneda, KIX, New Chitose, Fukuoka"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -318,14 +383,16 @@ export default function JapanAirportSimCardsPage({ updated }: { updated: PageUpd
         {/* The answer, before anything else on the page. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            You can buy a <strong>SIM card at the airport in Japan</strong> at all three main gateways: Narita lists
-            SIM vending machines in all 3 terminals and counters mostly open 07:00–21:00, Haneda lists prepaid SIM
-            counters in international Terminal 3 open until 23:00 and vending machines in Terminals 1 and 2 open
-            05:00–24:00, and Kansai (KIX) Terminal 1 lists 2 SIM vending machines open 24 hours. An{" "}
-            <strong>eSIM is not sold at the airport counters</strong> these listings describe, so the least effort
-            is to buy one before you fly, from <strong>{ESIM_FROM}</strong> (checked {pricesCheckedAt}), and switch
-            it on when you land. If your flight lands after 21:00 at Narita or after 23:00 at Haneda or KIX, plan on
-            the counters being closed. Airport listings checked {CHECKED}.
+            You can buy a <strong>SIM card at Narita, Haneda and Kansai (KIX) airports</strong> before passport
+            control: Narita lists GPA SIM vending machines in all 3 terminals and counters mostly open 07:00–21:00,
+            Haneda lists AnyFone JAPAN vending machines in Terminals 1 and 2 (05:00–24:00) and a prepaid SIM counter in
+            international Terminal 3 (06:00–23:00), and KIX Terminal 1 lists Sakura Mobile and Telecom Square counters
+            (06:00–23:00) and 2 SIM vending machines open 24 hours. An <strong>eSIM installed before you land</strong>{" "}
+            is cheaper and quicker: Sakura Mobile, which sells both, lists its Travel eSIM from ¥1,375 against ¥3,850
+            for its Travel SIM card (tax included), the cheapest eSIM in this site&apos;s price check is{" "}
+            <strong>{ESIM_FROM}</strong> (checked {pricesCheckedAt}), and it connects when you switch off flight mode,
+            with no counter hours to beat. Of the five airports below, only New Chitose and Fukuoka list machines that
+            sell an <strong>eSIM at the airport</strong>; listings and Sakura Mobile prices checked {CHECKED}.
           </p>
         </section>
 
@@ -364,13 +431,51 @@ export default function JapanAirportSimCardsPage({ updated }: { updated: PageUpd
 
         <SimbyeOffer />
 
+        {/* Physical SIM for airport pickup, then the train into the city. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Phone cannot take an eSIM? Pre-order a Sakura Mobile Travel SIM and collect it at Narita, Haneda, Kansai
+            or Fukuoka (pickup counters and hours are in the five-airport table below) instead of hoping a counter is
+            still open when you land.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
+            <a href={SAKURA_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.pickCta}>
+              Pre-order Sakura Mobile for airport pickup →
+            </a>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            Once you are connected, the airport train is the next queue. Tickets for the main airport trains can be
+            booked ahead:
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
+            <KlookLink href={keiseiSkylinerUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Narita: Keisei Skyliner →
+            </KlookLink>
+            <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Narita: N&apos;EX round trip →
+            </KlookLink>
+            <KlookLink href={jrHarukaUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Kansai: JR Haruka →
+            </KlookLink>
+            <KlookLink href={nankaiRapitUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Kansai: Nankai to Namba →
+            </KlookLink>
+          </div>
+          <p className={styles.bodyText} style={noteStyle}>
+            Routes, journey times and which train suits your hotel:{" "}
+            <Link href="/guides/transport/tokyo-airport-transfer" style={linkStyle}>Tokyo airport transfer</Link> and{" "}
+            <Link href="/guides/transport/osaka-airport-transfer" style={linkStyle}>Osaka airport transfer</Link>.
+          </p>
+        </section>
+
         {/* Can you buy an eSIM at the airport? */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>eSIM</span>
           <h2 className={styles.sectionTitle}>Can You Buy an eSIM at the Airport in Japan?</h2>
           <p className={styles.bodyText}>
             Not over the counter, in most cases: the Narita, Haneda and Kansai listings cover physical SIM cards and
-            router rentals, not eSIM sales. There are two ways round it. Sakura Mobile hands over an eSIM QR code at
+            router rentals, not eSIM sales. New Chitose and Fukuoka are the exceptions, with eSIM plans sold from
+            machines (see the five-airport table below). Elsewhere there are two ways round it. Sakura Mobile hands over an eSIM QR code at
             its airport pickup counters if you order ahead (orders can be changed up to 3 days before pickup), and any
             travel eSIM can be bought online in the arrivals hall over the free WiFi that Haneda and Kansai list. Both
             take longer than installing it at home, where a QR code and your own WiFi are all it needs. Our{" "}
@@ -386,9 +491,10 @@ export default function JapanAirportSimCardsPage({ updated }: { updated: PageUpd
         {/* By airport */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>By airport</span>
-          <h2 className={styles.sectionTitle}>Where Can I Buy a SIM Card at Narita, Haneda or Kansai?</h2>
+          <h2 className={styles.sectionTitle}>Where Can I Buy a SIM Card at Narita, Haneda or Kansai Airport?</h2>
           <p className={styles.bodyText}>
-            In the public areas before passport control, at every terminal below. Narita states that its SIM and
+            In the public areas before passport control, at every terminal below; at Narita, all three terminals
+            have a GPA SIM vending machine. Narita states that its SIM and
             rental counters are only before departure passport control, and Kansai that rental services are not
             available beyond the security checkpoint.
           </p>
@@ -490,9 +596,9 @@ export default function JapanAirportSimCardsPage({ updated }: { updated: PageUpd
         {/* Price */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Price</span>
-          <h2 className={styles.sectionTitle}>Is It Cheaper to Buy a SIM Card at the Airport or Online?</h2>
+          <h2 className={styles.sectionTitle}>Is It Cheaper to Buy an eSIM Before Landing in Japan?</h2>
           <p className={styles.bodyText}>
-            Online, as a rule. The airports do not publish counter or vending-machine prices, so this uses the sellers
+            Yes, as a rule. The airports do not publish counter or vending-machine prices, so this uses the sellers
             that do; Sakura Mobile sells both a physical SIM and an eSIM, which makes the gap easy to see.
           </p>
           <div className={styles.tableWrap}>
@@ -548,12 +654,79 @@ export default function JapanAirportSimCardsPage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>Vending machines</span>
           <h2 className={styles.sectionTitle}>Are There SIM Card Vending Machines at Japanese Airports?</h2>
           <p className={styles.bodyText}>
-            Yes, at all three. Narita lists GPA SIM vending machines in Terminals 1, 2 and 3, including four on
-            Terminal 2&apos;s 2F before customs, so you can buy one while you wait for your bags. Haneda lists AnyFone
-            JAPAN machines on B1F of Terminals 1 and 2, open 05:00–24:00. Kansai lists four in Terminal 1, the GLOBAL
-            WiFi North and JTB machines open 24 hours, and one in Terminal 2. None of the airports publishes the
-            machine prices. Checked {CHECKED}.
+            Yes, at all five airports in the table below. Narita lists GPA SIM vending machines in Terminals 1, 2 and
+            3, including four on Terminal 2&apos;s 2F before customs, so you can buy one while you wait for your bags.
+            Kansai lists five in Terminal 1, the GLOBAL WiFi North and JTB machines open 24 hours, and one in Terminal
+            2. None of the airports publishes the machine prices; New Chitose&apos;s page says to check the price at
+            the machine. Checked {CHECKED}.
           </p>
+
+          <h2 className={styles.sectionTitle}>Is There a SIM Card Vending Machine at Haneda?</h2>
+          <p className={styles.bodyText}>
+            Yes, in Terminals 1 and 2: AnyFone JAPAN machines on B1F (Terminal 1 Marketplace North, Terminal 2
+            Terminal Lobby North), open 05:00–24:00. International Terminal 3 lists no machine, so arrivals there use
+            AnyFone JAPAN&apos;s prepaid SIM counter in the 2F arrival lobby (06:00–23:00). Checked {CHECKED}.
+          </p>
+        </section>
+
+        {/* Five airports: vending, eSIM, Sakura Mobile pickup */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Five airports</span>
+          <h2 className={styles.sectionTitle}>{FAQ_Q_WHICH}</h2>
+          <p className={styles.bodyText}>
+            Only New Chitose and Fukuoka, of the five below: both list machines that sell eSIM plans. Every one of the
+            five lists SIM vending machines, and Sakura Mobile has a pickup point at each, a post office in New
+            Chitose&apos;s case.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Airport", "SIM vending machines", "eSIM sold at the airport", "Sakura Mobile pickup"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>All five</td>
+                    <td style={{ fontSize: "0.85rem" }}><strong>Yes, at every one</strong></td>
+                    <td style={{ fontSize: "0.85rem" }}><strong>Only New Chitose and Fukuoka list it</strong></td>
+                    <td style={{ fontSize: "0.85rem" }}><strong>At all five; order ahead</strong></td>
+                  </tr>
+                  {fiveAirportRows.map((row) => (
+                    <tr key={row.airport}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.airport}</td>
+                      <td style={{ fontSize: "0.85rem", minWidth: "200px" }}>{row.vending}</td>
+                      <td style={{ fontSize: "0.85rem", minWidth: "170px" }}>{row.esim}</td>
+                      <td style={{ fontSize: "0.85rem", minWidth: "200px" }}>{row.sakura}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={noteStyle}>
+            Last checked: {CHECKED_ISO}. Sources:{" "}
+            {FIVE_SOURCES.map((href, i) => (
+              <span key={href}>
+                {i > 0 && ", "}
+                <a href={href} target="_blank" rel="noopener noreferrer" style={{ color: "var(--text-muted)" }}>{href}</a>
+              </span>
+            ))}
+            . New Chitose&apos;s page names no floors for its machines. Sakura Mobile&apos;s New Chitose and Chubu
+            Centrair pickups are post-office counters (weekdays only at Centrair).
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <a href={SIMBYE_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>Get Simbye eSIM before you land →</a>
+            <a href={SAKURA_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.pickCta}>
+              Sakura Mobile airport pickup →
+            </a>
+          </div>
+        </section>
+
+        <section className={styles.bodySection}>
 
           <h2 className={styles.sectionTitle}>{FAQ_Q_LATE}</h2>
           <p className={styles.bodyText}>
