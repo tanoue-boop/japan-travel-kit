@@ -288,6 +288,22 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/yokohama-day-trip",
+    badge: "Day trip",
+    title: "Yokohama Day Trip from Tokyo (2026): Trains & Day Passes",
+    desc: "Tokyo to Yokohama in 27 minutes for ¥310 from Shibuya, the JR, Minatomirai and Tokyu day passes compared, a half-day and full-day route, and the Cup Noodles Museum, Sankeien and Red Brick Warehouse with official prices.",
+    group: "daytrips",
+    city: "tokyo",
+  },
+  {
+    href: "/guides/attractions/kawagoe-day-trip",
+    badge: "Day trip",
+    title: "Kawagoe Day Trip from Tokyo (2026): Seibu vs Tobu & Kimono",
+    desc: "Little Edo 30 minutes from Ikebukuro: Seibu and Tobu compared by time, fare and walk, a half-day kimono route, and Kita-in, the Toki no Kane bell tower and Kashiya Yokocho with official prices.",
+    group: "daytrips",
+    city: "tokyo",
+  },
+  {
     href: "/guides/attractions/nara-day-trip",
     badge: "Day trip",
     title: "Nara Day Trip from Kyoto or Osaka (2026): Time, Cost & Route",

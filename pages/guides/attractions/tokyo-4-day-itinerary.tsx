@@ -272,6 +272,7 @@ const related = [
   { href: "/guides/attractions/nikko-day-trip", title: "Nikko Day Trip From Tokyo (2026): Costs and Tour or Not" },
   { href: "/guides/attractions/kamakura-day-trip", title: "Kamakura Day Trip From Tokyo (2026): Temples and Fares" },
   { href: "/guides/attractions/hakone-day-trip-from-tokyo", title: "Hakone Day Trip From Tokyo 2026: Itinerary, Cost, Tours" },
+  { href: "/guides/attractions/kawagoe-day-trip", title: "Kawagoe Day Trip from Tokyo (2026): Seibu vs Tobu & Kimono" },
   { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas Compared" },
   { href: "/guides/money/tokyo-trip-cost", title: "Trip to Tokyo Cost (2026): Per Day, 5-Day and 7-Day Totals" },
   { href: "/guides/attractions", title: "More Things to Do in Japan →" },
@@ -581,7 +582,10 @@ export default function Tokyo4DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/kamakura-day-trip">Kamakura</Link> and{" "}
             <Link href="/guides/attractions/hakone-day-trip-from-tokyo">Hakone</Link> day-trip guides; the
             Hakone pass prices from Shinjuku and Odawara, and whether one day is enough to make it pay, are in
-            our <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass</Link> guide.
+            our <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass</Link> guide. If the
+            weather rules out Mt. Fuji, the{" "}
+            <Link href="/guides/attractions/kawagoe-day-trip">Kawagoe day trip</Link> is the half-day
+            alternative: Edo-era warehouse streets and a kimono rental, under an hour from Ikebukuro.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={fujiPhotographyDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

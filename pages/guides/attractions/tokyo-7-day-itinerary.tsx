@@ -274,6 +274,8 @@ const related = [
   { href: "/guides/attractions/nikko-day-trip", title: "Nikko Day Trip From Tokyo (2026): Costs and Tour or Not" },
   { href: "/guides/attractions/kamakura-day-trip", title: "Kamakura Day Trip From Tokyo (2026): Temples and Fares" },
   { href: "/guides/attractions/kawaguchiko-day-trip-from-tokyo", title: "Kawaguchiko Day Trip From Tokyo 2026: ¥2,200 Bus or Tour" },
+  { href: "/guides/attractions/yokohama-day-trip", title: "Yokohama Day Trip from Tokyo (2026): Trains & Day Passes" },
+  { href: "/guides/attractions/kawagoe-day-trip", title: "Kawagoe Day Trip from Tokyo (2026): Seibu vs Tobu & Kimono" },
   { href: "/guides/attractions/tokyo-subway-ticket", title: "Tokyo Subway Ticket 2026: 24/48/72-Hour Price, Worth It?" },
   { href: "/guides/attractions/hakone-free-pass", title: "Hakone Freepass 2026: Price from Shinjuku & Is It Worth It?" },
   { href: "/guides/transport/tokyo-wide-pass", title: "JR Tokyo Wide Pass 2026: Price, Map & Is It Worth It?" },
@@ -555,6 +557,11 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/nikko-day-trip">Nikko day trip</Link>,{" "}
             <Link href="/guides/attractions/kamakura-day-trip">Kamakura day trip</Link> and{" "}
             <Link href="/guides/attractions/kawaguchiko-day-trip-from-tokyo">Kawaguchiko day trip</Link> guides.
+            For a shorter day with no tour needed, the{" "}
+            <Link href="/guides/attractions/yokohama-day-trip">Yokohama day trip</Link> (bay, Chinatown and the
+            Cup Noodles Museum) and the{" "}
+            <Link href="/guides/attractions/kawagoe-day-trip">Kawagoe day trip</Link> (Edo-era warehouse streets,
+            often in kimono) are both within an hour of the city by train.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={nikkoWorldHeritageDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

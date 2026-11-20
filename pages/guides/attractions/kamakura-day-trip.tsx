@@ -423,7 +423,9 @@ export default function KamakuraDayTripPage({ updated }: { updated: PageUpdated 
             your whole trip. If you would rather spend the day on a mountain than a coastline,{" "}
             <Link href="/guides/attractions/hakone-day-trip-from-tokyo">Hakone</Link> and{" "}
             <Link href="/guides/attractions/mt-fuji-day-trip-tokyo">Lake Kawaguchi</Link> are the other two
-            easy days out of Tokyo.
+            easy days out of Tokyo. Yokohama is on the same JR line, between Tokyo and Kamakura — the{" "}
+            <Link href="/guides/attractions/yokohama-day-trip">Yokohama day trip</Link> guide has its trains,
+            day passes and a half-day route if you want to stop on the way back.
           </p>
         </section>
 
@@ -477,6 +479,18 @@ export default function KamakuraDayTripPage({ updated }: { updated: PageUpdated 
               </div>
               <div className={styles.relatedMeta}>
                 <p className={styles.relatedTitle}>Tokyo 7 Day Itinerary (2026): Day Trips, Passes &amp; Bookings</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            <Link href="/guides/attractions/yokohama-day-trip" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M2 20c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5" />
+                  <path d="M5 16V8l7-4 7 4v8" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Yokohama Day Trip from Tokyo (2026): Trains &amp; Day Passes</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -10955,3 +10955,137 @@ export const japanNewYearTripPrep: KlookTripPrepItem[] = [
     why: "Shrine crowds, holiday timetables and closed shops: data from the day you land lets you check what is open before you cross the city.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Yokohama and Kawagoe day trips — added 20 Nov 2026 (task-jtk-20261120-02).
+//
+// Listings confirmed as live en-US pages through the www.klook.com search index
+// on 20 Nov 2026 (Klook answers automated reads with 403):
+//   45566   "Must See Yokohama with a Local" — private Yokohama city tour      6.5%
+//   89824   "Yokohama / Kamakura 6hr Private Trip Government-Licensed Guide"   6.5%
+//   53363   "Yokohama Chinatown Gourmet Trip Tickets" — Tokyu / Minatomirai
+//           1-day ride plus a Chinatown meal coupon                            5%
+//   182039  "Cup Noodles Museum Guided Tour in Yokohama"                       6.5%
+//   80456   "1 Day Vasara Kimono Rental in Kawagoe"                            6.5%
+//   99642   "Little Edo Kawagoe Morning Walking Tour" (join-in, half day)      6.5%
+//   124602  "Kawagoe Little Edo Customized Private Day Tour" (chartered car)  6.5%
+//   14780   "SEIBU KAWAGOE PASS" — Seibu round trip to Hon-Kawagoe            5%
+// Not used: 45607 (Yokohama food tour) and 146096 (Cup Noodles Museum ticket)
+// were indexed only under locale-less / other-locale URLs, not en-US; 100464
+// (Tobu KAWAGOE DISCOUNT PASS) likewise. No ad id: data/klook-adids.json had
+// spare 0, so these fall back to ?aid=119070. No Klook price on either page.
+// ---------------------------------------------------------------------------
+
+/** Private Yokohama city tour with a local host — the Yokohama page's main CTA. */
+export const yokohamaPrivateCityTour: KlookTour = {
+  title: "Yokohama private city tour with a local",
+  desc: "A private day in Yokohama with a local host who shapes the route around you — Minato Mirai, the bay and Chinatown",
+  url: klookLink("https://www.klook.com/en-US/activity/45566-must-see-yokohama-local/"),
+};
+
+/** Yokohama and Kamakura with a government-licensed guide, 6 hours. */
+export const yokohamaKamakuraPrivateGuide: KlookTour = {
+  title: "Yokohama / Kamakura 6-hour private trip with a licensed guide",
+  desc: "A customisable 6-hour private walking tour of Yokohama, Kamakura or both, led by a government-licensed guide",
+  url: klookLink("https://www.klook.com/en-US/activity/89824-yokohama-kamakura-customizable-one-day-private-guided-tour-walking-tour/"),
+};
+
+/** Chinatown meal coupon bundled with a 1-day Tokyu / Minatomirai Line ticket. */
+export const yokohamaChinatownGourmetTicket: KlookTour = {
+  title: "Yokohama Chinatown Gourmet Trip ticket",
+  desc: "A 1-day ride on the Tokyu and Minatomirai lines plus a meal coupon at a Chinatown restaurant; the voucher is exchanged for a ticket at Shibuya first",
+  url: klookLink("https://www.klook.com/en-US/activity/53363-yokohama-chinatown-gourmet-trip-tickets/"),
+};
+
+/** Guided visit to the Cup Noodles Museum. */
+export const cupNoodlesMuseumGuidedTour: KlookTour = {
+  title: "Cup Noodles Museum guided tour, Yokohama",
+  desc: "An English-guided visit to the CUPNOODLES MUSEUM in Minato Mirai, including making an original cup of your own",
+  url: klookLink("https://www.klook.com/en-US/activity/182039-cup-noodles-museum-guided-tour-in-yokohama/"),
+};
+
+/** VASARA one-day kimono rental in Kawagoe — the Kawagoe page's main CTA. */
+export const kawagoeKimonoVasara: KlookTour = {
+  title: "VASARA kimono rental, Kawagoe (1 day)",
+  desc: "A one-day kimono rental with dressing, hair styling and accessories included, and kids' sizes from 95 cm to 140 cm",
+  url: klookLink("https://www.klook.com/en-US/activity/80456-1-day-vasara-kimono-rental-kawagoe/"),
+};
+
+/** Join-in morning walk of Little Edo, from Hon-Kawagoe Station. */
+export const kawagoeMorningWalkingTour: KlookTour = {
+  title: "Little Edo Kawagoe morning walking tour (join-in)",
+  desc: "A half-day guided walk of the warehouse district that meets at Hon-Kawagoe Station, about 2 hours 15 minutes, in English",
+  url: klookLink("https://www.klook.com/en-US/activity/99642-trip-back-time-little-edo-kawagoe-morning-walking-tour-join-half-day-walking-tour/"),
+};
+
+/** Chartered-car day to Kawagoe from a Tokyo hotel. */
+export const kawagoePrivateCarTour: KlookTour = {
+  title: "Kawagoe Little Edo private day tour by chartered car",
+  desc: "About 10 hours by private car from a hotel in Tokyo's 23 wards, with Hikawa Shrine and the old town on a route you set",
+  url: klookLink("https://www.klook.com/en-US/activity/124602-kawagoe-one-day-tour-by-chartered-car-departure-from-tokyo/"),
+};
+
+/** Seibu's round-trip ticket for overseas visitors: Seibu-Shinjuku / Ikebukuro ⇔ Hon-Kawagoe. */
+export const seibuKawagoePass: KlookTour = {
+  title: "SEIBU KAWAGOE PASS",
+  desc: "One round trip on the Seibu line between Seibu-Shinjuku, Takadanobaba or Ikebukuro and Hon-Kawagoe, for non-Japanese passport holders; Limited Express seats cost extra",
+  url: klookLink("https://www.klook.com/en-US/activity/14780-seibu-kawagoe-rail-pass-ikebukuro-tokyo/"),
+};
+
+/** "Book these on the same visit" for Yokohama: 6.5% tours and hotel, 5% ticket, 20% eSIM. */
+export const yokohamaDayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: yokohamaPrivateCityTour.title,
+    ctaLabel: "Check the Yokohama tour →",
+    url: yokohamaPrivateCityTour.url,
+    why: "A host who plans the day around you: the one booking that turns a loose half day into a route, and it is booked by date.",
+  },
+  {
+    label: yokohamaChinatownGourmetTicket.title,
+    ctaLabel: "Check the Chinatown ticket →",
+    url: yokohamaChinatownGourmetTicket.url,
+    why: "From Shibuya: the train there and back on the Tokyu and Minatomirai lines and a Chinatown meal on one voucher.",
+  },
+  {
+    label: "Hotels around Shinjuku",
+    ctaLabel: "Check Shinjuku hotels on Klook →",
+    url: tokyoStayAreas[0].url,
+    why: "Yokohama is a day trip, so the bed stays in Tokyo: Shinjuku has the direct JR Shonan-Shinjuku Line to Yokohama.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Minato Mirai, the bay and Chinatown are walked between, not ridden: data keeps the map and the train times open all day.",
+  },
+];
+
+/** "Book these on the same visit" for Kawagoe: 6.5% kimono, tour and hotel, 5% rail, 20% eSIM. */
+export const kawagoeDayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: kawagoeKimonoVasara.title,
+    ctaLabel: "Check the Kawagoe kimono rental →",
+    url: kawagoeKimonoVasara.url,
+    why: "A dressing slot is an appointment: book the time first, then the train that gets you there for it.",
+  },
+  {
+    label: seibuKawagoePass.title,
+    ctaLabel: "Check the Seibu Kawagoe Pass →",
+    url: seibuKawagoePass.url,
+    why: "From Shinjuku or Ikebukuro: the Seibu round trip to Hon-Kawagoe, 15 minutes on foot from the Toki no Kane bell tower.",
+  },
+  {
+    label: kawagoeMorningWalkingTour.title,
+    ctaLabel: "Check the Kawagoe walking tour →",
+    url: kawagoeMorningWalkingTour.url,
+    why: "A guide for the morning, before the crowds: it meets at Hon-Kawagoe Station, so it pairs with the Seibu ticket.",
+  },
+  {
+    label: "Hotels around Shinjuku",
+    ctaLabel: "Check Shinjuku hotels on Klook →",
+    url: tokyoStayAreas[0].url,
+    why: "Kawagoe is a half day out of Tokyo, and Seibu-Shinjuku is where the Seibu line to Hon-Kawagoe starts.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The warehouse street, the bell tower and Kita-in are a walk apart: data keeps the map open and the return train time in hand.",
+  },
+];

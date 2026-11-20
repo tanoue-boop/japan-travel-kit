@@ -609,6 +609,18 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
+            {/* Added 20 Nov 2026: Kawagoe, the Edo-era town an hour from Tokyo where kimono rental is the plan. */}
+            <Link href="/guides/attractions/kawagoe-day-trip" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M8 3l4 4 4-4 4 4-3 3v11H7V10L4 7z" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Kawagoe Day Trip from Tokyo (2026): Seibu vs Tobu &amp; Kimono</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             <Link href="/guides/attractions/kyoto-kimono-rental" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
