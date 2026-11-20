@@ -576,7 +576,7 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
           <h2 className={styles.sectionTitle}>도쿄 스카이트리, 시부야 스카이, 도쿄 타워 중 어느 티켓을 살까요?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             높이를 원한다면 스카이트리로, 350m 전망대가 ¥1,800부터입니다. 스크램블 교차로가 내려다보이는 야외 전망대에서 일몰을 보고 싶다면{" "}
-            <Link href="/ko/guides/attractions/shibuya-sky-tickets">시부야 스카이 티켓</Link>이 더 나은 선택이고,
+            시부야 스카이가 더 나은 선택이고(<Link href="/ko/guides/attractions/shibuya-sky-tickets">시부야 스카이 예약</Link>은 입장 2주 전 0시에 열리며 일몰 시간대가 먼저 매진됩니다),
             가장 저렴한 유료 전망대와 가장 늦은 시간까지 입장하고 싶다면{" "}
             <Link href="/guides/attractions/tokyo-tower-tickets">도쿄 타워 티켓(영어)</Link>이 ¥1,500부터입니다.
             배를 타고 스카이트리를 감상하고 싶다면{" "}
@@ -690,7 +690,7 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
             { href: "/guides/attractions/asakusa-kimono-rental", title: "아사쿠사 기모노 대여(2026): 반납 시간, 헤어 세트, 촬영 장소(영어)" },
             { href: "/guides/attractions/tokyo-3-day-itinerary", title: "도쿄 3일 일정(2026): 무엇을 어떤 순서로 예약해야 할까(영어)" },
             { href: "/guides/attractions/tokyo-tower-tickets", title: "도쿄 타워 티켓(2026): 요금, 메인 데크 vs 톱 데크, 예약 방법(영어)" },
-            { href: "/ko/guides/attractions/shibuya-sky-tickets", title: "시부야 스카이 티켓 예약 2026: 가격·예약 오픈·일몰 시간" },
+            { href: "/ko/guides/attractions/shibuya-sky-tickets", title: "시부야 스카이 예약 2026: 티켓 가격·오픈 시간·선셋 팁" },
             { href: "/guides/attractions/tokyo-subway-ticket", title: "도쿄 서브웨이 티켓(2026): 24/48/72시간, 살 만한가(영어)" },
             { href: "/guides/attractions/warner-bros-studio-tour-tokyo-tickets", title: "워너 브라더스 스튜디오 투어 도쿄 티켓(2026): 요금과 예약 방법(영어)" },
             { href: "/guides/attractions/mt-fuji-day-tour-from-tokyo", title: "도쿄 출발 후지산 1일 투어(2026): 어떤 투어로, 실제로 무엇을 보나(영어)" },

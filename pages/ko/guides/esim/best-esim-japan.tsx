@@ -1001,6 +1001,10 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
             <Link href="/ko/guides/attractions/teamlab-tokyo-tickets" className={tools.inlineLink}>
               팀랩 플래닛·보더리스
             </Link>
+            , 20분 단위 입장 시간이 적힌 전자 티켓을 보여 주는{" "}
+            <Link href="/ko/guides/attractions/shibuya-sky-tickets" className={tools.inlineLink}>
+              시부야 스카이 예약
+            </Link>
             처럼 미리 예약해 두는 날이 그렇습니다. 이 페이지에서 가장 싼 일본 요금제는 Simbye의{" "}
             {planLabel(cheapestPlan("simbye"))}로, 대부분의 통신사가 받는 로밍 하루 요금보다 쌉니다.
           </p>

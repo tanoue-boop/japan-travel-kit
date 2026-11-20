@@ -818,9 +818,9 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             카드 지원과 앱에 연동되는 QR, 이 조합 덕분에 해외 방문객의 표준적인 해결책이 되었습니다. 도쿄의
             다른 일정과 함께 계획하고 있다면, 저희{" "}
             <Link href="/ko/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
-              시부야 스카이 티켓 가이드
+              시부야 스카이 예약
             </Link>
-            에서 판매처를 통하는 편이 더 쉬운 또 하나의 날짜 지정 예약을 다룹니다.
+            {" "}가이드에서 판매처를 통하는 편이 더 쉬운 또 하나의 날짜 지정 예약을 다룹니다.
           </p>
         </section>
 
@@ -854,7 +854,7 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             { href: "/guides/attractions/sanrio-puroland-tickets", title: "산리오 퓨로랜드 티켓(2026): 가격, 변동 가격제, 예약 방법(영어)" },
             { href: "/guides/attractions/fuji-q-highland-tickets", title: "후지큐 하이랜드 티켓(2026): 프리패스 가격, Q 팩, 가는 방법(영어)" },
             { href: "/guides/attractions/warner-bros-studio-tour-tokyo-tickets", title: "워너 브라더스 스튜디오 투어 도쿄 티켓(2026): 가격과 예약 방법(영어)" },
-            { href: "/ko/guides/attractions/shibuya-sky-tickets", title: "시부야 스카이 티켓 예약 2026: 가격·예약 오픈·일몰 시간" },
+            { href: "/ko/guides/attractions/shibuya-sky-tickets", title: "시부야 스카이 예약 2026: 티켓 가격·오픈 시간·선셋 팁" },
             { href: "/ko/guides/attractions/teamlab-planets-tickets", title: "팀랩 플래닛 예약 2026: 티켓 가격, 운영 시간, 가는 법" },
             { href: "/guides/transport/tokyo-transportation", title: "도쿄 교통 가이드(2026): 전철, 지하철, 교통카드 정리(영어)" },
             { href: "/guides/attractions", title: "일본에서 할 것 더 보기(영어) →" },

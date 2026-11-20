@@ -257,7 +257,11 @@ export default function KoTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           <p className={styles.bodyText}>
             도요스의 팀랩 플래닛은 성인 {P_ADULT}의 시간 지정 티켓만 팔고 현장 판매는 없으므로, 날짜와 입장 시간을 온라인에서
             고르는 것이 곧 예약입니다. 날짜별 가격, 프리미엄 패스, 물에 들어갈 때의 복장, 신토요스역·도요스역에서 가는 길은
-            플래닛 가이드에 정리했습니다.
+            플래닛 가이드에 정리했습니다. 같은 도쿄 일정에 일몰 전망대를 넣는다면{" "}
+            <Link href="/ko/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
+              시부야 스카이 예약
+            </Link>
+            도 입장 2주 전 0시에 열리는 시간 지정권이라 팀랩과 함께 미리 잡아 두는 편이 좋습니다.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <Link href="/ko/guides/attractions/teamlab-planets-tickets" className={styles.verdictBtn}>
@@ -310,7 +314,7 @@ export default function KoTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           items={[
             { href: "/ko/guides/attractions/teamlab-planets-tickets", title: "팀랩 플래닛 예약 2026: 티켓 가격, 운영 시간, 가는 법" },
             { href: "/ko/guides/attractions/teamlab-borderless-tickets", title: "팀랩 보더리스 티켓(2026): 가격, 지정 시간 입장, 구매 경로" },
-            { href: "/ko/guides/attractions/shibuya-sky-tickets", title: "시부야 스카이 티켓 예약 2026: 가격·예약 오픈·일몰 시간" },
+            { href: "/ko/guides/attractions/shibuya-sky-tickets", title: "시부야 스카이 예약 2026: 티켓 가격·오픈 시간·선셋 팁" },
             { href: "/ko/guides/attractions/tokyo-skytree-tickets", title: "도쿄 스카이트리 티켓(2026): 요금과 플로어 350·450 선택" },
             { href: "/ko/guides/attractions/tokyo-disney-tickets", title: "도쿄 디즈니랜드 티켓(2026): 날짜 지정 예매와 랜드·씨 선택" },
             { href: "/guides/attractions/teamlab-kyoto-tickets", title: "teamLab Kyoto 티켓: 가격, 운영 시간, 예약(영어)" },
