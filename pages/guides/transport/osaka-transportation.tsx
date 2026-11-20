@@ -366,7 +366,10 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
             it also unlocks discounts at around 30 Osaka attractions. The tourist-oriented Osaka Metro Pass
             is sold in 1-day and 2-day versions, with the 2-day pass the version most travellers buy. To
             choose between the passes, with a sample day priced ride by ride, see our{" "}
-            <Link href="/guides/transport/osaka-metro-pass">Osaka Metro pass</Link> guide.
+            <Link href="/guides/transport/osaka-metro-pass">Osaka Metro pass</Link> guide. One of the
+            Amazing Pass&apos;s free admissions is a five-minute walk from Namba Station: the{" "}
+            <Link href="/guides/attractions/dotonbori-river-cruise">Dotonbori river cruise (Tombori River Cruise)</Link>,
+            which leaves Tazaemonbashi Pier every 30 minutes.
           </p>
 
           <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>

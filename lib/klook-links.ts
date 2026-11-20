@@ -5719,6 +5719,17 @@ export const asakusaSensojiWalkingTour: KlookTour = {
   url: klookLink("https://www.klook.com/en-US/activity/128022-tokyo-city-asakusa-sensoji-walking-tour-with-local-guide/"),
 };
 
+/**
+ * Asakusa culture and food walk with a wagyu beef meal (6.5%). en-US listing confirmed in
+ * the www.klook.com search index on 20 Nov 2026 (task-jtk-20261120-C01) for tokyo-food-tour's
+ * Asakusa row. No price, for the usual reason.
+ */
+export const asakusaCultureFoodWagyuTour: KlookTour = {
+  title: "Asakusa culture & food tour with a wagyu beef meal",
+  desc: "A guided Asakusa walk built around local food and a wagyu beef meal, as the listing describes it",
+  url: klookLink("https://www.klook.com/en-US/activity/123234-tokyo-city-asakusa-culture-food-tour-with-wagyu-beef-meal/"),
+};
+
 /** One small card: the item plus a short tag naming what kind of booking it is. */
 export type KlookSameDayCard = KlookTripPrepItem & { kind: string };
 

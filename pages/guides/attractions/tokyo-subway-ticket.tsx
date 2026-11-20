@@ -684,7 +684,9 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
             bundles that add it: the Keisei Skyliner &amp; Tokyo Subway Ticket and the Limousine &amp; Subway Pass
             from Narita, and the Limousine &amp; Subway Pass from Haneda. The{" "}
             <Link href="/guides/transport/tokyo-airport-limousine-bus">Airport Limousine Bus Tokyo guide</Link> has the
-            bus half of that bundle — fares and timetable times by route — and the{" "}
+            bus half of that bundle — fares and timetable times by route — our{" "}
+            <Link href="/guides/transport/skyliner-vs-nex">Skyliner vs N&apos;EX comparison</Link> settles which
+            airport train suits your hotel&apos;s station, and the{" "}
             <Link href="/guides/transport/tokyo-airport-transfer">Tokyo airport transfer guide</Link> compares the routes
             into town.
           </p>

@@ -789,6 +789,10 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
             <Link href="/guides/money/best-travel-card-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               the best travel card for Japan
             </Link>
+            ; for the cash to top a card up at a machine, see{" "}
+            <Link href="/guides/money/atms-in-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              which ATMs in Japan accept foreign cards
+            </Link>
             .
           </p>
         </section>

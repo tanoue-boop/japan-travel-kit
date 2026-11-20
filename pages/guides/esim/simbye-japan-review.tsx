@@ -287,7 +287,10 @@ export default function SimbyeJapanReviewPage({ updated }: { updated: PageUpdate
               {ENTRY?.name} and {priceLabel(TEN_GB)} for {TEN_GB?.name}, with tethering allowed. Its feed
               lists {NETWORK}. Unlimited starts at {unlimitedFromLabel("simbye", 7)} but is capped at 2 GB
               a day of full speed. It is data only, with no Japanese number, calls or SMS. Prices checked{" "}
-              {pricesCheckedAt}; terms read on simbye.com on {SIMBYE_SPECS_CHECKED_AT}.
+              {pricesCheckedAt}; terms read on simbye.com on {SIMBYE_SPECS_CHECKED_AT}. Working from a
+              tethered laptop? Our{" "}
+              <Link href="/guides/esim/japan-esim-business">eSIM for a business trip to Japan</Link> guide
+              sizes the plan for a working week.
             </p>
             <div className={styles.verdictGrid}>
               <div className={styles.verdictStat}>

@@ -1004,7 +1004,11 @@ export default function TaxFreeShoppingJapanPage({ updated }: { updated: PageUpd
             {WISE_VERIFIED.checkedAt}). For the cash the smaller shops still want, the free ATM allowance
             depends on the country where your account is registered — Wise&apos;s UK card page gives free
             withdrawals up to {WISE_VERIFIED.freeAtmUk}, and {WISE_VERIFIED.overAtmFeeUk} above that allowance
-            (checked {WISE_VERIFIED.checkedAt}).
+            (checked {WISE_VERIFIED.checkedAt}). The machine&apos;s own fee is separate — our{" "}
+            <Link href="/guides/money/atms-in-japan" style={{ color: "var(--text)", fontWeight: 600 }}>
+              ATMs in Japan guide
+            </Link>{" "}
+            lists which networks take foreign cards and what each charges.
           </p>
           <p className={styles.bodyText}>
             One habit matters whichever card you bring: when a terminal offers to charge you in your home

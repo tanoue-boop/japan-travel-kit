@@ -962,7 +962,9 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
             (osaka-amazing-pass.com, read on {CHECKED}), and it is the single most expensive thing the
             pass leaves out. The pass (¥3,500 for 1 day, ¥5,000 for 2 days) bundles unlimited Osaka Metro
             and city bus travel with free entry to about 40 facilities, including Osaka Castle, the Umeda
-            Sky Building observatory and the river cruises — and, right next to the aquarium, the
+            Sky Building observatory and the river cruises (among them the{" "}
+            <Link href="/guides/attractions/dotonbori-river-cruise">Dotonbori river cruise</Link>, ¥2,000
+            without the pass) — and, right next to the aquarium, the
             Tempozan Giant Ferris Wheel, the Santa Maria day cruise and the Captain Line. Universal
             Studios Japan is not on it either. Our{" "}
             <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass guide</Link>{" "}

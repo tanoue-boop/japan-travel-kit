@@ -39,9 +39,11 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 // list and suito-osaka.jp, read 1 November 2026); nothing was added for this edition.
 
 const ROUTE = "/zh-tw/guides/attractions/dotonbori-river-cruise";
-const TITLE = "道頓堀遊船 2026：¥2,000、20 分鐘、班次與搭船處";
+// 20 Nov 2026 (task-jtk-20261120-C01): official name とんぼりリバークルーズ moved into the title;
+// fares, times and pier re-read on osaka-info.jp/en/spot/tombori-river-cruise/ the same day.
+const TITLE = "道頓堀遊船（とんぼりリバークルーズ）2026：票價、時刻與碼頭";
 const DESC =
-  "道頓堀遊船票價與時間：とんぼり遊船成人 ¥2,000、約 20 分鐘，11:00–21:00 每半小時一班，大阪周遊卡免費。比較各船後預訂。";
+  "道頓堀遊船（とんぼりリバークルーズ）票價：成人 ¥2,000、約 20 分鐘，11:00–21:00 每 30 分鐘一班，從太左衛門橋碼頭出發，大阪周遊卡免費。";
 
 const L = "zh-tw" as const;
 const CHECKED = dateLabel("2026-11-01", L);
@@ -305,6 +307,20 @@ export default function ZhDotonboriRiverCruisePage({ updated }: { updated: PageU
       <div className={styles.content}>
         <Disclosure />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>道頓堀遊船（とんぼりリバークルーズ）</strong>成人 <strong>¥2,000</strong>、學生{" "}
+            <strong>¥1,000</strong>、兒童 <strong>¥500</strong>，航程<strong>約 20 分鐘</strong>。從
+            <strong>太左衛門橋碼頭</strong>出發，<strong>11:00–21:00 每 30 分鐘一班</strong>；持大阪周遊卡換成指定時間的船票後
+            <strong>免費</strong>。數據來自大阪官方觀光網站，最後查核 2026-11-20。
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginBottom: "0.5rem" }}>
+            <KlookLink href={K.pass} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+              含遊船的大阪周遊卡 →
+            </KlookLink>
+          </div>
+        </section>
+
         {/* Quick Answer */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -467,9 +483,9 @@ export default function ZhDotonboriRiverCruisePage({ updated }: { updated: PageU
             只有幾百公尺的霓虹店面，再長一點也只是再繞一圈。
           </p>
 
-          <h3 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
-            道頓堀遊船在哪裡搭？
-          </h3>
+          <h2 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            太左衛門橋碼頭在哪裡？
+          </h2>
           <p className={styles.bodyText}>
             在<strong>太左衛門橋碼頭</strong>，位於道頓堀川<strong>北岸</strong>的とんぼりリバーウォーク
             步道上，大約在戎橋東邊一分鐘。找路時，先認地標會比直接找碼頭容易：接待櫃台在

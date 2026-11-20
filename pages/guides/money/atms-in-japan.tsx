@@ -32,10 +32,26 @@ const CHECKED = "26 October 2026";
  * (¥100,000, ¥30,000 magnetic stripe); jp-bank.japanpost.jp/en/ias/en_ias_index.html (brands, ¥220,
  * ¥50,000, hours). All unchanged. E-net, Lawson Bank and AEON Bank keep the 26 Oct date.
  */
-const RECHECKED = "13 November 2026";
-const RECHECKED_ISO = "2026-11-13";
+/**
+ * 20 Nov 2026 re-read (task jtk-20261120-C01): sevenbank.co.jp/intlcard/card.html (brand hours;
+ * "海外発行カードでの１回の引出限度額は10万円です。ただし、磁気ストライプでのお取引きは3万円です";
+ * "海外発行カードのブランドにより手数料が異なります" — still no amount), /intlcard/service.html (same
+ * limits); jp-bank.japanpost.jp/en/ias/en_ias_index.html ("an ATM usage fee (\220 (tax included) per
+ * use) may apply", 50,000 yen, hours, brands). All unchanged.
+ * AEON Bank's English ATM pages answered this time (www.aeonbank.co.jp/atm/en/page02/ and page04/):
+ * brands UnionPay, Mastercard, Maestro, Cirrus, Visa, PLUS, JCB, Discover; "The limit for each
+ * withdrawal is 50,000 yen"; 24 hours on every brand in its table, while its FAQ says hours vary with
+ * the location; UnionPay "ATM fee of JPY 75 (tax included) per withdrawal"; and a fee notice: "From
+ * December 16, 2026, when using a Visa, Mastercard, or UnionPay card issued outside of Japan at an AEON
+ * Bank ATM, a fee of 880 yen will be charged". So the AEON row is filled in from this date.
+ * The task brief suggested "¥110–330 per withdrawal"; no operator page read gives that range, so it is
+ * not used.
+ */
+const RECHECKED = "20 November 2026";
+const RECHECKED_ISO = "2026-11-20";
 const SEVEN_BANK_URL = "https://www.sevenbank.co.jp/intlcard/";
 const JP_BANK_URL = "https://www.jp-bank.japanpost.jp/en/ias/en_ias_index.html";
+const AEON_URL = "https://www.aeonbank.co.jp/atm/en/page02/";
 
 /** Requirement (c): one row per ATM network, every cell from the operator's own page. */
 const atmNetworks = [
@@ -53,7 +69,7 @@ const atmNetworks = [
     sub: "ATMs at post offices",
     where: "Post offices nationwide, plus Japan Post Bank ATMs in some convenience stores.",
     brands: "“VISA, PLUS, Mastercard, Maestro, Cirrus, JCB, China Unionpay and DISCOVER”.",
-    fee: "The only published amount of the five: “when using certain cards issued abroad, an ATM usage fee (¥220 (tax included) per use) may apply”.",
+    fee: "“When using certain cards issued abroad, an ATM usage fee (¥220 (tax included) per use) may apply”.",
     hours: "ATMs at post offices: Mon–Sat 7:00–23:00; Sundays, holidays, 1–3 January and 31 December 7:00–21:00. Its ATMs inside convenience stores: 0:05–23:55 (from 7:00 on the third Monday).",
     limit: "“Single transaction withdrawal limit is 50,000 yen”.",
   },
@@ -78,11 +94,11 @@ const atmNetworks = [
   {
     name: "AEON Bank",
     sub: "ATMs in AEON malls",
-    where: "AEON malls and supermarkets.",
-    brands: "Not confirmed on the official site — see the note under the table.",
-    fee: "Not confirmed on the official site — see the note under the table.",
-    hours: "Not confirmed on the official site — see the note under the table.",
-    limit: "Not confirmed on the official site — see the note under the table.",
+    where: "AEON malls, MINISTOP and other convenience stores, airports and major stations.",
+    brands: "UnionPay, Mastercard, Maestro, Cirrus, Visa, PLUS, JCB and Discover.",
+    fee: "UnionPay ¥75 (tax included) per withdrawal now. From 16 December 2026: ¥880 per withdrawal on Visa, Mastercard and UnionPay cards issued abroad.",
+    hours: "24 hours for every brand in its table — but AEON's FAQ says hours follow the opening hours of the site.",
+    limit: "¥50,000 per withdrawal.",
   },
 ];
 
@@ -118,16 +134,16 @@ const FAQ_SCHEMA_COUNT = 5;
 
 const faqItems = [
   {
+    q: "Which ATMs in Japan accept foreign cards?",
+    a: `Seven Bank (in 7-Eleven), Japan Post Bank (Yucho, at post offices), AEON Bank, E-net (in FamilyMart) and part of Lawson Bank's estate — the convenience-store and post-office networks, not the branch ATMs of the big commercial banks. Seven Bank takes the longest list: Visa, PLUS, Mastercard, Maestro, Cirrus, UnionPay, American Express, JCB, Discover and Diners Club. Japan Post Bank and AEON Bank both take Visa, PLUS, Mastercard, Maestro, Cirrus, JCB, UnionPay and Discover. Seven Bank, Japan Post Bank and AEON Bank checked on their own sites on ${RECHECKED}; E-net and Lawson Bank on ${CHECKED}.`,
+  },
+  {
+    q: "How much are ATM fees in Japan?",
+    a: `It depends on the network, and three of the five publish an amount. Japan Post Bank: “an ATM usage fee (¥220 (tax included) per use) may apply” to certain cards issued abroad. AEON Bank: ¥75 per withdrawal on UnionPay now, and from 16 December 2026 ¥880 per withdrawal on Visa, Mastercard and UnionPay cards issued abroad. Seven Bank states only that the fee differs by card brand, and E-net that the handling bank sets it — neither prints a figure. Your own card issuer's fee comes on top, and the machine shows its own fee on screen before you confirm. Checked ${RECHECKED}.`,
+  },
+  {
     q: "Do 7-Eleven ATMs in Japan accept foreign cards?",
     a: `Yes. The ATMs in 7-Eleven stores are Seven Bank machines, and Seven Bank lists Visa, PLUS, Mastercard, Maestro, Cirrus, UnionPay, American Express, JCB, Discover and Diners Club for cards issued abroad, noting that some cards with those marks may still not work. The limit is ¥100,000 per withdrawal, or ¥30,000 if the magnetic stripe is read, and Visa and Mastercard cards can be used 00:00–24:00. Seven Bank publishes no fee amount — it states only that the fee differs by card brand — so the figure on screen before you confirm is the one to read. Checked on sevenbank.co.jp on ${RECHECKED}.`,
-  },
-  {
-    q: "Which ATMs in Japan accept foreign cards?",
-    a: `Five networks, all of them outside the big commercial banks: Seven Bank in 7-Eleven stores (Visa, PLUS, Mastercard, Maestro, Cirrus, UnionPay, American Express, JCB, DISCOVER and Diners Club), Japan Post Bank at post offices (“VISA, PLUS, Mastercard, Maestro, Cirrus, JCB, China Unionpay and DISCOVER”), E-net in FamilyMart and Don Quijote (Visa, Mastercard, UnionPay and JCB), part of the Lawson Bank estate (Visa, Mastercard, JCB and UnionPay), and AEON Bank in its malls. Brand lists read off each operator's own pages on ${CHECKED}; AEON Bank's figures are not confirmed on its own site, so no figure for it is quoted here.`,
-  },
-  {
-    q: "What are the ATM fees in Japan for foreign cards?",
-    a: `Only one of the five operators publishes an amount. Japan Post Bank states that “when using certain cards issued abroad, an ATM usage fee (¥220 (tax included) per use) may apply”. Seven Bank says only that the fee differs by the brand of the overseas card, and E-net that it is set by the handling bank, with the card issuer possibly adding its own — neither prints a figure. Whatever the machine charges is separate from what your own bank charges, and the machine shows it on screen before you confirm. Checked ${CHECKED}.`,
   },
   {
     q: "Are ATMs in Japan open 24 hours?",
@@ -135,7 +151,7 @@ const faqItems = [
   },
   {
     q: "How much cash can I withdraw from a Japanese ATM in one go?",
-    a: `Seven Bank allows ¥100,000 per withdrawal and E-net ¥100,000 by IC chip; Japan Post Bank and Lawson Bank each cap a single transaction at ¥50,000. Your own bank's daily limit applies on top of the machine's, and it is the one the ATM cannot tell you about — check it before you travel. Limits read off the operators' own pages on ${CHECKED}.`,
+    a: `Seven Bank allows ¥100,000 per withdrawal and E-net ¥100,000 by IC chip; Japan Post Bank, AEON Bank and Lawson Bank each cap a single transaction at ¥50,000. Your own bank's daily limit applies on top of the machine's, and it is the one the ATM cannot tell you about — check it before you travel. Limits read off the operators' own pages on ${CHECKED}.`,
   },
   {
     q: "Why was my withdrawal capped at ¥30,000 or ¥40,000?",
@@ -159,14 +175,15 @@ const tips = [
   "Withdraw in large amounts and rarely, not small amounts and often: the machine's fee is charged per withdrawal, so four withdrawals of ¥25,000 cost four fees and one of ¥100,000 costs one.",
   "Seven Bank puts ATMs in airports as well as stores, so the arrival-day withdrawal does not have to wait for the first convenience store in town.",
   "Keep the receipt if you want the record — the fee itself is shown on the ATM screen before you confirm, which for Seven Bank and E-net is the only place an amount is stated at all.",
+  "If you will use an AEON Bank ATM after 16 December 2026, note its new ¥880 fee on Visa, Mastercard and UnionPay cards issued abroad — a 7-Eleven or post office may be cheaper for the same withdrawal.",
   "Coverage thins out away from the cities. Convenience-store density is what makes these five networks usable, and it drops in mountain towns and on smaller islands — take the cash out before you leave an urban centre.",
 ];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/atms-in-japan") } });
 
-const TITLE = "ATMs in Japan (2026): 7-Eleven, Fees & Foreign Cards";
+const TITLE = "ATMs in Japan 2026: Which Accept Foreign Cards & Fees";
 const DESCRIPTION =
-  "ATMs in Japan for foreign cards: 7-Eleven allows ¥100,000 a withdrawal, Japan Post Bank ¥50,000 with a ¥220 fee. Compare all 5, then get a Wise card.";
+  "ATMs in Japan for foreign cards: 7-Eleven ¥100,000 a withdrawal, Japan Post ¥50,000 + ¥220 fee, AEON ¥880 from 16 Dec 2026. Compare all 5, then get Wise.";
 
 export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -203,7 +220,8 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/money/atms-in-japan",
-              headline: "ATMs in Japan (2026): 7-Eleven, Fees & Which Accept Foreign Cards",
+              headline: TITLE,
+              description: DESCRIPTION,
               updated,
             }),
           }}
@@ -251,12 +269,11 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            ATMs in Japan (2026): <br />7-Eleven, Fees &amp; Which Accept Foreign Cards
+            ATMs in Japan 2026: <br />Which Accept Foreign Cards, Fees &amp; Limits
           </h1>
           <p className={styles.heroSubtitle}>
-            Five ATM networks take a card issued abroad, and only one of them publishes what it
-            charges for the privilege. Brands, fees, hours and limits, from each operator&apos;s
-            own pages, checked {CHECKED}.
+            Five ATM networks take a card issued abroad, and only some of them publish what they
+            charge. Brands, fees, hours and limits, from each operator&apos;s own pages.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "5 Networks Compared", `Figures checked ${CHECKED}`].map((t) => (
@@ -273,18 +290,15 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             <strong>
-              Seven Bank ATMs in 7-Eleven take Visa, PLUS, Mastercard, Maestro, Cirrus, UnionPay, American
-              Express, JCB, Discover and Diners Club cards issued abroad, allow ¥100,000 per withdrawal
-              (¥30,000 on a magnetic-stripe read) and run 00:00–24:00 for Visa and Mastercard; Seven Bank
-              publishes no fee amount, only that it differs by card brand.
+              Seven Bank (7-Eleven), Japan Post Bank (Yucho) and AEON Bank ATMs all accept Visa and Mastercard
+              cards issued abroad.
             </strong>{" "}
-            Japan Post Bank (Yucho) ATMs take Visa, PLUS, Mastercard, Maestro, Cirrus, JCB, UnionPay and
-            Discover, cap a withdrawal at ¥50,000 and state that &ldquo;an ATM usage fee (¥220 (tax included)
-            per use) may apply&rdquo; to certain cards issued abroad, with post-office machines open Mon–Sat
-            7:00–23:00. E-net (FamilyMart), Lawson Bank and AEON Bank also take foreign cards, and whatever
-            the machine charges is separate from your own bank&apos;s fee — Seven Bank and Japan Post Bank
-            figures checked on their own sites on {RECHECKED}, the rest on {CHECKED}. Where an ATM fits next to the
-            card and the cash float is set out in our{" "}
+            Seven Bank allows <strong>¥100,000</strong> per withdrawal and publishes no fee amount; Japan Post
+            Bank caps a withdrawal at <strong>¥50,000</strong> and says a <strong>¥220</strong> fee may apply;
+            AEON Bank caps it at <strong>¥50,000</strong> and charges <strong>¥880</strong> per withdrawal on
+            Visa, Mastercard and UnionPay from 16 December 2026. Your own bank&apos;s fee comes on top — all
+            three checked on the operators&apos; own sites on {RECHECKED}, with E-net (FamilyMart) and Lawson
+            Bank on {CHECKED}. Where an ATM fits next to the card and the cash float is set out in our{" "}
             <Link href="/guides/money" style={{ color: "var(--text)", fontWeight: 600 }}>money in Japan</Link> guide.
           </p>
         </section>
@@ -305,15 +319,15 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
                 <p className={styles.verdictStatValue}>E-net</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Only Published Fee</p>
-                <p className={styles.verdictStatValue}>¥220 (Japan Post)</p>
+                <p className={styles.verdictStatLabel}>Published Fees</p>
+                <p className={styles.verdictStatValue}>¥220 Japan Post; ¥880 AEON from 16 Dec</p>
               </div>
             </div>
             <p className={styles.verdictText}>
               <strong>Reach for a 7-Eleven first.</strong> Seven Bank takes the longest list of overseas
-              brands, allows ¥100,000 per withdrawal against ¥50,000 at Japan Post Bank and Lawson Bank,
-              and runs around the clock on Visa and Mastercard. The fee is shown on screen before you
-              confirm — on three of the five networks that is the only place an amount appears at all.
+              brands, allows ¥100,000 per withdrawal against ¥50,000 at Japan Post Bank, AEON Bank and
+              Lawson Bank, and runs around the clock on Visa and Mastercard. The fee is shown on screen
+              before you confirm — for Seven Bank and E-net that is the only place an amount appears at all.
             </p>
             <a href={WISE_CARD_CTA} className={styles.verdictBtn} target="_blank" rel={WISE_REL} style={{ display: "inline-block", marginTop: "1rem" }}>
               Get a Wise card before you fly →
@@ -331,9 +345,9 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
           <span className={styles.sectionLabel}>Comparison</span>
           <h2 className={styles.sectionTitle}>Which ATMs in Japan accept foreign cards?</h2>
           <p className={styles.bodyText}>
-            Seven Bank, Japan Post Bank, E-net, part of Lawson Bank and AEON Bank — the convenience-store
-            and post-office networks, not the branch ATMs of Mizuho, MUFG or SMBC. Seven Bank takes the
-            longest brand list of the five and E-net is the only one that states a flat 24/365.
+            Seven Bank (7-Eleven), Japan Post Bank, AEON Bank, E-net and part of Lawson Bank — the
+            convenience-store and post-office networks, not the branch ATMs of Mizuho, MUFG or SMBC. Seven
+            Bank takes the longest brand list of the five and allows the most per withdrawal, ¥100,000.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -364,19 +378,20 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem" }}>
-            Last checked: {RECHECKED_ISO} (Seven Bank and Japan Post Bank rows). Official pages:{" "}
-            <a href={SEVEN_BANK_URL} target="_blank" rel="noopener" style={{ fontWeight: 600 }}>Seven Bank overseas cards</a>{" "}
+            Last checked: {RECHECKED_ISO} (Seven Bank, Japan Post Bank and AEON Bank rows). Official pages:{" "}
+            <a href={SEVEN_BANK_URL} target="_blank" rel="noopener" style={{ fontWeight: 600 }}>Seven Bank overseas cards</a>,{" "}
+            <a href={JP_BANK_URL} target="_blank" rel="noopener" style={{ fontWeight: 600 }}>Japan Post Bank international ATM service</a>{" "}
             and{" "}
-            <a href={JP_BANK_URL} target="_blank" rel="noopener" style={{ fontWeight: 600 }}>Japan Post Bank international ATM service</a>.
+            <a href={AEON_URL} target="_blank" rel="noopener" style={{ fontWeight: 600 }}>AEON Bank cards issued overseas</a>.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
             Sources, first read {CHECKED}: Seven Bank&apos;s overseas-card pages (brands and service hours,
             and its ATM-usage page for the limits), Japan Post Bank&apos;s international ATM service page,
             E-net&apos;s overseas-card page plus its own notice of the limit change, and Lawson Bank&apos;s
-            FAQ. The two gaps are deliberate: the official sources checked do not give them — neither
-            www.aeonbank.co.jp nor www.lawsonbank.jp could be checked, so Lawson Bank&apos;s brands and ¥50,000 limit come
-            from its FAQ subdomain, and its fee and hours are therefore not printed
-            here rather than borrowed from a comparison site. Fees change: the ATM screen states the
+            FAQ; AEON Bank&apos;s English ATM pages were read on {RECHECKED}. The Lawson Bank gaps are
+            deliberate: www.lawsonbank.jp could not be checked, so its brands and ¥50,000 limit come from its
+            FAQ subdomain, and its fee and hours are not printed here rather than borrowed from a comparison
+            site. Fees change: the ATM screen states the
             charge before you confirm the withdrawal.
           </p>
         </section>
@@ -392,13 +407,55 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
         {/* Q2 */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Fees</span>
-          <h2 className={styles.sectionTitle}>How much do ATMs in Japan charge foreign cards?</h2>
+          <h2 className={styles.sectionTitle}>How much are ATM fees in Japan?</h2>
           <p className={styles.bodyText}>
-            One published figure exists across the five networks: Japan Post Bank&apos;s &ldquo;an ATM usage
-            fee (¥220 (tax included) per use) may apply&rdquo; when using certain cards issued abroad. Seven
-            Bank states only that the fee differs by the brand of the overseas card, and E-net that it is set
-            by the handling bank with the issuer possibly adding its own — neither prints an amount, which is
-            why none appears here.
+            <strong>¥220 at Japan Post Bank (&ldquo;may apply&rdquo;), and ¥880 at AEON Bank on Visa,
+            Mastercard and UnionPay from 16 December 2026</strong> — the two amounts the operators publish.
+            AEON charges UnionPay cards ¥75 per withdrawal until then. Seven Bank states only that the fee
+            differs by the brand of the overseas card, and E-net that it is set by the handling bank with the
+            issuer possibly adding its own — neither prints an amount, which is why none appears here.
+            Checked {RECHECKED}.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["ATM network", "Machine fee per withdrawal (foreign card)", "Limit"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>Japan Post Bank</td>
+                    <td style={{ fontSize: "0.85rem" }}>¥220 (tax included) &ldquo;may apply&rdquo; on certain cards</td>
+                    <td className={styles.tdPrice}>¥50,000</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider}>AEON Bank</td>
+                    <td style={{ fontSize: "0.85rem" }}>UnionPay ¥75 now; ¥880 on Visa, Mastercard and UnionPay from 16 Dec 2026</td>
+                    <td className={styles.tdPrice}>¥50,000</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider}>Seven Bank (7-Eleven)</td>
+                    <td style={{ fontSize: "0.85rem" }}>Not published — differs by card brand; shown on screen</td>
+                    <td className={styles.tdPrice}>¥100,000 (¥30,000 stripe)</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider}>E-net (FamilyMart)</td>
+                    <td style={{ fontSize: "0.85rem" }}>Not published — set by the handling bank</td>
+                    <td className={styles.tdPrice}>¥100,000 (¥40,000 stripe)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {RECHECKED_ISO} (E-net row: {CHECKED}). Sources:{" "}
+            <a href={JP_BANK_URL} target="_blank" rel="noopener">Japan Post Bank</a>,{" "}
+            <a href={AEON_URL} target="_blank" rel="noopener">AEON Bank</a>,{" "}
+            <a href={SEVEN_BANK_URL} target="_blank" rel="noopener">Seven Bank</a>.
           </p>
           <p className={styles.bodyText}>
             There are two fees on any Japanese withdrawal and they are charged by different parties. The
@@ -446,8 +503,8 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
           <span className={styles.sectionLabel}>Limits</span>
           <h2 className={styles.sectionTitle}>How much cash can I withdraw from a Japanese ATM?</h2>
           <p className={styles.bodyText}>
-            ¥100,000 in one go at Seven Bank and at E-net on a chip read, and ¥50,000 at Japan Post Bank and
-            at Lawson Bank. Magnetic-stripe transactions are capped lower — ¥30,000 at Seven Bank, ¥40,000 at
+            ¥100,000 in one go at Seven Bank and at E-net on a chip read, and ¥50,000 at Japan Post Bank, AEON
+            Bank and Lawson Bank. Magnetic-stripe transactions are capped lower — ¥30,000 at Seven Bank, ¥40,000 at
             E-net — so a chip card that falls back to the stripe will stop short of the headline figure.
           </p>
           <p className={styles.bodyText}>
@@ -543,7 +600,7 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
           <span className={styles.sectionLabel}>Backup option</span>
           <h2 className={styles.sectionTitle}>Japan Post Bank ATMs</h2>
           <p className={styles.bodyText}>
-            Japan Post Bank is the one network that tells you the price in advance: &ldquo;when using certain
+            Japan Post Bank tells you the price in advance: &ldquo;when using certain
             cards issued abroad, an ATM usage fee (¥220 (tax included) per use) may apply&rdquo;. It accepts
             &ldquo;VISA, PLUS, Mastercard, Maestro, Cirrus, JCB, China Unionpay and DISCOVER&rdquo;, and caps a
             single withdrawal at ¥50,000 — half of Seven Bank&apos;s ceiling, so a larger amount means two

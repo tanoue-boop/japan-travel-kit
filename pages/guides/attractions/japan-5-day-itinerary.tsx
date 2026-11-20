@@ -190,8 +190,10 @@ const days: Day[] = [
         teamLab Planets, without exception. The official store sells nothing on site, the adult price moves
         by date from {PRICES.teamlabPlanets.adult.replace("from ", "")}, and parts of it are walked barefoot through water, as
         our <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets guide</Link>{" "}
-        explains. The Tsukiji walk is the optional part of the day: three hours, with 08:30 and 11:00
-        departures from Tsukiji Hongan-ji as listed.
+        explains — or swap it for{" "}
+        <Link href="/guides/attractions/teamlab-kyoto-tickets">teamLab Biovortex Kyoto</Link>, a seven-minute
+        walk from Kyoto Station, if Day 4 has a spare evening. The Tsukiji walk is the optional part of the
+        day: three hours, with 08:30 and 11:00 departures from Tsukiji Hongan-ji as listed.
       </>
     ),
     picks: [

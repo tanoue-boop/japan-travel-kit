@@ -50,7 +50,11 @@ const workWeekPlan = (id: EsimProviderId): EsimPlan | null =>
 // Retitled 13 Nov 2026 (task jtk-20261113-C01) for the "reliable esim for a business trip
 // to japan" questions. "Invoices" was proposed for the title but none of the provider pages
 // read that day publishes an invoice process, so it stays out.
-const TITLE = "Best eSIM for a Business Trip to Japan (2026): Data & Calls";
+// Retitled again 20 Nov 2026 (task jtk-20261120-C01): the two AI-mode questions that land here
+// ("can you recommend a reliable esim solution for a business trip to japan?" and "what is the top
+// international mobile plan for business travel with low roaming fees in japan?") are now H2s,
+// answered in the sentence after. Receipts/invoices stay out for the reason above.
+const TITLE = "Best eSIM for a Business Trip to Japan 2026: Reliable Plans";
 const DESCRIPTION =
   `Best eSIM for a business trip to Japan: Simbye 20 GB ${priceLabel(SIMBYE_MONTH)} or eSIM Go ${priceLabel(WORK_MONTH)}, ` +
   `both allow tethering. Japanese number: Sakura Mobile. Buy links inside.`;
@@ -66,10 +70,20 @@ const dataEstimates = [
   { activity: "Total for a working day with a laptop", perDay: "~3–4 GB" },
 ];
 
+/** The first FAQ_SCHEMA_COUNT questions (the search-query ones) go into FAQPage; the rest stay visible only. */
+const FAQ_SCHEMA_COUNT = 5;
+
+/** Answer to the second landed question, reused in the H2 section and the FAQ. */
+const ROAMING_ANSWER = `A prepaid Japan data eSIM rather than your home carrier's roaming: the price is fixed before you fly, so there is no per-megabyte bill afterwards. For a working week with a tethered laptop, eSIM Go's ${WORK_MONTH?.name} is ${priceLabel(WORK_MONTH)} for 30 days on ${getProvider("esimgo").network}, and Simbye's ${SIMBYE_MONTH?.name} is ${priceLabel(SIMBYE_MONTH)}; both Japan pages allow hotspot use. Prices checked ${pricesCheckedAt}.`;
+
 const faqItems = [
   {
-    q: "Can you recommend a reliable eSIM for a business trip to Japan?",
+    q: "Can you recommend a reliable eSIM solution for a business trip to Japan?",
     a: `Simbye's ${SIMBYE_MONTH?.name} at ${priceLabel(SIMBYE_MONTH)} is the lowest-priced plan here whose Japan page allows hotspot use for a laptop. eSIM Go is the pick on the one spec business travel turns on: tethering is stated on every one of its Japan plans at no extra cost and with no separate hotspot allowance, so a tethered laptop draws on the same pool as the phone. A working week is ${priceLabel(WORK_WEEK)} for ${WORK_WEEK?.name} and a month ${priceLabel(WORK_MONTH)} for ${WORK_MONTH?.name}. Airalo from ${priceFrom("airalo")} is the alternative if 24/7 live chat matters more than price. Prices checked ${pricesCheckedAt}; tethering clauses ${SPECS_CHECKED_AT}.`,
+  },
+  {
+    q: "What is the top international mobile plan for business travel with low roaming fees in Japan?",
+    a: ROAMING_ANSWER,
   },
   {
     q: "Can I tether a laptop to a Japan eSIM?",
@@ -121,7 +135,7 @@ export default function JapanEsimBusinessPage({ updated }: { updated: PageUpdate
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, FAQ_SCHEMA_COUNT).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -181,7 +195,7 @@ export default function JapanEsimBusinessPage({ updated }: { updated: PageUpdate
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Best eSIM for a Business Trip to Japan (2026): Data &amp; Calls
+            Best eSIM for a Business Trip to Japan 2026: Reliable Plans Compared
           </h1>
           <p className={styles.heroSubtitle}>
             Priced for a tethered laptop and a week of video calls, not a tourist&apos;s maps —
@@ -220,9 +234,10 @@ export default function JapanEsimBusinessPage({ updated }: { updated: PageUpdate
           <div className={styles.verdictBody}>
             <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
               <strong>
-                For a business trip to Japan, buy a {dataLabel(SIMBYE_MONTH)} / 30-day data eSIM that
-                allows laptop tethering: Simbye&apos;s is {priceLabel(SIMBYE_MONTH)} and eSIM Go&apos;s is{" "}
-                {priceLabel(WORK_MONTH)}, and both state hotspot use on every Japan plan.
+                For a business trip to Japan, buy a {dataLabel(SIMBYE_MONTH)} / 30-day data eSIM on a major
+                Japanese network that allows laptop tethering: Simbye&apos;s is {priceLabel(SIMBYE_MONTH)} and
+                eSIM Go&apos;s ({getProvider("esimgo").network}) is {priceLabel(WORK_MONTH)}, and both state
+                hotspot use on every Japan plan.
               </strong>{" "}
               A working day with a tethered laptop and video calls uses about 3–4 GB (a planning
               estimate), so a five-day trip needs 15–20 GB rather than a 5 GB tourist plan.{" "}
@@ -272,7 +287,26 @@ export default function JapanEsimBusinessPage({ updated }: { updated: PageUpdate
         {/* The table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Side by side</span>
-          <h2 className={styles.sectionTitle}>Which Plan Covers a Working Week?</h2>
+          <h2 className={styles.sectionTitle}>
+            Can You Recommend a Reliable eSIM Solution for a Business Trip to Japan?
+          </h2>
+          <p className={styles.bodyText}>
+            <strong>
+              Yes: eSIM Go&apos;s {WORK_MONTH?.name} at {priceLabel(WORK_MONTH)} on{" "}
+              {getProvider("esimgo").network}, or Simbye&apos;s {SIMBYE_MONTH?.name} at {priceLabel(SIMBYE_MONTH)}
+            </strong>{" "}
+            — both allow a tethered laptop on their Japan plans, which is the clause a business trip turns on.
+            Add Sakura Mobile&apos;s Voice + Data eSIM only if you need a Japanese phone number. Prices checked{" "}
+            {pricesCheckedAt}.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem", marginBottom: "1rem" }}>
+            <a href={esimLink("simbye")} className={styles.verdictBtn} target="_blank" rel="sponsored nofollow noopener">
+              Get Simbye {dataLabel(SIMBYE_MONTH)} →
+            </a>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              {klookEsim.ctaLabel}
+            </KlookLink>
+          </div>
           <p className={styles.bodyText}>
             One row per provider: the cheapest plan each sells that covers seven days with 10 GB or
             more — the size a working week needs rather than a sightseeing one. The two right-hand
@@ -294,6 +328,23 @@ export default function JapanEsimBusinessPage({ updated }: { updated: PageUpdate
             <a href={esimLink("sakura")} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
               Get Sakura Mobile — Japanese number →
             </a>
+          </div>
+        </section>
+
+        {/* The second landed AI-mode question, verbatim. */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Roaming</span>
+          <h2 className={styles.sectionTitle}>
+            What Is the Top International Mobile Plan for Business Travel with Low Roaming Fees in Japan?
+          </h2>
+          <p className={styles.bodyText}>{ROAMING_ANSWER}</p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
+            <a href={esimLink("esimgo")} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
+              eSIM Go {dataLabel(WORK_MONTH)} — {priceLabel(WORK_MONTH)} →
+            </a>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              {klookEsim.ctaLabel}
+            </KlookLink>
           </div>
         </section>
 

@@ -796,7 +796,9 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText}>
             <strong>From Narita.</strong> The Narita Express runs to Tokyo Station, Shinjuku and Shibuya
             without a transfer, which covers all three of the bases above. The Keisei Skyliner is the
-            faster option if you are staying on the Ueno and Asakusa side. The limousine bus is the one
+            faster option if you are staying on the Ueno and Asakusa side — our{" "}
+            <Link href="/guides/transport/skyliner-vs-nex">Skyliner vs N&apos;EX guide</Link> sets the two
+            fares and times side by side by station. The limousine bus is the one
             to pick with large luggage or a hotel that is not beside a station, and Klook sells it
             bundled with the subway pass, which is one booking instead of two. Journey times and the
             full route-by-route comparison are in our{" "}

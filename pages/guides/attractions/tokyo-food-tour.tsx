@@ -5,12 +5,15 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import {
+  asakusaCultureFoodWagyuTour,
   goldenGaiBarHoppingExperience,
   goldenGaiFoodTastingExperience,
   shinjukuBarHoppingNightTour,
+  shibuyaFoodCultureWalkingTour,
   shinjukuNightFoodWalkingTour,
   tokyoSubwayTicket,
   tokyoSightseeingBusTour,
+  tsukijiFoodCultureWalkingTour,
   tsukijiStreetFoodTour,
 } from "../../../lib/klook-links";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
@@ -46,14 +49,50 @@ const AREA_CHECKED_ISO = "2026-11-11";
 const GOLDEN_GAI_URL = "https://www.gotokyo.org/en/spot/62/index.html";
 const OMOIDE_URL = "https://www.gotokyo.org/en/spot/63/index.html";
 
-const TITLE = "Tokyo Food Tour 2026: Shinjuku Izakaya, Golden Gai & Tsukiji";
+/*
+ * Repositioned 20 Nov 2026 (task-jtk-20261120-C01): the evening izakaya / Golden Gai searches
+ * belong to /guides/attractions/tokyo-night-food-tour (retitled 19 Nov for them), so this page
+ * now leads with the daytime walks — Tsukiji, Shibuya, Asakusa — and how to choose, and hands
+ * the night searches over with a contextual link. Tour formats are the Klook listings' own
+ * descriptions (lib/klook-links.ts); the Asakusa listing was confirmed in the www.klook.com
+ * search index on 20 Nov 2026. No Klook price is quoted.
+ */
+const TITLE = "Tokyo Food Tours 2026: Best Tours Compared by Area & Time";
 const DESC =
-  "Tokyo food tours by area: a 3-hour Shinjuku izakaya and Golden Gai walk (20+) or a 2-hour daytime Tsukiji market tour. Compare formats and book on Klook.";
+  "Tokyo food tours compared: 2-hour daytime Tsukiji market walks, Shibuya and Asakusa food walks, and a 3-hour Shinjuku evening (20+). Pick by area on Klook.";
 
 /** Which tour to book — the first row is the default answer. */
 const compareRows = [
   {
-    option: "Shinjuku izakaya & bar hopping night (default pick)",
+    option: "Tsukiji street food walk (default pick for a first tour)",
+    url: tsukijiStreetFoodTour.url,
+    when: "Daytime, ~2 hrs, small group",
+    route: "Tsukiji Hongwanji → Tsukiji Outer Market",
+    note: "Skewers, tamagoyaki, sushi and wagyu; all ages",
+  },
+  {
+    option: "Tsukiji food & culture walk (longer)",
+    url: tsukijiFoodCultureWalkingTour.url,
+    when: "Morning, ~3 hrs, 08:30 or 11:00 start",
+    route: "Tsukiji Hongan-ji → Outer Market",
+    note: "Small English-guided group; more history between the tastings",
+  },
+  {
+    option: "Shibuya food & culture walk",
+    url: shibuyaFoodCultureWalkingTour.url,
+    when: "Half day",
+    route: "Shibuya 109, Nonbei Yokocho, Miyashita Park",
+    note: "Four dishes and two drinks included, per the listing",
+  },
+  {
+    option: "Asakusa culture & food walk with wagyu",
+    url: asakusaCultureFoodWagyuTour.url,
+    when: "Guided walk",
+    route: "Asakusa",
+    note: "Built around local food and a wagyu beef meal, per the listing",
+  },
+  {
+    option: "Shinjuku izakaya & bar hopping night (evening, 20+)",
     url: shinjukuBarHoppingNightTour.url,
     when: "Evening, ~3 hrs, join-in",
     route: "Omoide Yokocho → Kabukicho → Golden Gai, three bars",
@@ -79,13 +118,6 @@ const compareRows = [
     when: "Evening, after dinner",
     route: "Golden Gai alleys",
     note: "No meal attached — for a night that has already eaten",
-  },
-  {
-    option: "Tsukiji street food walk (daytime)",
-    url: tsukijiStreetFoodTour.url,
-    when: "Daytime, ~2 hrs, small group",
-    route: "Tsukiji Hongwanji → Tsukiji Outer Market",
-    note: "Skewers, tamagoyaki, sushi and wagyu; the all-ages option",
   },
 ];
 
@@ -157,10 +189,21 @@ const steps = [
   },
 ];
 
+/** The first FAQ_SCHEMA_COUNT questions (the search-query ones) go into FAQPage; the rest stay visible only. */
+const FAQ_SCHEMA_COUNT = 5;
+
 const faqItems = [
   {
-    q: "Which Tokyo food tour should I book: Shinjuku izakaya, Golden Gai or Tsukiji?",
-    a: "Choose by area and time of day. The best-known Shinjuku izakaya food tour is about 3 hours in the evening, starting in Omoide Yokocho's yakitori alley (2 minutes from Shinjuku Station) or Kabukicho and ending in Golden Gai, where around 280 bars sit in six narrow alleys; it includes alcohol, so it is 20+. Pick a food-led Shinjuku walk if you want more eating than drinking, and the roughly 2-hour daytime Tsukiji street-food walk if anyone in the group is under 20. Area facts from GO TOKYO, last checked 2026-11-11.",
+    q: "Which Tokyo food tour is best for first-timers?",
+    a: "A daytime Tsukiji Outer Market walk. The Tsukiji street-food tour on Klook is about 2 hours in a small group from Tsukiji Hongwanji, tasting skewers, tamagoyaki, sushi and wagyu, and it works for every age because it is not built around alcohol; a 3-hour Tsukiji food and culture walk with 08:30 and 11:00 starts adds more history. If you are staying west, the Shibuya half-day walk covers Shibuya 109, Nonbei Yokocho and Miyashita Park with four dishes and two drinks included. Save the Shinjuku izakaya evening — about 3 hours, 20 and over — for a night when you want drinks as much as food. Formats as each Klook listing describes them.",
+  },
+  {
+    q: "How much does a food tour in Tokyo cost?",
+    a: `There is no single figure, because the price follows what is included, and Klook prices change by date — open the listing for your date rather than trusting a number printed anywhere else. Compare like with like: how many tastings (the Tsukiji half-day listing states five; the Shibuya walk four dishes and two drinks), whether drinks are included, the group size and the length (about 2 hours at Tsukiji, about 3 hours on the Shinjuku evening crawl). Golden Gai bars set their own cover charges, so an evening tour that stops there can carry costs on top. Checked ${CHECKED}; Shibuya and Asakusa listings 2026-11-20.`,
+  },
+  {
+    q: "What are good alternatives to Ninja Food Tours?",
+    a: "If you are comparing food tour operators, the same areas are sold on Klook and GetYourGuide by different local guides: a roughly 2-hour daytime Tsukiji street-food walk, a 3-hour Tsukiji food and culture walk, a Shibuya half-day food walk, an Asakusa culture and food walk built around a wagyu meal, and a 3-hour Shinjuku izakaya evening for over-20s. Compare them on the number of stops, which food and drinks are included, the group size and the meeting point, then open the listing for the price on your date.",
   },
   {
     q: "Is there a Golden Gai food tour?",
@@ -171,16 +214,8 @@ const faqItems = [
     a: "Yes: the Shinjuku izakaya tours start in Omoide Yokocho, an alley of yakitori stalls serving skewers and beer. A typical evening tour gathers a small group and an English-speaking guide, then moves between several izakaya and tiny bars — often in Shinjuku's Omoide Yokocho and Golden Gai — sampling dishes like yakitori, gyoza, and fried tofu with sake or beer along the way. Tours usually last around three hours and include the food and drinks, so you taste a range of places in one night.",
   },
   {
-    q: "How much does a Tokyo food tour cost?",
-    a: `No figure is quoted here, because the honest answer is that it depends almost entirely on what is included and the listings change. What to compare instead of headline price: how many stops, how many dishes and drinks are covered versus paid on the night, the group size, and whether the guide stays with you throughout. A three-hour tour with two venues and drinks included is a different product from a walking tour that stops outside places and leaves you to order. Open a listing for the current price on your date — Klook prices change by date, so there is no fixed figure to print. Checked ${CHECKED}.`,
-  },
-  {
     q: "Is there an age limit for izakaya bar-hopping tours?",
     a: "Yes. Because izakaya and bar-hopping tours include alcoholic drinks, they're generally limited to ages 20 and over, in line with Japan's legal drinking age. If you're travelling with younger members of your group, look instead at a daytime market food tour (such as Tsukiji), which is family-friendly and lighter on alcohol.",
-  },
-  {
-    q: "What are the alternatives to Ninja Food Tours in Tokyo?",
-    a: "If you are comparing food tour operators, the same Shinjuku and Tsukiji routes are sold on Klook and GetYourGuide by different local guides: a 3-hour Shinjuku izakaya walk through Omoide Yokocho and Golden Gai, a Golden Gai food tasting built around yakitori and ramen, and a roughly 2-hour daytime Tsukiji street-food walk. Compare them on the number of stops, which food and drinks are included, the group size and the meeting point, then open the listing for the price on your date.",
   },
   {
     q: "What food will I try on a Tokyo izakaya tour?",
@@ -216,7 +251,7 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, FAQ_SCHEMA_COUNT).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -278,14 +313,14 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Tokyo Food Tour 2026: <br />Shinjuku Izakaya, Golden Gai &amp; Tsukiji Market
+            Tokyo Food Tours 2026: <br />Best Tours Compared by Area &amp; Time
           </h1>
           <p className={styles.heroSubtitle}>
-            Which tour to book by area, time of day and length — from the 3-hour Shinjuku izakaya crawl
-            through Omoide Yokocho and Golden Gai to a 2-hour daytime walk at Tsukiji.
+            Which tour to book by area, time of day and length — Tsukiji, Shibuya and Asakusa by day,
+            and the 3-hour Shinjuku izakaya evening for over-20s.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Shinjuku Nightlife", "Small-Group Tours"].map((t) => (
+            {[`Updated ${updated.label}`, "Tsukiji · Shibuya · Asakusa", "Small-Group Tours"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -304,6 +339,26 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
           </p>
         </div>
 
+        {/* Lead — the answer in the first body paragraph, with numbers. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>For a first Tokyo food tour, book a daytime Tsukiji Outer Market walk</strong>: about{" "}
+            <strong>2 hours</strong> in a small group from Tsukiji Hongwanji, tasting skewers, tamagoyaki,
+            sushi and wagyu, open to all ages. The <strong>Shibuya</strong> half-day walk adds four dishes
+            and two drinks around Nonbei Yokocho and Miyashita Park, and an <strong>Asakusa</strong> walk is
+            built around a wagyu meal; the <strong>3-hour Shinjuku izakaya evening</strong> is the 20-and-over
+            option. Formats as each Klook listing describes them, checked 2026-11-20 for Shibuya and Asakusa.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginBottom: "0.5rem" }}>
+            <KlookLink href={tsukijiStreetFoodTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Book the 2-hour Tsukiji food walk →
+            </KlookLink>
+            <KlookLink href={shibuyaFoodCultureWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Shibuya food walk →
+            </KlookLink>
+          </div>
+        </section>
+
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -313,11 +368,11 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Where</p>
-                <p className={styles.verdictStatValue}>Shinjuku alleys &amp; bars</p>
+                <p className={styles.verdictStatValue}>Tsukiji, Shibuya, Asakusa; Shinjuku at night</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Length</p>
-                <p className={styles.verdictStatValue}>~3 hrs, small group</p>
+                <p className={styles.verdictStatValue}>~2 hrs (Tsukiji) to ~3 hrs</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Language</p>
@@ -329,12 +384,13 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>A Tokyo food tour runs about 3 hours in Shinjuku</strong> (Omoide Yokocho&apos;s yakitori
-              alley, 2 minutes from Shinjuku Station, then Golden Gai&apos;s around 280 bars, ages 20+) or{" "}
-              <strong>about 2 hours in the daytime at Tsukiji Outer Market</strong>, both in small join-in
-              groups with an English-speaking guide. Choose by area: Shinjuku for izakaya, yakitori and Golden
-              Gai; Tsukiji for seafood, tamagoyaki and an all-ages group. For a late bar-hopping night rather
-              than a food tour, see the{" "}
+              <strong>A Tokyo food tour runs about 2 hours in the daytime at Tsukiji Outer Market</strong> or{" "}
+              <strong>about 3 hours in the evening in Shinjuku</strong> (Omoide Yokocho&apos;s yakitori alley,
+              2 minutes from Shinjuku Station, then Golden Gai&apos;s around 280 bars, ages 20+), both in small
+              join-in groups with an English-speaking guide. Choose by area and hour: Tsukiji for seafood,
+              tamagoyaki and an all-ages group, Shibuya or Asakusa for a daytime walk near your hotel, Shinjuku
+              for izakaya and yakitori after dark. The evening izakaya, yakitori and Golden Gai tours are
+              compared one by one in our{" "}
               <Link href="/guides/attractions/tokyo-night-food-tour" style={{ color: "var(--red)", fontWeight: 600 }}>
                 Tokyo night food tour guide
               </Link>
@@ -394,11 +450,11 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
         {/* Comparison table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Compare</span>
-          <h2 className={styles.sectionTitle}>Which Tokyo Food Tour Should You Book?</h2>
+          <h2 className={styles.sectionTitle}>Which Tokyo Food Tour Is Best for First-Timers?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            <strong>The Shinjuku izakaya night, unless you are under 20 or out in daylight.</strong> Every
-            evening option below covers the same three Shinjuku names — Omoide Yokocho, Kabukicho and Golden
-            Gai — and differs in whether food or drink leads:
+            <strong>The 2-hour daytime Tsukiji street-food walk</strong> — short, all ages, and built around
+            food rather than drinks. The daytime rows come first below; the evening Shinjuku rows, all
+            covering Omoide Yokocho, Kabukicho and Golden Gai, differ in whether food or drink leads:
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -428,7 +484,8 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            <strong>Last checked: 2026-10-27</strong> — formats as each Klook listing describes them. No tour
+            <strong>Last checked: 2026-10-27</strong> (Shibuya and Asakusa rows: 2026-11-20) — formats as each
+            Klook listing describes them. No tour
             price is quoted: Klook prices change by date and with the number of tastings included, so open a
             listing for your date. Alcohol-inclusive tours are restricted to ages 20 and over.
           </p>
@@ -439,6 +496,40 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
             <KlookLink href={tsukijiStreetFoodTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Daytime Tsukiji street food walk →
             </KlookLink>
+          </div>
+        </section>
+
+        {/* Cost and alternatives — two searches this page gets, answered without a Klook price. */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Cost</span>
+          <h2 className={styles.sectionTitle}>How Much Does a Food Tour in Tokyo Cost?</h2>
+          <p className={styles.bodyText}>
+            <strong>It follows what is included, and Klook prices change by date</strong> — so open the
+            listing for your own date rather than trusting a figure printed elsewhere. Compare like with like:
+            the number of tastings (the Shibuya walk lists four dishes and two drinks), whether drinks are
+            included, the group size, and the length — about 2 hours at Tsukiji, about 3 on the Shinjuku
+            evening. Golden Gai bars set their own cover charges, so an evening tour that stops there can carry
+            costs on top; a daytime market walk usually does not.
+          </p>
+
+          <h2 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            What Are Good Alternatives to Ninja Food Tours?
+          </h2>
+          <p className={styles.bodyText}>
+            <strong>The same areas, sold by other local guides on Klook and GetYourGuide</strong>: the 2-hour
+            Tsukiji street-food walk, the 3-hour Tsukiji food and culture walk with 08:30 and 11:00 starts, the
+            Shibuya half-day food walk, an Asakusa culture and food walk built around a wagyu meal, and the
+            3-hour Shinjuku izakaya evening for over-20s. Compare the stops, what is included, the group size
+            and the meeting point before you book.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
+            <KlookLink href={tsukijiFoodCultureWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Tsukiji food &amp; culture walk →
+            </KlookLink>
+            <KlookLink href={asakusaCultureFoodWagyuTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Asakusa food walk with wagyu →
+            </KlookLink>
+            <GygCompareButton slug="tokyo-food-tour" listing={gygTokyoStreetFood} />
           </div>
         </section>
 

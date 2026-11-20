@@ -41,11 +41,13 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 // suito-osaka.jp no-roof line keeps its 1 Nov 2026 date.
 
 const ROUTE = "/th/guides/attractions/dotonbori-river-cruise";
-const TITLE = "ล่องเรือโดทงโบริ 2026: ราคา เวลา ท่าเรือ";
+// 20 Nov 2026 (task-jtk-20261120-C01): official name Tombori River Cruise moved into the title;
+// fares, times and pier re-read on osaka-info.jp/en/spot/tombori-river-cruise/ the same day.
+const TITLE = "ล่องเรือโดทงโบริ (Tombori) 2026: ราคา";
 const DESC =
-  "ล่องเรือโดทงโบริ ¥2,000 20 นาที ทุก 30 นาที 11:00–21:00 ฟรีด้วย Amazing Pass จองบน Klook";
+  "Tombori ล่องเรือโดทงโบริ ¥2,000 20 นาที ทุก 30 นาที 11:00–21:00 ฟรีด้วย Amazing Pass";
 
-const CHECKED_ISO = "2026-11-13";
+const CHECKED_ISO = "2026-11-20";
 const CHECKED = dateLabel(CHECKED_ISO, "th");
 const ROOF_CHECKED = dateLabel("2026-11-01", "th");
 const OSAKA_INFO_URL = "https://osaka-info.jp/en/spot/tombori-river-cruise/";
@@ -289,7 +291,7 @@ export default function ThDotonboriRiverCruisePage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>อัปเดต {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            ล่องเรือโดทงโบริ 2026: <br />ราคา เวลาออกเรือ และท่าเรือทาซาเอมงบาชิ
+            ล่องเรือโดทงโบริ (Tombori River Cruise) 2026: <br />ราคา เวลาออกเรือ และท่าเรือทาซาเอมงบาชิ
           </h1>
           <p className={styles.heroSubtitle}>
             ผู้ใหญ่ ¥2,000 ราว 20 นาที และออกจากท่าทาซาเอมงบาชิทุกครึ่งชั่วโมงระหว่าง 11:00 ถึง 21:00 —
@@ -307,6 +309,21 @@ export default function ThDotonboriRiverCruisePage({ updated }: { updated: PageU
 
       <div className={styles.content}>
         <Disclosure />
+
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>Tombori River Cruise</strong> (ล่องเรือโดทงโบริ) ผู้ใหญ่ <strong>¥2,000</strong> นักเรียน{" "}
+            <strong>¥1,000</strong> เด็ก <strong>¥500</strong> ใช้เวลา<strong>ราว 20 นาที</strong>{" "}
+            ออกจาก<strong>ท่าทาซาเอมงบาชิ</strong>ทุก 30 นาที <strong>11:00–21:00</strong> และ
+            <strong>ขึ้นฟรีด้วย Osaka Amazing Pass</strong> เมื่อแลกเป็นตั๋วระบุเวลาแล้ว ตัวเลขจากเว็บไซต์ท่องเที่ยวทางการของโอซาก้า
+            ตรวจสอบล่าสุด {CHECKED_ISO}
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginBottom: "0.5rem" }}>
+            <KlookLink href={PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+              Osaka Amazing Pass รวมล่องเรือ →
+            </KlookLink>
+          </div>
+        </section>
 
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -491,9 +508,9 @@ export default function ThDotonboriRiverCruisePage({ updated }: { updated: PageU
             ความยาวที่เหมาะกับเส้นทางนี้ — ช่วงแม่น้ำมีแค่หน้าตึกนีออนไม่กี่ร้อยเมตร หากนานกว่านี้ ก็เท่ากับแล่นวนซ้ำอีกรอบ
           </p>
 
-          <h3 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
-            ขึ้นเรือล่องโดทงโบริได้ที่ไหน?
-          </h3>
+          <h2 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            ท่าเรือทาซาเอมงบาชิอยู่ที่ไหน?
+          </h2>
           <p className={styles.bodyText}>
             ที่ <strong>ท่าทาซาเอมงบาชิ</strong> บนทางเดิน Tonbori River Walk ริม
             <strong>ฝั่งเหนือ</strong>ของคลองโดทงโบริ ห่างสะพานเอบิสึบาชิไปทางตะวันออกราวหนึ่งนาที

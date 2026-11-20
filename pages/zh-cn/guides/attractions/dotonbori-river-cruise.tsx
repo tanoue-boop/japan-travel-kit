@@ -41,12 +41,14 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 // page — unchanged. The suito-osaka.jp no-roof line keeps its 1 Nov 2026 date.
 
 const ROUTE = "/zh-cn/guides/attractions/dotonbori-river-cruise";
-const TITLE = "道顿堀游船2026：票价¥2,000、开船时间与太左卫门桥码头";
+// 20 Nov 2026 (task-jtk-20261120-C01): official name とんぼりリバークルーズ moved into the title;
+// fares, times and pier re-read on osaka-info.jp/en/spot/tombori-river-cruise/ the same day.
+const TITLE = "道顿堀游船（とんぼりリバークルーズ）2026：票价、时间与码头";
 const DESC =
-  "道顿堀游船票价：成人¥2,000、儿童¥500，约20分钟，11:00–21:00每半小时一班，太左卫门桥码头出发，持大阪周游卡免费，可在Klook购买。";
+  "道顿堀游船（とんぼりリバークルーズ）票价：成人¥2,000、约20分钟，11:00–21:00每30分钟一班，太左卫门桥码头出发，大阪周游卡免费。";
 
 const L = "zh-cn" as const;
-const CHECKED_ISO = "2026-11-13";
+const CHECKED_ISO = "2026-11-20";
 const CHECKED = dateLabel(CHECKED_ISO, L);
 const ROOF_CHECKED = dateLabel("2026-11-01", L);
 const OSAKA_INFO_URL = "https://osaka-info.jp/en/spot/tombori-river-cruise/";
@@ -292,7 +294,7 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            道顿堀游船 2026： <br />票价、开船时间与太左卫门桥码头
+            道顿堀游船（とんぼりリバークルーズ）2026： <br />票价、开船时间与太左卫门桥码头
           </h1>
           <p className={styles.heroSubtitle}>
             成人 ¥2,000、约 20 分钟，11:00 到 21:00 之间从太左卫门桥码头每半小时一班。持大阪周游卡可免费乘船，
@@ -310,6 +312,20 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
 
       <div className={styles.content}>
         <Disclosure />
+
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>道顿堀游船（とんぼりリバークルーズ）</strong>成人 <strong>¥2,000</strong>、学生{" "}
+            <strong>¥1,000</strong>、儿童 <strong>¥500</strong>，航程<strong>约 20 分钟</strong>。从
+            <strong>太左卫门桥码头</strong>出发，<strong>11:00–21:00 每 30 分钟一班</strong>；持大阪周游卡换成指定时间的船票后
+            <strong>免费</strong>。数据来自大阪官方观光网站，最后核对 {CHECKED_ISO}。
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginBottom: "0.5rem" }}>
+            <KlookLink href={K.pass} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+              含游船的大阪周游卡 →
+            </KlookLink>
+          </div>
+        </section>
 
         {/* Quick Answer */}
         <div className={styles.verdictBox}>
@@ -487,9 +503,9 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
             两岸只有几百米的霓虹店面，即使航程更长，也只是多绕一圈。
           </p>
 
-          <h3 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
-            道顿堀游船在哪里坐？
-          </h3>
+          <h2 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            太左卫门桥码头在哪里？
+          </h2>
           <p className={styles.bodyText}>
             在<strong>太左卫门桥码头</strong>，位于道顿堀川<strong>北岸</strong>的 Tombori River Walk
             河滨步道上，从戎桥往东步行约一分钟。建议先找附近的地标，而不是直接找码头：换票柜台在

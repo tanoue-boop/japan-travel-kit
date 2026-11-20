@@ -613,7 +613,11 @@ export default function TeamlabBotanicalGardenOsakaTicketsPage({ updated }: { up
               teamLab Borderless guide
             </Link>
             , each with its own check date. All three price by date, so each figure is a floor rather than a
-            fare.
+            fare. Heading on to Kyoto? Our{" "}
+            <Link href="/guides/attractions/teamlab-kyoto-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>
+              teamLab Biovortex Kyoto tickets guide
+            </Link>{" "}
+            covers the indoor museum seven minutes&apos; walk from Kyoto Station, open 9:00–21:00.
           </p>
         </section>
 

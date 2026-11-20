@@ -41,11 +41,13 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 // and Tazaemonbashi Pier unchanged. The suito-osaka.jp no-roof line keeps its 1 Nov 2026 date.
 
 const ROUTE = "/ko/guides/attractions/dotonbori-river-cruise";
-const TITLE = "도톤보리 리버크루즈 2026: 가격・시간・다자에몬바시 선착장";
+// 20 Nov 2026 (task-jtk-20261120-C01): official name 톤보리 리버크루즈 moved into the title;
+// fares, times and pier re-read on osaka-info.jp/en/spot/tombori-river-cruise/ the same day.
+const TITLE = "도톤보리 리버크루즈(톤보리) 2026: 가격・시간・선착장";
 const DESC =
-  "도톤보리 리버크루즈 가격 성인 ¥2,000, 약 20분, 11:00~21:00 30분 간격, 다자에몬바시 선착장. 주유패스 무료, 클룩 예약.";
+  "톤보리 리버크루즈 가격: 성인 ¥2,000, 약 20분, 11:00~21:00 30분 간격, 다자에몬바시 선착장. 주유패스 무료.";
 
-const CHECKED_ISO = "2026-11-13";
+const CHECKED_ISO = "2026-11-20";
 const CHECKED = dateLabel(CHECKED_ISO, "ko");
 const ROOF_CHECKED = dateLabel("2026-11-01", "ko");
 const OSAKA_INFO_URL = "https://osaka-info.jp/en/spot/tombori-river-cruise/";
@@ -289,7 +291,7 @@ export default function KoDotonboriRiverCruisePage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>{updatedLabel} 업데이트</p>
           <h1 className={styles.heroTitle}>
-            도톤보리 리버크루즈 2026: <br />가격, 운항 시간, 다자에몬바시 선착장
+            도톤보리 리버크루즈(톤보리 리버크루즈) 2026: <br />가격, 운항 시간, 다자에몬바시 선착장
           </h1>
           <p className={styles.heroSubtitle}>
             성인 ¥2,000, 약 20분, 11:00부터 21:00까지 다자에몬바시 선착장에서 30분마다 출항합니다. 저녁 배가
@@ -307,6 +309,21 @@ export default function KoDotonboriRiverCruisePage({ updated }: { updated: PageU
 
       <div className={styles.content}>
         <Disclosure />
+
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>톤보리 리버크루즈</strong>(도톤보리 리버크루즈)는 성인 <strong>¥2,000</strong>, 학생{" "}
+            <strong>¥1,000</strong>, 어린이 <strong>¥500</strong>이고 <strong>약 20분</strong> 운항합니다.{" "}
+            <strong>다자에몬바시 선착장</strong>에서 <strong>11:00~21:00, 30분마다</strong> 출항하며,
+            오사카 주유패스를 시간 지정 티켓으로 교환하면 <strong>무료</strong>입니다. 오사카시 공식 관광
+            사이트 기준, 마지막 확인 {CHECKED_ISO}.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginBottom: "0.5rem" }}>
+            <KlookLink href={PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+              크루즈 포함 오사카 주유패스 →
+            </KlookLink>
+          </div>
+        </section>
 
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -492,9 +509,9 @@ export default function KoDotonboriRiverCruisePage({ updated }: { updated: PageU
             간판이 늘어선 몇백 미터뿐이라, 더 길어져 봐야 같은 곳을 한 번 더 돌 뿐입니다.
           </p>
 
-          <h3 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
-            도톤보리 리버크루즈는 어디서 타나
-          </h3>
+          <h2 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            다자에몬바시 선착장은 어디인가요?
+          </h2>
           <p className={styles.bodyText}>
             도톤보리 수로 <strong>북쪽 강변</strong>의 톤보리 리버워크 산책로에 있는{" "}
             <strong>다자에몬바시 선착장</strong>이고, 에비스바시에서 동쪽으로 1분 정도입니다. 선착장보다

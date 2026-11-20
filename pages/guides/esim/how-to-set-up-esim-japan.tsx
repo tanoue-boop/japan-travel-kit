@@ -632,7 +632,9 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>How to Set Up eSIM on an Android Tablet</h2>
           <p className={styles.bodyText}>
             eSIM profiles are device-specific, so your tablet needs its own plan (or a hotspot from
-            your phone). On a <strong>Samsung Galaxy Tab</strong>, follow the Samsung steps above:
+            your phone — providers word their hotspot allowances differently, and our{" "}
+            <Link href="/guides/esim/japan-esim-business">eSIM for a business trip to Japan</Link> guide
+            compares them for a tethered laptop). On a <strong>Samsung Galaxy Tab</strong>, follow the Samsung steps above:
             Settings → Connections → SIM Manager → Add eSIM, scan the QR code, then keep the profile
             off until you land. On a <strong>Google Pixel Tablet</strong>, follow the Pixel steps:
             Settings → Network &amp; internet → SIMs → Add eSIM.
