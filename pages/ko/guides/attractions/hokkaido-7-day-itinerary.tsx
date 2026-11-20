@@ -716,7 +716,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
           checkedIso={SEASON_ISO}
           deadline={
             <>
-여행 일정이 2027년 2월 4~11일 삿포로 눈축제나 2월 6~13일 오타루 눈빛 거리 축제 기간과 겹친다면 숙소부터 예약하세요. 당일 투어는 12월 31일까지 예약해 두고, 닛카 증류소는 4주 전에 예약이 열릴 때까지 기다리세요.
+여행 일정이 2027년 2월 4~11일 <Link href="/ko/guides/attractions/sapporo-snow-festival-tours">삿포로 눈축제 2027</Link>이나 2월 6~13일 오타루 눈빛 거리 축제 기간과 겹친다면 숙소부터 예약하세요. 당일 투어는 12월 31일까지 예약해 두고, 닛카 증류소는 4주 전에 예약이 열릴 때까지 기다리세요.
 </>
           }
           tours={[

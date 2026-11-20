@@ -246,7 +246,7 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
           </p>
           <p className={styles.bodyText}>
             <strong>日本景點門票價格（2026）</strong>：澀谷SKY 網路購票 ¥2,700（15:00 前入場）／¥3,400（15:00
-            起），teamLab Planets ¥3,800 起，teamLab 無界 ¥3,400 起，東京迪士尼一日護照 ¥8,900 起；日本環球影城的票價依日期浮動，結帳時才會顯示當天的價格。
+            起），<Link href="/zh-tw/guides/attractions/teamlab-planets-tickets">teamLab Planets 門票</Link> ¥3,800 起，teamLab 無界 ¥3,400 起，東京迪士尼一日護照 ¥8,900 起；日本環球影城的票價依日期浮動，結帳時才會顯示當天的價格。
             <strong>必須提前在網路上購票的</strong>是兩間 teamLab（指定時段）、東京迪士尼（現場不賣票）與日本環球影城（當天現場不售票），澀谷SKY 只有日落時段需要提前購票。票價資料取自各官方網站：澀谷SKY 與 teamLab Planets 於 2026 年 11 月 6 日、東京迪士尼於 10 月 28 日、teamLab
             無界於 10 月 9 日查核。
           </p>

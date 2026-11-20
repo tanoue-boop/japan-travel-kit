@@ -58,11 +58,14 @@ const ADULT = priceLabel(P.adult, LOCALE);
 const CHILD = priceLabel(P.child, LOCALE);
 
 const ROUTE = "/zh-tw/guides/attractions/teamlab-planets-tickets";
-const TITLE = "teamLab Planets 門票 2026：豐洲官網票價與入場時段";
-const DESC = `teamLab Planets 門票官網價：成人 ${ADULT}，需指定日期與入場時段，現場不售票；水深可達膝蓋。可在 Klook 預約時段。`;
+// 2026-11-20（task-jtk-20261120-I01）：標題改以台灣的實際搜尋詞「teamLab Planets 門票」「豐洲 門票 價格」開頭。
+const TITLE = "teamLab Planets 門票價格 2026：豐洲票價與入場時段";
+const DESC = `teamLab Planets 門票官網價：成人 ${ADULT}，需指定日期與入場時段，現場不售票；新豐洲站步行 3 分鐘。可在 Klook 預約時段。`;
 // 2026-11-13（task-jtk-20261113-C01）：以 teamLab 的鏡像頁 art.team-lab.cn/en/e/planets 重新查核，
 // 票價、營業時間、休館日與「水深可達成人膝蓋」皆未變動。詳見英文版。
-const RECHECKED_ISO = "2026-11-13";
+// 2026-11-20（I01）：teamlab.art/e/planets 與 /jp/e/planets 直接讀取：成人 3,800 円（變動價格）、2,800、1,500、
+// 新豊洲駅 1A 出口徒步 3 分、豊洲駅 7 番出口徒步 10 分、休館日 12/3・1/14，皆未變動。
+const RECHECKED_ISO = "2026-11-20";
 const OFFICIAL_URL = "https://www.teamlab.art/e/planets/";
 
 const priceRows = [
@@ -266,7 +269,7 @@ export default function ZhTeamLabPlanetsPage({ updated }: { updated: PageUpdated
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新於 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            teamLab Planets 豐洲門票 2026： <br />官網票價、入場時段與預約方式
+            teamLab Planets 門票 2026（豐洲）： <br />門票價格、入場時段與預約方式
           </h1>
           <p className={styles.heroSubtitle}>
             豐洲的 teamLab Planets 門票多少錢、什麼時候開放、怎麼預約，以及從新豐洲站或豐洲站怎麼走。
@@ -290,6 +293,14 @@ export default function ZhTeamLabPlanetsPage({ updated }: { updated: PageUpdated
             ¥2,800、4～12 歲 <strong>¥1,500</strong>，3 歲以下免費。每張票都要指定日期與入場時間，美術館現場不售票；
             官方未公布參觀時間，建議館內預留 <strong>1.5～2 小時</strong>，再加上官方售票網站提醒的 30～60 分鐘入場等候。
             全程赤腳，涉水作品的水深可達<strong>成人膝蓋高</strong>，請穿可以捲到膝蓋以上的短褲或長褲。
+          </p>
+          <p className={styles.bodyText}>
+            美術館在東京江東區豐洲 6-1-16，最近的車站是百合海鷗號<strong>新豐洲站</strong>（1A 出口<strong>步行 3 分鐘</strong>），
+            搭東京地鐵有樂町線則從<strong>豐洲站</strong> 7 號出口步行 10 分鐘。
+          </p>
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {RECHECKED_ISO}。官方來源：
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener">teamlab.art/e/planets</a>（票價與交通）。
           </p>
         </section>
 

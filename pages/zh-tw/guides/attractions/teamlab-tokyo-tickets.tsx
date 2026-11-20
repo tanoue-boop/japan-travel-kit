@@ -183,6 +183,8 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
               麻布台之丘的 <strong>teamLab 無界成人 {BORDERLESS_ADULT}</strong>，4～12 歲兩座都是 {CHILD}（{CHECKED} 查閱官網）。
               teamLab 官方表示無界參觀約需 1.5～2 小時，Planets 未公布時間，同樣抓 1.5～2 小時即可。帶小孩就選赤腳涉水的{" "}
               <strong>teamLab Planets</strong>；不帶小孩第一次去，就選穿著鞋參觀、有名額時也能現場購票的 <strong>teamLab 無界</strong>。
+              選了 Planets，各票種價格、30 分鐘入場時段與新豐洲站的走法請看{" "}
+              <Link href="/zh-tw/guides/attractions/teamlab-planets-tickets">teamLab Planets 門票</Link>攻略。
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={zhTeamlabPlanets.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>

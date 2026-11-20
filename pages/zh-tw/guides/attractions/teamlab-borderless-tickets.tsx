@@ -914,7 +914,8 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             如果兩間都有時間去，請分在不同天：一個下午看四小時數位藝術，是最快讓你什麼都看不進去的方法，
-            而且兩個場館在城市的兩端，相距 30 分鐘。
+            而且兩個場館在城市的兩端，相距 30 分鐘。另一天去豐洲的話，成人起價、入場時段與從新豐洲站怎麼走，請看{" "}
+            <Link href="/zh-tw/guides/attractions/teamlab-planets-tickets">teamLab Planets 豐洲門票價格</Link>。
           </p>
         </section>
 

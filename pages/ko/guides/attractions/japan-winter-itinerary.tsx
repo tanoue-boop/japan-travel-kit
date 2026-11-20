@@ -1372,7 +1372,7 @@ teamLab 식물원 오사카 →
 축제 날짜와 행사장 범위는 삿포로 눈축제 실행위원회의 제77회 공지 기준이며 {REREAD}에 확인했습니다. 같은 공지는 2027년 2월 12~14일 삿포로 스노 스포츠 파크를 연계 행사로 추가합니다. 삿포로 2월 일 최고 평균 0.4°C와 1월 강설량 137 cm는 위의 기상청 수치입니다. 주의할 점이 하나 있습니다. 홋카이도까지는 열차로 오래 걸려 대부분 비행기를 이용하며, JR 동일본–남홋카이도 패스는 어차피 JR 동일본을 많이 탈 때만 값어치가 있습니다.
 </p>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-8일차 당일 여행으로는 오타루 눈빛 거리 축제가 2027년 2월 6~13일이라 눈축제 여행에서 둘 다 볼 수 있습니다. 열차와 운하 마을은 <Link href="/guides/attractions/otaru-day-trip-from-sapporo" hrefLang="en">삿포로 출발 오타루 당일 여행 가이드(영어)</Link>에 있습니다. 전체를 홋카이도에 쓰고 싶다면 섬에 머무는 <Link href="/ko/guides/attractions/hokkaido-7-day-itinerary">홋카이도 7일 여행</Link>을 보세요. 오타루 대신 스키를 타려면 <Link href="/ko/guides/attractions/niseko-ski-tours">니세코 스키 투어 2026-27</Link> 가이드에 삿포로 출발 당일 투어와 2026년 11월 28일 개장 일정이 있습니다.
+8일차 당일 여행으로는 오타루 눈빛 거리 축제가 2027년 2월 6~13일이라 눈축제 여행에서 둘 다 볼 수 있습니다. 축제 주간에 예약할 오타루·시코쓰호·조잔케이 당일 투어는 <Link href="/ko/guides/attractions/sapporo-snow-festival-tours">삿포로 눈축제 투어</Link> 가이드에 하루 종일·반나절로 나눠 정리했습니다. 열차와 운하 마을은 <Link href="/guides/attractions/otaru-day-trip-from-sapporo" hrefLang="en">삿포로 출발 오타루 당일 여행 가이드(영어)</Link>에 있습니다. 전체를 홋카이도에 쓰고 싶다면 섬에 머무는 <Link href="/ko/guides/attractions/hokkaido-7-day-itinerary">홋카이도 7일 여행</Link>을 보세요. 오타루 대신 스키를 타려면 <Link href="/ko/guides/attractions/niseko-ski-tours">니세코 스키 투어 2026-27</Link> 가이드에 삿포로 출발 당일 투어와 2026년 11월 28일 개장 일정이 있습니다.
 </p>
           <div className={styles.pickCtaRow}>
             <KlookLink href={klookFor(newChitoseSapporoSharedTransfer.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

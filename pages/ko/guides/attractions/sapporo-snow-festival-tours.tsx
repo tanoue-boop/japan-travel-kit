@@ -190,7 +190,8 @@ const bookingWindow = [
 ];
 
 // 18 Nov 2026: dates and admission re-read on snowfes.com/news/948.html and snowfes.com/faq/.
-const TODAY = dateLabel("2026-11-18", LOCALE);
+// 20 Nov 2026 (I01): both re-read again — 2月4日（木）から11日（木・祝）の8日間, 大通・つどーむ・すすきの, 全会場無料, unchanged.
+const TODAY = dateLabel("2026-11-20", LOCALE);
 
 const factRows = [
   { item: "삿포로 눈축제 2027(제77회)", fact: "2027년 2월 4일(목)~11일(목·공휴일), 8일간. 행사장 3곳 모두 입장 무료, 티켓 없음" },
@@ -254,9 +255,10 @@ const festivalSameTrip: KlookTripPrepItem[] = [
   },
 ];
 
-const TITLE = "삿포로 눈축제 2027 투어: 일정, 비용, 티켓, 예약 시기";
+// 20 Nov 2026 (task-jtk-20261120-I01): title leads with the two Korean queries, 삿포로 눈축제 투어 and 삿포로 눈축제 2027.
+const TITLE = "삿포로 눈축제 투어 | 삿포로 눈축제 2027 일정·비용";
 const DESC =
-  "삿포로 눈축제 2027은 2월 4~11일, 입장 무료라 티켓이 필요 없습니다. 숙소는 지금, 당일 투어는 12월 31일까지 Klook에서.";
+  "삿포로 눈축제 2027은 2월 4~11일, 입장 무료. 삿포로 눈축제 투어는 오타루 등 당일 여행으로 12월 31일까지 Klook에서.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -285,7 +287,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 업데이트 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-삿포로 눈축제 2027 투어: <br />일정(2월 4~11일), 비용, 티켓, 예약할 것
+삿포로 눈축제 투어: <br />삿포로 눈축제 2027 일정(2월 4~11일), 비용, 예약할 것
 </h1>
           <p className={styles.heroSubtitle}>
 8일간, 행사장 3곳, 입장권 없음. 예약할 만한 투어는 축제 전후의 당일 여행이고, 다른 것으로 대체할 수 없는 예약은 숙소뿐입니다.
@@ -307,6 +309,9 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             <strong>삿포로 눈축제 2027</strong>은 <strong>2027년 2월 4일부터 11일까지 8일간</strong> 오도리, 스스키노, 쓰도무 행사장 3곳에서 열리며 <strong>입장은 무료이고 티켓이 없습니다</strong>. 그래서 <strong>삿포로 눈축제 투어</strong>는 축제 전후의 선택 일정이며, 숙소를 먼저 잡고 당일 투어는 12월 31일 무렵까지 예약하세요. 실행위원회 공식 사이트 확인일 {TODAY}.
+          </p>
+          <p className={styles.bodyText}>
+            투어는 세 가지 형태입니다. <strong>하루 종일</strong> 걸리는 삿포로 출발 당일 투어(오타루·스노 파크, 아사히야마 동물원·비에이, 노보리베쓰·도야호), <strong>반나절</strong> 투어(시코쓰호 얼음 축제, 스노 파크. 조잔케이 온천은 상품에 따라 반나절~하루), 그리고 시코쓰호 얼음 축제와 도마무 아이스 빌리지를 묶은 <strong>10시간</strong> 투어입니다. 소요 시간은 아래 표의 각 Klook 상품 기준입니다.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -330,7 +335,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Last checked: 2026-11-18. 공식 출처: <a href="https://www.snowfes.com/news/948.html" target="_blank" rel="noopener noreferrer">snowfes.com(2027 개최 개요)</a>, <a href="https://www.snowfes.com/faq/" target="_blank" rel="noopener noreferrer">snowfes.com FAQ</a>
+            Last checked: 2026-11-20. 공식 출처: <a href="https://www.snowfes.com/news/948.html" target="_blank" rel="noopener noreferrer">snowfes.com(2027 개최 개요)</a>, <a href="https://www.snowfes.com/faq/" target="_blank" rel="noopener noreferrer">snowfes.com FAQ</a>
           </p>
 
           <h2 className={styles.sectionTitle}>삿포로 눈축제 투어 비용은 얼마인가요?</h2>
