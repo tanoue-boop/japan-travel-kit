@@ -323,6 +323,11 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
             of. You walk barefoot, and in the water artworks the water can reach{" "}
             <strong>adult knee height</strong>, so wear shorts or trousers that roll above the knee.
           </p>
+          <p className={styles.bodyText}>
+            Not sure Planets is the right one? Tokyo&apos;s other teamLab museum, Borderless at Azabudai Hills, keeps
+            your shoes on and sells tickets at the door — see{" "}
+            <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Planets vs Borderless</Link> to choose.
+          </p>
         </section>
 
         {/* The answer first: the table and the Klook button, then the same-day block. */}

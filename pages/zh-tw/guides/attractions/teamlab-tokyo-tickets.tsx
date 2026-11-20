@@ -1,7 +1,9 @@
-// Traditional Chinese edition of /guides/attractions/teamlab-tokyo-tickets. Mirrors the English
-// comparison page as of 2026-11-06: it answers one question, which of Tokyo's two teamLab museums
-// to book. Planets tickets, hours and access live on /zh-tw/guides/attractions/teamlab-planets-tickets.
-// Every figure comes from the English page or lib/attraction-prices.ts, none is added here.
+// Traditional Chinese edition of /guides/attractions/teamlab-tokyo-tickets. It answers one
+// question, which of Tokyo's two teamLab museums to book. Since 20 Nov 2026 (task
+// jtk-20261120-R01) it mirrors the English page's order: a numbers-first answer, one comparison
+// table with the verdict in row one, the Klook buttons and same-day block under it, short
+// Planets-only / Borderless-only sections that hand over to their own guides, and the same five
+// FAQ questions. Official figures were re-read on teamlab.art on 20 Nov 2026.
 import Head from "next/head";
 import Link from "next/link";
 import BookingEsimCard from "../../../../components/BookingEsimCard";
@@ -31,7 +33,7 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 import KlookSameDayCards from "../../../../components/KlookSameDayCards";
 import { teamlabSameDayCards } from "../../../../lib/teamlab-same-day-cards";
 
-// Same-day cards under the main CTA (task-jtk-20261115-P01).
+// Same-day cards under the comparison table (task-jtk-20261115-P01, moved 20 Nov 2026).
 const SAME_DAY = teamlabSameDayCards("tokyo", "zh-tw");
 
 const ROUTE = "/zh-tw/guides/attractions/teamlab-tokyo-tickets";
@@ -39,74 +41,74 @@ const LOCALE = "zh-tw" as const;
 
 const P = PRICES.teamlabPlanets;
 const B = PRICES.teamlabBorderless;
-const PLANETS_CHECKED = dateLabel(P.checked, LOCALE);
-const BORDERLESS_CHECKED = dateLabel(B.checked, LOCALE);
 const PLANETS_ADULT = priceLabel(P.adult, LOCALE);
 const BORDERLESS_ADULT = priceLabel(B.adult, LOCALE);
+const CHILD = priceLabel(P.child, LOCALE);
+const CHECKED_ISO = "2026-11-20";
+const CHECKED = dateLabel(CHECKED_ISO, LOCALE);
 
-const TITLE = "teamLab Planets 無界 比較：東京該去哪一館（2026）";
+const TITLE = "teamLab Planets 無界 比較：票價與怎麼選（2026）";
 const DESC =
-  "東京有兩間 teamLab 美術館，門票各自分開。比較 Planets 與無界的票價、營業時間、地點和適合對象，再訂適合你的那一間。";
+  "東京兩間 teamLab 門票分開賣：Planets 成人 ¥3,800 起、無界 ¥3,400 起。帶小孩選 Planets，大人初訪選無界，看比較表再預訂。";
 
+// 第一列是結論。
 const compareRows = [
-  { factor: "地點", planets: "豐洲（江東區）", borderless: "麻布台之丘（港區）" },
-  { factor: "體驗", planets: "赤腳走過水中", borderless: "沒有地圖的迷宮，50 多件作品" },
-  { factor: "適合", planets: "親子、第一次來、想要身體感受的人", borderless: "藝術愛好者、想慢慢逛、攝影" },
-  { factor: "成人票", planets: PLANETS_ADULT, borderless: BORDERLESS_ADULT },
-  {
-    factor: "兒童票",
-    planets: `${priceLabel(P.child, LOCALE)}（4～12 歲；未滿 4 歲免費）`,
-    borderless: `${priceLabel(B.child, LOCALE)}（4～12 歲；未滿 4 歲免費）`,
-  },
-  { factor: "營業時間", planets: "08:00–22:00（12/31–1/2 為 08:00–20:00）", borderless: "公告 08:30–21:00，依日期變動" },
-  { factor: "入場", planets: "指定日期與入場時間", borderless: "指定時段，或不指定時間的 Flexible Pass" },
-  { factor: "現場購票", planets: "現場不售票", borderless: "現場購票多 ¥200" },
-  { factor: "展期", planets: "到 2027 年底", borderless: "常設" },
+  { factor: "適合誰", planets: "帶小孩同行，或想赤腳涉水體驗的人", borderless: "不帶小孩、第一次去，或想穿著鞋慢慢欣賞藝術的人" },
+  { factor: "成人（18 歲以上）", planets: `${PLANETS_ADULT}，熱門日期與時段較貴`, borderless: `${BORDERLESS_ADULT}，熱門日期與時段較貴` },
+  { factor: "13～17 歲", planets: "¥2,800", borderless: "¥2,800" },
+  { factor: "兒童（4～12 歲）", planets: `${CHILD}；3 歲以下免費`, borderless: `${CHILD}；3 歲以下免費` },
+  { factor: "要下水嗎", planets: "要。赤腳，水深可達成人膝蓋", borderless: "不用。穿著鞋參觀" },
+  { factor: "參觀時間", planets: "官方未公布；建議預留 1.5～2 小時", borderless: "約 1.5～2 小時（官方 FAQ），館內不限時" },
+  { factor: "會售完嗎", planets: "指定時段，現場不售票，須事先上網預訂", borderless: "官網註明門票可能售完；約在參觀日兩個月前的 1 日開賣" },
+  { factor: "現場購票", planets: "現場不售票", borderless: "尚有名額時可現場購買，需加 ¥200" },
+  { factor: "最近車站", planets: "新豐洲站（百合海鷗線）1A 出口步行 3 分鐘", borderless: "神谷町站（日比谷線）5 號出口步行 2 分鐘" },
+  { factor: "營業時間", planets: "08:00–22:00（12/31–1/2 為 08:00–20:00）", borderless: "08:30–21:00，部分日期不同" },
+  { factor: "開放期間", planets: "至 2027 年底", borderless: "常設" },
 ];
 
 const whoFor = [
   {
-    title: "選 Planets 的話…",
-    desc: "你帶著小孩、想要身體感受，也不介意腳濕。你會赤腳走過深及成人膝蓋的水。",
+    title: "選 teamLab Planets 的話…",
+    desc: "你帶著小孩、想親身體驗藝術，也不介意把腳弄濕。你會赤腳走過深及成人膝蓋的水。",
   },
   {
-    title: "選無界的話…",
-    desc: "你想看藝術，而不是涉水走過它。這裡沒有固定路線，作品在房間之間移動，你可以照自己的步調逛。",
+    title: "選 teamLab 無界的話…",
+    desc: "你想欣賞藝術作品，而不是走進水中體驗。這裡沒有固定路線，作品在房間之間移動，你可以照自己的步調逛。",
   },
   {
     title: "兩座都去，如果…",
-    desc: "你有兩個半天的空檔，而且喜歡 teamLab。兩座美術館位於東京不同區域，需要分別購買指定時間的門票，因此請分開安排行程。",
+    desc: "你有兩個空閒的半天，而且很喜歡 teamLab。兩座位在東京不同區域，需要各自的指定時段門票，所以請分開安排。",
   },
 ];
 
 const faqItems: FaqItem[] = [
   {
-    q: "東京的 teamLab，Planets 和無界哪個比較好？",
-    a: "沒有哪一間整體比較好。Planets 適合親子和第一次來、想要身體感受的人，你會赤腳走過水中。無界適合想慢慢探索的藝術愛好者，沒有地圖，也沒有固定路線。如果只有時間去一間，又帶著小孩，就選 Planets。",
+    q: "teamLab Planets 和 teamLab 無界哪個比較好？",
+    a: "沒有哪一間整體比較好。teamLab Planets 要赤腳走過深及成人膝蓋的水，適合帶小孩同行；teamLab 無界沒有地圖、也沒有固定路線，可以穿著鞋慢慢欣賞作品。帶小孩就選 teamLab Planets，不帶小孩第一次去就選 teamLab 無界。",
   },
   {
-    q: "teamLab Planets 和無界是同一張門票嗎？",
-    a: "不是。它們是兩間獨立的美術館，門票分開，位在東京不同區域。Planets 的門票不能進無界，無界的門票也不能進 Planets。",
+    q: "2026 年東京 teamLab 門票多少錢？",
+    a: `成人票 teamLab Planets ${PLANETS_ADULT}、teamLab 無界 ${BORDERLESS_ADULT}，熱門日期與時段會更貴（${CHECKED} 查閱 teamlab.art）。13～17 歲 ¥2,800，4～12 歲兩座都是 ${CHILD}，3 歲以下免費。兩座都去，成人至少 ¥7,200。`,
   },
   {
-    q: "東京的 teamLab 門票多少錢？",
-    a: `Planets 成人票 ${PLANETS_ADULT}（${PLANETS_CHECKED} 查閱），無界成人票 ${BORDERLESS_ADULT}（${BORDERLESS_CHECKED} 查閱）。兩間都依日期與時段定價，請確認你自己日期的金額。`,
+    q: "teamLab 門票會售完嗎？",
+    a: "會。teamLab 無界官網註明門票指定日期與時段、可能售完，建議行程確定後盡早購買；門票約在參觀日兩個月前的 1 日開賣。teamLab Planets 現場完全不售票，一定要事先上網預訂。",
   },
   {
-    q: "Planets 和無界可以同一天去嗎？",
-    a: "可以，因為兩張票各有自己的日期與時間。不過兩座美術館位於東京不同區域，每一間都要花不少時間，分成兩個半天會比較輕鬆。",
+    q: "teamLab Planets 和 teamLab 無界可以同一天去嗎？",
+    a: "可以，因為兩張票各有自己的日期與時間。不過兩座分別在豐洲與麻布台之丘，teamLab 官方表示無界參觀約需 1.5～2 小時。兩個入場時間之間請至少留下這段時間再加上交通時間，或分成兩個半天。",
   },
   {
-    q: "哪一間 teamLab 比較適合小孩？",
-    a: "Planets。兩間都是未滿 4 歲免費，但 Planets 時間較短、以身體體驗為主，小孩比較容易跟上。請帶替換衣物，因為涉水區大家都會濕；另外嬰兒車不能進場。",
+    q: "teamLab 門票在哪裡買最便宜？",
+    a: "基本票價由官方售票網站決定，teamLab 也把 Klook 列為無界的官方販售管道。真正影響價格的是日期：兩座的成人票在熱門日期與時段都會漲價，付款前請比較幾個日期。teamLab 無界現場購票比網路貴 ¥200。",
   },
 ];
 
+const subwayTour = withKlookLocale(tokyoSubwayTicket, LOCALE, {
+  title: "東京地鐵通票（24／48／72 小時）",
+  desc: "東京地下鐵與都營地下鐵全線無限搭乘，抵達後領取，不必排隊購買",
+});
 const tours = [
-  withKlookLocale(tokyoSubwayTicket, LOCALE, {
-    title: "東京地鐵通票（24／48／72 小時）",
-    desc: "東京地下鐵與都營地下鐵全線無限搭乘，抵達後領取，不必排隊購買",
-  }),
   withKlookLocale(tokyoSightseeingBusTour, LOCALE, {
     title: "東京觀光巴士一日遊",
     desc: "附導覽的環狀觀光路線，走訪皇居庭園、淺草與東京晴空塔，提供多語語音導覽",
@@ -119,7 +121,7 @@ const tours = [
 
 const trail: Crumb[] = [
   { href: "/zh-tw/guides/attractions", label: "日本景點門票" },
-  { label: "teamLab Planets 與無界比較" },
+  { label: "teamLab Planets 與 teamLab 無界比較" },
 ];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
@@ -153,10 +155,10 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新於 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            teamLab Planets 與無界比較（2026）： <br />東京該訂哪一間
+            teamLab Planets 無界 比較： <br />票價與怎麼選（2026）
           </h1>
           <p className={styles.heroSubtitle}>
-            東京有兩間 teamLab 美術館，門票各自分開。這裡整理兩間的差別，以及該訂哪一間。
+            東京有兩座 teamLab 美術館，門票各自分開。這裡整理兩座的差別，以及該選哪一間。
           </p>
           <div className={styles.heroBadges}>
             {[`更新於 ${updatedLabel}`, "官方票價", "並排比較"].map((t) => (
@@ -177,38 +179,26 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           </div>
           <div className={styles.verdictBody}>
             <p className={styles.verdictText}>
-              <strong>東京的 teamLab 門票</strong>，其實是在兩間美術館之間做選擇。帶小孩或想走進水裡，
-              <strong>就訂 Planets</strong>；想慢慢探索藝術，<strong>就訂無界</strong>。兩間門票分開，
-              成人票 Planets {PLANETS_ADULT}，無界 {BORDERLESS_ADULT}。
+              <strong>東京的 teamLab 門票</strong>由兩座美術館分開販售：豐洲的 <strong>teamLab Planets 成人 {PLANETS_ADULT}</strong>，
+              麻布台之丘的 <strong>teamLab 無界成人 {BORDERLESS_ADULT}</strong>，4～12 歲兩座都是 {CHILD}（{CHECKED} 查閱官網）。
+              teamLab 官方表示無界參觀約需 1.5～2 小時，Planets 未公布時間，同樣抓 1.5～2 小時即可。帶小孩就選赤腳涉水的{" "}
+              <strong>teamLab Planets</strong>；不帶小孩第一次去，就選穿著鞋參觀、有名額時也能現場購票的 <strong>teamLab 無界</strong>。
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={zhTeamlabPlanets.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
-                查看 Planets 門票 →
+                查看 teamLab Planets 門票 →
               </KlookLink>
               <KlookLink href={zhTeamlabBorderless.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
-                查看無界門票 →
+                查看 teamLab 無界門票 →
               </KlookLink>
             </div>
           </div>
         </div>
 
-        <p className={styles.bodyText}>
-          已經決定了？營業時間、預約方式與交通請看{" "}
-          <Link href="/zh-tw/guides/attractions/teamlab-planets-tickets">teamLab Planets 門票攻略</Link>，或{" "}
-          <Link href="/zh-tw/guides/attractions/teamlab-borderless-tickets">teamLab 無界門票攻略</Link>。
-          同一趟想再加一個展望台，晴空塔 350 公尺與 450 公尺的票價比較請看{" "}
-          <Link href="/zh-tw/guides/attractions/tokyo-skytree-tickets">東京晴空塔門票攻略</Link>。
-        </p>
-
-        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
-
-        <BookingEsimCard />
-
-        <EsimCtaTop />
-
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>並排比較</span>
-          <h2 className={styles.sectionTitle}>teamLab Planets vs 無界：該訂哪一間？</h2>
+          <h2 className={styles.sectionTitle}>teamLab Planets vs teamLab 無界：該選哪一間？</h2>
+          <p className={styles.bodyText}>帶小孩選 teamLab Planets，大人第一次去選 teamLab 無界；理由逐項列在下表。</p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -232,10 +222,66 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Planets 資料讀自 teamlab.art 與官方售票網站，查核日 {PLANETS_CHECKED}；無界資料讀自 teamlab.art，
-            查核日 {BORDERLESS_CHECKED}。兩座的成人票都依日期與時段定價，請確認你自己的日期。
+            最後查核：{CHECKED_ISO}。來源：{" "}
+            <a href="https://www.teamlab.art/e/planets/" target="_blank" rel="noopener noreferrer">teamlab.art/e/planets</a>、
+            <a href="https://www.teamlab.art/e/borderless-azabudai/" target="_blank" rel="noopener noreferrer">teamlab.art/e/borderless-azabudai</a>、
+            無界 FAQ{" "}
+            <a href="https://www.teamlab.art/faq/Tokyo/" target="_blank" rel="noopener noreferrer">teamlab.art/faq/Tokyo</a>。
+            兩座的成人票都依日期與時段浮動、只公布最低價，請確認你預計參觀日期的票價。Planets 的參觀時間是規劃參考，teamLab 未公布。
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={zhTeamlabPlanets.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+              查看你那天的 teamLab Planets 門票 →
+            </KlookLink>
+            <KlookLink href={zhTeamlabBorderless.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+              查看你那天的 teamLab 無界門票 →
+            </KlookLink>
+          </div>
+        </section>
+
+        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
+
+        <KlookTourPicks
+          heading="豐洲與麻布台之丘之間怎麼移動"
+          intro="無界所在的神谷町站屬於東京地下鐵日比谷線，東京地鐵通票可在 24／48／72 小時內無限搭乘東京地下鐵與都營地下鐵全線。Planets 所在的新豐洲站屬於百合海鷗線，通票不能搭，可改走有樂町線豐洲站。"
+          tours={[subwayTour]}
+        />
+
+        <BookingEsimCard />
+
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>只去 Planets</span>
+          <h2 className={styles.sectionTitle}>已經決定去 teamLab Planets 了嗎？</h2>
+          <p className={styles.bodyText}>
+            豐洲的 teamLab Planets 只賣指定時段門票，成人 {PLANETS_ADULT}，現場不售票，所以上網選好日期與入場時間就是預約。
+            各日期票價、Premium Pass、涉水穿著，以及從新豐洲站或豐洲站過去的路線，都在 Planets 門票攻略裡。
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <Link href="/zh-tw/guides/attractions/teamlab-planets-tickets" className={styles.verdictBtn}>
+              看完整的 teamLab Planets 門票攻略 →
+            </Link>
+          </div>
+        </section>
+
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>只去無界</span>
+          <h2 className={styles.sectionTitle}>已經決定去 teamLab 無界了嗎？</h2>
+          <p className={styles.bodyText}>
+            麻布台之丘的 teamLab 無界販售成人 {BORDERLESS_ADULT} 的指定時段門票，以及不指定入場時間的 Flexible Pass，約在參觀日兩個月前的
+            1 日開賣。開賣日期、Flexible Pass、閉館時間變動與現場購票，請看無界門票攻略。
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <Link href="/zh-tw/guides/attractions/teamlab-borderless-tickets" className={styles.verdictBtn}>
+              看完整的 teamLab 無界門票攻略 →
+            </Link>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            同一趟想再加一個展望台，晴空塔 350 公尺與 450 公尺的票價比較請看{" "}
+            <Link href="/zh-tw/guides/attractions/tokyo-skytree-tickets">東京晴空塔門票攻略</Link>。
           </p>
         </section>
+
+        <EsimCtaTop />
 
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>哪一間適合你</span>
@@ -255,8 +301,8 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
         <FaqList items={faqItems} />
 
         <KlookTourPicks
-          heading="同一趟旅程可以一起訂的行程"
-          intro="兩座美術館都只會佔用東京一天中的一部分時間。以下三項包括地鐵通票、附導覽的東京市區一日遊，以及從東京出發的一日遊。Klook 價格依日期而變，所以請打開頁面查看你那一天的金額。"
+          heading="同一趟旅程，順遊東京其他景點"
+          intro="兩座美術館都只會佔用東京一天中的一部分時間。以下包括附導覽的東京市區一日遊，以及從東京出發的一日遊。Klook 價格依日期而變，所以請打開頁面查看你那一天的金額。"
           tours={tours}
         />
 

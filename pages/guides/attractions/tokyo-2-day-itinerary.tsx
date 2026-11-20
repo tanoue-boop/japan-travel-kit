@@ -570,7 +570,9 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
             Asakusa early, Skytree late morning, Tsukiji for lunch and Tokyo Tower at night. teamLab Planets in
             Toyosu fits the afternoon if you want it (slots and booking in our{" "}
             <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets</Link> guide); without it, spend the afternoon in Ueno Park or back in
-            Asakusa.
+            Asakusa. Would Borderless at Azabudai Hills suit you better? See{" "}
+            <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Planets vs Borderless</Link> before you
+            book a slot.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

@@ -360,7 +360,7 @@ export default function GuidesAttractionsPage({ updated, dates }: { updated: Pag
             <h2 className={styles.sectionTitle}>How far ahead should I book teamLab or SHIBUYA SKY?</h2>
             <p className={styles.bodyText}>
               {faqItems[1].a} Planets or Borderless? The{" "}
-              <Link href="/guides/attractions/teamlab-tokyo-tickets" style={L}>teamLab Tokyo tickets comparison</Link>{" "}
+              <Link href="/guides/attractions/teamlab-tokyo-tickets" style={L}>teamLab Planets vs Borderless</Link> comparison{" "}
               puts the two side by side; for Planets alone, see{" "}
               <Link href="/guides/attractions/teamlab-planets-tickets" style={L}>teamLab Planets tickets</Link>.
             </p>
