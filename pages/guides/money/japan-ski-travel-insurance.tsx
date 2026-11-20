@@ -62,60 +62,163 @@ const RENTAL_URL = nisekoSkiSnowboardRental.url;
 // day on niseko.ne.jp. World Nomads' ski page now redirects to a general page, so its values
 // stay dated 25 Oct 2026.
 const CHECKED = checkedLabel("2026-10-25");
-const SW_CHECKED = checkedLabel("2026-11-13");
-const LAST_CHECKED = "2026-11-13";
+// Re-read 20 Nov 2026 (task jtk-20261120-R04) on safetywing.com/nomad-insurance/faq and /policy:
+// the US$62.72 / US$177.50 prices, the off-piste wording, the "doesn't cover search and rescue"
+// answer, the helicopter exclusion, Complete's ski-resort rescue, the US$10 add-on, the luggage
+// limits and the child rule are all unchanged, so SW_CHECKED moves to that date.
+const SW_CHECKED = checkedLabel("2026-11-20");
+const LAST_CHECKED = "2026-11-20";
 
 // The cover-item table: one row per thing a ski trip in Japan actually claims for.
 // Only values read on SafetyWing's own policy wording and FAQ; anything those pages do
 // not state is "Check the policy wording", never a guess.
+// R04 (20 Nov 2026): the last column is now the question to ask of any policy, not a
+// third insurer's values — World Nomads and Heymondo stay in the side-by-side table below.
 const coverRows = [
   {
     item: "Bottom line",
     essential: "Covers on-piste skiing and snowboarding for medical treatment and medical evacuation. No search and rescue, no off-piste.",
     complete: "Adds search and rescue at a recognised ski resort. A 12-month plan, not a single-trip one.",
-    other: "Confirm that skiing is named, where the off-piste line is drawn, and whether rescue is a separate benefit.",
+    other: "Is skiing named, where is the off-piste line drawn, and is rescue a separate benefit?",
   },
   {
     item: "On-piste skiing and snowboarding",
     essential: "Covered. Both are in the covered-activities list. Safety equipment such as a helmet must be worn as the sport requires.",
     complete: "Covered. Sports are included without an add-on; professional and high-risk activities are excepted.",
-    other: "Check the policy wording.",
+    other: "Included as standard, or a paid winter-sports add-on? Many home-country policies sell it as an add-on (see the next table).",
   },
   {
     item: "Off-piste inside the resort boundary",
     essential: "Excluded: \"not covered off-piste\". The US$10 Adventure Sports Add-On keeps off-piste on its exclusion list.",
     complete: "Check the policy wording.",
-    other: "World Nomads: covered within resort boundaries on every plan (its own activity list, read 25 Oct 2026).",
+    other: "Does \"off-piste\" mean outside marked runs, or outside the resort boundary? The two are different lines.",
   },
   {
     item: "Backcountry (through a resort gate)",
     essential: "Excluded: off-piste means outside marked territory or against the advice of the ski school or authority.",
     complete: "Check the policy wording. Search and rescue during off-site winter sports is not covered.",
-    other: "World Nomads: named only on the Explorer plan (read 25 Oct 2026).",
+    other: "Is a guide required? Is a gate that the resort has closed treated as \"against local advice\"?",
   },
   {
     item: "Helicopter rescue / search and rescue",
     essential: "Not covered. The exclusions name search and rescue \"including air transfer services via helicopter\". Medical evacuation to a hospital is covered to US$100,000 lifetime.",
     complete: "Covered at a recognised ski resort or similar winter sports resort. Not at sea, not during off-site winter sports.",
-    other: "Check the policy wording.",
+    other: "Is search and rescue a named benefit with its own limit, separate from medical evacuation?",
   },
   {
     item: "Skis, board or rental gear lost or stolen",
     essential: "No named ski-equipment benefit. Lost checked luggage up to US$3,000 per period, US$500 per item.",
     complete: "Check the policy wording.",
-    other: "Check the policy wording.",
+    other: "Is there a ski-equipment limit, and does it cover hired gear and unattended gear?",
   },
   {
     item: "Unused lift pass or ski school after an injury",
     essential: "Not listed in the description of cover. Check the policy wording.",
     complete: "Check the policy wording.",
-    other: "Check the policy wording.",
+    other: "Is a pro-rata refund for unused lift passes, hire and lessons listed?",
   },
   {
     item: "Runs or lifts closed by bad weather",
     essential: "Not listed in the description of cover. Check the policy wording.",
     complete: "Check the policy wording.",
-    other: "Check the policy wording.",
+    other: "Is piste closure (lack of snow or weather) a listed benefit, and from which date?",
+  },
+];
+
+// R04 (20 Nov 2026): what home-country policies do with skiing, from each insurer's own page or
+// policy wording PDF, read 20 Nov 2026. No prices: none are published as list prices. Cover-More
+// (Australia) was left out because its page could not be read; Allianz US gives only exclusions.
+const countryRows = [
+  {
+    country: "Bottom line",
+    insurer: "Australia, Singapore, UK: a paid add-on. US: varies by plan.",
+    rule: "Skiing and snowboarding are usually a separate winter-sports option that you add when you buy, not later.",
+    offPiste: "Usually excluded, or only within the resort boundary.",
+  },
+  {
+    country: "Australia",
+    insurer: "Allianz Partners Australia — Snow Pack",
+    rule: "\"Standard policies don't provide cover for your participation in snow sport activities.\" The Snow Pack is an option on Comprehensive, Multi Trip and Domestic plans, and adds snow-sport equipment, unused lift passes, hire and tuition after injury, and lift closures over 24 hours for lack of snow.",
+    offPiste: "Excluded: activities \"which involve going off-piste or back-country\". Cover is for marked, open slopes within resort boundaries.",
+  },
+  {
+    country: "Australia",
+    insurer: "Fast Cover — Snow Sports Plus",
+    rule: "\"You must choose snow sports at quote\"; without it \"You will not have cover.\" Adds own equipment, pre-paid lift passes after injury and whole-resort lift closures over 24 hours.",
+    offPiste: "Off-piste, backcountry, cat and heli skiing only with a professional snow sport instructor.",
+  },
+  {
+    country: "Singapore",
+    insurer: "MSIG TravelEasy Flex — Adventurous Activities Cover",
+    rule: "Winter sports are excluded unless covered under the optional Adventurous Activities Cover (section 33). Sports equipment, including skis and snowboards, is a separate benefit, except during use.",
+    offPiste: "Excluded: skiing and snowboarding are covered only if not done in off-piste, ungroomed or unpatrolled areas.",
+  },
+  {
+    country: "United Kingdom",
+    insurer: "Post Office — Winter sports cover",
+    rule: "\"winter sports cover is a mandatory add-on for skiing and snowboarding trips\" at an additional cost, with own or hired gear, ski pass, piste closure and avalanche cover.",
+    offPiste: "Covered \"as long as you're within the resort's boundaries and in recognised areas\".",
+  },
+  {
+    country: "United Kingdom",
+    insurer: "Staysure — Optional Winter Sports Cover",
+    rule: "Optional, for an additional premium and only if shown on your Validation Certificate; not available on Basic annual policies. Adds ski equipment, ski pack, hire, piste closure and avalanche sections.",
+    offPiste: "Only within the confines of the ski resort; not in areas rated avalanche risk 3 or above.",
+  },
+  {
+    country: "United States",
+    insurer: "World Nomads (US residents)",
+    rule: "Skiing and snowboarding included on the Standard plan. Lift-ticket reimbursement and slope-closure cover are on the Explorer and Epic plans only.",
+    offPiste: "On or off piste within resort boundaries on Standard; backcountry and heli or cat access on Explorer or higher.",
+  },
+  {
+    country: "United States",
+    insurer: "Allianz Travel Insurance (US)",
+    rule: "Its ski page lists exclusions rather than an add-on; skis and boards are covered only while checked with a travel carrier, and warm weather melting the snow is not covered.",
+    offPiste: "Excluded: skiing or snowboarding outside marked trails, or in an area accessed by helicopter.",
+  },
+];
+
+// R04 (20 Nov 2026): each area's own published gate and out-of-bounds rules, read that day on the
+// resorts' official pages (niseko.ne.jp, hakubavalley.com, happo-one.jp terms PDF, nozawaski.com,
+// gala.co.jp, princehotels.co.jp Naeba). GALA Yuzawa's live page states the ban only; its old
+// PDFs with penalties now return 404, so no penalty or charge is given for it.
+const resortRows = [
+  {
+    area: "Bottom line",
+    gate: "Leave the marked area only through a designated gate, and never under a rope.",
+    penalty: "Lift pass confiscated or suspended, and you can be asked to leave.",
+    rescue: "Rescue outside the boundary is billed to you at every area listed that states a rule.",
+  },
+  {
+    area: "Niseko United (Hirafu, Village, Annupuri, Hanazono)",
+    gate: "\"Always use gates when entering backcountry areas. Do not duck boundary ropes.\" Backcountry is prohibited when the gates are closed; elementary-school children only with an older companion.",
+    penalty: "Lift pass can be confiscated and a new one refused.",
+    rescue: "\"A minimum of ¥100,000\" for search and rescue in backcountry areas.",
+  },
+  {
+    area: "Hakuba Valley",
+    gate: "Backcountry gates at ABLE Hakuba Goryu, Happo-one, Tsugaike, Hakuba Norikura and Hakuba Cortina only; access from Jigatake, Kashimayari, Sanosaka, Hakuba47 and Iwatake is prohibited. A mountain-climbing registration form is required.",
+    penalty: "Lift ticket suspended and you are asked to leave the resort.",
+    rescue: "If a private rescue team is dispatched, costs are borne by the person rescued. Happo-one's terms list patrol rescue at ¥20,000 per hour per rescuer and ¥50,000 per hour per snowcat.",
+  },
+  {
+    area: "Nozawa Onsen",
+    gate: "Backcountry only through the access gates at the top of the Yamabiko area; ducking under the ropes is \"strictly PROHIBITED\".",
+    penalty: "Lift ticket may be confiscated, you may be removed from the resort or denied entry.",
+    rescue: "Rescue goes through the village council and the police, and \"rescue costs will be incurred\"; no amount published.",
+  },
+  {
+    area: "Yuzawa — GALA Yuzawa",
+    gate: "No backcountry gate. Off-limits areas are closed to skiing for avalanche and getting-lost risk; never cross the poles or nets.",
+    penalty: "Not stated on the current page.",
+    rescue: "Not stated on the current page.",
+  },
+  {
+    area: "Yuzawa — Naeba (Prince)",
+    gate: "Leave the managed area only through the designated gate, with a climbing plan handed to the patrol.",
+    penalty: "Lift ticket may be taken back; no refund for entering off-limits areas.",
+    rescue: "All search and rescue costs are owed by the person rescued; no amount published.",
   },
 ];
 
@@ -224,9 +327,9 @@ const japanRows = [
   },
   {
     item: "Nagano public helicopter rescue (Hakuba, Nozawa, Shiga Kogen)",
-    rule: "The prefecture does not bill individuals for fire-and-disaster helicopter mountain rescue",
-    cost: "¥0 from the prefecture",
-    note: "Nagano's own published position: the helicopter rescue is treated as an extension of the free municipal ambulance and rescue service. Private rescue teams are a separate bill.",
+    rule: "The prefecture currently does not bill individuals for fire or police ground or helicopter rescue",
+    cost: "¥0 from the prefecture (currently)",
+    note: "Nagano's own published answer of 20 January 2026 says this applies regardless of nationality, and that the prefecture has begun studying cost-sharing. Private rescue teams and resort patrols bill separately.",
   },
   {
     item: "Saitama prefectural helicopter rescue",
@@ -236,34 +339,38 @@ const japanRows = [
   },
 ];
 
+// R04 (20 Nov 2026): the five questions the GSC queries ask, in the task's order.
 const faqItems = [
   {
-    q: "Does travel insurance cover snowboarding in Japan?",
-    a: `Yes on marked runs, if the policy names it. SafetyWing Nomad Insurance lists snowboarding as a covered activity on the same terms as skiing: not covered off-piste or against the advice of the local ski school or authority, and safety equipment such as a helmet must be worn as the sport requires. Snowboard jumping and acrobatics need its US$10 per 28 days Adventure Sports Add-On, sold on subscriptions only. Read on SafetyWing's policy wording and FAQ on ${SW_CHECKED}.`,
+    q: "Do I need ski insurance for Japan?",
+    a: `Japan does not require it for entry, but the costs are real: a rescue outside the Niseko boundaries is billed to you at a minimum of ¥100,000 under the resorts' own Niseko Rules, and a standard policy only covers skiing if it names it. Check that skiing and snowboarding are listed, where the off-piste line is drawn, and whether search and rescue is a separate benefit. SafetyWing Nomad Insurance Essential names both sports on marked runs. Read on ${SW_CHECKED}.`,
   },
   {
-    q: "Is off-piste skiing covered?",
-    a: `Not by default. SafetyWing excludes off-piste skiing and snowboarding on every plan — outside marked territory or against the advice of the ski school or authority — and its Adventure Sports Add-On keeps off-piste and heli-skiing on its exclusion list (read ${SW_CHECKED}). World Nomads' own activity list covers off piste within resort boundaries on every plan and names backcountry only on its Explorer plan (read ${CHECKED}). Going through a Niseko or Hakuba backcountry gate is a plan you choose before you buy, not an add-on.`,
+    q: "Does travel insurance cover off-piste skiing in Niseko?",
+    a: `Not on most standard policies. SafetyWing excludes off-piste skiing and snowboarding on every plan — outside marked territory or against the advice of the ski school or authority — and its US$10 Adventure Sports Add-On keeps off-piste and heli-skiing on its exclusion list (read ${SW_CHECKED}). Niseko's backcountry is reached only through the resorts' gates, which close in dangerous conditions; going through a closed gate or under a rope breaks the Niseko Rules. For the gates, buy a plan whose activity list names backcountry before you travel.`,
   },
   {
     q: "What is the best travel insurance for a family ski trip to Hokkaido?",
     a: `For a family skiing marked runs, SafetyWing Nomad Insurance Essential. One child aged 14 days to 9 years per adult, up to two per group, is added at no extra cost; older children pay their own age price, and group members can only be added at purchase. It covers on-piste skiing and snowboarding but not search and rescue or off-piste, and the Niseko Rules bar elementary-school children from backcountry areas unless accompanied. Read on ${SW_CHECKED}.`,
   },
   {
-    q: "Do I need ski insurance for Niseko?",
-    a: `If you ski only the marked runs, a policy that names skiing covers the medical side. Niseko is where the gaps show: the resorts' own Niseko Rules charge a minimum of ¥100,000 for a rescue outside the boundaries and can confiscate your lift pass for ducking a rope, and SafetyWing Essential excludes search and rescue, including by helicopter. For backcountry gates you need a plan that names backcountry. Niseko Rules and SafetyWing wording read on ${SW_CHECKED}.`,
+    q: "Is snowboarding covered by standard travel insurance?",
+    a: `Often, but not always as standard. SafetyWing Nomad Insurance lists snowboarding as a covered activity on the same terms as skiing — not off-piste, not against local advice, and with safety equipment such as a helmet worn as the sport requires; jumping and acrobatics need its US$10 per 28 days Adventure Sports Add-On, on subscriptions only. Many policies sold in Australia, Singapore and the UK put skiing and snowboarding in a separate winter-sports add-on, so check the activity list before you buy. Read on ${SW_CHECKED}.`,
   },
   {
-    q: "What does ski insurance cost for Japan?",
-    a: `SafetyWing publishes US$62.72 per 4 weeks for Nomad Insurance Essential at ages 10–39, which covers on-piste skiing and snowboarding. The Adventure Sports Add-On is an extra US$10 per 28 days on subscriptions, and Nomad Insurance Complete is US$177.50 a month at ages 18–39. Prices rise with age and neither plan has a deductible. World Nomads and Heymondo quote per trip, so they have no list price. Read on safetywing.com on ${SW_CHECKED}.`,
+    q: "How much does ski rescue cost in Japan?",
+    a: `It depends on who rescues you. The Niseko resorts charge a minimum of ¥100,000 for a rescue outside the boundaries, and Happo-one in Hakuba lists patrol rescue at ¥20,000 per rescuer per hour. Saitama Prefecture charges ¥8,000 per 5 minutes of prefectural helicopter flight in designated mountain areas, while Nagano Prefecture currently does not bill individuals for fire or police rescue; private rescue teams bill separately. SafetyWing Essential does not cover search and rescue, including by helicopter; its Complete plan covers it at a recognised ski resort. Read on official pages on ${SW_CHECKED}.`,
   },
 ];
 
 // Retitled 13 Nov 2026 (R03): exact "travel insurance for skiing in japan" and "snowboarding"
 // up front; "family" and "Hokkaido" in the description for the 1.2-position, 0%-CTR query.
-const TITLE = "Travel Insurance for Skiing & Snowboarding in Japan (2026)";
+// Retitled 20 Nov 2026 (R04): "Japan ski travel insurance" head term first, with skiing and
+// snowboarding; the description keeps "travel insurance for skiing in Japan" and adds the rescue
+// bill an AI answer does not give.
+const TITLE = "Japan Ski Travel Insurance 2026: Skiing & Snowboarding Cover";
 const DESCRIPTION =
-  "Travel insurance for skiing in Japan: snowboarding, off-piste and helicopter rescue cover compared, and the best pick for a family ski trip to Hokkaido.";
+  "Travel insurance for skiing in Japan: snowboarding, off-piste and rescue cover by plan, Niseko's ¥100,000 rescue minimum, and the best family ski pick.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/money/japan-ski-travel-insurance") },
@@ -356,7 +463,7 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Travel Insurance for Skiing in Japan: Snowboarding, Off-Piste &amp; Family Trips (2026)
+            Japan Ski Travel Insurance 2026: Travel Insurance for Skiing &amp; Snowboarding in Japan
           </h1>
           <p className={styles.heroSubtitle}>
             On-piste skiing is standard cover almost everywhere. One gate at Niseko or Hakuba moves you
@@ -392,18 +499,18 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
             <span className={styles.verdictLabel}>Quick Answer</span>
           </div>
           <div className={styles.verdictBody}>
-            {/* Answer-first (R03, 13 Nov 2026): the first body paragraph, ahead of the stat grid. */}
+            {/* Answer-first (R04, 20 Nov 2026): cover needed + what a rescue can cost, in 3 sentences. */}
             <p className={styles.verdictText} style={{ marginTop: 0, marginBottom: "1rem" }}>
-              <strong>Travel insurance for skiing in Japan</strong> needs to cover four things: emergency
-              medical treatment, rescue and evacuation off the mountain, your skis, board or rental gear, and
-              unused lift passes or lessons after an injury. <strong>Off-piste and backcountry</strong> riding
-              is excluded or conditional on most policies: SafetyWing&apos;s Essential plan excludes it, even with its{" "}
-              <strong>US$10</strong> Adventure Sports Add-On, and World Nomads covers off piste only inside
-              resort boundaries except on its Explorer plan. <strong>SafetyWing Nomad Insurance
-              Essential</strong> (<strong>US$62.72 per 4 weeks</strong>, ages 10–39) names skiing and
-              snowboarding as covered activities but excludes search and rescue, including by helicopter;
-              its Complete plan covers search and rescue at a recognised ski resort. SafetyWing wording read
-              on {SW_CHECKED}; World Nomads on {CHECKED}.
+              <strong>Travel insurance for skiing in Japan</strong> needs four things: medical treatment and
+              evacuation, search and rescue off the mountain, cover for skis, board or rental gear, and a clear
+              line on <strong>off-piste</strong> riding, which most standard policies exclude.{" "}
+              A rescue can be billed to you: the Niseko resorts charge a <strong>minimum of ¥100,000</strong>{" "}
+              for search and rescue outside their boundaries, Hakuba&apos;s Happo-one lists patrol rescue at{" "}
+              <strong>¥20,000 per rescuer per hour</strong>, and Saitama Prefecture charges{" "}
+              <strong>¥8,000 per 5 minutes</strong> of helicopter flight in designated mountain areas.
+              <strong>SafetyWing Nomad Insurance Essential</strong> (<strong>US$62.72 per 4 weeks</strong>,
+              ages 10–39) covers on-piste skiing and snowboarding but not off-piste or search and rescue,
+              including by helicopter (SafetyWing, resort and prefecture pages read on {SW_CHECKED}).
             </p>
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
@@ -427,12 +534,27 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
               <a href={SAFETYWING_URL} target="_blank" rel={SPONSORED_REL} className={styles.verdictBtn}>
                 Get a SafetyWing quote →
               </a>
+            </div>
+            {/* R04: the same-trip bookings straight after the insurance button — lift + transfer, rental. */}
+            <p className={styles.verdictText} style={{ marginTop: "1rem", marginBottom: "0.5rem" }}>
+              Booking the lift days at the same time? Check whether the lift pass, rental and transfer are in
+              the package, and the cancellation window, on each listing.
+            </p>
+            <div className={styles.pickCtaRow}>
+              <KlookLink href={nisekoHirafuLiftPassBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+                Niseko lift pass + bus →
+              </KlookLink>
               <KlookLink href={RENTAL_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Reserve Ski Rental →
+              </KlookLink>
+              <KlookLink href={galaNaebaSkiDayTripTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+                Ski day trip from Tokyo →
               </KlookLink>
             </div>
           </div>
         </div>
+
+        <EsimCtaTop />
 
         {/* Cover table (R03): what a ski trip actually claims for, item by item. */}
         <section className={styles.comparisonSection}>
@@ -448,7 +570,7 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Cover item", "SafetyWing Essential", "SafetyWing Complete", "Any other policy"].map((h) => (
+                    {["Cover item", "SafetyWing Essential", "SafetyWing Complete", "What to check on any policy"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -469,9 +591,8 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Last checked: {LAST_CHECKED}. Sources: SafetyWing&apos;s Essential description of cover
             (https://safetywing.com/nomad-insurance/policy) and FAQ
-            (https://safetywing.com/nomad-insurance/faq). World Nomads values from worldnomads.com, read on{" "}
-            {CHECKED}. Cover varies by country of residence and policy version; the document attached to your
-            quote is the one that counts.
+            (https://safetywing.com/nomad-insurance/faq). Cover varies by country of residence and policy
+            version; the document attached to your quote is the one that counts.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <a href={SAFETYWING_URL} target="_blank" rel={SPONSORED_REL} className={styles.verdictBtn}>
@@ -480,7 +601,48 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
           </div>
         </section>
 
-        <EsimCtaTop />
+        {/* R04: departure-country notes — what home-country policies do with skiing. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>By home country</span>
+          <h2 className={styles.sectionTitle}>Does My Home Travel Insurance Cover Skiing in Japan?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Often not without an add-on. The Australian, Singaporean and UK policies below all sell skiing and
+            snowboarding as a separate winter-sports option that has to be chosen when you buy, and most limit
+            off-piste to the resort boundary or exclude it.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Country", "Insurer / option", "How skiing is sold", "Off-piste"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {countryRows.map((row) => (
+                    <tr key={row.insurer}>
+                      <td className={styles.tdProvider}>{row.country}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.insurer}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.rule}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.offPiste}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED}. Sources: allianz.com.au/travel-insurance/ski-snow-cover.html;
+            fastcover.com.au/travel-insurance-for-skiing-and-snowboarding and its Snow Sports PDS page;
+            MSIG TravelEasy Flex policy wording (msig.com.sg/sites/msig_sg/files/downloads/traveleasy_flex_policy.pdf);
+            postoffice.co.uk/travel-insurance/ski-winter-sports; Staysure Signature policy wording (July 2026,
+            cms-public.staysure.co.uk); worldnomads.com/usa/travel-insurance/activities/ski-snowboard-travel-insurance;
+            allianztravelinsurance.com/travel/planning/travel-insurance-for-ski-vacation.htm. Prices are quoted per
+            trip and are not shown. Wording differs by plan and policy version.
+          </p>
+        </section>
 
         {/* The core question */}
         <section className={styles.bodySection}>
@@ -719,6 +881,54 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
           </div>
         </section>
 
+        {/* R04: resort off-piste rules — Niseko, Hakuba, Nozawa, Yuzawa. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Resort rules</span>
+          <h2 className={styles.sectionTitle}>What Are the Off-Piste Rules at Niseko, Hakuba, Nozawa and Yuzawa?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Every area below allows backcountry only through a designated gate, or not at all, and treats a
+            ducked rope as a rule breach. That matters for insurance, because policies exclude skiing
+            &quot;against the advice of the local ski school or local authoritative body&quot;.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Ski area", "Gate and out-of-bounds rule", "Penalty", "Rescue cost"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {resortRows.map((row) => (
+                    <tr key={row.area}>
+                      <td className={styles.tdProvider}>{row.area}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.gate}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.penalty}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.rescue}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED}. Sources: https://www.niseko.ne.jp/en/niseko-rules/;
+            https://www.hakubavalley.com/en/safetytips_en/backcountry/ and https://www.hakubavalley.com/info_en/5863/;
+            Happo-one terms (happo-one.jp, effective 21 Nov 2020);
+            https://en.nozawaski.com/the-mountain/moutain-info/to-all-back-country-skiers-and-snowborders/;
+            https://gala.co.jp/winter/course/;
+            https://www.princehotels.co.jp/ski/naeba/winter/coursemap/safety.html.
+          </p>
+          <p className={styles.bodyText}>
+            Planning the resorts themselves? See the{" "}
+            <Link href="/guides/attractions/hakuba-ski-tours">Hakuba ski tours</Link>,{" "}
+            <Link href="/guides/attractions/nozawa-onsen-ski">Nozawa Onsen ski</Link> and{" "}
+            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo">Gala Yuzawa day trip</Link> guides.
+          </p>
+        </section>
+
         {/* Japan specifics */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Japan specifics</span>
@@ -764,7 +974,9 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
             Saitama&apos;s ¥8,000-per-5-minutes helicopter fee and the one-hour average from Saitama
             Prefecture&apos;s own page on the ordinance, which also records the rise from ¥5,000 on 1 April
             2024. Nagano&apos;s position on not billing individuals from the prefecture&apos;s own published
-            answer. All read on {CHECKED}.
+            answer of 20 January 2026. Last checked: {LAST_CHECKED} on https://www.niseko.ne.jp/en/niseko-rules/,
+            https://www.pref.saitama.lg.jp/a0404/herizyourei/herizyourei.html and
+            https://www.pref.nagano.lg.jp/koho/kensei/koho/hotline/202601/hot_2601-17.html.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <a href={SAFETYWING_URL} target="_blank" rel={SPONSORED_REL} className={styles.verdictBtn}>

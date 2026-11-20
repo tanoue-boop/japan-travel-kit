@@ -494,8 +494,8 @@ export default function JapanTravelInsurancePage({ updated }: { updated: PageUpd
             Last checked: {LAST_CHECKED} on{" "}
             <a href="https://safetywing.com/nomad-insurance" target="_blank" rel={PLAIN_REL}>safetywing.com/nomad-insurance</a> and{" "}
             <a href="https://safetywing.com/nomad-insurance/faq" target="_blank" rel={PLAIN_REL}>SafetyWing&apos;s FAQ</a>.
-            Skiing or snowboarding? Our{" "}
-            <Link href="/guides/money/japan-ski-travel-insurance">travel insurance for skiing in Japan</Link> guide
+            Going to Japan to ski or snowboard? Our{" "}
+            <Link href="/guides/money/japan-ski-travel-insurance">Japan ski travel insurance</Link> guide
             compares on-piste, off-piste and rescue wording insurer by insurer.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>

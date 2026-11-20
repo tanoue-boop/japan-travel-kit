@@ -1194,8 +1194,8 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             helmet, while off-piste is outside that wording, and other policies may need an add-on. A single
             day on snow is the day of a Japan trip most likely to produce a hospital bill, which is why this is the one thing on the page that matters more
             than the ¥500 you save buying the pass online. Our{" "}
-            <Link href="/guides/money/japan-ski-travel-insurance">best travel insurance for skiing in Japan</Link>{" "}
-            sets out what the common exclusions actually say and what counts as off-piste.
+            <Link href="/guides/money/japan-ski-travel-insurance">Japan ski travel insurance</Link>{" "}
+            guide sets out what the common exclusions actually say and what counts as off-piste.
           </p>
           <p className={styles.bodyText}>
             The other two things worth sorting before a GALA day. <strong>Data</strong>, because the resort

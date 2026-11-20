@@ -649,9 +649,11 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
           <h2 className={styles.sectionTitle}>Does Travel Insurance Cover Skiing and Snowboarding in Japan?</h2>
           <p className={styles.bodyText}>
             On marked runs, usually yes. SafetyWing covers skiing and snowboarding on piste if you wear a
-            helmet. It excludes off-piste on every plan, and Essential does not cover search and rescue. Our guide to{" "}
-            <Link href="/guides/money/japan-ski-travel-insurance">travel insurance for skiing in Japan</Link>{" "}
-            compares the wording of each insurer, including off-piste, rescue and family trips to Hokkaido.
+            helmet. It excludes off-piste on every plan, and Essential does not cover search and rescue. This
+            page compares cover for the whole trip; if the trip is for skiing, our{" "}
+            <Link href="/guides/money/japan-ski-travel-insurance">Japan ski travel insurance</Link>{" "}
+            guide compares the wording of each insurer, including off-piste, rescue, resort gate rules and
+            family trips to Hokkaido.
           </p>
           <p className={styles.bodyText}>
             Planning the trip itself? See our guides to{" "}
