@@ -10872,3 +10872,86 @@ export const tokyoBikeTourTripPrep: KlookTripPrepItem[] = [
     why: "The meeting point is a map pin, and any weather change to the tour reaches you on the morning, away from hotel Wi-Fi.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Japan New Year itinerary — added 20 Nov 2026 (task-jtk-20261120-01).
+//
+// Two new listing ids, both confirmed as live en-US pages through the
+// www.klook.com search index on 20 Nov 2026:
+//   98401   "Countdown Cruise 2026-2027 (Tokyo / Provided by Symphony Cruise)" —
+//           the New Year's Eve sailing from Hinode Pier, titled for 2026-27     6.5%
+//   143495  "Tokyo: Asakusa & Sensoji - Oldest Temple Walking Tour (2hrs)"       6.5%
+// Re-confirmed the same day (existing constants): 140853 Tokyo night tour,
+// 5672 Tokyo sightseeing bus day tour, 82323 Kyoto day tour from Kyoto Station,
+// 1552 Tokyo Subway Ticket. Hotels are `tokyoStayAreas` / `kyotoStayAreas` (6.5%),
+// the shinkansen and Skyliner are the existing rail links (5%), eSIM 20%.
+// No ad id: data/klook-adids.json had spare 0, so these fall back to ?aid=119070.
+// No Klook price appears on the page.
+// ---------------------------------------------------------------------------
+
+/** New Year's Eve on Tokyo Bay — the 2026-27 listing of the Symphony countdown sailing. */
+export const tokyoCountdownCruise: KlookTour = {
+  title: "Tokyo Bay countdown cruise 2026-27 (Symphony)",
+  desc: "The New Year's Eve sailing from Hinode Pier, listed at about 2.5 hours under Rainbow Bridge with a buffet or course dinner and a deck toast at midnight",
+  url: klookLink("https://www.klook.com/en-US/activity/98401-2023-2024-new-years-eve-cruise-tokyo/"),
+};
+
+/** A guided 2-hour walk of Asakusa and Senso-ji. */
+export const asakusaSensojiTwoHourTour: KlookTour = {
+  title: "Asakusa & Senso-ji walking tour (2 hours)",
+  desc: "A 2-hour guided walk of Tokyo's oldest temple and Nakamise-dori with a local guide, in English",
+  url: klookLink("https://www.klook.com/en-US/activity/143495-asakusa-sensoji-temple-walking-tour-in-tokyo/"),
+};
+
+/** Hotels for the five New Year nights — Tokyo first, then Kyoto. */
+export const japanNewYearStayAreas: KlookStayArea[] = [
+  {
+    area: "Shinjuku (Tokyo, 30 Dec – 2 Jan)",
+    why: "Harajuku, the station for Meiji Jingu, is two stops away on the JR Yamanote Line, so the midnight visit on New Year's Eve ends with a short trip back.",
+    url: tokyoStayAreas[0].url,
+  },
+  {
+    area: "Ueno / Asakusa (Tokyo, 30 Dec – 2 Jan)",
+    why: "Senso-ji's midnight bell and the 1 January opening of the Tokyo National Museum in Ueno Park are both close by.",
+    url: tokyoStayAreas[2].url,
+  },
+  {
+    area: "Kyoto Station (Kyoto, from 3 Jan)",
+    why: "The shinkansen arrives under it — useful on a day when every Nozomi is reserved-seat only and you are moving with luggage.",
+    url: kyotoStayAreas[0].url,
+  },
+];
+
+/** "Book these on the same visit" for New Year: 6.5% hotel and cruise, 5% rail and subway, 20% eSIM. */
+export const japanNewYearTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels around Shinjuku",
+    ctaLabel: "Check Shinjuku hotels on Klook →",
+    url: tokyoStayAreas[0].url,
+    why: "Four nights over 30 Dec – 2 Jan, the week Japan travels too. Book a room with free cancellation first; you can still change it later.",
+  },
+  {
+    label: tokyoCountdownCruise.title,
+    ctaLabel: "Check the countdown cruise →",
+    url: tokyoCountdownCruise.url,
+    why: "The one New Year's Eve plan on this page that sells by date: a dinner sailing on Tokyo Bay with the countdown on deck.",
+  },
+  {
+    label: shinkansenTokyoKyoto.title,
+    ctaLabel: "Check Tokyo → Kyoto seats →",
+    url: shinkansenTokyoKyoto.url,
+    why: "Every Nozomi is reserved-seat only from 25 Dec to 5 Jan, so the Day 5 move to Kyoto needs a booked seat — there is no unreserved car to fall back on.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "The 72-hour ticket covers 31 Dec – 2 Jan on Tokyo Metro and Toei: Meiji-jingumae, Asakusa and Ueno are all on it. It does not cover JR.",
+  },
+  {
+    ...tripPrepProducts.skyliner,
+    why: "Landing at Narita on 30 Dec: a reserved-seat train to Ueno, the station for Asakusa and the museum.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Shrine crowds, holiday timetables and closed shops: data from the day you land lets you check what is open before you cross the city.",
+  },
+];

@@ -1217,6 +1217,12 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
               reserved Kanazawa coach, the all-reserved Kagayaki and your beds — and leave Kyoto almost
               entirely unbooked, because almost all of it is walk-in even in high season.
             </p>
+            {/* Added 20 Nov 2026: the 30 Dec – 3 Jan holiday week has its own page. */}
+            <p className={styles.verdictText} style={{ marginTop: "0.75rem" }}>
+              Arriving for the New Year holiday itself (30 December to 3 January), when banks and many museums
+              close? Use the <Link href="/guides/attractions/japan-new-year-itinerary">Japan New Year itinerary</Link>{" "}
+              for those five days.
+            </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink
                 href={shirakawagoLightUpTakayamaDayTour.url}
@@ -1797,6 +1803,19 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 20 Nov 2026: the five New Year days, 30 Dec – 3 Jan. */}
+            <Link href="/guides/attractions/japan-new-year-itinerary" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Japan New Year Itinerary (2026–27): 5 Days, What&apos;s Open</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 18 Nov 2026: a snowy onsen town four hours from Tokyo by bus. */}
             <Link href="/guides/attractions/kusatsu-onsen-day-trip" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

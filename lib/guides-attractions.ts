@@ -683,6 +683,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/japan-new-year-itinerary",
+    badge: "Itinerary",
+    title: "Japan New Year Itinerary (2026–27): 5 Days, What's Open",
+    desc: "30 Dec – 3 Jan: the countdown at Meiji Jingu or on a Tokyo Bay cruise, the first shrine visit, then Kyoto by shinkansen — with what is open on 31 Dec, 1 Jan and 2–3 Jan from each official site, and what to book first.",
+    group: "cities",
+    // Nationwide: Tokyo for 30 Dec – 2 Jan, Kyoto from 3 Jan.
+    city: "other",
+  },
+  {
     href: "/guides/attractions/tokyo-5-day-itinerary",
     badge: "Itinerary",
     title: "Tokyo 5-Day Itinerary (2026): 5 Days in Tokyo, Day by Day",
