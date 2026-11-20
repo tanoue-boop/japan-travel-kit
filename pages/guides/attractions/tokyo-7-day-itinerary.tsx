@@ -275,7 +275,7 @@ const related = [
   { href: "/guides/attractions/kamakura-day-trip", title: "Kamakura Day Trip From Tokyo (2026): Temples and Fares" },
   { href: "/guides/attractions/kawaguchiko-day-trip-from-tokyo", title: "Kawaguchiko Day Trip From Tokyo 2026: ¥2,200 Bus or Tour" },
   { href: "/guides/attractions/tokyo-subway-ticket", title: "Tokyo Subway Ticket 2026: 24/48/72-Hour Price, Worth It?" },
-  { href: "/guides/attractions/hakone-free-pass", title: "Hakone Freepass (Free Pass) 2026: Price & Where to Buy" },
+  { href: "/guides/attractions/hakone-free-pass", title: "Hakone Freepass 2026: Price from Shinjuku & Is It Worth It?" },
   { href: "/guides/transport/tokyo-wide-pass", title: "JR Tokyo Wide Pass 2026: Price, Map & Is It Worth It?" },
   { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas Compared" },
   { href: "/guides/money/tokyo-trip-cost", title: "Trip to Tokyo Cost (2026): Per Day, 5-Day and 7-Day Totals" },

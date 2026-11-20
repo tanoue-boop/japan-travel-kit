@@ -383,7 +383,9 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             If the Hakone half is what interests you most, it is also the half that works best on your own —
             see our <Link href="/guides/attractions/hakone-day-trip-from-tokyo">Hakone day trip guide</Link> for
-            the Freepass prices and how the loop fits together.
+            how the loop fits together, and our{" "}
+            <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass</Link> guide for the pass that covers
+            it — the price from Shinjuku and whether it pays for itself in one day.
           </p>
         </section>
 

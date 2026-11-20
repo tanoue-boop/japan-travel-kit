@@ -578,7 +578,9 @@ export default function Tokyo4DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/kawaguchiko-day-trip-from-tokyo">Kawaguchiko</Link>,{" "}
             <Link href="/guides/attractions/nikko-day-trip">Nikko</Link>,{" "}
             <Link href="/guides/attractions/kamakura-day-trip">Kamakura</Link> and{" "}
-            <Link href="/guides/attractions/hakone-day-trip-from-tokyo">Hakone</Link> day-trip guides.
+            <Link href="/guides/attractions/hakone-day-trip-from-tokyo">Hakone</Link> day-trip guides; the
+            Hakone pass prices from Shinjuku and Odawara, and whether one day is enough to make it pay, are in
+            our <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass</Link> guide.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={fujiPhotographyDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

@@ -173,7 +173,7 @@ const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const relatedGuides = [
   { href: "/guides/attractions/kawaguchiko-ryokan-mt-fuji-view", title: "Kawaguchiko Ryokan with Mt Fuji View & Private Onsen 2026" },
-  { href: "/guides/attractions/hakone-free-pass", title: "Hakone Freepass (Free Pass) 2026: Price & Where to Buy" },
+  { href: "/guides/attractions/hakone-free-pass", title: "Hakone Freepass 2026: Price from Shinjuku & Is It Worth It?" },
   { href: "/guides/attractions/hakone-day-trip-from-tokyo", title: "Hakone Day Trip From Tokyo (2026): Timed Itinerary, Cost and Tours" },
   { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport" },
   { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days: Tokyo, Kyoto, Osaka & Hakone (2026)" },
@@ -471,6 +471,9 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
             Add the Shinjuku to Hakone-Yumoto time to each leg: the fastest Romancecar is 75 minutes on Hakone
             Navi, and the inns quote about 85 to 90. Train, bus and colour timings come from Hakone Navi, Odakyu,
             the Hakone tourism association and Mikawaya&apos;s access page, and they vary by service and by year.
+            The Hakone Tozan Train, the cable car and Hakone Tozan Bus (not Izu-Hakone Bus) are covered by the 2-day{" "}
+            <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass</Link>, which runs to the last
+            service on the day after you buy it.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={hakoneHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
