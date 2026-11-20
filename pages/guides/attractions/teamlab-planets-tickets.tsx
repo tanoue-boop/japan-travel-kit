@@ -634,8 +634,8 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
             water in; Borderless is a map-less maze in Azabudai Hills. Our{" "}
             <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Tokyo comparison</Link> has prices,
             hours and who each suits, and the{" "}
-            <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless ticket guide</Link>{" "}
-            covers booking that museum.
+            <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless tickets</Link> guide{" "}
+            covers booking that museum&apos;s timed entry.
           </p>
         </section>
 

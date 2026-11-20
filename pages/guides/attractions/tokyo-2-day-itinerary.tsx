@@ -572,7 +572,9 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets</Link> guide); without it, spend the afternoon in Ueno Park or back in
             Asakusa. Would Borderless at Azabudai Hills suit you better? See{" "}
             <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Planets vs Borderless</Link> before you
-            book a slot.
+            book a slot, and our{" "}
+            <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless tickets</Link> guide
+            for how its timed entry is booked.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

@@ -18,14 +18,18 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 const BORDERLESS_URL = teamlabBorderlessTicketUrl;
 
 // The adult and child figures are owned by lib/attraction-prices.ts, which also feeds
-// the ticket price table. On 13 November 2026 (task-jtk-20261113-R01) the prices, the
-// Flexible Pass, the hours and closed days were re-read off the server-rendered
-// teamlab.art/e/tokyo/ page, and the sale window, time needed, cancellation, re-entry
-// and child rules off the FAQPage data of teamlab.art/faq/tokyo/ — so this page carries
-// that date. The shared record keeps its own date for the other pages that use it.
+// the ticket price table. On 20 November 2026 (task-jtk-20261120-R02) the ticket
+// segments (adult ¥3,400 dynamic, 13–17 ¥2,800, 4–12 ¥1,500, under-4 free, disability
+// ¥1,700 dynamic, Flexible Pass ¥12,000, +¥200 on site) and the purchase notes were
+// re-read off the __NEXT_DATA__ of teamlab.art/e/borderless-azabudai/, and the sale
+// window, same-day sales, payment, ticket delivery, queueing and stay rules off
+// teamlab.art/faq/Tokyo/ — so the prices, the booking steps, the slot table and the FAQ
+// carry that date. The hours / closed-day table was not re-read and keeps 13 Nov 2026.
 const P = PRICES.teamlabBorderless;
-const CHECKED_ISO = "2026-11-13";
+const CHECKED_ISO = "2026-11-20";
 const CHECKED = checkedLabel(CHECKED_ISO);
+const HOURS_CHECKED_ISO = "2026-11-13";
+const HOURS_CHECKED = checkedLabel(HOURS_CHECKED_ISO);
 const OFFICIAL_URL = "https://www.teamlab.art/e/tokyo/";
 const FAQ_URL = "https://www.teamlab.art/faq/tokyo/";
 
@@ -39,12 +43,14 @@ const PLANETS_CHECKED = checkedLabel(PLANETS.checked);
 const ADDRESS_CHECKED = checkedLabel("2026-10-26");
 
 // The headline search term is "teamLab Borderless tickets", so it stays verbatim and
-// first in the title, the H1 and the description. This page is the Borderless booking
-// page; "Planets or Borderless?" belongs to teamlab-tokyo-tickets (13 Nov 2026).
-const TITLE = "teamLab Borderless Tickets 2026: Price, Slots & How to Book";
-const H1 = "teamLab Borderless Tickets 2026: Price, Time Slots & How to Book";
+// first in the title, the H1 and the description; the landing query this page does
+// best on is "how to book teamlab borderless timed entry tickets", so "timed entry"
+// and "book" follow it (20 Nov 2026, R02). "Planets or Borderless?" belongs to
+// teamlab-tokyo-tickets.
+const TITLE = "teamLab Borderless Tickets 2026: Book Timed Entry & Prices";
+const H1 = "teamLab Borderless Tickets 2026: How to Book Timed Entry & Prices";
 const DESC =
-  "teamLab Borderless tickets 2026: adults from ¥3,400 by date and time slot, sales open about 2 months ahead, 1.5–2 hours inside. How to book, then compare.";
+  "teamLab Borderless tickets: book timed entry on teamlab.art or Klook. Adults from ¥3,400; sales open ~1st of month, 2 months ahead. Steps & same-day rules.";
 
 // `varies` is the column that stops the ¥3,400 being read as a price: only the adult and
 // disability tiers move with the date, and teamLab publishes no range for how far.
@@ -127,17 +133,17 @@ const hoursRows = [
     detail: "About 1.5–2 hours — teamLab gives an average of about an hour and a half, and \"about 2 hours\"; there is no time limit, and no re-entry",
     source: `teamlab.art FAQ, ${CHECKED}`,
   },
-  { item: "Opening hours", detail: "Listed 08:30–21:00, varying by date", source: `teamlab.art, ${CHECKED}` },
-  { item: "Last entry", detail: "One hour before closing — a 21:00 close means in by 20:00", source: `teamlab.art, ${CHECKED}` },
+  { item: "Opening hours", detail: "Listed 08:30–21:00, varying by date", source: `teamlab.art, ${HOURS_CHECKED}` },
+  { item: "Last entry", detail: "One hour before closing — a 21:00 close means in by 20:00", source: `teamlab.art, ${HOURS_CHECKED}` },
   {
     item: "Shorter and longer days",
-    detail: "22:00 close on 2, 5, 6, 9, 12, 13 November and 26–30 December 2026; 17:00 close on 26 January 2027",
-    source: `teamlab.art, ${CHECKED}`,
+    detail: "22:00 close on 26–30 December 2026; 17:00 close on 26 January 2027",
+    source: `teamlab.art, ${HOURS_CHECKED}`,
   },
   {
     item: "Closed days",
     detail: "Tuesday 24 November and Tuesday 8 December 2026; Wednesday 13 January and Tuesday 19 January 2027",
-    source: `teamlab.art, ${CHECKED}`,
+    source: `teamlab.art, ${HOURS_CHECKED}`,
   },
   {
     item: "Entrance Pass",
@@ -241,7 +247,7 @@ const buyingRows = [
     official: "Low if you book early",
     klook: "Low if you book early",
     gyg: "A second counter worth trying if your slot has gone on the first",
-    door: "High — busy slots sell out before the day",
+    door: "Higher — sold only while slots remain on the day",
   },
 ];
 
@@ -269,7 +275,7 @@ const whoFor = [
   },
   {
     title: "Don't plan on buying at the door if…",
-    desc: "You're visiting on a weekend, a holiday or in an evening slot. On-site tickets cost ¥200 more for an adult and only exist while slots remain — which, at the times most visitors want, they often don't.",
+    desc: "You have one fixed day for Borderless. On-site tickets cost ¥200 more for an adult and only exist while slots remain, and teamLab itself warns that tickets can sell out.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="9" />
@@ -279,31 +285,89 @@ const whoFor = [
   },
 ];
 
-const steps = [
+// How to book, side by side for the two official sales sites (teamLab names only its own
+// ticket site and Klook). Row one is the verdict. The official column is teamLab's own
+// FAQ and ticket notes (20 Nov 2026); the Klook column describes only what any Klook
+// order does and sends the option-specific terms back to the listing.
+const bookingRows = [
   {
-    title: "Pick a date, then check the price for it",
-    desc: "Adult and disability tickets at Borderless are dynamically priced, so the figure you see depends on the date and time slot you select. Weekday mornings are usually the cheapest and the quietest.",
+    step: "Which to use",
+    official: "Base price and up to 3 date changes — use it if your card goes through",
+    klook: "Same admission in your own currency and app; the option's own change terms apply",
   },
   {
-    title: "Choose an entry time — or a Flexible Pass",
-    desc: "The standard Entrance Pass has a specified admission time. teamLab also sells a Flexible Pass that is valid on a specific date with no designated entry time, which is worth the premium if your day is unpredictable.",
+    step: "1. Open the calendar",
+    official: "teamlab.art/e/tokyo → ticket calendar. Dates open around the 1st of the month, two months ahead",
+    klook: "Open the teamLab Borderless listing on Klook (button below the table)",
   },
   {
-    title: "Buy once your dates are set — sales open about two months out",
-    desc: "Tickets go on sale around the 1st of the month, two months before the admission date, and teamLab's own advice is to buy as soon as your dates are fixed because tickets can sell out. Weekend and evening slots are the ones to secure first.",
+    step: "2. Pick the date and ticket",
+    official: "Read that date's adult price, then choose Entrance Pass (timed) or Flexible Pass (¥12,000, no entry time)",
+    klook: "Pick the date and the ticket option shown on the listing",
   },
   {
-    title: "Show the ticket on your phone, and allow 1.5–2 hours",
-    desc: "An official ticket opens from the link in the confirmation email — no printing needed if you have a phone. There's no time limit once inside and no re-entry, and teamLab puts a visit at about 1.5–2 hours. Strollers go in the luggage room, and Kamiyacho and Roppongi-itchome both connect underground.",
+    step: "3. Pick the time and pay",
+    official: "Choose the admission time; pay by credit card or PayPay",
+    klook: "Choose the time if the option asks for one, read its change and cancellation terms, then pay",
+  },
+  {
+    step: "4. Get in",
+    official: "Open the ticket from the URL in the confirmation email and show it at the entrance; a print button appears 24 hours before",
+    klook: "The booking sits in your Klook account; follow the entry instructions on your voucher",
   },
 ];
 
-// Five questions, each one a query that already lands on this page in Search Console
-// (28 days to 10 Nov 2026). The older questions — the door, date changes, the two
-// passes, hours, location, official vs Klook, Planets — are answered in the body.
+// Time slots, queues and selling out — only what teamLab itself says. It publishes no
+// busiest hours, no slot length and no "fills X days ahead" figure, and the last row says
+// so rather than filling the gap.
+const slotRows = [
+  {
+    item: "Bottom line",
+    detail: "Any date and slot can sell out — teamLab recommends buying as soon as your dates are set",
+    source: "Ticket notes + FAQ",
+  },
+  {
+    item: "Same day",
+    detail: "On the official ticket site if not sold out; on site while slots remain, at a different price (adult +¥200)",
+    source: "FAQ + ticket notes",
+  },
+  {
+    item: "Arriving for your slot",
+    detail: "Come at the time on your ticket. Timed tickets mean that in most cases there is no queue, but in busy periods you may wait outside",
+    source: "FAQ",
+  },
+  {
+    item: "How long a slot lasts",
+    detail: "There is no limit once inside, and you need not leave when the next slot starts; no re-entry",
+    source: "FAQ",
+  },
+  {
+    item: "Evenings",
+    detail: "Usually open until 21:00 with last entry at 20:00 (hours vary by date); teamLab notes it is often chosen as part of an evening in Tokyo",
+    source: "FAQ",
+  },
+  {
+    item: "Flexible Pass",
+    detail: "No entry time: come any time up to last entry and join the entry line",
+    source: "Ticket notes",
+  },
+  {
+    item: "Crowds inside",
+    detail: "Certain artworks may not be available because of large crowds or maintenance",
+    source: "Ticket notes",
+  },
+  {
+    item: "Not published",
+    detail: "Which hours are busiest, or how many days ahead a given slot fills",
+    source: "—",
+  },
+];
+
+// Five questions, matching the queries that land on this page in Search Console (28 days
+// to 18 Nov 2026). Time needed and children are answered in the body.
 const faqItems = [
   {
-    q: "How do I book teamLab Borderless timed-entry tickets?",
+    q: "How do I book teamLab Borderless timed entry tickets?",
     a: `Pick a date on the official ticket calendar (teamlab.art/e/tokyo) or on Klook, which teamLab lists as its other official sales site, check the adult price that date carries, then choose an admission time for an Entrance Pass — or a ¥12,000 Flexible Pass with no fixed entry time. Pay by card (the official site also takes PayPay) and the ticket arrives as a link in the confirmation email that you show on your phone at the entrance. Prices and rules as listed on the official site on ${CHECKED}.`,
   },
   {
@@ -315,12 +379,12 @@ const faqItems = [
     a: `On the official ticket site, checked on ${CHECKED}: adults (18+) from ¥3,400, ages 13–17 ¥2,800, ages 4–12 ¥1,500, children 3 and under free, and visitors with a disability from ¥1,700 (one companion at the same rate). Adult and disability prices change with the date and time slot, so ¥3,400 is the floor. The Flexible Pass is ¥12,000, and buying on site costs ¥200 more for an adult.`,
   },
   {
-    q: "How long do you need at teamLab Borderless?",
-    a: `About 1.5 to 2 hours. teamLab's FAQ, read on ${CHECKED}, gives an average visit of about an hour and a half and also says a visit takes about 2 hours; there is no time limit, you do not have to leave when the next slot starts, and re-entry is not permitted.`,
+    q: "Can I buy teamLab Borderless tickets on the day?",
+    a: `Yes, if any are left. teamLab's FAQ, read on ${CHECKED}, says same-day tickets are sold on the official ticket site if not sold out, and on site at a different price (an adult pays ¥200 more) while slots remain. Tickets can sell out, so a same-day purchase is a fallback rather than a plan.`,
   },
   {
-    q: "Do children under 4 need a ticket for teamLab Borderless?",
-    a: `No — children aged 3 and under enter free, and there is no minimum age; ages 4–12 pay ¥1,500. Children of elementary-school age and below must be with an adult aged 18 or over, at one adult for every five children (free under-4s included), and strollers are not allowed inside — they go in the luggage room. Official FAQ, read on ${CHECKED}.`,
+    q: "Is Klook or the official site better for teamLab Borderless?",
+    a: `It is the same admission either way: teamLab lists its own ticket site and Klook as the official sales sites (${CHECKED}). Buy on the official site for the base price and up to three date changes (until 2 hours before your slot); buy on Klook for a checkout in your own currency and a booking in the same app as your other plans — then the Klook option's own change and cancellation terms apply instead.`,
   },
 ];
 
@@ -437,12 +501,14 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
         {/* The answer, in one paragraph, before anything else in the body — the hero
             subtitle above describes the page, it does not answer the question. */}
         <p className={styles.bodyText}>
-          <strong>teamLab Borderless tickets</strong> cost from <strong>¥3,400</strong> for adults, ¥2,800 for
-          ages 13–17 and ¥1,500 for ages 4–12 on the official site, and children 3 and under enter free; the
-          adult price rises on busier dates and time slots. Each Entrance Pass is for a set date and{" "}
-          <strong>admission time</strong>, and tickets <strong>go on sale around the 1st of the month, two
-          months before</strong> the visit date — around 1 November 2026 for a January 2027 visit. teamLab puts
-          a visit at <strong>about 1.5–2 hours</strong>, with no time limit once you are inside.
+          To book <strong>teamLab Borderless tickets</strong>, pick a date and an <strong>admission time (timed
+          entry)</strong> on the official ticket site at teamlab.art or on Klook, the two official sales sites;
+          tickets <strong>go on sale around the 1st of the month, two months before</strong> the visit date, so
+          a January 2027 visit opens around 1 November 2026. Adults pay <strong>from ¥3,400</strong> (official
+          site, checked {CHECKED}), ages 13–17 ¥2,800 and ages 4–12 ¥1,500, and under-4s enter free; the adult
+          price moves with the date and slot. Same-day tickets are sold online only if any remain, and on site
+          at ¥200 more for an adult — and once inside there is no time limit, so a slot fixes when you enter,
+          not how long you stay.
         </p>
         <p className={styles.bodyText}>
           All figures were read from the official teamLab site and its FAQ on {CHECKED}. Still choosing which
@@ -491,18 +557,68 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
               <GygCompareButton slug="teamlab-borderless-tickets" listing={gygTeamlabBorderless} />
             </div>
             <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
-              Prices, hours and closed dates on this page were read from the official teamLab site on {CHECKED}.
-              Borderless uses dynamic pricing and a shifting calendar, so confirm both for your own date at checkout.
+              Prices and booking rules on this page were read from the official teamLab site on {CHECKED}; hours
+              and closed dates on {HOURS_CHECKED}. Borderless uses dynamic pricing and a shifting calendar, so
+              confirm both for your own date at checkout.
             </p>
           </div>
         </div>
 
-        {/* Directly under the existing Borderless CTA: what else to book for the same day. */}
+        {/* How to book — the landing query, as a question, answered in a two-column table
+            (official site / Klook) with the verdict in row one. The Klook ticket button and
+            the same-day bookings sit directly under it. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Step-by-step</span>
+          <h2 className={styles.sectionTitle}>How do I book teamLab Borderless timed entry tickets?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Pick the date first, read the adult price that date carries, choose an admission time on an Entrance
+            Pass (or the ¥12,000 Flexible Pass with no fixed time), then pay — on the official site or on Klook,
+            which teamLab lists as its other official sales site. Four steps either way; only the date and the
+            slot change what you pay.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["", "Official site (teamlab.art)", "Klook"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {bookingRows.map((row) => (
+                    <tr key={row.step}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.step}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.official}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.klook}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {CHECKED_ISO} —{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer">teamlab.art/e/tokyo</a> (ticket
+            types, payment, official sales sites) and{" "}
+            <a href={FAQ_URL} target="_blank" rel="noopener noreferrer">teamlab.art/faq/tokyo</a> (sale date,
+            ticket delivery, printing). teamLab does not publish a slot length: you enter at your time and stay as
+            long as you like.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={BORDERLESS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Book teamLab Borderless timed entry on Klook →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* Directly under the booking table and the Borderless CTA: what else to book for the same day. */}
         <KlookTripPrep
           label="Book the same day"
           heading="What else should you book for a teamLab Borderless day?"
           headingLevel={3}
-          intro="A timed slot fixes where you need to be and when. These three book on the same Klook account as the ticket: a room near Azabudai Hills, the subway pass for both access stations, and data for the e-ticket."
+          intro="A timed slot fixes where you need to be and when. These book on the same Klook account as the ticket: an evening tour for after a daytime slot, the subway pass for both Azabudai Hills stations (Kamiyacho and Roppongi-itchome), data for the e-ticket, and a room near Roppongi."
           items={teamlabBorderlessTripPrep()}
         />
 
@@ -602,11 +718,9 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-            Last checked: {CHECKED_ISO} —{" "}
-            <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer">teamlab.art/e/tokyo</a> (hours,
-            closures, passes) and{" "}
-            <a href={FAQ_URL} target="_blank" rel="noopener noreferrer">teamlab.art/faq/tokyo</a> (time to
-            allow). Hours and closures shift month to month, so open the official calendar for your own dates
+            Last checked: {HOURS_CHECKED_ISO} (hours, closures) and {CHECKED_ISO} (passes, time to allow) —{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer">teamlab.art/e/tokyo</a> and{" "}
+            <a href={FAQ_URL} target="_blank" rel="noopener noreferrer">teamlab.art/faq/tokyo</a>. Hours and closures shift month to month, so open the official calendar for your own dates
             before you book the slot.
           </p>
         </section>
@@ -718,12 +832,54 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
           </p>
         </section>
 
+        {/* Time slots, same-day sales and selling out — teamLab's own notes only. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Time slots</span>
+          <h2 className={styles.sectionTitle}>Can I buy teamLab Borderless tickets on the day?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Yes, if any are left: same-day tickets are sold on the official ticket site when a slot is not sold
+            out, and on site at a different price (adult +¥200) while slots remain. teamLab does not say which
+            hours sell out first — only that any date and slot can — so the table below is everything it does say
+            about slots, queues and crowds.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["", "What teamLab says", "Source"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {slotRows.map((row) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.item}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.detail}</td>
+                      <td style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>{row.source}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {CHECKED_ISO} —{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer">teamlab.art/e/tokyo</a> (ticket
+            notes) and <a href={FAQ_URL} target="_blank" rel="noopener noreferrer">teamlab.art/faq/tokyo</a>. If
+            the slot you want has gone on one official counter, check the other before settling for the door.
+          </p>
+        </section>
+
         {/* Where to buy */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Where to buy</span>
-          <h2 className={styles.sectionTitle}>Official Site vs Klook vs GetYourGuide vs the Door</h2>
+          <h2 className={styles.sectionTitle}>Is Klook or the official site better for teamLab Borderless?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Klook is an official teamLab ticketing partner, so the admission is identical whichever counter you
+            Neither is cheaper by design: it is the same admission, priced by the same date-and-slot calendar.
+            The official site wins on flexibility (up to three date changes); Klook wins on checkout (your own
+            currency, foreign cards, one app). Klook is an official teamLab ticketing partner, so the admission is identical whichever counter you
             use. What differs is the checkout, the flexibility, and — if you leave it to the day — the price.
             GetYourGuide sells Borderless too, and the column below is thin on purpose: see the note under the
             table for what is and is not confirmed about it.
@@ -776,34 +932,12 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
           </div>
         </section>
 
-        {/* How to book — the heading is the query, and the four steps are the answer. */}
-        <section className={styles.installSection}>
-          <span className={styles.sectionLabel}>Step-by-step</span>
-          <h2 className={styles.sectionTitle}>How do I book teamLab Borderless timed-entry tickets?</h2>
-          <p className={styles.bodyText} style={{ marginBottom: "1.25rem" }}>
-            Pick the date first, read the price that date carries, choose an admission time on an Entrance Pass
-            (or the ¥12,000 Flexible Pass with no fixed time), then buy — on the official site, or on Klook,
-            which teamLab lists as its other official sales site. Four steps, and the first one is the only one
-            that changes what you pay.
-          </p>
-          <div className={styles.stepsList}>
-            {steps.map((step, i) => (
-              <div key={i} className={styles.stepCard}>
-                <span className={styles.stepNum}>{i + 1}</span>
-                <div className={styles.stepBody}>
-                  <p className={styles.stepTitle}>{step.title}</p>
-                  <p className={styles.stepDesc}>{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-            Ready to lock a slot in?{" "}
-            <KlookLink href={BORDERLESS_URL} target="_blank" rel="sponsored nofollow noopener">
-              Check Borderless availability and prices on Klook →
-            </KlookLink>
-          </p>
-        </section>
+        <p className={styles.bodyText}>
+          Ready to lock a slot in?{" "}
+          <KlookLink href={BORDERLESS_URL} target="_blank" rel="sponsored nofollow noopener">
+            Check Borderless availability and prices on Klook →
+          </KlookLink>
+        </p>
 
         {/* The official-site question — asked often enough to deserve a heading, and the
             one claim on this page that could be confirmed first-hand on 26 Oct 2026. */}

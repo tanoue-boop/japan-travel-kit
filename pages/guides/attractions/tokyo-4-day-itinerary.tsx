@@ -495,7 +495,9 @@ export default function Tokyo4DayItineraryPage({ updated }: { updated: PageUpdat
             Outer Market, a walk through Ginza, teamLab Planets in Toyosu ({PRICES.teamlabPlanets.adult}, timed
             entry, nothing sold on site — see the{" "}
             <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets</Link> guide) and the
-            Odaiba seafront before the airport.
+            Odaiba seafront before the airport. Prefer shoes-on art in central Tokyo? Swap in Azabudai Hills with
+            our <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless tickets</Link> guide
+            — its timed slots open around the 1st of the month, two months ahead.
           </p>
           <p className={styles.bodyText}>
             The hour-by-hour versions of these districts are in the{" "}

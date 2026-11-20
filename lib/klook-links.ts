@@ -672,17 +672,19 @@ export const roppongiHotels: KlookTour = {
 };
 
 /**
- * teamLab Borderless — the three things to book alongside a timed slot: a bed
- * near Azabudai Hills (6.5%), the subway pass for Kamiyacho / Roppongi-itchome
- * (5%) and the eSIM (20%). The ticket constant itself stays where it is.
+ * teamLab Borderless — the things to book alongside a timed slot. 20 Nov 2026
+ * (task-jtk-20261120-R02): a Tokyo night tour (6.5%) leads, for the evening after
+ * a daytime slot, then the subway pass for Kamiyacho / Roppongi-itchome (5%),
+ * the eSIM (20%) and the existing bed near Azabudai Hills (6.5%). Existing
+ * constants only — no new Klook id. The ticket constant itself stays where it is.
  * The `why` lines are English; translated pages pass their own.
  */
 export const teamlabBorderlessTripPrep = (): KlookTripPrepItem[] => [
   {
-    label: roppongiHotels.title,
-    ctaLabel: "Check Roppongi hotels on Klook →",
-    url: roppongiHotels.url,
-    why: "Roppongi-itchome connects to the museum underground, so a room in this district turns an 08:30 first slot or a 20:00 last entry into a short walk rather than a cross-city ride.",
+    label: tokyoNightTourAkihabaraShibuya.title,
+    ctaLabel: "Check the Tokyo night tour →",
+    url: tokyoNightTourAkihabaraShibuya.url,
+    why: "A guided evening from Ueno through Akihabara to the Shibuya crossing — the rest of the night if your Borderless slot is in the daytime. It sells by date, like the ticket.",
   },
   {
     ...tripPrepProducts.subway,
@@ -691,6 +693,12 @@ export const teamlabBorderlessTripPrep = (): KlookTripPrepItem[] => [
   {
     ...tripPrepProducts.esim,
     why: "An official ticket is a screen you open from the link in the confirmation email and show at the entrance, and a date change has to be made online at least 2 hours before your slot — both need data on the street, not only hotel Wi-Fi.",
+  },
+  {
+    label: roppongiHotels.title,
+    ctaLabel: "Check Roppongi hotels on Klook →",
+    url: roppongiHotels.url,
+    why: "Roppongi-itchome connects to the museum underground, so a room in this district turns an 08:30 first slot or a 20:00 last entry into a short walk rather than a cross-city ride.",
   },
 ];
 

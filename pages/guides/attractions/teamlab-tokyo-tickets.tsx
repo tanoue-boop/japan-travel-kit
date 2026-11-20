@@ -324,8 +324,8 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText}>
             teamLab Borderless at Azabudai Hills sells timed tickets from {B.adult} for an adult, plus a Flexible
             Pass with no set entry time, and its tickets go on sale around the 1st of the month two months ahead.
-            Release dates, the Flexible Pass, closing-time changes and buying at the door are in the Borderless
-            guide.
+            Release dates, timed-entry booking steps, the Flexible Pass and buying on the day are in our{" "}
+            <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless tickets</Link> guide.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <Link href="/guides/attractions/teamlab-borderless-tickets" className={styles.verdictBtn}>
