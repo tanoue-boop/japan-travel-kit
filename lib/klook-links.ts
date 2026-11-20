@@ -2958,6 +2958,39 @@ export const osakaMetroPassTripPrep: KlookTripPrepItem[] = [
 ];
 
 /**
+ * Osaka Metro pass, added 20 Nov 2026 — the block straight under the "which pass" table,
+ * in the order the reader decides: the subway pass and the Amazing Pass (5%), a guided
+ * day over the same castle–Umeda–Dotonbori stops (6.5%), the airport train the passes do
+ * not cover (5%), then data (20%). No new URLs.
+ */
+export const osakaMetroPassChooserPrep: KlookTripPrepItem[] = [
+  {
+    label: osakaMetroDayPass.title,
+    why: "The voucher version of the subway day pass, paid in your own currency before you fly and exchanged in Osaka with your passport.",
+    ctaLabel: "Check the Osaka Metro pass →",
+    url: osakaMetroDayPass.url,
+  },
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "The pick for a day built around paid sights: the subway, the private railways in the city and about 40 attractions on one QR code.",
+  },
+  {
+    label: osakaCastleUmedaTonboriDayTour.title,
+    why: "The same castle, Umeda and Dotonbori stops as the sample day below, with a guide doing the routing instead of you.",
+    ctaLabel: "Check the Osaka day tour →",
+    url: osakaCastleUmedaTonboriDayTour.url,
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "No Osaka subway pass reaches Kansai Airport; the Haruka runs direct to Tennoji, Osaka and Shin-Osaka.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Osaka Metro's route and fare search runs in the browser, so checking whether a day pass pays needs data on the move.",
+  },
+];
+
+/**
  * Osaka Amazing Pass, added 9 Nov 2026 — what the same Osaka trip still needs booking
  * once the pass day is planned. No new URLs: the food tour, the Kyoto and Nara day tour
  * and the Namba hotel search (6.5%), and the two airport trains (5%). The eSIM sits

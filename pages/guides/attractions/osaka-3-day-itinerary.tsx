@@ -748,7 +748,9 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
           <h2 className={styles.sectionTitle}>Which Day Should I Use the Osaka Amazing Pass?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Day 1 only, on the 1-day pass. The 2-day pass ({PASS_2_DAY}) has to be two consecutive days,
-            and with USJ on Day 2 the second day would be wasted.
+            and with USJ on Day 2 the second day would be wasted. Day 3 runs on the Enjoy Eco Card instead; our{" "}
+            <Link href="/guides/transport/osaka-metro-pass">Osaka Metro pass</Link> guide shows how many rides it
+            takes to pay off.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

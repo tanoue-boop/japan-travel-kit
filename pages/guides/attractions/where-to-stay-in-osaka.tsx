@@ -530,7 +530,9 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
             is why the honest version of this answer is that the area matters less in Osaka than it does in
             Tokyo. Our{" "}
             <Link href="/guides/transport/osaka-transportation">getting around Osaka guide</Link> covers the
-            lines and the day passes that make that true.
+            lines that make that true, and our{" "}
+            <Link href="/guides/transport/osaka-metro-pass">Osaka Metro pass</Link> guide works out whether a
+            day pass from either base beats paying per ride.
           </p>
           <p className={styles.bodyText}>
             How many nights you have changes the answer less than you would expect. On a short stay, our{" "}

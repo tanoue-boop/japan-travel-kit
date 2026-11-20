@@ -364,7 +364,9 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
             weekend price — which most visitors hit before lunch. The Enjoy Eco Card is open to residents
             and tourists alike (no passport needed) and is sold at any Osaka Metro station ticket machine;
             it also unlocks discounts at around 30 Osaka attractions. The tourist-oriented Osaka Metro Pass
-            is sold in 1-day and 2-day versions, with the 2-day pass the version most travellers buy.
+            is sold in 1-day and 2-day versions, with the 2-day pass the version most travellers buy. To
+            choose between the passes, with a sample day priced ride by ride, see our{" "}
+            <Link href="/guides/transport/osaka-metro-pass">Osaka Metro pass</Link> guide.
           </p>
 
           <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
