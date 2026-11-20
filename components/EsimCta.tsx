@@ -121,7 +121,7 @@ const COPY: Record<Locale, Copy> = {
     from: "{price}부터 ({plan}).",
     orderNote:
       "이 순서로 추천하는 이유: {simbye}. 클룩 eSIM은 클룩에서 예약한 다른 상품과 같은 계정에서 관리됩니다. Airalo는 자체 앱으로 설치하고 라이브 채팅을 지원합니다. Sakura Mobile은 일본 전화번호가 제공되는 요금제를 선택할 수 있습니다. 가격은 매일 확인하는 요금 데이터 기준이며 마지막 확인일은 {date}입니다.",
-    orderLowest: "Simbye는 저희가 확인한 요금 데이터에서 가장 저렴한 요금제입니다",
+    orderLowest: "Simbye는 저희가 확인한 요금제 중 가장 저렴합니다",
     orderNetworks: "Simbye는 일본 4개 통신사 회선을 모두 표시합니다",
     insuranceName: "여행자 보험",
     insuranceText: "SafetyWing Nomad Insurance는 출발 전이나 여행 중에도 시작할 수 있는 구독형 보험이며, 두 플랜 모두 자기부담금이 없습니다.",
@@ -135,7 +135,7 @@ const COPY: Record<Locale, Copy> = {
   "zh-tw": {
     topLabel: "日本行動上網",
     topLine: "首選 Simbye：{plan} {price} 起，輸入折扣碼 {code} 享 {percent}% 折扣，為 {discounted}。",
-    topLowest: "這是我們所查詢方案中的最低價格。",
+    topLowest: "這是我們查詢的方案中價格最低的。",
     networks: "Simbye 標示的日本線路：{networks}。",
     others: "其他選擇：",
     bottomHeading: "出發前要準備的東西：行動上網",
@@ -168,7 +168,7 @@ const COPY: Record<Locale, Copy> = {
     bottomIntro: "出发前扫二维码设置 eSIM，抵达日本后马上就能上网。以下按推荐顺序列出四个选择及理由。",
     simbyeFrom: "{price} 起（{plan}）。",
     simbyeCode: "输入优惠码 {code} 可享受 {percent}% 折扣：{discounted}。",
-    lowest: "已核实套餐的最低价格。",
+    lowest: "已核实套餐中价格最低。",
     hotspot: "所有日本套餐均可共享热点。",
     from: "{price} 起（{plan}）。",
     orderNote:

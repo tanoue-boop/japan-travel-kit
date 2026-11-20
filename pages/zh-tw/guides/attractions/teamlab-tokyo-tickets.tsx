@@ -53,42 +53,42 @@ const DESC =
 
 // 第一列是結論。
 const compareRows = [
-  { factor: "適合誰", planets: "帶小孩同行，或想赤腳涉水體驗的人", borderless: "不帶小孩、第一次去，或想穿著鞋慢慢欣賞藝術的人" },
+  { factor: "適合誰", planets: "帶小孩同行，或想赤腳涉水體驗的人", borderless: "沒帶小孩、第一次參觀，或想穿著鞋慢慢欣賞藝術的人" },
   { factor: "成人（18 歲以上）", planets: `${PLANETS_ADULT}，熱門日期與時段較貴`, borderless: `${BORDERLESS_ADULT}，熱門日期與時段較貴` },
   { factor: "13～17 歲", planets: "¥2,800", borderless: "¥2,800" },
   { factor: "兒童（4～12 歲）", planets: `${CHILD}；3 歲以下免費`, borderless: `${CHILD}；3 歲以下免費` },
-  { factor: "要下水嗎", planets: "要。赤腳，水深可達成人膝蓋", borderless: "不用。穿著鞋參觀" },
+  { factor: "需要涉水嗎", planets: "需要。必須赤腳，水深可達成人膝蓋", borderless: "不需要，可以穿鞋參觀" },
   { factor: "參觀時間", planets: "官方未公布；建議預留 1.5～2 小時", borderless: "約 1.5～2 小時（官方 FAQ），館內不限時" },
   { factor: "會售完嗎", planets: "指定時段，現場不售票，須事先上網預訂", borderless: "官網註明門票可能售完；約在參觀日兩個月前的 1 日開賣" },
   { factor: "現場購票", planets: "現場不售票", borderless: "尚有名額時可現場購買，需加 ¥200" },
   { factor: "最近車站", planets: "新豐洲站（百合海鷗線）1A 出口步行 3 分鐘", borderless: "神谷町站（日比谷線）5 號出口步行 2 分鐘" },
   { factor: "營業時間", planets: "08:00–22:00（12/31–1/2 為 08:00–20:00）", borderless: "08:30–21:00，部分日期不同" },
-  { factor: "開放期間", planets: "至 2027 年底", borderless: "常設" },
+  { factor: "開放期間", planets: "開放至 2027 年底", borderless: "常設" },
 ];
 
 const whoFor = [
   {
     title: "選 teamLab Planets 的話…",
-    desc: "你帶著小孩、想親身體驗藝術，也不介意把腳弄濕。你會赤腳走過深及成人膝蓋的水。",
+    desc: "你帶著小孩、想親身體驗藝術，也不介意雙腳弄濕。你會赤腳走過深及成人膝蓋的水。",
   },
   {
     title: "選 teamLab 無界的話…",
-    desc: "你想欣賞藝術作品，而不是走進水中體驗。這裡沒有固定路線，作品在房間之間移動，你可以照自己的步調逛。",
+    desc: "你想欣賞藝術作品，而不是走進水中體驗。這裡沒有固定路線，作品在展區之間移動，你可以照自己的步調逛。",
   },
   {
     title: "兩座都去，如果…",
-    desc: "你有兩個空閒的半天，而且很喜歡 teamLab。兩座位在東京不同區域，需要各自的指定時段門票，所以請分開安排。",
+    desc: "你有兩個半天的空檔，而且很喜歡 teamLab。兩座美術館位在東京不同區域，須分別購買指定時段門票，所以請分開安排。",
   },
 ];
 
 const faqItems: FaqItem[] = [
   {
     q: "teamLab Planets 和 teamLab 無界哪個比較好？",
-    a: "沒有哪一間整體比較好。teamLab Planets 要赤腳走過深及成人膝蓋的水，適合帶小孩同行；teamLab 無界沒有地圖、也沒有固定路線，可以穿著鞋慢慢欣賞作品。帶小孩就選 teamLab Planets，不帶小孩第一次去就選 teamLab 無界。",
+    a: "沒有哪一間絕對比較好。teamLab Planets 要赤腳走過深及成人膝蓋的水，適合帶小孩同行；teamLab 無界沒有地圖、也沒有固定路線，可以穿著鞋慢慢欣賞作品。帶小孩同行就選 teamLab Planets，沒帶小孩、第一次參觀就選 teamLab 無界。",
   },
   {
     q: "2026 年東京 teamLab 門票多少錢？",
-    a: `成人票 teamLab Planets ${PLANETS_ADULT}、teamLab 無界 ${BORDERLESS_ADULT}，熱門日期與時段會更貴（${CHECKED} 查閱 teamlab.art）。13～17 歲 ¥2,800，4～12 歲兩座都是 ${CHILD}，3 歲以下免費。兩座都去，成人至少 ¥7,200。`,
+    a: `成人票 teamLab Planets ${PLANETS_ADULT}、teamLab 無界 ${BORDERLESS_ADULT}，熱門日期與時段會更貴（${CHECKED} 查閱 teamlab.art）。13～17 歲 ¥2,800，4～12 歲兩座都是 ${CHILD}，3 歲以下免費。兩座都參觀的話，成人合計至少 ¥7,200。`,
   },
   {
     q: "teamLab 門票會售完嗎？",
@@ -96,7 +96,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "teamLab Planets 和 teamLab 無界可以同一天去嗎？",
-    a: "可以，因為兩張票各有自己的日期與時間。不過兩座分別在豐洲與麻布台之丘，teamLab 官方表示無界參觀約需 1.5～2 小時。兩個入場時間之間請至少留下這段時間再加上交通時間，或分成兩個半天。",
+    a: "可以，因為兩張門票各自指定日期與入場時間。不過兩座分別在豐洲與麻布台之丘，teamLab 官方表示無界參觀約需 1.5～2 小時。兩個入場時段之間，請至少預留這段參觀時間加上交通時間，或分成兩個半天。",
   },
   {
     q: "teamLab 門票在哪裡買最便宜？",
@@ -106,16 +106,16 @@ const faqItems: FaqItem[] = [
 
 const subwayTour = withKlookLocale(tokyoSubwayTicket, LOCALE, {
   title: "東京地鐵通票（24／48／72 小時）",
-  desc: "東京地下鐵與都營地下鐵全線無限搭乘，抵達後領取，不必排隊購買",
+  desc: "東京地下鐵與都營地下鐵全線無限搭乘，抵達後領取，無須排隊購票",
 });
 const tours = [
   withKlookLocale(tokyoSightseeingBusTour, LOCALE, {
     title: "東京觀光巴士一日遊",
-    desc: "附導覽的環狀觀光路線，走訪皇居庭園、淺草與東京晴空塔，提供多語語音導覽",
+    desc: "附導覽的東京市區環遊行程，走訪皇居庭園、淺草與東京晴空塔，提供多語語音導覽",
   }),
   withKlookLocale(fujiDayTour, LOCALE, {
     title: "東京出發富士山一日遊",
-    desc: "全日巴士行程，前往富士山五合目、河口湖與忍野八海，當天晚上回到東京",
+    desc: "全天巴士行程，前往富士山五合目、河口湖與忍野八海，當天晚上回到東京",
   }),
 ];
 
@@ -158,7 +158,7 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
             teamLab Planets 無界 比較： <br />票價與怎麼選（2026）
           </h1>
           <p className={styles.heroSubtitle}>
-            東京有兩座 teamLab 美術館，門票各自分開。這裡整理兩座的差別，以及該選哪一間。
+            東京有兩座 teamLab 美術館，門票需分別購買。這裡整理兩座的差別，以及該選哪一間。
           </p>
           <div className={styles.heroBadges}>
             {[`更新於 ${updatedLabel}`, "官方票價", "並排比較"].map((t) => (
@@ -179,11 +179,11 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           </div>
           <div className={styles.verdictBody}>
             <p className={styles.verdictText}>
-              <strong>東京的 teamLab 門票</strong>由兩座美術館分開販售：豐洲的 <strong>teamLab Planets 成人 {PLANETS_ADULT}</strong>，
+              <strong>東京的 teamLab 門票</strong>由兩座美術館分別販售：豐洲的 <strong>teamLab Planets 成人 {PLANETS_ADULT}</strong>，
               麻布台之丘的 <strong>teamLab 無界成人 {BORDERLESS_ADULT}</strong>，4～12 歲兩座都是 {CHILD}（{CHECKED} 查閱官網）。
-              teamLab 官方表示無界參觀約需 1.5～2 小時，Planets 未公布時間，同樣抓 1.5～2 小時即可。帶小孩就選赤腳涉水的{" "}
-              <strong>teamLab Planets</strong>；不帶小孩第一次去，就選穿著鞋參觀、有名額時也能現場購票的 <strong>teamLab 無界</strong>。
-              選了 Planets，各票種價格、30 分鐘入場時段與新豐洲站的走法請看{" "}
+              teamLab 官方表示無界參觀約需 1.5～2 小時，Planets 未公布時間，同樣建議預留 1.5～2 小時。帶小孩同行就選需要赤腳涉水的{" "}
+              <strong>teamLab Planets</strong>；沒帶小孩、第一次參觀，就選可以穿鞋參觀、有名額時也能現場購票的 <strong>teamLab 無界</strong>。
+              選了 Planets，各票種價格、30 分鐘入場時段與從新豐洲站前往的路線請看{" "}
               <Link href="/zh-tw/guides/attractions/teamlab-planets-tickets">teamLab Planets 門票</Link>攻略。
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
@@ -200,7 +200,7 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>並排比較</span>
           <h2 className={styles.sectionTitle}>teamLab Planets vs teamLab 無界：該選哪一間？</h2>
-          <p className={styles.bodyText}>帶小孩選 teamLab Planets，大人第一次去選 teamLab 無界；理由逐項列在下表。</p>
+          <p className={styles.bodyText}>帶小孩選 teamLab Planets，沒帶小孩、第一次參觀的成人選 teamLab 無界；理由逐項列在下表。</p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -245,7 +245,7 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
 
         <KlookTourPicks
           heading="豐洲與麻布台之丘之間怎麼移動"
-          intro="無界所在的神谷町站屬於東京地下鐵日比谷線，東京地鐵通票可在 24／48／72 小時內無限搭乘東京地下鐵與都營地下鐵全線。Planets 所在的新豐洲站屬於百合海鷗線，通票不能搭，可改走有樂町線豐洲站。"
+          intro="離無界最近的神谷町站位於東京地下鐵日比谷線，東京地鐵通票可在 24／48／72 小時內無限搭乘東京地下鐵與都營地下鐵全線。離 Planets 最近的新豐洲站屬於百合海鷗線，通票不能搭，可改搭有樂町線到豐洲站。"
           tours={[subwayTour]}
         />
 
@@ -255,8 +255,8 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>只去 Planets</span>
           <h2 className={styles.sectionTitle}>已經決定去 teamLab Planets 了嗎？</h2>
           <p className={styles.bodyText}>
-            豐洲的 teamLab Planets 只賣指定時段門票，成人 {PLANETS_ADULT}，現場不售票，所以上網選好日期與入場時間就是預約。
-            各日期票價、Premium Pass、涉水穿著，以及從新豐洲站或豐洲站過去的路線，都在 Planets 門票攻略裡。
+            豐洲的 teamLab Planets 只賣指定時段門票，成人 {PLANETS_ADULT}，現場不售票，必須上網選好日期與入場時間完成預約。
+            各日期票價、Premium Pass、涉水時的穿著，以及從新豐洲站或豐洲站過去的路線，都在 Planets 門票攻略裡。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <Link href="/zh-tw/guides/attractions/teamlab-planets-tickets" className={styles.verdictBtn}>
@@ -270,7 +270,7 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           <h2 className={styles.sectionTitle}>已經決定去 teamLab 無界了嗎？</h2>
           <p className={styles.bodyText}>
             麻布台之丘的 teamLab 無界販售成人 {BORDERLESS_ADULT} 的指定時段門票，以及不指定入場時間的 Flexible Pass，約在參觀日兩個月前的
-            1 日開賣。開賣日期、Flexible Pass、閉館時間變動與現場購票，請看無界門票攻略。
+            1 日開賣。開賣日期、Flexible Pass、閉館時間調整與現場購票規定，請看無界門票攻略。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <Link href="/zh-tw/guides/attractions/teamlab-borderless-tickets" className={styles.verdictBtn}>
@@ -278,7 +278,7 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
             </Link>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            同一趟想再加一個展望台，晴空塔 350 公尺與 450 公尺的票價比較請看{" "}
+            同一趟想再加一個展望台，晴空塔 350 公尺與 450 公尺展望台的票價比較請看{" "}
             <Link href="/zh-tw/guides/attractions/tokyo-skytree-tickets">東京晴空塔門票攻略</Link>。
           </p>
         </section>
@@ -304,7 +304,7 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
 
         <KlookTourPicks
           heading="同一趟旅程，順遊東京其他景點"
-          intro="兩座美術館都只會佔用東京一天中的一部分時間。以下包括附導覽的東京市區一日遊，以及從東京出發的一日遊。Klook 價格依日期而變，所以請打開頁面查看你那一天的金額。"
+          intro="兩座美術館都只需安排一天中的部分時間。以下包括附導覽的東京市區一日遊，以及從東京出發的一日遊。Klook 價格依日期而變，所以請打開頁面查看你那一天的金額。"
           tours={tours}
         />
 

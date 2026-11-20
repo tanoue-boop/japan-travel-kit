@@ -73,7 +73,7 @@ const priceRows = [
     ticket: "成人（18 歲以上）",
     price: ADULT,
     varies: "會——依日期與入場時段",
-    note: "¥3,400 是底價，不是你的價格：付款前請確認你那天的金額",
+    note: "¥3,400 是最低票價，不代表你實際要付的金額：付款前請確認你那天的金額",
   },
   { ticket: "13～17 歲", price: "¥2,800", varies: "不會——固定價", note: "入場時請攜帶可證明年齡的證件" },
   { ticket: "4～12 歲", price: CHILD, varies: "不會——固定價", note: "不論選哪一天都一樣" },
@@ -209,8 +209,8 @@ const vsPlanetsRows = [
   { factor: "建議停留", borderless: "約 1.5～2 小時（官方 FAQ）", planets: "約 1.5～2 小時" },
   {
     factor: "適合誰",
-    borderless: "藝術、攝影、大人，以及東京市中心的下雨午後",
-    planets: "帶小孩，以及想要第一次就印象最深刻的人",
+    borderless: "喜歡藝術或攝影的人、成人，以及想在東京市中心安排雨天下午行程的人",
+    planets: "帶小孩，以及希望第一次參觀就留下最深刻印象的人",
   },
 ];
 
@@ -247,9 +247,9 @@ const buyingRows = [
   },
   {
     factor: "買不到的風險",
-    official: "早訂就低",
-    klook: "早訂就低",
-    gyg: "第一個管道沒有你要的時段時，值得再查的第二個櫃台",
+    official: "越早訂風險越低",
+    klook: "越早訂風險越低",
+    gyg: "第一個管道沒有你要的時段時，值得再查的第二個購票管道",
     door: "較高——當天只在還有名額時販售",
   },
 ];
@@ -267,7 +267,7 @@ const whoFor = [
   },
   {
     title: "選 Klook 的話…",
-    desc: "你希望用自己的幣別、看得懂的介面結帳，用非日本發行的信用卡付款，並把電子票和其他預訂放在同一個 App 裡。Klook 是 teamLab 的官方售票合作夥伴，票是同一張，只是換一個櫃台。",
+    desc: "你希望用自己的幣別、看得懂的介面結帳，用非日本發行的信用卡付款，並把電子票和其他預訂放在同一個 App 裡。Klook 是 teamLab 的官方售票合作夥伴，票是同一張，只是換一個購票管道。",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="6" width="20" height="12" rx="2" />
@@ -294,7 +294,7 @@ const bookingRows = [
   {
     step: "該用哪個",
     official: "基本票價、最多可改期 3 次——你的卡刷得過就用官網",
-    klook: "同一個入場資格，用自己的幣別與 App 結帳；改期條件依 Klook 方案而定",
+    klook: "買到相同的入場資格，還能用自己的幣別在 App 結帳；改期條件依 Klook 方案而定",
   },
   {
     step: "1. 打開行事曆",
@@ -370,7 +370,7 @@ const tripPrep: KlookTripPrepItem[] = [
     label: "東京夜間導覽：上野、秋葉原、澀谷與卡拉 OK",
     ctaLabel: "在 Klook 查看東京夜間導覽 →",
     url: klookFor(tokyoNightTourAkihabaraShibuya.url, "zh-tw"),
-    why: "從上野經秋葉原到澀谷十字路口的導覽夜遊——如果你的無界時段在白天，晚上就交給它。它和門票一樣依日期販售。",
+    why: "從上野經秋葉原到澀谷十字路口的導覽夜遊——如果你的無界時段在白天，晚上就可以參加這個行程。它和門票一樣依日期販售。",
   },
   {
     label: "東京地鐵通票（24／48／72 小時）",
@@ -382,7 +382,7 @@ const tripPrep: KlookTripPrepItem[] = [
     label: "Klook 日本 eSIM",
     ctaLabel: "在 Klook 查看 eSIM 方案 →",
     url: klookFor(klookEsim.url, "zh-tw"),
-    why: "官方門票是從確認信連結打開、在入口出示的畫面，改日期也必須在預約時段 2 小時前上網辦理——兩件事都需要在街上就有網路，不能只靠飯店 Wi-Fi。",
+    why: "官方門票是從確認信連結打開、在入口出示的畫面，改日期也必須在預約時段 2 小時前上網辦理——兩件事都需要外出時能上網，不能只靠飯店 Wi-Fi。",
   },
   {
     label: "六本木站周邊飯店",
@@ -401,15 +401,15 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "teamLab Borderless 門票什麼時候開賣？",
-    a: `約在入場日兩個月前的 1 號左右——所以 2027 年 1 月的票約在 2026 年 11 月 1 日開賣。依 teamLab 官方 FAQ（查核日 ${CHECKED}），門票可能售完，建議日期一確定就購買；當天票只在還有剩的時候，於線上或現場販售。`,
+    a: `約在入場日兩個月前的 1 號左右——所以 2027 年 1 月的票約在 2026 年 11 月 1 日開賣。依 teamLab 官方 FAQ（查核日 ${CHECKED}），門票可能售完，建議日期一確定就購買；當天票僅在尚有名額時於線上或現場販售。`,
   },
   {
     q: "teamLab Borderless 門票線上買多少錢？",
-    a: `依官方售票網站（查核日 ${CHECKED}）：成人（18 歲以上）${ADULT}，13～17 歲 ¥2,800，4～12 歲 ${CHILD}，3 歲以下免費，身心障礙者 ¥1,700 起（一位陪同者同價）。成人票與身障票會依日期與入場時段變動，所以 ¥3,400 是底價。彈性入場券 ¥12,000，現場購票成人多 ¥200。`,
+    a: `依官方售票網站（查核日 ${CHECKED}）：成人（18 歲以上）${ADULT}，13～17 歲 ¥2,800，4～12 歲 ${CHILD}，3 歲以下免費，身心障礙者 ¥1,700 起（一位陪同者同價）。成人票與身心障礙者票會依日期與入場時段變動，所以 ¥3,400 是最低票價。彈性入場券 ¥12,000，現場購票成人多 ¥200。`,
   },
   {
     q: "當天可以買 teamLab 無界門票嗎？",
-    a: `有剩就可以。依 teamLab 官方 FAQ（查核日 ${CHECKED}），沒售完的話當天可在官方售票網站購買；還有名額時現場也賣，但價格不同（成人多 ¥200）。門票可能售完，所以當天購票只能當備案，不能當計畫。`,
+    a: `尚有名額就可以。依 teamLab 官方 FAQ（查核日 ${CHECKED}），沒售完的話當天可在官方售票網站購買；還有名額時現場也賣，但價格不同（成人多 ¥200）。門票可能售完，所以當天購票只能當備案，不能當計畫。`,
   },
   {
     q: "teamLab 無界門票在 Klook 買還是官網買比較好？",
@@ -454,7 +454,7 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <p className={styles.eyebrow}>更新於 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>{H1}</h1>
           <p className={styles.heroSubtitle}>
-            麻布台之丘的 teamLab 無界，門票要多少錢、每個月的票什麼時候開賣、指定時段怎麼運作，
+            麻布台之丘的 teamLab 無界，門票要多少錢、每個月的票什麼時候開賣、指定時段入場怎麼安排，
             以及該在官網買還是透過 Klook。
           </p>
           <div className={styles.heroBadges}>
@@ -474,7 +474,7 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
           預約 <strong>teamLab 無界門票</strong>（Borderless），就是在 teamlab.art 的官方售票網站或 Klook 這兩個官方售票管道，
           選好日期與<strong>入場時間（指定時段）</strong>；門票<strong>約在入場日兩個月前的 1 號左右開賣</strong>，
           2027 年 1 月入場的票約在 2026 年 11 月 1 日開賣。成人 <strong>¥3,400 起</strong>（官方網站，查核日{" "}
-          {CHECKED}），13～17 歲 ¥2,800、4～12 歲 ¥1,500，未滿 4 歲免費；成人票價依日期與時段浮動。當天票只在還有剩時於線上販售，
+          {CHECKED}），13～17 歲 ¥2,800、4～12 歲 ¥1,500，未滿 4 歲免費；成人票價依日期與時段浮動。當天票僅在尚有名額時於線上販售，
           現場購票成人多 ¥200——入場後沒有時間限制，時段決定的是你幾點進場，不是能待多久。
         </p>
         <p className={styles.bodyText}>
@@ -511,7 +511,7 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
               門票指定日期與時間，原則上不能取消，也可能賣完；現場購票成人多 ¥200 且要看還有沒有名額。館方公告的營業時間約 08:30–21:00，
               最後入場是閉館前一小時。預留 1.5～2 小時，從神谷町站（日比谷線，步行 2 分鐘）或六本木一丁目站
               （南北線，步行 6 分鐘）過去，兩站都有地下通道。想要基本票價與最多三次免費改期就買官網；
-              想要看得懂、用自己幣別、海外卡刷得過的結帳就走 Klook。
+              想要看得懂的介面、用自己的幣別結帳、能用海外信用卡付款，就選 Klook。
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={BORDERLESS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
@@ -531,7 +531,7 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>teamLab 無界指定時段門票怎麼預約？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             先選日期、看那天的成人票價，為指定時段入場券選一個入場時間（或改買不指定時間的彈性入場券，¥12,000），
-            然後付款——在官網，或在 teamLab 公布的另一個官方售票網站 Klook。兩邊都是四步；會改變你付多少錢的，只有日期和時段。
+            然後付款——在官網，或在 teamLab 公布的另一個官方售票網站 Klook。兩邊都只要四個步驟；影響票價的只有日期和時段。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -573,7 +573,7 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
           label="同一天要訂的"
           heading="teamLab 無界那天還要訂什麼？"
           headingLevel={3}
-          intro="指定時段決定了你幾點要在哪裡。以下都能和門票用同一個 Klook 帳號預訂：白天時段之後的夜間導覽、麻布台之丘兩個車站（神谷町、六本木一丁目）都能用的地鐵通票、出示電子票需要的網路，以及六本木附近的住宿。"
+          intro="指定時段決定了你必須幾點抵達美術館。以下都能和門票用同一個 Klook 帳號預訂：白天時段之後的夜間導覽、麻布台之丘兩個車站（神谷町、六本木一丁目）都能用的地鐵通票、出示電子票需要的網路，以及六本木附近的住宿。"
           items={tripPrep}
         />
 
@@ -584,7 +584,7 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>teamLab Borderless 門票線上買多少錢？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             線上購買時，成人 <strong>¥3,400 起</strong>，13～17 歲 ¥2,800，4～12 歲兒童 ¥1,500，未滿 4 歲免費；彈性入場券 ¥12,000。
-            會變動的只有成人票與身障票：無界依日期與入場時段為這兩種票定價，所以官方金額後面才會加上「起」，
+            會變動的只有成人票與身心障礙者票：無界依日期與入場時段為這兩種票定價，所以官方金額後面才會加上「起」，
             也因此你這趟旅行最便宜的票，取決於票價行事曆，而不是售票平台。
           </p>
           <div className={styles.tableWrap}>
@@ -623,9 +623,9 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
             1 名大人，免費的 3 歲以下幼兒也算在內。嬰兒車不能進入館內，須寄放在行李寄放處（官方 FAQ，{CHECKED}）。
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            <strong>成人票價會浮動到多少，官方沒有公布。</strong>teamLab 給的是起價和一份票價行事曆，不是價目表，
-            所以沒有任何誠實的攻略能告訴你週六傍晚的無界要多少錢——替你報出一個價格區間的頁面，都是自己編的。
-            把 ¥3,400 當成底價，把你行程能容納的每一天都在官方行事曆上打開來看，比較過金額再付款。
+            <strong>成人票價最高會到多少，官方沒有公布。</strong>teamLab 給的是起價和一份票價行事曆，不是價目表，
+            所以沒有任何攻略能如實告訴你週六傍晚的無界要多少錢；列出票價區間的網頁，數字都是自行編造的。
+            把 ¥3,400 當成最低票價，把你行程能容納的每一天都在官方行事曆上打開來看，比較過金額再付款。
             這裡真正有用的是把參觀日挪一天；換一家較便宜的售票平台也無法降低票價，因為價格是日期和時段決定的。
           </p>
         </section>
@@ -635,7 +635,7 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>teamLab Borderless 要逛多久？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             約 1.5～2 小時：teamLab 表示平均參觀時間約一個半小時，館內沒有時間限制，下一個時段開始時也不必離場——但不能再入場。
-            比起時間，更常讓人踩雷的是行事曆：美術館有不定期的休館日，部分日期提早或延後閉館，選時段前請先看下表。
+            比起參觀時間，更常讓人出錯的是休館日與營業時間的變動：美術館有不定期的休館日，部分日期提早或延後閉館，選時段前請先看下表。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -672,14 +672,14 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>你買到的是什麼</span>
           <h2 className={styles.sectionTitle}>teamLab 無界究竟是什麼</h2>
           <p className={styles.bodyText}>
-            無界是一間沒有地圖的美術館。約 70 件作品分布在互相連通的房間群裡，而作品本身會移動——
-            它們會從一個空間走到另一個空間、會對房間裡的人有反應、整天都在變化。沒有建議路線、沒有編號站點，
-            所以買同一張票的兩個人，體驗可能真的不一樣。
+            無界是一間沒有地圖的美術館。約 70 件作品分布在互相連通的展區裡，而作品本身會移動——
+            它們會從一個展區移動到另一個展區、會對展區裡的人有反應、整天都在變化。沒有建議路線，也沒有編號的參觀點，
+            所以買同樣門票的兩個人，體驗可能真的不一樣。
           </p>
           <p className={styles.bodyText}>
-            正因為這個設計，這張票值得先規劃。趕一小時只能看到幾個有名的展間；1.5～2 小時才夠你亂走、折返，
+            正因為這個設計，這張票值得先規劃。只花一小時趕著看，只能看到幾個知名展區；1.5～2 小時才夠你隨意走、折返，
             並找到那些要等才會出現的作品。這也讓無界成為東京兩間 teamLab 當中比較偏成人、比較適合攝影的那一間——
-            想找赤腳走進水裡的豐洲那一間，以及 Planets 那一方的考量，請看我們的{" "}
+            想了解豐洲那座需要赤腳涉水的 Planets 及選擇理由，請看我們的{" "}
             <Link href="/zh-tw/guides/attractions/teamlab-planets-tickets">teamLab Planets 門票攻略</Link>。
           </p>
         </section>
@@ -689,14 +689,14 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>teamLab 無界值得去嗎？</h2>
           <p className={styles.bodyText}>
             喜歡藝術、攝影，或只是想待在一個哪裡都看不到的地方——值得。但它是一個每人 ¥3,400 起、約 1.5～2 小時的景點，
-            價格像一個下午，花掉的時間卻像一頓長午餐。與其直接給結論，不如把算式攤在你面前：
+            票價相當於半天行程，參觀時間卻只像一頓悠閒的午餐。與其直接給結論，不如先把費用和參觀時間列出來：
           </p>
           <ul className={styles.bodyList}>
             <li><strong>每小時的花費偏高。</strong>¥3,400 換 1.5～2 小時，是東京鐵塔主展望台 ¥1,500 的兩倍多，也高於澀谷 SKY 白天線上票的 {PRICES.shibuyaSky.adult.split(" / ")[0]}，而那兩處都可以待很久——數字可以在我們的<Link href="/guides/attractions/japan-attraction-ticket-prices">日本景點門票價格表（英文）</Link>比較。你付的是別處看不到的東西，不是時間長度。</li>
-            <li><strong>沒有地圖的設計是價值，也是風險。</strong>約 70 件作品、沒有路線、沒有編號站點，代表趕一小時只能看到幾個有名的展間。如果你只有一小時，這張票就不划算，而不是「縮短版的好體驗」。</li>
-            <li><strong>它是兩間當中最不費體力的。</strong>穿著鞋、不用涉水，也不必帶替換衣物。如果 Planets 的形式對你來說像折磨而不是體驗，這裡就是同一個團隊、但沒有那些的版本。</li>
-            <li><strong>不怕下雨，又在市中心。</strong>麻布台之丘離神谷町站走地下 2 分鐘，下雨的午後在交通上不會有任何損失——東京大多數雨天行程可做不到。</li>
-            <li><strong>這裡失誤還有救。</strong>和 Planets 不同，無界在還有名額時會現場售票，所以沒訂到的代價是多付 ¥200、時段差一點，而不是賠掉一個下午。</li>
+            <li><strong>沒有地圖的設計是價值，也是風險。</strong>約 70 件作品、沒有路線、沒有編號的參觀點，代表只花一小時趕著看，只能看到幾個知名展區。如果你只有一小時，這張票就不划算，而不是「縮短版的好體驗」。</li>
+            <li><strong>它是兩間當中最不費體力的。</strong>穿著鞋、不用涉水，也不必帶替換衣物。如果 Planets 的形式對你來說太折騰，這裡就是同一個團隊、但沒有那些的版本。</li>
+            <li><strong>不怕下雨，又在市中心。</strong>麻布台之丘離神谷町站走地下 2 分鐘，下雨的午後也不必在交通上淋雨——東京大多數雨天行程可做不到。</li>
+            <li><strong>這裡就算沒訂到也還有補救機會。</strong>和 Planets 不同，無界在還有名額時會現場售票，所以沒訂到的代價是多付 ¥200、時段差一點，而不是賠掉一個下午。</li>
           </ul>
           <p className={styles.bodyText}>
             如果你的東京行程已經很緊、只能給它一小時，或者帶著小小孩、只排得進一間 teamLab——Planets 帶孩子比較輕鬆——
@@ -739,8 +739,8 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
             teamLab 沒有公布各時段會提前幾天售完，所以本頁也不提供這個數字。
           </p>
           <ul className={styles.bodyList}>
-            <li><strong>不只規劃參觀日，也要規劃購買日：</strong>如果你旅行的月份在你還沒決定行程時就會開賣，開賣那天就是該記進行事曆的日子。</li>
-            <li><strong>當天票只是備案：</strong>只在還有剩的時候於線上或現場販售，而且現場成人票貴 ¥200。</li>
+            <li><strong>不只規劃參觀日，也要規劃購買日：</strong>如果你旅行的月份在你還沒決定行程時就會開賣，就該把開賣日記在行事曆上。</li>
+            <li><strong>當天票只是備案：</strong>僅在尚有名額時於線上或現場販售，而且現場成人票貴 ¥200。</li>
             <li><strong>日期變了就改期，不要重訂：</strong>官方門票最多可以改三次日期，須在預約入場時間 2 小時前辦理；新日期比較貴的話要付新價格，原本的金額會退還。</li>
             <li><strong>售票平台的條件各自不同：</strong>Klook 與 GetYourGuide 的變更與取消期限依方案而定，付款前請在訂購頁上看清楚，不要以為 teamLab 的三次改期也適用。</li>
           </ul>
@@ -763,7 +763,7 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>指定時段</span>
           <h2 className={styles.sectionTitle}>當天可以買 teamLab 無界門票嗎？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            有剩就可以：時段沒售完時，當天可在官方售票網站購買；還有名額時現場也賣，但價格不同（成人 +¥200）。
+            尚有名額就可以：時段沒售完時，當天可在官方售票網站購買；還有名額時現場也賣，但價格不同（成人 +¥200）。
             teamLab 沒有說哪個時段最先賣完——只說任何日期與時段都可能售完——下表就是官方對時段、排隊與人潮的全部說明。
           </p>
           <div className={styles.tableWrap}>
@@ -793,7 +793,7 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
             <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer">teamlab.art/e/tokyo</a>
             （購票須知）與
             <a href={FAQ_URL} target="_blank" rel="noopener noreferrer">teamlab.art/faq/tokyo</a>
-            。想要的時段在一個官方管道賣完了，先查另一個，再考慮現場。
+            。想要的時段在其中一個官方管道售罄時，先查另一個，再考慮現場。
           </p>
         </section>
 
@@ -802,8 +802,8 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>teamLab 無界門票在 Klook 買還是官網買比較好？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             兩邊都不會比較便宜：是同一個入場資格，由同一份日期與時段行事曆定價。官網勝在彈性（最多改期三次）；
-            Klook 勝在結帳（自己的幣別、海外信用卡、同一個 App）。Klook 是 teamLab 的官方售票合作夥伴，所以不論走哪個櫃台，入場資格都一樣。差別在結帳流程、彈性，
-            以及——如果你拖到當天——價格。GetYourGuide 也賣無界的票，下表中它那一欄刻意寫得很少：
+            Klook 勝在結帳（自己的幣別、海外信用卡、同一個 App）。Klook 是 teamLab 的官方售票合作夥伴，所以不論透過哪個購票管道，入場資格都一樣。差別在結帳流程、改期彈性，
+            以及拖到當天才買時的價格。GetYourGuide 也賣無界的票，下表中它那一欄刻意寫得很少：
             已確認與未確認的內容，請看表格下方的說明。
           </p>
           <div className={styles.tableWrap}>
@@ -833,7 +833,7 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             現場加價與改期次數依 teamLab 官方網站 {CHECKED} 的公告。售票平台的取消與變更條件依方案而異，
             付款前請在訂購頁上看清楚。GetYourGuide 一欄刻意寫得很短：它的無界頁面在 {GYG_CHECKED} 確認仍在販售，
-            但它的價格、刷卡情況與變更條件未經本頁確認，請在商品頁查看。那幾格就照實寫，不用猜的。
+            但它的價格、刷卡情況與變更條件未經本頁確認，請在商品頁查看。未公布的項目如實標示，不自行推測。
           </p>
         </section>
 
@@ -867,10 +867,10 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
             已經不是獨立的售票網站：它的英文與日文網址現在都會轉址到上面的 teamlab.art 頁面，這點已於 {ADDRESS_CHECKED} 確認。
           </p>
           <ul className={styles.bodyList}>
-            <li><strong>為什麼「官方」在這裡很重要：</strong>基本票價在 teamLab 自己的行事曆上，三次免費改期也只有直接購買的票才有。售票平台賣的是同一個入場資格，但用自己的條件。</li>
-            <li><strong>還有誰是正規的：</strong>Klook 是 teamLab 的官方售票合作夥伴，所以 Klook 的票就是在另一個櫃台買到的同一個入場資格——不是旁門左道，也不是在門票價上加價。</li>
+            <li><strong>為什麼這裡要找官方管道：</strong>基本票價在 teamLab 自己的行事曆上，三次免費改期也只有直接購買的票才有。售票平台賣的是同一個入場資格，但用自己的條件。</li>
+            <li><strong>還有哪些正規購票管道：</strong>Klook 是 teamLab 的官方售票合作夥伴，所以 Klook 的票就是透過另一個購票管道買到的同一個入場資格——不是非正規管道，也不是在門票價上加價。</li>
             <li><strong>直接買不會讓你得到的：</strong>折扣。成人票價由日期與時段決定，而每個官方管道背後都是同一份行事曆。</li>
-            <li><strong>直接買可能讓你付出的：</strong>信用卡被拒。日文結帳頁面是遊客最後改用售票平台的常見原因，而改用國際化的結帳流程是合理的解法，不是錯誤。</li>
+            <li><strong>直接買可能讓你付出的：</strong>信用卡被拒。遊客常因日文結帳頁面，最後改用售票平台，而改用國際化的結帳流程是合理的解法，不是錯誤。</li>
           </ul>
           <p className={styles.bodyText}>
             所以：你的卡刷得過、又想要日期彈性，就直接在官網買；想用自己的語言和幣別結帳、讓電子票和其他預訂放在一起，就透過 Klook。
@@ -881,9 +881,9 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>並排比較</span>
           <h2 className={styles.sectionTitle}>teamLab 無界 vs Planets：該訂哪一個？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            <strong>想「看」藝術就訂無界；想「走進」藝術，或要帶小孩，就訂 Planets。</strong>東京有兩間 teamLab 美術館，
+            <strong>想欣賞藝術就選無界；想親身走進藝術，或要帶小孩，就訂 Planets。</strong>東京有兩間 teamLab 美術館，
             遊客經常訂錯。它們是不同的場館、不同的門票，位在城市的不同區域，下面這些數字就是決定的關鍵。
-            Planets 那一方的完整資訊——赤腳規定、置物櫃、兒童相關規定——請看我們的{" "}
+            關於 Planets 的完整資訊——赤腳規定、置物櫃、兒童相關規定——請看我們的{" "}
             <Link href="/zh-tw/guides/attractions/teamlab-planets-tickets">teamLab Planets 門票攻略</Link>。
           </p>
           <div className={styles.tableWrap}>
@@ -913,7 +913,7 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
             兩間美術館的成人票都依日期與時段定價，行事曆也都會變，請以你自己的日期為準。無界的建議停留時間出自官方 FAQ；Planets 的則是本站的規劃參考，不是官方數字。
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            如果兩間都有時間去，請分在不同天：一個下午看四小時數位藝術，是最快讓你什麼都看不進去的方法，
+            如果兩間都有時間去，請分在不同天：一個下午連看四小時數位藝術，很快就會什麼都看不進去，
             而且兩個場館在城市的兩端，相距 30 分鐘。另一天去豐洲的話，成人起價、入場時段與從新豐洲站怎麼走，請看{" "}
             <Link href="/zh-tw/guides/attractions/teamlab-planets-tickets">teamLab Planets 豐洲門票價格</Link>。
           </p>
@@ -924,12 +924,12 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>teamLab 無界的位置</h2>
           <p className={styles.bodyText}>
             美術館位在港區虎之門五丁目一帶的「麻布台之丘 Garden Plaza B」地下一樓。
-            它不是以前台場的無界——那個場館已經結束，所以任何把你帶去海濱的路線都請忽略。
+            它不是以前台場的無界——那個場館已經結束，所以若導航帶你去台場海濱，請忽略該路線。
           </p>
           <ul className={styles.bodyList}>
             <li><strong>神谷町站</strong>（東京地下鐵日比谷線）——5 號出口步行 2 分鐘。</li>
             <li><strong>六本木一丁目站</strong>（東京地下鐵南北線）——4 號出口步行 6 分鐘。</li>
-            <li>兩站都有地下通道連到麻布台之丘，可以全程照指標走，不必上到地面。</li>
+            <li>兩站都有地下通道連到麻布台之丘，可以全程照指標走，不必走到地面。</li>
           </ul>
           <p className={styles.bodyText}>
             用{" "}
@@ -960,9 +960,9 @@ export default function ZhTeamLabBorderlessPage({ updated }: { updated: PageUpda
 
         <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>
-            <h2 className={styles.ctaBannerTitle}>先把無界的時段訂下來</h2>
+            <h2 className={styles.ctaBannerTitle}>先預訂無界的入場時段</h2>
             <p className={styles.ctaBannerDesc}>
-              指定時段入場的意思是：最熱門的入場時段通常最早售罄。Klook 是 teamLab 的官方售票合作夥伴，
+              指定時段入場的意思是：你想要的入場時段可能會售罄。Klook 是 teamLab 的官方售票合作夥伴，
               可以用繁體中文介面、自己的幣別結帳，電子票直接存在手機裡。
             </p>
             <div className={styles.pickCtaRow}>

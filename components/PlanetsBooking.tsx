@@ -60,7 +60,7 @@ const COPY: Record<Locale, Copy> = {
       { item: "營業時間", detail: "08:00–22:00（12/31–1/2 為 08:00–20:00），閉館前 1 小時停止入場" },
       { item: "休館日", detail: "2026/12/3（四）、2027/1/14（四）" },
       { item: "預約方式", detail: "僅限線上預約，須指定日期與入場時間，現場不售票。購票管道：官方售票網站、Lawson Ticket、Seven Ticket、Klook" },
-      { item: "人潮最多的時段", detail: "官方未公布。官方售票網站僅說明入場可能需等候 30–60 分鐘" },
+      { item: "最擁擠的入場時段", detail: "官方未公布。官方售票網站僅說明入場可能需等候 30–60 分鐘" },
       { item: "所需時間", detail: "官方未公布。本站建議預留 1.5–2 小時，含置物櫃與擦乾雙腳的時間" },
       { item: "新豐洲站出發", detail: "從 1A 出口步行 3 分鐘（百合海鷗號）" },
       { item: "豐洲站出發", detail: "7 號出口步行 10 分鐘（東京地鐵有樂町線），沿著百合海鷗號高架軌道前進" },
@@ -150,7 +150,7 @@ const COPY: Record<Locale, Copy> = {
 /** "Last checked: YYYY-MM-DD" label under the answer table (task jtk-20261113-C01). */
 const LAST_CHECKED: Record<Locale, string> = {
   en: "Last checked",
-  "zh-tw": "最後確認",
+  "zh-tw": "最後查核",
   "zh-cn": "最后确认",
   ko: "최종 확인",
   th: "ตรวจสอบล่าสุด",
@@ -189,7 +189,7 @@ export function PlanetsAnswer() {
           </KlookLink>
         </div>
         <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
-          <strong>{LAST_CHECKED[locale]}: {P.checked}</strong> — {copy.source.replace("{date}", date)}{" "}
+          <strong>{LAST_CHECKED[locale]}{locale === "zh-tw" ? "：" : ": "}{P.checked}</strong> — {copy.source.replace("{date}", date)}{" "}
           <a href={OFFICIAL_URL} target="_blank" rel="noopener">teamlab.art/e/planets</a>
         </p>
       </div>
