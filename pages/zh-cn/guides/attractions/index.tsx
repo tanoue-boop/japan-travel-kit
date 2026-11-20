@@ -69,7 +69,7 @@ const groups: CnHubGroup[] = [
   {
     key: "tickets",
     label: "门票与景点",
-    desc: "单个场馆的门票——指定时段的美术馆与观景台。官方票价，以及为什么入场时段往往比能否买到门票更值得关注。",
+    desc: "单个场馆的门票——指定时段的美术馆与观景台。介绍官方票价，以及为什么入场时段往往比能否买到门票更值得关注。",
     routes: [
       "/zh-cn/guides/attractions/shibuya-sky-tickets",
       "/zh-cn/guides/attractions/teamlab-planets-tickets",
@@ -90,7 +90,7 @@ const groups: CnHubGroup[] = [
     // and the English hub uses the same key for the same group.
     key: "daytrips",
     label: "一日游",
-    desc: "安排一整天的郊游行程时，重点是选择路线，而不是门票。",
+    desc: "安排一整天的出城游览行程时，重点是选择路线，而不是门票。",
     routes: ["/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo"],
   },
   {
@@ -102,7 +102,7 @@ const groups: CnHubGroup[] = [
   {
     key: "prep",
     label: "行前准备",
-    desc: "抵达日本当天就会用到的两样东西：机场到市区的交通，以及手机上网。",
+    desc: "抵达日本当天就需要用到的两项服务：机场到市区的交通，以及手机上网。",
     routes: [
       "/zh-cn/guides/transport/tokyo-airport-transfer",
       "/zh-cn/guides/esim/best-esim-japan",
@@ -121,11 +121,11 @@ const BLURBS: Record<string, string> = {
   "/zh-cn/guides/attractions/tokyo-disney-tickets":
     "每张票都指定日期、不在现场售票。怎么买（包括官网拦截海外卡时），以及乐园与海洋怎么选。",
   "/zh-cn/guides/attractions/usj-tickets-express-pass":
-    "现在一律网上购票，超级任天堂世界需要按指定时段入场。Studio Pass 的分级、快速通行证 4／7／8 怎么挑。",
+    "现在一律网上购票，超级任天堂世界需要在指定时段入场。Studio Pass 的不同票种、快速通行证 4／7／8 怎么挑。",
   "/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo":
     "四种行程比较：只去富士山，还是连箱根一起玩、Subaru Line 五合目是什么，以及一天要多久。",
   "/zh-cn/guides/attractions/things-to-do-tokyo":
-    "真正容易售罄的景点门票只有四五种。这份短名单说哪些要提前多久订，哪些可以吃早餐时再决定。",
+    "真正容易售罄的景点门票只有四五类。这份短名单说哪些要提前多久订，哪些可以当天早上再决定。",
   "/zh-cn/guides/transport/tokyo-airport-transfer":
     "从成田和羽田机场前往市区的各种交通方式，比较价格、所需时间和便利程度，附 2026 年票价与按酒店位置的建议。",
   "/zh-cn/guides/esim/best-esim-japan":
@@ -152,11 +152,11 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "东京景点的套票划算吗？",
-    a: "只有套票里每个景点你本来就会去时才划算。先用门票价格总表把各景点的官方单票加起来比较；SHIBUYA SKY、teamLab 这类指定时段的场馆，买之前先确认套票能选哪些入场时段——会售罄的是时段，不是门票。",
+    a: "只有套票包含的每个景点都是你原本就计划去的，才划算。先用门票价格总表把各景点的官方单票加起来比较；SHIBUYA SKY、teamLab 这类指定时段的场馆，买之前先确认套票能选哪些入场时段——会售罄的是特定入场时段，而不是门票本身。",
   },
   {
     q: "为什么我的海外信用卡无法在日本官方售票网站付款？",
-    a: "日本多个景点购票网站的支付系统对境外发行的信用卡兼容性不佳——SHIBUYA SKY 自 2024 年 7 月起就是如此，东京迪士尼的购票系统也经常拒绝境外信用卡付款。这就是为什么从海外订票时，通过第三方售票平台预订往往更顺利：原因是付款流程更方便，也支持境外信用卡，并不是因为票价更便宜。",
+    a: "日本多个景点购票网站的支付系统对境外发行的信用卡兼容性不佳——SHIBUYA SKY 自 2024 年 7 月起就是如此，东京迪士尼的购票系统也经常拒绝境外信用卡付款。这就是为什么从海外订票时，通过第三方售票平台预订往往更顺利：这是因为付款流程更方便，也支持境外信用卡，而不是因为票价更便宜。",
   },
 ];
 
@@ -207,7 +207,7 @@ export default function CnAttractionsHubPage({ dates }: { dates: Record<string, 
             日本景点门票 2026： <br />东京・大阪・京都哪些要提前预约与票价
           </h1>
           <p className={styles.heroSubtitle}>
-            按“需要提前多久购票”整理的日本景点门票：开售日、当天能不能买、官方票价与核查日期。
+            按“需要提前多久购票”整理的日本景点门票攻略：开售日、当天能不能买、官方票价与核查日期。
           </p>
           <div className={styles.heroBadges}>
             {["官方票价", "附核查日期", `${editionGuideCount("zh-cn")} 篇简体中文攻略`].map((t) => (
@@ -223,7 +223,7 @@ export default function CnAttractionsHubPage({ dates }: { dates: Record<string, 
         <Disclosure />
 
         <section className={styles.bodySection}>
-          <h2 className={styles.sectionTitle}>东京・大阪・京都的景点门票，先看哪几篇？</h2>
+          <h2 className={styles.sectionTitle}>东京、大阪、京都的景点门票攻略，先看哪几篇？</h2>
           <p className={styles.bodyText}>
             <strong>先看下面 5 篇：东京迪士尼与日本环球影城约 2 个月前开售、门口不卖票，SHIBUYA SKY 在入场日 2 周前开售</strong>
             （{CHECKED} 于各官网核查）；京都多数知名寺院则可以直接前往。
@@ -236,7 +236,7 @@ export default function CnAttractionsHubPage({ dates }: { dates: Record<string, 
             ))}
           </ul>
           <p className={styles.bodyText}>
-            日本最热门的景点中有四个<strong>不在现场售票</strong>，出发前就要买好：<strong>吉卜力美术馆</strong>每月 10 日
+            日本最热门的景点中，有四个<strong>不提供现场售票</strong>，出发前就要买好：<strong>吉卜力美术馆</strong>每月 10 日
             10:00 开售下个月、<strong>吉卜力公园</strong>在 2 个月前的 10 日 14:00 开售、<strong>东京迪士尼</strong>每天 14:00
             开售 2 个月后的同一天，<strong>日本环球影城</strong>约 2 个月前开售，2025 年 5 月 6 日起门口不再售票。
             <strong>teamLab 无界</strong>在 2 个月前的月初、<strong>SHIBUYA SKY</strong>在 2 周前的 0:00 开售——想订特定时段，就要在开售时立即预订（均为日本时间，{CHECKED} 于各官网核查）。
@@ -244,8 +244,7 @@ export default function CnAttractionsHubPage({ dates }: { dates: Record<string, 
           <p className={styles.bodyText}>
             <strong>日本景点门票价格（2026）</strong>：SHIBUYA SKY 网上购票 ¥2,700（15:00 前入场）／¥3,400（15:00
             起），teamLab Planets ¥3,800 起，teamLab 无界 ¥3,400 起，东京迪士尼一日护照 ¥8,900 起；日本环球影城按日期定价，结算时才会显示所选日期的票价。
-            <strong>必须提前在网上预订的</strong>是两座 teamLab 美术馆（指定时段）、东京迪士尼（门口不卖票）与日本环球影城（当天门口不售票），SHIBUYA SKY
-            只有日落时段需要早订。票价均来自各官方网站：SHIBUYA SKY 与 teamLab Planets 于 2026 年 11 月 6 日、东京迪士尼于 10 月 28 日、teamLab
+            <strong>必须提前在网上预订的</strong>是两座 teamLab 美术馆（指定时段）、东京迪士尼（门口不卖票）与日本环球影城（当天门口不售票），SHIBUYA SKY 只有日落时段需要提前预订。票价均来自各官方网站：SHIBUYA SKY 与 teamLab Planets 于 2026 年 11 月 6 日、东京迪士尼于 10 月 28 日、teamLab
             无界于 10 月 9 日核查。
           </p>
         </section>
@@ -309,18 +308,17 @@ export default function CnAttractionsHubPage({ dates }: { dates: Record<string, 
 
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>先看这个</span>
-          <h2 className={styles.sectionTitle}>日本景点门票，难点不在价格</h2>
+          <h2 className={styles.sectionTitle}>预订日本景点门票，难点不在价格</h2>
           <p className={styles.bodyText}>
             日本有几个知名景点，即使到了现场也买不到门票。teamLab、东京迪士尼、日本环球影城与 SHIBUYA SKY 的日落时段，
-            全都在网上销售指定日期与时段的票，热门时段的门票提前数周就会售罄——迪士尼的情况更极端，完全不在现场售票。
+            全都在网上销售指定日期与时段的票，热门时段的门票提前数周就会售罄——迪士尼的情况更极端，完全不提供现场售票。
           </p>
           <p className={styles.bodyText}>
-            有两件事特别容易让旅客踩坑：官方网站有时无法使用海外发行的信用卡付款，而搜索结果中排名靠前的转售网站，
-            常常是入场时无效的票。这些攻略写的是官方票价、支持境外购票的渠道，以及该什么时候订。
+            有两件事特别容易让旅客踩坑：官方网站有时无法使用海外发行的信用卡付款，而搜索结果中排名靠前的转售网站，出售的门票常常无法用于入场。这些攻略写的是官方票价、支持境外购票的渠道，以及该什么时候订。
           </p>
           <p className={styles.bodyText}>
-            日本也有很多景点完全不需要提前做这些准备。京都多数知名寺院可以直接走进去，奈良公园免费，
-            和服体验或烹饪课程，提前一周预订也来得及。这些攻略的重点是：把规划的精力用在真正影响行程的事情上。
+            日本也有很多景点完全不需要提前做这些准备。京都多数知名寺院可以直接入内参观，奈良公园免费，
+            和服体验或烹饪课程，提前一周预订也来得及。这些攻略的重点是：把规划行程的精力放在真正影响行程的事情上。
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.86rem", color: "var(--text-muted)" }}>
             本站目前已核查 {attractionPrices.length} 项日本景点、主题乐园、通票与一日游景点的官方入场费用，
@@ -355,7 +353,7 @@ export default function CnAttractionsHubPage({ dates }: { dates: Record<string, 
 
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>其他语言</span>
-          <h2 className={styles.sectionTitle}>还没翻译的部分</h2>
+          <h2 className={styles.sectionTitle}>尚未翻译的内容</h2>
           <p className={styles.bodyText}>
             简体中文版目前共有 {editionPageCount("zh-cn")} 页（含首页与本页）。京都与大阪的城市攻略、其他的一日游、
             铁路周游券、IC 卡、支付与货币，以及完整的门票价格总表，目前只有英文版：{" "}
@@ -370,7 +368,7 @@ export default function CnAttractionsHubPage({ dates }: { dates: Record<string, 
             <Link href="/zh-tw/guides/attractions" hrefLang="zh-Hant-TW" style={{ color: "var(--text)", fontWeight: 600 }}>
               日本景點門票攻略（繁體中文）
             </Link>
-            。每一页三种语言都有的时候，页首会出现 English／繁體中文／简体中文 的切换。
+            。当某个页面提供全部三种语言版本时，页首会出现 English／繁體中文／简体中文 的切换。
           </p>
         </section>
 

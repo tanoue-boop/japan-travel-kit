@@ -107,13 +107,13 @@ const COPY: Record<Locale, Copy> = {
   },
   ko: {
     topLabel: "일본 모바일 데이터",
-    topLine: "첫 번째 추천은 Simbye입니다: {plan} {price}부터, 코드 {code} 입력 시 {percent}% 할인되어 {discounted}.",
+    topLine: "가장 먼저 추천하는 상품은 Simbye입니다: {plan} {price}부터, 코드 {code} 입력 시 {percent}% 할인되어 {discounted}.",
     topLowest: "저희가 확인한 요금제 중 최저가입니다.",
     networks: "Simbye가 밝힌 일본 회선: {networks}.",
     others: "다른 선택지:",
     bottomHeading: "출발 전에 준비할 것: 모바일 데이터",
     bottomIntro:
-      "출발 전에 QR 코드로 eSIM을 설치해 두면 도착하자마자 사용할 수 있습니다. 추천 순서대로 네 가지와 그 이유입니다.",
+      "출발 전에 QR 코드로 eSIM을 설치해 두면 도착하자마자 사용할 수 있습니다. 추천 순서대로 네 가지 상품과 추천 이유를 소개합니다.",
     simbyeFrom: "{price}부터 ({plan}).",
     simbyeCode: "코드 {code} 입력 시 {percent}% 할인: {discounted}.",
     lowest: "확인한 요금제 중 가장 저렴한 가격.",
@@ -146,7 +146,7 @@ const COPY: Record<Locale, Copy> = {
     hotspot: "所有日本方案皆可分享熱點。",
     from: "{price} 起（{plan}）。",
     orderNote:
-      "排序理由：{simbye}；Klook eSIM 可與你的其他 Klook 訂單透過同一個帳號管理；Airalo 可透過官方 App 安裝，並提供線上客服；Sakura Mobile 有附日本電話號碼的方案可選。價格來自每日價格查核，最近一次查核日期為 {date}。",
+      "排序理由：{simbye}；Klook eSIM 可以和其他 Klook 訂單使用同一個帳號管理；Airalo 可透過官方 App 安裝，並提供線上客服；Sakura Mobile 有附日本電話號碼的方案可選。價格來自每日價格查核，最近一次查核日期為 {date}。",
     orderLowest: "Simbye 是我們價格資料中方案價格最低的",
     orderNetworks: "Simbye 標示涵蓋日本四家電信線路",
     insuranceName: "旅遊保險",

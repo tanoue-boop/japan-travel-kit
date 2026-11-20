@@ -34,7 +34,7 @@ const popularLinks = [
   { href: "/zh-tw/guides/attractions/shibuya-sky-tickets", label: "東京：澀谷SKY 門票" },
   { href: "/zh-tw/guides/attractions/tokyo-disney-tickets", label: "東京：東京迪士尼門票" },
   { href: "/zh-tw/guides/attractions/tokyo-skytree-tickets", label: "東京：晴空塔門票" },
-  { href: "/zh-tw/guides/attractions/things-to-do-tokyo", label: "東京必去景點與購票時間" },
+  { href: "/zh-tw/guides/attractions/things-to-do-tokyo", label: "東京必去景點與購票時機" },
 ];
 
 /** Booking windows read on each official site on this date (same sources as the English hub). */
@@ -46,7 +46,7 @@ const windowRows: WindowRow[] = [
   { name: "吉卜力美術館", city: "東京（三鷹）", opens: "每月 10 日 10:00（日本時間）開賣次月整月門票", onTheDay: "不行——僅接受事先預約，館內不售票", href: "/zh-tw/guides/attractions/things-to-do-tokyo", guide: "東京必去景點", source: "https://www.ghibli-museum.jp/en/tickets/" },
   { name: "吉卜力公園", city: "名古屋", opens: "2 個月前的 10 日 14:00（日本時間）", onTheDay: "不行——一律須事先預約", href: "/guides/attractions/ghibli-park-tickets", guide: "Ghibli Park tickets（英文）", source: "https://ghibli-park.jp/en/ticket/" },
   { name: "東京迪士尼樂園・海洋", city: "東京（舞濱）", opens: "每天 14:00（日本時間）開賣 2 個月後的同一天", onTheDay: "有餘票時只能在官網或 App 買；園區不售票（迪士尼飯店住客除外）", href: "/zh-tw/guides/attractions/tokyo-disney-tickets", guide: "東京迪士尼門票", source: "https://www.tokyodisneyresort.jp/en/ticket/index.html" },
-  { name: "日本環球影城（Studio Pass、快速通關）", city: "大阪", opens: "入園日約 2 個月前", onTheDay: "只能線上購買，可能售罄——售票亭自 2025 年 5 月 6 日起停售", href: "/zh-tw/guides/attractions/usj-tickets-express-pass", guide: "環球影城快速通關", source: "https://www.usj.co.jp/company/company_e/news/2025/0425/" },
+  { name: "日本環球影城（Studio Pass、快速通關）", city: "大阪", opens: "入園日約 2 個月前", onTheDay: "只能在線上購買，也可能售罄——售票亭自 2025 年 5 月 6 日起停售", href: "/zh-tw/guides/attractions/usj-tickets-express-pass", guide: "環球影城快速通關", source: "https://www.usj.co.jp/company/company_e/news/2025/0425/" },
   { name: "teamLab 無界", city: "東京（麻布台之丘）", opens: "入場日 2 個月前的月初（1 日前後）", onTheDay: "不建議等到當天——官方 FAQ 提醒門票可能售罄", href: "/zh-tw/guides/attractions/teamlab-borderless-tickets", guide: "teamLab 無界門票", source: "https://www.teamlab.art/faq/tokyo/" },
   { name: "澀谷SKY", city: "東京（澀谷）", opens: "入場日 2 週前的 0:00（日本時間）", onTheDay: "可以——售票櫃台與網路都可購買", href: "/zh-tw/guides/attractions/shibuya-sky-tickets", guide: "澀谷SKY 門票", source: "https://www.shibuya-scramble-square.com/sky/ticket/" },
   { name: "華納兄弟東京影城（哈利波特）", city: "東京（練馬）", opens: "官網提前販售；官方建議預約，日期與時段可能售罄", onTheDay: "可以——若尚未售罄，可在現場售票處購買", href: "/guides/attractions/warner-bros-studio-tour-tokyo-tickets", guide: "Warner Bros. Studio Tour（英文）", source: "https://www.wbstudiotour.jp/en/tickets/" },
@@ -69,7 +69,7 @@ const groups: ZhHubGroup[] = [
   {
     key: "tickets",
     label: "門票與景點",
-    desc: "單一景點的入場門票，包括需預約指定時段的美術館與觀景台。官方票價，以及為什麼入場時段往往比門票本身更需要留意。",
+    desc: "單一景點的入場門票，包括需預約指定時段的美術館與觀景台。介紹官方票價，以及為什麼入場時段往往比門票本身更需要留意。",
     routes: [
       "/zh-tw/guides/attractions/shibuya-sky-tickets",
       "/zh-tw/guides/attractions/teamlab-planets-tickets",
@@ -91,7 +91,7 @@ const groups: ZhHubGroup[] = [
     // and the English hub uses the same key for the same group.
     key: "daytrips",
     label: "一日遊",
-    desc: "離開市區一整天的行程，要選的是哪一條路線，而不是哪一張票。",
+    desc: "安排一整天的市區外行程時，要選的是哪一條路線，而不是哪一張票。",
     routes: ["/zh-tw/guides/attractions/mt-fuji-day-tour-from-tokyo"],
   },
   {
@@ -116,23 +116,23 @@ const BLURBS: Record<string, string> = {
   "/zh-tw/guides/attractions/shibuya-sky-tickets":
     "位於澀谷十字路口上方的露天觀景台。官方票價、為什麼日落時段最先售罄，以及海外信用卡無法在官網付款時怎麼購票。",
   "/zh-tw/guides/attractions/teamlab-planets-tickets":
-    "豐洲的 Planets：官方票價、每 30 分鐘劃分的入場時段、前往需赤腳涉水的區域時該穿什麼，以及和無界的完整比較。",
+    "豐洲的 Planets：官方票價、每 30 分鐘劃分的入場時段、參觀需要赤腳涉水的區域時，該穿什麼，以及和無界的完整比較。",
   "/zh-tw/guides/attractions/teamlab-borderless-tickets":
     "麻布台之丘的無界：浮動定價怎麼算、指定時段與 Flexible Pass 的差別、營業時間與休館日。",
   "/zh-tw/guides/attractions/tokyo-skytree-tickets":
     "晴空塔門票怎麼買：350 公尺天望甲板與 450 公尺天望迴廊的票價比較、線上購票省下現場服務費，以及傍晚時段為什麼要先訂。",
   "/zh-tw/guides/attractions/tokyo-disney-tickets":
-    "每張票都指定日期、不提供現場售票。怎麼買（包括官網封鎖海外卡時），以及樂園與海洋怎麼選。",
+    "每張票都指定日期、不提供現場售票。購票方式（包括官網不接受海外信用卡時），以及樂園與海洋怎麼選。",
   "/zh-tw/guides/attractions/usj-tickets-express-pass":
-    "現在一律線上購票，超級任天堂世界需要指定時間入園。Studio Pass 的分級、快速通關 4／7／8 怎麼挑。",
+    "現在都必須在線上購票，超級任天堂世界需要指定時間入園。Studio Pass 的分級、快速通關 4／7／8 怎麼挑。",
   "/zh-tw/guides/attractions/mt-fuji-day-tour-from-tokyo":
-    "四種行程比較：只玩富士山，或連箱根一起安排、Subaru Line 五合目是什麼，以及一天要多久。",
+    "四種行程比較：只遊覽富士山周邊，或把箱根也排進行程、Subaru Line 五合目是什麼，以及一天要多久。",
   "/zh-tw/guides/attractions/things-to-do-tokyo":
-    "真正容易售罄的景點門票只有四、五種。這份短名單說明哪些要提前多久購票，哪些可以當天早上再決定。",
+    "真正容易售罄的景點門票只有四、五種。這份短名單說明哪些要提前多久購票，哪些可以等到當天早上再決定。",
   "/zh-tw/guides/transport/tokyo-airport-transfer":
-    "從成田與羽田機場前往市區的各種交通方式，比較價格、時間與方便度，附上 2026 年車資，以及根據飯店位置提供的建議。",
+    "從成田與羽田機場前往市區的各種交通方式，比較價格、所需時間與便利性，附上 2026 年車資，以及根據飯店位置提供的建議。",
   "/zh-tw/guides/esim/best-esim-japan":
-    "Klook 日本 eSIM，加上 Airalo、Holafly、eSIM Go、Sakura Mobile 的價格與網路比較。價格每天查核。",
+    "Klook 日本 eSIM，加上 Airalo、Holafly、eSIM Go、Sakura Mobile 的價格與網路比較。每天查核價格。",
 };
 
 /** The pair rows for this hub's own routes, keyed by route for title lookup. */
@@ -150,16 +150,16 @@ const faqItems: FaqItem[] = [
     a: "想預訂特定時段的話，就要在開賣時立即訂票。teamLab 無界在入場日 2 個月前的月初（1 日前後）開賣，官方 FAQ 提醒可能售罄；澀谷SKY 在入場日剛好 2 週前的日本時間 0:00 開賣。2026 年 11 月 16 日於 teamlab.art 與 shibuya-scramble-square.com 查核。",
   },
   {
-    q: "日本景點門票可以當天買嗎？",
-    a: "部分可以。澀谷SKY 有售票櫃台，華納兄弟東京影城在未售罄時現場售票處也賣；東京迪士尼與日本環球影城的當日票只在網路上、有餘票時才買得到；吉卜力美術館與吉卜力公園當天不賣票。2026 年 11 月 16 日查核。",
+    q: "日本景點門票可以當天購買嗎？",
+    a: "部分可以。澀谷SKY 有售票櫃台，華納兄弟東京影城只要門票尚未售罄，也可以在現場售票處購買；東京迪士尼與日本環球影城的當日票只在網路上、有餘票時才買得到；吉卜力美術館與吉卜力公園當天不賣票。2026 年 11 月 16 日查核。",
   },
   {
     q: "東京景點的套票划算嗎？",
-    a: "只有套票包含的景點都是你原本就打算去的，才比較划算。先用門票價格總表把各景點的官方單票加起來比較；澀谷SKY、teamLab 這類指定時段的場館，買之前先確認套票能選哪些入場時段——會售罄的是時段，不是門票。",
+    a: "只有套票包含的景點都是你原本就打算去的，才比較划算。先參考門票價格總表，加總各景點的官方單張票價再比較；澀谷SKY、teamLab 這類指定時段的場館，購買前先確認套票可以選擇哪些入場時段——會售罄的是特定入場時段，而不是門票本身。",
   },
   {
     q: "為什麼我的海外信用卡無法在日本官方售票網站付款？",
-    a: "好幾個日本景點的付款系統無法正常處理海外發行的信用卡——澀谷SKY 自 2024 年 7 月起就是如此，東京迪士尼也經常拒絕。這就是為什麼從海外購票時，透過售票平台往往比較順利：這些平台的結帳流程較容易操作，也支援海外信用卡付款，而不是票價更便宜。",
+    a: "好幾個日本景點的付款系統無法正常處理海外發行的信用卡——澀谷SKY 自 2024 年 7 月起就是如此，東京迪士尼的付款系統也經常拒絕海外信用卡。因此，從海外購票時，透過售票平台往往比較順利：這些平台的結帳流程較容易操作，也支援海外信用卡付款，但不代表票價比較便宜。",
   },
 ];
 
@@ -226,7 +226,7 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
         <Disclosure />
 
         <section className={styles.bodySection}>
-          <h2 className={styles.sectionTitle}>東京・大阪・京都的景點門票，先看哪幾篇？</h2>
+          <h2 className={styles.sectionTitle}>東京、大阪、京都的景點門票，該先看哪幾篇？</h2>
           <p className={styles.bodyText}>
             <strong>先看下面 5 篇：東京迪士尼與日本環球影城約 2 個月前開賣、門口不賣票，澀谷SKY 在入場日 2 週前開賣</strong>
             （{CHECKED} 於各官網查核）；京都多數知名寺院則可以直接前往。
@@ -239,16 +239,15 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
             ))}
           </ul>
           <p className={styles.bodyText}>
-            日本最熱門的景點中有四個<strong>不提供現場售票</strong>，出發前就要買好：<strong>吉卜力美術館</strong>每月 10 日
+            日本最熱門的景點中，有四個<strong>不提供現場售票</strong>，出發前就要買好：<strong>吉卜力美術館</strong>每月 10 日
             10:00 開賣次月門票、<strong>吉卜力公園</strong>在 2 個月前的 10 日 14:00 開賣、<strong>東京迪士尼</strong>每天 14:00
             開賣 2 個月後的同一天，<strong>日本環球影城</strong>約 2 個月前開賣，2025 年 5 月 6 日起門口不再售票。
-            <strong>teamLab 無界</strong>在 2 個月前的月初、<strong>澀谷SKY</strong>在 2 週前的 0:00 開賣——想預訂特定時段，就要在開賣時立即訂票（皆為日本時間，{CHECKED} 於各官網查核）。
+            <strong>teamLab 無界</strong>在 2 個月前的月初、<strong>澀谷SKY</strong>在 2 週前的 0:00 開賣——如果想預訂特定時段，就要在開賣時立即購票（皆為日本時間，{CHECKED} 於各官網查核）。
           </p>
           <p className={styles.bodyText}>
             <strong>日本景點門票價格（2026）</strong>：澀谷SKY 網路購票 ¥2,700（15:00 前入場）／¥3,400（15:00
-            起），teamLab Planets ¥3,800 起，teamLab 無界 ¥3,400 起，東京迪士尼一日護照 ¥8,900 起；日本環球影城依日期定價，結帳時才顯示當天價格。
-            <strong>必須提前在網路上購票的</strong>是兩間 teamLab（指定時段）、東京迪士尼（現場不賣票）與日本環球影城（當天現場不售票），澀谷SKY
-            只有日落時段需要提早購票。票價資料取自各官方網站：澀谷SKY 與 teamLab Planets 於 2026 年 11 月 6 日、東京迪士尼於 10 月 28 日、teamLab
+            起），teamLab Planets ¥3,800 起，teamLab 無界 ¥3,400 起，東京迪士尼一日護照 ¥8,900 起；日本環球影城的票價依日期浮動，結帳時才會顯示當天的價格。
+            <strong>必須提前在網路上購票的</strong>是兩間 teamLab（指定時段）、東京迪士尼（現場不賣票）與日本環球影城（當天現場不售票），澀谷SKY 只有日落時段需要提前購票。票價資料取自各官方網站：澀谷SKY 與 teamLab Planets 於 2026 年 11 月 6 日、東京迪士尼於 10 月 28 日、teamLab
             無界於 10 月 9 日查核。
           </p>
         </section>
@@ -257,7 +256,7 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
           <span className={styles.sectionLabel}>提前預約</span>
           <h2 className={styles.sectionTitle}>日本哪些景點門票一定要提前購買？</h2>
           <p className={styles.bodyText}>
-            吉卜力美術館、吉卜力公園、東京迪士尼與日本環球影城：四個都不在門口賣票。下表是每個景點的開賣時間，以及當天是否還買得到。
+            吉卜力美術館、吉卜力公園、東京迪士尼與日本環球影城：這四個景點都不提供現場售票。下表整理了各景點的門票開賣時間，以及當天是否還能購票。
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
@@ -277,7 +276,7 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
                     <td className={styles.tdProvider} style={{ minWidth: "130px" }}>必須提前預約</td>
                     <td style={{ fontSize: "0.82rem" }}>東京、名古屋、大阪</td>
                     <td style={{ fontSize: "0.82rem", minWidth: "180px" }}>吉卜力美術館、吉卜力公園、東京迪士尼、日本環球影城</td>
-                    <td style={{ fontSize: "0.82rem", minWidth: "160px" }}>門口不賣票——出發前買好</td>
+                    <td style={{ fontSize: "0.82rem", minWidth: "160px" }}>現場不售票——出發前就要買好</td>
                     <td style={{ fontSize: "0.82rem" }}>
                       <Link href="/guides/attractions/japan-attraction-ticket-prices" hrefLang="en" style={inline}>門票價格總表（英文）</Link>
                     </td>
@@ -304,7 +303,7 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
-            Last checked: {CHECKED}。官方頁面：ghibli-museum.jp/en/tickets/ · ghibli-park.jp/en/ticket/ ·
+            最後查核：{CHECKED}。官方頁面：ghibli-museum.jp/en/tickets/ · ghibli-park.jp/en/ticket/ ·
             tokyodisneyresort.jp/en/ticket/index.html 與 faq-en.tokyodisneyresort.jp · usj.co.jp/company/company_e/news/2025/0421/ 與 /0425/ ·
             teamlab.art/faq/tokyo/ · shibuya-scramble-square.com/sky/ticket/ · wbstudiotour.jp/en/tickets/。特別活動可能另訂開賣日。
           </p>
@@ -315,15 +314,15 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
           <h2 className={styles.sectionTitle}>日本景點門票：不只是價格的問題</h2>
           <p className={styles.bodyText}>
             日本幾個最熱門的景點不提供現場售票。teamLab、東京迪士尼、日本環球影城與澀谷SKY 的日落時段，
-            全都在線上販售指定日期與時段的票，熱門時段往往數週前就會售罄——迪士尼的情況更極端，完全不提供現場售票。
+            全都在網路上販售指定日期與時段的門票，熱門時段往往數週前就會售罄——迪士尼的情況更極端，完全不提供現場售票。
           </p>
           <p className={styles.bodyText}>
-            有兩件事特別容易讓旅客踩雷：日本官方售票網站有時無法使用海外發行的信用卡付款，而搜尋結果中排名靠前的轉售網站，
+            有兩件事特別容易讓旅客踩雷：日本景點的官方售票網站，有時無法使用海外發行的信用卡付款，而搜尋結果中排名較前面的轉售網站，
             買到的票常常無法用來入場。這些攻略寫的是官方票價、海外旅客可用的購票管道，以及該什麼時候購票。
           </p>
           <p className={styles.bodyText}>
             日本也有許多景點不需要提前購票。京都多數知名寺院可直接入內參觀，奈良公園免費，
-            和服體驗或料理課前一週訂都還來得及。這些攻略的重點是：把規劃的力氣花在真的會影響結果的地方。
+            和服體驗或料理課程，提前一週預訂都還來得及。這些攻略的重點是：把規劃行程的時間和精力，花在真正會影響行程的事情上。
           </p>
           <p className={styles.bodyText}>
             冬天的北海道也是這樣：
@@ -332,10 +331,10 @@ export default function ZhAttractionsHubPage({ dates }: { dates: Record<string, 
             <Link href="/zh-tw/guides/attractions/hokkaido-7-day-itinerary">北海道7天行程</Link>
             以札幌 4 晚、富良野 2 晚走完札幌、小樽、旭川、美瑛與富良野。不去北海道也能賞雪：
             <Link href="/zh-tw/guides/attractions/jigokudani-snow-monkey-tour">地獄谷野猿公苑</Link>
-            從東京搭新幹線到長野最快 79 分鐘，再轉車、步行約 35 分鐘就能看到泡湯的雪猴，12 月至 4 月持網路票者優先入園。
+            從東京搭新幹線到長野最快 79 分鐘，再轉車並步行約 35 分鐘，就能看到泡溫泉的雪猴，12 月至 4 月持網路票者優先入園。
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.86rem", color: "var(--text-muted)" }}>
-            本站目前已查核 {attractionPrices.length} 項日本景點、主題樂園、通票與一日遊景點的官方入場費用，
+            本站目前已查核 {attractionPrices.length} 項日本景點、主題樂園、通票與一日遊景點的官方門票價格，
             最近一次查核是 {zhDateLabel(latestChecked())}（英文版記為 {checkedLabel(latestChecked())}）。
             完整的總表目前只有英文版：{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
