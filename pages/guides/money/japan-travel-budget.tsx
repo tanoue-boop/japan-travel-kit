@@ -1495,7 +1495,11 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
             transport passes, admissions, data and hotels can all be bought online in your own currency before you
             fly, which leaves cash for the chains, the smaller restaurants, the temples and the vending machines —
             the {yen(round10(FOOD_SAVE_LOW))}–{yen(round10(FOOD_MID_HIGH))} food line, in other words, plus a
-            margin.
+            margin. The cash per day by travel style, with 3, 7 and 14-day totals, is in{" "}
+            <Link href="/guides/money/how-much-yen-to-bring-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              how much yen to bring
+            </Link>
+            .
           </p>
           <p className={styles.bodyText}>
             The reason to take cash out rarely and in large amounts is that the Japanese machine&apos;s fee is per

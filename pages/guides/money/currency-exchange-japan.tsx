@@ -588,7 +588,11 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
             <Link href="/guides/money/tokyo-trip-cost" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Tokyo trip cost guide
             </Link>{" "}
-            prices the days line by line.
+            prices the days line by line, and the share of each day that has to be cash is in{" "}
+            <Link href="/guides/money/how-much-yen-to-bring-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              how much yen to bring
+            </Link>
+            .
           </p>
           <div className={styles.tableWrap} style={{ marginBottom: "1.25rem" }}>
             <div className={styles.tableScroll}>

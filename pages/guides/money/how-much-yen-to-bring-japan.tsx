@@ -62,6 +62,104 @@ const ATM_GUIDE_CHECKED = checkedLabel("2026-10-26");
 const WISE_CHECKED = checkedLabel("2026-10-26");
 
 /**
+ * 20 Nov 2026 (F): JNTO's currency, cashless and credit-card pages, Seven Bank's
+ * intlcard/service.html, Japan Post Bank's en_ias_index.html and Wise's UK card-fee
+ * page were re-read with a plain fetch; METI's 2025 cashless ratio press release
+ * (31 March 2026) and Revolut's UK Standard fee schedule were read through the
+ * search index (revolut.com answers a plain fetch with 403).
+ */
+const DAILY = {
+  budget: "¥2,000–¥3,000",
+  mid: "¥3,000–¥5,000",
+  eatOut: "¥5,000–¥8,000",
+} as const;
+
+const TODAY_ISO = "2026-11-20";
+const TODAY = checkedLabel(TODAY_ISO);
+
+/**
+ * All-in day in Tokyo (room, food, city transport, one sight) from
+ * /guides/money/japan-travel-budget, read off the operators' sites 27 Oct 2026:
+ * budget ceiling ¥11,850, mid-range ¥14,030–¥20,540, treat floor ¥30,110.
+ * The card share below is (all-in day − cash float) ÷ all-in day, rounded to 5%.
+ */
+const BUDGET_PAGE_CHECKED = checkedLabel("2026-10-27");
+const ALLIN = { budget: 11850, midLow: 14030, midHigh: 20540, treat: 30110 } as const;
+const share = (cash: number, day: number) => Math.round(((day - cash) / day) * 20) * 5;
+const yen = (n: number) => `¥${n.toLocaleString("en-US")}`;
+
+const styleRows = [
+  {
+    style: "Answer for most visitors",
+    cash: "¥3,000–¥5,000 a day, plus ¥10,000–¥20,000 on arrival",
+    day: `${yen(ALLIN.midLow)}–${yen(ALLIN.midHigh)} (mid-range Tokyo day)`,
+    card: `About ${share(5000, ALLIN.midLow)}–${share(3000, ALLIN.midHigh)}%`,
+    conclusion: true,
+  },
+  {
+    style: "Budget",
+    cash: DAILY.budget,
+    day: `Up to ${yen(ALLIN.budget)}`,
+    card: `About ${share(3000, ALLIN.budget)}–${share(2000, ALLIN.budget)}%`,
+    conclusion: false,
+  },
+  {
+    style: "Mid-range",
+    cash: DAILY.mid,
+    day: `${yen(ALLIN.midLow)}–${yen(ALLIN.midHigh)}`,
+    card: `About ${share(5000, ALLIN.midLow)}–${share(3000, ALLIN.midHigh)}%`,
+    conclusion: false,
+  },
+  {
+    style: "Comfortable (eating out)",
+    cash: DAILY.eatOut,
+    day: `From ${yen(ALLIN.treat)}`,
+    card: `About ${share(8000, ALLIN.treat)}–${share(5000, ALLIN.treat)}%`,
+    conclusion: false,
+  },
+];
+
+/** Ways to get yen, with the provider's own published charge. */
+const getYenRows = [
+  {
+    method: "Best for most visitors: a debit card at a 7-Eleven ATM",
+    charge: "Your card's own fee (zero within a Wise or Revolut allowance) plus any amount shown on the ATM screen.",
+    limit: "¥100,000 per withdrawal at Seven Bank.",
+    checked: TODAY,
+  },
+  {
+    method: "Seven Bank ATM (7-Eleven, airports)",
+    charge: "No amount published. Seven Bank states that where a transaction carries a fee, it is charged per transaction.",
+    limit: "¥100,000 per withdrawal; ¥30,000 on a magnetic-stripe read.",
+    checked: TODAY,
+  },
+  {
+    method: "Japan Post Bank ATM (post offices)",
+    charge: "“An ATM usage fee (¥220 (tax included) per use) may apply” on certain overseas cards, plus your issuer's fee.",
+    limit: "50,000 yen per transaction.",
+    checked: TODAY,
+  },
+  {
+    method: "Exchange counters (airports, city bureaux)",
+    charge: "No separate fee to compare: the cost is inside the rate on the board. JNTO notes all major airports have exchange points in the arrivals hall.",
+    limit: "Set by the counter.",
+    checked: TODAY,
+  },
+  {
+    method: "Wise card (UK account)",
+    charge: "Free up to 250 GBP of withdrawals a month, then 2.69% on the amount above it; Wise adds that “some ATM providers may charge additional fees”.",
+    limit: "Your account's ATM limits.",
+    checked: TODAY,
+  },
+  {
+    method: "Revolut card (UK Standard plan)",
+    charge: "Free up to £200 a month, then 2% per withdrawal (Revolut's Standard fee schedule). The ATM operator's own fee is extra.",
+    limit: "Your plan's ATM limits.",
+    checked: TODAY,
+  },
+];
+
+/**
  * Fee, cap and hours per network — the same figures as /guides/money/atms-in-japan,
  * so the two pages cannot disagree. Where the operator publishes no amount, the
  * cell says so instead of estimating one.
@@ -99,7 +197,9 @@ const atmRows = [
 
 /** At a glance: the two tables further down, reduced to one line per situation. */
 const glanceRows = [
+  { where: "Rule of thumb", cash: "Small payments: gates, stalls, buses, lockers", card: "Large payments: hotels, shinkansen, shops, taxis" },
   { where: "Temple and shrine gates", cash: "Yes — cash by default", card: "Not published" },
+  { where: "Rural inns, shops and buses", cash: "Yes — JNTO: “may still only accept cash, even hotels”", card: "Check with each place before you go (JNTO)" },
   { where: "Coin lockers", cash: "Coins, ¥300–¥600", card: "Often an IC card (JNTO)" },
   { where: "Local city buses", cash: "Exact coins (¥230 flat in Kyoto)", card: "IC card; a foreign contactless card generally not" },
   { where: "Short subway and train hops", cash: "Ticket machine or IC top-up", card: "IC card; payment cards not always (JNTO)" },
@@ -124,12 +224,6 @@ const glanceRows = [
  *   eat out — the same again with an unreserved restaurant bill that may be
  *             cash-only, which is where the top of the range comes from
  */
-const DAILY = {
-  budget: "¥2,000–¥3,000",
-  mid: "¥3,000–¥5,000",
-  eatOut: "¥5,000–¥8,000",
-} as const;
-
 const tripFloat = [
   {
     trip: "Per day",
@@ -273,50 +367,31 @@ const cardFineRows = [
   },
 ];
 
+/**
+ * 20 Nov 2026 (F): cut to five, one per question heading plus the Wise one, so the
+ * FAQPage mirrors the four questions the page now answers in its H2s. The trains,
+ * tax-free and ATM-cap answers still sit in the body sections below.
+ */
 const faqItems = [
   {
-    q: "How much yen should I bring to Japan?",
-    a: `Bring ¥10,000–¥20,000 in cash for the flight and the first day, then withdraw the rest in Japan. The float you actually need is about ${DAILY.budget} a day on a budget trip, ${DAILY.mid} mid-range and ${DAILY.eatOut} if you are eating out properly — so ¥14,000–¥56,000 over a week, depending on the tier, not the whole trip budget. Exchanging large sums before you fly means paying a counter's spread on money that a 7-Eleven ATM would have given you at a rate closer to the market one.`,
+    q: "How much yen per day do I need in Japan?",
+    a: `About ${DAILY.budget} in cash a day on a budget trip, ${DAILY.mid} mid-range and ${DAILY.eatOut} on a comfortable trip that eats out — a float for the things that only take cash, not the whole daily budget. The room, convenience stores, chain restaurants, department stores and shinkansen fares take cards, so on an all-in Tokyo day of ${yen(ALLIN.midLow)}–${yen(ALLIN.midHigh)} mid-range (room included, prices read ${BUDGET_PAGE_CHECKED}) roughly ${share(5000, ALLIN.midLow)}–${share(3000, ALLIN.midHigh)}% can go on a card. The lowest tier is built from a ¥420–¥490 counter meal, a ¥200–¥800 temple gate, a ¥230 bus ride and a ¥300–¥600 coin locker.`,
   },
   {
-    q: "Do I need cash in Japan?",
-    a: `Yes, some. JNTO's own advice is to “always have some cash on hand” because “there are still many places where cash is required”. The places that matter to a visitor are specific and small in number: temple and shrine gates (¥200–¥800 at the sites listed below, paid at the gate), coin lockers (¥300–¥600, JNTO's range), local city buses (a flat ¥230 in Kyoto), street stalls and small counter restaurants. Hotels, convenience stores, department stores, city taxis and shinkansen tickets all take cards. Official statements checked ${OFFICIAL}.`,
+    q: "How much cash should I bring to Japan for 2 weeks?",
+    a: `Bring ¥10,000–¥20,000 from home and withdraw the rest in Japan. Over 14 days the cash float comes to ¥28,000–¥42,000 on a budget, ¥42,000–¥70,000 mid-range and ¥70,000–¥112,000 eating out — taken out a week at a time from a 7-Eleven ATM, which allows ¥100,000 per withdrawal (Seven Bank, checked ${TODAY}). Carrying the whole fortnight in notes from day one is not necessary.`,
   },
   {
-    q: "Is Japan more cash or card?",
-    a: `By value it is now more cashless than cash: METI puts the cashless share of consumer spending at 58.0% for 2025 — ¥162.7 trillion, up from a restated 52.5% in 2024 — published 31 March 2026, with credit cards 82.7% of that. But the remaining share is concentrated exactly where a tourist walks: gates, stalls, local buses and rural businesses. So the practical answer is card for the large items and cash for the small ones, which is the opposite of how most countries work.`,
+    q: "Is it better to bring yen or withdraw in Japan?",
+    a: `Withdraw in Japan, and bring only ¥10,000–¥20,000 for arrival. An exchange counter's cost is built into its rate, while an ATM withdrawal on a debit card with a free allowance costs nothing on the card side — Wise is free up to 250 GBP a month then 2.69% (UK account), Revolut Standard up to £200 then 2%. On the ATM side Japan Post Bank publishes ¥220 per use on certain overseas cards; Seven Bank publishes no amount and shows any fee on screen. All checked ${TODAY}.`,
   },
   {
-    q: "Where can I get yen in Japan?",
-    a: `From a convenience-store or post-office ATM, not an exchange counter. JNTO states “you can withdraw cash at ATMs in Japan Post Bank and in Seven Bank”. Seven Bank's machines — over 28,000 of them, inside 7-Eleven stores and at airports — take VISA, PLUS, Mastercard, Maestro, Cirrus, UnionPay, American Express, JCB, DISCOVER and Diners Club, with the caveat that some cards carrying those marks may still not work. Japan Post Bank is the only network that publishes a fee: “an ATM usage fee (¥220 (tax included) per use) may apply”, with a single transaction capped at 50,000 yen and post-office machines closed overnight (Mon–Sat 7:00–23:00). Checked ${OFFICIAL}.`,
-  },
-  {
-    q: "How much cash do I need per day in Japan?",
-    a: `${DAILY.budget} on a budget trip, ${DAILY.mid} mid-range, ${DAILY.eatOut} if you eat out properly — as a float, not as a budget. The arithmetic behind the lowest tier: one counter meal in the published ¥420–¥490 band, one temple or shrine gate at ¥200–¥800, a bus ride or two at ¥230, and a ¥300–¥600 coin locker comes to roughly ¥1,250–¥2,130, so ¥2,000–¥3,000 covers a day without running dry. Everything else on a normal day — the room, the convenience store, the chain restaurant, the taxi — takes a card.`,
-  },
-  {
-    q: "Can I pay for trains without cash?",
-    a: `For long-distance trains yes, for short hops only with an IC card. JNTO states you can pay for Narita Express and shinkansen fares by card, but that “you can’t always use them for short distance train/subway fares”. A Suica or Pasmo solves the short hops — ¥500 deposit, or none at all on Welcome Suica and TOURIST PASMO — and the top-up itself usually takes coins and notes, which is the one place a train still needs yen. A prepaid 24, 48 or 72-hour subway ticket avoids both. Checked ${OFFICIAL}.`,
-  },
-  {
-    q: "Should I exchange yen before I travel to Japan?",
-    a: `Only a small float. Changing ¥10,000–¥20,000 at home covers the flight and the first hours, and JNTO notes that “all major airports have exchange points in their respective arrivals halls” if you bring nothing. Beyond that, withdraw in Japan: the cost of a withdrawal is per withdrawal rather than per yen, so a larger, less frequent one is cheaper, and JNTO's own warning is worth heeding — “ATMs often charge for withdrawals and this charge can vary depending on the time you're making a withdrawal. Not all ATMs are 24 hours.” Checked ${OFFICIAL}.`,
-  },
-  {
-    q: "Does tax-free shopping change how much cash I need?",
-    a: `From 1 November 2026, yes — upwards on the day you shop. Under the new system you pay the full tax-inclusive price at the till like a Japanese shopper and the 10% comes back after customs confirms the goods are leaving Japan, instead of coming off the price in the shop. The ¥5,000-before-tax minimum per shop per day on a non-resident passport is unchanged. So a shopping day needs about 10% more at the till than it used to, and the refund arrives later. Official rules read ${TAXFREE_CHECKED}.`,
+    q: "Can I pay by card everywhere in Japan?",
+    a: `No. JNTO states that international credit, debit and prepaid cards “are generally accepted throughout the country”, but also that you “can’t always use them for short distance train/subway fares” and that “many places, especially in rural areas, may still only accept cash, even hotels”. Temple and shrine gates, street stalls, small counter restaurants, coin lockers and local buses are where cash or an IC card is still needed. METI puts Japan's cashless share of consumer spending at 58.0% for 2025 (published 31 March 2026). Checked ${TODAY}.`,
   },
   {
     q: "Can I use Wise to withdraw money in Japan?",
-    a: `Yes. A Wise card withdraws yen at Seven Bank ATMs in 7-Eleven and at Japan Post Bank ATMs. Wise charges nothing up to a monthly allowance set by the country your card was issued in — 250 USD, GBP or EUR, or 400 AUD — and 2.69% of the excess above it (1.95 USD + 1.95% per withdrawal on a US card), checked ${WISE_CHECKED}. The Japanese operator's own fee applies on top: ¥220 at Japan Post Bank on certain overseas cards, checked ${ATM_CHECKED}.`,
-  },
-  {
-    q: "How much yen does a tourist spend in a day in Japan?",
-    a: `Spending and cash are different numbers. A budget day in Tokyo on published prices is about ¥1,570–¥1,850 before the room — convenience-store and chain-noodle meals, two or three ¥178 subway rides and a free observation deck — and most of it can go on a card (prices read ${PRICES_CHECKED}). The cash share is ${DAILY.budget} a day on a budget trip, ${DAILY.mid} mid-range and ${DAILY.eatOut} eating out properly.`,
-  },
-  {
-    q: "How much can I withdraw from an ATM in Japan at once?",
-    a: `¥100,000 per withdrawal at Seven Bank (¥30,000 if the machine reads the magnetic stripe) and 50,000 yen at Japan Post Bank, both checked ${ATM_CHECKED}; ¥100,000 by IC chip at E-net and ¥50,000 at Lawson Bank, checked ${ATM_GUIDE_CHECKED}. Your own bank's daily limit applies on top, so a week's float is normally one Seven Bank withdrawal.`,
+    a: `Yes. A Wise card withdraws yen at Seven Bank ATMs in 7-Eleven and at Japan Post Bank ATMs. On a UK account Wise charges nothing up to 250 GBP a month and 2.69% on the excess (checked ${TODAY}); other countries have their own allowance — 250 USD or EUR, or 400 AUD (checked ${WISE_CHECKED}). The Japanese operator's own fee applies on top: ¥220 at Japan Post Bank on certain overseas cards.`,
   },
 ];
 
@@ -332,11 +407,12 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/money/how-much-yen-to-bring-japan") },
 });
 
-const TITLE = "How Much Yen to Bring to Japan (2026): Cash per Day & ATMs";
+/** 20 Nov 2026 (F): short exact-match title for Bing, where this is the site's most-shown page. */
+const TITLE = "How Much Yen to Bring to Japan (2026): Cash Per Day";
 const DESCRIPTION =
-  "How Much Yen to Bring to Japan: ¥10,000–¥20,000 on arrival, then ¥2,000–¥8,000 a day in cash from a 7-Eleven ATM. Where cash is needed, ATM fees and caps.";
+  "How much yen to bring to Japan: ¥10,000–¥20,000 on arrival, then ¥2,000–¥8,000 cash per day by style. Where cash is needed, ATM fees, what to prepay.";
 const CANONICAL = "https://www.japan-travel-kit.com/guides/money/how-much-yen-to-bring-japan";
-const H1 = "How Much Yen to Bring to Japan (2026): The Cash Float, Day by Day";
+const H1 = "How Much Yen to Bring to Japan (2026): Cash Per Day by Travel Style";
 
 const H3_STYLE = { fontSize: "1.05rem", fontWeight: 700, margin: "1.25rem 0 0.4rem" } as const;
 
@@ -453,12 +529,13 @@ export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageU
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             <strong>
-              Carry about {DAILY.budget} in cash a day on a budget trip, {DAILY.mid} mid-range and{" "}
-              {DAILY.eatOut} if you are eating out properly — a float, not a budget, because a card
-              covers the room, the convenience stores and the chain restaurants. For the whole trip,
-              bring ¥10,000–¥20,000 in cash for the flight and the first day, then withdraw the rest
-              from a 7-Eleven ATM (¥100,000 per withdrawal) or a post-office ATM (50,000 yen), caps
-              checked {ATM_CHECKED}.
+              A tourist in Japan needs about {DAILY.budget} in cash per day on a budget trip,{" "}
+              {DAILY.mid} on a mid-range trip and {DAILY.eatOut} on a comfortable trip that eats out —
+              the room, convenience stores, chain restaurants and shinkansen fares go on a card. Land
+              with ¥10,000–¥20,000 in yen for the train in and the first day, then withdraw the rest
+              from a 7-Eleven ATM, which allows ¥100,000 per withdrawal (Seven Bank, checked {TODAY}).
+              Over two weeks that is ¥42,000–¥70,000 in cash on a mid-range trip, taken out a week at a
+              time.
             </strong>{" "}
             How the cash fits with the card, tax-free shopping and insurance is laid out in our{" "}
             <Link href="/guides/money" style={{ color: "var(--text)", fontWeight: 600 }}>money in Japan</Link> guide.
@@ -467,12 +544,71 @@ export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageU
 
         {/* Klook — directly after the answer, because every item on it shrinks the float. */}
         <KlookTripPrep
-          heading="What You Can Pay for Before You Fly — and Take Off the Float"
-          intro="The figures above assume the big items are already paid for. These are yen costs normally settled out of the cash you carry — the airport train, city subway rides and mobile data first — that can be put on a card in your own currency before you leave:"
+          heading="Pay Before You Land: What Comes Off the Cash Float"
+          intro="The daily figures assume the big yen costs are already paid. These are the ones normally settled out of the cash you carry — the airport train, city subway rides, mobile data and day tours — and each can be put on a card in your own currency before you leave:"
           items={howMuchYenTripPrep}
         />
 
         <EsimCtaTop />
+
+        {/* 20 Nov 2026 (F): table 1 — style × cash per day × card share. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Per day</span>
+          <h2 className={styles.sectionTitle}>How much yen per day do I need in Japan?</h2>
+          <p className={styles.bodyText}>
+            {DAILY.budget} a day on a budget, {DAILY.mid} mid-range, {DAILY.eatOut} on a comfortable trip
+            — and a card covers roughly two-thirds to five-sixths of what the day costs in total, because
+            the room and the large payments are the card part.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Travel style", "Cash to carry per day", "All-in day in Tokyo (room included)", "Share you can pay by card"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {styleRows.map((row) => (
+                    <tr key={row.style} style={row.conclusion ? { fontWeight: 600 } : {}}>
+                      <td className={styles.tdProvider} style={{ minWidth: "140px" }}>{row.style}</td>
+                      <td className={styles.tdPrice}>{row.cash}</td>
+                      <td style={{ fontSize: "0.82rem" }}>{row.day}</td>
+                      <td style={{ fontSize: "0.82rem" }}>{row.card}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Last checked: {TODAY_ISO}. The all-in days are the tiers in{" "}
+            <Link href="/guides/money/japan-travel-budget" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Japan travel budget per day
+            </Link>{" "}
+            (operators&apos; prices read {BUDGET_PAGE_CHECKED}); the 2025 Tokyo visitor average of about
+            ¥17,960 a night for room, food and transport in{" "}
+            <Link href="/guides/money/tokyo-trip-cost" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Tokyo trip cost
+            </Link>{" "}
+            sits inside the mid-range band. Card share = (all-in day − cash float) ÷ all-in day, rounded to
+            5%. Card acceptance: JNTO,{" "}
+            <a href="https://www.japan.travel/en/plan/credit-cards/" target="_blank" rel="noopener noreferrer">
+              japan.travel/en/plan/credit-cards/
+            </a>{" "}
+            and{" "}
+            <a href="https://www.japan.travel/en/plan/cashless-payments-in-japan/" target="_blank" rel="noopener noreferrer">
+              /cashless-payments-in-japan/
+            </a>
+            ; national cashless share 58.0% in 2025 (METI, published 31 March 2026,{" "}
+            <a href="https://www.meti.go.jp/press/2025/03/20260331006/20260331006.html" target="_blank" rel="noopener noreferrer">
+              meti.go.jp
+            </a>
+            ).
+          </p>
+        </section>
 
         {/* Short answers to the question forms search engines send here. */}
         <section className={styles.bodySection}>
@@ -570,10 +706,11 @@ export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageU
         {/* Q1 + table 1 */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The float</span>
-          <h2 className={styles.sectionTitle}>How much yen should I bring to Japan?</h2>
+          <h2 className={styles.sectionTitle}>How much cash should I bring to Japan for 2 weeks?</h2>
           <p className={styles.bodyText}>
-            ¥10,000–¥20,000 in hand when you land, and then whatever the table below says for your trip
-            length — withdrawn in Japan, not exchanged at home. The figures are floats: cash to spend on
+            ¥10,000–¥20,000 from home, then ¥42,000–¥70,000 over the fortnight on a mid-range trip
+            (¥28,000–¥42,000 on a budget, ¥70,000–¥112,000 eating out), withdrawn in Japan a week at a
+            time rather than exchanged at home. Other trip lengths are in the table. The figures are floats: cash to spend on
             the things that take nothing else, on the assumption the room, the intercity travel and any
             booked tickets are already paid for.
           </p>
@@ -616,11 +753,12 @@ export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageU
         {/* Q2 + table 2 */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Cash only</span>
-          <h2 className={styles.sectionTitle}>Do I need cash in Japan?</h2>
+          <h2 className={styles.sectionTitle}>Can I pay by card everywhere in Japan?</h2>
           <p className={styles.bodyText}>
-            Yes, but less than the reputation suggests and in specific places. JNTO&apos;s own advice is
-            to &ldquo;always have some cash on hand&rdquo; because &ldquo;there are still many places
-            where cash is required&rdquo;. At a glance, where you need cash and where a card is enough:
+            No — cards are &ldquo;generally accepted throughout the country&rdquo; (JNTO), but temple
+            gates, small restaurants, street stalls, coin lockers, local buses and rural businesses still
+            want cash or an IC card. JNTO&apos;s own advice is to &ldquo;always have some cash on
+            hand&rdquo;. At a glance, where you need cash and where a card is enough:
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
@@ -644,6 +782,22 @@ export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageU
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Last checked: {TODAY_ISO} —{" "}
+            <a href="https://www.japan.travel/en/plan/credit-cards/" target="_blank" rel="noopener noreferrer">
+              JNTO credit cards
+            </a>
+            ,{" "}
+            <a href="https://www.japan.travel/en/plan/cashless-payments-in-japan/" target="_blank" rel="noopener noreferrer">
+              JNTO cashless payments
+            </a>
+            . Operator rows carry their own dates in the tables below. Place by place for temples, taxis,
+            vending machines and markets:{" "}
+            <Link href="/guides/money/cash-vs-card-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              cash vs card in Japan
+            </Link>
+            .
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             The detail behind the cash rows, with the published amounts — the second column is the point
             of the table, because about half of them have an alternative and the rest do not:
@@ -748,9 +902,51 @@ export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageU
         {/* Q4 + Wise CTA */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Getting yen</span>
-          <h2 className={styles.sectionTitle}>Where can I get yen in Japan?</h2>
+          <h2 className={styles.sectionTitle}>Is it better to bring yen or withdraw in Japan?</h2>
           <p className={styles.bodyText}>
-            A convenience-store or post-office ATM, not an exchange counter. JNTO states plainly that
+            Withdraw in Japan. Bring ¥10,000–¥20,000 for the first day, then use a debit card at a 7-Eleven
+            or post-office ATM: an exchange counter&apos;s cost is hidden in its rate, while Wise and
+            Revolut publish a free monthly ATM allowance. The ways to get yen, with each provider&apos;s
+            own published charge:
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["How you get yen", "What the provider publishes", "Limit", "Checked"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {getYenRows.map((row, i) => (
+                    <tr key={row.method} style={i === 0 ? { fontWeight: 600 } : {}}>
+                      <td className={styles.tdProvider} style={{ minWidth: "160px" }}>{row.method}</td>
+                      <td style={{ fontSize: "0.82rem" }}>{row.charge}</td>
+                      <td style={{ fontSize: "0.82rem" }}>{row.limit}</td>
+                      <td style={{ fontSize: "0.82rem", whiteSpace: "nowrap" }}>{row.checked}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Last checked: {TODAY_ISO}. Official pages:{" "}
+            <a href="https://www.sevenbank.co.jp/intlcard/service.html" target="_blank" rel="noopener noreferrer">Seven Bank</a>,{" "}
+            <a href="https://www.jp-bank.japanpost.jp/en/ias/en_ias_index.html" target="_blank" rel="noopener noreferrer">Japan Post Bank</a>,{" "}
+            <a href="https://www.japan.travel/en/plan/currency/" target="_blank" rel="noopener noreferrer">JNTO currency</a>,{" "}
+            <a href="https://wise.com/gb/pricing/card-fees" target="_blank" rel="noopener noreferrer">Wise card fees (UK)</a>,{" "}
+            <a href="https://www.revolut.com/legal/standard-fees/" target="_blank" rel="noopener noreferrer">Revolut Standard fees</a>.
+            Allowances differ by the country your account is registered in; other countries are in{" "}
+            <Link href="/guides/money/wise-vs-revolut-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Wise vs Revolut in Japan
+            </Link>
+            .
+          </p>
+          <p className={styles.bodyText}>
+            Which ATM, then: a convenience-store or post-office machine. JNTO states plainly that
             &ldquo;you can withdraw cash at ATMs in Japan Post Bank and in Seven Bank&rdquo;, and Seven
             Bank — over 28,000 machines inside 7-Eleven stores and at airports — takes VISA, PLUS,
             Mastercard, Maestro, Cirrus, UnionPay, American Express, JCB, DISCOVER and Diners Club,
@@ -823,7 +1019,7 @@ export default function HowMuchYenToBringJapanPage({ updated }: { updated: PageU
         {/* Q5 */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Per day</span>
-          <h2 className={styles.sectionTitle}>How much cash do I need per day in Japan?</h2>
+          <h2 className={styles.sectionTitle}>How is the cash-per-day figure worked out?</h2>
           <p className={styles.bodyText}>
             {DAILY.budget} on a budget trip, {DAILY.mid} mid-range, {DAILY.eatOut} eating out properly.
             The lowest tier is the one worth showing the working for: a counter meal at ¥420–¥490, one

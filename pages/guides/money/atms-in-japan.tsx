@@ -512,7 +512,12 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
             tell you what it is. Check it before you fly, together with whether the card is enabled for
             overseas withdrawals at all. Seven Bank&apos;s own instruction when a withdrawal exceeds its limit
             is simply to reduce the amount and try again — worth knowing, because the screen reads like a
-            refusal. Limits checked {CHECKED}.
+            refusal. Limits checked {CHECKED}. How many withdrawals a trip needs depends on the cash per
+            day, which{" "}
+            <Link href="/guides/money/how-much-yen-to-bring-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              how much yen to bring
+            </Link>{" "}
+            sets out by travel style.
           </p>
         </section>
 

@@ -536,7 +536,12 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
             home. The reason is arithmetic rather than caution: a Japanese ATM fee is charged per
             withdrawal, not per yen, so the cheap pattern is few and large. Seven Bank allows ¥100,000 in a
             single withdrawal and Japan Post Bank ¥50,000, and a 7-Eleven is open when the exchange desk is
-            not. ATM figures read off the operators&apos; own pages on {ATM_CHECKED}.
+            not. ATM figures read off the operators&apos; own pages on {ATM_CHECKED}. The cash per day by
+            travel style, and the 2-week total, are in{" "}
+            <Link href="/guides/money/how-much-yen-to-bring-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              how much yen to bring
+            </Link>
+            .
           </p>
           <p className={styles.bodyText}>
             Arriving with some yen is still worth it — the first bus, a locker, a vending machine before
