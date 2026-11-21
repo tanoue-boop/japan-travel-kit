@@ -20,6 +20,7 @@ import {
   osakaMetroDayPass,
   osakaSkyVistaHalfDayBusTour,
   santaMariaDayCruise,
+  osakaSightsHighRatePrep,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
@@ -990,6 +991,17 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
             </KlookLink>
           </div>
         </section>
+
+        {/* 21 Nov 2026 (P01): the 5% castle and Umeda tickets and a 6.5% day tour, just before the FAQ. GA4 placement kaiyukan-highrate-faq. */}
+        <div data-placement="kaiyukan-highrate-faq">
+          <KlookTripPrep
+            label="Same trip"
+            heading="Which Other Osaka Sights Can You Book for the Same Trip?"
+            intro="Kaiyukan takes two to three hours, which leaves room for the castle or the Umeda deck that evening or the next day. Both are covered by the Osaka Amazing Pass, so these are for a trip without it."
+            items={osakaSightsHighRatePrep}
+            adPlacement="kaiyukan-highrate-faq"
+          />
+        </div>
 
         <EsimCtaBottom />
 

@@ -29,6 +29,8 @@ import {
   usjSameDayPrep,
   usjStayAreas,
   usjTripPrep,
+  usjHighRateTopPrep,
+  osakaSightsHighRatePrep,
   type KlookStayArea,
   type KlookTripPrepItem,
 } from "../../../../lib/klook-links";
@@ -421,6 +423,43 @@ const linkStyle = { color: "var(--red)", fontWeight: 600 } as const;
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
+// P01 (21 Nov 2026, task-jtk-20261121-P01): as on the English page, the 5% / 6.5% blocks under the
+// Express Pass block and before the FAQ. Same products and order as lib/klook-links.ts.
+const highRateTopPrep: KlookTripPrepItem[] = [
+  withKlookLocale(usjHighRateTopPrep[0], LOCALE, {
+    label: "京都・奈良一日遊（清水寺・伏見稻荷・奈良公園）",
+    ctaLabel: "查看京都・奈良一日遊 →",
+    why: "飛到大阪玩 USJ 的旅客最常排的第二天：從大阪出發，一天走完清水寺、伏見稻荷和奈良公園。",
+  }),
+  withKlookLocale(usjHighRateTopPrep[1], LOCALE, {
+    label: "關西機場 ⇄ 大阪飯店行李配送（LuggAgent）",
+    ctaLabel: "查看行李配送 →",
+    why: "行李另外在關西機場與大阪飯店之間配送，抵達日或離開日也能不拖行李箱觀光。預訂前請確認飯店是否在服務範圍內，以及寄件截止時間。",
+  }),
+  withKlookLocale(usjHighRateTopPrep[2], LOCALE, {
+    label: "JR 西日本關西鐵路周遊券（1～4 天）",
+    ctaLabel: "查看 JR 關西周遊券 →",
+    why: "依 Klook 商品說明，可不限次搭乘大阪・京都・神戶・奈良一帶的 JR 西日本普通、快速列車，以及從關西機場出發的 HARUKA，適合自己去京都或奈良的日子。",
+  }),
+];
+const highRateFaqPrep: KlookTripPrepItem[] = [
+  withKlookLocale(osakaSightsHighRatePrep[0], LOCALE, {
+    label: "大阪城天守閣門票",
+    ctaLabel: "查看大阪城門票 →",
+    why: "天守閣 8 個樓層與豐臣石垣館的門票，在入口掃碼入場。已有大阪周遊卡就不需要另外購買。",
+  }),
+  withKlookLocale(osakaSightsHighRatePrep[1], LOCALE, {
+    label: "梅田藍天大廈空中庭園展望台門票",
+    ctaLabel: "查看梅田藍天大廈門票 →",
+    why: "雙塔頂端 173 公尺的屋頂環形展望台，從大阪站步行可達，適合傍晚順路前往。大阪周遊卡同樣包含這裡。",
+  }),
+  withKlookLocale(osakaSightsHighRatePrep[2], LOCALE, {
+    label: "大阪城・梅田藍天大廈・道頓堀水上觀光船一日遊",
+    ctaLabel: "查看一日遊 →",
+    why: "由導遊帶領，一天走完大阪城、梅田展望台與道頓堀水上觀光船，路線不必自己安排。",
+  }),
+];
+
 export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) {
   const updatedLabel = monthLabel(updated.iso, LOCALE);
 
@@ -539,6 +578,18 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           intro="快速通關決定了你去樂園的日期。在它會售完的熱門日子，大門旁的官方飯店也會客滿——所以房間、從關西機場進來的交通，以及樂園 App 要用的網路，值得同一天一起訂好。"
           items={expressSameDayPrep}
         />
+
+        {/* 21 Nov 2026 (P01): 5% / 6.5% for the days either side of the park, under the 0% Express Pass. GA4 placement usj-highrate-top. */}
+        <div data-placement="usj-highrate-top">
+          <KlookTripPrep
+            label="樂園前後幾天"
+            heading="USJ 前後幾天可以一起預訂的項目"
+            intro="快速通行證確定入園日期後，大阪其他幾天的行程也可以一併訂好：京都・奈良一日遊、機場與飯店之間的行李配送，以及 JR 關西鐵路周遊券。"
+            items={highRateTopPrep}
+            adPlacement="usj-highrate-top"
+            headingLevel={3}
+          />
+        </div>
 
         <EsimCtaTop />
 
@@ -956,6 +1007,17 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           intro="樂園只是其中一天。以下三項是同一趟旅行通常還需要的，第一項放在這裡，主要是為了避免你因為錯誤的理由買它。"
           items={tripPrep}
         />
+
+        {/* 21 Nov 2026 (P01): the 5% Osaka sights and a 6.5% day tour, just before the FAQ. GA4 placement usj-highrate-faq. */}
+        <div data-placement="usj-highrate-faq">
+          <KlookTripPrep
+            label="不去樂園的日子"
+            heading="不去樂園的那天，可以預訂的大阪景點"
+            intro="如果不買大阪周遊卡（Osaka Amazing Pass），大阪城和梅田藍天大廈都需要另外購票。也有一天走完兩處的導覽行程。"
+            items={highRateFaqPrep}
+            adPlacement="usj-highrate-faq"
+          />
+        </div>
 
         <EsimCtaBottom />
 

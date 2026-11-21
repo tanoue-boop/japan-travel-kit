@@ -30,6 +30,8 @@ import {
   usjSameDayPrep,
   usjStayAreas,
   usjTripPrep,
+  usjHighRateTopPrep,
+  osakaSightsHighRatePrep,
   type KlookStayArea,
   type KlookTripPrepItem,
 } from "../../../../lib/klook-links";
@@ -413,6 +415,43 @@ const linkStyle = { color: "var(--red)", fontWeight: 600 } as const;
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
+// P01 (21 Nov 2026, task-jtk-20261121-P01): as on the English page, the 5% / 6.5% blocks under the
+// Express Pass block and before the FAQ. Same products and order as lib/klook-links.ts.
+const highRateTopPrep: KlookTripPrepItem[] = [
+  withKlookLocale(usjHighRateTopPrep[0], LOCALE, {
+    label: "ทัวร์เกียวโต–นาระ 1 วัน (วัดคิโยมิซุ ศาลเจ้าฟูชิมิอินาริ สวนนาระ)",
+    ctaLabel: "ดูทัวร์เกียวโต–นาระ →",
+    why: "วันที่สองที่คนบินมาเที่ยว USJ เลือกกันบ่อย ออกจากโอซาก้าแล้วเที่ยววัดคิโยมิซุ ศาลเจ้าฟูชิมิอินาริ และสวนนาระในวันเดียว",
+  }),
+  withKlookLocale(usjHighRateTopPrep[1], LOCALE, {
+    label: "บริการส่งกระเป๋า สนามบินคันไซ ⇄ โรงแรมในโอซาก้า (LuggAgent)",
+    ctaLabel: "ดูบริการส่งกระเป๋า →",
+    why: "กระเป๋าถูกส่งแยกระหว่างสนามบินคันไซกับโรงแรมในโอซาก้า วันที่มาถึงหรือวันกลับจึงเที่ยวได้โดยไม่ต้องลากกระเป๋า ก่อนจองโปรดตรวจสอบว่าโรงแรมอยู่ในพื้นที่ให้บริการ และเวลาปิดรับฝากกระเป๋า",
+  }),
+  withKlookLocale(usjHighRateTopPrep[2], LOCALE, {
+    label: "JR-West Kansai Rail Pass (1–4 วัน)",
+    ctaLabel: "ดู JR Kansai Rail Pass →",
+    why: "ตามรายละเอียดสินค้าของ Klook ขึ้นรถไฟ JR West ขบวนธรรมดาและขบวนเร็วรอบโอซาก้า เกียวโต โคเบ และนาระได้ไม่จำกัด รวมถึงรถไฟฮารุกะจากสนามบินคันไซ เหมาะกับวันที่ไปเกียวโตหรือนาระเอง",
+  }),
+];
+const highRateFaqPrep: KlookTripPrepItem[] = [
+  withKlookLocale(osakaSightsHighRatePrep[0], LOCALE, {
+    label: "ตั๋วเข้าชมหอปราสาทโอซาก้า",
+    ctaLabel: "ดูตั๋วปราสาทโอซาก้า →",
+    why: "ตั๋วเข้าชมหอปราสาท 8 ชั้นและพิพิธภัณฑ์กำแพงหินโทโยโทมิ สแกนที่ทางเข้า ถ้ามี Osaka Amazing Pass อยู่แล้วไม่ต้องซื้อเพิ่ม",
+  }),
+  withKlookLocale(osakaSightsHighRatePrep[1], LOCALE, {
+    label: "ตั๋วจุดชมวิว Kuchu Teien อุเมดะสกายบิลดิ้ง",
+    ctaLabel: "ดูตั๋วอุเมดะสกาย →",
+    why: "จุดชมวิวบนดาดฟ้าสูง 173 เมตรที่เชื่อมยอดตึกแฝด เดินจากสถานีโอซาก้าได้ เหมาะแวะช่วงเย็น Osaka Amazing Pass ก็ครอบคลุมที่นี่",
+  }),
+  withKlookLocale(osakaSightsHighRatePrep[2], LOCALE, {
+    label: "ทัวร์ 1 วัน ปราสาทโอซาก้า อุเมดะสกายบิลดิ้ง และล่องเรือโทนโบริ",
+    ctaLabel: "ดูทัวร์ 1 วัน →",
+    why: "เที่ยวปราสาทโอซาก้า จุดชมวิวอุเมดะ และล่องเรือโทนโบริในย่านโดทงโบริวันเดียวพร้อมไกด์ ไม่ต้องวางเส้นทางเอง",
+  }),
+];
+
 export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) {
   const updatedLabel = monthLabel(updated.iso, LOCALE);
 
@@ -538,6 +577,18 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           intro="Express Pass กำหนดวันไปสวนของคุณ ในวันที่คนเยอะซึ่ง Express Pass ขายหมด โรงแรมทางการติดประตูสวนก็เต็มด้วย — ห้องพัก การเดินทางจากสนามบินคันไซ และอินเทอร์เน็ตสำหรับแอปของสวน จึงควรจองไว้พร้อมกัน"
           items={expressSameDayPrep}
         />
+
+        {/* 21 Nov 2026 (P01): 5% / 6.5% for the days either side of the park, under the 0% Express Pass. GA4 placement usj-highrate-top. */}
+        <div data-placement="usj-highrate-top">
+          <KlookTripPrep
+            label="วันก่อนและหลังเข้าสวน"
+            heading="สิ่งที่ควรจองไว้สำหรับวันก่อนและหลังไป USJ"
+            intro="เมื่อ Express Pass กำหนดวันเข้าสวนแล้ว วันอื่นในโอซาก้าก็จองไปพร้อมกันได้ ได้แก่ ทัวร์เกียวโต–นาระ 1 วัน บริการส่งกระเป๋าระหว่างสนามบินกับโรงแรม และ JR Kansai Rail Pass"
+            items={highRateTopPrep}
+            adPlacement="usj-highrate-top"
+            headingLevel={3}
+          />
+        </div>
 
         <EsimCtaTop />
 
@@ -1001,6 +1052,17 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           intro="วันไปสวนคือหนึ่งวัน สามรายการนี้คือสิ่งที่ทริปเดียวกันมักต้องใช้รอบ ๆ วันนั้น และรายการแรกอยู่ในลิสต์เพื่อไม่ให้คุณซื้อมันด้วยเหตุผลที่ผิด"
           items={tripPrep}
         />
+
+        {/* 21 Nov 2026 (P01): the 5% Osaka sights and a 6.5% day tour, just before the FAQ. GA4 placement usj-highrate-faq. */}
+        <div data-placement="usj-highrate-faq">
+          <KlookTripPrep
+            label="วันที่ไม่ได้ไปสวนสนุก"
+            heading="สถานที่ในโอซาก้าที่จองไว้สำหรับวันที่ไม่ได้ไปสวนสนุก"
+            intro="ถ้าไม่ได้ซื้อ Osaka Amazing Pass ปราสาทโอซาก้าและอุเมดะสกายบิลดิ้งต้องซื้อตั๋วแยก และยังมีทัวร์พร้อมไกด์ที่เที่ยวทั้งสองแห่งในวันเดียว"
+            items={highRateFaqPrep}
+            adPlacement="usj-highrate-faq"
+          />
+        </div>
 
         <EsimCtaBottom />
 

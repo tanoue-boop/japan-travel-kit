@@ -9698,6 +9698,74 @@ export const usjExpressSameDayPrep: KlookTripPrepItem[] = [
   },
 ];
 
+// ---------------------------------------------------------------------------
+// USJ and Kaiyukan: 5% / 6.5% blocks beside the 0% tickets (task-jtk-20261121-P01).
+//
+// Klook's 30-day report on 21 Nov 2026 had ko/usj-tickets-express-pass (1528179, 47
+// clicks), usj-tickets-express-pass (1528143, 18) and osaka-aquarium-kaiyukan-tickets
+// (1528111, 36) among the most-clicked ad ids, all at 0 commission, while the 5%
+// Osaka Castle and Umeda Sky tickets paid on a handful of clicks. These two lists go
+// directly under the Express Pass block and just before the FAQ, as
+// `#usj-highrate-top` / `#usj-highrate-faq` (and `#kaiyukan-highrate-faq`). The spare
+// ad ids had run out, so those placements carry the page's own id in Klook's report
+// and are told apart by the GA4 `placement` parameter (data-placement on the wrapper).
+//
+// One new URL: LuggAgent 5625, confirmed live in its en-US form through the
+// www.klook.com search index on 21 Nov 2026 ("Osaka Kansai Airport Luggage Services by
+// LuggAgent", Kansai Airport ⇄ hotel or Airbnb). No Klook "Kansai Pass" product is
+// linked here: that is the listing Klook sells with a free eSIM (the Freebie bundle
+// that paid 0% on 20 Nov). No prices, for the usual reason.
+// ---------------------------------------------------------------------------
+
+/** LuggAgent bags between Kansai Airport and an Osaka hotel (5%). */
+export const kansaiAirportLuggageDelivery: KlookTour = {
+  title: "Kansai Airport ⇄ Osaka hotel luggage delivery (LuggAgent)",
+  desc: "Bags carried separately between Kansai Airport and your Osaka hotel or Airbnb, in either direction",
+  url: klookLink("https://www.klook.com/en-US/activity/5625-airport-luggage-services-osaka/"),
+};
+
+/** Under the Express Pass block: the Osaka days either side of the park. */
+export const usjHighRateTopPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.kyotoNaraTour,
+    why: "The usual second day of a USJ trip: Kiyomizu-dera, Fushimi Inari and Nara Park in one booked day, departing from Osaka.",
+  },
+  {
+    label: kansaiAirportLuggageDelivery.title,
+    ctaLabel: "Check the luggage delivery →",
+    url: kansaiAirportLuggageDelivery.url,
+    why: "Your bags travel between Kansai Airport and the hotel on their own, so arrival or departure day can still be a sightseeing day. Check that your hotel is covered and the drop-off cut-off for your date.",
+  },
+  {
+    label: jrKansaiAreaPass.title,
+    ctaLabel: "Check the Kansai Rail Pass →",
+    url: jrKansaiAreaPass.url,
+    why: "Unlimited JR West local and rapid trains around Osaka, Kyoto, Kobe and Nara, plus the Haruka from Kansai Airport, as Klook's listing describes it — the pass for a Kyoto or Nara day on your own.",
+  },
+];
+
+/** Just before the FAQ (USJ and Kaiyukan): the Osaka sights for the other days. */
+export const osakaSightsHighRatePrep: KlookTripPrepItem[] = [
+  {
+    label: osakaCastleTicket.title,
+    ctaLabel: "Check the Osaka Castle ticket →",
+    url: osakaCastleTicket.url,
+    why: "The main tower's eight floors and the Toyotomi Stone Wall Museum, scanned at the gate. Skip it if you hold the Osaka Amazing Pass, which already covers the castle.",
+  },
+  {
+    label: umedaSkyBuildingTicket.title,
+    ctaLabel: "Check the Umeda Sky ticket →",
+    url: umedaSkyBuildingTicket.url,
+    why: "The 173 m rooftop ring above the twin towers, a walk from Osaka Station — an easy evening stop. The Amazing Pass covers it too.",
+  },
+  {
+    label: osakaCastleUmedaTonboriDayTour.title,
+    ctaLabel: "Check the Osaka day tour →",
+    url: osakaCastleUmedaTonboriDayTour.url,
+    why: "A guided day of the castle, the Umeda deck and the Tombori river cruise in Dotonbori, with the routing done for you.",
+  },
+];
+
 /**
  * USJ hotels: the rooms, the airport bus, data — the page's "Book this trip" block,
  * directly under the answer. 19 Nov 2026 (task-jtk-20261119-04, Act): the Studio Pass

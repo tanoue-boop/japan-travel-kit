@@ -21,6 +21,8 @@ import {
   usjSameDayPrep,
   usjStayAreas,
   usjTripPrep,
+  usjHighRateTopPrep,
+  osakaSightsHighRatePrep,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
@@ -593,6 +595,18 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
           items={usjExpressSameDayPrep}
         />
 
+        {/* 21 Nov 2026 (P01): 5% / 6.5% for the days either side of the park, under the 0% Express Pass. GA4 placement usj-highrate-top. */}
+        <div data-placement="usj-highrate-top">
+          <KlookTripPrep
+            label="Either side of the park day"
+            heading="What to Book for the Days Before and After USJ"
+            intro="The Express Pass fixes the park day. The days either side of it usually go to Kyoto or Nara and to the airport run, and these three cover them."
+            items={usjHighRateTopPrep}
+            adPlacement="usj-highrate-top"
+            headingLevel={3}
+          />
+        </div>
+
         <EsimCtaTop />
 
         {/* Q1 — what it is */}
@@ -1098,6 +1112,17 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
         <p className={styles.bodyText}>
           Landing at Kansai Airport before the park day? <Link href="/guides/transport/haruka-vs-nankai-rapit">Haruka vs Rapi:t</Link> compares the two airport trains by hotel station: the Haruka for Osaka Station and Kyoto, the Rapi:t for Namba.
         </p>
+
+        {/* 21 Nov 2026 (P01): the 5% Osaka sights and a 6.5% day tour, just before the FAQ. GA4 placement usj-highrate-faq. */}
+        <div data-placement="usj-highrate-faq">
+          <KlookTripPrep
+            label="Non-park days"
+            heading="Which Osaka Sights Should You Book for a Non-Park Day?"
+            intro="Without the Osaka Amazing Pass, Osaka Castle and the Umeda Sky Building each need their own ticket. There is also a guided day that takes in both."
+            items={osakaSightsHighRatePrep}
+            adPlacement="usj-highrate-faq"
+          />
+        </div>
 
         <EsimCtaBottom />
 

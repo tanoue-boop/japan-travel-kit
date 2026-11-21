@@ -30,6 +30,8 @@ import {
   usjSameDayPrep,
   usjStayAreas,
   usjTripPrep,
+  usjHighRateTopPrep,
+  osakaSightsHighRatePrep,
   type KlookStayArea,
   type KlookTripPrepItem,
 } from "../../../../lib/klook-links";
@@ -410,6 +412,43 @@ const linkStyle = { color: "var(--red)", fontWeight: 600 } as const;
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
+// P01 (21 Nov 2026, task-jtk-20261121-P01): as on the English page, the 5% / 6.5% blocks under the
+// Express Pass block and before the FAQ. Same products and order as lib/klook-links.ts.
+const highRateTopPrep: KlookTripPrepItem[] = [
+  withKlookLocale(usjHighRateTopPrep[0], LOCALE, {
+    label: "교토・나라 당일 투어(기요미즈데라・후시미 이나리・나라 공원)",
+    ctaLabel: "교토・나라 투어 보기 →",
+    why: "USJ 여행의 둘째 날로 많이 고르는 코스입니다. 오사카에서 출발해 기요미즈데라, 후시미 이나리, 나라 공원을 하루에 돌아봅니다.",
+  }),
+  withKlookLocale(usjHighRateTopPrep[1], LOCALE, {
+    label: "간사이 공항 ⇄ 오사카 호텔 짐 배송(LuggAgent)",
+    ctaLabel: "짐 배송 보기 →",
+    why: "짐을 간사이 공항과 오사카 호텔 사이에서 따로 보내 주므로, 도착일이나 출국일에도 캐리어 없이 관광할 수 있습니다. 예약 전에 호텔이 대상인지, 맡기는 마감 시간을 확인하세요.",
+  }),
+  withKlookLocale(usjHighRateTopPrep[2], LOCALE, {
+    label: "JR 간사이 레일 패스(1~4일)",
+    ctaLabel: "JR 간사이 패스 보기 →",
+    why: "클룩 상품 설명 기준으로 오사카・교토・고베・나라 주변 JR 서일본 보통・쾌속 열차와 간사이 공항에서 출발하는 하루카를 무제한 탈 수 있습니다. 교토・나라를 직접 다녀오는 날에 맞는 패스입니다.",
+  }),
+];
+const highRateFaqPrep: KlookTripPrepItem[] = [
+  withKlookLocale(osakaSightsHighRatePrep[0], LOCALE, {
+    label: "오사카성 천수각 입장권",
+    ctaLabel: "오사카성 입장권 보기 →",
+    why: "천수각 8개 층과 도요토미 석벽관 입장권으로, 입구에서 스캔합니다. 오사카 어메이징 패스가 있다면 따로 살 필요가 없습니다.",
+  }),
+  withKlookLocale(osakaSightsHighRatePrep[1], LOCALE, {
+    label: "우메다 스카이 빌딩 공중정원 전망대 입장권",
+    ctaLabel: "우메다 스카이 입장권 보기 →",
+    why: "두 동의 빌딩 꼭대기를 잇는 173m 옥상 전망대로, 오사카역에서 걸어갈 수 있어 저녁에 들르기 좋습니다. 이곳도 어메이징 패스에 포함됩니다.",
+  }),
+  withKlookLocale(osakaSightsHighRatePrep[2], LOCALE, {
+    label: "오사카성・우메다 스카이 빌딩・돔보리 리버 크루즈 1일 투어",
+    ctaLabel: "1일 투어 보기 →",
+    why: "가이드와 함께 오사카성, 우메다 전망대, 도톤보리의 돔보리 리버 크루즈를 하루에 돌아봅니다. 동선은 가이드가 맡습니다.",
+  }),
+];
+
 export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) {
   const updatedLabel = monthLabel(updated.iso, LOCALE);
 
@@ -532,6 +571,18 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           intro="익스프레스 패스가 파크 방문 날짜를 정합니다. 익스프레스 패스가 매진되는 붐비는 날짜에는 게이트 옆 공식 호텔도 함께 차므로, 객실과 간사이 공항에서 오는 교통편, 파크 앱에 쓸 데이터를 같은 날 예약해 두는 것이 좋습니다."
           items={expressSameDayPrep}
         />
+
+        {/* 21 Nov 2026 (P01): 5% / 6.5% for the days either side of the park, under the 0% Express Pass. GA4 placement usj-highrate-top. */}
+        <div data-placement="usj-highrate-top">
+          <KlookTripPrep
+            label="파크 앞뒤 일정"
+            heading="USJ 앞뒤 날짜에 예약해 두면 좋은 것"
+            intro="익스프레스 패스로 파크 날짜가 정해지면 나머지 오사카 일정도 함께 정해 두기 좋습니다. 교토・나라 당일 투어, 공항과 호텔 사이 짐 배송, JR 간사이 패스입니다."
+            items={highRateTopPrep}
+            adPlacement="usj-highrate-top"
+            headingLevel={3}
+          />
+        </div>
 
         <EsimCtaTop />
 
@@ -998,6 +1049,17 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           intro="파크는 하루입니다. 아래 세 가지는 같은 여행에서 보통 그 앞뒤로 필요한 것들이고, 첫 번째는 잘못된 이유로 사지 않도록 목록에 넣었습니다."
           items={tripPrep}
         />
+
+        {/* 21 Nov 2026 (P01): the 5% Osaka sights and a 6.5% day tour, just before the FAQ. GA4 placement usj-highrate-faq. */}
+        <div data-placement="usj-highrate-faq">
+          <KlookTripPrep
+            label="파크에 가지 않는 날"
+            heading="파크에 가지 않는 날 예약할 오사카 명소"
+            intro="오사카 어메이징 패스를 사지 않는다면 오사카성과 우메다 스카이 빌딩은 입장권을 따로 사야 합니다. 두 곳을 하루에 도는 가이드 투어도 있습니다."
+            items={highRateFaqPrep}
+            adPlacement="usj-highrate-faq"
+          />
+        </div>
 
         <EsimCtaBottom />
 
