@@ -263,7 +263,7 @@ const faqItems = [
     a: `On Sakura Mobile's resident plans, ¥500 a month more than the same plan without one, at every tier. The Voice + Data grid is published at ${VOICE_FROM} for 5 GB, ¥3,480 for 15 GB, ¥3,980 for 30 GB, ¥4,980 for 40 GB, ¥6,980 for 60 GB, ¥8,980 for 80 GB and ¥10,980 for 100 GB; Data Only runs ${DATA_FROM}, ¥2,980, ¥3,480, ¥4,480, ¥6,480, ¥8,480 and ¥10,480 against those. Add a one-off ${ACTIVATION} activation fee on either, and note that calls and SMS are charged on top of the monthly fee rather than included on the resident plan. So the number itself is ¥500 a month — ¥6,000 across a year — and the data tier is the part that actually moves your bill. Prices read on ${CHECKED}.`,
   },
   {
-    q: "Can tourists get a Japanese phone number?",
+    q: "Can a tourist get a Japanese phone number?",
     a: `Yes, but not on the product most tourists buy. A short-stay visitor status does not come with a residence card, so the resident monthly plans are out — and every data eSIM, Sakura Mobile's own included, carries no number. The route that is open is the prepaid Voice + Data travel eSIM: sold for 1 to 90 days with domestic calls and SMS (7 days ¥10,340 and 30 days ¥18,855 tax incl., read on ${RECHECKED}), and verified in person with a passport at a select counter at Narita, Haneda, Kansai or Fukuoka airport, or the Shinjuku office, rather than against a card. Two honest caveats. It has to be pre-ordered, because the in-person verification is the mechanism rather than an inconvenience. And for most holidays it is unnecessary: restaurant bookings, hotels and taxis in Japan are reachable through apps and your hotel's front desk, and a data plan carries messaging and internet calls. Read on ${CHECKED}.`,
   },
   {
@@ -288,11 +288,13 @@ const faqItems = [
   },
 ];
 
-// The H1 starts with the title's exact words and adds "& Cost", so the result has one wording.
-const TITLE = "Japan Phone Number for Foreigners (2026): How to Get One";
-const H1 = "Japan Phone Number for Foreigners (2026): How to Get One & Cost";
+// Nov 21 C01: 0% CTR at position 8.3 after the 14 Nov rewrite. Title and H1 now open on the
+// searched phrase ("Japanese Phone Number for Foreigners") and the monthly price; the H1 adds
+// the fastest route, which is the other thing the snippet has to answer.
+const TITLE = `Japanese Phone Number for Foreigners: From ${VOICE_FROM}/mo (2026)`;
+const H1 = `Japanese Phone Number for Foreigners (2026): Passport at the Airport, or From ${VOICE_FROM}/Month`;
 const DESCRIPTION =
-  "Japan phone number for foreigners: tourists get Sakura Mobile's voice eSIM (7 days ¥10,340, passport check at the airport); residents from ¥2,980/mo.";
+  `Japanese phone number for foreigners: tourists get a passport-checked voice eSIM (7 days ¥10,340); residents from ${VOICE_FROM}/mo. Travel eSIMs are data only.`;
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/esim/japan-phone-number-for-foreigners") },
@@ -423,6 +425,14 @@ export default function JapanPhoneNumberForForeignersPage({ updated }: { updated
 
         {/* Lead paragraph — the whole answer, before anything else on the page. */}
         <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>A Japanese phone number for foreigners costs from {VOICE_FROM} a month</strong> on Sakura
+            Mobile&apos;s Voice + Data plan with a residence card, and the fastest route for a tourist is its
+            passport-checked Voice + Data travel eSIM collected at the airport (7 days ¥10,340). Arriving on
+            a data-only plan first? Compare them in the{" "}
+            <Link href="/guides/esim/best-esim-japan">best Japan eSIM ranking</Link>; staying for months, read
+            the <Link href="/guides/esim/japan-sim-card-long-term-stay">long-term-stay SIM guide</Link>.
+          </p>
           <p className={styles.bodyText}>
             A <strong>Japan phone number for foreigners</strong> does not come with a traveller&apos;s data
             eSIM: every Japan plan from the four providers compared here is <strong>data only</strong>, and the
@@ -688,9 +698,15 @@ export default function JapanPhoneNumberForForeignersPage({ updated }: { updated
         {/* Q5 — tourists */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Tourists</span>
-          <h2 className={styles.sectionTitle}>Can Tourists Get a Japanese Phone Number?</h2>
+          <h2 className={styles.sectionTitle}>Can a tourist get a Japanese phone number?</h2>
           <p className={styles.bodyText}>
-            Yes, but not on the product almost every tourist buys. A short-stay visitor status does not come
+            <strong>Yes — with a passport, in person.</strong> Sakura Mobile&apos;s prepaid Voice + Data travel
+            eSIM carries a Japanese number with calls and SMS (7 days ¥10,340, 30 days ¥18,855 tax incl., read{" "}
+            {RECHECKED}), verified at a select counter at Narita, Haneda, Kansai or Fukuoka airport or the
+            Shinjuku office; it has to be pre-ordered.
+          </p>
+          <p className={styles.bodyText}>
+            It is not the product almost every tourist buys. A short-stay visitor status does not come
             with a residence card, which closes the resident monthly plans — and the data eSIM you bought
             before flying carries no number at any price. The route that stays open is the prepaid{" "}
             <strong>Voice + Data travel eSIM</strong>, sold for 1 to 90 days with domestic calls and SMS and

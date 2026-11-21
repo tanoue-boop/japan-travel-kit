@@ -239,6 +239,10 @@ const compareRows = [
 
 const faqItems = [
   {
+    q: "How long does it take from Osaka to Kobe?",
+    a: `About 30 minutes by train from Osaka-Umeda to Sannomiya, on JR, Hankyu or Hanshin — VISIT KOBE's own figure for all three, read on ${OWN}. None of them is a reserved train, so there is nothing to book. From Osaka-Namba, Hanshin's through service to Kobe-Sannomiya is ¥600 for an adult and ¥300 for a child on its own fare table. Allow three to four hours in the city itself, or a full day if you add the Mt. Rokko night view.`,
+  },
+  {
     q: "How do I get from Osaka to Kobe?",
     a: `Take a train to Sannomiya, and it barely matters which. VISIT KOBE, the Kobe Tourism Bureau's own travel guide, puts Sannomiya and Osaka-Umeda at approximately 30 minutes apart "by JR, Hanshin or Hankyu lines" — three competing operators on roughly parallel tracks, all terminating within a few minutes' walk of each other in central Kobe. Read on ${OWN}. From Namba rather than Umeda, Hanshin's own fare table gives Osaka-Namba to Kobe-Sannomiya at ¥600 for an adult and ¥300 for a child on the Namba Line through service, read the same day. None of the three is a reserved train, so there is nothing to book and no reason to buy a rail pass for the hop alone.`,
   },
@@ -284,9 +288,13 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Kobe Day Trip from Osaka (2026): Routes and the Beef";
+// Nov 21 C01: 0% CTR at position 9.7. Title and H1 now lead with the searched phrase and the two
+// numbers that answer "how long / how much": VISIT KOBE's 30 minutes and Hanshin's published ¥600
+// from Namba (the one Osaka–Kobe fare an operator prints as text; read 27 Oct 2026).
+const TITLE = "Kobe Day Trip from Osaka (2026): 30 Min, ¥600 from Namba";
+const H1 = "Kobe Day Trip from Osaka (2026): 30 Minutes by Train, ¥600 from Namba, Mostly Free Sights";
 const DESCRIPTION =
-  "A Kobe day trip from Osaka is about 30 minutes to Sannomiya. The Weathercock House is ¥500, the Port Tower ¥1,200 and the City Loop day pass ¥800.";
+  "Kobe day trip from Osaka: about 30 min to Sannomiya on JR, Hankyu or Hanshin (¥600 from Namba), nothing to book. Kitano and the harbour are free.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/kobe-day-trip-from-osaka") },
@@ -314,7 +322,7 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -379,7 +387,7 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Kobe Day Trip from Osaka (2026): <br />Routes, the Beef and What Fits in a Day
+            {H1}
           </h1>
           <p className={styles.heroSubtitle}>
             Three competing railways cover the same half hour, and almost everything worth seeing at the
@@ -488,9 +496,17 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
         {/* Access table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Getting there</span>
-          <h2 className={styles.sectionTitle}>How Do I Get From Osaka to Kobe?</h2>
+          <h2 className={styles.sectionTitle}>How long does it take from Osaka to Kobe?</h2>
+          <p className={styles.bodyText}>
+            <strong>About 30 minutes by train from Osaka-Umeda to Sannomiya</strong> on JR, Hankyu or Hanshin
+            (VISIT KOBE&apos;s figure for all three, read {OWN}), with no reserved seat to buy. From Namba,
+            Hanshin&apos;s through service is ¥600 for an adult and ¥300 for a child. Adding the onsen over the
+            mountain? Our <Link href="/guides/attractions/arima-onsen-day-trip">Arima Onsen day trip</Link>{" "}
+            guide has the bus times; for a castle the same day, see the{" "}
+            <Link href="/guides/attractions/himeji-castle-day-trip">Himeji Castle day trip</Link>.
+          </p>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Any of the three railways, and then a bus pass once you arrive. One honest note on the fare
+            How do you get from Osaka to Kobe? Any of the three railways, and then a bus pass once you arrive. One honest note on the fare
             column: JR, Hankyu and Hanshin all publish single fares only through a route-search tool rather
             than as a table, so the only Osaka–Kobe fare printed below is the one Hanshin publishes as text.
             One checked figure is more useful than four plausible ones.
@@ -518,6 +534,13 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {OWN_ISO} (Arima bus 2026-10-25). Official sources:{" "}
+            <a href="https://www.feel-kobe.jp/" target="_blank" rel="noopener noreferrer">feel-kobe.jp</a>,{" "}
+            <a href="https://www.hankyu.co.jp/" target="_blank" rel="noopener noreferrer">hankyu.co.jp</a>,{" "}
+            <a href="https://kobeloop.bus-japan.net/" target="_blank" rel="noopener noreferrer">kobeloop.bus-japan.net</a>,{" "}
+            <a href="https://www.rokkocable.com/" target="_blank" rel="noopener noreferrer">rokkocable.com</a>.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             If you already hold a JR West regional pass, the JR leg is covered and the question answers
             itself — our{" "}

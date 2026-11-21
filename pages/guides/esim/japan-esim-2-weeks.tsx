@@ -45,11 +45,13 @@ const tooShort = allEsimPlans.filter((p) => !p.unlimited && (p.gb ?? 0) >= TARGE
 const planLabel = (p?: EsimPlanRow) => (p ? `${p.name} — ${formatUsd(p.priceUsd)}` : "—");
 
 // Title and H1 share one string so Google has no reason to swap in the badge row or the slug.
-const TITLE = "Japan eSIM 2 Weeks (2026): How Many GB for 14 Days & Prices";
-// The Simbye figure comes from the daily feed, so the description cannot outlive the plan it names.
-const DESC = `Japan eSIM for 2 weeks: 14 days uses about 4–9 GB, so 10 GB (not unlimited) covers most trips. ${
-  simbyePick ? `Simbye ${simbyePick.name} is ${formatUsd(simbyePick.priceUsd)}` : "See Simbye 10 GB plans"
-}, or buy on Klook eSIM.`;
+// Nov 21 C01: 0% CTR at position 7.9 after the 14 Nov rewrite, so the title now leads with the
+// searcher's words ("14-Day Japan eSIM") and the cheapest plan that lasts the trip, from the feed.
+const TITLE = `14-Day Japan eSIM 2026: 10GB from ${bestValue ? formatUsd(bestValue.priceUsd) : "$12"}, 5 Plans Compared`;
+// The figure comes from the daily feed, so the description cannot outlive the plan it names.
+const DESC = `14-day Japan eSIM: 2 weeks uses 4–9 GB, so 10 GB covers most trips. Cheapest 10 GB valid all 14 days: ${
+  bestValue ? `${bestValue.provider} ${formatUsd(bestValue.priceUsd)}` : "see below"
+}. Many plans expire on day 7.`;
 
 const dataTable = [
   { usageType: "Light",             perDay: "~300MB", total: "~4.2GB"  },
@@ -169,7 +171,7 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
             {TITLE}
           </h1>
           <p className={styles.heroSubtitle}>
-            Fourteen days in Japan takes about 4–9 GB, so a 10 GB plan covers most trips; daily video
+            A 14-day Japan eSIM needs about 4–9 GB, so a 10 GB plan covers most trips; daily video
             streaming pushes you past 14 GB, which is where an unlimited plan makes sense. Buy a plan valid
             for at least 14 days: the cheapest {TARGET_GB} GB plan that lasts the trip is{" "}
             {bestValue?.provider} {planLabel(bestValue)} (prices checked {pricesCheckedAt}).
@@ -312,7 +314,13 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
         {/* How Much Data */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Data Guide</span>
-          <h2 className={styles.sectionTitle}>How Much Data Do You Need for 2 Weeks?</h2>
+          <h2 className={styles.sectionTitle}>How much data do I need for 2 weeks in Japan?</h2>
+          <p className={styles.bodyText}>
+            <strong>About 4–9 GB for 14 days, so a 10 GB plan covers most two-week trips.</strong>{" "}
+            Light use (maps, messaging) is around 4 GB, active social media around 8 GB, and only
+            daily video streaming pushes you past 14 GB. The cheapest 10 GB plan valid for all 14
+            days is {bestValue?.provider} {planLabel(bestValue)}.
+          </p>
           <p className={styles.bodyText}>
             Two weeks in Japan gives you time to explore well beyond the Golden Route — but data
             needs are still manageable. Here&apos;s how usage breaks down by travel style:
@@ -344,6 +352,16 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
             travellers — even those who use social media actively. Only daily video streaming
             pushes you above 10GB. Download offline maps, use hotel WiFi for uploads, and
             10GB will see you through.
+          </p>
+          <p className={styles.bodyText}>
+            Shorter trip? The{" "}
+            <Link href="/guides/esim/japan-esim-10-days" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              10-day Japan eSIM
+            </Link>{" "}
+            guide sizes ten days the same way. Still deciding on the format? See{" "}
+            <Link href="/guides/esim/japan-sim-card-vs-esim-2026" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              SIM card vs eSIM in Japan
+            </Link>.
           </p>
         </section>
 

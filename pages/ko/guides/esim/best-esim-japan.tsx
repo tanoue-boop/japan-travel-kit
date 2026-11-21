@@ -54,9 +54,10 @@ const ROUTE = "/ko/guides/esim/best-esim-japan";
 // Retitled 13 Nov 2026 (task jtk-20261113-C01). On 10 Nov Google showed this page as
 // "가격 확인 <date>｜…", the date line that sat directly under a two-line H1, so the H1 is
 // now one line equal to the title and the date line moved into the first body paragraph.
-const TITLE = "일본 이심 추천 2026: eSIM 6곳 비교·가격·설정";
-const DESC =
-  "일본 이심 추천: eSIM 6곳의 가격·통신사(도코모/소프트뱅크/KDDI)·테더링 비교와 설정법 정리. 클룩 eSIM 버튼에서 구매.";
+// Retitled again 21 Nov 2026 (task jtk-20261121-C01): 0.9% CTR at position 8.5, with "일본 이심
+// 추천" (98 impressions, 0%) and "일본 esim 추천" (67) as the two landing queries. The title now
+// opens on both spellings, "eSIM·이심", and carries the 1st pick's 10 GB price from the daily feed.
+// TITLE and DESC are built after tenGb below, so the figure is always the one on sale.
 
 const LOCALE = "ko" as const;
 
@@ -116,6 +117,13 @@ const tenGb = (id: EsimProviderId) => {
   const plan = cheapestAtLeastGb(id, 10);
   return plan ? formatUsd(plan.priceUsd) : "—";
 };
+
+// check:i18n requires the contiguous "일본 이심", so eSIM goes in brackets rather than first.
+const TITLE = `일본 이심(eSIM) 추천 2026: 10GB ${tenGb("simbye")}부터`;
+// The H1 starts with the title's exact words and adds the provider count.
+const H1 = `${TITLE}, 6곳 비교`;
+const DESC =
+  `일본 이심 추천 1순위 Simbye(10GB ${tenGb("simbye")}, 도코모·KDDI·소프트뱅크). eSIM 6곳 가격·통신망 비교와 설정법.`;
 
 const topPicks: TopPick[] = [
   {
@@ -428,6 +436,14 @@ const timingRows = [
 
 const faqItems: FaqItem[] = [
   {
+    q: "일본 이심 추천: 어떤 걸 사야 하나요?",
+    a: `데이터만 필요하다면 1순위는 Simbye입니다. 10 GB가 ${tenGb("simbye")}로 정가를 비교한 5곳 중 가장 싸고, NTT docomo·KDDI/au·SoftBank·Rakuten Mobile 망을 쓰며 테더링도 됩니다. 일본 전화번호가 필요하면 음성+데이터 eSIM을 파는 Sakura Mobile, 대용량은 eSIM Go, 테더링 제한 없는 무제한은 Airalo가 맞습니다. 가격 확인일 ${pricesCheckedAt}.`,
+  },
+  {
+    q: "일본 eSIM 통신사(도코모·소프트뱅크·KDDI) 차이는?",
+    a: `도쿄–교토–오사카 같은 도시와 신칸센 구간에서는 체감 차이가 거의 없고, 지방과 산간에서는 도코모(Docomo) 커버리지가 가장 넓습니다. 각 사 가격 정보 기준으로 Simbye는 NTT docomo·KDDI/au·SoftBank·Rakuten Mobile, eSIM Go는 Docomo·SoftBank, Airalo는 SoftBank가 주 통신망, Holafly는 SoftBank·KDDI입니다(${pricesCheckedAt} 확인). 일정이 주요 도시를 벗어난다면 도코모를 쓰는 요금제를 고르세요.`,
+  },
+  {
     q: "eSIM이란 무엇이고 일본에서 꼭 필요한가요?",
     a: "eSIM은 휴대폰에 내장된 디지털 SIM입니다. 물리 카드가 필요 없습니다. QR 코드로 프로필을 내려받으면 바로 쓸 수 있습니다. 일본 여행에 eSIM이 반드시 필요한 것은 아니지만 단연 가장 편한 선택입니다. 출발 전에 사서 설치하고, 착륙하면 활성화하면 됩니다.",
   },
@@ -544,7 +560,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
     <>
       <Head>
         {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems.slice(0, 5)) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -565,7 +581,7 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
       {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.heroInner}>
-          <h1 className={styles.heroTitle}>일본 이심 추천 2026: eSIM 6곳 비교·가격·설정</h1>
+          <h1 className={styles.heroTitle}>{H1}</h1>
           <p className={styles.heroSubtitle}>
             추천 1순위는 Simbye입니다. 10 GB가 {tenGb("simbye")}로 이 페이지에서 비교한 정가 중 가장 싸고, NTT
             docomo, KDDI/au, SoftBank, Rakuten Mobile 네 통신망을 쓰며 테더링도 됩니다.
@@ -731,7 +747,16 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
         {/* Q: What is the best eSIM for Japan? — the pick-by-itinerary table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>짧은 답</span>
-          <h2 className={styles.sectionTitle}>일본 eSIM은 어디가 가장 좋을까?</h2>
+          <h2 className={styles.sectionTitle}>일본 이심 추천: 어떤 걸 사야 하나요?</h2>
+          <p className={styles.bodyText}>
+            <strong>
+              데이터만 필요하면 Simbye(10 GB {tenGb("simbye")}), 일본 전화번호가 필요하면 Sakura Mobile을 사세요.
+            </strong>{" "}
+            용량이 아주 많이 필요하면 eSIM Go, 테더링 제한 없는 무제한을 원하면 Airalo입니다. 가격 확인일 {pricesCheckedAt}.
+            여행 기간별로 고르려면{" "}
+            <Link href="/guides/esim/japan-esim-10-days" className={tools.inlineLink}>10일 eSIM(영어)</Link>과{" "}
+            <Link href="/guides/esim/japan-esim-2-weeks" className={tools.inlineLink}>14일 eSIM(영어)</Link> 가이드를 참고하세요.
+          </p>
           <p className={styles.bodyText}>
             하나로 정해진 정답은 없습니다. 여행 기간과 데이터 사용량에 따라 적합한 통신사가 다르기 때문입니다. Simbye는 용량제
             정가가 가장 낮고, eSIM Go는 용량이 가장 크며, Airalo는 테더링 제한 없는 무제한을 원할 때
@@ -841,7 +866,12 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
         {/* Q: Which network is best in Japan? — carrier table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>통신망</span>
-          <h2 className={styles.sectionTitle}>일본 통신망은 어디가 좋을까: Docomo, au, SoftBank?</h2>
+          <h2 className={styles.sectionTitle}>일본 eSIM 통신사(도코모·소프트뱅크·KDDI) 차이는?</h2>
+          <p className={styles.bodyText}>
+            <strong>도시에서는 차이가 거의 없고, 지방은 도코모(Docomo)가 가장 넓습니다.</strong> Simbye는 도코모·KDDI/au·SoftBank·Rakuten
+            중 잡히는 망에 자동 연결되고, eSIM Go는 Docomo·SoftBank, Airalo는 SoftBank가 주 통신망, Holafly는 SoftBank·KDDI입니다
+            (각 사 가격 정보 기준, {pricesCheckedAt} 확인).
+          </p>
           <p className={styles.bodyText}>
             도쿄–교토–오사카–히로시마 경로에서는 실질적인 차이가 없습니다 — 세 곳 모두 도시와 신칸센 구간에서
             서비스됩니다. 차이가 나는 곳은 그 바깥으로, 일본 현지 사업자들이 지방용 요금제를 만드는 기반이 Docomo

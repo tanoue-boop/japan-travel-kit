@@ -65,9 +65,6 @@ const pricesCheckedAt = pricesCheckedLabel();
  */
 const SPECS_CHECKED = "29 Oct 2026";
 
-// Title and H1 are one string, same word order, so the result snippet has nothing else to pick.
-const TITLE = "Japan eSIM for 10 Days (2026): How Many GB & Cheapest Plans";
-const H1 = TITLE;
 const ROUTE = "/guides/esim/japan-esim-10-days";
 
 const TRIP_DAYS = 10;
@@ -118,10 +115,19 @@ const lightPick = cheapestForTrip(LIGHT_GB);
 const normalPick = cheapestForTrip(NORMAL_GB);
 const heavyPick = cheapestForTrip(HEAVY_GB);
 
+/**
+ * Title and H1 are one string, same word order. Nov 21 C01: the 14 Nov rewrite still drew 0%
+ * CTR at position 5.5, so the title now opens on the searcher's own words ("10-Day Japan
+ * eSIM") followed by the two numbers the snippet has to carry — the allowance most trips
+ * need and the cheapest plan on sale that holds it for all ten days, read from the daily feed.
+ */
+const TITLE = `10-Day Japan eSIM 2026: 10GB from ${normalPick ? formatUsd(normalPick.priceUsd) : "$12"}, 5 Plans Compared`;
+const H1 = TITLE;
+
 // Read from the daily feed, so the plan named in the snippet is always the one on sale.
-const DESCRIPTION = `Japan eSIM for 10 days: 5 GB light, 10 GB normal, 15 GB if you tether. Cheapest 10 GB that lasts: ${
-  normalPick ? `${normalPick.provider} ${normalPick.name} ${formatUsd(normalPick.priceUsd)}` : "see below"
-}, or Klook eSIM.`;
+const DESCRIPTION = `10-day Japan eSIM: 10GB (1GB a day) is enough for most trips. Cheapest 10GB valid all 10 days: ${
+  normalPick ? `${normalPick.provider} ${formatUsd(normalPick.priceUsd)}` : "see below"
+}. 5GB light, 15GB if you tether.`;
 
 const planName = (p: EsimPlanRow | null) => (p ? `${p.provider} ${p.name}` : "—");
 const planPrice = (p: EsimPlanRow | null | EsimPlan) => (p ? formatUsd(p.priceUsd) : "—");
@@ -297,6 +303,10 @@ const timingRows = [
 ];
 
 const faqItems = [
+  {
+    q: "Is 10GB enough for 10 days in Japan?",
+    a: `Yes for most travellers: 10 GB is 1 GB a day, which covers maps, messaging, photo uploads, video calls and some streaming over ten days. Maps and messaging alone use about ${LIGHT_GB} GB; tethering a laptop or watching video on trains takes a trip to about ${HEAVY_GB} GB. The cheapest 10 GB plan that stays valid for all ten days is ${planName(normalPick)} at ${planPrice(normalPick)} (prices checked ${pricesCheckedAt}).`,
+  },
   {
     q: "How much data do I need for 10 days in Japan?",
     a: `Budget ${LIGHT_GB} GB for ten days if your phone is doing maps, messaging and a few photo uploads, ${NORMAL_GB} GB once you add video calls and some streaming, and ${HEAVY_GB} GB if you tether a laptop or watch video on trains. ${NORMAL_GB} GB is the figure to buy on if you are not sure, and it is what the cheapest ten-day-capable plan on sale carries: ${planName(normalPick)} at ${planPrice(normalPick)} (prices checked ${pricesCheckedAt}). Those per-day figures are planning arithmetic rather than a provider claim, but they sit well inside what the providers treat as heavy use — Airalo's fair-use threshold is 3 GB in a day and Sakura Mobile's daily cap is 3 GB (checked ${SPECS_CHECKED}).`,
@@ -474,7 +484,10 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
         {/* The answer, first. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            A 10-day trip to Japan needs about <strong>{NORMAL_GB} GB</strong> of eSIM data:{" "}
+            <strong>Yes — 10 GB is enough for 10 days in Japan</strong> for most travellers, and the
+            cheapest 10 GB plan valid for all ten days is{" "}
+            <strong>{planName(normalPick)} at {planPrice(normalPick)}</strong>. A 10-day trip
+            needs about <strong>{NORMAL_GB} GB</strong> of eSIM data:{" "}
             {LIGHT_GB} GB for maps and messaging only, {NORMAL_GB} GB once you add video calls and
             some streaming, {HEAVY_GB} GB if you tether a laptop. The cheapest plan with{" "}
             {NORMAL_GB} GB that stays valid for all ten days is{" "}
@@ -579,9 +592,15 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
         {/* Sizing */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The arithmetic</span>
-          <h2 className={styles.sectionTitle}>How much data do I need for 10 days in Japan?</h2>
+          <h2 className={styles.sectionTitle}>Is 10GB enough for 10 days in Japan?</h2>
           <p className={styles.bodyText}>
-            {LIGHT_GB} GB light, {NORMAL_GB} GB normal, {HEAVY_GB} GB heavy. The per-day column is
+            <strong>Yes, for most trips.</strong> 10 GB is 1 GB a day — enough for maps, messaging,
+            photo uploads, video calls and some streaming. Only a tethered laptop or daily video on
+            trains needs more ({HEAVY_GB} GB); the cheapest 10 GB plan that lasts all ten days is{" "}
+            {planName(normalPick)} at {planPrice(normalPick)}.
+          </p>
+          <p className={styles.bodyText}>
+            How much data do you need for 10 days in Japan? {LIGHT_GB} GB light, {NORMAL_GB} GB normal, {HEAVY_GB} GB heavy. The per-day column is
             planning arithmetic — half a gigabyte a day for maps, messaging and photos, a gigabyte
             once video calls and some streaming are in the mix, and half as much again for a
             tethered laptop — and the plan column is the cheapest thing on sale that covers the
@@ -627,7 +646,15 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
             5, 7, 14 and 30 days, and every plan sorted by price per GB, see{" "}
             <Link href="/guides/esim/japan-esim-data-plans" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Japan eSIM data plans compared
-            </Link>.
+            </Link>. Staying four more days? The{" "}
+            <Link href="/guides/esim/japan-esim-2-weeks" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              14-day Japan eSIM
+            </Link>{" "}
+            guide runs the same sizing for two weeks, and the{" "}
+            <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              best Japan eSIM ranking
+            </Link>{" "}
+            compares every provider on network, tethering and price.
           </p>
         </section>
 

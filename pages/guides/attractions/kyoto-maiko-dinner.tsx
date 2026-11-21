@@ -160,11 +160,14 @@ const faqItems = [
   },
 ];
 
-// The H1 opens with the title's exact words ("How to Book" spelled out), so the result has one wording.
-const TITLE = "Kyoto Maiko Dinner (2026): Price, Booking & What to Expect";
-const H1 = "Kyoto Maiko Dinner (2026): Price, How to Book & What to Expect";
+// Nov 21 C01: 0% CTR at position 5.8. Title leads with the searched name and the two figures that
+// can be verified: the 1.5–3.5 hour length of the listings and Gion Corner's official ¥5,500 show
+// price (no official fixed dinner price was found, and Klook prices are not printed on this site).
+// The H1 adds "ozashiki", the Kyoto name for the banquet-room format, so both wordings appear.
+const TITLE = "Kyoto Maiko Dinner (2026): 1.5–3.5 Hours, Show from ¥5,500";
+const H1 = "Kyoto Maiko Dinner & Ozashiki (2026): 1.5–3.5 Hours, Price by Date, Show from ¥5,500";
 const DESCRIPTION =
-  "Kyoto maiko dinner: 1.5 to 3.5 hours, priced by date, so book once your Kyoto dates are set. Only want the dance? Gion Corner is ¥5,500. Book on Klook.";
+  "How much is a maiko dinner in Kyoto? Priced by date per listing, 1.5–3.5 hours with a course meal. Only want the dance? Gion Corner's show is ¥5,500.";
 
 const ROUTE = "/guides/attractions/kyoto-maiko-dinner";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
@@ -328,6 +331,25 @@ export default function KyotoMaikoDinnerPage({ updated }: { updated: PageUpdated
             </div>
           </div>
         </div>
+
+        {/* The searched question, verbatim, answered at once. */}
+        <section className={styles.bodySection}>
+          <h2 className={styles.sectionTitle}>How much is a maiko dinner in Kyoto?</h2>
+          <p className={styles.bodyText}>
+            <strong>A maiko dinner (ozashiki) in Kyoto is priced by date and party size on each listing</strong>,
+            for 1 hour 30 minutes to 3 hours 30 minutes with a course meal, so open the listing for your evening.
+            The one fixed official price is the show without a meal: Gion Corner&apos;s one-hour programme with
+            Kyomai by a maiko is ¥5,500 for an adult, ¥3,850 for ages 16–22 and ¥3,300 for ages 7–15 (read{" "}
+            {GION_CHECKED}). Planning the rest of the evening? See the{" "}
+            <Link href="/guides/attractions/gion-night-walking-tour">Gion night walking tour</Link> and{" "}
+            <Link href="/guides/attractions/things-to-do-kyoto">things to do in Kyoto</Link>.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={kyotoMaikoLunchDinnerAnKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check maiko dinner dates →
+            </KlookLink>
+          </div>
+        </section>
 
         <EsimCtaTop />
 

@@ -265,7 +265,7 @@ const faqItems = [
     a: `For a resident monthly plan, in practice yes — for a travel product, no. Sakura Mobile's application page accepts three documents: a Residence Card or a My Number Card, each valid and showing your current address, for an eSIM QR by email or a SIM by delivery; or a passport, where you collect at an airport counter or its Shinjuku office. Its resident plan guide adds the detail that catches people out — the card "must be registered with your current address", and the card handed over at immigration has a blank address field until the ward office prints one on it. A travel eSIM needs nothing at all: Sakura Mobile's own data-only travel eSIM states no ID verification is required, and no tourist eSIM compared here asks for a document either. Read on ${CHECKED}.`,
   },
   {
-    q: "Can I get a SIM card in Japan without a bank account?",
+    q: "Can students get a Japanese SIM without a bank account?",
     a: `Yes, and this is the clause that makes the whole thing possible in your first fortnight rather than your second month. Sakura Mobile's own monthly Voice page states the plan comes "with no Japanese bank account required", and the resident plan guide puts it plainly: "You do not need a Japanese bank account or a local credit card." The dependency actually runs the other way round. Japan Post Bank's page for foreign nationals asks for your residence card to be presented, requests a student ID from students, and states that an account cannot be opened where your period of stay expires within three months of the application date — so the phone tends to come first and the bank follows it. Read on ${CHECKED}.`,
   },
   {
@@ -298,11 +298,13 @@ const faqItems = [
   },
 ];
 
-// The H1 starts with the same words (it adds "International"), so the snippet has one wording to choose.
-const TITLE = "Japan SIM Card for Students (2026): Plans & What You Need";
-const H1 = "Japan SIM Card for International Students (2026): Plans & What You Need";
+// Nov 21 C01: 0% CTR at position 8.1 after the 14 Nov rewrite. Title and H1 now open on the
+// full search phrase ("International Students") and carry the monthly floor price; the H1 adds
+// the documents, which is the other half of what these searches are asking.
+const TITLE = `Japan SIM Card for International Students: From ${DATA_FROM}/mo`;
+const H1 = `Japan SIM Card for International Students (2026): From ${DATA_FROM}/Month, Residence Card, No Bank Account`;
 const DESCRIPTION =
-  "Japan SIM card for international students: a residence card with your address and any international card, no bank account. From ¥2,480/mo at Sakura Mobile.";
+  `Japan SIM card for international students: from ${DATA_FROM}/mo (${VOICE_FROM} with a number). Needs a residence card showing your address; no bank account required.`;
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/esim/japan-sim-card-for-students") },
@@ -434,6 +436,15 @@ export default function JapanSimCardForStudentsPage({ updated }: { updated: Page
 
         {/* Lead paragraph — the whole answer, before anything else on the page. */}
         <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>A Japan SIM card for international students costs from {DATA_FROM} a month</strong>{" "}
+            (data only) or {VOICE_FROM} with a Japanese phone number on Sakura Mobile&apos;s resident plans,
+            plus a {ACTIVATION} activation fee that drops to {ACTIVATION_AFTER} with the student coupon. You
+            need a residence card showing your registered address — no Japanese bank account. Staying past a
+            year, or need the number for a bank or a lease? See the{" "}
+            <Link href="/guides/esim/japan-sim-card-long-term-stay">long-term-stay SIM guide</Link> and{" "}
+            <Link href="/guides/esim/japan-phone-number-for-foreigners">how to get a Japanese phone number</Link>.
+          </p>
           <p className={styles.bodyText}>
             This page is for the student staying in Japan <strong>longer than three months</strong> on a
             student status, who will hold a <strong>residence card</strong> — if your term is shorter than
@@ -694,9 +705,11 @@ export default function JapanSimCardForStudentsPage({ updated }: { updated: Page
         {/* Q5 — the bank account */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Bank accounts</span>
-          <h2 className={styles.sectionTitle}>Can I Get a SIM Card in Japan Without a Bank Account?</h2>
+          <h2 className={styles.sectionTitle}>Can students get a Japanese SIM without a bank account?</h2>
           <p className={styles.bodyText}>
-            Yes — and this is the clause that makes a monthly plan possible in your first fortnight rather
+            <strong>Yes.</strong> Sakura Mobile&apos;s resident plans take any international credit or
+            debit card, from {DATA_FROM} a month, so the only document that matters is a residence card
+            showing your address. And this is the clause that makes a monthly plan possible in your first fortnight rather
             than your second month. Sakura Mobile&apos;s monthly Voice page states the plan comes{" "}
             <strong>&ldquo;with no Japanese bank account required&rdquo;</strong>, and its resident plan guide
             says it again: &ldquo;You do not need a Japanese bank account or a local credit card.&rdquo;

@@ -56,10 +56,12 @@ const weekPlan = (id: EsimProviderId): EsimPlan | null =>
   plansFor(id).find((p) => p.days >= 7 && (p.unlimited || (p.gb ?? 0) >= 5)) ?? null;
 
 // Title and H1 are one string, so the result has no second wording to pick from.
-const TITLE = "Simbye Japan eSIM Review (2026): Prices, Network & Setup";
+// Nov 21 C01: 0% CTR at position 9.3. The title now carries the entry price from the feed and
+// the network count, the two facts a review snippet competes on.
+const TITLE = `Simbye Japan eSIM Review (2026): From ${priceLabel(ENTRY)}, 4 Networks`;
 const DESCRIPTION =
-  `Simbye Japan eSIM review: from ${priceLabel(ENTRY)} (${ENTRY?.name}), 10 GB ${priceLabel(TEN_GB)}, on docomo, au, SoftBank and Rakuten. ` +
-  `Install by QR before you fly. Data only, ${SIMBYE_DISCOUNT_PERCENT}% code.`;
+  `Is Simbye good for Japan? Yes for data only: from ${priceLabel(ENTRY)}, 10 GB ${priceLabel(TEN_GB)}, on docomo, au, SoftBank and Rakuten, ` +
+  `tethering OK. No Japanese number. ${SIMBYE_DISCOUNT_PERCENT}% code.`;
 
 const pros = [
   "Lowest list price compared here on fixed Japan plans",
@@ -116,6 +118,10 @@ const suitsRows = [
 ];
 
 const faqItems = [
+  {
+    q: "Is Simbye good for Japan?",
+    a: `Yes, if you only need data. Simbye has the lowest list prices compared here on fixed Japan plans — from ${priceLabel(ENTRY)} for ${ENTRY?.name} and ${priceLabel(TEN_GB)} for ${TEN_GB?.name} — on ${NETWORK}, with tethering allowed and validity that starts when the eSIM first connects in Japan. It is a poor fit if you need a Japanese phone number (it is data only) or more than 2 GB a day at full speed on unlimited. Prices checked ${pricesCheckedAt}; terms read ${SIMBYE_SPECS_CHECKED_AT}.`,
+  },
   {
     q: "How much is Simbye's Japan eSIM?",
     a: `From ${priceLabel(ENTRY)} for ${ENTRY?.name}. A 10 GB plan is ${priceAtLeastLabel("simbye", 10)}, and unlimited starts at ${unlimitedFromLabel("simbye", 7)}. Those are list prices from Simbye's feed, checked ${pricesCheckedAt}; the code ${SIMBYE_DISCOUNT_CODE} takes ${SIMBYE_DISCOUNT_PERCENT}% off eSIM plans.`,
@@ -182,7 +188,7 @@ export default function SimbyeJapanReviewPage({ updated }: { updated: PageUpdate
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/esim/simbye-japan-review",
-              headline: "Simbye Japan Review (2026): Prices, Networks and Discount Code",
+              headline: TITLE,
               description: DESCRIPTION,
               updated,
             }),
@@ -271,6 +277,23 @@ export default function SimbyeJapanReviewPage({ updated }: { updated: PageUpdate
         </div>
 
         <EsimPageAnswer route="/guides/esim/simbye-japan-review" />
+
+        {/* The searcher's question, verbatim, answered at once with the button under it. */}
+        <section className={styles.bodySection}>
+          <h2 className={styles.sectionTitle}>Is Simbye good for Japan?</h2>
+          <p className={styles.bodyText}>
+            <strong>Yes, for a data-only trip:</strong> Simbye&apos;s Japan eSIM starts at {priceLabel(ENTRY)}{" "}
+            ({ENTRY?.name}), 10 GB is {priceLabel(TEN_GB)}, and it runs on {NETWORK} with tethering
+            allowed. Skip it if you need a Japanese phone number — it has no calls or SMS — and compare the{" "}
+            <Link href="/guides/esim/sakura-mobile-review" className={tools.inlineLink}>Sakura Mobile review</Link>{" "}
+            or the{" "}
+            <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>best Japan eSIM ranking</Link>{" "}
+            instead. Prices checked {pricesCheckedAt}.
+          </p>
+          <a href={esimLink("simbye")} className={styles.verdictBtn} target="_blank" rel="sponsored nofollow noopener">
+            Get Simbye Japan — from {priceLabel(ENTRY)} →
+          </a>
+        </section>
 
         {/* Quick Verdict — the whole answer, first */}
         <div className={styles.verdictBox}>

@@ -221,6 +221,10 @@ const savings = [
 
 const faqItems = [
   {
+    q: "How much does it cost to go to Tokyo for a week?",
+    a: `About ${yen(round100(MID_LOW * 7))}–${yen(round100(MID_HIGH * 7))} per person for 7 days and 7 nights at the standard level, room included, before flights and shopping — the per-night room, food and transport foreign visitors spent in Tokyo in 2025 on the Tokyo Metropolitan Government's survey, plus one paid observation deck a day. A saving week is about ${yen(round100(SAVE_DAY * 7))} plus the room; a top-end week is from about ${yen(round100(TOP_DAY_LOW * 7))}. Add ¥660 (Keikyu, Haneda) to ¥5,160 (Skyliner, Narita) for the airport both ways.`,
+  },
+  {
     q: "How much does a trip to Tokyo cost per day?",
     a: `About ${yen(round100(MID_LOW))}–${yen(round100(MID_HIGH))} per person per day for a standard trip, before flights and shopping: the room (${yen(AVG_ROOM)}), food (${yen(AVG_FOOD)}) and transport (${yen(AVG_TRANSPORT)}) that foreign visitors spent per night in Tokyo in 2025, on the Tokyo Metropolitan Government's survey, plus one paid observation deck. A saving trip is about ${yen(round10(SAVE_DAY))} a day plus the room; a top-end one is from about ${yen(round100(TOP_DAY_LOW))}.`,
   },
@@ -254,11 +258,16 @@ const faqItems = [
   },
 ];
 
-// Title and H1 are one string, so the result has nothing else to rewrite it from.
-const TITLE = "Tokyo Trip Cost (2026): Daily Budget for 3, 5 & 7 Days";
+// Nov 21 C01: 0% CTR at position 7.7, and the query this page ranks first for is "how much does
+// it cost to go to tokyo for a week". Title leads with the head term and the per-day figure; the
+// H1 starts with the same words and adds the week total, so both numbers are on the page top.
+const WEEK_LOW = yen(round100(MID_LOW * 7));
+const WEEK_HIGH = yen(round100(MID_HIGH * 7));
+const TITLE = `Tokyo Trip Cost 2026: 1 Week from ${yen(round100(MID_LOW))} per Day`;
+const H1 = `Tokyo Trip Cost 2026: 1 Week from ${yen(round100(MID_LOW))} per Day, ${WEEK_LOW}–${WEEK_HIGH} Total`;
 const DESCRIPTION =
-  `Tokyo trip cost 2026: about ${yen(round100(MID_LOW))}–${yen(round100(MID_HIGH))} a day per person standard, ` +
-  `${yen(round10(SAVE_DAY))} plus the room on a budget, from ${yen(round100(TOP_DAY_LOW))} top end. Book Tokyo hotels on Klook.`;
+  `Tokyo trip cost 2026: a week is about ${WEEK_LOW}–${WEEK_HIGH} per person (${yen(round100(MID_LOW))}–${yen(round100(MID_HIGH))} a day, ` +
+  `room included), on Tokyo's 2025 visitor survey.`;
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -297,7 +306,7 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: articleJsonLd({ route: ROUTE, headline: TITLE, description: DESCRIPTION, updated }),
+            __html: articleJsonLd({ route: ROUTE, headline: H1, description: DESCRIPTION, updated }),
           }}
         />
         <script
@@ -341,7 +350,7 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            {TITLE}
+            {H1}
           </h1>
           <p className={styles.heroSubtitle}>
             What visitors actually spent in Tokyo in 2025, on the city government&apos;s own survey, next to the
@@ -389,7 +398,9 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
             </div>
             {/* Answer-first: the first body paragraph, not the hero line. */}
             <p className={styles.verdictText}>
-              A <strong>Tokyo trip costs about {yen(round100(MID_LOW))}–{yen(round100(MID_HIGH))} per person per
+              <strong>A week in Tokyo costs about {WEEK_LOW}–{WEEK_HIGH} per person</strong> at a standard level,
+              room included, before flights and shopping. That is a{" "}
+              <strong>Tokyo trip cost of about {yen(round100(MID_LOW))}–{yen(round100(MID_HIGH))} per person per
               day</strong> at a standard level, room included, excluding flights and shopping. On a tight budget it is
               about <strong>{yen(round10(SAVE_DAY))} a day plus the room</strong>, and at the top end from about{" "}
               <strong>{yen(round100(TOP_DAY_LOW))} a day</strong>, room included. At the standard level, 3 days is about{" "}
@@ -410,6 +421,20 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
             </div>
           </div>
         </div>
+
+        {/* The query this page ranks first for, verbatim, with the total straight after it. */}
+        <section className={styles.bodySection}>
+          <h2 className={styles.sectionTitle}>How much does it cost to go to Tokyo for a week?</h2>
+          <p className={styles.bodyText}>
+            <strong>About {WEEK_LOW}–{WEEK_HIGH} per person for 7 days and 7 nights</strong> at the standard level,
+            room included, before flights and shopping. On a tight budget a week is about{" "}
+            {yen(round100(SAVE_DAY * 7))} plus seven nights of room; at the top end it is from about{" "}
+            {yen(round100(TOP_DAY_LOW * 7))}. Add the airport both ways: ¥660 on Keikyu from Haneda or ¥5,160 on the
+            Skyliner from Narita (operators&apos; fares, read {AIRPORT}). To fill the seven days, see the{" "}
+            <Link href="/guides/attractions/tokyo-7-day-itinerary">7-day Tokyo itinerary</Link>, and for what to
+            book first, the <Link href="/guides/attractions/things-to-do-tokyo">things to do in Tokyo</Link> guide.
+          </p>
+        </section>
 
         {/* Klook, all four bands, above the first H2 for a reader who has the number. */}
         <KlookTripPrep

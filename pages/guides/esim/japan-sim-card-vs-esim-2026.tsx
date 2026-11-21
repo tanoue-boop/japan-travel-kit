@@ -47,10 +47,12 @@ const weekPlan = (id: EsimProviderId): EsimPlan | null =>
   plansFor(id).find((p) => p.days >= 7 && (p.unlimited || (p.gb ?? 0) >= 5)) ?? null;
 
 // Title and H1 are the same string, so the result has one wording to show.
-const TITLE = "Japan SIM Card vs eSIM (2026): Which Is Cheaper & Easier?";
+// Nov 21 C01: 0% CTR at position 5.1 after the 14 Nov rewrite. The title now gives the verdict
+// in one word and the eSIM floor price from the daily feed, so the snippet is the answer.
+const TITLE = `SIM Card vs eSIM in Japan (2026): eSIM Wins, from ${ESIM_FROM}`;
 const DESCRIPTION =
-  `Japan SIM card vs eSIM: eSIM from ${ESIM_FROM}, set up before you fly; a SIM is picked up in ` +
-  `Japan. Most travel plans are data only. Get Simbye or Klook eSIM.`;
+  `SIM card or eSIM for Japan? eSIM for most visitors: from ${ESIM_FROM}, set up before you fly. ` +
+  `Pick a SIM only for a Japanese number or a phone without eSIM.`;
 
 const comparisonRows = [
   { feature: "How you get it", esim: "QR code by email — install before you fly", physicalSim: "Collected or delivered inside Japan" },
@@ -165,8 +167,8 @@ const scenarios = [
 
 const faqItems = [
   {
-    q: "Is an eSIM better than a SIM card for Japan?",
-    a: `For almost every visitor, yes. It is cheaper (from ${ESIM_FROM} for ${ESIM_FROM_PLAN?.name} against ${SAKURA_ENTRY} for the cheapest physical travel plan we link), it installs before you fly, and your home SIM stays in the phone. There are exactly two situations where cost is irrelevant and a card is the only option: you need a Japanese phone number, or your handset has no eSIM hardware. Prices checked ${pricesCheckedAt}.`,
+    q: "Is a SIM card or eSIM better for Japan?",
+    a: `An eSIM, for almost every visitor. It is cheaper (from ${ESIM_FROM} for ${ESIM_FROM_PLAN?.name} against ${SAKURA_ENTRY} for the cheapest physical travel plan we link), it installs before you fly, and your home SIM stays in the phone. There are exactly two situations where cost is irrelevant and a card is the only option: you need a Japanese phone number, or your handset has no eSIM hardware. Prices checked ${pricesCheckedAt}.`,
   },
   {
     q: "Which budget plans are cheaper in Japan: eSIM or a physical SIM card?",
@@ -302,6 +304,25 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
         </div>
 
         <EsimPageAnswer route="/guides/esim/japan-sim-card-vs-esim-2026" />
+
+        {/* The searcher's question, verbatim, answered in the next two sentences. */}
+        <section className={styles.bodySection}>
+          <h2 className={styles.sectionTitle}>Is a SIM card or eSIM better for Japan?</h2>
+          <p className={styles.bodyText}>
+            <strong>An eSIM is better for almost every visitor to Japan:</strong> it starts at{" "}
+            {ESIM_FROM} ({ESIM_FROM_PLAN?.name}) against {SAKURA_ENTRY} for the cheapest physical
+            travel SIM linked here, installs before you fly, and leaves your home SIM in the phone.
+            A physical SIM is the better choice only if you need a Japanese phone number or your
+            phone has no eSIM hardware. Prices checked {pricesCheckedAt}. Check your handset with the{" "}
+            <Link href="/guides/esim/does-esim-work-in-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              does eSIM work in Japan
+            </Link>{" "}
+            guide, then compare providers in the{" "}
+            <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              best Japan eSIM ranking
+            </Link>.
+          </p>
+        </section>
 
         {/* Quick Answer Box — the whole answer, first */}
         <div className={styles.verdictBox}>
