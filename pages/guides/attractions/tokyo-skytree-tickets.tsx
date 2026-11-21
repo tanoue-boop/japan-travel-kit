@@ -349,6 +349,11 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
           and weekend table — the price for your date shows at checkout. Buy the combo online if you might want
           the 450 m skywalk: adding it on the day costs ¥1,400 more and that sale can be paused for capacity.
         </p>
+        <p className={styles.bodyText}>
+          Not sure Skytree is the right deck? The{" "}
+          <Link href="/guides/attractions/tokyo-observation-decks">Shibuya Sky vs Skytree</Link> comparison sets
+          it against SHIBUYA SKY&apos;s open-air rooftop, Tokyo Tower and the free deck in Shinjuku.
+        </p>
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>

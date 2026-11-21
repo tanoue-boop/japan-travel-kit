@@ -492,7 +492,9 @@ export default function Tokyo4DayItineraryPage({ updated }: { updated: PageUpdat
             then Tokyo Skytree ({PRICES.tokyoSkytree.adult}, cheaper booked ahead than at the same-day counter) for
             the evening view. <strong>Day 2</strong> is the west: Meiji Jingu in the morning, Takeshita Street in
             Harajuku, the Scramble Crossing and SHIBUYA SKY at sunset ({PRICES.shibuyaSky.adult} online, before /
-            from 15:00), then Omoide Yokocho in Shinjuku. <strong>Day 4</strong> is the bay: breakfast at Tsukiji
+            from 15:00), then Omoide Yokocho in Shinjuku. Two paid decks in one trip is a lot of skyline; the{" "}
+            <Link href="/guides/attractions/tokyo-observation-decks">Shibuya Sky vs Skytree</Link> comparison helps
+            you keep one and swap the other for the free deck in Shinjuku. <strong>Day 4</strong> is the bay: breakfast at Tsukiji
             Outer Market (a guided 2-hour walk is the first pick in our{" "}
             <Link href="/guides/attractions/tokyo-food-tour">Tokyo food tours comparison</Link>), a walk through Ginza, teamLab Planets in Toyosu ({PRICES.teamlabPlanets.adult}, timed
             entry, nothing sold on site — see the{" "}

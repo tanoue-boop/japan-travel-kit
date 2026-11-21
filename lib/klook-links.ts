@@ -5840,7 +5840,27 @@ export const tokyoTowerHotelsUrl = klookLink(
   "https://www.klook.com/en-US/destination/p50001692-tokyo-tower/3-hotel/",
 );
 
+/*
+ * 21 Nov 2026 (task-jtk-20261121-R01): reordered so the block under the comparison table
+ * opens with the Tokyo night tour (6.5%), the Tokyo Subway Ticket (5%) and the Klook eSIM
+ * (20%); the three hotel searches follow. tokyoNightTourAkihabaraShibuya is the existing
+ * constant used by tokyo-illumination-tours, so no new URL is added.
+ */
 export const observationDecksSameDayPrep: KlookTripPrepItem[] = [
+  {
+    label: tokyoNightTourAkihabaraShibuya.title,
+    ctaLabel: "Check the Tokyo night tour →",
+    url: tokyoNightTourAkihabaraShibuya.url,
+    why: "For the evening after a daytime deck: a guided night from Ueno through Akihabara to the Shibuya crossing, with train fares between the stops included, as Klook's listing describes it. Check the start time on the listing against your deck slot.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Shibuya, Oshiage, Akabanebashi and Tochomae are all subway stations, so a 24, 48 or 72-hour ticket covers two decks in a day. It does not cover JR lines such as the Yamanote.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "A Klook ticket arrives as an e-ticket on your phone, and every deck here depends on the weather — data from the airport onwards means the voucher, the map and the forecast are all there on the day.",
+  },
   {
     label: "Hotels around Tokyo Skytree (Oshiage)",
     ctaLabel: "Check Oshiage hotels on Klook →",
@@ -5856,14 +5876,6 @@ export const observationDecksSameDayPrep: KlookTripPrepItem[] = [
     ctaLabel: "Check Tokyo Tower hotels on Klook →",
     url: tokyoTowerHotelsUrl,
     why: "Tokyo Tower's Main Deck admits until 22:30, the latest of the three, and Hamamatsucho is also the monorail stop for Haneda.",
-  },
-  {
-    ...tripPrepProducts.subway,
-    why: "Shibuya, Oshiage, Akabanebashi and Tochomae are all subway stations, so a 24, 48 or 72-hour ticket covers two decks in a day. It does not cover JR lines such as the Yamanote.",
-  },
-  {
-    ...tripPrepProducts.esim,
-    why: "A Klook ticket arrives as an e-ticket on your phone, and every deck here depends on the weather — data from the airport onwards means the voucher, the map and the forecast are all there on the day.",
   },
 ];
 

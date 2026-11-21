@@ -378,6 +378,13 @@ export default function TokyoTowerTicketsPage({ updated }: { updated: PageUpdate
             Everything below is the official pricing, the hours, the booking rules, and the one case where
             booking in advance actually saves money.
           </p>
+          <p className={styles.bodyText}>
+            Choosing between towers? The{" "}
+            <Link href="/guides/attractions/tokyo-observation-decks" style={linkStyle}>
+              Shibuya Sky vs Skytree
+            </Link>{" "}
+            comparison adds Tokyo Tower and the free Tokyo Metropolitan Government Building to the same table.
+          </p>
         </section>
 
         {/* Price table */}

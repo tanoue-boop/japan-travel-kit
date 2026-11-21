@@ -513,7 +513,10 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
           <h2 className={styles.sectionTitle}>What Should You Do on Day 1? The West Side</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Harajuku, Shibuya and Shinjuku, all on the Fukutoshin Line, so the subway pass covers the whole day.
-            The fixed point is the SHIBUYA SKY slot: book it for sunset and build the afternoon around it.
+            The fixed point is the SHIBUYA SKY slot: book it for sunset and build the afternoon around it. If the
+            sunset slots are gone, the{" "}
+            <Link href="/guides/attractions/tokyo-observation-decks">Shibuya Sky vs Skytree comparison</Link> lists
+            the free and cheaper decks to use instead.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

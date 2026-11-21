@@ -538,6 +538,14 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
             release, the Tokyo Metropolitan Government&apos;s tourism listing and Klook&apos;s SHIBUYA SKY
             listing.
           </p>
+          <p className={styles.bodyText}>
+            Still deciding between decks? The{" "}
+            <Link href="/guides/attractions/tokyo-observation-decks" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Shibuya Sky vs Skytree
+            </Link>{" "}
+            comparison puts SHIBUYA SKY, Tokyo Skytree, Tokyo Tower and the free Tokyo Metropolitan Government
+            Building side by side, with what to do if your slot is sold out.
+          </p>
         </section>
 
         {/* Quick Answer Box */}
