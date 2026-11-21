@@ -69,9 +69,9 @@ const linkStyle = { color: "var(--text)", fontWeight: 600 } as const;
 
 const fareRows = [
   { tier: "成人", price: "¥2,000", what: "太左卫门桥码头的现场票价，也是衡量通票值不值得的基准" },
-  { tier: "学生（初中及以上）", price: "¥1,000", what: "成人票价的一半，是大阪少数设有学生票价的景点之一" },
+  { tier: "学生（初中及以上）", price: "¥1,000", what: "成人票价的一半，是大阪少数设有学生优惠票价的景点之一" },
   { tier: "儿童（小学生）", price: "¥500", what: "成人票价的四分之一" },
-  { tier: "学龄前儿童", price: "免费", what: "每位付费成人可带一位免费，第二位按儿童票 ¥500" },
+  { tier: "学龄前儿童", price: "免费", what: "每位购票成人可免费携带一名学龄前儿童，第二位按儿童票 ¥500" },
   { tier: "大阪周游卡持有人", price: "免费", what: "含一次乘船，但必须先在换票柜台兑换成注明发船时间的船票" },
   { tier: "大阪 e-Pass 持有人", price: "免费", what: "大阪市官方的 e-Pass 页面也把它列为免费设施" },
 ];
@@ -87,7 +87,7 @@ const scheduleRows = [
   { what: "线上订票截止", when: "开船前 10 分钟（预先付款）" },
   { what: "电话预约", when: "不受理" },
   { what: "2026 年停航日", when: "7 月 13、24、25 日" },
-  { what: "临时停航", when: "可能因河川状况与因船只维修等原因调整时，恕不另行通知" },
+  { what: "临时停航", when: "可能因河道状况或船只维修等原因临时调整，恕不另行通知" },
 ];
 
 const boatRows = [
@@ -110,7 +110,7 @@ const boatRows = [
     run: "30～40 分钟，日本桥↔八轩家滨单程",
     fare: "成人 ¥1,800／儿童 ¥900",
     pass: "未列为通票设施",
-    sold: "同一个售票亭，班次有限，官方建议提前预约",
+    sold: "在同一个售票亭购票，班次有限，官方建议提前预约",
   },
   {
     boat: "浪花观光游船",
@@ -138,7 +138,7 @@ const boatRows = [
 const whoFor = [
   {
     title: "天黑之后再坐，如果…",
-    desc: "你想看明信片上的那种道顿堀。格力高广告牌、戎桥一带店面的霓虹灯，以及水面上的倒影，才是这趟游船的重点，而下午两点这些都看不到。末班是 21:00，所以即使在大阪日落晚于 19:00 的盛夏，天黑后仍有四个班次可选。",
+    desc: "你想看明信片上那样的道顿堀夜景。格力高广告牌、戎桥一带店面的霓虹灯，以及水面上的倒影，才是这趟游船的重点，而下午两点这些都看不到。末班是 21:00，所以即使在大阪日落晚于 19:00 的盛夏，天黑后仍有四个班次可选。",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
@@ -182,19 +182,19 @@ const steps = [
     desc: "当天票在码头旁的售票处出售，售票处在当天首班前一小时开门。不受理电话预约。线上订票开放到开船前 10 分钟，而且要预先付款，周五或周六晚上建议使用线上订票。",
   },
   {
-    title: "码头其实比地址看起来更容易找到",
+    title: "码头其实比只看地址时想象的更好找",
     desc: "太左卫门桥码头位于北岸的 Tombori River Walk 河滨步道上，换票柜台在唐吉诃德道顿堀店一楼，就是外墙装有摩天轮的那栋建筑。从难波、心斋桥或日本桥站步行 5 到 10 分钟，但从这三个车站出来都会先到对岸，所以要从戎桥或太左卫门桥过河。",
   },
   {
     title: "从头到尾预留约 40 分钟，不是 20 分钟",
-    desc: "游船航程是 20 分钟。换票排队、走到浮动码头以及登上可容纳二三十人的小船，占去另一半时间。如果想把乘船安排在已预订的晚餐和演出之间，请按 40 分钟来规划。",
+    desc: "游船航程是 20 分钟。换票排队、走到浮动码头以及登上可容纳二三十人的小船，还要再花约 20 分钟。如果想把乘船安排在已预订的晚餐和演出之间，请按 40 分钟来规划。",
   },
 ];
 
 const faqItems: FaqItem[] = [
   {
     q: "道顿堀游船票价（价格）多少？",
-    a: `成人 ¥2,000。Tombori River Cruise（运营方从太左卫门桥码头发船的游船）成人 ¥2,000，初中及以上学生 ¥1,000，小学生 ¥500，每位付费成人可带一位学龄前儿童免费。大阪官方旅游机构与大阪周游卡运营方发布的设施清单，列出的是同样这三个价格。持大阪周游卡或大阪 e-Pass 均可免费乘坐，但都要先在换票柜台兑换成注明发船时间的船票。这条河上的其他游船各自定价：日本桥码头的 Wonder Cruise 20 分钟道顿堀航线是 ¥1,000，Klook 上销售的几种游船则以各自商品页的标价为准。全部核查日 ${CHECKED}。`,
+    a: `成人 ¥2,000。Tombori River Cruise（由该运营方经营、从太左卫门桥码头出发的游船）成人 ¥2,000，初中及以上学生 ¥1,000，小学生 ¥500，每位付费成人可带一位学龄前儿童免费。大阪官方旅游机构与大阪周游卡运营方发布的设施清单，列出的是同样这三个价格。持大阪周游卡或大阪 e-Pass 均可免费乘坐，但都要先在换票柜台兑换成注明发船时间的船票。这条河上的其他游船各自定价：日本桥码头的 Wonder Cruise 20 分钟道顿堀航线是 ¥1,000，Klook 上销售的几种游船则以各自商品页的标价为准。全部核查日 ${CHECKED}。`,
   },
   {
     q: "道顿堀游船的开船时间是几点到几点？",
@@ -210,7 +210,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "一本松海运的 Tombori River Cruise 和道顿堀游船是同一种游船吗？",
-    a: `是同一种游船，只是有两个名字。Tombori River Cruise（とんぼりリバークルーズ）是官方商品名，由一本松海运运营，也是船票、码头和大阪周游卡免费设施清单上出现的名字。「道顿堀游船」是大多数游客搜索时使用的说法，也常被笼统地用来指这条河上的任何游船，包括日本桥码头的 Wonder Cruise，以及 Klook 上销售的 City Cruise、浪花观光游船与 TONBORIRAVE DJ 船，这些属于不同运营方，票价也不同。如果是为了用通票乘船，其中只有 Tombori River Cruise 包含在通票内。名称与运营方核查日 ${CHECKED}。`,
+    a: `是同一种游船，只是有两个名字。Tombori River Cruise（とんぼりリバークルーズ）是官方商品名，由一本松海运运营，也是船票、码头和大阪周游卡免费设施清单上出现的名字。「道顿堀游船」是大多数游客搜索时常用的叫法，也常被笼统地用来指这条河上的任何游船，包括日本桥码头的 Wonder Cruise，以及 Klook 上销售的 City Cruise、浪花观光游船与 TONBORIRAVE DJ 船，这些属于不同运营方，票价也不同。如果是为了用通票乘船，其中只有 Tombori River Cruise 包含在通票内。名称与运营方核查日 ${CHECKED}。`,
   },
   {
     q: "道顿堀游船的末班是几点？",
@@ -222,7 +222,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "大阪周游卡坐道顿堀游船免费吗？",
-    a: `免费。Tombori River Cruise 是大阪周游卡的免费设施之一，而且没有像梅田蓝天大厦那样的时间限制。它也是大阪 e-Pass 的免费设施。需要注意的是流程而不是费用：你要在换票柜台把通票兑换成注明发船时间的船票，运营方明确写着只能在票上的时间登船。通票运营方也提醒傍晚的游船很快售罄，建议在白天换票。一日卡 ${PASS_1_DAY}，仅 ¥2,000 的游船加上大阪城天守阁 ¥1,200，在还没乘坐任何一趟地铁之前就已经接近回本。条件核查日 ${CHECKED}。`,
+    a: `免费。Tombori River Cruise 是大阪周游卡的免费设施之一，而且没有像梅田蓝天大厦那样的时间限制。它也是大阪 e-Pass 的免费设施。需要注意的是流程而不是费用：你要在换票柜台把通票兑换成注明发船时间的船票，运营方明确写着只能在票上的时间登船。通票运营方也提醒傍晚的游船很快售罄，建议在白天换票。一日卡 ${PASS_1_DAY}，仅 ¥2,000 的游船加上大阪城天守阁 ¥1,200，还没坐一趟地铁，就已经接近抵消通票的价格。条件核查日 ${CHECKED}。`,
   },
   {
     q: "道顿堀游船需要提前订吗？",
@@ -230,7 +230,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "道顿堀游船晚上还是白天好？",
-    a: "只坐一次的话，建议晚上。这趟游船的看点是格力高广告牌、霓虹店面与水面的灯光，这些都要天黑后才看得到。白天也有两个实际的理由：时段比较容易订到；想在一天里安排好几个免费设施的通票持有人，会发现 13:00 的班次比 19:30 更好安排。如果想挑一班刚好赶上天色转暗的船，我们的梅田蓝天大厦攻略（英文）列有大阪各季节公布的日落时间。",
+    a: "如果只坐一次，建议选择晚上。这趟游船的看点是格力高广告牌、沿岸店铺的霓虹灯与水面倒影，这些都要天黑后才看得到。白天也有两个实际的理由：时段比较容易订到；想在一天里安排好几个免费设施的通票持有人，会发现 13:00 的班次比 19:30 更好安排。如果想挑一班刚好赶上天色转暗的船，我们的梅田蓝天大厦攻略（英文）列有大阪各季节公布的日落时间。",
   },
   {
     q: "下雨还会开船吗？",
@@ -242,18 +242,18 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "带小孩坐道顿堀游船合适吗？",
-    a: "合适，从票价设定就能看出来：小学生 ¥500，成人 ¥2,000。20 分钟的航程不长，孩子也比较容易保持注意力，讲解轻松热闹而不是一本正经，而且不像观景台或主题乐园项目那样要排长队。需要提前考虑的是：这艘船没有顶棚（八月日晒强烈，一月寒风刺骨），而且船票上注明了发船时间，需在该时间之前到达码头，而不是到了再说。",
+    a: "合适，从票价设定就能看出来：小学生 ¥500，成人 ¥2,000。20 分钟的航程不长，孩子也比较容易保持注意力，讲解轻松热闹而不是一本正经，而且不像观景台或主题乐园项目那样要排长队。需要提前考虑的是：这艘船没有顶棚（八月日晒强烈，一月寒风刺骨），而且船票上注明了发船时间，需在该时间之前到达码头，不能到了现场再临时决定。",
   },
   {
     q: "游船前后，道顿堀周边还能做什么？",
-    a: "20 分钟的航程只占一个晚上的一小部分，而码头两侧的街道是全日本美食最密集的地方。白天可以选美食漫步：Klook 上 11:00 到 14:00 的道顿堀拼团行程，包含串炸、章鱼烧、季节午餐套餐与一道甜点，2 到 10 人成团。晚上可以选穿梭于难波大街小巷的酒吧巡游，而不是只逛道顿堀大街。这两个行程走访的都是游船沿途能看到的那几百米街区。",
+    a: "20 分钟的航程只占一个晚上的一小部分，而码头两侧的街道是全日本餐饮店最密集的地方。白天可以选美食漫步：Klook 上 11:00 到 14:00 的道顿堀拼团行程，包含串炸、章鱼烧、季节午餐套餐与一道甜点，2 到 10 人成团。晚上可以选穿梭于难波大街小巷的酒吧巡游，而不是只逛道顿堀大街。这两个行程走访的都是游船沿途能看到的那几百米街区。",
   },
 ];
 
 const tourPicks = [
   withKlookLocale(dotonboriDaytimeFoodTour, L, {
     title: "大阪道顿堀白天美食之旅",
-    desc: "三小时的拼团漫步，时间为 11:00–14:00、2 到 10 人，内容有串炸、章鱼烧、居酒屋的季节午餐套餐与一道本地甜点",
+    desc: "3 小时的拼团步行游览，时间为 11:00–14:00、2 到 10 人，内容有串炸、章鱼烧、居酒屋的季节午餐套餐与一道本地甜点",
   }),
   withKlookLocale(nambaBarHoppingNightTour, L, {
     title: "大阪难波酒吧巡游夜间之旅",
@@ -298,7 +298,7 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
           </h1>
           <p className={styles.heroSubtitle}>
             成人 ¥2,000、约 20 分钟，11:00 到 21:00 之间从太左卫门桥码头每半小时一班。持大阪周游卡可免费乘船，
-            但需在傍晚班次满员前换好船票。
+            但需在傍晚班次售罄前换好船票。
           </p>
           <div className={styles.heroBadges}>
             {[`更新于 ${updatedLabel}`, "官方票价，附核查日", "六种游船对比"].map((t) => (
@@ -361,7 +361,7 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
             <p className={styles.verdictText}>
               其余细节：学生票适用于初中及以上，儿童票适用于小学生，
               每位付费成人可带一位学龄前儿童免费。换票柜台位于码头正对面的唐吉诃德道顿堀店 1 楼。
-              持<strong>大阪 e-Pass</strong> 也可免费乘坐，两种通票都没有下午时段的使用限制。但仅凭通票不能直接登船：
+              持<strong>大阪 e-Pass</strong> 也可免费乘坐，两种通票均不限制下午时段使用。但仅凭通票不能直接登船：
               你需要在换票柜台兑换成注明发船时间的船票，而通票运营方提醒傍晚的班次最先售罄。当天票从首班前
               一小时（10:00）起在码头销售；线上订票在开船前 10 分钟截止，不受理电话预约。
               全部核查日 {CHECKED}。
@@ -384,22 +384,22 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
           <span className={styles.sectionLabel}>游船介绍<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>道顿堀游船是什么？</h2>
           <p className={styles.bodyText}>
-            一趟 <strong>20 分钟、¥2,000</strong> 的航程，船身较低，没有顶棚，名字叫
+            一趟 <strong>20 分钟、¥2,000</strong> 的航程，船身较低，没有顶棚，名称为
             <strong>Tombori River Cruise</strong>，由<strong>一本松海运</strong>运营，
             从<strong>太左卫门桥码头</strong>在 <strong>11:00 到 21:00</strong> 之间每半小时开一班，
-            持<strong>大阪周游卡可免费乘坐</strong>。「道顿堀游船」是游客搜索时使用的说法；
-            <strong>Tombori River Cruise（とんぼりリバークルーズ）</strong>才是船票、码头指示牌与通票运营方免费设施清单上的名字，
+            持<strong>大阪周游卡可免费乘坐</strong>。「道顿堀游船」是游客搜索时常用的叫法；
+            <strong>Tombori River Cruise（とんぼりリバークルーズ）</strong>才是船票、码头指示牌及通票运营方免费设施清单上使用的名称，
             也是你在现场要找的名字。
           </p>
           <p className={styles.bodyText}>
-            游船行驶在几百米长的河段上，格力高广告牌、戎桥上的人潮和巨型机械螃蟹招牌都面向这段河道，船上有导游以大阪特有的轻松幽默风格讲解。
+            游船行驶在几百米长的河段上，格力高广告牌、戎桥上的人群以及巨型机械螃蟹招牌都集中在这段河道两岸，船上有导游以大阪特有的轻松幽默风格讲解。
           </p>
           <p className={styles.bodyText}>
-            这 20 分钟的看点在于从水上欣赏道顿堀的视角。道顿堀街上人流拥挤：站在戎桥上，你周围挤满了游客，想拍下招牌全景，却很难退后找到合适的拍摄距离。在水面上，船上的视线低于岸边人群，可以毫无遮挡地正面欣赏沿河店铺，桥从头顶近距离经过，这也说明了
+            这 20 分钟的看点在于从水上欣赏道顿堀的视角。道顿堀街上人流拥挤：站在戎桥上，你周围挤满了游客，想拍下招牌全景，却很难退后找到合适的拍摄距离。在水面上，从船上看，视角比岸边行人更低，可以毫无遮挡地正面欣赏沿河店铺，桥从头顶近距离经过，这也解释了
             这些船为什么没有顶棚。
           </p>
           <p className={styles.bodyText}>
-            这里没有需要抢购的分时段门票，没有开售日，工作日下午也没有售罄的风险。需要注意的是
+            这里不需要抢购分时段船票，也没有固定的开售日，工作日下午也没有售罄的风险。需要注意的是
             <strong>通票持有人的换票规则</strong>，以及比白天更早满员的傍晚班次，大多数人的行程安排
             就取决于这两点。本页其余部分介绍票价、时刻、码头，以及在同一河段运营的另外四种游船。
           </p>
@@ -410,7 +410,7 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
           <span className={styles.sectionLabel}>门票价格<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>道顿堀游船票价多少？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            <strong>成人 ¥2,000、学生 ¥1,000、儿童 ¥500。</strong>每个年龄段只有一个票价，所有班次都一样：
+            <strong>成人 ¥2,000、学生 ¥1,000、儿童 ¥500。</strong>各年龄段票价固定，所有班次价格相同：
             夜间班次不加价，这种定价方式并不常见，也是这趟游船性价比高却容易被忽略的原因：
           </p>
           <div className={styles.tableWrap}>
@@ -490,7 +490,7 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
             。
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            每天 21 个班次，是安排行程时有用的信息。这意味着游船可以安排在晚间行程中，无需为此占用整个晚上；
+            每天有 21 个班次，安排行程很方便。这意味着游船可以安排在晚间行程中，不必为此空出一整晚；
             而 <strong>21:00 的末班</strong>足够晚，无论哪个季节，都可以安排在晚餐后乘船。时刻核查日 {CHECKED}。
           </p>
 
@@ -499,7 +499,7 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
           </h3>
           <p className={styles.bodyText}>
             <strong>在水上约 20 分钟。</strong>大阪官方旅游网站写 20 分钟，「水都大阪」游船门户网站写
-            「约 20 分钟」，核查日都是 {CHECKED}。实际请预留<strong>从头到尾约 40 分钟</strong>：换票、走到浮动码头以及登上可容纳二三十人的小船，占去另一半时间。20 分钟对这条航线来说正合适：这段河道
+            「约 20 分钟」，核查日都是 {CHECKED}。实际请预留<strong>从头到尾约 40 分钟</strong>：换票、走到浮动码头以及登上可容纳二三十人的小船，还要再花约 20 分钟。20 分钟对这条航线来说正合适：这段河道
             两岸只有几百米的霓虹店面，即使航程更长，也只是多绕一圈。
           </p>
 
@@ -521,13 +521,13 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
             当天购票还是提前预订，以及哪些班次容易满员
           </h3>
           <p className={styles.bodyText}>
-            这两种方式并不相同，差别只有在天黑之后才会显现。<strong>当天购票</strong>：码头旁的售票处从 10:00 起出售最近一班尚有余位的船票，而通票运营方说得很直接：「所有座位都满的时候就不能登船」。
+            这两种方式并不相同，区别只在天黑后的班次上体现出来。<strong>当天购票</strong>：码头旁的售票处从 10:00 起出售最近一班尚有余位的船票，而通票运营方说得很直接：「所有座位都满的时候就不能登船」。
             <strong>提前预订</strong>：运营方的线上订票须预先付款，开放到<strong>开船前 10 分钟</strong>，
             周五或周六晚上建议使用。不受理电话预约。
           </p>
           <p className={styles.bodyText}>
             至于哪些时段最先满员，目前唯一公开的信息来自通票运营方，而且很具体：请在<strong>白天</strong>
-            换票，因为<strong>傍晚的游船很快售罄</strong>。按这一说明，入夜后的班次（19:00 至 21:00）才是最难订的，周末尤其如此，而工作日下午通常直接去现场就能乘船。除此之外没有任何公开的
+            换票，因为<strong>傍晚的游船很快售罄</strong>。按这一说明，入夜后的班次（19:00 至 21:00）才是最难订的，周末尤其如此，而工作日下午通常直接到现场就能乘船。除此之外没有任何公开的
             载客率数据，所以更具体的说法都只能算推测。说明核查日 {CHECKED}。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
@@ -545,7 +545,7 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
           <span className={styles.sectionLabel}>乘船时段<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>道顿堀游船晚上还是白天好？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1.25rem" }}>
-            <strong>只坐一次的话，建议晚上</strong>：霓虹灯夜景才是亮点，而每个班次票价相同，所以无需额外付费就能看到夜景。
+            <strong>如果只坐一次，建议选择晚上</strong>：霓虹灯夜景才是亮点，而每个班次票价相同，所以无需额外付费就能看到夜景。
             但使用通票时答案会不同，因为你实际能订到的时段，不一定是你想要的时段：
           </p>
           <div className={styles.whoForGrid}>
@@ -560,7 +560,7 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             如果想刚好赶上天色转暗，请按日期挑班次：我们的{" "}
             <Link href="/guides/attractions/umeda-sky-building-tickets" style={linkStyle}>梅田蓝天大厦攻略（英文）</Link>{" "}
-            列有大阪各季节公布的日落时间，一年之中前后相差约两个半小时。
+            列有大阪各季节公布的日落时间，全年日落时间前后相差约两个半小时。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
             <KlookLink href={K.rave} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
@@ -578,10 +578,10 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
           <h2 className={styles.sectionTitle}>道顿堀的游船该选哪一艘？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             这段河道上有多家游船运营商，彼此不能互相替代。有两点区别值得注意。第一，
-            <strong>只有 Tombori River Cruise 属于通票包含的游船项目</strong>，而 Klook 并没有把它作为单独商品销售，所以如果
+            <strong>通票包含的游船项目只有 Tombori River Cruise</strong>，而 Klook 并没有把它作为单独商品销售，所以如果
             你持有大阪通票，要在柜台换票，而不是在手机上预订。第二，唯一公布了官方票价的其他游船，
             日本桥码头的 <strong>Wonder Cruise</strong>，
-            <strong>提供票价 ¥1,000、航程 20 分钟的道顿堀航线，票价是 Tombori River Cruise 的一半</strong>，
+            <strong>提供成人票价 ¥1,000、航程 20 分钟的道顿堀航线，票价是 Tombori River Cruise 的一半</strong>，
             适合自费且没有通票的游客。
           </p>
           <div className={styles.tableWrap}>
@@ -665,7 +665,7 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
             而不是 19:20 才到，然后发现下一班可免费乘坐的船是 21:00。
           </p>
           <p className={styles.bodyText}>
-            要再去第三个通票设施才划算。一日卡 {PASS_1_DAY}（官方价格，2026 年 11 月 9 日核查），游船（¥2,000）加上大阪城天守阁（¥1,200）是 ¥3,200 的
+            还要再去第三个通票包含的景点才划算。一日卡 {PASS_1_DAY}（官方价格，2026 年 11 月 9 日核查），游船（¥2,000）加上大阪城天守阁（¥1,200）是 ¥3,200 的
             门票，略低于通票价格；再加上 15:00 之前的梅田观景台就是 ¥5,200。完整的免费设施清单、
             两日卡价格与不含项目，请见我们的{" "}
             <Link href="/guides/attractions/osaka-attractions-pass" style={linkStyle}>大阪周游卡攻略（英文）</Link>；
@@ -692,8 +692,8 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
         <FaqList items={faqItems} />
 
         <KlookTourPicks
-          heading="坐船前后的那几个小时"
-          intro="20 分钟的游船之外，整个晚上都还空着，而码头周围的街道是全日本美食最密集的地方。第一个是白天的漫步行程，第二个是天黑之后的行程。Klook 价格随日期变化，请打开商品页查看当前票价与集合地点。"
+          heading="乘船前后的行程安排"
+          intro="20 分钟的游船之外，整个晚上都还空着，而码头周围的街道是全日本餐饮店最密集的地方。第一个是白天的漫步行程，第二个是天黑之后的行程。Klook 价格随日期变化，请打开商品页查看当前票价与集合地点。"
           tours={tourPicks}
         />
 
@@ -717,7 +717,7 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>关键是提前确定乘船时段</h2>
             <p className={styles.ctaBannerDesc}>
-              ¥2,000 的票价不是问题，难订的是傍晚的班次；即使持有可免费乘船的通票，也要在夜间班次满员前
+              ¥2,000 的票价不是重点，真正难订的是傍晚的班次；即使持有可免费乘船的通票，也要在夜间班次满员前
               到柜台换票。付款前请查看订单上显示的取消条件，取消条件按商品而不是按运营方设定。
             </p>
             <div className={styles.pickCtaRow}>

@@ -99,7 +99,7 @@ const variantRows = [
   },
   {
     pass: "입장 확약권이 포함된 버전",
-    covers: "일부 익스프레스 패스에는 슈퍼 닌텐도 월드 입장 확약권(エリア入場確約券)이 들어 있어, 도착하기 전에 슈퍼 닌텐도 월드 입장 시간을 확보할 수 있습니다.",
+    covers: "일부 익스프레스 패스에는 슈퍼 닌텐도 월드 입장 확약권(エリア入場確約券)이 포함되어 있어, 도착하기 전에 슈퍼 닌텐도 월드 입장 시간을 확보할 수 있습니다.",
     snw: "포함 — 추가 금액이 바로 이 부분입니다",
     price: VARIANT_PRICE,
     bestFor: "슈퍼 닌텐도 월드가 여행의 이유인 사람",
@@ -176,7 +176,7 @@ const needRows = [
   {
     date: "일본 공휴일 또는 연휴",
     verdict: "구매, 그것도 일찍",
-    why: "방문객 수요 위에 일본 국내 수요가 겹치고, 하루 판매 수량은 정해져 있습니다. 이런 날에는 원하는 버전이 가장 먼저 사라집니다.",
+    why: "방문객 수요 위에 일본 국내 수요가 겹치고, 하루 판매 수량은 정해져 있습니다. 이런 날에는 원하는 버전이 가장 먼저 매진됩니다.",
   },
   {
     date: "25주년 및 겨울 방학 날짜",
@@ -214,7 +214,7 @@ const buyRows = [
   },
   {
     where: "GetYourGuide",
-    what: "익스프레스 패스 단독 판매, 두 번째 판매처",
+    what: "익스프레스 패스 단독 판매, 다른 구매처",
     opens: "상품 페이지에 표시된 날짜",
     change: "상품 페이지의 취소 규정 참고",
     note: "첫 번째 판매처에서 날짜가 매진됐을 때 볼 만합니다. 판매 수량은 날짜별이자 판매처별로 배정됩니다.",
@@ -270,7 +270,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "스튜디오 패스 없이 USJ 익스프레스 패스만으로 들어갈 수 있나요?",
-    a: `없습니다. USJ 공식 익스프레스 패스 페이지는 파크 입장에 스튜디오 패스(또는 연간 패스)가 필요하며, 익스프레스 패스와 별도로 테마파크 입장권이 필요하다고 밝힙니다. 익스프레스 패스는 입장한 뒤 줄을 줄여 줄 뿐입니다. ${CHECKED_USJ} 확인.`,
+    a: `없습니다. USJ 공식 익스프레스 패스 페이지는 파크 입장에 스튜디오 패스(또는 연간 패스)가 필요하며, 익스프레스 패스와 별도로 테마파크 입장권이 필요하다고 밝힙니다. 익스프레스 패스는 입장한 뒤 어트랙션 대기 시간을 줄여 줄 뿐입니다. ${CHECKED_USJ} 확인.`,
   },
   {
     q: "유니버설 스튜디오 재팬 익스프레스 패스는 얼마나 미리 살 수 있나요?",
@@ -290,15 +290,15 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "유니버설 스튜디오 재팬에 가려면 어디에 묵어야 하나요?",
-    a: `개장 시간에 게이트에 있고 싶다면 유니버설시티, 그렇지 않다면 우메다나 오사카역입니다. 파크 게이트는 JR 유메사키선 유니버설시티역에서 걸어서 약 5분이고, 파크는 오사카역에서 약 20분입니다. 두 수치 모두 오사카 관광국(Osaka Convention & Tourism Bureau)의 것으로 ${CHECKED} 확인했습니다. JR 서일본의 목적지 페이지는 유니버설시티역을 파크의 가장 가까운 역으로 꼽고 파크가 역 ‘바로 옆’에 있다고 설명합니다. 고려할 점은 여행의 나머지입니다. 우메다와 오사카역은 JR 주요 노선 위에 있고, 유니버설시티 호텔은 몇 곳이 모여 있을 뿐이라 붐비는 날짜에는 가장 먼저 객실이 찹니다.`,
+    a: `개장 시간에 게이트에 있고 싶다면 유니버설시티, 그렇지 않다면 우메다나 오사카역입니다. 파크 게이트는 JR 유메사키선 유니버설시티역에서 걸어서 약 5분이고, 파크는 오사카역에서 약 20분입니다. 두 수치 모두 오사카 관광국(Osaka Convention & Tourism Bureau)의 것으로 ${CHECKED} 확인했습니다. JR 서일본의 목적지 페이지는 유니버설시티역을 파크의 가장 가까운 역으로 꼽고 파크가 역 ‘바로 옆’에 있다고 설명합니다. 반면 여행의 나머지 일정을 생각하면 판단이 달라집니다. 우메다와 오사카역은 JR 주요 노선 위에 있고, 유니버설시티 호텔은 몇 곳이 모여 있을 뿐이라 붐비는 날짜에는 가장 먼저 객실이 찹니다.`,
   },
   {
     q: "간사이 공항이나 오사카역에서 USJ까지 어떻게 가나요?",
-    a: `역은 JR 유메사키선(사쿠라지마선) 유니버설시티역이고, 보통 니시쿠조에서 갈아탑니다. 오사카 관광국은 파크까지 오사카역에서 약 20분으로 봅니다. 간사이 공항에서는 직통 열차가 없습니다. JR 서일본의 하루카는 덴노지, 오사카, 신오사카, 교토까지 환승 없이 가며, 단기 체류로 입국한 외국 여권 소지자용 할인 편도는 2026년 10월 31일까지 덴노지 ¥1,300, 오사카·신오사카 ¥1,800이고 2026년 11월 1일부터 ¥1,600과 ¥1,900으로 오릅니다. 또는 난카이 라피트가 운임과 별도로 어른 ¥700의 특급권으로 난바까지 최소 34분에 갑니다. 어느 쪽이든 환상선으로 니시쿠조까지 간 뒤 유메사키선으로 갈아탑니다. 모든 수치는 ${CHECKED} 확인.`,
+    a: `역은 JR 유메사키선(사쿠라지마선) 유니버설시티역이고, 보통 니시쿠조에서 갈아탑니다. 오사카 관광국은 파크까지 오사카역에서 약 20분으로 봅니다. 간사이 공항에서는 직통 열차가 없습니다. JR 서일본의 하루카는 덴노지, 오사카, 신오사카, 교토까지 환승 없이 가며, 단기 체류로 입국한 외국 여권 소지자용 할인 편도는 2026년 10월 31일까지 덴노지 ¥1,300, 오사카·신오사카 ¥1,800이고 2026년 11월 1일부터 각각 ¥1,600과 ¥1,900으로 인상됩니다. 또는 난카이 라피트가 운임과 별도로 어른 ¥700의 특급권으로 난바까지 최소 34분에 갑니다. 어느 쪽이든 환상선으로 니시쿠조까지 간 뒤 유메사키선으로 갈아탑니다. 모든 수치는 ${CHECKED} 확인.`,
   },
   {
     q: "USJ 익스프레스 패스는 당일에 어떻게 사용하나요?",
-    a: "익스프레스 패스 입구에서 QR 코드가 포함된 티켓 화면 전체를 크루에게 보여 줍니다. 일부 어트랙션은 티켓에 지정 시간이 찍혀 있고, 나머지는 운영 시간 중 언제든 탈 수 있습니다. 지정 시간에 늦어도 환불이나 시간 변경은 되지 않으며, 티켓은 1인 1매입니다. usj.co.jp의 검색 색인 기준, 2026년 11월 6일 확인.",
+    a: "익스프레스 패스 입구에서 QR 코드가 포함된 티켓 화면 전체를 크루에게 보여 줍니다. 일부 어트랙션은 이용 시간이 티켓에 지정되어 있고, 나머지는 운영 시간 중 언제든 탈 수 있습니다. 지정 시간에 늦어도 환불이나 시간 변경은 되지 않으며, 티켓은 1인 1매입니다. usj.co.jp의 검색 색인 기준, 2026년 11월 6일 확인.",
   },
   {
     q: "오사카나 간사이 패스로 USJ가 커버되나요?",
@@ -337,7 +337,7 @@ const expressSameDayPrep: KlookTripPrepItem[] = [
   withKlookLocale(usjExpressSameDayPrep[3], LOCALE, {
     label: "클룩 일본 eSIM",
     ctaLabel: "클룩 eSIM 보기 →",
-    why: "익스프레스 패스와 스튜디오 패스는 QR 전자 티켓이고, 슈퍼 닌텐도 월드 입장은 USJ 공식 앱으로 이뤄집니다. 모두 파크 안에서 데이터가 필요합니다.",
+    why: "익스프레스 패스와 스튜디오 패스는 QR 전자 티켓이고, 슈퍼 닌텐도 월드 입장은 USJ 공식 앱으로 이뤄집니다. 모두 파크 안에서도 모바일 데이터가 필요합니다.",
   }),
 ];
 
@@ -380,11 +380,11 @@ const stayAreas: KlookStayArea[] = [
   }),
   withKlookLocale(usjStayAreas[2], LOCALE, {
     area: "덴노지",
-    why: "JR 쪽의 더 저렴한 거점이자 간사이 공항발 하루카가 처음 서는 시내 역입니다. 환상선으로 시내 중심을 지나지 않고 니시쿠조까지 가서 유메사키선으로 갈아탈 수 있습니다.",
+    why: "JR 이용이 편한, 비교적 저렴한 숙박 지역이자 간사이 공항발 하루카가 처음 서는 시내 역입니다. 환상선으로 시내 중심을 지나지 않고 니시쿠조까지 가서 유메사키선으로 갈아탈 수 있습니다.",
   }),
   withKlookLocale(usjStayAreas[3], LOCALE, {
     area: "난바",
-    why: "파크가 더 넓은 오사카 여행의 하루일 뿐이라면 이곳입니다. 도톤보리와 구로몬 시장이 걸어서 가깝고, 난카이 종착역이 있어 귀국하는 날 라피트로 간사이 공항까지 최소 34분(난카이 기준)입니다.",
+    why: "USJ가 오사카 여행 일정 중 하루일 뿐이라면 이곳이 좋습니다. 도톤보리와 구로몬 시장이 걸어서 가깝고, 난카이 종착역이 있어 귀국하는 날 라피트로 간사이 공항까지 최소 34분(난카이 기준)입니다.",
   }),
 ];
 
@@ -392,7 +392,7 @@ const tripPrep: KlookTripPrepItem[] = [
   withKlookLocale(usjTripPrep[0], LOCALE, {
     label: "오사카 주유패스(1일권/2일권)",
     ctaLabel: "오사카 패스 보기 →",
-    why: "꼼꼼히 읽어 주세요. 이 패스는 유니버설 스튜디오 재팬을 포함하지 않고, 유니버설시티까지의 JR 구간도 포함하지 않습니다. 포함되는 것은 오사카 여행의 다른 모든 날, 즉 오사카 메트로와 시내버스 무제한에 40곳 이상의 입장입니다.",
+    why: "꼼꼼히 읽어 주세요. 이 패스는 유니버설 스튜디오 재팬을 포함하지 않고, 유니버설시티까지의 JR 구간도 포함하지 않습니다. USJ에 가지 않는 오사카 여행의 다른 날에 쓰는 패스로, 오사카 메트로·시내버스 무제한 이용과 40곳 이상의 시설 입장이 포함됩니다.",
   }),
   withKlookLocale(usjTripPrep[1], LOCALE, {
     label: "교토·나라 당일 투어(기요미즈데라, 후시미 이나리, 나라 공원)",
@@ -418,7 +418,7 @@ const highRateTopPrep: KlookTripPrepItem[] = [
   withKlookLocale(usjHighRateTopPrep[0], LOCALE, {
     label: "교토・나라 당일 투어(기요미즈데라・후시미 이나리・나라 공원)",
     ctaLabel: "교토・나라 투어 보기 →",
-    why: "USJ 여행의 둘째 날로 많이 고르는 코스입니다. 오사카에서 출발해 기요미즈데라, 후시미 이나리, 나라 공원을 하루에 돌아봅니다.",
+    why: "USJ 방문 다음 날 일정으로 많이 고르는 코스입니다. 오사카에서 출발해 기요미즈데라, 후시미 이나리, 나라 공원을 하루에 돌아봅니다.",
   }),
   withKlookLocale(usjHighRateTopPrep[1], LOCALE, {
     label: "간사이 공항 ⇄ 오사카 호텔 짐 배송(LuggAgent)",
@@ -428,7 +428,7 @@ const highRateTopPrep: KlookTripPrepItem[] = [
   withKlookLocale(usjHighRateTopPrep[2], LOCALE, {
     label: "JR 간사이 레일 패스(1~4일)",
     ctaLabel: "JR 간사이 패스 보기 →",
-    why: "클룩 상품 설명 기준으로 오사카・교토・고베・나라 주변 JR 서일본 보통・쾌속 열차와 간사이 공항에서 출발하는 하루카를 무제한 탈 수 있습니다. 교토・나라를 직접 다녀오는 날에 맞는 패스입니다.",
+    why: "클룩 상품 설명 기준으로 오사카·교토·고베·나라 주변 JR 서일본 보통·쾌속 열차와 간사이 공항에서 출발하는 하루카를 무제한 탈 수 있습니다. 교토·나라를 직접 다녀오는 날에 맞는 패스입니다.",
   }),
 ];
 const highRateFaqPrep: KlookTripPrepItem[] = [
@@ -443,9 +443,9 @@ const highRateFaqPrep: KlookTripPrepItem[] = [
     why: "두 동의 빌딩 꼭대기를 잇는 173m 옥상 전망대로, 오사카역에서 걸어갈 수 있어 저녁에 들르기 좋습니다. 이곳도 어메이징 패스에 포함됩니다.",
   }),
   withKlookLocale(osakaSightsHighRatePrep[2], LOCALE, {
-    label: "오사카성・우메다 스카이 빌딩・돔보리 리버 크루즈 1일 투어",
+    label: "오사카성·우메다 스카이 빌딩·톤보리 리버 크루즈 1일 투어",
     ctaLabel: "1일 투어 보기 →",
-    why: "가이드와 함께 오사카성, 우메다 전망대, 도톤보리의 돔보리 리버 크루즈를 하루에 돌아봅니다. 동선은 가이드가 맡습니다.",
+    why: "가이드와 함께 오사카성, 우메다 전망대, 도톤보리의 톤보리 리버 크루즈를 하루에 돌아봅니다. 동선은 가이드가 맡습니다.",
   }),
 ];
 
@@ -501,8 +501,8 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             주로 <strong>익스프레스 패스 4</strong>(어트랙션 4개)와 <strong>익스프레스 패스 7</strong>(어트랙션
             7개)로 팔리며, 각각 하나의 날짜에 묶여 있고 입장권이 아니므로 같은 날짜의 스튜디오 패스가 따로
             필요합니다. USJ는 고정 가격을 정하지 않아 종류와 가격이 입장일에 따라 다르고, 방문 약 2개월 전에
-            판매가 시작되며, 하루 판매 수량이 한정되어 미리 매진되는 경우가 많습니다. 주말, 일본 공휴일, 겨울 방학
-            날짜라면 사고, 한가한 평일이라면 대개 스튜디오 패스만으로 충분합니다. usj.co.jp에서 {CHECKED_USJ},{" "}
+            판매가 시작되며, 하루 판매 수량이 한정되어 미리 매진되는 경우가 많습니다. 주말이나 일본 공휴일, 겨울 방학
+            기간에 방문한다면 구매하고, 한가한 평일이라면 대개 스튜디오 패스만으로 충분합니다. usj.co.jp에서 {CHECKED_USJ},{" "}
             {CHECKED_TODAY} 확인.
           </p>
         </section>
@@ -533,7 +533,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             <p className={styles.verdictText}>
               <strong>요약:</strong> 입장용으로 스튜디오 패스를 사고, 익스프레스 패스는 날짜를 보고 정하세요.
               붐비는 날 하루이고 인기 어트랙션을 타고 싶다면 익스프레스 패스 7, 비교적 한가한 날이거나 상위 몇
-              개만 원한다면 익스프레스 패스 4, 슈퍼 닌텐도 월드가 여행의 목적이라면 입장 확약권이 포함된 버전입니다.
+              개만 원한다면 익스프레스 패스 4, 슈퍼 닌텐도 월드 방문이 주목적이라면 입장 확약권이 포함된 버전을 고르세요.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink href={koUsjStudioPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
@@ -576,7 +576,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
         <div data-placement="usj-highrate-top">
           <KlookTripPrep
             label="파크 앞뒤 일정"
-            heading="USJ 앞뒤 날짜에 예약해 두면 좋은 것"
+            heading="USJ 방문 전후 일정에 예약해 두면 좋은 것"
             intro="익스프레스 패스로 파크 날짜가 정해지면 나머지 오사카 일정도 함께 정해 두기 좋습니다. 교토・나라 당일 투어, 공항과 호텔 사이 짐 배송, JR 간사이 패스입니다."
             items={highRateTopPrep}
             adPlacement="usj-highrate-top"
@@ -636,7 +636,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <p className={styles.bodyText}>
             필요합니다. USJ 공식 익스프레스 패스 페이지는 테마파크 입장권이 별도로 필요하다고 밝히므로, 일행
             모두 익스프레스 패스와 같은 날짜에 유효한 스튜디오 패스(또는 연간 패스)가 있어야 합니다. 익스프레스
-            패스는 입장한 뒤 줄을 줄여 줄 뿐입니다. {CHECKED_USJ} 확인.
+            패스는 입장한 뒤 어트랙션 대기 시간을 줄여 줄 뿐입니다. {CHECKED_USJ} 확인.
           </p>
           <div className={styles.pickCtaRow}>
             <KlookLink href={koUsjStudioPass.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
@@ -711,8 +711,8 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <p className={styles.bodyText}>
             붐비는 날짜에 첫 방문이라면 익스프레스 패스 7, 비교적 한가한 날짜나 짧은 하루, 또는 상위 몇 개
             어트랙션만 원하는 재방문이라면 익스프레스 패스 4입니다. 숫자는 우선 탑승 혜택이 적용되는 어트랙션 이용 횟수를 뜻하며,
-            어트랙션 목록 자체는 버전과 날짜별로 정해져 있습니다. 패스 이름의 숫자보다 방문 날짜에 이용 가능한
-            어트랙션을 확인하세요.
+            어트랙션 목록 자체는 버전과 날짜별로 정해져 있습니다. 패스 이름에 붙은 숫자보다 방문 날짜에 어떤 어트랙션이 포함되는지
+            확인하세요.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -918,10 +918,10 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <span className={styles.sectionLabel}>당일 이용</span>
           <h2 className={styles.sectionTitle}>USJ 익스프레스 패스는 당일에 어떻게 쓰나요?</h2>
           <ul className={styles.bodyList}>
-            <li><strong>시간 지정 어트랙션:</strong> 패스의 일부 어트랙션에는 지정 시간이 티켓에 찍혀 있습니다. 그 시간에 가야 하며, 늦어도 환불이나 시간 변경은 되지 않습니다.</li>
+            <li><strong>시간 지정 어트랙션:</strong> 일부 어트랙션은 이용 시간이 티켓에 지정되어 있습니다. 그 시간에 가야 하며, 늦어도 환불이나 시간 변경은 되지 않습니다.</li>
             <li><strong>시간 자유 어트랙션:</strong> 나머지는 운영 시간 중 언제든 탈 수 있습니다.</li>
             <li><strong>탑승 시:</strong> 익스프레스 패스 입구에서 QR 코드가 포함된 티켓 화면 전체를 크루에게 보여 줍니다.</li>
-            <li><strong>1회 1어트랙션:</strong> 한 칸에 여러 어트랙션이 적혀 있으면 그중 하나에만 쓸 수 있습니다.</li>
+            <li><strong>1회 1어트랙션:</strong> 티켓의 한 항목에 여러 어트랙션이 적혀 있으면 그중 하나에만 쓸 수 있습니다.</li>
             <li><strong>1인 1매:</strong> 티켓은 개인별이므로 일행 모두 각자 필요합니다.</li>
             <li><strong>싱글 라이더:</strong> 익스프레스 패스와는 별개의 제도로, 일행과 떨어져 빈 좌석을 채웁니다. 운영하지 않는 날과 시간이 있으니 각 어트랙션의 크루에게 문의하세요.</li>
           </ul>
@@ -960,7 +960,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             옆&rdquo;에 있다고 설명합니다(같은 날 확인).
           </p>
           <p className={styles.bodyText}>
-            그 도보 거리가 핵심입니다. 익스프레스 패스를 쓰는 날에는 일찍 개찰구를 통과하고 싶고, 이동을 5분
+            게이트까지 걸어갈 수 있다는 점이 핵심입니다. 익스프레스 패스를 쓰는 날에는 일찍 개찰구를 통과하고 싶고, 이동을 5분
             도보로 바꿔 주는 지역은 유니버설시티뿐입니다. 반대 논리는 여행의 나머지입니다. 우메다와 오사카역은
             JR 주요 노선 위에 있고, 유니버설시티 호텔은 몇 곳이 모여 있을 뿐이라 붐비는 날짜에는 가장 먼저 객실이
             찹니다.{" "}
@@ -994,7 +994,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             <strong>간사이 공항</strong>에서 시내로 들어가는 합리적인 방법은 두 가지이고, 둘 다 파크까지 바로
             가지는 않습니다. JR 서일본의 하루카는 공항에서 덴노지, 오사카, 신오사카, 교토까지 환승 없이 갑니다.
             할인 편도 티켓은 단기 체류로 입국한 외국 여권 소지자에게만 판매되며, 2026년 10월 31일까지 덴노지
-            ¥1,300, 오사카·신오사카 ¥1,800이고 2026년 11월 1일부터 ¥1,600과 ¥1,900으로 오르며, 어린이는 반액입니다.
+            ¥1,300, 오사카·신오사카 ¥1,800이고 2026년 11월 1일부터 각각 ¥1,600과 ¥1,900으로 인상되며, 어린이는 반액입니다.
             난카이 라피트는 환승 없이 난바까지 최소 34분이며, 보통 운임에 더해 어른 ¥700, 어린이 ¥350의 특급권이
             필요합니다. 차내에서 사면 ¥300 더 비싸고, 티켓리스로 사면 ¥150 저렴합니다. JR 서일본과 난카이 수치,
             둘 다 {CHECKED} 확인. 어느 쪽이든 그다음 환상선으로 니시쿠조까지 가서 유메사키선으로 갈아탑니다.
@@ -1024,7 +1024,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             <Link href="/guides/transport/osaka-airport-transfer" style={linkStyle}>
               오사카 공항 교통 가이드(영어)
             </Link>
-            (하루카와 난카이 라피트 비교 포함)와 1일권 정보가 있는{" "}
+            (하루카와 난카이 라피트 비교 포함)와 1일권 정보를 다룬{" "}
             <Link href="/guides/transport/osaka-transportation" style={linkStyle}>
               오사카 시내 교통 가이드(영어)
             </Link>
@@ -1046,7 +1046,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
         <KlookTripPrep
           label="함께 예약할 것"
           heading="오사카 여행에 그 밖에 무엇을 예약할까?"
-          intro="파크는 하루입니다. 아래 세 가지는 같은 여행에서 보통 그 앞뒤로 필요한 것들이고, 첫 번째는 잘못된 이유로 사지 않도록 목록에 넣었습니다."
+          intro="USJ에 쓰는 날은 하루입니다. 아래 세 가지는 같은 여행에서 보통 그 앞뒤로 필요한 것들이고, 첫 번째는 잘못된 이유로 사지 않도록 목록에 넣었습니다."
           items={tripPrep}
         />
 
@@ -1084,13 +1084,13 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
         <GygCompare
           slug={GYG_SLUG}
           heading="GetYourGuide의 USJ 티켓과 익스프레스 패스"
-          intro="익스프레스 패스는 하루 수량이 정해져 있고 적힌 날짜에 묶여 있어서, 원하는 패스가 이미 매진된 경우가 많습니다. GetYourGuide는 익스프레스 패스를 단독으로 팔고(다른 곳과 마찬가지로 파크 입장권은 포함되지 않습니다), 스튜디오 패스는 따로 팝니다. 위에서 날짜가 매진됐다면 여행 날짜를 바꾸기 전에 여기를 확인해 보세요."
+          intro="익스프레스 패스는 하루 수량이 정해져 있고 적힌 날짜에만 사용할 수 있어서, 원하는 패스가 이미 매진된 경우가 많습니다. GetYourGuide는 익스프레스 패스를 단독으로 팔고(다른 곳과 마찬가지로 파크 입장권은 포함되지 않습니다), 스튜디오 패스는 따로 팝니다. 위에서 날짜가 매진됐다면 여행 날짜를 바꾸기 전에 여기를 확인해 보세요."
           listings={[gygUsjExpressPass, gygUsj]}
         />
 
         <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>
-            <h2 className={styles.ctaBannerTitle}>USJ에서 줄을 줄이세요</h2>
+            <h2 className={styles.ctaBannerTitle}>USJ에서 대기 시간을 줄이세요</h2>
             <p className={styles.ctaBannerDesc}>
               입장용 스튜디오 패스를 온라인으로 사고, 날짜에 필요한 익스프레스 패스 버전을 더하세요. 하루 판매
               수량은 정해져 있고, 슈퍼 닌텐도 월드 입장 확약권이 포함된 버전이 가장 먼저 팔립니다.

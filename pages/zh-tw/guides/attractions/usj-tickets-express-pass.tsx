@@ -79,21 +79,21 @@ const variantRows = [
   // First row is the answer (2026-11-14, mirrors English).
   {
     pass: "不確定？從這裡開始",
-    covers: "第一次來、人多的一天選快速通關 7；人潮較少的日期或第二次來選快速通關 4；如果超級任天堂世界是這趟的理由，選含區域入場的版本。",
+    covers: "第一次來、人多的一天選快速通關 7；人潮較少的日期或第二次來選快速通關 4；如果超級任天堂世界是這趟的理由，選含超級任天堂世界區域入場的版本。",
     snw: "選註明含區域入場的版本",
     price: VARIANT_PRICE,
     bestFor: "週末或假日第一次來的多數人：快速通關 7",
   },
   {
     pass: "快速通關 4",
-    covers: "四個設施名額。USJ 把這一款描述為玩必玩設施用的通關券；是哪四項，依版本與日期固定。",
+    covers: "四項設施。USJ 將這款定位為暢玩人氣設施的通關券；是哪四項，依版本與日期固定。",
     snw: "只有註明包含的版本才有",
     price: VARIANT_PRICE,
     bestFor: "時間短的一天、第二次來，或人少的日子只想玩主力設施",
   },
   {
     pass: "快速通關 7",
-    covers: "七個設施名額——多數第一次來的人會在兩種數量中選的較大那一款，設施清單同樣依版本而定。",
+    covers: "七項設施——多數第一次來的人會在兩種數量中選的較大那一款，設施清單同樣依版本而定。",
     snw: "只有註明包含的版本才有",
     price: VARIANT_PRICE,
     bestFor: "只有一天、第一次來、人多的日子",
@@ -103,12 +103,12 @@ const variantRows = [
     covers: "USJ 也賣以單一設施或季節陣容為主的快速通關，各有自己的清單，會隨樂園活動推出與下架。",
     snw: "依版本而異",
     price: VARIANT_PRICE,
-    bestFor: "有某一項非玩不可的設施，而不是追求廣泛涵蓋",
+    bestFor: "有某一項非玩不可的設施，而不是想多玩幾項",
   },
   {
     pass: "含區域入場的版本",
-    covers: "部分快速通關附帶超級任天堂世界的園區指定時段入場券，讓你在抵達前就握有入區時段。",
-    snw: "有——多付的錢買的就是這個",
+    covers: "部分快速通關附帶超級任天堂世界的園區指定時段入場券，讓你在抵達前就取得入區時段。",
+    snw: "有——多付的錢就是買這項入場資格",
     price: VARIANT_PRICE,
     bestFor: "超級任天堂世界就是這趟旅行理由的人",
   },
@@ -121,7 +121,7 @@ const pricingRows = [
     source: "Universal Express Pass 頁面，usj.co.jp",
   },
   {
-    what: "這套做法實施多久了",
+    what: "這套定價方式實施多久了",
     usj: "快速通關自 2018 年起即採類似的需求定價制度，目前沒有變更計畫。",
     source: "〈Pricing for Studio Passes to Change〉，2026年6月30日，usj.co.jp",
   },
@@ -170,12 +170,12 @@ const needRows = [
   {
     date: "日本學校假期以外、人少的平日",
     verdict: "通常可以不買",
-    why: "普通排隊最短，而透過官方 App 免費取得園區指定時段入場的方式，在你入園時最有可能還有名額。",
+    why: "一般排隊時間最短，而透過官方 App 免費取得園區指定時段入場的方式，在你入園時最有可能還有名額。",
   },
   {
     date: "週六或週日",
     verdict: "買",
-    why: "依日期定價反映的正是週末需求。這是快速通關的一般情況，便宜的版本會最先賣完。",
+    why: "依日期定價反映的正是週末需求。這是快速通關的一般情況，便宜的版本會最早售罄。",
   },
   {
     date: "日本國定假日或連假",
@@ -190,14 +190,14 @@ const needRows = [
   {
     date: "超級任天堂世界是你去的理由",
     verdict: "買含區域入場的版本",
-    why: "這是在抵達前就握有入區時段的唯一方式。免費的方式確實存在，但那是當天在園內先到先得。",
+    why: "這是在抵達前就取得入區時段的唯一方式。免費的方式確實存在，但那是當天在園內先到先得。",
   },
 ];
 
 const buyRows = [
   {
     where: "USJ WEB Ticket Store（官方）",
-    what: "你那天在售的所有版本，以當天價格販售",
+    what: "你入園日期當天在售的所有版本，以當天價格販售",
     opens: "入園日前約兩個月",
     change: "僅限票面日期有效（USJ）",
     note: "熱門開賣日請預期會有排隊系統。",
@@ -211,7 +211,7 @@ const buyRows = [
   },
   {
     where: "Klook",
-    what: "單獨販售的快速通關，結帳介面看得懂、可用海外信用卡付款，並提供電子票",
+    what: "單獨販售的快速通關，結帳介面易懂、可用海外信用卡付款，並提供電子票",
     opens: "依商品頁顯示的日期",
     change: "請看商品頁的取消規定",
     note: "USJ 自己的指定時間入場頁面說，區域入場也可以透過特定旅行社事先取得。",
@@ -221,7 +221,7 @@ const buyRows = [
     what: "單獨販售的快速通關，作為第二個購買管道",
     opens: "依商品頁顯示的日期",
     change: "請看商品頁的取消規定",
-    note: "第一個管道你的日期已售完時值得看看——配額除了每天有上限，也是按販售管道分配。",
+    note: "第一個管道已售完你要的日期時，值得來這裡看看——配額除了每天有上限，也是按販售管道分配。",
   },
   {
     where: "當天在樂園",
@@ -251,7 +251,7 @@ const steps = [
   },
   {
     title: "建議提早抵達園區",
-    desc: "人潮較多時，園區可能提早開園。提早到，才能讓免費的園區指定時段入場方式變得實際可行——如果你買的版本不含區域入場的話。",
+    desc: "人潮較多時，園區可能提早開園。提早到，免費取得區域指定時段入場的機會才比較實際——如果你買的版本不含區域入場的話。",
   },
 ];
 
@@ -262,15 +262,15 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "USJ 門票一定要提前買嗎？",
-    a: "要。日本環球影城已停止在門口販售當日票，所以要在出發前線上購買。透過 Klook 這類代售平台訂，結帳介面看得懂、接受海外信用卡，並發送入園時可掃描的電子票。",
+    a: "要。日本環球影城已停止在門口販售當日票，所以要在出發前線上購買。透過 Klook 這類代售平台訂，結帳介面易懂、接受海外信用卡，並發送入園時可掃描的電子票。",
   },
   {
     q: "2026 年的 USJ 快速通關值得買嗎？",
-    a: `人多的日子，值得。2026 年是 USJ 的 25 週年——樂園官方新聞稿在2026年9月14日與9月28日發布了週年相關消息，於${CHECKED_USJ}查閱——週末或國定假日，快速通關能把好幾小時的普通排隊換成另一條短隊伍，含區域入場的版本還附超級任天堂世界的入區資格。人少的離峰平日就沒那麼必要：普通排隊最短，用 App 免費進入該區也最有可能還有名額。`,
+    a: `人多的日子，值得。2026 年是 USJ 的 25 週年——樂園官方新聞稿在2026年9月14日與9月28日發布了週年相關消息，於${CHECKED_USJ}查閱——週末或國定假日，快速通關能把好幾小時的普通排隊換成另一條短隊伍，含區域入場的版本還附超級任天堂世界的入區資格。人少的離峰平日就沒那麼必要：一般排隊時間最短，用 App 免費取得該區入場資格的機會也最高。`,
   },
   {
     q: "快速通關 4 和快速通關 7 差在哪？",
-    a: "數字是通關券涵蓋的設施名額——四個或七個。USJ 把快速通關 4 描述為玩必玩設施用的那一款，快速通關 7 則是兩者中涵蓋較廣的。實際的設施清單依版本與日期固定，超級任天堂世界的區域入場也只有註明包含的版本才有，所以購買前請確認你那天的內容。",
+    a: "數字是通關券涵蓋的設施數——四項或七項。USJ 將快速通關 4 定位為暢玩人氣設施的那一款，快速通關 7 則是兩者中涵蓋較廣的。實際的設施清單依版本與日期固定，超級任天堂世界的區域入場也只有註明包含的版本才有，所以購買前請確認你那天的內容。",
   },
   {
     q: "沒有 Studio Pass 可以只用快速通關嗎？",
@@ -282,11 +282,11 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "USJ 快速通關可以改日期或退款嗎？",
-    a: `請當作不能改。USJ 自己的快速通關頁面寫明，預先購買的通關券只在票面日期有效；指定時間的設施若遲到，不退款，也不能改到其他時段。於${CHECKED_USJ}查閱。`,
+    a: `請視為無法更改。USJ 自己的快速通關頁面寫明，預先購買的通關券只在票面日期有效；指定時間的設施若遲到，不退款，也不能改到其他時段。於${CHECKED_USJ}查閱。`,
   },
   {
     q: "怎麼進超級任天堂世界？",
-    a: `有兩種方式，都是 USJ 官方的：事先購買含園區指定時段入場券的快速通關版本，或在入園後透過官方 USJ App 取得。USJ 的指定時間入場頁面也說，自2026年1月5日起，必須用官方 App 取得園區指定時段入場券與 Standby Entry Ticket，而且要先在 App 裡登錄入園票。於${CHECKED_USJ}查閱。人少的日子也許可以直接走進去，但不該把行程押在這上面。`,
+    a: `有兩種方式，都是 USJ 官方的：事先購買含園區指定時段入場券的快速通關版本，或在入園後透過官方 USJ App 取得。USJ 的指定時間入場頁面也說，自2026年1月5日起，必須用官方 App 取得園區指定時段入場券與 Standby Entry Ticket，而且要先在 App 裡登錄入園票。於${CHECKED_USJ}查閱。人少的日子也許可以直接入園，但不該把行程賭在這上面。`,
   },
   {
     q: "日本環球影城快速通關多少錢？",
@@ -294,19 +294,19 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "去日本環球影城該住哪裡？",
-    a: `想在開園時就到門口，住環球城；否則住梅田或大阪站一帶。從 JR 夢咲線的環球城站步行到樂園大門約五分鐘，從大阪站到樂園約 20 分鐘——兩個數字都是大阪觀光局（Osaka Convention & Tourism Bureau）自己的，於${CHECKED}查閱。JR 西日本自己的目的地頁面把環球城站列為樂園最近的車站，並形容樂園「就在旁邊」。取捨在於其餘行程：梅田與大阪站讓你留在 JR 主要路網上，而環球城的飯店只有一小區，人多的日子最先客滿。`,
+    a: `想在開園時就到門口，住環球城；否則住梅田或大阪站一帶。從 JR 夢咲線的環球城站步行到樂園大門約五分鐘，從大阪站到樂園約 20 分鐘——兩個數字都是大阪觀光局（Osaka Convention & Tourism Bureau）自己的，於${CHECKED}查閱。JR 西日本自己的目的地頁面把環球城站列為樂園最近的車站，並形容樂園「就在旁邊」。取捨在於其餘行程：梅田與大阪站讓你留在 JR 主要路網上，而環球城的飯店集中在一小區，人多的日子最先客滿。`,
   },
   {
     q: "從關西機場或大阪站怎麼去 USJ？",
-    a: `車站是 JR 夢咲線（櫻島線）的環球城站，通常在西九條轉車，大阪觀光局說從大阪站到樂園約 20 分鐘。從關西機場沒有直達電車：JR 西日本的 HARUKA 不必轉車直達天王寺、大阪、新大阪與京都——以短期滯在身分入境的外國護照持有人可買的優惠單程票，到2026年10月31日為止，到天王寺 ¥1,300、到大阪或新大阪 ¥1,800，2026年11月1日起調整為 ¥1,600 與 ¥1,900——或搭南海 Rapi:t 到難波，最快 34 分鐘，除車資外另需成人 ¥700 的特急券。之後都搭環狀線到西九條，再轉夢咲線。所有數字於${CHECKED}查閱。`,
+    a: `車站是 JR 夢咲線（櫻島線）的環球城站，通常在西九條轉車，大阪觀光局說從大阪站到樂園約 20 分鐘。從關西機場沒有直達電車：JR 西日本的 HARUKA 不必轉車直達天王寺、大阪、新大阪與京都——以「短期停留（Temporary Visitor）」身分入境的外國護照持有人可買的優惠單程票，到2026年10月31日為止，到天王寺 ¥1,300、到大阪或新大阪 ¥1,800，2026年11月1日起調整為 ¥1,600 與 ¥1,900——或搭南海 Rapi:t 到難波，最快 34 分鐘，除車資外另需成人 ¥700 的特急券。之後都搭環狀線到西九條，再轉夢咲線。所有數字於${CHECKED}查閱。`,
   },
   {
     q: "USJ 快速通關當天要怎麼使用？",
-    a: "在快速通關入口向工作人員出示含 QR 碼的完整票券畫面。部分設施的時間印在票上，其餘在營業時間內隨時可搭。若未依指定時間抵達，恕不退款，也無法更改時段；票券每人一張。依 usj.co.jp 的搜尋索引內容，2026 年 11 月 6 日查閱。",
+    a: "在快速通關入口向工作人員出示含 QR 碼的完整票券畫面。部分設施的時間印在票上，其餘在營業時間內隨時可使用快速通關。若未依指定時間抵達，恕不退款，也無法更改時段；票券每人一張。依 usj.co.jp 的搜尋索引內容，2026 年 11 月 6 日查閱。",
   },
   {
     q: "有哪張大阪或關西的票券包含 USJ 嗎？",
-    a: `樂園本身不在大阪周遊卡（Osaka Amazing Pass）的範圍內，也沒有任何大阪地鐵票券涵蓋前往環球城的 JR 路段。鐵路方面，JR 西日本自己的關西地區鐵路周遊券頁面把 WEST QR Kansai Mini Pass 描述為「京都、日本環球影城、大阪、難波、神戶、奈良 3 日無限搭乘」——成人 ¥3,000、兒童 ¥1,500，連續三天可搭普通、快速與新快速列車，但不能搭包括 HARUKA 在內的任何特急。WEST QR Kansai Area Pass 則涵蓋 HARUKA，自由席無限次加上兩次指定席，一日 ¥2,700 到四日 ¥6,700。於${CHECKED}查閱。以上都不含樂園門票——那永遠是另外一張 Studio Pass。`,
+    a: `樂園本身不在大阪周遊卡（Osaka Amazing Pass）的範圍內，也沒有任何大阪地鐵票券涵蓋前往環球城的 JR 路段。鐵路方面，JR 西日本自己的關西地區鐵路周遊券頁面把 WEST QR Kansai Mini Pass 描述為「京都、日本環球影城、大阪、難波、神戶、奈良 3 日無限搭乘」——成人 ¥3,000、兒童 ¥1,500，連續三天可搭普通、快速與新快速列車，但不能搭包括 HARUKA 在內的任何特急。WEST QR Kansai Area Pass 則涵蓋 HARUKA，自由席無限次加上兩次指定席，一日 ¥2,700 到四日 ¥6,700。於${CHECKED}查閱。以上都不含樂園門票——入園一定要另外買 Studio Pass。`,
   },
 ];
 
@@ -360,12 +360,12 @@ const sameDayCopy: Pick<KlookTripPrepItem, "label" | "ctaLabel" | "why">[] = [
   {
     label: "JR HARUKA 關西機場特急車票",
     ctaLabel: "查看 HARUKA 車票 →",
-    why: "從關西機場直達天王寺、大阪或新大阪——USJ 行程的出發車站；Klook 商品頁註明，僅限持「短期滯在（Temporary Visitor）」入境章的非日本護照旅客購買。",
+    why: "從關西機場直達天王寺、大阪或新大阪——前往 USJ 的轉乘車站；Klook 商品頁註明，僅限以「短期停留（Temporary Visitor）」身分入境的非日本護照旅客購買。",
   },
   {
     label: "大阪美食導覽（道頓堀巷弄）",
     ctaLabel: "查看大阪美食導覽 →",
-    why: "留給不去樂園那天的晚上：3 小時的併團步行導覽，離開道頓堀大街，有串炸、章魚燒、隱藏版居酒屋與在地甜點。",
+    why: "安排在不去樂園那天的晚上：3 小時的併團步行導覽，離開道頓堀大街，有串炸、章魚燒、隱藏版居酒屋與在地甜點。",
   },
   {
     label: "Klook 日本 eSIM 網卡",
@@ -382,7 +382,7 @@ const stayCopy: Pick<KlookStayArea, "area" | "why">[] = [
   },
   {
     area: "梅田／大阪站",
-    why: "夢咲線直通班次的出發地：觀光局說從大阪站到樂園約 20 分鐘，而且其餘行程都留在 JR 主要路網上——京都線、神戶線、環狀線，以及新大阪的新幹線。",
+    why: "夢咲線直通列車的發車站：觀光局說從大阪站到樂園約 20 分鐘，而且其餘行程都留在 JR 主要路網上——京都線、神戶線、環狀線，以及新大阪的新幹線。",
   },
   {
     area: "天王寺",
@@ -390,7 +390,7 @@ const stayCopy: Pick<KlookStayArea, "area" | "why">[] = [
   },
   {
     area: "難波",
-    why: "如果樂園只是大阪行程中的一天就選這裡：道頓堀與黑門市場走路就到，也是南海的終點站——南海表示 Rapi:t 到關西機場最快 34 分鐘，回國那天很方便。",
+    why: "如果樂園只是大阪行程中的一天就選這裡：道頓堀與黑門市場走路就到，也是南海電鐵的終點站——南海表示 Rapi:t 到關西機場最快 34 分鐘，回國那天很方便。",
   },
 ];
 const stayAreas: KlookStayArea[] = usjStayAreas.map((area, i) => withKlookLocale(area, LOCALE, stayCopy[i]));
@@ -399,7 +399,7 @@ const tripPrepCopy: Pick<KlookTripPrepItem, "label" | "ctaLabel" | "why">[] = [
   {
     label: "大阪周遊卡（1日／2日）",
     ctaLabel: "查看大阪周遊卡 →",
-    why: "這一項請看仔細：周遊卡不含日本環球影城，也不含前往環球城的 JR。它涵蓋的是大阪行程的其他每一天——大阪地鐵與市營巴士無限搭乘，加上 40 多處設施入場。",
+    why: "這一項請特別留意適用範圍：周遊卡不含日本環球影城，也不含前往環球城的 JR。它涵蓋的是大阪行程的其他每一天——大阪地鐵與市營巴士無限搭乘，加上 40 多處設施入場。",
   },
   {
     label: "京都＋奈良一日遊（清水寺、伏見稻荷與奈良公園）",
@@ -439,7 +439,7 @@ const highRateTopPrep: KlookTripPrepItem[] = [
   withKlookLocale(usjHighRateTopPrep[2], LOCALE, {
     label: "JR 西日本關西鐵路周遊券（1～4 天）",
     ctaLabel: "查看 JR 關西周遊券 →",
-    why: "依 Klook 商品說明，可不限次搭乘大阪・京都・神戶・奈良一帶的 JR 西日本普通、快速列車，以及從關西機場出發的 HARUKA，適合自己去京都或奈良的日子。",
+    why: "依 Klook 商品說明，可不限次搭乘大阪・京都・神戶・奈良一帶的 JR 西日本的普通與快速列車，以及從關西機場出發的 HARUKA，適合自己去京都或奈良的日子。",
   }),
 ];
 const highRateFaqPrep: KlookTripPrepItem[] = [
@@ -490,7 +490,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <p className={styles.eyebrow}>更新於 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>{H1}</h1>
           <p className={styles.heroSubtitle}>
-            Express Pass 4 與 Express Pass 7（快速通關 4／7）各涵蓋什麼、為什麼價格隨日期變動，以及哪些日子只買 Studio Pass 就夠了。
+            Express Pass 4 與 Express Pass 7（快速通關 4／7）分別包含哪些設施、為什麼價格隨日期變動，以及哪些日子只買 Studio Pass 就夠了。
           </p>
           <div className={styles.heroBadges}>
             {[`更新於 ${updatedLabel}`, "快速通關 4 vs 7", "超級任天堂世界", "買或不買"].map((t) => (
@@ -507,7 +507,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>日本環球影城快速通關（Universal Express Pass）</strong>是 USJ 的付費「fast pass」，主要分為
+            <strong>日本環球影城快速通關（Universal Express Pass）</strong>是 USJ 的付費快速通關（俗稱 fast pass），主要分為
             <strong>快速通關 4</strong>（4 個設施名額）與<strong>快速通關 7</strong>（7 個名額），每一張都綁定一個日期，而且不是入園票——同一天你還需要
             Studio Pass。USJ 沒有固定價格：種類與價格依入園日期而異，約在入園前兩個月開賣，每天販售數量有限，常常提前售完。週末、日本國定假日或寒假期間的日期就買；人少的平日，通常只買
             Studio Pass 就夠了。以上於{CHECKED_USJ}與{CHECKED_TODAY}在 usj.co.jp 查閱。
@@ -538,8 +538,8 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>結論：</strong>先買 Studio Pass 入園，再依日期決定快速通關。只有一天又是人多的日子、想玩主力設施，選快速通關 7；人潮較少的日期或只想玩前幾名，選快速通關
-              4；如果超級任天堂世界是這趟的重點，選含區域入場的版本。
+              <strong>結論：</strong>先買 Studio Pass 入園，再依日期決定快速通關。只有一天又是人多的日子、想玩主力設施，選快速通關 7；人潮較少的日期或只想玩幾項熱門設施，選快速通關
+              4；如果超級任天堂世界是這趟的重點，選含超級任天堂世界區域入場的版本。
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink href={STUDIO_PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
@@ -574,8 +574,8 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             bookings that share its date. */}
         <KlookTripPrep
           label="同一天訂"
-          heading="和快速通關同一天要訂的項目"
-          intro="快速通關決定了你去樂園的日期。在它會售完的熱門日子，大門旁的官方飯店也會客滿——所以房間、從關西機場進來的交通，以及樂園 App 要用的網路，值得同一天一起訂好。"
+          heading="和快速通關一起訂的項目"
+          intro="快速通關決定了你去樂園的日期。在它會售完的熱門日子，大門旁的官方合作飯店也會客滿——所以房間、從關西機場進來的交通，以及樂園 App 要用的網路，值得同一天一起訂好。"
           items={expressSameDayPrep}
         />
 
@@ -584,7 +584,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <KlookTripPrep
             label="樂園前後幾天"
             heading="USJ 前後幾天可以一起預訂的項目"
-            intro="快速通行證確定入園日期後，大阪其他幾天的行程也可以一併訂好：京都・奈良一日遊、機場與飯店之間的行李配送，以及 JR 關西鐵路周遊券。"
+            intro="快速通關確定入園日期後，大阪其他幾天的行程也可以一併訂好：京都・奈良一日遊、機場與飯店之間的行李配送，以及 JR 關西鐵路周遊券。"
             items={highRateTopPrep}
             adPlacement="usj-highrate-top"
             headingLevel={3}
@@ -597,12 +597,12 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <span className={styles.sectionLabel}>通關券本身</span>
           <h2 className={styles.sectionTitle}>日本環球影城快速通關是什麼？</h2>
           <p className={styles.bodyText}>
-            它是綁定日期的加購項目，讓你在固定幾項設施改走較短的快速通關通道，而不是普通排隊。它<strong>不是</strong>入園票：USJ
+            它是綁定日期的加購項目，讓你在固定幾項設施改走較短的快速通關通道，不用排一般隊伍。它<strong>不是</strong>入園票：USJ
             自己的快速通關頁面說，需要另外的樂園入場券，所以同一天必須有 Studio Pass 或年票。於{CHECKED_USJ}查閱。
           </p>
           <p className={styles.bodyText}>
             比較版本之前還有兩個細節。通關券上的設施有些是指定時間、有些不是——不指定時間的，USJ 說營業時間內隨時都能使用——使用時在設施的快速通關入口出示
-            QR code。另外，通關券只涵蓋上面列出的設施，所以你買哪個版本，比票面上的數字更重要。
+            QR Code。另外，通關券只涵蓋上面列出的設施，所以你買哪個版本，比票面上的數字更重要。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -692,7 +692,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             最後確認：2026-11-14——
             <a href={USJ_EXPRESS_URL} target="_blank" rel="noopener noreferrer">USJ 官方 Universal Express Pass 頁面</a>。
-            為什麼不列價格區間：usj.co.jp 不同票券列表頁上的「起」價彼此不一致，而 WEB Ticket Store 的列表也說價格依入園日期而異。與其照抄一個可能不適用於你那天的數字，本指南列出
+            為什麼不列價格區間：usj.co.jp 不同票券列表頁上的「起」價彼此不一致，而 WEB Ticket Store 的列表也說價格依入園日期而異。與其照抄一個可能不適用於你入園日期的價格，本指南列出
             USJ 的定價規則，並請你以當天結帳時的價格為準。
           </p>
         </section>
@@ -701,8 +701,8 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <span className={styles.sectionLabel}>選哪個版本</span>
           <h2 className={styles.sectionTitle}>USJ 快速通關該買哪一種（4 還是 7）？</h2>
           <p className={styles.bodyText}>
-            人多的日子又是第一次來，選快速通關 7；人潮較少的日期、時間短，或是第二次來只想玩前幾名，選快速通關
-            4。數字是通關券涵蓋的設施名額，設施清單本身依版本與日期固定——所以請看你那天的內容，而不是票面上的數字。
+            第一次來、又剛好是人多的日子，選快速通關 7；人潮較少的日期、時間短，或是第二次來只想玩幾項熱門設施，選快速通關
+            4。數字是通關券涵蓋的設施數，設施清單本身依版本與日期固定——所以請看你那天的內容，而不是票面上的數字。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -808,7 +808,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <span className={styles.sectionLabel}>售完</span>
           <h2 className={styles.sectionTitle}>USJ 快速通關什麼時候會賣完？</h2>
           <p className={styles.bodyText}>
-            當天配額賣光的時候——USJ 自己的頁面說每天數量有限、常常提前售完，所以沒有「這樣就安全」的提前量，只有「越早越好」。你能購買的期間大約是兩個月，這是關於它最有用的一件事。
+            當天配額售罄時——USJ 自己的頁面說每天數量有限、常常提前售完，所以沒有「這樣就安全」的提前量，只有「越早越好」。你能購買的期間大約是兩個月，這是關於它最有用的一件事。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -894,9 +894,9 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <h2 className={styles.sectionTitle}>USJ 快速通關當天怎麼用？</h2>
           <ul className={styles.bodyList}>
             <li><strong>指定時間的設施:</strong> 部分設施的時間印在票上，須依該時間前往。若未依指定時間抵達，恕不退款，也無法更改時段。</li>
-            <li><strong>不指定時間的設施:</strong> 其餘設施在營業時間內隨時可搭。</li>
+            <li><strong>沒有指定搭乘時間的設施:</strong> 其餘設施在營業時間內隨時可使用快速通關。</li>
             <li><strong>搭乘時:</strong> 在快速通關入口向工作人員出示含 QR 碼的完整票券畫面。</li>
-            <li><strong>一格一項:</strong> 同一格印有多項設施時，只能使用其中一項。</li>
+            <li><strong>每格限一項:</strong> 同一格印有多項設施時，只能使用其中一項。</li>
             <li><strong>每人一張:</strong> 門票限本人使用，同行每人都需要自己的票。</li>
             <li><strong>單人乘車通道（Single Rider）:</strong> 與快速通關無關的另一套制度：與同行者分開排隊，利用設施剩餘座位搭乘。部分日期與時段不能使用，請洽各設施的工作人員。</li>
           </ul>
@@ -914,7 +914,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           </p>
           <p className={styles.bodyText}>
             App 是免費的方式，也是規定變嚴的那一個。USJ 表示，自2026年1月5日起，必須用官方 App 取得園區指定時段入場券與 Standby Entry
-            Ticket：先在 App 裡登錄你的入園票，再選擇區域、人數與時段，然後在區域入口出示 QR code。於{CHECKED_USJ}查閱。這是當天先到先得，也正因如此，含區域入場的快速通關版本，是出發前就能握有超級任天堂世界入區時段的唯一方式。出發前就安裝
+            Ticket：先在 App 裡登錄你的入園票，再選擇區域、人數與時段，然後在區域入口出示 QR Code。於{CHECKED_USJ}查閱。這是當天先到先得，也正因如此，含區域入場的快速通關版本，是出發前就能取得超級任天堂世界入區時段的唯一方式。出發前就安裝
             App 並登錄門票——在隊伍裡用沒網路的手機處理，是這個問題最可以避免的版本。
           </p>
         </section>
@@ -928,8 +928,8 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             西日本自己的樂園目的地頁面把環球城站列為最近的車站，並形容樂園「就在旁邊」，同日查閱。
           </p>
           <p className={styles.bodyText}>
-            那段步行就是全部的理由。買了快速通關的日子，你會想早點通過閘門，而環球城是唯一能把交通變成五分鐘步行的區域。反過來的考量是其餘行程：梅田與大阪站讓你留在
-            JR 主要路網上，而環球城的飯店只有一小區，人多的日子最先客滿。我們的{" "}
+            那段步行就是全部的理由。買了快速通關的那天，你會想早點入園，而環球城是唯一能把交通變成五分鐘步行的區域。反過來的考量是其餘行程：梅田與大阪站讓你留在
+            JR 主要路網上，而環球城的飯店集中在一小區，人多的日子最先客滿。我們的{" "}
             <Link href="/guides/attractions/where-to-stay-in-osaka" style={linkStyle}>
               大阪住宿區域指南（英文）
             </Link>{" "}
@@ -953,18 +953,18 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <p className={styles.bodyText}>
             USJ 在大阪西側的此花區，車站是 JR 夢咲線（櫻島線）的環球城站——通常在西九條轉車。JR
             西日本把環球城站列為樂園最近的車站，大阪觀光局則說從該站步行到大門約五分鐘、從大阪站到樂園約 20 分鐘。兩者皆於{CHECKED}查閱。JR
-            西日本的英文網站沒有公布夢咲線段的門到門時間，所以這裡不列。
+            西日本的英文網站沒有公布夢咲線段的全程所需時間，所以這裡不列。
           </p>
           <p className={styles.bodyText}>
-            從<strong>關西機場</strong>進市區有兩個合理的選擇，但都不會直達樂園。JR 西日本的 HARUKA 從機場不必轉車直達天王寺、大阪、新大阪與京都；它的優惠單程票——只賣給以短期滯在身分入境的外國護照持有人——到2026年10月31日為止，到天王寺
+            從<strong>關西機場</strong>進市區有兩個合理的選擇，但都不會直達樂園。JR 西日本的 HARUKA 從機場不必轉車直達天王寺、大阪、新大阪與京都；它的優惠單程票——只賣給以「短期停留（Temporary Visitor）」身分入境的外國護照持有人——到2026年10月31日為止，到天王寺
             ¥1,300、到大阪或新大阪 ¥1,800，2026年11月1日起調整為 ¥1,600 與 ¥1,900，兒童半價。南海 Rapi:t 不必轉車到難波，最快 34
-            分鐘，除一般車資外另需特急券，成人 ¥700、兒童 ¥350——在車上買多 ¥300，用無票（ticketless）方式少 ¥150。JR 西日本與南海的數字皆於{CHECKED}查閱。不論哪一種，之後都搭環狀線到西九條，再轉夢咲線。
+            分鐘，除一般車資外另需特急券，成人 ¥700、兒童 ¥350——在車上買多 ¥300，用無紙化購票（ticketless）可省 ¥150。JR 西日本與南海的數字皆於{CHECKED}查閱。不論哪一種，之後都搭環狀線到西九條，再轉夢咲線。
           </p>
           <p className={styles.bodyText}>
             有一張票值得知道：JR 西日本自己的關西地區鐵路周遊券頁面把 <strong>WEST QR Kansai Mini Pass</strong>{" "}
-            描述為「京都、日本環球影城、大阪、難波、神戶、奈良 3 日無限搭乘」，票價成人 ¥3,000、兒童 ¥1,500，連續三天可搭普通列車，含新快速與快速。它不能搭任何特急，HARUKA
-            也包括在內——JR 西日本表明那需要另外買票。涵蓋 HARUKA 的是 <strong>WEST QR Kansai Area Pass</strong>（自由席無限次，加上兩次指定席），一日
-            ¥2,700 到四日 ¥6,700。以上皆於{CHECKED}查閱。兩張都不能搭大阪地鐵，也沒有任何大阪地鐵票券到得了環球城。
+            描述為「京都、日本環球影城、大阪、難波、神戶、奈良 3 日無限搭乘」，票價成人 ¥3,000、兒童 ¥1,500，連續三天可搭普通列車，含新快速與快速。這張票不能搭任何特急列車，包括
+            HARUKA——JR 西日本表明那需要另外買票。涵蓋 HARUKA 的是 <strong>WEST QR Kansai Area Pass</strong>（自由席無限次，加上兩次指定席），一日
+            ¥2,700 到四日 ¥6,700。以上皆於{CHECKED}查閱。兩張都不能搭大阪地鐵，也沒有任何大阪地鐵票券能搭到環球城。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={HARUKA_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
@@ -1004,7 +1004,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
         <KlookTripPrep
           label="一起預訂"
           heading="大阪之旅還要訂什麼？"
-          intro="樂園只是其中一天。以下三項是同一趟旅行通常還需要的，第一項放在這裡，主要是為了避免你因為錯誤的理由買它。"
+          intro="樂園只是其中一天。以下三項是同一趟旅行通常還會用到的項目，第一項放在這裡，主要是為了避免你因為錯誤的理由買它。"
           items={tripPrep}
         />
 
@@ -1048,9 +1048,9 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
 
         <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>
-            <h2 className={styles.ctaBannerTitle}>在 USJ 少排隊</h2>
+            <h2 className={styles.ctaBannerTitle}>在 USJ 縮短排隊時間</h2>
             <p className={styles.ctaBannerDesc}>
-              線上買 Studio Pass 入園，再加上你那天需要的快速通關版本——每天的配額有上限，含超級任天堂世界園區入場資格的版本最先賣完。
+              線上買 Studio Pass 入園，再加上你那天需要的快速通關版本——每天的配額有上限，含超級任天堂世界園區入場資格的版本最早售罄。
             </p>
             <div className={styles.pickCtaRow}>
               <KlookLink href={EXPRESS_PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>

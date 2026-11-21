@@ -46,7 +46,7 @@ const LISTING_COPY: Partial<Record<Locale, Record<string, ListingCopy>>> = {
     "https://www.getyourguide.com/tokyo-l193/entry-tickets-tc123/": { title: "东京景点门票", what: "东京商品目录中的景点门票专区，对应本页介绍的景点" },
   },
   ko: {
-    "https://www.getyourguide.com/tokyo-disney-resort-l104703/entry-tickets-tc123/": { title: "도쿄 디즈니 리조트", what: "도쿄 디즈니랜드와 디즈니씨 입장권을 한 페이지에서, 모두 날짜・파크 지정" },
+    "https://www.getyourguide.com/tokyo-disney-resort-l104703/entry-tickets-tc123/": { title: "도쿄 디즈니 리조트", what: "도쿄 디즈니랜드와 디즈니씨 입장권을 한 페이지에서, 모두 방문 날짜와 파크 지정" },
     "https://www.getyourguide.com/tokyo-disneysea-l4082/entry-tickets-tc123/": { title: "도쿄 디즈니씨", what: "디즈니랜드와 분리된 디즈니씨 입장권 전용 페이지" },
     "https://www.getyourguide.com/universal-studios-japan-l80971/entry-tickets-tc123/": { title: "유니버설 스튜디오 재팬", what: "GetYourGuide의 USJ 스튜디오 패스 입장권. 같은 페이지에 교통 포함 상품도 있습니다" },
     "https://www.getyourguide.com/osaka-l1204/osaka-universal-studios-japan-express-pass-only-t883811/": { title: "USJ 익스프레스 패스", what: "GetYourGuide가 단독으로 파는 익스프레스 패스 — 입장은 스튜디오 패스가 따로 필요합니다" },

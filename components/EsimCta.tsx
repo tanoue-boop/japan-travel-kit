@@ -107,7 +107,7 @@ const COPY: Record<Locale, Copy> = {
   },
   ko: {
     topLabel: "일본 모바일 데이터",
-    topLine: "가장 먼저 추천하는 상품은 Simbye입니다: {plan} {price}부터, 코드 {code} 입력 시 {percent}% 할인되어 {discounted}.",
+    topLine: "가장 먼저 추천하는 상품은 Simbye입니다. {plan} {price}부터, 코드 {code} 입력 시 {percent}% 할인되어 {discounted}.",
     topLowest: "저희가 확인한 요금제 중 최저가입니다.",
     networks: "Simbye가 밝힌 일본 회선: {networks}.",
     others: "다른 선택지:",
@@ -116,7 +116,7 @@ const COPY: Record<Locale, Copy> = {
       "출발 전에 QR 코드로 eSIM을 설치해 두면 도착하자마자 사용할 수 있습니다. 추천 순서대로 네 가지 상품과 추천 이유를 소개합니다.",
     simbyeFrom: "{price}부터 ({plan}).",
     simbyeCode: "코드 {code} 입력 시 {percent}% 할인: {discounted}.",
-    lowest: "확인한 요금제 중 가장 저렴한 가격.",
+    lowest: "확인한 요금제 중 최저가.",
     hotspot: "모든 일본 요금제에서 테더링 가능.",
     from: "{price}부터 ({plan}).",
     orderNote:

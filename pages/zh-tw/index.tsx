@@ -32,12 +32,12 @@ export default function ZhTwHomePage({ dates }: { dates: Record<string, string> 
       locale={LOCALE}
       dates={dates}
       lead={{
-        eyebrow: "東京先訂這兩個",
+        eyebrow: "東京這兩個景點請先訂票",
         title: "teamLab 門票怎麼買？",
-        desc: "東京兩間 teamLab 都要指定入場時段，最好先訂。",
+        desc: "東京兩座 teamLab 都要預約入場時段，最好先訂。",
         body: (
           <>
-            豐洲的 Planets 與麻布台之丘的無界是兩張不同的門票。Planets 要赤腳涉水、現場不售票，成人 ¥3,800 起，
+            豐洲的 teamLab Planets 與麻布台之丘的 teamLab 無界是兩張不同的門票。Planets 要赤腳涉水、現場不售票，成人 ¥3,800 起，
             價格、入場時段與從新豐洲站怎麼走，請看{" "}
             <Link href="/zh-tw/guides/attractions/teamlab-planets-tickets">teamLab Planets 門票</Link>攻略；
             還在兩館之間猶豫，請看{" "}

@@ -58,7 +58,7 @@ const GYG_SLUG = "ko-tokyo-disney-tickets";
  * official calendar; every other figure is the resort's published minimum ("부터").
  */
 const priceRows = [
-  { ticket: "1데이 패스포트(개장부터 하루) — 가장 일반적인 티켓", adult: `${PRICE_MIN}~${PRICE_MAX}`, junior: "¥7,400부터", child: "¥5,300부터" },
+  { ticket: "1데이 패스포트(개장 시간부터 종일) — 가장 일반적인 티켓", adult: `${PRICE_MIN}~${PRICE_MAX}`, junior: "¥7,400부터", child: "¥5,300부터" },
   { ticket: "애프터 3 패스포트(주말·공휴일 15:00부터)", adult: "¥7,900부터", junior: "¥6,600부터", child: "¥4,400부터" },
   { ticket: "애프터 5 패스포트(평일 17:00부터)", adult: "¥5,400부터", junior: "¥4,600부터", child: "¥3,600부터" },
   { ticket: "1데이 패스포트(장애가 있는 분)", adult: "¥7,100부터", junior: "¥5,900부터", child: "¥4,200부터" },
@@ -75,7 +75,7 @@ const changeRows = [
   },
   {
     q: "바꿀 수 있는 것",
-    a: "입장 날짜와 연령 구분(예: 어린이 → 중고생)입니다. 둘 다 바꾸려면 하나씩 변경합니다.",
+    a: "입장 날짜와 연령 구분(예: 어린이 → 청소년)입니다. 둘 다 바꾸려면 하나씩 변경합니다.",
   },
   {
     q: "바꿀 수 없는 것",
@@ -83,7 +83,7 @@ const changeRows = [
   },
   {
     q: "가격 차이는 어떻게 되나요?",
-    a: "바꿀 티켓의 금액을 전액 결제하고 원래 티켓의 금액은 전액 환불되므로, 더 싼 날짜든 비싼 날짜든 자동으로 정산됩니다.",
+    a: "변경할 티켓 금액을 전액 결제하면 기존 티켓 금액은 전액 환불되므로, 더 싼 날짜든 비싼 날짜든 자동으로 정산됩니다.",
   },
   {
     q: "클룩 등 다른 곳에서 산 티켓은?",
@@ -113,7 +113,7 @@ const ticketRows = [
     ticket: "애프터 5 패스포트(평일 한정)",
     entry: "17:00부터",
     dates: "평일",
-    note: "가장 짧고 가장 저렴한 입장. 평일 저녁 방문용입니다.",
+    note: "이용 시간이 가장 짧고 요금도 가장 저렴한 티켓입니다. 평일 저녁 방문용입니다.",
   },
   {
     ticket: "1데이 파크 호퍼 패스포트(기간 한정)",
@@ -143,7 +143,7 @@ const hoursRows = [
   {
     what: "티켓에 어떤 의미인가",
     detail:
-      "방문 날짜의 티켓은 약 2개월 전에 판매가 시작되는데, 그 시점이면 운영 시간은 이미 몇 달 전에 공개되어 있습니다. 그러니 사고 나서가 아니라 사기 전에 캘린더를 확인하세요. 20:00에 폐장하는 날의 애프터 5 패스포트는 3시간짜리 방문입니다.",
+      "방문 날짜의 티켓은 약 2개월 전에 판매가 시작되는데, 그 시점이면 운영 시간은 이미 몇 달 전에 공개되어 있습니다. 그러니 사고 나서가 아니라 사기 전에 캘린더를 확인하세요. 20:00에 폐장하는 날 애프터 5 패스포트를 이용하면 체류 시간은 3시간입니다.",
   },
   {
     what: "조기 입장(해피 엔트리)",
@@ -156,9 +156,9 @@ const hoursRows = [
 const sellerRows = [
   {
     where: "추천: 공식 웹사이트·앱(tokyodisneyresort.jp)",
-    best: "공식 결제에서 내 카드가 승인되는 분",
+    best: "공식 사이트에서 카드 결제가 가능한 분",
     change: "유효 기간 안에서 온라인으로 무료 변경(날짜·연령 구분만, 파크·티켓 종류는 불가)",
-    validity: "구매일로부터 1년 뒤 같은 날",
+    validity: "구매일로부터 1년 후 같은 날짜",
     note: "한국어 페이지가 있습니다. 일부 해외 발급 카드는 결제가 거절됩니다. 고객 사정에 의한 환불은 없습니다.",
   },
   {
@@ -194,7 +194,7 @@ const accessRows = [
   {
     service: "디즈니 프리미어 액세스",
     cost: "유료, 1회당 요금, 파크 티켓과 별도",
-    what: "대상 어트랙션의 이용 시간(대기 단축)이나 대상 퍼레이드·쇼의 감상 구역을 예약합니다. 입장 후 공식 앱에서 구매하며, 수량이 한정되어 매진될 수 있습니다.",
+    what: "대상 어트랙션의 이용 시간(대기 단축)이나 대상 퍼레이드·쇼를 관람할 구역을 예약합니다. 입장 후 공식 앱에서 구매하며, 수량이 한정되어 매진될 수 있습니다.",
   },
   {
     service: "일반 대기 줄",
@@ -228,7 +228,7 @@ const buyingRows = [
   },
   {
     q: "방문 날짜가 매진됐어요. 이걸로 끝인가요?",
-    a: "꼭 그렇지는 않습니다. FAQ에 따르면 매진된 티켓 종류가 예고 없이 재판매될 수 있고, 다른 고객이 티켓을 다른 날짜로 옮기면 비게 된 자리가 판매분으로 돌아가 다시 온라인으로 판매됩니다. 다시 확인해 보는 것이 생각보다 효과가 있습니다.",
+    a: "꼭 그렇지는 않습니다. FAQ에 따르면 매진된 티켓 종류가 예고 없이 재판매될 수 있고, 다른 고객이 티켓 날짜를 변경하면 그만큼의 수량이 다시 판매되어 다시 온라인으로 판매됩니다. 다시 확인해 보는 것이 생각보다 효과가 있습니다.",
   },
 ];
 
@@ -237,7 +237,7 @@ const parkRows = [
     park: "도쿄 디즈니랜드",
     style: "디즈니의 상징인 성을 중심으로 한 파크: 퍼레이드, 불꽃놀이, 가족이 함께 즐기는 어트랙션",
     suits: "첫 방문자, 어린 아이를 동반한 가족, 클래식 디즈니 팬",
-    note: "다른 디즈니 파크에 가 봤다면 익숙한 배치입니다",
+    note: "다른 디즈니 파크를 방문한 적이 있다면 익숙하게 느껴질 구성입니다",
   },
   {
     park: "도쿄 디즈니씨",
@@ -261,7 +261,7 @@ const whoFor = [
   },
   {
     title: "도쿄 디즈니씨를 고른다면",
-    desc: "다른 디즈니 리조트에서는 경험할 수 없는 것을 원하고, 성인이거나 어린 아이 없이 여행하는 경우입니다. 디즈니씨는 성인 방문객도 즐기기 좋은 분위기이며 테마별 항구는 도쿄에만 있으며, 디즈니랜드와 달리 주류를 판매합니다.",
+    desc: "다른 디즈니 리조트에서는 경험할 수 없는 것을 원하고, 성인이거나 어린 아이 없이 여행하는 경우입니다. 디즈니씨는 성인 방문객도 즐기기 좋은 분위기이며 테마별로 꾸며진 항구는 도쿄 디즈니씨에서만 볼 수 있으며, 디즈니랜드와 달리 주류를 판매합니다.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M2 12h20" />
@@ -292,11 +292,11 @@ const steps = [
   },
   {
     title: "방문일 2개월 전 일본 시간 14:00에 맞춰 예매를 준비하세요",
-    desc: "그때가 방문 날짜의 판매 시작 시점입니다. 한국은 일본과 시차가 없으니 한국 시간으로도 오후 2시입니다. 그날의 판매 수량에는 상한이 있고 예고 없이 판매가 멈출 수 있으니 캘린더에 넣어 두세요.",
+    desc: "해당 방문일의 티켓 판매가 시작되는 시간입니다. 한국은 일본과 시차가 없으니 한국 시간으로도 오후 2시입니다. 그날의 판매 수량에는 상한이 있고 예고 없이 판매가 멈출 수 있으니 캘린더에 넣어 두세요.",
   },
   {
     title: "해외 카드가 문제라면 클룩을 이용합니다",
-    desc: "도쿄 디즈니 리조트 공식 사이트는 해외에서 발급된 신용카드를 거부하거나 막는 일이 잦습니다. 클룩은 공식 승인 판매처로 해외 카드를 받고 결제 화면이 한국어로 되어 있어, 많은 해외 방문객이 이용합니다.",
+    desc: "도쿄 디즈니 리조트 공식 사이트는 해외 발급 신용카드로 결제할 때 승인이 거절되는 경우가 많습니다. 클룩은 공식 승인 판매처로 해외 카드를 받고 결제 화면이 한국어로 되어 있어, 많은 해외 방문객이 이용합니다.",
   },
   {
     title: "전자 티켓 QR을 공식 앱에 연동합니다",
@@ -307,11 +307,11 @@ const steps = [
 const faqItems: FaqItem[] = [
   {
     q: "도쿄 디즈니랜드 티켓 가격은 얼마인가요?",
-    a: `성인 1데이 패스포트는 날짜에 따라 ${PRICE_MIN}~${PRICE_MAX}입니다. 도쿄 디즈니 리조트 공식 가격 캘린더(${CALENDAR_SPAN})의 최저가와 최고가이며, 도쿄 디즈니씨도 같은 날 같은 가격입니다. 중고생(12~17세)은 ¥7,400부터, 어린이(4~11세)는 ¥5,300부터, 3세 이하는 무료이고, 평일 저녁용 애프터 5 패스포트는 성인 ¥5,400부터입니다. 최종 확인: ${LAST_CHECKED_PRICES}.`,
+    a: `성인 1데이 패스포트는 날짜에 따라 ${PRICE_MIN}~${PRICE_MAX}입니다. 도쿄 디즈니 리조트 공식 가격 캘린더(${CALENDAR_SPAN})의 최저가와 최고가이며, 도쿄 디즈니씨도 같은 날 같은 가격입니다. 청소년(12~17세)은 ¥7,400부터, 어린이(4~11세)는 ¥5,300부터, 3세 이하는 무료이고, 평일 저녁용 애프터 5 패스포트는 성인 ¥5,400부터입니다. 최종 확인: ${LAST_CHECKED_PRICES}.`,
   },
   {
     q: "디즈니씨 티켓은 어디서 예약하나요?",
-    a: `도쿄 디즈니씨와 도쿄 디즈니랜드 티켓은 같은 곳에서 예약합니다. 공식 결제에서 카드가 승인된다면 도쿄 디즈니 리조트 공식 웹사이트나 앱이 가장 좋습니다. 구매일로부터 1년 뒤 같은 날까지 유효하고, 온라인에서 수수료 없이 날짜를 바꿀 수 있습니다. 해외 카드가 거절되면 클룩 같은 공식 승인 판매처에서 같은 날짜 지정 1데이 패스포트를 살 수 있지만, 유효 기간은 입장일로부터 1개월 뒤 같은 날까지이고 날짜 변경은 판매처를 통해 합니다. 최종 확인: ${LAST_CHECKED_CHANGES}.`,
+    a: `도쿄 디즈니씨와 도쿄 디즈니랜드 티켓은 같은 곳에서 예약합니다. 공식 결제에서 카드가 승인된다면 도쿄 디즈니 리조트 공식 웹사이트나 앱이 가장 좋습니다. 구매일로부터 1년 후 같은 날짜까지 유효하고, 온라인에서 수수료 없이 날짜를 바꿀 수 있습니다. 해외 카드가 거절되면 클룩 같은 공식 승인 판매처에서 같은 날짜 지정 1데이 패스포트를 살 수 있지만, 유효 기간은 입장일로부터 1개월 뒤 같은 날까지이고 날짜 변경은 판매처를 통해 합니다. 최종 확인: ${LAST_CHECKED_CHANGES}.`,
   },
   {
     q: "당일 티켓도 구매할 수 있나요?",
@@ -332,17 +332,17 @@ const KO_TRIP_PREP_COPY = [
   {
     label: "마이하마 주변 호텔",
     ctaLabel: "클룩에서 마이하마 호텔 보기 →",
-    why: "두 파크가 함께 쓰는 역으로, 도쿄역에서 JR 게이요선으로 약 15~20분 걸립니다. 디즈니 리조트 라인 모노레일의 출발점이기도 해서, 이른 입장이나 늦은 퍼레이드를 현실적으로 만들어 줍니다.",
+    why: "두 파크가 함께 쓰는 역으로, 도쿄역에서 JR 게이요선으로 약 15~20분 걸립니다. 디즈니 리조트 라인 모노레일의 출발점이기도 해서, 일찍 입장하거나 늦게 끝나는 퍼레이드를 보기에도 편리합니다.",
   },
   {
     label: "우라야스·신우라야스 호텔",
     ctaLabel: "클룩에서 우라야스 호텔 보기 →",
-    why: "한 정거장 더 떨어져 있고 리조트 쪽 객실보다 대체로 저렴하며, 이 지역 호텔 다수가 게이트까지 무료 셔틀을 운행합니다. 대신 모노레일 대신 셔틀 시간표에 맞춰야 합니다.",
+    why: "한 정거장 더 가야 하지만 리조트 인근 숙소보다 대체로 저렴하며, 이 지역 호텔 다수가 게이트까지 무료 셔틀을 운행합니다. 대신 모노레일 대신 셔틀 시간표에 맞춰야 합니다.",
   },
   {
     label: "하네다 공항 리무진 버스",
     ctaLabel: "하네다 버스 보기 →",
-    why: "하네다 상품의 목적지에 도쿄 디즈니 리조트가 포함되어 있어, 도심의 역이 아니라 리조트에서 내리는 공항 이동입니다. 짐을 들고 다시 갈아탈 필요가 없습니다.",
+    why: "하네다 상품의 목적지에 도쿄 디즈니 리조트가 포함되어 있어, 도심의 역을 거치지 않고 리조트에서 내릴 수 있는 공항 교통편입니다. 짐을 들고 다시 갈아탈 필요가 없습니다.",
   },
   {
     label: "나리타 공항 리무진 버스",
@@ -407,7 +407,7 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             날짜 변경 규정, 어느 파크를 고를지 정리했습니다.
           </p>
           <div className={styles.heroBadges}>
-            {[`${updatedLabel} 업데이트`, "공식 가격 캘린더 기준", "2개월 전 판매 시작", "해외 카드는 클룩"].map((t) => (
+            {[`${updatedLabel} 업데이트`, "공식 가격 캘린더 기준", "2개월 전 판매 시작", "해외 발급 카드는 클룩에서"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -423,7 +423,7 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             2026년 <strong>도쿄 디즈니랜드·디즈니씨 티켓</strong>(1데이 패스포트) 가격은 날짜에 따라 성인{" "}
-            <strong>{PRICE_MIN}~{PRICE_MAX}</strong>, 중고생(12~17세) <strong>¥7,400</strong>부터, 어린이(4~11세){" "}
+            <strong>{PRICE_MIN}~{PRICE_MAX}</strong>, 청소년(12~17세) <strong>¥7,400</strong>부터, 어린이(4~11세){" "}
             <strong>¥5,300</strong>부터이며 3세 이하는 무료입니다(도쿄 디즈니 리조트 공식 가격 캘린더,{" "}
             {CALENDAR_SPAN} 입장분, {PRICE_CHECKED} 확인). 입장권은 방문일 <strong>2개월 전 같은 날짜 일본 시간 14:00</strong>
             (한국 시간도 오후 2시)에 공식 웹사이트·앱에서 예약이 시작되고, 두 파크 모두 게이트에서는 팔지 않습니다.
@@ -431,7 +431,7 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           </p>
           <p className={styles.bodyText}>
             매진된 날짜에는 입장할 수 없고, 고객 사정에 의한 환불은 되지 않으며, 공식 사이트에서 산 티켓은 유효 기간
-            안에서 수수료 없이 날짜를 바꿀 수 있습니다. 공식 결제에서 해외 카드가 거절되면 클룩 같은 공식 승인 판매처를
+            안에서 수수료 없이 날짜를 바꿀 수 있습니다. 공식 사이트에서 해외 발급 카드로 결제할 수 없다면 클룩 같은 공식 승인 판매처를
             이용합니다. 도쿄의 다른 일정도 짜고 있다면{" "}
             <Link href="/ko/guides/attractions/teamlab-tokyo-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>
               도쿄 팀랩 티켓 비교
@@ -493,14 +493,14 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             성인 1데이 패스포트는 날짜에 따라 {PRICE_MIN}~{PRICE_MAX}이고, 도쿄 디즈니씨도 같은 날 같은 가격입니다.
             {CALENDAR_SPAN} 입장분의 공식 가격 캘린더에서 가장 싼 날은 2027년 1월 6~8일({PRICE_MIN}), 가장 비싼 날은
             11~12월의 일부 주말과 12월 25~26일 등({PRICE_MAX})이며, 2027년 1~2월 평일은 대부분 ¥9,900입니다. 다른 티켓 종류와
-            중고생·어린이 요금은 리조트가 공개한 최저가(‘부터’)입니다.
+            청소년·어린이 요금은 리조트가 공개한 최저 가격으로, 표에는 ‘부터’로 표시했습니다.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["티켓 종류(랜드·씨 공통)", "성인(18세 이상)", "중고생(12~17세)", "어린이(4~11세)"].map((h) => (
+                    {["티켓 종류(랜드·씨 공통)", "성인(18세 이상)", "청소년(12~17세)", "어린이(4~11세)"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -539,8 +539,8 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             airport limousine bus (5%), Klook eSIM (20%). Moved up from below the steps (R06). */}
         <KlookTripPrep
           label="티켓과 함께 예약할 것"
-          heading="도쿄 디즈니 리조트 근처에 묵어야 할까?"
-          intro="주말이나 기념 기간의 날짜라면 그렇습니다. 리조트는 도쿄역에서 JR 게이요선으로 15~20분 거리라서, 게이트가 열리기 전에 한 번, 밤 퍼레이드가 끝난 뒤 또 한 번 오가야 합니다. 마이하마나 한 정거장 떨어진 곳에 묵으면 아침과 밤의 이동 시간을 줄일 수 있고, 공항 리무진 버스와 eSIM도 티켓 날짜가 정해지면 같이 준비해 두면 됩니다."
+          heading="도쿄 디즈니 리조트 근처에 숙박하는 게 좋을까요?"
+          intro="주말이나 기념 기간의 날짜라면 그렇습니다. 리조트는 도쿄역에서 JR 게이요선으로 15~20분 거리라서, 개장 전과 야간 퍼레이드가 끝난 후에 각각 이동해야 합니다. 마이하마나 한 정거장 떨어진 곳에 묵으면 아침과 밤의 이동 시간을 줄일 수 있고, 공항 리무진 버스와 eSIM도 티켓 날짜가 정해지면 같이 준비해 두면 됩니다."
           items={koTripPrep}
         />
         <p className={styles.bodyText}>
@@ -556,8 +556,8 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>티켓 종류</span>
           <h2 className={styles.sectionTitle}>도쿄 디즈니 티켓은 어떤 것을 사야 하나요?</h2>
           <p className={styles.bodyText}>
-            하루 종일이라면 1데이 패스포트, 밤 시간만 원하면 저녁 패스포트, 두 파크를 모두 가려면 티켓 두
-            장입니다. 하루에 두 파크를 이용할 수 있던 1데이 파크 호퍼 패스포트는 현재 판매하지 않고,
+            하루 종일 즐기려면 1데이 패스포트, 저녁에만 방문하려면 저녁 시간대 패스포트를 선택하면 됩니다. 두 파크를 모두 방문하려면 티켓 두
+            장이 필요합니다. 하루에 두 파크를 이용할 수 있던 1데이 파크 호퍼 패스포트는 현재 판매하지 않고,
             멀티데이 패스포트는 아예 판매하지 않습니다.
           </p>
           <div className={styles.tableWrap}>
@@ -586,7 +586,7 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             티켓 종류, 입장 시간, 파크 호퍼의 현재 상태는 리조트 FAQ의 답변입니다({CHECKED} 확인). 내
             날짜에 어떤 패스포트가 판매되는지는 날짜별로 다릅니다. 기간 한정 티켓은 리조트 이벤트에 따라
-            생겼다 사라지므로, 위 목록은 고정된 티켓 목록이 아니라 현재 판매되는 티켓 종류의 개요입니다.
+            판매 여부가 달라지므로, 위 목록은 고정된 티켓 목록이 아니라 현재 판매되는 티켓 종류의 개요입니다.
           </p>
         </section>
 
@@ -596,8 +596,8 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           <h2 className={styles.sectionTitle}>도쿄 디즈니의 운영 시간은 어떻게 되나요?</h2>
           <p className={styles.bodyText}>
             고정된 운영 시간은 없습니다. 리조트가 날짜마다 정해 약 5개월 전에 자체 운영 캘린더에 공개합니다.
-            티켓 판매보다 이르다는 점이 유용한데, 방문 날짜의 판매가 시작될 무렵에는 그날 파크가 몇 시간
-            운영하는지 이미 알 수 있습니다.
+            티켓 판매보다 이르다는 점이 유용한데, 방문 날짜의 판매가 시작될 무렵에는 해당 날짜의 파크 운영 시간을
+            미리 확인할 수 있습니다.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -758,8 +758,8 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           <h2 className={styles.sectionTitle}>디즈니랜드와 디즈니씨 중 어디가 좋을까요?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             티켓 한 장에 파크 하나입니다. 파크 호퍼가 판매되지 않으므로 방문 순서가 아니라 어느 파크에 갈지를 정해야 합니다.
-            디즈니의 상징인 성이 있는 파크와 어린 아이라면 디즈니랜드, 다른 어디에도 없는 파크와 25주년 기념 시즌을 원한다면
-            디즈니씨입니다.
+            디즈니의 상징인 성이 있는 파크와 어린 아이라면 디즈니랜드, 다른 곳에서는 경험할 수 없는 파크와 25주년 기념 시즌을 즐기고 싶다면
+            디즈니씨를 추천합니다.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -819,7 +819,7 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
 
         {/* Premier Access — added 11 Nov 2026 (R08). First row is the recommendation. */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>대기 줄 단축</span>
+          <span className={styles.sectionLabel}>대기 시간 줄이기</span>
           <h2 className={styles.sectionTitle}>디즈니 프리미어 액세스가 필요할까요?</h2>
           <p className={styles.bodyText}>
             필요하지 않습니다. 디즈니 프리미어 액세스는 파크에 입장한 뒤 공식 앱에서 사는 유료 서비스이고, 모든
@@ -879,13 +879,13 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           <h2 className={styles.sectionTitle}>해외 카드로 도쿄 디즈니 티켓을 살 수 있나요?</h2>
           <p className={styles.bodyText}>
             공식 사이트에서는 안 되는 경우가 많습니다. 도쿄 디즈니 리조트 공식 웹사이트가 기본 구매처이지만,
-            해외에서 발급된 신용카드를 거부하거나 막는 일이 잦습니다. 해외 여행자에게 반복되는 골칫거리이고,
+            해외 발급 신용카드로 결제할 때 승인이 거절되는 경우가 많습니다. 해외 여행객들이 자주 겪는 문제이며,
             사려는 티켓이 2개월 전 한순간에만 판매가 시작된다면 더욱 곤란합니다.
           </p>
           <p className={styles.bodyText}>
             <strong>클룩은 도쿄 디즈니 리조트의 공식 승인 티켓 판매처입니다.</strong> 해외 카드를 받고, 결제
             화면이 한국어이며, 도쿄 디즈니 리조트 공식 앱에 등록할 수 있는 전자 티켓 QR 코드를 발급합니다. 해외
-            카드 지원과 앱에 연동되는 QR, 이 조합 덕분에 해외 방문객의 표준적인 해결책이 되었습니다. 도쿄의
+            발급 카드로 결제할 수 있고 공식 앱에 QR 코드를 등록할 수 있어 해외 방문객의 표준적인 해결책이 되었습니다. 도쿄의
             다른 일정과 함께 계획하고 있다면, 저희{" "}
             <Link href="/ko/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
               시부야 스카이 예약
@@ -901,15 +901,15 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
 
         {/* Klook tours in the same city. */}
         <KlookTourPicks
-          heading="같은 도시에서 떠나는 1일 투어"
-          intro="파크에 가면 하루가 통째로 들어가므로, 대부분은 도쿄 여행 일정 중 하루를 디즈니에 할애합니다. 아래 두 투어는 파크에 가지 않는 하루를 채워 주고, 티켓과 같은 클룩 계정에서 결제할 수 있습니다."
+          heading="도쿄에서 출발하는 당일 투어"
+          intro="파크를 방문하면 하루 일정이 필요하므로, 대부분은 도쿄 여행 일정 중 하루를 디즈니에 할애합니다. 아래 두 투어는 파크에 가지 않는 하루를 채워 주고, 티켓과 같은 클룩 계정에서 결제할 수 있습니다."
           tours={koTours}
         />
 
         {/* A second authorized-reseller route. */}
         <GygCompare
           slug={GYG_SLUG}
-          heading="겟유어가이드의 같은 패스포트"
+          heading="GetYourGuide에서 판매하는 동일한 패스포트"
           intro="도쿄 디즈니에는 현장 판매가 없고 매진된 날짜에는 입장할 수 없으므로, 한 판매처에서 매진된 날짜로는 사실상 방문할 수 없습니다. 겟유어가이드도 디즈니랜드와 디즈니씨 모두의 1데이 패스포트를 판매하니, 날짜를 확정하기 전에 다른 판매처도 함께 확인해 볼 만합니다."
           listings={[gygTokyoDisneyResort, gygTokyoDisneySea]}
         />

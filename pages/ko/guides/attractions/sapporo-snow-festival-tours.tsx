@@ -71,17 +71,17 @@ const SHUTTLE_FARE = "¥200";
 const siteRows = [
   {
     site: "오도리 행사장(大通会場)",
-    where: "오도리 공원 니시 1초메~니시 11초메. 삿포로 TV 타워 아래에서 시작해 11블록이 일직선으로 이어집니다",
+    where: "오도리 공원 니시 1초메~니시 11초메. 삿포로 TV 타워 아래에서 시작해 11개 구역이 일직선으로 이어집니다",
     when: "축제 기간 언제든 관람 가능, 조각 조명은 22:00까지",
     cost: "무료",
-    what: "대형 눈 조각, 시민 조각 경연, 먹거리 노점. 눈축제라고 하면 보통 이 행사장을 가리킵니다",
+    what: "대형 눈 조각, 시민 조각 경연, 먹거리 노점. 일반적으로 삿포로 눈축제 하면 이 행사장을 떠올립니다",
   },
   {
     site: "스스키노 행사장(すすきの会場)",
     where: "에키마에도리 미나미 4조~미나미 6조. 유흥가를 가로지르는 큰길입니다",
     when: "언제든 관람 가능, 조명은 23:00까지(마지막 날 22:00까지)",
     cost: "무료",
-    what: "눈 조각이 아닌 얼음 조각이 술집이 늘어선 거리를 따라 전시됩니다. 세 행사장 중 가장 늦게까지 볼 수 있고, 오도리에서 조금 걷거나 지하철 한 정거장입니다",
+    what: "술집이 늘어선 거리를 따라 눈 조각 대신 얼음 조각이 전시됩니다. 세 행사장 중 가장 늦게까지 볼 수 있고, 오도리에서 조금 걷거나 지하철 한 정거장입니다",
   },
   {
     site: "쓰도무 행사장(つどーむ)",
@@ -97,19 +97,19 @@ const tourRows = [
     tour: "오타루, 시로이 코이비토 파크, 스노 파크 당일 여행",
     adds: "쾌속 에어포트로 서쪽으로 33~41분 거리에 있는 운하 마을과 증기 시계, 눈놀이를 하루 일정으로 예약합니다",
     fits: "하루 종일. 다른 당일 여행보다 축제 저녁과 묶으세요",
-    note: "오타루에서는 2027년 2월 6~13일에 별도의 눈빛 거리 축제가 열립니다. 이것이 오타루를 12월보다 축제 주간에 가는 편이 나은 이유입니다",
+    note: "오타루에서는 2027년 2월 6~13일에 별도의 오타루 눈빛거리 축제가 열립니다. 이런 이유로 오타루는 12월보다 축제 기간에 방문하는 편이 낫습니다",
   },
   {
-    tour: "아사히야마 동물원, 비에이 아오이이케(푸른 연못), 닝구루 테라스 당일 여행",
+    tour: "아사히야마 동물원, 비에이 아오이이케(푸른 연못), 닝구르 테라스 당일 여행",
     adds: "펭귄 산책을 볼 수 있는 계절의 아사히야마 동물원과 비에이. 겨울에는 스노모빌 옵션이 추가 요금으로 있습니다",
     fits: "하루 종일 걸리는 긴 일정으로, 이 목록에서 삿포로로부터 가장 멉니다",
     note: "펭귄 산책은 산책로에 눈이 쌓여야 진행되고 2026-27 시작일은 미발표입니다. 다만 2월은 동물원이 안내하는 12월 하순~3월 중순 기간에 들어갑니다",
   },
   {
     tour: "시코쓰호 얼음 축제: 반나절 투어, 셔틀 좌석, 도마무 일일 투어",
-    adds: "홋카이도 이쪽의 또 다른 2월 얼음 행사로, 2027년 1월 30일~2월 23일, 조명 16:30~20:00입니다",
-    fits: "반나절 또는 저녁. 축제 날 오후가 비었을 때 딱 맞습니다",
-    note: "가이드 반나절 투어, 왕복 버스 좌석, 도마무 아이스 빌리지를 묶은 10시간 투어의 세 가지로 판매됩니다. 입장료는 평일 ¥1,000, 주말·공휴일 ¥3,000이고 도마무 상품은 불포함이라고 밝히고 있으니 나머지도 확인하세요",
+    adds: "홋카이도에서 열리는 또 다른 2월 얼음 축제로, 2027년 1월 30일~2월 23일, 조명 16:30~20:00입니다",
+    fits: "반나절 또는 저녁. 축제 기간 중 오후 일정이 비어 있을 때 적합합니다",
+    note: "가이드가 동행하는 반나절 투어, 왕복 버스 좌석, 도마무 아이스 빌리지와 연계한 10시간 투어 등 세 가지 형태로 판매됩니다. 입장료는 평일 ¥1,000, 주말·공휴일 ¥3,000이고 도마무 상품은 불포함이라고 밝히고 있으니 나머지도 확인하세요",
   },
   {
     tour: "조잔케이: 온천 당일 여행 또는 부처의 언덕 당일 여행",
@@ -127,7 +127,7 @@ const tourRows = [
     tour: "노보리베쓰, 도야호, 오타루 당일 여행",
     adds: "온천 계곡, 칼데라호, 운하 마을을 하루에 도는 남서쪽 파노라마 코스",
     fits: "하루 종일 걸리는 긴 일정으로, 하루 여유가 있을 때 맞습니다",
-    note: "4일 이상 여행이라면 할 만합니다. 3일 일정이라면 다시 오지 않는 축제의 저녁 하나를 쓰게 됩니다",
+    note: "4일 이상 머문다면 일정에 넣을 만합니다. 3일 일정이라면 다시 오지 않는 축제 저녁 하나를 포기해야 합니다",
   },
 ];
 
@@ -173,7 +173,7 @@ const transportRows = [
 const bookingWindow = [
   {
     title: "2027년 2월 여행이라면 지금 바로: 숙소",
-    desc: "일정은 위원회가 제76회 축제를 마감하는 공지에서 2026년 2월 11일에 발표했습니다. 축제 8일간의 밤이 1년 전부터 정해져 있으니 누구나 일찍 예약합니다. 객실 점유율 수치는 공개된 것이 없어 싣지 않지만, 축제 여행에서 다른 것으로 대체할 수 없는 예약은 숙소 예약뿐입니다.",
+    desc: "일정은 위원회가 제76회 축제를 마감하는 공지에서 2026년 2월 11일에 발표했습니다. 축제 8일간의 일정이 1년 전부터 확정되어 있으니 누구나 일찍 예약합니다. 객실 점유율 수치는 공개된 것이 없어 싣지 않지만, 축제 여행에서 다른 예약으로 대체하기 어려운 것은 숙소 예약뿐입니다.",
   },
   {
     title: "출국 전: 공항 구간과 홋카이도 패스",
@@ -185,7 +185,7 @@ const bookingWindow = [
   },
   {
     title: "예약할 것 없음: 축제 자체",
-    desc: "실행위원회 FAQ에 따르면 행사장 3곳 모두 무료입니다. 오도리와 스스키노는 언제든 걸어 들어갈 수 있는 공원과 거리이고, 쓰도무는 입장 무료에 내부 일부 체험만 유료입니다. 입장권도, 지정 입장 시간도, 예약할 것도 없습니다.",
+    desc: "실행위원회 FAQ에 따르면 세 행사장 모두 입장 무료입니다. 오도리와 스스키노는 언제든 걸어 들어갈 수 있는 공원과 거리이고, 쓰도무는 입장 무료에 내부 일부 체험만 유료입니다. 입장권도, 지정 입장 시간도, 예약할 것도 없습니다.",
   },
 ];
 
@@ -195,9 +195,9 @@ const TODAY = dateLabel("2026-11-20", LOCALE);
 
 const factRows = [
   { item: "삿포로 눈축제 2027(제77회)", fact: "2027년 2월 4일(목)~11일(목·공휴일), 8일간. 행사장 3곳 모두 입장 무료, 티켓 없음" },
-  { item: "오도리 행사장", fact: "오도리 공원 니시 1~11초메. 언제든 관람 가능, 조명 22:00까지" },
+  { item: "오도리 행사장", fact: "오도리 공원 니시 1초메~11초메. 언제든 관람 가능, 조명 22:00까지" },
   { item: "스스키노 행사장", fact: "에키마에도리 미나미 4조~6조. 언제든 관람 가능, 조명 23:00까지(마지막 날 22:00)" },
-  { item: "쓰도무 행사장", fact: "10:00~16:00. 입장 무료, 일부 체험 유료. 혼잡하면 체험 접수가 일찍 마감될 수 있음" },
+  { item: "쓰도무 행사장(삿포로 커뮤니티 돔)", fact: "10:00~16:00. 입장 무료, 일부 체험 유료. 혼잡하면 체험 접수가 일찍 마감될 수 있음" },
   { item: "연계 행사", fact: "삿포로 스노 스포츠 파크 2027, 2027년 2월 12~14일, 다이와하우스 프리미스트 돔" },
 ];
 
@@ -207,7 +207,7 @@ const faqItems = [
     a: `축제 자체는 무료입니다. 실행위원회 FAQ는 「全会場無料です」(전 행사장 무료)라고 답하며, 쓰도무 행사장 일부 체험 등만 유료입니다. 돈이 드는 것은 축제 전후의 가이드 당일 투어이고, 가격은 날짜별로 Klook에 표시되니 여행 날짜로 확인하세요. snowfes.com 확인일 ${TODAY}.`,
   },
   {
-    q: "삿포로 눈축제 일정은 얼마나 미리 예약해야 하나요?",
+    q: "삿포로 눈축제 여행은 얼마나 미리 예약해야 하나요?",
     a: "날짜가 정해지는 대로 숙소부터 예약하세요. 2027년 2월 4~11일 일정은 2026년 2월 11일부터 공개되어 있습니다. 오타루, 아사히야마 동물원, 시코쓰호 얼음 축제 같은 계절 한정 당일 투어는 취소 조건을 확인해 일정을 바꿀 수 있을 때, 12월 31일 무렵까지 예약해 두세요. 축제 행사장 자체는 예약할 것이 없습니다.",
   },
   {
@@ -220,11 +220,11 @@ const faqItems = [
   },
   {
     q: "삿포로 눈축제에 투어가 필요한가요?",
-    a: `아니요. 눈축제 투어라고 파는 상품이 있다면 의심해 보세요. 행사장 3곳 모두 무료이고 그냥 들어갈 수 있으며, 오도리와 스스키노는 몇 블록 거리의 공원과 거리, 쓰도무는 지하철과 짧은 셔틀로 갑니다. 돈을 내고 건너뛸 대기 줄도, 미리 확보할 입장권도 없습니다. 이 여행에서 투어가 실제로 유용한 것은 축제 관람 외의 나머지 반나절입니다. 행사장은 모두 야외이고 2월 평균 일 최고기온은 ${FEB_MAX}이므로, 대부분은 낮에 실내나 시외로 갔다가 저녁에 조명이 켜진 오도리를 보고 싶어 합니다. 이 페이지의 상품이 바로 그것입니다. 오타루 운하, 아사히야마 동물원 겨울 일정, 시코쓰호 얼음 축제 저녁, 조잔케이 온천 반나절, 스노 파크입니다. 눈축제 투어는 하나도 없습니다. 존재하지도 않고 필요하지도 않기 때문입니다.`,
+    a: `아니요. 눈축제 투어라고 파는 상품이 있다면 의심해 보세요. 세 행사장 모두 입장 무료이고 그냥 들어갈 수 있으며, 오도리와 스스키노는 몇 블록 거리의 공원과 거리, 쓰도무는 지하철과 짧은 셔틀로 갑니다. 추가 요금을 내고 대기 시간을 줄이는 서비스도, 미리 확보할 입장권도 없습니다. 이 여행에서 투어가 실제로 유용한 것은 축제 관람에 쓰지 않는 나머지 반나절을 활용하는 일정입니다. 행사장은 모두 야외이고 2월 평균 일 최고기온은 ${FEB_MAX}이므로, 대부분은 낮에 실내나 시외로 갔다가 저녁에 조명이 켜진 오도리를 보고 싶어 합니다. 이 페이지의 상품이 바로 그것입니다. 오타루 운하, 아사히야마 동물원 겨울 일정, 시코쓰호 얼음 축제 저녁, 조잔케이 온천 반나절, 스노 파크입니다. 눈축제 투어는 하나도 없습니다. 존재하지도 않고 필요하지도 않기 때문입니다.`,
   },
   {
     q: "눈축제 기간에는 어디에 묵어야 하나요?",
-    a: `삿포로역이나 스스키노입니다. 차이는 저녁에 무엇을 더 중시하느냐입니다. 삿포로역은 오도리에서 지하철 한 정거장이고 대부분 지하로 걸을 수 있어, 2월 평균 일 최고기온이 ${FEB_MAX}일 때 어떤 전망보다 중요합니다. 신치토세에서 오는 쾌속 에어포트도 이곳에 내려 줍니다. 스스키노는 숙소 앞 거리가 바로 얼음 조각 행사장입니다. 행사장은 미나미 4조~6조의 에키마에도리를 따라 23:00까지 조명이 켜져 있어, 늦은 시간도 막차 없이 걸어서 돌아옵니다. 삿포로가 만실이면 오타루가 현실적인 대안입니다. JR 홋카이도 기준 쾌속 에어포트로 33~41분, ¥800이며 같은 시기에 눈빛 거리 축제도 열립니다. 어디든 날짜가 2026년 2월부터 공개되어 있으니 가장 먼저 정해야 할 예약입니다.`,
+    a: `삿포로역이나 스스키노입니다. 차이는 저녁에 무엇을 더 중시하느냐입니다. 삿포로역은 오도리역에서 지하철로 한 정거장 거리이며, 대부분 지하 통로로 이동할 수 있어, 2월 평균 일 최고기온이 ${FEB_MAX}일 때 전망 좋은 방보다 더 중요합니다. 신치토세에서 오는 쾌속 에어포트도 이곳에 내려 줍니다. 스스키노는 숙소 앞 거리가 바로 얼음 조각 행사장입니다. 행사장은 미나미 4조~6조의 에키마에도리를 따라 23:00까지 조명이 켜져 있어, 늦은 시간에도 막차 걱정 없이 걸어서 숙소로 돌아올 수 있습니다. 삿포로가 만실이면 오타루가 현실적인 대안입니다. JR 홋카이도 기준 쾌속 에어포트로 33~41분, ¥800이며 같은 시기에 눈빛거리 축제도 열립니다. 어디든 날짜가 2026년 2월부터 공개되어 있으니 가장 먼저 숙소를 예약해야 합니다.`,
   },
 ];
 
@@ -233,7 +233,7 @@ const festivalSameTrip: KlookTripPrepItem[] = [
     label: "클룩 일본 eSIM",
     ctaLabel: "클룩에서 eSIM 보기 →",
     url: klookFor(klookEsim.url, LOCALE),
-    why: "야외 행사장 3곳, 아직 2027년 시간표가 나오지 않은 쓰도무 셔틀, 일 최고기온 평균 0.4°C인 한 달입니다. 행사장 공지와 날씨 변화는 모두 창구가 아니라 휴대폰으로 받게 됩니다.",
+    why: "야외 행사장 3곳과 아직 2027년 시간표가 발표되지 않은 쓰도무 셔틀이 있으며, 2월의 일 최고기온 평균은 0.4°C입니다. 행사장 안내와 날씨 정보는 현장 창구보다 휴대폰으로 확인하게 됩니다.",
   },
   {
     label: "신치토세 공항 이동(전용차·합승)",
@@ -251,7 +251,7 @@ const festivalSameTrip: KlookTripPrepItem[] = [
     label: "삿포로역 주변 호텔",
     ctaLabel: "클룩에서 삿포로 호텔 보기 →",
     url: klookFor(sapporoSnowFestivalStayAreas[0].url, LOCALE),
-    why: "날짜가 2026년 2월 11일부터 공개되어 있어 이 8일의 객실은 가장 먼저 정해야 할 예약이며, 이 페이지에서 가격을 적을 수 없는 항목입니다.",
+    why: "날짜가 2026년 2월 11일부터 공개되어 있어 이 8일의 객실은 가장 먼저 예약해야 하는 항목이며, 이 페이지에서 가격을 적을 수 없는 항목입니다.",
   },
 ];
 
@@ -290,10 +290,10 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 삿포로 눈축제 투어: <br />삿포로 눈축제 2027 일정(2월 4~11일), 비용, 예약할 것
 </h1>
           <p className={styles.heroSubtitle}>
-8일간, 행사장 3곳, 입장권 없음. 예약할 만한 투어는 축제 전후의 당일 여행이고, 다른 것으로 대체할 수 없는 예약은 숙소뿐입니다.
+8일간 개최, 행사장 3곳, 입장권 불필요. 예약할 만한 투어는 축제 전후의 당일 여행이고, 다른 예약으로 대체하기 어려운 것은 숙소뿐입니다.
 </p>
           <div className={styles.heroBadges}>
-            {[`업데이트 ${monthLabel(updated.iso, LOCALE)}`, "실행위원회가 발표한 2027년 일정", "행사장 3곳 모두 무료", "요금과 시간, 확인일 표기"].map((t) => (
+            {[`업데이트 ${monthLabel(updated.iso, LOCALE)}`, "실행위원회가 발표한 2027년 일정", "세 행사장 모두 입장 무료", "요금과 시간, 확인일 표기"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -308,7 +308,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
         {/* Answer-first block, added 18 Nov 2026. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>삿포로 눈축제 2027</strong>은 <strong>2027년 2월 4일부터 11일까지 8일간</strong> 오도리, 스스키노, 쓰도무 행사장 3곳에서 열리며 <strong>입장은 무료이고 티켓이 없습니다</strong>. 그래서 <strong>삿포로 눈축제 투어</strong>는 축제 전후의 선택 일정이며, 숙소를 먼저 잡고 당일 투어는 12월 31일 무렵까지 예약하세요. 실행위원회 공식 사이트 확인일 {TODAY}.
+            <strong>삿포로 눈축제 2027</strong>은 <strong>2027년 2월 4일부터 11일까지 8일간</strong> 오도리, 스스키노, 쓰도무 행사장 3곳에서 열리며 <strong>입장은 무료이고 티켓이 없습니다</strong>. 그래서 <strong>삿포로 눈축제 투어</strong>는 축제 관람 전후에 선택할 수 있는 일정이며, 숙소를 먼저 잡고 당일 투어는 12월 31일 무렵까지 예약하세요. 실행위원회 공식 사이트 확인일 {TODAY}.
           </p>
           <p className={styles.bodyText}>
             투어는 세 가지 형태입니다. <strong>하루 종일</strong> 걸리는 삿포로 출발 당일 투어(오타루·스노 파크, 아사히야마 동물원·비에이, 노보리베쓰·도야호), <strong>반나절</strong> 투어(시코쓰호 얼음 축제, 스노 파크. 조잔케이 온천은 상품에 따라 반나절~하루), 그리고 시코쓰호 얼음 축제와 도마무 아이스 빌리지를 묶은 <strong>10시간</strong> 투어입니다. 소요 시간은 아래 표의 각 Klook 상품 기준입니다.
@@ -343,7 +343,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             축제 자체는 ¥0입니다. 실행위원회 FAQ는 「全会場無料です」(전 행사장 무료)라고 답하며 쓰도무 행사장 일부 체험 등만 유료입니다. 돈이 드는 것은 오타루, 아사히야마 동물원, 시코쓰호 얼음 축제 같은 가이드 당일 투어이고, 가격은 날짜별로 Klook에 표시되니 여행 날짜로 확인하세요.
           </p>
 
-          <h2 className={styles.sectionTitle}>삿포로 눈축제 일정은 얼마나 미리 예약해야 하나요?</h2>
+          <h2 className={styles.sectionTitle}>삿포로 눈축제 여행은 얼마나 미리 예약해야 하나요?</h2>
           <p className={styles.bodyText}>
             날짜가 정해지는 대로 숙소부터 예약하세요. 2027년 2월 4~11일 8박의 일정은 2026년 2월 11일부터 공개되어 있습니다. 계절 한정 당일 투어는 취소 조건을 확인해 일정을 바꿀 수 있을 때, 12월 31일 무렵까지 예약해 두고, 축제 행사장은 예약할 것이 없습니다.
           </p>
@@ -362,7 +362,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
           checkedIso={SEASON_ISO}
           deadline={
             <>
-숙소를 지금 예약하세요. 축제 8일은 2026년 2월 11일부터 정해져 있고, 이 여행에서 대체할 수 없는 유일한 예약입니다. 당일 투어는 12월 31일까지 예약해 두세요. 취소 조건을 확인해 두면 계획을 바꿀 수 있는 시기입니다.
+숙소를 지금 예약하세요. 축제 8일은 2026년 2월 11일부터 정해져 있고, 이 여행에서 다른 방법으로 대체할 수 없는 유일한 예약입니다. 당일 투어는 12월 31일까지 예약해 두세요. 취소 조건을 확인해 두면 계획을 바꿀 수 있는 시기입니다.
 </>
           }
           tours={[
@@ -374,7 +374,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
               departs: "삿포로",
             },
             {
-              title: "삿포로 출발 아사히야마 동물원, 비에이 아오이이케(푸른 연못), 닝구루 테라스 당일 투어",
+              title: "삿포로 출발 아사히야마 동물원, 비에이 아오이이케(푸른 연못), 닝구르 테라스 당일 투어",
               url: klookFor(asahiyamaBieiHighlightsTour.url, LOCALE),
               price: "약 US$55부터",
               duration: "하루 종일",
@@ -419,7 +419,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 입장
 </p>
                 <p className={styles.verdictStatValue}>
-행사장 3곳 모두 무료
+세 행사장 모두 입장 무료
 </p>
               </div>
               <div className={styles.verdictStat}>
@@ -432,7 +432,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
               </div>
             </div>
                         <p className={styles.verdictText}>
-<strong>삿포로 눈축제 2027</strong>은 2월 4~11일에 열리고(공식 사이트 snowfes.com, {TODAY} 확인) 행사장 3곳 모두 무료라 <strong>삿포로 눈축제 투어</strong>는 필수가 아닙니다. 숙소는 지금, 당일 투어는 12월 31일까지 예약해 두세요. <strong>제77회 삿포로 눈축제는 2027년 2월 4일부터 11일까지</strong> 8일간 행사장 3곳에서 열립니다. <strong>오도리 공원 니시 1초메~11초메</strong>, <strong>스스키노 에키마에도리 미나미 4조~6조</strong>, 그리고 삿포로시 스포츠 시설인 <strong>쓰도무</strong>이며, 위원회 FAQ에 따르면 모두 <strong>무료</strong>입니다. 오도리는 언제든 볼 수 있고 조각 조명은 <strong>22:00</strong>까지, 스스키노는 <strong>23:00</strong>까지(마지막 날 22:00), 쓰도무는 <strong>10:00–16:00</strong>이며 내부 일부 체험은 유료입니다. 입장권도, 지정 입장 시간도, 돈을 내고 건너뛸 대기 줄도 없습니다. 예약할 만한 것은 축제 기간 전후의 일정입니다. 대체할 수 없는 숙소, 그리고 이 시기에만 운영되는 시외 당일 여행인 오타루, 아사히야마 동물원, 시코쓰호 얼음 축제, 조잔케이 온천입니다. 2월 삿포로의 일 최고기온 평균은 <strong>{FEB_MAX}</strong>이므로 축제 날에는 낮 시간을 실내 일정으로 잡아야 합니다. 축제 정보 확인일 {OWN}, 기온 평년값 확인일 {JMA_CHECKED}.
+<strong>삿포로 눈축제 2027</strong>은 2월 4~11일에 열리고(공식 사이트 snowfes.com, {TODAY} 확인) 세 행사장 모두 입장 무료라 <strong>삿포로 눈축제 투어</strong>는 필수가 아닙니다. 숙소는 지금, 당일 투어는 12월 31일까지 예약해 두세요. <strong>제77회 삿포로 눈축제는 2027년 2월 4일부터 11일까지</strong> 8일간 행사장 3곳에서 열립니다. <strong>오도리 공원 니시 1초메~11초메</strong>, <strong>스스키노 에키마에도리 미나미 4조~6조</strong>, 그리고 삿포로시 스포츠 시설인 <strong>쓰도무</strong>이며, 위원회 FAQ에 따르면 모두 <strong>무료</strong>입니다. 오도리는 언제든 볼 수 있고 조각 조명은 <strong>22:00</strong>까지, 스스키노는 <strong>23:00</strong>까지(마지막 날 22:00), 쓰도무는 <strong>10:00–16:00</strong>이며 내부 일부 체험은 유료입니다. 입장권도, 지정 입장 시간도, 추가 요금을 내고 대기 시간을 줄이는 서비스도 없습니다. 예약할 만한 것은 축제 기간 전후의 일정입니다. 다른 숙소로 대체하기 어려운 숙박 예약과 이 시기에만 운영되는 근교 당일 투어인 오타루, 아사히야마 동물원, 시코쓰호 얼음 축제, 조잔케이 온천입니다. 2월 삿포로의 일 최고기온 평균은 <strong>{FEB_MAX}</strong>이므로 축제 기간에는 낮 시간에 실내 일정을 넣어야 합니다. 축제 정보 확인일 {OWN}, 기온 평년값 확인일 {JMA_CHECKED}.
 </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={klookFor(sapporoSnowFestivalStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -448,7 +448,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
                 <KlookTripPrep
           label={"이번 여행에서 예약할 것"}
           heading={"축제 여행에서 출국 전에 예약할 것"}
-          intro={"축제 관람 외에 예약할 것은 네 가지입니다. 모바일 데이터, 열차 대신 차량을 이용하는 공항 이동편, 자신의 경로로 계산해 볼 철도 패스, 그리고 날짜가 1년 전에 정해지기 때문에 대체할 방법이 없는 숙소입니다."}
+          intro={"축제 관람 외에 예약할 것은 네 가지입니다. 모바일 데이터, 기차 대신 차량으로 이동하는 공항 교통편, 실제 이동 경로를 기준으로 구매 여부를 판단할 철도 패스, 그리고 날짜가 1년 전에 정해지기 때문에 대체할 방법이 없는 숙소입니다."}
           items={festivalSameTrip}
         />
 
@@ -504,10 +504,10 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 무료이고, 투어는 필요 없습니다. 실행위원회 FAQ는 요금 질문에 한 줄로 답합니다. <strong>「全会場無料です」</strong>, 전 행사장 무료이며 입장권이 필요한 부분은 없습니다. 오도리 행사장은 8일 동안 언제든 들어갈 수 있는 공원이고, 스스키노 행사장은 공공 도로입니다. 쓰도무 행사장은 입장 무료이며 일부 체험은 별도 요금이고, 실행위원회 안내에 따르면 혼잡하면 접수가 16:00 전에 끝날 수 있습니다. 확인일 {OWN}.
 </p>
           <p className={styles.bodyText}>
-그래서 이 사이트의 행사 중에서도 특이합니다. 입장권도, 지정 입장 시간도, 돈을 내고 건너뛸 대기 줄도 없으니 ‘줄 서지 않고 입장’ 상품도 필요 없습니다. 눈축제 자체의 입장권을 파는 클룩 상품은 없으며, 있어서도 안 됩니다. 축제 여행에서 예약할 것은 <strong>축제 관람 외의 나머지 반나절</strong>입니다. 행사장은 모두 야외이고 기상청 평년값으로 일 최고기온 평균이 <strong>{FEB_MAX}</strong>이며 조각은 해가 진 뒤가 가장 좋습니다. 축제를 즐기기 좋은 하루는 오전에 시외로 나가거나 오후에 실내에서 보낸 뒤 저녁에 오도리와 스스키노의 조명을 보는 것입니다. 아래 상품이 바로 그 앞부분입니다.
+그래서 이 사이트의 행사 중에서도 특이합니다. 입장권도, 지정 입장 시간도, 추가 요금을 내고 대기 시간을 줄이는 서비스도 없으니 ‘줄 서지 않고 입장’ 상품도 필요 없습니다. 눈축제 자체의 입장권을 파는 클룩 상품은 없으며, 있어서도 안 됩니다. 축제 여행에서 예약할 것은 <strong>축제 관람에 쓰지 않는 나머지 반나절</strong>을 활용하는 일정입니다. 행사장은 모두 야외이고 기상청 평년값으로 일 최고기온 평균이 <strong>{FEB_MAX}</strong>이며 조각은 해가 진 뒤가 가장 좋습니다. 축제를 즐기기 좋은 하루는 오전에 시외로 나가거나 오후에 실내에서 보낸 뒤 저녁에 오도리와 스스키노의 조명을 보는 것입니다. 아래 상품이 바로 그 앞부분입니다.
 </p>
           <p className={styles.bodyText}>
-위치 때문에 언급할 티켓이 하나 있습니다. <strong>삿포로 TV 타워</strong> 전망대는 오도리 행사장 11블록이 시작되는 니시 1초메에 있어, 조명이 켜진 행사장 전체를 일직선으로 볼 수 있는 유일한 유료 시설입니다. <KlookLink href={klookFor(sapporoTvTowerMoiwaSetTicket.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>TV 타워와 모이와산 세트권 보기 →</KlookLink>
+위치 때문에 언급할 티켓이 하나 있습니다. <strong>삿포로 TV 타워</strong> 전망대는 오도리 행사장 11개 구역이 시작되는 니시 1초메에 있어, 조명이 켜진 행사장 전체를 일직선으로 내려다볼 수 있는 유일한 유료 시설입니다. <KlookLink href={klookFor(sapporoTvTowerMoiwaSetTicket.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>TV 타워와 모이와산 세트권 보기 →</KlookLink>
 </p>
         </section>
 
@@ -571,17 +571,17 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 눈축제 기간에는 어디에 묵어야 하나요?
 </h2>
           <p className={styles.bodyText}>
-<strong>삿포로역이나 스스키노</strong>입니다. 선택 기준은 저녁에 무엇을 더 중시하느냐입니다. 삿포로역은 오도리에서 지하철 한 정거장이고 대부분 지하로 걸을 수 있으며 신치토세발 쾌속 에어포트가 내리는 곳입니다. 일 최고기온 평균 {FEB_MAX}의 야외 8일 동안 행사장 사이에 실내로 돌아올 수 있는 것은 전망보다 가치가 있습니다. <strong>스스키노</strong>는 숙소 앞 거리가 얼음 조각 행사장이고 23:00까지 조명이 켜져 있어 늦은 시간도 걸어서 돌아옵니다. JR 하코다테 본선 쾌속 에어포트로 서쪽으로 33~41분 거리에 있는 <strong>오타루</strong>는 삿포로가 만실일 때의 대안이며 같은 시기에 눈빛 거리 축제가 열립니다.
+<strong>삿포로역이나 스스키노</strong>입니다. 선택 기준은 저녁에 무엇을 더 중시하느냐입니다. 삿포로역은 오도리역에서 지하철로 한 정거장 거리이며, 대부분 지하 통로로 이동할 수 있으며 신치토세발 쾌속 에어포트가 내리는 곳입니다. 일 최고기온 평균 {FEB_MAX}의 야외 8일 동안 행사장 사이에 실내로 돌아올 수 있는 것은 전망 좋은 방보다 더 중요합니다. <strong>스스키노</strong>는 숙소 앞 거리가 얼음 조각 행사장이고 23:00까지 조명이 켜져 있어 늦은 시간에도 걸어서 숙소로 돌아올 수 있습니다. JR 하코다테 본선 쾌속 에어포트로 서쪽으로 33~41분 거리에 있는 <strong>오타루</strong>는 삿포로가 만실일 때의 대안이며 같은 시기에 눈빛거리 축제가 열립니다.
 </p>
           <p className={styles.bodyText}>
-시기에 대해서는 확인된 것과 아닌 것을 분명히 하겠습니다. <strong>일정은 2026년 2월 11일에 발표</strong>되었습니다. 실행위원회가 제76회를 마감하는 공지에서 2027년 일정을 발표했으니, 축제 8일간의 밤이 8개월 전부터 정해져 있는 셈이고 일찍 예약해야 할 가장 강한 근거입니다. 객실 점유율이나 매진 수치는 공개된 것이 없어 싣지 않으며, 추정치도 넣지 않습니다. 숙소는 대체할 수 없는 예약으로, 나머지는 유연하게 생각하세요.
+시기에 대해서는 확인된 것과 아닌 것을 분명히 하겠습니다. <strong>일정은 2026년 2월 11일에 발표</strong>되었습니다. 실행위원회가 제76회를 마감하는 공지에서 2027년 일정을 발표했으니, 축제 8일간의 일정이 8개월 전부터 확정되어 있는 셈이고 일찍 예약해야 할 가장 강한 근거입니다. 객실 점유율이나 매진 수치는 공개된 것이 없어 싣지 않으며, 추정치도 넣지 않습니다. 숙소는 대체할 수 없는 예약으로, 나머지는 유연하게 생각하세요.
 </p>
         </section>
 
         <KlookStayAreas
           heading={"위 세 거점의 호텔 검색"}
           intro={"남은 객실과 가격은 날짜별로 다르므로 각 거점에서 클룩 호텔 검색으로 연결했습니다. 축제 기간에 비교할 것은 1박 요금보다 난방이 되는 실내까지의 거리이며, 각 항목의 설명이 그 내용입니다."}
-          areas={sapporoSnowFestivalStayAreas.map((item, i) => withKlookLocale(item, LOCALE, ([{ why: "오도리까지 지하철 한 정거장 또는 지붕 있는 길로 걸을 수 있고 신치토세발 쾌속 에어포트가 내리는 곳입니다. 2월의 8일 동안은 행사장 사이에 실내로 돌아올 수 있어 어떤 전망보다 중요합니다.", area: "삿포로역" }, { why: "숙소 앞 거리가 얼음 조각 행사장입니다. 스스키노 행사장은 미나미 4조~6조의 에키마에도리를 따라 23:00까지 조명이 켜져 있어 늦은 시간도 막차 없이 걸어서 돌아옵니다.", area: "스스키노" }, { why: "삿포로가 만실일 때의 대안이자 그 자체로 여행지입니다. 오타루는 JR 하코다테 본선 쾌속 에어포트로 33~41분이며 같은 2월에 눈빛 거리 축제가 열립니다.", area: "오타루역" }] as Partial<typeof item>[])[i]))}
+          areas={sapporoSnowFestivalStayAreas.map((item, i) => withKlookLocale(item, LOCALE, ([{ why: "오도리까지 지하철 한 정거장 또는 지붕 있는 길로 걸을 수 있고 신치토세발 쾌속 에어포트가 내리는 곳입니다. 8일간의 축제 기간에는 행사장 사이에 실내로 돌아올 수 있어 전망 좋은 방보다 더 중요합니다.", area: "삿포로역" }, { why: "숙소 앞 거리가 얼음 조각 행사장입니다. 스스키노 행사장은 미나미 4조~6조의 에키마에도리를 따라 23:00까지 조명이 켜져 있어 늦은 시간에도 막차 걱정 없이 걸어서 숙소로 돌아올 수 있습니다.", area: "스스키노" }, { why: "삿포로가 만실일 때의 대안이자 그 자체로 여행지입니다. 오타루는 JR 하코다테 본선 쾌속 에어포트로 33~41분이며 같은 2월에 눈빛거리 축제가 열립니다.", area: "오타루역" }] as Partial<typeof item>[])[i]))}
         />
 
                 <section className={styles.bodySection}>
@@ -595,7 +595,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 일본 기상청 1991~2020년 삿포로 평년값으로 2월 평균 기온은 <strong>{FEB_MEAN}</strong>, <strong>일 최고 평균 {FEB_MAX}</strong>, <strong>일 최저 평균 {FEB_MIN}</strong>, 월 강설량은 <strong>{FEB_SNOW}</strong>입니다. 확인일 {JMA_CHECKED}.
 </p>
           <p className={styles.bodyText}>
-이 수치에서 나오는 실질적인 결론 세 가지입니다. 첫째, 일 최고기온이 0°C 안팎이면 발밑의 눈은 젖어 있지 않고 단단하게 다져져 미끄럽습니다. 방수보다 접지력이 중요하며 가장 먼저 고려할 점입니다. 둘째, 삿포로의 건물, 열차, 지하 통로는 난방이 강해 두꺼운 코트 하나보다 벗을 수 있는 겹옷이 낫습니다. 삿포로역과 오도리 사이의 지하 통로가 바로 이런 이유로 있으며 축제 저녁 계획의 일부입니다. 셋째, 조각은 해가 진 뒤가 가장 좋은데 이때 기온은 평균이 아니라 최저에 가깝습니다. 밖에 있고 싶은 시간이 하루 중 가장 추운 시간이며 장갑, 모자, 얼굴 가리개는 필수입니다. <Link href="/ko/guides/attractions/japan-winter-itinerary">일본 겨울 여행 일정</Link>에 도쿄, 교토, 오사카와 삿포로의 기상청 평년값을 나란히 실어 두었습니다. 홋카이도에 다른 옷이 필요한 이유를 알 수 있습니다.
+이 수치에서 나오는 실질적인 결론 세 가지입니다. 첫째, 일 최고기온이 0°C 안팎이면 발밑의 눈은 젖어 있지 않고 단단하게 다져져 미끄럽습니다. 방수보다 접지력이 중요하며 가장 먼저 고려할 점입니다. 둘째, 삿포로의 건물, 열차, 지하 통로는 난방이 강해 두꺼운 코트 하나보다 벗을 수 있는 겹옷이 낫습니다. 삿포로역과 오도리 사이의 지하 통로가 바로 이런 이유로 있으며 축제 저녁 계획의 일부입니다. 셋째, 조각은 해가 진 뒤가 가장 좋은데 이때 기온은 평균이 아니라 최저에 가깝습니다. 야외에서 관람하기 좋은 시간이 하루 중 가장 추운 시간대이므로 장갑, 모자, 얼굴 가리개는 필수입니다. <Link href="/ko/guides/attractions/japan-winter-itinerary">일본 겨울 여행 일정</Link>에 도쿄, 교토, 오사카와 삿포로의 기상청 평년값을 나란히 실어 두었습니다. 홋카이도에 다른 옷이 필요한 이유를 알 수 있습니다.
 </p>
         </section>
 
@@ -607,7 +607,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
 신치토세 공항에서 삿포로까지 어떻게 가나요?
 </h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-<strong>쾌속 에어포트로 33~37분, {AIRPORT_FARE}</strong>입니다. JR 홋카이도 수치이고 대부분의 도착편에 맞는 방법입니다. 아래 표는 지정석 요금, 각 행사장으로 가는 방법, 지하철 1일권 두 종류를 운영사 공식 요금과 함께 정리했습니다.
+<strong>쾌속 에어포트로 33~37분, {AIRPORT_FARE}</strong>입니다. JR 홋카이도 수치이고 대부분의 도착편에 맞는 방법입니다. 아래 표는 지정석 요금, 각 행사장으로 가는 방법, 지하철 1일권 두 종류를 운영사 공식 요금을 기준으로 정리했습니다.
 </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -633,7 +633,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-직접 정해야 할 것이 두 가지 있습니다. 4호차 <strong>U시트 지정석</strong>은 요금에 ¥1,000 추가, 티켓리스 예약은 ¥800이며, 2월에는 일반 차량이 스키 가방을 든 승객으로 붐비기 때문에 값어치가 있습니다. <strong>JR 홋카이도 레일 패스</strong>는 시외로 나갈 때만 이득입니다. 공항 왕복은 약 ¥2,460이므로 패스는 공항이 아니라 오타루, 아사히카와, 노보리베쓰에 대한 판단입니다. 자신의 구간으로 계산해 보세요. 요금 확인일 {OWN}. 오타루·아사히카와·후라노를 도는 <Link href="/ko/guides/attractions/hokkaido-7-day-itinerary">홋카이도 7일 일정</Link>에 구간별 요금과 패스 계산이 있습니다. <Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR 패스 가이드(영어)</Link>도 전국 패스에 같은 방법을 씁니다.
+직접 정해야 할 것이 두 가지 있습니다. 4호차 <strong>U시트 지정석</strong>은 요금에 ¥1,000 추가, 티켓리스 예약은 ¥800이며, 2월에는 일반 차량이 스키 가방을 든 승객으로 붐비기 때문에 값어치가 있습니다. <strong>JR 홋카이도 레일 패스</strong>는 시외로 나갈 때만 이득입니다. 공항 왕복은 약 ¥2,460이므로 패스 구매 여부는 공항이 아니라 오타루, 아사히카와, 노보리베쓰 방문 계획에 따라 판단해야 합니다. 자신의 구간으로 계산해 보세요. 요금 확인일 {OWN}. 오타루·아사히카와·후라노를 도는 <Link href="/ko/guides/attractions/hokkaido-7-day-itinerary">홋카이도 7일 일정</Link>에 구간별 요금과 패스 계산이 있습니다. <Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR 패스 가이드(영어)</Link>도 전국 패스에 같은 방법을 씁니다.
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -647,7 +647,7 @@ JR 홋카이도 레일 패스 →
 </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-도착일에 예약할 것이 하나 더 있습니다. 모바일 데이터입니다. 야외 행사장 3곳, 2027년 시간표가 없는 셔틀, 당일 계획을 바꾸는 2월 날씨까지, 관련 공지는 모두 창구가 아니라 휴대폰으로 옵니다. <KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>클룩 eSIM 보기 →</KlookLink> <Link href="/ko/guides/esim/best-esim-japan">일본 eSIM 추천 가이드</Link>에서 다른 선택지와 비교할 수 있습니다.
+도착 당일부터 쓸 수 있도록 준비할 것이 하나 더 있습니다. 모바일 데이터입니다. 야외 행사장 3곳, 2027년 시간표가 없는 셔틀, 당일 계획을 바꾸는 2월 날씨까지, 관련 공지는 모두 창구가 아니라 휴대폰으로 옵니다. <KlookLink href={klookFor(klookEsim.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>클룩 eSIM 보기 →</KlookLink> <Link href="/ko/guides/esim/best-esim-japan">일본 eSIM 추천 가이드</Link>에서 다른 선택지와 비교할 수 있습니다.
 </p>
         </section>
 
@@ -659,7 +659,7 @@ JR 홋카이도 레일 패스 →
 실제로 무엇을, 언제 예약해야 하나요?
 </h2>
           <p className={styles.bodyText}>
-네 가지를 이 순서로 정리합니다. 축제는 그중에 없습니다. 얼마나 미리 정해야 하는지 순서입니다.
+네 가지를 이 순서로 정리합니다. 축제 자체는 예약 대상에 포함되지 않습니다. 얼마나 미리 정해야 하는지 순서입니다.
 </p>
           <div className={styles.whoForGrid}>
             {bookingWindow.map((item) => (
@@ -670,7 +670,7 @@ JR 홋카이도 레일 패스 →
             ))}
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-이 여행에서는 취소 조건이 특히 중요합니다. 2월 홋카이도에서는 눈이 와도 축제는 중단되지 않습니다. 행사장은 야외이고 무료이며 조각은 그대로입니다. 하지만 시외 도로가 막히고 항공편이 묶일 수 있습니다. 버스 투어를 예약할 때 취소 조건을 확인하고, 마지막 날 아침에 출국한다면 신치토세 첫 편은 피하세요.
+이 여행에서는 취소 조건이 특히 중요합니다. 2월 홋카이도에서는 눈이 와도 축제는 중단되지 않습니다. 행사장은 야외이고 무료이며 조각은 그대로입니다. 하지만 시외 도로가 막히고 항공편이 묶일 수 있습니다. 버스 투어를 예약할 때 취소 조건을 확인하고, 마지막 날 아침에 출국한다면 신치토세 공항에서 출발하는 첫 항공편은 피하세요.
 </p>
         </section>
 
@@ -682,10 +682,10 @@ JR 홋카이도 레일 패스 →
 눈축제와 무엇을 묶으면 좋을까요?
 </h2>
           <p className={styles.bodyText}>
-먼저 홋카이도 안에서 찾아보세요. <Link href="/guides/attractions/otaru-day-trip-from-sapporo" hrefLang="en">삿포로 출발 오타루 당일 여행(영어)</Link>은 눈빛 거리 축제가 눈축제 대부분과 겹쳐 쉽게 더할 수 있습니다. 일주일이 있다면 <Link href="/ko/guides/attractions/hokkaido-7-day-itinerary">홋카이도 7일 여행</Link>이 아사히카와와 후라노까지 가는 경로 안에 축제를 넣어 줍니다. 오도리에서 세 번째 저녁을 보내는 것보다 스키가 중요하다면 <Link href="/ko/guides/attractions/niseko-ski-tours">니세코 스키 투어 가이드</Link>에서 삿포로 출발 가이드 일정을 보세요.
+먼저 홋카이도 안에서 찾아보세요. <Link href="/guides/attractions/otaru-day-trip-from-sapporo" hrefLang="en">삿포로 출발 오타루 당일 여행(영어)</Link>은 눈빛거리 축제 기간이 삿포로 눈축제와 대부분 겹쳐 일정에 쉽게 추가할 수 있습니다. 일주일이 있다면 <Link href="/ko/guides/attractions/hokkaido-7-day-itinerary">홋카이도 7일 여행</Link>이 아사히카와와 후라노까지 가는 경로 안에 축제를 넣어 줍니다. 오도리에서 세 번째 저녁을 보내는 것보다 스키가 중요하다면 <Link href="/ko/guides/attractions/niseko-ski-tours">니세코 스키 투어 가이드</Link>에서 삿포로 출발 가이드 일정을 보세요.
 </p>
           <p className={styles.bodyText}>
-도쿄로 들어온다면 혼슈의 겨울을 한 곳 더 넣을 만합니다. <Link href="/ko/guides/attractions/jigokudani-snow-monkey-tour">지고쿠다니 원숭이 공원 투어</Link>와 <Link href="/guides/attractions/takayama-shirakawago-tour" hrefLang="en">다카야마와 시라카와고 투어(영어)</Link>는 북쪽으로 비행하지 않고도 깊은 눈을 볼 수 있고, 스키를 하루만 타고 싶다면 <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" hrefLang="en">도쿄 출발 갈라 유자와 스키(영어)</Link>가 더 짧은 답입니다. 홋카이도 앞뒤의 저녁에는 <Link href="/guides/attractions/tokyo-illumination-tours" hrefLang="en">도쿄 일루미네이션(영어)</Link> 가이드에서 2월에도 하는 곳을 확인하세요.
+도쿄로 들어온다면 혼슈의 겨울을 한 곳 더 넣을 만합니다. <Link href="/ko/guides/attractions/jigokudani-snow-monkey-tour">지고쿠다니 원숭이 공원 투어</Link>와 <Link href="/guides/attractions/takayama-shirakawago-tour" hrefLang="en">다카야마와 시라카와고 투어(영어)</Link>는 북쪽으로 비행하지 않고도 깊은 눈을 볼 수 있고, 스키를 하루만 타고 싶다면 <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" hrefLang="en">도쿄 출발 갈라 유자와 스키 투어(영어)</Link>가 더 간편한 선택입니다. 홋카이도 앞뒤의 저녁에는 <Link href="/guides/attractions/tokyo-illumination-tours" hrefLang="en">도쿄 일루미네이션(영어)</Link> 가이드에서 2월에도 하는 곳을 확인하세요.
 </p>
         </section>
 
@@ -695,8 +695,8 @@ JR 홋카이도 레일 패스 →
 
                 <KlookTourPicks
           heading={"이 시기에만 운영되는 당일 여행"}
-          intro={"축제 날 오도리에서 보내지 않는 절반을 위한 삿포로 출발 상품 네 가지입니다. 겨울 경로는 여름과 다르므로 당일 아침이 아니라 도착 전에 열어 보세요."}
-          tours={[withKlookLocale(otaruSnowParkDayTour, LOCALE, { title: "오타루, 시로이 코이비토 파크, 스노 파크 당일 투어", desc: "오타루 운하와 증기 시계, 시로이 코이비토 파크, 눈놀이를 묶은 홋카이도 당일 여행" }), withKlookLocale(asahiyamaBieiHighlightsTour, LOCALE, { title: "삿포로 출발 아사히야마 동물원, 비에이 아오이이케(푸른 연못), 닝구루 테라스 당일 투어", desc: "삿포로에서 아사히야마 동물원, 비에이 아오이이케(푸른 연못), 닝구루 테라스를 도는 당일 버스로, 여러 경로로 판매되며 겨울에는 스노모빌 옵션이 추가 요금으로 있습니다" }), withKlookLocale(sapporoJozankeiBuddhaDayTour, LOCALE, { title: "삿포로, 조잔케이, 부처의 언덕 당일 투어", desc: "조잔케이 계곡, 안도 다다오의 부처의 언덕, 시로이 코이비토 파크, 맥주 박물관을 묶은 가이드 투어로, 축제 행사장이 아닌 삿포로의 하루입니다" }), withKlookLocale(noboribetsuToyaOtaruDayTour, LOCALE, { title: "삿포로 출발 노보리베쓰, 도야호, 오타루 당일 투어", desc: "시내 남서쪽을 도는 합류형 당일 투어로, 축제 여행에 하루 여유가 있고 오도리에서 네 번째 저녁을 보낼 생각이 없을 때 맞습니다" })]}
+          intro={"축제 기간 중 오도리 관람 외의 반나절을 활용할 수 있는 삿포로 출발 투어 네 가지입니다. 겨울 경로는 여름과 다르므로 당일 아침이 아니라 도착 전에 상품 정보를 확인하세요."}
+          tours={[withKlookLocale(otaruSnowParkDayTour, LOCALE, { title: "오타루, 시로이 코이비토 파크, 스노 파크 당일 투어", desc: "오타루 운하와 증기 시계, 시로이 코이비토 파크, 눈놀이를 묶은 홋카이도 당일 여행" }), withKlookLocale(asahiyamaBieiHighlightsTour, LOCALE, { title: "삿포로 출발 아사히야마 동물원, 비에이 아오이이케(푸른 연못), 닝구르 테라스 당일 투어", desc: "삿포로에서 아사히야마 동물원, 비에이 아오이이케(푸른 연못), 닝구르 테라스를 도는 당일 버스로, 여러 경로로 판매되며 겨울에는 스노모빌 옵션이 추가 요금으로 있습니다" }), withKlookLocale(sapporoJozankeiBuddhaDayTour, LOCALE, { title: "삿포로, 조잔케이, 부처의 언덕 당일 투어", desc: "조잔케이 계곡, 안도 다다오의 부처의 언덕, 시로이 코이비토 파크, 맥주 박물관을 묶은 가이드 투어로, 축제 행사장이 아닌 삿포로의 하루입니다" }), withKlookLocale(noboribetsuToyaOtaruDayTour, LOCALE, { title: "삿포로 출발 노보리베쓰, 도야호, 오타루 당일 투어", desc: "삿포로 남서쪽 지역을 둘러보는 그룹 당일 투어로, 축제 여행에 하루 여유가 있고 오도리에서 네 번째 저녁을 보낼 생각이 없을 때 맞습니다" })]}
         />
 
                 <Related items={[{ href: "/guides/transport/hokkaido-rail-pass", title: "홋카이도 레일 패스(2026): 가격과 이득 여부 (영어)" }, { href: "/ko/guides/attractions/niseko-ski-tours", title: "니세코 스키 투어 2026-27: 삿포로 출발·렌탈·리프트권" }, { href: "/ko/guides/attractions/hokkaido-7-day-itinerary", title: "홋카이도 7일 여행: 일자별 추천 일정" }, { href: "/guides/attractions/otaru-day-trip-from-sapporo", title: "삿포로 출발 오타루 당일 여행(2027): ¥800, JR 33분 (영어)" }, { href: "/ko/guides/attractions/japan-winter-itinerary", title: "일본 겨울 여행 12일 일정(2027): 일자별 코스" }, { href: "/guides/money/japan-ski-travel-insurance", title: "일본 스키 여행자 보험(2027): 무엇을 보장받아야 할까 (영어)" }, { href: "/guides/attractions/tokyo-illumination-tours", title: "도쿄 일루미네이션: 일정, 무료 명소, 예약할 것 (영어)" }, { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "도쿄 출발 갈라 유자와 스키 당일 여행: 71분, 리프트 ¥8,000 (영어)" }, { href: "/ko/guides/attractions/jigokudani-snow-monkey-tour", title: "도쿄 출발 지고쿠다니 원숭이 공원 가이드(2027)" }, { href: "/guides/attractions/takayama-shirakawago-tour", title: "다카야마와 시라카와고 투어(2027): 어디서 출발할까 (영어)" }, { href: "/guides/transport/jr-pass-guide", title: "JR 패스 가이드(2026): 가격, 범위, 이득 여부 (영어)" }, { href: "/ko/guides/esim/best-esim-japan", title: "일본 eSIM 추천(2026): 업체, 가격, 선택법" }, { href: "/guides/attractions", title: "일본의 다른 볼거리 → (영어)" }]} />
@@ -704,10 +704,10 @@ JR 홋카이도 레일 패스 →
                 <div className={styles.ctaBanner}>
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>
-무료로 즐기는 8일, 대체할 수 없는 예약 하나
+무료로 즐기는 8일간의 축제, 꼭 해야 할 예약 하나
 </h2>
             <p className={styles.ctaBannerDesc}>
-축제는 돈도 예약도 필요 없습니다. 2027년 2월 4~11일의 숙소는 필요하며, 이 주에만 운영되는 시외 당일 여행도 미리 예약해 두세요.
+축제 관람에는 입장료도 예약도 필요하지 않습니다. 2027년 2월 4~11일의 숙소는 필요하며, 이 주에만 운영되는 시외 당일 여행도 미리 예약해 두세요.
 </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
               <KlookLink href={klookFor(sapporoSnowFestivalStayAreas[0].url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
