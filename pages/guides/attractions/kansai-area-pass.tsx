@@ -739,8 +739,11 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
             On arrival day, press &quot;Use ticket&quot; (after 04:00), scan the QR code at the JR gate at Kansai
             Airport and board the HARUKA to <strong>Tennoji</strong>, <strong>Shin-Osaka</strong> or{" "}
             <strong>Kyoto</strong>. Shin-Osaka to Kyoto by bullet train is a separate ticket even on a day the
-            pass is valid; if a shinkansen leg to Hiroshima is in the plan, the Kansai-Hiroshima Area Pass in the
-            comparison table below is the one that includes it.
+            pass is valid; if a shinkansen leg to Hiroshima is in the plan, the{" "}
+            <Link href="/guides/transport/kansai-hiroshima-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Kansai Hiroshima Area Pass
+            </Link>{" "}
+            is the one that includes it — the line between the two passes is Hiroshima.
           </p>
           <p className={styles.bodyText}>
             The two reserved seats are what you want on the day you are carrying cases. JR West states they are

@@ -481,7 +481,12 @@ export default function OsakaToHiroshimaShinkansenPage({ updated }: { updated: P
             national one: the five-day <strong>Kansai-Hiroshima Area Pass</strong> at {KANSAI_HIROSHIMA},
             or the seven-day <strong>Sanyo-San&apos;in Area Pass</strong> at {SANYO_SANIN} if the trip
             carries on to Hakata. A nationwide JAPAN RAIL PASS at {JR_PASS_7} is simply the wrong size for
-            a Kansai week.
+            a Kansai week. What the five-day pass covers, and the break-even against singles and the HARUKA,
+            is on our{" "}
+            <Link href="/guides/transport/kansai-hiroshima-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Kansai Hiroshima Area Pass
+            </Link>{" "}
+            page.
           </p>
           <p className={styles.bodyText}>
             The one thing worth deciding before you book is how much of Miyajima you want. Hiroshima city —

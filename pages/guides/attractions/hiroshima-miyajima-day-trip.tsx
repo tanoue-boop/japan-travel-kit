@@ -430,7 +430,9 @@ export default function HiroshimaMiyajimaDayTripPage({ updated }: { updated: Pag
             <Link href="/guides/transport/shinkansen-guide">shinkansen guide</Link> and{" "}
             <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link>; the times and fares from
             Shin-Osaka are in our{" "}
-            <Link href="/guides/transport/osaka-to-hiroshima-shinkansen">Osaka to Hiroshima Shinkansen guide</Link>; coming
+            <Link href="/guides/transport/osaka-to-hiroshima-shinkansen">Osaka to Hiroshima Shinkansen guide</Link>, and the
+            five-day pass that covers that train and the Miyajima ferry is on our{" "}
+            <Link href="/guides/transport/kansai-hiroshima-area-pass">Kansai Hiroshima Area Pass</Link> page; coming
             from the capital, our{" "}
             <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen">Tokyo to Hiroshima shinkansen</Link>{" "}
             guide has the NOZOMI times, the JR Pass route and the train-versus-flight table. If you are basing yourself in

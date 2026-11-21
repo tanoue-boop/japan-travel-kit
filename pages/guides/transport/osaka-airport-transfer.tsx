@@ -785,6 +785,14 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
             reservations, so seats are first come, first served.
           </p>
           <p className={styles.bodyText}>
+            Or leave the case out of the journey: an Osaka or Kyoto hotel can send it to Kansai Airport ahead of your
+            flight, and you collect it on the Terminal 1 departure floor — the{" "}
+            <Link href="/guides/transport/japan-luggage-delivery" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Japan luggage delivery
+            </Link>{" "}
+            guide has the deadlines, Yamato&apos;s rates and the counters.
+          </p>
+          <p className={styles.bodyText}>
             On the way back out, allow extra time if you shopped tax-free: from 1 November 2026{" "}
             <Link href="/guides/money/tax-free-shopping-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
               Japan tax free shopping is a refund

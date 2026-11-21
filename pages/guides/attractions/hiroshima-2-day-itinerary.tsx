@@ -753,7 +753,9 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
             <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen">Tokyo to Hiroshima shinkansen guide</Link>{" "}
             and{" "}
             <Link href="/guides/transport/osaka-to-hiroshima-shinkansen">Osaka to Hiroshima shinkansen guide</Link>{" "}
-            have the full fare tables.
+            have the full fare tables, and the{" "}
+            <Link href="/guides/transport/kansai-hiroshima-area-pass">Kansai Hiroshima Area Pass</Link>{" "}
+            page works out when the pass pays.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shinkansenTokyoHiroshima.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

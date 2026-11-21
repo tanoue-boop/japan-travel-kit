@@ -774,6 +774,11 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
             If the case is the problem rather than the seat, it can travel separately: LuggAgent&apos;s
             same-day service on Klook carries bags from a hotel in the Tokyo area to one in the Osaka area.
             Check that both hotels are covered and the morning drop-off cut-off on the listing before you book.
+            The slower and cheaper route is Yamato&apos;s TA-Q-BIN, priced by size on our{" "}
+            <Link href="/guides/transport/japan-luggage-delivery" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Japan luggage delivery
+            </Link>{" "}
+            page.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
             <KlookLink href={kantoKansaiLuggageDelivery.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

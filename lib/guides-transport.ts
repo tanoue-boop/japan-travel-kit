@@ -124,6 +124,15 @@ export const transportArticles: GuideArticle[] = [
     city: "osaka",
   },
   {
+    href: "/guides/transport/kansai-hiroshima-area-pass",
+    badge: "Pass",
+    title: "Kansai Hiroshima Area Pass 2026: ¥17,000 & Is It Worth It?",
+    desc: "JR West's ¥17,000 five-day pass with reserved Sanyo Shinkansen seats Shin-Osaka to Hiroshima, the HARUKA and the Miyajima ferry. One Osaka–Hiroshima return is ¥21,500 on Smart EX, so it saves ¥4,500 — against the Kansai Area Pass and the ¥50,000 JR Pass.",
+    group: "passes",
+    // Kansai plus Hiroshima: nationwide in the hub's terms, as the task asks.
+    city: "other",
+  },
+  {
     href: "/guides/transport/tokyo-airport-transfer",
     badge: "Guide",
     title: "Tokyo Airport Transfer Guide (2026): Narita & Haneda to the City",
@@ -162,6 +171,15 @@ export const transportArticles: GuideArticle[] = [
     desc: "One runs to Namba, the other to Tennoji, Shin-Osaka and Kyoto — so your hotel decides this, not the fare. A head-to-head on time, price, and JR Pass coverage.",
     group: "airports",
     city: "osaka",
+  },
+  {
+    href: "/guides/transport/japan-luggage-delivery",
+    badge: "Guide",
+    title: "Japan Luggage Delivery 2026: Takkyubin Prices & Deadlines",
+    desc: "Send luggage to the airport two days before you fly: Yamato's TA-Q-BIN from Tokyo to Narita or Haneda is ¥2,510 (size 120) to ¥4,380 (size 200), Tokyo to Kyoto ¥2,630 for size 160, plus same-day services and every airport pick-up counter.",
+    // Airports group: most sends end at Narita, Haneda or Kansai Airport.
+    group: "airports",
+    city: "other",
   },
   {
     href: "/guides/transport/tokyo-transportation",

@@ -11275,3 +11275,115 @@ export const kawagoeDayTripPrep: KlookTripPrepItem[] = [
     why: "The warehouse street, the bell tower and Kita-in are a walk apart: data keeps the map open and the return train time in hand.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// japan-luggage-delivery and kansai-hiroshima-area-pass, added 21 Nov 2026
+// (task-jtk-20261121-02). Klook's 21 Nov report showed two US bookings of activity
+// 27664 ("Luggage Delivery Service between Tokyo Hotels and Airport", 5%) with no
+// page of ours about luggage forwarding at all, so it gets one.
+//
+// New URLs, each confirmed live in its en-US form through the www.klook.com search
+// index on 21 Nov 2026:
+//  - 27664 Luggage Delivery Service between Tokyo Hotels and Airport / Tokyo Hotels
+//    and Tokyo Hotels (the product that sold);
+//  - 5624 Tokyo Luggage Services by LuggAgent (Narita / Haneda / Tokyo downtown);
+//  - 37663 Luggage Delivery Services from Osaka/Kyoto Hotels & NLSC to Kansai
+//    Airport/Other Hotels.
+// Reused: 5625 (Kansai Airport ⇄ Osaka hotel, LuggAgent), 141959 (Kanto ⇄ Kansai
+// same day), the two Airport Limousine listings, 3278 (the pass itself), the
+// Hiroshima & Miyajima tours, the HARUKA and the eSIM. No ad id: spare was empty, so
+// both pages fall back to ?aid=119070. No Klook price on either page.
+// ---------------------------------------------------------------------------
+
+/** Airporter's Tokyo hotel ⇄ Narita / Haneda service — the 21 Nov booking (5%). */
+export const tokyoHotelAirportLuggageDelivery: KlookTour = {
+  title: "Luggage delivery between Tokyo hotels and Narita / Haneda",
+  desc: "A per-bag booking that carries your case between a Tokyo hotel and either airport, or from one Tokyo hotel to the next, with same-day and next-day options",
+  url: klookLink("https://www.klook.com/en-US/activity/27664-hotel-luggage-delivery-service-tokyo-hotels-airport/"),
+};
+
+/** LuggAgent in Tokyo: airport ⇄ hotel, hotel ⇄ hotel and homestays (5%). */
+export const tokyoLuggAgentDelivery: KlookTour = {
+  title: "Tokyo luggage delivery by LuggAgent (Narita, Haneda, downtown)",
+  desc: "Bags carried between Narita or Haneda and a Tokyo hotel, between two hotels, or to a homestay — the listing to open if you are not staying in a hotel",
+  url: klookLink("https://www.klook.com/en-US/activity/5624-airport-luggage-services-tokyo/"),
+};
+
+/** Osaka / Kyoto hotels → Kansai Airport or another hotel (5%). */
+export const osakaKyotoHotelLuggageDelivery: KlookTour = {
+  title: "Luggage delivery from Osaka / Kyoto hotels to Kansai Airport or another hotel",
+  desc: "The Kansai version of the hotel-to-airport run: hand the case in at an Osaka or Kyoto hotel and collect it at Kansai Airport, or at your next hotel",
+  url: klookLink("https://www.klook.com/en-US/activity/37663-luggage-delivery-services-osaka-kyoto-hotels-nlsc-kansai-airport-other/"),
+};
+
+/**
+ * Directly under the answer on japan-luggage-delivery: the booked services first
+ * (5%), then the hotel the bags go to (6.5%), data (20%) and the airport ride you
+ * take without them (5%).
+ */
+export const luggageDeliveryTripPrep: KlookTripPrepItem[] = [
+  {
+    label: tokyoHotelAirportLuggageDelivery.title,
+    ctaLabel: "Check Tokyo hotel ⇄ airport delivery →",
+    url: tokyoHotelAirportLuggageDelivery.url,
+    why: "One booking per bag instead of a size-and-distance rate, in either direction between a Tokyo hotel and Narita or Haneda. Check the hotel drop-off cut-off for your date on the listing.",
+  },
+  {
+    label: kantoKansaiLuggageDelivery.title,
+    ctaLabel: "Check Tokyo → Osaka same-day delivery →",
+    url: kantoKansaiLuggageDelivery.url,
+    why: "For the shinkansen day: the case goes hotel to hotel on the same day, so you never need a seat with an oversized baggage area.",
+  },
+  {
+    label: osakaKyotoHotelLuggageDelivery.title,
+    ctaLabel: "Check Osaka / Kyoto → Kansai Airport →",
+    url: osakaKyotoHotelLuggageDelivery.url,
+    why: "Flying home from Kansai: the bag leaves your Osaka or Kyoto hotel and waits at the airport, so the last morning is free.",
+  },
+  {
+    ...tripPrepProducts.hotelTokyoStation,
+    why: "Delivery is to a hotel front desk, so the room decides where your bags can go; Tokyo Station is where the N'EX and many airport buses stop.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Tracking numbers, the delivery company's contact page and your hotel's address in Japanese are all on your phone on the day the bag travels without you.",
+  },
+  {
+    ...tripPrepProducts.naritaLimousine,
+    why: "With the case already sent, the airport bus is a ride with a day pack; book the seat for the morning you fly.",
+  },
+];
+
+/**
+ * Directly under the answer on kansai-hiroshima-area-pass: the pass (5%), then what
+ * the Hiroshima day is for — a guided Hiroshima & Miyajima day (6.5%), a Hiroshima
+ * room (6.5%), data (20%) and the airport HARUKA the pass already covers.
+ */
+export const kansaiHiroshimaPassTripPrep: KlookTripPrepItem[] = [
+  {
+    label: jrKansaiHiroshimaAreaPass.title,
+    ctaLabel: "Check the Kansai-Hiroshima Area Pass →",
+    url: jrKansaiHiroshimaAreaPass.url,
+    why: "Five consecutive days of JR West around Kansai plus reserved Sanyo Shinkansen seats as far as Hiroshima and the JR ferry to Miyajima.",
+  },
+  {
+    label: hiroshimaMiyajimaFerryDayTour.title,
+    ctaLabel: "Check the Hiroshima & Miyajima day →",
+    url: hiroshimaMiyajimaFerryDayTour.url,
+    why: "The Peace Memorial Park and Itsukushima Shrine with a guide — the pass gets you to Hiroshima, the tour does the day.",
+  },
+  {
+    label: "Hotels around Hiroshima Station",
+    ctaLabel: "Check Hiroshima hotels on Klook →",
+    url: hiroshimaStayAreas[0].url,
+    why: "Five days is enough to sleep in Hiroshima instead of riding back the same night; the shinkansen and the trains to Miyajimaguchi both leave from this station.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Reserving the pass's shinkansen seats, the ferry times and the tide table for the floating torii are all done on your phone.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "If your five days do not start at Kansai Airport, the HARUKA single is the airport run to buy instead; if they do, the pass already covers it.",
+  },
+];

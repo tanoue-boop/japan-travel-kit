@@ -589,7 +589,12 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Yes, if your suitcase measures 161 to 250 cm in length + width + height: on the Tokaido, Sanyo and
             Kyushu Shinkansen you must reserve a seat with an oversized baggage area. It costs nothing extra, but
-            board without one and JR charges ¥1,000, and when those seats are gone the answer is another train.
+            board without one and JR charges ¥1,000, and when those seats are gone the answer is another train — or
+            sending the case ahead by courier, which our{" "}
+            <Link href="/guides/transport/japan-luggage-delivery" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Japan luggage delivery
+            </Link>{" "}
+            guide prices by size.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
