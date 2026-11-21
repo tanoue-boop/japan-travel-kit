@@ -900,7 +900,12 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/transport/kintetsu-rail-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
               Kintetsu Rail Pass guide
             </Link>{" "}
-            shows when the 1day pass beats the single fares from Osaka-Namba.
+            shows when the 1day pass beats the single fares from Osaka-Namba. An Umeda base does the same for
+            the hot springs: the Hankyu coach to Arima leaves from Umeda, and our{" "}
+            <Link href="/guides/attractions/arima-onsen-day-trip" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Arima Onsen day trip
+            </Link>{" "}
+            guide has the routes, the bath prices and the pass.
           </p>
         </section>
 

@@ -51,10 +51,31 @@ const CHECKED = checkedLabel("2026-10-25");
 //  - feel-kobe.jp/en/stories/arimaonsen (VISIT KOBE, Kobe Tourism Bureau):
 //    Osaka (Umeda) by Hankyu Bus about 60 min; central Kobe by JR Bus about 30 min.
 //  - taikounoyu.com/howto: Taiko no Yu admissions and hours unchanged.
-const RECHECKED_ISO = "2026-11-13";
+// Re-checked 21 Nov 2026 (task-jtk-20261121-R07):
+//  - nishinihonjrbus.co.jp/trans/lp/arima/: Osaka-area runs still all suspended;
+//    Sannomiya/Shin-Kobe ¥780 (¥700 7+ days ahead), 08:50 Sannomiya → 09:20.
+//  - arimaspa-kingin.jp kin-01 / gin-01: prices, hours and closed Tuesdays as above.
+//  - taikounoyu.com/howto: ¥2,750 / ¥2,970, 10:00–22:00 (last entry 21:00), next
+//    closed day 6 Jan 2027, tattoos refused.
+//  - hankyu.co.jp/en/ticket/otoku/014066.html: Arima Onsen Taiko-no-yu coupon
+//    (Hankyu edition 2026) ¥3,250, sold 1 Apr 2026 – 31 Mar 2027 on SURUTTO QRtto,
+//    Hankyu all lines + Kobe subway Sannomiya–Tanigami + Shintetsu Tanigami–Arima
+//    Onsen for a day, plus Taiko no Yu admission. The Arima & Rokko One-Day
+//    Excursion Pass (FY2025, sales to 31 May 2026) is no longer on Hankyu's list of
+//    current tickets (hankyu.co.jp/ticket/otoku/), and its pages now return 404.
+//  - reserve.489ban.net (Yuya no Yado Koki's own booking engine): day-use plan
+//    12:00–18:00, from ¥8,000 per person (two sharing), private silver-spring baths
+//    booked at the front desk on the day, no under-12s, free cancellation to 6 days out.
+//  Not quoted: the Hankyu coach fare from Umeda and the Shintetsu train fare — neither
+//  operator's own page with the fare could be read on 21 Nov.
+const RECHECKED_ISO = "2026-11-21";
 const JRBUS_URL = "https://www.nishinihonjrbus.co.jp/trans/lp/arima/";
 const KINGIN_URL = "https://arimaspa-kingin.jp/kin-01.htm";
 const VISIT_KOBE_URL = "https://www.feel-kobe.jp/en/stories/arimaonsen";
+const TAIKO_COUPON_URL = "https://www.hankyu.co.jp/en/ticket/otoku/014066.html";
+const TAIKO_OFFICIAL_URL = "https://www.taikounoyu.com/howto";
+const KOKI_DAYUSE_URL = "https://reserve.489ban.net/client/arimaonsen-koki/0/detail/658286";
+const TAIKO_COUPON = "¥3,250";
 
 const KIN_ADULT = "¥800";
 const GIN_ADULT = "¥700";
@@ -64,10 +85,11 @@ const TWO_SPA = "¥1,200";
 
 const accessRows = [
   {
-    route: "Sannomiya or Shin-Kobe → Arima Onsen, coach",
+    route: "Best pick: Sannomiya or Shin-Kobe → Arima Onsen, coach",
     operator: "West JR Bus, Arima Express",
     fare: "¥780 (¥700 bought 7+ days ahead)",
     time: "About 30 min — 08:50 departure arrives 09:20",
+    pass: "Not the Kansai Area Pass. Klook's Kin no Yu + Gin no Yu package includes this coach both ways",
     note: "Runs daily and is the cheapest and fastest run of all. From Osaka, take a JR train to Sannomiya and board here.",
   },
   {
@@ -75,20 +97,31 @@ const accessRows = [
     operator: "Hankyu Bus",
     fare: "Not quoted — check Hankyu Bus for your date",
     time: "About 60 min (VISIT KOBE's figure)",
-    note: "The direct coach from Osaka while the West JR Osaka runs are suspended.",
+    pass: "No rail pass covers it",
+    note: "The direct coach from Osaka while the West JR Osaka runs are suspended. Leaves from Hankyu Sanbangai in Umeda.",
   },
   {
-    route: "Osaka Station / Shin-Osaka → Arima Onsen, coach",
+    route: "Osaka (Umeda) → Arima Onsen, train",
+    operator: "Hankyu + Kobe Municipal Subway + Kobe Electric Railway",
+    fare: `Covered by the ${TAIKO_COUPON} Taiko-no-yu coupon; otherwise ¥280 for the subway leg plus the Hankyu and Shintetsu fares`,
+    time: "Three trains — Hankyu to Kobe-sannomiya, subway to Tanigami, Shintetsu to Arima Onsen (change at Arimaguchi)",
+    pass: `Yes — Hankyu's Arima Onsen Taiko-no-yu coupon, ${TAIKO_COUPON}, covers all three legs for a day plus Taiko no Yu admission`,
+    note: "The only Osaka route a current pass covers. The coupon is valid via Sannomiya only, not via Shinkaichi.",
+  },
+  {
+    route: "Shin-Osaka / Osaka Station → Arima Onsen, coach",
     operator: "West JR Bus, Arima Express",
-    fare: "¥1,400 / ¥1,250 when running",
+    fare: "¥1,250 / ¥1,400 when running",
     time: "Suspended for now",
-    note: "West JR Bus states that every Osaka-area run is suspended until further notice. Use Sannomiya or the Hankyu coach instead.",
+    pass: "—",
+    note: "West JR Bus states that every Osaka-area run is suspended until further notice. From Shin-Osaka, take a train to Shin-Kobe and board the ¥780 coach there.",
   },
   {
     route: "Sannomiya → Arima Onsen, train",
     operator: "Kobe Municipal Subway + Kobe Electric Railway",
     fare: "¥280 for the subway leg, plus the Shintetsu fare",
     time: "Two changes",
+    pass: "Taiko-no-yu coupon (from Hankyu stations)",
     note: "Subway to Tanigami, then a Shintetsu train towards Sanda, changing at Arimaguchi. Scenic, but it buys you nothing over the coach.",
   },
   {
@@ -96,6 +129,7 @@ const accessRows = [
     operator: "Arima Onsen Tourist Association's own figure",
     fare: "Not published as one fare",
     time: "About 30 min",
+    pass: "—",
     note: "The closest airport to the town by a wide margin — worth knowing if you are choosing between Kansai's two airports.",
   },
   {
@@ -103,13 +137,14 @@ const accessRows = [
     operator: "Arima Onsen Tourist Association's own figure",
     fare: "Not published as one fare",
     time: "About 90 min",
+    pass: "—",
     note: "Doable on an arrival day, but it is 90 minutes with luggage and the baths close in the evening.",
   },
 ];
 
 const bathRows = [
   {
-    bath: "Kin no Yu (the gold bath)",
+    bath: "Best first bath: Kin no Yu (the gold bath)",
     adult: `${KIN_ADULT} (${KIN_WEEKDAY} on weekdays)`,
     child: "¥350",
     hours: "08:00–22:00, last entry 21:30",
@@ -134,7 +169,14 @@ const bathRows = [
     adult: "¥2,750 weekdays, ¥2,970 weekends and holidays",
     child: "¥1,430 / ¥1,239 elementary; ¥550 / ¥440 ages 3–5",
     hours: "10:00–22:00, last entry 21:00",
-    closed: "Occasional maintenance days, published on its own site",
+    closed: "Maintenance days only — the next one listed is 6 January 2027",
+  },
+  {
+    bath: "Yuya no Yado Koki (private bath, day use)",
+    adult: "From ¥8,000 per person, two sharing a room (+¥75 bathing tax)",
+    child: "Not available to children 12 and under",
+    hours: "12:00–18:00, up to 6 hours in a room; four private silver-spring baths, booked at the front desk on the day",
+    closed: "Availability is per date and room type — check the plan calendar. Free cancellation up to 6 days before",
   },
 ];
 
@@ -200,50 +242,30 @@ const compareRows = [
 
 const faqItems = [
   {
-    q: "How do you do an Arima Onsen day trip from Osaka?",
-    a: `Arima Onsen is about 60 minutes from Osaka (Umeda) on the Hankyu Bus coach, on VISIT KOBE's figure. The West JR Bus Arima Express from Osaka Station and Shin-Osaka is suspended for now, so the other reliable route is a JR train to Sannomiya and the Arima Express from there: ¥780, about 30 minutes, with the 08:50 departure arriving at 09:20. The Arima Onsen Tourist Association also gives about 60 minutes from Osaka. Checked ${RECHECKED_ISO}.`,
+    q: "Is Arima Onsen worth a day trip from Osaka?",
+    a: `Yes, if you want a 1,300-year-old onsen town about 60 minutes from Osaka (Umeda) by Hankyu coach, with two public baths you walk into for ${KIN_ADULT} (Kin no Yu) and ${GIN_ADULT} (Gin no Yu). It is a compact, busy town inside the Kobe city limits rather than a secluded mountain spring, and the day-use baths close between 21:00 and 22:00 — the private baths and the kaiseki dinner belong to people staying the night. Checked ${RECHECKED_ISO}.`,
   },
   {
-    q: "How long does it take to get to Arima Onsen from Kobe?",
-    a: "About 30 minutes, and it is the cheapest approach: the Arima Express from Sannomiya Bus Terminal or Shin-Kobe is ¥780 one way, ¥700 if bought at least 7 days ahead, and the 08:50 departure arrives at 09:20. The train alternative — Kobe Municipal Subway to Tanigami (¥280), then a Kobe Electric Railway train towards Sanda with a change at Arimaguchi — is more interesting and no faster. If you are staying in Kobe rather than Osaka, this is barely a day trip at all.",
+    q: "Which pass covers Arima Onsen?",
+    a: `From Osaka, Hankyu's Arima Onsen Taiko-no-yu coupon (Hankyu edition 2026, ${TAIKO_COUPON}, adults only) covers Hankyu trains, the Kobe subway from Sannomiya to Tanigami and the Kobe Electric Railway to Arima Onsen for one day, plus Taiko no Yu admission; it is sold on SURUTTO QRtto until 31 March 2027. The Arima & Rokko One-Day Excursion Pass sold until 31 May 2026 and is not on Hankyu's current list. The Kansai Area Pass reaches Sannomiya but not the Arima coach or the Kobe subway. From Kobe, Klook sells Kin no Yu and Gin no Yu with the round-trip Arima Express coach, valid three days including the boarding date. Checked ${RECHECKED_ISO}.`,
   },
   {
-    q: "How much are Kin no Yu and Gin no Yu?",
-    a: `Kin no Yu, the iron-rich gold bath, is ${KIN_ADULT} for an adult (${KIN_WEEKDAY} on weekdays) and ¥350 for a child; Gin no Yu, the clear silver bath, is ${GIN_ADULT} (${GIN_WEEKDAY} on weekdays) and ¥300. The weekday rates do not apply over New Year, Golden Week and Obon. The 2-Spa Ticket covering both is ${TWO_SPA}. Read off arimaspa-kingin.jp on ${RECHECKED_ISO}.`,
+    q: "Can you use a private onsen in Arima for a day?",
+    a: "Yes. Yuya no Yado Koki sells a day-use plan on its own booking engine: a room from 12:00 to 18:00 (up to six hours) with its four private silver-spring baths, which you book at the front desk on the day, from ¥8,000 per person with two sharing a room, plus the ¥75 bathing tax. Children 12 and under cannot use it, and cancellation is free up to six days before. Kin no Yu, Gin no Yu and Taiko no Yu have shared baths only. Checked 2026-11-21.",
   },
   {
-    q: "What are Kin no Yu and Gin no Yu's opening hours and closed days?",
-    a: `Kin no Yu opens 08:00 to 22:00 with last entry at 21:30, and closes every 2nd and 4th Tuesday — open if that Tuesday is a national holiday, closed the following day instead — plus 1 January. Gin no Yu opens 09:00 to 21:00 with last entry at 20:30, and closes the 1st and 3rd Tuesday of every month, plus 1 January. The two sets of closed Tuesdays do not overlap, which is the useful part: on any given Tuesday one of them is open. It also means the ${TWO_SPA} 2-Spa Ticket is the wrong buy on a Tuesday. Checked ${CHECKED}.`,
+    q: "How long do you need in Arima Onsen?",
+    a: "About three hours covers the town: Kin no Yu, the Yumoto-zaka slope of shops, the free Taiko no Ashiyu foot bath and the old lanes are all a few minutes apart. Give it a full day if you add the Rokko-Arima ropeway up to the Rokko summit and the view over Osaka Bay, or if you book a private bath, since that day-use plan runs from 12:00 to 18:00.",
   },
   {
-    q: "Can you visit Arima Onsen with tattoos?",
-    a: `Taiko no Yu, the large day spa, states plainly on its own site that it refuses admission to anyone with a tattoo. For the two municipal bathhouses, Kin no Yu and Gin no Yu, the official pages checked do not give a published tattoo rule as of ${CHECKED} — so treat the answer there as unconfirmed rather than assuming either way, and ask at the counter. The reliable route for a tattooed visitor anywhere in Japan is a private bath: most Arima ryokan have a reservable kashikiri bath, and that sidesteps the question entirely.`,
-  },
-  {
-    q: "Is half a day enough for Arima Onsen, or do you need a full day?",
-    a: "Half a day is genuinely enough for the town. Arima is small — Kin no Yu, Gin no Yu, the Yumoto-zaka shopping slope and the Taiko no Ashiyu foot bath are all within a few minutes of each other, and you can walk the old streets in under an hour. A full day is worth it if you add the mountain above the town: the Rokko-Arima ropeway runs up to the Rokko summit and the view over Osaka Bay, which is a different day out and the reason the guided itineraries pair the two.",
-  },
-  {
-    q: "What is the difference between the gold spring and the silver spring?",
-    a: "They are two different waters, not two temperatures of the same one. Kinsen, the gold spring, is heavily iron-bearing and salty — it oxidises reddish-brown on contact with air, which is where the colour and the name come from. Ginsen, the silver spring, is clear. Kin no Yu is built on the gold spring and Gin no Yu on the silver, which is why the ¥1,200 2-Spa Ticket exists at all: the two bathhouses are not substitutes for each other.",
-  },
-  {
-    q: "Is there an Arima Onsen package with transport, or a pass that covers it?",
-    a: "Klook sells a Kin no Yu and Gin no Yu package bundled with the round-trip express coach from Kobe, valid for three days including the boarding date, and a separate Taiko no Yu day spa ticket. West JR Bus's own coach-plus-baths ticket (the Arima Onsen Yokubari Kippu) is paused on its site. The Kansai Area Pass covers JR trains as far as Sannomiya but not the Arima coach or the Kobe subway. The bathhouses themselves are walk-in, so the only things worth booking ahead are the coach (¥700 instead of ¥780 if bought 7+ days before) and any guided day. Checked 2026-11-13.",
-  },
-  {
-    q: "Is Arima Onsen worth it as a day trip?",
-    a: "If you want a 1,300-year-old onsen town reachable from Osaka in about an hour and Kobe in half that, with two public baths you can walk into for under ¥1,000 each, yes. If you are expecting a secluded mountain hot spring, manage that expectation: Arima is a compact, busy resort town inside the city limits of Kobe, and its day-use baths close in the evening. The version of Arima that people write about — private baths, a kaiseki dinner, the streets after the coaches leave — needs a night, not a day.",
-  },
-  {
-    q: "Can you combine Arima Onsen with Himeji Castle or Mt. Rokko in one day?",
-    a: "With Mt. Rokko, easily — the mountain sits directly above the town and the ropeway connects them, which is why the independent full-day plan uses both. With Himeji as well, only on a guided coach day: Himeji is an hour west of Kobe on a different line, and doing all three on public transport means spending the day on platforms. That is the one case where a booked itinerary genuinely buys you something a timetable cannot.",
+    q: "Are tattoos allowed at Arima Onsen?",
+    a: `Not at Taiko no Yu: its own site states that it refuses admission to anyone with a tattoo. For Kin no Yu and Gin no Yu the official pages give no published tattoo rule as of ${RECHECKED_ISO}, so treat it as unconfirmed and ask at the counter. A private bath booked for your party alone, such as a ryokan's day-use plan, avoids the question.`,
   },
 ];
 
-const TITLE = "Arima Onsen Day Trip from Osaka 2026: Access, Baths & Passes";
+const TITLE = "Arima Onsen Day Trip from Osaka 2026: Pass & Private Baths";
 const DESCRIPTION =
-  "Arima Onsen is about 60 min from Osaka by coach, 30 min (¥780) from Sannomiya. Kin no Yu ¥800, Gin no Yu ¥700. Book a baths + coach set or a guided day.";
+  "Arima Onsen day trip from Osaka: ~60 min by coach. Arima Onsen pass ¥3,250 incl. Taiko no Yu; Kin no Yu ¥800; private onsen day use from ¥8,000.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/arima-onsen-day-trip") },
@@ -336,7 +358,7 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Arima Onsen Day Trip from Osaka (2026): <br />Access, Kin no Yu &amp; Gin no Yu Prices, Passes
+            Arima Onsen Day Trip from Osaka (2026): <br />Pass, Kin no Yu &amp; Private Baths
           </h1>
           <p className={styles.heroSubtitle}>
             A 1,300-year-old hot spring town inside the Kobe city limits, an hour from Osaka by coach. Two
@@ -394,11 +416,15 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
               <strong>Kin no Yu</strong> (the gold bath, 08:00–22:00) costs <strong>{KIN_ADULT}</strong> for an
               adult and <strong>Gin no Yu</strong> (the silver bath, 09:00–21:00) costs{" "}
               <strong>{GIN_ADULT}</strong>, or {KIN_WEEKDAY} and {GIN_WEEKDAY} on weekdays, and a{" "}
-              <strong>{TWO_SPA} 2-Spa Ticket</strong> covers both. Check the day first: Kin no Yu closes on the{" "}
-              <strong>2nd and 4th Tuesday</strong> and Gin no Yu on the <strong>1st and 3rd</strong>. Last
+              <strong>{TWO_SPA} 2-Spa Ticket</strong> covers both. The pass from Osaka is Hankyu&apos;s{" "}
+              <strong>Arima Onsen Taiko-no-yu coupon, {TAIKO_COUPON}</strong>: a day of Hankyu, Kobe subway and
+              Shintetsu trains to Arima plus Taiko no Yu admission; a private bath for the day starts at{" "}
+              <strong>¥8,000 per person</strong> at Yuya no Yado Koki. Check the day first: Kin no Yu closes on
+              the <strong>2nd and 4th Tuesday</strong> and Gin no Yu on the <strong>1st and 3rd</strong>. Last
               checked: {RECHECKED_ISO} on the{" "}
               <a href={JRBUS_URL} target="_blank" rel="noopener">West JR Bus</a>,{" "}
-              <a href={KINGIN_URL} target="_blank" rel="noopener">Kin no Yu / Gin no Yu</a> and{" "}
+              <a href={KINGIN_URL} target="_blank" rel="noopener">Kin no Yu / Gin no Yu</a>,{" "}
+              <a href={TAIKO_COUPON_URL} target="_blank" rel="noopener">Hankyu</a> and{" "}
               <a href={VISIT_KOBE_URL} target="_blank" rel="noopener">VISIT KOBE</a> sites.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
@@ -412,12 +438,15 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
           </div>
         </div>
 
-        <EsimCtaTop />
-
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>What Is Arima Onsen, and Why Is It a Day Trip?</h2>
+          <h2 className={styles.sectionTitle}>Is Arima Onsen Worth a Day Trip from Osaka?</h2>
+          <p className={styles.bodyText}>
+            Yes, for a 1,300-year-old onsen town an hour from Osaka with two walk-in public baths under ¥1,000
+            each — as long as you expect a compact resort town rather than a secluded mountain spring, and
+            check the closed Tuesdays before you pick a date.
+          </p>
           <p className={styles.bodyText}>
             Arima is one of Japan&apos;s oldest hot spring towns and, geographically, a slightly absurd one:
             it sits in the hills on the far side of Mt. Rokko but inside the city limits of{" "}
@@ -453,7 +482,7 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Route", "Operator", "One-way fare", "Journey time", "Notes"].map((h) => (
+                    {["Route", "Operator", "One-way fare", "Journey time", "Pass that covers it", "Notes"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -465,6 +494,7 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
                       <td style={{ fontSize: "0.88rem" }}>{row.operator}</td>
                       <td className={styles.tdPrice} style={{ fontSize: "0.88rem" }}>{row.fare}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.time}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.pass}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.note}</td>
                     </tr>
                   ))}
@@ -488,14 +518,67 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
             <Link href="/guides/attractions/kansai-area-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
               Kansai Area Pass
             </Link>
-            , which covers JR West trains around Kobe but not this coach and not the Kobe subway.
+            , which covers JR West trains around Kobe but not this coach and not the Kobe subway. The{" "}
+            <a href={TAIKO_COUPON_URL} target="_blank" rel="noopener">Taiko-no-yu coupon</a> terms are
+            Hankyu&apos;s own page ({RECHECKED_ISO}).
           </p>
         </section>
+
+        {/* Pass CTA directly under the access table */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Passes</span>
+          <h2 className={styles.sectionTitle}>Which Pass Covers Arima Onsen?</h2>
+          <p className={styles.bodyText}>
+            From Osaka, Hankyu&apos;s <strong>Arima Onsen Taiko-no-yu coupon ({TAIKO_COUPON}, adults
+            only)</strong> is the one current pass that covers the whole rail trip and a bath: Hankyu trains to
+            Kobe-sannomiya, the Kobe subway to Tanigami and the Kobe Electric Railway to Arima Onsen for one
+            day, with Taiko no Yu admission. It is a smartphone ticket sold on SURUTTO QRtto until 31 March
+            2027, paid by credit card only, and it cannot be used on Taiko no Yu&apos;s closed days. The older
+            Arima &amp; Rokko One-Day Excursion Pass sold until 31 May 2026 and is no longer on Hankyu&apos;s
+            current ticket list.
+          </p>
+          <p className={styles.bodyText}>
+            From Kobe, the simpler buy is one booking for both municipal bathhouses and the round-trip Arima
+            Express coach — West JR Bus has paused its own version of that ticket. Two things to settle on the
+            listing rather than here: whether the voucher covers your exact date range (the bath-and-coach
+            set runs three days including the boarding date), and the cancellation rule. If the mountain
+            matters as much as the bath, the Rokkosan Tourist Pass covers the Rokko cable car and the summit
+            buses above the town.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={TAIKO_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Taiko no Yu Ticket →
+            </KlookLink>
+            <KlookLink href={BATH_BUS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Kin no Yu + Gin no Yu + Coach →
+            </KlookLink>
+            <KlookLink href={PASS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Rokkosan Tourist Pass →
+            </KlookLink>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            Rather not change trains three times? A guided coach day from Osaka puts Arima with the Mt. Rokko
+            deck — and Himeji Castle or the Sanda outlets — in one booking.
+          </p>
+          <div className={styles.pickCtaRow}>
+            <KlookLink href={TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Guided Arima Day from Osaka →
+            </KlookLink>
+            <KlookLink href={rokkoHikingArimaBathingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Rokko Hike + Arima Bath →
+            </KlookLink>
+          </div>
+        </section>
+
+        <EsimCtaTop />
 
         {/* Baths table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>The baths</span>
-          <h2 className={styles.sectionTitle}>How Much Are Kin no Yu and Gin no Yu, and When Are They Shut?</h2>
+          <h2 className={styles.sectionTitle}>How Much Are Arima&apos;s Day-Use Baths, and When Are They Shut?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Kin no Yu is {KIN_ADULT} ({KIN_WEEKDAY} on weekdays), Gin no Yu {GIN_ADULT} ({GIN_WEEKDAY}), Taiko no Yu
+            ¥2,750 on a weekday, and a private bath with a room for the afternoon from ¥8,000 per person.</p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -530,21 +613,45 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
             <strong>Last checked: {RECHECKED_ISO}</strong> —{" "}
             <a href={KINGIN_URL} target="_blank" rel="noopener">arimaspa-kingin.jp</a> (Kin no Yu and Gin no
-            Yu) and <a href="https://www.taikounoyu.com/howto" target="_blank" rel="noopener">taikounoyu.com</a>{" "}
-            (Taiko no Yu). The {KIN_WEEKDAY} and {GIN_WEEKDAY} weekday adult rates exclude New Year, Golden
+            Yu), <a href={TAIKO_OFFICIAL_URL} target="_blank" rel="noopener">taikounoyu.com</a>{" "}
+            (Taiko no Yu) and{" "}
+            <a href={KOKI_DAYUSE_URL} target="_blank" rel="noopener">Yuya no Yado Koki&apos;s day-use plan</a>{" "}
+            (its own booking engine). The {KIN_WEEKDAY} and {GIN_WEEKDAY} weekday adult rates exclude New Year, Golden
             Week and Obon. Taiko no Yu adds the ¥75 Kobe bathing tax on top of the admission.
+          </p>
+        </section>
+
+        {/* Private baths */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Private baths</span>
+          <h2 className={styles.sectionTitle}>Can You Use a Private Onsen in Arima for a Day?</h2>
+          <p className={styles.bodyText}>
+            Yes, at a ryokan rather than a public bathhouse. <strong>Yuya no Yado Koki</strong> sells a day-use
+            plan on its own booking engine: a room from <strong>12:00 to 18:00</strong>, both the gold and
+            silver springs in its indoor baths, and four <em>kashikiri</em> (private) silver-spring baths you
+            can use as often as they are free, reserved at the front desk on the day. It starts at{" "}
+            <strong>¥8,000 per person</strong> with two sharing a room, plus the ¥75 bathing tax; children 12
+            and under cannot book it, and cancellation is free up to six days before. Kin no Yu, Gin no Yu and
+            Taiko no Yu have shared baths only. Checked {RECHECKED_ISO}.
+          </p>
+          <p className={styles.bodyText}>
+            The catch is the clock: check-in is from 12:00, so a private-bath day suits the Hankyu coach or
+            a late-morning Arima Express rather than the 08:50 early start built around Kin no Yu. Compared
+            with Hakone, where the private-bath question is mostly about overnight rooms, see our{" "}
+            <Link href="/guides/attractions/hakone-ryokan-private-onsen">Hakone ryokan with private onsen
+            guide</Link>.
           </p>
         </section>
 
         {/* Tattoos */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Tattoos</span>
-          <h2 className={styles.sectionTitle}>Can You Bathe in Arima Onsen With a Tattoo?</h2>
+          <h2 className={styles.sectionTitle}>Are Tattoos Allowed at Arima Onsen?</h2>
           <p className={styles.bodyText}>
             One of the three has a published answer. <strong>Taiko no Yu</strong>, the large day spa, states
             on its own site that it refuses admission to anyone with a tattoo. For{" "}
             <strong>Kin no Yu</strong> and <strong>Gin no Yu</strong> the official pages checked do not give a published
-            tattoo rule as of {CHECKED} — so rather than an answer either way, treat it as unconfirmed, and
+            tattoo rule as of {RECHECKED_ISO} — so rather than an answer either way, treat it as unconfirmed, and
             the counter as the place to ask.
           </p>
           <p className={styles.bodyText}>
@@ -558,7 +665,11 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
         {/* Model plans */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>How long to give it</span>
-          <h2 className={styles.sectionTitle}>Is Half a Day Enough, or Do You Need a Full Day?</h2>
+          <h2 className={styles.sectionTitle}>How Long Do You Need in Arima Onsen?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            About three hours for the town itself; a full day if you add the Rokko-Arima ropeway and the summit,
+            or book a private bath for the afternoon.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -658,7 +769,7 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
             makes it the rainy-day answer and the answer for a group that wants to spread out. Its two
             published restrictions are worth reading before you buy: <strong>no re-entry</strong> once you
             leave, and <strong>no admission for anyone with a tattoo</strong>. Prices and rules read off
-            taikounoyu.com on {CHECKED}.
+            taikounoyu.com on {RECHECKED_ISO}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={TAIKO_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>

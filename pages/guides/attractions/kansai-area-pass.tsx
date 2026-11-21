@@ -489,7 +489,9 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
               — Hankyu, Keihan, Kintetsu and Nankai. It pays off when you <strong>land at Kansai Airport and
               head for Kyoto</strong>: the HARUKA single to Kyoto is also ¥2,700, so the 1-day pass costs the
               same and every other JR ride that day is free. The paper version stopped selling on 30 September
-              2026.
+              2026. It gets you to Sannomiya for an{" "}
+              <Link href="/guides/attractions/arima-onsen-day-trip">Arima Onsen day trip</Link>, but not the
+              coach or the Kobe subway from there to the baths.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink href={KANSAI_PASS_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>

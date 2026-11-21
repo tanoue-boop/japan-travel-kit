@@ -535,7 +535,9 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
             <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass</Link> has no 1-day version, and
             the 2-day pass from Shinjuku is ¥7,100, with the ¥1,200 Romancecar surcharge on top (read{" "}
             {PASS_DATE}). For the day-out version, see our{" "}
-            <Link href="/guides/attractions/hakone-day-trip-from-tokyo">Hakone day trip guide</Link>.
+            <Link href="/guides/attractions/hakone-day-trip-from-tokyo">Hakone day trip guide</Link>. In
+            Kansai, Arima Onsen near Kobe has a ryokan day-use plan with private baths for the afternoon — see our{" "}
+            <Link href="/guides/attractions/arima-onsen-day-trip">Arima Onsen day trip</Link> guide.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
