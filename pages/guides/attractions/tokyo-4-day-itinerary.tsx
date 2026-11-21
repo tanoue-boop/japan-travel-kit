@@ -499,7 +499,10 @@ export default function Tokyo4DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/tokyo-food-tour">Tokyo food tours comparison</Link>), a walk through Ginza, teamLab Planets in Toyosu ({PRICES.teamlabPlanets.adult}, timed
             entry, nothing sold on site — see the{" "}
             <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets</Link> guide) and the
-            Odaiba seafront before the airport. Prefer shoes-on art in central Tokyo? Swap in Azabudai Hills with
+            Odaiba seafront before the airport. Licensed drivers can see the same bay from street level: the{" "}
+            <Link href="/guides/attractions/tokyo-go-kart">Tokyo go-kart</Link> guide lists the 1.5 to 2-hour
+            Tokyo Bay course past Rainbow Bridge and Tokyo Tower, and the paper 1949 Geneva IDP it requires.
+            Prefer shoes-on art in central Tokyo? Swap in Azabudai Hills with
             our <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless tickets</Link> guide
             — its timed slots open around the 1st of the month, two months ahead.
           </p>

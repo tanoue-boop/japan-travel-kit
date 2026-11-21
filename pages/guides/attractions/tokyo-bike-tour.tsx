@@ -462,6 +462,11 @@ export default function TokyoBikeTourPage({ updated }: { updated: PageUpdated })
             uncomfortable. The e-bike tour needs no licence. If you have not ridden for years, book the e-bike or
             the 1-hour-10 Shibuya ride rather than the full 3 hours.
           </p>
+          <p className={styles.bodyText}>
+            A bike is also the street-level option if your licence is not valid in Japan. A{" "}
+            <Link href="/guides/attractions/tokyo-go-kart">Tokyo go-kart</Link> tour needs a paper 1949 Geneva
+            IDP, your home licence and your passport, and the shop cannot issue any of them on the day.
+          </p>
           <h3 className={styles.sectionTitle} style={h3}>E-bike tour Tokyo: is it worth choosing the e-bike?</h3>
           <p className={styles.bodyText}>
             Yes, if you are unsure about 3 hours in the saddle. The motor assists your pedalling on hills and when

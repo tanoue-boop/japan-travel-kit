@@ -675,7 +675,15 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
             <Link href="/guides/attractions/tokyo-night-food-tour" style={{ color: "var(--red)", fontWeight: 600 }}>
               Tokyo night food tour
             </Link>{" "}
-            needs no licence at all.
+            needs no licence at all, and neither does the e-bike departure in our{" "}
+            <Link href="/guides/attractions/tokyo-bike-tour" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Tokyo bike tour
+            </Link>{" "}
+            guide. On a longer trip, the Tokyo Bay course fits the bay day of our{" "}
+            <Link href="/guides/attractions/tokyo-4-day-itinerary" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Tokyo 4 day itinerary
+            </Link>
+            .
           </p>
         </section>
 

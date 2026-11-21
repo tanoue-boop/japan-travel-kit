@@ -356,6 +356,14 @@ export default function TokyoNightFoodTourPage({ updated }: { updated: PageUpdat
             all, while this one is only the evening — the alleys, the bars, the drinking age and which of the night
             departures to book.
           </p>
+          <p className={styles.bodyText}>
+            Want to drive before you drink? Our{" "}
+            <Link href="/guides/attractions/tokyo-go-kart" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Tokyo go-kart
+            </Link>{" "}
+            guide covers the evening slots at the Shibuya shops and the paper 1949 Geneva IDP they ask for. Book
+            the kart first and the bars after it, never the other way round.
+          </p>
         </section>
 
         {/* Quick Answer Box with the main CTA */}
