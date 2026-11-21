@@ -358,7 +358,7 @@ export default function JapanEsimAndroidPage({ updated }: { updated: PageUpdated
             can refuse a third-party profile even with the hardware present. Both are walked
             through in{" "}
             <Link href="/guides/esim/does-esim-work-in-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              does eSIM work in Japan
+              does Japan have eSIM — networks, bands and phones that work
             </Link>
             .
           </p>

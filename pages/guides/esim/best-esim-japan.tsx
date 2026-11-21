@@ -1534,7 +1534,7 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             and your plan has to match how you travel rather than how long you are away — a 30-day plan with
             5 GB on it is the wrong purchase for a fortnight of video calls.{" "}
             <Link href="/guides/esim/does-esim-work-in-japan" className={tools.inlineLink}>
-              Will an eSIM work in Japan on your phone? →
+              Does Japan have eSIM that works on your phone? Networks, bands and checks →
             </Link>
           </p>
         </section>

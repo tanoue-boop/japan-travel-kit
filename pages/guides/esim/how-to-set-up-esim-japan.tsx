@@ -645,7 +645,7 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
             unlocked retailer almost always work without issue. The same two conditions decide it for
             phones — see{" "}
             <Link href="/guides/esim/does-esim-work-in-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              does eSIM work in Japan
+              does Japan have eSIM (networks, bands and phones)
             </Link>{" "}
             for the hardware and carrier-lock checks to run before you buy anything.
           </p>

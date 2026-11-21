@@ -627,7 +627,7 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
           <p className={styles.bodyText} style={{ marginTop: "1.2rem" }}>
             Full walkthroughs:{" "}
             <Link href="/guides/esim/does-esim-work-in-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              Does eSIM work in Japan?
+              Does Japan have eSIM?
             </Link>{" "}
             (the network, band and phone checks)
             ,{" "}

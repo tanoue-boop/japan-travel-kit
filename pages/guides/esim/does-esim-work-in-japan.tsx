@@ -112,18 +112,86 @@ const deviceRows = [
   },
 ];
 
+/** The date the networks of Airalo, Holafly, Sakura Mobile and Ubigi were re-read off their own Japan pages. */
+const NETWORKS_CHECKED = "2026-11-21";
+
+type CarrierKey = "docomo" | "kddi" | "softbank";
+const carrierBands: Record<CarrierKey, { short: string; lte: string; nr: string }> = {
+  docomo: { short: "docomo", lte: bandRows[0].lte, nr: bandRows[0].nr },
+  kddi: { short: "KDDI", lte: bandRows[1].lte, nr: bandRows[1].nr },
+  softbank: { short: "SoftBank", lte: bandRows[2].lte, nr: bandRows[2].nr },
+};
+
 /**
- * Travel eSIMs by the networks they name. Networks for the five feed providers come from
- * data/esim-prices.json; Klook's from the listing (lib/klook-esim-facts.ts).
+ * Travel eSIMs × the networks each names on its own Japan page × those carriers' own band
+ * lists (bandRows above). `lte` / `nr` name the carriers whose LTE / 5G bands apply: Klook's
+ * listing names SoftBank for 5G and IIJ (docomo) for 4G LTE only. Airalo shows SoftBank as
+ * its primary network and "+2 others" without naming them on the page itself.
  */
-const travelEsimNetworks = [
-  { provider: "Simbye", network: getProvider("simbye").network, checked: SIMBYE_SPECS_CHECKED_AT },
-  { provider: "Klook eSIM", network: "SoftBank 5G / IIJ (docomo)", checked: klookEsim.checkedAt },
-  { provider: "Airalo", network: getProvider("airalo").network, checked: pricesCheckedAt },
-  { provider: "eSIM Go", network: getProvider("esimgo").network, checked: pricesCheckedAt },
-  { provider: "Holafly", network: getProvider("holafly").network, checked: pricesCheckedAt },
-  { provider: "Sakura Mobile", network: getProvider("sakura").network, checked: pricesCheckedAt },
+const travelEsimNetworks: {
+  provider: string;
+  network: string;
+  lte: CarrierKey[];
+  nr: CarrierKey[];
+  note?: string;
+  checked: string;
+  url: string;
+}[] = [
+  {
+    provider: "Klook eSIM",
+    network: "SoftBank 5G / IIJ (docomo) 4G LTE",
+    lte: ["softbank", "docomo"],
+    nr: ["softbank"],
+    checked: klookEsim.checkedAt,
+    url: "https://www.klook.com/en-US/activity/109393-japan-esim-high-speed-internet-qr-code-voucher/",
+  },
+  {
+    provider: "Airalo",
+    network: "SoftBank (primary) + 2 others",
+    lte: ["softbank"],
+    nr: ["softbank"],
+    note: "the other two are not named on the page",
+    checked: NETWORKS_CHECKED,
+    url: "https://www.airalo.com/japan-esim",
+  },
+  {
+    provider: "Holafly",
+    network: "KDDI / SoftBank",
+    lte: ["kddi", "softbank"],
+    nr: ["kddi", "softbank"],
+    checked: NETWORKS_CHECKED,
+    url: "https://esim.holafly.com/esim-japan/",
+  },
+  {
+    provider: "Ubigi",
+    network: "KDDI, NTT Docomo, SoftBank",
+    lte: ["docomo", "kddi", "softbank"],
+    nr: [],
+    note: "5G is not stated on its Japan page",
+    checked: NETWORKS_CHECKED,
+    url: "https://cellulardata.ubigi.com/destinations/japan/",
+  },
+  {
+    provider: "Sakura Mobile",
+    network: "docomo (3GB/day plan) or au by KDDI (Unlimited plan)",
+    lte: ["docomo", "kddi"],
+    nr: ["docomo", "kddi"],
+    checked: NETWORKS_CHECKED,
+    url: "https://www.sakuramobile.jp/travel/esim/",
+  },
+  {
+    provider: "Simbye",
+    network: getProvider("simbye").network,
+    lte: ["docomo", "kddi", "softbank"],
+    nr: ["docomo", "kddi", "softbank"],
+    note: "Rakuten Mobile has no band list in this table; the 50 GB plan is NTT Docomo only",
+    checked: NETWORKS_CHECKED,
+    url: "https://simbye.com/products/esim-japan",
+  },
 ];
+
+const bandsFor = (keys: CarrierKey[], kind: "lte" | "nr") =>
+  keys.length ? keys.map((k) => `${carrierBands[k].short}: ${carrierBands[k][kind]}`).join(" · ") : "—";
 
 /**
  * eSIM against the three alternatives, on the four things that actually differ.
@@ -234,29 +302,37 @@ const whereItWorks = [
 /** The five questions that go into FAQPage; they lead the on-page FAQ too. */
 const faqSchemaItems = [
   {
-    q: "Is eSIM available in Japan?",
-    a: "Yes. Travel eSIMs for Japan are sold online to anyone and delivered as a QR code or app install, so you can buy one at home before you fly. They connect to NTT docomo, KDDI (au) or SoftBank. No ID check is needed for a data-only plan; only a plan with a Japanese phone number needs in-person ID verification after you land.",
-  },
-  {
     q: "Do most travel eSIMs work on Japanese networks?",
-    a: `Yes. Every travel eSIM compared on this site names docomo or SoftBank on at least one of its Japan plans: Simbye lists ${getProvider("simbye").network}; Airalo ${getProvider("airalo").network}; eSIM Go ${getProvider("esimgo").network}; Holafly ${getProvider("holafly").network}; Sakura Mobile ${getProvider("sakura").network}; Klook eSIM SoftBank 5G / IIJ (docomo). You do not choose the network yourself.`,
+    a: "Yes. Each travel eSIM in the table on this page names NTT docomo, SoftBank or KDDI (au) on its own Japan page: Klook eSIM SoftBank 5G / IIJ (docomo); Airalo SoftBank plus two others; Holafly KDDI / SoftBank; Ubigi KDDI, NTT Docomo and SoftBank; Sakura Mobile docomo or au by KDDI; Simbye all four networks including Rakuten Mobile (checked 21 Nov 2026). The phone picks the network by itself.",
   },
   {
-    q: "Do travel eSIMs work on Japan's LTE bands?",
+    q: "Do travel eSIMs work on Japan's LTE network bands?",
     a: "Yes, on any phone that supports LTE Bands 1 and 3: both are on docomo's, KDDI's and SoftBank's own band lists. docomo also uses Bands 19, 21, 28 and 42; KDDI 11, 18, 26, 28, 41 and 42; SoftBank 8, 11, 28, 41 and 42 (carrier frequency sheets, checked 14 Nov 2026).",
+  },
+  {
+    q: "Does Japan have eSIM?",
+    a: "Yes. Travel eSIMs for Japan are sold online to anyone and run on NTT docomo, KDDI (au) or SoftBank; a data-only plan needs no ID check. It will not work on a carrier-locked phone or on a phone without eSIM (iPhone before XS/XR, Pixel before 4, Galaxy before S20, per Apple, Google and Samsung).",
   },
   {
     q: "Do I need an eSIM for Japan?",
     a: "You need some way to get data, and an eSIM is the only option you can set up before you leave home. A physical SIM, a pocket WiFi router or your home carrier's roaming also work; roaming keeps your own number but AT&T's International Day Pass is $12 a day per line.",
   },
   {
-    q: "Which phones support eSIM in Japan?",
-    a: "iPhone XS, XS Max, XR or later (Apple); Pixel 4 and later (Google, with exceptions for Pixel 3 and 3a); Galaxy S20 and later and the Galaxy Fold and Z series (Samsung). The phone must also be carrier-unlocked: on an iPhone, Settings → General → About shows “No SIM restrictions” next to Carrier Lock.",
+    q: "How does an eSIM work in Japan?",
+    a: "You buy the eSIM online, install the profile over WiFi at home, and when you land and turn off airplane mode it registers on docomo, SoftBank or KDDI; most plans start counting at that moment. Set it as your data line and turn data roaming off on your home line, which keeps your own number for calls and texts.",
   },
 ];
 
 const faqItems = [
   ...faqSchemaItems,
+  {
+    q: "Is eSIM available in Japan?",
+    a: "Yes. Travel eSIMs for Japan are sold online to anyone and delivered as a QR code or app install, so you can buy one at home before you fly. They connect to NTT docomo, KDDI (au) or SoftBank. No ID check is needed for a data-only plan; only a plan with a Japanese phone number needs in-person ID verification after you land.",
+  },
+  {
+    q: "Which phones support eSIM in Japan?",
+    a: "iPhone XS, XS Max, XR or later (Apple); Pixel 4 and later (Google, with exceptions for Pixel 3 and 3a); Galaxy S20 and later and the Galaxy Fold and Z series (Samsung). The phone must also be carrier-unlocked: on an iPhone, Settings → General → About shows “No SIM restrictions” next to Carrier Lock.",
+  },
   {
     q: "Does eSIM work in rural Japan?",
     a: "Generally, yes. eSIM providers in Japan run on Docomo, SoftBank or au/KDDI — all three have strong nationwide coverage, including most rural and tourist areas. Docomo has the broadest reach, especially in mountainous regions. Very remote villages or deep mountains may have weak signal regardless of carrier.",
@@ -295,9 +371,10 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Does eSIM Work in Japan? Yes — Networks, Bands & Phone Check";
+const TITLE = "Does Japan Have eSIM? Yes — Networks, Bands & Phones That Work";
+const SEO_TITLE = "Does Japan Have eSIM? Yes — Networks, Bands & Phones";
 const DESCRIPTION =
-  "Does eSIM work in Japan? Yes: travel eSIMs run on docomo, au and SoftBank. Check your phone takes eSIM and is unlocked, then get Simbye or Klook eSIM.";
+  "Is eSIM available in Japan? Yes. Do travel eSIMs work on Japanese networks? Yes: docomo, SoftBank, KDDI. Check bands and your phone, then get Klook eSIM.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/does-esim-work-in-japan") } });
 
@@ -305,17 +382,17 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
   return (
     <>
       <Head>
-        <title>{TITLE}</title>
+        <title>{SEO_TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/does-esim-work-in-japan" />
-        <meta property="og:title" content={TITLE} />
+        <meta property="og:title" content={SEO_TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/does-esim-work-in-japan" />
         <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:title" content={SEO_TITLE} />
         <meta name="twitter:description" content={DESCRIPTION} />
         <script
           type="application/ld+json"
@@ -384,11 +461,12 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Does eSIM Work in Japan? <br />Is eSIM Available in Japan? Does Japan Have eSIM? Yes
+            {TITLE}
           </h1>
           <p className={styles.heroSubtitle}>
-            The networks and LTE/5G bands, the phones that take an eSIM, and how to check
-            yours is unlocked — each from the carrier&apos;s or maker&apos;s own page.
+            Is eSIM available in Japan, and does eSIM work in Japan on your phone? The networks
+            and LTE/5G bands, the phones that take an eSIM, and how to check yours is unlocked —
+            each from the carrier&apos;s or maker&apos;s own page.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Band table", "Phone check"].map((t) => (
@@ -412,13 +490,29 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
         </div>
 
         <p className={styles.bodyText}>
-          <strong>Yes — eSIM works in Japan: travel eSIMs connect to NTT docomo, KDDI (au) and
-          SoftBank, the three carriers whose own band lists are in the table below.</strong>{" "}
-          What you need is a phone that supports eSIM (iPhone XS or XR and later, Pixel 4 and
-          later, Galaxy S20 and later, per Apple, Google and Samsung) and is carrier-unlocked.
-          Buy and install the eSIM at home before you fly, and it connects once you land and
-          turn off airplane mode.
+          <strong>Yes — Japan has eSIM, and all six travel eSIMs in the table below run on
+          Japan&apos;s own networks: NTT docomo, SoftBank or KDDI (au), as each provider names on
+          its Japan page (checked 21 Nov 2026).</strong>{" "}
+          An eSIM will not work in only two cases: the phone is carrier-locked, or it has no
+          eSIM (iPhone before XS/XR, Pixel before 4, Galaxy before S20, per Apple, Google and
+          Samsung). Buy and install it at home over WiFi, and it connects once you land and turn
+          off airplane mode.
         </p>
+
+        <div style={{ margin: "0.5rem 0 1.5rem" }}>
+          <KlookLink
+            href={klookEsim.url}
+            className={styles.pickCta}
+            target="_blank"
+            rel="sponsored nofollow noopener"
+            style={{ display: "inline-flex" }}
+          >
+            {klookEsim.ctaLabel}
+          </KlookLink>
+          <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.5rem", lineHeight: 1.6 }}>
+            Klook eSIM runs on SoftBank 5G and IIJ (docomo) 4G LTE, as its listing title states.
+          </p>
+        </div>
 
         <BookingEsimCard lead="Is your phone ready? Get the eSIM before you fly" />
 
@@ -437,8 +531,8 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
               <strong>Yes — an eSIM works anywhere in Japan, on two conditions: the phone
               must have eSIM hardware and must be carrier-unlocked.</strong>{" "}
               Travel eSIMs sold for Japan run on the three tier-one networks — Docomo,
-              SoftBank and au/KDDI, which is what the four providers on this page state on
-              their own plan pages ({pricesCheckedAt}) — and they are data-only: you keep
+              SoftBank and au/KDDI, which is what the six providers in the network table state
+              on their own Japan pages (checked 21 Nov 2026) — and they are data-only: you keep
               your home number for calls and texts, and you get no Japanese phone number
               unless you buy a voice plan, which needs an in-person ID check after you land.
               You buy and install it at home over WiFi days before the flight, and the plan
@@ -517,10 +611,10 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>Networks</span>
           <h2 className={styles.sectionTitle}>Do Most Travel eSIMs Work on Japanese Networks?</h2>
           <p className={styles.bodyText}>
-            Yes. All six travel eSIMs below name docomo or SoftBank on at least one Japan plan,
-            so the eSIM connects to the same radio network the people around you are using.
-            Which carrier matters less than whether your phone passes the two checks further
-            down.
+            Yes. All six travel eSIMs below name NTT docomo, SoftBank or KDDI (au) on their own
+            Japan page, so the eSIM connects to the same radio network the people around you are
+            using. Which carrier matters less than whether your phone passes the two checks
+            further down.
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
@@ -529,20 +623,31 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
                   <tr>
                     <th>Travel eSIM</th>
                     <th>Japanese network(s) it names</th>
+                    <th>4G LTE bands (carrier&apos;s own list)</th>
+                    <th>5G bands (carrier&apos;s own list)</th>
                     <th>Checked</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td className={styles.tdProvider}>Conclusion</td>
-                    <td colSpan={2} style={{ fontWeight: 700, color: "var(--sumi)" }}>
-                      Most travel eSIMs run on docomo or SoftBank; three also name KDDI (au)
+                    <td colSpan={4} style={{ fontWeight: 700, color: "var(--sumi)" }}>
+                      All six run on docomo, SoftBank or KDDI; a phone with LTE Bands 1 and 3 works on every one
                     </td>
                   </tr>
                   {travelEsimNetworks.map((row) => (
                     <tr key={row.provider}>
                       <td className={styles.tdProvider}>{row.provider}</td>
-                      <td className={styles.tdNetwork}>{row.network}</td>
+                      <td className={styles.tdNetwork}>
+                        {row.network}
+                        {row.note && (
+                          <span style={{ display: "block", fontSize: "0.72rem", color: "var(--text-muted)", marginTop: "0.25rem", fontWeight: 500 }}>
+                            {row.note}
+                          </span>
+                        )}
+                      </td>
+                      <td>{bandsFor(row.lte, "lte")}</td>
+                      <td>{bandsFor(row.nr, "nr")}</td>
                       <td>{row.checked}</td>
                     </tr>
                   ))}
@@ -551,26 +656,53 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
-            Last checked: {BANDS_CHECKED} (table compiled); each row&apos;s network is as the
-            provider states it on its own Japan plan page, or on the Klook eSIM listing, on the
-            date shown. Official pages: https://www.airalo.com/japan-esim ·
-            https://esim.holafly.com/esim-japan/ · https://www.sakuramobile.jp/travel/esim/
+            Last checked: {NETWORKS_CHECKED}. Networks are as each provider states them on its own
+            Japan page (Klook: the listing title); the band columns are those carriers&apos; own
+            band lists from the frequency sheets in the next table (checked {BANDS_CHECKED}). A
+            dash in the 5G column means the provider&apos;s page does not state 5G. Official
+            pages:{" "}
+            {travelEsimNetworks.map((row, i) => (
+              <span key={row.provider}>
+                {i > 0 && " · "}
+                {row.provider === "Klook eSIM" ? (
+                  <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)" }}>
+                    {row.url}
+                  </KlookLink>
+                ) : (
+                  <a href={row.url} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>
+                    {row.url}
+                  </a>
+                )}
+              </span>
+            ))}
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            Simbye is the one that names all four Japanese networks — {getProvider("simbye").network}{" "}
-            — and its Japan page says you never pick a network by hand. How the six compare on
-            price, data and tethering is in the{" "}
+            Which one to pick is the part the table cannot settle. Simbye is the one that names
+            all four Japanese networks — {getProvider("simbye").network} — and its Japan page
+            says the eSIM switches to whichever is stronger by itself. Sakura Mobile is the one
+            that lets you choose the carrier by plan: its 3GB/day eSIM runs on docomo and its
+            Unlimited eSIM on au by KDDI, and it also sells a Voice + Data eSIM with a Japanese
+            number. How they compare on price, data and tethering is in the{" "}
             <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               best eSIM for Japan comparison
             </Link>.
           </p>
           <SimbyeOffer />
+          <a
+            href={link("sakura")}
+            className={styles.pickCta}
+            target="_blank"
+            rel="sponsored nofollow noopener"
+            style={{ marginTop: "0.75rem", display: "inline-flex" }}
+          >
+            Choose docomo or au with Sakura Mobile →
+          </a>
         </section>
 
         {/* Bands: each carrier's own list */}
         <section className={styles.comparisonSection} id="bands">
           <span className={styles.sectionLabel}>LTE and 5G bands</span>
-          <h2 className={styles.sectionTitle}>Do Travel eSIMs Work on Japan&apos;s LTE Bands?</h2>
+          <h2 className={styles.sectionTitle}>Do Travel eSIMs Work on Japan&apos;s LTE Network Bands?</h2>
           <p className={styles.bodyText}>
             Yes, on any phone with LTE Bands 1 and 3: both appear on docomo&apos;s, KDDI&apos;s
             and SoftBank&apos;s own band lists. The table is each carrier&apos;s list as it marks
@@ -761,16 +893,24 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
 
           <h2 className={styles.sectionTitle} style={{ marginTop: "2rem" }}>Does Japan Have eSIM?</h2>
           <p className={styles.bodyText}>
-            Yes. All three tier-one Japanese carriers — NTT Docomo, SoftBank and au/KDDI — carry
-            eSIM traffic, and the four travel providers compared on this site name one or more of
-            them as the network behind their Japan plans: {getProvider("airalo").network} for
-            Airalo, {getProvider("esimgo").network} for eSIM Go,{" "}
-            {getProvider("holafly").network} for Holafly and {getProvider("sakura").network} for
-            Sakura Mobile (read off their own plan pages, {pricesCheckedAt}). You are not on a
-            second-tier reseller network: it is the same radio the people around you are using.
+            <strong>Yes. Travel eSIMs for Japan are sold online to anyone and run on NTT docomo,
+            SoftBank or KDDI (au), the networks named in the{" "}
+            <a href="#networks" style={{ color: "var(--accent)" }}>table above</a>.</strong>{" "}
+            They fail only on a carrier-locked phone or one without eSIM hardware.
+          </p>
+          <p className={styles.bodyText}>
+            You are not on a second-tier reseller network: Klook eSIM names SoftBank 5G and IIJ
+            (docomo), Holafly KDDI / SoftBank, Ubigi KDDI, NTT Docomo and SoftBank, and Sakura
+            Mobile docomo or au by KDDI on their own pages (checked 21 Nov 2026) — the same radio
+            the people around you are using.
           </p>
 
           <h2 className={styles.sectionTitle} style={{ marginTop: "2rem" }}>Do I Need an eSIM for Japan?</h2>
+          <p className={styles.bodyText}>
+            <strong>Not strictly — you need mobile data, and an eSIM is the only way to get it
+            that you can set up before leaving home.</strong> A physical SIM, a pocket WiFi router
+            or home-carrier roaming also work; the table below compares the four.
+          </p>
           <p className={styles.bodyText}>
             You need <em>some</em> way to get data — Japan&apos;s free public WiFi is patchy and
             sign-up-heavy, and the things you will actually lean on (Google Maps for the subway,
@@ -832,6 +972,11 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
           </p>
 
           <h2 className={styles.sectionTitle} style={{ marginTop: "2rem" }}>How Does an eSIM Work in Japan?</h2>
+          <p className={styles.bodyText}>
+            <strong>You install the eSIM profile over WiFi at home; when you land and turn off
+            airplane mode, it registers on docomo, SoftBank or KDDI and most plans start counting
+            from that moment.</strong> Your home SIM stays in the phone for calls and texts.
+          </p>
           <p className={styles.bodyText}>
             An eSIM is a carrier profile downloaded into a chip already soldered into your phone,
             so &ldquo;working in Japan&rdquo; means the profile holds an agreement with a Japanese
