@@ -724,6 +724,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/hakone-2-day-itinerary",
+    badge: "Itinerary",
+    title: "Hakone 2 Day Itinerary (2026): Loop, Ryokan Night & Freepass",
+    desc: "A Hakone overnight trip from Tokyo: Day 1 the loop to Owakudani and Lake Ashi, Day 2 the Open-Air and Pola museums, with Odakyu's ride times, the ¥7,100 Freepass against ¥8,322 in single fares, and the 2026–27 ropeway closures.",
+    group: "cities",
+    // Filed under the Tokyo hub as the task asks: the trip starts and ends at Shinjuku.
+    city: "tokyo",
+  },
+  {
     href: "/guides/attractions/tokyo-4-day-itinerary",
     badge: "Itinerary",
     title: "Tokyo 4 Day Itinerary (2026): Day by Day, Day Trip & Costs",

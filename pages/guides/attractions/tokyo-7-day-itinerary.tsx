@@ -271,6 +271,7 @@ const related = [
   { href: "/guides/attractions/tokyo-3-day-itinerary", title: "Tokyo 3 Day Itinerary" },
   { href: "/guides/attractions/tokyo-2-day-itinerary", title: "Tokyo 2 Day Itinerary" },
   { href: "/guides/attractions/hakone-day-trip-from-tokyo", title: "Hakone Day Trip From Tokyo 2026: Itinerary, Cost, Tours" },
+  { href: "/guides/attractions/hakone-2-day-itinerary", title: "Hakone 2 Day Itinerary (2026): Loop, Ryokan Night & Freepass" },
   { href: "/guides/attractions/nikko-day-trip", title: "Nikko Day Trip From Tokyo (2026): Costs and Tour or Not" },
   { href: "/guides/attractions/kamakura-day-trip", title: "Kamakura Day Trip From Tokyo (2026): Temples and Fares" },
   { href: "/guides/attractions/kawaguchiko-day-trip-from-tokyo", title: "Kawaguchiko Day Trip From Tokyo 2026: ¥2,200 Bus or Tour" },
@@ -561,7 +562,9 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/yokohama-day-trip">Yokohama day trip</Link> (bay, Chinatown and the
             Cup Noodles Museum) and the{" "}
             <Link href="/guides/attractions/kawagoe-day-trip">Kawagoe day trip</Link> (Edo-era warehouse streets,
-            often in kimono) are both within an hour of the city by train.
+            often in kimono) are both within an hour of the city by train. To turn the Hakone day into a night
+            at an onsen inn, with the museums on the second morning, see the{" "}
+            <Link href="/guides/attractions/hakone-2-day-itinerary">Hakone 2 day itinerary</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={nikkoWorldHeritageDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

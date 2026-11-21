@@ -412,7 +412,11 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
             <Link href="/guides/attractions/hakone-day-trip-from-tokyo" style={linkStyle}>
               Hakone day trip from Tokyo
             </Link>{" "}
-            guide.
+            guide, and how to use both days of the pass with a night in between is our{" "}
+            <Link href="/guides/attractions/hakone-2-day-itinerary" style={linkStyle}>
+              Hakone 2 day itinerary
+            </Link>
+            .
           </p>
         </section>
 

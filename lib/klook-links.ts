@@ -7685,6 +7685,68 @@ export const hakoneFreepassTripPrep: KlookTripPrepItem[] = [
   },
 ];
 
+/**
+ * hakone-2-day-itinerary, added 21 Nov 2026 (task-jtk-20261121-01). Two new listings,
+ * both confirmed en-US through the www.klook.com search index on 21 Nov 2026:
+ * activity 22229 (Hakone Open-Air Museum admission, the Day 2 stop; activities band,
+ * 6.5%) and Klook's Shinjuku → Hakone-Yumoto rail page (the Romancecar seat; transport,
+ * 5%). Klook's 2-day "onsen stay" tours out of Tokyo (130631, 181724) sleep in Izu,
+ * not Hakone, so they are not used.
+ */
+export const hakoneOpenAirMuseumTicket: KlookTour = {
+  title: "Hakone Open-Air Museum ticket",
+  desc: "Admission to the sculpture park two minutes on foot from Chokoku-no-Mori on the Hakone Tozan Train",
+  url: klookLink("https://www.klook.com/en-US/activity/22229-hakone-open-air-museum-ticket/"),
+};
+
+export const romancecarShinjukuHakoneYumoto: KlookTour = {
+  title: "Shinjuku to Hakone-Yumoto train (Romancecar)",
+  desc: "Klook's rail page for the Odakyu limited express seat between Shinjuku and Hakone-Yumoto",
+  url: klookLink("https://www.klook.com/en-US/japan-rail/shinjuku-station/hakone-yumoto-station/"),
+};
+
+/**
+ * What a Hakone night books around the two days: the room and the Day 2 museum (6.5%)
+ * and data (20%) first, then the Romancecar seat (5%) and the Freepass itself, which
+ * the reader came in already knowing about.
+ */
+export const hakone2DayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: hakoneHotels.title,
+    ctaLabel: "Check Hakone ryokan →",
+    url: hakoneHotels.url,
+    why: "The night is the one part of the two days that sells out: weekends and autumn dates go first, and a room with its own open-air bath is a room type, not a hotel feature.",
+  },
+  {
+    label: hakoneOpenAirMuseumTicket.title,
+    ctaLabel: "Check the Open-Air Museum ticket →",
+    url: hakoneOpenAirMuseumTicket.url,
+    why: "The first stop on Day 2, open from 9:00. Booked ahead, it is one less queue on the morning you check out.",
+  },
+  {
+    label: hakoneLoopBusTour.title,
+    ctaLabel: "Check the guided Hakone tour →",
+    url: hakoneLoopBusTour.url,
+    why: "If you would rather not ride the loop on your own timetable, a guided coach covers Owakudani, the ropeway and the Lake Ashi boat on one booking.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The ropeway and the boat can stop for wind or fog; Hakone Navi's live status page is the thing to check before you leave the ryokan.",
+  },
+  {
+    label: romancecarShinjukuHakoneYumoto.title,
+    ctaLabel: "Check Romancecar seats →",
+    url: romancecarShinjukuHakoneYumoto.url,
+    why: "The Freepass does not include the Romancecar seat. All seats are reserved, so book both directions with your dates.",
+  },
+  {
+    label: hakoneFreepass.title,
+    ctaLabel: "Check the Hakone Freepass →",
+    url: hakoneFreepass.url,
+    why: "Two calendar days of the Tozan Train, cable car, ropeway, boat and buses, plus the Odakyu return from Shinjuku.",
+  },
+];
+
 // ---------------------------------------------------------------------------
 // Tokyo to Kyoto — added 7 Nov 2026 (task-jtk-20261107-03).
 //

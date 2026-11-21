@@ -366,7 +366,8 @@ export default function HakoneDayTripFromTokyoPage({ updated }: { updated: PageU
             all on our <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass guide</Link>. If you
             can spare the night, the second day is already paid for — and if you are going to stay, the{" "}
             <Link href="/guides/attractions/hakone-ryokan-private-onsen">Hakone ryokan with private onsen guide</Link>{" "}
-            compares inns with a bath in the room.
+            compares inns with a bath in the room. The same loop spread over two days, with the museums on the
+            second, is our <Link href="/guides/attractions/hakone-2-day-itinerary">Hakone 2 day itinerary</Link>.
           </p>
         </section>
 

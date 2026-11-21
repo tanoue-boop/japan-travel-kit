@@ -175,6 +175,7 @@ const relatedGuides = [
   { href: "/guides/attractions/kawaguchiko-ryokan-mt-fuji-view", title: "Kawaguchiko Ryokan with Mt Fuji View & Private Onsen 2026" },
   { href: "/guides/attractions/hakone-free-pass", title: "Hakone Freepass 2026: Price from Shinjuku & Is It Worth It?" },
   { href: "/guides/attractions/hakone-day-trip-from-tokyo", title: "Hakone Day Trip From Tokyo (2026): Timed Itinerary, Cost and Tours" },
+  { href: "/guides/attractions/hakone-2-day-itinerary", title: "Hakone 2 Day Itinerary (2026): Loop, Ryokan Night & Freepass" },
   { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport" },
   { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days: Tokyo, Kyoto, Osaka & Hakone (2026)" },
   { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary: 12 Days, Day by Day (2027)" },
@@ -535,7 +536,9 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
             <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass</Link> has no 1-day version, and
             the 2-day pass from Shinjuku is ¥7,100, with the ¥1,200 Romancecar surcharge on top (read{" "}
             {PASS_DATE}). For the day-out version, see our{" "}
-            <Link href="/guides/attractions/hakone-day-trip-from-tokyo">Hakone day trip guide</Link>. In
+            <Link href="/guides/attractions/hakone-day-trip-from-tokyo">Hakone day trip guide</Link>; for what to
+            do around the night, hour by hour, our{" "}
+            <Link href="/guides/attractions/hakone-2-day-itinerary">Hakone 2 day itinerary</Link>. In
             Kansai, Arima Onsen near Kobe has a ryokan day-use plan with private baths for the afternoon — see our{" "}
             <Link href="/guides/attractions/arima-onsen-day-trip">Arima Onsen day trip</Link> guide.
           </p>
