@@ -1098,8 +1098,10 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
             date.
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
-            Travel insurance is the other one-off left out of the daily figures. What a policy costs for your
-            trip length and age, and which one to pick, is on our guide to the{" "}
+            Travel insurance is the other one-off left out of the daily figures. Whether you need it and what
+            it should cover is in our{" "}
+            <Link href="/guides/money/japan-travel-insurance">Japan travel insurance</Link> guide; what a policy
+            costs for your trip length and age, and which one to pick, is on our guide to the{" "}
             <Link href="/guides/money/best-travel-insurance-japan">best travel insurance for Japan</Link>.
           </p>
         </section>

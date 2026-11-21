@@ -598,8 +598,9 @@ export default function BestTravelInsuranceJapanPage({ updated }: { updated: Pag
             Up to ¥10 million: JNTO publishes ¥7.5 million after a bicycle collision and ¥10 million after a heart
             attack, each including the flight home. Visitors are outside Japan&apos;s public health insurance, so even
             an outpatient visit is priced by the hospital, and without cash-free insurance you pay it yourself.
-            Whether a policy is required for entry, and what it should cover, is answered in{" "}
-            <Link href="/guides/money/japan-travel-insurance">Do you need travel insurance for Japan?</Link>
+            Whether a policy is required for entry, and what it should cover, is answered in our{" "}
+            <Link href="/guides/money/japan-travel-insurance">Japan travel insurance</Link> guide: do you need
+            travel insurance for Japan, and how much medical cover to buy.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

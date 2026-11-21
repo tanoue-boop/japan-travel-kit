@@ -1845,7 +1845,13 @@ export const taxFreeAirportRunPrep: KlookTripPrepItem[] = [
  * sorting the things to settle before the flight. Airport trains (5% band) and the
  * Klook eSIM (20%); every URL is an existing tracking link, none is new.
  */
+// Reordered 21 Nov 2026 (R02): this list now sits right under the answer as "Before you fly",
+// so the eSIM (20%) leads and the airport trains (5%) follow.
 export const japanTravelInsuranceTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "Calling an insurer's assistance line, finding a hospital on JNTO's search and sending claim photos all need data on your phone from the moment you land.",
+  },
   {
     ...tripPrepProducts.naritaExpress,
     why: "Landing at Narita: a reserved seat into Tokyo, Shinjuku or Yokohama, settled before the flight along with the policy.",
@@ -1857,10 +1863,6 @@ export const japanTravelInsuranceTripPrep: KlookTripPrepItem[] = [
   {
     ...tripPrepProducts.haruka,
     why: "Landing at Kansai Airport: the JR train to Kyoto, Shin-Osaka and Tennoji. Klook's listing states it is sold only to non-Japanese passport holders with a Temporary Visitor stamp.",
-  },
-  {
-    ...tripPrepProducts.esim,
-    why: "Calling an insurer's assistance line, finding a hospital on JNTO's search and sending claim photos all need data on your phone from the moment you land.",
   },
 ];
 

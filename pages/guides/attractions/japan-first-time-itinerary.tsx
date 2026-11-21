@@ -741,7 +741,9 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
             room, meals and daily train fares included.
           </p>
           <p className={styles.bodyText}>
-            Japan&apos;s health ministry strongly recommends private health insurance for visitors; our{" "}
+            Japan&apos;s health ministry strongly recommends private health insurance for visitors. Whether it is
+            required and what a policy should cover is in our{" "}
+            <Link href="/guides/money/japan-travel-insurance">Japan travel insurance</Link> guide, and the{" "}
             <Link href="/guides/money/best-travel-insurance-japan">best travel insurance for Japan</Link> guide
             shows what a policy costs for a trip like this one and which to pick.
           </p>

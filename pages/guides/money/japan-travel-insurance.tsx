@@ -46,10 +46,25 @@ const PLAIN_REL = "noopener noreferrer nofollow";
  *                                       billing on request; skiing not covered off-piste; cannot
  *                                       guarantee it meets visa requirements.
  * The 14-day fixed-date price (US$31.36 at 10–39) was read off SafetyWing's calculator on 9 Nov 2026.
+ *
+ * Re-read 21 Nov 2026 (task-jtk-20261121-R02): every line above unchanged, plus
+ *   mlit.go.jp/kankocho/en/shisaku/kokusai/traveltojapan.html  Japan Tourism Agency, last update
+ *                                       2026/10/27: medical expenses "can be very high", recommends
+ *                                       private medical insurance with sufficient coverage; unpaid
+ *                                       bills may mean refused entry. The JNTO guide is a JTA page.
+ *   mlit.go.jp/kankocho/news08_00002.html  JTA survey, Oct 2023–Feb 2024, 3,069 visitors at five
+ *                                       airports: about 4% fell ill or were injured (6 in 10 cold or
+ *                                       fever); about 73% had bought private medical insurance.
+ *   jnto.go.jp/emergency/eng/mi_guide.html  the after-arrival policy JNTO promotes covers up to
+ *                                       ¥10 million in medical costs.
+ * The "suggested amount" column of the cover table uses only these published figures: ¥10 million
+ * (MOFA Digital Nomad minimum, JNTO case, JNTO's after-arrival policy). No amount is given where no
+ * official figure exists. Title/H1 set to "Is It Required & What It Should Cover" for the
+ * requirements queries; best-travel-insurance-japan keeps "which policy to buy".
  */
-const CHECKED = checkedLabel("2026-11-13");
+const CHECKED = checkedLabel("2026-11-21");
 const CALC_CHECKED = checkedLabel("2026-11-09");
-const LAST_CHECKED = "2026-11-13";
+const LAST_CHECKED = "2026-11-21";
 
 const requiredRows = [
   {
@@ -122,47 +137,49 @@ const costRows = [
   },
 ];
 
+// First row is the conclusion. "amount" only uses published official figures; where none exists
+// the cell says what to match instead of inventing a number.
 const coverRows = [
   {
-    item: "Medical treatment and hospital stays",
-    why: "JNTO's heart-attack case reached ¥10 million. The Digital Nomad visa sets ¥10 million as its medical minimum.",
-    look: "A limit well above ¥10 million and no or a low deductible",
+    item: "Medical treatment and hospital stays (the must-have)",
+    amount: "¥10 million or more",
+    basis: "MOFA's Digital Nomad visa minimum is ¥10 million; JNTO's heart-attack case came to ¥10 million; the after-arrival policy JNTO promotes covers up to ¥10 million.",
     sw: "US$250,000 limit (Essential)",
   },
   {
     item: "Emergency evacuation and the flight home",
-    why: "Both JNTO cases include a doctor escort and a business-class flight home.",
-    look: "Evacuation and repatriation listed as their own line",
+    amount: "Its own line, on top of medical",
+    basis: "Both JNTO cases (¥7.5 million and ¥10 million) include a doctor escort and a business-class flight home inside the total.",
     sw: "US$100,000 lifetime",
   },
   {
     item: "Paying the hospital",
-    why: "Clinics generally take cash only; cash-free insurance means no payment on the day.",
-    look: "Direct billing or a cash-free service, and a 24-hour assistance line",
+    amount: "Cash-free service or direct billing",
+    basis: "JNTO: cards only at major hospitals, clinics generally cash only; with cash-free insurance no payment is needed on the day.",
     sw: "Pay and claim; direct billing on request",
   },
   {
     item: "Trip cancellation",
-    why: "Covers bookings you cannot use if you fall ill before leaving.",
-    look: "A cancellation limit that matches your prepaid hotels and tours",
+    amount: "What you have prepaid and cannot get back",
+    basis: "No official figure. Match the limit to your non-refundable hotels, tours and rail passes.",
     sw: "Not listed on Essential; US$300 per trip on Complete",
   },
   {
     item: "Lost luggage and belongings",
-    why: "Checked bags and the phone you navigate with.",
-    look: "Per-item and per-trip limits",
+    amount: "Per-item limit above your most valuable item",
+    basis: "No official figure. Check the per-item cap against your phone or camera, not just the total.",
     sw: "US$500 per item, US$3,000 per plan",
   },
   {
     item: "Skiing and snowboarding",
-    why: "Japan's ski season runs through the winter; off-piste is where most policies stop.",
-    look: "Wording for on-piste, off-piste and search and rescue",
+    amount: "On-piste plus search and rescue in writing",
+    basis: "No official figure. Off-piste and heli-skiing are where many policies stop; SafetyWing excludes off-piste.",
     sw: "Covered on piste; not off-piste",
   },
   {
     item: "Pre-existing conditions and pregnancy",
-    why: "JNTO notes travel insurance does not cover perinatal care.",
-    look: "Ask the insurer in writing before buying",
+    amount: "Ask the insurer in writing",
+    basis: "JNTO notes travel insurance does not cover perinatal care, which can be expensive.",
     sw: "Not covered (pre-existing conditions, maternity care)",
   },
 ];
@@ -170,29 +187,30 @@ const coverRows = [
 const faqItems = [
   {
     q: "Do you need travel insurance for Japan?",
-    a: `It is not an entry requirement for tourists, but Japan's health ministry strongly recommends private health insurance, and JNTO says visitors without overseas travel insurance may be charged the full amount. JNTO lists hospital cases of ¥7.5 million and ¥10 million. Read on ${CHECKED}.`,
+    a: `Not to enter as a tourist: MOFA's visa exemption for 74 countries and regions sets no insurance condition. You should still buy it. Japan's health ministry and the Japan Tourism Agency strongly recommend private medical insurance, a visitor without it may be charged the full hospital bill, and JNTO lists cases of ¥7.5 million and ¥10 million. Read on ${CHECKED}.`,
   },
   {
-    q: "Is travel insurance mandatory for Japan?",
-    a: `Not for a tourist entering visa-free: MOFA's visa-exemption list sets no insurance condition. It is mandatory for the Long Stay for sightseeing and recreation visa and the Digital Nomad visa, which requires medical cover of ¥10 million or more. Read on ${CHECKED}.`,
+    q: "Is travel insurance required for a Japan visa?",
+    a: `Only for some visas. MOFA lists proof of medical travel insurance among the documents for the Long Stay for sightseeing and recreation visa, and the Digital Nomad visa needs medical cover of ¥10 million or more. Visa-free short stays have no insurance condition; for any other visa, check the document list of the embassy you apply to. Read on ${CHECKED}.`,
   },
   {
-    q: "How much is travel insurance for a Japan trip?",
-    a: `SafetyWing Essential lists US$62.72 per 4 weeks at ages 10–39 (read on ${CHECKED}), and its calculator gave US$31.36 for 14 fixed days at 10–39 on ${CALC_CHECKED}, without add-ons. Prices rise with age; your quote depends on age and dates.`,
+    q: "How much is a hospital visit in Japan without insurance?",
+    a: `The full amount. Residents in Japan's health insurance pay 30% at the counter and 100% without their card; a visitor without overseas travel insurance may be charged everything. JNTO's two published cases came to ¥7.5 million (bicycle collision, 19 days in hospital and the flight home) and ¥10 million (heart attack, 45 days). Read on ${CHECKED}.`,
   },
   {
-    q: "Does travel insurance cover foreigners in Japan's hospitals?",
-    a: "Yes. Japanese hospitals and clinics treat foreign visitors, and a private travel policy pays the bill either through a cash-free service, so you pay nothing on the day, or by refunding you after you pay. JNTO's search lists hospitals that take foreign patients.",
+    q: "Does Japan travel insurance cover skiing?",
+    a: `Often on piste only. SafetyWing's FAQ covers skiing and snowboarding but not off-piste or against the advice of the local ski school, and heli-skiing is excluded even with its adventure add-on. Check the on-piste, off-piste and search-and-rescue wording before a ski trip. Read on ${CHECKED}.`,
   },
   {
-    q: "Can you buy travel insurance after arriving in Japan?",
-    a: `Yes. JNTO says private medical insurance you can buy after entering Japan gives sufficient cover during your stay, and SafetyWing can be bought whether or not you are already abroad. Anything that started before you bought it is not covered. Read on ${CHECKED}.`,
+    q: "What is the cheapest travel insurance for Japan?",
+    a: `There is no single cheapest policy, because most insurers only quote. Of the plans that publish a price, SafetyWing Essential lists US$62.72 per 4 weeks at ages 10–39 (read on ${CHECKED}), and its calculator gave US$31.36 for 14 fixed days at 10–39 on ${CALC_CHECKED}. Our best travel insurance for Japan guide compares the options by price and medical limit.`,
   },
 ];
 
-const TITLE = "Japan Travel Insurance 2026: Required? What to Cover & Cost";
+const TITLE = "Japan Travel Insurance 2026: Is It Required? What to Cover";
+const H1 = "Japan Travel Insurance 2026: Is It Required & What It Should Cover";
 const DESCRIPTION =
-  "Do you need travel insurance for Japan? Not for entry, but JNTO cites a ¥10 million hospital case. Japan travel insurance: what to cover, what it costs.";
+  "Do you need travel insurance for Japan? Not for tourist entry, but you may pay the full bill. What travel insurance for Japan should cover: ¥10m+ medical.";
 const ROUTE = "/guides/money/japan-travel-insurance";
 const PAGE_URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
@@ -282,15 +300,13 @@ export default function JapanTravelInsurancePage({ updated }: { updated: PageUpd
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
-          <h1 className={styles.heroTitle}>
-            Japan Travel Insurance (2026): <br />Do You Need Travel Insurance for Japan?
-          </h1>
+          <h1 className={styles.heroTitle}>{H1}</h1>
           <p className={styles.heroSubtitle}>
             Whether Japan requires it, what a hospital bill can reach without it, and the cover to check before
             you buy, from the government&apos;s own pages.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "MOFA, MHLW and JNTO sources", "Requirements and cost"].map((t) => (
+            {[`Updated ${updated.label}`, "MOFA, MHLW, JTA and JNTO sources", "Requirements and cover"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -316,24 +332,30 @@ export default function JapanTravelInsurancePage({ updated }: { updated: PageUpd
           </div>
           <div className={styles.verdictBody}>
             <p className={styles.verdictText}>
-              Japan does not require travel insurance for tourists to enter: Japan&apos;s Ministry of Foreign Affairs
-              sets no insurance condition for visa-free visitors, and the health ministry strongly recommends it
-              instead. Without overseas travel insurance, JNTO says a visitor may be charged the full hospital bill,
-              and it lists cases of <strong>¥7.5 million</strong> and <strong>¥10 million</strong>. At minimum, a
-              Japan travel insurance policy should cover medical treatment, emergency evacuation home and your
-              belongings. Read on {CHECKED}.
+              Japan does not require travel insurance for a short tourist visit: MOFA&apos;s visa exemption for 74
+              countries and regions sets no insurance condition, and only some longer-stay visas, such as the Digital
+              Nomad visa, ask for it. A foreign visitor without travel insurance may be charged the full hospital
+              bill, and JNTO lists cases of <strong>¥7.5 million</strong> and <strong>¥10 million</strong> for
+              treatment, hospital stay and the flight home. Japan travel insurance should therefore cover at least
+              <strong> ¥10 million in medical costs</strong> plus emergency evacuation. Read on {CHECKED}.
             </p>
             <SafetyWingButton label="Check SafetyWing for your dates →" className={styles.verdictBtn} placement="insurance-answer" />
+            <p className={styles.bodyText} style={{ marginTop: "0.9rem", marginBottom: 0 }}>
+              <strong>Ready to pick a policy?</strong> Compare the{" "}
+              <Link href="/guides/money/best-travel-insurance-japan" style={{ color: "var(--red)", fontWeight: 700 }}>
+                best travel insurance for Japan →
+              </Link>{" "}
+              by trip type, price and medical limit.
+            </p>
           </div>
         </div>
 
-        <p className={styles.bodyText}>
-          Already know you want cover and need to pick a policy? Compare the{" "}
-          <Link href="/guides/money/best-travel-insurance-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
-            best travel insurance for Japan
-          </Link>{" "}
-          by trip type, price and medical limit.
-        </p>
+        <KlookTripPrep
+          label="Before you fly"
+          heading="Before You Fly: Data and the Airport Train"
+          intro="Insurance covers the trip going wrong. These cover arrival day: data on your phone for the assistance line and JNTO's hospital search, and a reserved train from the airport."
+          items={japanTravelInsuranceTripPrep}
+        />
 
         {/* 1. Required or not. */}
         <section className={styles.comparisonSection}>
@@ -342,6 +364,9 @@ export default function JapanTravelInsurancePage({ updated }: { updated: PageUpd
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             As a tourist, no rule makes you buy it, but you should. Two visa types do require it: the Long Stay for
             sightseeing and recreation visa and the Digital Nomad visa, which sets a ¥10 million medical minimum.
+            In the Japan Tourism Agency&apos;s airport survey of 3,069 visitors (October 2023 to February 2024), about
+            73% had bought private medical insurance and about 4% fell ill or were injured during the trip, six in
+            ten of them with a cold or fever.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -371,7 +396,9 @@ export default function JapanTravelInsurancePage({ updated }: { updated: PageUpd
             <a href="https://www.mofa.go.jp/j_info/visit/visa/short/novisa.html" target="_blank" rel={PLAIN_REL}>MOFA, visa exemption</a>,{" "}
             <a href="https://www.mofa.go.jp/ca/fna/page22e_000738.html" target="_blank" rel={PLAIN_REL}>MOFA, Long Stay for sightseeing and recreation</a>,{" "}
             <a href="https://www.mofa.go.jp/ca/fna/pagewe_000001_00046.html" target="_blank" rel={PLAIN_REL}>MOFA, Digital Nomad</a>,{" "}
-            <a href="https://www.mhlw.go.jp/stf/newpage_46516.html" target="_blank" rel={PLAIN_REL}>MHLW</a> and{" "}
+            <a href="https://www.mhlw.go.jp/stf/newpage_46516.html" target="_blank" rel={PLAIN_REL}>MHLW</a>,{" "}
+            <a href="https://www.mlit.go.jp/kankocho/en/shisaku/kokusai/traveltojapan.html" target="_blank" rel={PLAIN_REL}>Japan Tourism Agency</a>,{" "}
+            <a href="https://www.mlit.go.jp/kankocho/news08_00002.html" target="_blank" rel={PLAIN_REL}>JTA visitor medical survey (2024)</a> and{" "}
             <a href="https://www.hokeniryo.metro.tokyo.lg.jp/iryo/iryo_hoken/medical_info_eng/insurance" target="_blank" rel={PLAIN_REL}>Tokyo Metropolitan Government</a>.
             Applying for a visa that requires cover? SafetyWing&apos;s FAQ says it cannot guarantee its plans meet a
             given visa&apos;s requirements, so check the wording against the consulate&apos;s list.
@@ -384,9 +411,14 @@ export default function JapanTravelInsurancePage({ updated }: { updated: PageUpd
         {/* Mandatory, as its own question. */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Entry rules</span>
-          <h2 className={styles.sectionTitle}>Is Travel Insurance Mandatory for Japan?</h2>
+          <h2 className={styles.sectionTitle}>Is Travel Insurance Required for a Japan Visa?</h2>
           <p className={styles.bodyText}>
-            No, not for a visa-free tourist: MOFA&apos;s visa-exemption list sets no insurance condition for entry.
+            Only for some visas. MOFA lists proof of medical travel insurance for the Long Stay for sightseeing and
+            recreation visa, and medical cover of ¥10 million or more for the Digital Nomad visa. A visa-free
+            tourist needs none: MOFA&apos;s visa-exemption list sets no insurance condition for entry. For any other
+            visa, the embassy&apos;s own document list is the one to follow.
+          </p>
+          <p className={styles.bodyText}>
             The catch is the bill: the health ministry warns that unpaid medical fees can mean stricter immigration
             procedures on your next visit, and JNTO says such visitors may be denied entry in future.
           </p>
@@ -400,7 +432,7 @@ export default function JapanTravelInsurancePage({ updated }: { updated: PageUpd
         {/* 2. Cost of care. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Cost of care</span>
-          <h2 className={styles.sectionTitle}>What Does a Hospital Cost in Japan Without Insurance?</h2>
+          <h2 className={styles.sectionTitle}>How Much Is a Hospital Visit in Japan Without Insurance?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             The full amount. Residents in Japan&apos;s health insurance pay 30% at the counter; a visitor without
             overseas travel insurance may be charged everything, and JNTO&apos;s two published cases came to ¥7.5
@@ -463,8 +495,10 @@ export default function JapanTravelInsurancePage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>Checklist</span>
           <h2 className={styles.sectionTitle}>What Should Japan Travel Insurance Cover?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Medical treatment, emergency evacuation and your belongings first; cancellation if you have prepaid a
-            lot; ski wording if you are going to the mountains. The last column is SafetyWing Essential&apos;s own
+            At least ¥10 million in medical cover, with emergency evacuation home as its own line. That is the
+            figure MOFA sets for the Digital Nomad visa and the size of JNTO&apos;s heart-attack case. Then
+            cancellation if you have prepaid a lot, and ski wording if you are going to the mountains. Amounts are
+            given only where an official source publishes one; the last column is SafetyWing Essential&apos;s own
             published line, for comparison.
           </p>
           <div className={styles.tableWrap}>
@@ -472,7 +506,7 @@ export default function JapanTravelInsurancePage({ updated }: { updated: PageUpd
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Cover", "Why it matters in Japan", "What to look for", "SafetyWing Essential"].map((h) => (
+                    {["Cover", "Suggested amount", "Basis (official sources)", "SafetyWing Essential"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -481,8 +515,8 @@ export default function JapanTravelInsurancePage({ updated }: { updated: PageUpd
                   {coverRows.map((row) => (
                     <tr key={row.item}>
                       <td className={styles.tdProvider}>{row.item}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.why}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.look}</td>
+                      <td style={{ fontSize: "0.88rem", fontWeight: 600 }}>{row.amount}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.basis}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.sw}</td>
                     </tr>
                   ))}
@@ -491,24 +525,41 @@ export default function JapanTravelInsurancePage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={noteStyle}>
-            Last checked: {LAST_CHECKED} on{" "}
+            Last checked: {LAST_CHECKED}. Sources:{" "}
+            <a href="https://www.mofa.go.jp/ca/fna/pagewe_000001_00046.html" target="_blank" rel={PLAIN_REL}>MOFA, Digital Nomad</a>,{" "}
+            <a href="https://www.jnto.go.jp/emergency/eng/mi_guide.html" target="_blank" rel={PLAIN_REL}>JNTO, guide for when you are feeling ill</a>,{" "}
+            <a href="https://www.mlit.go.jp/kankocho/en/shisaku/kokusai/traveltojapan.html" target="_blank" rel={PLAIN_REL}>Japan Tourism Agency</a>,{" "}
             <a href="https://safetywing.com/nomad-insurance" target="_blank" rel={PLAIN_REL}>safetywing.com/nomad-insurance</a> and{" "}
             <a href="https://safetywing.com/nomad-insurance/faq" target="_blank" rel={PLAIN_REL}>SafetyWing&apos;s FAQ</a>.
-            Going to Japan to ski or snowboard? Our{" "}
-            <Link href="/guides/money/japan-ski-travel-insurance">Japan ski travel insurance</Link> guide
-            compares on-piste, off-piste and rescue wording insurer by insurer.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <SafetyWingButton label="Check SafetyWing medical cover →" className={styles.verdictBtn} placement="insurance-cover" />
           </div>
         </section>
 
+        {/* Skiing, as its own question. */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Ski trips</span>
+          <h2 className={styles.sectionTitle}>Does Japan Travel Insurance Cover Skiing?</h2>
+          <p className={styles.bodyText}>
+            Often on piste only. SafetyWing&apos;s FAQ covers skiing and snowboarding, but not off-piste or against
+            the advice of the local ski school, and heli-skiing stays excluded even with its adventure add-on.
+            Before a ski trip, read three lines in any policy: on-piste, off-piste and search and rescue. Read on{" "}
+            {CHECKED}.
+          </p>
+          <p className={styles.bodyText}>
+            Going to Niseko, Hakuba or Nozawa? Our{" "}
+            <Link href="/guides/money/japan-ski-travel-insurance">Japan ski travel insurance</Link> guide compares
+            that wording insurer by insurer.
+          </p>
+        </section>
+
         {/* Price. */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Price</span>
-          <h2 className={styles.sectionTitle}>How Much Is Travel Insurance for a Japan Trip?</h2>
+          <h2 className={styles.sectionTitle}>What Is the Cheapest Travel Insurance for Japan?</h2>
           <p className={styles.bodyText}>
-            SafetyWing Essential lists US$62.72 per 4 weeks at ages 10–39 (read on {CHECKED}). For a fixed
+            There is no single cheapest policy, because most insurers only give a quote. SafetyWing Essential lists US$62.72 per 4 weeks at ages 10–39 (read on {CHECKED}). For a fixed
             two-week trip its calculator gave US$31.36 at ages 10–39 on {CALC_CHECKED}. Conditions: Essential plan,
             in US dollars, no add-ons, no US cover; prices rise with age and your quote depends on your dates.
           </p>
@@ -537,13 +588,6 @@ export default function JapanTravelInsurancePage({ updated }: { updated: PageUpd
             Anything that started before the policy did will not be covered.
           </p>
         </section>
-
-        <KlookTripPrep
-          label="Book on the same trip"
-          heading="What Else to Book Before You Fly to Japan"
-          intro="Insurance covers the trip going wrong. These cover arrival day: a reserved train from the airport and data on your phone for the assistance line and the hospital search."
-          items={japanTravelInsuranceTripPrep}
-        />
 
         <EsimCtaBottom />
 
