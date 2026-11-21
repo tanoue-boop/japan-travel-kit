@@ -502,7 +502,7 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             Which leaves your handset as the only real variable — and the rest of this page is
             about checking it. Once your phone passes, see our{" "}
             <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              full comparison of the four Japan eSIM providers
+              best eSIM for Japan: six providers compared
             </Link>{" "}
             for which plan to buy, or the{" "}
             <Link href="/guides/esim" style={{ color: "var(--accent)", fontWeight: 600 }}>

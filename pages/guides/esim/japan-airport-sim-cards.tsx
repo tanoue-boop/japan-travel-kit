@@ -478,7 +478,10 @@ export default function JapanAirportSimCardsPage({ updated }: { updated: PageUpd
             machines (see the five-airport table below). Elsewhere there are two ways round it. Sakura Mobile hands over an eSIM QR code at
             its airport pickup counters if you order ahead (orders can be changed up to 3 days before pickup), and any
             travel eSIM can be bought online in the arrivals hall over the free WiFi that Haneda and Kansai list. Both
-            take longer than installing it at home, where a QR code and your own WiFi are all it needs. Our{" "}
+            take longer than installing it at home, where a QR code and your own WiFi are all it needs; which one to
+            install is in the{" "}
+            <Link href="/guides/esim/best-esim-japan" style={linkStyle}>best eSIM for Japan</Link> comparison of six
+            providers. Our{" "}
             <Link href="/guides/esim/how-to-set-up-esim-japan" style={linkStyle}>eSIM setup guide</Link> walks through
             it, and{" "}
             <Link href="/guides/esim/does-esim-work-in-japan" style={linkStyle}>does eSIM work in Japan?</Link> covers

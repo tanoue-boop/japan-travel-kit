@@ -426,7 +426,9 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
           <p className={styles.bodyText}>
             Pick a trip length, then sort by any column. Plans start in price order; the unlimited view starts in price per day.
             Price per GB is left blank for unlimited plans and for daily-allowance plans, where a total has no comparable
-            meaning.
+            meaning. To decide which one to buy rather than follow the price, the{" "}
+            <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>best eSIM for Japan</Link> comparison
+            puts the network, phone number and tethering next to the 7-day and 15-day prices.
           </p>
           <EsimPriceTrackerTable rows={rows} links={links} />
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>

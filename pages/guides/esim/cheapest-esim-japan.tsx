@@ -635,6 +635,8 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
             <strong>Last checked: {LAST_CHECKED_ISO}.</strong> Fixed-allowance plans, list prices in USD read from each
             provider&apos;s official site (e.g.{" "}
             <a href={SIMBYE_URL} target="_blank" rel="sponsored nofollow noopener" className={tools.inlineLink}>simbye.com</a>).
+            This table ranks price only; if a phone number, the network or tethering decides it, see the{" "}
+            <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>best eSIM for Japan</Link> overall comparison.
           </p>
           {/* The top row is Simbye at every size checked so far: its button first (25%), then Klook eSIM (20%). */}
           <a href={SIMBYE_URL} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener" style={{ marginTop: "0.5rem" }}>

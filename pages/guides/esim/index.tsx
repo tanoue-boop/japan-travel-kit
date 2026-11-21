@@ -323,7 +323,9 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
             <h2 className={styles.sectionTitle}>Which Japan eSIM should I get for my trip?</h2>
             <p className={styles.bodyText}>
               Simbye if you are not sure, because it has the lowest list prices compared here; Sakura Mobile if you need
-              a Japanese phone number. Each row links to the guide that goes deeper.
+              a Japanese phone number. Each row links to the guide that goes deeper, and the{" "}
+              <Link href="/guides/esim/best-esim-japan" style={inline}>best eSIM for Japan</Link> page compares all six
+              providers on 7-day and 15-day price, network, phone number and tethering in one table.
             </p>
             <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
               <div className={styles.tableScroll}>
