@@ -15,6 +15,7 @@ import {
   jrPassWholeJapan,
   kantoKansaiLuggageDelivery,
   klookEsim,
+  luggageDeliveryCards,
   tokyoOsakaFareTablePrep,
   osakaAmazingPass,
   shinkansenTokyoOsaka,
@@ -848,8 +849,8 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
         <KlookTripPrep
           label="Book with the train"
           heading="What to Book for the Day You Arrive"
-          intro="The train is the one part of this day JR has already solved. These four are what the rest of it needs: lunch at the other end, a way around the city, a bed, and data on your phone."
-          items={tokyoOsakaArrivalPrep}
+          intro="The train is the one part of this day JR has already solved. These are what the rest of it needs: lunch at the other end, a way around the city, a bed, data on your phone and, if you fly home from Kansai, a bag service for the last morning."
+          items={[...tokyoOsakaArrivalPrep, luggageDeliveryCards.tokyoToOsakaFlyHome]}
         />
 
         <KlookTourPicks

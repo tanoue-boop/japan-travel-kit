@@ -9,6 +9,7 @@ import { hreflangLinks } from "../../../components/Hreflang";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import {
   keiseiSkylinerUrl,
+  luggageDeliveryCards,
   naritaExpressRoundTripUrl,
   skylinerVsNexSameDayPrep,
 } from "../../../lib/klook-links";
@@ -531,7 +532,7 @@ export default function SkylinerVsNexPage({ updated }: { updated: PageUpdated })
           label="Book for the same day"
           heading="What to Book Alongside Your Airport Train"
           intro="The train gets you to a station; the rest of the arrival day is a bed near it, a way to ride the subway afterwards and data on your phone. These are booked on the same Klook account as the train ticket. No prices are quoted — open each listing for the current figure."
-          items={skylinerVsNexSameDayPrep}
+          items={[...skylinerVsNexSameDayPrep, luggageDeliveryCards.skylinerVsNex]}
         />
 
         {/* By destination */}

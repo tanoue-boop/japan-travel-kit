@@ -1604,6 +1604,11 @@ export type KlookTripPrepItem = {
   why: string;
   ctaLabel: string;
   url: string;
+  /**
+   * Optional internal link after the reason (21 Nov 2026): our own explainer page
+   * for the product, so the card can send the reader there as well as to Klook.
+   */
+  guide?: { href: string; label: string };
 };
 
 /** N'EX round trip — the same tracking link the Tokyo airport-transfer guide uses. */
@@ -11353,6 +11358,114 @@ export const luggageDeliveryTripPrep: KlookTripPrepItem[] = [
     why: "With the case already sent, the airport bus is a ride with a day pack; book the seat for the morning you fly.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Luggage delivery cards on the airport, shinkansen, ski and hotel pages — added
+// 21 Nov 2026 (task-jtk-20261121-04, Act). 27664 sold twice from the US on 21 Nov;
+// a bag service is bought on the same day as the airport ride, the seat or the room,
+// so each of those pages' same-day blocks gets one card.
+//
+// Re-confirmed live in en-US form through the www.klook.com search index on
+// 21 Nov 2026: 27664, 37663, 141959 (all declared above) and one new URL,
+// 141957 "Hotels Aorund Tokyo Disneyland Same-day Luggage Delivery by LuggAgent"
+// (Klook's spelling), airport → a hotel around Tokyo Disneyland. Each card links to
+// japan-luggage-delivery (live since task-jtk-20261121-02). No ad id (spare empty),
+// no price. Pages append these to their own lists, because the lists above this
+// point are evaluated before these constants exist.
+// ---------------------------------------------------------------------------
+
+/** LuggAgent: Tokyo airport → a hotel around Tokyo Disneyland, same day (5%). */
+export const tokyoDisneyHotelLuggageDelivery: KlookTour = {
+  title: "Same-day luggage delivery to hotels around Tokyo Disneyland (LuggAgent)",
+  desc: "Bags handed over at a Tokyo airport and delivered to a hotel in the Tokyo Disneyland area on the same day",
+  url: klookLink("https://www.klook.com/en-US/activity/141957-hotels-aorund-tokyo-disneyland-same-day-luggage-delivery-by-luggagent/"),
+};
+
+const luggageGuide = { href: "/guides/transport/japan-luggage-delivery", label: "How luggage delivery works" };
+
+const TOKYO_LUGGAGE = {
+  label: "Luggage delivery (Tokyo hotel ⇔ Narita / Haneda)",
+  ctaLabel: "Check hotel ⇔ airport delivery →",
+  url: tokyoHotelAirportLuggageDelivery.url,
+  guide: luggageGuide,
+};
+
+const KANSAI_LUGGAGE = {
+  label: "Luggage delivery (Osaka / Kyoto hotel ⇔ Kansai Airport)",
+  ctaLabel: "Check hotel → Kansai Airport delivery →",
+  url: osakaKyotoHotelLuggageDelivery.url,
+  guide: luggageGuide,
+};
+
+/** One card per host page; the reason is written for that page's reader. */
+export const luggageDeliveryCards = {
+  tokyoAirportTransfer: {
+    ...TOKYO_LUGGAGE,
+    why: "Every option above is easier with a day bag than with two cases. Booked per bag, in either direction, so the hotel can send the case to the airport on the day you fly — check the hotel drop-off cut-off for your date on the listing.",
+  },
+  limousineBus: {
+    ...TOKYO_LUGGAGE,
+    why: "The bus already takes cases in the hold; this is for the day it does not suit — a train to the airport, or a sightseeing day before an evening flight — when the case goes from the hotel to Narita or Haneda without you.",
+  },
+  skylinerVsNex: {
+    ...TOKYO_LUGGAGE,
+    why: "Both trains have luggage space, but the stairs and transfers at either end do not carry the case for you. Sent from the hotel, it waits at Narita or Haneda; check the hotel drop-off cut-off on the listing.",
+  },
+  osakaAirportTransfer: {
+    ...KANSAI_LUGGAGE,
+    why: "For the flight home: hand the case in at an Osaka or Kyoto hotel and collect it at Kansai Airport, so the last morning is not spent on a train with it. Check that your hotel is covered and the drop-off cut-off on the listing.",
+  },
+  harukaVsRapit: {
+    ...KANSAI_LUGGAGE,
+    why: "Neither the Haruka nor the Rapi:t helps on the walk between the platform and the hotel. Sent from an Osaka or Kyoto hotel, the case waits at Kansai Airport; check that your hotel is covered on the listing.",
+  },
+  shinkansenGuideAirport: {
+    ...TOKYO_LUGGAGE,
+    why: "If the trip ends in Tokyo, the same idea works for the airport day: the case goes from the hotel to Narita or Haneda and you ride with a day bag.",
+  },
+  shinkansenGuideSameDay: {
+    label: "Luggage delivery (Tokyo-area hotel ⇔ Osaka-area hotel, same day)",
+    ctaLabel: "Check same-day hotel ⇔ hotel delivery →",
+    url: kantoKansaiLuggageDelivery.url,
+    guide: luggageGuide,
+    why: "When the oversized-baggage seats are gone on your train: LuggAgent carries the case between a hotel in the Tokyo area and one in the Osaka area on the same day. Check that both hotels are covered and the morning drop-off cut-off on the listing.",
+  },
+  tokyoToOsakaFlyHome: {
+    ...KANSAI_LUGGAGE,
+    why: "If you fly home from Kansai, the last morning works the same way as the train day: the case leaves the Osaka or Kyoto hotel and waits at Kansai Airport.",
+  },
+  kyotoToTokyo: {
+    ...TOKYO_LUGGAGE,
+    why: "Most Kyoto-to-Tokyo trips end at Narita or Haneda a day or two later. Booked per bag, the case goes from the Tokyo hotel to the airport so the last sightseeing day is not spent with it.",
+  },
+  skiItinerary: {
+    ...TOKYO_LUGGAGE,
+    why: "For the Tokyo nights either side of the snow: the city suitcase goes between the Tokyo hotel and Narita or Haneda, so the shinkansen or the coach is a ride with the ski bag only. Size and weight limits are per bag — check whether a ski bag fits on the listing before you book it.",
+  },
+  hakuba: {
+    ...TOKYO_LUGGAGE,
+    why: "If Tokyo comes before or after Hakuba, the city suitcase can go between the Tokyo hotel and the airport without you, leaving the ski bag for the shinkansen and the shuttle. Limits are per bag, so check a ski bag against the listing first.",
+  },
+  niseko: {
+    ...TOKYO_LUGGAGE,
+    why: "Only if the trip has Tokyo nights before you fly to Hokkaido or after you come back: the city suitcase goes between the Tokyo hotel and Haneda or Narita. Limits are per bag, so check a ski bag against the listing first.",
+  },
+  whereToStayTokyo: {
+    ...TOKYO_LUGGAGE,
+    why: "Whichever area you pick, the bag service collects from the hotel front desk, so a base with an awkward airport run — a transfer or a long walk to the platform — matters less on the day you fly.",
+  },
+  usjHotels: {
+    ...KANSAI_LUGGAGE,
+    why: "For the day you leave Universal City for the airport, or move to Kyoto: the case goes from the hotel to Kansai Airport or another hotel. Check that your hotel is on the listing's coverage before you book.",
+  },
+  tokyoDisneyHotels: {
+    label: "Luggage delivery (Tokyo airport ⇒ Tokyo Disneyland-area hotel, same day)",
+    ctaLabel: "Check Disney-area hotel delivery →",
+    url: tokyoDisneyHotelLuggageDelivery.url,
+    guide: luggageGuide,
+    why: "For the arrival day: hand the bags over at the airport and they go to a hotel around Tokyo Disneyland the same day, so you can reach the park without them. Check the airport hand-in time and that your hotel is covered on the listing.",
+  },
+} satisfies Record<string, KlookTripPrepItem>;
 
 /**
  * Directly under the answer on kansai-hiroshima-area-pass: the pass (5%), then what

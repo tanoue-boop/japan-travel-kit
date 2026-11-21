@@ -4,7 +4,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import BookingEsimCard from "../../../components/BookingEsimCard";
-import { shinkansenGuideSameDayPrep, shinkansenTokyoKyoto, shinkansenTokyoOsaka } from "../../../lib/klook-links";
+import { luggageDeliveryCards, shinkansenGuideSameDayPrep, shinkansenTokyoKyoto, shinkansenTokyoOsaka } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
@@ -628,6 +628,15 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
             If you miss the reserved train, a non-reserved seat on a later train does not allow the oversized bag.
           </p>
         </section>
+
+        {/* Luggage delivery, directly after the oversized-baggage rule (21 Nov 2026 Act) */}
+        <KlookTripPrep
+          headingLevel={3}
+          label="Send the case instead"
+          heading="Can I Send My Suitcase Instead of Taking It on the Shinkansen?"
+          intro="Yes. A booked bag service carries it between hotels, or between the hotel and the airport, while you ride with a day bag — the way round a train whose oversized-baggage seats are gone."
+          items={[luggageDeliveryCards.shinkansenGuideSameDay, luggageDeliveryCards.shinkansenGuideAirport]}
+        />
 
         {/* Q4 — on the day / how early */}
         <section className={styles.bodySection}>

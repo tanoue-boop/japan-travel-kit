@@ -5,7 +5,7 @@ import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import KlookTripPrep from "../../../components/KlookTripPrep";
-import { jrHarukaUrl, nankaiRapitUrl, osakaAirportArrivalPrep, osakaAirportStayAreas } from "../../../lib/klook-links";
+import { jrHarukaUrl, luggageDeliveryCards, nankaiRapitUrl, osakaAirportArrivalPrep, osakaAirportStayAreas } from "../../../lib/klook-links";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { pocketWifi } from "../../../lib/pocket-wifi";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -53,6 +53,7 @@ const arrivalPrep = [
     url: ninjaWifi.affiliateUrl,
   },
   ...osakaAirportArrivalPrep.slice(1),
+  luggageDeliveryCards.osakaAirportTransfer,
 ];
 
 const kixOptions = [

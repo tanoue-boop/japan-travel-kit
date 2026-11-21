@@ -18,6 +18,7 @@ import {
   hakubaSkiSnowboardRental,
   jrEastPass,
   klookEsim,
+  luggageDeliveryCards,
   naganoHakubaShuttleBus,
   shinkansenTokyoNagano,
   spicyHakubaSkiRental,
@@ -245,6 +246,7 @@ const hakubaSameTrip: KlookTripPrepItem[] = [
     url: klookEsim.url,
     why: "Lift status, shuttle changes and bus reservations all reach a phone, and the valley ticket's choice of 10 ski areas is a decision made on the morning's conditions.",
   },
+  luggageDeliveryCards.hakuba,
 ];
 
 const TITLE = "Hakuba Ski Tours (2026-27): Tokyo Access, Lifts & Resorts";
@@ -443,7 +445,7 @@ export default function HakubaSkiToursPage({ updated }: { updated: PageUpdated }
         <KlookTripPrep
           label="Book on the same trip"
           heading="What a Hakuba Ski Trip Books Alongside the Lift Ticket"
-          intro="The transfer, the gear and the bed — plus data, because lift status and bus changes reach a phone first."
+          intro="The transfer, the gear and the bed — plus data, because lift status and bus changes reach a phone first, and a bag service for the Tokyo end of the trip."
           items={hakubaSameTrip}
         />
         <p className={styles.bodyText} style={{ fontSize: "0.9rem" }}>

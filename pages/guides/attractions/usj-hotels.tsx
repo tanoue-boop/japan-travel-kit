@@ -12,6 +12,7 @@ import {
   hotelUniversalPortKlook,
   hotelUniversalPortVitaKlook,
   kansaiAirportLimousineBus,
+  luggageDeliveryCards,
   parkFrontHotelUsjKlook,
   usjExpressPassUrl,
   usjHotelsTripPrep,
@@ -368,8 +369,8 @@ export default function UsjHotelsPage({ updated }: { updated: PageUpdated }) {
         <KlookTripPrep
           label="Book this trip"
           heading="Book Your USJ Hotel Stay"
-          intro="The room, the airport bus and data. The Park Front Hotel opens online bookings six months ahead and Hotel Universal Port up to a year ahead; Klook prices change by date, so open a listing for the figure on yours."
-          items={usjHotelsTripPrep}
+          intro="The room, the airport bus, data and a bag service for the day you leave. The Park Front Hotel opens online bookings six months ahead and Hotel Universal Port up to a year ahead; Klook prices change by date, so open a listing for the figure on yours."
+          items={[...usjHotelsTripPrep, luggageDeliveryCards.usjHotels]}
           headingLevel={3}
         />
 

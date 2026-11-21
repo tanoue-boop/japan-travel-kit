@@ -7,6 +7,7 @@ import KlookLink from "../../../components/KlookLink";
 import {
   hanedaLimousineBus,
   keiseiSkylinerUrl,
+  luggageDeliveryCards,
   naritaBusSubwayCombo,
   naritaExpressRoundTripUrl,
   naritaLimousineBus,
@@ -1631,11 +1632,11 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
           areas={tokyoAirportStayAreas}
         />
 
-        {/* Klook: two things the transfer ticket does not cover */}
+        {/* Klook: three things the transfer ticket does not cover (luggage card added 21 Nov 2026) */}
         <KlookTripPrep
-          heading="Two Things the Transfer Ticket Does Not Cover"
-          intro="The airport ticket gets you as far as your first station. These two cover what happens either side of it:"
-          items={tokyoAirportTripPrep}
+          heading="Three Things the Transfer Ticket Does Not Cover"
+          intro="The airport ticket gets you as far as your first station. These three cover what happens either side of it:"
+          items={[...tokyoAirportTripPrep, luggageDeliveryCards.tokyoAirportTransfer]}
         />
 
         <section className={styles.bodySection}>

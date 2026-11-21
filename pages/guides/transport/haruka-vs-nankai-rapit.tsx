@@ -9,6 +9,7 @@ import {
   nankaiRapitUrl,
   jrKansaiAreaPass,
   klookEsim,
+  luggageDeliveryCards,
   osakaStayAreas,
   kyotoStayAreas,
   type KlookTripPrepItem,
@@ -204,6 +205,7 @@ const tripPrep: KlookTripPrepItem[] = [
     url: klookEsim.url,
     why: "Platform numbers, ticket QR codes and your hotel map all sit on your phone, so install it at home and it works when you clear customs.",
   },
+  luggageDeliveryCards.harukaVsRapit,
 ];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });

@@ -15,6 +15,7 @@ import {
   japanWinterStayAreas,
   jrHokkaidoRailPass,
   klookEsim,
+  luggageDeliveryCards,
   newChitoseAirportTransfers,
   nisekoHirafuEnglishSkiLesson,
   nisekoHirafuLiftPassBusTour,
@@ -365,6 +366,7 @@ const nisekoSameTrip: KlookTripPrepItem[] = [
     url: japanWinterStayAreas[7].url,
     why: "The booking that fixes everything else. Which of the four areas you sleep in decides whether the lifts are a walk or a shuttle ride, and Niseko United itself says the peak holiday periods sell out early.",
   },
+  luggageDeliveryCards.niseko,
 ];
 
 const TITLE = "Niseko Ski Tours (2027): Transfers, Lessons & 4 Areas";

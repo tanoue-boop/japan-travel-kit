@@ -15,6 +15,7 @@ import {
   klookEsim,
   kyotoToTokyoArrivalStayAreas,
   kyotoToTokyoTripPrep,
+  luggageDeliveryCards,
   naritaLimousineBus,
   shinkansenKyotoTokyo,
   tokyoPrivateAirportTransfer,
@@ -711,9 +712,9 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
         <KlookTripPrep
           headingLevel={3}
           label="Book with the train"
-          heading="Book the Same Day: Tokyo Hotel, Subway Ticket, eSIM"
-          intro="The train ends inside Tokyo Station. A room near it, a subway ticket for the days after and data for the journey are the three bookings the shinkansen ticket does not cover."
-          items={kyotoToTokyoTripPrep}
+          heading="Book the Same Day: Tokyo Hotel, Subway Ticket, eSIM, Luggage"
+          intro="The train ends inside Tokyo Station. A room near it, a subway ticket for the days after, data for the journey and a bag service for the airport day are the four bookings the shinkansen ticket does not cover."
+          items={[...kyotoToTokyoTripPrep, luggageDeliveryCards.kyotoToTokyo]}
         />
 
         <BookingEsimCard />

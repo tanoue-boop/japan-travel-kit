@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "../styles/BestEsimJapan.module.css";
 import KlookLink from "./KlookLink";
 import { useComponentLocale } from "./componentLocale";
@@ -81,6 +82,14 @@ export default function KlookTripPrep({ heading, intro, items, label, note, loca
             <span className={styles.proIcon}>▸</span>
             <span>
               <strong>{item.label}</strong> — {item.why}{" "}
+              {item.guide && (
+                <>
+                  <Link href={item.guide.href} style={{ color: "var(--red)", fontWeight: 600 }}>
+                    {item.guide.label}
+                  </Link>
+                  {" · "}
+                </>
+              )}
               <KlookLink
                 href={item.url}
                 adPlacement={adPlacement}

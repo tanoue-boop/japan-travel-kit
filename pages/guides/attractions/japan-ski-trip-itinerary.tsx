@@ -15,6 +15,7 @@ import {
   hakubaHotelsUrl,
   hakubaSkiSnowboardRental,
   klookEsim,
+  luggageDeliveryCards,
   naganoHakubaShuttleBus,
   nisekoLiftTicketGearDelivery,
   nisekoResortShuttleBus,
@@ -239,6 +240,7 @@ const sameTrip: KlookTripPrepItem[] = [
     url: klookEsim.url,
     why: "Bus reservations, lift status and the shinkansen back all live on a phone.",
   },
+  luggageDeliveryCards.skiItinerary,
 ];
 
 const TITLE = "Japan Ski Trip Itinerary: 7 & 10 Days, Hakuba to Niseko";
@@ -465,7 +467,7 @@ export default function JapanSkiTripItineraryPage({ updated }: { updated: PageUp
         <KlookTripPrep
           label="Book on the same trip"
           heading="What a Japan Ski Trip Books Alongside the Lift Ticket"
-          intro="The bed and the gear for the four nights at the resort, the airport run, and data for the trip."
+          intro="The bed and the gear for the four nights at the resort, the airport run, data for the trip, and a way to send the city suitcase so you travel with the ski bag only."
           items={sameTrip}
         />
         <p className={styles.bodyText} style={{ fontSize: "0.9rem" }}>

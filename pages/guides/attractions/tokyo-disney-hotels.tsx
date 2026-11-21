@@ -8,6 +8,7 @@ import { checkedLabel } from "../../../lib/attraction-prices";
 import {
   disneyAmbassadorHotelKlook,
   hiltonTokyoBayKlook,
+  luggageDeliveryCards,
   sheratonGrandeTokyoBayKlook,
   tokyoDisneyCelebrationHotelKlook,
   tokyoDisneyHotelsTripPrep,
@@ -642,7 +643,7 @@ export default function TokyoDisneyHotelsPage({ updated }: { updated: PageUpdate
           label="Same trip"
           heading="What Should You Book Around a Tokyo Disney Hotel?"
           intro="Once the room is settled, these cover the rest of the park trip. Open a listing for the price on your dates."
-          items={tokyoDisneyHotelsTripPrep}
+          items={[...tokyoDisneyHotelsTripPrep, luggageDeliveryCards.tokyoDisneyHotels]}
         />
 
         <EsimCtaBottom />

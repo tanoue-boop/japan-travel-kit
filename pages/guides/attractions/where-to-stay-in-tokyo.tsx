@@ -8,7 +8,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { checkedLabel } from "../../../lib/attraction-prices";
-import { whereToStayTokyoAreas, whereToStayTokyoTripPrep } from "../../../lib/klook-links";
+import { luggageDeliveryCards, whereToStayTokyoAreas, whereToStayTokyoTripPrep } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
@@ -566,7 +566,7 @@ export default function WhereToStayInTokyoPage({ updated }: { updated: PageUpdat
           label="Booked alongside"
           heading="What Else Does the Area You Pick Decide?"
           intro="Each of these follows from the area rather than the other way round: the airport ticket you want depends on which side of the city your hotel is, and the pass that pays off depends on whether your base is a JR station or a subway one."
-          items={whereToStayTokyoTripPrep}
+          items={[...whereToStayTokyoTripPrep, luggageDeliveryCards.whereToStayTokyo]}
         />
 
         {/* FAQ */}

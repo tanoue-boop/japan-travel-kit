@@ -13,6 +13,7 @@ import {
   fujiHakoneDayTour,
   hanedaLimousineBus,
   limousineBusTripPrep,
+  luggageDeliveryCards,
   naritaBusSubwayCombo,
   naritaHanedaLimousineBus,
   naritaLimousineBus,
@@ -644,8 +645,8 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
         <KlookTripPrep
           label="Before you land"
           heading="What Should You Book Before You Land?"
-          intro="The bus seat, the subway pass for the days after, a hotel on the route and data that works at the kerb. Klook prices change by date, so check the listing for your date."
-          items={limousineBusTripPrep}
+          intro="The bus seat, the subway pass for the days after, a hotel on the route, data that works at the kerb and, for the day the bus does not suit, a luggage service. Klook prices change by date, so check the listing for your date."
+          items={[...limousineBusTripPrep, luggageDeliveryCards.limousineBus]}
         />
 
         {/* Narita fares */}
