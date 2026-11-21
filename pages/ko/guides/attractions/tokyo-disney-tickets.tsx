@@ -24,30 +24,75 @@ import { withKlookLocale } from "../../../../lib/klook-locale";
 import { gygTokyoDisneyResort, gygTokyoDisneySea } from "../../../../lib/gyg-links";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
-import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
+import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
 import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const ROUTE = "/ko/guides/attractions/tokyo-disney-tickets";
-const TITLE = "도쿄 디즈니랜드 티켓(2026): 가격, 구매처, 랜드·씨 선택";
+// 21 Nov 2026 (R06): title for the Korean queries on both parks (티켓·입장권·가격·예약), structure
+// aligned with the English page's 18 Nov 2026 R04 rewrite. Prices re-read on 21 Nov 2026 on the
+// resort's own ticket page and price calendar (/en/ticket/index.html, /en/ticket/index/202612/,
+// /202701/, /202702/, "As of 10:50 a.m., November 21, 2026"): published minimums unchanged; adult
+// 1-Day Passport 8,900 (6–8 Jan 2027) to 12,400 for 21 Nov 2026 – 28 Feb 2027, Disneyland and
+// DisneySea identical. Change rules re-read the same day on /en/ticket/change/howto.html.
+const TITLE = "도쿄 디즈니랜드·디즈니씨 티켓 2026: 가격·예약 방법";
 const DESC =
-  "도쿄 디즈니랜드 티켓 2026: 성인 ¥8,900부터, 날짜별 가격, 현장 판매 없음. 공식 사이트·클룩 구매처와 유효 기간 정리.";
+  "도쿄 디즈니랜드·디즈니씨 입장권 성인 ¥8,900~12,400. 현장 판매 없이 2개월 전 14시 예약 시작. 공식 앱·클룩 예약 방법 비교.";
 // 11 Nov 2026 (R08): mirrors the English page's where-to-buy, validity, Premier Access and Happy Entry
 // additions — same official FAQ sources and check dates; no figure added beyond the English page.
-const LAST_CHECKED_PRICES = "2026-10-28";
+const LAST_CHECKED_PRICES = "2026-11-21";
 const LAST_CHECKED_RULES = "2026-11-11";
+const LAST_CHECKED_CHANGES = "2026-11-21";
+const PRICE_MIN = "¥8,900";
+const PRICE_MAX = "¥12,400";
+const CALENDAR_SPAN = "2026년 11월 21일~2027년 2월 28일";
 
 // Mirrors the English page (/guides/attractions/tokyo-disney-tickets) block by block as of
 // 2026-11-01: same sections, tables, Klook and GetYourGuide CTAs. Every rule and figure is
 // the English page's (Tokyo Disney Resort's own, read 28 Oct 2026); no figure is added.
 const CHECKED = dateLabel("2026-10-28", "ko");
+const PRICE_CHECKED = dateLabel(LAST_CHECKED_PRICES, "ko");
 const GYG_SLUG = "ko-tokyo-disney-tickets";
 
-/** The published minimums, by the resort's own age bands. */
+/**
+ * Ticket type × age band. First row is the answer. Adult 1-Day Passport is the range on the
+ * official calendar; every other figure is the resort's published minimum ("부터").
+ */
 const priceRows = [
-  { band: "성인", who: "18세 이상", price: priceLabel("From ¥8,900", "ko") },
-  { band: "청소년", who: "12~17세 — 중학생·고등학생 연령", price: priceLabel("From ¥7,400", "ko") },
-  { band: "어린이", who: "4~11세 — 미취학 아동·초등학생 연령", price: priceLabel("From ¥5,300", "ko") },
-  { band: "유아", who: "3세 이하", price: priceLabel("Free", "ko") },
+  { ticket: "1데이 패스포트(개장부터 하루) — 가장 일반적인 티켓", adult: `${PRICE_MIN}~${PRICE_MAX}`, junior: "¥7,400부터", child: "¥5,300부터" },
+  { ticket: "애프터 3 패스포트(주말·공휴일 15:00부터)", adult: "¥7,900부터", junior: "¥6,600부터", child: "¥4,400부터" },
+  { ticket: "애프터 5 패스포트(평일 17:00부터)", adult: "¥5,400부터", junior: "¥4,600부터", child: "¥3,600부터" },
+  { ticket: "1데이 패스포트(장애가 있는 분)", adult: "¥7,100부터", junior: "¥5,900부터", child: "¥4,200부터" },
+  { ticket: "캠퍼스 데이 패스포트(기간 한정, 학생)", adult: "¥7,900부터", junior: "¥6,600부터", child: "—" },
+  { ticket: "2일권·멀티데이 패스포트", adult: "판매하지 않음", junior: "판매하지 않음", child: "판매하지 않음" },
+  { ticket: "3세 이하", adult: "—", junior: "—", child: "무료" },
+];
+
+/** Date changes — first row is the answer. /en/ticket/change/howto.html, read 21 Nov 2026. */
+const changeRows = [
+  {
+    q: "날짜를 바꿀 수 있나요?",
+    a: "공식 웹사이트·앱에서 산 티켓이라면 가능합니다. 유효 기간 안에서 온라인으로, 수수료 없이, 원래 날짜가 지난 뒤에도 바꿀 수 있습니다. 환불은 되지 않습니다.",
+  },
+  {
+    q: "바꿀 수 있는 것",
+    a: "입장 날짜와 연령 구분(예: 어린이 → 중고생)입니다. 둘 다 바꾸려면 하나씩 변경합니다.",
+  },
+  {
+    q: "바꿀 수 없는 것",
+    a: "파크(디즈니랜드 ↔ 디즈니씨), 티켓 종류, 유효 기간입니다. 매진된 날짜로도 바꿀 수 없습니다.",
+  },
+  {
+    q: "가격 차이는 어떻게 되나요?",
+    a: "바꿀 티켓의 금액을 전액 결제하고 원래 티켓의 금액은 전액 환불되므로, 더 싼 날짜든 비싼 날짜든 자동으로 정산됩니다.",
+  },
+  {
+    q: "클룩 등 다른 곳에서 산 티켓은?",
+    a: "리조트의 온라인 변경은 공식 웹사이트에서 산 티켓만 대상입니다. 다른 판매처에서 산 티켓은 그 판매처를 통해 변경합니다.",
+  },
+  {
+    q: "취소·환불",
+    a: "고객 사정에 의한 취소·환불은 받지 않습니다.",
+  },
 ];
 
 /** Which passports exist, and when each one lets you through the gate. */
@@ -110,26 +155,30 @@ const hoursRows = [
 /** Where to buy — first row is the recommendation. Validity from the resort's FAQ. */
 const sellerRows = [
   {
-    where: "추천: 공식 웹사이트 또는 앱(tokyodisneyresort.jp)",
+    where: "추천: 공식 웹사이트·앱(tokyodisneyresort.jp)",
     best: "공식 결제에서 내 카드가 승인되는 분",
+    change: "유효 기간 안에서 온라인으로 무료 변경(날짜·연령 구분만, 파크·티켓 종류는 불가)",
     validity: "구매일로부터 1년 뒤 같은 날",
-    note: "유효 기간 안에서 날짜와 연령 구분을 온라인으로 수수료 없이 횟수 제한 없이 변경할 수 있으며, 변경할 때마다 새 날짜의 가격으로 정산됩니다.",
+    note: "한국어 페이지가 있습니다. 일부 해외 발급 카드는 결제가 거절됩니다. 고객 사정에 의한 환불은 없습니다.",
   },
   {
     where: "공식 승인 해외 온라인 여행사(예: 클룩)",
     best: "공식 사이트에서 해외 카드가 거절되는 분",
+    change: "리조트의 온라인 변경 대상이 아님 — 유효 기간 안에 판매처에 문의",
     validity: "입장일로부터 1개월 뒤 같은 날",
-    note: "해외 카드 결제, 한국어 결제 화면. 공식 사이트에서 매진으로 보일 때 한 번 더 확인해 볼 만합니다. 유효 기간이 더 짧다는 점에 유의하세요.",
+    note: "해외 카드 결제, 한국어 결제 화면, 공식 앱에 등록할 수 있는 QR. 취소 조건은 판매처가 정하므로 결제 전에 상품 약관을 확인하세요.",
   },
   {
     where: "일본 국내 여행사·편의점",
     best: "일본 거주자, 이미 일본에 있는 여행자",
+    change: "유효 기간 안에 발권처에 문의",
     validity: "입장일로부터 1개월 뒤 같은 날",
-    note: "예약 교환권으로 판매됩니다. 날짜를 놓쳤다면 교환권 만료 전에 발권처에 문의하세요.",
+    note: "예약 교환권으로 판매됩니다.",
   },
   {
     where: "파크 게이트",
     best: "해당 없음 — 판매하지 않음",
+    change: "—",
     validity: "—",
     note: "도쿄 디즈니랜드와 도쿄 디즈니씨에서는 파크 티켓을 판매하지 않습니다. 디즈니 호텔 투숙객만 호텔에서 당일 티켓을 살 수 있습니다.",
   },
@@ -176,14 +225,6 @@ const buyingRows = [
   {
     q: "예외는 없나요?",
     a: "디즈니 호텔 투숙객은 호텔에서 당일 티켓을 살 수 있습니다. 그 외에는 웹사이트와 앱이 당일 구매의 유일한 경로이며, 미리 사는 티켓은 일부 여행사와 편의점에서도 판매합니다.",
-  },
-  {
-    q: "취소하고 환불받을 수 있나요?",
-    a: "안 됩니다. 고객 사정에 의한 취소·환불은 불가하며, 악천후나 지진 등 지정일에 방문하지 못하는 경우를 다룬 FAQ도 같은 규칙을 안내합니다.",
-  },
-  {
-    q: "대신 날짜를 바꿀 수는 있나요?",
-    a: "가능합니다. 변경할 수 있는 것은 날짜뿐입니다. 온라인 티켓은 유효 기간 안에서 지정 입장일 전이든 후든 날짜를 변경할 수 있고, 변경 횟수에도 제한이 없습니다. 변경할 때마다 새 날짜의 가격으로 정산됩니다. 변경은 파크가 아니라 웹사이트나 앱에서 합니다.",
   },
   {
     q: "방문 날짜가 매진됐어요. 이걸로 끝인가요?",
@@ -265,36 +306,24 @@ const steps = [
 
 const faqItems: FaqItem[] = [
   {
-    q: "2026년 도쿄 디즈니랜드 티켓은 얼마인가요?",
-    a: `정해진 단일 가격은 없습니다. 도쿄 디즈니 리조트는 파크 티켓 가격이 방문일에 따라 달라진다고 분명히 밝히고 있습니다. 공개된 것은 1데이 패스포트의 최저가로, 성인(18세 이상) ¥8,900부터, 청소년(12~17세) ¥7,400부터, 어린이(4~11세) ¥5,300부터, 3세 이하 무료이며, 방문 날짜의 실제 금액은 날짜를 선택하면 표시됩니다. ${CHECKED} 확인. 성수기 날짜, 특히 디즈니씨 25주년 기간의 날짜는 최저가보다 한참 높습니다.`,
+    q: "도쿄 디즈니랜드 티켓 가격은 얼마인가요?",
+    a: `성인 1데이 패스포트는 날짜에 따라 ${PRICE_MIN}~${PRICE_MAX}입니다. 도쿄 디즈니 리조트 공식 가격 캘린더(${CALENDAR_SPAN})의 최저가와 최고가이며, 도쿄 디즈니씨도 같은 날 같은 가격입니다. 중고생(12~17세)은 ¥7,400부터, 어린이(4~11세)는 ¥5,300부터, 3세 이하는 무료이고, 평일 저녁용 애프터 5 패스포트는 성인 ¥5,400부터입니다. 최종 확인: ${LAST_CHECKED_PRICES}.`,
   },
   {
-    q: "도쿄 디즈니랜드 티켓은 어디서 사야 하나요?",
-    a: "공식 결제에서 카드가 승인된다면 도쿄 디즈니 리조트 공식 웹사이트나 앱에서 사세요. 그곳에서 산 티켓은 구매일로부터 1년 뒤 같은 날까지 유효하고, 온라인에서 수수료 없이 날짜를 바꿀 수 있습니다. 공식 결제에서 해외 카드가 거절되면 클룩 같은 공식 승인 해외 온라인 여행사에서도 같은 날짜 지정 1데이 패스포트를 팔지만, 리조트 FAQ상 이런 티켓의 유효 기간은 더 짧아 입장일로부터 1개월 뒤 같은 날까지입니다. 두 파크 모두 게이트에서는 티켓을 팔지 않습니다. 최종 확인: 2026-11-11.",
+    q: "디즈니씨 티켓은 어디서 예약하나요?",
+    a: `도쿄 디즈니씨와 도쿄 디즈니랜드 티켓은 같은 곳에서 예약합니다. 공식 결제에서 카드가 승인된다면 도쿄 디즈니 리조트 공식 웹사이트나 앱이 가장 좋습니다. 구매일로부터 1년 뒤 같은 날까지 유효하고, 온라인에서 수수료 없이 날짜를 바꿀 수 있습니다. 해외 카드가 거절되면 클룩 같은 공식 승인 판매처에서 같은 날짜 지정 1데이 패스포트를 살 수 있지만, 유효 기간은 입장일로부터 1개월 뒤 같은 날까지이고 날짜 변경은 판매처를 통해 합니다. 최종 확인: ${LAST_CHECKED_CHANGES}.`,
   },
   {
-    q: "도쿄 디즈니랜드 티켓의 유효 기간은 얼마나 되나요?",
-    a: "공식 웹사이트나 앱에서 산 파크 티켓은 구매일로부터 1년 뒤 같은 날까지 유효합니다. 입장일로부터 1년이 아닙니다. 여행사, 편의점, 해외 온라인 여행사에서 산 티켓은 입장일로부터 1개월 뒤 같은 날까지 유효합니다. 유효 기간 안에서는 날짜를 바꿀 수 있고, 기간이 지난 티켓은 무효입니다. 최종 확인: 2026-11-11.",
+    q: "당일 티켓도 구매할 수 있나요?",
+    a: `재고가 남아 있다면 공식 웹사이트나 앱에서 당일 티켓을 살 수 있습니다. 다만 도쿄 디즈니랜드와 도쿄 디즈니씨의 게이트에서는 파크 티켓을 판매하지 않고, 그날이 매진이면 입장할 수 없습니다. 예외는 디즈니 호텔 투숙객으로, 호텔에서 당일 티켓을 살 수 있습니다. 매진된 티켓은 예고 없이 다시 판매될 수 있으니 다시 확인해 볼 만합니다. 최종 확인: ${LAST_CHECKED_RULES}.`,
   },
   {
-    q: "디즈니 프리미어 액세스란 무엇이고, 꼭 필요한가요?",
-    a: "디즈니 프리미어 액세스는 파크 티켓과 별도의 유료 서비스로, 대상 어트랙션의 이용 시간이나 대상 쇼의 감상 구역을 예약합니다. 파크에 입장한 뒤 도쿄 디즈니 리조트 공식 앱에서 구매하며, 수량이 한정되어 매진될 수 있습니다. 꼭 필요하지는 않습니다. 모든 어트랙션은 줄을 서서 이용할 수 있고, 무료 스탠바이 패스와 엔트리 리퀘스트도 그대로 있습니다. 무료 40주년 프라이어리티 패스는 2026년 8월 31일에 종료되었습니다. 최종 확인: 2026-11-11.",
+    q: "디즈니랜드와 디즈니씨 중 어디가 좋을까요?",
+    a: "티켓 한 장으로 한 파크만 들어갈 수 있고 하루에 두 파크를 오가는 파크 호퍼는 현재 판매하지 않으므로, 하루라면 한 곳을 골라야 합니다. 아이와 함께이거나 디즈니 파크가 처음이라면 성과 퍼레이드, 가족이 함께 즐기는 어트랙션이 중심인 도쿄 디즈니랜드가 맞습니다. 성인끼리이거나 도쿄에만 있는 파크를 원한다면 항해를 테마로 하고 주류도 판매하는 도쿄 디즈니씨가 맞으며, 디즈니씨는 2026년 4월부터 2027년 3월까지 25주년을 기념합니다.",
   },
   {
-    q: "도쿄 디즈니 티켓은 언제 판매가 시작되나요?",
-    a: `2개월 뒤 같은 날짜의 티켓이 매일 일본 시간 14:00부터 판매됩니다. 3월 1일 방문분은 1월 1일 14:00에 판매가 시작되고, 해당 월에 같은 날짜가 없으면 다음 달 1일 14:00에 판매가 시작됩니다. 한 번의 주문에 최대 10장까지 살 수 있으며, 그날의 수량에 도달하면 해당 날짜의 판매가 예고 없이 중단될 수 있습니다. ${CHECKED} 확인.`,
-  },
-  {
-    q: "도쿄 디즈니랜드 티켓의 날짜는 변경할 수 있나요?",
-    a: `날짜는 구매할 때 정해지지만 변경할 수 있고, 환불은 되지 않습니다. 고객 사정에 의한 취소·환불은 불가하며, 악천후나 지진 등 지정일에 가지 못하는 경우를 다룬 FAQ도 같은 규칙을 안내합니다. 온라인 티켓은 유효 기간 안에서 지정일 전이든 후든 변경할 수 있고 횟수 제한도 없으며, 변경할 때마다 새 날짜의 가격으로 정산됩니다. 변경은 파크가 아니라 공식 웹사이트나 앱에서 합니다. ${CHECKED} 확인.`,
-  },
-  {
-    q: "방문 날짜가 매진됐는데, 그래도 들어갈 수 있나요?",
-    a: "현장에서 살 수는 없습니다. 매진된 날짜에는 입장할 수 없습니다. 다만 리조트 FAQ에 따르면 매진된 파크 티켓은 예고 없이 다시 판매될 수 있고, 다른 고객이 티켓을 다른 날짜로 변경하면 원래 자리가 공식 웹사이트와 앱에서 다시 온라인 구매 가능 상태가 됩니다. 다시 확인해 볼 만하고, 공식 승인 판매처를 확인하는 것도 방법입니다. 최종 확인: 2026-11-11.",
-  },
-  {
-    q: "도쿄 디즈니랜드와 도쿄 디즈니씨 중 어디를 골라야 하나요?",
-    a: "1데이 패스포트는 한 파크만 포함하므로 하나를 골라야 합니다. 도쿄 디즈니랜드는 디즈니의 상징인 성을 중심으로 한 파크로, 퍼레이드와 가족이 함께 즐길 수 있는 어트랙션이 있어 첫 방문자와 어린 아이를 동반한 가족에게 맞습니다. 도쿄 디즈니씨는 항해를 테마로 한 파크로 도쿄만의 개성이 강하고 성인 방문객도 즐기기 좋은 분위기이며 주류를 판매하고, 2026년 4월부터 2027년 3월까지 25주년을 기념합니다. 아이와 첫 방문이라면 디즈니랜드, 특별한 곳을 원하면 디즈니씨입니다.",
+    q: "티켓 날짜 변경이 가능한가요?",
+    a: `공식 웹사이트나 앱에서 산 티켓은 가능합니다. 유효 기간 안이라면 원래 날짜가 지난 뒤에도 온라인에서 수수료 없이 입장 날짜와 연령 구분을 바꿀 수 있습니다. 파크와 티켓 종류는 바꿀 수 없고, 매진된 날짜로도 옮길 수 없으며, 새 티켓 금액을 전액 결제하고 원래 티켓 금액은 전액 환불되는 방식으로 정산됩니다. 고객 사정에 의한 취소·환불은 없고, 클룩 등 다른 판매처에서 산 티켓은 그 판매처를 통해 변경합니다. 최종 확인: ${LAST_CHECKED_CHANGES}.`,
   },
 ];
 
@@ -339,7 +368,7 @@ const koTours = [
   }),
 ];
 
-const trail: Crumb[] = [...TRAIL_BASE.ko, { label: "도쿄 디즈니랜드 티켓" }];
+const trail: Crumb[] = [...TRAIL_BASE.ko, { label: "도쿄 디즈니랜드·디즈니씨 티켓" }];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
@@ -372,15 +401,13 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>{updatedLabel} 업데이트</p>
-          <h1 className={styles.heroTitle}>
-            도쿄 디즈니랜드 티켓(2026): <br />가격, 구매처, 랜드·씨 선택
-          </h1>
+          <h1 className={styles.heroTitle}>{TITLE}</h1>
           <p className={styles.heroSubtitle}>
-            날짜 지정 티켓, 변동 가격제, 현장 판매 없음, 환불 불가. 패스포트 가격, 어디서 살지, 방문 날짜의 판매 시작 시점,
-            어느 파크를 고를지 정리했습니다.
+            날짜 지정 티켓, 변동 가격제, 현장 판매 없음, 환불 불가. 랜드·씨 입장권 가격, 예약 방법, 판매 시작 시점,
+            날짜 변경 규정, 어느 파크를 고를지 정리했습니다.
           </p>
           <div className={styles.heroBadges}>
-            {[`${updatedLabel} 업데이트`, "공식 가격과 규정", "2개월 전 판매 시작", "해외 카드는 클룩"].map((t) => (
+            {[`${updatedLabel} 업데이트`, "공식 가격 캘린더 기준", "2개월 전 판매 시작", "해외 카드는 클룩"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -395,17 +422,17 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
         {/* Lead paragraph */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            2026년 <strong>도쿄 디즈니랜드 티켓</strong>은 성인 1데이 패스포트가 <strong>¥8,900</strong>부터,
-            12~17세 <strong>¥7,400</strong>부터, 4~11세 <strong>¥5,300</strong>부터(3세 이하 무료)이며, 실제 가격은
-            방문일에 따라 달라집니다. 두 파크 모두 게이트에서 티켓을 팔지 않으므로 도쿄 디즈니 리조트 공식 웹사이트나
-            앱에서 사고, 공식 사이트에서 카드가 거절되면 클룩 같은 공식 승인 판매처를 이용하며, 판매는{" "}
-            <strong>2개월 전 매일 일본 시간 14:00</strong>에 시작됩니다. 티켓 한 장은 한 날짜, 한 파크용으로, 도쿄
-            디즈니랜드는 첫 방문과 어린 아이 동반에, 도쿄 디즈니씨는 성인과 25주년(2026년 4월~2027년 3월)에 맞습니다.
+            2026년 <strong>도쿄 디즈니랜드·디즈니씨 티켓</strong>(1데이 패스포트) 가격은 날짜에 따라 성인{" "}
+            <strong>{PRICE_MIN}~{PRICE_MAX}</strong>, 중고생(12~17세) <strong>¥7,400</strong>부터, 어린이(4~11세){" "}
+            <strong>¥5,300</strong>부터이며 3세 이하는 무료입니다(도쿄 디즈니 리조트 공식 가격 캘린더,{" "}
+            {CALENDAR_SPAN} 입장분, {PRICE_CHECKED} 확인). 입장권은 방문일 <strong>2개월 전 같은 날짜 일본 시간 14:00</strong>
+            (한국 시간도 오후 2시)에 공식 웹사이트·앱에서 예약이 시작되고, 두 파크 모두 게이트에서는 팔지 않습니다.
+            디즈니랜드와 디즈니씨는 같은 날 같은 가격이며, 티켓 한 장으로 한 파크만 들어갈 수 있습니다.
           </p>
           <p className={styles.bodyText}>
-            매진된 날짜에는 입장할 수 없고, 환불은 되지 않으며, 유효 기간 안에서는 몇 번이든 날짜를 바꿀 수 있습니다.
-            가격과 연령 구분은 리조트 티켓 페이지에서 {CHECKED}에, 유효 기간과 파크 내 규정은 공식 FAQ에서 2026년
-            11월 11일에 확인했습니다. 도쿄의 다른 일정도 짜고 있다면{" "}
+            매진된 날짜에는 입장할 수 없고, 고객 사정에 의한 환불은 되지 않으며, 공식 사이트에서 산 티켓은 유효 기간
+            안에서 수수료 없이 날짜를 바꿀 수 있습니다. 공식 결제에서 해외 카드가 거절되면 클룩 같은 공식 승인 판매처를
+            이용합니다. 도쿄의 다른 일정도 짜고 있다면{" "}
             <Link href="/ko/guides/attractions/teamlab-tokyo-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>
               도쿄 팀랩 티켓 비교
             </Link>
@@ -426,7 +453,7 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>1데이 패스포트</p>
-                <p className={styles.verdictStatValue}>성인 ¥8,900부터</p>
+                <p className={styles.verdictStatValue}>성인 {PRICE_MIN}~{PRICE_MAX}</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>가격</p>
@@ -458,31 +485,33 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
 
         <EsimCtaTop />
 
-        {/* Q1 — price */}
+        {/* Q1 — price. 21 Nov 2026 (R06): ticket type × age table from the official calendar. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>가격</span>
-          <h2 className={styles.sectionTitle}>2026년 도쿄 디즈니랜드 티켓은 얼마인가요?</h2>
+          <h2 className={styles.sectionTitle}>도쿄 디즈니랜드 티켓 가격은 얼마인가요?</h2>
           <p className={styles.bodyText}>
-            성인 ¥8,900부터입니다. 여기서 중요한 것은 ‘부터’라는 표현입니다. 도쿄 디즈니 리조트는 파크
-            티켓이 변동 가격제이며 방문일에 따라 요금이 다르다고 밝히고 있어, 안내된 금액은 최저 요금이며,
-            방문 날짜에 따라 실제 가격이 달라집니다. 그날의 실제 금액은 공식 티켓 페이지에서 날짜를 선택하면 표시됩니다.
+            성인 1데이 패스포트는 날짜에 따라 {PRICE_MIN}~{PRICE_MAX}이고, 도쿄 디즈니씨도 같은 날 같은 가격입니다.
+            {CALENDAR_SPAN} 입장분의 공식 가격 캘린더에서 가장 싼 날은 2027년 1월 6~8일({PRICE_MIN}), 가장 비싼 날은
+            11~12월의 일부 주말과 12월 25~26일 등({PRICE_MAX})이며, 2027년 1~2월 평일은 대부분 ¥9,900입니다. 다른 티켓 종류와
+            중고생·어린이 요금은 리조트가 공개한 최저가(‘부터’)입니다.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["연령 구분", "대상", "1데이 패스포트(1개 파크)"].map((h) => (
+                    {["티켓 종류(랜드·씨 공통)", "성인(18세 이상)", "중고생(12~17세)", "어린이(4~11세)"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {priceRows.map((row) => (
-                    <tr key={row.band}>
-                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.band}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.who}</td>
-                      <td className={styles.tdPrice}>{row.price}</td>
+                    <tr key={row.ticket}>
+                      <td className={styles.tdProvider}>{row.ticket}</td>
+                      <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>{row.adult}</td>
+                      <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{row.junior}</td>
+                      <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{row.child}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -490,18 +519,37 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            <strong>최종 확인: {LAST_CHECKED_PRICES}</strong> · 출처: https://www.tokyodisneyresort.jp/en/ticket/index.html(가격),
-            https://faq-en.tokyodisneyresort.jp/(규정).{" "}
-            공개 최저가와 연령 구분은 공식 파크 티켓 페이지에서 {CHECKED}에 확인했고, 변동 가격제 규정은
-            리조트 FAQ의 표현 그대로입니다. 리조트가 상한가를 고정 수치로 공개하지 않으므로 여기서도 상한은
-            적지 않습니다. 주말이나 디즈니씨 25주년 기간의 날짜는 최저가보다 상당히 비쌉니다. 도쿄의 다른
-            날짜 지정 티켓은 확인일과 함께{" "}
+            <strong>Last checked: {LAST_CHECKED_PRICES}</strong> · 출처: https://www.tokyodisneyresort.jp/en/ticket/index.html
+            (티켓 종류별 최저가·가격 캘린더). 성인 1데이 패스포트의 범위는 공식 가격 캘린더({CALENDAR_SPAN} 입장분,
+            디즈니랜드·디즈니씨)의 값이고, 가격은 예고 없이 바뀔 수 있습니다. 판매가 아직 시작되지 않은 날짜의 다른 티켓
+            가격은 캘린더에서 같은 금액의 날짜를 누르면 표시됩니다. 도쿄의 다른 날짜 지정 티켓은 확인일과 함께{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               일본 관광지 티켓 가격표(영어)
             </Link>
             에 정리되어 있습니다.
           </p>
+          <div className={styles.pickCtaRow}>
+            <KlookLink href={koTokyoDisney.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              클룩에서 디즈니랜드·디즈니씨 티켓 보기 →
+            </KlookLink>
+          </div>
         </section>
+
+        {/* Same-day bookings, right after the price table: Maihama/Urayasu hotels (6.5%),
+            airport limousine bus (5%), Klook eSIM (20%). Moved up from below the steps (R06). */}
+        <KlookTripPrep
+          label="티켓과 함께 예약할 것"
+          heading="도쿄 디즈니 리조트 근처에 묵어야 할까?"
+          intro="주말이나 기념 기간의 날짜라면 그렇습니다. 리조트는 도쿄역에서 JR 게이요선으로 15~20분 거리라서, 게이트가 열리기 전에 한 번, 밤 퍼레이드가 끝난 뒤 또 한 번 오가야 합니다. 마이하마나 한 정거장 떨어진 곳에 묵으면 아침과 밤의 이동 시간을 줄일 수 있고, 공항 리무진 버스와 eSIM도 티켓 날짜가 정해지면 같이 준비해 두면 됩니다."
+          items={koTripPrep}
+        />
+        <p className={styles.bodyText}>
+          호텔 자체를 고르고 있다면{" "}
+          <Link href="/guides/attractions/tokyo-disney-hotels" style={{ color: "var(--red)", fontWeight: 600 }}>
+            도쿄 디즈니 호텔 가이드(영어)
+          </Link>
+          에서 디즈니 호텔, 오피셜 호텔, 파트너 호텔을 파크까지 가는 방법, 해피 엔트리, 예약 시작 시기(디즈니 호텔은 4개월 전)로 비교합니다.
+        </p>
 
         {/* Q2 — which ticket */}
         <section className={styles.comparisonSection}>
@@ -536,7 +584,7 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            티켓 종류, 입장 시간, 파크 호퍼의 현재 상태는 리조트 FAQ의 답변이며 {CHECKED}에 확인했습니다. 내
+            티켓 종류, 입장 시간, 파크 호퍼의 현재 상태는 리조트 FAQ의 답변입니다({CHECKED} 확인). 내
             날짜에 어떤 패스포트가 판매되는지는 날짜별로 다릅니다. 기간 한정 티켓은 리조트 이벤트에 따라
             생겼다 사라지므로, 위 목록은 고정된 티켓 목록이 아니라 현재 판매되는 티켓 종류의 개요입니다.
           </p>
@@ -579,21 +627,21 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           </p>
         </section>
 
-        {/* Where to buy — added 11 Nov 2026 (R08). First row is the recommendation. */}
+        {/* Where to buy — 21 Nov 2026 (R06): 예약 방법 비교, columns aligned with the English R04 table. */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>구매처</span>
-          <h2 className={styles.sectionTitle}>도쿄 디즈니랜드 티켓은 어디서 사야 하나요?</h2>
+          <span className={styles.sectionLabel}>예약 방법</span>
+          <h2 className={styles.sectionTitle}>디즈니씨·디즈니랜드 티켓은 어디서 예약하나요?</h2>
           <p className={styles.bodyText}>
-            공식 결제에서 카드가 승인된다면 도쿄 디즈니 리조트 공식 웹사이트나 앱에서 사세요. 그곳에서 산 티켓은
-            구매일부터 1년간 유효합니다. 해외 카드가 거절되면 클룩 같은 공식 승인 해외 판매처에서도 같은 날짜 지정
-            티켓을 팔며, 유효 기간은 입장일로부터 1개월 뒤까지입니다.
+            카드가 승인된다면 도쿄 디즈니 리조트 공식 웹사이트·앱이 가장 좋습니다. 구매일로부터 1년간 유효하고 온라인에서
+            무료로 날짜를 바꿀 수 있습니다. 해외 카드가 거절되면 클룩 같은 공식 승인 판매처에서 같은 날짜 지정 티켓을 살 수
+            있지만, 유효 기간은 입장일로부터 1개월 뒤까지이고 날짜 변경은 판매처를 통해 합니다.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["구매처", "이런 분께", "유효 기간", "참고"].map((h) => (
+                    {["예약처", "이런 분께", "날짜 변경", "유효 기간", "참고"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -603,6 +651,7 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
                     <tr key={row.where}>
                       <td className={styles.tdProvider}>{row.where}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.best}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.change}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.validity}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.note}</td>
                     </tr>
@@ -612,8 +661,10 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            <strong>최종 확인: {LAST_CHECKED_RULES}</strong> · 출처:
-            https://faq-en.tokyodisneyresort.jp/answer/680ba03d01fdf7431bafb1d5/(유효 기간) 및 파크 티켓에 관한 리조트 FAQ(현장 판매 없음, 당일 구매, 디즈니 호텔 예외).
+            <strong>Last checked: {LAST_CHECKED_CHANGES}</strong> · 출처:
+            https://www.tokyodisneyresort.jp/en/ticket/change/howto.html(날짜 변경·환불),
+            https://faq-en.tokyodisneyresort.jp/answer/680ba03d01fdf7431bafb1d5/(유효 기간, {LAST_CHECKED_RULES}) 및 파크 티켓에 관한
+            리조트 FAQ(현장 판매 없음, 당일 구매, 디즈니 호텔 예외).
           </p>
           <div className={styles.pickCtaRow}>
             <KlookLink href={koTokyoDisney.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
@@ -622,13 +673,48 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           </div>
         </section>
 
+        {/* Date changes — 21 Nov 2026 (R06), from /en/ticket/change/howto.html. First row is the answer. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>날짜 변경</span>
+          <h2 className={styles.sectionTitle}>티켓 날짜 변경이 가능한가요?</h2>
+          <p className={styles.bodyText}>
+            공식 웹사이트·앱에서 산 티켓이라면 가능합니다. 유효 기간 안에서 수수료 없이 입장 날짜를 바꿀 수 있지만, 파크와
+            티켓 종류는 바꿀 수 없고 고객 사정에 의한 환불도 없습니다.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["질문", "리조트 규정"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {changeRows.map((row) => (
+                    <tr key={row.q}>
+                      <td className={styles.tdProvider}>{row.q}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.a}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {LAST_CHECKED_CHANGES}</strong> · 출처: https://www.tokyodisneyresort.jp/en/ticket/change/howto.html.
+            변경은 공식 앱의 도움말 → 예약·구매 내역, 또는 공식 웹사이트의 예약·구매 페이지에서 합니다.
+          </p>
+        </section>
+
         {/* Q4 — the booking window, sell-outs and refunds, then the CTA stack. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>판매 일정</span>
-          <h2 className={styles.sectionTitle}>도쿄 디즈니 티켓은 미리 예약해야 하나요?</h2>
+          <h2 className={styles.sectionTitle}>당일 티켓도 구매할 수 있나요?</h2>
           <p className={styles.bodyText}>
-            그렇습니다. 그리고 리조트에서는 다른 구매 방법을 제공하지 않습니다. 도쿄 디즈니랜드와 도쿄 디즈니씨에서는
-            파크 티켓을 전혀 판매하지 않습니다. 방문 날짜의 티켓은 <strong>2개월 전, 매일 일본 시간 14:00</strong>에
+            재고가 남아 있을 때 공식 웹사이트·앱에서만 가능합니다. 도쿄 디즈니랜드와 도쿄 디즈니씨의 게이트에서는
+            파크 티켓을 전혀 판매하지 않으므로, 사실상 미리 예약해야 합니다. 방문 날짜의 티켓은 <strong>2개월 전, 매일 일본 시간 14:00</strong>에
             판매가 시작되며, 한국과 일본은 시차가 없으니 한국 시간으로도 오후 2시입니다. 하루 판매 수량에는
             상한이 있어 다 팔리면 예고 없이 판매가 멈출 수 있습니다. 주말, 일본 공휴일, 디즈니씨 25주년
             기간의 날짜라면 판매가 시작되는 순간 바로 예약해야 합니다.
@@ -669,7 +755,7 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
         {/* Q5 — which park */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>디즈니랜드 vs 디즈니씨</span>
-          <h2 className={styles.sectionTitle}>디즈니랜드와 디즈니씨, 어느 파크를 고를까?</h2>
+          <h2 className={styles.sectionTitle}>디즈니랜드와 디즈니씨 중 어디가 좋을까요?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             티켓 한 장에 파크 하나입니다. 파크 호퍼가 판매되지 않으므로 방문 순서가 아니라 어느 파크에 갈지를 정해야 합니다.
             디즈니의 상징인 성이 있는 파크와 어린 아이라면 디즈니랜드, 다른 어디에도 없는 파크와 25주년 기념 시즌을 원한다면
@@ -766,7 +852,7 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             <strong>최종 확인: {LAST_CHECKED_RULES}</strong> · 출처:
             https://faq-en.tokyodisneyresort.jp/answer/680ba05101fdf7431bafb6b0/,
             https://faq-en.tokyodisneyresort.jp/answer/680ba05101fdf7431bafb6b8/. 프리미어 액세스 가격은 어트랙션·쇼마다
-            정해져 앱에 표시됩니다. 리조트 공식 페이지에서 직접 확인하지 못한 금액은 적지 않았습니다.
+            정해져 앱에 표시됩니다.
           </p>
         </section>
 
@@ -786,22 +872,6 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             ))}
           </div>
         </section>
-
-        {/* Klook: the stay and the days either side. */}
-        <KlookTripPrep
-          label="파크 가는 날 전후"
-          heading="도쿄 디즈니 리조트 근처에 묵어야 할까?"
-          intro="주말이나 기념 기간의 날짜라면 그렇습니다. 리조트는 도쿄역에서 JR 게이요선으로 15~20분 거리라서, 게이트가 열리기 전에 한 번, 밤 퍼레이드가 끝난 뒤 또 한 번 오가야 합니다. 마이하마나 한 정거장 떨어진 곳에 묵으면 아침과 밤의 이동 시간을 줄일 수 있습니다."
-          items={koTripPrep}
-        />
-        {/* Added 12 Nov 2026: link to the English hotel guide (no translation yet). */}
-        <p className={styles.bodyText}>
-          호텔 자체를 고르고 있다면{" "}
-          <Link href="/guides/attractions/tokyo-disney-hotels" style={{ color: "var(--red)", fontWeight: 600 }}>
-            도쿄 디즈니 호텔 가이드(영어)
-          </Link>
-          에서 디즈니 호텔, 오피셜 호텔, 파트너 호텔을 파크까지 가는 방법, 해피 엔트리, 예약 시작 시기(디즈니 호텔은 4개월 전)로 비교합니다.
-        </p>
 
         {/* Foreign card / Klook explainer */}
         <section className={styles.bodySection}>

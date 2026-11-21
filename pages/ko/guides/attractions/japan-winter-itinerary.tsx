@@ -324,7 +324,7 @@ const days: Day[] = [
     ],
     book: (
       <>
-시간 지정 티켓 두 장이 필요하고, 전망대에는 입장 마감 시간이 있습니다. SHIBUYA SKY는 일본 시간 0시 정각에 2주 뒤 날짜가 판매되며, 인기 있는 겨울 날짜의 일몰 시간대가 가장 먼저 나갑니다. <Link href="/ko/guides/attractions/shibuya-sky-tickets">시부야 스카이 예약</Link> 가이드에 두 가격대와 예약 시기를 정리했습니다. teamLab Planets는 현장 판매 없는 30분 단위 입장이며 <Link href="/ko/guides/attractions/teamlab-planets-tickets">teamLab Planets 가이드</Link>에서 다룹니다. 아자부다이힐스의 보더리스와 어느 쪽이 맞는지는 <Link href="/ko/guides/attractions/teamlab-tokyo-tickets">팀랩 플래닛 보더리스 비교</Link>를 보세요. 둘 다 실내이거나 지붕이 있어, 3일차가 눈으로 막히면 옮기기 좋은 날입니다.
+시간 지정 티켓 두 장이 필요하고, 전망대에는 입장 마감 시간이 있습니다. SHIBUYA SKY는 일본 시간 0시 정각에 2주 뒤 날짜가 판매되며, 인기 있는 겨울 날짜의 일몰 시간대가 가장 먼저 나갑니다. <Link href="/ko/guides/attractions/shibuya-sky-tickets">시부야 스카이 예약</Link> 가이드에 두 가격대와 예약 시기를 정리했습니다. teamLab Planets는 현장 판매 없는 30분 단위 입장이며 <Link href="/ko/guides/attractions/teamlab-planets-tickets">teamLab Planets 가이드</Link>에서 다룹니다. 아자부다이힐스의 보더리스와 어느 쪽이 맞는지는 <Link href="/ko/guides/attractions/teamlab-tokyo-tickets">팀랩 플래닛 보더리스 비교</Link>를 보세요. 둘 다 실내이거나 지붕이 있어, 3일차가 눈으로 막히면 옮기기 좋은 날입니다. 도쿄 4박 중 하루를 테마파크에 쓴다면 디즈니랜드·디즈니씨 입장권은 현장 판매가 없고 방문 2개월 전 같은 날짜 14시에 예약이 시작되니, <Link href="/ko/guides/attractions/tokyo-disney-tickets">도쿄 디즈니 티켓</Link> 가이드에서 날짜별 가격과 예약 방법을 먼저 확인하세요.
 </>
     ),
     picks: [

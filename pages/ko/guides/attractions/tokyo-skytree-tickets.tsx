@@ -653,6 +653,9 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
           <p className={styles.bodyText}>
             겨울에 도쿄에 들른다면 여행 전체 동선도 함께 정하세요. 홋카이도와 스키, 일루미네이션까지 넣은 전체 코스는{" "}
             <Link href="/ko/guides/attractions/japan-winter-itinerary">일본 겨울 여행 일정</Link>에서 12일 기준으로 정리했습니다.
+            스카이트리와 같은 여행에 테마파크 하루를 넣는다면{" "}
+            <Link href="/ko/guides/attractions/tokyo-disney-tickets">도쿄 디즈니 티켓</Link> 가이드에서 디즈니랜드·디즈니씨의
+            날짜별 가격과 2개월 전 예약 시작 시각을 확인하세요. 두 파크 모두 현장 판매가 없습니다.
           </p>
         </section>
 
@@ -696,7 +699,7 @@ export default function KoTokyoSkytreePage({ updated }: { updated: PageUpdated }
             { href: "/guides/attractions/mt-fuji-day-tour-from-tokyo", title: "도쿄 출발 후지산 1일 투어(2026): 어떤 투어로, 실제로 무엇을 보나(영어)" },
             { href: "/ko/guides/attractions/teamlab-planets-tickets", title: "팀랩 플래닛 예약 2026: 티켓 가격, 운영 시간, 가는 법" },
             { href: "/ko/guides/attractions/teamlab-tokyo-tickets", title: "팀랩 플래닛 보더리스 비교 2026: 도쿄에서 어디로 갈까" },
-            { href: "/ko/guides/attractions/tokyo-disney-tickets", title: "도쿄 디즈니랜드 티켓(2026): 날짜 지정 예매와 랜드·씨 선택" },
+            { href: "/ko/guides/attractions/tokyo-disney-tickets", title: "도쿄 디즈니랜드·디즈니씨 티켓 2026: 가격·예약 방법" },
             { href: "/guides/attractions", title: "일본에서 즐길 거리 더 보기(영어) →" },
           ]}
         />

@@ -261,7 +261,12 @@ export default function KoTeamLabTokyoPage({ updated }: { updated: PageUpdated }
             <Link href="/ko/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
               시부야 스카이 예약
             </Link>
-            도 입장 2주 전 0시에 열리는 시간 지정권이라 팀랩과 함께 미리 잡아 두는 편이 좋습니다.
+            도 입장 2주 전 0시에 열리는 시간 지정권이라 팀랩과 함께 미리 잡아 두는 편이 좋습니다. 디즈니랜드·디즈니씨도
+            날짜 지정이고 현장 판매가 없으며 방문 2개월 전에 예약이 시작되므로, 같은 여행이라면{" "}
+            <Link href="/ko/guides/attractions/tokyo-disney-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
+              도쿄 디즈니 티켓
+            </Link>{" "}
+            가이드에서 가격과 예약 방법을 먼저 확인하세요.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <Link href="/ko/guides/attractions/teamlab-planets-tickets" className={styles.verdictBtn}>
@@ -316,7 +321,7 @@ export default function KoTeamLabTokyoPage({ updated }: { updated: PageUpdated }
             { href: "/ko/guides/attractions/teamlab-borderless-tickets", title: "팀랩 보더리스 티켓(2026): 가격, 지정 시간 입장, 구매 경로" },
             { href: "/ko/guides/attractions/shibuya-sky-tickets", title: "시부야 스카이 예약 2026: 티켓 가격·오픈 시간·선셋 팁" },
             { href: "/ko/guides/attractions/tokyo-skytree-tickets", title: "도쿄 스카이트리 티켓(2026): 요금과 350m·450m 전망대 선택" },
-            { href: "/ko/guides/attractions/tokyo-disney-tickets", title: "도쿄 디즈니랜드 티켓(2026): 날짜 지정 예매와 디즈니랜드·디즈니씨 선택" },
+            { href: "/ko/guides/attractions/tokyo-disney-tickets", title: "도쿄 디즈니랜드·디즈니씨 티켓 2026: 가격·예약 방법" },
             { href: "/guides/attractions/teamlab-kyoto-tickets", title: "teamLab Kyoto 티켓: 가격, 운영 시간, 예약(영어)" },
             { href: "/guides/attractions/teamlab-fukuoka-tickets", title: "teamLab Fukuoka 티켓 2026: 가격, 운영 시간, 예약(영어)" },
             { href: "/guides/transport/tokyo-transportation", title: "도쿄 교통 가이드(2026): 전철, 지하철, IC 카드(영어)" },

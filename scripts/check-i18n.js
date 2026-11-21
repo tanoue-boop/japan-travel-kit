@@ -120,7 +120,7 @@ const SEARCH_TERMS = {
   "/guides/attractions/tokyo-disney-tickets": {
     "zh-tw": "東京迪士尼門票",
     "zh-cn": "东京迪士尼门票",
-    ko: "도쿄 디즈니랜드 티켓",
+    ko: "디즈니랜드·디즈니씨 티켓",
     th: "ตั๋วดิสนีย์แลนด์",
   },
   // 14 Nov 2026 (R01): retargeted from "tickets" to the Express Pass query itself.

@@ -429,7 +429,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
       "/ko/guides/attractions/dotonbori-river-cruise":
         "톤보리 리버크루즈의 요금과 운항 시간, 오사카 주유패스 교환 규칙, 배 5종 비교.",
       "/ko/guides/attractions/tokyo-disney-tickets":
-        "모든 티켓이 날짜 지정이고 현장 판매는 없습니다. 구매 방법과 랜드·씨 선택 기준.",
+        "디즈니랜드·디즈니씨 입장권 가격과 예약 방법. 날짜 지정, 현장 판매 없음, 2개월 전 예약 시작.",
       "/ko/guides/attractions/usj-tickets-express-pass":
         "전면 온라인 판매, 슈퍼 닌텐도 월드는 입장 시간 지정. 익스프레스 패스 4·7·8 선택법.",
       "/ko/guides/esim/best-esim-japan":
