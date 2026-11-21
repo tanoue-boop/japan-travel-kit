@@ -434,6 +434,12 @@ export default function KyotoSubwayBusPassPage({ updated }: { updated: PageUpdat
             Source:{" "}
             <a href={`${KOTSU}0000324695.html`} target="_blank" rel={OFFICIAL_REL}>Kyoto City Bus, how to ride</a>.
           </p>
+          <p className={styles.bodyText}>
+            Which ride the card or the pass pays for depends on the sight: the{" "}
+            <Link href="/guides/transport/kyoto-transportation" style={{ fontWeight: 600 }}>Kyoto transportation route table</Link>{" "}
+            gives the fastest train or bus, ride time and fare from Kyoto Station to Kiyomizu-dera, Kinkaku-ji, Fushimi
+            Inari, Arashiyama and Ginkaku-ji.
+          </p>
         </section>
 
         {/* Important notice */}

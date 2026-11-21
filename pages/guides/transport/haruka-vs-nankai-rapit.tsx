@@ -429,7 +429,9 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
                 <Link href="/guides/attractions/osaka-kyoto-3-day-itinerary">3-day Osaka and Kyoto itinerary</Link>{" "}
                 lays out the days between them. For a Kyoto arrival, the 1-day{" "}
                 JR West <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass</Link> is the same ¥2,700 as the
-                HARUKA single to Kyoto and includes the Haruka.
+                HARUKA single to Kyoto and includes the Haruka. From Kyoto Station onward, our{" "}
+                <Link href="/guides/transport/kyoto-transportation">Kyoto transportation guide</Link> has the train or
+                bus to each main sight and the ¥230 bus fare.
               </p>
             )}
             {s.id === "faster" && (

@@ -11387,3 +11387,37 @@ export const kansaiHiroshimaPassTripPrep: KlookTripPrepItem[] = [
     why: "If your five days do not start at Kansai Airport, the HARUKA single is the airport run to buy instead; if they do, the pass already covers it.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// kyoto-transportation "Book before you land" block, added 21 Nov 2026
+// (task-jtk-20261121-03). No new Klook URL: every slot reuses a constant. Checked
+// in the www.klook.com search index on 21 Nov 2026: 82323 (Kyoto day tour) and
+// 1107 (JR-West Kansai Rail Pass) as en-US pages; 18400 (HARUKA) surfaced only on
+// en-AU / en-SG / en-IN, the same sibling-locale rule used on 4 Nov. The two WEST QR
+// tickets are the ones JR West does not sell inside Japan, which is why they sit
+// here rather than in the same-day block. Tours 6.5%, pass and HARUKA 5%, eSIM 20%.
+// No prices.
+// ---------------------------------------------------------------------------
+
+export const kyotoTransportationArrivalPrep: KlookTripPrepItem[] = [
+  {
+    label: kyotoCityFushimiArashiyamaTour.title,
+    ctaLabel: "Check the Kyoto day tour →",
+    url: kyotoCityFushimiArashiyamaTour.url,
+    why: "Fushimi Inari, Arashiyama and Kiyomizu-dera are three separate routes from Kyoto Station. A guided day covers them with no transfers to plan; tours sell by date, so check your day and the cancellation terms before you fly.",
+  },
+  {
+    label: jrKansaiAreaPass.title,
+    ctaLabel: "Check the Kansai Area Pass →",
+    url: jrKansaiAreaPass.url,
+    why: "Covers the JR lines to Inari and Saga-Arashiyama that neither Kyoto day pass does, plus the HARUKA from Kansai Airport. JR West sells the WEST QR pass only through overseas travel agencies, not inside Japan.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "Kansai Airport to Kyoto Station in one seat. The WEST QR HARUKA One-way Ticket is ¥2,700 on JR West's page and, like the pass, cannot be bought at a travel agency in Japan.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Bus approach screens, the city's crowd app and the operators' fare searches all need data at the stop, which is where you will want them.",
+  },
+];
