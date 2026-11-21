@@ -403,6 +403,10 @@ export default function JapanEsimAndroidPage({ updated }: { updated: PageUpdated
             <Link href="/guides/esim/how-to-set-up-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               how to set up an eSIM in Japan
             </Link>
+            . On an iPhone instead, the screens and the plans that install from an iOS app are in{" "}
+            <Link href="/guides/esim/japan-esim-iphone" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM on iPhone
+            </Link>
             .
           </p>
         </section>
@@ -541,7 +545,7 @@ export default function JapanEsimAndroidPage({ updated }: { updated: PageUpdated
               Best eSIM for Japan 2026: Top 4 Picks Compared
             </EsimRelatedCard>
             <EsimRelatedCard href="/guides/esim/japan-esim-iphone">
-              Best eSIM for Japan on iPhone (2026): Setup &amp; Picks
+              Japan eSIM on iPhone (2026): Setup Steps &amp; Best eSIM
             </EsimRelatedCard>
             <EsimRelatedCard href="/guides/esim/how-to-set-up-esim-japan">
               How to Set Up an eSIM in Japan (Step-by-Step)

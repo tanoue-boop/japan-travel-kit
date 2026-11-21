@@ -534,11 +534,12 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
             from the Airalo iOS app.
           </p>
           <p className={styles.bodyText}>
-            This page is the setup for any phone and what to do when it fails. Which iPhone
-            models take an eSIM, which Japan eSIM to buy for an iPhone, and the iOS screens in
-            order (including Data Roaming on the travel line) are in{" "}
+            This page is the setup for any phone and what to do when it fails. The iPhone-only
+            steps — which models take an eSIM, which Japan eSIM to buy for an iPhone, and the iOS
+            screens before you fly and after you land (including Data Roaming on the travel line)
+            — are in{" "}
             <Link href="/guides/esim/japan-esim-iphone" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              eSIM for Japan on iPhone →
+              Japan eSIM on iPhone: setup steps →
             </Link>
           </p>
         </section>

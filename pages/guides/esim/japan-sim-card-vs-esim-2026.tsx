@@ -631,6 +631,10 @@ export default function JapanSimCardVsEsim2026Page({ updated }: { updated: PageU
             </Link>{" "}
             (the network, band and phone checks)
             ,{" "}
+            <Link href="/guides/esim/japan-esim-iphone" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM on iPhone
+            </Link>{" "}
+            (the iOS setup steps),{" "}
             <Link href="/guides/esim/japan-esim-android" style={{ color: "var(--accent)", fontWeight: 600 }}>
               where to tap on Android
             </Link>{" "}
