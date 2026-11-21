@@ -13,7 +13,9 @@ import fares from "../../../data/jr-fares.json";
 import {
   dotonboriDaytimeFoodTour,
   jrPassWholeJapan,
+  kantoKansaiLuggageDelivery,
   klookEsim,
+  tokyoOsakaFareTablePrep,
   osakaAmazingPass,
   shinkansenTokyoOsaka,
   tokyoOsakaArrivalPrep,
@@ -53,18 +55,38 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  *    time (kosokubus.com, a booking site, labelled).
  *
  * data/jr-fares.json had 14720 for the Tokyo–Shin-Osaka Hikari reference fare, which is
- * the Nozomi figure; corrected to the JR Group's 14400 on 12 Nov 2026. No flight time,
+ * the Nozomi figure; corrected to 14400 on 12 Nov 2026. No flight time,
  * bus fare or Klook price is printed.
+ *
+ * 21 Nov 2026 (task-jtk-20261121-R04), title "Price, Time & How to Book". Every fare and
+ * time was re-read on official pages that day, and jr-group.jp was dropped as a source
+ * (it describes itself as a private site):
+ *  - smartEX price PDFs under smart-ex.jp/en/product/plan/service/pdf/ (reserved, green,
+ *    non_reserved; "As of April 1, 2025"): Tokyo–Shin-Osaka Nozomi ¥14,520 reserved /
+ *    ¥19,390 Green, Hikari-Kodama ¥14,200 / ¥19,070, non-reserved ¥13,870;
+ *  - JR Central / JR West release 000046069.pdf: Nozomi window ¥14,720 → ¥15,420 and
+ *    Green ¥19,590 → ¥23,290. Its charge tables give the current Nozomi reserved charge
+ *    (¥6,510 − ¥700 = ¥5,810) and the Nozomi addition over the Hikari charge
+ *    (¥1,020 − ¥700 = ¥320), so the Hikari window price is ¥14,720 − ¥320 = ¥14,400 and
+ *    Hikari Green ¥19,590 − ¥320 = ¥19,270, each ¥200 over its smartEX figure;
+ *  - traininfo.jr-central.co.jp departure_info_1_2.json and train_info JSON for 21 Nov
+ *    2026: 160 Nozomi from Tokyo reach Shin-Osaka, 141 to 150 minutes (median 147), first
+ *    06:00 and last 21:24; 28 Hikari, 168 to 186 minutes; 11 Kodama, 222 to 234 minutes;
+ *  - japanrailpass.net price and special-ticket pages: ¥50,000 / ¥53,000, ¥4,960;
+ *  - global.jr-central.co.jp/en/info/oversized-baggage/: 161–250 cm needs a reserved
+ *    oversized-baggage seat, ¥1,000 without one; Mt Fuji seat E (Ordinary) / D (Green),
+ *    from JR Central's guides through the global.jr-central.co.jp search index.
+ * Klook's "2h 14m" and "345 direct trains" figures are gone: JR's own data contradicts them.
  */
 
-const OWN = checkedLabel("2026-11-12");
+const OWN = checkedLabel("2026-11-21");
 const EARLIER = checkedLabel("2026-11-04");
 
 const tokyoOsaka = fares.segments.find((s) => s.id === "tokyo-shin-osaka")!;
 const yen = (n: number) => `¥${n.toLocaleString("en-US")}`;
 
 const WINDOW_NOZOMI = "¥14,720";
-const WINDOW_HIKARI = yen(tokyoOsaka.fareYen); // ¥14,400, JR Group, Oct 2026
+const WINDOW_HIKARI = yen(tokyoOsaka.fareYen); // ¥14,400, from JR Central's 16 Oct 2026 charge tables
 const SMART_NOZOMI = "¥14,520";
 const SMART_HIKARI = "¥14,200";
 const NON_RESERVED = "¥13,870";
@@ -83,16 +105,16 @@ const nozomiAllReservedPeriods = [
 /** Table 1: the answer row first. */
 const fareRows = [
   {
-    train: "Nozomi (fastest)",
-    time: "2h 21m fastest, about 2h 30m typical",
+    train: "Nozomi — fastest, the one to book",
+    time: "2h 21m fastest, 2h 27m typical",
     nonReserved: NON_RESERVED,
     reserved: `${WINDOW_NOZOMI} (${SMART_NOZOMI} smartEX)`,
     green: "¥19,590 (¥19,390 smartEX)",
     pass: `No, needs the ${NOZOMI_TICKET} ticket`,
   },
   {
-    train: "Hikari",
-    time: "About 3 hours",
+    train: "Hikari — the JR Pass train",
+    time: "2h 48m to 3h 06m",
     nonReserved: NON_RESERVED,
     reserved: `${WINDOW_HIKARI} (${SMART_HIKARI} smartEX)`,
     green: "¥19,270 (¥19,070 smartEX)",
@@ -100,7 +122,7 @@ const fareRows = [
   },
   {
     train: "Kodama (all stops)",
-    time: "About 4 hours",
+    time: "3h 42m to 3h 54m",
     nonReserved: NON_RESERVED,
     reserved: `${WINDOW_HIKARI} (${SMART_HIKARI} smartEX)`,
     green: "¥19,270 (¥19,070 smartEX)",
@@ -110,22 +132,28 @@ const fareRows = [
 
 const frequencyRows = [
   {
+    item: "Nozomi, Tokyo → Shin-Osaka",
+    value: "160 trains, 2h 21m – 2h 30m",
+    detail: "Every Nozomi from Tokyo that reaches Shin-Osaka on 21 Nov 2026; the typical (median) run is 2h 27m, with no transfer",
+    source: "JR Central timetable data",
+  },
+  {
+    item: "First and last Nozomi",
+    value: "06:00 and 21:24",
+    detail: "Tokyo departures on 21 Nov 2026. Holiday timetables move the last trains, so check your own date",
+    source: "JR Central timetable data",
+  },
+  {
+    item: "Hikari and Kodama",
+    value: "28 and 11 trains",
+    detail: "Hikari 2h 48m to 3h 06m, Kodama 3h 42m to 3h 54m on the same date — the trains a JR Pass covers",
+    source: "JR Central timetable data",
+  },
+  {
     item: "Whole-line frequency",
     value: "Up to 18 trains an hour",
-    detail: "About 383 trains a day across the Tokaido Shinkansen in FY2024, so a missed train is rarely a long wait",
+    detail: "So a missed train is rarely a long wait",
     source: "global.jr-central.co.jp",
-  },
-  {
-    item: "First and last train",
-    value: "06:00 and 21:31",
-    detail: "On Klook's sample date of 10 Nov 2026. Holiday timetables move the last trains, so check your own date",
-    source: "klook.com rail page",
-  },
-  {
-    item: "Direct trains on that date",
-    value: "345",
-    detail: "Tokyo to Osaka on the same sample date, with no transfer on any of them",
-    source: "klook.com rail page",
   },
 ];
 
@@ -178,22 +206,28 @@ const bookingRows = [
     when: "On the day at Tokyo Station, or reserved seats from 10:00 one month before the train leaves its first station",
     cancel: `Ask at the ticket office. Also where a JR Pass holder buys the ${NOZOMI_TICKET} Nozomi ticket`,
   },
+  {
+    route: "JR Pass (7-day Ordinary)",
+    price: `${JR_PASS_ONLINE} online, ${JR_PASS_ORDER} from an overseas agency; Nozomi ${NOZOMI_TICKET} extra per ride`,
+    when: "Hikari and Kodama seats are reserved free with the pass; the Nozomi ticket is sold at JR stations in Japan from one month before boarding",
+    cancel: "Only pays if the same 7 days add Hiroshima, Kanazawa or Tohoku — see the JR Pass table above",
+  },
 ];
 
 const altRows = [
   {
     option: "Shinkansen, non-reserved",
-    time: "2h 21m to about 4h, by train",
+    time: "2h 21m to 3h 54m, by train",
     cost: `${NON_RESERVED}, the same on every day of the year`,
     verdict: "The cheapest shinkansen seat. No seat choice, no oversized-bag seats, and no Nozomi non-reserved cars in the peak periods.",
-    source: `jr-group.jp, ${OWN}`,
+    source: `smart-ex.jp price table, ${OWN}`,
   },
   {
     option: "Shinkansen, reserved on smartEX",
     time: "2h 21m fastest",
     cost: `${SMART_HIKARI} Hikari, ${SMART_NOZOMI} Nozomi`,
     verdict: "¥200 under the window price on every reserved seat. smartEX also sells limited-seat early-booking fares, priced on smart-ex.jp.",
-    source: `jr-group.jp and smart-ex.jp, ${OWN}`,
+    source: `smart-ex.jp and JR Central, ${OWN}`,
   },
   {
     option: "Overnight highway bus",
@@ -214,29 +248,29 @@ const altRows = [
 const faqItems = [
   {
     q: "How much is the shinkansen from Tokyo to Osaka?",
-    a: `${WINDOW_NOZOMI} one way for a reserved Ordinary seat on the Nozomi at the station window, or ${SMART_NOZOMI} on JR's smartEX. The Hikari and Kodama are ${WINDOW_HIKARI} reserved (${SMART_HIKARI} on smartEX), and a non-reserved seat on any of them is ${NON_RESERVED}. Those are one adult in the regular season: reserved seats cost ¥200 more on peak dates, ¥400 more in the top season and ¥200 less off-peak. Green Car is ¥19,590 on the Nozomi and ¥19,270 on the Hikari. Checked on JR's own pages, ${OWN}.`,
+    a: `${WINDOW_NOZOMI} one way for a reserved Ordinary seat on the Nozomi at the station window, or ${SMART_NOZOMI} on JR's smartEX. The Hikari and Kodama are ${WINDOW_HIKARI} reserved (${SMART_HIKARI} on smartEX), and a non-reserved seat on any of them is ${NON_RESERVED}. Those are one adult in the regular season: reserved seats cost ¥200 more on peak dates, ¥400 more in the top season and ¥200 less off-peak. Green Car is ¥19,590 on the Nozomi (¥19,390 on smartEX). Checked on JR Central's and smartEX's own pages, ${OWN}.`,
   },
   {
     q: "How long is the bullet train from Tokyo to Osaka?",
-    a: `2 hours 21 minutes at the fastest, on JR Central's own figure for a Nozomi from Tokyo Station to Shin-Osaka, with no transfer. Most Nozomi take about 2 hours 30 minutes, the Hikari about 3 hours and the all-stops Kodama about 4 hours. JR Central runs up to 18 trains an hour on the line. Checked ${EARLIER}.`,
+    a: `2 hours 21 minutes at the fastest and 2 hours 27 minutes on a typical Nozomi from Tokyo Station to Shin-Osaka, with no transfer: 160 Nozomi made the run on 21 Nov 2026 in JR Central's own timetable data, the first at 06:00 and the last at 21:24. The Hikari takes 2h 48m to 3h 06m and the all-stops Kodama 3h 42m to 3h 54m. Checked ${OWN}.`,
   },
   {
-    q: "Is the JR Pass worth it for Tokyo to Osaka?",
-    a: `Not for a return. Two reserved Nozomi seats on smartEX are ¥29,040, against ${JR_PASS_ONLINE} for a 7-day Ordinary pass online or ${JR_PASS_ORDER} from an overseas agency. The pass also does not cover the Nozomi without a ${NOZOMI_TICKET} ticket per ride, sold only at JR stations in Japan. It starts to pay when the same week reaches Hiroshima, Kanazawa or Tohoku. Checked on japanrailpass.net, ${OWN}.`,
+    q: "Do I need to reserve the shinkansen from Tokyo to Osaka?",
+    a: `Usually no, and on some dates yes. On an ordinary day a non-reserved ticket (${NON_RESERVED}) works because trains run up to 18 an hour. In these periods every Nozomi car is reserved: ${nozomiAllReservedPeriods.join("; ")}. The Hikari and Kodama keep non-reserved cars then, though JR warns they may be overcrowded. Always reserve for a bag of 161 to 250 cm (¥1,000 if you board without an oversized-baggage seat), a fixed connection or the Mt Fuji seat. Checked on JR Central's site, ${OWN}.`,
   },
   {
-    q: "Is there a cheaper way to get from Tokyo to Osaka than the shinkansen?",
-    a: `The overnight highway bus is the low-cost option, at about 8 to 9 hours, with fares that change by date and seat. On the shinkansen itself, a non-reserved seat is the cheapest at ${NON_RESERVED} on any train, and smartEX takes ¥200 off every reserved seat. smartEX also sells limited-seat early-booking fares, priced on smart-ex.jp. Checked ${OWN}.`,
+    q: "Is the JR Pass worth it for Tokyo to Osaka only?",
+    a: `No. Two reserved Nozomi seats on smartEX are ¥29,040, against ${JR_PASS_ONLINE} for a 7-day Ordinary pass online or ${JR_PASS_ORDER} from an overseas agency (prices since 1 October 2026). The pass also does not cover the Nozomi without a ${NOZOMI_TICKET} ticket per ride, sold only at JR stations in Japan. It starts to pay when the same week reaches Hiroshima, Kanazawa or Tohoku. Checked on japanrailpass.net, ${OWN}.`,
   },
   {
-    q: "Do I need to book the Tokyo to Osaka shinkansen in advance?",
-    a: `Usually no, and on some dates yes. On an ordinary day a non-reserved ticket works because trains run up to 18 an hour. In these periods every Nozomi car is reserved: ${nozomiAllReservedPeriods.join("; ")}. The Hikari and Kodama keep non-reserved cars then, though JR warns they may be overcrowded. Book ahead for an oversized bag, a fixed connection or the Mt Fuji seat (E). Checked on JR Central's site, ${OWN}.`,
+    q: "Which side to sit to see Mt Fuji from Tokyo to Osaka?",
+    a: "The right-hand side going west: Seat E in an Ordinary car, or Seat D in the Green Car, which are the seats JR Central's own guides name. Non-reserved cars cannot guarantee either, so reserve the seat, and JR Central notes the mountain may not be visible, depending on the weather. Checked on global.jr-central.co.jp, 21 Nov 2026.",
   },
 ];
 
-const TITLE = "Tokyo to Osaka Shinkansen 2026: Price, Time & Tickets";
+const TITLE = "Tokyo to Osaka Shinkansen 2026: Price, Time & How to Book";
 const DESCRIPTION =
-  "Tokyo to Osaka Shinkansen price: ¥14,720 reserved Nozomi (¥14,520 on smartEX), 2h21m fastest. Bullet train times, JR Pass rules and where to book tickets.";
+  "Shinkansen Tokyo to Osaka price: ¥14,720 reserved Nozomi, ¥13,870 non-reserved. The bullet train takes 2h21m. smartEX, Klook or JR Pass: how to book.";
 const ROUTE = "/guides/transport/tokyo-to-osaka-shinkansen";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
@@ -344,7 +378,7 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tokyo to Osaka Shinkansen 2026: <br />Price, Time &amp; Tickets
+            Tokyo to Osaka Shinkansen 2026: <br />Price, Time &amp; How to Book
           </h1>
           <p className={styles.heroSubtitle}>
             What each seat costs on the Nozomi, Hikari and Kodama, how long the bullet train takes, whether a
@@ -373,13 +407,14 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
         {/* Lead paragraph: the whole answer, before anything else. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            A <strong>Tokyo to Osaka Shinkansen</strong> ticket costs <strong>{WINDOW_NOZOMI}</strong> one way for
-            a reserved seat on the Nozomi ({SMART_NOZOMI} on JR&apos;s own smartEX), and the fastest bullet train
-            takes <strong>2 hours 21 minutes</strong> from Tokyo Station to Shin-Osaka, with up to 18 trains an
-            hour on the line. The Hikari and Kodama cost {WINDOW_HIKARI} reserved and take about 3 and 4 hours,
-            and a non-reserved seat on any of the three is <strong>{NON_RESERVED}</strong>. A JR Pass covers the
-            Hikari but not the Nozomi without a {NOZOMI_TICKET} ticket, so for one return trip two single tickets
-            are cheaper. Fares checked on JR&apos;s own pages, {OWN}.
+            The fastest <strong>Tokyo to Osaka Shinkansen</strong>, the Nozomi, takes{" "}
+            <strong>2 hours 21 minutes</strong> from Tokyo Station to Shin-Osaka (2 hours 27 minutes on a typical
+            one), and 160 Nozomi made the run on 21 November 2026. A reserved Nozomi seat costs{" "}
+            <strong>{WINDOW_NOZOMI}</strong> one way at the station or {SMART_NOZOMI} on JR&apos;s own smartEX,
+            and a non-reserved seat on any train is <strong>{NON_RESERVED}</strong>. A JR Pass covers the Hikari
+            ({WINDOW_HIKARI} reserved, about 3 hours) but not the Nozomi without a {NOZOMI_TICKET} ticket, so
+            for one return trip two single tickets are cheaper. Fares and times checked on JR Central&apos;s and
+            smartEX&apos;s own pages, {OWN}.
           </p>
         </section>
 
@@ -468,17 +503,19 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
             </div>
           </div>
           <LastChecked
-            date="2026-11-12"
+            date="2026-11-21"
             sources={[
-              { label: "JR Group Hikari/Kodama fares (as of Oct 2026)", href: "https://jr-group.jp/hikari-ryokin/" },
-              { label: "JR Central / JR West release, 16 Oct 2026 (Nozomi)", href: "https://jr-central.co.jp/news/release/_pdf/000046069.pdf" },
+              { label: "JR Central / JR West release, 16 Oct 2026 (window fares)", href: "https://jr-central.co.jp/news/release/_pdf/000046069.pdf" },
+              { label: "smartEX reserved-seat prices (PDF)", href: "https://smart-ex.jp/en/product/plan/service/pdf/service_fares_reserved.pdf" },
               { label: "smartEX Service", href: "https://smart-ex.jp/en/product/plan/service/" },
+              { label: "JR Central train information", href: "https://traininfo.jr-central.co.jp/shinkansen/sp/en/" },
             ]}
           />
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Times are JR Central&apos;s 2h 21m and JR Tokai Tours&apos; &ldquo;about 2h30 / 3 hours / 4
-            hours&rdquo;, and the smartEX Green figures are from smart-ex.jp&apos;s tables, all read {EARLIER}. No
-            Klook price appears here, because Klook&apos;s prices change by date.
+            Times are the fastest and slowest runs from Tokyo to Shin-Osaka on 21 Nov 2026 in JR Central&apos;s
+            timetable data. The Hikari and Green window prices are worked from the charge tables in JR
+            Central&apos;s release, and each is ¥200 above its smartEX price. No Klook price appears here,
+            because Klook&apos;s prices change by date.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shinkansenTokyoOsaka.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -487,14 +524,22 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
           </div>
         </section>
 
+        <KlookTripPrep
+          headingLevel={3}
+          label="Same day in Osaka"
+          heading="What to Book for the Day You Reach Osaka"
+          intro="The seat is the 2-hour part of the day. These four settle the rest of it before you leave Tokyo: a guided first day, the city pass, a room by the USJ gates if the park is the point, and data on your phone."
+          items={tokyoOsakaFareTablePrep}
+        />
+
         {/* Time */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Time</span>
           <h2 className={styles.sectionTitle}>How Long Is the Bullet Train From Tokyo to Osaka?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            2 hours 21 minutes on the fastest Nozomi and about 2 hours 30 on most of them, with no transfer.
-            The Hikari takes about 3 hours and the Kodama about 4, because they stop more often, and trains run
-            from about 06:00 to 21:30.
+            2 hours 21 minutes on the fastest Nozomi and 2 hours 27 minutes on a typical one, with no transfer.
+            The Hikari takes 2h 48m to 3h 06m and the Kodama 3h 42m to 3h 54m, because they stop more often,
+            and the Nozomi to Shin-Osaka leave Tokyo from 06:00 to 21:24.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -520,15 +565,14 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
             </div>
           </div>
           <LastChecked
-            date="2026-11-04"
+            date="2026-11-21"
             sources={[
+              { label: "JR Central train information (timetable for 21 Nov 2026)", href: "https://traininfo.jr-central.co.jp/shinkansen/sp/en/" },
               { label: "JR Central Tokaido Shinkansen", href: "https://global.jr-central.co.jp/en/" },
-              { label: "Klook's Tokyo → Osaka rail page (sample date 10 Nov 2026)" },
             ]}
           />
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Klook&apos;s page also gives 2h 14m as its shortest time, which no JR source supports, so the headline
-            figure here is JR Central&apos;s. The Mt Fuji side, the luggage rule and the system as a whole are in
+            Train counts are for one Saturday; weekday and holiday timetables differ. The Mt Fuji side, the luggage rule and the system as a whole are in
             our <Link href="/guides/transport/shinkansen-guide">shinkansen guide for first-timers</Link>.
           </p>
         </section>
@@ -536,7 +580,7 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
         {/* JR Pass */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>JR Pass</span>
-          <h2 className={styles.sectionTitle}>Is the JR Pass Worth It for Tokyo to Osaka?</h2>
+          <h2 className={styles.sectionTitle}>Is the JR Pass Worth It for Tokyo to Osaka Only?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Not for one return trip: two reserved Nozomi seats are ¥29,040 on smartEX and the cheapest 7-day pass
             is {JR_PASS_ONLINE}. The pass covers the Hikari and Kodama, but every Nozomi ride needs a separate{" "}
@@ -565,7 +609,7 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
             </div>
           </div>
           <LastChecked
-            date="2026-11-12"
+            date="2026-11-21"
             sources={[
               { label: "japanrailpass.net prices", href: "https://japanrailpass.net/en/purchase/price/" },
               { label: "japanrailpass.net NOZOMI/MIZUHO ticket", href: "https://japanrailpass.net/en/use/special-ticket/" },
@@ -620,9 +664,9 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
             </div>
           </div>
           <LastChecked
-            date="2026-11-12"
+            date="2026-11-21"
             sources={[
-              { label: "JR Group Hikari/Kodama fares", href: "https://jr-group.jp/hikari-ryokin/" },
+              { label: "smartEX non-reserved prices (PDF)", href: "https://smart-ex.jp/en/product/plan/service/pdf/service_fares_non_reserved.pdf" },
               { label: "smartEX Service", href: "https://smart-ex.jp/en/product/plan/service/" },
             ]}
           />
@@ -656,11 +700,11 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
         {/* Booking */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Tickets</span>
-          <h2 className={styles.sectionTitle}>Where Should You Book Tokyo to Osaka Shinkansen Tickets?</h2>
+          <h2 className={styles.sectionTitle}>How Do You Book the Tokyo to Osaka Shinkansen?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             smartEX for the lowest reserved price and free changes; Klook if you would rather pick the train and
             seat class in one checkout with the rest of the trip; the station if you are already in Japan and
-            travelling today.
+            travelling today; the JR Pass only when the same week goes well beyond Osaka.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -686,9 +730,11 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
             </div>
           </div>
           <LastChecked
-            date="2026-11-12"
+            date="2026-11-21"
             sources={[
               { label: "smartEX Service", href: "https://smart-ex.jp/en/product/plan/service/" },
+              { label: "JR Central / JR West release (window fares)", href: "https://jr-central.co.jp/news/release/_pdf/000046069.pdf" },
+              { label: "japanrailpass.net NOZOMI/MIZUHO ticket", href: "https://japanrailpass.net/en/use/special-ticket/" },
               { label: "Klook's terms are shown at its checkout" },
             ]}
           />
@@ -699,11 +745,11 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
           </div>
 
           <h3 className={styles.sectionTitle} style={{ fontSize: "1.1rem", marginTop: "1.5rem" }}>
-            When Do Tokyo to Osaka Trains Sell Out?
+            Do I Need to Reserve the Shinkansen From Tokyo to Osaka?
           </h3>
           <p className={styles.bodyText}>
-            On these dates every Nozomi car is reserved, so a walk-up Nozomi ticket does not exist and seats on
-            the morning trains go first. The Hikari and Kodama keep non-reserved cars, though JR warns they may be
+            Not on an ordinary day, but yes on these dates: every Nozomi car is reserved, so a walk-up Nozomi
+            non-reserved ticket does not exist and seats on the morning trains go first. The Hikari and Kodama keep non-reserved cars, though JR warns they may be
             overcrowded. Checked on JR Central&apos;s site, {OWN}.
           </p>
           <ul className={styles.pickList}>
@@ -716,10 +762,37 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
           </ul>
           <p className={styles.bodyText}>
             Outside those dates, book ahead only for three reasons: a bag of 161 to 250 cm, which needs a
-            reserved seat with an oversized baggage area (¥1,000 if you board without one); a fixed connection;
-            or the Mt Fuji view, which is <strong>Seat E</strong> in Ordinary or <strong>Seat D</strong> in Green
-            Car going west. Non-reserved cars have neither. Baggage and seat rules read on JR Central&apos;s own
-            pages, {EARLIER}.
+            reserved seat with an oversized baggage area (¥1,000 if you board without one, and bags over 250 cm
+            cannot come aboard); a fixed connection; or the Mt Fuji view. Non-reserved cars have neither seat.
+            Baggage rules read on JR Central&apos;s{" "}
+            <a href="https://global.jr-central.co.jp/en/info/oversized-baggage/" target="_blank" rel="noopener noreferrer">
+              oversized baggage page
+            </a>
+            , {OWN}.
+          </p>
+          <p className={styles.bodyText}>
+            If the case is the problem rather than the seat, it can travel separately: LuggAgent&apos;s
+            same-day service on Klook carries bags from a hotel in the Tokyo area to one in the Osaka area.
+            Check that both hotels are covered and the morning drop-off cut-off on the listing before you book.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
+            <KlookLink href={kantoKansaiLuggageDelivery.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Same-day Tokyo → Osaka luggage delivery →
+            </KlookLink>
+          </div>
+
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.1rem", marginTop: "1.5rem" }}>
+            Which Side Should You Sit On to See Mt Fuji From Tokyo to Osaka?
+          </h3>
+          <p className={styles.bodyText}>
+            The right-hand side going west: <strong>Seat E</strong> in an Ordinary car or <strong>Seat D</strong>{" "}
+            in the Green Car, the seats JR Central&apos;s own guides name. Pick it on the smartEX seat map or ask
+            for it at the ticket office; the view depends on the weather, and JR Central notes the mountain may
+            not be visible. Read on{" "}
+            <a href="https://global.jr-central.co.jp/en/goldenroute/shinkansen/" target="_blank" rel="noopener noreferrer">
+              JR Central&apos;s Shinkansen Perfect Guide
+            </a>
+            , {OWN}.
           </p>
         </section>
 

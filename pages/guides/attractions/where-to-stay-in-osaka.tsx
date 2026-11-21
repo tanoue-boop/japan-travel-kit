@@ -580,7 +580,9 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
             Namba is Nankai (Kansai Airport), Kintetsu (Nara) and three subway lines, with the nightlife on
             foot. Umeda is JR Osaka — the Loop Line, the Kyoto and Kobe lines, and the Yumesaki through
             services towards Universal City — plus Hankyu and Hanshin, and Shin-Osaka two stops up for the
-            shinkansen. On the official Kyoto travel guide&apos;s figures, read on {OWN}, Osaka Station to
+            shinkansen. Coming straight from Tokyo, our{" "}
+            <Link href="/guides/transport/tokyo-to-osaka-shinkansen">Tokyo to Osaka shinkansen</Link> guide has
+            the Nozomi fare, the journey time and where to book the seat. On the official Kyoto travel guide&apos;s figures, read on {OWN}, Osaka Station to
             Kyoto Station is approximately 30 minutes on the JR Special Rapid, which is the strongest single
             argument for the northern base. An Umeda base also puts the{" "}
             <Link href="/guides/attractions/umeda-sky-building-tickets">Umeda Sky Building observation deck</Link>{" "}

@@ -293,9 +293,9 @@ const stayRows = [
 const accessRows = [
   {
     route: "Tokyo → Shin-Osaka, Tokaido Shinkansen",
-    time: "Shortest 2 hr 14 min, no transfer",
-    fare: "By date and seat class — non-reserved, reserved and Green Car",
-    note: `Time and the zero-transfer figure from Klook's own Tokyo–Osaka rail page, read ${OWN}. Shin-Osaka is two stops up the Midosuji Line from Umeda.`,
+    time: "Shortest 2 hr 21 min on the Nozomi, no transfer",
+    fare: "¥14,720 reserved Nozomi at the station (¥14,520 on smartEX); ¥13,870 non-reserved",
+    note: "Time from JR Central's own timetable data, fares from JR Central and smart-ex.jp, read 21 Nov 2026. Shin-Osaka is two stops up the Midosuji Line from Umeda.",
   },
   {
     route: "Tokyo → Kyoto, Tokaido Shinkansen",
@@ -917,7 +917,9 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Two days in Osaka is almost always two days inside a longer trip, so the arrival is usually a
             shinkansen from Tokyo, a half-hour hop from Kyoto, or a flight into Kansai. Every figure below is
-            the operator&apos;s or the official tourism body&apos;s own published number.
+            the operator&apos;s or the official tourism body&apos;s own published number. For the Nozomi,
+            Hikari and Kodama fares side by side and where to book the seat, see our{" "}
+            <Link href="/guides/transport/tokyo-to-osaka-shinkansen">Tokyo to Osaka shinkansen</Link> guide.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

@@ -9813,6 +9813,48 @@ export const usjHotelsTripPrep: KlookTripPrepItem[] = [
 ];
 
 // ---------------------------------------------------------------------------
+// Tokyo to Osaka shinkansen, 21 Nov 2026 (task-jtk-20261121-R04). The page's 2%
+// shinkansen ticket now has a same-day Osaka block directly under the fare table:
+// a guided Osaka day (6.5%), the Osaka Amazing Pass (5%), Universal City hotels (6.5%)
+// and the eSIM (20%). No new URL in the list itself.
+//
+// One new URL: LuggAgent 141959, "Same-Day Luggage Delivery Between Kanto and Kansai
+// Hotels by LuggAgent", confirmed live in its en-US form through the www.klook.com
+// search index on 21 Nov 2026. It sits by the oversized-baggage rule. No prices.
+// ---------------------------------------------------------------------------
+
+/** LuggAgent same-day hotel-to-hotel bags, Kanto ⇄ Kansai (5%). */
+export const kantoKansaiLuggageDelivery: KlookTour = {
+  title: "Same-day luggage delivery between Tokyo-area and Osaka-area hotels (LuggAgent)",
+  desc: "Bags carried separately from a Kanto hotel to a Kansai hotel on the same day, so you ride the shinkansen without the case",
+  url: klookLink("https://www.klook.com/en-US/activity/141959-same-day-luggage-delivery-between-kanto-and-kansai-hotels-by-luggagent/"),
+};
+
+/** Directly under the Tokyo → Osaka fare table: the rest of the arrival day. */
+export const tokyoOsakaFareTablePrep: KlookTripPrepItem[] = [
+  {
+    label: osakaCastleUmedaTonboriDayTour.title,
+    ctaLabel: "Check the Osaka day tour →",
+    url: osakaCastleUmedaTonboriDayTour.url,
+    why: "The castle, the Umeda deck and the Tombori river cruise as one guided day, for the morning after you arrive or an early Nozomi out of Tokyo.",
+  },
+  {
+    ...tripPrepProducts.osakaPass,
+    why: "Osaka Metro and city buses from the moment you leave Shin-Osaka, plus the castle and the river cruises on the same day.",
+  },
+  {
+    label: "Hotels near Universal Studios Japan (Universal City)",
+    ctaLabel: "Check Universal City hotels on Klook →",
+    url: usjStayAreas[0].url,
+    why: "If USJ is the reason for the Osaka leg: the park gates are about five minutes on foot from Universal City Station, so book the room for the same night as the seat.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "A smartEX change, the QR ticket and any delay notice arrive on your phone, so it needs data before you reach Tokyo Station.",
+  },
+];
+
+// ---------------------------------------------------------------------------
 // Okinawa 3 day itinerary, added 14 Nov 2026 (task-jtk-20261114-01).
 //
 // Klook answers automated reads of its product pages with HTTP 403, so the new

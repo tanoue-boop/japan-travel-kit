@@ -1278,7 +1278,10 @@ export default function TokyoKyotoOsaka7DayItineraryPage({ updated }: { updated:
             train types and fares for the one leg that matters. If you run the route the other way and
             finish in Tokyo, the guide to the{" "}
             <Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo train</Link> is
-            the same leg eastbound, from the Kyoto Station platforms to where to get off in Tokyo.
+            the same leg eastbound, from the Kyoto Station platforms to where to get off in Tokyo. If you
+            skip Kyoto and ride straight through to Shin-Osaka, the{" "}
+            <Link href="/guides/transport/tokyo-to-osaka-shinkansen">Tokyo to Osaka shinkansen</Link> guide
+            has that fare, the journey time and the booking options.
             To break Day 4 in Nagoya for a few hours on separate tickets, our{" "}
             <Link href="/guides/attractions/nagoya-castle-tickets">Nagoya Castle tickets guide</Link> has the
             castle&apos;s price, hours and the train on to Kyoto.
