@@ -602,7 +602,11 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
             <Link href="/guides/money/best-travel-card-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               the best travel card for Japan
             </Link>{" "}
-            compares it against the alternatives on fees and ATM limits.
+            compares it against the alternatives on fees and ATM limits. If you carry a Revolut card instead,{" "}
+            <Link href="/guides/money/revolut-card-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Revolut in Japan
+            </Link>{" "}
+            tables the free ATM cash and weekend exchange fee on each plan.
           </p>
         </section>
 
@@ -901,7 +905,7 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Revolut in Japan 2026: Fees, ATMs &amp; Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Can I Use Revolut in Japan? Yes — Fees, ATMs &amp; Limits (2026)</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

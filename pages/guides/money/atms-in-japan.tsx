@@ -466,7 +466,12 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
             <Link href="/guides/money/best-travel-card-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
               our travel-card comparison
             </Link>{" "}
-            sets out what each type charges. Figures checked {CHECKED}.
+            sets out what each type charges. On a Revolut card, that second fee is nothing within your
+            plan&apos;s monthly allowance and 2% above it; the allowance for each plan is in{" "}
+            <Link href="/guides/money/revolut-card-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Revolut in Japan
+            </Link>
+            . Figures checked {CHECKED}.
           </p>
           <p className={styles.bodyText}>
             The fewer withdrawals you make, the fewer times that second fee repeats — and a tap of the same
@@ -693,7 +698,7 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Revolut in Japan 2026: Fees, ATMs &amp; Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Can I Use Revolut in Japan? Yes — Fees, ATMs &amp; Limits (2026)</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

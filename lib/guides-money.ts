@@ -29,8 +29,8 @@ export const moneyArticles: GuideArticle[] = [
   {
     href: "/guides/money/revolut-card-japan",
     badge: "Guide",
-    title: "Revolut in Japan (2026): Fees, ATMs & Is It Worth It?",
-    desc: "Does Revolut work in Japan? We break down the plans, weekday and weekend FX fees, ATM limits, and whether Revolut is worth it for your trip.",
+    title: "Can I Use Revolut in Japan? Yes — Fees, ATMs & Limits (2026)",
+    desc: "Yes: Revolut works on Visa/Mastercard and at 7-Eleven ATMs. Free ATM cash by plan, then 2%; the 1% weekend exchange fee on Standard, and what to pay before you land.",
     group: "cards",
     city: "other",
   },

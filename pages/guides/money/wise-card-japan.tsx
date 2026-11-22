@@ -767,7 +767,12 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
             Wise if you want one rate and one published fee with nothing to manage; Revolut if you are willing to
             work around a plan structure to get a larger free ATM allowance. The two differ most in how they
             package it — Wise charges the same conversion fee whatever day of the week it is, while Revolut&apos;s
-            allowances and weekend rate depend on the tier you are on.
+            allowances and weekend rate depend on the tier you are on. Each Revolut plan&apos;s free ATM cash and
+            weekend markup are tabled in our{" "}
+            <Link href="/guides/money/revolut-card-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Revolut in Japan
+            </Link>{" "}
+            guide.
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1.25rem" }}>
             <div className={styles.tableScroll}>
@@ -1010,7 +1015,7 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Revolut in Japan (2026): Fees, ATMs &amp; Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Can I Use Revolut in Japan? Yes — Fees, ATMs &amp; Limits (2026)</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

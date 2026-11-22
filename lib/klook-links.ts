@@ -2141,7 +2141,13 @@ export const bestTravelCardTripPrep: KlookTripPrepItem[] = [
  * here is tied to one of those two limits. Spread across eSIM 20%, airport access
  * and the passes 5%, and the Tokyo hotel 6.5%. No new URLs.
  */
-export const revolutCardTripPrep: KlookTripPrepItem[] = [
+/**
+ * Revolut Card — "Pay before you land" (22 Nov 2026, task jtk-20261122-03). Sits directly
+ * under the answer: what a Revolut reader can settle on the card on a weekday at home, so it
+ * stays out of the weekend window and off the free ATM allowance. eSIM (20%), airport access
+ * and Tokyo Subway Ticket (5%), one day tour (6.5%). No new products: existing tracking links.
+ */
+export const revolutCardPayBeforeLand: KlookTripPrepItem[] = [
   {
     ...tripPrepProducts.esim,
     why: "Revolut runs from its app: spend alerts, the card freeze and the plan screen that shows your allowance all need data from the moment you land.",
@@ -2160,8 +2166,16 @@ export const revolutCardTripPrep: KlookTripPrepItem[] = [
   },
   {
     ...tripPrepProducts.subway,
-    why: "Tokyo Metro and Toei gates do not take a foreign contactless card, so this is one card payment in place of a run of yen fares.",
+    why: "Unlimited Tokyo Metro and Toei rides for 24, 48 or 72 hours: one card payment in place of a run of yen fares or IC card top-ups.",
   },
+  {
+    ...tripPrepProducts.fujiHakoneTour,
+    why: "A fixed-departure coach seat that has to be booked ahead anyway, and one of the larger single bills of a Tokyo trip, so pay it on a weekday from your yen balance.",
+  },
+];
+
+/** Revolut Card — lower block: the two large payments left after revolutCardPayBeforeLand. */
+export const revolutCardTripPrep: KlookTripPrepItem[] = [
   {
     ...tripPrepProducts.jrPass,
     why: "A single large charge, so check your plan's exchange limit first, and on Standard buy it on a weekday to stay clear of the 1% weekend fee.",

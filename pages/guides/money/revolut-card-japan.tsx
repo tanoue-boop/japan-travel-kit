@@ -4,7 +4,7 @@ import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import KlookTripPrep from "../../../components/KlookTripPrep";
-import { klookEsim, revolutCardTripPrep } from "../../../lib/klook-links";
+import { klookEsim, revolutCardPayBeforeLand, revolutCardTripPrep } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
@@ -20,71 +20,76 @@ const REVOLUT_ATM_JAPAN_URL = "https://www.revolut.com/cards/atm-withdrawals-in-
 const SEVEN_BANK_URL = "https://www.sevenbank.co.jp/intlcard/card.html";
 const JAPAN_POST_URL = "https://www.jp-bank.japanpost.jp/en/ias/en_ias_index.html";
 const ENET_URL = "https://www.enetcom.co.jp/intl/";
+const AEON_URL = "https://www.aeonbank.co.jp/atm/en/page02/";
+const REVOLUT_ATM_LOCATOR_URL = "https://www.revolut.com/cards/atm-locator/";
+const REVOLUT_CONVERTER_URL = "https://www.revolut.com/currency-converter/";
 
 /**
- * Every revolut.com and help.revolut.com page answers an automated read with HTTP
- * 403, so Revolut's figures below were read from those pages' search-index entries,
- * the same fallback lib/klook-links.ts uses for Klook, and the page says so where
- * they appear. Seven Bank, Japan Post Bank, E-net and Apple were read directly.
- * JR East's own pages also answer 403, so its Apple Pay wording is from the index.
+ * revolut.com and help.revolut.com answer an automated read with HTTP 403, so Revolut's
+ * figures are taken from those pages' search-index entries, and the page says so under
+ * each table. Re-checked 22 Nov 2026 (task jtk-20261122-03):
+ * - UK ATM allowance: Standard £200 or 5 withdrawals, Plus £200, Premium £400, Metal £800,
+ *   Ultra £2,000 a month, then 2% (£1 minimum) — revolut.com/cards/atm-locator/ and UK fees.
+ * - Japan account ATM: Standard ¥25,000, Premium ¥50,000, Metal ¥100,000, then 2% —
+ *   revolut.com/en-JP/legal/{standard,premium,metal}-fees/ and the en-JP cash-limits FAQ.
+ * - UK exchange: Standard £1,000 a month then 1%, Plus £3,000 then 0.5%, Premium/Metal/Ultra
+ *   no limit — UK Standard fees PDF and revolut.com/currency-converter/.
+ * - Japan account exchange: Standard ¥300,000 a month Mon–Fri, then 0.5% (help.revolut.com/en-JP).
+ * - Weekend: 5pm Friday–6pm Sunday ET, Standard +1%, Plus +0.5%, Premium/Metal/Ultra none.
+ * - Revolut's Japan ATM guide: Apple Pay / Google Pay contactless wherever Visa and Mastercard
+ *   are accepted; Seven Bank and Japan Post named as the ATMs to use.
+ * Seven Bank, Japan Post Bank and AEON Bank were read directly on 22 Nov 2026 with the same
+ * figures as atms-in-japan (Seven Bank no amount, Japan Post ¥220 "may apply", AEON ¥880 on
+ * Visa/Mastercard/UnionPay from 16 Dec 2026, UnionPay ¥75 until then). E-net keeps 4 Nov.
  */
-const CHECKED = "4 November 2026";
+const CHECKED = "22 November 2026";
+const LAST_CHECKED_ISO = "2026-11-22";
 
-const TITLE = "Revolut in Japan 2026: Fees, ATMs & Is It Worth It?";
+const TITLE = "Can I Use Revolut in Japan? Yes — Fees, ATMs & Limits (2026)";
 const DESCRIPTION =
-  "Revolut in Japan works at 7-Eleven ATMs. Free ATM limit: £200 on UK Standard, ¥25,000 on a Japan account, then 2%. Weekend FX +1%. ATM fees are extra.";
-
-const YEN_BALANCE = "No Revolut fee in your base currency or from a yen balance.";
+  "Revolut Japan: yes, on Visa/Mastercard and tap-to-pay. Revolut ATM Japan: free to £200 (UK Standard) or ¥25,000, then 2%; weekend FX +1%. Prepay on Klook.";
 
 const planRows = [
   {
     plan: "Standard",
-    atmUk: "£200 or 5 withdrawals, whichever comes first",
-    atmJp: "¥25,000",
-    over: "2%",
+    atm: "£200 or 5 withdrawals (UK) · ¥25,000 (Japan account)",
+    exchange: "£1,000, then 1% (UK) · ¥300,000 Mon–Fri, then 0.5% (Japan account)",
     weekend: "+1%",
-    card: `${YEN_BALANCE} Japan accounts: exchange free Mon–Fri to ¥300,000 a month, then 0.5%.`,
   },
   {
     plan: "Plus",
-    atmUk: "£200",
-    atmJp: "Not listed",
-    over: "2%",
+    atm: "£200 (UK) · not listed for Japan",
+    exchange: "£3,000, then 0.5% (UK) · not listed for Japan",
     weekend: "+0.5%",
-    card: `${YEN_BALANCE} Exchange limit shown in your app.`,
   },
   {
     plan: "Premium",
-    atmUk: "£400",
-    atmJp: "¥50,000",
-    over: "2%",
+    atm: "£400 (UK) · ¥50,000 (Japan account)",
+    exchange: "No limit (UK) · no additional fees (Japan account)",
     weekend: "None",
-    card: `${YEN_BALANCE} Japan accounts: no additional exchange fees.`,
   },
   {
     plan: "Metal",
-    atmUk: "£800",
-    atmJp: "¥100,000",
-    over: "2%",
+    atm: "£800 (UK) · ¥100,000 (Japan account)",
+    exchange: "No limit (UK) · no additional fees (Japan account)",
     weekend: "None",
-    card: `${YEN_BALANCE} Japan accounts: no additional exchange fees.`,
   },
   {
     plan: "Ultra",
-    atmUk: "£2,000",
-    atmJp: "Not listed",
-    over: "2%",
+    atm: "£2,000 (UK) · not listed for Japan",
+    exchange: "No limit (UK)",
     weekend: "None",
-    card: `${YEN_BALANCE} Exchange limit shown in your app.`,
   },
 ];
 
+/** ATM-side fees, aligned with /guides/money/atms-in-japan (same operator pages). */
 const atmRows = [
   {
     atm: "Seven Bank",
     sub: "Inside 7-Eleven stores",
     accepts: "Yes: Visa and Mastercard are listed, though Seven Bank warns some cards with those marks may not work.",
-    fee: "No amount published. Seven Bank says the fee differs by overseas card brand.",
+    fee: "No amount published. Seven Bank says the fee differs by overseas card brand; the screen shows it before you confirm.",
+    limit: "¥100,000 per withdrawal (¥30,000 on a magnetic-stripe read)",
     url: SEVEN_BANK_URL,
     source: "Seven Bank",
   },
@@ -93,14 +98,25 @@ const atmRows = [
     sub: "At post offices",
     accepts: "Yes: Visa and Mastercard are listed.",
     fee: "“An ATM usage fee (¥220 (tax included) per use) may apply” with certain cards issued abroad.",
+    limit: "¥50,000 per withdrawal",
     url: JAPAN_POST_URL,
     source: "Japan Post Bank",
+  },
+  {
+    atm: "AEON Bank",
+    sub: "In AEON malls and MINISTOP",
+    accepts: "Yes: Visa and Mastercard are listed.",
+    fee: "¥880 per withdrawal on Visa, Mastercard and UnionPay cards issued abroad from 16 December 2026 (UnionPay ¥75 until then).",
+    limit: "¥50,000 per withdrawal",
+    url: AEON_URL,
+    source: "AEON Bank",
   },
   {
     atm: "E-net",
     sub: "In FamilyMart and Don Quijote",
     accepts: "Yes: Visa and Mastercard are listed, with the same warning as Seven Bank.",
     fee: "No amount published. The fee differs by handling bank, and the card issuer may add its own.",
+    limit: "¥100,000 by IC chip (¥40,000 by stripe)",
     url: ENET_URL,
     source: "E-net",
   },
@@ -141,16 +157,20 @@ const cons = [
 
 const faqItems = [
   {
-    q: "Does Revolut work in Japan?",
-    a: `Yes. Revolut's card works at terminals accepting Visa or Mastercard and at Japanese ATMs, and Revolut's own Japan guides point to Seven Bank (inside 7-Eleven) and Japan Post ATMs. Japan is still partly cash-based, so keep some yen for smaller venues. Checked ${CHECKED}.`,
+    q: "Can I use Revolut in Japan?",
+    a: `Yes. Revolut's card works at Japanese terminals that accept Visa or Mastercard, including tap-to-pay through Apple Pay or Google Pay, and at Seven Bank (7-Eleven), Japan Post Bank and AEON Bank ATMs. Revolut charges nothing within your plan's free ATM allowance (£200 or 5 withdrawals a month on UK Standard, ¥25,000 on a Japan account) and 2% above it. Japan is still partly cash-based, so keep some yen for smaller venues. Checked ${CHECKED}.`,
+  },
+  {
+    q: "Does Revolut work at 7-Eleven ATMs in Japan?",
+    a: `Yes. 7-Eleven ATMs are run by Seven Bank, which lists Visa and Mastercard, runs that service 00:00–24:00 and allows ¥100,000 per withdrawal (¥30,000 on a magnetic-stripe read); Revolut's own Japan guide names Seven Bank and Japan Post as the ATMs to use. Seven Bank publishes no fee amount and shows it on screen before you confirm. Checked ${CHECKED}.`,
   },
   {
     q: "Which ATMs accept Revolut in Japan?",
-    a: `Seven Bank ATMs in 7-Eleven, Japan Post Bank ATMs at post offices and E-net ATMs in FamilyMart and Don Quijote all list Visa and Mastercard. Seven Bank and E-net warn that some cards with those marks may still not work, so try a second network if one refuses you. Operators' pages read ${CHECKED}.`,
+    a: `Seven Bank ATMs in 7-Eleven, Japan Post Bank ATMs at post offices, AEON Bank ATMs and E-net ATMs in FamilyMart and Don Quijote all list Visa and Mastercard. Japan Post Bank says a ¥220 fee may apply; AEON Bank charges ¥880 per withdrawal on Visa and Mastercard cards issued abroad from 16 December 2026. Seven Bank and E-net warn that some cards with those marks may still not work, so try a second network if one refuses you. Checked ${CHECKED}.`,
   },
   {
     q: "Does Revolut charge ATM fees in Japan?",
-    a: `Not within your plan's free allowance; above it Revolut charges 2%. The allowance depends on your plan and your account's country: £200 or 5 withdrawals a month on UK Standard, £200 on Plus, £400 on Premium, £800 on Metal and £2,000 on Ultra; on a Japan-registered account ¥25,000 on Standard, ¥50,000 on Premium and ¥100,000 on Metal. The minimum on the UK figures is £1. The ATM operator may add its own fee: Japan Post Bank says ¥220 may apply, while Seven Bank and E-net publish no amount. Checked ${CHECKED}; your app shows your own allowance.`,
+    a: `Not within your plan's free allowance; above it Revolut charges 2%. The allowance depends on your plan and your account's country: £200 or 5 withdrawals a month on UK Standard, £200 on Plus, £400 on Premium, £800 on Metal and £2,000 on Ultra; on a Japan-registered account ¥25,000 on Standard, ¥50,000 on Premium and ¥100,000 on Metal. The minimum on the UK figures is £1. The ATM operator may add its own fee: Japan Post Bank says ¥220 may apply, AEON Bank charges ¥880 from 16 December 2026, and Seven Bank and E-net publish no amount. Checked ${CHECKED}; your app shows your own allowance.`,
   },
   {
     q: "What are Revolut's fees in Japan?",
@@ -165,14 +185,28 @@ const faqItems = [
     a: "Weigh the monthly fee against how much you expect to withdraw and exchange. Both remove the weekend fee and double or quadruple Standard's free ATM allowance in the same currency schedule, but a Standard user who exchanges on weekdays and withdraws within the allowance pays Revolut nothing on those transactions. Confirm the current plan price in your app.",
   },
   {
-    q: "Revolut or Wise for Japan?",
-    a: "Wise has no weekend markup, which makes it the simpler choice if you do not want to think about the calendar. Revolut suits travellers who can exchange on weekdays, or who already pay for a plan with no weekend fee. See our Wise vs Revolut comparison for the full breakdown.",
+    q: "Wise or Revolut for Japan?",
+    a: "Wise has no weekend markup, which makes it the simpler choice if you do not want to think about the calendar. Revolut suits travellers who can exchange on weekdays, or who already pay for a plan with no weekend fee: Premium and Metal add nothing at the weekend and give £400 and £800 of free ATM cash a month on a UK account. See our Wise vs Revolut for Japan comparison for the full breakdown.",
   },
   {
-    q: "Can I use Revolut for Suica or Pasmo?",
-    a: `The official sources checked do not confirm it. Apple says a Suica or PASMO in Wallet needs "an eligible payment card" but does not name which ones, and neither JR East nor Revolut says a Revolut card qualifies. Plan to top up with yen cash at a station ticket machine, and treat any card top-up that works as a bonus. Checked ${CHECKED}.`,
+    q: "Can I use Revolut for Suica or train tickets?",
+    a: `For Suica and PASMO top-ups, the official sources checked do not confirm it: Apple says a Suica or PASMO in Wallet needs "an eligible payment card" without naming which ones, and neither JR East nor Revolut says a Revolut card qualifies, so plan on yen cash at a station ticket machine. Train tickets and passes sold online, such as airport-train tickets or the Tokyo Subway Ticket, can be paid on the card before you fly wherever the seller takes Visa or Mastercard. Checked ${CHECKED}.`,
   },
 ];
+
+/** FAQPage: the five questions the page is built around (task jtk-20261122-03). */
+const FAQ_SCHEMA_QUESTIONS = [
+  "Can I use Revolut in Japan?",
+  "Does Revolut work at 7-Eleven ATMs in Japan?",
+  "Does Revolut charge ATM fees in Japan?",
+  "Can I use Revolut for Suica or train tickets?",
+  "Wise or Revolut for Japan?",
+];
+const faqSchemaItems = FAQ_SCHEMA_QUESTIONS.map((q) => {
+  const item = faqItems.find((f) => f.q === q);
+  if (!item) throw new Error(`FAQ schema question missing: ${q}`);
+  return item;
+});
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/revolut-card-japan") } });
 
@@ -224,7 +258,7 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqSchemaItems.map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -260,13 +294,13 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Revolut in Japan (2026): <br />Fees, ATMs &amp; Is It Worth It?
+            Can I Use Revolut in Japan? <br />Yes — Fees, ATMs &amp; Limits (2026)
           </h1>
           <p className={styles.heroSubtitle}>
-            A feature-packed travel card that&apos;s great value on weekdays — with one catch to watch at the weekend.
+            Free ATM allowance by plan, what 7-Eleven, Japan Post and AEON ATMs add, and the weekend exchange fee.
           </p>
           <div className={styles.heroBadges}>
-            {[`Fees checked ${CHECKED}`, "Plans Compared", "Weekend Fee Explained"].map((t) => (
+            {[`Fees checked ${CHECKED}`, "4 Plans Compared", "Weekend Fee Explained"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -278,13 +312,25 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
       <div className={styles.content}>
         {/* The answer, before anything else */}
         <p className={styles.bodyText}>
-          Yes: a Revolut card works in Japan, for Visa and Mastercard card payments and at ATMs such as Seven Bank in
-          7-Eleven. Free ATM withdrawals depend on your plan and your account&apos;s country:{" "}
-          <strong>£200 or 5 withdrawals a month on UK Standard, £400 on Premium and £800 on Metal</strong>, or ¥25,000,
-          ¥50,000 and ¥100,000 on a Japan-registered account. <strong>Above that Revolut charges 2%.</strong> Standard
-          also adds <strong>1% to weekend exchanges</strong> (Plus adds 0.5%; Premium and Metal add nothing), and the
-          Japanese ATM&apos;s own fee is separate. Revolut&apos;s figures checked {CHECKED}.
+          <strong>Yes — Revolut works in Japan</strong> wherever Visa or Mastercard is accepted, including tap-to-pay
+          through Apple Pay or Google Pay, and at Seven Bank (7-Eleven), Japan Post Bank and AEON Bank ATMs. Revolut&apos;s
+          free ATM allowance is <strong>£200 or 5 withdrawals a month on UK Standard, £400 on Premium and £800 on
+          Metal</strong> (¥25,000, ¥50,000 and ¥100,000 on a Japan-registered account), then <strong>2%</strong>, and the
+          ATM may add its own fee: ¥220 at Japan Post Bank, ¥880 at AEON Bank from 16 December 2026. Exchanges between
+          5pm Friday and 6pm Sunday US Eastern Time cost <strong>1% extra on Standard</strong> and 0.5% on Plus, with
+          nothing added on Premium or Metal. Figures checked {CHECKED}.
         </p>
+
+        {/* Pay before you land (task jtk-20261122-03): directly under the answer. */}
+        <div id="pay-before-you-land">
+          <KlookTripPrep
+            label="Pay before you land"
+            heading="What Can You Pay for With Revolut Before You Land?"
+            intro="The part a quick answer leaves out is when each payment happens. Anything booked on a weekday at home stays out of Revolut's weekend window and off your free ATM allowance, and these six are all bookable on Klook before you fly; pick the airport line for the airport you land at:"
+            items={revolutCardPayBeforeLand}
+            headingLevel={3}
+          />
+        </div>
 
         {/* Disclaimer */}
         <div className={styles.disclosure}>
@@ -334,11 +380,16 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
         {/* Can I use it */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>Can I Use Revolut in Japan?</h2>
+          <h2 className={styles.sectionTitle}>Can I use Revolut in Japan?</h2>
           <p className={styles.bodyText}>
-            Yes. A Revolut card works at Japanese terminals that accept Visa or Mastercard, and at ATMs that take cards
-            issued abroad. Hotels, chain stores and convenience stores are the easy cases; small restaurants, temples and
-            market stalls are where you will still want cash.
+            Yes. A Revolut card works at Japanese terminals that accept Visa or Mastercard, by tap through Apple Pay or
+            Google Pay as well as by chip, and at ATMs that take cards issued abroad. Hotels, chain stores and convenience
+            stores are the easy cases; small restaurants, temples and market stalls are where you will still want cash —
+            our{" "}
+            <Link href="/guides/money/cash-vs-card-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              cash vs card in Japan
+            </Link>{" "}
+            guide sorts the two.
           </p>
           <p className={styles.bodyText}>
             Revolut is an app-based account with a linked debit card, sold on free and paid plans. What changes between
@@ -366,25 +417,26 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
-                <caption style={{ captionSide: "bottom", padding: "0.6rem 0.75rem", fontSize: "0.82rem", color: "var(--text-muted)", textAlign: "left" }}>
-                  Revolut&apos;s figures, checked {CHECKED}. &quot;Not listed&quot; means Revolut&apos;s Japan pages did not show that plan.
-                </caption>
                 <thead>
                   <tr>
-                    {["Plan", "Free ATM, UK account (per month)", "Free ATM, Japan account (per month)", "Over the allowance", "Weekend exchange", "Card payments"].map((h) => (
+                    {["Plan", "Free ATM cash a month", "Free currency exchange a month", "Weekend exchange markup"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
+                  <tr style={{ background: "var(--surface-2, rgba(0,0,0,0.03))" }}>
+                    <td className={styles.tdProvider}>Every plan</td>
+                    <td style={{ fontSize: "0.85rem" }}><strong>Free up to the allowance, then 2%</strong>; the Japanese ATM&apos;s own fee is extra</td>
+                    <td style={{ fontSize: "0.85rem" }}><strong>Spending from a yen balance carries no Revolut fee</strong></td>
+                    <td style={{ fontSize: "0.85rem" }}><strong>Avoid it by exchanging Mon–Fri</strong></td>
+                  </tr>
                   {planRows.map((row) => (
                     <tr key={row.plan}>
                       <td className={styles.tdProvider}>{row.plan}</td>
-                      <td style={{ fontSize: "0.85rem" }}>{row.atmUk}</td>
-                      <td style={{ fontSize: "0.85rem" }}>{row.atmJp}</td>
-                      <td style={{ fontSize: "0.85rem" }}>{row.over}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.atm}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.exchange}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.weekend}</td>
-                      <td style={{ fontSize: "0.85rem" }}>{row.card}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -392,39 +444,39 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            The 2% carries a £1 minimum on the UK figures. ATM withdrawals that involve an exchange also count toward your
-            exchange limit. The weekend window is 5pm Friday to 6pm Sunday US Eastern Time. Accounts in other countries
-            have their own schedules: Revolut&apos;s US pages, for one, show Premium at $800 and Metal at $1,200 a month.
-            Your app&apos;s plan screen is the final word.
+            <strong>Last checked: {LAST_CHECKED_ISO}.</strong> Sources:{" "}
+            <a href={REVOLUT_ATM_LOCATOR_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ fontWeight: 600 }}>Revolut ATM withdrawals</a>,{" "}
+            <a href={REVOLUT_CONVERTER_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ fontWeight: 600 }}>Revolut exchange limits</a>,{" "}
+            <a href={REVOLUT_JP_PLANS_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ fontWeight: 600 }}>Revolut Japan plans</a>,{" "}
+            <a href={REVOLUT_JP_CASH_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ fontWeight: 600 }}>Japan cash withdrawal limits</a>,{" "}
+            <a href={REVOLUT_JP_FX_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ fontWeight: 600 }}>Japan exchange fees</a> and{" "}
+            <a href={REVOLUT_ATM_JAPAN_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ fontWeight: 600 }}>ATMs in Japan</a>.
+            Revolut&apos;s pages are quoted from their search-index entries, so confirm them on Revolut&apos;s site.
+            &quot;Not listed&quot; means Revolut&apos;s Japan pages did not show that plan.
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Sources:{" "}
-            <a href={REVOLUT_JP_PLANS_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ fontWeight: 600 }}>Revolut Japan plans</a>,{" "}
-            <a href={REVOLUT_JP_CASH_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ fontWeight: 600 }}>cash withdrawal limits</a>,{" "}
-            <a href={REVOLUT_JP_FX_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ fontWeight: 600 }}>exchange fees</a> and{" "}
-            <a href={REVOLUT_ATM_JAPAN_URL} target="_blank" rel="noopener noreferrer nofollow" style={{ fontWeight: 600 }}>ATMs in Japan</a>.
-            These were read from its pages&apos; search-index entries on {CHECKED}, not from the live pages, so check
-            them on Revolut&apos;s site.
+            The 2% carries a £1 minimum on the UK figures. ATM withdrawals that involve an exchange also count toward your
+            exchange limit. The weekend window is 5pm Friday to 6pm Sunday US Eastern Time — Saturday morning to Monday
+            morning in Japan. Accounts in other countries have their own schedules: Revolut&apos;s US pages, for one, show
+            Premium at $800 and Metal at $1,200 a month. Your app&apos;s plan screen is the final word.
           </p>
         </section>
 
         {/* ATM table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>ATMs</span>
-          <h2 className={styles.sectionTitle}>Which ATMs Accept Revolut in Japan?</h2>
+          <h2 className={styles.sectionTitle}>Does Revolut work at 7-Eleven ATMs in Japan?</h2>
           <p className={styles.bodyText}>
-            Seven Bank in 7-Eleven is the first one to try, followed by Japan Post Bank; those are the two Revolut itself
-            names, and both, along with E-net, list Visa and Mastercard. Only Japan Post Bank publishes a fee amount.
+            Yes. 7-Eleven ATMs are Seven Bank machines, which list Visa and Mastercard, run that service 00:00–24:00 and
+            allow ¥100,000 per withdrawal; Seven Bank and Japan Post Bank are the two ATMs Revolut itself names. Japan Post
+            Bank and AEON Bank publish a fee amount, Seven Bank and E-net do not.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
-                <caption style={{ captionSide: "bottom", padding: "0.6rem 0.75rem", fontSize: "0.82rem", color: "var(--text-muted)", textAlign: "left" }}>
-                  Read from each operator&apos;s own page on {CHECKED}. None of them names Revolut.
-                </caption>
                 <thead>
                   <tr>
-                    {["ATM", "Takes a Revolut card?", "ATM-side fee", "Source"].map((h) => (
+                    {["ATM", "Takes a Revolut card?", "ATM-side fee", "Limit", "Source"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -440,6 +492,7 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
                       </td>
                       <td style={{ fontSize: "0.85rem" }}>{row.accepts}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.fee}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.limit}</td>
                       <td style={{ fontSize: "0.85rem" }}>
                         <a href={row.url} target="_blank" rel="noopener" style={{ fontWeight: 600 }}>{row.source}</a>
                       </td>
@@ -450,7 +503,12 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            AEON Bank and Lawson Bank are left out because their fees could not be confirmed on their own sites. Our{" "}
+            <strong>Last checked: {LAST_CHECKED_ISO}</strong> on{" "}
+            <a href={SEVEN_BANK_URL} target="_blank" rel="noopener" style={{ fontWeight: 600 }}>sevenbank.co.jp</a>,{" "}
+            <a href={JAPAN_POST_URL} target="_blank" rel="noopener" style={{ fontWeight: 600 }}>jp-bank.japanpost.jp</a> and{" "}
+            <a href={AEON_URL} target="_blank" rel="noopener" style={{ fontWeight: 600 }}>aeonbank.co.jp</a> (E-net read 4
+            November 2026). None of them names Revolut, and Revolut&apos;s own fee above the allowance comes on top. Lawson
+            Bank is left out because its fee could not be confirmed on its own site. Our{" "}
             <Link href="/guides/money/atms-in-japan" style={{ fontWeight: 600 }}>ATMs in Japan guide</Link> covers hours and
             limits for all five networks.
           </p>
@@ -459,7 +517,7 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
         {/* Wise */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Compared</span>
-          <h2 className={styles.sectionTitle}>Is Revolut or Wise Better for Japan?</h2>
+          <h2 className={styles.sectionTitle}>Wise or Revolut for Japan?</h2>
           <p className={styles.bodyText}>
             Wise is the simpler choice because it has no weekend markup; Revolut suits you if you can exchange on weekdays
             or already pay for a plan without the weekend fee. Our{" "}
@@ -473,10 +531,11 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
         {/* Suica */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Transit cards</span>
-          <h2 className={styles.sectionTitle}>Can I Use Revolut for Suica or Pasmo?</h2>
+          <h2 className={styles.sectionTitle}>Can I use Revolut for Suica or train tickets?</h2>
           <p className={styles.bodyText}>
-            The official sources checked do not confirm that a Revolut card can top up Suica or PASMO, so plan on yen cash at a station ticket
-            machine. Apple says a Suica or PASMO in Wallet needs &quot;an eligible payment card&quot; without naming which
+            Not confirmed for Suica or PASMO top-ups, so plan on yen cash at a station ticket machine; train tickets and
+            passes sold online can be paid on the card before you fly, wherever the seller takes Visa or Mastercard
+            (see the <a href="#pay-before-you-land" style={{ fontWeight: 600 }}>pay before you land</a> list above). Apple says a Suica or PASMO in Wallet needs &quot;an eligible payment card&quot; without naming which
             cards qualify, and neither JR East nor Revolut says Revolut is one of them.
           </p>
           <p className={styles.bodyText}>
@@ -550,8 +609,8 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
         </section>
 
         <KlookTripPrep
-          heading="What to Pay by Card Before You Fly"
-          intro="Once you know how much cash you need, the rest of the trip is a question of when each payment is made. Bookings you make on a weekday before you leave stay out of Revolut's weekend window, and anything already paid for does not have to come out of your free ATM allowance."
+          heading="The Two Big Payments to Time for a Weekday"
+          intro="Beyond the airport run and the subway pass, two bookings are large enough to check against your plan's exchange limit first, and on Standard to make Monday to Friday so the 1% weekend fee does not apply:"
           items={revolutCardTripPrep}
         />
 

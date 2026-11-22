@@ -516,8 +516,8 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
             out each condition. All figures checked {CHECKED}. For the detail on one card, see the{" "}
             <Link href="/guides/money/wise-card-japan" style={{ color: "var(--red)", fontWeight: 600 }}>Wise card in Japan</Link>{" "}
             and{" "}
-            <Link href="/guides/money/revolut-card-japan" style={{ color: "var(--red)", fontWeight: 600 }}>Revolut card in Japan</Link>{" "}
-            guides, or{" "}
+            <Link href="/guides/money/revolut-card-japan" style={{ color: "var(--red)", fontWeight: 600 }}>Revolut in Japan</Link>{" "}
+            guides (the Revolut one sets out the free ATM allowance on each plan), or{" "}
             <Link href="/guides/money/wise-vs-revolut-japan" style={{ color: "var(--red)", fontWeight: 600 }}>Wise vs Revolut for Japan</Link>{" "}
             for the two side by side. For the transit IC cards that pay train and bus fares (Suica, PASMO, ICOCA), see{" "}
             <Link href="/guides/transport/ic-cards-japan" style={{ color: "var(--red)", fontWeight: 600 }}>IC cards in Japan</Link>.
