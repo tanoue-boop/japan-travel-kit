@@ -109,8 +109,8 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/holafly-japan-review",
     badge: "Review",
-    title: "Holafly Japan eSIM Review 2026: Unlimited Data Worth It?",
-    desc: "Holafly offers unlimited data for Japan — but is the price right? We compare its cost per day, SoftBank coverage, and setup against the plans that charge by the gigabyte.",
+    title: "Holafly Japan eSIM Review 2026: Price, Network & Limits",
+    desc: "Holafly's Japan eSIM is unlimited only, priced by the day, on KDDI and SoftBank, with no phone number. Price, hotspot limit and the Klook eSIM / Simbye alternatives side by side.",
     group: "reviews",
     city: "other",
   },

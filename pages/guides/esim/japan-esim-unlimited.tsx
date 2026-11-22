@@ -945,7 +945,7 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>Honest answer</span>
           <h2 className={styles.sectionTitle}>Is Holafly Really Unlimited in Japan?</h2>
           <p className={styles.bodyText}>
-            On the phone, largely yes: it publishes no daily threshold, though its Japan page says a Fair Usage Policy can restrict speed for no more than one day. Through a hotspot, no: tethering is capped at 1 GB a day, so a laptop is the case it does not cover (read {TERMS_CHECKED}).
+            On the phone, largely yes: it publishes no daily threshold, though its Japan page says a Fair Usage Policy can restrict speed for no more than one day. Through a hotspot, no: tethering is limited to 1 GB per day purchased (7 GB on a 7-day plan, Holafly&apos;s Japan page, 22 Nov 2026), so a laptop is the case it does not cover (read {TERMS_CHECKED}).
           </p>
           <p className={styles.bodyText}>
             The network caveat: Holafly lists {getProvider("holafly").network} in Japan, not Docomo. Both cover cities, tourist areas and major train routes well, while Docomo has broader reach in rural areas. For popular tourist destinations (Tokyo, Kyoto, Osaka, Hiroshima, Hokkaido cities), this makes no practical difference.
@@ -957,6 +957,8 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText}>
             Holafly suits you if you cannot predict your phone use and will not tether. We have no link to it, so
             the alternative we send readers to is Airalo Unlimited. It is not necessary for typical tourist use.
+            Prices by day, networks and the Klook eSIM / Simbye comparison are in the{" "}
+            <Link href="/guides/esim/holafly-japan-review" style={{ color: "var(--accent)", fontWeight: 600 }}>Holafly Japan review</Link>.
           </p>
         </section>
 
@@ -1036,7 +1038,7 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Holafly Japan eSIM Review 2026: Unlimited Data Worth It?</p>
+                <p className={styles.relatedTitle}>Holafly Japan eSIM Review 2026: Price, Network &amp; Limits</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

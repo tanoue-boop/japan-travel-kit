@@ -1018,7 +1018,9 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             https://simbye.com/products/esim-japan · https://www.airalo.com/japan-esim ·
             https://breezesim.com/products/esim-japan · https://www.sakuramobile.jp/travel/esim/ ·
             https://esim.holafly.com/esim-japan/ · the Klook listing &ldquo;{klookEsim.listingTitle}&rdquo;. Holafly runs
-            no affiliate programme this site can join, so its row links to Airalo&apos;s unlimited plans instead.
+            no affiliate programme this site can join, so its row links to Airalo&apos;s unlimited plans instead; its
+            price by day, networks and hotspot limit are in the{" "}
+            <Link href="/guides/esim/holafly-japan-review" className={tools.inlineLink}>Holafly Japan review</Link>.
           </p>
           {/* R03: the three partners side by side, right under the verdict — Klook eSIM for a Klook
               basket, Simbye on price, Sakura Mobile for a number or a long stay. */}
@@ -1374,7 +1376,7 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
           <p className={styles.bodyText}>
             Airalo for most trips, because it sells both fixed-data plans (from {priceFromLabel("airalo")}) and an
             unlimited plan with no tethering limit stated. Sakura Mobile if you need a Japanese phone number or a
-            physical SIM. Holafly sells unlimited data only, with 1 GB of shareable hotspot data a day; prices by
+            physical SIM. Holafly sells unlimited data only, with 1 GB of shareable hotspot data per day purchased; prices by
             trip length and the cheaper plans for the same days are in our{" "}
             <Link href="/guides/esim/holafly-japan-review" className={tools.inlineLink}>Holafly Japan review</Link>.
           </p>

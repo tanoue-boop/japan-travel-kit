@@ -22,6 +22,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { SIMBYE_DISCOUNT_CODE, SIMBYE_DISCOUNT_PERCENT, SIMBYE_JAPAN_DISCOUNT_URL } from "../../../lib/simbye";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaTop } from "../../../components/EsimCta";
+import BookingEsimCard from "../../../components/BookingEsimCard";
 
 const ROUTE = "/guides/esim/holafly-japan-review";
 
@@ -35,13 +36,21 @@ const ROUTE = "/guides/esim/holafly-japan-review";
  * 9 Oct 2026; Holafly not pursued, 23 Oct 2026). Holafly is described from its own Japan
  * page and never linked; the buttons are Simbye, Klook eSIM and Sakura Mobile.
  */
-const TITLE = "Holafly Japan Review 2026: eSIM Price, Speed & Alternatives";
-const H1 = "Holafly Japan Review 2026: Holafly eSIM Japan Unlimited Price, Speed & Alternatives";
+/*
+ * 2026-11-22 (task-jtk-20261122-R06): title and H1 now lead with "Holafly Japan eSIM Review",
+ * the form the top results use. The comparison table names Holafly vs Klook eSIM vs Simbye vs
+ * Airalo (7 and 15 days, network, hotspot, phone number), with the Simbye/Klook card under it.
+ * Holafly's page now words the hotspot as "1 GB of shareable data for each day purchased, with
+ * no daily limits" (a 7-day plan = 7 GB to share), so "capped at 1 GB a day" was replaced.
+ */
+const TITLE = "Holafly Japan eSIM Review 2026: Price, Network & Limits";
+const H1 = "Holafly Japan eSIM Review 2026: Price, Network & Limits";
 
-/** Holafly's Japan page (esim.holafly.com/esim-japan/), Simbye's and Sakura Mobile's Japan pages, read on this date. */
-const FACTS_CHECKED = "2026-11-15";
-const FACTS_CHECKED_LABEL = "15 Nov 2026";
+/** Holafly's Japan page (esim.holafly.com/esim-japan/) re-read on this date; Simbye and Sakura Mobile terms 15 Nov. */
+const FACTS_CHECKED = "2026-11-22";
+const FACTS_CHECKED_LABEL = "22 Nov 2026";
 const HOLAFLY_OFFICIAL = "esim.holafly.com/esim-japan";
+const HOTSPOT = "1 GB of hotspot data per day purchased (7 GB on a 7-day plan), shareable at any pace";
 
 const pricesCheckedAt = pricesCheckedLabel();
 const pricesCheckedIso = (latestCheckedAt() ?? "").slice(0, 10);
@@ -68,7 +77,7 @@ const withCode = (p: EsimPlan | null) =>
   p?.discountedUsd ? ` (${formatUsd(p.discountedUsd)} with code ${SIMBYE_DISCOUNT_CODE})` : "";
 
 // Meta description: answer + where the buttons are. 120–155 characters.
-const DESC = `Holafly Japan review: the Holafly eSIM is unlimited on KDDI/SoftBank, ${usd(H7)} for 7 days, hotspot 1 GB/day, no number. Cheaper alternatives below.`;
+const DESC = `Holafly eSIM Japan review: the Holafly digital SIM for Japan is unlimited on KDDI/SoftBank, ${usd(H7)} for 7 days, no phone number. Cheaper picks below.`;
 
 const inline = { color: "var(--accent)", fontWeight: 600 } as const;
 const muted = { marginTop: "0.9rem", fontSize: "0.82rem", color: "var(--text-muted)", lineHeight: 1.6 } as const;
@@ -76,9 +85,16 @@ const muted = { marginTop: "0.9rem", fontSize: "0.82rem", color: "var(--text-mut
 // ---------------------------------------------------------------------------
 // Buttons: existing affiliate constants only. Holafly gets no link.
 // ---------------------------------------------------------------------------
-type Cta = "simbye" | "klook" | "sakura" | "none";
+type Cta = "simbye" | "klook" | "sakura" | "airalo" | "none";
 
 function CtaLink({ cta }: { cta: Cta }) {
+  if (cta === "airalo") {
+    return (
+      <a href={getProvider("airalo").affiliateUrl} className={styles.tdLink} target="_blank" rel="sponsored nofollow noopener">
+        Get Airalo →
+      </a>
+    );
+  }
   if (cta === "klook") {
     return (
       <KlookLink href={klookEsim.url} className={styles.tdLink} target="_blank" rel="sponsored nofollow noopener">
@@ -107,7 +123,7 @@ function CtaLink({ cta }: { cta: Cta }) {
 const glanceRows: { item: string; value: ReactNode }[] = [
   {
     item: "Bottom line",
-    value: `Works in Japan with unlimited data on the phone; it costs more per day than Simbye's unlimited plan, and the hotspot is capped at 1 GB a day.`,
+    value: `Works in Japan with unlimited data on the phone; it costs more per day than Simbye's unlimited plan, and hotspot sharing is limited to 1 GB per day purchased.`,
   },
   { item: "Price range (USD)", value: `${usd(H_MIN)} (${H_MIN?.days ?? "—"} days) to ${usd(H_MAX)} (${H_MAX?.days ?? "—"} days)` },
   { item: "7 days / 15 days", value: `${usd(H7)} / ${usd(H15)}` },
@@ -117,7 +133,7 @@ const glanceRows: { item: string; value: ReactNode }[] = [
     item: "Speed policy",
     value: "No daily full-speed threshold published; a Fair Usage Policy can reduce speed for no more than one day, then it resets",
   },
-  { item: "Hotspot / tethering", value: "Yes, 1 GB of shareable data per day" },
+  { item: "Hotspot / tethering", value: `Yes, ${HOTSPOT}` },
   { item: "Phone number", value: "No — data only, no local number for calls or SMS" },
   { item: "Plan starts", value: "When you arrive and turn the eSIM on" },
 ];
@@ -127,18 +143,22 @@ type AltRow = {
   name: string;
   d7: ReactNode;
   d15: ReactNode;
+  network: string;
   speed: string;
   hotspot: string;
   number: string;
   cta: Cta;
 };
+const A7 = unlimitedFor("airalo", 7);
+const A15 = unlimitedFor("airalo", 15);
 const altRows: AltRow[] = [
   {
-    name: "Not sure? Simbye",
+    name: "Best value: Simbye",
     d7: `${usd(S7)}${withCode(S7)}`,
     d15: `${usd(S15)}${withCode(S15)}`,
+    network: getProvider("simbye").network,
     speed: "2 GB a day at full speed, then unlimited at 1 Mbps",
-    hotspot: "Allowed",
+    hotspot: "Allowed on every Japan plan",
     number: "No — data only",
     cta: "simbye",
   },
@@ -146,52 +166,58 @@ const altRows: AltRow[] = [
     name: "Klook eSIM",
     d7: klookEsim.priceUnknownLabel,
     d15: klookEsim.priceUnknownLabel,
+    network: klookEsim.specNetwork,
     speed: "Unlimited plans: high speed up to 10 GB a day, then 128 kbps",
-    hotspot: "Supported",
-    number: "No — data only",
+    hotspot: klookEsim.specTethering,
+    number: klookEsim.specPhoneNumber,
     cta: "klook",
   },
   {
-    name: "Sakura Mobile (unlimited, au)",
-    d7: usd(K7),
-    d15: usd(K15),
-    speed: "High speed: unlimited (au 5G)",
-    hotspot: "Up to 6 GB on 7 days, 15 GB on 15 days",
-    number: "No on data eSIMs; a separate Voice + Data eSIM adds one",
-    cta: "sakura",
+    name: "Airalo",
+    d7: usd(A7),
+    d15: usd(A15),
+    network: getProvider("airalo").network,
+    speed: "Unlimited plans: full speed to 3 GB a day; fair-use policy applies",
+    hotspot: "Yes, where the device allows",
+    number: "No — data only",
+    cta: "airalo",
   },
   {
     name: "Holafly",
     d7: usd(H7),
     d15: usd(H15),
+    network: getProvider("holafly").network,
     speed: "No daily threshold published; Fair Usage Policy can slow it for up to 1 day",
-    hotspot: "1 GB a day",
+    hotspot: "1 GB per day purchased (7 GB on 7 days)",
     number: "No — data only",
     cta: "none",
+  },
+  {
+    name: "Sakura Mobile (unlimited, au)",
+    d7: usd(K7),
+    d15: usd(K15),
+    network: "au (KDDI) 5G",
+    speed: "High speed: unlimited (au 5G)",
+    hotspot: "Up to 6 GB on 7 days, 15 GB on 15 days",
+    number: "No on data eSIMs; a separate Voice + Data eSIM adds one",
+    cta: "sakura",
   },
 ];
 
 // Question headings: each answered in the first one or two sentences.
+const HOLAFLY_WORKS = `Yes. Holafly's Japan eSIM runs on ${getProvider("holafly").network}, on 5G where available and 4G/LTE elsewhere, with unlimited data and no Japanese phone number (Holafly's Japan page, checked ${FACTS_CHECKED_LABEL}).`;
+const HOLAFLY_PRICE = `Holafly charges ${usd(H_MIN)} for ${H_MIN?.days ?? 3} days, ${usd(H7)} for 7, ${usd(H15)} for 15 and ${usd(H30)} for 30 days (USD, checked ${pricesCheckedAt}). Every plan is unlimited, and longer plans cost less per day.`;
+const HOLAFLY_UNLIMITED = `On the phone itself, yes, with two limits: hotspot sharing is ${HOTSPOT}, and Holafly's Japan page says a Fair Usage Policy can reduce speed for no more than one day before it resets (checked ${FACTS_CHECKED_LABEL}).`;
+const HOLAFLY_ALTERNATIVE = `Simbye for price: ${usd(S7)} for 7 days of unlimited${withCode(S7)} against Holafly's ${usd(H7)}, on four networks. Klook eSIM if your tickets are already on Klook; its unlimited plans run at high speed up to 10 GB a day. Airalo's 7-day unlimited is ${usd(A7)} and it also sells fixed-data plans (prices checked ${pricesCheckedAt}).`;
+
 const faqItems = [
+  { q: "Does Holafly work in Japan?", a: HOLAFLY_WORKS },
+  { q: "How much is Holafly for Japan?", a: HOLAFLY_PRICE },
+  { q: "Is Holafly unlimited really unlimited in Japan?", a: HOLAFLY_UNLIMITED },
+  { q: "What is the best Holafly alternative for Japan?", a: HOLAFLY_ALTERNATIVE },
   {
     q: "What is Holafly's digital SIM card for Japan?",
-    a: `It is Holafly's Japan eSIM — a digital SIM you install from a QR code or the Holafly app instead of a plastic card. It gives unlimited data only on ${getProvider("holafly").network} (5G where available), shares 1 GB a day by hotspot, has no Japanese phone number, and costs ${usd(H_MIN)} for ${H_MIN?.days ?? 3} days to ${usd(H_MAX)} for ${H_MAX?.days ?? 30} (Holafly's Japan page, checked ${FACTS_CHECKED}).`,
-  },
-  {
-    q: "Does the Holafly Japan eSIM include a phone number?",
-    a: "No. Holafly's Japan page states the eSIM comes with cellular data only and no local number for calls or SMS; calls go through apps such as WhatsApp or LINE. Of the alternatives compared here, only Sakura Mobile's separate Voice + Data eSIM adds a Japanese number.",
-  },
-  {
-    q: "Can I use Holafly for a whole month in Japan?",
-    a: `Yes. Holafly's 30-day Japan plan is ${usd(H30)}, still unlimited with 1 GB of hotspot a day (prices checked ${pricesCheckedAt}). Simbye's 30-day unlimited plan is ${usd(unlimitedFor("simbye", 30))}, with 2 GB a day at full speed and then 1 Mbps.`,
-  },
-  {
-    q: "Is Holafly better than Airalo for Japan?",
-    a: `Only if you need no daily full-speed threshold on the phone itself. Airalo's 7-day unlimited plan is ${usd(unlimitedFor("airalo", 7))} against ${usd(H7)} on Holafly, and Airalo also sells small fixed-data plans; the head-to-head is in our Airalo vs Holafly Japan comparison.`,
-  },
-  {
-    q: "Is there a cheaper alternative to Holafly for Japan?",
-    a: `Yes. For the same 7 days of unlimited, Simbye is ${usd(S7)}${withCode(S7)} against Holafly's ${usd(H7)}, and for 15 days ${usd(S15)} against ${usd(H15)} (prices checked ${pricesCheckedAt}). Klook eSIM's unlimited plans run at high speed up to 10 GB a day; check its price on Klook.`,
+    a: `It is Holafly's Japan eSIM — a digital SIM you install from a QR code or the Holafly app instead of a plastic card. It gives unlimited data only on ${getProvider("holafly").network}, ${HOTSPOT}, no Japanese phone number, and costs ${usd(H_MIN)} for ${H_MIN?.days ?? 3} days to ${usd(H_MAX)} for ${H_MAX?.days ?? 30} (Holafly's Japan page, checked ${FACTS_CHECKED}).`,
   },
 ];
 
@@ -217,7 +243,7 @@ const setupSteps = [
 const commonIssues = [
   { problem: "No signal on arrival", fix: "Check data roaming is on for the eSIM line, then toggle airplane mode off and on to force it onto a network." },
   { problem: "Slow speed for a day", fix: "Holafly says a Fair Usage Policy can reduce speed for no more than one day; it resets the next day." },
-  { problem: "Laptop hotspot stops working", fix: "Hotspot sharing is capped at 1 GB a day on Holafly. For a tethered laptop, a plan with a larger hotspot allowance fits better." },
+  { problem: "Laptop hotspot stops working", fix: "Holafly's hotspot allowance is 1 GB per day purchased, so a 7-day plan has 7 GB to share in total. For a tethered laptop, a plan with a larger hotspot allowance fits better." },
   { problem: "Can't install", fix: "Your phone may be carrier-locked or not eSIM-compatible. Ask your home carrier to unlock it before you travel." },
 ];
 
@@ -277,7 +303,7 @@ export default function HolaflyJapanReviewPage({ updated }: { updated: PageUpdat
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg><span className="sr-only"> / </span>
-          <span className={styles.breadCurrent}>Holafly Japan Review</span>
+          <span className={styles.breadCurrent}>Holafly Japan eSIM Review</span>
         </div>
       </div>
 
@@ -346,15 +372,70 @@ export default function HolaflyJapanReviewPage({ updated }: { updated: PageUpdat
           </p>
         </section>
 
+        {/* Q — Holafly vs Klook eSIM vs Simbye vs Airalo. Row 1 is the conclusion. */}
+        <section className={styles.comparisonFeature}>
+          <span className={styles.sectionLabel}>Alternatives</span>
+          <h2 className={styles.sectionTitle}>What is the best Holafly alternative for Japan?</h2>
+          <p className={styles.bodyText}>
+            Simbye, on price: {usd(S7)} for 7 days of unlimited and {usd(S15)} for 15, against {usd(H7)} and{" "}
+            {usd(H15)} on Holafly, on four networks, and code {SIMBYE_DISCOUNT_CODE} takes {SIMBYE_DISCOUNT_PERCENT}%
+            off. Klook eSIM fits if your tickets are already on Klook; Airalo&apos;s week of unlimited is {usd(A7)}.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Holafly vs Klook eSIM vs Simbye vs Airalo (unlimited)</th>
+                    <th>7 days</th>
+                    <th>15 days</th>
+                    <th>Network</th>
+                    <th>Full speed</th>
+                    <th>Hotspot / tethering</th>
+                    <th>Phone number</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {altRows.map((row) => (
+                    <tr key={row.name}>
+                      <td className={styles.tdProvider}>{row.name}</td>
+                      <td className={styles.tdPrice}>{row.d7}</td>
+                      <td className={styles.tdPrice}>{row.d15}</td>
+                      <td>{row.network}</td>
+                      <td>{row.speed}</td>
+                      <td>{row.hotspot}</td>
+                      <td>{row.number}</td>
+                      <td><CtaLink cta={row.cta} /></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p style={muted}>
+            <strong>Last checked: {FACTS_CHECKED}</strong> (Holafly&apos;s Japan page; Simbye and Sakura Mobile terms
+            on their Japan pages 15 Nov 2026); prices in USD, re-read daily, latest {pricesCheckedIso}. Klook eSIM terms
+            from its listing &ldquo;{klookEsim.listingTitle}&rdquo;, read {klookEsim.specsCheckedAt}; Klook prices
+            change by plan and date, so open the listing for today&apos;s price. Official pages: https://{HOLAFLY_OFFICIAL}/
+            · https://simbye.com/products/esim-japan · https://www.airalo.com/japan-esim ·
+            https://www.klook.com/en-US/activity/109393-japan-esim-high-speed-internet-qr-code-voucher/ ·
+            sakuramobile.jp/travel/esim. Affiliate links except Holafly.
+          </p>
+          <BookingEsimCard lead="Cheaper than Holafly for the same trip" />
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            Which to pick: Simbye for the lowest unlimited price on four networks; Klook eSIM if the rest of the trip is
+            booked there; Airalo if a small fixed-data plan from {priceFromLabel("airalo")} is enough; Sakura Mobile for
+            a phone number (Voice + Data eSIM) or a bigger hotspot. All six providers are ranked in the{" "}
+            <Link href="/guides/esim/best-esim-japan" style={inline}>best eSIM for Japan</Link> guide.
+          </p>
+        </section>
+
         {/* Q1 */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Coverage</span>
           <h2 className={styles.sectionTitle}>Does Holafly work in Japan?</h2>
-          <p className={styles.bodyText}>
-            Yes. Holafly&apos;s Japan eSIM runs on {getProvider("holafly").network}, on 5G where available and 4G/LTE
-            elsewhere, and its page says actual speed depends on location, device and local coverage (checked{" "}
-            {FACTS_CHECKED_LABEL}).
-          </p>
+          <p className={styles.bodyText}>{HOLAFLY_WORKS}</p>
           <p className={styles.bodyText}>
             KDDI (au) and SoftBank cover the cities and the main tourist routes. Simbye adds NTT docomo and Rakuten
             Mobile to those two, which is the wider choice if your route leaves the main corridors; the networks are
@@ -388,9 +469,7 @@ export default function HolaflyJapanReviewPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>Unlimited</span>
           <h2 className={styles.sectionTitle}>Is Holafly unlimited really unlimited in Japan?</h2>
           <p className={styles.bodyText}>
-            On the phone itself, yes, with two limits: hotspot sharing is capped at 1 GB a day, and Holafly&apos;s
-            Japan page says a Fair Usage Policy can reduce speed for no more than one day before it resets (checked{" "}
-            {FACTS_CHECKED_LABEL}).
+            {HOLAFLY_UNLIMITED}
           </p>
           <p className={styles.bodyText}>
             So it suits one phone that streams a lot, not a laptop tethered all day. Simbye&apos;s unlimited plan gives
@@ -403,12 +482,8 @@ export default function HolaflyJapanReviewPage({ updated }: { updated: PageUpdat
         {/* Q3 */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
-          <h2 className={styles.sectionTitle}>How much is Holafly for Japan in 2026?</h2>
-          <p className={styles.bodyText}>
-            Holafly charges {usd(H_MIN)} for {H_MIN?.days ?? 3} days up to {usd(H_MAX)} for {H_MAX?.days ?? 30} days,
-            with {usd(H7)} for a week and {usd(H15)} for 15 days (USD, checked {pricesCheckedAt}). Every plan is
-            unlimited, and longer plans cost less per day.
-          </p>
+          <h2 className={styles.sectionTitle}>How much is Holafly for Japan?</h2>
+          <p className={styles.bodyText}>{HOLAFLY_PRICE}</p>
           <ProviderPlanTable providerId="holafly" />
         </section>
 
@@ -436,67 +511,12 @@ export default function HolaflyJapanReviewPage({ updated }: { updated: PageUpdat
               <p className={styles.pickListLabel}>Against it</p>
               <ul className={styles.pickList}>
                 <li><span className={styles.conIcon}>−</span>Unlimited only, so no cheap small plan</li>
-                <li><span className={styles.conIcon}>−</span>Hotspot capped at 1 GB a day</li>
+                <li><span className={styles.conIcon}>−</span>Hotspot limited to 1 GB per day purchased</li>
                 <li><span className={styles.conIcon}>−</span>Fair Usage Policy can slow it for up to a day</li>
                 <li><span className={styles.conIcon}>−</span>Data only, no Japanese phone number</li>
               </ul>
             </div>
           </div>
-        </section>
-
-        {/* Q5 — (2) Alternatives table */}
-        <section className={styles.comparisonFeature}>
-          <span className={styles.sectionLabel}>Alternatives</span>
-          <h2 className={styles.sectionTitle}>What is a cheaper alternative to Holafly in Japan?</h2>
-          <p className={styles.bodyText}>
-            Simbye: {usd(S7)} for 7 days of unlimited and {usd(S15)} for 15, against {usd(H7)} and {usd(H15)} on Holafly,
-            and code {SIMBYE_DISCOUNT_CODE} takes {SIMBYE_DISCOUNT_PERCENT}% off. If your tickets are already on Klook,
-            its eSIM keeps everything in one account; if you need a Japanese number or a large hotspot allowance, Sakura
-            Mobile.
-          </p>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    <th>eSIM (unlimited)</th>
-                    <th>7 days</th>
-                    <th>15 days</th>
-                    <th>Full speed</th>
-                    <th>Hotspot</th>
-                    <th>Phone number</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {altRows.map((row) => (
-                    <tr key={row.name}>
-                      <td className={styles.tdProvider}>{row.name}</td>
-                      <td className={styles.tdPrice}>{row.d7}</td>
-                      <td className={styles.tdPrice}>{row.d15}</td>
-                      <td>{row.speed}</td>
-                      <td>{row.hotspot}</td>
-                      <td>{row.number}</td>
-                      <td><CtaLink cta={row.cta} /></td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p style={muted}>
-            <strong>Last checked: {FACTS_CHECKED}</strong> (Holafly, Simbye and Sakura Mobile terms on their Japan pages);
-            prices in USD, re-read daily, latest {pricesCheckedIso}. Klook eSIM terms from its listing &ldquo;
-            {klookEsim.listingTitle}&rdquo;, read {klookEsim.specsCheckedAt}; Klook prices change by plan and date, so
-            open the listing for today&apos;s price. Official pages: {HOLAFLY_OFFICIAL} · simbye.com/products/esim-japan ·
-            sakuramobile.jp/travel/esim. Affiliate links except Holafly.
-          </p>
-          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            Which to pick: Simbye for the lowest unlimited price on four networks; Klook eSIM if the rest of the trip is
-            booked there; Sakura Mobile for a phone number (Voice + Data eSIM) or a bigger hotspot. All six providers are
-            ranked in the{" "}
-            <Link href="/guides/esim/best-esim-japan" style={inline}>best eSIM for Japan</Link> guide.
-          </p>
         </section>
 
         <EsimBrandCompare brand="holafly" />
