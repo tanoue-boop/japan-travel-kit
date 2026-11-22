@@ -971,6 +971,7 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
             { href: "/guides/attractions/teamlab-fukuoka-tickets", title: "팀랩 후쿠오카 티켓 2026: 가격, 운영 시간, 예약(영어)" },
             { href: "/guides/attractions/teamlab-kyoto-tickets", title: "팀랩 교토 티켓: 가격, 운영 시간, 예약(영어)" },
             { href: "/guides/attractions/teamlab-botanical-garden-osaka-tickets", title: "팀랩 보태니컬 가든 오사카 티켓: 가격과 운영 시간(영어)" },
+            { href: "/ko/guides/attractions/dotonbori-river-cruise", title: "도톤보리 리버크루즈 2026: 성인 ¥2,000, 약 20분, 오사카 주유패스 무료" },
             { href: "/guides/attractions/tokyo-joypolis-tickets", title: "도쿄 조이폴리스 티켓(2026): 패스포트 가격, 운영 시간, 키 제한(영어)" },
             { href: "/ko/guides/attractions/teamlab-planets-tickets", title: "팀랩 플래닛 예약 2026: 티켓 가격, 운영 시간, 가는 법" },
             { href: "/ko/guides/attractions/teamlab-tokyo-tickets", title: "팀랩 플래닛 보더리스 비교 2026: 도쿄에서 어디로 갈까" },

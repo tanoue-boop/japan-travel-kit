@@ -933,7 +933,9 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             festival inside a route that reaches Asahikawa and Furano, and if a day on the snow matters more
             than a third evening at Odori, our{" "}
             <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours guide</Link> covers the guided
-            day out of Sapporo.
+            day out of Sapporo; for a closer slope, the{" "}
+            <Link href="/guides/attractions/sapporo-ski-day-trip">Sapporo ski day trip</Link> guide puts Teine
+            about 40 minutes from the city.
           </p>
           <p className={styles.bodyText}>
             If you are flying in through Tokyo, the mainland winter is worth one more stop. The{" "}

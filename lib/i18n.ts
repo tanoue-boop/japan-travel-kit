@@ -455,7 +455,8 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     zhTitle: "日本冬季行程（2027）：12 天路線逐日安排",
     zhLabel: "日本冬季行程",
     zhCn: "/zh-cn/guides/attractions/japan-winter-itinerary",
-    zhCnTitle: "日本冬季行程（2027）：12 天路线逐日安排",
+    // 2026-11-22 (C01): season + the three winter terms first (北海道・雪景・滑雪), then the route length.
+    zhCnTitle: "日本冬季行程 2026-27：北海道・雪景・滑雪・12天路线",
     zhCnLabel: "日本冬季行程",
     ko: "/ko/guides/attractions/japan-winter-itinerary",
     koTitle: "일본 겨울 여행 12일 일정(2027): 일자별 코스",
@@ -491,8 +492,9 @@ export const HOME_GROUP: TranslatedPage = {
   zhTitle: "日本旅遊實用指南（2026）：門票、交通、網卡",
   zhLabel: "日本旅遊實用指南",
   zhCn: "/zh-cn",
-  zhCnTitle: "日本旅游实用指南（2026）：门票、交通、流量卡",
-  zhCnLabel: "日本旅游实用指南",
+  // 2026-11-22 (C01): GSC 28-day CTR 0% at pos 6.7 — the search term 日本旅行指南 and the three things it covers, in that order.
+  zhCnTitle: "日本旅行指南 2026：门票・eSIM・交通",
+  zhCnLabel: "日本旅行指南",
   ko: "/ko",
   koTitle: "일본 여행 준비 가이드(2026): 티켓, 교통, eSIM",
   koLabel: "일본 여행 준비 가이드",

@@ -370,6 +370,13 @@ export default function CnAttractionsHubPage({ dates }: { dates: Record<string, 
             </Link>
             。当某个页面提供全部三种语言版本时，页首会出现 English／繁體中文／简体中文 的切换。
           </p>
+          <p className={styles.bodyText}>
+            门票之外的行前准备（上网、机场交通、住宿区域），按类别整理在{" "}
+            <Link href="/zh-cn" style={{ color: "var(--text)", fontWeight: 600 }}>日本旅行指南 2026 首页</Link>
+            ；12 月到 2 月出发的话，先看{" "}
+            <Link href="/zh-cn/guides/attractions/japan-winter-itinerary" style={{ color: "var(--text)", fontWeight: 600 }}>日本冬季行程 2026-27</Link>
+            ，白川乡亮灯、札幌雪祭这些日期固定的冬季活动都按要先订的顺序列出。
+          </p>
         </section>
 
         <section className={styles.bodySection}>

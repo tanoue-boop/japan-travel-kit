@@ -602,6 +602,18 @@ export default function JapanEsimFamilyGroupPage({ updated }: { updated: PageUpd
           </div>
         </section>
 
+        {/* Added 22 Nov 2026 (task-jtk-20261122-C01): sizing each phone's plan. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Sizing each phone&apos;s own plan rather than one shared hotspot? The{" "}
+            <Link href="/guides/esim/japan-esim-data-plans" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM data plans
+            </Link>{" "}
+            guide answers how much data you need for Japan per person — about 1 GB a day — with the cheapest plan
+            on sale for 3 to 30 days.
+          </p>
+        </section>
+
         {/* Related articles */}
         <section className={styles.relatedSection}>
           <span className={styles.sectionLabel}>Related guides</span>

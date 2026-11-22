@@ -40,6 +40,14 @@ const WIDE_PASS_URL = jrKansaiWideAreaPass.url;
 //  - the WEST QR Kansai Area Pass prices from westjr.co.jp, cross-checked against
 //    our own kansai-area-pass guide, which was built from the same page today.
 const CHECKED = checkedLabel("2026-10-25");
+/**
+ * Re-read 22 Nov 2026 (task-jtk-20261122-C01) on himejicastle.jp/en/: "Adults (18 or older)
+ * 2,500 yen / Citizen of Himeji 1,000 yen", "Opening hours 09:00～17:00 Entry ～16:00", and
+ * access "the JR Kobe Line (Special rapid service) … About one hour from Osaka", Sanyo
+ * Shinkansen "about 30 min from Shin Osaka". The task brief's "¥1,000" is the Himeji-resident
+ * rate, so the title carries ¥2,500.
+ */
+const REREAD = checkedLabel("2026-11-22");
 
 /** Official adult price, from data/attraction-prices.json (himejiCastle). */
 const ADULT = priceById("himejiCastle").adult;
@@ -265,9 +273,27 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Himeji Castle Day Trip (2026): From Osaka and Kyoto, ¥2,500";
+/**
+ * FAQ cut to five on 22 Nov 2026 (task-jtk-20261122-C01), visible list and FAQPage alike: the
+ * questions the search terms ask. Hours, Koko-en, Kyoto, timing and cherry blossom each have
+ * their own section or table row above, so their FAQ entries were not kept.
+ */
+const FAQ_KEEP = [
+  "How do you do a Himeji Castle day trip from Osaka?",
+  "How much is Himeji Castle admission in 2026?",
+  "How long do you need at Himeji Castle?",
+  "Do you need to book Himeji Castle tickets in advance?",
+  "Does the Kansai Area Pass cover the trip to Himeji?",
+];
+const faqShown = FAQ_KEEP.map((q) => {
+  const item = faqItems.find((f) => f.q === q);
+  if (!item) throw new Error(`himeji FAQ missing: ${q}`);
+  return item;
+});
+
+const TITLE = "Himeji Castle Day Trip from Osaka: ¥2,500, 1 Hour by JR";
 const DESCRIPTION =
-  "Himeji Castle day trip: 1 hr 1 min from Osaka by JR rapid, 28 min by shinkansen, 44 min from Kyoto. Admission ¥2,500 (checked 11 Nov 2026), free under 18.";
+  "Himeji Castle day trip from Osaka: about 1 hour by JR Special Rapid, 28 min by shinkansen from Shin-Osaka. Admission ¥2,500 from 1 Mar 2026, free under 18.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/himeji-castle-day-trip") },
@@ -295,7 +321,7 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqShown.map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -360,7 +386,7 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Himeji Castle Day Trip (2026): <br />From Osaka and Kyoto, ¥2,500 Admission
+            Himeji Castle Day Trip from Osaka (2026): <br />¥2,500 Admission, 1 Hour by JR Special Rapid
           </h1>
           <p className={styles.heroSubtitle}>
             Japan&apos;s one surviving original hilltop castle, an hour from Osaka — and two and a half times
@@ -412,19 +438,14 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
             </div>
             {/* Answer-first: the first body paragraph of the article, not the hero line. */}
             <p className={styles.verdictText}>
-              A <strong>Himeji Castle day trip</strong> takes <strong>1 hour 1 minute</strong> from{" "}
-              <strong>Osaka Station</strong> on a direct JR Special Rapid Service, or{" "}
-              <strong>28 minutes</strong> from Shin-Osaka on the Sanyo Shinkansen; from Kyoto it is 1 hr 25 min
-              by special rapid and <strong>44 minutes</strong> by shinkansen. Admission is{" "}
+              A <strong>Himeji Castle day trip from Osaka</strong> takes about <strong>1 hour</strong> each way:
+              the JR Special Rapid Service runs direct from <strong>Osaka Station</strong> in 1 hr 1 min, and the
+              Sanyo Shinkansen from Shin-Osaka takes <strong>28 minutes</strong>. Admission is{" "}
               <strong>{ADULT}</strong> for an adult aged 18 or over and <strong>free under 18</strong> — up
-              from ¥1,000 on <strong>1 March 2026</strong> — or <strong>{COMBO}</strong> on the combined ticket
-              with the Koko-en garden. The castle opens <strong>09:00 to 17:00</strong> but the{" "}
-              <strong>last admission is 16:00</strong>, it closes on 29 and 30 December, and the keep itself
-              admits <strong>1,000 people an hour</strong>, so the queue is the thing to plan around: arrive at
-              opening, allow <strong>1.5–2 hours</strong> inside, and expect up to an hour of waiting in peak
-              season. All figures read off Himeji City&apos;s and the castle&apos;s own pages on {CHECKED}; the
-              {" "}{ADULT} adult fee, free entry under 18 and the 09:00–17:00 hours were re-read on
-              himejicastle.jp on 11 November 2026.
+              from ¥1,000 on <strong>1 March 2026</strong> — or <strong>{COMBO}</strong> with the Koko-en garden.
+              The castle opens <strong>09:00 to 17:00</strong> with <strong>last admission at 16:00</strong>, so
+              arrive at opening and allow <strong>1.5–2 hours</strong> inside (himejicastle.jp, checked {REREAD};
+              journey times from Himeji City, {CHECKED}).
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -462,10 +483,11 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
         {/* Access table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Getting there</span>
-          <h2 className={styles.sectionTitle}>How Do You Get to Himeji From Osaka or Kyoto?</h2>
+          <h2 className={styles.sectionTitle}>How Do You Do a Himeji Castle Day Trip From Osaka?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            From Osaka, the direct special rapid is the answer and the shinkansen is a luxury. From Kyoto it
-            is the other way round — the slow train turns Himeji into a travel day.
+            Take the JR Special Rapid Service from Osaka Station — about one hour, direct, with Himeji at the
+            end of the line — then walk about 15 minutes up Otemae-dori to the castle gate. From Kyoto it is
+            the other way round: take the shinkansen (44 minutes), because the special rapid takes 1 hr 25 min.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -491,7 +513,9 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Every journey time above is Himeji City&apos;s own figure from visit-himeji.com, read on {CHECKED}.
+            Every journey time above is Himeji City&apos;s own figure from visit-himeji.com, read on {CHECKED};
+            himejicastle.jp gives the same picture in round numbers — &quot;about one hour from Osaka&quot; by
+            special rapid and &quot;about 30 min from Shin Osaka&quot; by shinkansen (checked {REREAD}).
             No single-ticket rail fare appears in this table on purpose: neither JR West nor Sanyo publishes a
             route-by-route fare table as of {CHECKED}, only a live search tool, so the cost anchors
             on this page are the published pass prices instead. For the city end of the journey, see{" "}
@@ -503,6 +527,9 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
               Kansai Area Pass
             </Link>
             , which covers the special rapid to Himeji but not the shinkansen.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-22 · https://www.himejicastle.jp/en/ · https://www.visit-himeji.com/access/
           </p>
         </section>
 
@@ -547,6 +574,10 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
             correction worth making explicitly: many sites still list a summer extension to 18:00 from late
             April to the end of August. Neither official page carried it on {CHECKED}, so this guide does
             not print it.
+          </p>
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-22 · https://www.himejicastle.jp/en/ (adult ¥2,500, Himeji residents ¥1,000,
+            09:00–17:00, entry until 16:00)
           </p>
         </section>
 
@@ -721,7 +752,7 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>FAQ</span>
           <h2 className={styles.sectionTitle}>Common Questions</h2>
           <div className={styles.faqList}>
-            {faqItems.map((item, i) => (
+            {faqShown.map((item, i) => (
               <details key={item.q} className={styles.faqItem}>
                 <summary className={styles.faqSummary}>
                   <span>{i + 1}. {item.q}</span>

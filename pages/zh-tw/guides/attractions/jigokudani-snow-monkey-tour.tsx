@@ -51,10 +51,14 @@ const CHECKED = dateLabel(CHECKED_ISO, LOCALE);
 // 交通頁與首頁（12 月至 4 月網路票優先入園），與英文版及本頁數字一致，未變動。
 const RECHECKED_ISO = "2026-11-15";
 const RECHECKED = dateLabel(RECHECKED_ISO, LOCALE);
+// 2026-11-22（task-jtk-20261122-C01）：交通頁（79／38／15／41／35 分鐘）與時間頁（冬季 9:00–16:00、
+// 12 月 1 日票價調整告示）再次查核，數字未變動。票價金額本身出自 11-15 查核的調整公告。
+const ACCESS_ISO = "2026-11-22";
 const FEES_URL = "https://jigokudani-yaenkoen.co.jp/guide/";
 const ACCESS_URL = "https://jigokudani-yaenkoen.co.jp/access/";
 
 const factRows = [
+  { item: "結論", value: "成人 ¥1,000（12/1 起），冬季 9:00–16:00", note: "網路票 ¥880 且 12 月至 4 月優先入園，冬天自助前往先買網路票" },
   { item: "12 月 1 日起門票，成人（18 歲以上）", value: "現場 ¥1,000，網路票 ¥880", note: "11 月 30 日前 ¥800。20 人以上團體 ¥840，網路票 ¥740" },
   { item: "12 月 1 日起門票，兒童（小學到高中）", value: "現場 ¥500，網路票 ¥440", note: "11 月 30 日前 ¥400。未滿 6 歲由監護人陪同免費；團體 ¥420，網路票 ¥380" },
   { item: "開放時間，11 月至 3 月", value: "9:00–16:00", note: "請於閉園前 30 分鐘抵達" },
@@ -154,7 +158,7 @@ const faqItems = [
     a: `依公苑的票價公告，2026 年 12 月 1 日起現場票成人（18 歲以上）¥1,000、小學到高中兒童 ¥500，網路票為 ¥880 與 ¥440。11 月 30 日前仍是 ¥800 與 ¥400。未滿 6 歲由監護人陪同免費，20 人以上團體為 ¥840 與 ¥420（網路票 ¥740 與 ¥380），沒有敬老優惠，折扣不可併用。12 月至 4 月，購買當日網路票的遊客優先入園。查核日：${RECHECKED}。`,
   },
   {
-    q: "地獄谷野猿公苑交通：從東京怎麼去？",
+    q: "從東京去地獄谷怎麼去？",
     a: `依公苑的交通頁，東京到長野搭北陸新幹線最快 79 分鐘，轉長野電鐵特急到湯田中 38 分鐘，再搭 15 分鐘巴士到 Snow Monkey Park 站牌（或從長野站東口搭 41 分鐘急行巴士直達），然後步行約 35 分鐘。不算等車，單程將近三小時，而公苑冬季 16:00 閉園，所以從東京當天來回請一早出發，或把轉乘交給一日遊行程。查核日：${RECHECKED}。`,
   },
   {
@@ -168,34 +172,6 @@ const faqItems = [
   {
     q: "地獄谷門票需要事先預訂嗎？",
     a: "不是必要，但冬季值得先買。公苑販售指定日期的網路票，12 月至 4 月持票者優先入園，而且 2026 年 12 月 1 日起只要 ¥880，現場是 ¥1,000，所以旺季時網路票既能少排隊又比較便宜。跟團行程每天有名額上限，日期確定就訂，並查看商品頁關於雪天的取消條款。",
-  },
-  {
-    q: "走到雪猴那裡要多久？",
-    a: "從 Snow Monkey Park 巴士站約 35 分鐘，從上林溫泉的免費停車場約 30 分鐘（遊步道約 2 公里），從收費的地獄谷停車場約 15 分鐘，但冬季從澀溫泉上來的林道封閉，無法使用這座停車場。步道未鋪裝，有坡道和階梯，輪椅與推車無法通行。",
-  },
-  {
-    q: "什麼時候看雪猴最好？",
-    a: "想看泡湯就選 12 月到 3 月。公苑表示猴子主要在這段時間泡湯取暖，天氣暖時不太願意下水。海拔 850 公尺的冬天最低溫可到 −10°C、積雪超過一公尺，正是多數遊客想看的畫面。猴子是野生的，公苑每週會公布猴子出現機率預報，出發前請先確認。",
-  },
-  {
-    q: "冬天去地獄谷要穿什麼？",
-    a: "雪靴，有的話再加簡易冰爪。公苑的建議是冬季穿靴子或雪靴，夏季穿運動鞋或登山鞋，並用簡易冰爪（套在鞋上的輕便防滑釘）在壓實的雪和冰上走得更安全。請以 −10°C 而不是東京的氣溫來穿著，並空出雙手走階梯。",
-  },
-  {
-    q: "雪猴可以和澀溫泉或善光寺一起玩嗎？",
-    a: "可以，兩處都能順路安排。澀溫泉是公苑下方的溫泉街，住一晚時最適合順遊。善光寺在轉車的長野市區，Klook 有幾款地獄谷一日遊把它和公苑排在一起。自己從東京當天來回時，善光寺最適合排在回程的下午，但前提是您在冬季 16:00 閉園之前早早離開公苑。",
-  },
-  {
-    q: "可以帶小孩、嬰兒車或狗去地獄谷嗎？",
-    a: "小孩可以，嬰兒車和狗不行。未滿 6 歲由監護人陪同免費，但步道未鋪裝、有坡道和階梯，公苑表示輪椅與推車無法使用，小小孩請抱著或使用嬰兒背帶。狗和貓不得入園，導盲犬等輔助犬也一樣，因為狗是猴子的天敵。",
-  },
-  {
-    q: "野猿公苑有哪些規定？",
-    a: "不要餵食、觸摸或盯著猴子看。公苑的注意事項說，帶食物會讓猴子搶包包、抱住腿，近距離直視猴子的眼睛，會被視為敵意的表現，幼猴靠近時要走開。拍照甚至用閃光燈都沒問題，但禁止無人機和自拍棒，也不可把相機伸向猴子或伸進浴池。",
-  },
-  {
-    q: "JR Pass 或 JR EAST PASS 能到雪猴那裡嗎？",
-    a: "只到長野。JR EAST PASS（5 天 ¥35,000，10 天 ¥50,000）涵蓋東京到長野的北陸新幹線。長野以後的長野電鐵和巴士都是民營，需要另外付費，或購買長電的 SNOW MONKEY PASS，內含鐵路、湯田中巴士和公苑門票。",
   },
 ];
 
@@ -231,16 +207,17 @@ const sameTripItems: KlookTripPrepItem[] = [
 ];
 
 // H1 用與 title 相同的語序開頭，避免 Google 改用 slug 或徽章文字當標題。
-const TITLE = "地獄谷野猿公苑 2026：交通・門票・東京出發一日遊";
+// 2026-11-22（C01）：「一日遊」與門票金額放進 title 前段，交通的 H2 改成讀者的問法。
+const TITLE = "地獄谷野猿公苑一日遊 2026：雪猴交通・門票 ¥1,000";
 const DESC =
-  "地獄谷野猿公苑交通：東京到長野最快 79 分鐘，再轉車步行 35 分鐘；門票 12/1 起 ¥1,000，冬季 9:00–16:00。Klook 訂一日遊。";
+  "地獄谷野猿公苑一日遊：東京到長野最快 79 分鐘，轉車再步行 35 分鐘；門票 12/1 起 ¥1,000，冬季 9:00–16:00。Klook 訂東京團。";
 
 export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: PageUpdated }) {
   return (
     <>
       <Head>
         {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems.slice(0, 5)) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -258,7 +235,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 更新於 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-地獄谷野猿公苑 2026： <br />交通・門票・東京出發一日遊
+地獄谷野猿公苑一日遊 2026： <br />東京出發雪猴交通・門票 ¥1,000
 </h1>
           <p className={styles.heroSubtitle}>
 日本會泡溫泉的猴子棲息在長野市近郊山上的山谷裡，搭完新幹線後，還得轉搭電車和巴士，再走一段積雪的山路。這裡整理費用、時間，以及哪些情況適合跟團。
@@ -423,7 +400,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-票價出自公苑 2026 年 9 月 20 日的票價調整公告；開放時間與休園出自時間與票價頁（已確認 12 月 1 日調整，但表格仍是舊價）；網路票優先入園出自首頁；海拔與氣候出自英文介紹頁。票價、時間與優先入園於 {CHECKED} 在 jigokudani-yaenkoen.co.jp 查核。網路票在公苑的網路售票頁販售，長電也販售巴士加門票的版本。
+票價出自公苑 2026 年 9 月 20 日的票價調整公告；開放時間與休園出自時間與票價頁（頁面告示 12 月 1 日調整票價，表格仍列舊價）；網路票優先入園出自首頁；海拔與氣候出自英文介紹頁。票價、時間與優先入園於 {CHECKED} 在 jigokudani-yaenkoen.co.jp 查核。網路票在公苑的網路售票頁販售，長電也販售巴士加門票的版本。
 </p>
           <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Last checked: {RECHECKED_ISO} · {FEES_URL}
@@ -435,10 +412,10 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 交通方式
 </span>
           <h2 className={styles.sectionTitle}>
-從東京怎麼去看雪猴？
+從東京去地獄谷怎麼去？
 </h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-要轉乘四段交通，再走一段步道。第一段很快，後三段交通才是這趟行程能否順利完成的關鍵。
+<strong>從東京搭北陸新幹線到長野最快 79 分鐘，轉長野電鐵特急 38 分鐘到湯田中、再搭 15 分鐘巴士（或從長野站搭 41 分鐘急行巴士），最後步行約 35 分鐘，不含等車單程約 2 小時 50 分鐘。</strong>冬季 16:00 閉園，自助請一早出發，不想轉車就參加東京出發的一日遊。要轉乘四段交通，再走一段步道。第一段很快，後三段交通才是這趟行程能否順利完成的關鍵。
 </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -467,7 +444,7 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
 時間出自公苑交通頁（{CHECKED} 查核）；票券內容出自長野電鐵的 Snow Monkey 頁面（2026 年 11 月 3 日查核）。<strong>關於票價：</strong>這裡不列新幹線、長電電車和巴士的日圓票價。JR 東日本官網沒有可供查核票價的網頁，長電的票價表只以 PDF 公布，第三方對 2026-27 急行巴士的數字又彼此不一致，請在車站或業者官網確認。<Link href="/guides/transport/jr-east-pass" hrefLang="en" style={{ color: "var(--text)", fontWeight: 600 }}>JR 東日本周遊券攻略（英文）</Link>算出了周遊券何時比單買到長野划算。
 </p>
           <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Last checked: {RECHECKED_ISO} · {ACCESS_URL}
+            Last checked: {ACCESS_ISO} · {ACCESS_URL}
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={klookFor(jrEastPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

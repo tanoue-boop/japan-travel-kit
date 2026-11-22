@@ -850,6 +850,7 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             { href: "/guides/transport/tokyo-airport-limousine-bus", title: "東京機場利木津巴士（2026）：成田與羽田的票價、時間與停靠站（英文）" },
             { href: "/guides/attractions/sanrio-puroland-tickets", title: "三麗鷗彩虹樂園門票（2026）：票價、浮動定價與預約方式（英文）" },
             { href: "/guides/attractions/fuji-q-highland-tickets", title: "富士急樂園門票（2026）：一日券票價、Q Pack 與交通方式（英文）" },
+            { href: "/zh-tw/guides/attractions/jigokudani-snow-monkey-tour", title: "地獄谷野猿公苑一日遊（東京出發．2026）：雪猴交通與門票" },
             { href: "/guides/attractions/warner-bros-studio-tour-tokyo-tickets", title: "東京華納兄弟哈利波特影城門票（2026）：票價與預約方式（英文）" },
             { href: "/zh-tw/guides/attractions/shibuya-sky-tickets", title: "澀谷SKY 門票（2026）：票價、最佳時段與預約方式" },
             { href: "/zh-tw/guides/attractions/teamlab-planets-tickets", title: "teamLab Planets 門票 2026：票價、時間與預約方式" },

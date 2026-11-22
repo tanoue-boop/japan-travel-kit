@@ -877,7 +877,8 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
             지원합니다. 차이는 도시와 신칸센 구간 밖에서 나타나며, 일본 현지 사업자들이 지방용 요금제에 쓰는 통신망이
             Docomo입니다. 그리고 확인한 페이지 어디에도 커버리지 비율을 공개한 사업자가 없으므로, 제대로 고르려면
             홍보 문구가 아니라 요금제가 실제로 사용하는 통신망을 확인해야 합니다. 결제 페이지에 표시된 브랜드와
-            실제로 쓰는 통신망은 다릅니다.
+            실제로 쓰는 통신망은 다릅니다. 홋카이도 스키장처럼 도시 밖에서 리프트 운행 공지를 휴대폰으로 확인해야 하는 여행은{" "}
+            <Link href="/ko/guides/attractions/niseko-ski-tours" className={tools.inlineLink}>니세코 스키 투어 가이드</Link>(리프트권 1일 ¥8,800~¥13,500)를 함께 보세요.
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>

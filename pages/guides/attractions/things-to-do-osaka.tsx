@@ -218,7 +218,9 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
             {priceById("abenoHarukas").adult} for the Harukas 300 deck booked online. Those and the rest of Kansai —
             Himeji Castle, Nara, Kobe — are in our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={linkStyle}>Japan attraction ticket prices table</Link>,
-            each with the date it was read. When Universal Studios Japan and the other timed tickets go on sale is
+            each with the date it was read; the{" "}
+            <Link href="/guides/attractions/himeji-castle-day-trip" style={linkStyle}>Himeji Castle day trip from Osaka</Link>{" "}
+            is about an hour each way on the JR Special Rapid, for ¥2,500 admission. When Universal Studios Japan and the other timed tickets go on sale is
             in{" "}
             <Link href="/guides/attractions" style={linkStyle}>Japan attraction tickets to book in advance</Link>.
             For a hot-spring day out of Osaka, the{" "}

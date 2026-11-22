@@ -64,7 +64,8 @@ const SEARCH_TERMS = {
   // side of that group is the home page.
   "/": {
     "zh-tw": "日本旅遊實用指南",
-    "zh-cn": "日本旅游实用指南",
+    // 2026-11-22 (C01): zh-cn top title now leads with 「日本旅行指南 2026」.
+    "zh-cn": "日本旅行指南",
     ko: "일본 여행 준비 가이드",
     th: "ไกด์เที่ยวญี่ปุ่น",
   },

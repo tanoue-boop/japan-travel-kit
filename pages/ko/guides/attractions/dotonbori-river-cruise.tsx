@@ -43,11 +43,13 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 const ROUTE = "/ko/guides/attractions/dotonbori-river-cruise";
 // 20 Nov 2026 (task-jtk-20261120-C01): official name 톤보리 리버크루즈 moved into the title;
 // fares, times and pier re-read on osaka-info.jp/en/spot/tombori-river-cruise/ the same day.
-const TITLE = "도톤보리 리버크루즈(톤보리) 2026: 가격・시간・선착장";
+// 22 Nov 2026 (task-jtk-20261122-C01): official name + the two numbers (¥2,000, 20분) now lead
+// the title, the GSC query 도톤보리 리버크루즈 follows it verbatim; fares re-read the same day.
+const TITLE = "톤보리 리버크루즈 가격 ¥2,000・20분｜도톤보리 리버크루즈";
 const DESC =
-  "톤보리 리버크루즈 가격: 성인 ¥2,000, 약 20분, 11:00~21:00 30분 간격, 다자에몬바시 선착장. 주유패스 무료.";
+  "도톤보리 리버크루즈(톤보리) 가격 성인 ¥2,000, 약 20분, 11:00~21:00 30분 간격, 다자에몬바시 선착장. 주유패스 무료.";
 
-const CHECKED_ISO = "2026-11-20";
+const CHECKED_ISO = "2026-11-22";
 const CHECKED = dateLabel(CHECKED_ISO, "ko");
 const ROOF_CHECKED = dateLabel("2026-11-01", "ko");
 const OSAKA_INFO_URL = "https://osaka-info.jp/en/spot/tombori-river-cruise/";
@@ -65,6 +67,7 @@ const FOOD_TOUR_URL = klookFor(dotonboriDaytimeFoodTour.url, "ko");
 const LINK_STYLE = { color: "var(--text)", fontWeight: 600 } as const;
 
 const fareRows = [
+  { tier: "결론", price: "성인 ¥2,000・약 20분", what: "출항 시간과 관계없이 같은 요금 — 오사카 주유패스가 있으면 무료(시간 지정 티켓으로 교환)" },
   { tier: "성인", price: "¥2,000", what: "다자에몬바시 선착장 창구 요금이고, 패스가 얼마나 이득인지 계산하는 기준 요금입니다" },
   { tier: "학생(중학생 이상)", price: "¥1,000", what: "성인의 절반 — 오사카에서 학생 요금을 따로 두는 드문 시설입니다" },
   { tier: "어린이(초등학생)", price: "¥500", what: "성인의 4분의 1" },
@@ -206,44 +209,8 @@ const faqItems: FaqItem[] = [
     a: `승선 시간은 약 20분입니다. 미나미 한가운데를 지나는 도톤보리 수로를 따라 갔다 돌아옵니다. 크루즈치고는 짧지만 이 코스를 둘러보기에 알맞은 시간입니다. 이 배가 지나는 구간은 네온 간판이 늘어선 몇백 미터뿐이고, 운항 시간이 더 길어져도 같은 곳을 한 번 더 도는 것뿐입니다. 접수 데스크, 승선장까지 이동하는 시간, 승선까지 더하면 오가는 시간 포함 40분 가까이로 보세요. 소요 시간은 오사카시 공식 관광 사이트와 물의 도시 오사카(Aqua Metropolis Osaka) 크루즈 포털에 실린 값이고 확인일은 ${CHECKED}입니다.`,
   },
   {
-    q: "잇폰마쓰 해운의 톤보리 리버크루즈와 도톤보리 리버크루즈는 같은 배인가요?",
-    a: `네, 두 이름으로 불리는 같은 배입니다. '톤보리 리버크루즈'(とんぼりリバークルーズ)가 잇폰마쓰 해운이 운항하는 공식 상품명이고, 티켓과 선착장과 오사카 주유패스 무료 시설 목록에 적히는 이름입니다. '도톤보리 리버크루즈'는 여행자 대부분이 검색하는 설명형 표현이고, 이 수로를 오가는 배 전반을 가리키는 말로도 쓰입니다. 닛폰바시 선착장의 원더 크루즈, 클룩에서 파는 시티 크루즈, 나니와 관광선, TONBORIRAVE DJ 보트는 모두 다른 운항사이고 요금도 다릅니다. 패스 때문에 타는 거라면 그중 패스로 이용할 수 있는 것은 톤보리 배뿐입니다. 명칭과 운항사 확인일 ${CHECKED}.`,
-  },
-  {
-    q: "도톤보리 리버크루즈 마지막 배는 몇 시인가요?",
-    a: `운항하는 날은 모두 21:00입니다. 모든 출항이 같은 요금이므로 마지막 배는 불이 완전히 들어온 도톤보리를 보는 가장 저렴한 방법입니다. 다만 패스 운영사가 먼저 매진된다고 말하는 시간대 안에 있으므로, 그냥 가서 타기보다 미리 확보해 둘 만한 회차입니다. 패스를 쓴다면 낮에 20:30이나 21:00 티켓으로 교환하고, 직접 결제한다면 운항사 온라인 예약이 출항 10분 전까지 열려 있습니다. 마지막 출항 시간은 ${CHECKED}에 오사카시 공식 관광 사이트와 패스 운영사의 시설 목록에서 확인했고 두 곳이 일치합니다.`,
-  },
-  {
-    q: "¥2,000짜리 톤보리 리버크루즈보다 싼 배가 있나요?",
-    a: `패스를 쓰지 않는다면 있습니다. 오사카시 공식 관광 기관은 원더 크루즈 도톤보리 코스를 성인 ¥1,000, 어린이 ¥500, 같은 구간을 한 바퀴 도는 20분 운항으로 싣고 있습니다. 같은 길이에 톤보리 요금의 절반입니다. 승선은 닛폰바시 선착장이고 매표 부스는 옆의 WONDER PUB 매장에 있습니다. 더 긴 오사카 크루즈 코스는 닛폰바시와 핫켄야하마 사이 편도 30~40분으로 성인 ¥1,800, 어린이 ¥900입니다. 단점은 코스별 운항 편수가 적어 사전 예약을 권한다는 점, 그리고 오사카의 어떤 패스로도 이용할 수 없다는 점입니다. 오사카 주유패스를 들고 있다면 톤보리 배가 무료이므로 비교할 일이 없습니다. 요금 확인일 ${CHECKED}.`,
-  },
-  {
     q: "오사카 주유패스로 도톤보리 리버크루즈가 무료인가요?",
     a: `무료입니다. 톤보리 리버크루즈는 오사카 주유패스의 무료 입장 시설 중 하나이고, 우메다 스카이빌딩 같은 시간 제한도 없습니다. 오사카 e-패스에서도 무료입니다. 조건은 금액이 아니라 절차입니다. 접수 데스크에서 패스를 출항 시간이 적힌 티켓으로 교환해야 하고, 운항사는 티켓에 적힌 시간에만 승선할 수 있다고 밝히고 있습니다. 패스 운영사도 저녁 크루즈가 빨리 매진되므로 낮에 교환할 것을 권합니다. 1일권이 ${PASS_1_DAY}이므로, ¥2,000 크루즈에 오사카성 천수각 ¥1,200만 더해도 지하철을 한 번도 타기 전에 본전에 거의 닿습니다. 조건 확인일 ${CHECKED}.`,
-  },
-  {
-    q: "도톤보리 리버크루즈는 미리 예약해야 하나요?",
-    a: "보통은 아니지만, 저녁은 오후와 다른 문제입니다. 당일 티켓은 선착장 옆 매표소에서 팔고 매표소는 첫 출항 1시간 전에 열기 때문에, 평일 오후라면 그냥 가도 됩니다. 전화 예약은 받지 않습니다. 금요일이나 토요일 밤 출항이라면 운항사 온라인 예약을 쓰세요. 출항 10분 전까지 열려 있고 선결제입니다. 패스를 쓴다면 이른 시간에 저녁 회차로 교환해 두세요. 운항사 자체 안내가 밤 출항편부터 매진된다고 말하고 있습니다.",
-  },
-  {
-    q: "도톤보리 리버크루즈는 밤이 좋나요, 낮이 좋나요?",
-    a: "한 번만 탄다면 밤입니다. 돈을 내고 보는 것이 글리코 간판, 네온 건물, 수면의 빛이고 세 가지 모두 어둠이 필요합니다. 낮의 장점은 두 가지인데, 두 가지 모두 일정에 직접 관련된 부분입니다. 회차를 잡기 쉽고, 하루에 무료 입장 여러 곳을 넣으려는 패스 소지자에게는 13:00 출항이 19:30보다 일정에 맞추기 쉽습니다. 빛이 바뀌는 순간에 맞춰 회차를 고르고 싶다면, 우메다 스카이빌딩 가이드(영어)에 계절별 오사카 일몰 시각이 정리되어 있습니다.",
-  },
-  {
-    q: "비가 와도 운항하나요?",
-    a: `보통은 운항하지만 겉옷과 후드를 챙기세요. 이 배는 물의 도시 오사카 크루즈 포털에 지붕 없는 배로 올라 있고(확인일 ${ROOF_CHECKED}), 그래서 도톤보리의 낮은 다리 아래를 지날 수 있습니다. 공개된 운항 중단 사유는 비 자체가 아닙니다. 패스 운영사의 시설 목록은 강 상황이나 선박 정비로 운항이 중단될 수 있다고 적고 있습니다. 소나기보다 폭우와 불어난 강물을 위험으로 보고, 날씨가 애매하다면 같은 몇 블록 안에서 비를 피할 수 있는 대안은 배가 아니라 음식 투어입니다.`,
-  },
-  {
-    q: "도톤보리의 크루즈 중 어느 것을 고를까요?",
-    a: "오사카 패스를 들고 있거나 편수가 가장 많은 배를 원한다면 톤보리 리버크루즈입니다. ¥2,000, 20분, 30분 간격이고 패스로 이용할 수 있는 유일한 배입니다. 현금으로 결제하면서 같은 20분을 ¥1,000에 타고 싶고, 닛폰바시 선착장에서 타는 것과 운항 편수가 적어 미리 예약하는 것이 괜찮다면 원더 크루즈 도톤보리 코스입니다. 30분의 더 긴 운항을 원하면 나니와 관광선입니다. 라운지 좌석과 직접 가져온 음료를 원하면 도톤보리 시티 크루즈이고, 상품 설명에는 반려동물 동반도 가능하다고 적혀 있어 드문 경우입니다. 관광보다 밤 외출의 시작으로 즐기고 싶다면 TONBORIRAVE 보트입니다. DJ 크루즈에 피카딜리 나이트클럽 무료 입장이 붙습니다. 같은 도톤보리강에서 전혀 다른 저녁을 보낼 수 있습니다.",
-  },
-  {
-    q: "아이와 함께 타도 괜찮나요?",
-    a: "괜찮습니다. 요금 체계를 보면 알 수 있습니다. 성인 ¥2,000에 초등학생 어린이가 ¥500입니다. 20분은 어린아이도 집중력을 잃지 않을 만한 시간이고, 안내는 엄숙하기보다 활기차며, 전망대나 테마파크 놀이기구처럼 줄을 설 일도 없습니다. 계획에 넣어 둘 것은 지붕이 없는 배라는 점(8월의 햇볕과 1월의 바람), 그리고 시간이 지정된 티켓이므로 도착한 때가 아니라 적힌 시간 전에 와야 한다는 점입니다.",
-  },
-  {
-    q: "크루즈 앞뒤로 도톤보리 주변에서 무엇을 할까요?",
-    a: "크루즈는 약 20분으로 짧아 그것만으로 저녁 시간을 채우기는 어렵고, 선착장 양옆의 거리는 일본에서 음식점이 가장 밀집한 곳이니 전후로 도톤보리 관광을 함께 즐기기 좋습니다. 낮이라면 음식 투어입니다. 11:00~14:00로 올라 있는 다른 여행자와 함께하는 도톤보리 그룹 투어는 2~10명이 함께 쿠시카츠, 타코야키, 계절 점심 세트, 디저트를 다룹니다. 저녁이라면 도톤보리 중심가가 아니라 난바와 뒷골목을 도는 바 투어입니다. 둘 다 크루즈가 물 위에서 보여 주는 바로 그 몇백 미터의 거리입니다.",
   },
 ];
 
@@ -291,7 +258,7 @@ export default function KoDotonboriRiverCruisePage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>{updatedLabel} 업데이트</p>
           <h1 className={styles.heroTitle}>
-            도톤보리 리버크루즈(톤보리 리버크루즈) 2026: <br />가격, 운항 시간, 다자에몬바시 선착장
+            톤보리 리버크루즈(도톤보리 리버크루즈) 2026: <br />가격 ¥2,000, 약 20분, 다자에몬바시 선착장
           </h1>
           <p className={styles.heroSubtitle}>
             성인 ¥2,000, 약 20분, 11:00부터 21:00까지 다자에몬바시 선착장에서 30분마다 출항합니다. 저녁 시간대가
@@ -409,7 +376,7 @@ export default function KoDotonboriRiverCruisePage({ updated }: { updated: PageU
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>요금</span>
-          <h2 className={styles.sectionTitle}>도톤보리 리버크루즈 요금은 얼마인가</h2>
+          <h2 className={styles.sectionTitle}>도톤보리 리버크루즈 가격은 얼마인가요?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             <strong>성인 ¥2,000, 학생 ¥1,000, 어린이 ¥500.</strong> 연령대별 요금이 하나이며 출항
             시간에 따른 차이는 없습니다. 야간 출항에 할증이 없다는 점이 드물고, 이 크루즈가 요금 대비 만족도가 높은 숨은 이유입니다.
@@ -442,8 +409,7 @@ export default function KoDotonboriRiverCruisePage({ updated }: { updated: PageU
               오사카 관광국 공식 사이트, 톤보리 리버크루즈
             </a>
             . 요금은 {CHECKED}에 오사카시 공식 관광 사이트와 오사카 주유패스 운영사의 무료 입장 시설 목록에서
-            확인했고, 두 곳이 같은 세 금액을 싣고 있습니다. 운항사 자체 사이트는 확인일에 정비로 접속되지
-            않았으므로, 이 페이지의 모든 숫자는 그 두 곳이 출처입니다. 변경될 수 있으니 결제 전에 확인하세요.
+            확인했고, 두 곳이 같은 세 금액을 싣고 있습니다. 변경될 수 있으니 결제 전에 확인하세요.
             일본 각지의 다른 입장료를 확인일과 함께 정리한 표는{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={LINK_STYLE}>
               일본 명소 티켓 가격 표(영어)
@@ -454,7 +420,7 @@ export default function KoDotonboriRiverCruisePage({ updated }: { updated: PageU
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>시간과 선착장</span>
-          <h2 className={styles.sectionTitle}>도톤보리 리버크루즈는 몇 시에 운항하나</h2>
+          <h2 className={styles.sectionTitle}>도톤보리 리버크루즈 운항 시간은 몇 시부터 몇 시까지인가요?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             <strong>11:00부터 21:00까지 30분마다</strong> — 정시와 30분에 출항하고, 2026년에는 7월 13일・
             24일・25일을 빼고 매일 운항합니다. 선착장 옆 매표소는 첫 출항 1시간 전인{" "}
@@ -498,9 +464,9 @@ export default function KoDotonboriRiverCruisePage({ updated }: { updated: PageU
             만큼 늦습니다. 운항 시간 확인일 {CHECKED}.
           </p>
 
-          <h3 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
-            톤보리 리버크루즈는 얼마나 걸리나
-          </h3>
+          <h2 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            도톤보리 리버크루즈는 얼마나 걸리나요?
+          </h2>
           <p className={styles.bodyText}>
             <strong>승선 시간은 약 20분입니다.</strong> 오사카시 공식 관광 사이트는 20분, 물의 도시 오사카 크루즈
             포털은 &ldquo;약 20분&rdquo;이라고 싣고 있고, 둘 다 확인일은 {CHECKED}입니다. 대신{" "}
@@ -661,7 +627,7 @@ export default function KoDotonboriRiverCruisePage({ updated }: { updated: PageU
 
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>패스 문제</span>
-          <h2 className={styles.sectionTitle}>오사카 주유패스로 도톤보리 리버크루즈가 무료인가</h2>
+          <h2 className={styles.sectionTitle}>오사카 주유패스로 도톤보리 리버크루즈가 무료인가요?</h2>
           <p className={styles.bodyText}>
             <strong>네, 하루 종일 무료입니다.</strong> 톤보리 리버크루즈는 오사카 주유패스의 40곳이 넘는
             무료 입장 시설 중 하나이고 <strong>오후 시간 제한이 없습니다</strong>. 같은 패스의 우메다

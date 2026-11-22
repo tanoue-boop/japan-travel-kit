@@ -929,6 +929,7 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             { href: "/guides/transport/tokyo-transportation", title: "도쿄 교통 가이드(2026): 전철, 지하철, 교통카드 정리(영어)" },
             { href: "/guides/attractions", title: "일본에서 할 것 더 보기(영어) →" },
             { href: "/ko/guides/attractions/usj-tickets-express-pass", title: "유니버설 스튜디오 재팬 익스프레스 패스(2026): 티켓은 어떤 것을 살까" },
+            { href: "/ko/guides/attractions/dotonbori-river-cruise", title: "톤보리 리버크루즈 가격 ¥2,000・20분: 도톤보리 리버크루즈 가이드" },
             { href: "/guides/attractions/sumo-tokyo-tickets", title: "도쿄에서 스모 보기(2026): 본대회 티켓 vs 아침 연습(영어)" },
           ]}
         />

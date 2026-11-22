@@ -804,7 +804,8 @@ const hokkaidoRows = [
   { leg: "第 12 天", plan: "从新千岁离开，或回到东京。这个版本唯一的风险是 2 月下雪关闭机场，所以不要订当天最后一班" },
 ];
 
-const faqItems = [
+/** The full answer set; the visible FAQ and FAQPage use the five chosen in faqItems below. */
+const faqAll = [
   {
     q: "日本冬天值得去吗？",
     a: `值得，而且有三个其他季节没有的理由。可直接入内的景点，也就是京都大部分和整个奈良公园，在新年周到梅花开之间人最少。太平洋侧空气干燥清澈，只有这时能稳定从东京观景台看到富士山。而夏天只是次要绕路的日本海侧成了主角：金泽兼六园和白川乡合掌村在雪中都更美。代价是日照。12 月下午四点半左右就天黑，观光时间变短，所以这份行程在东京每天都排了晚上的活动，而不是当成附加。`,
@@ -847,9 +848,74 @@ const faqItems = [
   },
 ];
 
-const TITLE = "日本冬季行程（2027）：12 天路线逐日安排";
+/**
+ * 2026-11-22 (C01): five questions, the two H2 questions first in the same words. Three
+ * answers are kept from faqAll; the other seven stay in faqAll unused, since their
+ * content is in the body sections (packing, JR Pass, snow) or out of this page's scope.
+ */
+const faqPick = (q: string) => {
+  const item = faqAll.find((f) => f.q === q);
+  if (!item) throw new Error(`japan-winter-itinerary: no FAQ "${q}"`);
+  return item;
+};
+const faqItems = [
+  {
+    q: "日本冬天去哪里玩？",
+    a: "看雪景去日本海侧和山区，滑雪离东京最近是 GALA 汤泽，粉雪和雪祭去北海道。具体来说：白川乡合掌村 1 月积雪最深，2027 年冬季亮灯只有 1 月 11、17、24、31 日四晚（17:30–19:30），完全预约制、当天不售票；GALA 汤泽从东京站坐上越新干线直达，雪道 2026 年 12 月 19 日到 2027 年 5 月 5 日开放；第 77 届札幌雪祭 2027 年 2 月 4–11 日，三个会场免费入场；二世谷四个雪场预定 2026 年 11 月 28 日开放。东京、京都、大阪通常不下大雪。日期均于 2026 年 11 月 22 日在各主办方官网核查。",
+  },
+  {
+    q: "北海道冬天几天够？",
+    a: "只玩北海道的话 7 天：札幌、小樽、旭山动物园和富良野、美瑛各占一到两天，本站北海道 7 日游就是这条逐日路线；只有 5 天就删掉富良野之后的一天和札幌的一晚。要滑雪的话，本页北海道版给二世谷或留寿都留 3 天（第 9–11 天）。2 月上旬去，札幌雪祭（2027 年 2 月 4–11 日）和小樽雪灯之路（2 月 6–13 日）可以排在同一周。想同时去东京的话，本页北海道版是东京 4 天加北海道 8 天的 12 天行程；2 月下雪可能关闭机场，回程不要订当天最后一班。",
+  },
+  faqPick("冬天去日本要几天？"),
+  faqPick("冬季行程要提前预订吗？"),
+  faqPick("日本 12 月、1 月、2 月有多冷？"),
+];
+
+// 2026-11-22 (C01): GSC 28-day CTR 0% at pos 9.8 — season, 北海道・雪景・滑雪 first, then the route length.
+const TITLE = "日本冬季行程 2026-27：北海道・雪景・滑雪・12天路线";
 const DESC =
-  "日本冬季行程 12 天怎么排：东京、金泽、白川乡、高山、京都和大阪，每天一张表，并附冬季活动日期、气温和该先预订的项目。";
+  "日本冬季行程 2026-27 怎么排：12 天东京、金泽、白川乡、高山、京都、大阪，另附北海道雪祭版、看雪滑雪地点、气温和要先订的项目。";
+
+/**
+ * 「日本冬天去哪里玩？」 — the first row is the answer, the rest are the four places it
+ * names. Every date was re-read on the organiser's own site on WHERE_CHECKED_ISO:
+ * shirakawa-go.gr.jp/events/441/, snowfes.com/news/948.html, gala.co.jp (2026-27 season
+ * calendar) and niseko.ne.jp/en/lift/.
+ */
+const WHERE_CHECKED_ISO = "2026-11-22";
+const whereRows = [
+  {
+    place: "结论",
+    what: "看雪景去日本海侧的白川乡、金泽；滑雪离东京最近是 GALA 汤泽，粉雪去北海道二世谷；2 月上旬可以加札幌雪祭",
+    when: "1 月最冷、积雪最深；雪祭在 2 月 4–11 日",
+    getting: "本页 12 天路线走东京 → 金泽 → 白川乡 → 京都 → 大阪，北海道版见下文",
+  },
+  {
+    place: "白川乡（岐阜）",
+    what: "雪中的合掌村，冬季亮灯",
+    when: "亮灯 2027 年 1 月 11、17、24、31 日 17:30–19:30，完全预约制，当天不售票",
+    getting: "金泽或高山坐预约制高速巴士，没有火车站",
+  },
+  {
+    place: "札幌（北海道）",
+    what: "第 77 届札幌雪祭，三个会场免费入场",
+    when: "2027 年 2 月 4–11 日，共 8 天",
+    getting: "飞新千岁机场，再坐 JR 进札幌",
+  },
+  {
+    place: "GALA 汤泽（新潟）",
+    what: "从东京当天往返滑雪，车站和缆车站是同一栋建筑",
+    when: "雪道 2026 年 12 月 19 日–2027 年 5 月 5 日；12 月 12–18 日仅观光运行",
+    getting: "东京站坐上越新干线直达",
+  },
+  {
+    place: "二世谷（北海道）",
+    what: "粉雪滑雪，四个雪场一张通票",
+    when: "四个雪场预定 2026 年 11 月 28 日开放，按雪场 2027 年 4 月 4 日–5 月 5 日关闭",
+    getting: "新千岁机场坐能放雪具的直达巴士",
+  },
+];
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -878,7 +944,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 更新于 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-日本冬季行程（2027）： <br />12 天路线逐日安排
+日本冬季行程 2026-27： <br />北海道・雪景・滑雪・12 天路线
 </h1>
           <p className={styles.heroSubtitle}>
 东京、金泽、白川乡、高山、京都和大阪，加上日期固定的两个冬季活动，其中一项活动完全不出售当日门票。
@@ -931,7 +997,47 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 
                 <section className={styles.bodySection}>
           <p className={styles.bodyText}>
+<strong>日本冬季行程 2026-27 的答案：12 天、5 个住宿地点，主线是东京 → 金泽 → 白川乡 → 高山 → 京都 → 大阪；看雪景去白川乡和金泽，滑雪离东京最近的是东京站坐上越新干线直达的 GALA 汤泽，北海道版则换成札幌雪祭（2027 年 2 月 4–11 日）和二世谷。</strong>日期固定、必须先订的是白川乡亮灯：2027 年只有 1 月 11、17、24、31 日四晚，当天不售票。
+</p>
+          <p className={styles.bodyText}>
 这份<strong>日本冬季行程</strong>共<strong>十二天、五个住宿地点</strong>（东京 4 晚、金泽 2 晚、高山 2 晚、京都 2 晚、大阪 1 晚）。这份行程不是单纯罗列景点，而是按冬季旅行的三项变化来安排。主轴是北陆新干线从东京到金泽（根据 JR 西日本为 <strong>2 小时 28 分钟</strong>），再乘坐须预约的高速巴士进入山区，然后经东海道线前往关西。有两项活动的日期固定，无法调整：<strong>白川乡冬季亮灯只有 2027 年 1 月 11、17、24、31 日四个晚上，每晚 17:30–19:30，主办方当天完全不出售门票</strong>；<strong>第 77 届札幌雪祭是 2027 年 2 月 4–11 日</strong>，免费入场。白天很短，12 月下午四点半左右就天黑，根据日本气象厅 1991–2020 年平年值，1 月均温东京 5.4°C、札幌 −3.2°C。下面的活动日期、气温和票价都附出处：活动日期和巴士票价于 {REREAD} 重新核查，气候平年值于 {CHECKED} 核查。
+</p>
+        </section>
+
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>去哪里</span>
+          <h2 className={styles.sectionTitle}>日本冬天去哪里玩？</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+看雪景去日本海侧的白川乡和金泽，滑雪离东京最近是 GALA 汤泽，粉雪和雪祭去北海道的二世谷和札幌。东京、京都、大阪通常不下大雪，所以本页路线从东京往日本海侧绕一圈再到关西。
+</p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["去哪里", "看什么／玩什么", "2026-27 日期", "怎么去"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {whereRows.map((row) => (
+                    <tr key={row.place}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.place}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.what}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.when}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.getting}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+Last checked: {WHERE_CHECKED_ISO}。出处：白川乡观光协会 https://shirakawa-go.gr.jp/events/441/ ；札幌雪祭 https://www.snowfes.com/news/948.html ；GALA 汤泽 https://gala.co.jp/winter/hours-pricing/ ；Niseko United https://www.niseko.ne.jp/en/lift/ 。雪场开放日期会因积雪变化，出发前请再看官网。
+</p>
+          <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
+只想滑雪的话看<Link href="/zh-cn/guides/attractions/niseko-ski-tours">二世谷滑雪攻略</Link>，只去北海道看<Link href="/zh-cn/guides/attractions/hokkaido-7-day-itinerary">北海道 7 日游</Link>；门票、eSIM 和机场交通这些冬夏都一样的行前准备，整理在<Link href="/zh-cn">日本旅行指南 2026</Link>首页。
 </p>
         </section>
 
@@ -1382,6 +1488,15 @@ JR 东日本南北海道周游券 →
 留寿都机场接驳 →
 </KlookLink>
           </div>
+        </section>
+
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>北海道天数</span>
+          <h2 className={styles.sectionTitle}>北海道冬天几天够？</h2>
+          <p className={styles.bodyText}>
+<strong>只玩北海道的话 7 天：札幌、小樽、旭山动物园和富良野、美瑛，按<Link href="/zh-cn/guides/attractions/hokkaido-7-day-itinerary">北海道 7 日游</Link>的逐日路线；要滑雪的话，上表北海道版给二世谷或留寿都留 3 天（第 9–11 天）。</strong>
+2 月上旬去，札幌雪祭（2027 年 2 月 4–11 日）和小樽雪灯之路（2 月 6–13 日）可以排在同一周；滑雪为主的旅行，接送、教练课和四个雪场怎么选见<Link href="/zh-cn/guides/attractions/niseko-ski-tours">二世谷滑雪攻略</Link>。
+</p>
         </section>
 
                 <section className={styles.comparisonSection}>

@@ -685,7 +685,7 @@ Rhythm 私人課 →
 住札幌？訂一日行程
 </p>
               <p className={styles.whoForDesc}>
-這種情況才真正需要預訂滑雪一日遊。依 Niseko United 的數字單程 2 到 3.5 小時，自己安排的話白天都在巴士上。纜車券加巴士商品販售 Grand Hirafu 的固定時段，交通與纜車券都包含在同一筆費用中。
+這種情況才真正需要預訂滑雪一日遊。依 Niseko United 的數字單程 2 到 3.5 小時，自己安排的話白天都在巴士上。纜車券加巴士商品販售 Grand Hirafu 的固定時段，交通與纜車券都包含在同一筆費用中。札幌住 4 晚的一週怎麼排，請看<Link href="/zh-tw/guides/attractions/hokkaido-7-day-itinerary">北海道7天行程</Link>。
 </p>
             </div>
             <div className={styles.whoForCard}>

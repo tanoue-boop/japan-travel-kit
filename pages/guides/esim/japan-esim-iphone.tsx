@@ -1133,6 +1133,17 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
           </div>
         </section>
 
+        {/* Added 22 Nov 2026 (task-jtk-20261122-C01): what size of plan to install. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Not sure what size of plan to install on the iPhone? The{" "}
+            <Link href="/guides/esim/japan-esim-data-plans" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM data plans
+            </Link>{" "}
+            guide works out how much data you need for Japan — 0.5 to 1.5 GB a day — from 1 GB plans to unlimited.
+          </p>
+        </section>
+
         {/* Related articles */}
         <section className={styles.relatedSection}>
           <span className={styles.sectionLabel}>Related guides</span>

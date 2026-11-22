@@ -713,6 +713,8 @@ export default function JapanSimCardForStudentsPage({ updated }: { updated: Page
             than your second month. Sakura Mobile&apos;s monthly Voice page states the plan comes{" "}
             <strong>&ldquo;with no Japanese bank account required&rdquo;</strong>, and its resident plan guide
             says it again: &ldquo;You do not need a Japanese bank account or a local credit card.&rdquo;
+            Which multi-currency card a student in Japan can pay it with is covered in the{" "}
+            <Link href="/guides/money/best-travel-card-japan">best travel card for Japan</Link> guide.
           </p>
           <p className={styles.bodyText}>
             The dependency runs the other way round, which is the useful thing to know on arrival. Japan Post

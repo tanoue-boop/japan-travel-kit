@@ -343,7 +343,12 @@ export default function RevolutCardJapanPage({ updated }: { updated: PageUpdated
           <p className={styles.bodyText}>
             Revolut is an app-based account with a linked debit card, sold on free and paid plans. What changes between
             them is how much you can withdraw and exchange before fees begin, and that also depends on the country your
-            account is registered in, not on Japan.
+            account is registered in, not on Japan. How Revolut sits against Wise and Starling on fees and free ATM
+            cash is set out in the{" "}
+            <Link href="/guides/money/best-travel-card-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              best travel card for Japan
+            </Link>{" "}
+            comparison.
           </p>
         </section>
 

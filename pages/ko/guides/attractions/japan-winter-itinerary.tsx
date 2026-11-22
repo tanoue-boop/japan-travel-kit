@@ -649,7 +649,7 @@ const days: Day[] = [
     ],
     book: (
       <>
-두 가지이고, 첫 번째 예약이 필요한지는 패스 여부에 따라 달라집니다. 오사카 주유패스는 40곳 이상의 시설과 그 사이 메트로를 포함해 오사카의 빡빡한 하루에 매우 유리합니다. teamLab 정원은 포함되지 않으며 별도 티켓입니다. teamLab 공식 요금은 성인 ¥1,800, 6~15세 ¥500이고 현장은 ¥2,000, ¥600입니다. <Link href="/guides/attractions/teamlab-botanical-garden-osaka-tickets" hrefLang="en">teamLab 식물원 오사카 가이드(영어)</Link>에 날짜별 시간, 우천 규칙, 공식 티켓의 날짜 변경 3회를 정리했습니다. 숙소는 미도스지선이 좋습니다. 나가이에서 21:00에 끝나도 열차 한 번이면 돌아옵니다. 비교는 <Link href="/guides/attractions/where-to-stay-in-osaka" hrefLang="en">오사카 숙소 가이드(영어)</Link>에 있습니다. 오사카에 하루를 더 쓸 수 있다면 유니버설 스튜디오 재팬도 후보입니다. 주유패스에 포함되지 않고 티켓은 날짜 지정 온라인 판매이며, 익스프레스 패스 종류까지 <Link href="/ko/guides/attractions/usj-tickets-express-pass">유니버설 스튜디오 재팬 익스프레스 패스 가이드</Link>에 정리했습니다.
+두 가지이고, 첫 번째 예약이 필요한지는 패스 여부에 따라 달라집니다. 오사카 주유패스는 40곳 이상의 시설과 그 사이 메트로를 포함해 오사카의 빡빡한 하루에 매우 유리합니다. 오후의 리버 크루즈도 그중 하나로, <Link href="/ko/guides/attractions/dotonbori-river-cruise">도톤보리 리버크루즈(톤보리 리버크루즈) 가이드</Link>에 성인 ¥2,000, 약 20분, 저녁 회차를 미리 교환하는 방법을 정리했습니다. teamLab 정원은 포함되지 않으며 별도 티켓입니다. teamLab 공식 요금은 성인 ¥1,800, 6~15세 ¥500이고 현장은 ¥2,000, ¥600입니다. <Link href="/guides/attractions/teamlab-botanical-garden-osaka-tickets" hrefLang="en">teamLab 식물원 오사카 가이드(영어)</Link>에 날짜별 시간, 우천 규칙, 공식 티켓의 날짜 변경 3회를 정리했습니다. 숙소는 미도스지선이 좋습니다. 나가이에서 21:00에 끝나도 열차 한 번이면 돌아옵니다. 비교는 <Link href="/guides/attractions/where-to-stay-in-osaka" hrefLang="en">오사카 숙소 가이드(영어)</Link>에 있습니다. 오사카에 하루를 더 쓸 수 있다면 유니버설 스튜디오 재팬도 후보입니다. 주유패스에 포함되지 않고 티켓은 날짜 지정 온라인 판매이며, 익스프레스 패스 종류까지 <Link href="/ko/guides/attractions/usj-tickets-express-pass">유니버설 스튜디오 재팬 익스프레스 패스 가이드</Link>에 정리했습니다.
 </>
     ),
     picks: [
@@ -1229,7 +1229,7 @@ JAPAN RAIL PASS 보기 →
 일본 어디서 눈을 볼 수 있나요?
 </h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-대체로 도쿄, 교토, 오사카는 아닙니다. 세 도시는 태평양 쪽이라 눈이 흔하지 않아 눈이 내리면 뉴스에 나올 정도입니다. 눈은 산과 동해 쪽에 있으며, 중요한 질문은 어디가 가장 깊은가가 아니라 어떤 설경·눈 체험이 자신의 여행에 맞는가입니다.
+대체로 도쿄, 교토, 오사카는 아닙니다. 세 도시는 태평양 쪽이라 눈이 흔하지 않아 눈이 내리면 뉴스에 나올 정도입니다. 눈은 산과 동해 쪽에 있으며, 중요한 질문은 어디가 가장 깊은가가 아니라 어떤 설경·눈 체험이 자신의 여행에 맞는가입니다. 파우더 스키가 목적이라면 2026년 11월 28일 개장하는 <Link href="/ko/guides/attractions/niseko-ski-tours">니세코 스키 투어(리프트권·렌탈·셔틀)</Link>가 기준입니다.
 </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

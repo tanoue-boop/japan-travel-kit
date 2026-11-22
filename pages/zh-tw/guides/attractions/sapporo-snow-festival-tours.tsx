@@ -640,7 +640,7 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-有兩件事要自己決定。4 號車的 <strong>U-Seat（uシート）指定席</strong>需另加 ¥1,000，以無紙化車票（ticketless）預約加 ¥800，2 月普通車廂常被雪具塞滿，所以值得。<strong>JR 北海道周遊券</strong>只有離開市區才划算：機場來回約 ¥2,460，所以周遊券要看的是小樽、旭川和登別，而不是機場。請用自己的路段計算。票價查核日：{OWN}；<Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR Pass 攻略（英文）</Link>用同樣方法計算全國版。
+有兩件事要自己決定。4 號車的 <strong>U-Seat（uシート）指定席</strong>需另加 ¥1,000，以無紙化車票（ticketless）預約加 ¥800，2 月普通車廂常被雪具塞滿，所以值得。<strong>JR 北海道周遊券</strong>只有離開市區才划算：機場來回約 ¥2,460，所以周遊券要看的是小樽、旭川和登別，而不是機場。請用自己的路段計算；札幌→小樽→旭川→富良野一週的實際算法（鐵路每人低於 ¥18,000）在<Link href="/zh-tw/guides/attractions/hokkaido-7-day-itinerary">北海道7天行程</Link>。票價查核日：{OWN}；<Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR Pass 攻略（英文）</Link>用同樣方法計算全國版。
 </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={klookFor(newChitoseAirportTransfers.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

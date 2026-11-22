@@ -65,8 +65,10 @@ const checkedLabel = formatDate(checkedAt);
 const SPECS_CHECKED = "29 Oct 2026";
 
 // CTR pass, 15 Nov 2026 (C01): title and H1 are one string in one word order, so the result
-// snippet has no badge or slug text to fall back on. "How many GB" is the query shape.
-const TITLE = "Japan eSIM Data Plans (2026): How Many GB You Need & Prices";
+// snippet has no badge or slug text to fall back on.
+// CTR pass, 22 Nov 2026 (task-jtk-20261122-C01): the size range leads — "1GB to Unlimited" is the
+// number a searcher scans for — and the question H2 is the verbatim "How much data do I need for Japan?".
+const TITLE = "Japan eSIM Data Plans 2026: 1GB to Unlimited Compared";
 const H1 = TITLE;
 const ROUTE = "/guides/esim/japan-esim-data-plans";
 
@@ -325,7 +327,9 @@ const timingRows = [
   },
 ];
 
-// The first five go into FAQPage, in the order searchers ask them; the rest stay on the page.
+// Five questions, all in FAQPage, in the order searchers ask them (cut from ten on 22 Nov 2026:
+// install timing, phone number, top-up, value per GB and update frequency each have their own
+// section or table above).
 const faqItems = [
   {
     q: "How many GB of eSIM data do I need for Japan?",
@@ -584,12 +588,17 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
 
         <EsimCtaTop />
 
-        {/* Q: How much data do I need in Japan per day? */}
+        {/* Q: How much data do I need for Japan? (verbatim search question, 22 Nov 2026) */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Per day</span>
-          <h2 className={styles.sectionTitle}>How much data do I need in Japan per day?</h2>
+          <h2 className={styles.sectionTitle}>How much data do I need for Japan?</h2>
           <p className={styles.bodyText}>
-            <strong>0.5 GB a day</strong> if your phone is doing maps, messaging and a few photo uploads;{" "}
+            About <strong>1 GB a day</strong>, so <strong>7 GB for a week</strong> and <strong>10 GB for a
+            10-day trip</strong> — the first row of the table below is that answer, with the cheapest plan on sale
+            that covers it.
+          </p>
+          <p className={styles.bodyText}>
+            In detail: <strong>0.5 GB a day</strong> if your phone is doing maps, messaging and a few photo uploads;{" "}
             <strong>1 GB a day</strong> once you add video calls and some streaming; <strong>1.5 GB a day</strong>{" "}
             if you tether a laptop or watch video on trains. Multiply by the nights you are away and buy the next
             plan up — the table below has done both for you, with the cheapest plan on sale against each row.
@@ -1033,7 +1042,7 @@ export default function JapanEsimDataPlansPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>FAQ</span>
           <h2 className={styles.sectionTitle}>Common Questions</h2>
           <div className={styles.faqList}>
-            {faqItems.map((item, i) => (
+            {faqItems.slice(0, 5).map((item, i) => (
               <details key={item.q} className={styles.faqItem}>
                 <summary className={styles.faqSummary}>
                   <span>{i + 1}. {item.q}</span>

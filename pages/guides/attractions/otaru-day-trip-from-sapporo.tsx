@@ -861,7 +861,8 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
                 A ski hill or a snow park is a lift ticket, a rental and a transfer, and the listings sell
                 all three in one booking. For a traveller carrying no gear this is cheaper to organise than
                 it is to assemble, and in February it is the thing that gives an outdoor Otaru afternoon an
-                indoor or active morning.
+                indoor or active morning. Teine, Kiroro and Rusutsu as a day on their own are compared in the{" "}
+                <Link href="/guides/attractions/sapporo-ski-day-trip">Sapporo ski day trip</Link> guide.
               </p>
             </div>
             <div className={styles.whoForCard}>

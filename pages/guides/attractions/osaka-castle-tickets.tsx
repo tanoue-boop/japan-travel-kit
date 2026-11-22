@@ -608,7 +608,10 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass</Link> guide
             has the full 40-plus inclusion list, the two-day price and the two big exclusions, and{" "}
             <Link href="/guides/attractions/things-to-do-osaka">things to do in Osaka</Link> lays out
-            how to split a two or three-day trip around them. Facility list read on {CHECKED}.
+            how to split a two or three-day trip around them. Facility list read on {CHECKED}. For an
+            original keep rather than a reconstruction, the{" "}
+            <Link href="/guides/attractions/himeji-castle-day-trip">Himeji Castle day trip from Osaka</Link>{" "}
+            is about an hour each way by JR Special Rapid.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
             <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

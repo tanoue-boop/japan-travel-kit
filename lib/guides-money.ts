@@ -13,7 +13,7 @@ export const moneyArticles: GuideArticle[] = [
   {
     href: "/guides/money/best-travel-card-japan",
     badge: "Guide",
-    title: "Best Travel Card for Japan (2026): Fees and ATM Limits Compared",
+    title: "Best Travel Card for Japan 2026: Wise vs Revolut vs Starling",
     desc: "Debit, prepaid and credit compared on card cost, foreign transaction fees, exchange rate and Japanese ATM fees — plus which card to carry from the US, UK, Australia, Canada and the Eurozone.",
     group: "cards",
     city: "other",
