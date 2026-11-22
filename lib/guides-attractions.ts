@@ -288,6 +288,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/mt-takao-day-trip",
+    badge: "Day trip",
+    title: "Mt Takao Day Trip (2026): Trains, Trails & Cable Car Fares",
+    desc: "Keio Line from Shinjuku to Takaosanguchi for ¥430, the cable car at ¥490 one way, Trails 1, 6 and Inariyama by length and time, and when the autumn leaves peak — from Keio, the railway and the Visitor Center.",
+    group: "daytrips",
+    city: "tokyo",
+  },
+  {
     href: "/guides/attractions/yokohama-day-trip",
     badge: "Day trip",
     title: "Yokohama Day Trip from Tokyo (2026): Trains & Day Passes",
@@ -795,6 +803,14 @@ export const attractionArticles: GuideArticle[] = [
     desc: "Osaka rewards a pass more than most Japanese cities, with one large exception — Universal Studios Japan, which no pass covers.",
     group: "cities",
     city: "osaka",
+  },
+  {
+    href: "/guides/attractions/tokyo-new-years-eve",
+    badge: "Experience",
+    title: "Tokyo New Year's Eve 2026: Countdown, Trains & Hatsumode",
+    desc: "31 December from 22:00 to 2:00: Meiji Jingu open all night, Senso-ji's bell at midnight, Zojoji's earlier bell, the countdown cruise, and the JR extra trains after the last one — from each official site.",
+    group: "experiences",
+    city: "tokyo",
   },
   {
     href: "/guides/attractions/kimono-rental-japan",

@@ -593,6 +593,9 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
             December is in the{" "}
             <Link href="/guides/attractions/tokyo-christmas-itinerary" style={{ color: "var(--text)", fontWeight: 600 }}>
               Tokyo Christmas itinerary
+            </Link>, and the 31 December countdown sailing, with the trains home after midnight, is in{" "}
+            <Link href="/guides/attractions/tokyo-new-years-eve" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Tokyo New Year&apos;s Eve
             </Link>. For the admissions in this
             guide across the rest of Japan, each with its own check date, see our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
@@ -695,6 +698,19 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
               </div>
               <div className={styles.relatedMeta}>
                 <p className={styles.relatedTitle}>Tokyo Christmas Itinerary 2026: 3 Days, Lights &amp; Markets</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            {/* Added 22 Nov 2026: 31 Dec in Tokyo — the countdown cruise, shrines and late trains. */}
+            <Link href="/guides/attractions/tokyo-new-years-eve" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Tokyo New Year&apos;s Eve 2026: Countdown, Trains &amp; Hatsumode</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

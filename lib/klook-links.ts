@@ -11606,3 +11606,118 @@ export const tokyoChristmasTripPrep: KlookTripPrepItem[] = [
     why: "The 72-hour ticket covers Tokyo Metro and Toei for all three days: Roppongi, Hibiya, Onarimon for Shiba Park and Asakusa. It does not cover JR or the Yurikamome.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Tokyo New Year's Eve — added 22 Nov 2026 (task-jtk-20261122-02).
+//
+// No new Klook URL. Confirmed as live en-US pages through the www.klook.com search
+// index on 22 Nov 2026:
+//   98401   "Countdown Cruise 2026-2027 (Tokyo / Provided by Symphony Cruise)" — the
+//           slug still says 2023-2024; the en-US title is the 2026-2027 sailing      6.5%
+//   140853  Tokyo night tour (Ueno, Akihabara, Shibuya)                            6.5%
+//   106435  Tokyo Bay yakatabune dinner cruise                                     6.5%
+//   p60269837 / p50006601 Shinjuku and Tokyo Station hotel searches                6.5%
+//   1552    Tokyo Subway Ticket                                                    5%
+//   109393  Klook Japan eSIM                                                       20%
+// No ad id (spare empty): links fall back to ?aid=119070.
+// ---------------------------------------------------------------------------
+
+/** Hotels for 31 Dec – 1 Jan, chosen by which midnight plan they sit next to. */
+export const tokyoNewYearsEveStayAreas: KlookStayArea[] = [
+  {
+    area: "Shinjuku",
+    why: "On the JR Yamanote Line, which runs extra trains from about 1:00 to 4:50 after midnight on 1 Jan 2027, and two stops from Harajuku for Meiji Jingu.",
+    url: tokyoStayAreas[0].url,
+  },
+  {
+    area: "Tokyo Station / Marunouchi",
+    why: "On the Yamanote and Keihin-Tohoku lines, both with extra trains after the last regular service, and two JR stops from Shimbashi, where the Yurikamome runs to Hinode for the countdown cruise pier.",
+    url: tokyoStayAreas[1].url,
+  },
+];
+
+/**
+ * "Book these on the same trip" for 31 Dec: the 6.5% cruise, hotel and night tour and
+ * the 20% eSIM first, the 5% subway ticket next.
+ */
+export const tokyoNewYearsEveTripPrep: KlookTripPrepItem[] = [
+  {
+    label: tokyoCountdownCruise.title,
+    ctaLabel: "Check the countdown cruise →",
+    url: tokyoCountdownCruise.url,
+    why: "The one midnight plan that is sold by date: about 2.5 hours from Hinode Pier with dinner and a toast on deck at midnight. Check that the listing shows 31 December 2026.",
+  },
+  {
+    label: "Hotels around Shinjuku",
+    ctaLabel: "Check Shinjuku hotels on Klook →",
+    url: tokyoStayAreas[0].url,
+    why: "New Year's week is when Japan itself travels. Book a room with free cancellation for 31 December first, then build the night around it.",
+  },
+  {
+    label: tokyoNightTourAkihabaraShibuya.title,
+    ctaLabel: "Check the Tokyo night tour →",
+    url: tokyoNightTourAkihabaraShibuya.url,
+    why: "A guided evening from Ueno to the Shibuya crossing for 30 December or earlier — or 31 December if its calendar shows that date.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Route searches for the extra night trains, shrine queues and a taxi at 1:00 all need data away from the hotel Wi-Fi.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Covers Tokyo Metro and Toei — Meiji-jingumae, Asakusa, Onarimon for Zojoji — on 31 Dec and the first days of January. It does not cover the JR extra trains after midnight.",
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Mt Takao day trip — added 22 Nov 2026 (task-jtk-20261122-02).
+//
+// Confirmed as live en-US pages through the www.klook.com search index on 22 Nov 2026:
+//   132837  "Tokyo City, Mt. Takao One Day Hiking Tour with Autumn Leaves Viewing"  6.5%
+//   24660   Keio 1-Day Ticket with Mt. Takao Cable Car and Chair Lift Ticket
+//           (not sold to Japanese passport holders, per the listing)               5%
+//   5618    Nikko World Heritage day tour from Tokyo (existing constant)          6.5%
+//   p60269837 Shinjuku hotel search (existing)                                     6.5%
+//   109393  Klook Japan eSIM                                                       20%
+// No ad id (spare empty): links fall back to ?aid=119070. No Klook price on the page.
+// ---------------------------------------------------------------------------
+
+/** Guided Mt Takao day out from central Tokyo, autumn-leaves edition. */
+export const mtTakaoHikingTour: KlookTour = {
+  title: "Mt. Takao one-day hiking tour with autumn leaves",
+  desc: "A guided day from central Tokyo on Mt. Takao in the foliage season, sold by date — the transport and the route are arranged for you",
+  url: klookLink("https://www.klook.com/en-US/activity/132837-mt-takao-one-day-hiking-tour-with-autumn-leaves-viewing/"),
+};
+
+/** Keio's day ticket with the Mt Takao cable car or chairlift, sold through Klook. */
+export const keioMtTakaoTicket: KlookTour = {
+  title: "Keio 1-Day Ticket with Mt. Takao cable car and chairlift",
+  desc: "A day of Keio and Inokashira Line rides from Shinjuku or Shibuya plus the cable car or chairlift up Mt. Takao, for one date",
+  url: klookLink("https://www.klook.com/en-US/activity/24660-keio-inokashira-train-ticket-mt-takao-tokyo/"),
+};
+
+/** "Book these on the same trip" for the Mt Takao day: 6.5% tour and hotel, 5% ticket, 20% eSIM. */
+export const mtTakaoTripPrep: KlookTripPrepItem[] = [
+  {
+    label: mtTakaoHikingTour.title,
+    ctaLabel: "Check the Mt. Takao hiking tour →",
+    url: mtTakaoHikingTour.url,
+    why: "If you would rather not work out the trains and the trail yourself: a guided day sold by date in the autumn-leaves season. Check which dates its calendar shows.",
+  },
+  {
+    label: "Hotels around Shinjuku",
+    ctaLabel: "Check Shinjuku hotels on Klook →",
+    url: tokyoStayAreas[0].url,
+    why: "The Keio Line to Takaosanguchi and the JR Chuo Line to Takao both start at Shinjuku, so the earliest train of the day leaves from your own station.",
+  },
+  {
+    label: keioMtTakaoTicket.title,
+    ctaLabel: "Check the Keio + cable car ticket →",
+    url: keioMtTakaoTicket.url,
+    why: "The Keio train from Shinjuku and the cable car or chairlift on one ticket for your date, instead of buying each at the station.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The trail map, the cable car's last departure and the train home all need data on the mountain.",
+  },
+];

@@ -298,6 +298,7 @@ const crumbSep = (
 );
 
 const related = [
+  { href: "/guides/attractions/tokyo-new-years-eve", title: "Tokyo New Year's Eve 2026: Countdown, Trains & Hatsumode" },
   { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary: 12 Days, Day by Day (2027)" },
   { href: "/guides/attractions/tokyo-4-day-itinerary", title: "Tokyo 4 Day Itinerary (2026): Day by Day, Day Trip & Costs" },
   { href: "/guides/attractions/kyoto-2-day-itinerary", title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book" },
@@ -572,6 +573,12 @@ export default function JapanNewYearItineraryPage({ updated }: { updated: PageUp
             <Link href="/guides/attractions/where-to-stay-in-tokyo">where to stay in Tokyo</Link>, and the lights
             still on in late December are in the{" "}
             <Link href="/guides/attractions/tokyo-illumination-tours">Tokyo illuminations</Link> guide.
+          </p>
+          <p className={styles.bodyText}>
+            {/* Added 22 Nov 2026: the single-night page for 31 Dec — hour by hour, and the trains after midnight. */}
+            Just the night itself, 22:00 to 2:00 — Zojoji&apos;s earlier bell from 2026 and the JR extra trains
+            after the last one — is in{" "}
+            <Link href="/guides/attractions/tokyo-new-years-eve">Tokyo New Year&apos;s Eve</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={tokyoCountdownCruise.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

@@ -750,7 +750,11 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             JR line that a rail pass already covers, with the open-air Great Buddha and Hase-dera a few
             minutes apart.{" "}
             <Link href="/guides/attractions/nikko-day-trip" style={linkStyle}>Nikko</Link> is two hours north
-            for a UNESCO shrine and a mountain waterfall, and the buses between them are the part to plan.
+            for a UNESCO shrine and a mountain waterfall, and the buses between them are the part to plan.{" "}
+            {/* Added 22 Nov 2026. */}
+            For a hike without leaving the Keio Line, the{" "}
+            <Link href="/guides/attractions/mt-takao-day-trip" style={linkStyle}>Mt Takao day trip</Link> is ¥430
+            from Shinjuku to the foot of the mountain, with a paved trail and a cable car over the steep lower half.
           </p>
           <p className={styles.bodyText}>
             For Mt. Fuji there are two separate questions. If you want the Lake Kawaguchi viewpoints, our{" "}

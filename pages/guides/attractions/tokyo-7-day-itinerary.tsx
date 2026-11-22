@@ -274,6 +274,7 @@ const related = [
   { href: "/guides/attractions/hakone-2-day-itinerary", title: "Hakone 2 Day Itinerary (2026): Loop, Ryokan Night & Freepass" },
   { href: "/guides/attractions/nikko-day-trip", title: "Nikko Day Trip From Tokyo (2026): Costs and Tour or Not" },
   { href: "/guides/attractions/kamakura-day-trip", title: "Kamakura Day Trip From Tokyo (2026): Temples and Fares" },
+  { href: "/guides/attractions/mt-takao-day-trip", title: "Mt Takao Day Trip (2026): Trains, Trails & Cable Car Fares" },
   { href: "/guides/attractions/kawaguchiko-day-trip-from-tokyo", title: "Kawaguchiko Day Trip From Tokyo 2026: ¥2,200 Bus or Tour" },
   { href: "/guides/attractions/yokohama-day-trip", title: "Yokohama Day Trip from Tokyo (2026): Trains & Day Passes" },
   { href: "/guides/attractions/kawagoe-day-trip", title: "Kawagoe Day Trip from Tokyo (2026): Seibu vs Tobu & Kimono" },

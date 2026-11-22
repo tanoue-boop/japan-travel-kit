@@ -765,7 +765,9 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
             In Tokyo for Christmas itself? The{" "}
             <Link href="/guides/attractions/tokyo-christmas-itinerary">Tokyo Christmas itinerary</Link> turns
             23–25 December into one plan a day: these lights, a Christmas market, Christmas Eve dinner and
-            Disney on the 25th.
+            Disney on the 25th. Staying to 31 December? Marunouchi is still lit then, and{" "}
+            <Link href="/guides/attractions/tokyo-new-years-eve">Tokyo New Year&apos;s Eve</Link> sets out the night
+            hour by hour — the shrines at midnight, the countdown cruise and the JR extra trains after it.
             A few nights of illuminations sit easily at the start of a longer trip. If Tokyo is only
             your first stop, our <Link href="/guides/attractions/japan-winter-itinerary">12-day Japan winter itinerary</Link>{" "}
             puts these evenings on Days 1 to 4, then carries on through Kanazawa, Takayama, Kyoto and
@@ -858,6 +860,19 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
               </div>
               <div className={styles.relatedMeta}>
                 <p className={styles.relatedTitle}>Tokyo Christmas Itinerary 2026: 3 Days, Lights &amp; Markets</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
+            {/* Added 22 Nov 2026: the night of 31 Dec, hour by hour. */}
+            <Link href="/guides/attractions/tokyo-new-years-eve" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Tokyo New Year&apos;s Eve 2026: Countdown, Trains &amp; Hatsumode</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
