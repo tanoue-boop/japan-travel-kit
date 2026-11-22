@@ -412,6 +412,10 @@ export default function ThTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             และ{" "}
             <Link href="/guides/attractions/things-to-do-tokyo" style={{ color: "var(--text)", fontWeight: 600 }}>
               คู่มือเที่ยวโตเกียว (ภาษาอังกฤษ)
+            </Link>{" "}
+            ทริปเดียวกันจะไปยูนิเวอร์แซลที่โอซาก้าด้วย? บัตรของ USJ ก็ระบุวันเช่นกัน และ Express Pass ต้องซื้อแยก ดู{" "}
+            <Link href="/th/guides/attractions/usj-tickets-express-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
+              บัตร Universal Studios Japan มีกี่แบบ และ Express Pass ราคาเท่าไหร่
             </Link>
           </p>
         </section>

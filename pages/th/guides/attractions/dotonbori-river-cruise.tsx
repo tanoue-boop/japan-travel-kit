@@ -682,6 +682,8 @@ export default function ThDotonboriRiverCruisePage({ updated }: { updated: PageU
             มีรายการสถานที่ทั้งหมด ราคาบัตรสองวัน และข้อยกเว้น และ{" "}
             <Link href="/guides/attractions/things-to-do-osaka">คู่มือเที่ยวโอซาก้า (ภาษาอังกฤษ)</Link>{" "}
             แจกแจงว่าส่วนไหนของวันในเมืองที่บัตรพาสจ่ายให้ และส่วนไหนไม่ เงื่อนไขอ่านเมื่อ {CHECKED}
+            บัตรพาสนี้ไม่รวมยูนิเวอร์แซล สตูดิโอ เจแปน วันไป USJ ต้องซื้อบัตรเข้าสวนแยก ส่วนจะเพิ่ม Express Pass หรือไม่ ดู{" "}
+            <Link href="/th/guides/attractions/usj-tickets-express-pass" style={LINK_STYLE}>บัตร USJ มีกี่แบบ และ Express Pass ราคาเท่าไหร่</Link>
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
             <KlookLink href={PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>

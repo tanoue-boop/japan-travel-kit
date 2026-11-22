@@ -128,7 +128,8 @@ const SEARCH_TERMS = {
     "zh-tw": "日本環球影城快速通關",
     "zh-cn": "日本环球影城快速通关",
     ko: "유니버설 스튜디오 재팬 익스프레스 패스",
-    th: "Express Pass ยูนิเวอร์แซล",
+    // 22 Nov 2026 (R07): Thai readers search "บัตร universal studio japan (มีกี่แบบ)" first.
+    th: "บัตร Universal Studios Japan",
   },
   "/guides/attractions/mt-fuji-day-tour-from-tokyo": { "zh-tw": "富士山一日遊", "zh-cn": "富士山一日游" },
   "/guides/transport/tokyo-airport-transfer": { "zh-tw": "成田機場到東京", "zh-cn": "成田机场到东京" },

@@ -955,6 +955,11 @@ export default function ThTeamLabBorderlessPage({ updated }: { updated: PageUpda
             <Link href="/guides/transport/tokyo-transportation">คู่มือการเดินทางในโตเกียว (ภาษาอังกฤษ)</Link>{" "}
             อธิบายสายรถไฟอย่างละเอียดกว่า
           </p>
+          <p className={styles.bodyText}>
+            จะไปโอซาก้าต่อหลังโตเกียว? ยูนิเวอร์แซล สตูดิโอ เจแปน ไม่ขายบัตรที่หน้าประตูแล้ว ต้องซื้อออนไลน์ก่อนเหมือน teamLab ดู{" "}
+            <Link href="/th/guides/attractions/usj-tickets-express-pass">บัตร Universal Studios Japan มีกี่แบบ + Express Pass</Link>{" "}
+            ว่าควรซื้อบัตรแบบไหนและวันไหนที่ควรเพิ่ม Express Pass
+          </p>
         </section>
 
         <EsimCtaBottom />

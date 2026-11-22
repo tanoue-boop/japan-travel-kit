@@ -48,12 +48,14 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const ROUTE = "/th/guides/attractions/usj-tickets-express-pass";
 // 14 Nov 2026 (R01): the query leads the title, H1 and meta, as on the English page.
-// Thai budget is 35 visible glyphs (scripts/check-meta-length.js): "ประเภทและราคา" would
-// take it to 42, so the title keeps the price and the H1 carries the type.
-const TITLE = "Express Pass ยูนิเวอร์แซล 2026: ราคา";
-const H1 = "Express Pass ยูนิเวอร์แซล สตูดิโอ เจแปน 2026: ประเภท ราคา และคุ้มไหม";
+// 22 Nov 2026 (R07): Thai readers search "บัตร universal studio japan (มีกี่แบบ)" — the ticket, and how many
+// kinds there are — before "express pass". Title and H1 now read บัตร → Universal Studios Japan → มีกี่แบบ →
+// Express Pass, in that order. The title runs past the 35-glyph Thai budget (Latin letters are narrow; the
+// full park name is the query), so "2026" moves to the H1.
+const TITLE = "บัตร Universal Studios Japan มีกี่แบบ + Express Pass";
+const H1 = "บัตร Universal Studios Japan 2026 มีกี่แบบ + Express Pass ราคาเท่าไหร่";
 const DESC =
-  "USJ Express Pass 2026: แบบ 4 กับ 7 ราคาตามวัน ต้องมีบัตร Universal Studio Japan ด้วย";
+  "บัตร USJ มี 1 วัน 1.5 วัน 2 วัน ราคาตามวัน Express Pass ราคาเท่าไหร่ 4 กับ 7 ต่างกันยังไง";
 
 const LOCALE = "th" as const;
 const GYG_SLUG = "th-usj-tickets-express-pass";
@@ -63,6 +65,72 @@ const CHECKED_TODAY = dateLabel("2026-11-14", LOCALE);
 const USE_CHECKED = dateLabel("2026-11-06", LOCALE);
 const USJ_EXPRESS_URL = "https://www.usj.co.jp/web/en/us/tickets/express-pass";
 const VARIANT_PRICE = "แตกต่างตามวันเข้าสวน — แสดงตอนชำระเงิน";
+const CHECKED_R07 = dateLabel("2026-11-22", LOCALE);
+const USJ_MULTIDAY_URL = "https://www.usj.co.jp/web/ja/jp/enjoy/multi-day-pass-plan";
+
+// 22 Nov 2026 (R07): the two tables under the opening answer — admission ticket types, then Express Pass
+// types. No yen: USJ prices both per date, and usj.co.jp list pages disagree on "from" prices (see the
+// price section). The 1.5-day rule is USJ's own multi-day page, read through the search index on 22 Nov 2026.
+const admissionRows = [
+  {
+    ticket: "สรุป: มาวันเดียวซื้อ Studio Pass 1 วัน",
+    what: "อยู่โอซาก้า 2 วันขึ้นไปและอยากเที่ยว USJ สองวัน เลือก 2 วัน (เฉลี่ยต่อวันมักถูกกว่า) ถ้ามาถึงช่วงบ่าย เลือก 1.5 วัน",
+    price: "ทุกแบบราคาตามวันเข้าสวน — ไม่มีราคาคงที่",
+  },
+  {
+    ticket: "Studio Pass 1 วัน",
+    what: "เข้าสวนได้ 1 วันเต็ม เล่นเครื่องเล่นทั่วไปด้วยคิวปกติ",
+    price: "กำหนดตามวัน — ราคาของวันนั้นแสดงตอนชำระเงิน",
+  },
+  {
+    ticket: "Studio Pass 1.5 วัน",
+    what: "วันแรกเข้าได้ตั้งแต่ 15:00 วันที่สองเข้าได้ตั้งแต่สวนเปิด เหมาะกับวันที่เดินทางมาถึงโอซาก้า",
+    price: "กำหนดตามวัน — ราคาของวันนั้นแสดงตอนชำระเงิน",
+  },
+  {
+    ticket: "Studio Pass 2 วัน",
+    what: "เข้าสวนได้ 2 วันติดต่อกัน",
+    price: "กำหนดตามวัน — ราคาของวันนั้นแสดงตอนชำระเงิน",
+  },
+  {
+    ticket: "Express Pass (ซื้อเพิ่ม)",
+    what: "ไม่ใช่บัตรเข้าสวน — ต้องมี Studio Pass ของวันเดียวกันด้วย",
+    price: "กำหนดตามวัน (ดูตารางถัดไป)",
+  },
+];
+
+const expressTypeRows = [
+  {
+    type: "สรุป: ส่วนใหญ่เลือก Express Pass 7",
+    covers: "มาครั้งแรกและมีวันเดียวในวันเสาร์อาทิตย์หรือวันหยุด เลือก 7 วันที่คนน้อยเลือก 4 ถ้าไปเพราะ Super Nintendo World เลือกเวอร์ชันที่รวมสิทธิ์เข้าโซน",
+    snw: "เฉพาะเวอร์ชันที่ระบุ",
+    where: "USJ WEB Ticket Store / Lawson Ticket / Klook — เปิดขายประมาณ 2 เดือนก่อนวันเข้าสวน",
+  },
+  {
+    type: "Express Pass 4",
+    covers: "ลัดคิวได้ 4 เครื่องเล่น — เครื่องเล่นไหนบ้างกำหนดตามเวอร์ชันและวัน",
+    snw: "เฉพาะเวอร์ชันที่ระบุ",
+    where: "WEB Ticket Store, Lawson Ticket, Klook",
+  },
+  {
+    type: "Express Pass 7",
+    covers: "ลัดคิวได้ 7 เครื่องเล่น — รายชื่อเครื่องเล่นกำหนดตามเวอร์ชันเช่นกัน",
+    snw: "เฉพาะเวอร์ชันที่ระบุ",
+    where: "WEB Ticket Store, Lawson Ticket, Klook",
+  },
+  {
+    type: "Express Pass Premium และ Express Pass 4 ตามธีม",
+    covers: "ขายเฉพาะช่วงวันเข้าสวนที่กำหนด แต่ละแบบมีรายชื่อเครื่องเล่นของตัวเอง",
+    snw: "แตกต่างตามเวอร์ชัน",
+    where: "ดูวันที่ที่เปิดขายในแต่ละช่องทาง",
+  },
+  {
+    type: "ที่ประตูสวนในวันนั้น",
+    covers: "—",
+    snw: "—",
+    where: "ไม่มีขาย — USJ ไม่ขายบัตรที่ประตูในวันนั้นแล้ว ต้องซื้อออนไลน์ก่อนไป",
+  },
+];
 
 const ticketRows = [
   { ticket: "Studio Pass 1 วัน", what: "เข้าสวนได้หนึ่งวัน เครื่องเล่นทั่วไปต่อคิวปกติ", price: "กำหนดตามวัน — ราคาของวันนั้นแสดงตอนชำระเงิน" },
@@ -256,6 +324,14 @@ const steps = [
 
 const faqItems: FaqItem[] = [
   {
+    q: "บัตร Universal Studio Japan มีกี่แบบ?",
+    a: `บัตรเข้าสวน (Studio Pass) มี 3 แบบหลัก: 1 วัน, 1.5 วัน (วันแรกเข้าได้ตั้งแต่ 15:00 วันที่สองตั้งแต่สวนเปิด) และ 2 วันติดต่อกัน ส่วน Express Pass เป็นบัตรลัดคิวที่ซื้อเพิ่ม มีแบบหลักคือ Express Pass 4 และ Express Pass 7 และบางเวอร์ชันรวมสิทธิ์เข้าโซน Super Nintendo World ทุกแบบราคาตามวันเข้าสวน และ Express Pass ใช้แทนบัตรเข้าสวนไม่ได้ ตรวจสอบบน usj.co.jp เมื่อ ${CHECKED_R07}`,
+  },
+  {
+    q: "ไม่มี Express Pass เล่นได้ไหม?",
+    a: `เล่นได้ มี Studio Pass ก็เข้าสวนและต่อคิวปกติเล่นเครื่องเล่นได้ Express Pass แค่ซื้อเพิ่มเพื่อให้คิวสั้นลง วันธรรมดาที่คนน้อยมักซื้อแค่ Studio Pass ก็พอ และยังมีวิธีฟรีอีกสองทาง คือคิว Single Rider (ไม่ได้เปิดตลอดเวลา) และการรับ Area Timed Entry Ticket ของ Super Nintendo World ผ่านแอปทางการในวันนั้นตามลำดับก่อนหลัง ส่วนวันเสาร์อาทิตย์ วันหยุด และช่วงวันหยุดฤดูหนาวที่คิวยาว ควรซื้อเพิ่ม ตรวจสอบบน usj.co.jp เมื่อ ${CHECKED_USJ}`,
+  },
+  {
     q: "USJ Express Pass กับ Fast Pass คือสิ่งเดียวกันไหม?",
     a: `ในทางปฏิบัติ ใช่ บัตรลดเวลาต่อคิวแบบเสียเงินของยูนิเวอร์แซล สตูดิโอ เจแปน ชื่อว่า Universal Express Pass และ "USJ fast pass" คือชื่อที่นักท่องเที่ยวจำนวนมากใช้ค้นหา หน้าบัตรของ USJ เองไม่มีสินค้าแยกที่ชื่อ Fast Pass ขายหลัก ๆ เป็น Express Pass 4 และ Express Pass 7 ใช้ได้เฉพาะวันที่ระบุ และต้องมี Studio Pass ของวันเดียวกัน ตรวจสอบบน usj.co.jp เมื่อ ${CHECKED_USJ}`,
   },
@@ -276,8 +352,8 @@ const faqItems: FaqItem[] = [
     a: `ไม่ได้ หน้า Express Pass ของ USJ เองระบุว่าต้องมี Studio Pass — หรือ Annual Pass — เพื่อเข้าสวน และต้องมีบัตรเข้าสวนแยกต่างหากนอกเหนือจาก Express Pass Express Pass แค่ทำให้คิวสั้นลงเมื่อคุณอยู่ในสวนแล้ว ตรวจสอบเมื่อ ${CHECKED_USJ}`,
   },
   {
-    q: "ซื้อ Express Pass ยูนิเวอร์แซล สตูดิโอ เจแปน ล่วงหน้าได้นานแค่ไหน?",
-    a: `ประมาณสองเดือนก่อนวันเข้าสวน ประกาศช่วงเวลาจำหน่ายของ USJ วันที่ 21 เมษายน 2025 ระบุว่าบัตร — Studio Pass, Express และอื่น ๆ — เปิดขายที่ WEB Ticket Store ทางการ และ Lawson Ticket ประมาณสองเดือนล่วงหน้า ช่วง Osaka Expo ขยายเป็นสามเดือนสำหรับวันเข้าสวนถึง 13 ตุลาคม 2025 แล้วจะกลับเป็นประมาณสองเดือน ตรวจสอบเมื่อ ${CHECKED_USJ}`,
+    q: "ต้องซื้อ Express Pass ล่วงหน้ากี่วัน?",
+    a: `เปิดขายประมาณ 2 เดือนก่อนวันเข้าสวน และถ้าเป็นวันเสาร์อาทิตย์ วันหยุดราชการญี่ปุ่น หรือช่วงวันหยุดฤดูหนาว ควรซื้อทันทีที่เปิดขาย เพราะขายจำนวนจำกัดต่อวันและมักหมดล่วงหน้า ประกาศช่วงเวลาจำหน่ายของ USJ วันที่ 21 เมษายน 2025 ระบุว่าบัตร — Studio Pass, Express และอื่น ๆ — เปิดขายที่ WEB Ticket Store ทางการ และ Lawson Ticket ประมาณสองเดือนล่วงหน้า ช่วง Osaka Expo ขยายเป็นสามเดือนสำหรับวันเข้าสวนถึง 13 ตุลาคม 2025 แล้วจะกลับเป็นประมาณสองเดือน ตรวจสอบเมื่อ ${CHECKED_USJ}`,
   },
   {
     q: "เปลี่ยนวันหรือขอคืนเงิน Express Pass USJ ได้ไหม?",
@@ -288,7 +364,7 @@ const faqItems: FaqItem[] = [
     a: `มีสองวิธี และเป็นวิธีที่ USJ ระบุเอง: ล่วงหน้า ด้วย Express Pass เวอร์ชันที่รวม Area Timed Entry Ticket หรือผ่านแอปทางการของ USJ เมื่อเข้าสวนแล้ว หน้าบัตรเข้าโซนตามเวลาของ USJ ยังระบุว่าตั้งแต่ 5 มกราคม 2026 ต้องใช้แอปทางการเพื่อรับ Area Timed Entry Ticket และ Standby Entry Ticket และต้องลงทะเบียนบัตรเข้าสวนในแอปก่อน ตรวจสอบเมื่อ ${CHECKED_USJ} วันที่คนน้อยคุณอาจเดินเข้าไปได้เลย แต่ไม่ควรวางแผนทริปโดยหวังแบบนั้น`,
   },
   {
-    q: "Express Pass ยูนิเวอร์แซล สตูดิโอ เจแปน ราคาเท่าไร?",
+    q: "Express Pass USJ ราคาเท่าไหร่?",
     a: `USJ ไม่ได้ประกาศราคาคงที่ หน้า Express Pass ของ USJ ระบุว่าประเภทและราคาของ Express Pass ที่ใช้ได้แตกต่างกันไปตามวัน และประกาศเรื่องราคา Studio Pass วันที่ 30 มิถุนายน 2026 ระบุว่า Express Pass ใช้ระบบราคาตามความต้องการมาตั้งแต่ปี 2018 และไม่มีแผนจะเปลี่ยน ราคาของวันนั้นแสดงตอนชำระเงิน จึงไม่มีตัวเลขเงินเยนในหน้านี้ — ตรวจสอบเมื่อ ${CHECKED_USJ}`,
   },
   {
@@ -309,13 +385,14 @@ const faqItems: FaqItem[] = [
   },
 ];
 
-// The FAQPage markup carries five questions, as on the English page; the visible list keeps all of them.
+// The FAQPage markup carries five questions; the visible list keeps all of them.
+// 22 Nov 2026 (R07): the five are the Thai landing questions (บัตร … มีกี่แบบ, ราคาเท่าไหร่, ล่วงหน้ากี่วัน).
 const FAQ_SCHEMA_QS = new Set([
-  "USJ Express Pass กับ Fast Pass คือสิ่งเดียวกันไหม?",
-  "Express Pass USJ ปี 2026 คุ้มไหม?",
+  "บัตร Universal Studio Japan มีกี่แบบ?",
+  "Express Pass USJ ราคาเท่าไหร่?",
+  "ต้องซื้อ Express Pass ล่วงหน้ากี่วัน?",
+  "ไม่มี Express Pass เล่นได้ไหม?",
   "Express Pass 4 กับ Express Pass 7 ต่างกันอย่างไร?",
-  "Express Pass ยูนิเวอร์แซล สตูดิโอ เจแปน ราคาเท่าไร?",
-  "ใช้ Express Pass USJ โดยไม่มี Studio Pass ได้ไหม?",
 ]);
 const faqSchemaItems = faqItems.filter((item) => FAQ_SCHEMA_QS.has(item.q));
 
@@ -371,6 +448,11 @@ const sameDayPrep: KlookTripPrepItem[] = [
     why: "USJ ใช้แอปของตัวเองสำหรับบัตรเข้าโซน Super Nintendo World ตามเวลา ซึ่งใช้ในสวนในวันนั้น และ Studio Pass ก็เป็นตั๋วอิเล็กทรอนิกส์ — ทั้งสองอย่างต้องใช้อินเทอร์เน็ตตอนต่อคิว ไม่ใช่แค่ Wi-Fi โรงแรม",
   }),
 ];
+
+// 22 Nov 2026 (R07), as on zh-tw (R04): directly under the answer — USJ-area hotels (6.5%), the Osaka Amazing
+// Pass (5%) and the Klook eSIM (20%), the bookings that share the Studio Pass / Express Pass date. Same
+// products as usjSameDayPrep[0], [1] and [4]; GA4 placement usj-sameday-answer.
+const answerSameDayPrep: KlookTripPrepItem[] = [0, 1, 4].map((i) => sameDayPrep[i]);
 
 const stayAreas: KlookStayArea[] = [
   withKlookLocale(usjStayAreas[0], LOCALE, {
@@ -500,15 +582,103 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>Express Pass ของยูนิเวอร์แซล สตูดิโอ เจแปน</strong> (&ldquo;fast pass&rdquo; แบบเสียเงินของ USJ)
-            ขายหลัก ๆ เป็น <strong>Express Pass 4</strong> (สิทธิ์เครื่องเล่น 4 รายการ) และ{" "}
-            <strong>Express Pass 7</strong> (7 รายการ) แต่ละใบใช้ได้เฉพาะวันที่ระบุ และไม่ใช่บัตรเข้าสวน — คุณต้องมี
-            Studio Pass ของวันเดียวกันด้วย USJ ไม่ได้กำหนดราคาคงที่: ประเภทและราคาแตกต่างตามวันเข้าสวน เปิดขาย
-            ประมาณ 2 เดือนก่อนวันเข้าสวน และขายจำนวนจำกัดในแต่ละวัน ซึ่งมักขายหมดล่วงหน้า ควรซื้อสำหรับวันเสาร์อาทิตย์
-            วันหยุดราชการญี่ปุ่น หรือช่วงวันหยุดฤดูหนาว ส่วนวันธรรมดาที่คนน้อย ซื้อแค่ Studio Pass ก็มักเพียงพอ
-            ตรวจสอบบน usj.co.jp เมื่อ {CHECKED_USJ} และ {CHECKED_TODAY}
+            <strong>บัตร Universal Studios Japan (USJ)</strong> มี 2 ส่วน: <strong>บัตรเข้าสวน Studio Pass</strong> แบบ 1 วัน 1.5 วัน และ
+            2 วัน กับ <strong>Express Pass</strong> บัตรลัดคิวที่ซื้อเพิ่ม แบบหลักคือ Express Pass 4 (ลัดคิว 4 เครื่องเล่น) และ Express Pass 7
+            (7 เครื่องเล่น) ทั้งสองส่วนราคาเปลี่ยนตามวันเข้าสวน USJ ไม่มีราคาคงที่ และราคาของวันนั้นแสดงตอนชำระเงิน
+          </p>
+          <p className={styles.bodyText}>
+            Express Pass ไม่ใช่บัตรเข้าสวน ทุกคนต้องมี Studio Pass ของวันเดียวกันด้วย ทั้งสองแบบเปิดขายประมาณ 2 เดือนก่อนวันเข้าสวน
+            Express Pass มีจำนวนจำกัดต่อวันและมักขายหมดล่วงหน้า — วันเสาร์อาทิตย์ วันหยุดราชการญี่ปุ่น และช่วงวันหยุดฤดูหนาวควรซื้อทันทีที่เปิดขาย
+            ส่วนวันธรรมดาที่คนน้อย ซื้อแค่ Studio Pass ก็มักเพียงพอ ตรวจสอบบน usj.co.jp เมื่อ {CHECKED_USJ} และ {CHECKED_R07}
           </p>
         </section>
+
+        {/* 22 Nov 2026 (R07): "บัตร universal studio japan มีกี่แบบ" asked outright, with the two type tables. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>ประเภทบัตร</span>
+          <h2 className={styles.sectionTitle}>บัตร Universal Studio Japan มีกี่แบบ?</h2>
+          <p className={styles.bodyText}>
+            บัตรเข้าสวนมี 3 แบบ (1 วัน 1.5 วัน 2 วัน) และ Express Pass มีแบบหลัก 2 แบบ (4 และ 7) บวกเวอร์ชันพิเศษที่ขายเป็นช่วง ๆ
+            เลือกบัตรเข้าสวนตามจำนวนวัน แล้วค่อยตัดสินว่าจะเพิ่ม Express Pass หรือไม่ตามวันที่ไป
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["บัตรเข้าสวน", "ใช้ได้อย่างไร", "ราคา"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {admissionRows.map((row, i) => (
+                    <tr key={row.ticket} style={i === 0 ? { fontWeight: 600 } : undefined}>
+                      <td className={styles.tdProvider}>{row.ticket}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.what}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.price}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            ตรวจสอบล่าสุด: 2026-11-22 —{" "}
+            <a href={USJ_MULTIDAY_URL} target="_blank" rel="noopener noreferrer">หน้าบัตรหลายวันทางการของ USJ</a>{" "}
+            (เวลาเข้าสวนของบัตร 1.5 วัน) และประกาศราคา Studio Pass วันที่ 30 มิถุนายน 2026 (ราคาตามวัน) ตารางนี้ไม่มีตัวเลขเงินเยน
+            เพราะ USJ กำหนดราคาตามวัน
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1.5rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["ประเภท Express Pass", "เครื่องเล่นที่รวม", "Super Nintendo World", "ซื้อที่ไหน"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {expressTypeRows.map((row, i) => (
+                    <tr key={row.type} style={i === 0 ? { fontWeight: 600 } : undefined}>
+                      <td className={styles.tdProvider}>{row.type}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.covers}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.snw}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.where}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            ตรวจสอบล่าสุด: 2026-11-22 —{" "}
+            <a href={USJ_EXPRESS_URL} target="_blank" rel="noopener noreferrer">หน้า Universal Express Pass ทางการของ USJ</a>{" "}
+            (ประเภทและราคาแตกต่างตามวัน ต้องมีบัตรเข้าสวนแยก) ช่องทางและช่วงเวลาขายจากประกาศช่วงเวลาจำหน่ายของ USJ วันที่ 21 เมษายน 2025
+            รายชื่อเครื่องเล่นของแต่ละเวอร์ชันเปลี่ยนตามช่วงเวลา จึงควรดูรายการที่รวมของวันคุณในหน้าชำระเงิน
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={thUsjStudioPass.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              ดู Studio Pass USJ บน Klook →
+            </KlookLink>
+            <KlookLink href={thUsjExpressPass.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              ดูวันที่ของ Express Pass บน Klook →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* 22 Nov 2026 (R07), as on zh-tw (R04): the bookings that share the park date, right under the answer:
+            hotels 6.5%, Osaka Amazing Pass 5%, Klook eSIM 20%. GA4 placement usj-sameday-answer. */}
+        <div data-placement="usj-sameday-answer">
+          <KlookTripPrep
+            label="จองในวันเดียวกัน"
+            heading="ได้วันเข้าสวนแล้ว ควรจองอะไรต่อในวันเดียวกัน"
+            intro="เมื่อได้วันของ Studio Pass และ Express Pass แล้ว ควรจองโรงแรมใกล้ USJ พาสโอซาก้าสำหรับวันก่อนและหลังไปสวน และอินเทอร์เน็ตสำหรับแอปและตั๋วอิเล็กทรอนิกส์ไปพร้อมกัน ในวันที่คนเยอะ โรงแรมย่าน Universal City มักเต็มเร็วพอ ๆ กับ Express Pass"
+            items={answerSameDayPrep}
+            headingLevel={3}
+          />
+        </div>
 
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -670,7 +840,7 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>ราคา</span>
-          <h2 className={styles.sectionTitle}>Express Pass ปี 2026 ราคาเท่าไร?</h2>
+          <h2 className={styles.sectionTitle}>Express Pass ราคาเท่าไหร่?</h2>
           <p className={styles.bodyText}>
             Express Pass ของยูนิเวอร์แซล สตูดิโอ เจแปน ไม่มีราคาคงที่สำหรับปี 2026: USJ กำหนดราคาตามวันเข้าสวนและ
             ตามประเภท และแสดงราคาของวันนั้นตอนชำระเงิน ไม่มีคำตอบเดียว และนั่นคือจุดยืนของ USJ เอง ไม่ใช่การเลี่ยงตอบ: หน้า Express Pass ระบุว่าประเภทและราคา
@@ -701,7 +871,7 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            ตรวจสอบล่าสุด: 2026-11-14 —{" "}
+            ตรวจสอบล่าสุด: 2026-11-22 —{" "}
             <a href={USJ_EXPRESS_URL} target="_blank" rel="noopener noreferrer">หน้า Universal Express Pass ทางการของ USJ</a>{" "}
             ทำไมไม่ระบุช่วงราคา: ตัวเลข &ldquo;เริ่มต้น&rdquo; ในหน้ารายการบัตรต่าง ๆ ของ usj.co.jp ไม่ตรงกัน และรายการ
             ของ WEB Ticket Store ระบุว่าราคาแตกต่างตามวันเข้าสวน แทนที่จะใส่ตัวเลขที่อาจไม่ตรงกับวันของคุณ คู่มือนี้แสดง
@@ -742,7 +912,7 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            ตรวจสอบล่าสุด: 2026-11-14 —{" "}
+            ตรวจสอบล่าสุด: 2026-11-22 —{" "}
             <a href={USJ_EXPRESS_URL} target="_blank" rel="noopener noreferrer">หน้า Universal Express Pass ทางการของ USJ</a>{" "}
             ชื่อเวอร์ชันและกฎสิทธิ์เข้าโซนตรวจสอบบน usj.co.jp เมื่อ {CHECKED_USJ} รายการ Express Pass ทางการของ USJ
             ซึ่งตรวจสอบอีกครั้งเมื่อ {CHECKED_TODAY} ยังมี Express Pass Premium และ Express Pass 4 ชุดตามธีมหลายแบบ
@@ -755,6 +925,24 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             </KlookLink>
             <KlookLink href={klookFor(parkFrontHotelUsjKlook.url, LOCALE)} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
               The Park Front Hotel (โรงแรมทางการของ USJ) →
+            </KlookLink>
+          </div>
+        </section>
+
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>ไม่ซื้อ Express Pass</span>
+          <h2 className={styles.sectionTitle}>ไม่มี Express Pass เล่นได้ไหม?</h2>
+          <p className={styles.bodyText}>
+            เล่นได้ มี Studio Pass ก็เข้าสวนและต่อคิวปกติเล่นเครื่องเล่นได้ Express Pass แค่ซื้อเพิ่มเพื่อให้คิวสั้นลง
+            วันธรรมดาที่คนน้อยมักซื้อแค่ Studio Pass ก็พอ ส่วนวันเสาร์อาทิตย์ วันหยุด และช่วงวันหยุดฤดูหนาวที่คิวยาว จึงควรซื้อเพิ่ม
+          </p>
+          <p className={styles.bodyText}>
+            ถ้าไม่ซื้อ ยังมีวิธีฟรีสองทาง: คิว Single Rider (นั่งแยกจากกลุ่ม ไม่ได้เปิดตลอดเวลา) และการรับ Area Timed Entry Ticket ของ
+            Super Nintendo World ผ่านแอปทางการของ USJ ในวันนั้นตามลำดับก่อนหลัง ตรวจสอบบน usj.co.jp เมื่อ {CHECKED_USJ}
+          </p>
+          <div className={styles.pickCtaRow}>
+            <KlookLink href={thUsjStudioPass.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              Studio Pass USJ →
             </KlookLink>
           </div>
         </section>
@@ -825,7 +1013,11 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>ขายหมด</span>
-          <h2 className={styles.sectionTitle}>Express Pass USJ ขายหมดเมื่อไร?</h2>
+          <h2 className={styles.sectionTitle}>ต้องซื้อ Express Pass ล่วงหน้ากี่วัน?</h2>
+          <p className={styles.bodyText}>
+            <strong>เปิดขายประมาณ 2 เดือนก่อนวันเข้าสวน วันเสาร์อาทิตย์ วันหยุดราชการญี่ปุ่น และช่วงวันหยุดฤดูหนาวให้ซื้อทันทีที่เปิดขาย</strong>{" "}
+            หน้าของ USJ เองระบุว่าแต่ละวันมีจำนวนจำกัดและมักขายหมดล่วงหน้า
+          </p>
           <p className={styles.bodyText}>
             เมื่อจำนวนของวันนั้นหมด — หน้าของ USJ เองระบุว่าแต่ละวันมีจำนวนจำกัดและมักขายหมดล่วงหน้า จึงไม่มีช่วงเวลาที่รับประกันว่าบัตรจะยังเหลือ ยิ่งจองเร็วยิ่งดี
             ช่วงเวลาที่คุณซื้อได้ยาวประมาณสองเดือน ซึ่งเป็นเรื่องที่มีประโยชน์
