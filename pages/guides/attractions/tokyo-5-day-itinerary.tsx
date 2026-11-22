@@ -832,7 +832,9 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
             17:30 the same day, and the dressing itself takes most of an hour before you step outside —
             so plan the return before Ueno, not after it. Our{" "}
             <Link href="/guides/attractions/asakusa-kimono-rental">Asakusa kimono rental guide</Link>{" "}
-            sets out the return deadlines shop by shop. Skytree is worth booking for a different reason:
+            sets out the return deadlines shop by shop. To spend part of the kimono time indoors, a{" "}
+            <Link href="/guides/attractions/tea-ceremony-japan">tea ceremony in Tokyo</Link> in Asakusa
+            dresses you first and runs about 90 minutes in all. Skytree is worth booking for a different reason:
             the same-day counter adds a service fee per ticket, so buying ahead is cheaper rather than
             safer — the detail is in our{" "}
             <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree tickets guide</Link>.

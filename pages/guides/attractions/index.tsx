@@ -408,7 +408,9 @@ export default function GuidesAttractionsPage({ updated, dates }: { updated: Pag
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={L}>Japan attraction ticket prices table</Link>{" "}
             has the official admission of {attractionPrices.length} sights, the 2026 fee rises and a free CSV. For a first night in Tokyo, a 3-hour{" "}
             <Link href="/guides/attractions/tokyo-food-tour" style={L}>Tokyo food tour through Shinjuku&apos;s izakaya and Golden Gai</Link>{" "}
-            is the easy booking; in Osaka, the{" "}
+            is the easy booking, and for a quiet hour by day a{" "}
+            <Link href="/guides/attractions/tea-ceremony-japan" style={L}>tea ceremony in Tokyo</Link> takes 40 to 90
+            minutes in Asakusa, Shibuya or a hotel tea room; in Osaka, the{" "}
             <Link href="/guides/attractions/dotonbori-river-cruise" style={L}>Dotonbori River Cruise</Link> is ¥2,000
             for 20 minutes, every half hour from 11:00 to 21:00, and{" "}
             <Link href="/guides/attractions/umeda-sky-building-tickets" style={L}>Umeda Sky Building tickets</Link> are

@@ -282,7 +282,9 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
             One or two signature dishes from scratch. A sushi class covers seasoning the rice and shaping maki,
             nigiri or temari sushi; a combo adds ramen broth and noodles, and other formats teach gyoza or
             wagashi sweets with matcha. Most of the 1.5 to 3 hours is hands-on, and the class ends with you
-            eating what you made.
+            eating what you made. If it is the matcha you are after rather than the cooking, a{" "}
+            <Link href="/guides/attractions/tea-ceremony-japan">tea ceremony in Tokyo</Link> takes 40 to 90
+            minutes in Asakusa, Shibuya or a hotel tea room, where you whisk your own bowl.
           </p>
         </section>
 

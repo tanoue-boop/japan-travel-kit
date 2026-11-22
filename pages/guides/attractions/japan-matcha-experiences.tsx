@@ -462,7 +462,10 @@ export default function JapanMatchaExperiencesPage({ updated }: { updated: PageU
             Subject to change — confirm on the listing for your date. Where a length says &ldquo;check the
             listing&rdquo;, the operator does not state a duration in the listing. No admission price is printed
             for Byodo-in or Chazuna on this page: neither was confirmed from its own site on {OWN}, so both
-            are left out rather than reprint a figure from elsewhere.
+            are left out rather than reprint a figure from elsewhere. For the ritual in a Tokyo tea room
+            rather than the leaf, the 8 places to book a{" "}
+            <Link href="/guides/attractions/tea-ceremony-japan">tea ceremony in Tokyo</Link> — Asakusa,
+            Shibuya, Meguro, Toyosu and two hotel tea rooms — are compared with prices and booking.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={ujiChazunaStoneMillMatcha.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

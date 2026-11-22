@@ -616,7 +616,8 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
             Because the deadline takes your afternoon but not your evening, this slots neatly into a
             wider Tokyo day. A{" "}
             <Link href="/guides/attractions/tea-ceremony-japan">tea ceremony in Tokyo</Link> is the natural
-            indoor pairing and runs under an hour;{" "}
+            indoor pairing: 40 to 60 minutes in Shibuya, Meguro or a hotel tea room, or about 90 minutes at
+            the Asakusa sessions that dress you in their own kimono;{" "}
             Tokyo Skytree is across the
             river and stays open long after the kimono is back (book{" "}
             <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree tickets</Link> online — the

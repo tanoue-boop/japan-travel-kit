@@ -490,7 +490,9 @@ export default function Tokyo4DayItineraryPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText}>
             <strong>Day 1</strong> is old Tokyo: Senso-ji before the crowds, Nakamise-dori, Ueno Park and Ameyoko,
             then Tokyo Skytree ({PRICES.tokyoSkytree.adult}, cheaper booked ahead than at the same-day counter) for
-            the evening view. <strong>Day 2</strong> is the west: Meiji Jingu in the morning, Takeshita Street in
+            the evening view. With an hour to spare in Asakusa, a{" "}
+            <Link href="/guides/attractions/tea-ceremony-japan">tea ceremony in Tokyo</Link> near Senso-ji
+            takes about 90 minutes with a kimono included. <strong>Day 2</strong> is the west: Meiji Jingu in the morning, Takeshita Street in
             Harajuku, the Scramble Crossing and SHIBUYA SKY at sunset ({PRICES.shibuyaSky.adult} online, before /
             from 15:00), then Omoide Yokocho in Shinjuku. Two paid decks in one trip is a lot of skyline; the{" "}
             <Link href="/guides/attractions/tokyo-observation-decks">Shibuya Sky vs Skytree</Link> comparison helps

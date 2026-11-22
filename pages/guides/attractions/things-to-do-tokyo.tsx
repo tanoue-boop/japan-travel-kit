@@ -716,8 +716,8 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             For the quieter end,{" "}
             <Link href="/guides/attractions/kimono-rental-japan" style={linkStyle}>kimono rental</Link> in
             Asakusa is a half-day commitment with a fixed return time rather than a costume hire, a{" "}
-            <Link href="/guides/attractions/tea-ceremony-japan" style={linkStyle}>tea ceremony in Tokyo</Link> runs under
-            an hour and is taught in English at most visitor-facing listings, and a{" "}
+            <Link href="/guides/attractions/tea-ceremony-japan" style={linkStyle}>tea ceremony in Tokyo</Link> takes 40
+            to 60 minutes on its own or about 90 with a kimono in Asakusa, and is booked by time slot, and a{" "}
             <Link href="/guides/attractions/samurai-ninja-experience-tokyo" style={linkStyle}>samurai and ninja experience</Link>{" "}
             covers three fairly different things sold under one name. For the shop prices, opening hours
             and return times in one table, see our{" "}
