@@ -23,8 +23,18 @@ import {
   usjTripPrep,
   usjHighRateTopPrep,
   osakaSightsHighRatePrep,
+  type KlookSameDayCard,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import KlookSameDayCards from "../../../components/KlookSameDayCards";
+
+// The two official hotels (6.5%) and the Kansai Airport limousine bus (5%) from the
+// Express Pass same-day list, as cards under the first Klook button (task-jtk-20261122-04).
+// Its fourth item, the eSIM, is the BookingEsimCard directly below the cards.
+const USJ_SAME_DAY_KINDS = ["Official hotel", "Official hotel", "Airport bus"];
+const USJ_SAME_DAY: KlookSameDayCard[] = usjExpressSameDayPrep
+  .slice(0, 3)
+  .map((item, i) => ({ ...item, kind: USJ_SAME_DAY_KINDS[i] }));
 
 // CTA links — Klook affiliate redirects.
 const STUDIO_PASS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299137&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F46604-universal-studios-japan-e-ticket-osaka-qr-code-direct-entry%2F";
@@ -551,11 +561,20 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink href={STUDIO_PASS_URL} target="_blank" rel="noopener noreferrer nofollow" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
-                USJ Studio Pass →
+                Check Studio Pass dates &amp; prices on Klook →
               </KlookLink>
             </div>
+            <p className={styles.bodyText} style={{ marginTop: "0.5rem", marginBottom: 0, fontSize: "0.85rem" }}>
+              Pick your park date on the listing to see that day&apos;s price and whether it is still on sale:
+              the price changes by date, and Klook&apos;s listing warns that sales for busy dates can pause.
+            </p>
           </div>
         </div>
+
+        {/* 22 Nov 2026 (task-jtk-20261122-04): the same-day bookings moved up from under the
+            Express Pass box to directly under the first Klook button, as three cards; the eSIM
+            card (20%) follows. */}
+        <KlookSameDayCards heading="What to Book for the Same Park Day" cards={USJ_SAME_DAY} />
 
         <BookingEsimCard />
 
@@ -584,16 +603,6 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
             </div>
           </div>
         </div>
-
-        {/* 14 Nov 2026 (R01): directly under the 0% Express Pass button, the bookings that
-            share its date — official USJ hotels 6.5%, the airport limousine bus 5%,
-            the eSIM 20%. */}
-        <KlookTripPrep
-          label="Book for the same day"
-          heading="What to Book on the Same Day as Your Express Pass"
-          intro="The Express Pass fixes your park date. On the busy dates it sells out on, the official hotels by the gates fill too — so the room, the ride in from Kansai Airport and data for the park's app are worth booking the same day."
-          items={usjExpressSameDayPrep}
-        />
 
         {/* 21 Nov 2026 (P01): 5% / 6.5% for the days either side of the park, under the 0% Express Pass. GA4 placement usj-highrate-top. */}
         <div data-placement="usj-highrate-top">

@@ -15,7 +15,9 @@ import {
   saganoHozugawaGuaranteedTour,
   saganoRomanticTrainTicket,
   whereToStayKyotoAreas,
+  type KlookSameDayCard,
 } from "../../../lib/klook-links";
+import KlookSameDayCards from "../../../components/KlookSameDayCards";
 import { gygArashiyama, gygHozugawaKudari } from "../../../lib/gyg-links";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -30,6 +32,32 @@ const TICKET_URL = saganoRomanticTrainTicket.url;
 const BOAT_URL = hozugawaRiverBoatTicket.url;
 const ARASHIYAMA_HOTELS_URL = whereToStayKyotoAreas[3].url;
 const KYOTO_STATION_HOTELS_URL = whereToStayKyotoAreas[0].url;
+
+// Three cards directly under the ticket button (task-jtk-20261122-04): two tours (6.5%)
+// and the eSIM (20%). No prices.
+const SAGANO_SAME_DAY: KlookSameDayCard[] = [
+  {
+    kind: "Guided day",
+    label: saganoHozugawaGuaranteedTour.title,
+    ctaLabel: "Check the train & boat day →",
+    url: TOUR_URL,
+    why: "The torokko ride and the Hozugawa boat back down as one booking, for a reader who would rather not juggle two sales windows.",
+  },
+  {
+    kind: "Walking tour",
+    label: arashiyamaEarlyMorningWalk.title,
+    ctaLabel: "Check the morning walk →",
+    url: arashiyamaEarlyMorningWalk.url,
+    why: "A 2.5-hour small-group walk from Saga-Arashiyama Station on quieter paths, ending with a matcha tea ceremony: the bamboo grove half of a torokko day.",
+  },
+  {
+    kind: "eSIM",
+    label: "Klook Japan eSIM",
+    ctaLabel: "See eSIM options on Klook →",
+    url: klookEsim.url,
+    why: "The operator says closed dates can be added or changed, so its notices are worth checking on your phone on the day of the ride.",
+  },
+];
 
 // Read on 7 November 2026 from sagano-kanko.co.jp:
 //  - press release of 23 Oct 2026 (news/5535): new train from 1 Mar 2027, seat fee
@@ -516,24 +544,21 @@ export default function SaganoRomanticTrainTicketsPage({ updated }: { updated: P
             guided walk and mobile data can be booked in the same sitting. Open a listing for your date&apos;s
             availability and current price.
           </p>
+          {/* 22 Nov 2026 (task-jtk-20261122-04): one action button for the ticket, a line on
+              the winter closure, then the same-day bookings as three cards. The Hozugawa boat
+              ticket button left this row; it stays in the boat section and the FAQ block. */}
           <div className={styles.pickCtaRow}>
             <KlookLink href={TICKET_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
-              Sagano Romantic Train Ticket on Klook →
-            </KlookLink>
-            <KlookLink href={TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
-              Train + Hozugawa Boat Day →
-            </KlookLink>
-            <KlookLink href={BOAT_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
-              Hozugawa Boat Ticket →
-            </KlookLink>
-            <KlookLink href={arashiyamaEarlyMorningWalk.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
-              Arashiyama Morning Walk →
-            </KlookLink>
-            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
-              Klook Japan eSIM →
+              Check Sagano train dates &amp; prices on Klook →
             </KlookLink>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.85rem" }}>
+            Pick your ride date on the listing to see the price and the seats left. The current train&apos;s last
+            run is 29 December 2026, and the line does not run from 30 December 2026 to 28 February 2027.
+          </p>
         </section>
+
+        <KlookSameDayCards heading="What to Book for the Same Arashiyama Day" cards={SAGANO_SAME_DAY} />
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>

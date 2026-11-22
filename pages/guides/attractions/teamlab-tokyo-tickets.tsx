@@ -236,14 +236,22 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
-                Check Planets tickets →
+                Check Planets dates &amp; prices on Klook →
               </KlookLink>
               <KlookLink href={teamlabBorderlessTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
-                Check Borderless tickets →
+                Check Borderless dates &amp; prices on Klook →
               </KlookLink>
             </div>
+            <p className={styles.bodyText} style={{ marginTop: "0.5rem", marginBottom: 0, fontSize: "0.85rem" }}>
+              Both museums price adult tickets by date and publish only the lowest price, so pick your date and
+              time on the listing to see the real price and the open slots.
+            </p>
           </div>
         </div>
+
+        {/* 22 Nov 2026 (task-jtk-20261122-04): moved up from below the comparison table to
+            directly under the first Klook buttons. */}
+        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
 
         {/* eSIM box straight after the answer (jtk-20261122-P01): it sat below three H2 sections. */}
         <EsimCtaTop />
@@ -295,8 +303,6 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
             </KlookLink>
           </div>
         </section>
-
-        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
 
         <KlookTourPicks
           heading="Getting between Toyosu and Azabudai Hills"

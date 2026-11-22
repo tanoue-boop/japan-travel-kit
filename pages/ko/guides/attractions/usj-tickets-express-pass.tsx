@@ -32,9 +32,11 @@ import {
   usjTripPrep,
   usjHighRateTopPrep,
   osakaSightsHighRatePrep,
+  type KlookSameDayCard,
   type KlookStayArea,
   type KlookTripPrepItem,
 } from "../../../../lib/klook-links";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
 import { koUsjExpressPass, koUsjStudioPass } from "../../../../lib/klook-links-ko";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
@@ -341,6 +343,13 @@ const expressSameDayPrep: KlookTripPrepItem[] = [
   }),
 ];
 
+// The first three of those as cards under the first Klook button (task-jtk-20261122-04);
+// the eSIM is the BookingEsimCard directly below them.
+const KO_SAME_DAY_KINDS = ["공식 호텔", "공식 호텔", "공항 버스"];
+const koUsjSameDayCards: KlookSameDayCard[] = expressSameDayPrep
+  .slice(0, 3)
+  .map((item, i) => ({ ...item, kind: KO_SAME_DAY_KINDS[i] }));
+
 const sameDayPrep: KlookTripPrepItem[] = [
   withKlookLocale(usjSameDayPrep[0], LOCALE, {
     label: "유니버설 스튜디오 재팬 주변 호텔(유니버설시티)",
@@ -537,11 +546,19 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink href={koUsjStudioPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
-                USJ 스튜디오 패스 →
+                클룩에서 스튜디오 패스 날짜·가격 확인 →
               </KlookLink>
             </div>
+            <p className={styles.bodyText} style={{ marginTop: "0.5rem", marginBottom: 0, fontSize: "0.85rem" }}>
+              가격은 입장일마다 다르고, 클룩 상품 페이지에는 붐비는 날짜의 판매가 중단될 수 있다는 안내가 있으니
+              방문 날짜를 골라 그날 가격과 판매 여부를 확인하세요.
+            </p>
           </div>
         </div>
+
+        {/* 22 Nov 2026 (task-jtk-20261122-04): the same-day bookings moved up from under the
+            Express Pass box to directly under the first Klook button, as three cards. */}
+        <KlookSameDayCards heading="USJ 방문일에 함께 예약할 것" cards={koUsjSameDayCards} />
 
         <BookingEsimCard />
 
@@ -564,13 +581,6 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             </div>
           </div>
         </div>
-
-        <KlookTripPrep
-          label="같은 날 예약"
-          heading="익스프레스 패스와 같은 날 예약할 것"
-          intro="익스프레스 패스가 파크 방문 날짜를 정합니다. 익스프레스 패스가 매진되는 붐비는 날짜에는 게이트 옆 공식 호텔도 함께 차므로, 객실과 간사이 공항에서 오는 교통편, 파크 앱에 쓸 데이터를 같은 날 예약해 두는 것이 좋습니다."
-          items={expressSameDayPrep}
-        />
 
         {/* 21 Nov 2026 (P01): 5% / 6.5% for the days either side of the park, under the 0% Express Pass. GA4 placement usj-highrate-top. */}
         <div data-placement="usj-highrate-top">

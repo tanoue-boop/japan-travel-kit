@@ -20,8 +20,10 @@ import {
   naritaExpressRoundTripUrl,
   shinkansenTokyoGalaYuzawa,
   yuzawaIwapparaSkiDayTourTokyo,
+  type KlookSameDayCard,
   type KlookTripPrepItem,
 } from "../../../lib/klook-links";
+import KlookSameDayCards from "../../../components/KlookSameDayCards";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
@@ -413,6 +415,34 @@ const faqItems = [
   },
 ];
 
+/**
+ * Three cards directly under the first Klook button (task-jtk-20261122-04): the train and
+ * the pass a lift-ticket buyer still needs for the same day (5%), and the eSIM (20%).
+ */
+const GALA_SAME_DAY: KlookSameDayCard[] = [
+  {
+    kind: "Train",
+    label: shinkansenTokyoGalaYuzawa.title,
+    ctaLabel: "Check Tokyo → GALA trains →",
+    url: shinkansenTokyoGalaYuzawa.url,
+    why: "The lift ticket does not include the ride: the direct Tanigawa seats from Tokyo or Ueno, booked by date with a QR code.",
+  },
+  {
+    kind: "Rail pass",
+    label: jrTokyoWidePass.title,
+    ctaLabel: "Check the TOKYO Wide Pass →",
+    url: jrTokyoWidePass.url,
+    why: "JR East says the pass covers the shinkansen to GALA Yuzawa; with one more day trip in the same three days it is the one to price.",
+  },
+  {
+    kind: "eSIM",
+    label: "Klook Japan eSIM",
+    ctaLabel: "See eSIM options on Klook →",
+    url: klookEsim.url,
+    why: "GALA states its operating dates and hours change with snow and weather, and the Klook listing asks for the lift-ticket voucher on a phone with internet access.",
+  },
+];
+
 /** The same-trip block: the pass and transfer first, then what GALA sells separately. */
 const sameTripItems: KlookTripPrepItem[] = [
   {
@@ -593,17 +623,20 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             </>
           }
           tours={[
+            // 22 Nov 2026 (task-jtk-20261122-04): the first row was the Iwappara coach day,
+            // a different resort. GALA's own lift ticket (99585) leads now; Iwappara stays
+            // in the Quick Answer buttons and the tour picks further down.
             {
-              title: yuzawaIwapparaSkiDayTourTokyo.title,
-              url: yuzawaIwapparaSkiDayTourTokyo.url,
+              title: galaYuzawaLiftTicket.title,
+              url: galaYuzawaLiftTicket.url,
               price: null,
-              duration: "11 to 12.5 hours",
-              departs: "Tokyo",
+              duration: "A lift day; the shinkansen is booked separately",
+              departs: "GALA Yuzawa Station, inside the resort",
             },
             {
               title: galaNaebaSkiDayTripTokyo.title,
               url: galaNaebaSkiDayTripTokyo.url,
-              price: "about US$475–546 per vehicle",
+              price: null,
               duration: "10-hour charter",
               departs: "Your hotel in Tokyo's 23 wards",
             },
@@ -615,7 +648,16 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
               departs: "Meets at GALA Yuzawa",
             },
           ]}
+          primaryCta="Check GALA lift ticket dates & prices on Klook →"
+          primaryNote={
+            <>
+              Pick your ski date on the listing to see the price and whether it is on sale: GALA&apos;s slopes
+              open on {SLOPES_OPEN} and its 2026-27 daily hours are not published yet.
+            </>
+          }
         />
+
+        <KlookSameDayCards heading="What to Book for the Same GALA Day" cards={GALA_SAME_DAY} />
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>

@@ -2551,7 +2551,11 @@ export const spicyHakubaSkiRental: KlookTour = {
   url: klookLink("https://www.klook.com/en-US/activity/103260-spicy-ski-set-snowboard-set-rental-nagano-hakuba/"),
 };
 
-/** The bare GALA Yuzawa lift ticket — a ticket, so a secondary link, not a CTA. */
+/**
+ * The bare GALA Yuzawa lift ticket. Since 22 Nov 2026 (task-jtk-20261122-04) the first
+ * Klook button on the GALA day-trip page: the Iwappara coach day that held that slot is
+ * a different resort. Confirmed live on en-US via the www.klook.com index that day.
+ */
 export const galaYuzawaLiftTicket: KlookTour = {
   title: "GALA Yuzawa ski resort lift ticket",
   desc: "The lift ticket on its own for the resort you can reach from Tokyo Station on the Joetsu shinkansen without a transfer",

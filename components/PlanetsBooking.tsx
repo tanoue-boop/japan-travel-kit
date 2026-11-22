@@ -19,6 +19,8 @@ type Copy = {
   label: string;
   rows: { item: string; detail: string }[];
   cta: string;
+  /** One line under the button (task-jtk-20261122-04): why a date has to be picked first. */
+  ctaNote: string;
   source: string;
   sameLabel: string;
   sameTitle: string;
@@ -42,7 +44,8 @@ const COPY: Record<Locale, Copy> = {
       { item: "From Shin-Toyosu Station", detail: "3 minutes on foot from Exit 1A (Yurikamome Line)" },
       { item: "From Toyosu Station", detail: "10 minutes on foot from Exit 7 (Tokyo Metro Yurakucho Line), along the Yurikamome viaduct" },
     ],
-    cta: "Check teamLab Planets tickets on Klook →",
+    cta: "Check Planets dates & prices on Klook →",
+    ctaNote: "Pick a date and admission time on the listing to see that slot's price and whether it is open: the adult price changes by date and time, and nothing is sold at the door.",
     source: "Read on teamlab.art and the official ticket store (teamlabplanets.dmm.com) on {date}.",
     sameLabel: "Before you go",
     sameTitle: "Data and the subway for a Toyosu day",
@@ -65,7 +68,8 @@ const COPY: Record<Locale, Copy> = {
       { item: "新豐洲站出發", detail: "從 1A 出口步行 3 分鐘（百合海鷗號）" },
       { item: "豐洲站出發", detail: "7 號出口步行 10 分鐘（東京地鐵有樂町線），沿著百合海鷗號高架軌道前進" },
     ],
-    cta: "在 Klook 查看 teamLab Planets 門票 →",
+    cta: "在 Klook 查看 Planets 日期與價格 →",
+    ctaNote: "請先在商品頁選擇日期與入場時段，才會顯示該時段的價格與是否還有名額：成人票價依日期與時段變動，現場也不售票。",
     source: "{date} 查閱 teamlab.art 與官方售票網站（teamlabplanets.dmm.com）。",
     sameLabel: "出發前準備",
     sameTitle: "豐洲一日行程的網路與交通",
@@ -88,7 +92,8 @@ const COPY: Record<Locale, Copy> = {
       { item: "从新丰洲站出发", detail: "1A 出口步行 3 分钟（百合海鸥线）" },
       { item: "从丰洲站出发", detail: "7 号出口步行 10 分钟（东京地铁有乐町线），沿百合海鸥线高架前行" },
     ],
-    cta: "在 Klook 查看 teamLab Planets 门票 →",
+    cta: "在 Klook 查看 Planets 日期与价格 →",
+    ctaNote: "请先在商品页选择日期与入场时段，才会显示该时段的价格以及是否还有名额：成人票价随日期与时段变动，现场也不售票。",
     source: "{date} 查阅 teamlab.art 与官方售票网站（teamlabplanets.dmm.com）。",
     sameLabel: "出发前准备",
     sameTitle: "丰洲这一天的网络与地铁",
@@ -111,7 +116,8 @@ const COPY: Record<Locale, Copy> = {
       { item: "신토요스역에서", detail: "1A 출구에서 도보 3분(유리카모메선)" },
       { item: "도요스역에서", detail: "7번 출구에서 도보 10분(도쿄 메트로 유라쿠초선), 유리카모메 고가를 따라 이동" },
     ],
-    cta: "클룩에서 팀랩 플래닛 티켓 보기 →",
+    cta: "클룩에서 플래닛 날짜·가격 확인 →",
+    ctaNote: "상품 페이지에서 날짜와 입장 시간을 골라야 그 시간대의 가격과 예약 가능 여부가 나옵니다. 성인 요금은 날짜와 시간에 따라 달라지고, 현장 판매는 없습니다.",
     source: "{date}에 teamlab.art와 공식 티켓 스토어(teamlabplanets.dmm.com)에서 확인했습니다.",
     sameLabel: "출발 전 준비",
     sameTitle: "도요스 일정의 데이터와 지하철",
@@ -134,7 +140,8 @@ const COPY: Record<Locale, Copy> = {
       { item: "จากสถานี Shin-Toyosu", detail: "เดิน 3 นาทีจากทางออก 1A (สาย Yurikamome)" },
       { item: "จากสถานี Toyosu", detail: "เดิน 10 นาทีจากทางออก 7 (สาย Tokyo Metro Yurakucho) ตามแนวรางยกระดับของ Yurikamome" },
     ],
-    cta: "ดูตั๋ว teamLab Planets บน Klook →",
+    cta: "เช็กวันที่และราคา Planets บน Klook →",
+    ctaNote: "เลือกวันและเวลาเข้าชมในหน้าสินค้าก่อน จึงจะเห็นราคาและที่ว่างของรอบนั้น ราคาผู้ใหญ่เปลี่ยนตามวันและเวลา และไม่มีขายบัตรหน้างาน",
     source: "ตรวจสอบข้อมูลจาก teamlab.art และเว็บไซต์จำหน่ายบัตรอย่างเป็นทางการ (teamlabplanets.dmm.com) เมื่อ {date}",
     sameLabel: "เตรียมก่อนออกเดินทาง",
     sameTitle: "อินเทอร์เน็ตและรถไฟใต้ดินสำหรับวันเที่ยวโทโยสุ",
@@ -188,6 +195,7 @@ export function PlanetsAnswer() {
             {copy.cta}
           </KlookLink>
         </div>
+        <p className={styles.bodyText} style={{ marginTop: "0.5rem", marginBottom: 0, fontSize: "0.85rem" }}>{copy.ctaNote}</p>
         <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0, fontSize: "0.82rem", color: "var(--text-muted)" }}>
           <strong>{LAST_CHECKED[locale]}{locale === "zh-tw" ? "：" : ": "}{P.checked}</strong> — {copy.source.replace("{date}", date)}{" "}
           <a href={OFFICIAL_URL} target="_blank" rel="noopener">teamlab.art/e/planets</a>

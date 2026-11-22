@@ -38,6 +38,14 @@ type Props = {
   checkedIso: string;
   /** Defaults to the locale of the route the block renders on. */
   locale?: Locale;
+  /**
+   * The big button under the table, which links to `tours[0]`. Defaults to the tour's
+   * title. Pages pass an action label here ("Check … dates & prices on Klook →")
+   * (task-jtk-20261122-04).
+   */
+  primaryCta?: string;
+  /** One line under that button: why the price and availability need a date picked. */
+  primaryNote?: ReactNode;
 };
 
 type Copy = {
@@ -54,7 +62,7 @@ const COPY: Record<Locale, Copy> = {
     label: "Book early",
     deadlineLabel: "When to book:",
     columns: ["Tour", "Price", "Duration", "Departs from", ""],
-    button: "Check dates on Klook →",
+    button: "Check dates & prices on Klook →",
     noPrice: "Shown on Klook for your date",
     note: (date) =>
       `Our picks for this trip, not a Klook ranking. Prices are the from-prices on Klook's listings as of ${date}; they change by date and currency, so the listing is the final word. Klook pays us a commission at no extra cost to you.`,
@@ -97,7 +105,7 @@ const COPY: Record<Locale, Copy> = {
   },
 };
 
-export default function WinterBookingTop({ heading, deadline, tours, checkedIso, locale }: Props) {
+export default function WinterBookingTop({ heading, deadline, tours, checkedIso, locale, primaryCta, primaryNote }: Props) {
   const resolved = useComponentLocale(locale);
   const copy = COPY[resolved];
   const date = resolved === "en" ? checkedLabel(checkedIso) : dateLabel(checkedIso, resolved);
@@ -143,9 +151,14 @@ export default function WinterBookingTop({ heading, deadline, tours, checkedIso,
       </div>
       <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
         <KlookLink href={tours[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
-          {tours[0].title} →
+          {primaryCta ?? `${tours[0].title} →`}
         </KlookLink>
       </div>
+      {primaryNote && (
+        <p className={styles.bodyText} style={{ marginTop: "0.5rem", marginBottom: 0, fontSize: "0.85rem" }}>
+          {primaryNote}
+        </p>
+      )}
       <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
         {copy.note(date)}
       </p>

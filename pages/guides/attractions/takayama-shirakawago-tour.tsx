@@ -21,12 +21,13 @@ import {
   takayamaShirakawagoGokayamaUnescoTour,
   takayamaShirakawagoNagoyaDayTrip,
   takayamaShirakawagoOneDayBusTour,
+  shirakawagoWinterLightUpTakayamaNagoyaBusTour,
+  takayamaHotelsUrl,
+  type KlookSameDayCard,
   type KlookTripPrepItem,
 } from "../../../lib/klook-links";
-import {
-  shirakawagoFairytale2027NagoyaTour,
-  shirakawagoIllumination2027NagoyaTour,
-} from "../../../lib/klook-links-winter-honshu";
+import { shirakawagoFairytale2027NagoyaTour } from "../../../lib/klook-links-winter-honshu";
+import KlookSameDayCards from "../../../components/KlookSameDayCards";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
@@ -249,6 +250,34 @@ const faqItems = [
  * The same-trip block. Klook sells no Chubu airport transfer we could tie to this route,
  * so the transfer is the Narita one that starts the page's Tokyo–Kanazawa–Takayama loop.
  */
+/**
+ * Three cards directly under the first Klook button (task-jtk-20261122-04): a bed in
+ * Takayama (6.5%), the Nohi bus for a self-planned day (5%) and the eSIM (20%).
+ */
+const TAKAYAMA_SAME_DAY: KlookSameDayCard[] = [
+  {
+    kind: "Hotel",
+    label: "Hotels in Takayama",
+    ctaLabel: "Check Takayama hotels on Klook →",
+    url: takayamaHotelsUrl,
+    why: "The Nohi buses to Shirakawa-go leave from beside Takayama Station, so a night in town turns the day into a short walk to the bus.",
+  },
+  {
+    kind: "Bus ticket",
+    label: shirakawagoLineBusTicket.title,
+    ctaLabel: "Check the Shirakawa-go bus →",
+    url: shirakawagoLineBusTicket.url,
+    why: "For a day you plan yourself: Nohi Bus's Shirakawa-go Line as a non-reserved seat, one way or return.",
+  },
+  {
+    kind: "eSIM",
+    label: "Klook Japan eSIM",
+    ctaLabel: "See eSIM options on Klook →",
+    url: klookEsim.url,
+    why: "Nohi Bus warns of winter delays from snow and road closures, and Shirakawa-go has no station to ask at.",
+  },
+];
+
 const sameTripItems: KlookTripPrepItem[] = [
   {
     label: "Klook Japan eSIM",
@@ -403,29 +432,42 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             </>
           }
           tours={[
-            {
-              title: shirakawagoIllumination2027NagoyaTour.title,
-              url: shirakawagoIllumination2027NagoyaTour.url,
-              price: null,
-              duration: "09:00–22:30 on the listing",
-              departs: "Nagoya",
-            },
+            // 22 Nov 2026 (task-jtk-20261122-04): the first row was the 233458 light-up
+            // listing, which the www.klook.com index no longer returns (16 and 22 Nov). The
+            // year-round daytime tour leads now, and the light-up row is 80951, which the
+            // index shows with the four January evenings and all departures guaranteed.
             {
               title: shirakawagoTakayamaOldTownDayTour.title,
               url: shirakawagoTakayamaOldTownDayTour.url,
-              price: "from about US$45",
-              duration: "11 hours 20 minutes",
+              price: null,
+              duration: "About 10 hours on the listing",
               departs: "Nagoya",
+            },
+            {
+              title: shirakawagoWinterLightUpTakayamaNagoyaBusTour.title,
+              url: shirakawagoWinterLightUpTakayamaNagoyaBusTour.url,
+              price: null,
+              duration: "12 hours 25 minutes, light-up evenings only",
+              departs: "Meitetsu Bus Center, Nagoya",
             },
             {
               title: shirakawagoGokayamaKanazawaBusTour.title,
               url: shirakawagoGokayamaKanazawaBusTour.url,
-              price: "about US$90–105",
+              price: null,
               duration: "6 hours 10 minutes to 9 hours 30 minutes",
               departs: "JR Kanazawa Station, West Exit",
             },
           ]}
+          primaryCta="Check Shirakawa-go & Takayama tour dates & prices on Klook →"
+          primaryNote={
+            <>
+              Pick your date on the listing to see that day&apos;s price and whether it is open. On the four
+              light-up dates, sightseeing buses without a light-up booking must leave the village by 16:00.
+            </>
+          }
         />
+
+        <KlookSameDayCards heading="What to Book for the Same Trip" cards={TAKAYAMA_SAME_DAY} />
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
@@ -692,8 +734,10 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             an onsen ticket, and <strong>¥16,000</strong> with the Ogimachi Castle Ruins deck, which Nohi says
             has limited seats and a walk of about 20 minutes uphill each way. It is sold on Nohi Bus&apos;s
             website only, and <strong>no route bus runs back to Takayama after the event</strong>. From Nagoya,
-            Klook has two 2027 listings; one runs 09:00 to 22:30 and the other states the deck is not included.
-            Check the refund line first: one gives a full refund only 60 days out. Because the dates are fixed
+            Klook has two listings for these evenings: a coach from the Meitetsu Bus Center with
+            English-speaking staff, which states all four departures are guaranteed, and a small-group tour
+            that states the deck is not included and refunds you if its minimum of eight is not reached.
+            Check each listing&apos;s refund line before you book. Because the dates are fixed
             and the capacity is not elastic, this is the one booking on this page where the question is
             availability rather than price. All official details read on {OWN}.
           </p>
@@ -707,11 +751,11 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             <Link href="/guides/attractions/shirakawago-winter-light-up">Shirakawago winter light up guide</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={shirakawagoIllumination2027NagoyaTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
-              2027 light-up day from Nagoya →
+            <KlookLink href={shirakawagoWinterLightUpTakayamaNagoyaBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Light-up coach from Nagoya →
             </KlookLink>
             <KlookLink href={shirakawagoFairytale2027NagoyaTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
-              Second 2027 Nagoya listing →
+              Small-group 2027 Nagoya tour →
             </KlookLink>
             <KlookLink href={shirakawagoObservationDeckDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Day tour with deck access →
@@ -837,7 +881,7 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             shirakawagoGokayamaKanazawaBusTour,
             takayamaShirakawagoOneDayBusTour,
             shirakawagoObservationDeckDayTour,
-            shirakawagoIllumination2027NagoyaTour,
+            shirakawagoWinterLightUpTakayamaNagoyaBusTour,
             shirakawagoFairytale2027NagoyaTour,
           ]}
         />
