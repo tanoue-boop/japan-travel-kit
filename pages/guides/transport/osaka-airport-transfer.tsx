@@ -414,7 +414,9 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
           <h2 className={styles.sectionTitle}>Which airport train is best for my hotel area?</h2>
           <p className={styles.bodyText}>
             Pick the service that stops at your hotel&apos;s station, because a change of train with luggage costs more
-            than a few minutes of journey time.
+            than a few minutes of journey time. Not booked yet? Our guide to{" "}
+            <Link href="/guides/attractions/where-to-stay-in-osaka">where to stay in Osaka</Link>{" "}
+            compares the areas by the airport train under each one.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

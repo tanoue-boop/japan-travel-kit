@@ -423,6 +423,11 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
               ¥1,200 30-hour pass when your sightseeing straddles two calendar days. Only taking two or three rides?
               Use a pay-as-you-go <strong>ICOCA</strong>.
             </p>
+            <p className={styles.verdictText} style={{ marginTop: "0.75rem" }}>
+              How many rides you take depends on your hotel: our guide to{" "}
+              <Link href="/guides/attractions/where-to-stay-in-osaka">where to stay in Osaka</Link>{" "}
+              compares Namba, Shinsaibashi and Umeda, all on the Midosuji Line.
+            </p>
             <KlookLink
               href={METRO_URL}
               className={styles.verdictBtn}

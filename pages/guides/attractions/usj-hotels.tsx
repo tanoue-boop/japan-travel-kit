@@ -352,6 +352,11 @@ export default function UsjHotelsPage({ updated }: { updated: PageUpdated }) {
               <strong>Namba</strong> (about <strong>13 minutes</strong>, Hanshin to Nishikujo, then the JR Yumesaki
               Line). Times from USJ&apos;s and each hotel&apos;s official sites, read {OWN}.
             </p>
+            <p className={styles.verdictText} style={{ marginTop: "0.75rem" }}>
+              Only one day at the park? Our guide to{" "}
+              <Link href="/guides/attractions/where-to-stay-in-osaka">where to stay in Osaka</Link>{" "}
+              compares Namba, Umeda, Shinsaibashi and Tennoji for the rest of the trip.
+            </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={parkFrontHotelUsjKlook.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 The Park Front Hotel →
@@ -613,7 +618,7 @@ export default function UsjHotelsPage({ updated }: { updated: PageUpdated }) {
           <div className={styles.relatedGrid}>
             {[
               { href: "/guides/attractions/usj-tickets-express-pass", title: "Universal Studios Japan Express Pass 2026: Types, Prices & Is It Worth It" },
-              { href: "/guides/attractions/where-to-stay-in-osaka", title: "Where to Stay in Osaka 2026: Namba vs Umeda vs Shinsaibashi" },
+              { href: "/guides/attractions/where-to-stay-in-osaka", title: "Where to Stay in Osaka (2026): Best Areas for First-Timers" },
               { href: "/guides/attractions/osaka-3-day-itinerary", title: "Osaka 3 Day Itinerary (2026): Day by Day, and What to Book" },
               { href: "/guides/attractions/tokyo-disney-hotels", title: "Tokyo Disney Hotels (2026): Closest, Official & Budget" },
               { href: "/guides/transport/osaka-airport-transfer", title: "Osaka Airport Transfer: Kansai Airport to the City" },

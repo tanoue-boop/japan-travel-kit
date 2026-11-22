@@ -870,7 +870,7 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
               { href: "/guides/attractions/teamlab-fukuoka-tickets", title: "teamLab Fukuoka Tickets 2026: Price, Hours & Booking" },
               { href: "/guides/attractions/kyushu-5-day-itinerary", title: "Kyushu 5 Day Itinerary (2026): Fukuoka, Beppu, Kumamoto and Takachiho" },
               { href: "/guides/transport/jr-kyushu-rail-pass", title: "JR Kyushu Rail Pass 2026: Price, Which Pass & Worth It?" },
-              { href: "/guides/attractions/hiroshima-2-day-itinerary", title: "Hiroshima 2 Day Itinerary (2026): Peace Park and Miyajima" },
+              { href: "/guides/attractions/hiroshima-2-day-itinerary", title: "2 Days in Hiroshima: Day-by-Day Itinerary (2026)" },
               { href: "/guides/attractions/kyoto-2-day-itinerary", title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book" },
               { href: "/guides/attractions", title: "More Things to Do in Japan →" },
             ].map((r) => (

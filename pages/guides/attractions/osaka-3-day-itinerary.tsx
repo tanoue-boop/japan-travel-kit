@@ -402,7 +402,7 @@ const related = [
   { href: "/guides/attractions/nara-day-trip", title: "Nara Day Trip on Your Own (2026): Trains, Times and Todai-ji" },
   { href: "/guides/attractions/kobe-day-trip-from-osaka", title: "Kobe Day Trip from Osaka (2026)" },
   { href: "/guides/attractions/kyoto-nara-day-tour-from-osaka", title: "Kyoto and Nara Day Tour from Osaka" },
-  { href: "/guides/attractions/where-to-stay-in-osaka", title: "Where to Stay in Osaka 2026: Namba vs Umeda vs USJ, the Best Areas Compared" },
+  { href: "/guides/attractions/where-to-stay-in-osaka", title: "Where to Stay in Osaka (2026): Best Areas for First-Timers" },
   { href: "/guides/attractions/things-to-do-osaka", title: "Things to Do in Osaka (2026)" },
   { href: "/guides/attractions/osaka-go-kart", title: "Osaka Go Kart 2026: IDP Rules, Routes and Which Tour to Book" },
   { href: "/guides/transport/haruka-vs-nankai-rapit", title: "HARUKA vs Nankai Rapi:t: Kansai Airport to Osaka" },
@@ -538,6 +538,9 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
               <Link href="/guides/attractions/osaka-2-day-itinerary">Osaka 2 day itinerary</Link>. Want Kyoto
               in the same three days? See the{" "}
               <Link href="/guides/attractions/osaka-kyoto-3-day-itinerary">Osaka Kyoto 3 day itinerary</Link>.
+              Still choosing a base? See{" "}
+              <Link href="/guides/attractions/where-to-stay-in-osaka">where to stay in Osaka</Link>: Namba for Day 1 in Minami, Universal City
+              for the USJ day.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>

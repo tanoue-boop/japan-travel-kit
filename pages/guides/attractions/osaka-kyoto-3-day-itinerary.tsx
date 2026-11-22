@@ -743,6 +743,11 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
               which are ¥5,400 from 1 November 2026. Figures read off the operators&apos; own sites, the
               HARUKA table on {OWN}.
             </p>
+            <p className={styles.verdictText} style={{ marginTop: "0.75rem" }}>
+              Which area for the three nights? Our guide to{" "}
+              <Link href="/guides/attractions/where-to-stay-in-osaka">where to stay in Osaka</Link>{" "}
+              compares Umeda, on the JR line to Kyoto, with Namba.
+            </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={jrKansaiAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Price the 3-Day Kansai Pass →

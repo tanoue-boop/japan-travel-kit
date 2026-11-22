@@ -200,15 +200,15 @@ const faqItems = [
     a: `Namba, for most trips. It is on the Midosuji Line, it puts Dotonbori and Kuromon Market within walking distance, and it is the Nankai terminus — so the run to Kansai Airport starts under your hotel rather than after a change with the cases. Nankai puts the Rapi:t at a minimum of 34 minutes between Kansai Airport and Namba with no transfer, re-read on ${TODAY}. The case for Umeda instead is JR: Shin-Osaka is approximately 4 minutes away on the JR Kyoto Line, so if you are arriving by shinkansen or spending days in Kyoto, the northern hub saves you the crossing. Shinsaibashi is the Namba choice one stop north, and Universal City only pays off on a trip built around USJ.`,
   },
   {
-    q: "Namba or Umeda: which is better?",
+    q: "Is Namba or Umeda better to stay in?",
     a: `Namba for a first trip, Umeda if your trip runs on JR. They are the two ends of the useful stretch of the Midosuji Line, so neither is far from the other — what differs is which network is at the door. Namba is Nankai (Kansai Airport), Kintetsu (Nara) and three subway lines, with the nightlife on foot. Umeda is JR Osaka — the Loop Line, the Kyoto and Kobe lines, and the Yumesaki through services to Universal City — plus Hankyu and Hanshin. On the official Kyoto travel guide's figures, read on ${OWN}, Osaka Station to Kyoto Station is approximately 30 minutes on the JR Special Rapid, which is the single strongest argument for the northern base.`,
   },
   {
-    q: "Namba or Shinsaibashi: which is better?",
-    a: `Either works for a first trip, because they are one Midosuji Line stop apart and Dotonbori sits between them. Namba has the Nankai terminus under it — the Rapi:t to Kansai Airport in a minimum of 34 minutes with no transfer — and Kintetsu to Nara. Shinsaibashi is the shopping end: the covered Shinsaibashi-suji arcade runs south into Dotonbori, and the Osaka Convention & Tourism Bureau's own listing puts Shin-Osaka approximately 12 minutes away on the Midosuji Line, against about 20 minutes from Namba, read on ${SHIN_OSAKA}. Fly in and out of Kansai: Namba. Arrive by shinkansen: Shinsaibashi is the shorter ride.`,
+    q: "Where should I stay in Osaka for USJ?",
+    a: `At Universal City if the trip is built around the park: Universal City Station on the JR Yumesaki Line is approximately five minutes on foot from the gates, on the Osaka Convention & Tourism Bureau's own figures read on ${OWN}. Otherwise stay in Umeda, about 20 minutes from the park by JR from Osaka Station, so the other days keep the full network. The Universal City hotels are a small cluster that a large domestic crowd books first, so check those dates earliest.`,
   },
   {
-    q: "Which area is best from Kansai Airport?",
+    q: "Where should I stay in Osaka near Kansai Airport?",
     a: `It depends on which train you would rather take, and the two go to different places. The Nankai Rapi:t runs to Namba in a minimum of 34 minutes with no transfer, with a ¥700 adult limited express ticket on top of the ordinary fare. The JR Haruka runs direct to Tennoji, Osaka, Shin-Osaka and Kyoto; JR West's discounted one-way for foreign passport holders is ¥1,600 to Tennoji and ¥1,900 to Osaka or Shin-Osaka for an adult (prices changed for tickets sold from 1 November 2026). Both re-read on ${TODAY}. So: Namba if you are flying in and out of Kansai, Tennoji if you want the shortest Haruka leg, Umeda if you are continuing by shinkansen.`,
   },
   {
@@ -222,9 +222,12 @@ const faqItems = [
 // so the three areas go in brackets to keep the whole <title> under 60.
 // Rebuilt again 19 Nov 2026 (task jtk-20261119-I01): "USJ" left the title so the page
 // stops competing with usj-hotels; Shinsaibashi is the third area named instead (59 chars).
-const TITLE = "Where to Stay in Osaka 2026: Namba vs Umeda vs Shinsaibashi";
+// Rebuilt 22 Nov 2026 (task jtk-20261122-I01): still 0 impressions while indexed, so the
+// title leads with the plain query and "first-timers" (the itineraries and usj-hotels own
+// the other angles), and the section headings became the questions searchers type (58 chars).
+const TITLE = "Where to Stay in Osaka (2026): Best Areas for First-Timers";
 const DESCRIPTION =
-  "Where to stay in Osaka: Namba for a first trip, Umeda for Shin-Osaka (4 min by JR), Universal City for USJ. The best area to stay in Osaka by train time.";
+  "Where to stay in Osaka: Namba for first-timers (Rapi:t to Kansai Airport in 34 min), Umeda for Shin-Osaka (4 min by JR), Universal City for USJ.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/where-to-stay-in-osaka") } });
 
@@ -316,7 +319,7 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Where to Stay in Osaka 2026: <br />The Best Area to Stay in Osaka, Namba vs Umeda vs Shinsaibashi
+            Where to Stay in Osaka (2026): <br />The Best Areas for First-Timers, Namba vs Umeda vs USJ
           </h1>
           <p className={styles.heroSubtitle}>
             Namba, Shinsaibashi, Umeda, Tennoji and Universal City, compared on the stations under them rather
@@ -548,7 +551,7 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
 
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Minami</span>
-          <h2 className={styles.sectionTitle}>Namba or Shinsaibashi: Which Is Better?</h2>
+          <h2 className={styles.sectionTitle}>Is Namba or Shinsaibashi Better to Stay In?</h2>
           <p className={styles.bodyText}>
             <strong>Namba if you fly in and out of Kansai, Shinsaibashi if you arrive by shinkansen.</strong>{" "}
             They are one Midosuji stop apart with Dotonbori between them, so the evenings are the same; what
@@ -570,7 +573,7 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
 
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Head to head</span>
-          <h2 className={styles.sectionTitle}>Namba or Umeda: Which Is Better?</h2>
+          <h2 className={styles.sectionTitle}>Is Namba or Umeda Better to Stay In?</h2>
           <p className={styles.bodyText}>
             <strong>Namba for a first trip, Umeda if your trip runs on JR.</strong> They are the two ends of
             the useful stretch of the Midosuji Line, so neither is far from the other — what differs is which
@@ -592,7 +595,7 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
 
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Theme parks</span>
-          <h2 className={styles.sectionTitle}>Is Universal City Worth It as an Osaka Base?</h2>
+          <h2 className={styles.sectionTitle}>Where to Stay in Osaka for USJ?</h2>
           <p className={styles.bodyText}>
             <strong>Only if USJ is the point of the trip.</strong> The park is approximately five minutes on
             foot from Universal City Station on the JR Yumesaki Line, and about 20 minutes from Osaka Station
@@ -637,7 +640,7 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
 
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Airport</span>
-          <h2 className={styles.sectionTitle}>Which Area Is Best From Kansai Airport?</h2>
+          <h2 className={styles.sectionTitle}>Where to Stay in Osaka Near Kansai Airport?</h2>
           <p className={styles.bodyText}>
             <strong>It depends which train you would rather take</strong>, because the two go to different
             places. The Nankai Rapi:t runs to Namba in a minimum of 34 minutes with no transfer, with a ¥700

@@ -642,7 +642,7 @@ export default function KinosakiOnsenDayTripPage({ updated }: { updated: PageUpd
               { href: "/guides/attractions/kansai-area-pass", title: "JR Kansai Area Pass 2026: Price, Coverage & Is It Worth It?" },
               { href: "/guides/attractions/himeji-castle-day-trip", title: "Himeji Castle Day Trip (2026)" },
               { href: "/guides/attractions/amanohashidate-ine-day-trip", title: "Amanohashidate Day Trip (2026): Ine Boathouses, Tours and Trains" },
-              { href: "/guides/attractions/where-to-stay-in-osaka", title: "Where to Stay in Osaka 2026" },
+              { href: "/guides/attractions/where-to-stay-in-osaka", title: "Where to Stay in Osaka (2026): Best Areas for First-Timers" },
               { href: "/guides/attractions/kusatsu-onsen-day-trip", title: "Kusatsu Onsen Day Trip from Tokyo: Bus, Baths & Winter" },
               { href: "/guides/attractions", title: "More Things to Do in Japan →" },
             ].map((r) => (

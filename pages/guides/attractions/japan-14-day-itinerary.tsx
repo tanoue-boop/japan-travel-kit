@@ -911,7 +911,9 @@ const legs: Leg[] = [
             gives the straight answer on whether one day is enough from Kansai, with Itsukushima
             Shrine&apos;s {PRICES.itsukushima.adult} admission and the {PRICES.miyajimaRopeway.adult}{" "}
             Mt. Misen ropeway fare. A guided coach version removes the two connections that make the
-            day fragile.
+            day fragile. If you would rather spend a night there, our{" "}
+            <Link href="/guides/attractions/hiroshima-2-day-itinerary">2 days in Hiroshima itinerary</Link>{" "}
+            splits the city and Miyajima into a day each.
           </>
         ),
         picks: [
@@ -2088,7 +2090,7 @@ export default function Japan14DayItineraryPage({ updated }: { updated: PageUpda
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Hiroshima 2 Day Itinerary (2026): Peace Park and Miyajima</p>
+                <p className={styles.relatedTitle}>2 Days in Hiroshima: Day-by-Day Itinerary (2026)</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

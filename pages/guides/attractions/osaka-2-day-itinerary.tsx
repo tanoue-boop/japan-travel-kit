@@ -559,6 +559,11 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
               stop needs booking: the Kaiyukan&apos;s 15-minute entry slot. Prices read off the operators&apos;
               own sites on the dates in the table below.
             </p>
+            <p className={styles.verdictText} style={{ marginTop: "0.75rem" }}>
+              Still choosing a hotel? Our guide to{" "}
+              <Link href="/guides/attractions/where-to-stay-in-osaka">where to stay in Osaka</Link>{" "}
+              compares Namba, a walk from Day 1&apos;s Dotonbori, with Umeda, by Day 2&apos;s rooftop.
+            </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={osakaCastleUmedaTonboriDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Both Days as One Guided Day →

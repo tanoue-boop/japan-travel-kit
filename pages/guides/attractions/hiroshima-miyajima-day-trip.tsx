@@ -280,6 +280,11 @@ export default function HiroshimaMiyajimaDayTripPage({ updated }: { updated: Pag
               Rail Pass covers Hikari and Sakura but not Nozomi or Mizuho. Take the coach if you would rather
               not think about tides and ferry timetables; check which city your chosen departure leaves from.
             </p>
+            <p className={styles.verdictText} style={{ marginTop: "0.75rem" }}>
+              Staying overnight? Our{" "}
+              <Link href="/guides/attractions/hiroshima-2-day-itinerary">2 days in Hiroshima itinerary</Link>{" "}
+              gives the city and the museum Day 1 and Miyajima Day 2, with a night in between.
+            </p>
             <KlookLink href={HIROSHIMA_TOUR_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ marginTop: "1rem" }}>
               Browse Hiroshima Day Tours →
             </KlookLink>

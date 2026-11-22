@@ -586,6 +586,11 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
               half an hour of each other (09:20 vs 09:49). Read {TODAY}.
             </p>
             <p className={styles.verdictText} style={{ marginTop: "0.75rem" }}>
+              At 3 hours 39 minutes each way, most trips from Tokyo stay overnight: our{" "}
+              <Link href="/guides/attractions/hiroshima-2-day-itinerary">2 days in Hiroshima itinerary</Link>{" "}
+              plans the two days after you arrive.
+            </p>
+            <p className={styles.verdictText} style={{ marginTop: "0.75rem" }}>
               Two rules to check before you book: in <strong>eight peak periods</strong> every NOZOMI car is
               reserved, and a case over <strong>160 cm</strong> across three sides needs its own reserved
               luggage seat or a <strong>¥1,000</strong> fee (JR Central, read {OWN}).

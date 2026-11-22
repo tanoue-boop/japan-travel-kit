@@ -939,7 +939,7 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
               { href: "/guides/attractions/okinawa-whale-watching", title: "Okinawa Whale Watching 2027: Season, Kerama & Naha Tours" },
               { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary: Kanazawa, Shirakawa-go and Takayama" },
               { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day" },
-              { href: "/guides/attractions/hiroshima-2-day-itinerary", title: "Hiroshima 2 Day Itinerary (2026): Peace Park and Miyajima" },
+              { href: "/guides/attractions/hiroshima-2-day-itinerary", title: "2 Days in Hiroshima: Day-by-Day Itinerary (2026)" },
               { href: "/guides/attractions", title: "More Things to Do in Japan →" },
             ].map((r) => (
               <Link key={r.href} href={r.href} className={styles.relatedCard}>

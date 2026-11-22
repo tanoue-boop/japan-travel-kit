@@ -326,9 +326,12 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Hiroshima 2 Day Itinerary (2026): Peace Park and Miyajima";
+// Rebuilt 22 Nov 2026 (task jtk-20261122-I01): indexed but 0 impressions, so the title makes
+// "2 days" the subject and drops "Peace Park and Miyajima", which hiroshima-miyajima-day-trip
+// and hiroshima-peace-memorial-tours already rank for (48 chars).
+const TITLE = "2 Days in Hiroshima: Day-by-Day Itinerary (2026)";
 const DESCRIPTION =
-  "A Hiroshima 2 day itinerary: the Peace Park and ¥200 museum on Day 1, Miyajima on Day 2. Hiroshima and Miyajima 2 days with ferries, tides and hotels.";
+  "2 days in Hiroshima, day by day: Day 1 the Peace Park and ¥200 museum, Day 2 Miyajima by 10-min JR ferry (¥200 + ¥100 tax). Where to sleep, what to book.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -411,7 +414,7 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Hiroshima 2 Day Itinerary (2026): <br />The Peace Park, Miyajima and What to Book
+            2 Days in Hiroshima (2026): <br />A Day-by-Day Itinerary With a Night in Between
           </h1>
           <p className={styles.heroSubtitle}>
             One day for the city and its memorial, one day for the island. The ferry, the tide and where you
@@ -463,7 +466,8 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
             </div>
             {/* Answer-first: the first body paragraph, not the hero line. */}
             <p className={styles.verdictText}>
-              A <strong>Hiroshima 2 day itinerary</strong> works best as one day per site. On{" "}
+              <strong>2 days in Hiroshima</strong> work best as one day per site, with a night in the city
+              between them. On{" "}
               <strong>Day 1</strong>, walk the Peace Memorial Park and the Atomic Bomb Dome, then give the{" "}
               <strong>Peace Memorial Museum</strong> about two hours (<strong>{MUSEUM_ADULT}</strong> for an
               adult, open from <strong>7:30</strong>). On <strong>Day 2</strong>, go to{" "}

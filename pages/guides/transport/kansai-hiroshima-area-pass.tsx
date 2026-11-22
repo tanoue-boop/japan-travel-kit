@@ -344,6 +344,11 @@ export default function KansaiHiroshimaAreaPassPage({ updated }: { updated: Page
               Buy it if one Hiroshima return falls inside your five days. Start the five days on the morning you land
               at Kansai Airport and the HARUKA is covered too.
             </p>
+            <p className={styles.verdictText} style={{ marginTop: "0.75rem" }}>
+              Staying a night in Hiroshima on the pass? Our{" "}
+              <Link href="/guides/attractions/hiroshima-2-day-itinerary">2 days in Hiroshima itinerary</Link>{" "}
+              plans the city on Day 1 and Miyajima on Day 2.
+            </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink href={jrKansaiHiroshimaAreaPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
                 Check the pass on Klook →
@@ -547,7 +552,7 @@ export default function KansaiHiroshimaAreaPassPage({ updated }: { updated: Page
               ["/guides/attractions/kansai-area-pass", "JR Kansai Area Pass 2026: Price, Coverage & Is It Worth It?"],
               ["/guides/transport/osaka-to-hiroshima-shinkansen", "Osaka to Hiroshima Shinkansen (2026): Time and Price"],
               ["/guides/attractions/hiroshima-miyajima-day-trip", "Hiroshima and Miyajima Day Trip (2026): Is One Day Enough?"],
-              ["/guides/attractions/hiroshima-2-day-itinerary", "Hiroshima 2 Day Itinerary (2026): Peace Park and Miyajima"],
+              ["/guides/attractions/hiroshima-2-day-itinerary", "2 Days in Hiroshima: Day-by-Day Itinerary (2026)"],
               ["/guides/transport/jr-pass-guide", "JR Pass Price 2026: New Prices From Oct 1 & Is It Worth It?"],
               ["/guides/transport/haruka-vs-nankai-rapit", "Haruka vs Rapi:t 2026: Which Kansai Airport Train?"],
               ["/guides/transport", "More Transport Guides →"],

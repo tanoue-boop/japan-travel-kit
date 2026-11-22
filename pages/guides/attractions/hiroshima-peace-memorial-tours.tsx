@@ -350,6 +350,11 @@ export default function HiroshimaPeaceMemorialToursPage({ updated }: { updated: 
               <strong>In short:</strong> you do not need a guide, but one adds context that labels cannot.
               Choose a guide for explanation and questions, or the ¥500 audio guide for a quieter visit.
             </p>
+            <p className={styles.verdictText} style={{ marginTop: "0.75rem" }}>
+              Staying overnight? Our{" "}
+              <Link href="/guides/attractions/hiroshima-2-day-itinerary">2 days in Hiroshima itinerary</Link>{" "}
+              puts the park and museum on Day 1 and Miyajima on Day 2.
+            </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={hiroshimaPeaceHalfDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
                 Check the guided tour →
