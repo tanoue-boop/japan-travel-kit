@@ -428,7 +428,9 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
             Price per GB is left blank for unlimited plans and for daily-allowance plans, where a total has no comparable
             meaning. To decide which one to buy rather than follow the price, the{" "}
             <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>best eSIM for Japan</Link> comparison
-            puts the network, phone number and tethering next to the 7-day and 15-day prices.
+            puts the network, phone number and tethering next to the 7-day and 15-day prices. Buying one for the first time? The
+            4 steps from purchase to switching it on are in{" "}
+            <Link href="/guides/esim" className={tools.inlineLink}>how to get an eSIM for Japan</Link>.
           </p>
           <EsimPriceTrackerTable rows={rows} links={links} />
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>

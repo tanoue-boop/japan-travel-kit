@@ -927,7 +927,11 @@ export default function HowToSetUpEsimJapanPage({ updated }: { updated: PageUpda
             Not sure which to pick?{" "}
             <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Read our full comparison →
-            </Link>
+            </Link>{" "}
+            This page is the setup screens; buying it, and whether to buy at the airport instead, is in{" "}
+            <Link href="/guides/esim" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              how to get an eSIM for Japan
+            </Link>.
           </p>
         </section>
 

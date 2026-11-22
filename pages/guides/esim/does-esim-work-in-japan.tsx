@@ -600,9 +600,9 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             </Link>{" "}
             for which plan to buy, or the{" "}
             <Link href="/guides/esim" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              Japan eSIM guide
+              how to get an eSIM for Japan
             </Link>{" "}
-            for how to get an eSIM in Japan and a pick for each kind of trip. Prices on this page checked {pricesCheckedAt}.
+            for the 4 steps and a pick for each kind of trip. Prices on this page checked {pricesCheckedAt}.
           </p>
         </section>
 
@@ -1004,7 +1004,8 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText}>
             Four steps, and the whole thing takes about ten minutes at home. There is no shop to
             visit, no passport to show and nothing that sells out, which is the main practical
-            difference from a physical SIM.
+            difference from a physical SIM. Airport versus before-you-fly, with prices and hours, is in{" "}
+            <Link href="/guides/esim" style={{ color: "var(--accent)", fontWeight: 600 }}>how to get an eSIM for Japan</Link>.
           </p>
           <div className={styles.pickGrid} style={{ marginTop: "1rem" }}>
             <div className={styles.pickPros} style={{ gridColumn: "1 / -1" }}>

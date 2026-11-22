@@ -7,6 +7,7 @@ import GuideHub from "../../../components/GuideHub";
 import KlookLink from "../../../components/KlookLink";
 import PartnerPick, { PartnerTextLink } from "../../../components/PartnerPick";
 import {
+  allEsimPlans,
   cheapestAtLeastGb,
   cheapestUnlimited,
   findPlansForTrip,
@@ -32,8 +33,12 @@ export const getStaticProps = () => ({
 
 const ROUTE = "/guides/esim";
 // Title and H1 share the same word order (title ≤ 60 characters, no site-name suffix).
-const TITLE = "Japan eSIM Guide 2026: How to Get an eSIM in Japan & Compare";
-const H1 = "Japan eSIM Guide 2026: How to Get an eSIM in Japan & Japan eSIM Comparison";
+// 22 Nov 2026 (jtk-20261122-R01): rebuilt around the "how to get an eSIM for Japan" step queries
+// (80–90th in the 28 days to 19 Nov); the 15 Nov city-word version did not move. Setup screens
+// live on how-to-set-up-esim-japan and the provider comparison on best-esim-japan; this page
+// owns the getting-one flow (check, buy, install, switch on) and the airport-vs-pre-buy choice.
+const TITLE = "How to Get an eSIM for Japan (2026): 4 Steps Before You Fly";
+const H1 = "How to Get an eSIM for Japan (2026): 4 Steps Before You Fly";
 
 /**
  * Facts read on the official pages on this date (15 Nov 2026): Sakura Mobile's travel eSIM
@@ -43,6 +48,10 @@ const H1 = "Japan eSIM Guide 2026: How to Get an eSIM in Japan & Japan eSIM Comp
  */
 const FACTS_CHECKED = "2026-11-15";
 const SPECS_CHECKED_OTHERS = "2026-10-29";
+/** Apple / Google setup pages, as read for how-to-set-up-esim-japan and does-esim-work-in-japan. */
+const SETUP_CHECKED = "2026-11-17";
+/** Airport counters, vending machines and Sakura Mobile prices, as read for japan-airport-sim-cards. */
+const AIRPORT_CHECKED = "2026-11-20";
 
 const sakura = getProvider("sakura");
 const pricesChecked = pricesCheckedLabel();
@@ -54,17 +63,21 @@ const providerPlan = (p: (EsimPlan & { provider?: string }) | null) =>
   p ? `${formatUsd(p.priceUsd)} (${p.provider ? `${p.provider} ` : ""}${p.name})` : "—";
 
 const WEEK = tripPlan(7, 5);
-const TWO_WEEKS = tripPlan(14, 10);
-const MONTH = tripPlan(30, 20);
 const CHEAPEST = siteCheapest();
 const S10 = cheapestAtLeastGb("simbye", 10);
 const S_UNL = cheapestUnlimited("simbye", 7);
 const S_LONG = cheapestAtLeastGb("simbye", 50);
 
+// Cheapest 7-day unlimited plan across the five providers, and what it comes to per day.
+const UNL_WEEK =
+  allEsimPlans
+    .filter((p) => p.unlimited && p.days === 7)
+    .reduce<(typeof allEsimPlans)[number] | null>((a, b) => (!a || b.priceUsd < a.priceUsd ? b : a), null);
+const UNL_PER_DAY = UNL_WEEK ? formatUsd(Math.round((UNL_WEEK.priceUsd / 7) * 100) / 100) : null;
+const FROM = CHEAPEST ? formatUsd(CHEAPEST.priceUsd) : "a few dollars";
+
 // Meta description: the answer plus where the buttons are. 120–155 characters.
-const DESC = `How to get an eSIM in Japan: buy before you fly, scan the QR code, switch it on when you land. Japan eSIM comparison from ${
-  CHEAPEST ? formatUsd(CHEAPEST.priceUsd) : "a few dollars"
-}, by trip type.`;
+const DESC = `How to get an eSIM in Japan: buy an eSIM for Japan online before you fly, scan the QR code, turn it on when you land. From ${FROM}; 4 steps and picks.`;
 
 // ---------------------------------------------------------------------------
 // Buttons: existing affiliate constants only (Simbye 25%, Klook eSIM 20%, Sakura Mobile).
@@ -175,55 +188,105 @@ function dataRange(id: EsimProviderId): string {
   return parts.join(" or ") || "—";
 }
 
-// (3) Airport on arrival vs an eSIM before you fly. First row is the conclusion.
-const airportRows: { what: string; airport: string; esim: string }[] = [
+// (A) The four steps. First row is the whole answer in one line.
+type StepRow = { step: string; todo: ReactNode; time: string; watch: ReactNode; buy?: boolean };
+const stepRows: StepRow[] = [
   {
-    what: "Bottom line",
-    airport: "Only if your phone cannot take an eSIM",
-    esim: "Easiest: online the moment you land",
+    step: "In short",
+    todo: "Buy online before you fly, install from the QR code on Wi-Fi, switch the line on when you land",
+    time: "A few minutes at home",
+    watch: "Do steps 1–3 at home: once you land you have no data until the eSIM is on",
   },
   {
-    what: "What you get",
-    airport: "A physical SIM from a vending machine or counter, or a pocket WiFi rental",
-    esim: "An eSIM by email or app, installed from a QR code",
+    step: "1. Check your phone",
+    todo: "Confirm it supports eSIM and is carrier-unlocked (iPhone: Settings → General → About; “No SIM restrictions” next to Carrier Lock)",
+    time: "1 minute",
+    watch: (
+      <>
+        Apple lists iPhone XS, XS Max, XR and later; Google Pixel 4 and later; Samsung Galaxy S20 and later. A locked
+        phone cannot install the eSIM — models in{" "}
+        <Link href="/guides/esim/does-esim-work-in-japan" style={inline}>does eSIM work in Japan</Link>
+      </>
+    ),
   },
   {
-    what: "When you can get it at KIX",
-    airport: "Terminal 1 (1F): SIM vending machines 24 hours; counters about 06:00–23:00",
-    esim: "Any time before you fly",
+    step: "2. Buy a Japan eSIM",
+    todo: `Pick days and data online: from ${FROM} (${CHEAPEST?.provider ?? ""} ${CHEAPEST?.name ?? ""}); a week with 5 GB from ${providerPlan(WEEK)}`,
+    time: "Any day before you fly",
+    watch: "Data-only plans have no Japanese phone number; only Sakura Mobile's Voice + Data eSIM has one",
+    buy: true,
   },
   {
-    what: "Phone needed",
-    airport: "Unlocked, with a SIM slot",
-    esim: "Unlocked and eSIM-capable",
+    step: "3. Install it from the QR code",
+    todo: "Scan the QR code (or use the provider's app) on Wi-Fi; on iPhone, Settings → Cellular → Add eSIM",
+    time: "A few minutes on Wi-Fi",
+    watch: "Leave the new line switched off until you land; you need Wi-Fi for this step, not mobile data",
   },
   {
-    what: "Japanese phone number",
-    airport: "Sakura Mobile Voice + Data (pre-order, collect at the counter)",
-    esim: "Sakura Mobile Voice + Data eSIM",
+    step: "4. Switch it on when you land",
+    todo: "Turn the eSIM line on for mobile data and turn on data roaming for that line (iPhone: Settings → Cellular → Cellular Data; Pixel: Settings → Network & internet → SIMs)",
+    time: "1 minute after landing",
+    watch: "Turn data roaming off on your home SIM so it does not run up roaming charges",
   },
 ];
+
+// (B) Buying after you land vs before you fly. Values as read for japan-airport-sim-cards.
+type ArriveRow = { option: string; price: string; wait: string; hours: string; cta?: Cta };
+const arriveRows: ArriveRow[] = [
+  {
+    option: "Bottom line: eSIM bought before you fly",
+    price: `From ${FROM} in this site's price check (${pricesChecked})`,
+    wait: "None: connected when you switch off flight mode",
+    hours: "Any time, from home",
+    cta: "simbye",
+  },
+  {
+    option: "Airport SIM counter",
+    price: "No counter price printed on the Narita, Haneda or Kansai airport listings",
+    wait: "Queue at the counter in arrivals; physical SIM, phone needs a SIM slot",
+    hours: "Most of Narita 07:00–21:00; Haneda T3 AnyFone 06:00–23:00; KIX T1 06:00–23:00",
+  },
+  {
+    option: "Airport SIM vending machine",
+    price: "No machine price printed on the airport listings",
+    wait: "No counter: pay at the machine and swap the SIM yourself",
+    hours: "KIX T1 (North, JTB) 24 hours; Haneda T1/T2 05:00–24:00; Narita lists no hours",
+  },
+  {
+    option: "Long stay or a Japanese number: Sakura Mobile, pre-ordered",
+    price: "Travel eSIM from ¥1,375; Travel SIM from ¥3,850 (tax incl.)",
+    wait: "Order ahead, then show your passport and collect the SIM or eSIM QR code at the counter",
+    hours: "KIX T1 06:00–23:00; Haneda T2 07:00–22:00; Narita T1/T2 06:30 to 1 hour after the last international arrival",
+    cta: "sakura",
+  },
+];
+
+const SAKURA_NUMBER_ANSWER = `Of the five compared here, only Sakura Mobile sells an eSIM with a Japanese phone number: its Voice + Data eSIM. Its data eSIMs, and Simbye's, Holafly's, Airalo's and eSIM Go's, have no phone number. If you only need messaging and calls through apps, a data eSIM is enough. Checked on sakuramobile.jp ${FACTS_CHECKED}.`;
+const PHONE_ANSWER =
+  "Yes, if it is carrier-unlocked and supports eSIM. Check both before you buy: an eSIM profile cannot be installed on a locked phone or one without eSIM. If yours cannot take an eSIM, buy a physical SIM instead, by post or at the airport.";
 
 const faqItems = [
   {
     q: "How do I get an eSIM in Japan?",
-    a: `Buy a Japan data eSIM online before you fly, install it from the QR code or the provider's app while you still have Wi-Fi, and switch the line on (and data roaming for it) when you land. On prices checked ${pricesChecked}, a week with 5 GB costs from ${providerPlan(WEEK)} and two weeks with 10 GB from ${providerPlan(TWO_WEEKS)}.`,
+    a: `Buy a Japan data eSIM online before you fly, install it from the QR code or the provider's app while you still have Wi-Fi, and switch the line on (and data roaming for it) when you land. On prices checked ${pricesChecked}, plans start from ${FROM} and a week with 5 GB costs from ${providerPlan(WEEK)}.`,
   },
   {
-    q: "Which Japan eSIM is cheapest in 2026?",
-    a: `Simbye has the lowest list prices of the five compared here: ${CHEAPEST ? providerPlan(CHEAPEST) : "—"} is the cheapest plan and 10 GB is ${label(S10)} (prices checked ${pricesChecked}). Code ${SIMBYE_DISCOUNT_CODE} takes another ${SIMBYE_DISCOUNT_PERCENT}% off.`,
+    q: "Can I buy an eSIM after I arrive in Japan?",
+    a: `Yes, if you have Wi-Fi: an eSIM is bought online, so it can be bought and installed on airport Wi-Fi (Haneda and Kansai Airport both list free Wi-Fi). The Narita, Haneda and Kansai airport listings sell physical SIM cards from counters and vending machines, not eSIMs, and print no prices; KIX Terminal 1 has SIM vending machines open 24 hours. Buying before you fly means you are online the moment you land. Airport listings checked ${AIRPORT_CHECKED}.`,
   },
   {
-    q: "Can I buy an eSIM in Osaka or at the airport?",
-    a: `Kansai Airport's own listing names SIM card vending machines (Terminal 1, 1F, two open 24 hours) and rental counters, not eSIM sales. Sakura Mobile's counter in KIX Terminal 1 (Arrival Lobby 1F, 06:00–23:00) hands over SIMs and eSIM QR codes ordered in advance; there is no Sakura counter in Terminal 2. The simplest route is an eSIM bought before you fly, which works in Osaka like anywhere else in Japan. Checked ${FACTS_CHECKED}.`,
+    q: "How do I buy an eSIM for Japan before I fly?",
+    a: `Choose a plan by days and data on the provider's site or app, pay, and the QR code arrives by email or in the app; install it at home on Wi-Fi. Simbye has the lowest list prices of the five compared here (from ${FROM}, prices checked ${pricesChecked}) and code ${SIMBYE_DISCOUNT_CODE} takes another ${SIMBYE_DISCOUNT_PERCENT}% off.`,
   },
   {
-    q: "Do I need Sakura Mobile for a phone number?",
-    a: `Of the five compared here, only Sakura Mobile sells an eSIM with a Japanese phone number: its Voice + Data eSIM. Its data eSIMs, and Simbye's, Holafly's, Airalo's and eSIM Go's, have no phone number. If you only need messaging and calls through apps, a data eSIM is enough. Checked on sakuramobile.jp ${FACTS_CHECKED}.`,
+    q: "Which eSIM should I get for Osaka and Kyoto?",
+    a: `The same Japan eSIM as for Tokyo: these eSIMs run on Japan's national networks, so no city needs its own plan. Pick by days and data — a week with 5 GB from ${providerPlan(WEEK)}${
+      UNL_WEEK ? `, or unlimited for a week from ${providerPlan(UNL_WEEK)}` : ""
+    }. Landing at Kansai Airport, Sakura Mobile hands over pre-ordered SIMs and eSIM QR codes at its Terminal 1 counter (06:00–23:00).`,
   },
   {
     q: "Will my phone work with a Japan eSIM?",
-    a: "Yes, if it is carrier-unlocked and supports eSIM. Check both before you buy: an eSIM profile cannot be installed on a locked phone or one without eSIM. If yours cannot take an eSIM, buy a physical SIM instead, by post or at the airport.",
+    a: PHONE_ANSWER,
   },
 ];
 
@@ -284,26 +347,80 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
       <GuideHub
         category={esimCategory}
         heading={H1}
-        heroDesc="How to get an eSIM in Japan, which one to buy for your trip, and every Japan eSIM guide on this site — prices read from each provider daily."
+        heroDesc="Check your phone, buy a Japan eSIM online, install it from the QR code, switch it on when you land — then which eSIM to buy, and every Japan eSIM guide on this site."
         dates={dates}
         lead={
           <>
             <section className={styles.bodySection} style={{ marginBottom: "2rem" }}>
               <p className={styles.bodyText}>
-                To <strong>get an eSIM in Japan</strong>, buy a Japan data eSIM online before you fly, install it from
-                the QR code or the provider&apos;s app while you still have Wi-Fi, and switch the line on when you land.
-                On prices checked {pricesChecked}, a one-week trip with 5 GB costs from{" "}
-                <strong>{providerPlan(WEEK)}</strong>, two weeks with 10 GB from <strong>{providerPlan(TWO_WEEKS)}</strong>{" "}
-                and a month with 20 GB from <strong>{providerPlan(MONTH)}</strong>. If you need a Japanese phone number,
-                the only eSIM with one in this Japan eSIM comparison is <strong>Sakura Mobile&apos;s Voice + Data eSIM</strong>.
+                To <strong>get an eSIM for Japan</strong>, buy it online before you fly, install it from the QR code on
+                Wi-Fi, and when you land switch the line on and turn on data roaming for it. On prices checked{" "}
+                {pricesChecked}, a Japan eSIM costs from <strong>{FROM}</strong>
+                {CHEAPEST ? ` (${CHEAPEST.provider} ${CHEAPEST.name})` : ""}, a week with 5 GB from{" "}
+                <strong>{providerPlan(WEEK)}</strong>
+                {UNL_WEEK && UNL_PER_DAY ? (
+                  <>
+                    {" "}and a week of unlimited data from <strong>{providerPlan(UNL_WEEK)}</strong>, about {UNL_PER_DAY} a day
+                  </>
+                ) : null}
+                . The only eSIM here with a Japanese phone number is <strong>Sakura Mobile&apos;s Voice + Data eSIM</strong>.
               </p>
               <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
-                Prices read off each provider&apos;s own site on {pricesChecked}; Sakura Mobile, Kansai Airport,
-                Holafly and Simbye terms read on {FACTS_CHECKED}. Klook prices change by date, so open its listing
-                for yours.
+                Prices read off each provider&apos;s own site on {pricesChecked}. Klook prices change by date, so open
+                its listing for yours. The screen-by-screen setup for iPhone and Android is in{" "}
+                <Link href="/guides/esim/how-to-set-up-esim-japan" style={inline}>how to set up an eSIM for Japan</Link>;
+                every provider side by side is in the{" "}
+                <Link href="/guides/esim/best-esim-japan" style={inline}>best eSIM for Japan</Link> comparison.
               </p>
             </section>
-            <BookingEsimCard lead="Get your Japan eSIM before you fly" />
+
+            {/* (A) Four steps */}
+            <section className={styles.comparisonSection} style={{ marginBottom: "2rem" }}>
+              <span className={styles.sectionLabel}>4 steps</span>
+              <h2 className={styles.sectionTitle}>How do I get an eSIM in Japan?</h2>
+              <p className={styles.bodyText}>{faqItems[0].a}</p>
+              <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+                <div className={styles.tableScroll}>
+                  <table className={styles.table}>
+                    <thead>
+                      <tr>
+                        <th>Step</th>
+                        <th>What to do</th>
+                        <th>Time</th>
+                        <th>Watch out for</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {stepRows.map((row) => (
+                        <tr key={row.step}>
+                          <td className={styles.tdProvider} style={{ minWidth: "140px" }}>{row.step}</td>
+                          <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "240px" }}>
+                            {row.todo}
+                            {row.buy ? (
+                              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem", marginTop: "0.5rem" }}>
+                                <CtaLink cta="simbye" />
+                                <CtaLink cta="klook" />
+                              </div>
+                            ) : null}
+                          </td>
+                          <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "110px" }}>{row.time}</td>
+                          <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "220px" }}>{row.watch}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <p className={styles.bodyText} style={muted}>
+                Last checked: {SETUP_CHECKED} (phone models, carrier lock and settings menus); {pricesCheckedIso}{" "}
+                (prices). Official pages: support.apple.com/en-us/118669 · support.apple.com/en-us/118227 ·
+                support.apple.com/en-us/109316 · support.google.com/pixelphone/answer/9449293 ·
+                simbye.com/products/esim-japan. Affiliate links.
+              </p>
+            </section>
+
+            {/* Step 2 buttons: Klook eSIM 20%, Simbye 25% */}
+            <BookingEsimCard lead="Step 2: buy your Japan eSIM before you fly" />
             <p className={styles.bodyText} style={{ fontSize: "0.85rem", margin: "-1rem 0 2.5rem" }}>
               Need a Japanese phone number?{" "}
               <a href={sakura.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
@@ -311,6 +428,62 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
               </a>{" "}
               <span style={{ color: "var(--text-muted)" }}>(affiliate link)</span>
             </p>
+
+            {/* (B) After you land vs before you fly */}
+            <section className={styles.comparisonSection} style={{ marginBottom: "2rem" }}>
+              <span className={styles.sectionLabel}>Airport or before you fly</span>
+              <h2 className={styles.sectionTitle}>Can I buy an eSIM after I arrive in Japan?</h2>
+              <p className={styles.bodyText}>{faqItems[1].a}</p>
+              <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+                <div className={styles.tableScroll}>
+                  <table className={styles.table}>
+                    <thead>
+                      <tr>
+                        <th>Option</th>
+                        <th>Price</th>
+                        <th>Wait on arrival</th>
+                        <th>Hours</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {arriveRows.map((row) => (
+                        <tr key={row.option}>
+                          <td className={styles.tdProvider} style={{ minWidth: "160px" }}>{row.option}</td>
+                          <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "170px" }}>{row.price}</td>
+                          <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "180px" }}>{row.wait}</td>
+                          <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "200px" }}>{row.hours}</td>
+                          <td>{row.cta ? <CtaLink cta={row.cta} /> : null}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <p className={styles.bodyText} style={muted}>
+                Last checked: {AIRPORT_CHECKED} (airport counters, machines and hours; Sakura Mobile prices and pickup
+                counters); {pricesCheckedIso} (eSIM prices). Official pages: narita-airport.jp/en/service/internet/rental ·
+                tokyo-haneda.com/en/service/facilities/cellular_phone_rental.html ·
+                kansai-airport.or.jp/en/service/internet/rental-wifi-sim · sakuramobile.jp/travel ·
+                sakuramobile.jp/travel/pickup-return. Every counter by terminal, plus New Chitose and Fukuoka, is in{" "}
+                <Link href="/guides/esim/japan-airport-sim-cards" style={inline}>Japan airport SIM cards</Link>; from KIX
+                into the city, see <Link href="/guides/transport/osaka-airport-transfer" style={inline}>Kansai Airport to Osaka</Link>.
+              </p>
+            </section>
+
+            <section className={styles.bodySection}>
+              <h2 className={styles.sectionTitle}>How do I buy an eSIM for Japan before I fly?</h2>
+              <p className={styles.bodyText}>{faqItems[2].a}</p>
+              <p className={styles.bodyText}>
+                Which provider suits a short trip, a long stay or a family is in the table below; for network, tethering
+                and 7- and 15-day prices side by side, see the{" "}
+                <Link href="/guides/esim/best-esim-japan" style={inline}>best eSIM for Japan</Link> comparison.
+              </p>
+            </section>
+            <section className={styles.bodySection}>
+              <h2 className={styles.sectionTitle}>Which eSIM should I get for Osaka and Kyoto?</h2>
+              <p className={styles.bodyText}>{faqItems[3].a}</p>
+            </section>
           </>
         }
         picks={
@@ -421,68 +594,15 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
             </p>
           </section>
 
-          {/* (3) Airport vs before you fly */}
-          <section className={styles.comparisonSection}>
-            <span className={styles.sectionLabel}>Osaka &amp; airports</span>
-            <h2 className={styles.sectionTitle}>Can I buy an eSIM in Osaka or at the airport?</h2>
-            <p className={styles.bodyText}>
-              Not over the counter: Kansai Airport&apos;s listing names SIM card vending machines and rental counters, not
-              eSIM sales, so buy the eSIM before you fly and it works in Osaka as anywhere else in Japan. Sakura Mobile can
-              hand over a pre-ordered SIM or eSIM QR code at its KIX Terminal 1 counter.
-            </p>
-            <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
-              <div className={styles.tableScroll}>
-                <table className={styles.table}>
-                  <thead>
-                    <tr>
-                      <th></th>
-                      <th>Buy at the airport on arrival</th>
-                      <th>eSIM before you fly</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {airportRows.map((row) => (
-                      <tr key={row.what}>
-                        <td className={styles.tdProvider} style={{ minWidth: "140px" }}>{row.what}</td>
-                        <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "220px" }}>{row.airport}</td>
-                        <td style={{ fontSize: "0.82rem", color: "var(--text)", minWidth: "200px" }}>{row.esim}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <p className={styles.bodyText} style={muted}>
-              Last checked: {FACTS_CHECKED}. Official pages: kansai-airport.or.jp/en/service/internet/rental-wifi-sim ·
-              sakuramobile.jp/travel/pickup-return. Narita and Haneda counters and hours are in the{" "}
-              <Link href="/guides/esim/japan-airport-sim-cards" style={inline}>Japan airport SIM cards</Link> guide;
-              getting from KIX into the city is in{" "}
-              <Link href="/guides/transport/osaka-airport-transfer" style={inline}>Kansai Airport to Osaka</Link>.
-            </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem", marginTop: "1rem" }}>
-              <CtaLink cta="simbye" />
-              <CtaLink cta="klook" />
-              <CtaLink cta="sakura" />
-            </div>
-          </section>
-
           {/* Question sections, each answered in the first sentence */}
           <section className={styles.bodySection}>
-            <h2 className={styles.sectionTitle}>How do I get an eSIM in Japan?</h2>
-            <p className={styles.bodyText}>{faqItems[0].a}</p>
-            <p className={styles.bodyText}>
-              Step by step, with the screens for iPhone and Android, is in{" "}
-              <Link href="/guides/esim/how-to-set-up-esim-japan" style={inline}>how to set up an eSIM for Japan</Link>.
-            </p>
-          </section>
-          <section className={styles.bodySection}>
             <h2 className={styles.sectionTitle}>Do I need Sakura Mobile for a phone number?</h2>
-            <p className={styles.bodyText}>{faqItems[3].a}</p>
+            <p className={styles.bodyText}>{SAKURA_NUMBER_ANSWER}</p>
           </section>
           <section className={styles.bodySection}>
             <h2 className={styles.sectionTitle}>Will my phone work with a Japan eSIM?</h2>
             <p className={styles.bodyText}>
-              {faqItems[4].a} How to check, network by network, is in{" "}
+              {PHONE_ANSWER} How to check, network by network, is in{" "}
               <Link href="/guides/esim/does-esim-work-in-japan" style={inline}>Does eSIM work in Japan?</Link>; on an
               iPhone, see <Link href="/guides/esim/japan-esim-iphone" style={inline}>Japan eSIM on iPhone</Link> for the setup steps and which eSIM to buy.
             </p>

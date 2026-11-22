@@ -394,6 +394,11 @@ export default function JapanAirportSimCardsPage({ updated }: { updated: PageUpd
             with no counter hours to beat. Of the five airports below, only New Chitose and Fukuoka list machines that
             sell an <strong>eSIM at the airport</strong>; listings and Sakura Mobile prices checked {CHECKED}.
           </p>
+          <p className={styles.bodyText}>
+            Buying before you fly takes 4 steps — check the phone, buy, install from the QR code, switch it on after
+            landing — set out in{" "}
+            <Link href="/guides/esim" style={linkStyle}>how to get an eSIM for Japan</Link>.
+          </p>
         </section>
 
         {/* Quick Answer Box */}
