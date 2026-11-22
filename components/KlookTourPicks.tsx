@@ -23,7 +23,7 @@ type Props = {
 
 const COPY: Record<Locale, { label: string; cta: string }> = {
   en: { label: "Same trip, same city", cta: "View on Klook →" },
-  "zh-tw": { label: "同城行程推薦", cta: "在 Klook 查看 →" },
+  "zh-tw": { label: "相關行程推薦", cta: "在 Klook 查看 →" },
   "zh-cn": { label: "同城行程推荐", cta: "在 Klook 查看 →" },
   ko: { label: "같은 여행에서", cta: "클룩에서 보기 →" },
   th: { label: "เที่ยวที่อื่นในทริปเดียวกัน", cta: "ดูบน Klook →" },

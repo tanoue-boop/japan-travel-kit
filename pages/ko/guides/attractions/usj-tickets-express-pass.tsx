@@ -51,7 +51,7 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 const ROUTE = "/ko/guides/attractions/usj-tickets-express-pass";
 // 2026-11-14: the exact query leads the title, H1 and meta, in the same order (mirrors English).
 const TITLE = "유니버설 스튜디오 재팬 익스프레스 패스 2026: 종류·가격";
-const H1 = "유니버설 스튜디오 재팬 익스프레스 패스 2026: 종류, 가격, 살 만한가";
+const H1 = "유니버설 스튜디오 재팬 익스프레스 패스 2026: 종류, 가격, 구매할 만할까?";
 const DESC =
   "유니버셜 스튜디오 재팬 익스프레스 패스(USJ 익스프레스 패스) 2026: 4·7 차이, 날짜별 가격, 매진 시기와 살 시점.";
 
@@ -64,7 +64,7 @@ const USJ_EXPRESS_URL = "https://www.usj.co.jp/web/en/us/tickets/express-pass";
 const VARIANT_PRICE = "입장일에 따라 다름 — 결제 화면에 표시";
 
 const ticketRows = [
-  { ticket: "1일 스튜디오 패스", what: "하루 파크 입장. 일반 어트랙션은 일반 대기 줄로 이용", price: "날짜별로 정해짐 — 그날 가격은 결제 화면에 표시" },
+  { ticket: "1일 스튜디오 패스", what: "하루 동안 파크에 입장할 수 있으며 어트랙션은 일반 대기 줄을 이용합니다", price: "날짜별로 정해짐 — 그날 가격은 결제 화면에 표시" },
   { ticket: "2일 스튜디오 패스", what: "연속 2일 입장. 하루당으로 따지면 더 저렴한 경우가 많음", price: "날짜별로 정해짐 — 그날 가격은 결제 화면에 표시" },
   { ticket: "익스프레스 패스(추가 상품)", what: "정해진 어트랙션에서 더 짧은 별도 줄을 이용. 파크 입장권이 아니므로 스튜디오 패스나 연간 패스가 함께 필요", price: "날짜별로 정해짐 — USJ가 2018년 익스프레스 패스에 도입한 가격 체계" },
 ];
@@ -81,14 +81,14 @@ const variantRows = [
   {
     pass: "익스프레스 패스 4",
     covers: "우선 탑승 혜택이 적용되는 어트랙션 4개. USJ는 꼭 타야 할 어트랙션을 위한 패스로 설명하며, 어떤 네 개인지는 버전과 날짜별로 정해집니다.",
-    snw: "그렇다고 명시된 버전에만 포함",
+    snw: "포함된다고 명시된 버전에만 제공",
     price: VARIANT_PRICE,
     bestFor: "짧은 하루, 재방문, 또는 인기 어트랙션만 타면 되는 한가한 날짜",
   },
   {
     pass: "익스프레스 패스 7",
     covers: "우선 탑승 혜택이 적용되는 어트랙션 7개. 첫 방문객 대부분이 고르는 두 가지 중 범위가 넓은 패스이며, 어트랙션 목록이 버전별로 정해지는 점은 같습니다.",
-    snw: "그렇다고 명시된 버전에만 포함",
+    snw: "포함된다고 명시된 버전에만 제공",
     price: VARIANT_PRICE,
     bestFor: "하루 일정, 첫 방문, 붐비는 날짜",
   },
@@ -119,7 +119,7 @@ const pricingRows = [
     source: EXPRESS_PAGE,
   },
   {
-    what: "이 방식이 언제부터인지",
+    what: "이 가격 책정 방식의 시작 시점",
     usj: "익스프레스 패스는 2018년부터 비슷한 수요 기반 가격 체계로 정해져 왔으며, 변경할 계획은 없습니다.",
     source: PRICING_RELEASE,
   },
@@ -177,7 +177,7 @@ const needRows = [
   },
   {
     date: "일본 공휴일 또는 연휴",
-    verdict: "구매, 그것도 일찍",
+    verdict: "미리 구매",
     why: "방문객 수요 위에 일본 국내 수요가 겹치고, 하루 판매 수량은 정해져 있습니다. 이런 날에는 원하는 버전이 가장 먼저 매진됩니다.",
   },
   {
@@ -195,7 +195,7 @@ const needRows = [
 const buyRows = [
   {
     where: "USJ WEB 티켓 스토어(공식)",
-    what: "본인 날짜에 판매 중인 모든 버전을 그날 가격으로",
+    what: "방문 날짜에 판매 중인 모든 버전과 해당 날짜의 가격",
     opens: "방문일 약 2개월 전",
     change: "적힌 날짜에만 유효(USJ)",
     note: "인기 날짜의 판매 개시일에는 대기열 시스템을 각오하세요.",
@@ -223,16 +223,16 @@ const buyRows = [
   },
   {
     where: "당일 파크에서",
-    what: "게이트 판매 없음 — USJ는 이제 당일 게이트에서 티켓을 팔지 않습니다",
+    what: "현장 판매 없음 — USJ는 현재 입장 게이트에서 당일권을 판매하지 않습니다",
     opens: "—",
     change: "—",
-    note: "가기 전에 온라인으로 사세요.",
+    note: "방문 전에 온라인으로 구매하세요.",
   },
 ];
 
 const steps = [
   {
-    title: "먼저 날짜를 정하고, 스튜디오 패스를 삽니다",
+    title: "먼저 방문 날짜를 정하고 스튜디오 패스를 구매합니다",
     desc: "이 페이지의 모든 내용은 날짜에 달려 있습니다. USJ는 이제 당일 게이트에서 티켓을 팔지 않으므로 스튜디오 패스는 온라인으로 사야 하며, 이것이 익스프레스 패스에 포함되지 않는 입장권입니다.",
   },
   {
@@ -268,7 +268,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "익스프레스 패스 4와 익스프레스 패스 7은 무엇이 다른가요?",
-    a: "숫자는 우선 탑승 혜택이 적용되는 어트랙션 이용 횟수, 즉 4개 또는 7개를 뜻합니다. USJ는 익스프레스 패스 4를 꼭 타야 할 어트랙션을 위한 패스로 설명하고, 익스프레스 패스 7은 둘 중 범위가 넓은 패스입니다. 실제 어트랙션 목록은 버전과 날짜별로 정해지고, 슈퍼 닌텐도 월드 입장 확약권은 그렇다고 명시된 버전에만 있으므로 사기 전에 본인 날짜의 포함 내용을 확인하세요.",
+    a: "숫자는 우선 탑승 혜택을 이용할 수 있는 어트랙션 수, 즉 4개 또는 7개를 뜻합니다. USJ는 익스프레스 패스 4를 꼭 타야 할 어트랙션을 위한 패스로 설명하고, 익스프레스 패스 7은 둘 중 범위가 넓은 패스입니다. 실제 어트랙션 목록은 버전과 날짜별로 정해지고, 슈퍼 닌텐도 월드 입장 확약권은 포함된다고 명시된 버전에만 제공되므로 사기 전에 본인 날짜의 포함 내용을 확인하세요.",
   },
   {
     q: "스튜디오 패스 없이 USJ 익스프레스 패스만으로 들어갈 수 있나요?",
@@ -280,7 +280,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "USJ 익스프레스 패스의 날짜를 바꾸거나 환불받을 수 있나요?",
-    a: `바꿀 수 없다고 생각하세요. USJ 공식 익스프레스 패스 페이지는 미리 산 패스는 적힌 날짜에만 유효하고, 시간 지정 어트랙션에 늦게 도착하면 환불도 다른 시간대로의 변경도 없다고 밝힙니다. ${CHECKED_USJ} 확인.`,
+    a: `날짜는 변경할 수 없다고 보세요. USJ 공식 익스프레스 패스 페이지는 미리 산 패스는 적힌 날짜에만 유효하고, 시간 지정 어트랙션에 늦게 도착하면 환불도 다른 시간대로의 변경도 없다고 밝힙니다. ${CHECKED_USJ} 확인.`,
   },
   {
     q: "슈퍼 닌텐도 월드는 어떻게 들어가나요?",
@@ -288,11 +288,11 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "유니버설 스튜디오 재팬 익스프레스 패스는 얼마인가요?",
-    a: `USJ는 고정 금액을 공개하지 않습니다. 공식 익스프레스 패스 페이지는 유효한 익스프레스 패스의 종류와 가격이 날짜에 따라 다르다고 하고, 2026년 6월 30일 스튜디오 패스 가격 안내는 익스프레스 패스가 2018년부터 수요 기반 체계로 가격이 정해져 왔으며 변경 계획이 없다고 밝힙니다. 그날 가격은 결제 화면에 나오므로 여기에는 엔화 금액을 적지 않습니다. ${CHECKED_USJ} 확인.`,
+    a: `USJ는 고정 금액을 공개하지 않습니다. 공식 익스프레스 패스 페이지는 유효한 익스프레스 패스의 종류와 가격이 날짜에 따라 다르다고 하고, 2026년 6월 30일 스튜디오 패스 가격 안내는 익스프레스 패스가 2018년부터 수요 기반 체계로 가격이 정해져 왔으며 변경 계획이 없다고 밝힙니다. 해당 날짜의 가격은 결제 화면에서 확인할 수 있으므로 여기에는 엔화 금액을 적지 않았습니다. ${CHECKED_USJ} 확인.`,
   },
   {
     q: "유니버설 스튜디오 재팬에 가려면 어디에 묵어야 하나요?",
-    a: `개장 시간에 게이트에 있고 싶다면 유니버설시티, 그렇지 않다면 우메다나 오사카역입니다. 파크 게이트는 JR 유메사키선 유니버설시티역에서 걸어서 약 5분이고, 파크는 오사카역에서 약 20분입니다. 두 수치 모두 오사카 관광국(Osaka Convention & Tourism Bureau)의 것으로 ${CHECKED} 확인했습니다. JR 서일본의 목적지 페이지는 유니버설시티역을 파크의 가장 가까운 역으로 꼽고 파크가 역 ‘바로 옆’에 있다고 설명합니다. 반면 여행의 나머지 일정을 생각하면 판단이 달라집니다. 우메다와 오사카역은 JR 주요 노선 위에 있고, 유니버설시티 호텔은 몇 곳이 모여 있을 뿐이라 붐비는 날짜에는 가장 먼저 객실이 찹니다.`,
+    a: `개장 시간에 맞춰 입장하려면 유니버설시티, 그렇지 않다면 우메다·오사카역 주변이 좋습니다. 파크 게이트는 JR 유메사키선 유니버설시티역에서 걸어서 약 5분이고, 파크는 오사카역에서 약 20분입니다. 두 수치 모두 오사카 관광국(Osaka Convention & Tourism Bureau)의 것으로 ${CHECKED} 확인했습니다. JR 서일본의 목적지 페이지는 유니버설시티역을 파크의 가장 가까운 역으로 꼽고 파크가 역 ‘바로 옆’에 있다고 설명합니다. 반면 여행의 다른 일정을 생각하면 선택이 달라집니다. 우메다와 오사카역은 JR 주요 노선 위에 있고, 유니버설시티 호텔은 몇 곳이 모여 있을 뿐이라 붐비는 날짜에는 가장 먼저 객실이 찹니다.`,
   },
   {
     q: "간사이 공항이나 오사카역에서 USJ까지 어떻게 가나요?",
@@ -304,7 +304,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "오사카나 간사이 패스로 USJ가 커버되나요?",
-    a: `파크 자체는 오사카 주유패스에 포함되지 않고, 유니버설시티까지의 JR 구간을 커버하는 오사카 메트로 패스도 없습니다. 철도 쪽에서는 JR 서일본의 간사이 에어리어 패스 페이지가 WEST QR 간사이 미니 패스를 “Kyoto, Universal Studios Japan, Osaka, Namba, Kobe and Nara 3-Day Unlimited Rides”라고 소개합니다. 연속 3일 동안 보통·쾌속·신쾌속 열차를 탈 수 있고 어른 ¥3,000, 어린이 ¥1,500이며, 하루카를 포함한 특급 열차에는 쓸 수 없습니다. WEST QR 간사이 에어리어 패스는 하루카를 커버하며(자유석 무제한, 지정석 2회), 1일권 ¥2,700부터 4일권 ¥6,700까지입니다. ${CHECKED} 확인. 어느 패스에도 파크 입장은 포함되지 않습니다. 입장은 언제나 별도의 스튜디오 패스입니다.`,
+    a: `파크 자체는 오사카 주유패스에 포함되지 않고, 유니버설시티까지의 JR 구간을 커버하는 오사카 메트로 패스도 없습니다. 철도 쪽에서는 JR 서일본의 간사이 에어리어 패스 페이지가 WEST QR 간사이 미니 패스를 “Kyoto, Universal Studios Japan, Osaka, Namba, Kobe and Nara 3-Day Unlimited Rides”라고 소개합니다. 연속 3일 동안 보통·쾌속·신쾌속 열차를 탈 수 있고 어른 ¥3,000, 어린이 ¥1,500이며, 하루카를 포함한 특급 열차에는 쓸 수 없습니다. WEST QR 간사이 에어리어 패스는 하루카를 커버하며(자유석 무제한, 지정석 2회), 1일권 ¥2,700부터 4일권 ¥6,700까지입니다. ${CHECKED} 확인. 두 패스 모두 파크 입장권은 포함하지 않습니다. 입장하려면 별도의 스튜디오 패스가 필요합니다.`,
   },
 ];
 
@@ -329,7 +329,7 @@ const expressSameDayPrep: KlookTripPrepItem[] = [
   withKlookLocale(usjExpressSameDayPrep[1], LOCALE, {
     label: "호텔 킨테츠 유니버설 시티",
     ctaLabel: "호텔 킨테츠 유니버설 시티 보기 →",
-    why: "유니버설시티역 옆의 또 다른 USJ 공식 호텔로, 원하는 날짜에 더 파크 프런트 호텔이 만실일 때의 대안입니다.",
+    why: "유니버설시티역 옆의 또 다른 USJ 공식 호텔로, 원하는 날짜에 더 파크 프런트 호텔의 객실이 없을 때 선택할 수 있는 대안입니다.",
   }),
   withKlookLocale(usjExpressSameDayPrep[2], LOCALE, {
     label: "간사이 공항 리무진 버스(편도)",
@@ -364,12 +364,12 @@ const sameDayPrep: KlookTripPrepItem[] = [
   withKlookLocale(usjSameDayPrep[2], LOCALE, {
     label: "JR 하루카 공항 특급 티켓",
     ctaLabel: "하루카 티켓 보기 →",
-    why: "간사이 공항에서 USJ 여행이 시작되는 덴노지, 오사카, 신오사카까지 바로 갑니다. 클룩 상품 페이지에는 ‘단기 체류(Temporary Visitor)’ 도장이 있는 일본 외 여권 소지자에게만 판매한다고 적혀 있습니다.",
+    why: "간사이 공항에서 USJ 여행이 시작되는 덴노지, 오사카, 신오사카까지 바로 갑니다. 클룩 상품 페이지에는 ‘단기 체류(Temporary Visitor)’ 도장이 있는 외국 여권 소지자에게만 판매한다고 적혀 있습니다.",
   }),
   withKlookLocale(usjSameDayPrep[3], LOCALE, {
     label: "Absolute 오사카 푸드 투어",
     ctaLabel: "오사카 푸드 투어 보기 →",
-    why: "파크에 가지 않는 날의 저녁입니다. 도톤보리 큰길에서 벗어나 걷는 3시간 조인 투어로, 쿠시카츠, 타코야키, 숨은 이자카야, 현지 디저트가 들어 있습니다.",
+    why: "파크에 가지 않는 날의 저녁입니다. 도톤보리 큰길에서 벗어나 걷는 3시간 그룹 투어로, 쿠시카츠, 타코야키, 현지인이 찾는 이자카야, 현지 디저트가 들어 있습니다.",
   }),
   withKlookLocale(usjSameDayPrep[4], LOCALE, {
     label: "클룩 일본 eSIM",
@@ -385,11 +385,11 @@ const stayAreas: KlookStayArea[] = [
   }),
   withKlookLocale(usjStayAreas[1], LOCALE, {
     area: "우메다 / 오사카역",
-    why: "유메사키선 직통 열차가 출발하는 곳입니다. 관광국은 파크까지 오사카역에서 약 20분으로 보며, 여행 내내 JR 주요 노선(교토선·고베선, 환상선, 신오사카의 신칸센)을 쓸 수 있습니다.",
+    why: "유메사키선 직통 열차를 이용할 수 있는 지역입니다. 관광국은 파크까지 오사카역에서 약 20분으로 보며, 여행 내내 JR 주요 노선(교토선·고베선, 환상선, 신오사카의 신칸센)을 쓸 수 있습니다.",
   }),
   withKlookLocale(usjStayAreas[2], LOCALE, {
     area: "덴노지",
-    why: "JR 이용이 편한, 비교적 저렴한 숙박 지역이자 간사이 공항발 하루카가 처음 서는 시내 역입니다. 환상선으로 시내 중심을 지나지 않고 니시쿠조까지 가서 유메사키선으로 갈아탈 수 있습니다.",
+    why: "JR을 이용하기 편리하고 숙박비가 비교적 저렴한 지역입니다. 간사이 공항발 하루카가 오사카 시내에서 처음 정차하는 역이기도 합니다. 환상선으로 시내 중심을 지나지 않고 니시쿠조까지 가서 유메사키선으로 갈아탈 수 있습니다.",
   }),
   withKlookLocale(usjStayAreas[3], LOCALE, {
     area: "난바",
@@ -404,14 +404,14 @@ const tripPrep: KlookTripPrepItem[] = [
     why: "꼼꼼히 읽어 주세요. 이 패스는 유니버설 스튜디오 재팬을 포함하지 않고, 유니버설시티까지의 JR 구간도 포함하지 않습니다. USJ에 가지 않는 오사카 여행의 다른 날에 쓰는 패스로, 오사카 메트로·시내버스 무제한 이용과 40곳 이상의 시설 입장이 포함됩니다.",
   }),
   withKlookLocale(usjTripPrep[1], LOCALE, {
-    label: "교토·나라 당일 투어(기요미즈데라, 후시미 이나리, 나라 공원)",
+    label: "교토·나라 당일 투어(기요미즈데라, 후시미이나리 신사, 나라 공원)",
     ctaLabel: "교토·나라 당일 투어 보기 →",
     why: "테마파크 때문에 오사카에 온 사람에게 가장 자연스러운 둘째 날입니다. 기요미즈데라, 후시미 이나리, 나라 공원을 오사카 출발 예약 한 번으로 다녀오며, 동선을 직접 짤 필요가 없습니다.",
   }),
   withKlookLocale(usjTripPrep[2], LOCALE, {
     label: "클룩 일본 eSIM",
     ctaLabel: "클룩 eSIM 보기 →",
-    why: "USJ는 날짜 지정 스튜디오 패스를 전자 티켓으로 팔고, 슈퍼 닌텐도 월드 정리권을 당일 파크 안에서 쓰는 자체 앱으로 배포합니다. 데이터가 없다는 걸 줄 서서 알게 되면 곤란합니다.",
+    why: "USJ는 날짜 지정 스튜디오 패스를 전자 티켓으로 팔고, 슈퍼 닌텐도 월드 정리권을 당일 파크 안에서 쓰는 자체 앱으로 배포합니다. 대기 줄에 선 뒤 데이터 연결이 안 된다는 것을 알게 되지 않도록 미리 준비하세요.",
   }),
 ];
 
@@ -425,9 +425,9 @@ export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } })
 // Express Pass block and before the FAQ. Same products and order as lib/klook-links.ts.
 const highRateTopPrep: KlookTripPrepItem[] = [
   withKlookLocale(usjHighRateTopPrep[0], LOCALE, {
-    label: "교토・나라 당일 투어(기요미즈데라・후시미 이나리・나라 공원)",
-    ctaLabel: "교토・나라 투어 보기 →",
-    why: "USJ 방문 다음 날 일정으로 많이 고르는 코스입니다. 오사카에서 출발해 기요미즈데라, 후시미 이나리, 나라 공원을 하루에 돌아봅니다.",
+    label: "교토·나라 당일 투어(기요미즈데라·후시미이나리 신사·나라 공원)",
+    ctaLabel: "교토·나라 투어 보기 →",
+    why: "USJ 방문 다음 날 일정으로 많이 고르는 코스입니다. 오사카에서 출발해 기요미즈데라, 후시미이나리 신사, 나라 공원을 하루에 돌아봅니다.",
   }),
   withKlookLocale(usjHighRateTopPrep[1], LOCALE, {
     label: "간사이 공항 ⇄ 오사카 호텔 짐 배송(LuggAgent)",
@@ -444,12 +444,12 @@ const highRateFaqPrep: KlookTripPrepItem[] = [
   withKlookLocale(osakaSightsHighRatePrep[0], LOCALE, {
     label: "오사카성 천수각 입장권",
     ctaLabel: "오사카성 입장권 보기 →",
-    why: "천수각 8개 층과 도요토미 석벽관 입장권으로, 입구에서 스캔합니다. 오사카 어메이징 패스가 있다면 따로 살 필요가 없습니다.",
+    why: "천수각 8개 층과 도요토미 석벽관 입장권으로, 입구에서 스캔합니다. 오사카 주유패스(Osaka Amazing Pass)가 있다면 따로 살 필요가 없습니다.",
   }),
   withKlookLocale(osakaSightsHighRatePrep[1], LOCALE, {
     label: "우메다 스카이 빌딩 공중정원 전망대 입장권",
     ctaLabel: "우메다 스카이 입장권 보기 →",
-    why: "두 동의 빌딩 꼭대기를 잇는 173m 옥상 전망대로, 오사카역에서 걸어갈 수 있어 저녁에 들르기 좋습니다. 이곳도 어메이징 패스에 포함됩니다.",
+    why: "두 동의 빌딩 꼭대기를 잇는 173m 옥상 전망대로, 오사카역에서 걸어갈 수 있어 저녁에 들르기 좋습니다. 이곳도 오사카 주유패스에 포함됩니다.",
   }),
   withKlookLocale(osakaSightsHighRatePrep[2], LOCALE, {
     label: "오사카성·우메다 스카이 빌딩·톤보리 리버 크루즈 1일 투어",
@@ -488,11 +488,11 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <p className={styles.eyebrow}>{updatedLabel} 업데이트</p>
           <h1 className={styles.heroTitle}>{H1}</h1>
           <p className={styles.heroSubtitle}>
-            익스프레스 패스 4와 익스프레스 패스 7이 각각 무엇을 포함하는지, 날짜에 따라 가격이 바뀌는 이유,
+            익스프레스 패스 4와 익스프레스 패스 7에 각각 어떤 어트랙션이 포함되는지, 날짜에 따라 가격이 바뀌는 이유,
             그리고 스튜디오 패스만으로도 충분히 즐길 수 있는 날짜를 정리합니다.
           </p>
           <div className={styles.heroBadges}>
-            {[`${updatedLabel} 업데이트`, "익스프레스 패스 4 vs 7", "슈퍼 닌텐도 월드", "살까 말까"].map((t) => (
+            {[`${updatedLabel} 업데이트`, "익스프레스 패스 4 vs 7", "슈퍼 닌텐도 월드", "구매할까 말까"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -527,7 +527,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
                 <p className={styles.verdictStatValue}>스튜디오 패스(온라인)</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>익스프레스 패스를 더할 때</p>
+                <p className={styles.verdictStatLabel}>익스프레스 패스를 추가로 구매할 때</p>
                 <p className={styles.verdictStatValue}>주말 / 공휴일 / 기념일</p>
               </div>
               <div className={styles.verdictStat}>
@@ -540,7 +540,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>요약:</strong> 입장용으로 스튜디오 패스를 사고, 익스프레스 패스는 날짜를 보고 정하세요.
+              <strong>요약:</strong> 입장권인 스튜디오 패스를 먼저 구매하고, 익스프레스 패스는 방문 날짜에 따라 결정하세요.
               붐비는 날 하루이고 인기 어트랙션을 타고 싶다면 익스프레스 패스 7, 비교적 한가한 날이거나 상위 몇
               개만 원한다면 익스프레스 패스 4, 슈퍼 닌텐도 월드 방문이 주목적이라면 입장 확약권이 포함된 버전을 고르세요.
             </p>
@@ -569,7 +569,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <div className={styles.verdictBody}>
             <p className={styles.verdictText}>
               익스프레스 패스는 입장권이 아닌 추가 상품입니다. 같은 날짜의 스튜디오 패스가 필요하고, 하루 판매
-              수량이 정해져 있습니다. 아래 내용을 보고 날짜에 맞춰 정하세요.
+              수량이 정해져 있습니다. 아래 내용을 보고 방문 날짜에 맞춰 선택하세요.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink href={koUsjExpressPass.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
@@ -585,9 +585,9 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
         {/* 21 Nov 2026 (P01): 5% / 6.5% for the days either side of the park, under the 0% Express Pass. GA4 placement usj-highrate-top. */}
         <div data-placement="usj-highrate-top">
           <KlookTripPrep
-            label="파크 앞뒤 일정"
-            heading="USJ 방문 전후 일정에 예약해 두면 좋은 것"
-            intro="익스프레스 패스로 파크 날짜가 정해지면 나머지 오사카 일정도 함께 정해 두기 좋습니다. 교토・나라 당일 투어, 공항과 호텔 사이 짐 배송, JR 간사이 패스입니다."
+            label="파크 방문 전후 일정"
+            heading="USJ 방문 전후에 예약해 두면 좋은 것"
+            intro="익스프레스 패스로 파크 방문 날짜가 정해지면 나머지 오사카 일정도 함께 정해 두기 좋습니다. 교토·나라 당일 투어, 공항과 호텔 사이 짐 배송, JR 간사이 패스입니다."
             items={highRateTopPrep}
             adPlacement="usj-highrate-top"
             headingLevel={3}
@@ -659,7 +659,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <span className={styles.sectionLabel}>패스트 패스</span>
           <h2 className={styles.sectionTitle}>익스프레스 패스와 패스트 패스는 무엇이 다른가요?</h2>
           <p className={styles.bodyText}>
-            유니버설 스튜디오 재팬에서는 같은 것입니다. USJ의 유료 대기 단축 티켓의 이름은{" "}
+            유니버설 스튜디오 재팬에서는 같은 패스를 가리킵니다. USJ의 유료 대기 단축 티켓의 이름은{" "}
             <strong>유니버설 익스프레스 패스</strong>이고, &ldquo;USJ 패스트 패스&rdquo;는 많은 방문객이 이를
             검색할 때 쓰는 이름일 뿐입니다. USJ 공식 티켓 페이지에는 패스트 패스라는 별도 상품이 없습니다. USJ에서
             하루를 줄여 주는 무료 방법 두 가지는 또 다른 것입니다.
@@ -717,10 +717,10 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>패스 종류 비교</span>
-          <h2 className={styles.sectionTitle}>USJ 익스프레스 패스, 4와 7 중 무엇을 살까?</h2>
+          <h2 className={styles.sectionTitle}>USJ 익스프레스 패스, 4와 7 중 어떤 것을 구매할까?</h2>
           <p className={styles.bodyText}>
-            붐비는 날짜에 첫 방문이라면 익스프레스 패스 7, 비교적 한가한 날짜나 짧은 하루, 또는 상위 몇 개
-            어트랙션만 원하는 재방문이라면 익스프레스 패스 4입니다. 숫자는 우선 탑승 혜택이 적용되는 어트랙션 이용 횟수를 뜻하며,
+            붐비는 날짜에 첫 방문이라면 익스프레스 패스 7, 비교적 한가한 날짜나 짧은 하루, 또는 인기 어트랙션 몇 개만
+            이용하고 싶은 재방문이라면 익스프레스 패스 4입니다. 숫자는 우선 탑승 혜택을 이용할 수 있는 어트랙션 수를 뜻하며,
             어트랙션 목록 자체는 버전과 날짜별로 정해져 있습니다. 패스 이름에 붙은 숫자보다 방문 날짜에 어떤 어트랙션이 포함되는지
             확인하세요.
           </p>
@@ -767,7 +767,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
         </section>
 
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>살까 말까</span>
+          <span className={styles.sectionLabel}>구매할까 말까</span>
           <h2 className={styles.sectionTitle}>USJ 익스프레스 패스, 살 만한가요?</h2>
           <p className={styles.bodyText}>
             주말, 일본 공휴일, 겨울 방학 날짜라면 그렇고, 한가한 평일이라면 대개 아닙니다. 거의 전적으로 여러분이 아니라 날짜에 달려 있습니다. 한가한 평일에는 대개 스튜디오 패스만으로
@@ -874,7 +874,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <span className={styles.sectionLabel}>구매 방법</span>
           <h2 className={styles.sectionTitle}>유니버설 스튜디오 재팬 익스프레스 패스는 어떻게 사나요?</h2>
           <p className={styles.bodyText}>
-            온라인에서 특정 날짜로, USJ에서 직접 또는 판매처를 통해 삽니다. USJ의 구매 기간 안내는 공식 WEB
+            방문 날짜를 지정해 온라인으로 구매하며, USJ 공식 사이트나 판매처를 이용합니다. USJ의 구매 기간 안내는 공식 WEB
             티켓 스토어와 로손 티켓을 판매처로 명시하고 판매 기간을 방문일 약 2개월 전부터로 정하고 있으며,
             판매처들은 같은 날짜 지정 상품을 영어 결제 화면으로 팝니다.
           </p>
@@ -929,9 +929,9 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <h2 className={styles.sectionTitle}>USJ 익스프레스 패스는 당일에 어떻게 쓰나요?</h2>
           <ul className={styles.bodyList}>
             <li><strong>시간 지정 어트랙션:</strong> 일부 어트랙션은 이용 시간이 티켓에 지정되어 있습니다. 그 시간에 가야 하며, 늦어도 환불이나 시간 변경은 되지 않습니다.</li>
-            <li><strong>시간 자유 어트랙션:</strong> 나머지는 운영 시간 중 언제든 탈 수 있습니다.</li>
+            <li><strong>이용 시간 미지정 어트랙션:</strong> 나머지는 운영 시간 중 언제든 탈 수 있습니다.</li>
             <li><strong>탑승 시:</strong> 익스프레스 패스 입구에서 QR 코드가 포함된 티켓 화면 전체를 크루에게 보여 줍니다.</li>
-            <li><strong>1회 1어트랙션:</strong> 티켓의 한 항목에 여러 어트랙션이 적혀 있으면 그중 하나에만 쓸 수 있습니다.</li>
+            <li><strong>1회당 어트랙션 1개:</strong> 티켓의 한 항목에 여러 어트랙션이 적혀 있으면 그중 하나에만 쓸 수 있습니다.</li>
             <li><strong>1인 1매:</strong> 티켓은 개인별이므로 일행 모두 각자 필요합니다.</li>
             <li><strong>싱글 라이더:</strong> 익스프레스 패스와는 별개의 제도로, 일행과 떨어져 빈 좌석을 채웁니다. 운영하지 않는 날과 시간이 있으니 각 어트랙션의 크루에게 문의하세요.</li>
           </ul>
@@ -944,7 +944,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <span className={styles.sectionLabel}>슈퍼 닌텐도 월드</span>
           <h2 className={styles.sectionTitle}>익스프레스 패스에 슈퍼 닌텐도 월드가 포함되나요?</h2>
           <p className={styles.bodyText}>
-            그렇다고 명시된 버전에만 포함됩니다. 슈퍼 닌텐도 월드 입장 확약권(エリア入場確約券)은 모든 익스프레스
+            포함된다고 명시된 버전에만 제공됩니다. 슈퍼 닌텐도 월드 입장 확약권(エリア入場確約券)은 모든 익스프레스
             패스에 포함되는 것이 아니므로 별도로 확인해야 합니다. USJ 공식 시간 지정 입장 페이지는 슈퍼 닌텐도 월드에 들어가는 두 가지 방법을 설명합니다. 일부
             유니버설 익스프레스 패스나 일부 여행사를 통해 미리 확보하는 방법, 그리고 파크에 입장한 뒤 USJ 공식
             앱으로 받는 방법입니다.
@@ -963,7 +963,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <span className={styles.sectionLabel}>어디에 묵을까</span>
           <h2 className={styles.sectionTitle}>유니버설 스튜디오 재팬에 가려면 어디에 묵어야 할까?</h2>
           <p className={styles.bodyText}>
-            <strong>개장 시간에 게이트에 있고 싶다면 유니버설시티, 그렇지 않다면 우메다나 오사카역입니다.</strong>{" "}
+            <strong>개장 시간에 맞춰 입장하려면 유니버설시티, 그렇지 않다면 우메다·오사카역 주변이 좋습니다.</strong>{" "}
             파크 게이트는 JR 유메사키선 유니버설시티역에서 걸어서 약 5분이고, 파크는 오사카역에서 약 20분입니다.
             두 수치 모두 오사카 관광국(Osaka Convention &amp; Tourism Bureau)의 것으로 {CHECKED} 확인했습니다.
             JR 서일본의 파크 목적지 페이지는 유니버설시티역을 가장 가까운 역으로 꼽고 파크가 역 &ldquo;바로
@@ -1065,7 +1065,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <KlookTripPrep
             label="파크에 가지 않는 날"
             heading="파크에 가지 않는 날 예약할 오사카 명소"
-            intro="오사카 어메이징 패스를 사지 않는다면 오사카성과 우메다 스카이 빌딩은 입장권을 따로 사야 합니다. 두 곳을 하루에 도는 가이드 투어도 있습니다."
+            intro="오사카 주유패스를 사지 않는다면 오사카성과 우메다 스카이 빌딩은 입장권을 따로 사야 합니다. 두 곳을 하루에 도는 가이드 투어도 있습니다."
             items={highRateFaqPrep}
             adPlacement="usj-highrate-faq"
           />
@@ -1085,7 +1085,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             { href: "/guides/transport/osaka-airport-transfer", title: "오사카 공항 교통 가이드(2026): 간사이·이타미 공항에서 시내로(영어)" },
             { href: "/guides/attractions/osaka-2-day-itinerary", title: "오사카 2일 일정(2026): 날짜별 동선과 예약할 것(영어)" },
             { href: "/guides/transport/osaka-transportation", title: "오사카 시내 교통(2026): 지하철, 전철, IC 카드 정리(영어)" },
-            { href: "/guides/attractions", title: "일본에서 할 것 더 보기(영어)" },
+            { href: "/guides/attractions", title: "일본에서 즐길 거리 더 보기(영어)" },
             { href: "/ko/guides/attractions/tokyo-disney-tickets", title: "도쿄 디즈니랜드 티켓(2026): 날짜 지정 예매와 랜드·씨 선택" },
             { href: "/guides/transport/osaka-metro-pass", title: "오사카 메트로 패스 vs 엔조이 에코 카드(2026): 관광객은 무엇을 살까(영어)" },
           ]}

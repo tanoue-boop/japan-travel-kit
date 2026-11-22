@@ -28,11 +28,11 @@ export default function ZhCnHomePage({ dates }: { dates: Record<string, string> 
       lead={{
         eyebrow: "行前准备",
         title: "去日本旅行要准备什么？",
-        desc: "三样要在出发前办好：要指定日期的门票、日本 eSIM，以及从机场到住宿的交通。",
+        desc: "出发前需要办好的三件事：要指定日期的门票、日本 eSIM，以及从机场到住宿的交通。",
         body: (
           <>
-            东京迪士尼和日本环球影城门口不卖票、约 2 个月前开售，SHIBUYA SKY 在入场日 2 周前的日本时间 0:00 开售，
-            哪些要先订、官方票价多少，请看{" "}
+            东京迪士尼度假区和日本环球影城均不在入口售票，约 2 个月前开售，SHIBUYA SKY 在入场日 2 周前的日本时间 0:00 开售，
+            哪些门票需要提前订、官方票价是多少，请看{" "}
             <Link href="/zh-cn/guides/attractions">日本景点门票总览</Link>；上网用的 eSIM 出发前装好，比较见{" "}
             <Link href="/zh-cn/guides/esim/best-esim-japan">日本eSIM推荐</Link>；从成田、羽田到市区怎么走，见{" "}
             <Link href="/zh-cn/guides/transport/tokyo-airport-transfer">东京机场交通攻略</Link>。

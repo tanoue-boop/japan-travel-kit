@@ -275,7 +275,7 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     zhCnLabel: "teamLab Planets 与无界对比",
     ko: "/ko/guides/attractions/teamlab-tokyo-tickets",
     koTitle: "팀랩 플래닛 보더리스 비교 2026: 도쿄에서 어디로 갈까",
-    koLabel: "팀랩 플래닛 보더리스 비교",
+    koLabel: "팀랩 플래닛 vs 보더리스",
     th: "/th/guides/attractions/teamlab-tokyo-tickets",
     thTitle: "teamLab Planets หรือ Borderless",
     thLabel: "teamLab Planets หรือ Borderless",

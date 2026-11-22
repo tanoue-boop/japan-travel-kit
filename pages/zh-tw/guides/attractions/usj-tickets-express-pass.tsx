@@ -50,7 +50,7 @@ const ROUTE = "/zh-tw/guides/attractions/usj-tickets-express-pass";
 // 2026-11-22 (R04): Taiwanese readers search "fast pass", "快證", "快速通關", "快通4" — not "Express Pass".
 // Title and H1 now read 快速通關 → Fast Pass → 價錢 → 種類, in that order.
 const TITLE = "日本環球影城快速通關 2026：Fast Pass 價錢・種類比較";
-const H1 = "日本環球影城快速通關 2026：Fast Pass 價錢與種類比較";
+const H1 = "日本環球影城快速通關 2026：快速通關價格與種類比較";
 const DESC =
   "USJ fast pass（快證）價錢依入園日期變動、須另買入園票。快通4・快通7 差在哪、提早多久買、沒有快速通關可以玩嗎，一次比較。";
 
@@ -76,19 +76,19 @@ const VARIANT_PRICE = "依入園日期而異——結帳時顯示";
 const typeRows = [
   {
     type: "結論：多數人選快速通關 7",
-    covers: "第一次來、週末或國定假日只有一天，選涵蓋 7 項設施的快速通關 7；人少的日期選快速通關 4。",
+    covers: "第一次造訪、只有一天能玩，又遇上週末或國定假日，建議選擇涵蓋 7 項設施的快速通關 7；人少的日期選快速通關 4。",
     price: "依入園日期而異，USJ 不公布固定金額",
     where: "USJ 官方 WEB Ticket Store／Klook，約入園前兩個月開賣",
   },
   {
-    type: "快速通關 4（快通4）",
-    covers: "4 項設施，是哪幾項依版本與日期固定",
+    type: "快速通關 4（Express Pass 4）",
+    covers: "包含 4 項設施，實際設施組合依版本與日期而定",
     price: VARIANT_PRICE,
     where: "官方 WEB Ticket Store、Lawson Ticket、Klook",
   },
   {
-    type: "快速通關 7（快通7）",
-    covers: "7 項設施，設施清單同樣依版本而定",
+    type: "快速通關 7（Express Pass 7）",
+    covers: "包含 7 項設施，包含的設施同樣依版本而定",
     price: VARIANT_PRICE,
     where: "官方 WEB Ticket Store、Lawson Ticket、Klook",
   },
@@ -123,7 +123,7 @@ const variantRows = [
   },
   {
     pass: "快速通關 4",
-    covers: "四項設施。USJ 將這款定位為暢玩人氣設施的通關券；是哪四項，依版本與日期固定。",
+    covers: "四項設施。USJ 將這款定位為暢玩人氣設施的通關券；實際設施組合依版本與日期而定。",
     snw: "只有註明包含的版本才有",
     price: VARIANT_PRICE,
     bestFor: "時間短的一天、第二次來，或人少的日子只想玩主力設施",
@@ -140,7 +140,7 @@ const variantRows = [
     covers: "USJ 也賣以單一設施或季節陣容為主的快速通關，各有自己的清單，會隨樂園活動推出與下架。",
     snw: "依版本而異",
     price: VARIANT_PRICE,
-    bestFor: "有某一項非玩不可的設施，而不是想多玩幾項",
+    bestFor: "有特別想玩的設施，而非希望一次體驗多項設施的旅客",
   },
   {
     pass: "含區域入場的版本",
@@ -168,7 +168,7 @@ const pricingRows = [
     source: "〈Pricing for Studio Passes to Change〉，2026年6月30日，usj.co.jp",
   },
   {
-    what: "USJ 自己的建議",
+    what: "USJ 官方建議",
     usj: "價格可能上漲，請盡早購買。",
     source: "〈Pricing for Studio Passes to Change〉，2026年6月30日，usj.co.jp",
   },
@@ -187,7 +187,7 @@ const windowRows = [
   },
   {
     q: "每天賣多少張？",
-    a: "每天數量有限——USJ 自己的頁面說，常常會提前售完。",
+    a: "每天數量有限——USJ 官方頁面指出，常常會提前售完。",
     source: "Universal Express Pass 頁面，usj.co.jp",
   },
   {
@@ -207,7 +207,7 @@ const needRows = [
   {
     date: "日本學校假期以外、人少的平日",
     verdict: "通常可以不買",
-    why: "一般排隊時間最短，而透過官方 App 免費取得園區指定時段入場的方式，在你入園時最有可能還有名額。",
+    why: "一般排隊所需的時間較短，而透過官方 App 免費取得園區指定時段入場的方式，在你入園時最有可能還有名額。",
   },
   {
     date: "週六或週日",
@@ -237,7 +237,7 @@ const buyRows = [
     what: "你入園日期當天在售的所有版本，以當天價格販售",
     opens: "入園日前約兩個月",
     change: "僅限票面日期有效（USJ）",
-    note: "熱門開賣日請預期會有排隊系統。",
+    note: "熱門日期開賣時，購票網站可能啟用線上排隊系統。",
   },
   {
     where: "Lawson Ticket——網站與 Loppi 機台",
@@ -251,7 +251,7 @@ const buyRows = [
     what: "單獨販售的快速通關，結帳介面易懂、可用海外信用卡付款，並提供電子票",
     opens: "依商品頁顯示的日期",
     change: "請看商品頁的取消規定",
-    note: "USJ 自己的指定時間入場頁面說，區域入場也可以透過特定旅行社事先取得。",
+    note: "USJ 官方指定時間入場頁面指出，區域入場也可以透過特定旅行社事先取得。",
   },
   {
     where: "GetYourGuide",
@@ -284,7 +284,7 @@ const steps = [
   },
   {
     title: "出發前先安裝官方 USJ App",
-    desc: `USJ 自己的指定時間入場頁面說，自2026年1月5日起，必須用官方 App 取得園區指定時段入場券與 Standby Entry Ticket，而且要先在 App 裡登錄你的入園票。於${CHECKED_USJ}查閱。`,
+    desc: `USJ 官方指定時間入場頁面指出，自2026年1月5日起，必須用官方 App 取得園區指定時段入場券與 Standby Entry Ticket，而且要先在 App 裡登錄你的入園票。於${CHECKED_USJ}查閱。`,
   },
   {
     title: "建議提早抵達園區",
@@ -295,7 +295,7 @@ const steps = [
 const faqItems: FaqItem[] = [
   {
     q: "USJ 快速通關、fast pass、快證是一樣的嗎？",
-    a: `是同一張票。日本環球影城付費縮短排隊的票叫做 Universal Express Pass（快速通關），「USJ fast pass」「快證」「快通」都是旅客對它的叫法；USJ 自己的票券頁面沒有另外的 Fast Pass 商品。它主要分為快速通關 4 與快速通關 7，綁定一個日期，同一天還需要 Studio Pass。於${CHECKED_USJ}在 usj.co.jp 查閱。`,
+    a: `是同一張票。日本環球影城付費縮短排隊的票叫做 Universal Express Pass（快速通關），「USJ fast pass」「快證」「快通」都是旅客對它的叫法；USJ 官方票券頁面沒有另外的 Fast Pass 商品。它主要分為快速通關 4 與快速通關 7，綁定一個日期，同一天還需要 Studio Pass。於${CHECKED_USJ}在 usj.co.jp 查閱。`,
   },
   {
     q: "USJ 門票一定要提前買嗎？",
@@ -303,27 +303,27 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "2026 年的 USJ 快速通關值得買嗎？",
-    a: `人多的日子，值得。2026 年是 USJ 的 25 週年——樂園官方新聞稿在2026年9月14日與9月28日發布了週年相關消息，於${CHECKED_USJ}查閱——週末或國定假日，快速通關能把好幾小時的普通排隊換成另一條短隊伍，含區域入場的版本還附超級任天堂世界的入區資格。人少的離峰平日就沒那麼必要：一般排隊時間最短，用 App 免費取得該區入場資格的機會也最高。`,
+    a: `人多的日子，值得。2026 年是 USJ 的 25 週年——樂園官方新聞稿在2026年9月14日與9月28日發布了週年相關消息，於${CHECKED_USJ}查閱——週末或國定假日，快速通關能把好幾小時的普通排隊換成另一條短隊伍，含區域入場的版本還附超級任天堂世界的入區資格。人少的離峰平日就沒那麼必要：一般排隊所需的時間較短，用 App 免費取得該區入場資格的機會也最高。`,
   },
   {
     q: "環球快通4 和快通7 差在哪？",
-    a: "差在涵蓋的設施數：快通4（快速通關 4）是四項，快通7（快速通關 7）是七項。USJ 將快速通關 4 定位為暢玩人氣設施的那一款，快速通關 7 則是兩者中涵蓋較廣的。實際的設施清單依版本與日期固定，超級任天堂世界的區域入場也只有註明包含的版本才有，所以購買前請確認你那天的內容。",
+    a: "差在涵蓋的設施數：快通4（快速通關 4）是四項，快通7（快速通關 7）是七項。USJ 將快速通關 4 定位為暢玩人氣設施的那一款，快速通關 7 則是兩者中涵蓋較廣的。實際設施組合依版本與日期而定，超級任天堂世界的區域入場也只有註明包含的版本才有，所以購買前請確認你那天的內容。",
   },
   {
     q: "沒有 Studio Pass 可以只用快速通關嗎？",
-    a: `不行。USJ 自己的快速通關頁面寫明，入園需要 Studio Pass 入園券（或年票），快速通關之外還需要另外的樂園入場券。快速通關只是在你入園後縮短排隊。於${CHECKED_USJ}查閱。`,
+    a: `不行。USJ 官方快速通關頁面寫明，入園需要 Studio Pass 入園券（或年票），快速通關之外還需要另外購買的樂園入場券。快速通關只是在你入園後縮短排隊。於${CHECKED_USJ}查閱。`,
   },
   {
     q: "沒有快速通關可以玩嗎？",
-    a: `可以。有 Studio Pass 就能入園、排一般隊伍玩所有設施；快速通關只是另外付費縮短排隊。人少的平日通常只買 Studio Pass 就夠了，USJ 也有免費的單人乘車通道（Single Rider），超級任天堂世界則可在入園後用官方 App 免費取得園區指定時段入場券（先到先得）。週末、國定假日與寒假期間排隊較長，才建議加買。於${CHECKED_USJ}在 usj.co.jp 查閱。`,
+    a: `可以。有 Studio Pass 就能入園、排一般隊伍玩所有設施；快速通關只是另外付費縮短排隊。人少的平日通常只買 Studio Pass 就夠了，USJ 也有免費的單人乘坐通道（Single Rider），超級任天堂世界則可在入園後用官方 App 免費取得園區指定時段入場券（先到先得）。週末、國定假日與寒假期間排隊較長，才建議加買。於${CHECKED_USJ}在 usj.co.jp 查閱。`,
   },
   {
     q: "大阪環球影城快速通關要提早多久買？",
-    a: `入園日前約兩個月開賣，週末、國定假日與寒假期間的日期一開賣就買。每天數量有限，USJ 自己的頁面說常常提前售完。USJ 自己2025年4月21日的購票期間公告說，門票——Studio Pass、快速通關等——約在兩個月前於官方 WEB Ticket Store 與 Lawson Ticket 開賣；大阪世博期間（入園日至2025年10月13日為止）曾放寬為三個月，之後恢復為約兩個月。於${CHECKED_USJ}查閱。`,
+    a: `入園日前約兩個月開賣，週末、國定假日與寒假期間的日期一開賣就買。每天數量有限，USJ 官方頁面指出常常提前售完。USJ 官方2025年4月21日的購票期間公告指出，門票——Studio Pass、快速通關等——約在兩個月前於官方 WEB Ticket Store 與 Lawson Ticket 開賣；大阪世博期間（入園日至2025年10月13日為止）曾放寬為三個月，之後恢復為約兩個月。於${CHECKED_USJ}查閱。`,
   },
   {
     q: "USJ 快速通關可以改日期或退款嗎？",
-    a: `請視為無法更改。USJ 自己的快速通關頁面寫明，預先購買的通關券只在票面日期有效；指定時間的設施若遲到，不退款，也不能改到其他時段。於${CHECKED_USJ}查閱。`,
+    a: `請視為無法更改。USJ 官方快速通關頁面寫明，預先購買的通關券只在票面日期有效；指定時間的設施若遲到，不退款，也不能改到其他時段。於${CHECKED_USJ}查閱。`,
   },
   {
     q: "怎麼進超級任天堂世界？",
@@ -335,11 +335,11 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "去日本環球影城該住哪裡？",
-    a: `想在開園時就到門口，住環球城；否則住梅田或大阪站一帶。從 JR 夢咲線的環球城站步行到樂園大門約五分鐘，從大阪站到樂園約 20 分鐘——兩個數字都是大阪觀光局（Osaka Convention & Tourism Bureau）自己的，於${CHECKED}查閱。JR 西日本自己的目的地頁面把環球城站列為樂園最近的車站，並形容樂園「就在旁邊」。取捨在於其餘行程：梅田與大阪站讓你留在 JR 主要路網上，而環球城的飯店集中在一小區，人多的日子最先客滿。`,
+    a: `想在開園時就到門口，住環球城；否則住梅田或大阪站一帶。從 JR 夢咲線的環球城站步行到樂園大門約五分鐘，從大阪站到樂園約 20 分鐘——兩個數字都出自大阪觀光局（Osaka Convention & Tourism Bureau）官方資料，於${CHECKED}查閱。JR 西日本官方目的地頁面把環球城站列為樂園最近的車站，並形容樂園「就在旁邊」。取捨在於其餘行程：梅田與大阪站讓你留在 JR 主要路網上，而環球城的飯店集中在一小區，人多的日子最先客滿。`,
   },
   {
     q: "從關西機場或大阪站怎麼去 USJ？",
-    a: `車站是 JR 夢咲線（櫻島線）的環球城站，通常在西九條轉車，大阪觀光局說從大阪站到樂園約 20 分鐘。從關西機場沒有直達電車：JR 西日本的 HARUKA 不必轉車直達天王寺、大阪、新大阪與京都——以「短期停留（Temporary Visitor）」身分入境的外國護照持有人可買的優惠單程票，到2026年10月31日為止，到天王寺 ¥1,300、到大阪或新大阪 ¥1,800，2026年11月1日起調整為 ¥1,600 與 ¥1,900——或搭南海 Rapi:t 到難波，最快 34 分鐘，除車資外另需成人 ¥700 的特急券。之後都搭環狀線到西九條，再轉夢咲線。所有數字於${CHECKED}查閱。`,
+    a: `車站是 JR 夢咲線（櫻島線）的環球城站，通常在西九條轉車，大阪觀光局說從大阪站到樂園約 20 分鐘。從關西機場沒有直達電車：JR 西日本的 HARUKA 不必轉車直達天王寺、大阪、新大阪與京都——以「短期停留（Temporary Visitor）」身分入境的外國護照持有人可買的優惠單程票，到2026年10月31日為止，到天王寺 ¥1,300、到大阪或新大阪 ¥1,800，2026年11月1日起調整為 ¥1,600 與 ¥1,900——或搭南海 Rapi:t 到難波，最快 34 分鐘，除了車資外，還需另外購買成人 ¥700 的特急券。之後都搭環狀線到西九條，再轉夢咲線。所有數字於${CHECKED}查閱。`,
   },
   {
     q: "USJ 快速通關當天要怎麼使用？",
@@ -347,7 +347,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "有哪張大阪或關西的票券包含 USJ 嗎？",
-    a: `樂園本身不在大阪周遊卡（Osaka Amazing Pass）的範圍內，也沒有任何大阪地鐵票券涵蓋前往環球城的 JR 路段。鐵路方面，JR 西日本自己的關西地區鐵路周遊券頁面把 WEST QR Kansai Mini Pass 描述為「京都、日本環球影城、大阪、難波、神戶、奈良 3 日無限搭乘」——成人 ¥3,000、兒童 ¥1,500，連續三天可搭普通、快速與新快速列車，但不能搭包括 HARUKA 在內的任何特急。WEST QR Kansai Area Pass 則涵蓋 HARUKA，自由席無限次加上兩次指定席，一日 ¥2,700 到四日 ¥6,700。於${CHECKED}查閱。以上都不含樂園門票——入園一定要另外買 Studio Pass。`,
+    a: `樂園本身不在大阪周遊卡（Osaka Amazing Pass）的範圍內，也沒有任何大阪地鐵票券涵蓋前往環球城的 JR 路段。鐵路方面，JR 西日本官方的關西地區鐵路周遊券頁面把 WEST QR Kansai Mini Pass 描述為「京都、日本環球影城、大阪、難波、神戶、奈良 3 日無限搭乘」——成人 ¥3,000、兒童 ¥1,500，連續三天可搭普通、快速與新快速列車，但不能搭包括 HARUKA 在內的任何特急。WEST QR Kansai Area Pass 則涵蓋 HARUKA，自由席無限次加上兩次指定席，一日 ¥2,700 到四日 ¥6,700。於${CHECKED}查閱。以上都不含樂園門票——入園一定要另外買 Studio Pass。`,
   },
 ];
 
@@ -382,7 +382,7 @@ const expressSameDayCopy: Pick<KlookTripPrepItem, "label" | "ctaLabel" | "why">[
   {
     label: "Klook 日本 eSIM 網卡",
     ctaLabel: "查看 Klook eSIM 方案 →",
-    why: "快速通關與 Studio Pass 都是 QR 電子票，超級任天堂世界的園區指定時段入場也透過 USJ 官方 App 辦理——全都需要你在園內有網路。",
+    why: "快速通關與 Studio Pass 都是 QR 電子票，超級任天堂世界的園區指定時段入場也透過 USJ 官方 App 辦理——使用這些服務時，都需要在園內能連上網路。",
   },
 ];
 const expressSameDayPrep: KlookTripPrepItem[] = usjExpressSameDayPrep.map((item, i) => withKlookLocale(item, LOCALE, expressSameDayCopy[i]));
@@ -392,7 +392,7 @@ const sameDayCopy: Pick<KlookTripPrepItem, "label" | "ctaLabel" | "why">[] = [
   {
     label: "日本環球影城周邊飯店（環球城）",
     ctaLabel: "在 Klook 查看環球城飯店 →",
-    why: "與我們大阪住宿指南使用的同一個 Klook 飯店搜尋。從環球城站步行到樂園大門約五分鐘，適合打算在開園前就到門口的早晨。",
+    why: "與我們大阪住宿指南使用的同一個 Klook 飯店搜尋。從環球城站步行到樂園大門約五分鐘，適合想在開園前就抵達入口的旅客。",
   },
   {
     label: "大阪周遊卡（1日／2日）",
@@ -407,7 +407,7 @@ const sameDayCopy: Pick<KlookTripPrepItem, "label" | "ctaLabel" | "why">[] = [
   {
     label: "大阪美食導覽（道頓堀巷弄）",
     ctaLabel: "查看大阪美食導覽 →",
-    why: "安排在不去樂園那天的晚上：3 小時的併團步行導覽，離開道頓堀大街，有串炸、章魚燒、隱藏版居酒屋與在地甜點。",
+    why: "安排在不去樂園那天的晚上：3 小時的併團步行導覽，走進道頓堀大街以外的巷弄，品嚐串炸、章魚燒與在地甜點，並造訪隱藏版居酒屋。",
   },
   {
     label: "Klook 日本 eSIM 網卡",
@@ -424,7 +424,7 @@ const answerSameDayPrep: KlookTripPrepItem[] = [0, 1, 4].map((i) => sameDayPrep[
 const stayCopy: Pick<KlookStayArea, "area" | "why">[] = [
   {
     area: "環球城（Universal City）",
-    why: "依大阪觀光局自己的數字，從環球城站步行到樂園大門約五分鐘——想在開園前就站在門口的那一天，這正是住這一區的全部理由。",
+    why: "依大阪觀光局官方數字，從環球城站步行到樂園大門約五分鐘——想在開園前就站在門口的那一天，這正是選擇住在環球城的理由。",
   },
   {
     area: "梅田／大阪站",
@@ -478,7 +478,7 @@ const highRateTopPrep: KlookTripPrepItem[] = [
     why: "飛到大阪玩 USJ 的旅客最常排的第二天：從大阪出發，一天走完清水寺、伏見稻荷和奈良公園。",
   }),
   withKlookLocale(usjHighRateTopPrep[1], LOCALE, {
-    label: "關西機場 ⇄ 大阪飯店行李配送（LuggAgent）",
+    label: "關西機場與大阪飯店間的行李配送服務（LuggAgent）",
     ctaLabel: "查看行李配送 →",
     why: "行李另外在關西機場與大阪飯店之間配送，抵達日或離開日也能不拖行李箱觀光。預訂前請確認飯店是否在服務範圍內，以及寄件截止時間。",
   }),
@@ -536,7 +536,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <p className={styles.eyebrow}>更新於 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>{H1}</h1>
           <p className={styles.heroSubtitle}>
-            快通4・快通7（Express Pass 4／7）分別包含幾項設施、fast pass 價錢為什麼隨日期變動，以及哪些日子只買 Studio Pass 就夠了。
+            快速通關 4、快速通關 7（Express Pass 4／7）各包含哪些設施、快速通關價格為何會隨日期變動，以及哪些日期只買 Studio Pass 就夠了。
           </p>
           <div className={styles.heroBadges}>
             {[`更新於 ${updatedLabel}`, "快速通關 4 vs 7", "超級任天堂世界", "買或不買"].map((t) => (
@@ -553,8 +553,8 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>日本環球影城快速通關（Universal Express Pass，俗稱 USJ fast pass、快證）</strong>主要有<strong>快速通關 4（快通4，4 項設施）</strong>與
-            <strong>快速通關 7（快通7，7 項設施）</strong>兩種，另有含超級任天堂世界區域入場的版本。價錢沒有固定金額：USJ
+            <strong>日本環球影城快速通關（Universal Express Pass，也常被稱為 USJ Fast Pass）</strong>主要有<strong>快速通關 4（Express Pass 4，包含 4 項設施）</strong>與
+            <strong>快速通關 7（Express Pass 7，包含 7 項設施）</strong>兩種，另有含超級任天堂世界區域入場的版本。價錢沒有固定金額：USJ
             依入園日期定價，當天價格在結帳時顯示。快速通關不是入園票，同一天一定要另外買 Studio Pass。
           </p>
           <p className={styles.bodyText}>
@@ -601,8 +601,8 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
         <div data-placement="usj-sameday-answer">
           <KlookTripPrep
             label="同一天要預訂的"
-            heading="訂好快速通關後，同一天要預訂的項目"
-            intro="快速通關的日期一確定，USJ 周邊飯店、樂園前後幾天用的大阪周遊卡，以及樂園 App 與電子票要用的網路，最好同一天一起訂好。熱門日期的環球城飯店，常和快速通關一樣早早客滿。"
+            heading="訂好快速通關後，建議一併預訂的項目"
+            intro="快速通關的日期一確定，USJ 周邊飯店、樂園行程前後幾天使用的大阪周遊卡，以及樂園 App 與電子票要用的網路，最好同一天一起訂好。熱門日期的環球城飯店，常和快速通關一樣早早客滿。"
             items={answerSameDayPrep}
             headingLevel={3}
           />
@@ -633,7 +633,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             </div>
             <p className={styles.verdictText}>
               <strong>結論：</strong>先買 Studio Pass 入園，再依日期決定快速通關。只有一天又是人多的日子、想玩主力設施，選快速通關 7；人潮較少的日期或只想玩幾項熱門設施，選快速通關
-              4；如果超級任天堂世界是這趟的重點，選含超級任天堂世界區域入場的版本。
+              4；如果超級任天堂世界是這趟旅程的重點，選含超級任天堂世界區域入場的版本。
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink href={STUDIO_PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn} style={{ flex: "1 1 200px" }}>
@@ -692,7 +692,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <h2 className={styles.sectionTitle}>日本環球影城快速通關是什麼？</h2>
           <p className={styles.bodyText}>
             它是綁定日期的加購項目，讓你在固定幾項設施改走較短的快速通關通道，不用排一般隊伍。它<strong>不是</strong>入園票：USJ
-            自己的快速通關頁面說，需要另外的樂園入場券，所以同一天必須有 Studio Pass 或年票。於{CHECKED_USJ}查閱。
+            官方快速通關頁面指出，需要另外購買的樂園入場券，所以同一天必須有 Studio Pass 或年票。於{CHECKED_USJ}查閱。
           </p>
           <p className={styles.bodyText}>
             比較版本之前還有兩個細節。通關券上的設施有些是指定時間、有些不是——不指定時間的，USJ 說營業時間內隨時都能使用——使用時在設施的快速通關入口出示
@@ -729,7 +729,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <span className={styles.sectionLabel}>入園票</span>
           <h2 className={styles.sectionTitle}>買快速通關還需要 Studio Pass 嗎？</h2>
           <p className={styles.bodyText}>
-            需要。USJ 自己的快速通關頁面說，需要另外的樂園入場券，所以每位遊客都需要一張與快速通關同一天有效的 Studio Pass（或年票）——快速通關只是在你入園後縮短排隊。於{CHECKED_USJ}查閱。
+            需要。USJ 官方快速通關頁面指出，需要另外購買的樂園入場券，所以每位遊客都需要一張與快速通關同一天有效的 Studio Pass（或年票）——快速通關只是在你入園後縮短排隊。於{CHECKED_USJ}查閱。
           </p>
           <div className={styles.pickCtaRow}>
             <KlookLink href={STUDIO_PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
@@ -743,10 +743,10 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <h2 className={styles.sectionTitle}>快速通關（Express Pass）和 fast pass 有什麼不同？</h2>
           <p className={styles.bodyText}>
             在日本環球影城，兩者是同一個東西：USJ 付費縮短排隊的票叫做 <strong>Universal Express Pass（快速通關）</strong>，「USJ fast
-            pass」只是很多旅客搜尋它時用的名稱——USJ 自己的票券頁面沒有另外叫 Fast Pass 的商品。USJ 兩種免費縮短排隊的方式，則是另外的東西：
+            pass」只是很多旅客搜尋它時用的名稱——USJ 官方票券頁面沒有另外叫 Fast Pass 的商品。USJ 兩種免費縮短排隊的方式，則是另外的東西：
           </p>
           <ul className={styles.bodyList}>
-            <li><strong>單人乘車通道（Single Rider）：</strong>另一條隊伍，與同行者分開、填補空位；並非隨時開放。</li>
+            <li><strong>單人乘坐通道（Single Rider）：</strong>另一條隊伍，與同行者分開、填補空位；並非隨時開放。</li>
             <li><strong>園區指定時段入場券（官方 App）：</strong>進入超級任天堂世界的時段，當天在園內取得——它不會縮短設施排隊。</li>
           </ul>
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
@@ -759,7 +759,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <h2 className={styles.sectionTitle}>USJ fast pass 多少錢？</h2>
           <p className={styles.bodyText}>
             日本環球影城快速通關沒有固定的 2026 年價格：USJ 依入園日期與種類定價，當天金額在結帳時顯示。沒有單一答案，而這是 USJ 自己的立場，不是我們含糊其詞：它的快速通關頁面說，有效快速通關的種類與價格依日期而異；2026年6月30日關於
-            Studio Pass 定價的公告也說，快速通關自 2018 年起採需求定價制度，目前沒有變更計畫。你能據以規劃的是規則，所以這張表列的就是規則。
+            Studio Pass 定價的公告也說，快速通關自 2018 年起採需求定價制度，目前沒有變更計畫。因此，下表整理可供規劃行程時參考的定價規則。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -796,7 +796,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <h2 className={styles.sectionTitle}>環球快通4 和快通7 差在哪？</h2>
           <p className={styles.bodyText}>
             差在涵蓋的設施數：快通4 是 4 項、快通7 是 7 項，價錢同樣依入園日期而異。第一次來、又剛好是人多的日子，選快速通關 7；人潮較少的日期、時間短，或是第二次來只想玩幾項熱門設施，選快速通關
-            4。數字是通關券涵蓋的設施數，設施清單本身依版本與日期固定——所以請看你那天的內容，而不是票面上的數字。
+            4。數字是通關券涵蓋的設施數，實際設施組合依版本與日期而定——所以請看你那天的內容，而不是票面上的數字。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -845,7 +845,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             可以。有 Studio Pass 就能入園，所有設施都能排一般隊伍搭乘；快速通關只是另外付費縮短排隊。人少的平日通常只買 Studio Pass 就夠了，週末、國定假日與寒假期間排隊較長，才建議加買。
           </p>
           <p className={styles.bodyText}>
-            不買快速通關時，還有兩種免費的方式：單人乘車通道（Single Rider，與同行者分開搭乘，並非隨時開放），以及入園後用官方 USJ App
+            不買快速通關時，還有兩種免費的方式：單人乘坐通道（Single Rider，與同行者分開搭乘，並非隨時開放），以及入園後用官方 USJ App
             免費取得超級任天堂世界的園區指定時段入場券（當天先到先得）。於{CHECKED_USJ}在 usj.co.jp 查閱。
           </p>
         </section>
@@ -914,7 +914,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <span className={styles.sectionLabel}>售完</span>
           <h2 className={styles.sectionTitle}>大阪環球影城快速通關要提早多久買？</h2>
           <p className={styles.bodyText}>
-            入園日前約兩個月開賣，週末、國定假日與寒假期間的日期一開賣就買。USJ 自己的頁面說每天數量有限、常常提前售完，因此沒有「提早這麼多天就一定買得到」的時間點，只有「越早越好」。
+            入園日前約兩個月開賣，週末、國定假日與寒假期間的日期一開賣就買。USJ 官方頁面指出每天數量有限、常常提前售完，因此沒有「提早這麼多天就一定買得到」的時間點，只有「越早越好」。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -1002,9 +1002,9 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             <li><strong>指定時間的設施:</strong> 部分設施的時間印在票上，須依該時間前往。若未依指定時間抵達，恕不退款，也無法更改時段。</li>
             <li><strong>沒有指定搭乘時間的設施:</strong> 其餘設施在營業時間內隨時可使用快速通關。</li>
             <li><strong>搭乘時:</strong> 在快速通關入口向工作人員出示含 QR 碼的完整票券畫面。</li>
-            <li><strong>每格限一項:</strong> 同一格印有多項設施時，只能使用其中一項。</li>
+            <li><strong>每欄限一項:</strong> 同一欄列有多項設施時，只能選擇其中一項使用。</li>
             <li><strong>每人一張:</strong> 門票限本人使用，同行每人都需要自己的票。</li>
-            <li><strong>單人乘車通道（Single Rider）:</strong> 與快速通關無關的另一套制度：與同行者分開排隊，利用設施剩餘座位搭乘。部分日期與時段不能使用，請洽各設施的工作人員。</li>
+            <li><strong>單人乘坐通道（Single Rider）:</strong> 與快速通關無關的另一套制度：與同行者分開排隊，利用設施剩餘座位搭乘。部分日期與時段不能使用，請洽各設施的工作人員。</li>
           </ul>
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
             依 USJ 快速通關與 FAQ 頁面的搜尋索引內容，2026 年 11 月 6 日查閱。時間可能變動，請以你票上的時間為準。
@@ -1016,7 +1016,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <h2 className={styles.sectionTitle}>快速通關包含超級任天堂世界嗎？</h2>
           <p className={styles.bodyText}>
             只有版本上註明的才有。區域入場是另外的附加內容，不是每一張快速通關都有——USJ
-            自己的指定時間入場頁面描述了兩種進入該區的方式：事先透過特定的快速通關或特定旅行社取得，或在入園後透過官方 USJ App 取得。
+            官方指定時間入場頁面描述了兩種進入該區的方式：事先透過特定的快速通關或特定旅行社取得，或在入園後透過官方 USJ App 取得。
           </p>
           <p className={styles.bodyText}>
             App 是免費的方式，也是規定變嚴的那一個。USJ 表示，自2026年1月5日起，必須用官方 App 取得園區指定時段入場券與 Standby Entry
@@ -1030,8 +1030,8 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <h2 className={styles.sectionTitle}>去日本環球影城該住哪裡？</h2>
           <p className={styles.bodyText}>
             <strong>想在開園時就到門口，住環球城；否則住梅田或大阪站一帶。</strong>從 JR 夢咲線的環球城站步行到樂園大門約五分鐘，從大阪站到樂園約 20
-            分鐘——兩個數字都是大阪觀光局（Osaka Convention &amp; Tourism Bureau）自己的，於{CHECKED}查閱。JR
-            西日本自己的樂園目的地頁面把環球城站列為最近的車站，並形容樂園「就在旁邊」，同日查閱。
+            分鐘——兩個數字都出自大阪觀光局（Osaka Convention &amp; Tourism Bureau）官方資料，於{CHECKED}查閱。JR
+            西日本官方的樂園目的地頁面把環球城站列為最近的車站，並形容樂園「就在旁邊」，同日查閱。
           </p>
           <p className={styles.bodyText}>
             那段步行就是全部的理由。買了快速通關的那天，你會想早點入園，而環球城是唯一能把交通變成五分鐘步行的區域。反過來的考量是其餘行程：梅田與大阪站讓你留在
@@ -1064,10 +1064,10 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <p className={styles.bodyText}>
             從<strong>關西機場</strong>進市區有兩個合理的選擇，但都不會直達樂園。JR 西日本的 HARUKA 從機場不必轉車直達天王寺、大阪、新大阪與京都；它的優惠單程票——只賣給以「短期停留（Temporary Visitor）」身分入境的外國護照持有人——到2026年10月31日為止，到天王寺
             ¥1,300、到大阪或新大阪 ¥1,800，2026年11月1日起調整為 ¥1,600 與 ¥1,900，兒童半價。南海 Rapi:t 不必轉車到難波，最快 34
-            分鐘，除一般車資外另需特急券，成人 ¥700、兒童 ¥350——在車上買多 ¥300，用無紙化購票（ticketless）可省 ¥150。JR 西日本與南海的數字皆於{CHECKED}查閱。不論哪一種，之後都搭環狀線到西九條，再轉夢咲線。
+            分鐘，除了一般車資外，還需另外購買特急券，成人 ¥700、兒童 ¥350——在車上買多 ¥300，用無紙化購票（ticketless）可省 ¥150。JR 西日本與南海的數字皆於{CHECKED}查閱。不論哪一種，之後都搭環狀線到西九條，再轉夢咲線。
           </p>
           <p className={styles.bodyText}>
-            有一張票值得知道：JR 西日本自己的關西地區鐵路周遊券頁面把 <strong>WEST QR Kansai Mini Pass</strong>{" "}
+            有一張票值得知道：JR 西日本官方的關西地區鐵路周遊券頁面把 <strong>WEST QR Kansai Mini Pass</strong>{" "}
             描述為「京都、日本環球影城、大阪、難波、神戶、奈良 3 日無限搭乘」，票價成人 ¥3,000、兒童 ¥1,500，連續三天可搭普通列車，含新快速與快速。這張票不能搭任何特急列車，包括
             HARUKA——JR 西日本表明那需要另外買票。涵蓋 HARUKA 的是 <strong>WEST QR Kansai Area Pass</strong>（自由席無限次，加上兩次指定席），一日
             ¥2,700 到四日 ¥6,700。以上皆於{CHECKED}查閱。兩張都不能搭大阪地鐵，也沒有任何大阪地鐵票券能搭到環球城。
@@ -1141,7 +1141,7 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             { href: "/guides/transport/osaka-transportation", title: "大阪市區交通（2026）：地鐵、電車與 IC 卡（英文）" },
             { href: "/zh-tw/guides/attractions", title: "日本景點門票攻略（2026）：官方票價、預約方式與一日遊 →" },
             { href: "/zh-tw/guides/attractions/tokyo-disney-tickets", title: "東京迪士尼門票（2026）：樂園與海洋怎麼買、怎麼選" },
-            { href: "/guides/transport/osaka-metro-pass", title: "大阪地鐵周遊券 vs Enjoy Eco Card（2026）：旅客該買哪一張？（英文）" },
+            { href: "/guides/transport/osaka-metro-pass", title: "大阪地鐵周遊券與 Enjoy Eco Card 比較（2026）：旅客該買哪一張？（英文）" },
           ]}
         />
 
