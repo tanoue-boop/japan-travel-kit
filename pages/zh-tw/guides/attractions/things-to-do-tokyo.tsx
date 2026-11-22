@@ -614,6 +614,8 @@ export default function ZhThingsToDoTokyoPage({ updated }: { updated: PageUpdate
             說明怎麼買以及兩座園區怎麼選。哈利波特迷的話，<strong>華納兄弟哈利波特影城東京</strong>
             是位於練馬的哈利波特影城，指定時段、不可重複入場，要預留大約四小時——細節在我們的{" "}
             <Link href="/guides/attractions/warner-bros-studio-tour-tokyo-tickets" style={linkStyle}>影城攻略（英文）</Link>。
+            行程還會到大阪的話，大阪的日本環球影城同樣要先線上買入園票，快通4・快通7 怎麼選請見{" "}
+            <Link href="/zh-tw/guides/attractions/usj-tickets-express-pass" style={linkStyle}>環球影城快速通關價錢與種類比較</Link>。
           </p>
         </section>
 

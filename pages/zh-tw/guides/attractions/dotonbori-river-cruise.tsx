@@ -653,6 +653,8 @@ export default function ZhDotonboriRiverCruisePage({ updated }: { updated: PageU
             城市一日裡哪些部分周遊卡會幫你付、哪些不會，請見{" "}
             <Link href="/guides/attractions/things-to-do-osaka" style={linkStyle}>大阪景點攻略（英文）</Link>。
             條件查核日 {CHECKED}。
+            周遊卡不含日本環球影城；去 USJ 的那天要另外買入園票，是否加買快速通關，請見{" "}
+            <Link href="/zh-tw/guides/attractions/usj-tickets-express-pass" style={linkStyle}>日本環球影城快速通關（fast pass）價錢與種類比較</Link>。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
             <KlookLink href={K.pass} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>

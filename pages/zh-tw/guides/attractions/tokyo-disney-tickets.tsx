@@ -415,6 +415,10 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             <Link href="/zh-tw/guides/attractions/things-to-do-tokyo" style={{ color: "var(--text)", fontWeight: 600 }}>
               東京必玩攻略
             </Link>
+            。同一趟也要去大阪的日本環球影城？兩邊的票都綁定日期，USJ 的 fast pass 另外收費，請見{" "}
+            <Link href="/zh-tw/guides/attractions/usj-tickets-express-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
+              日本環球影城快速通關（快證）價錢與種類
+            </Link>
             。
           </p>
         </section>
