@@ -247,7 +247,9 @@ export default function GuidesAttractionsPage({ updated, dates }: { updated: Pag
               <Link href="/guides/attractions/shibuya-sky-tickets" style={L}>Shibuya Sky tickets</Link>: the clearest
               example of a timed slot that opens two weeks ahead and also sells at the counter. In Osaka,{" "}
               <Link href="/guides/attractions/osaka-aquarium-kaiyukan-tickets" style={L}>Kaiyukan tickets</Link> work
-              the same way from about 30 days out, with the price set by date.
+              the same way from about 30 days out, with the price set by date. In Okinawa,{" "}
+              <Link href="/guides/attractions/okinawa-churaumi-aquarium-tickets" style={L}>Churaumi Aquarium tickets</Link>{" "}
+              are a fixed ¥2,180 at the gate, with no time slot to book.
             </>
           ),
           parks: (
@@ -370,6 +372,9 @@ export default function GuidesAttractionsPage({ updated, dates }: { updated: Pag
             <p className={styles.bodyText}>
               {faqItems[2].a} Still choosing a deck for a walk-up visit? See the{" "}
               <Link href="/guides/attractions/tokyo-observation-decks" style={L}>best observation deck in Tokyo</Link>.
+              Outside Tokyo,{" "}
+              <Link href="/guides/attractions/okinawa-churaumi-aquarium-tickets" style={L}>Churaumi Aquarium tickets</Link>{" "}
+              are sold at the door every day it is open.
             </p>
           </section>
           <section className={styles.bodySection}>

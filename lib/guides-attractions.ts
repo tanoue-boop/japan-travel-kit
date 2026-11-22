@@ -111,8 +111,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/okinawa-churaumi-aquarium-tickets",
     badge: "Tickets",
-    title: "Okinawa Churaumi Aquarium Tickets 2026: Price, Hours, Access",
-    desc: "¥2,180 for an adult, ¥710 for a child, free under 6. Open 8:30–18:30 most of the year, about two hours by car from Naha Airport — and whether a northern day tour beats renting a car.",
+    title: "Churaumi Aquarium Tickets 2026: Price, Hours & JUNGLIA Combo",
+    desc: "¥2,180 for an adult, ¥710 for a child, free under 6, no after-4pm rate. Open 8:30–18:30 most of the year, about two hours by car from Naha Airport or ¥2,000 by bus — and the JUNGLIA combo ticket.",
     group: "tickets",
     // Okinawa is outside the three city hubs, so it reads as nationwide.
     city: "other",

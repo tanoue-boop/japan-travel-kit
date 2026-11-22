@@ -10,7 +10,9 @@ import {
   churaumiKouriNorthernDayTour,
   churaumiSameDayPrep,
   nahaAirportCarRental,
+  nahaAirportLimousineBus,
   okinawaChuraumiStayAreas,
+  okinawaManzamoKouriChuraumiTour,
 } from "../../../lib/klook-links";
 import { gygChuraumiAquarium } from "../../../lib/gyg-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -20,60 +22,52 @@ import { checkedLabel } from "../../../lib/attraction-prices";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
- * Okinawa Churaumi Aquarium tickets — written for the exact phrase "Okinawa Churaumi
- * Aquarium Tickets". Added 3 Nov 2026 (task jtk-20261103-01); the first Okinawa page
- * on this site.
+ * Okinawa Churaumi Aquarium tickets. Added 3 Nov 2026 (task jtk-20261103-01), the first
+ * Okinawa page on this site; rank rewrite 22 Nov 2026 (task jtk-20261122-R08) after the
+ * search result showed the slug in place of the old price-and-hours title.
  *
- * Every figure is the operator's own, read on 3 November 2026:
- *   churaumi.okinawa/en/guide/info/  and the   Adult ¥2,180, high-school ¥1,440, elementary
- *     Japanese /guide/info/                    and junior-high ¥710, under 6 free; groups of
- *                                              20+ ¥1,730 / ¥1,140 / ¥560, day of admission
- *                                              only; annual passport ¥4,360 / ¥2,880 /
- *                                              ¥1,420; a "WEB Ticket" link to asoview. The
- *                                              fee page carries no after-16:00 rate, so none
- *                                              is printed here.
- *   churaumi.okinawa/en/guide/hour/            Off season 8:30–18:30, last entry 17:30; peak
- *                                              ① 8:30–20:00 (last 19:00) on 25 Apr – 6 May and
- *                                              18 – 31 Jul 2026; peak ② 8:30–21:00 (last 20:00)
- *                                              in August 2026; year-end 8:30–18:30; "no
- *                                              scheduled closing days until 31/Mar/2027",
- *                                              temporary closures for typhoons possible.
- *   churaumi.okinawa/en/guide/access/          "about two hours by car from Naha Airport (via
- *                                              the Okinawa Expressway)", "approximately three
- *                                              hours by express bus"; Okinawa Airport
- *                                              Shuttle, Yanbaru Express Bus, routes 111 and
- *                                              117; "Parking lots at Ocean Expo Park are free".
- *   churaumi.okinawa/program/aquarium/kuroshio/ feeding schedule 9:30 (manta) and 15:00 /
- *                                              17:00 (the Kuroshio Sea tank), subject to
- *                                              change without notice.
- *   churaumi.okinawa/program/aquarium/         the paid Kuroshio Sea backyard tour, advance
- *                                              booking from 1 Nov 2026, bookings open 30 days
- *                                              ahead at 10:00.
- *   churaumi.okinawa/en/                       dolphin shows suspended 4 – 9 January 2027.
- *   oki-park.jp/kaiyohaku/faq/ and info/33     all nine park car parks free; Okichan Theater
- *                                              dolphin show times 10:30, 11:30, 13:00, 15:00,
- *                                              17:00, about 20 minutes. The programme page
- *                                              states no charge either way, so none is stated.
- *   oki-park.jp (Emerald Beach notice)         swimming 1 April – 31 October 2026, 8:30–17:00,
- *                                              free, only at the designated beach. Read
- *                                              through the oki-park.jp search index.
+ * Re-read on 22 November 2026:
+ *   churaumi.okinawa/en/guide/info/   Adult ¥2,180, high-school ¥1,440, elementary and
+ *                                     junior-high ¥710, under 6 free; groups of 20+ ¥1,730 /
+ *                                     ¥1,140 / ¥560, day of admission only; annual passport
+ *                                     ¥4,360 / ¥2,880 / ¥1,420. The after-16:00 ticket
+ *                                     (¥1,510 / ¥1,000 / ¥490) is marked as no longer sold,
+ *                                     ended Friday 31 March 2023.
+ *   churaumi.okinawa/en/guide/hour/   Off season 8:30–18:30, last entry 17:30; peak ① 8:30–20:00
+ *                                     on 25 Apr – 6 May and 18 – 31 Jul 2026; peak ② 8:30–21:00
+ *                                     in August 2026; year-end 8:30–18:30; no scheduled closing
+ *                                     days until 31 Mar 2027 (typhoon closures possible).
+ *   okinawa-hokubu.org (Japan Entertainment, the JUNGLIA operator) — the Churaumi Aquarium
+ *                                     set with JUNGLIA's "Furatto Ticket": adult ¥5,150, high
+ *                                     school ¥4,410, junior high ¥3,680, elementary ¥2,690,
+ *                                     preschool ¥1,980; free park tram, priority-lane entry.
+ *   prtimes.jp release 000000034.000148025 (Japan Entertainment, 30 Mar 2026) — the launch
+ *                                     version with a JUNGLIA afternoon ticket: ¥6,800 / ¥6,060 /
+ *                                     ¥5,330 / ¥4,010 / ¥3,300, sold on asoview, use within one
+ *                                     month of purchase, the two can be on different days.
+ *   junglia.jp/ticket/furatto-ticket  One standby attraction plus shows, about 3 hours; the
+ *                                     stand-alone price is labelled as the Japan-resident price.
+ *   yanbaru-expressbus.com timetable PDF 260109-time-d — Naha Airport to 記念公園前 / Royal View
+ *                                     Hotel Churaumi (aquarium) ¥2,000; e.g. 10:10 → 12:27.
  *
- * Deliberately absent: an express-bus fare (the operator's fare page could not be read,
- * and aggregator figures are not the operator's own) and any whale-shark-specific feeding
- * claim beyond the Kuroshio tank schedule the aquarium publishes.
+ * Read on 3 November 2026 and not changed since: the access page (about two hours by car,
+ * about three by express bus; Okinawa Airport Shuttle, Yanbaru Express, routes 111 and 117),
+ * the feeding schedule, the Okichan Theater times, Emerald Beach and the backyard tour.
  *
- * Nothing here is first-hand, and no Klook price appears: Klook answers automated reads
- * of its product pages with HTTP 403.
+ * Nothing here is first-hand. No Klook price appears. The Klook JUNGLIA listing that bundles
+ * the aquarium (141671) surfaced only without a locale, so it is not linked.
  */
-const CHECKED = checkedLabel("2026-11-03");
+const CHECKED = checkedLabel("2026-11-22");
+const CHECKED_ISO = "2026-11-22";
+const PROGRAMMES = checkedLabel("2026-11-03");
 const ROUTE = "/guides/attractions/okinawa-churaumi-aquarium-tickets";
 const SLUG = "okinawa-churaumi-aquarium-tickets";
 
 const priceRows = [
-  { ticket: "Adult", standard: "¥2,180", group: "¥1,730", annual: "¥4,360" },
-  { ticket: "High-school student", standard: "¥1,440", group: "¥1,140", annual: "¥2,880" },
-  { ticket: "Elementary & junior-high student", standard: "¥710", group: "¥560", annual: "¥1,420" },
-  { ticket: "Preschool (under 6)", standard: "Free", group: "Free", annual: "—" },
+  { ticket: "Adult", standard: "¥2,180", after16: "Not sold", group: "¥1,730", annual: "¥4,360" },
+  { ticket: "High-school student", standard: "¥1,440", after16: "Not sold", group: "¥1,140", annual: "¥2,880" },
+  { ticket: "Elementary & junior-high student", standard: "¥710", after16: "Not sold", group: "¥560", annual: "¥1,420" },
+  { ticket: "Preschool (under 6)", standard: "Free", after16: "Free", group: "Free", annual: "—" },
 ];
 
 const hoursRows = [
@@ -86,19 +80,45 @@ const hoursRows = [
 
 const accessRows = [
   {
-    how: "Rental car from Naha Airport",
+    how: "Rental car from Naha Airport (fastest)",
     time: "About 2 hours, via the Okinawa Expressway",
+    fare: "Rental + fuel + expressway toll; parking free",
     note: "Ocean Expo Park's nine car parks are free. The only option that adds Kouri Island and Bise the same afternoon at your own pace.",
   },
   {
-    how: "Express / route bus from Naha Airport",
-    time: "About 3 hours",
-    note: "Okinawa Airport Shuttle, Yanbaru Express Bus, routes 111 and 117. Check each operator's timetable for your date.",
+    how: "Yanbaru Express Bus (cheapest without driving)",
+    time: "About 2 h 20 min — e.g. 10:10 Naha Airport → 12:27 at the aquarium stop",
+    fare: "¥2,000 adult, Naha Airport to the aquarium",
+    note: "No reservation; board at the stop. Stops: Kinen Koen-mae (Central Gate) and Royal View Hotel Churaumi (Aquarium). Expressway traffic can delay it.",
+  },
+  {
+    how: "Okinawa Airport Shuttle, routes 111 / 117",
+    time: "About 3 hours (the aquarium's figure for the express bus)",
+    fare: "Check the operator's fare page",
+    note: "Named on the aquarium's access page as the other bus options from Naha Airport.",
   },
   {
     how: "Day tour from Naha or Chatan",
     time: "A full day (Klook's northern tour runs about 10 hours)",
+    fare: "Tour price on Klook; check whether the ticket is included",
     note: "Coach there and back with Kouri Island, Cape Manzamo and American Village; about 3 to 3.5 hours at the aquarium.",
+  },
+];
+
+const comboRows = [
+  {
+    version: "Churaumi + JUNGLIA “Furatto Ticket” set (on sale now)",
+    adult: "¥5,150",
+    teen: "High school ¥4,410 · junior high ¥3,680",
+    child: "Elementary ¥2,690 · preschool ¥1,980",
+    what: "Aquarium admission + JUNGLIA Furatto Ticket (one standby attraction plus shows, about 3 hours); free park tram, priority-lane entry",
+  },
+  {
+    version: "Launch version with a JUNGLIA afternoon ticket (30 Mar 2026)",
+    adult: "¥6,800",
+    teen: "High school ¥6,060 · 12+ to junior high ¥5,330",
+    child: "Grade 1 to age 11 ¥4,010 · age 4 to preschool ¥3,300",
+    what: "Aquarium admission + JUNGLIA afternoon ticket (entry from 13:00 or 14:00 by closing time); use within one month, different days allowed",
   },
 ];
 
@@ -113,48 +133,37 @@ const compareRows = [
 
 const faqItems = [
   {
-    q: "How much are Okinawa Churaumi Aquarium tickets?",
-    a: `¥2,180 for an adult, ¥1,440 for a high-school student, ¥710 for elementary and junior-high students, and free under 6 — the aquarium's own prices, tax included, read on ${CHECKED}. Groups of 20 or more pay ¥1,730 / ¥1,140 / ¥560 on the day only, and an annual passport is ¥4,360 for an adult, exactly two visits' worth.`,
+    q: "How much is the Churaumi Aquarium ticket?",
+    a: `¥2,180 for an adult, ¥1,440 for a high-school student, ¥710 for elementary and junior-high students, and free under 6 — the aquarium's own prices, tax included, read on ${CHECKED}. Groups of 20 or more pay ¥1,730 / ¥1,140 / ¥560 on the day only, and an annual passport is ¥4,360 for an adult, the price of two visits.`,
   },
   {
     q: "Is there a discount after 4pm at Churaumi Aquarium?",
-    a: `Not on the aquarium's current fee page. Older guides quote an after-16:00 rate, but the official fee table read on ${CHECKED} lists only the standard, group and annual-passport prices — so plan on the standard ¥2,180 whatever time you arrive.`,
+    a: `No. The aquarium's fee page states that the after-16:00 ticket (¥1,510 adult) stopped being sold after 31 March 2023, so the standard ¥2,180 applies whatever time you arrive. Read ${CHECKED}.`,
   },
   {
-    q: "What are Churaumi Aquarium's opening hours?",
-    a: `8:30 to 18:30 with last entry at 17:30 for most of the year, extended to 20:00 (last entry 19:00) over Golden Week and late July and to 21:00 (last entry 20:00) through August in 2026. The aquarium states it has no scheduled closing days until 31 March 2027, though it can close temporarily for typhoons. Read ${CHECKED}.`,
+    q: "Can I buy Churaumi tickets at the door?",
+    a: "Yes. Standard tickets are sold at the aquarium ticket desk on the day, by card or cash, and there is no time slot to reserve. The official site also links to web tickets through asoview, and resellers such as Klook sell an e-ticket scanned at the gate; a reseller sets its own validity and cancellation terms.",
   },
   {
     q: "How do I get to Churaumi Aquarium from Naha?",
-    a: "About two hours by car from Naha Airport on the Okinawa Expressway, or about three hours by express bus — the aquarium names the Okinawa Airport Shuttle, the Yanbaru Express Bus and routes 111 and 117. A day tour from Naha or Chatan is the third option, and the only one where nobody has to drive or read a bus timetable.",
+    a: `About two hours by car from Naha Airport on the Okinawa Expressway, or by bus: the Yanbaru Express Bus takes about 2 hours 20 minutes from Naha Airport and costs ¥2,000 for an adult on its January 2026 timetable, and the aquarium gives about three hours for the express buses in general. A day tour from Naha or Chatan is the option where nobody drives. Read ${CHECKED}.`,
   },
   {
-    q: "How long do you need at Churaumi Aquarium?",
-    a: "Allow two to three and a half hours inside — Klook's northern day tour allots about 3 to 3.5 hours there. Add time for the Okichan Theater dolphin show and Emerald Beach in the surrounding Ocean Expo Park if you are driving yourself.",
-  },
-  {
-    q: "What time is the whale shark feeding at Churaumi Aquarium?",
-    a: `The aquarium's feeding schedule lists 15:00 and 17:00 for the Kuroshio Sea — the giant tank the whale sharks live in — and 9:30 for the manta rays. It warns that programmes can change or be cancelled without notice depending on the animals' condition. Read ${CHECKED}.`,
-  },
-  {
-    q: "Is a day tour better than renting a car for Churaumi Aquarium?",
-    a: "If nobody in your group drives, or you have one day in the north, yes — the tour strings the aquarium together with Kouri Island and Cape Manzamo in one booking. If you are a family, want more than three hours in the aquarium or plan to stay in Motobu, a car wins. Driving in Japan as a visitor needs an International Driving Permit alongside your own licence.",
-  },
-  {
-    q: "Can you buy Churaumi Aquarium tickets at the door?",
-    a: "Yes — standard tickets are sold at the aquarium, and the official site also links to web tickets through asoview. Resellers such as Klook sell an e-ticket scanned at the gate; check the validity window and cancellation terms at checkout, because a reseller sets its own.",
+    q: "Is there a Churaumi and JUNGLIA combo ticket?",
+    a: `Yes. JUNGLIA's operator, Japan Entertainment, sells a set with the aquarium: ¥5,150 for an adult with JUNGLIA's short "Furatto Ticket" on its northern Okinawa portal, read ${CHECKED}. The version launched on 30 March 2026 paired the aquarium with a JUNGLIA afternoon ticket for ¥6,800, sold on asoview and valid for one month. The two are about 30 minutes apart by car.`,
   },
 ];
 
-const TITLE = "Okinawa Churaumi Aquarium Tickets: ¥2,180, Open 8:30–18:30";
+const TITLE = "Churaumi Aquarium Tickets 2026: Price, Hours & JUNGLIA Combo";
 const DESCRIPTION =
-  "Churaumi Aquarium tickets: ¥2,180 adult, ¥710 child, open 8:30–18:30 (last entry 17:30). From Naha about 2 hours by car or 3 by bus, or a tour on Klook.";
+  "Okinawa Churaumi Aquarium ticket price: ¥2,180 adult, ¥710 child, no 4pm discount. Open 8:30–18:30, 2h from Naha by car, ¥2,000 bus, JUNGLIA combo.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
 const thStyle = { fontSize: "0.82rem" } as const;
 const tdSmall = { fontSize: "0.88rem" } as const;
 const noteStyle = { marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" } as const;
+const linkStyle = { color: "var(--text)", textDecoration: "underline" } as const;
 
 export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -203,7 +212,7 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
                 { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
                 { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
                 { "@type": "ListItem", position: 3, name: "Things to Do", item: "https://www.japan-travel-kit.com/guides/attractions" },
-                { "@type": "ListItem", position: 4, name: "Okinawa Churaumi Aquarium Tickets", item: `https://www.japan-travel-kit.com${ROUTE}` },
+                { "@type": "ListItem", position: 4, name: "Churaumi Aquarium Tickets", item: `https://www.japan-travel-kit.com${ROUTE}` },
               ],
             }),
           }}
@@ -225,7 +234,7 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg><span className="sr-only"> / </span>
-          <span className={styles.breadCurrent}>Okinawa Churaumi Aquarium Tickets</span>
+          <span className={styles.breadCurrent}>Churaumi Aquarium Tickets</span>
         </div>
       </div>
 
@@ -234,14 +243,14 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Okinawa Churaumi Aquarium Tickets (2026): <br />¥2,180, Open 8:30–18:30 &amp; Getting There
+            Churaumi Aquarium Tickets 2026: Price, Hours &amp; JUNGLIA Combo
           </h1>
           <p className={styles.heroSubtitle}>
-            Okinawa&apos;s whale shark tank, two hours north of Naha. The official prices, the season hours, the
-            feeding times, and whether to drive or take a tour.
+            Okinawa&apos;s whale shark aquarium, two hours north of Naha: the official ticket prices, the season hours,
+            the bus and car times from Naha, and the new set ticket with JUNGLIA OKINAWA.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Official prices, checked", "Car vs bus vs tour", "Kouri Island & Bise"].map((t) => (
+            {[`Updated ${updated.label}`, "Official prices, checked", "Car vs bus vs tour", "JUNGLIA combo"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -263,16 +272,13 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
         {/* Lead */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>Okinawa Churaumi Aquarium tickets</strong> are <strong>¥2,180</strong> for an adult,{" "}
-            <strong>¥1,440</strong> for a high-school student, <strong>¥710</strong> for elementary and
-            junior-high students and free for children under 6, sold at the gate and online. The aquarium opens{" "}
-            <strong>8:30–18:30</strong> (last entry 17:30) for most of the year, with later closing over Golden
-            Week, late July and August, and has no scheduled closing days until 31 March 2027 (prices and hours
-            re-read on churaumi.okinawa on 11 November 2026). It sits in Ocean
-            Expo Park on the Motobu Peninsula, <strong>about two hours by car from Naha Airport</strong> on the
-            Okinawa Expressway or about three hours by express bus — which is why most visitors either rent a
-            car or book a northern day tour from Naha that adds Kouri Island. Allow two to three and a half hours
-            inside. All figures are the aquarium&apos;s own, read on {CHECKED}.
+            <strong>Okinawa Churaumi Aquarium tickets</strong> cost <strong>¥2,180</strong> for an adult,{" "}
+            <strong>¥1,440</strong> for a high-school student and <strong>¥710</strong> for elementary and
+            junior-high students (under 6 free), and there is no after-4pm discount — that ticket ended in March 2023.
+            The aquarium is open <strong>8:30–18:30</strong> (last entry 17:30) for most of the year, later over Golden
+            Week, late July and August. From Naha Airport it is <strong>about 2 hours by car</strong> or about 2 hours
+            20 minutes on the Yanbaru Express Bus for <strong>¥2,000</strong>. Prices, hours and the bus fare are the
+            operators&apos; own, read on {CHECKED}.
           </p>
         </section>
 
@@ -292,16 +298,16 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
                 <p className={styles.verdictStatValue}>8:30–18:30, last entry 17:30</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>From Naha</p>
-                <p className={styles.verdictStatValue}>~2 h by car · ~3 h by bus</p>
+                <p className={styles.verdictStatLabel}>From Naha Airport</p>
+                <p className={styles.verdictStatValue}>~2 h by car · ¥2,000 bus</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Kuroshio feeding</p>
-                <p className={styles.verdictStatValue}>15:00 and 17:00</p>
+                <p className={styles.verdictStatLabel}>JUNGLIA combo</p>
+                <p className={styles.verdictStatValue}>From ¥5,150 adult</p>
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>In short:</strong> the ticket is the easy part — the decision is how you get there. Drive if
+              <strong>In short:</strong> the ticket sells at the door, so the decision is how you get there. Drive if
               you are a family or staying in Motobu; book a northern day tour from Naha if nobody wants to drive.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
@@ -321,18 +327,18 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
         {/* Price */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Price</span>
-          <h2 className={styles.sectionTitle}>How Much Are Okinawa Churaumi Aquarium Tickets?</h2>
+          <h2 className={styles.sectionTitle}>How Much Is the Churaumi Aquarium Ticket?</h2>
           <p className={styles.bodyText}>
-            ¥2,180 for an adult and ¥710 for a primary or junior-high child; under-6s are free. Group rates need
-            20 or more people paying in one transaction on the day, and the annual passport costs exactly two
-            standard visits.
+            ¥2,180 for an adult and ¥710 for an elementary or junior-high child; under-6s are free. There is no
+            after-16:00 rate any more, group rates need 20 or more people paying together on the day, and the annual
+            passport costs the same as two visits.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Ticket", "Standard", "Group (20+, day only)", "Annual passport"].map((h) => (
+                    {["Ticket", "Standard", "After 16:00", "Group (20+, day only)", "Annual passport"].map((h) => (
                       <th key={h} style={thStyle}>{h}</th>
                     ))}
                   </tr>
@@ -342,6 +348,7 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
                     <tr key={row.ticket}>
                       <td className={styles.tdProvider}>{row.ticket}</td>
                       <td className={styles.tdPrice}>{row.standard}</td>
+                      <td style={tdSmall}>{row.after16}</td>
                       <td className={styles.tdPrice}>{row.group}</td>
                       <td className={styles.tdPrice}>{row.annual}</td>
                     </tr>
@@ -351,9 +358,38 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
             </div>
           </div>
           <p className={styles.bodyText} style={noteStyle}>
-            Tax included; the aquarium&apos;s own English and Japanese fee pages, read {CHECKED}. Neither page lists an
-            after-16:00 rate, so none is shown — guides that quote one are out of date.
+            Last checked: {CHECKED_ISO} —{" "}
+            <a href="https://churaumi.okinawa/en/guide/info/" target="_blank" rel="noopener" style={linkStyle}>churaumi.okinawa/en/guide/info/</a>.
+            Tax included. The fee page states the after-16:00 ticket (¥1,510 adult) was sold until 31 March 2023 and
+            is no longer available, so guides that still quote it are out of date.
           </p>
+          <div className={styles.pickCtaRow}>
+            <KlookLink href={churaumiAquariumTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Churaumi Aquarium ticket on Klook →
+            </KlookLink>
+            <KlookLink href={okinawaManzamoKouriChuraumiTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Churaumi &amp; Kouri Island tour from Naha →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* Door */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Booking</span>
+          <h2 className={styles.sectionTitle}>Can I Buy Churaumi Tickets at the Door?</h2>
+          <p className={styles.bodyText}>
+            Yes — the aquarium sells standard tickets at its ticket desk on the day, by card or cash, and there is no
+            time slot to book. Buying ahead saves the counter queue and, with a reseller, lets you pay in your own
+            currency; the official site also links to web tickets through asoview. What does need booking is the paid
+            Kuroshio Sea backyard tour, by advance reservation only from 1 November 2026, opening 30 days ahead at
+            10:00. In summer and holiday weeks, the rental car and the day tour are what fill up first, not the ticket.
+          </p>
+          <div className={styles.pickCtaRow}>
+            <KlookLink href={churaumiAquariumTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check Churaumi tickets on Klook →
+            </KlookLink>
+            <GygCompareButton slug={SLUG} listing={gygChuraumiAquarium} />
+          </div>
         </section>
 
         <KlookTripPrep
@@ -394,7 +430,9 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
             </div>
           </div>
           <p className={styles.bodyText} style={noteStyle}>
-            The aquarium&apos;s own hours page, read {CHECKED}. The 2027 peak-season dates had not been published.
+            Last checked: {CHECKED_ISO} —{" "}
+            <a href="https://churaumi.okinawa/en/guide/hour/" target="_blank" rel="noopener" style={linkStyle}>churaumi.okinawa/en/guide/hour/</a>.
+            The 2027 peak-season dates had not been published.
           </p>
         </section>
 
@@ -403,15 +441,16 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
           <span className={styles.sectionLabel}>Getting there</span>
           <h2 className={styles.sectionTitle}>How Do I Get to Churaumi Aquarium from Naha?</h2>
           <p className={styles.bodyText}>
-            By car in about two hours, by express bus in about three, or on a day tour. No train goes there — the
-            Okinawa Monorail stays within the Naha area.
+            Fastest by rental car, about 2 hours from Naha Airport; cheapest without driving on the Yanbaru Express
+            Bus, ¥2,000 and about 2 hours 20 minutes. No train goes there — the Okinawa Monorail stays in the Naha
+            area.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["How", "Time from Naha", "What to know"].map((h) => (
+                    {["How", "Time from Naha Airport", "Fare", "What to know"].map((h) => (
                       <th key={h} style={thStyle}>{h}</th>
                     ))}
                   </tr>
@@ -421,6 +460,7 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
                     <tr key={row.how}>
                       <td className={styles.tdProvider}>{row.how}</td>
                       <td style={tdSmall}>{row.time}</td>
+                      <td style={tdSmall}>{row.fare}</td>
                       <td style={tdSmall}>{row.note}</td>
                     </tr>
                   ))}
@@ -429,9 +469,12 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
             </div>
           </div>
           <p className={styles.bodyText} style={noteStyle}>
-            Car and bus times and the route names are the aquarium&apos;s own access page; free parking is Ocean Expo
-            Park&apos;s FAQ; read {CHECKED}. The tour duration and aquarium time are Klook&apos;s listing. No bus fare is
-            printed here, so check the operator&apos;s own fare page before you ride.
+            Last checked: {CHECKED_ISO} —{" "}
+            <a href="https://yanbaru-expressbus.com/" target="_blank" rel="noopener" style={linkStyle}>yanbaru-expressbus.com</a>{" "}
+            (timetable dated 9 January 2026: fare and times) and{" "}
+            <a href="https://churaumi.okinawa/en/guide/access/" target="_blank" rel="noopener" style={linkStyle}>churaumi.okinawa/en/guide/access/</a>{" "}
+            (car and express-bus times, route names, read {PROGRAMMES}). Free parking is Ocean Expo Park&apos;s FAQ. Tour
+            length and aquarium time are Klook&apos;s listing. The child bus fare is not shown here.
           </p>
           <div className={styles.pickCtaRow}>
             <KlookLink href={nahaAirportCarRental.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -439,6 +482,64 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
             </KlookLink>
             <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Northern day tour from Naha →
+            </KlookLink>
+            <KlookLink href={nahaAirportLimousineBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Naha Airport transfer →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* JUNGLIA combo */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Combo ticket</span>
+          <h2 className={styles.sectionTitle}>Is There a Churaumi and JUNGLIA Combo Ticket?</h2>
+          <p className={styles.bodyText}>
+            Yes — JUNGLIA&apos;s operator, Japan Entertainment, sells a set with the aquarium, from ¥5,150 for an adult
+            with JUNGLIA&apos;s short &ldquo;Furatto Ticket&rdquo;. The two are about 30 minutes apart by car, so the
+            usual plan is the aquarium at opening and JUNGLIA in the afternoon.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Set", "Adult", "Teen", "Child", "What's included"].map((h) => (
+                      <th key={h} style={thStyle}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {comboRows.map((row) => (
+                    <tr key={row.version}>
+                      <td className={styles.tdProvider}>{row.version}</td>
+                      <td className={styles.tdPrice}>{row.adult}</td>
+                      <td style={tdSmall}>{row.teen}</td>
+                      <td style={tdSmall}>{row.child}</td>
+                      <td style={tdSmall}>{row.what}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={noteStyle}>
+            Last checked: {CHECKED_ISO} —{" "}
+            <a href="https://okinawa-hokubu.org/" target="_blank" rel="noopener" style={linkStyle}>okinawa-hokubu.org</a>{" "}
+            (Japan Entertainment&apos;s northern Okinawa portal, current set) and its{" "}
+            <a href="https://prtimes.jp/main/html/rd/p/000000034.000148025.html" target="_blank" rel="noopener" style={linkStyle}>30 March 2026 release</a>{" "}
+            (launch version, sold on asoview). Tax included. JUNGLIA lists the stand-alone Furatto Ticket as a
+            Japan-resident price, so check at checkout that the set is open to you before paying.
+          </p>
+          <p className={styles.bodyText}>
+            Not set on JUNGLIA? A northern day tour from Naha covers the aquarium with Kouri Island and Cape Manzamo
+            instead, and nobody has to drive.
+          </p>
+          <div className={styles.pickCtaRow}>
+            <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Northern day tour from Naha →
+            </KlookLink>
+            <KlookLink href={nahaAirportCarRental.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Rent a car to do both →
             </KlookLink>
           </div>
         </section>
@@ -476,27 +577,9 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
           <p className={styles.bodyText} style={noteStyle}>
             Klook&apos;s car-rental page states that non-residents need a passport, their own licence, an International
             Driving Permit and a credit card. Tour inclusions differ by option and date — check whether the aquarium
-            ticket and an English-speaking guide are included before you book.
+            ticket and an English-speaking guide are included before you book. More routes are compared in the{" "}
+            <Link href="/guides/attractions/okinawa-day-tours" style={linkStyle}>Okinawa day tours</Link> guide.
           </p>
-        </section>
-
-        {/* Booking */}
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Booking</span>
-          <h2 className={styles.sectionTitle}>Do You Need to Book Churaumi Aquarium in Advance?</h2>
-          <p className={styles.bodyText}>
-            Usually not — the aquarium publishes its standard prices for buying on the day. Booking ahead saves the
-            ticket-counter queue and, with a reseller, lets you pay in your own currency; the official site also
-            links to web tickets through asoview. What does need booking is the paid Kuroshio Sea backyard tour,
-            which runs from 1 November 2026 by advance reservation only, opening 30 days ahead at 10:00. And in
-            summer and holiday weeks, the rental car and the day tour are what go first, not the ticket.
-          </p>
-          <div className={styles.pickCtaRow}>
-            <KlookLink href={churaumiAquariumTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
-              Check Churaumi tickets on Klook →
-            </KlookLink>
-            <GygCompareButton slug={SLUG} listing={gygChuraumiAquarium} />
-          </div>
         </section>
 
         {/* Duration and feeding */}
@@ -505,13 +588,15 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
           <h2 className={styles.sectionTitle}>How Long Do You Need at Churaumi Aquarium?</h2>
           <p className={styles.bodyText}>
             Two to three and a half hours inside; day tours allot about 3 to 3.5. Arrive at 8:30 and you are ahead of
-            the coaches that leave Naha after breakfast.
+            the coaches that leave Naha after breakfast. For a full trip plan, the{" "}
+            <Link href="/guides/attractions/okinawa-3-day-itinerary" style={linkStyle}>Okinawa 3 day itinerary</Link> puts
+            the aquarium on Day 2.
           </p>
           <h2 className={styles.sectionTitle} style={{ marginTop: "1.5rem" }}>What Time Is the Whale Shark Feeding?</h2>
           <p className={styles.bodyText}>
             The aquarium&apos;s schedule lists feeding in the Kuroshio Sea — the main tank, home to the whale sharks —
             at <strong>15:00 and 17:00</strong>, and the manta rays at <strong>9:30</strong>. Programmes can change
-            or be cancelled without notice depending on the animals&apos; condition (read {CHECKED}). If you are on a
+            or be cancelled without notice depending on the animals&apos; condition (read {PROGRAMMES}). If you are on a
             day tour, check that its aquarium window covers 15:00.
           </p>
         </section>
@@ -550,10 +635,18 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
                 tours pair with the aquarium, and an easy drive for a self-drive afternoon.
               </span>
             </li>
+            <li>
+              <span className={styles.proIcon}>▸</span>
+              <span>
+                <strong>Whales in winter</strong> — humpback whale boats from Naha and the Kerama Islands run roughly
+                December to April, per their Klook listings; see{" "}
+                <Link href="/guides/attractions/okinawa-whale-watching" style={linkStyle}>Okinawa whale watching</Link>.
+              </span>
+            </li>
           </ul>
           <p className={styles.bodyText} style={noteStyle}>
             Show times from Ocean Expo Park&apos;s programme page and FAQ, swimming season from the park&apos;s own notice,
-            the January suspension from the aquarium&apos;s site — all read {CHECKED}.
+            the January suspension from the aquarium&apos;s site — all read {PROGRAMMES}.
           </p>
         </section>
 

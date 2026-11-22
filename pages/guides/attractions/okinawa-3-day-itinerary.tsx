@@ -640,7 +640,8 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
             Yes — it is the standard Day 2. The aquarium is about <strong>2 hours by car</strong> from Naha Airport
             on the Okinawa Expressway and about <strong>3 hours by express bus</strong>. Northern day tours from Naha
             or Chatan run about 10 hours and give about 3 to 3.5 hours inside, with Kouri Island and Cape Manzamo
-            on the way.
+            on the way. Hours by season and the Naha access table are in the{" "}
+            <Link href="/guides/attractions/okinawa-churaumi-aquarium-tickets">Churaumi Aquarium tickets</Link> guide.
           </p>
           <StopTable rows={day2} />
           <p className={styles.bodyText} style={noteStyle}>
@@ -770,7 +771,9 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
           <h2 className={styles.sectionTitle}>How Much Are Shuri Castle and Churaumi Aquarium?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Shuri Castle is {SHURI_NEW} for an adult from 23 November 2026, and Churaumi Aquarium is {CHURAUMI}.
-            On Day 3, the boat fare is the main cost.
+            On Day 3, the boat fare is the main cost. Child prices, the JUNGLIA combo ticket and the bus fare north
+            are on the{" "}
+            <Link href="/guides/attractions/okinawa-churaumi-aquarium-tickets">Churaumi Aquarium tickets</Link> page.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -932,7 +935,7 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
           <div className={styles.relatedGrid}>
             {[
               { href: "/guides/attractions/okinawa-day-tours", title: "Okinawa Day Tours from Naha: North vs South Compared (2026)" },
-              { href: "/guides/attractions/okinawa-churaumi-aquarium-tickets", title: "Okinawa Churaumi Aquarium Tickets 2026: Price, Hours, Access" },
+              { href: "/guides/attractions/okinawa-churaumi-aquarium-tickets", title: "Churaumi Aquarium Tickets 2026: Price, Hours & JUNGLIA Combo" },
               { href: "/guides/attractions/okinawa-whale-watching", title: "Okinawa Whale Watching 2027: Season, Kerama & Naha Tours" },
               { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary: Kanazawa, Shirakawa-go and Takayama" },
               { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day" },

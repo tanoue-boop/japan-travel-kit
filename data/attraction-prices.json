@@ -1022,7 +1022,7 @@
       "revised": null,
       "source": "churaumi.okinawa",
       "sourceUrl": "https://churaumi.okinawa/en/guide/info/",
-      "checked": "2026-11-11",
+      "checked": "2026-11-22",
       "klook": {
         "label": "Klook: Okinawa Churaumi Aquarium ticket",
         "ref": "churaumiAquariumTicket"
@@ -1037,7 +1037,7 @@
         }
       ],
       "unverified": [
-        "No after-16:00 discount appears on the official fee pages (EN or JP)"
+        "No after-16:00 discount: the EN fee page states the after-16:00 ticket ended 31 Mar 2023 (re-read 2026-11-22)"
       ],
       "extraSources": [
         "https://churaumi.okinawa/en/guide/hour/",
