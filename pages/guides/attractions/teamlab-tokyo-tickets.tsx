@@ -245,6 +245,9 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
+        {/* eSIM box straight after the answer (jtk-20261122-P01): it sat below three H2 sections. */}
+        <EsimCtaTop />
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Side by side</span>
           <h2 className={styles.sectionTitle}>teamLab Planets vs Borderless: which should you book?</h2>
@@ -333,8 +336,6 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
             </Link>
           </div>
         </section>
-
-        <EsimCtaTop />
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Cost</span>
