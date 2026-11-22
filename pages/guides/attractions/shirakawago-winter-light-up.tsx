@@ -583,7 +583,9 @@ export default function ShirakawagoWinterLightUpPage({ updated }: { updated: Pag
               See Klook eSIM options →
             </KlookLink>{" "}
             Coming from Tokyo? The shinkansen leg is in our{" "}
-            <Link href="/guides/transport/tokyo-to-kanazawa">Tokyo to Kanazawa guide</Link>.
+            <Link href="/guides/transport/tokyo-to-kanazawa">Tokyo to Kanazawa guide</Link>, and the{" "}
+            <Link href="/guides/transport/hokuriku-arch-pass">Hokuriku Arch Pass</Link> guide works out whether a
+            seven-day pass beats single tickets when Kanazawa sits between Tokyo and Osaka.
           </p>
         </section>
 

@@ -784,7 +784,9 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             Line down to Nagoya and the Tokaido Shinkansen on to Kyoto — a loop that costs you a day and a
             half and takes you through the only part of central Japan the Golden Route misses entirely. The
             Kanazawa listing that drops you in Takayama rather than returning to Kanazawa exists precisely
-            for that shape.
+            for that shape. If you go on from Kanazawa to Kyoto and Osaka by train instead, the{" "}
+            <Link href="/guides/transport/hokuriku-arch-pass">Hokuriku Arch Pass</Link> covers Tokyo → Kanazawa →
+            Tsuruga → Osaka for seven days, but not the bus to Shirakawa-go.
           </p>
           <p className={styles.bodyText}>
             On a shorter trip it is harder to justify. A{" "}

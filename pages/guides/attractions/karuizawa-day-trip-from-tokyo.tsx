@@ -429,7 +429,9 @@ export default function KaruizawaDayTripFromTokyoPage({ updated }: { updated: Pa
             even in summer and long famous as a place to escape the heat, which is the short version of
             its history: foreign missionaries and then Tokyo families built summer houses here, and the
             town that grew up around them is wooded, walkable and noticeably better supplied with
-            bakeries than its size would suggest.
+            bakeries than its size would suggest. It is also on the line the{" "}
+            <Link href="/guides/transport/hokuriku-arch-pass">Hokuriku Arch Pass</Link> covers from Tokyo to
+            Kanazawa and on to Osaka, so a seven-day pass holder can break the journey here.
           </p>
           <p className={styles.bodyText}>
             What it does not have is a single unmissable sight. There is no Toshogu and no Mt. Fuji

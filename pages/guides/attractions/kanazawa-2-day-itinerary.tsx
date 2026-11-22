@@ -879,7 +879,7 @@ export default function Kanazawa2DayItineraryPage({ updated }: { updated: PageUp
               { href: "/guides/attractions/takayama-shirakawago-tour", title: "Takayama and Shirakawa-go Tour: Which Departure to Book" },
               { href: "/guides/attractions/shirakawago-winter-light-up", title: "Shirakawago Winter Light Up 2027: Dates, Tickets & Tours" },
               { href: "/guides/transport/tokyo-to-kanazawa", title: "Tokyo to Kanazawa Shinkansen (2026): Time, Price, Passes" },
-              { href: "/guides/transport/hokuriku-arch-pass", title: "JR Hokuriku Arch Pass 2026: Price, Coverage & Worth It?" },
+              { href: "/guides/transport/hokuriku-arch-pass", title: "JR Hokuriku Arch Pass 2026: Price, Coverage, Is It Worth It?" },
               { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary: Kanazawa, Shirakawa-go and Takayama" },
               { href: "/guides/attractions/japan-3-week-itinerary", title: "Japan 3 Week Itinerary: 21 Days, Day by Day" },
               { href: "/guides/attractions/kyoto-2-day-itinerary", title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book" },

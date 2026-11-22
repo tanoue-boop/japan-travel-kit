@@ -54,6 +54,16 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  * Ishikawa and Fukui (1 Oct 2026 – 5 May 2027) and for the eki-net
  * "Tokuda-ne Special 28" ¥7,200 Tokyo–Kanazawa fare (weekdays 7–17 Dec 2026).
  *
+ * Re-read on 22 November 2026 (Rank R02): the JR West pass page (¥35,000 / ¥17,500,
+ * "current as of January 28, 2026"; seat-reservation and refund rules unchanged), JR
+ * West's "Exchanging E-Tickets" guide (westjr.co.jp/global/en/howto/guide/emco/), the
+ * HOKURIKU One-way (¥6,500 / ¥8,000) and HARUKA One-way (¥1,900 / ¥2,700) pages, all
+ * read directly, and JR East's 28 January 2026 press release
+ * (jreast.co.jp/e/press/pdf/0128_pass_en.pdf, read directly): ¥30,000 → ¥35,000 adult,
+ * ¥15,000 → ¥17,500 child, sold from 14 March 2026, with the area expanded to the Tokyo
+ * metropolitan area, the Chuo Line and the Oito Line. JR East's pass page was read
+ * through a jreast.co.jp-restricted search index (same price).
+ *
  * Deliberately absent: the regular Kanazawa–Kyoto fare, Kyoto–Osaka and the
  * peak-season Hokuriku prices, none of which could be read from an operator.
  * The page says so where the sums would otherwise include them. The rounded
@@ -64,9 +74,11 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 const CHECKED = checkedLabel("2026-11-04");
 /** Re-check of the JR West pass, HOKURIKU and HARUKA pages and JR East's press release. */
-const RECHECKED_ISO = "2026-11-15";
+const RECHECKED_ISO = "2026-11-22";
 const RECHECKED = checkedLabel(RECHECKED_ISO);
 const WEST_URL = "https://www.westjr.co.jp/travel-information/en/tickets-passes/other/hokuriku-arch-pass/";
+const WEST_ETICKET_URL = "https://www.westjr.co.jp/global/en/howto/guide/emco/";
+const EAST_JAN_PRESS_URL = "https://www.jreast.co.jp/e/press/pdf/0128_pass_en.pdf";
 const EAST_URL = "https://www.jreast.co.jp/en/multi/pass/hokurikuarch.html";
 const EAST_TERMS_URL = "https://www.jreast.co.jp/en/multi/pass/hokurikuarch_terms.html";
 const EAST_PRESS_URL = "https://www.jreast.co.jp/press/2026/20261001_ho02.pdf";
@@ -81,16 +93,21 @@ const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 const ADULT = "¥35,000";
 const CHILD = "¥17,500";
 
-const TITLE = "JR Hokuriku Arch Pass 2026: Price, Coverage & Worth It?";
+const TITLE = "JR Hokuriku Arch Pass 2026: Price, Coverage, Is It Worth It?";
 const DESCRIPTION =
-  "JR Hokuriku Arch Pass price: ¥35,000 adult, ¥17,500 child, 7 days. Coverage: Tokyo to Kanazawa, Kyoto and Osaka, N'EX and Haruka. Worth it vs tickets?";
+  "Hokuriku Arch Pass price: ¥35,000 adult, ¥17,500 child for 7 days (up from ¥30,000 in March 2026). Tokyo–Kanazawa–Osaka coverage and when it pays.";
 
 /** Table 1 — the price, by where you buy it, and who may hold it. Row 1 is the answer. */
 const priceRows = [
   {
     item: "The answer",
     value: `${ADULT} / ${CHILD}`,
-    note: "Adult / child, 7 days, the same price from every official channel below. JR West sets it by the date you buy, not the date you exchange or travel.",
+    note: "Adult / child, 7 days, the same price online, from an overseas agency or in Japan. Up from ¥30,000 / ¥15,000 for passes sold from 14 March 2026. JR West sets it by the date you buy, not the date you exchange or travel.",
+  },
+  {
+    item: "Before 14 March 2026",
+    value: "¥30,000 / ¥15,000",
+    note: "The old adult / child price in JR East's 28 January 2026 press release. The same release widened the area to the Tokyo metropolitan area, the Chuo Line and the Oito Line.",
   },
   {
     item: "Overseas travel agency (exchange order or E-TICKET)",
@@ -144,7 +161,12 @@ const coverageRows = [
   {
     service: "The answer",
     allowed: "Tokyo → Kanazawa → Osaka",
-    note: "Hokuriku Shinkansen to Tsuruga, Thunderbird to Kyoto and Osaka, Haruka to Kansai Airport, N'EX to Narita, Tokyo Monorail to Haneda. Not the Tokaido or Sanyo Shinkansen.",
+    note: "Hokuriku Shinkansen to Tsuruga, Thunderbird to Kyoto and Osaka, Haruka to Kansai Airport, N'EX to Narita, Tokyo Monorail to Haneda. Not the Tokaido Shinkansen (Nozomi, Hikari, Kodama) or the Sanyo Shinkansen.",
+  },
+  {
+    service: "JR East lines in the Tokyo area, the Chuo Line and the Oito Line",
+    allowed: "✓ Added 14 Mar 2026",
+    note: "JR East's 28 January 2026 release expanded the area to these lines for passes valid from 14 March 2026. The exact edges are on the JR West and JR East maps.",
   },
   {
     service: "Hokuriku Shinkansen, Tokyo ⇄ Tsuruga",
@@ -425,20 +447,20 @@ const buySteps = [
 
 const faqItems = [
   {
-    q: "How much is the JR Hokuriku Arch Pass in 2026?",
-    a: `${ADULT} for an adult aged 12 or over and ${CHILD} for a child aged 6 to 11, for seven consecutive days, the only length sold. The price is the same through an overseas agency, JR-WEST Online Train Reservation, JR-EAST Train Reservation or a travel agency in Japan, and JR West sets it by the date you buy. Up to two children aged 1 to 5 travel free with each pass holder. Pages quoting ¥30,000 or ¥25,500 are out of date. Re-read on westjr.co.jp on ${RECHECKED}.`,
+    q: "How much is the Hokuriku Arch Pass?",
+    a: `${ADULT} for an adult aged 12 or over and ${CHILD} for a child aged 6 to 11, for seven consecutive days, the only length sold. It rose from ¥30,000 and ¥15,000 for passes sold from 14 March 2026, when JR East also widened the area to the Tokyo metropolitan area, the Chuo Line and the Oito Line. The price is the same through an overseas agency, JR-WEST Online Train Reservation, JR-EAST Train Reservation or a travel agency in Japan, and JR West sets it by the date you buy. Up to two children aged 1 to 5 travel free with each pass holder. Re-read on westjr.co.jp on ${RECHECKED}.`,
   },
   {
     q: "What does the Hokuriku Arch Pass cover?",
     a: "Reserved seats on the Hokuriku Shinkansen between Tokyo and Tsuruga, the Thunderbird to Kyoto and Osaka, the Haruka to Kansai Airport, the Narita Express, the Tokyo Monorail to Haneda, and JR local and rapid trains in the map area, plus three short private-line segments around Kanazawa, Toyama and Fukui. The Tokaido Shinkansen (Tokyo–Shin-Osaka) and the Sanyo Shinkansen are excluded, and Green Car or GranClass seats need extra tickets.",
   },
   {
-    q: "Is the Hokuriku Arch Pass worth it vs single tickets?",
-    a: `Not for a straight run. Tokyo to Kanazawa (¥14,400), Kanazawa to Kyoto (¥6,500) and Osaka to Kansai Airport (¥1,900) total ¥22,800, or ¥25,940 with the N'EX from Narita (¥3,140), against ${ADULT}. That leaves out Kyoto to Osaka and uses a visitor discount ticket for Kanazawa to Kyoto, so the true gap is a little smaller, but not ¥9,000 smaller. It pays with long side trips: one Kanazawa to Nagano return adds ¥17,940 and leaves you ¥8,880 ahead. Normal-season fares from JR West, read ${CHECKED}.`,
+    q: "Is the Hokuriku Arch Pass worth it vs the JR Pass?",
+    a: `Against the JR Pass, yes for a Tokyo–Kanazawa–Osaka week: ${ADULT} against ¥50,000 for a 7-day JR Pass online or ¥53,000 from an overseas agency, so ¥15,000 to ¥18,000 less. The JR Pass only earns the extra if the same week uses the Tokaido or Sanyo Shinkansen. Against single tickets, not for a straight run: Tokyo to Kanazawa (¥14,400), Kanazawa to Kyoto (¥6,500) and Osaka to Kansai Airport (¥1,900) total ¥22,800, or ¥25,940 with the N'EX from Narita. It pays with long side trips: one Kanazawa to Nagano return adds ¥17,940 and leaves you ¥8,880 ahead. Normal-season fares from JR West, read ${CHECKED}.`,
   },
   {
-    q: "Can I use the Hokuriku Arch Pass on the Narita Express or Haruka?",
-    a: "Yes to both. JR West names the Haruka between Kansai Airport and Kyoto or Osaka among the pass's limited expresses, and JR East's transportation conditions cover the Narita Express between Narita Airport and Tokyo, where you may also take an empty seat without a reservation. Haneda is reached on the Tokyo Monorail, which is covered too.",
+    q: "Can I book seats with the Hokuriku Arch Pass e-ticket?",
+    a: `Yes, after you exchange it in Japan. The E-TICKET from an overseas agency is an exchange order: scan its QR code or enter the Exchange Order No. at a green ticket-vending machine at a pick-up station, with a passport that has an IC chip, and the pass is issued. Then reserve each seat at a ticket machine or ticket office before boarding. JR West offers online seat reservations only for passes bought through JR-WEST ONLINE TRAIN RESERVATION, and the start date cannot be changed once the pass is issued. Read on westjr.co.jp, ${RECHECKED}.`,
   },
   {
     q: "Where can I buy the Hokuriku Arch Pass?",
@@ -578,17 +600,19 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
             {/* Answer-first: this is the article's first body paragraph, not the hero line. */}
             <p className={styles.verdictText}>
               The <strong>JR Hokuriku Arch Pass</strong> costs <strong>{ADULT}</strong> for an adult and{" "}
-              <strong>{CHILD}</strong> for a child aged 6 to 11, for <strong>7 consecutive days</strong>, at the same
-              price from an overseas agency, JR West or JR East online. It covers Tokyo → Kanazawa → Tsuruga on the{" "}
-              <strong>Hokuriku Shinkansen</strong> and Tsuruga → Kyoto → Osaka on the <strong>Thunderbird</strong>,
-              plus the <strong>Haruka</strong> to Kansai Airport, the <strong>Narita Express</strong> and the Tokyo
-              Monorail to Haneda, but not the Tokaido or Sanyo Shinkansen. On a straight run from Tokyo through
-              Kanazawa to Kansai Airport, single tickets confirmed with JR come to ¥22,800 (¥25,940 from Narita), so
-              the pass only pays with long side trips; until 5 May 2027 it also unlocks JR East&apos;s holder
-              discounts at sights in Toyama, Ishikawa and Fukui. Read off JR West&apos;s and JR East&apos;s pages on{" "}
-              {RECHECKED}. It is ¥15,000 to ¥18,000 cheaper than a 7-day{" "}
-              JR Pass (¥50,000 online or ¥53,000 from an agency; see the{" "}
-              <Link href="/guides/transport/jr-pass-guide">JR Pass price</Link> guide for the October 2026 rise).
+              <strong>{CHILD}</strong> for a child aged 6 to 11 for <strong>7 consecutive days</strong>, the same
+              price online, from an overseas agency or in Japan, up from ¥30,000 and ¥15,000 for passes sold from 14
+              March 2026. It covers <strong>Tokyo → Kanazawa → Tsuruga</strong> on the Hokuriku Shinkansen and{" "}
+              <strong>Tsuruga → Kyoto → Osaka</strong> on the Thunderbird, plus the Haruka, the Narita Express and
+              the Tokyo Monorail, but not the Tokaido Shinkansen (Nozomi, Hikari, Kodama) or the Sanyo Shinkansen.
+              On a straight Tokyo → Kanazawa → Kyoto → Osaka → Kansai Airport run, single tickets come to ¥22,800
+              (¥25,940 from Narita), so the pass pays only with long side trips.
+            </p>
+            <p className={styles.verdictText}>
+              It is ¥15,000 to ¥18,000 cheaper than a 7-day JR Pass (¥50,000 online or ¥53,000 from an agency; see
+              the <Link href="/guides/transport/jr-pass-guide">JR Pass price</Link> guide for the October 2026
+              rise), and until 5 May 2027 it also unlocks JR East&apos;s holder discounts at sights in Toyama,
+              Ishikawa and Fukui. Read off JR West&apos;s and JR East&apos;s pages on {RECHECKED}.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink
@@ -618,10 +642,11 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
         {/* Price */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
-          <h2 className={styles.sectionTitle}>How Much Is the JR Hokuriku Arch Pass in 2026?</h2>
+          <h2 className={styles.sectionTitle}>How Much Is the Hokuriku Arch Pass in 2026?</h2>
           <p className={styles.bodyText}>
-            {ADULT} for an adult and {CHILD} for a child, for seven consecutive days, wherever you buy it. There is one
-            length and one price. JR West&apos;s conditions say the price follows the date you buy, so it is worth
+            {ADULT} for an adult and {CHILD} for a child, for seven consecutive days, wherever you buy it. That is
+            ¥5,000 more than the ¥30,000 it cost before 14 March 2026, the date JR East&apos;s January release also gave
+            for adding the Tokyo area, the Chuo Line and the Oito Line to the map. There is one length and one price. JR West&apos;s conditions say the price follows the date you buy, so it is worth
             buying once your dates are firm rather than expecting a cheaper rate at the station.
           </p>
           <div className={styles.tableWrap}>
@@ -650,8 +675,9 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
             Last checked: {RECHECKED_ISO}. JR West:{" "}
             <a href={WEST_URL} target="_blank" rel="noopener noreferrer">{WEST_URL}</a> (its page dates the prices to
             28 January 2026). JR East:{" "}
-            <a href={EAST_URL} target="_blank" rel="noopener noreferrer">{EAST_URL}</a>, whose 28 January 2026 press
-            release gives the same ¥35,000 and ¥17,500.
+            <a href={EAST_URL} target="_blank" rel="noopener noreferrer">{EAST_URL}</a>, whose{" "}
+            <a href={EAST_JAN_PRESS_URL} target="_blank" rel="noopener noreferrer">28 January 2026 press release</a>{" "}
+            gives the same ¥35,000 and ¥17,500 and the old ¥30,000 and ¥15,000.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -696,7 +722,9 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
             Last checked: {RECHECKED_ISO}. Coverage from JR West&apos;s pass page (
             <a href={WEST_URL} target="_blank" rel="noopener noreferrer">westjr.co.jp</a>), with the Narita Express row
             from JR East&apos;s transportation conditions (
-            <a href={EAST_TERMS_URL} target="_blank" rel="noopener noreferrer">jreast.co.jp</a>). The limits of the valid area are drawn on JR West&apos;s
+            <a href={EAST_TERMS_URL} target="_blank" rel="noopener noreferrer">jreast.co.jp</a>) and the March 2026
+            area expansion from JR East&apos;s{" "}
+            <a href={EAST_JAN_PRESS_URL} target="_blank" rel="noopener noreferrer">28 January 2026 release</a>. The limits of the valid area are drawn on JR West&apos;s
             map image rather than listed in text, so open it if your plan sits near an edge.
           </p>
         </section>
@@ -783,8 +811,30 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Last checked: {RECHECKED_ISO} for the pass, HOKURIKU One-way and HARUKA One-way prices on westjr.co.jp;
             Tokyo–Kanazawa and Kanazawa–Nagano from JR West&apos;s e5489 e-ticket page, {CHECKED}. Pass:{" "}
-            <a href={WEST_URL} target="_blank" rel="noopener noreferrer">JR West</a>.
+            <a href={WEST_URL} target="_blank" rel="noopener noreferrer">{WEST_URL}</a> and{" "}
+            <a href={EAST_URL} target="_blank" rel="noopener noreferrer">{EAST_URL}</a>.
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            <strong>Which to book:</strong> the pass if your week adds long shinkansen side trips, single tickets if it
+            is one run through Kanazawa. Either way, the night in Kanazawa and the Shirakawa-go day are not on the
+            pass, and both sell by date, so check prices, seats left and the cancellation terms on the listing once
+            your dates are firm. For the four reservation-only light-up evenings in January 2027, see our{" "}
+            <Link href="/guides/attractions/shirakawago-winter-light-up">Shirakawa-go light-up guide</Link> first.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
+            <KlookLink href={hokurikuArchPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Hokuriku Arch Pass on Klook →
+            </KlookLink>
+            <KlookLink href={kanazawaHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Kanazawa Hotels →
+            </KlookLink>
+            <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Shirakawa-go Day Tour From Kanazawa →
+            </KlookLink>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              {klookEsim.ctaLabel}
+            </KlookLink>
+          </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Before you pay for either option, settle two things. Check <strong>your travel dates against JR West&apos;s
             seasons</strong>, because the ¥14,400 is the normal-season price. And check <strong>the listing&apos;s
@@ -811,9 +861,10 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
         {/* vs JR Pass */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Compare</span>
-          <h2 className={styles.sectionTitle}>Hokuriku Arch Pass vs JR Pass: Which Is Cheaper?</h2>
+          <h2 className={styles.sectionTitle}>Is the Hokuriku Arch Pass Worth It vs the JR Pass?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            The Arch Pass, by ¥15,000 against the official-site JR Pass and ¥18,000 against an overseas agency. The JR
+            Yes for a Tokyo–Kanazawa–Osaka week: the Arch Pass is ¥15,000 cheaper than the official-site JR Pass and
+            ¥18,000 cheaper than one from an overseas agency. The JR
             Pass earns the extra only if the week uses the Tokaido or Sanyo line. For the eastern side of the same map,
             the{" "}
             <Link href="/guides/transport/jr-east-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
@@ -878,6 +929,27 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
               Skyliner vs N&apos;EX
             </Link>
             .
+          </p>
+        </section>
+
+        {/* E-ticket and seats */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>E-ticket</span>
+          <h2 className={styles.sectionTitle}>Can I Book Seats With the Hokuriku Arch Pass E-Ticket?</h2>
+          <p className={styles.bodyText}>
+            Yes, once the e-ticket has been exchanged for the pass in Japan. The E-TICKET sold by an overseas agency
+            is an exchange order: at a green ticket-vending machine in a pick-up station, scan its QR code or enter
+            the Exchange Order No., enter your start date and swipe a passport with an IC chip, and the pass is
+            issued (without an IC chip, go to the ticket office). After that, reserve each seat at a ticket machine
+            or ticket office before boarding.
+          </p>
+          <p className={styles.bodyText}>
+            Three rules decide how this goes. JR West offers online seat reservations only for passes bought through
+            JR-WEST ONLINE TRAIN RESERVATION. The start date cannot be changed after the pass is issued, and the
+            e-ticket must be exchanged within 3 months of issue. And boarding with an unexchanged e-ticket means
+            buying tickets again on the train at the full price. Last checked: {RECHECKED_ISO},{" "}
+            <a href={WEST_ETICKET_URL} target="_blank" rel="noopener noreferrer">{WEST_ETICKET_URL}</a> and{" "}
+            <a href={WEST_URL} target="_blank" rel="noopener noreferrer">JR West&apos;s pass page</a>.
           </p>
         </section>
 

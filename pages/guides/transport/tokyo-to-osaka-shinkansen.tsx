@@ -619,7 +619,10 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
             14- and 21-day Ordinary passes are ¥80,000 / ¥100,000 online and ¥84,000 / ¥105,000 from an agency.
             Our <Link href="/guides/transport/jr-pass-guide">JR Pass price</Link> guide has the October 2026
-            price rise and works the break-even against your own legs.
+            price rise and works the break-even against your own legs. Going the long way through Kanazawa
+            instead? The{" "}
+            <Link href="/guides/transport/hokuriku-arch-pass">Hokuriku Arch Pass</Link> covers Tokyo to Osaka by
+            the Hokuriku Shinkansen and the Thunderbird for seven days, but not the Tokaido Shinkansen.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={jrPassWholeJapan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

@@ -593,7 +593,11 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
             From Joetsumyoko on to Toyama and <strong>Kanazawa</strong> the line belongs to JR West and is not covered.
           </p>
           <p className={styles.bodyText}>
-            For Kanazawa, the Hokuriku Arch Pass (¥35,000, read {ARCH_CHECKED}) covers Tokyo–Kanazawa–Osaka. Our{" "}
+            For Kanazawa, the{" "}
+            <Link href="/guides/transport/hokuriku-arch-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Hokuriku Arch Pass
+            </Link>{" "}
+            (¥35,000, read {ARCH_CHECKED}) covers Tokyo–Kanazawa–Osaka. Our{" "}
             <Link href="/guides/transport/tokyo-to-kanazawa" style={{ color: "var(--red)", fontWeight: 600 }}>
               Tokyo to Kanazawa shinkansen guide
             </Link>{" "}
@@ -851,7 +855,7 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>JR Hokuriku Arch Pass 2026: Price, Coverage & Worth It?</p>
+                <p className={styles.relatedTitle}>JR Hokuriku Arch Pass 2026: Price, Coverage, Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
