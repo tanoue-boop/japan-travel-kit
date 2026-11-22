@@ -11534,3 +11534,75 @@ export const kyotoTransportationArrivalPrep: KlookTripPrepItem[] = [
     why: "Bus approach screens, the city's crowd app and the operators' fare searches all need data at the stop, which is where you will want them.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Tokyo Christmas itinerary — added 22 Nov 2026 (task-jtk-20261122-01).
+//
+// No new Klook URL: every slot reuses a constant above. Confirmed as live en-US
+// pages through the www.klook.com search index on 22 Nov 2026:
+//   140853  Tokyo night tour (Ueno, Akihabara, Shibuya, city lights)        6.5%
+//   106435  Tokyo Bay yakatabune dinner cruise with a show                    6.5%
+//   p50006601 hotels near Tokyo Station                                       6.5%
+//   1552    Tokyo Subway Ticket                                               5%
+//   695     Tokyo Disney Resort 1-Day Passport                                2%
+//   109393  Klook Japan eSIM                                                  20%
+//   143495  Asakusa & Senso-ji walk (shown on the en-US Senso-ji destination page) 6.5%
+// Not used: 102385 "Tokyo Bay Christmas Night Cruise" (indexed only without a
+// locale, dated 12/23-24 of an earlier year), and 616 Symphony dinner cruise (no
+// en-US page in the index that day — and the Symphony's own site says its regular
+// plans are not sold on 24–25 Dec 2026, only its Christmas plans).
+// No ad id (spare empty): links fall back to ?aid=119070.
+// ---------------------------------------------------------------------------
+
+/** Hotels for the three Christmas nights. */
+export const tokyoChristmasStayAreas: KlookStayArea[] = [
+  {
+    area: "Tokyo Station / Marunouchi",
+    why: "Marunouchi Nakadori and Gyoko-dori — Day 1's lights, on until midnight in December — start at the station's Marunouchi exits, so the first evening ends with a walk back.",
+    url: tokyoStayAreas[1].url,
+  },
+  {
+    area: "Shinjuku",
+    why: "On the JR Yamanote Line and the subway, for a Day 2 split between Shiba Park or Roppongi and a late night out.",
+    url: tokyoStayAreas[0].url,
+  },
+  {
+    area: "Maihama (Tokyo Disney Resort)",
+    why: "For a Day 3 at Tokyo Disneyland or DisneySea on 25 December, the last day of Disney Christmas — the parks' own station on the JR Keiyo Line.",
+    url: tokyoDisneyStayAreas[0].url,
+  },
+];
+
+/**
+ * "Book these on the same trip" for 23–25 Dec: 6.5% tours, cruise and hotel and the
+ * 20% eSIM first, the 5% subway ticket next. The 2% Disney ticket is not in this
+ * block; the page puts it in the Day 3 section below.
+ */
+export const tokyoChristmasTripPrep: KlookTripPrepItem[] = [
+  {
+    label: tokyoNightTourAkihabaraShibuya.title,
+    ctaLabel: "Check the Tokyo night tour →",
+    url: tokyoNightTourAkihabaraShibuya.url,
+    why: "A guided evening of the lit city at street level, from Ueno Station to the Shibuya crossing, with the train fares between stops included. Check that your date is on its calendar.",
+  },
+  {
+    label: tokyoBayYakatabuneDinnerShow.title,
+    ctaLabel: "Check the yakatabune dinner cruise →",
+    url: tokyoBayYakatabuneDinnerShow.url,
+    why: "Dinner on the water off Odaiba, sold by date. Book it for 23 December, or check whether 24 December is still open on its calendar.",
+  },
+  {
+    label: "Hotels near Tokyo Station",
+    ctaLabel: "Check Tokyo Station hotels on Klook →",
+    url: tokyoStayAreas[1].url,
+    why: "Three nights, 23–25 December, next to the Marunouchi lights. Book a room with free cancellation first.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Market last-entry times, lighting changes and dated QR tickets all need data while you are out after dark.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "The 72-hour ticket covers Tokyo Metro and Toei for all three days: Roppongi, Hibiya, Onarimon for Shiba Park and Asakusa. It does not cover JR or the Yurikamome.",
+  },
+];

@@ -303,6 +303,7 @@ const related = [
   { href: "/guides/attractions/kyoto-2-day-itinerary", title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book" },
   { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas Compared" },
   { href: "/guides/attractions/tokyo-illumination-tours", title: "Tokyo Illuminations 2026: Dates, Hours and Which Ones Are Free" },
+  { href: "/guides/attractions/tokyo-christmas-itinerary", title: "Tokyo Christmas Itinerary 2026: 3 Days, Lights & Markets" },
   { href: "/guides/attractions/japan-first-time-itinerary", title: "First Time Japan Itinerary (2026): 9 Days, Day by Day" },
   { href: "/guides/attractions/tokyo-subway-ticket", title: "Tokyo Subway Ticket 2026: 24/48/72-Hour Price, Worth It?" },
   { href: "/guides/attractions", title: "More Things to Do in Japan →" },
@@ -474,7 +475,10 @@ export default function JapanNewYearItineraryPage({ updated }: { updated: PageUp
               <Link href="/guides/attractions/japan-winter-itinerary">Japan winter itinerary</Link>. Ordinary-week
               versions of the two cities are the{" "}
               <Link href="/guides/attractions/tokyo-4-day-itinerary">Tokyo 4 day itinerary</Link> and the{" "}
-              <Link href="/guides/attractions/kyoto-2-day-itinerary">Kyoto 2 day itinerary</Link>.
+              <Link href="/guides/attractions/kyoto-2-day-itinerary">Kyoto 2 day itinerary</Link>. Arriving
+              for Christmas first? The{" "}
+              <Link href="/guides/attractions/tokyo-christmas-itinerary">Tokyo Christmas itinerary</Link> covers
+              23–25 December.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={tokyoCountdownCruise.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>

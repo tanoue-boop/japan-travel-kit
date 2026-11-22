@@ -762,6 +762,10 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>The rest of the season</span>
           <h2 className={styles.sectionTitle}>What Else Can You Pair With Tokyo&apos;s Winter Lights?</h2>
           <p className={styles.bodyText}>
+            In Tokyo for Christmas itself? The{" "}
+            <Link href="/guides/attractions/tokyo-christmas-itinerary">Tokyo Christmas itinerary</Link> turns
+            23–25 December into one plan a day: these lights, a Christmas market, Christmas Eve dinner and
+            Disney on the 25th.
             A few nights of illuminations sit easily at the start of a longer trip. If Tokyo is only
             your first stop, our <Link href="/guides/attractions/japan-winter-itinerary">12-day Japan winter itinerary</Link>{" "}
             puts these evenings on Days 1 to 4, then carries on through Kanazawa, Takayama, Kyoto and
@@ -844,6 +848,19 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 22 Nov 2026: the three Christmas days, 23–25 Dec, as a plan. */}
+            <Link href="/guides/attractions/tokyo-christmas-itinerary" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Tokyo Christmas Itinerary 2026: 3 Days, Lights &amp; Markets</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 20 Nov 2026: the five New Year days after the illumination season peaks. */}
             <Link href="/guides/attractions/japan-new-year-itinerary" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

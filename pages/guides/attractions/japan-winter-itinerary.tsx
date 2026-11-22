@@ -1221,7 +1221,9 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             <p className={styles.verdictText} style={{ marginTop: "0.75rem" }}>
               Arriving for the New Year holiday itself (30 December to 3 January), when banks and many museums
               close? Use the <Link href="/guides/attractions/japan-new-year-itinerary">Japan New Year itinerary</Link>{" "}
-              for those five days.
+              for those five days. For 23–25 December in Tokyo, the{" "}
+              <Link href="/guides/attractions/tokyo-christmas-itinerary">Tokyo Christmas itinerary</Link> has the
+              lights, the markets and Christmas Eve day by day.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink
@@ -1803,6 +1805,19 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 22 Nov 2026: the three Christmas days in Tokyo, 23–25 Dec. */}
+            <Link href="/guides/attractions/tokyo-christmas-itinerary" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Tokyo Christmas Itinerary 2026: 3 Days, Lights &amp; Markets</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             {/* Added 20 Nov 2026: the five New Year days, 30 Dec – 3 Jan. */}
             <Link href="/guides/attractions/japan-new-year-itinerary" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>

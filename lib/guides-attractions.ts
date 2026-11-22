@@ -708,6 +708,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/tokyo-christmas-itinerary",
+    badge: "Itinerary",
+    title: "Tokyo Christmas Itinerary 2026: 3 Days, Lights & Markets",
+    desc: "23–25 December: Marunouchi and Keyakizaka lights, a Christmas market and Christmas Eve dinner or a bay cruise, then Disney on the 25th — with each 2026 date, hour and price from the official sites, and what to book first.",
+    group: "cities",
+    city: "tokyo",
+  },
+  {
     href: "/guides/attractions/tokyo-5-day-itinerary",
     badge: "Itinerary",
     title: "Tokyo 5-Day Itinerary (2026): 5 Days in Tokyo, Day by Day",

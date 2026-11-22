@@ -589,7 +589,11 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Read off symphony-cruise.co.jp on {CHECKED} and subject to change — the operator also notes
             that sailing times can shift with sea conditions. Higher plans run well above these figures,
-            and Christmas and New Year sailings are priced as separate itineraries. For the admissions in this
+            and Christmas and New Year sailings are priced as separate itineraries — what sails on 24 and 25
+            December is in the{" "}
+            <Link href="/guides/attractions/tokyo-christmas-itinerary" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Tokyo Christmas itinerary
+            </Link>. For the admissions in this
             guide across the rest of Japan, each with its own check date, see our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
@@ -681,6 +685,19 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>Related guides</span>
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
+            {/* Added 22 Nov 2026: 23–25 Dec in Tokyo, with the Christmas Eve cruise rules. */}
+            <Link href="/guides/attractions/tokyo-christmas-itinerary" className={styles.relatedCard}>
+              <div className={styles.relatedIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="17" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <div className={styles.relatedMeta}>
+                <p className={styles.relatedTitle}>Tokyo Christmas Itinerary 2026: 3 Days, Lights &amp; Markets</p>
+                <span className={styles.relatedArrow}>Read guide →</span>
+              </div>
+            </Link>
             <Link href="/guides/attractions/shibuya-sky-tickets" className={styles.relatedCard}>
               <div className={styles.relatedIcon}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
