@@ -4,7 +4,7 @@ import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
 import EsimPriceTrackerTable, { TrackerBuyButton, type BuyLink } from "../../../components/EsimPriceTrackerTable";
 import raw from "../../../data/esim-prices.json";
-import { buildRows, summarize, type TrackerRow } from "../../../lib/esim-tracker-core";
+import { buildRows, median, summarize, type TrackerRow } from "../../../lib/esim-tracker-core";
 import { cheapestPlan, formatDate, getProvider } from "../../../lib/esim-prices";
 import { klookEsim } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -120,61 +120,122 @@ const ANSWER = `Lowest price per GB: ${perGbTop ? `${perGbTop.provider} ${perGbT
 } (checked ${d(sum.lastChecked)}).`;
 const CITE = `${SITE_NAME}, "Japan eSIM Price Tracker", ${PAGE_URL} (prices checked ${d(sum.firstChecked)}–${d(sum.lastChecked)}).`;
 
+const rowLabel = (r: TrackerRow | null) => (r ? `${r.provider} ${r.plan} at ${usd(r.priceUsd)}` : "—");
+const perDay = (r: TrackerRow) => r.priceUsd / r.days;
+const isFixed = (r: TrackerRow) => !r.unlimited && !r.dailyCapGb;
+
 /**
- * Today's price by trip length: the lowest price on the tracker's 7, 15 and 30-day tabs
- * (exact validity, as the tabs filter), each with the date that row was last read.
+ * Cost by data size (R03, 22 Nov 2026): every plan with exactly that fixed allowance, or every
+ * unlimited plan, with the lowest and median total, price per GB and price per day.
  */
-type LengthLine = { days: number; any: TrackerRow | null; tenGb: TrackerRow | null; unl: TrackerRow | null };
-const lengthLines: LengthLine[] = [7, 15, 30].map((days) => {
-  const mine = rows.filter((r) => r.days === days);
+type SizeLine = {
+  label: string;
+  plans: number;
+  low: TrackerRow | null;
+  medPrice: number | null;
+  lowPerGb: number | null;
+  medPerGb: number | null;
+  lowPerDay: number | null;
+  medPerDay: number | null;
+};
+const sizeLine = (label: string, mine: TrackerRow[]): SizeLine => {
+  const gb = mine.map((r) => r.perGbUsd).filter((n): n is number => n !== null);
+  const low = minBy(mine, (r) => r.priceUsd);
+  const lowDay = minBy(mine, perDay);
   return {
-    days,
-    any: minBy(mine, (r) => r.priceUsd),
-    tenGb: minBy(mine.filter((r) => !r.unlimited && !r.dailyCapGb && (r.gb ?? 0) >= 10), (r) => r.priceUsd),
-    unl: minBy(mine.filter((r) => r.unlimited), (r) => r.priceUsd),
+    label,
+    plans: mine.length,
+    low,
+    medPrice: median(mine.map((r) => r.priceUsd)),
+    lowPerGb: gb.length ? Math.min(...gb) : null,
+    medPerGb: median(gb),
+    lowPerDay: lowDay ? perDay(lowDay) : null,
+    medPerDay: median(mine.map(perDay)),
+  };
+};
+const sizeLines: SizeLine[] = [
+  ...[1, 3, 10, 20].map((gb) => sizeLine(`${gb} GB`, rows.filter((r) => isFixed(r) && r.gb === gb))),
+  sizeLine("Unlimited", rows.filter((r) => r.unlimited)),
+];
+const fixedCount = rows.filter((r) => r.perGbUsd !== null).length;
+const tenGb = sizeLines[2];
+
+/**
+ * Cost by trip length: plans sold for exactly that many days. 14 days also takes the 15-day
+ * plans, because only a handful of providers sell a 14-day plan and most sell 15 days instead.
+ */
+type DayLine = {
+  label: string;
+  plans: number;
+  low: TrackerRow | null;
+  medPrice: number | null;
+  lowUnl: TrackerRow | null;
+  medUnl: number | null;
+  medUnlPerDay: number | null;
+};
+const dayLines: DayLine[] = [
+  { label: "5 days", days: [5] },
+  { label: "7 days", days: [7] },
+  { label: "10 days", days: [10] },
+  { label: "14 days (14–15-day plans)", days: [14, 15] },
+  { label: "30 days", days: [30] },
+].map(({ label, days }) => {
+  const mine = rows.filter((r) => days.includes(r.days));
+  const unl = mine.filter((r) => r.unlimited);
+  return {
+    label,
+    plans: mine.length,
+    low: minBy(mine, (r) => r.priceUsd),
+    medPrice: median(mine.map((r) => r.priceUsd)),
+    lowUnl: minBy(unl, (r) => r.priceUsd),
+    medUnl: median(unl.map((r) => r.priceUsd)),
+    medUnlPerDay: median(unl.map(perDay)),
   };
 });
-const [len7, len15] = lengthLines;
-const rowLabel = (r: TrackerRow | null) => (r ? `${r.provider} ${r.plan} at ${usd(r.priceUsd)}` : "—");
-/** Distinct official pages behind the price-by-length table, for its source line. */
-const lengthSources = Array.from(
-  new Map(
-    lengthLines
-      .flatMap((l) => [l.any, l.tenGb, l.unl])
-      .filter((r): r is TrackerRow => Boolean(r))
-      .map((r): [string, { name: string; url: string }] => [r.providerId, { name: r.provider, url: r.sourceUrl }])
-  ).values()
-);
+const day7 = dayLines[1];
+const day30 = dayLines[4];
+const cheapestAll = sum.cheapestPlan;
+const unlPerDayTop = sum.cheapestUnlimitedPerDay;
 
-// Split from cheapest-esim-japan (R04, 14 Nov 2026): this page owns the dated price checks;
-// "cheapest eSIM Japan" belongs to the cheapest page. CTR pass 15 Nov 2026 (C01): the lead is
-// "Japan eSIM prices today" + the update date, and title and H1 are one string in one order.
-const TITLE = "Japan eSIM Prices Today (2026): Daily Price Tracker";
+/**
+ * Pocket WiFi and airport SIM, as sakuramobile.jp printed them on 22 Nov 2026: Pocket WiFi
+ * unlimited ¥9,900 for 7 days (travel/wifi/), Travel SIM ¥3,850 and Travel eSIM ¥1,375,
+ * tax included (travel/sim/, travel/esim/).
+ */
+const SAKURA_CHECKED = "2026-11-22";
+const JPY = fx.perUsd.JPY;
+const yenUsd = (yen: number) => `¥${yen.toLocaleString("en-US")}${JPY ? ` (about ${usd(yen / JPY)})` : ""}`;
+const WIFI_7 = 9900;
+
+// Split from cheapest-esim-japan (R04, 14 Nov 2026): this page owns the market price ("how much
+// does it cost"), the cheapest page owns the single cheapest plan. R03 (22 Nov 2026): the landing
+// queries are all "how much / cost", so title and H1 lead with the question; still one string.
+const TITLE = "How Much Does an eSIM Cost in Japan? 2026 Price per GB & Day";
 const H1 = TITLE;
-const DESCRIPTION = `Japan eSIM prices today: 7 days from ${usd(len7.any?.priceUsd)}, 15 days from ${usd(
-  len15.any?.priceUsd
-)}, 7-day unlimited ${usd(len7.unl?.priceUsd)} (updated ${d(sum.lastChecked)}). ${sum.plans} plans, Simbye or Klook eSIM buttons.`;
+const DESCRIPTION = `Japan eSIM cost: about ${usd(sum.medianPerGb)} price per GB, 7-day unlimited about ${usd(
+  day7.medUnl
+)} (${usd(day7.medUnlPerDay)} a day), cheapest ${usd(cheapestAll?.priceUsd)}. Updated ${d(sum.lastChecked)}. Buy via Simbye or Klook.`;
 
 const faqItems = [
   {
-    q: "How much does a Japan eSIM cost?",
-    a: `As of the last update on ${d(sum.lastChecked)}, a 7-day Japan eSIM costs from ${usd(len7.any?.priceUsd)} (${rowLabel(len7.any)}), a 15-day one from ${usd(len15.any?.priceUsd)} (${rowLabel(len15.any)}) and a 30-day one from ${usd(lengthLines[2].any?.priceUsd)}. With 10 GB or more, 7 days starts at ${usd(len7.tenGb?.priceUsd)} and 15 days at ${usd(len15.tenGb?.priceUsd)}; unlimited starts at ${usd(len7.unl?.priceUsd)} for 7 days and ${usd(len15.unl?.priceUsd)} for 15. The median price per GB across all ${sum.plans} plans is ${usd(sum.medianPerGb)}.`,
+    q: "How much does an eSIM cost in Japan?",
+    a: `About ${usd(sum.medianPerGb)} per GB: that is the median of ${fixedCount} fixed-data Japan eSIM plans checked on the providers' official sites (last update ${d(sum.lastChecked)}). A 10 GB plan costs ${usd(tenGb.medPrice)} at the median and from ${usd(tenGb.low?.priceUsd)}; 7 days of unlimited data costs about ${usd(day7.medUnl)} (median of ${sum.unlimited7Count} plans, from ${usd(day7.lowUnl?.priceUsd)}). The cheapest plan of all is ${rowLabel(cheapestAll)}.`,
+  },
+  {
+    q: "How much is an eSIM for Japan per day?",
+    a: `About ${usd(day7.medUnlPerDay)} a day for unlimited data on a 7-day plan and ${usd(day30.medUnlPerDay)} a day on a 30-day plan (medians, checked ${d(sum.lastChecked)}). The lowest unlimited price per day is ${unlPerDayTop ? `${unlPerDayTop.provider} ${unlPerDayTop.plan}, ${usd(perDay(unlPerDayTop))} a day` : "—"}. A fixed 10 GB plan works out at ${usd(tenGb.medPerDay)} a day at the median.`,
+  },
+  {
+    q: "Is a monthly eSIM cheaper for Japan?",
+    a: `Per day, yes; in total, only if you stay long enough to use it. A 30-day unlimited plan costs ${usd(day30.medUnl)} at the median (${usd(day30.medUnlPerDay)} a day) against ${usd(day7.medUnl)} for 7 days (${usd(day7.medUnlPerDay)} a day), so for a one- or two-week trip the plan that matches your dates costs less.`,
+  },
+  {
+    q: "Is an eSIM cheaper than a pocket WiFi or airport SIM in Japan?",
+    a: `For one or two people, yes. Sakura Mobile's unlimited pocket WiFi is ${yenUsd(WIFI_7)} for 7 days per router, against ${usd(day7.medUnl)} for a median 7-day unlimited eSIM per person; split three ways, the router costs less per head. At the airport, Sakura Mobile's Travel SIM card is ¥3,850 against ¥1,375 for its Travel eSIM, tax included (sakuramobile.jp, ${SAKURA_CHECKED}).`,
   },
   {
     q: "When were these Japan eSIM prices last updated?",
     a: `The latest price check was ${d(sum.lastChecked)}. ${data.tracker.updatePolicy} Each row in the table carries its own check date and a link to the official page it was read from, so a row read on ${d(sum.firstChecked)} shows that date rather than today's.`,
-  },
-  {
-    q: "Which Japan eSIM has the lowest price per GB?",
-    a: `${perGbTop ? `${perGbTop.provider}'s ${perGbTop.plan} plan, at ${usd(perGbTop.perGbUsd)} per GB (${usd(perGbTop.priceUsd)} in total)` : "—"}, of the ${sum.plans} plans read on ${sum.providers} providers' official sites between ${d(sum.firstChecked)} and ${d(sum.lastChecked)}. The median of each provider's lowest price per GB is ${usd(sum.medianBestPerGbByProvider)}. Large allowances always win on this measure, so check the plan's validity covers your trip.`,
-  },
-  {
-    q: "Which 7-day unlimited Japan eSIM costs the least?",
-    a: `${unl7Top.length ? `${names(unl7Top)}, at ${usd(unl7Top[0].priceUsd)} for 7 days` : "—"}. The median 7-day unlimited plan across the ${sum.unlimited7Count} sold is ${usd(sum.medianUnlimited7)}. "Unlimited" means different things: most providers slow you down after a daily or total high-speed allowance, and the note under each plan in the table says what that provider publishes.`,
-  },
-  {
-    q: "How are prices in yen converted to US dollars?",
-    a: `Prices are recorded in the currency the provider's site shows. ${nonUsd.length ? `${nonUsd.join(" and ")} prices are converted at the European Central Bank reference rate of ${fx.date} (1 USD = ${nonUsd.map((c) => `${fx.perUsd[c]} ${c}`).join(", ")}).` : ""} The original price is shown under the USD figure and kept in the CSV.`,
   },
 ];
 
@@ -272,8 +333,8 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
           <p className={styles.eyebrow}>Prices checked {d(sum.firstChecked)}–{d(sum.lastChecked)}</p>
           <h1 className={styles.heroTitle}>{H1}</h1>
           <p className={styles.heroSubtitle}>
-            {sum.plans} plans from {sum.providers} providers, each read on the provider&apos;s own Japan page, with the date
-            and the link for every row. Sort it, filter it, or download the CSV.
+            A daily Japan eSIM price tracker: {sum.plans} plans from {sum.providers} providers, each read on the
+            provider&apos;s own Japan page, with the date and the link for every row.
           </p>
           <div className={styles.heroBadges}>
             {[`${sum.providers} providers priced`, `${sum.plans} plans`, "Free CSV download", "Re-checked daily or monthly"].map((t) => (
@@ -286,6 +347,19 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
       </section>
 
       <div className={styles.content}>
+        {/* The answer in numbers, in the first paragraph of the body (R03, 22 Nov 2026). */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            A Japan travel eSIM costs about <strong>{usd(sum.medianPerGb)} per GB</strong> (the median of {fixedCount}{" "}
+            fixed-data plans) and about <strong>{usd(day7.medUnl)} for 7 days of unlimited data</strong>, or{" "}
+            {usd(day7.medUnlPerDay)} a day, on prices checked on the providers&apos; official sites up to{" "}
+            {d(sum.lastChecked)}. The cheapest plan is <strong>{rowLabel(cheapestAll)}</strong>, and a 10 GB plan costs{" "}
+            {usd(tenGb.medPrice)} at the median, from {usd(tenGb.low?.priceUsd)}. This page tracks the going rate; the
+            single cheapest plan at each data size, with a pick, is in the{" "}
+            <Link href="/guides/esim/cheapest-esim-japan" className={tools.inlineLink}>cheapest eSIM for Japan</Link> guide.
+          </p>
+        </section>
+
         <div className={styles.disclosure}>
           <p className={styles.disclosureText}>
             <strong>Affiliate disclosure:</strong> Simbye, Sakura Mobile and Klook pay us a commission on purchases through
@@ -296,77 +370,58 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
           </p>
         </div>
 
-        {/* The answer and the method, in the first two sentences. */}
-        <section className={styles.bodySection}>
-          <p className={styles.bodyText}>
-            Japan eSIM prices today, as of the last update on <strong>{d(sum.lastChecked)}</strong>: a{" "}
-            <strong>7-day</strong> plan costs from <strong>{usd(len7.any?.priceUsd)}</strong> ({rowLabel(len7.any)}) and
-            a <strong>15-day</strong> plan from <strong>{usd(len15.any?.priceUsd)}</strong> ({rowLabel(len15.any)}). With
-            10 GB or more, 7 days starts at {usd(len7.tenGb?.priceUsd)} and 15 days at {usd(len15.tenGb?.priceUsd)}. The{" "}
-            {Object.keys(data.tracker.autoFacts).length} providers read automatically are re-checked every day and the rest
-            on the 1st of each month, and every row below shows the date its price was last read.
-          </p>
-          <p className={styles.bodyText}>
-            The Japan eSIM prices of <strong>{providersListed} providers</strong> were checked on their own official sites between{" "}
-            {d(sum.firstChecked)} and {d(sum.lastChecked)}, with per-plan prices recorded for{" "}
-            <strong>{sum.providers} of them ({sum.plans} plans)</strong>. The lowest price per GB is{" "}
-            <strong>
-              {perGbTop ? `${perGbTop.provider} ${perGbTop.plan} at ${usd(perGbTop.perGbUsd)}/GB` : "—"}
-            </strong>{" "}
-            against a median of {usd(sum.medianBestPerGbByProvider)} for each provider&apos;s best plan, and the cheapest 7-day
-            unlimited plan is{" "}
-            <strong>{unl7Top.length ? `${usd(unl7Top[0].priceUsd)} from ${names(unl7Top)}` : "—"}</strong> (median{" "}
-            {usd(sum.medianUnlimited7)} across {sum.unlimited7Count} plans). This page tracks each price and the date it was
-            checked; for the lowest price at each data size and a pick, see the{" "}
-            <Link href="/guides/esim/cheapest-esim-japan" className={tools.inlineLink}>cheapest eSIM for Japan</Link>.
-          </p>
-        </section>
+        {/* Klook eSIM (20%) and Simbye (25%) directly under the answer (R03, 22 Nov 2026); moved
+            up from above the first table, so the pair still appears once in the first screens. */}
+        <BookingEsimCard lead="Know the going rate? Set your eSIM up before you fly." />
 
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Today</span>
-          <h2 className={styles.sectionTitle}>What does a Japan eSIM cost today?</h2>
+          <span className={styles.sectionLabel}>By data size</span>
+          <h2 className={styles.sectionTitle}>How much does an eSIM cost in Japan?</h2>
           <p className={styles.bodyText}>
-            From {usd(len7.any?.priceUsd)} for 7 days and {usd(len15.any?.priceUsd)} for 15 days at the last update; the
-            table gives the lowest price on each trip-length tab and the day that price was read.
+            About {usd(sum.medianPerGb)} per GB and {usd(day7.medUnl)} for a week of unlimited data at the median. Bigger
+            allowances cost less per GB: {usd(sizeLines[0].medPerGb)} per GB on a 1 GB plan against{" "}
+            {usd(sizeLines[3].medPerGb)} on a 20 GB plan. How much data a trip needs is in the{" "}
+            <Link href="/guides/esim/japan-esim-data-plans" className={tools.inlineLink}>Japan eSIM data plans guide</Link>.
           </p>
-          {/* Buy block directly above the first table (19 Nov 2026, Act): Simbye 25% and Klook
-              eSIM 20%. Replaces the EsimCtaTop box that sat under the summary, so the same
-              pair does not appear twice in the first screens. */}
-          <BookingEsimCard lead="Bought the cheapest plan in the table? Set it up before you fly." />
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Trip length", "Lowest price", "Lowest with 10 GB+", "Lowest unlimited", "Price read on"].map((h) => (
+                    {["Data", "Plans", "Lowest price", "Median price", "Price per GB (lowest – median)", "Price per day (median, lowest)"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {/* Row 1 is the conclusion: the cheapest plan and the overall pick (19 Nov 2026). */}
+                  {/* Row 1 is the conclusion, with the Simbye button (25%) on the cheapest row. */}
                   <tr style={{ fontWeight: 700, background: "var(--paper)" }}>
                     <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>Answer</td>
                     <td colSpan={4} style={{ fontSize: "0.88rem" }}>
-                      {`Cheapest 7-day plan: ${rowLabel(len7.any)}${
-                        perGbTop ? `; lowest per GB: ${perGbTop.provider} ${perGbTop.plan} at ${usd(perGbTop.perGbUsd)}/GB` : ""
-                      }. Overall pick: Simbye${simbyeFrom ? ` (from ${usd(simbyeFrom.priceUsd)})` : ""}, on ${
+                      {`Japan eSIM cost: about ${usd(sum.medianPerGb)} per GB and ${usd(day7.medUnl)} for 7 days unlimited (medians). Cheapest plan: ${rowLabel(
+                        cheapestAll
+                      )}. Overall pick: Simbye${simbyeFrom ? ` (from ${usd(simbyeFrom.priceUsd)})` : ""}, on ${
                         getProvider("simbye").network
-                      } — the pick for most trips in our `}
+                      } — see the `}
                       <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>best Japan eSIM guide</Link>.
                     </td>
+                    <td>{links.simbye && <TrackerBuyButton link={links.simbye} />}</td>
                   </tr>
-                  {lengthLines.map((l) => (
-                    <tr key={l.days}>
-                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{l.days} days</td>
-                      {[l.any, l.tenGb, l.unl].map((r, j) => (
-                        <td key={j} className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>
-                          {r ? usd(r.priceUsd) : "—"}
-                          {r && <span className={tools.tdNote}>{`${r.provider} ${r.plan}`}</span>}
-                        </td>
-                      ))}
-                      <td className={styles.tdNetwork} style={{ whiteSpace: "nowrap" }}>
-                        {Array.from(new Set([l.any, l.tenGb, l.unl].map((r) => r?.checkedOn).filter(Boolean))).join(", ")}
+                  {sizeLines.map((l) => (
+                    <tr key={l.label}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{l.label}</td>
+                      <td className={styles.tdNetwork}>{l.plans}</td>
+                      <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>
+                        {usd(l.low?.priceUsd)}
+                        {l.low && <span className={tools.tdNote}>{`${l.low.provider} ${l.low.plan}`}</span>}
+                      </td>
+                      <td className={styles.tdPrice}>{usd(l.medPrice)}</td>
+                      <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>
+                        {l.medPerGb === null ? "—" : `${usd(l.lowPerGb)} – ${usd(l.medPerGb)}`}
+                      </td>
+                      <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>
+                        {usd(l.medPerDay)}
+                        <span className={tools.tdNote}>from {usd(l.lowPerDay)}</span>
                       </td>
                     </tr>
                   ))}
@@ -375,16 +430,116 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Last checked: {sum.lastChecked}. Source:{" "}
-            {lengthSources.map((s, i) => (
-              <span key={s.url}>
+            Last checked: {sum.lastChecked}. Plans with exactly that allowance, any validity; unlimited covers every
+            unlimited plan, whatever its speed limit after a daily allowance. Price per day is the total price ÷ the
+            plan&apos;s days. List prices before any discount code. Official pages:{" "}
+            {providerLines.map((p, i) => (
+              <span key={p.id}>
                 {i > 0 ? ", " : ""}
-                <a href={s.url} target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>
-                  {s.name}
+                <a href={p.sourceUrl} target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>
+                  {p.name}
                 </a>
               </span>
-            ))}{" "}
-            official pages. Exact validity only, as on the 7, 15 and 30-day tabs below; list prices before any discount code.
+            ))}
+            .
+          </p>
+        </section>
+
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>By trip length</span>
+          <h2 className={styles.sectionTitle}>How much is an eSIM for Japan per day?</h2>
+          <p className={styles.bodyText}>
+            About {usd(day7.medUnlPerDay)} a day for unlimited data on a 7-day plan and {usd(day30.medUnlPerDay)} a day on a
+            30-day plan, at the median; the lowest unlimited price per day is{" "}
+            {unlPerDayTop ? `${unlPerDayTop.provider} ${unlPerDayTop.plan} (${usd(perDay(unlPerDayTop))} a day)` : "—"}. The
+            plans for a{" "}
+            <Link href="/guides/esim/japan-esim-10-days" className={tools.inlineLink}>10-day Japan eSIM</Link> and a{" "}
+            <Link href="/guides/esim/japan-esim-2-weeks" className={tools.inlineLink}>2-week Japan eSIM</Link> are compared
+            one by one on their own pages.
+          </p>
+          <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Trip length", "Plans", "Lowest price", "Median price", "Lowest unlimited", "Unlimited per day (median)"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style={{ fontWeight: 700, background: "var(--paper)" }}>
+                    <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>Answer</td>
+                    <td colSpan={5} style={{ fontSize: "0.88rem" }}>
+                      {`A week costs ${usd(day7.medPrice)} at the median (from ${usd(day7.low?.priceUsd)}); unlimited data costs ${usd(
+                        day7.medUnlPerDay
+                      )} a day for 7 days and ${usd(day30.medUnlPerDay)} a day for 30.`}
+                    </td>
+                  </tr>
+                  {dayLines.map((l) => (
+                    <tr key={l.label}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{l.label}</td>
+                      <td className={styles.tdNetwork}>{l.plans}</td>
+                      <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>
+                        {usd(l.low?.priceUsd)}
+                        {l.low && <span className={tools.tdNote}>{`${l.low.provider} ${l.low.plan}`}</span>}
+                      </td>
+                      <td className={styles.tdPrice}>{usd(l.medPrice)}</td>
+                      <td className={styles.tdPrice} style={{ whiteSpace: "nowrap" }}>
+                        {usd(l.lowUnl?.priceUsd)}
+                        {l.lowUnl && <span className={tools.tdNote}>{`${l.lowUnl.provider} ${l.lowUnl.plan}`}</span>}
+                      </td>
+                      <td className={styles.tdPrice}>{usd(l.medUnlPerDay)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {sum.lastChecked}. Plans sold for exactly that many days; few providers sell a 14-day plan, so that
+            row also takes the 15-day plans. Each provider&apos;s official page is linked in the table above and on every row
+            of the full table below.
+          </p>
+        </section>
+
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Monthly</span>
+          <h2 className={styles.sectionTitle}>Is a monthly eSIM cheaper for Japan?</h2>
+          <p className={styles.bodyText}>
+            Per day, yes; in total, only if you stay long enough to use it. A 30-day unlimited plan costs{" "}
+            {usd(day30.medUnl)} at the median ({usd(day30.medUnlPerDay)} a day) against {usd(day7.medUnl)} for 7 days (
+            {usd(day7.medUnlPerDay)} a day), so for a one- or two-week trip the plan that matches your dates costs less. The
+            30-day plans here are data-only travel plans; for a contract with a Japanese number for a longer stay, see the{" "}
+            <Link href="/guides/esim/japan-sim-card-long-term-stay" className={tools.inlineLink}>long-term stay SIM guide</Link>.
+            Which unlimited plans slow down after a daily allowance is in the{" "}
+            <Link href="/guides/esim/japan-esim-unlimited" className={tools.inlineLink}>Japan eSIM unlimited data</Link> comparison.
+          </p>
+        </section>
+
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Alternatives</span>
+          <h2 className={styles.sectionTitle}>Is an eSIM cheaper than a pocket WiFi or airport SIM in Japan?</h2>
+          <p className={styles.bodyText}>
+            For one or two people, yes. Sakura Mobile&apos;s unlimited pocket WiFi is {yenUsd(WIFI_7)} for 7 days per
+            router, against {usd(day7.medUnl)} per person for a median 7-day unlimited eSIM; split three ways, the router
+            costs less per head. At the airport, Sakura Mobile&apos;s Travel SIM card is ¥3,850 against ¥1,375 for its
+            Travel eSIM, tax included (
+            <a href="https://www.sakuramobile.jp/travel/wifi/" target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>
+              pocket WiFi
+            </a>
+            ,{" "}
+            <a href="https://www.sakuramobile.jp/travel/sim/" target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>
+              SIM
+            </a>{" "}
+            and{" "}
+            <a href="https://www.sakuramobile.jp/travel/esim/" target="_blank" rel="nofollow noopener noreferrer" className={tools.inlineLink}>
+              eSIM
+            </a>{" "}
+            pages, checked {SAKURA_CHECKED}). Rental prices per day from other companies are in{" "}
+            <Link href="/guides/esim/best-pocket-wifi-japan" className={tools.inlineLink}>pocket WiFi Japan</Link>, and the
+            counters and vending machines at Narita, Haneda and Kansai in{" "}
+            <Link href="/guides/esim/japan-airport-sim-cards" className={tools.inlineLink}>SIM card at the airport</Link>.
           </p>
         </section>
 

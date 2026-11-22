@@ -307,7 +307,11 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
             <Link href="/guides/esim/cheapest-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               cheapest eSIM for Japan
             </Link>{" "}
-            ranking.
+            ranking; and for the median price of a 14 or 15-day plan and its cost per day, the{" "}
+            <Link href="/guides/esim/japan-esim-price-tracker" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM cost
+            </Link>{" "}
+            tracker.
           </p>
         </section>
 

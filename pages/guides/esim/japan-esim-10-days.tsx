@@ -508,7 +508,8 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
             is unmetered at full speed anyway. For the lowest price at every data size regardless of trip
             length, see the{" "}
             <Link href="/guides/esim/cheapest-esim-japan" className={tools.inlineLink}>cheapest eSIM for Japan</Link>{" "}
-            ranking.
+            ranking; for what a 10-day plan costs at the median, and the price per day for 5 to 30 days, the{" "}
+            <Link href="/guides/esim/japan-esim-price-tracker" className={tools.inlineLink}>Japan eSIM cost per day</Link> table.
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
             Prices read off each provider&apos;s own site on {pricesCheckedAt} by the job that

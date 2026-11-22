@@ -1150,7 +1150,9 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             If price is the only thing that matters, our{" "}
             <Link href="/guides/esim/cheapest-esim-japan" className={tools.inlineLink}>cheapest eSIM for Japan</Link> ranking sorts every
-            plan by size and price per GB, with the cost of a 1 GB, 10 GB and unlimited plan side by side. For a tethered laptop or heavy streaming, go to the{" "}
+            plan by size and price per GB, with the cost of a 1 GB, 10 GB and unlimited plan side by side; the going rate
+            across every provider checked — the median price per GB and per day — is in the{" "}
+            <Link href="/guides/esim/japan-esim-price-tracker" className={tools.inlineLink}>Japan eSIM cost</Link> tracker. For a tethered laptop or heavy streaming, go to the{" "}
             <Link href="/guides/esim/japan-esim-unlimited" className={tools.inlineLink}>Japan eSIM unlimited data</Link> comparison, and for
             what travellers themselves report, the{" "}
             <Link href="/guides/esim/best-esim-japan-reddit" className={tools.inlineLink}>Reddit advice check</Link>. If your

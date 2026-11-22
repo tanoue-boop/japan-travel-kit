@@ -21,8 +21,8 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/japan-esim-price-tracker",
     badge: "Data",
-    title: "Japan eSIM Prices Today (2026): Daily Price Tracker",
-    desc: "Today's Japan eSIM prices from every provider's official site, with the date each price was last updated, by 7, 15 and 30 days or unlimited, plus a free CSV.",
+    title: "How Much Does an eSIM Cost in Japan? 2026 Price per GB & Day",
+    desc: "What a Japan eSIM costs: the median and lowest price per GB and per day for 1–20 GB and unlimited, by 5 to 30 days, from every provider's official site, updated daily, plus a free CSV.",
     group: "compare",
     city: "other",
   },

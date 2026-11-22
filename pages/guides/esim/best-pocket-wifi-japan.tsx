@@ -804,7 +804,11 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
             <Link href="/guides/esim/pocket-wifi-vs-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Pocket WiFi vs eSIM comparison
             </Link>{" "}
-            puts the two side by side on price and convenience, and{" "}
+            puts the two side by side on price and convenience, the{" "}
+            <Link href="/guides/esim/japan-esim-price-tracker" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM cost
+            </Link>{" "}
+            tracker gives an eSIM&apos;s price per day to set against a router&apos;s, and{" "}
             <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Best eSIM for Japan
             </Link>{" "}

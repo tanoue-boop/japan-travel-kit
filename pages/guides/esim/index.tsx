@@ -587,8 +587,8 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
               </KlookLink>{" "}
               for your dates. Every plan in price order is in the{" "}
               <Link href="/guides/esim/cheapest-esim-japan" style={inline}>cheapest eSIM for Japan</Link> ranking, and
-              day-by-day prices in the{" "}
-              <Link href="/guides/esim/japan-esim-price-tracker" style={inline}>Japan eSIM price tracker</Link>.
+              the median <Link href="/guides/esim/japan-esim-price-tracker" style={inline}>Japan eSIM cost</Link> per GB
+              and per day, updated daily, in the price tracker.
               Holafly is not a partner of this site; its unlimited terms and the cheaper plans for the same days are in
               the <Link href="/guides/esim/holafly-japan-review" style={inline}>Holafly Japan review</Link>.
             </p>
