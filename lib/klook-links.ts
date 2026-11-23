@@ -1201,6 +1201,19 @@ export const santaMariaDayCruise: KlookTour = {
 };
 
 /**
+ * Tempozan Giant Ferris Wheel, in the same Tempozan Harbor Village as Kaiyukan
+ * (task-jtk-20261123-04). Listing 191266 "TEMPOZAN Giant Ferris Wheel" confirmed live
+ * in its en-US form through the www.klook.com search index on 23 Nov 2026. The Osaka
+ * Amazing Pass operator's facility list (read the same day) carries the wheel as
+ * facility 28. No price on the page.
+ */
+export const tempozanFerrisWheel: KlookTour = {
+  title: "Tempozan Giant Ferris Wheel ticket",
+  desc: "The 112.5 m wheel in Tempozan Harbor Village, a few minutes' walk from the aquarium",
+  url: klookLink("https://www.klook.com/en-US/activity/191266-tempozan-giant-ferris-wheel/"),
+};
+
+/**
  * Osaka Metro 1-day / 2-day tourist pass (task-jtk-20261119-R08). The Enjoy Eco Card
  * itself is a station-machine card and is not sold on Klook; this is the digital day
  * pass for the same subway and city-bus network. Confirmed live in its en-US form
@@ -8088,6 +8101,33 @@ export const kaiyukanSameDayCards: KlookSameDayCard[] = [
     url: osakaAmazingPass.url,
     why: "Not valid at Kaiyukan, but it covers the Tempozan Ferris wheel, the Santa Maria and the Captain Line next door.",
   },
+  // 23 Nov 2026 (task-jtk-20261123-04, Act): Klook paid ¥0 on 10 clicks and 6 tickets
+  // from this page in the 7 days to 22 Nov — the aquarium ticket sells at 0%. Four more
+  // cards in the 6.5%, 20% and 5% bands, directly under the same button.
+  {
+    label: tempozanFerrisWheel.title,
+    kind: "Activity",
+    ctaLabel: "Check the Ferris wheel →",
+    url: tempozanFerrisWheel.url,
+    why: "The 112.5 m wheel stands in the same Tempozan complex as the aquarium, so it is the other half of the harbour stop.",
+  },
+  {
+    label: dotonboriDaytimeFoodTour.title,
+    kind: "Food tour",
+    ctaLabel: "Check the food tour →",
+    url: dotonboriDaytimeFoodTour.url,
+    why: "Listed at 11:00 to 14:00, so it fits before an afternoon aquarium slot on the Chuo Line side of the day.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    kind: "eSIM",
+    why: "The aquarium's date-and-time e-ticket and the route to Osakako both live on your phone, so data from the airport onwards keeps them on hand.",
+  },
+  {
+    ...tripPrepProducts.rapit,
+    kind: "Airport train",
+    why: "A reserved seat between Kansai Airport and Namba, the arrival or departure leg of an Osaka trip.",
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -8406,6 +8446,60 @@ export const osakaCastleTripPrep: KlookTripPrepItem[] = [
   {
     ...tripPrepProducts.osakaPass,
     why: "The pass covers the castle keep among its city admissions, plus the Metro rides between them, so it is worth pricing against the single ticket before you buy either.",
+  },
+];
+
+/**
+ * Directly under the castle page's main ticket button (task-jtk-20261123-04, Act).
+ * Klook paid ¥252 on 7 clicks and 5 tickets in the 7 days to 22 Nov, so the cards
+ * are the 5% pass and airport train, the 6.5% walk, food tour, cruise and Namba
+ * hotels, and the 20% eSIM. No new URL: every card reuses an existing constant. The
+ * pass coverage (Osaka Castle Museum is facility 18 on the operator's list; Kaiyukan
+ * is not on it) was re-read on osaka-amazing-pass.com on 23 Nov 2026.
+ */
+export const osakaCastleSameDayCards: KlookSameDayCard[] = [
+  {
+    ...tripPrepProducts.osakaPass,
+    kind: "Pass",
+    why: "The keep, the Nishinomaru Garden, the Gozabune boat, the turrets and the KAIYODO museum are all on the pass, with the subway between them. Osaka Aquarium Kaiyukan is not.",
+  },
+  {
+    label: osakaCastleNishinomaruWalkingTour.title,
+    kind: "Tour",
+    ctaLabel: "Check the castle walk →",
+    url: osakaCastleNishinomaruWalkingTour.url,
+    why: "A join-in half day over the castle grounds and the Nishinomaru Garden, the separately ticketed lawn below the keep.",
+  },
+  {
+    label: dotonboriDaytimeFoodTour.title,
+    kind: "Food tour",
+    ctaLabel: "Check the food tour →",
+    url: dotonboriDaytimeFoodTour.url,
+    why: "Listed at 11:00 to 14:00 in Dotonbori: a 9:00 keep visit, then lunch on the walk.",
+  },
+  {
+    label: dotonboriCityCruise.title,
+    kind: "Cruise",
+    ctaLabel: "Check the Dotonbori cruise →",
+    url: dotonboriCityCruise.url,
+    why: "A 20-minute boat from Tazaemonbashi Pier past the Glico sign: the evening end of a day that starts at the castle.",
+  },
+  {
+    label: "Hotels around Namba",
+    kind: "Hotel",
+    ctaLabel: "Check Namba hotels on Klook →",
+    url: osakaStayAreas[1].url,
+    why: "Dotonbori is on foot from Namba, and the Nankai line to Kansai Airport starts there.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    kind: "eSIM",
+    why: "The ticket code, the station exits and the boat kiosk map are all on your phone in a park that takes 15–20 minutes to cross.",
+  },
+  {
+    ...tripPrepProducts.rapit,
+    kind: "Airport train",
+    why: "A reserved seat between Kansai Airport and Namba, the arrival or departure leg of an Osaka trip.",
   },
 ];
 

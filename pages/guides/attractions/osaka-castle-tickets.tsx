@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import KlookSameDayCards from "../../../components/KlookSameDayCards";
 import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
@@ -10,14 +11,20 @@ import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import {
+  jrHarukaUrl,
   osakaAmazingPass,
   osakaCastleNishinomaruWalkingTour,
+  osakaCastleSameDayCards,
   osakaCastleTicket,
   osakaCastleTripPrep,
   osakaCastleUmedaTonboriDayTour,
   osakaSkyVistaHalfDayBusTour,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+
+// The same-day cards under the main CTA (task-jtk-20261123-04) leave the lower
+// trip-prep block, so nothing is listed twice.
+const notInTopCards = (item: { url: string }) => !osakaCastleSameDayCards.some((c) => c.url === item.url);
 
 /**
  * Osaka Castle — the main tower, and the four other paid things inside the same walls
@@ -432,6 +439,22 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
           </div>
         </div>
 
+        <KlookSameDayCards
+          heading="What to book for the same Osaka Castle day"
+          cards={osakaCastleSameDayCards}
+          footnote={
+            <>
+              The Osaka Amazing Pass covers the keep (facility 18 on osaka-amazing-pass.com, checked
+              23 November 2026) but not Osaka Aquarium Kaiyukan — see our{" "}
+              <Link href="/guides/attractions/osaka-aquarium-kaiyukan-tickets">Kaiyukan tickets guide</Link>.
+              Landing at Kansai Airport for Kyoto, Shin-Osaka or Tennoji instead of Namba?{" "}
+              <KlookLink href={jrHarukaUrl} adPlacement="same-day-cards" target="_blank" rel="sponsored nofollow noopener">
+                The JR Haruka ticket on Klook →
+              </KlookLink>
+            </>
+          }
+        />
+
         <EsimCtaTop />
 
         {/* Intro */}
@@ -488,7 +511,10 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Read off osakacastle.net and Osaka&apos;s official tourism site on {CHECKED}. Subject to
+            Last checked: 2026-11-23 —{" "}
+            <a href="https://www.osakacastle.net/guide/" target="_blank" rel="noopener">osakacastle.net/guide/</a>{" "}
+            (¥1,200 / ¥600 / free, 9:00–18:00, last entry 17:30). Student and group bands read off
+            osakacastle.net and Osaka&apos;s official tourism site on {CHECKED}. Subject to
             change — confirm before you buy. For admissions across the rest of Japan,
             each with its own check date, see our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
@@ -696,7 +722,7 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
           label="Book for the same day"
           heading="What Else Is Worth Booking Around an Osaka Castle Day?"
           intro="The keep and the walls take about half a day, and the castle sits between Umeda and Namba, so where you stay and how the evening goes are the bookings left to make."
-          items={osakaCastleTripPrep}
+          items={osakaCastleTripPrep.filter(notInTopCards)}
         />
 
         <EsimCtaBottom />

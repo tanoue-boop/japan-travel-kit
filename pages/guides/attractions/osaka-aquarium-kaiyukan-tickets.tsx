@@ -14,6 +14,7 @@ import {
   kaiyukanNifrelCombo,
   kaiyukanSameDayCards,
   kaiyukanSameDayPrep,
+  jrHarukaUrl,
   osakaAmazingPassKaiyukanCombo,
   osakaAquariumKaiyukanTicket,
   osakaPrivateWalkingTour,
@@ -517,6 +518,12 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
           cards={kaiyukanSameDayCards}
           footnote={
             <>
+              The Osaka Amazing Pass does not cover Kaiyukan (osaka-amazing-pass.com facility list,
+              checked 23 November 2026); the Tempozan Ferris wheel and the Santa Maria are on it.
+              Flying in or out of Kansai Airport via Kyoto, Shin-Osaka or Tennoji?{" "}
+              <KlookLink href={jrHarukaUrl} adPlacement="same-day-cards" target="_blank" rel="sponsored nofollow noopener">
+                The JR Haruka ticket on Klook →
+              </KlookLink>{" "}
               Riding the subway more than seeing paid sights?{" "}
               <KlookLink href={osakaMetroDayPass.url} adPlacement="same-day-cards" target="_blank" rel="sponsored nofollow noopener">
                 The Osaka Metro 1-day / 2-day pass on Klook →
@@ -632,8 +639,8 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Last checked: {CHECKED_ISO} — <a href={OFFICIAL.bands} target="_blank" rel="noopener">kaiyukan.com/info/group/</a>{" "}
-            (price bands and booking notes), <a href={OFFICIAL.calendar} target="_blank" rel="noopener">kaiyukan.com/info/ticket/kaiyukan/</a>{" "}
+            Last checked: 2026-11-23 — <a href={OFFICIAL.bands} target="_blank" rel="noopener">kaiyukan.com/info/group/</a>{" "}
+            (price bands and booking notes); {CHECKED_ISO} — <a href={OFFICIAL.calendar} target="_blank" rel="noopener">kaiyukan.com/info/ticket/kaiyukan/</a>{" "}
             (dynamic pricing, price calendar, disability rule) and{" "}
             <a href={OFFICIAL.santaMaria} target="_blank" rel="noopener">suijo-bus.osaka/intro/santamaria/</a> (set ticket).
           </p>
