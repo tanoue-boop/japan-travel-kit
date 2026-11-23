@@ -7,6 +7,7 @@ import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import {
   fukuokaStayAreas,
+  klookEsim,
   jrKyushuPassTripPrep,
   jrKyushuRailPass,
   yufuinBeppuNoMoriTour,
@@ -50,32 +51,60 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  *     ¥530 = ¥6,130; Hakata–Kumamoto ¥5,310 + ¥530 = ¥5,840 (also ¥3,900–¥4,800 with
  *     ¥1,940–¥1,040); Kumamoto–Kagoshima-Chuo ¥7,440 + ¥530 = ¥7,970.
  *
+ * Re-read on 23 November 2026 (task-jtk-20261123-R06):
+ *
+ *   - railpass.html — same prices, area and seat rules as above; no 2026 revision notice.
+ *     The newest revision linked from the page is english/pdf/price_revision2025.pdf
+ *     (3 Feb 2025): from 1 April 2025 Northern 3/5 days ¥12,000/¥15,000 → ¥15,000/¥17,000,
+ *     All Kyushu 3/5/7 days ¥20,000/¥22,500/¥25,000 → ¥22,000/¥24,000/¥26,000, Southern
+ *     3 days ¥10,000 → ¥12,000. Kamome + relay limited express at Takeo-Onsen counts as one
+ *     reservation. english/news lists no 2026 rail pass notice; no "20260409" price-revision
+ *     PDF was found on jrkyushu.co.jp.
+ *   - english/pdf/railpass_guidebook.pdf (dated 2026.4.1) — station/travel agency price vs
+ *     JR KYUSHU RAIL PASS Online Booking price: All 3/5/7 days ¥22,000/¥21,000,
+ *     ¥24,000/¥23,000, ¥26,000/¥25,000; Northern 3/5 days ¥15,000/¥14,000, ¥17,000/¥16,000;
+ *     Southern 3 days ¥12,000/¥11,000. JR Kyushu Mobile Pass (Fukuoka and suburbs) 2 days
+ *     ¥3,500. Hisatsu Line Yatsushiro–Yoshimatsu and Yoshimatsu–Hayato suspended (Apr 2026).
+ *   - jrkyushu.co.jp/train/kyushu-de-ao/ and the 25 Sep 2026 news release — the 1 October
+ *     2026 pass is a separate product, 旅して応援！「九州であおう」乗り放題パス: adult ¥23,000,
+ *     child ¥3,000 (child only with an adult), 3 consecutive days, use 1 Oct – 24 Dec 2026
+ *     (starts up to 22 Dec), sold 26 Sep – 21 Dec 2026 from 1 month ahead at 5:30 to the day
+ *     before, only on JR九州インターネット列車予約. All JR Kyushu lines incl. Kyushu and Nishi
+ *     Kyushu Shinkansen, ordinary-car unreserved seats only; all-reserved trains such as the
+ *     Yufuin no Mori cannot be boarded on it alone; no Hakata–Kokura, no Hakata–Hakata-Minami.
+ *     ¥1,000 per adult pass donated to Kumamoto Prefecture for earthquake recovery.
+ *
  * Nothing here is first-hand, and no Klook price appears.
  * ---------------------------------------------------------------------------
  */
 
-const CHECKED_ISO = "2026-11-15";
+const CHECKED_ISO = "2026-11-23";
 const CHECKED = checkedLabel(CHECKED_ISO);
 const OFFICIAL = "https://www.jrkyushu.co.jp/english/railpass/railpass.html";
+const GUIDEBOOK = "https://www.jrkyushu.co.jp/english/pdf/railpass_guidebook.pdf";
+const REVISION_2025 = "https://www.jrkyushu.co.jp/english/pdf/price_revision2025.pdf";
+const AOU_PASS = "https://www.jrkyushu.co.jp/train/kyushu-de-ao/";
 const FARE_SOURCE = "https://www.jrkyushu.co.jp/railway/kaitei/pdf/241217_unchinkaitei_guidebook.pdf";
 
-const TITLE = "JR Kyushu Rail Pass 2026: Price, Which Pass & Worth It?";
+const TITLE = "JR Kyushu Rail Pass 2026: Prices, New Oct 1 Pass & Worth It?";
 const DESCRIPTION =
-  "JR Kyushu Rail Pass 2026: All Kyushu ¥22,000–¥26,000, Northern Kyushu Rail Pass ¥15,000 or ¥17,000, Southern ¥12,000. JR Kyushu Pass price vs real fares.";
+  "JR Kyushu Rail Pass 2026: All Kyushu ¥22,000–¥26,000, Northern ¥15,000/¥17,000, Southern ¥12,000. The Oct 1 ¥23,000 pass, Yufuin no Mori seats, break-even.";
 
 /** Table 1 — the three passes, JR Kyushu's own list. First row is the default pick. */
 const priceRows = [
   {
-    pass: "Northern Kyushu (most Fukuoka trips)",
+    pass: "Northern Kyushu (Fukuoka, Yufuin, Nagasaki)",
     days: "3 days / 5 days",
     adult: "¥15,000 / ¥17,000",
+    online: "¥14,000 / ¥16,000",
     child: "¥7,500 / ¥8,500",
     area: "Fukuoka, Saga, Nagasaki, Oita (Yufuin, Beppu) and Kumamoto; Kyushu Shinkansen Hakata–Kumamoto only",
   },
   {
-    pass: "All Kyushu",
+    pass: "All Kyushu (Hakata ⇄ Kagoshima-Chuo)",
     days: "3 / 5 / 7 days",
     adult: "¥22,000 / ¥24,000 / ¥26,000",
+    online: "¥21,000 / ¥23,000 / ¥25,000",
     child: "¥11,000 / ¥12,000 / ¥13,000",
     area: "Every JR Kyushu line, including Shimonoseki; the whole Kyushu Shinkansen Hakata–Kagoshima-Chuo",
   },
@@ -83,9 +112,44 @@ const priceRows = [
     pass: "Southern Kyushu",
     days: "3 days",
     adult: "¥12,000",
+    online: "¥11,000",
     child: "¥6,000",
     area: "Kumamoto, Oita, Miyazaki and Kagoshima south of Kumamoto and Oita; Kyushu Shinkansen Kumamoto–Kagoshima-Chuo only",
   },
+];
+
+/** Table — what changed. First row is the conclusion. */
+const changeRows = [
+  { pass: "2026: no new prices for the tourist pass", before: "—", after: "Unchanged since 1 April 2025", change: "New, separate ¥23,000 pass from 1 Oct 2026" },
+  { pass: "Northern Kyushu 3 days", before: "¥12,000", after: "¥15,000", change: "+¥3,000" },
+  { pass: "Northern Kyushu 5 days", before: "¥15,000", after: "¥17,000", change: "+¥2,000" },
+  { pass: "All Kyushu 3 days", before: "¥20,000", after: "¥22,000", change: "+¥2,000" },
+  { pass: "All Kyushu 5 days", before: "¥22,500", after: "¥24,000", change: "+¥1,500" },
+  { pass: "All Kyushu 7 days", before: "¥25,000", after: "¥26,000", change: "+¥1,000" },
+  { pass: "Southern Kyushu 3 days", before: "¥10,000", after: "¥12,000", change: "+¥2,000" },
+];
+
+/** Table — the 1 October 2026 pass against the 3-day All Kyushu pass. First row is the conclusion. */
+const aouRows = [
+  {
+    item: "Verdict",
+    aou: "Cheaper only with children: 1 adult + 1 child ¥26,000",
+    krp: "Cheaper for adults (¥22,000 each), and the only one with free reserved seats; 1 adult + 1 child ¥33,000",
+  },
+  { item: "Adult / child", aou: "¥23,000 / ¥3,000 (child only with an adult)", krp: "¥22,000 / ¥11,000 (online booking ¥21,000)" },
+  { item: "Days", aou: "3 consecutive days, used 1 Oct – 24 Dec 2026", krp: "3 consecutive days, all year" },
+  { item: "Trains", aou: "All JR Kyushu lines incl. Kyushu and Nishi-Kyushu Shinkansen", krp: "All JR Kyushu lines incl. Kyushu and Nishi-Kyushu Shinkansen" },
+  { item: "Seats", aou: "Unreserved ordinary cars only", krp: "Unreserved, plus unlimited free reserved seats" },
+  { item: "Yufuin no Mori", aou: "✗ All-reserved train: needs a separate reserved-seat express ticket", krp: "✓ Free reserved seat" },
+  { item: "Where sold", aou: "JR Kyushu Internet Train Reservation only, until 21 Dec 2026", krp: "Overseas agencies, JR Kyushu Rail Pass Online Booking, JR Kyushu stations" },
+];
+
+/** Table — free reserved seats. First row is the conclusion. */
+const seatRows = [
+  { pass: "All Kyushu", free: "Unlimited", after: "—", yufuin: "✓ Reserve as often as you like" },
+  { pass: "Northern Kyushu", free: "Up to 6", after: "Express ticket per train", yufuin: "✓ Each Yufuin no Mori seat uses 1 of the 6" },
+  { pass: "Southern Kyushu", free: "Up to 6", after: "Express ticket per train", yufuin: "✗ Not covered" },
+  { pass: "Seats booked ahead on JR Kyushu Rail Pass Online Booking", free: "Not counted in the 6", after: "¥1,000 per section (¥1,500 on design & story trains)", yufuin: "Paid KRP Option Ticket" },
 ];
 
 /** Table 2 — JR Kyushu's regular one-way fares, the pass's competition. */
@@ -157,39 +221,23 @@ const coverageRows = [
 const faqItems = [
   {
     q: "How much is the JR Kyushu Rail Pass in 2026?",
-    a: "JR Kyushu's own price list (checked 15 November 2026): All Kyushu ¥22,000 for 3 days, ¥24,000 for 5 and ¥26,000 for 7; Northern Kyushu ¥15,000 for 3 days and ¥17,000 for 5; Southern Kyushu ¥12,000 for 3 days. Children aged 6 to 11 pay half. JR Kyushu notes that its own online booking site has different prices.",
+    a: "All Kyushu is ¥22,000 for 3 days, ¥24,000 for 5 and ¥26,000 for 7; Northern Kyushu ¥15,000 for 3 days and ¥17,000 for 5; Southern Kyushu ¥12,000 for 3 days (JR Kyushu, checked 23 November 2026; children 6–11 half). These prices have applied since 1 April 2025, and JR Kyushu's own Rail Pass Online Booking sells each one for ¥1,000 less. The ¥23,000 pass on sale from 1 October 2026 is a different, limited-time pass.",
   },
   {
-    q: "Which JR Kyushu pass should I buy?",
-    a: "Northern Kyushu if the trip is Fukuoka with Nagasaki, Yufuin, Beppu or Kumamoto. All Kyushu if you ride the shinkansen from Hakata to Kagoshima-Chuo, or go to Miyazaki. Southern Kyushu only if you start in Kumamoto and stay south of it, because it does not cover Hakata at all.",
+    q: "Does the JR Kyushu Pass cover the Yufuin no Mori?",
+    a: "Yes, the All Kyushu and Northern Kyushu passes cover it, the Southern pass does not. Every seat on the Yufuin no Mori is reserved, so book one: it is free and unlimited on All Kyushu, and uses one of the six free reservations on Northern Kyushu. The 1 October 2026 ¥23,000 pass is for unreserved seats only and cannot be used on the Yufuin no Mori by itself.",
   },
   {
-    q: "Is the JR Kyushu Rail Pass worth it?",
-    a: "Only with two or more long trips. Hakata–Nagasaki and Hakata–Yufuin returns cost ¥25,240 at JR Kyushu's regular fares against ¥15,000 for the 3-day Northern pass. A single Nagasaki or Yufuin return (¥12,980 or ¥12,260) is cheaper on tickets, and cheaper still with JR Kyushu's online fares.",
+    q: "Does the JR Kyushu Pass cover the Nishi-Kyushu Shinkansen?",
+    a: "Yes. The All Kyushu and Northern Kyushu passes cover the Nishi-Kyushu Shinkansen Kamome from Takeo-Onsen to Nagasaki and the Relay Kamome from Hakata; the Southern pass does not. A Relay Kamome plus Kamome transfer at Takeo-Onsen counts as one seat reservation. No version covers the Sanyo Shinkansen between Hakata and Kokura.",
   },
   {
-    q: "Can I use the JR Kyushu Pass on the Shinkansen?",
-    a: "Yes, within its area. All Kyushu covers the Kyushu Shinkansen from Hakata to Kagoshima-Chuo; Northern covers Hakata–Kumamoto and the Kamome to Nagasaki; Southern covers Kumamoto–Kagoshima-Chuo. No version covers the Sanyo Shinkansen between Hakata and Kokura, which is JR West.",
+    q: "Northern vs All Kyushu: which one should I buy?",
+    a: "Northern Kyushu (¥15,000 for 3 days) if the trip is Fukuoka with Yufuin, Beppu, Nagasaki or Kumamoto. All Kyushu (¥22,000 for 3 days) if you ride the shinkansen from Hakata to Kagoshima-Chuo or go to Miyazaki: a Hakata–Kagoshima-Chuo return alone is ¥23,900 on regular tickets.",
   },
   {
-    q: "Are the days consecutive?",
-    a: "Yes. JR Kyushu states the pass must be used on consecutive days. Before the first valid day you can get a refund less a 10% handling charge; from the first valid day there is no refund.",
-  },
-  {
-    q: "How many seat reservations are included?",
-    a: "All Kyushu includes unlimited free seat reservations. Northern and Southern Kyushu include up to six; reservations made on JR Kyushu's rail pass online booking site do not count towards the six. Beyond that, a KRP Option Ticket is ¥1,000 per section, or ¥1,500 on design and story trains.",
-  },
-  {
-    q: "Is the Yufuin no Mori covered by the Northern Kyushu Rail Pass?",
-    a: "Yes. JR Kyushu lists the Yufuin no Mori, the Sonic and the Kamome as covered by both the Northern and the All Kyushu pass, and not by the Southern pass. A reserved seat on the Northern pass uses one of its six free reservations unless you book it on JR Kyushu's rail pass online booking site.",
-  },
-  {
-    q: "Who can buy the JR Kyushu Rail Pass?",
-    a: "Non-Japanese passport holders visiting on a temporary visitor stay who live outside Japan. You need the passport on board, and the pass can only be used by the person who bought it.",
-  },
-  {
-    q: "JR Kyushu Rail Pass or the national JR Pass?",
-    a: "For a trip that stays in Kyushu, the regional pass: the Northern 5-day is ¥17,000. The nationwide JR Pass starts at ¥53,000 for 7 days and only makes sense if you also ride the shinkansen to and from Honshu — see our JR Pass guide.",
+    q: "Is the JR Kyushu Pass worth it?",
+    a: "With two or more long trips, yes. Hakata–Nagasaki and Hakata–Yufuin returns cost ¥25,240 at JR Kyushu's regular fares against ¥15,000 for the 3-day Northern pass. A single Nagasaki or Yufuin return (¥12,980 or ¥12,260) is cheaper on tickets, and cheaper still with JR Kyushu's online fares.",
   },
 ];
 
@@ -284,11 +332,11 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            JR Kyushu Rail Pass (2026): <br />Price, Which Pass to Buy &amp; Is It Worth It?
+            JR Kyushu Rail Pass 2026: <br />Prices, the New Oct 1 Pass &amp; Is It Worth It?
           </h1>
           <p className={styles.heroSubtitle}>
-            All Kyushu, Northern Kyushu and Southern Kyushu side by side, priced against JR Kyushu&apos;s own fares
-            from Hakata to Nagasaki, Yufuin and Kagoshima.
+            All Kyushu, Northern Kyushu and Southern Kyushu side by side, what changed in 2025 and 2026, and the
+            break-even against JR Kyushu&apos;s own fares to Nagasaki, Yufuin and Kagoshima.
           </p>
           <div className={styles.heroBadges}>
             {[`Prices checked ${CHECKED}`, "Official JR Kyushu figures", "Break-even on real routes"].map((t) => (
@@ -336,13 +384,13 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
             </div>
             {/* Answer-first: this is the article's first body paragraph, not the hero line. */}
             <p className={styles.verdictText}>
-              The <strong>JR Kyushu Rail Pass</strong> comes in three versions: <strong>All Kyushu</strong> at ¥22,000
-              for 3 days, ¥24,000 for 5 and ¥26,000 for 7; <strong>Northern Kyushu</strong> at ¥15,000 for 3 days and
-              ¥17,000 for 5; and <strong>Southern Kyushu</strong> at ¥12,000 for 3 days (JR Kyushu, checked {CHECKED};
-              children 6–11 half). Take All Kyushu if you ride the shinkansen from Hakata to Kagoshima-Chuo, and
-              Northern Kyushu for Fukuoka with Nagasaki, Yufuin or Beppu. It pays once you make two long trips:
-              Hakata–Nagasaki and Hakata–Yufuin returns cost ¥25,240 on regular tickets against ¥15,000 for the 3-day
-              Northern pass, but one Nagasaki return alone (¥12,980) is cheaper without it.
+              The <strong>JR Kyushu Rail Pass</strong> costs <strong>¥22,000 / ¥24,000 / ¥26,000</strong> for 3 / 5 / 7
+              days of All Kyushu, <strong>¥15,000 / ¥17,000</strong> for 3 / 5 days of Northern Kyushu and{" "}
+              <strong>¥12,000</strong> for 3 days of Southern Kyushu — prices in force since 1 April 2025 and unchanged
+              in 2026 (JR Kyushu, checked {CHECKED}; ¥1,000 less on JR Kyushu&apos;s own online booking). Buy All Kyushu
+              if you ride Hakata ⇄ Kagoshima-Chuo, and Northern Kyushu if the trip is only Fukuoka, Yufuin and Nagasaki.
+              The ¥23,000 pass that JR Kyushu launched for 1 October 2026 is a separate, limited-time pass for
+              unreserved seats only, valid until 24 December 2026.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink
@@ -366,14 +414,15 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
           <h2 className={styles.sectionTitle}>How Much Is the JR Kyushu Rail Pass in 2026?</h2>
           <p className={styles.bodyText}>
             ¥12,000 to ¥26,000 for an adult, depending on the area and the number of days. Most visitors flying into
-            Fukuoka need the <strong>Northern Kyushu Rail Pass</strong>, at ¥15,000 for 3 days or ¥17,000 for 5.
+            Fukuoka need the <strong>Northern Kyushu Rail Pass</strong>, at ¥15,000 for 3 days or ¥17,000 for 5; a
+            Hakata ⇄ Kagoshima-Chuo shinkansen return needs <strong>All Kyushu</strong>, from ¥22,000.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Pass", "Days", "Adult", "Child (6–11)", "Area"].map((h) => (
+                    {["Pass", "Days", "Adult (station / agency)", "Adult (JR Kyushu online booking)", "Child (6–11)", "Area"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -384,6 +433,7 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
                       <td className={styles.tdProvider}>{row.pass}</td>
                       <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{row.days}</td>
                       <td className={styles.tdPrice}>{row.adult}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.online}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.child}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.area}</td>
                     </tr>
@@ -393,21 +443,123 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
             </div>
           </div>
           <p className={styles.bodyText} style={muted}>
-            Last checked {CHECKED} on{" "}
+            Last checked: {CHECKED_ISO} on{" "}
             <a href={OFFICIAL} target="_blank" rel="noopener" style={sourceLink}>
               JR Kyushu&apos;s rail pass page
-            </a>
-            . JR Kyushu notes that its own online booking site sells at different prices; those are not shown here.
-            No 2026 price change is announced on that page.
+            </a>{" "}
+            ({OFFICIAL}) and the online booking prices in{" "}
+            <a href={GUIDEBOOK} target="_blank" rel="noopener" style={sourceLink}>
+              JR Kyushu&apos;s rail pass guidebook
+            </a>{" "}
+            (dated 1 April 2026). JR Kyushu also sells a 2-day JR Kyushu Mobile Pass for Fukuoka and its suburbs at
+            ¥3,500.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={jrKyushuRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              JR Kyushu Rail Pass on Klook →
+            </KlookLink>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            <strong>Booking the same trip:</strong> a Yufuin and Beppu coach day or a Nagasaki day tour from Hakata
+            replaces one pass day, and a Japan eSIM covers the train apps and seat bookings on the way.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
+            <KlookLink href={yufuinBeppuNoMoriTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Yufuin &amp; Beppu day tour from Fukuoka →
+            </KlookLink>
+            <KlookLink href={nagasakiSmallGroupDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Nagasaki day tour from Hakata →
+            </KlookLink>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Klook Japan eSIM →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* What changed */}
+        <section className={styles.comparisonSection} id="oct-2026-pass">
+          <span className={styles.sectionLabel}>2025 and 2026 changes</span>
+          <h2 className={styles.sectionTitle}>Did the JR Kyushu Rail Pass Change on 1 October 2026?</h2>
+          <p className={styles.bodyText}>
+            No. The tourist pass prices are the ones JR Kyushu set on <strong>1 April 2025</strong>, when every
+            version rose by ¥1,000 to ¥3,000, and JR Kyushu&apos;s pass page lists no 2026 revision. What started on
+            1 October 2026 is a separate pass, <strong>&ldquo;Kyushu de Aou&rdquo; (九州であおう)</strong>: ¥23,000 for 3
+            days on every JR Kyushu line, unreserved seats only, sold until 21 December 2026.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Pass (adult)", "Before 1 Apr 2025", "Now", "Change"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {changeRows.map((row) => (
+                    <tr key={row.pass}>
+                      <td className={styles.tdProvider}>{row.pass}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.before}</td>
+                      <td className={styles.tdPrice}>{row.after}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.change}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1.5rem" }}>
+            The 1 October 2026 pass against the 3-day All Kyushu Rail Pass:
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["", "Kyushu de Aou pass (1 Oct – 24 Dec 2026)", "All Kyushu Rail Pass, 3 days"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {aouRows.map((row) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider}>{row.item}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.aou}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.krp}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={muted}>
+            Last checked: {CHECKED_ISO} on{" "}
+            <a href={REVISION_2025} target="_blank" rel="noopener" style={sourceLink}>
+              JR Kyushu&apos;s notice of the April 2025 revision
+            </a>{" "}
+            ({REVISION_2025}) and{" "}
+            <a href={AOU_PASS} target="_blank" rel="noopener" style={sourceLink}>
+              JR Kyushu&apos;s Kyushu de Aou page
+            </a>{" "}
+            ({AOU_PASS}, Japanese). The Kyushu de Aou pass goes on sale one month before the first day at 5:30 and
+            can be started up to 22 December 2026; JR Kyushu donates ¥1,000 per adult pass to Kumamoto Prefecture
+            for earthquake recovery. It does not cover the Sanyo Shinkansen Hakata–Kokura or the Hakata-Minami Line.
           </p>
         </section>
 
         {/* Which pass */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Which pass</span>
-          <h2 className={styles.sectionTitle}>Which JR Kyushu Pass Should I Buy?</h2>
+          <h2 className={styles.sectionTitle}>Northern vs All Kyushu: Which One?</h2>
           <p className={styles.bodyText}>
-            <strong>Northern Kyushu</strong> if your trip is Fukuoka plus Nagasaki, Yufuin, Beppu, Saga or Kumamoto.{" "}
+            <strong>Northern Kyushu</strong> (¥15,000 for 3 days) if your trip is Fukuoka plus Nagasaki, Yufuin, Beppu,
+            Saga or Kumamoto; <strong>All Kyushu</strong> (¥22,000 for 3 days) as soon as Kagoshima-Chuo or Miyazaki is
+            on the route — a Hakata ⇄ Kagoshima-Chuo return alone is ¥23,900 on regular tickets.
+          </p>
+          <p className={styles.bodyText}>
+            In detail: <strong>Northern Kyushu</strong> if your trip is Fukuoka plus Nagasaki, Yufuin, Beppu, Saga or Kumamoto.{" "}
             <strong>All Kyushu</strong> if Kagoshima or Miyazaki is on the route, or if you need 7 days.{" "}
             <strong>Southern Kyushu</strong> only if you start in Kumamoto or Kagoshima and stay south: it does not
             reach Hakata, and it covers only a few limited expresses.
@@ -422,7 +574,7 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
         {/* Break-even */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Break-even</span>
-          <h2 className={styles.sectionTitle}>Is the JR Kyushu Rail Pass Worth It?</h2>
+          <h2 className={styles.sectionTitle}>Is the JR Kyushu Pass Worth It?</h2>
           <p className={styles.bodyText}>
             Yes for two long returns in 3 to 5 days; no for a single day trip. The table below adds up JR Kyushu&apos;s
             regular fares (ticket plus reserved seat, normal season) for the trips most visitors plan.
@@ -477,7 +629,7 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
             </div>
           </div>
           <p className={styles.bodyText} style={muted}>
-            Last checked {CHECKED}. Regular fares are worked from{" "}
+            Last checked: {CHECKED_ISO} ({FARE_SOURCE}). Regular fares are worked from{" "}
             <a href={FARE_SOURCE} target="_blank" rel="noopener" style={sourceLink}>
               JR Kyushu&apos;s guidebook to the April 2025 fare revision
             </a>
@@ -538,11 +690,12 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
             </div>
           </div>
           <p className={styles.bodyText} style={muted}>
-            Last checked {CHECKED} on{" "}
+            Last checked: {CHECKED_ISO} on{" "}
             <a href={OFFICIAL} target="_blank" rel="noopener" style={sourceLink}>
               jrkyushu.co.jp
             </a>
-            . The Northern pass excludes the Nichirin, Ibusuki no Tamatebako, Umisachi Yamasachi and Kirishima limited
+            . JR Kyushu&apos;s April 2026 guidebook lists the Hisatsu Line between Yatsushiro and Yoshimatsu, and
+            between Yoshimatsu and Hayato, as suspended after heavy rain. The Northern pass excludes the Nichirin, Ibusuki no Tamatebako, Umisachi Yamasachi and Kirishima limited
             expresses. Reservations made on JR Kyushu&apos;s rail pass online booking site do not count towards the
             six free ones; more cost ¥1,000 per section (¥1,500 on design and story trains).
           </p>
@@ -551,11 +704,15 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
         {/* Shinkansen */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Shinkansen</span>
-          <h2 className={styles.sectionTitle}>Can I Use the JR Kyushu Pass on the Shinkansen?</h2>
+          <h2 className={styles.sectionTitle}>Does It Cover the Nishi-Kyushu Shinkansen?</h2>
           <p className={styles.bodyText}>
-            Yes, inside its area. All Kyushu covers the Kyushu Shinkansen end to end, Hakata to Kagoshima-Chuo, plus
-            the Kamome to Nagasaki. Northern covers Hakata–Kumamoto and the Kamome. Southern covers Kumamoto–
-            Kagoshima-Chuo only.
+            Yes, on the All Kyushu and Northern Kyushu passes: the Nishi-Kyushu Shinkansen Kamome from Takeo-Onsen to
+            Nagasaki and the Relay Kamome limited express from Hakata to Takeo-Onsen are both covered, and a Relay
+            Kamome plus Kamome booking counts as one seat reservation. The Southern pass does not cover it.
+          </p>
+          <p className={styles.bodyText}>
+            On the Kyushu Shinkansen, All Kyushu covers Hakata to Kagoshima-Chuo end to end, Northern covers
+            Hakata–Kumamoto and Southern covers Kumamoto–Kagoshima-Chuo only.
           </p>
           <p className={styles.bodyText}>
             No version covers the <strong>Sanyo Shinkansen between Hakata and Kokura</strong>, which belongs to JR
@@ -569,14 +726,47 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
         </section>
 
         {/* Reservations */}
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Seats</span>
-          <h2 className={styles.sectionTitle}>Do I Need Seat Reservations With the JR Kyushu Pass?</h2>
+        <section className={styles.comparisonSection} id="seats">
+          <span className={styles.sectionLabel}>Yufuin no Mori &amp; seats</span>
+          <h2 className={styles.sectionTitle}>Does the JR Kyushu Pass Cover the Yufuin no Mori?</h2>
           <p className={styles.bodyText}>
-            Not for unreserved cars, but a reserved seat is worth having on the Yufuin no Mori and the Kamome. All Kyushu includes unlimited free reservations;
-            Northern and Southern include six, and seats reserved through JR Kyushu&apos;s rail pass online booking
-            site do not use them up. The Yufuin no Mori is the train to book first: JR Kyushu puts its seats on sale one
-            month ahead at 10:00 (read on JR Kyushu&apos;s site on 7 November 2026 for our Kyushu itinerary).
+            Yes — the All Kyushu and Northern Kyushu passes cover the Yufuin no Mori, the Southern pass does not. Every
+            seat on it is reserved, so book one: free and unlimited on All Kyushu, one of six free reservations on
+            Northern Kyushu. The ¥23,000 Kyushu de Aou pass of October–December 2026 cannot be used on the Yufuin no
+            Mori without a separate reserved-seat express ticket.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Pass", "Free reserved seats", "After the free ones", "Yufuin no Mori"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {seatRows.map((row) => (
+                    <tr key={row.pass}>
+                      <td className={styles.tdProvider}>{row.pass}</td>
+                      <td className={styles.tdPrice}>{row.free}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.after}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.yufuin}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={muted}>
+            Last checked: {CHECKED_ISO} on{" "}
+            <a href={OFFICIAL} target="_blank" rel="noopener" style={sourceLink}>
+              JR Kyushu&apos;s rail pass page
+            </a>{" "}
+            ({OFFICIAL}). Free reservations are made at a JR Kyushu ticket office (Midori-no-madoguchi) or a
+            reserved-seat ticket machine in Kyushu. The Yufuin no Mori is the train to book first: JR Kyushu puts its
+            seats on sale one month ahead at 10:00 (read on JR Kyushu&apos;s site on 7 November 2026 for our Kyushu
+            itinerary).
           </p>
         </section>
 

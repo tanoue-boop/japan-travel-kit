@@ -782,7 +782,9 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
             pass pays when Fukuoka is the start of a longer Kyushu trip with Kumamoto or Nagasaki in it — our{" "}
             <Link href="/guides/attractions/kyushu-5-day-itinerary">Kyushu 5-day itinerary</Link> works the sums, and
             the <Link href="/guides/transport/jr-kyushu-rail-pass">JR Kyushu Rail Pass guide</Link> compares the three
-            passes.
+            passes. If you do take the pass to Yufuin, every Yufuin no Mori seat is reserved, and the Northern pass
+            includes six free ones — see{" "}
+            <Link href="/guides/transport/jr-kyushu-rail-pass#seats">how the Yufuin no Mori seats work on the pass</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={jrKyushuRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -869,7 +871,7 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
               { href: "/guides/attractions/yufuin-beppu-tour-from-fukuoka", title: "Yufuin and Beppu Tour from Fukuoka: Tours, Trains and Onsen Time" },
               { href: "/guides/attractions/teamlab-fukuoka-tickets", title: "teamLab Fukuoka Tickets 2026: Price, Hours & Booking" },
               { href: "/guides/attractions/kyushu-5-day-itinerary", title: "Kyushu 5 Day Itinerary (2026): Fukuoka, Beppu, Kumamoto and Takachiho" },
-              { href: "/guides/transport/jr-kyushu-rail-pass", title: "JR Kyushu Rail Pass 2026: Price, Which Pass & Worth It?" },
+              { href: "/guides/transport/jr-kyushu-rail-pass", title: "JR Kyushu Rail Pass 2026: Prices, New Oct 1 Pass & Worth It?" },
               { href: "/guides/attractions/hiroshima-2-day-itinerary", title: "2 Days in Hiroshima: Day-by-Day Itinerary (2026)" },
               { href: "/guides/attractions/kyoto-2-day-itinerary", title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book" },
               { href: "/guides/attractions", title: "More Things to Do in Japan →" },

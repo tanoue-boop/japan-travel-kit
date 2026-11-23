@@ -699,7 +699,10 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
             collected at the Fukuoka Airport international terminal — and its own listing states it is not
             sold to Japanese passport holders. Our{" "}
             <Link href="/guides/transport/ic-cards-japan">IC cards guide</Link> covers the pay-as-you-go
-            alternative if a pass is overkill for one afternoon.
+            alternative if a pass is overkill for one afternoon. Neither covers the trains out of Fukuoka; for
+            Yufuin, Nagasaki or Kumamoto on the same trip, the{" "}
+            <Link href="/guides/transport/jr-kyushu-rail-pass">JR Kyushu Rail Pass</Link> starts at ¥15,000 for 3
+            days of Northern Kyushu — and it does not cover the city subway to Tojinmachi.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={fukuokaTouristCityPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

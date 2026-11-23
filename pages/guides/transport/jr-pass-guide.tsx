@@ -1117,7 +1117,12 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             costs from an agency; the five-day Kansai WIDE Area Pass, the one that adds Sanyo Shinkansen seats,
             is ¥12,000. The October 2026 revision was the nationwide pass, so the gap between it and these
             three is wider than it was in September. The question is never &ldquo;which pass is cheaper&rdquo;
-            but whether the cheaper pass reaches the places you are going.
+            but whether the cheaper pass reaches the places you are going. In Kyushu, the{" "}
+            <Link href="/guides/transport/jr-kyushu-rail-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
+              JR Kyushu Rail Pass
+            </Link>{" "}
+            is ¥15,000 for 3 days of Northern Kyushu or ¥22,000 for 3 days of All Kyushu, prices JR Kyushu has not
+            changed in 2026.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -1348,7 +1353,7 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>JR Kyushu Rail Pass 2026: Price, Which Pass &amp; Worth It?</p>
+                <p className={styles.relatedTitle}>JR Kyushu Rail Pass 2026: Prices, New Oct 1 Pass &amp; Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -261,7 +261,7 @@ const ROUTE = "/guides/attractions/yufuin-beppu-tour-from-fukuoka";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const relatedGuides = [
-  { href: "/guides/transport/jr-kyushu-rail-pass", title: "JR Kyushu Rail Pass 2026: Price, Which Pass & Worth It?" },
+  { href: "/guides/transport/jr-kyushu-rail-pass", title: "JR Kyushu Rail Pass 2026: Prices, New Oct 1 Pass & Worth It?" },
   { href: "/guides/attractions/fukuoka-2-day-itinerary", title: "Fukuoka 2 Day Itinerary (2026): Dazaifu, Yanagawa or Yufuin" },
   { href: "/guides/attractions/kyushu-5-day-itinerary", title: "Kyushu 5 Day Itinerary (2026): Fukuoka, Beppu, Kumamoto and Takachiho" },
   { href: "/guides/attractions/teamlab-fukuoka-tickets", title: "teamLab Fukuoka Tickets 2026: Price, Hours & Booking" },
@@ -548,7 +548,12 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>Going by train?</strong> Check the Yufuin no Mori calendar first, because it does not run
             every day and every seat is reserved. Some trains continue past Yufuin toward Beppu. For a stay of a
-            few days, Klook&apos;s guide lists Hakata, Yufuin and Beppu inside the North Kyushu pass.
+            few days, Klook&apos;s guide lists Hakata, Yufuin and Beppu inside the North Kyushu pass. On a pass, each
+            Yufuin no Mori seat still has to be reserved —{" "}
+            <Link href="/guides/transport/jr-kyushu-rail-pass#seats" style={{ color: "var(--red)", fontWeight: 600 }}>
+              does the JR Kyushu Pass cover the Yufuin no Mori
+            </Link>{" "}
+            explains the six free reservations on the Northern pass.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={jrKyushuRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

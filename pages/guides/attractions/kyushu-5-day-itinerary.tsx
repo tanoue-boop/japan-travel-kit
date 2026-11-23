@@ -442,7 +442,7 @@ const ROUTE = "/guides/attractions/kyushu-5-day-itinerary";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const relatedGuides = [
-  { href: "/guides/transport/jr-kyushu-rail-pass", title: "JR Kyushu Rail Pass 2026: Price, Which Pass & Worth It?" },
+  { href: "/guides/transport/jr-kyushu-rail-pass", title: "JR Kyushu Rail Pass 2026: Prices, New Oct 1 Pass & Worth It?" },
   { href: "/guides/attractions/fukuoka-2-day-itinerary", title: "Fukuoka 2 Day Itinerary (2026): Dazaifu, Yanagawa or Yufuin" },
   { href: "/guides/attractions/yufuin-beppu-tour-from-fukuoka", title: "Yufuin and Beppu Tour from Fukuoka (2026): Tours vs Train" },
   { href: "/guides/attractions/teamlab-fukuoka-tickets", title: "teamLab Fukuoka Tickets 2026: Price, Hours & Booking" },
@@ -784,7 +784,11 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
             <Link href="/guides/transport/jr-kyushu-rail-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
               JR Kyushu Rail Pass guide
             </Link>
-            .
+            . Travelling between 1 October and 24 December 2026? The ¥23,000{" "}
+            <Link href="/guides/transport/jr-kyushu-rail-pass#oct-2026-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Kyushu de Aou 3-day pass
+            </Link>{" "}
+            is unreserved seats only, so it does not get you onto the all-reserved Yufuin no Mori by itself.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

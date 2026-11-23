@@ -659,7 +659,13 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
             The Shinkansen (新幹線) is Japan&apos;s high-speed rail network, operating since 1964.
             It connects Japan&apos;s major cities at speeds of up to 320 km/h — among the fastest commercial
             trains in the world. The network covers most of the main island of Honshu, with extensions
-            into Kyushu and Hokkaido.
+            into Kyushu and Hokkaido. In Kyushu, the Kyushu Shinkansen to Kagoshima-Chuo and the Nishi-Kyushu
+            Shinkansen to Nagasaki are covered by the{" "}
+            <Link href="/guides/transport/jr-kyushu-rail-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
+              JR Kyushu Rail Pass
+            </Link>{" "}
+            (All Kyushu from ¥22,000 for 3 days); the Hakata–Kokura stretch is JR West&apos;s Sanyo Shinkansen and is
+            not.
           </p>
           <p className={styles.bodyText}>
             What makes the Shinkansen remarkable isn&apos;t just speed: it&apos;s reliability.
