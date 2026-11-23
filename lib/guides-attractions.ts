@@ -985,6 +985,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/kyoto-tea-ceremony",
+    badge: "Experience",
+    title: "Kyoto Tea Ceremony Experience 2026: Prices & Where to Book",
+    desc: "Kyoto tea rooms by area with their official prices: ¥4,000–¥5,000 for 45 minutes near Ninenzaka, ¥1,500 for a bowl at Uji's Taihoan, kimono sessions in Gion — and Kyoto or Uji.",
+    group: "experiences",
+    city: "kyoto",
+  },
+  {
     href: "/guides/attractions/kyoto-cooking-class",
     badge: "Food",
     title: "Kyoto Cooking Class (2026): Sushi, Ramen, Wagashi Compared",

@@ -711,8 +711,8 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
             <strong>Next morning.</strong> Fushimi Inari and Arashiyama both suit an early start after a late
             night in Gion. Kyoto City puts them 10 and 25 minutes from Kyoto Station; our{" "}
             <Link href="/guides/attractions/kyoto-2-day-itinerary" style={linkStyle}>Kyoto 2 day itinerary</Link>{" "}
-            shows how the days fit together. For more evening culture, see our{" "}
-            <Link href="/guides/attractions/tea-ceremony-japan" style={linkStyle}>tea ceremony guide</Link>.
+            shows how the days fit together. For a tea room in the same streets by day, see our{" "}
+            <Link href="/guides/attractions/kyoto-tea-ceremony" style={linkStyle}>Kyoto tea ceremony guide</Link>.
           </p>
         </section>
 

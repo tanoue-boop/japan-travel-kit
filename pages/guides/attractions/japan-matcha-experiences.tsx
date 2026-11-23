@@ -574,7 +574,9 @@ export default function JapanMatchaExperiencesPage({ updated }: { updated: PageU
             <strong>Kyoto</strong> wins on setting and loses on nothing much. The rooms are machiya
             townhouses and temple halls around Gion, Higashiyama and the northern temples; the session we link
             near Kinkaku-ji runs 45 minutes to an hour with a second-degree Urasenke instructor, organic Uji
-            matcha served to you first, then a hands-on whisking lesson and a traditional sweet. It pairs
+            matcha served to you first, then a hands-on whisking lesson and a traditional sweet. The other
+            Kyoto rooms, with their own published prices, are in our{" "}
+            <Link href="/guides/attractions/kyoto-tea-ceremony">Kyoto tea ceremony</Link> guide. It pairs
             naturally with a kimono and with the temples you are already walking between — our{" "}
             <Link href="/guides/attractions/kyoto-kimono-rental">Kyoto kimono rental guide</Link> and{" "}
             <Link href="/guides/attractions/things-to-do-kyoto">things to do in Kyoto guide</Link> cover that

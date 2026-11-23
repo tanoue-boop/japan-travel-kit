@@ -342,7 +342,8 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
             <p className={styles.bodyText} style={{ fontSize: "0.85rem", marginTop: "0.75rem" }}>
               For the ¥1,210 JR Kansai Airport Rapid, the limousine bus, a private car and Itami Airport, see the{" "}
               <Link href="/guides/transport/osaka-airport-transfer" style={{ fontWeight: 600 }}>Osaka airport transfer</Link>{" "}
-              comparison.
+              comparison. Going straight to Kyoto? The HARUKA, the limousine bus and the shared shuttle are compared in{" "}
+              <Link href="/guides/transport/kansai-airport-to-kyoto" style={{ fontWeight: 600 }}>Kansai Airport to Kyoto</Link>.
             </p>
           </div>
         </div>

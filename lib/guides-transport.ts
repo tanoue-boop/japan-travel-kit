@@ -165,6 +165,14 @@ export const transportArticles: GuideArticle[] = [
     city: "osaka",
   },
   {
+    href: "/guides/transport/kansai-airport-to-kyoto",
+    badge: "Guide",
+    title: "Kansai Airport to Kyoto 2026: HARUKA vs Bus, Fares & Times",
+    desc: "Kansai Airport to Kyoto Station: the HARUKA in about 75 minutes for ¥2,700, the limousine bus in about 1 hr 25–30 min for ¥2,800 until 23:20, and the ¥4,300 shared shuttle to your hotel.",
+    group: "airports",
+    city: "kyoto",
+  },
+  {
     href: "/guides/transport/haruka-vs-nankai-rapit",
     badge: "Comparison",
     title: "Haruka vs Rapi:t 2026: Which Kansai Airport Train?",

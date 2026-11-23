@@ -651,7 +651,9 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
           <p className={styles.bodyText}>
             Book it in Kyoto if Kyoto is already on your route: the tea rooms sit in Gion, near Kiyomizu and
             Kinkaku-ji, in the streets you came to walk, and the Gion sessions on Klook include a kimono or seat
-            you on chairs. Pair it with a{" "}
+            you on chairs. The Kyoto tea rooms, their prices and which include a kimono are compared in our{" "}
+            <Link href="/guides/attractions/kyoto-tea-ceremony" style={linkStyle}>tea ceremony in Kyoto</Link> guide.
+            Pair it with a{" "}
             <Link href="/guides/attractions/kyoto-kimono-rental" style={linkStyle}>Kyoto kimono rental</Link>, a{" "}
             <Link href="/guides/attractions/gion-night-walking-tour" style={linkStyle}>Gion night walking tour</Link>{" "}
             in the evening, or see the{" "}

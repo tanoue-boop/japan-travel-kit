@@ -795,7 +795,9 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
             JR West, Kansai Airport and Kansai Airport Transportation, checked {CHECKED}. Only buses towards the airport
-            require a reservation.
+            require a reservation. First and last departures, the shared shuttle to a Kyoto hotel and what to do after a
+            late landing are in our{" "}
+            <Link href="/guides/transport/kansai-airport-to-kyoto">Kansai Airport to Kyoto guide</Link>.
           </p>
           <p className={styles.bodyText}>
             Heading to Kyoto? The 1-day{" "}

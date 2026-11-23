@@ -701,7 +701,9 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             expecting you. Our{" "}
             <Link href="/guides/attractions/kyoto-kimono-rental">kimono rental Kyoto price comparison</Link>{" "}
             puts four shops side by side — base plans from ¥2,980 before tax, hair sets and the 17:30
-            return — with the ones nearest Kyoto Station.
+            return — with the ones nearest Kyoto Station. A tea room fits the same Day 1 loop: the{" "}
+            <Link href="/guides/attractions/kyoto-tea-ceremony">Kyoto tea ceremony guide</Link> lists the
+            Higashiyama and Gion rooms with their official prices and session lengths.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={kyotoFushimiInariWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -1007,7 +1009,9 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             date pays two different prices for the same journey — and from then on the Kyoto single costs
             the same as a 1-day JR West{" "}
             <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass</Link>, which includes the
-            Haruka. And the nationwide{" "}
+            Haruka. The limousine bus, the shared shuttle and the last trains after a late landing are in
+            our <Link href="/guides/transport/kansai-airport-to-kyoto">Kansai Airport to Kyoto guide</Link>.
+            And the nationwide{" "}
             <strong>JR Pass does not cover Nozomi</strong>, which is the fast Tokyo–Kyoto service — on a
             two-day Kyoto stop inside a wider trip, that is usually the fact that decides whether a pass is
             worth it at all. Our{" "}

@@ -366,7 +366,7 @@ export default function KyotoMaikoDinnerPage({ updated }: { updated: PageUpdated
           <p className={styles.bodyText}>
             This page is for the meal. For the evening walk on its own, see our{" "}
             <Link href="/guides/attractions/gion-night-walking-tour">Gion night walking tour guide</Link>; for
-            matcha and a tea room, the <Link href="/guides/attractions/tea-ceremony-japan">tea ceremony guide</Link>.
+            matcha and a tea room in Kyoto, the <Link href="/guides/attractions/kyoto-tea-ceremony">Kyoto tea ceremony guide</Link>.
           </p>
         </section>
 

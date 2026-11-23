@@ -547,7 +547,9 @@ export default function JapanLuggageDeliveryPage({ updated }: { updated: PageUpd
             <Link href="/guides/transport/osaka-airport-transfer" style={linkStyle}>
               Osaka airport transfer guide
             </Link>{" "}
-            covers the HARUKA and the Rapi:t from Kansai Airport.
+            covers the HARUKA and the Rapi:t from Kansai Airport, and{" "}
+            <Link href="/guides/transport/kansai-airport-to-kyoto" style={linkStyle}>Kansai Airport to Kyoto</Link>{" "}
+            compares the HARUKA with the limousine bus, which takes cases in the hold.
           </p>
         </section>
 

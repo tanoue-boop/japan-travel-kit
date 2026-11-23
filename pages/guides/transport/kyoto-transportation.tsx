@@ -402,6 +402,9 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
           Getting to Kyoto in the first place — the shinkansen from Tokyo, the Haruka from Kansai Airport, and whether a
           JR pass pays — is priced in the{" "}
           <Link href="/guides/transport" style={{ color: "var(--text)", fontWeight: 600 }}>Japan transportation guide</Link>.
+          Landing at Kansai Airport, the HARUKA, the limousine bus to Kyoto Station and the shared shuttle to your hotel are
+          compared in{" "}
+          <Link href="/guides/transport/kansai-airport-to-kyoto" style={{ color: "var(--text)", fontWeight: 600 }}>Kansai Airport to Kyoto</Link>.
         </p>
 
         {/* Quick Answer Box */}

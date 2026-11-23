@@ -460,7 +460,9 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
             Day 1 is the kimono day, because Higashiyama and Gion are all on foot. For shop prices,
             hair sets and return times side by side, see our{" "}
             <Link href="/guides/attractions/kyoto-kimono-rental">kimono rental Kyoto guide</Link>; the shops
-            near Kiyomizu-dera suit this day better than the ones at Kyoto Station.
+            near Kiyomizu-dera suit this day better than the ones at Kyoto Station. A 45-minute tea ceremony
+            near Ninenzaka fits between Kiyomizu-dera and Gion; the rooms and prices are in our{" "}
+            <Link href="/guides/attractions/kyoto-tea-ceremony">tea ceremony in Kyoto</Link> guide.
           </p>
         </section>
 
@@ -688,7 +690,9 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
             The nationwide JR Pass does not cover Nozomi, so check that before you buy one for this route. JR
             West&apos;s HARUKA ticket is for foreign passport holders entering as temporary visitors. Compare
             the trains in our <Link href="/guides/transport/tokyo-to-kyoto">Tokyo to Kyoto guide</Link> and
-            our <Link href="/guides/transport/haruka-vs-nankai-rapit">Haruka vs Nankai Rapi:t guide</Link>.
+            our <Link href="/guides/transport/haruka-vs-nankai-rapit">Haruka vs Nankai Rapi:t guide</Link>;
+            the HARUKA against the limousine bus and the shared shuttle is in our{" "}
+            <Link href="/guides/transport/kansai-airport-to-kyoto">Kansai Airport to Kyoto</Link> guide.
             If Tokyo comes after Kyoto, the guide to the{" "}
             <Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo train</Link> covers
             the Kyoto Station shinkansen gates, the train times and the large-luggage seats for that last morning.

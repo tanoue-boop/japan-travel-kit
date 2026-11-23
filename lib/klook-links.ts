@@ -12049,3 +12049,97 @@ export const kansai5DayUsjSameDayCards: KlookSameDayCard[] = [
     why: "USJ's Area Timed Entry Tickets are issued in the official app, which needs data inside the park.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Kyoto tea ceremony and Kansai Airport to Kyoto — added 23 Nov 2026
+// (task-jtk-20261123-02). Each page has its own ad id from spare (1576215, 1576216).
+//
+// Confirmed as live pages through the www.klook.com search index on 23 Nov 2026:
+//   233020  Kimono tea ceremony at Orizuruya, Gion                         6.5%
+//   177406  Kyoto traditional tea ceremony with matcha and sweets (chairs)  6.5%
+//   134710  Tea ceremony, tasting and making experience in Kyoto            6.5%
+//   160630  Traditional tea ceremony near Kinkaku-ji                        6.5%
+//   93576   Uji half-day walking tour with a ceremony at Taihoan            6.5%
+//   15017   Uji tea ceremony + Kyoto highlights day tour from Osaka         6.5%
+//   18400   JR Haruka Kansai Airport Express ticket                         5%
+//   18203   Kansai Airport limousine bus one way (Osaka and Kyoto routes)    5%
+//   15424   Private Kansai Airport transfer for Kyoto (new constant below)   5%
+//   109393  Klook Japan eSIM                                                20%
+//   hotels  Kyoto Station / Karasuma Oike / Gion destination hotel searches 6.5%
+// No price from Klook appears on either page.
+// ---------------------------------------------------------------------------
+
+/** Private car between Kansai Airport and a Kyoto address — listing 15424, en-AU in the index. */
+export const kyotoPrivateKixTransfer: KlookTour = {
+  title: "Private Kansai Airport transfer for Kyoto",
+  desc: "A private car between Kansai Airport and your Kyoto hotel, priced per vehicle; the listing asks for the booking at least a day before pickup",
+  url: klookLink("https://www.klook.com/en-US/activity/15424-private-kansai-international-airport-transfers-kyoto/"),
+};
+
+/** "Book these on the same trip" for the Kyoto tea ceremony page: 6.5% first, then 20%. */
+export const kyotoTeaTripPrep: KlookTripPrepItem[] = [
+  {
+    label: kyotoGionKimonoTeaCeremony.title,
+    ctaLabel: "Check the Gion kimono ceremony →",
+    url: kyotoGionKimonoTeaCeremony.url,
+    why: "Kimono, hair and the ceremony in one Gion booking, in a group of up to 10 — the simplest way to have both on the same afternoon.",
+  },
+  {
+    label: kyotoGionChairTeaCeremony.title,
+    ctaLabel: "Check the Gion ceremony on chairs →",
+    url: kyotoGionChairTeaCeremony.url,
+    why: "One hour in Gion seated on chairs, for anyone who cannot kneel on tatami for the length of a ceremony.",
+  },
+  {
+    label: kyotoKimonoAiwafukuGion.title,
+    ctaLabel: "Check Gion kimono rental →",
+    url: kyotoKimonoAiwafukuGion.url,
+    why: "If your tea room has no kimono of its own: a full-day rental two minutes from Hanamikoji, worn to the ceremony and round Gion after it.",
+  },
+  {
+    label: ujiTaihoanWalkingTour.title,
+    ctaLabel: "Check the Uji walk with Taihoan →",
+    url: ujiTaihoanWalkingTour.url,
+    why: "Uji's own tea house inside a guided half day, for the reader who wants the tea town rather than a city tea room.",
+  },
+  {
+    label: kyotoCityFushimiArashiyamaTour.title,
+    ctaLabel: "Check the Kyoto day tour →",
+    url: kyotoCityFushimiArashiyamaTour.url,
+    why: "The rest of the day: Fushimi Inari, Arashiyama and Kiyomizu-dera with a guide, leaving from Kyoto Station.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Tea-room confirmations, the walk from the bus stop through Ninenzaka's lanes and the map to Uji all sit on your phone.",
+  },
+];
+
+/** "Book before you land" for Kansai Airport to Kyoto: 6.5% and 20% first, then the 5% transfers. */
+export const kansaiAirportKyotoTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels around Kyoto Station",
+    ctaLabel: "Check Kyoto Station hotels →",
+    url: kyotoStayAreas[0].url,
+    why: "The HARUKA and the airport limousine bus both end at Kyoto Station, so a room by the station means no second leg after the flight.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Platform numbers, the bus stand at Terminal 1 and your hotel map all need data the moment you clear customs.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "The HARUKA One-way Ticket to Kyoto is sold to Temporary Visitor passport holders and not inside Japan, so it is bought before you fly.",
+  },
+  {
+    label: kansaiAirportLimousineBus.title,
+    ctaLabel: "Check the limousine bus →",
+    url: kansaiAirportLimousineBus.url,
+    why: "The Kyoto Station Hachijo Exit route: cases go in the hold and every passenger has a seat.",
+  },
+  {
+    label: kyotoPrivateKixTransfer.title,
+    ctaLabel: "Check the private transfer →",
+    url: kyotoPrivateKixTransfer.url,
+    why: "Priced per car rather than per person, so it narrows the gap for a family or group, and it runs after the last train.",
+  },
+];
