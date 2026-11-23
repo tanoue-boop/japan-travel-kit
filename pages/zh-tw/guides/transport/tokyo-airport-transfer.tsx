@@ -1140,6 +1140,8 @@ export default function ZhTokyoAirportTransferPage({ updated }: { updated: PageU
             每條路線的車資、行李限制與預約規則，都在我們的{" "}
             <Link href="/guides/transport/tokyo-airport-limousine-bus">東京機場利木津巴士指南（英文）</Link>裡，
             讀的是同一批業者頁面。上方巴士車資查詢於 {CHECKED}。
+            通關後找月台與巴士乘車處都要用到手機網路，網卡怎麼選請見{" "}
+            <Link href="/zh-tw/guides/esim/best-esim-japan">日本eSIM推薦</Link>。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.5rem" }}>
             <KlookLink href={naritaBusUrl} className={styles.pickCta} target="_blank" rel={KLOOK_REL}>

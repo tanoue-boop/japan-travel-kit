@@ -655,6 +655,8 @@ export default function ZhDotonboriRiverCruisePage({ updated }: { updated: PageU
             條件查核日 {CHECKED}。
             周遊卡不含日本環球影城；去 USJ 的那天要另外買入園票，是否加買快速通關，請見{" "}
             <Link href="/zh-tw/guides/attractions/usj-tickets-express-pass" style={linkStyle}>日本環球影城快速通關（fast pass）價錢與種類比較</Link>。
+            在大阪市區用手機查地圖與時刻，網卡怎麼選請見{" "}
+            <Link href="/zh-tw/guides/esim/best-esim-japan" style={linkStyle}>日本eSIM推薦</Link>。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
             <KlookLink href={K.pass} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>

@@ -257,6 +257,8 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           <p className={styles.bodyText}>
             豐洲的 teamLab Planets 只賣指定時段門票，成人 {PLANETS_ADULT}，現場不售票，必須上網選好日期與入場時間完成預約。
             各日期票價、Premium Pass、涉水時的穿著，以及從新豐洲站或豐洲站過去的路線，都在 Planets 門票攻略裡。
+            上網預約、當天查路線都要用到手機網路，網卡怎麼選請見{" "}
+            <Link href="/zh-tw/guides/esim/best-esim-japan">日本eSIM推薦</Link>。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <Link href="/zh-tw/guides/attractions/teamlab-planets-tickets" className={styles.verdictBtn}>

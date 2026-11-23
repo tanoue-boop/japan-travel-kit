@@ -583,7 +583,7 @@ export default function ZhTeamLabPlanetsPage({ updated }: { updated: PageUpdated
           <h2 className={styles.sectionTitle}>去 teamLab Planets 該穿什麼、帶什麼？</h2>
           <ul className={styles.bodyList}>
             <li><strong>穿著：</strong>短褲或可捲到膝上的長褲。水深可到成人膝蓋，部分地板是鏡面，不建議穿迷你裙。現場有免費租借短褲，尺寸 XS 到 6L，離場前歸還。</li>
-            <li><strong>門票：</strong>手機或平板上的 QR 電子票，或列印出來。一個 QR 涵蓋同筆訂單的所有人。入場前 2 天會收到提醒信，QR 碼在入場當天 00:00 起才會顯示。</li>
+            <li><strong>門票：</strong>手機或平板上的 QR 電子票，或列印出來。一個 QR 涵蓋同筆訂單的所有人。入場前 2 天會收到提醒信，QR 碼在入場當天 00:00 起才會顯示。手機網路的準備方式見<Link href="/zh-tw/guides/esim/best-esim-japan">日本eSIM推薦</Link>。</li>
             <li><strong>證件：</strong>國高中生票需學生證或官方年齡證明，身心障礙者票需經認可的證明文件。</li>
             <li><strong>隨身包包：</strong>入場閘門後有免費置物櫃，尺寸 23 × 34 × 37 公分。較大的行李只能用鋼索鎖固定在館外的嬰兒車停放處。</li>
             <li><strong>毛巾：</strong>不必帶。涉水作品的出口備有毛巾。</li>

@@ -908,6 +908,10 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               查看 Klook eSIM 方案 →
             </KlookLink>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            園區指定時段入場要在官方 App 裡辦理，網卡怎麼選請見{" "}
+            <Link href="/zh-tw/guides/esim/best-esim-japan">日本eSIM推薦</Link>。
+          </p>
         </section>
 
         <section className={styles.comparisonSection}>

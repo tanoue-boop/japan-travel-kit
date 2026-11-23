@@ -694,7 +694,11 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             <Link href="/zh-tw/guides/attractions/things-to-do-tokyo" style={{ color: "var(--red)", fontWeight: 600 }}>
               東京自由行景點
             </Link>
-            的推薦名單裡。
+            的推薦名單裡。Klook 的門票是手機上的電子票，網卡怎麼選請見{" "}
+            <Link href="/zh-tw/guides/esim/best-esim-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              日本eSIM推薦
+            </Link>
+            。
           </p>
         </section>
 

@@ -179,7 +179,7 @@ const days: Day[] = [
     ],
     book: (
       <>
-機場交通、網路，以及接下來三天東京的地鐵票。成田路線完全看您住在城市哪一側，<Link href="/zh-tw/guides/transport/tokyo-airport-transfer">東京機場交通攻略</Link>都有介紹；行李大或飯店不在車站旁時選利木津巴士，N&apos;EX 來回票只有從東京回國的版本才用得到回程。東京地鐵票有個冬季特點：燈飾路線丸之內、六本木、惠比壽在東京地鐵和都營線上，不是山手線，所以 12 月比其他月份更適合，此票不含 JR 和山手線。
+機場交通、網路，以及接下來三天東京的地鐵票。成田路線完全看您住在城市哪一側，<Link href="/zh-tw/guides/transport/tokyo-airport-transfer">東京機場交通攻略</Link>都有介紹；網路的選法與各天數價格見<Link href="/zh-tw/guides/esim/best-esim-japan">日本eSIM推薦</Link>；行李大或飯店不在車站旁時選利木津巴士，N&apos;EX 來回票只有從東京回國的版本才用得到回程。東京地鐵票有個冬季特點：燈飾路線丸之內、六本木、惠比壽在東京地鐵和都營線上，不是山手線，所以 12 月比其他月份更適合，此票不含 JR 和山手線。
 </>
     ),
     picks: [
