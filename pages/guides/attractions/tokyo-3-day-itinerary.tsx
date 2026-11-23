@@ -817,9 +817,9 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             types and fares, and our{" "}
             <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link> works through the
             break-even — which, for a trip that is only Tokyo plus one other city, usually comes out
-            against the pass. For getting around within the three days, our{" "}
-            <Link href="/guides/transport/tokyo-transportation">Getting Around Tokyo guide</Link>
-            {" "}explains how IC cards and the subway lines fit together.
+            against the pass. For the three days themselves, our guide on{" "}
+            <Link href="/guides/transport/tokyo-transportation">how to get around Tokyo</Link>
+            {" "}sorts out when to take the subway, the JR Yamanote Line, a bus or a taxi, and what a day of it costs.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={naritaExpressRoundTripUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

@@ -1130,11 +1130,11 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
             <Link href="/guides/transport/osaka-metro-pass" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Osaka Metro Pass guide
             </Link>{" "}
-            do the break-even in full; the{" "}
+            do the break-even in full; the guide on{" "}
             <Link href="/guides/transport/tokyo-transportation" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              getting around Tokyo guide
+              how to get around Tokyo
             </Link>{" "}
-            shows which lines are Metro, Toei or JR, and{" "}
+            shows which lines are Metro, Toei or JR and when a bus or taxi fits, and{" "}
             the{" "}
             <Link href="/guides/transport" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Japan transportation guide

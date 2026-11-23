@@ -71,7 +71,7 @@ const fareRows: FareRow[] = [
     route: "Tokyo Metro, 1–6 km (most hops between central stations)",
     fare: "¥178 on an IC card, ¥180 ticket (up to ¥324 / ¥330 for 28–40 km)",
     time: "A few minutes per hop",
-    guide: <Link href="/guides/transport/tokyo-transportation" style={L}>Tokyo transportation</Link>,
+    guide: <Link href="/guides/transport/tokyo-transportation" style={L}>How to get around Tokyo</Link>,
     source: { href: "https://www.tokyometro.jp/en/ticket/regular/index.html", label: "tokyometro.jp", checked: "2026-11-16" },
   },
   {

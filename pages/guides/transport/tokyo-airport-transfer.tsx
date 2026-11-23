@@ -1218,8 +1218,8 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Not booked a hotel yet? Then this table runs the other way round, and the easiest arrival is the one you
             choose before you book the room — see{" "}
-            <Link href="/guides/transport/tokyo-transportation">getting around Tokyo</Link> for how the lines connect
-            once you are in the city, and{" "}
+            <Link href="/guides/transport/tokyo-transportation">how to get around Tokyo</Link> for how the subway,
+            JR, buses and taxis fit together once you are in the city, and{" "}
             <Link href="/guides/attractions/tokyo-3-day-itinerary">our 3-day Tokyo itinerary</Link> for which side of
             the loop a short trip actually spends its time on.
           </p>
