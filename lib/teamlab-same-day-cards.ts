@@ -43,11 +43,11 @@ const T: Record<TranslatedLocale, { planets: PageCopy; tokyo: PageCopy }> = {
       ],
     },
     tokyo: {
-      heading: "去 teamLab 的同一天还能预订什么？",
+      heading: "参观 teamLab 的当天，还能安排哪些体验？",
       cards: [
-        { kind: "美食导览", label: "筑地文化与美食导览", ctaLabel: "查看筑地导览 →", why: "上午跟随导游游览筑地场外市场，最后坐下来品尝寿司；从丰洲的 Planets 过去也不远。" },
-        { kind: "体验", label: "东京茶道体验：跟随茶道老师学习点抹茶", ctaLabel: "查看茶道体验 →", why: "选 Planets 的话：由里千家认证老师在丰洲的独立房间内指导你点抹茶。" },
-        { kind: "游船", label: "东京湾日间与夕阳游船", ctaLabel: "查看东京湾游船 →", why: "参观完任意一座美术馆后，可乘坐从芝浦出发、全程 1 小时的游船，经过台场、穿过彩虹大桥下方。" },
+        { kind: "美食导览", label: "筑地文化与美食导览", ctaLabel: "查看筑地导览 →", why: "上午跟随导游游览筑地场外市场，最后品尝寿司；从丰洲的 Planets 前往筑地也不远。" },
+        { kind: "体验", label: "东京茶道体验：跟随茶道老师学习制作抹茶", ctaLabel: "查看茶道体验 →", why: "选 Planets 的话：由里千家认证的茶道老师在丰洲的独立房间内指导你制作抹茶。" },
+        { kind: "游船", label: "东京湾日间与夕阳游船", ctaLabel: "查看东京湾游船 →", why: "参观完任意一座美术馆后，可乘坐从芝浦出发、航程 1 小时的游船，途经台场，并从彩虹大桥下方驶过。" },
       ],
     },
   },

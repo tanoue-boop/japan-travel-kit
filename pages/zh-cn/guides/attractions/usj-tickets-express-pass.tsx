@@ -75,14 +75,14 @@ const VARIANT_PRICE = "随入园日期而变——结账时显示";
 
 const ticketRows = [
   { ticket: "一日 Studio Pass", what: "可入园一天；普通项目需正常排队", price: "按日期定价——当天价格在结账时显示" },
-  { ticket: "两日 Studio Pass", what: "连续两天入园，平均每天的票价通常更低", price: "按日期定价——当天价格在结账时显示" },
+  { ticket: "两日 Studio Pass", what: "可连续两天入园，平均每天的票价通常更低", price: "按日期定价——当天价格在结账时显示" },
   { ticket: "快速通行证（加购）", what: "可以在指定的几个游乐项目使用更短的快速通道。不是入园票——还需要 Studio Pass 或年卡", price: "按日期定价，采用 USJ 自 2018 年起为快速通行证引入的制度" },
 ];
 
 const variantRows = [
   // First row is the answer (14 Nov 2026, R01), as on the English page.
   {
-    pass: "拿不定主意？先看这里",
+    pass: "不知道选哪种？先看这里",
     covers: "第一次来、只能在人多的日子玩一天，选快速通行证 7；入园当天游客较少或第二次来，选快速通行证 4；如果是专程为超级任天堂世界而来，选含区域入场的版本。",
     snw: "选注明包含区域入场的版本",
     price: VARIANT_PRICE,
@@ -93,11 +93,11 @@ const variantRows = [
     covers: "包含四个项目。USJ 把这一款描述为用于畅玩热门必玩项目的通行证；具体是哪四项，按版本和日期固定。",
     snw: "只有注明包含的版本才有",
     price: VARIANT_PRICE,
-    bestFor: "时间短的一天、第二次来，或游客较少时只想体验主要热门项目",
+    bestFor: "只有一天游玩时间、第二次来，或游客较少时只想体验主要热门项目",
   },
   {
     pass: "快速通行证 7",
-    covers: "包含七个项目——多数第一次来的游客在两种数量中会选的较大那一款，包含的项目同样按版本而定。",
+    covers: "包含七个项目——在这两种通行证中，这是多数第一次来的游客会选择的项目更多的版本，包含的项目同样按版本而定。",
     snw: "只有注明包含的版本才有",
     price: VARIANT_PRICE,
     bestFor: "只有一天、第一次来、人多的日子",
@@ -114,7 +114,7 @@ const variantRows = [
     covers: "部分快速通行证附带超级任天堂世界的区域指定时间入场券，可以在抵达前就确定入区时段。",
     snw: "包含——额外支付的费用主要就是为了这一入场资格",
     price: VARIANT_PRICE,
-    bestFor: "超级任天堂世界就是这趟旅行理由的人",
+    bestFor: "专程为了超级任天堂世界而来的游客",
   },
 ];
 
@@ -125,7 +125,7 @@ const pricingRows = [
     source: "Universal Express Pass 页面，usj.co.jp",
   },
   {
-    what: "这套做法实施多久了",
+    what: "这种定价方式实行多久了",
     usj: "快速通行证自 2018 年起即采用类似的需求定价制度，目前没有变更计划。",
     source: "《Pricing for Studio Passes to Change》，2026年6月30日，usj.co.jp",
   },
@@ -136,7 +136,7 @@ const pricingRows = [
   },
   {
     what: "USJ 官方建议",
-    usj: "价格可能上涨，请尽早购买。",
+    usj: "价格可能上涨，建议尽早购买。",
     source: "《Pricing for Studio Passes to Change》，2026年6月30日，usj.co.jp",
   },
 ];
@@ -187,14 +187,14 @@ const needRows = [
     why: "日本本地游客与海外游客的需求叠加，每天的配额又有上限。这些日子，你想要的版本最有可能已经售罄。",
   },
   {
-    date: "25 周年与冬季假期日期",
+    date: "25 周年庆期间及寒假期间",
     verdict: "入园日期一开售就买",
     why: `2026 年是 USJ 的 25 周年，USJ 官方新闻稿也在2026年9月14日推出 Holiday Kids Free Pass，邀请全日本的儿童今冬免费入园——同样的日期会有更多家庭，于${CHECKED_USJ}查阅。`,
   },
   {
     date: "主要为超级任天堂世界而去",
     verdict: "买含区域入场的版本",
-    why: "这是在抵达乐园前就能确定进入该区域时段的唯一方式。免费的方式确实存在，但那是当天在园内先到先得。",
+    why: "这是在抵达乐园前就能确定该区域入场时段的唯一方式。免费的方式确实存在，但那是当天在园内先到先得。",
   },
 ];
 
@@ -225,7 +225,7 @@ const buyRows = [
     what: "单独销售的快速通行证，作为第二个购买渠道",
     opens: "以商品页显示的日期为准",
     change: "见商品页自己的取消条款",
-    note: "第一个渠道在入园日期已售罄时值得看看——除了每天的总名额有限外，名额还会分配给不同销售渠道。",
+    note: "如果第一个渠道已售罄该日期的门票，可以来这里看看——除了每天的总名额有限外，名额还会分配给不同销售渠道。",
   },
   {
     where: "当天在乐园",
@@ -242,12 +242,12 @@ const steps = [
     desc: "这页的其他内容都以日期为准。USJ 已不在园区入口销售当日票，所以 Studio Pass 要网上购买——而它正是快速通行证不包含的入园票。",
   },
   {
-    title: "判断这个日期需不需要快速通行证",
+    title: "判断当天是否需要购买快速通行证",
     desc: "参考上面的“买还是不买”表。人少的工作日常常不需要；周末、日本法定节假日或周年日期就需要。",
   },
   {
     title: "确认版本是否包含超级任天堂世界",
-    desc: "区域入场资格属于额外权益，并非所有版本都包含。如果主要为超级任天堂世界而去，就买注明含区域指定时间入场券的版本。",
+    desc: "区域入场资格属于额外权益，并非所有版本都包含。如果主要是为了超级任天堂世界而去，就买注明含区域指定时间入场券的版本。",
   },
   {
     title: "出发前先安装官方 USJ App",
@@ -262,7 +262,7 @@ const steps = [
 const faqItems: FaqItem[] = [
   {
     q: "USJ 快速通关和 fast pass 是一回事吗？",
-    a: `实际上是。日本环球影城付费缩短排队的票叫 Universal Express Pass（快速通行证），很多游客搜索时用的是“USJ fast pass”这个说法；USJ 官方的门票页面没有另外列出名为 Fast Pass 的商品。它主要分为快速通行证 4 和快速通行证 7，只限一个日期使用，同一天还需要 Studio Pass。于${CHECKED_USJ}在 usj.co.jp 查阅。`,
+    a: `是的，两者指的是同一种通行证。日本环球影城付费缩短排队的票叫 Universal Express Pass（快速通行证），很多游客搜索时用的是“USJ fast pass”这个说法；USJ 官方的门票页面没有另外列出名为 Fast Pass 的商品。它主要分为快速通行证 4 和快速通行证 7，只限一个日期使用，同一天还需要 Studio Pass。于${CHECKED_USJ}在 usj.co.jp 查阅。`,
   },
   {
     q: "USJ 门票一定要提前买吗？",
@@ -274,7 +274,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "快速通行证 4 和快速通行证 7 有什么区别？",
-    a: "数字代表通行证包含的项目数量——四个或七个。USJ 把快速通行证 4 描述为用于畅玩热门必玩项目的那一款，快速通行证 7 则是两者中包含项目更多的。实际包含的项目按版本和日期固定，超级任天堂世界的区域入场也只有注明包含的版本才有，所以购买前请确认入园当天的具体内容。",
+    a: "数字代表通行证包含的项目数量——四个或七个。USJ 把快速通行证 4 描述为用于畅玩热门必玩项目的那一款，快速通行证 7 则包含更多游乐项目。实际包含的项目按版本和日期固定，超级任天堂世界的区域入场也只有注明包含的版本才有，所以购买前请确认入园当天的具体内容。",
   },
   {
     q: "没有 Studio Pass 可以只用快速通行证吗？",
@@ -290,7 +290,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "USJ 快速通行证可以改日期或退款吗？",
-    a: `请按无法改期来安排行程。USJ 官方快速通行证页面写明，提前购买的通行证只在票面日期有效；指定时间的设施如果迟到，不退款，也不能改到其他时段。于${CHECKED_USJ}查阅。`,
+    a: `安排行程时，请以无法改期为前提。USJ 官方快速通行证页面写明，提前购买的通行证只在票面日期有效；指定时间的设施如果迟到，不退款，也不能改到其他时段。于${CHECKED_USJ}查阅。`,
   },
   {
     q: "怎么进超级任天堂世界？",
@@ -306,7 +306,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "从关西机场或大阪站如何前往 USJ？",
-    a: `车站是 JR 梦咲线（樱岛线）的环球城站，通常在西九条换乘，大阪观光局说从大阪站到乐园约 20 分钟。从关西机场没有直达列车：JR 西日本的 HARUKA 无需换乘直达天王寺、大阪、新大阪和京都——以短期滞在身份入境的外国护照持有人可购买的优惠单程票，截至2026年10月31日，到天王寺 ¥1,300、到大阪或新大阪 ¥1,800，2026年11月1日起调整为 ¥1,600 和 ¥1,900——或坐南海 Rapi:t 到难波，最快 34 分钟，除车费外另需成人 ¥700 的特急券。之后都坐环状线到西九条，再换乘梦咲线。所有数字于${CHECKED}查阅。`,
+    a: `最近的车站是 JR 梦咲线（樱岛线）的环球城站，通常在西九条换乘，大阪观光局说从大阪站到乐园约 20 分钟。从关西机场没有直达列车：JR 西日本的 HARUKA 无需换乘直达天王寺、大阪、新大阪和京都——以“短期停留”身份入境的外国护照持有人可购买的优惠单程票，截至2026年10月31日，到天王寺 ¥1,300、到大阪或新大阪 ¥1,800，2026年11月1日起调整为 ¥1,600 和 ¥1,900——或坐南海 Rapi:t 到难波，最快 34 分钟，除车费外另需成人 ¥700 的特急券。之后均需乘坐大阪环状线到西九条，再换乘梦咲线。所有数字于${CHECKED}查阅。`,
   },
   {
     q: "USJ 快速通行证当天要怎么使用？",
@@ -333,17 +333,17 @@ const expressSameDayCopy: Pick<KlookTripPrepItem, "label" | "ctaLabel" | "why">[
   {
     label: "The Park Front Hotel（日本环球影城官方酒店）",
     ctaLabel: "查看 The Park Front Hotel →",
-    why: "就在乐园正门外的 USJ 官方酒店——使用快速通行证当天，最好提前入园。快速通行证售罄的那些人多的日子，大门旁的酒店房间也最先订满。",
+    why: "就在乐园正门外的 USJ 官方酒店——使用快速通行证当天，最好早点入园。快速通行证售罄的那些人多的日子，大门旁的酒店房间也最先订满。",
   },
   {
     label: "Hotel Kintetsu Universal City",
     ctaLabel: "查看 Hotel Kintetsu Universal City →",
-    why: "另一家 USJ 官方酒店，在环球城站旁边，适合入园当天 The Park Front Hotel 已订满的情况。",
+    why: "另一家 USJ 官方酒店，在环球城站旁边，如果入园当天 The Park Front Hotel 已订满，可以考虑这家酒店。",
   },
   {
     label: "关西机场利木津巴士（单程）",
     ctaLabel: "查看机场利木津巴士 →",
-    why: "该产品包含关西机场与日本环球影城之间的巴士线路，抵达当天不用拖着行李换乘火车。",
+    why: "该产品包含关西机场往返日本环球影城的巴士服务，抵达当天不用拖着行李换乘火车。",
   },
   {
     label: "Klook 日本 eSIM 流量卡",
@@ -388,11 +388,11 @@ const sameDayPrep: KlookTripPrepItem[] = usjSameDayPrep.map((item, i) => withKlo
 const stayCopy: Pick<KlookStayArea, "area" | "why">[] = [
   {
     area: "环球城（Universal City）",
-    why: "按大阪观光局发布的数字，从环球城站步行到乐园大门约五分钟——想在开园前就到达乐园门口的那天，这正是住这一区的全部理由。",
+    why: "按大阪观光局发布的数字，从环球城站步行到乐园大门约五分钟——如果想在开园前就到达乐园门口，这正是选择住在这一区的全部理由。",
   },
   {
     area: "梅田／大阪站",
-    why: "梦咲线直通列车的始发站：观光局说从大阪站到乐园约 20 分钟，而且其余行程也方便利用 JR 主要线路——京都线、神户线、环状线，以及新大阪的新干线。",
+    why: "可乘坐直通梦咲线列车的出发站：观光局说从大阪站到乐园约 20 分钟，而且其余行程也方便利用 JR 主要线路——京都线、神户线、环状线，以及新大阪的新干线。",
   },
   {
     area: "天王寺",
@@ -414,7 +414,7 @@ const tripPrepCopy: Pick<KlookTripPrepItem, "label" | "ctaLabel" | "why">[] = [
   {
     label: "京都＋奈良一日游（清水寺、伏见稻荷和奈良公园）",
     ctaLabel: "查看京都奈良一日游 →",
-    why: "专程专程飞到大阪玩主题乐园的游客，第二天很适合安排的行程：清水寺、伏见稻荷和奈良公园一次订好，从大阪出发，路线完全不用自己规划。",
+    why: "专程飞到大阪玩主题乐园的游客，第二天很适合安排的行程：一次预订清水寺、伏见稻荷和奈良公园的游览行程，从大阪出发，路线完全不用自己规划。",
   },
   {
     label: "Klook 日本 eSIM 流量卡",
@@ -439,17 +439,17 @@ const highRateTopPrep: KlookTripPrepItem[] = [
   withKlookLocale(usjHighRateTopPrep[0], LOCALE, {
     label: "京都・奈良一日游（清水寺・伏见稻荷・奈良公园）",
     ctaLabel: "查看京都・奈良一日游 →",
-    why: "专程飞到大阪玩 USJ 的游客，第二天最常安排的行程：从大阪出发，一天游览清水寺、伏见稻荷和奈良公园。",
+    why: "专程飞到大阪玩 USJ 的游客，第二天通常会安排这样的行程：从大阪出发，一天游览清水寺、伏见稻荷和奈良公园。",
   }),
   withKlookLocale(usjHighRateTopPrep[1], LOCALE, {
     label: "关西机场 ⇄ 大阪酒店行李配送（LuggAgent）",
     ctaLabel: "查看行李配送 →",
-    why: "行李可单独在关西机场与大阪酒店之间配送，到达日或离开日也能不拖行李箱游览。预订前请确认酒店是否在服务范围内，以及交寄截止时间。",
+    why: "行李可单独在关西机场与大阪酒店之间配送，抵达或离开当天，也能不用拖着行李箱游览。预订前请确认酒店是否在服务范围内，以及交寄截止时间。",
   }),
   withKlookLocale(usjHighRateTopPrep[2], LOCALE, {
     label: "JR 西日本关西铁路周游券（1～4 天）",
     ctaLabel: "查看 JR 关西周游券 →",
-    why: "按 Klook 商品说明，可不限次乘坐大阪・京都・神户・奈良一带的 JR 西日本的普通列车和快速列车，以及从关西机场出发的 HARUKA，适合自己去京都或奈良的日子。",
+    why: "根据 Klook 商品说明，可不限次数乘坐大阪、京都、神户、奈良一带的 JR 西日本普通列车和快速列车，以及从关西机场出发的 HARUKA，适合自己去京都或奈良的日子。",
   }),
 ];
 const highRateFaqPrep: KlookTripPrepItem[] = [
@@ -466,7 +466,7 @@ const highRateFaqPrep: KlookTripPrepItem[] = [
   withKlookLocale(osakaSightsHighRatePrep[2], LOCALE, {
     label: "大阪城・梅田蓝天大厦・道顿堀水上观光船一日游",
     ctaLabel: "查看一日游 →",
-    why: "由导游带领，一天走完大阪城、梅田展望台和道顿堀水上观光船，路线不用自己安排。",
+    why: "由导游带领，一天游览大阪城、梅田展望台，并体验道顿堀水上观光船，路线不用自己安排。",
   }),
 ];
 
@@ -520,7 +520,7 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             <strong>环球影城快速通关（Universal Express Pass，即“fast pass”）2026 年主要分为快速通行证 4（4 个项目）和快速通行证 7（7 个项目），没有固定价格，价格按入园日期浮动、在结账时显示。</strong>
-            每张只限一个日期使用，约在入园日前 2 个月开售、每天限量、经常提前售罄，而且不是入园票——同一天还需要 Studio Pass。
+            每张仅限指定日期使用，约在入园日前 2 个月开售、每天限量、经常提前售罄，而且不是入园票——同一天还需要 Studio Pass。
             周末、日本法定节假日或寒假期间入园就买快速通行证，人少的工作日通常只买 Studio Pass 就够了（于{CHECKED_USJ}及{CHECKED_TODAY}在 usj.co.jp 查阅）。
           </p>
           <p className={styles.bodyText}>
@@ -540,7 +540,7 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>这些日子加快速通行证</p>
-                <p className={styles.verdictStatValue}>周末／节假日／周年</p>
+                <p className={styles.verdictStatValue}>周末／节假日／周年庆期间</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>价格</p>
@@ -552,7 +552,7 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>结论：</strong>先买 Studio Pass 入园，再按日期决定快速通行证。如果只有一天时间，而且赶上游客较多的日子，又想体验主要热门项目，就选快速通行证 7；入园当天游客较少，或只想体验几个最热门的项目，选快速通行证
+              <strong>结论：</strong>先买 Studio Pass 入园，再按日期决定快速通行证。如果只有一天时间，而且赶上游客较多的日子，又想体验主要热门项目，就选快速通行证 7；入园当天游客较少，或只想玩几个最热门的项目，选快速通行证
               4；如果超级任天堂世界是这趟的重点，选含区域入场的版本。
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
@@ -586,8 +586,8 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             the bookings that share its date. */}
         <KlookTripPrep
           label="同一天预订"
-          heading="和快速通行证同一天要订的项目"
-          intro="购买快速通行证时，需要确定入园日期。在它会售罄的那些人多的日子，乐园大门旁的官方合作酒店也会订满——所以酒店、从关西机场出发的交通，以及使用乐园官方 App 所需的上网套餐，都值得同一天安排好。"
+          heading="需要与快速通行证一起预订的项目"
+          intro="购买快速通行证时，需要确定入园日期。在快速通行证容易售罄的热门日期，乐园大门旁的官方合作酒店也会订满——所以酒店、从关西机场出发的交通，以及使用乐园官方 App 所需的上网套餐，都值得同一天安排好。"
           items={expressSameDayPrep}
         />
 
@@ -613,11 +613,11 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <span className={styles.sectionLabel}>通行证介绍<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>日本环球影城快速通行证是什么？</h2>
           <p className={styles.bodyText}>
-            它是绑定日期的加购项目，可以在指定游乐项目使用快速通道代替普通排队，缩短排队时间。它<strong>不是</strong>入园票：USJ
+            这是一种指定日期使用的额外付费服务，可以在指定游乐项目使用快速通道代替普通排队，缩短排队时间。它<strong>不是</strong>入园票：USJ
             官方快速通行证页面说明，还需另购乐园门票，所以同一天必须有 Studio Pass 或年卡。于{CHECKED_USJ}查阅。
           </p>
           <p className={styles.bodyText}>
-            比较版本之前还有两个细节。通行证包含的项目中，有些指定使用时间，有些没有——对于未指定使用时间的项目，USJ 表示可在营业时间内随时使用——使用时在设施的快速通行证入口出示二维码。另外，通行证只适用于票面列出的项目，因此，选择哪个版本，比单看通行证上的项目数量更重要。
+            比较不同版本之前，还需要了解两个细节。通行证包含的项目中，有些指定使用时间，有些没有——对于未指定使用时间的项目，USJ 表示可在营业时间内随时使用——使用时在设施的快速通行证入口出示二维码。另外，通行证只适用于票面列出的项目，因此，选择哪个版本，比只看通行证包含的项目数量更重要。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -668,8 +668,8 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             官方的门票页面没有另外列出名为 Fast Pass 的商品。USJ 另外两种免费缩短一天排队的方式，又是别的东西：
           </p>
           <ul className={styles.bodyList}>
-            <li><strong>单人乘坐（Single Rider）：</strong>另一条队伍，与同行者分开、填补空位；不是任何时候都开放。</li>
-            <li><strong>区域指定时间入场券（官方 App）：</strong>进入超级任天堂世界的指定时段，当天在园内领取——它不会缩短游乐项目的排队。</li>
+            <li><strong>单人乘坐（Single Rider）：</strong>使用单独的排队通道，与同行者分开乘坐，填补空位；不是任何时候都开放。</li>
+            <li><strong>区域指定时间入场券（官方 App）：</strong>可在指定时段进入超级任天堂世界，需在入园当天于园内领取——它不会缩短游乐项目的排队。</li>
           </ul>
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
             出自 USJ 的快速通行证、FAQ 和指定时间入场页面，于{CHECKED_USJ}及{USE_CHECKED}查阅。
@@ -681,7 +681,7 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <h2 className={styles.sectionTitle}>2026 年快速通行证多少钱？</h2>
           <p className={styles.bodyText}>
             日本环球影城快速通行证在 2026 年没有统一的固定价格：USJ 按入园日期和种类定价，当天的价格在结账时显示。没有统一价格是 USJ 官方的定价规则，并非本站未提供具体价格：它的快速通行证页面说，有效快速通行证的种类和价格因日期而异；2026年6月30日关于
-            Studio Pass 定价的公告也说，快速通行证自 2018 年起采用需求定价制度，目前没有变更计划。能用来规划的是定价规则，所以下表列出的就是这些规则。
+            Studio Pass 定价的公告也说，快速通行证自 2018 年起采用需求定价制度，目前没有变更计划。因此，规划预算时可以参考定价规则，下表列出了具体规则。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -717,7 +717,7 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <span className={styles.sectionLabel}>选哪个版本<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>USJ 快速通行证该买哪一种（4 还是 7）？</h2>
           <p className={styles.bodyText}>
-            如果是第一次来，而且赶上游客较多的日子，就选快速通行证 7；入园当天游客较少、游玩时间有限，或是第二次来只想体验几个最热门的项目，选快速通行证
+            如果是第一次来，而且赶上游客较多的日子，就选快速通行证 7；入园当天游客较少、游玩时间有限，或是第二次来只想玩几个最热门的项目，选快速通行证
             4。数字代表通行证包含的项目数量，具体项目按版本和日期固定——所以请看入园当天的具体内容，而不是票面上的数字。
           </p>
           <div className={styles.tableWrap}>
@@ -824,7 +824,7 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <span className={styles.sectionLabel}>售罄<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>USJ 快速通行证什么时候会售罄？</h2>
           <p className={styles.bodyText}>
-            当天的名额全部售完时——USJ 官方网站注明每天数量有限、经常提前售罄，所以目前没有“提前多少天就一定能买到”的说法，只能越早越好。可购买期间大约是两个月，这是最需要了解的一点。
+            当天的名额全部售完时——USJ 官方网站注明每天数量有限、经常提前售罄，所以目前没有“提前多少天就一定能买到”的保证，因此越早购买越好。预售期大约为两个月，这是最需要了解的一点。
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -849,7 +849,7 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            实际上，这让快速通行证成为订完机票和住宿后第一个要订的东西，而不是最后一个。这时就值得再查一个购票渠道：除了每天的总名额有限外，名额还会分配给不同销售渠道，所以一个网站售罄的日期，不一定所有渠道都售罄了。
+            因此，订好机票和住宿后，应优先购买快速通行证，而不是留到最后。这时就值得再查一个购票渠道：除了每天的总名额有限外，名额还会分配给不同销售渠道，所以一个网站售罄的日期，不一定所有渠道都售罄了。
           </p>
         </section>
 
@@ -909,12 +909,12 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <span className={styles.sectionLabel}>当天使用<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>USJ 快速通行证当天怎么用？</h2>
           <ul className={styles.bodyList}>
-            <li><strong>指定时间的设施：</strong>部分设施的时间印在票上，须按该时间前往。迟到不退款，也不能改时段。</li>
-            <li><strong>不指定时间的设施：</strong>其余项目在营业时间内随时可用。</li>
+            <li><strong>指定时间的设施：</strong>部分项目的指定时间印在票上，须按指定时间前往。迟到不退款，也不能改时段。</li>
+            <li><strong>无指定时间的项目：</strong>其余项目在营业时间内随时可用。</li>
             <li><strong>乘坐时：</strong>在快速通行证入口向工作人员出示显示完整 QR 码的电子票页面。</li>
-            <li><strong>同一栏列出的项目只能选择其中一项：</strong>同一格印有多项设施时，只能使用其中一项。</li>
+            <li><strong>同一栏列出多个项目时，只能选择其中一项：</strong>同一格列出多个项目时，只能选择其中一个。</li>
             <li><strong>每人一张：</strong>票券为个人使用，同行每人都需要自己的票。</li>
-            <li><strong>单人乘坐：</strong>与快速通行证无关的另一套制度：与同行者分开乘坐以填补空位。部分日期与时段不能使用，请询问各设施的工作人员。</li>
+            <li><strong>单人乘坐：</strong>与快速通行证无关的另一套制度：与同行者分开乘坐，用来填补空座位。部分日期与时段不能使用，请询问各设施的工作人员。</li>
           </ul>
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
             依 USJ 快速通行证与 FAQ 页面的搜索索引内容，2026 年 11 月 6 日查阅。时间可能变动，请以你票上的时间为准。
@@ -929,9 +929,9 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             官方指定时间入场页面描述了两种进入该区域的方式：提前通过特定的快速通行证或特定旅行社获得，或在入园后通过官方 USJ App 领取。
           </p>
           <p className={styles.bodyText}>
-            也可以通过 App 免费领取入场券，但相关领取规定已经收紧。USJ 表示，自2026年1月5日起，必须用官方 App 领取区域指定时间入场券和 Standby Entry
+            也可以通过 App 免费领取入场券，但领取规则已经更加严格。USJ 表示，自2026年1月5日起，必须用官方 App 领取区域指定时间入场券和 Standby Entry
             Ticket：先在 App 中绑定入园门票，再选择区域、人数和时段，然后在区域入口出示二维码。于{CHECKED_USJ}查阅。这是当天先到先得，也正因如此，含区域入场的快速通行证版本，是出发前就能确定超级任天堂世界入区时段的唯一方式。出发前就安装
-            App 并绑定门票——排队时才发现手机无法上网，是最容易提前避免的问题。
+            App 并绑定门票——提前做好准备，就能避免排队时才发现手机无法上网。
           </p>
         </section>
 
@@ -944,7 +944,7 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             西日本官方的乐园目的地页面把环球城站列为最近的车站，并形容乐园“就在旁边”，同日查阅。
           </p>
           <p className={styles.bodyText}>
-            步行就能到乐园，就是住这一区的全部理由。买了快速通行证的日子，你会想早点入园，而只有住在环球城，前往乐园才只需约五分钟步行。反过来的考量是其余行程：住在梅田和大阪站一带，方便利用
+            住在这一区的全部理由，就是可以步行到乐园。买了快速通行证的日子，你会想早点入园，而只有住在环球城，前往乐园才只需约五分钟步行。另一方面，还要考虑其他几天的行程：住在梅田和大阪站一带，方便利用
             JR 主要线路，而环球城的酒店集中在一小片区域，人多的日子最先订满。我们的{" "}
             <Link href="/guides/attractions/where-to-stay-in-osaka" style={linkStyle}>
               大阪住宿区域攻略（英文）
@@ -959,7 +959,7 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
 
         <KlookStayAreas
           heading="USJ 酒店搜索：按区域查看"
-          intro="还剩哪些房间、价格多少，要看日期，所以每个区域都直接链接到 Klook 该区的酒店搜索。设定 Studio Pass 的入园日期，拿环球城和其中一个 JR 沿线落脚点比较——人少的工作日区别通常在价格，周年周末区别通常在有没有房。"
+          intro="还剩哪些房间、价格多少，要看日期，所以每个区域都直接链接到 Klook 该区的酒店搜索。设定 Studio Pass 的入园日期，将环球城与 JR 沿线的其他住宿区域进行比较——游客较少的工作日，区别通常在价格；周年庆期间的周末，区别通常在是否还有空房。"
           areas={stayAreas}
         />
 
@@ -967,14 +967,14 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <span className={styles.sectionLabel}>交通<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>从关西机场或大阪站如何前往 USJ？</h2>
           <p className={styles.bodyText}>
-            USJ 在大阪西侧的此花区，车站是 JR 梦咲线（樱岛线）的环球城站——通常在西九条换乘。JR
+            USJ 在大阪西侧的此花区，最近的车站是 JR 梦咲线（樱岛线）的环球城站——通常在西九条换乘。JR
             西日本把环球城站列为乐园最近的车站，大阪观光局则说从该站步行到大门约五分钟、从大阪站到乐园约 20 分钟。两者均于{CHECKED}查阅。JR
             西日本的英文网站没有公布梦咲线段的门到门时间，所以这里不列。
           </p>
           <p className={styles.bodyText}>
-            从<strong>关西机场</strong>前往市区主要有两种交通方式可选，但都不会直达乐园。JR 西日本的 HARUKA 从机场无需换乘直达天王寺、大阪、新大阪和京都；它的优惠单程票——仅向以“短期停留”（Temporary Visitor）身份入境的外国护照持有人——截至2026年10月31日，到天王寺
+            从<strong>关西机场</strong>前往市区主要有两种交通方式可选，但都不会直达乐园。JR 西日本的 HARUKA 从机场出发，无需换乘即可直达天王寺、大阪、新大阪和京都；它的优惠单程票——仅向以“短期停留”（Temporary Visitor）身份入境的外国护照持有人——截至2026年10月31日，到天王寺
             ¥1,300、到大阪或新大阪 ¥1,800，2026年11月1日起调整为 ¥1,600 和 ¥1,900，儿童半价。南海 Rapi:t 无需换乘到难波，最快 34
-            分钟，除普通车费外另需特急券，成人 ¥700、儿童 ¥350——在车上购买贵 ¥300，使用无纸化购票（ticketless）方式可便宜 ¥150。JR 西日本和南海的数字均于{CHECKED}查阅。不管哪一种，之后都坐环状线到西九条，再换乘梦咲线。
+            分钟，除普通车费外另需特急券，成人 ¥700、儿童 ¥350——在车上购买贵 ¥300，使用无纸化购票（ticketless）方式可便宜 ¥150。JR 西日本和南海的数字均于{CHECKED}查阅。不管哪一种，之后均需乘坐大阪环状线到西九条，再换乘梦咲线。
           </p>
           <p className={styles.bodyText}>
             还有一种铁路通票值得了解：JR 西日本官方的关西地区铁路周游券页面把 <strong>WEST QR Kansai Mini Pass</strong>{" "}
@@ -1014,7 +1014,7 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
         <KlookTripPrep
           label="乐园当天前后"
           heading="和 USJ 门票（Studio Pass）一起预订的项目"
-          intro="Studio Pass 让你入园；游玩当天还需要安排住宿、往返大阪市区的交通，并准备上网套餐。以下五项都能用同一个 Klook 账号，和门票一起预订。"
+          intro="Studio Pass 让你入园；游玩当天还需要安排住宿和往返大阪市区的交通，并准备上网套餐。以下五项都能用同一个 Klook 账号，和门票一起预订。"
           items={sameDayPrep}
         />
 
@@ -1058,8 +1058,8 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
 
         <GygCompare
           slug={GYG_SLUG}
-          heading="在 GetYourGuide 购买 USJ 门票和快速通行证"
-          intro="快速通行证每天限量、绑定票面日期，所以你想要的那一款常常已经售罄。GetYourGuide 单独销售快速通行证——和其他地方一样，它不含乐园入场——Studio Pass 则另外销售。如果上面的渠道在入园日期已售罄，改行程日期之前，先来这里看看还有没有票。"
+          heading="通过 GetYourGuide 购买 USJ 门票和快速通行证"
+          intro="快速通行证每天限量、绑定票面日期，所以你想要的那一款常常已经售罄。GetYourGuide 单独销售快速通行证——和其他地方一样，它不含乐园入场——Studio Pass 则另外销售。如果上述渠道已售罄该入园日期的门票，改行程日期之前，先来这里看看还有没有票。"
           listings={[gygUsjExpressPass, gygUsj]}
         />
 
@@ -1067,7 +1067,7 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>在 USJ 缩短排队时间</h2>
             <p className={styles.ctaBannerDesc}>
-              网上买 Studio Pass 入园，再加上入园当天需要的快速通行证版本——每天的配额有上限，含超级任天堂世界区域入场的版本最先售罄。
+              网上买 Studio Pass 入园，再根据入园日期购买合适的快速通行证版本——每天的配额有上限，含超级任天堂世界区域入场的版本最先售罄。
             </p>
             <div className={styles.pickCtaRow}>
               <KlookLink href={EXPRESS_PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.ctaBannerBtn}>

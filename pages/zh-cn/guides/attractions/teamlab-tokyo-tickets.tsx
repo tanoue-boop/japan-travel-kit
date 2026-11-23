@@ -59,13 +59,13 @@ const CHECKED = dateLabel(CHECKED_ISO, LOCALE);
 
 // 第一行是结论。
 const compareRows = [
-  { factor: "适合谁", planets: "带孩子同行，或想赤脚涉水体验的人", borderless: "不带孩子的首次参观者，或想穿鞋慢慢欣赏艺术的人" },
+  { factor: "适合谁", planets: "带孩子同行，或想赤脚涉水体验的人", borderless: "第一次参观 teamLab、没有带孩子的游客，或想穿鞋慢慢欣赏艺术作品的人" },
   { factor: "成人（18 岁以上）", planets: `${PLANETS_ADULT}，热门日期与时段更贵`, borderless: `${BORDERLESS_ADULT}，热门日期与时段更贵` },
   { factor: "13～17 岁", planets: "¥2,800", borderless: "¥2,800" },
   { factor: "儿童（4～12 岁）", planets: `${CHILD}；3 岁以下免费`, borderless: `${CHILD}；3 岁以下免费` },
   { factor: "需要涉水吗", planets: "需要。赤脚，水深可达成人膝盖", borderless: "不需要，可以穿鞋参观" },
   { factor: "参观时长", planets: "官方未公布；建议预留 1.5～2 小时", borderless: "约 1.5～2 小时（官方 FAQ），馆内不限时" },
-  { factor: "会售罄吗", planets: "指定时段，现场不售票，须提前网上预订", borderless: "官网注明门票可能售罄；约在参观日两个月前的 1 日开售" },
+  { factor: "会售罄吗", planets: "门票按指定时段入场，现场不售票，须提前在网上预订", borderless: "官网注明门票可能售罄；约在参观日期前两个月的 1 日开售" },
   { factor: "现场购票", planets: "现场不售票", borderless: "有余票时可现场购买，加收 ¥200" },
   { factor: "最近车站", planets: "新丰洲站（百合海鸥线）1A 出口步行 3 分钟", borderless: "神谷町站（日比谷线）5 号出口步行 2 分钟" },
   { factor: "开放时间", planets: "08:00–22:00（12/31–1/2 为 08:00–20:00）", borderless: "08:30–21:00，部分日期不同" },
@@ -74,16 +74,16 @@ const compareRows = [
 
 const whoFor = [
   {
-    title: "选 Planets 的话…",
+    title: "适合选择 Planets 的游客",
     desc: "如果带孩子同行、喜欢身体互动体验，也不介意赤脚涉水。你需要赤脚走过深及成人膝盖的水域。",
   },
   {
-    title: "选无界的话…",
+    title: "适合选择无界的游客",
     desc: "如果更想欣赏艺术，而不是涉水。这里没有固定路线，作品会在不同展区之间移动，你可以按自己的节奏游览。",
   },
   {
-    title: "两座都去，如果…",
-    desc: "如果行程中能安排出两个半天，又喜欢 teamLab。两座美术馆位于城市的不同区域，需要分别购买指定入场时段的门票，因此请错开两座场馆的预约时间。",
+    title: "哪些情况适合两座都去？",
+    desc: "如果行程中能腾出两个半天，而且喜欢 teamLab 的作品。两座美术馆位于城市的不同区域，需要分别购买指定入场时段的门票，因此请错开两座场馆的预约时间。",
   },
 ];
 
@@ -94,15 +94,15 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "2026 年东京 teamLab 门票多少钱？",
-    a: `成人票 teamLab Planets ${PLANETS_ADULT}、teamLab 无界 ${BORDERLESS_ADULT}，热门日期与时段更贵（${CHECKED} 查阅 teamlab.art）。13～17 岁 ¥2,800，4～12 岁两座都是 ${CHILD}，3 岁以下免费。两座都去，成人至少 ¥7,200。`,
+    a: `成人票 teamLab Planets ${PLANETS_ADULT}、teamLab 无界 ${BORDERLESS_ADULT}，热门日期与时段更贵（${CHECKED} 查阅 teamlab.art）。13～17 岁 ¥2,800，4～12 岁两座都是 ${CHILD}，3 岁以下免费。如果两座都去，成人门票合计至少 ¥7,200。`,
   },
   {
     q: "teamLab 门票会售罄吗？",
-    a: "会。无界官网注明门票指定日期与时段、可能售罄，建议行程确定后尽快购买；门票约在参观日两个月前的 1 日开售。Planets 现场完全不售票，必须提前在网上预订。",
+    a: "会。无界官网注明门票指定日期与时段、可能售罄，建议行程确定后尽快购买；门票约在参观日期前两个月的 1 日开售。Planets 现场完全不售票，必须提前在网上预订。",
   },
   {
     q: "Planets 和无界可以同一天去吗？",
-    a: "可以，因为每张票都有各自的日期和时间。但两座分别位于丰洲和麻布台之丘，teamLab 官方称无界参观约需 1.5～2 小时。两个入场时间之间请至少留出这段时间加上路程，或者分成两个半天。",
+    a: "可以，因为每张票都有各自的日期和时间。但两座分别位于丰洲和麻布台之丘，teamLab 官方称无界参观约需 1.5～2 小时。安排两个入场时段时，请至少预留这段参观时间以及两馆之间的交通时间，或者分成两个半天。",
   },
   {
     q: "在哪里买 teamLab 门票最便宜？",
@@ -112,12 +112,12 @@ const faqItems: FaqItem[] = [
 
 const subwayTour = withKlookLocale(tokyoSubwayTicket, LOCALE, {
   title: "东京地铁通票（24／48／72 小时）",
-  desc: "可不限次数乘坐东京地铁及都营地铁所有线路，抵达后领取，无需排队购票",
+  desc: "可不限次数乘坐东京地铁及都营地铁所有线路，抵达后领取车票，无需在售票机前排队购票",
 });
 const tripTours = [
   withKlookLocale(tokyoSightseeingBusTour, LOCALE, {
     title: "东京观光巴士一日游",
-    desc: "提供讲解的环线观光行程，游览皇居庭园、浅草与东京晴空塔，提供多语种语音讲解",
+    desc: "配有讲解服务的环线观光行程，游览皇居庭园、浅草与东京晴空塔，提供多语种语音讲解",
   }),
   withKlookLocale(fujiDayTour, LOCALE, {
     title: "东京出发富士山一日游",
@@ -167,7 +167,7 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
             东京有两座 teamLab 美术馆，门票需分别购买。这里说明两者的区别，以及该选哪一座。
           </p>
           <div className={styles.heroBadges}>
-            {[`更新于 ${updatedLabel}`, "官方票价", "并排比较"].map((t) => (
+            {[`更新于 ${updatedLabel}`, "官方票价", "两馆对比"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -186,7 +186,7 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           <p className={styles.bodyText}>
             <strong>东京两座 teamLab 美术馆的门票需要分别购买：丰洲的 teamLab Planets 成人 ¥3,800 起，麻布台之丘的 teamLab 无界成人 ¥3,400 起</strong>，
             4～12 岁儿童票两座都是 ¥1,500，3 岁以下免费（{CHECKED} 查阅官网）。teamLab 官方称无界参观约需 1.5～2 小时，Planets
-            未公布时长，同样按 1.5～2 小时安排即可。带孩子就选赤脚涉水的 Planets；如果是第一次参观且不带孩子，就选可以穿鞋参观、有余票时也能现场购票的无界。
+            未公布时长，同样按 1.5～2 小时安排即可。带孩子就选赤脚涉水的 Planets；如果是第一次参观 teamLab，而且没有带孩子，就选无界：可以穿鞋参观，有余票时也能现场购票。
           </p>
         </section>
 
@@ -258,7 +258,7 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
 
         <KlookTourPicks
           heading="丰洲与麻布台之丘之间怎么走"
-          intro="无界所在的神谷町站属于东京地铁日比谷线，东京地铁通票可在 24／48／72 小时内不限次数乘坐东京地铁及都营地铁所有线路。Planets 所在的新丰洲站属于百合海鸥线，通票不能乘坐，可改用有乐町线丰洲站。"
+          intro="前往无界可在东京地铁日比谷线神谷町站下车，东京地铁通票可在 24／48／72 小时内不限次数乘坐东京地铁及都营地铁所有线路。前往 Planets 可在百合海鸥线新丰洲站下车，但该线路不适用这张通票，可改用有乐町线丰洲站。"
           tours={[subwayTour]}
         />
 
@@ -268,8 +268,8 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>只去 Planets<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>已经决定去 teamLab Planets 了吗？</h2>
           <p className={styles.bodyText}>
-            丰洲的 teamLab Planets 只卖指定时段门票，成人 {PLANETS_ADULT}，现场不售票，所以在网上选好日期和入场时间就是预约。
-            各日期票价、Premium Pass、涉水穿着以及从新丰洲站或丰洲站过去的路线，都在 Planets 门票攻略里。
+            丰洲的 teamLab Planets 只出售指定入场时段的门票，成人 {PLANETS_ADULT}，现场不售票，因此需要在网上选择参观日期和入场时间，完成预订。
+            各日期票价、Premium Pass、涉水区域的着装要求，以及从新丰洲站或丰洲站前往美术馆的路线，都在 Planets 门票攻略里。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <Link href="/zh-cn/guides/attractions/teamlab-planets-tickets" className={styles.verdictBtn}>
@@ -282,8 +282,7 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>只去无界<span className="sr-only">：</span></span>
           <h2 className={styles.sectionTitle}>已经决定去 teamLab 无界了吗？</h2>
           <p className={styles.bodyText}>
-            麻布台之丘的 teamLab 无界出售成人 {BORDERLESS_ADULT} 的指定时段门票和不指定入场时间的 Flexible Pass，约在参观日两个月前的
-            1 日开售。开售日期、Flexible Pass、闭馆时间变动和现场购票，请看无界门票攻略。
+            麻布台之丘的 teamLab 无界出售成人 {BORDERLESS_ADULT} 的指定时段门票和不指定入场时间的 Flexible Pass，约在参观日期前两个月的 1 日开售。开售日期、Flexible Pass、闭馆时间变动和现场购票，请看无界门票攻略。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <Link href="/zh-cn/guides/attractions/teamlab-borderless-tickets" className={styles.verdictBtn}>

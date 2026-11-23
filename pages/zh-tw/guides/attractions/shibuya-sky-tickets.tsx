@@ -114,7 +114,7 @@ const bookingRows = [
   },
   {
     q: "現場買得到票嗎？",
-    a: "買得到——14 樓售票櫃檯販售，15:00 前入場 ¥3,000、15:00 起 ¥3,700。售票櫃檯無法事先保留時段，所以它是備案，不是計畫。",
+    a: "買得到——14 樓售票櫃檯販售，15:00 前入場 ¥3,000、15:00 起 ¥3,700。售票櫃檯無法事先保留入場時段，所以現場購票只能當作備案，不適合當成主要購票方式。",
   },
   {
     q: "哪些票只在售票櫃檯賣？",
@@ -133,7 +133,7 @@ const deckRows = [
   {
     deck: "東京晴空塔",
     height: "350 公尺與 450 公尺展望台（塔高 634 公尺）",
-    highlight: "最高的視野、玻璃地板區；天氣晴朗時看得到富士山",
+    highlight: "高空全景視野、玻璃地板區；天氣晴朗時看得到富士山",
     price: `${priceLabel(PRICES.tokyoSkytree.adult, LOCALE)}（Floor 350）`,
     area: "押上，淺草附近",
   },
@@ -156,7 +156,7 @@ const deckRows = [
 const whoFor = [
   {
     title: "選日落時段，如果……",
-    desc: "你想拍那張經典照片，而且能提早規劃。不論哪個月份，日落都落在 ¥3,400 那一段，所以你要考慮的只有「買不買得到」——而這正是最先售罄的時段。建議在日落前 30～60 分鐘入場，一次看到白天、黃金時段與城市亮燈。",
+    desc: "你想拍那張經典照片，而且能提早規劃。不論哪個月份，日落都落在 ¥3,400 那一段，所以你要考慮的只有「買不買得到」——而這正是最先售罄的時段。建議在日落前 30～60 分鐘入場，一次欣賞白天景色、夕陽餘暉與城市燈光亮起的夜景。",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M17 18a5 5 0 0 0-10 0" />
@@ -171,7 +171,7 @@ const whoFor = [
   },
   {
     title: "選 15:00 前，如果……",
-    desc: "價格比光線重要。10:00～14:59 入場是 ¥2,700，對比 ¥3,400——同一個屋頂便宜 ¥700，而且較早的時段最容易臨時買到。在晴朗乾燥的日子，白天的視野看得最遠，包括富士山。",
+    desc: "價格比光線重要。10:00～14:59 入場是 ¥2,700，對比 ¥3,400——同一個屋頂便宜 ¥700，而且較早的時段最容易臨時買到。天氣晴朗、空氣乾燥時，白天的能見度最好，連富士山都看得見。",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="4" />
@@ -252,7 +252,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "澀谷 SKY 和晴空塔怎麼選？",
-    a: `澀谷 SKY 賣的是體驗與照片：十字路口上方約 229 公尺的開放式屋頂，日落時最美，15:00 前 ¥2,700、15:00 後 ¥3,400。東京晴空塔賣的是高度與視距：350 公尺與 450 公尺展望台、玻璃地板區與遠方的景色，Floor 350 ${priceLabel(PRICES.tokyoSkytree.adult, LOCALE)}。想拍十字路口、感受氣氛就選澀谷 SKY；想要最高、最廣的全景就選晴空塔。`,
+    a: `澀谷 SKY 的特色是觀景體驗與拍照：十字路口上方約 229 公尺的開放式屋頂，日落時最美，15:00 前 ¥2,700、15:00 後 ¥3,400。東京晴空塔的特色是高度與遠眺視野：350 公尺與 450 公尺展望台、玻璃地板區與遠方的景色，Floor 350 ${priceLabel(PRICES.tokyoSkytree.adult, LOCALE)}。想拍十字路口、感受氣氛就選澀谷 SKY；想要最高、最廣的全景就選晴空塔。`,
   },
   {
     q: "東京有免費的展望台嗎？",
@@ -260,11 +260,11 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "澀谷 SKY 頂樓可以帶包包嗎？",
-    a: "不行。包包、背包、雨傘與自拍棒不可帶上頂樓，要先存放在 46 樓的置物櫃；手機與可放進口袋的相機沒問題。三腳架與單腳架只能在 46 樓室內使用，人多時可能被請求停止。依營運方購票 FAQ 的搜尋索引內容，2026 年 11 月 6 日查閱。",
+    a: "不行。包包、背包、雨傘與自拍棒不可帶上頂樓，要先存放在 46 樓的置物櫃；手機與可放進口袋的相機沒問題。三腳架與單腳架只能在 46 樓室內使用，人潮較多時，工作人員可能會要求停止使用。依營運方購票 FAQ 的搜尋索引內容，2026 年 11 月 6 日查閱。",
   },
   {
     q: "從澀谷 SKY 看得到富士山嗎？",
-    a: "天氣晴朗時看得到——不過高度更高的東京晴空塔機會更大。能見度取決於天氣，通常在較涼爽乾燥的月份、一天中較早的時候最好；如果你上去就是為了富士山，這也是選 ¥2,700 白天時段的理由。任何一天都沒有保證。",
+    a: "天氣晴朗時看得到——不過高度更高的東京晴空塔機會更大。能見度取決於天氣，通常在較涼爽乾燥的月份、一天中較早的時候最好；如果你特地上去看富士山，這也是選 ¥2,700 白天時段的理由。任何一天都沒有保證。",
   },
 ];
 
@@ -288,12 +288,12 @@ const sameDayPrep: KlookTripPrepItem[] = [
   withKlookLocale(shibuyaSkySameDayPrep[3], LOCALE, {
     label: "Klook 日本 eSIM 網卡",
     ctaLabel: "查看 Klook eSIM →",
-    why: "Klook 的門票是手機上的電子票，時段也是固定的——從機場開始就有網路，當天的憑證、地圖和天氣都能隨時查看。",
+    why: "Klook 的門票是手機上的電子票，時段也是固定的——一抵達機場就能上網，當天的憑證、地圖和天氣都能隨時查看。",
   }),
   withKlookLocale(shibuyaSkySameDayPrep[4], LOCALE, {
     label: "成田・羽田機場 ⇄ 東京 專車接送",
     ctaLabel: "查看機場接送 →",
-    why: "直接預約到飯店地址而不是車站，成田、羽田兩座機場都有，司機會追蹤你的航班——抵達當天就安排了晚間時段時特別實用。",
+    why: "可以直接預約接送至飯店，而不只是車站，成田、羽田兩座機場都有，司機會追蹤你的航班——抵達當天就安排了晚間時段時特別實用。",
   }),
 ];
 
@@ -307,7 +307,7 @@ const dayTripPrep: KlookTripPrepItem[] = [
   withKlookLocale(shibuyaSkyDayTripPrep[1], LOCALE, {
     label: "澀谷酒吧巡禮導覽（3 小時）",
     ctaLabel: "查看澀谷酒吧巡禮 →",
-    why: "日落時段之後那幾個小時最順理成章的安排，也是屋頂上看不到的那一面澀谷——兩間酒吧，由導遊幫你點酒。",
+    why: "看完日落後，接下來幾個小時很適合安排這項活動，也是屋頂上看不到的那一面澀谷——兩間酒吧，由導遊幫你點酒。",
   }),
   withKlookLocale(shibuyaSkyDayTripPrep[2], LOCALE, {
     label: "東京夜間酒吧巡禮導覽（新宿／澀谷）",
@@ -317,7 +317,7 @@ const dayTripPrep: KlookTripPrepItem[] = [
   withKlookLocale(shibuyaSkyDayTripPrep[3], LOCALE, {
     label: "澀谷美食與文化半日步行導覽",
     ctaLabel: "查看美食步行導覽 →",
-    why: "如果你的時段在白天，或同行有未滿 20 歲的人，這是白天、全年齡都適合的選擇——半天走訪澀谷 109、呑兵衛橫丁與宮下公園，而不是酒吧巡禮。",
+    why: "如果你的時段在白天，或同行有未滿 20 歲的人，這是白天、全年齡都適合的選擇——半天走訪澀谷 109、吞兵衛橫丁（のんべい横丁）與宮下公園，而不是酒吧巡禮。",
   }),
   withKlookLocale(shibuyaSkyDayTripPrep[4], LOCALE, {
     label: "東京地鐵通票（24／48／72小時）",
@@ -330,12 +330,12 @@ const dayTripPrep: KlookTripPrepItem[] = [
 // go-kart (5%) and the Shinjuku night food tour (6.5%). Labels reuse the blocks below; those
 // blocks drop the two items that moved up (see inTopCards).
 const sameDayCards: KlookSameDayCard[] = [
-  { ...withKlookLocale(shibuyaSkySameDayCards[0], LOCALE), label: dayTripPrep[0].label, ctaLabel: dayTripPrep[0].ctaLabel, kind: "住宿", why: "日落時段結束時天已經黑了；住在澀谷，回程走路就到。" },
+  { ...withKlookLocale(shibuyaSkySameDayCards[0], LOCALE), label: dayTripPrep[0].label, ctaLabel: dayTripPrep[0].ctaLabel, kind: "住宿", why: "看完日落時天已經黑了；如果住在澀谷，走路就能回飯店。" },
   withKlookLocale(shibuyaSkySameDayCards[1], LOCALE, {
     kind: "體驗",
     label: "澀谷街頭卡丁車（Street Kart 澀谷 Annex）",
     ctaLabel: "查看澀谷卡丁車 →",
-    why: "約 1 小時在一般道路上駛過澀谷十字路口。台灣駕照需搭配日文譯本與護照。",
+    why: "約 1 小時的街頭卡丁車體驗，沿著一般道路行駛，途經澀谷十字路口。台灣駕照需搭配日文譯本與護照。",
   }),
   { ...withKlookLocale(shibuyaSkySameDayCards[2], LOCALE), label: sameDayPrep[0].label, ctaLabel: sameDayPrep[0].ctaLabel, kind: "夜間導覽", why: "看完展望台後的夜晚：3 小時併團步行導覽，從澀谷搭山手線很快就到。" },
 ];
@@ -395,8 +395,7 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             澀谷 SKY（SHIBUYA SKY）門票（2026）： <br />票價、開放時間與日落時段
           </h1>
           <p className={styles.heroSubtitle}>
-            東京最佳的屋頂觀景視野——澀谷十字路口上方 229 公尺。兩種時段票價、提前兩週開放購票，
-            以及最容易售罄的時段。
+            東京最佳的露天觀景體驗，位於澀谷十字路口上方 229 公尺。依入場時段區分的兩種票價、提前兩週開賣的門票，以及最容易售罄的時段。
           </p>
           <div className={styles.heroBadges}>
             {[`更新於 ${updatedLabel}`, "官方票價已查核", "日落時段的開賣時間", "與晴空塔、東京鐵塔比較"].map((t) => (
@@ -416,13 +415,12 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         {/* Lead paragraph */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>澀谷 SKY 門票線上購買，成人 10:00～14:59 入場 ¥2,700，15:00～21:20 入場 ¥3,400</strong>；14 樓售票櫃檯每段貴
-            ¥300（¥3,000／¥3,700）。澀谷 SKY 每個日期在<strong>兩週前的日本時間 00:00</strong> 開賣，日落時段最先售罄，
-            所以日落時段要在你要的日期一開賣就立刻購票。澀谷 SKY 開放時間 10:00～22:30（最後入場 21:20），入場後沒有停留時間限制，
+            <strong>澀谷 SKY 門票線上購買，成人 10:00～14:59 入場 ¥2,700，15:00～21:20 入場 ¥3,400</strong>；14 樓售票櫃檯的兩個時段票價都貴 ¥300（¥3,000／¥3,700）。澀谷 SKY 每個日期在<strong>兩週前的日本時間 00:00</strong> 開賣，日落時段最先售罄，
+            所以想買日落時段的門票，最好在目標日期的票券一開賣時就立刻購買。澀谷 SKY 開放時間 10:00～22:30（最後入場 21:20），入場後沒有停留時間限制，
             多數遊客停留約 90 分鐘。
           </p>
           <p className={styles.bodyText}>
-            6～12 歲兒童票 ¥1,200，只在售票櫃檯販售；學齡前兒童免費入場。可以向營運方官網或 Klook 這類售票平台購買——自
+            6～12 歲兒童票 ¥1,200，只在售票櫃檯販售；學齡前兒童免費入場。可以透過營運方官網或 Klook 等售票平台購買——自
             2024 年 7 月起，許多海外發行的信用卡無法在官網付款。票價出自澀谷 Scramble Square 於 2025 年 2 月 27 日發布的票價調整公告
             （查核日 {CHECKED}）；票價、開放時間與停留規定已於 {LAST_CHECKED} 對照營運方官網與東京都官方觀光網站重新查核。
           </p>
@@ -477,8 +475,7 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>票價</span>
           <h2 className={styles.sectionTitle}>2026 年澀谷 SKY 門票多少錢？</h2>
           <p className={styles.bodyText}>
-            成人 15:00 前入場 ¥2,700、15:00 起 ¥3,400——在售票櫃檯購買而不是線上購買，每段再多 ¥300。這個兩段式的結構，
-            是多數攻略到現在還寫錯的地方：自 2025 年 4 月 1 日澀谷 Scramble Square 依入場時間拆分票價以來，
+            成人 15:00 前入場 ¥2,700、15:00 起 ¥3,400——在售票櫃檯購買而不是線上購買，每段再多 ¥300。這種依時段分成兩種票價的方式，至今仍有許多攻略寫錯：自 2025 年 4 月 1 日澀谷 Scramble Square 依入場時間拆分票價以來，
             澀谷 SKY 就不再只有一種票價。
           </p>
           <div className={styles.tableWrap}>
@@ -530,7 +527,7 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         <KlookTripPrep
           label="同一天要訂的"
           heading="和澀谷 SKY 門票一起預訂的項目"
-          intro="參觀澀谷 SKY 大約只需要一小時。同一天通常還需要這四項：之前的白天、中間的移動、手機網路，以及從機場進市區。"
+          intro="參觀澀谷 SKY 大約只需要一小時。同一天通常還需要安排四件事：白天的觀光行程、市區交通、手機網路，以及從機場前往市區的交通。"
           items={sameDayPrep.filter(notInTopCards)}
         />
 
@@ -539,7 +536,7 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>開放時間</span>
           <h2 className={styles.sectionTitle}>澀谷 SKY 幾點開放？最後入場是幾點？</h2>
           <p className={styles.bodyText}>
-            10:00 到 22:30，最後入場 21:20。入場時間也會影響票價：14:59 是 ¥2,700 那一段的最後入場時間，
+            10:00 到 22:30，最後入場 21:20。入場時間也會影響票價：14:59 是 ¥2,700 票價時段的最後入場時間，
             15:00 到截止前一律 ¥3,400——所以決定「我們幾點去？」時，在考慮拍照光線之前，得先考慮 ¥700 的價差。
           </p>
           <div className={styles.tableWrap}>
@@ -585,8 +582,8 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>澀谷 SKY 需要事先預約嗎？</h2>
           <p className={styles.bodyText}>
             想看日落的話，需要——而且截止時間比多數人以為的更早。每個日期在
-            <strong>剛好兩週前的日本時間 00:00</strong> 開賣，也就是台北時間前一天晚上 23:00。熱門日期的日落時段就是會售罄的那一批，
-            所以實用的原則是：你要的日期一開賣，就立刻結帳購票，而不是出發那一週才買。白天或晚間時段的空間大得多——
+            <strong>剛好兩週前的日本時間 00:00</strong> 開賣，也就是台北時間前一天晚上 23:00。熱門日期的日落時段最先售罄，
+            所以實用的原則是：你要的日期一開賣，就立刻結帳購票，而不是出發那一週才買。白天或晚間時段可選擇的空間大得多——
             但線上購票每人仍省 ¥300。
           </p>
           <div className={styles.tableWrap}>
@@ -627,7 +624,7 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>選時段</span>
           <h2 className={styles.sectionTitle}>澀谷 SKY 該買哪個時段？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            買得到就選日落時段；更看重價格就選 15:00 前；日落時段售罄就選晚間時段。東京的日落時間從 12 月中旬的 16:29
+            如果買得到票，優先選日落時段；更看重價格就選 15:00 前；日落時段售罄就選晚間時段。東京的日落時間從 12 月中旬的 16:29
             到 6 月中旬的 18:58，所以最搶手的時段並不是一整年都同一個——但它永遠落在 ¥3,400 那一段。
           </p>
           <h3 className={styles.pickName} style={{ marginTop: "1.25rem", marginBottom: "0.6rem" }}>
@@ -686,7 +683,7 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             ))}
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-            在屋頂待一小時只是一個晚上的其中一段，所以時段通常是配合當天其他安排來選的。我們把它排進了{" "}
+            在屋頂待一小時，只是當晚行程的一部分，所以時段通常是配合當天其他安排來選的。我們把它排進了{" "}
             <Link href="/guides/attractions/tokyo-3-day-itinerary" style={{ color: "var(--red)", fontWeight: 600 }}>
               東京三天行程（英文）
             </Link>
@@ -706,7 +703,7 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         <KlookTripPrep
           label="當天其他時間"
           heading="澀谷 SKY 這一天還要訂什麼？"
-          intro="展望台本身大約一小時，所以不論你在上面選了哪個時段，前後都還有大半天或一整個晚上。以下是隨著時段而來的預訂——看完之後的去處，以及涵蓋其間移動的票券。"
+          intro="展望台本身大約一小時，所以不論你在上面選了哪個時段，前後都還有大半天或一整個晚上。以下是可配合入場時段一起預訂的行程與票券——看完之後的去處，以及涵蓋其間移動的票券。"
           items={dayTripPrep.filter(notInTopCards)}
         />
 
@@ -715,7 +712,7 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>比較</span>
           <h2 className={styles.sectionTitle}>澀谷 SKY、晴空塔、東京鐵塔——該選哪個展望台？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            澀谷 SKY 的最大優勢，是能拍到經典的十字路口照片，但它既不是東京最高的展望台，也不是最便宜的——而且自 2025 年 4 月票價調整後，
+            澀谷 SKY 的最大優勢，是能拍到經典的十字路口照片，但它既不是東京最高的觀景台，票價也不是最便宜的——而且自 2025 年 4 月票價調整後，
             15:00 入場比東京鐵塔的 Top Deck Tour 還貴。要純粹的高度與富士山視野選晴空塔，要復古地標選東京鐵塔，
             想免費看全景就去新宿的東京都廳。晴空塔 350 公尺與 450 公尺展望台的票價與購票方式，請看{" "}
             <Link href="/zh-tw/guides/attractions/tokyo-skytree-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>
@@ -766,7 +763,7 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
           <ul className={styles.bodyList}>
             <li><strong>不可帶上頂樓:</strong> 包包、背包、雨傘、自拍棒。上去前先存放在 46 樓的置物櫃。</li>
             <li><strong>可以帶:</strong> 手機與可放進口袋的相機。</li>
-            <li><strong>三腳架與單腳架:</strong> 只能在 46 樓室內使用，人多時工作人員可能請你停止。頂樓與其他樓層禁止使用。</li>
+            <li><strong>三腳架與單腳架:</strong> 只能在 46 樓室內使用，人潮較多時，工作人員可能會要求停止使用。頂樓與其他樓層禁止使用。</li>
             <li><strong>天候不佳:</strong> 天氣轉壞時頂樓可能不經預告關閉，室內樓層仍開放。購票前請看清楚你的票券條款。</li>
           </ul>
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
