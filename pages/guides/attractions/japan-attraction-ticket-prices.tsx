@@ -1213,7 +1213,7 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
         </section>
 
         <p className={styles.bodyText}>
-          Fuji-Q Highland is priced by date and its entry is free; the full pass table and the bus from Shinjuku are in our <Link href="/guides/attractions/fuji-q-highland-tickets">Fuji-Q Highland tickets guide</Link>.
+          Fuji-Q Highland is priced by date and its entry is free; the 1-Day Pass against paying ¥2,000 per big coaster, the Toku-Q Pack bus bundle and the full pass table are in our <Link href="/guides/attractions/fuji-q-highland-tickets">Fuji-Q Highland tickets guide</Link>.
         </p>
 
         <EsimCtaBottom />

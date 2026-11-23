@@ -831,7 +831,10 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             for ages 3 and under, with a junior rate for 12–17 and a child rate for 4–11 on the official price list.
             Entry is by dated, timed slot, so book{" "}
             <Link href="/guides/attractions/warner-bros-studio-tour-tokyo-tickets">Harry Potter Studio Tour Tokyo tickets</Link>{" "}
-            once the family&apos;s dates are fixed.
+            once the family&apos;s dates are fixed. With teenagers who want coasters, a second day out can be
+            Fuji-Q Highland by highway bus from Shinjuku; entry is free and its Thomas Land has its own
+            cheaper pass for younger siblings, as set out in our{" "}
+            <Link href="/guides/attractions/fuji-q-highland-tickets">Fuji-Q Highland tickets</Link> guide.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

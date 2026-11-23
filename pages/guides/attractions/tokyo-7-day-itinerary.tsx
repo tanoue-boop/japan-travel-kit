@@ -596,7 +596,9 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
             Kawaguchiko if Mt. Fuji is the reason you came — but the mountain is often in cloud, so keep the day
             flexible and look at the forecast the evening before. Kamakura if you want a shorter, easier day after
             Nikko, or if you are travelling with small children. Either way, book the Kawaguchiko return bus
-            before you go; Kamakura needs no booking at all.
+            before you go; Kamakura needs no booking at all. If the group would rather ride coasters than look
+            at the lake, the same bus stops at Fuji-Q Highland, where entry is free and you pay for rides — see
+            our <Link href="/guides/attractions/fuji-q-highland-tickets">Fuji-Q Highland tickets</Link> guide.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

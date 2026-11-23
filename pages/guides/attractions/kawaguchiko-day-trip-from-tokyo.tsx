@@ -985,8 +985,9 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
             <Link href="/guides/attractions/hakone-day-trip-from-tokyo">Hakone</Link> is the easier of
             the two to do independently, because one pass covers the whole circuit. And if the roller
             coasters are the real draw,{" "}
-            <Link href="/guides/attractions/fuji-q-highland-tickets">Fuji-Q Highland</Link> is on the
-            same bus route.
+            Fuji-Q Highland is one stop before Kawaguchiko on the same bus route — entry is free, and our{" "}
+            <Link href="/guides/attractions/fuji-q-highland-tickets">Fuji-Q Highland tickets</Link> guide
+            compares the 1-Day Pass with paying per ride.
           </p>
         </section>
 

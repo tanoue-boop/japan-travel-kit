@@ -359,6 +359,11 @@ export default function MtFujiDayTripTokyoPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/kawaguchiko-day-trip-from-tokyo" style={{ color: "var(--red)", fontWeight: 600 }}>
               Tokyo to Kawaguchiko
             </Link>{" "}
+            guide. The highway bus also stops at Fuji-Q Highland; the free entry, the 1-Day Pass by date and
+            the Toku-Q Pack that bundles the bus are in our{" "}
+            <Link href="/guides/attractions/fuji-q-highland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Fuji-Q Highland tickets
+            </Link>{" "}
             guide.
           </p>
         </section>

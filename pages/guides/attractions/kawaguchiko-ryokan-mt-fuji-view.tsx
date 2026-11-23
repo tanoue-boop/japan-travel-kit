@@ -470,7 +470,10 @@ export default function KawaguchikoRyokanMtFujiViewPage({ updated }: { updated: 
           <h2 className={styles.sectionTitle}>How Do I Get to Kawaguchiko From Tokyo?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             The highway bus from Busta Shinjuku is the cheaper and quicker option on paper. The Fuji Excursion
-            train costs more but avoids road traffic. Both need a reserved seat.
+            train costs more but avoids road traffic. Both need a reserved seat. The same Shinjuku bus stops at
+            Fuji-Q Highland one stop before Kawaguchiko Station, so a night at the lake can follow a park day:
+            entry is free and the pass prices are in our{" "}
+            <Link href="/guides/attractions/fuji-q-highland-tickets">Fuji-Q Highland tickets</Link> guide.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

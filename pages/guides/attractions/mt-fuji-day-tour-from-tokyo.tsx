@@ -316,6 +316,9 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
             timetable that does not forgive a late start. If the lake is all you need, the highway bus and the
             Fuji Excursion train are compared with a tour in our{" "}
             <Link href="/guides/attractions/kawaguchiko-day-trip-from-tokyo">Tokyo to Kawaguchiko</Link> guide.
+            If the roller coasters at the foot of the mountain are the point rather than the Fifth Station, no
+            tour is needed: entry is free and the pass-or-pay-per-ride sums are in our{" "}
+            <Link href="/guides/attractions/fuji-q-highland-tickets">Fuji-Q Highland tickets</Link> guide.
           </p>
           <p className={styles.bodyText}>
             That is why the day-tour market around Fuji is so large, and why the tours look so similar at first
