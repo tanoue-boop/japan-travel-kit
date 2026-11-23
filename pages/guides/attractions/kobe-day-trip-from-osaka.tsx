@@ -503,7 +503,9 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
             Hanshin&apos;s through service is ¥600 for an adult and ¥300 for a child. Adding the onsen over the
             mountain? Our <Link href="/guides/attractions/arima-onsen-day-trip">Arima Onsen day trip</Link>{" "}
             guide has the bus times; for a castle the same day, see the{" "}
-            <Link href="/guides/attractions/himeji-castle-day-trip">Himeji Castle day trip</Link>.
+            <Link href="/guides/attractions/himeji-castle-day-trip">Himeji Castle day trip</Link>. Kobe also works as
+            the last day before a Kansai Airport flight, on the HARUKA One-way Ticket from Kobe — that is Day 5 of
+            the <Link href="/guides/attractions/kansai-5-day-itinerary">Kansai 5 day itinerary</Link>.
           </p>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             How do you get from Osaka to Kobe? Any of the three railways, and then a bus pass once you arrive. One honest note on the fare

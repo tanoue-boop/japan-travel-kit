@@ -538,6 +538,7 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
               <Link href="/guides/attractions/osaka-2-day-itinerary">Osaka 2 day itinerary</Link>. Want Kyoto
               in the same three days? See the{" "}
               <Link href="/guides/attractions/osaka-kyoto-3-day-itinerary">Osaka Kyoto 3 day itinerary</Link>.
+              Five days with Nara or Himeji and Kobe? See the <Link href="/guides/attractions/kansai-5-day-itinerary">Kansai 5 day itinerary</Link>.
               Still choosing a base? See{" "}
               <Link href="/guides/attractions/where-to-stay-in-osaka">where to stay in Osaka</Link>: Namba for Day 1 in Minami, Universal City
               for the USJ day.

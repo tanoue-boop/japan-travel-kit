@@ -1115,7 +1115,8 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
             Three days in Kansai is almost always in and out of Kansai Airport, so the arrival is the HARUKA
             to Kyoto, Shin-Osaka or Tennoji, or Nankai&apos;s Rapi:t to Namba. Every figure below is the
             operator&apos;s or the official tourism body&apos;s own published number — and one of them changes
-            on 1 November 2026.
+            on 1 November 2026. Staying five days, with Nara or Himeji and Kobe on the way out? See the{" "}
+            <Link href="/guides/attractions/kansai-5-day-itinerary">Kansai 5 day itinerary</Link>.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

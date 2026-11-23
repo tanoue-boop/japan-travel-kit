@@ -648,7 +648,9 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
           Still choosing a base? See{" "}
           <Link href="/guides/attractions/where-to-stay-in-osaka">where to stay in Osaka</Link>, and plan the days
           around it with our <Link href="/guides/attractions/osaka-2-day-itinerary">2-day Osaka itinerary</Link> or{" "}
-          <Link href="/guides/attractions/osaka-kyoto-3-day-itinerary">3-day Osaka and Kyoto itinerary</Link>.
+          <Link href="/guides/attractions/osaka-kyoto-3-day-itinerary">3-day Osaka and Kyoto itinerary</Link>; for
+          five days in and out of Kansai Airport, with Kobe on the way back, see the{" "}
+          <Link href="/guides/attractions/kansai-5-day-itinerary">Kansai 5 day itinerary</Link>.
         </p>
 
         {/* Fares */}

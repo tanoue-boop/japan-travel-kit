@@ -445,7 +445,8 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
             our <Link href="/guides/attractions/kyoto-2-day-itinerary">Kyoto 2 day itinerary</Link> covers the
             city without a day trip. If you are splitting the time between two cities, our{" "}
             <Link href="/guides/attractions/osaka-kyoto-3-day-itinerary">Osaka Kyoto 3 day itinerary</Link> is
-            the better fit. For the top five sights on their own, with prices and which need booking, see{" "}
+            the better fit, and five days with Nara, Himeji and Kobe are the{" "}
+            <Link href="/guides/attractions/kansai-5-day-itinerary">Kansai 5 day itinerary</Link>. For the top five sights on their own, with prices and which need booking, see{" "}
             <Link href="/guides/attractions/things-to-do-kyoto">things to do in Kyoto in 2026</Link>.
           </p>
           <p className={styles.bodyText}>

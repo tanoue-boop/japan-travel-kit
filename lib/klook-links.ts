@@ -11935,3 +11935,117 @@ export const mtTakaoTripPrep: KlookTripPrepItem[] = [
     why: "The trail map, the cable car's last departure and the train home all need data on the mountain.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Kansai 5-day itinerary — added 23 Nov 2026 (task-jtk-20261123-01).
+//
+// No new Klook URL: every slot reuses a constant above. Confirmed as live pages
+// through the www.klook.com search index on 23 Nov 2026:
+//   18400   JR Haruka Kansai Airport Express ticket                         5%
+//   599     Nankai Limited Express Rapi:t ticket                            5%
+//   82312   Osaka Amazing Pass                                              5%
+//   3276    JR West Kansai Area Pass (new constant below)                   5%
+//   110001  Kyoto, Nara & Arashiyama day tour from Osaka (en-IN in index)   6.5%
+//   82959   Himeji & Himeji Castle join-in bus tour from Osaka              6.5%
+//   108986  Kobe harbour, Kobe beef, Kitano, Arima & Mt. Rokko tour        6.5%
+//   109393  Klook Japan eSIM                                                20%
+//   hotels  Namba / Umeda / Kyoto Station destination hotel searches        6.5%
+//   46604   USJ Studio Pass                                                 0% (below the Day 2 cards)
+// Ad id: the page's own (data/klook-adids.json, taken from spare 23 Nov 2026).
+// Not used: 1107 (`jrKansaiAreaPass`) — in the index on 23 Nov 2026 it showed "not
+// currently available" with 2016–17 reviews, so this page links 3276 instead.
+// ---------------------------------------------------------------------------
+
+/** JR West Kansai Area Pass, Klook listing 3276 — live en-US in the index on 23 Nov 2026. */
+export const jrKansaiAreaPass3276: KlookTour = {
+  title: "JR West Kansai Area Pass",
+  desc: "The JR West pass for Osaka, Kyoto, Kobe, Nara and Himeji with the HARUKA from Kansai Airport, for visitors on a Temporary Visitor stamp",
+  url: klookLink("https://www.klook.com/en-US/activity/3276-4-day-jr-west-kansai-rail-pass-jr-pass/"),
+};
+
+/** Where to sleep for five Kansai nights — one base or two. */
+export const kansai5DayStayAreas: KlookStayArea[] = [
+  {
+    area: "Namba (Osaka)",
+    why: "Dotonbori on foot for Day 1, the Nankai Rapi:t from Kansai Airport ends here, and JR Namba is the terminus for the Nara train home on Day 4.",
+    url: osakaStayAreas[1].url,
+  },
+  {
+    area: "Umeda / Osaka Station",
+    why: "The JR station for Kyoto (Special Rapid), Himeji and Sannomiya — every day trip on this plan leaves from here, and the HARUKA stops at Shin-Osaka, one stop away.",
+    url: osakaStayAreas[0].url,
+  },
+  {
+    area: "Kyoto Station",
+    why: "For two of the five nights if you split the trip: the HARUKA terminus, the Nara Line to Fushimi Inari and Nara, and the Sagano Line to Arashiyama all start here.",
+    url: kyotoStayAreas[0].url,
+  },
+];
+
+/**
+ * "Book these on the same trip" for the five days: the 6.5% tours and hotel and the
+ * 20% eSIM first, then the 5% airport trains and passes. USJ (0%) is not in this
+ * block — the page puts it in the Day 2 section, under kansai5DayUsjSameDayCards.
+ */
+export const kansai5DayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels in Namba, Osaka",
+    ctaLabel: "Check Namba hotels on Klook →",
+    url: osakaStayAreas[1].url,
+    why: "Four nights in one Osaka base: the Rapi:t from the airport ends at Namba and Dotonbori is on foot. Book free cancellation first, then build the days around it.",
+  },
+  {
+    label: kyotoNaraArashiyamaTour.title,
+    ctaLabel: "Check the Kyoto–Nara day tour →",
+    url: kyotoNaraArashiyamaTour.url,
+    why: "Day 4 as one booking from Osaka: Arashiyama, the Sagano line and Nara Park on a coach instead of three train changes.",
+  },
+  {
+    label: himejiCastleOsakaBusTour.title,
+    ctaLabel: "Check the Himeji tour →",
+    url: himejiCastleOsakaBusTour.url,
+    why: "The Day 4 alternative: a coach from Osaka built around Himeji Castle. Admission is paid at the castle, and the tour runs only if it reaches its minimum group size.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "QR passes, timed USJ entries and five days of train changes all live on your phone — data from the airport onwards.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "Kansai Airport to Shin-Osaka, Osaka or Kyoto on the arrival day; the same ticket type to Kobe on the way out.",
+  },
+  {
+    label: jrKansaiAreaPass3276.title,
+    ctaLabel: "Check the Kansai Area Pass →",
+    url: jrKansaiAreaPass3276.url,
+    why: "On this plan only Days 3 to 5 need it: JR West's 3-day pass beats the singles for Kyoto, Nara or Himeji and the Kobe-to-airport run, and the 4-day one does not. Check which lengths the listing offers for your dates.",
+  },
+  {
+    ...tripPrepProducts.rapit,
+    why: "If your hotel is in Namba, the Rapi:t is the reserved-seat train straight there from Kansai Airport.",
+  },
+];
+
+/**
+ * Day 2 of the Kansai 5-day page: the 6.5% / 5% / 20% cards sit above the 0% USJ
+ * Studio Pass link, so the reader deciding Day 2 sees the paying options first.
+ */
+export const kansai5DayUsjSameDayCards: KlookSameDayCard[] = [
+  {
+    ...tripPrepProducts.osakaPass,
+    kind: "Pass",
+    why: "The non-USJ Day 2: Osaka Castle's keep, the Umeda Sky Building before 15:00 and the Tombori River Cruise are on the pass, with the subway between them. JR is not.",
+  },
+  {
+    label: "Hotels around Umeda / Osaka Station",
+    kind: "Hotel",
+    ctaLabel: "Check Umeda hotels on Klook →",
+    url: osakaStayAreas[0].url,
+    why: "Universal City is on the JR line out of Osaka Station, and the same station starts Days 3 to 5.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    kind: "eSIM",
+    why: "USJ's Area Timed Entry Tickets are issued in the official app, which needs data inside the park.",
+  },
+];

@@ -569,6 +569,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "osaka",
   },
   {
+    href: "/guides/attractions/kansai-5-day-itinerary",
+    badge: "Itinerary",
+    title: "Kansai 5 Day Itinerary (2026): Osaka, Kyoto, Nara & Kobe",
+    desc: "Five days in and out of Kansai Airport from one Osaka hotel: Dotonbori, USJ or Osaka Castle, Kyoto, Nara or Himeji, then Kobe — with the JR fares of each day and why the 3-day Kansai Area Pass pays and the 4-day one does not.",
+    group: "cities",
+    city: "osaka",
+  },
+  {
     href: "/guides/attractions/osaka-kyoto-3-day-itinerary",
     badge: "Itinerary",
     title: "Osaka Kyoto 3 Day Itinerary (2026): Day by Day & Bookings",

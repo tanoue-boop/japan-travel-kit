@@ -526,7 +526,8 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
             <Link href="/guides/attractions/kansai-area-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
               Kansai Area Pass
             </Link>
-            , which covers the special rapid to Himeji but not the shinkansen.
+            , which covers the special rapid to Himeji but not the shinkansen. Himeji as Day 4 of five days in
+            Kansai, with the pass worked out day by day, is in the <Link href="/guides/attractions/kansai-5-day-itinerary">Kansai 5 day itinerary</Link>.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Last checked: 2026-11-22 · https://www.himejicastle.jp/en/ · https://www.visit-himeji.com/access/

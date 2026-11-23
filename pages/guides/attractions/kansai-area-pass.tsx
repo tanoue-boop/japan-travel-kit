@@ -971,7 +971,9 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
             <Link href="/guides/transport/osaka-metro-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
               Osaka Metro Pass (the Enjoy Eco Card)
             </Link>{" "}
-            covers the subway and city buses for one calendar day instead.
+            covers the subway and city buses for one calendar day instead. On a five-day trip with one Osaka
+            day, the 3-day pass for the last three days beats the 4-day one — the day-by-day sums are in the{" "}
+            <Link href="/guides/attractions/kansai-5-day-itinerary">Kansai 5 day itinerary</Link>.
           </p>
           <p className={styles.bodyText}>
             <strong>Where it fails.</strong> A trip with a gap day in the middle of the pass window, or one
