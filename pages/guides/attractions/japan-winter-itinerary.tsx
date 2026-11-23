@@ -346,7 +346,11 @@ const days: Day[] = [
         guide has the direct shinkansen times, the JR Pass rules and the lift prices in full. If you would rather look at snow than ski on it,
         our{" "}
         <Link href="/guides/attractions/jigokudani-snow-monkey-tour">Jigokudani snow monkey tour guide</Link>{" "}
-        covers the winter day out on the Nagano side, which fits this same slot. If the snow part of the trip
+        covers the winter day out on the Nagano side, which fits this same slot. If the onsen is the part you
+        want and the snow is not, this slot can be a night in Hakone instead, about 90 minutes from Shinjuku
+        by Romancecar: our{" "}
+        <Link href="/guides/attractions/hakone-ryokan-private-onsen">Hakone ryokan with private onsen</Link>{" "}
+        guide compares 10 inns by area, six with an open-air bath in every room. If the snow part of the trip
         goes further — Yuzawa and Niigata on the Joetsu Shinkansen, Nagano on the Hokuriku Shinkansen, or Zao and
         Ginzan Onsen off the Yamagata Shinkansen — the{" "}
         <Link href="/guides/transport/jr-east-pass">JR East Pass</Link>{" "}
@@ -1944,7 +1948,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Hakone Ryokan with Private Onsen (2026): 4 Inns Compared</p>
+                <p className={styles.relatedTitle}>Hakone Ryokan with Private Onsen: 10 Inns by Area (2026)</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

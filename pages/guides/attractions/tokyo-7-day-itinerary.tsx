@@ -572,7 +572,10 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/kawagoe-day-trip">Kawagoe day trip</Link> (Edo-era warehouse streets,
             often in kimono) are both within an hour of the city by train. To turn the Hakone day into a night
             at an onsen inn, with the museums on the second morning, see the{" "}
-            <Link href="/guides/attractions/hakone-2-day-itinerary">Hakone 2 day itinerary</Link>.
+            <Link href="/guides/attractions/hakone-2-day-itinerary">Hakone 2 day itinerary</Link>; for the inn
+            itself, our{" "}
+            <Link href="/guides/attractions/hakone-ryokan-private-onsen">Hakone ryokan with private onsen</Link>{" "}
+            guide compares 10 inns by area, from Hakone-Yumoto to Lake Ashi.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={nikkoWorldHeritageDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

@@ -1859,7 +1859,7 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             For the onsen night, our{" "}
             <Link href="/guides/attractions/hakone-ryokan-private-onsen">Hakone ryokan with private onsen guide</Link>{" "}
-            compares four inns; for the ski version, our{" "}
+            compares 10 inns by area; for the ski version, our{" "}
             <Link href="/guides/attractions/japan-ski-trip-itinerary">Japan ski trip itinerary</Link>{" "}
             covers Hakuba, Nozawa Onsen and Niseko, and in Hokkaido the Sapporo Snow Festival runs 4–11
             February 2027 (snowfes.com, read 30 October 2026).

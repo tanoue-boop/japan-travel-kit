@@ -204,7 +204,7 @@ const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 const relatedGuides = [
   { href: "/guides/attractions/kawaguchiko-day-trip-from-tokyo", title: "Tokyo to Kawaguchiko Day Trip (2026): Bus, Train or Tour?" },
   { href: "/guides/attractions/mt-fuji-day-trip-tokyo", title: "Mt. Fuji Day Trip From Tokyo (2026): How to Get There Yourself" },
-  { href: "/guides/attractions/hakone-ryokan-private-onsen", title: "Hakone Ryokan with Private Onsen (2026): 4 Inns Compared" },
+  { href: "/guides/attractions/hakone-ryokan-private-onsen", title: "Hakone Ryokan with Private Onsen: 10 Inns by Area (2026)" },
   { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary: 12 Days, Day by Day (2027)" },
 ];
 
@@ -452,7 +452,10 @@ export default function KawaguchikoRyokanMtFujiViewPage({ updated }: { updated: 
             Fufu Kawaguchiko lists an open-air natural hot spring bath in the guest rooms, and it is all
             suites. For less, La Vista Fujikawaguchiko has four private baths you can use free, at any hour,
             whenever one is open. Asafuji, Mifujien and Royal Hotel Kawaguchiko have shared hot spring baths
-            only. None of the six inns states a tattoo rule on its site, so ask first.
+            only. None of the six inns states a tattoo rule on its site, so ask first. If a bath in the room
+            matters more than the Fuji view, Hakone has more choice: our{" "}
+            <Link href="/guides/attractions/hakone-ryokan-private-onsen">Hakone ryokan with private onsen</Link>{" "}
+            guide lists six inns there with an open-air bath in every room, by area.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={kawaguchikoFufu.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

@@ -487,11 +487,12 @@ export default function Hakone2DayItineraryPage({ updated }: { updated: PageUpda
             A room with its own open-air bath is a room type rather than a hotel feature, and weekend and autumn
             dates go first. Two inns at the two ends of this route, from our{" "}
             <Link href="/guides/attractions/hakone-ryokan-private-onsen" style={linkStyle}>
-              Hakone ryokan with private onsen
-            </Link>{" "}
-            comparison: {hakoneYoshiikeRyokan.title}, about 7 minutes on foot from Hakone-Yumoto Station with two
+              Hakone ryokan with private onsen, 10 inns by area
+            </Link>
+            : {hakoneYoshiikeRyokan.title}, about 7 minutes on foot from Hakone-Yumoto Station with two
             room types that have an open-air bath, and {hakoneGoraKadan.title}, about 5 minutes on foot from Gora
-            Station with several such room types.
+            Station with several such room types. That guide also lists the six inns with a bath in every room,
+            from Miyanoshita on this train line to Sengokuhara.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={hakoneHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -621,7 +622,7 @@ export default function Hakone2DayItineraryPage({ updated }: { updated: PageUpda
           <div className={styles.relatedGrid}>
             {[
               ["/guides/attractions/hakone-day-trip-from-tokyo", "Hakone Day Trip From Tokyo (2026): Timed Itinerary, Cost and Tours"],
-              ["/guides/attractions/hakone-ryokan-private-onsen", "Hakone Ryokan with Private Onsen (2026): 4 Inns Compared"],
+              ["/guides/attractions/hakone-ryokan-private-onsen", "Hakone Ryokan with Private Onsen: 10 Inns by Area (2026)"],
               ["/guides/attractions/hakone-free-pass", "Hakone Freepass 2026: Price from Shinjuku & Is It Worth It?"],
               ["/guides/attractions/tokyo-7-day-itinerary", "Tokyo 7 Day Itinerary (2026): Day Trips, Passes & Bookings"],
               ["/guides/attractions/mt-fuji-day-tour-from-tokyo", "Mt. Fuji Day Tour From Tokyo (2026): Which Tour, and What You Actually See"],

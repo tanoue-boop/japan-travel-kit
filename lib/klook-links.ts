@@ -7642,7 +7642,7 @@ export const furanoBieiTripPrep: KlookTripPrepItem[] = [
 ];
 
 /**
- * The four inns on hakone-ryokan-private-onsen. Each room-bath claim on that page comes
+ * The first four inns on hakone-ryokan-private-onsen. Each room-bath claim on that page comes
  * from the inn's own site. Hotels pay the 6.5% band.
  */
 export const hakoneYoshiikeRyokan: KlookTour = {
@@ -7667,6 +7667,48 @@ export const hakoneGoraKadan: KlookTour = {
   title: "Gora Kadan",
   desc: "Gora, about 5 minutes on foot from the station, with several room types that have an open-air bath",
   url: klookLink("https://www.klook.com/en-US/hotels/detail/499174-gora-kadan/"),
+};
+
+/**
+ * Six more inns, added 23 Nov 2026 (task-jtk-20261123-R08) to take the page from four
+ * inns to ten. Each Klook ID was found in the www.klook.com search index that day; the
+ * room-bath claims come from the inn's own site. Hanaori's ID was indexed only under
+ * en-SG and en-HK, so its en-US form is built from the same hotel ID.
+ */
+export const hakoneGinyu: KlookTour = {
+  title: "Hakone Ginyu",
+  desc: "Miyanoshita, 3 minutes on foot from the station. Every room has a private open-air bath on its terrace, and meals are served in the room",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/915438-hakone-ginyu/"),
+};
+
+export const hakoneGoraKaraku: KlookTour = {
+  title: "Hakone Gora Karaku",
+  desc: "Gora. Every room has an onsen open-air bath on its balcony, plus three reservable private baths",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/1208804-hakone-gora-karaku/"),
+};
+
+export const hakoneKowakienTenyu: KlookTour = {
+  title: "Hakone Kowakien Ten-yu",
+  desc: "Ninotaira, near Kowakudani. All 150 rooms have an onsen open-air bath, and the bus from Hakone-Yumoto stops at the door",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/428894-hakone-kowakien-tenyu/"),
+};
+
+export const hakoneKaiSengokuhara: KlookTour = {
+  title: "Hoshino Resorts KAI Sengokuhara",
+  desc: "Sengokuhara, 16 rooms, each with a private outdoor bath on the terrace. No shuttle: about 15 minutes by car from Gora Station",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/393520-hoshino-resorts-kai-sengokuhara/"),
+};
+
+export const hakoneSusukinoharaIchinoyu: KlookTour = {
+  title: "Susukinohara Ichinoyu",
+  desc: "Sengokuhara, by the pampas grass fields. Every room has an open-air bath; the bus stop is 1 minute away",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/586521-susukinohara-ichinoyu/"),
+};
+
+export const hakoneAshinokoHanaori: KlookTour = {
+  title: "Hakone Ashinoko Hanaori",
+  desc: "Lake Ashi at Togendai, by the ropeway and the sightseeing cruise. Some room types have an open-air bath, and two semi-open-air private baths can be reserved",
+  url: klookLink("https://www.klook.com/en-US/hotels/detail/434576-hakone-ashinoko-hanaori/"),
 };
 
 /**
@@ -7705,6 +7747,13 @@ export const hakoneRyokanTripPrep: KlookTripPrepItem[] = [
     ctaLabel: "Check the Hakone Freepass →",
     url: hakoneFreepass.url,
     why: "It has no 1-day version, so it suits a night here. The 2-day pass from Shinjuku is ¥7,100 on Odakyu's figures.",
+  },
+  {
+    // Same listing as romancecarShinjukuHakoneYumoto, which is declared further down.
+    label: "Shinjuku to Hakone-Yumoto train (Romancecar)",
+    ctaLabel: "Check the Romancecar →",
+    url: klookLink("https://www.klook.com/en-US/japan-rail/shinjuku-station/hakone-yumoto-station/"),
+    why: "The Freepass does not include the Romancecar seat. Most of the inns here quote about 90 minutes from Shinjuku to Hakone-Yumoto on it.",
   },
   {
     ...tripPrepProducts.esim,

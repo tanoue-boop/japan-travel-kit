@@ -527,8 +527,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/hakone-ryokan-private-onsen",
     badge: "Where to stay",
-    title: "Hakone Ryokan with Private Onsen (2026): 4 Inns Compared",
-    desc: "Four inns confirmed on their own sites, compared on the bath in the room, reserved baths, meals and check-in, with six areas of Hakone, tattoo rules by inn and how far ahead to book.",
+    title: "Hakone Ryokan with Private Onsen: 10 Inns by Area (2026)",
+    desc: "Ten inns confirmed on their own sites, from Hakone-Yumoto to Lake Ashi, compared on the bath in the room, reservable private baths, dinner and access, with tattoo rules and how far ahead to book.",
     group: "cities",
     // Hakone is outside the three city hubs, and a night there is not a Tokyo stay.
     city: "other",

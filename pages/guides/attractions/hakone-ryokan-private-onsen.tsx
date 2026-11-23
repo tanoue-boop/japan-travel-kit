@@ -6,13 +6,19 @@ import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import {
+  hakoneAshinokoHanaori,
   hakoneChisujiListing,
   hakoneFreepass,
+  hakoneGinyu,
   hakoneGoraKadan,
+  hakoneGoraKaraku,
   hakoneHotels,
+  hakoneKaiSengokuhara,
   hakoneKowakienMikawaya,
+  hakoneKowakienTenyu,
   hakoneRyokanKyuan,
   hakoneRyokanTripPrep,
+  hakoneSusukinoharaIchinoyu,
   hakoneYoshiikeRyokan,
   hakoneYuyuListing,
 } from "../../../lib/klook-links";
@@ -22,151 +28,228 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /**
  * Staying the night in Hakone, for the reader searching for a private onsen. Added
- * 7 Nov 2026. hakone-day-trip-from-tokyo and hakone-free-pass cover the day out; this
- * page covers the room.
+ * 7 Nov 2026 with four inns; widened to ten inns by area on 23 Nov 2026
+ * (task-jtk-20261123-R08). hakone-day-trip-from-tokyo and hakone-free-pass cover the
+ * day out; this page covers the room.
  *
- * Read on 7 November 2026, from each inn's own site:
+ * Every inn in the table is bookable on Klook, and its room bath or reservable bath is
+ * stated on the inn's own site:
  *
- *   yoshiike.org          room types, 2 indoor reserved baths, 14:00/10:00, FAQ on
- *                         tattoo cover seals and children, closed 7 to 10 Dec 2026
- *   hakonekowakien-mikawaya.jp  rooms, free family bath, FAQ, access. Room count
- *                         also on hakone.or.jp: 1 + 5 + 4 of 25 with an open-air bath
- *   kyuan.jp              10 rooms: 2 open-air, 8 semi-open-air; no public bath;
- *                         reserved bath Ryujin; pickups. Times from its booking engine
- *   gorakadan.com         room categories; FAQ PDF dated 21 Oct 2026 for reservations,
- *                         cancellation, shuttle, meals, children, tattoos
- *   hakone.or.jp, hakonenavi.jp, odakyu-global.com  area transport and autumn colour
+ *   yoshiike.org          (7 Nov) room types, 2 indoor reserved baths, FAQ on tattoos
+ *   hakonekowakien-mikawaya.jp  (7 Nov) 10 of 25 rooms with an open-air bath, free family bath
+ *   kyuan.jp              (7 Nov) 10 rooms: 2 open-air, 8 semi-open-air; reserved bath Ryujin
+ *   gorakadan.com         (7 Nov) room categories; FAQ PDF dated 21 Oct 2026
+ *   hakoneginyu.co.jp/en  (23 Nov) every room has a terrace open-air bath; meals in the room;
+ *                         Ginyu Spa reservable 21:00 to 23:00; 3 min from Miyanoshita Station
+ *   gora-karaku.orixhotelsandresorts.com  (23 Nov) a balcony onsen open-air bath in every
+ *                         room; 3 private baths; Mutsuki dining; Odawara shuttle, 2 a day
+ *   ten-yu.com            (23 Nov) all rooms open-air: 66 + 54 standard, 24 top floor, 6 special;
+ *                         buffet at Dining Hakone; bus about 20 min, Gora shuttle about 10 min
+ *   hoshinoresorts.com/en/hotels/kaisengokuhara  (23 Nov) a private outdoor bath on every
+ *                         terrace; 16 rooms; 14:30 / 11:00; about 15 min by car from Gora
+ *   ichinoyu.co.jp/facilities/susuki  (23 Nov) all rooms with an open-air bath; bus about
+ *                         30 min to Daigatake, 1 min on foot; shabu-shabu dinner
+ *   ashinoko-hanaori.orixhotelsandresorts.com  (23 Nov) open-air bath room types; 2
+ *                         semi-open-air private baths, 40 min, ¥3,000; buffet; Gora shuttle
  *
- * Gaps left open on purpose: YuYu Hakone, Chisuji Ryokan and Ajisai Onsen Ryokan have no
- * official site we could find, so none of them is described as having a room bath.
- * Ajisai is out altogether because no en-US Klook form was indexed. No Klook price
- * appears, and the inn table carries no prices. Nothing here is first-hand.
+ * Left out on purpose: Ryuguden (its only in-room baths are indoor), KAI Hakone (no room
+ * bath on its own site), Gora Hanaougi (no official site found). No Klook price
+ * appears, and no per-person price is given: none of the inns' own pages states one
+ * outside its booking engine. Nothing here is first-hand.
  */
 
-const OWN = checkedLabel("2026-11-07");
+const CHECKED = "2026-11-23";
+const OWN = checkedLabel(CHECKED);
+const FIRST_READ = checkedLabel("2026-11-07");
 const PASS_DATE = checkedLabel("2026-10-25");
 
 const inns = [
   {
     hotel: hakoneYoshiikeRyokan,
     area: "Hakone-Yumoto",
-    roomBath: "Open-air bath: Shiki no Ma (4 rooms) and Hollywood Twin. Semi-open-air: Family Suite",
+    type: "Some rooms + reservable bath",
+    roomBath: "Open-air: Shiki no Ma (4 rooms) and Hollywood Twin. Semi-open-air: Family Suite",
     reservedBath: "2 indoor baths, paid, reserve ahead",
     meals: "Plans with or without meals, in the restaurant",
     access: "7 minutes on foot from Hakone-Yumoto Station",
-    times: "14:00 / 10:00",
     source: "yoshiike.org",
+  },
+  {
+    hotel: hakoneGinyu,
+    area: "Miyanoshita",
+    type: "Every room",
+    roomBath: "Every room: open-air bath on a terrace over the Hayakawa valley",
+    reservedBath: "The whole Ginyu Spa pavilion, 21:00 to 23:00, by reservation",
+    meals: "Kaiseki dinner and breakfast, served in your room",
+    access: "3 minutes on foot from Miyanoshita Station (Hakone Tozan Train)",
+    source: "hakoneginyu.co.jp",
   },
   {
     hotel: hakoneKowakienMikawaya,
     area: "Kowakudani",
-    roomBath: "Open-air bath: 10 of 25 rooms",
+    type: "Some rooms + free family bath",
+    roomBath: "Open-air: 10 of 25 rooms",
     reservedBath: "1 semi-open-air family bath, free, no booking, about 60 minutes",
     meals: "Dinner in the main building restaurant, no in-room dining",
-    access: "Horai-en bus stop, or a shuttle bus of about 10 minutes from Gora Station",
-    times: "15:00 / 10:00",
+    access: "Horai-en bus stop, or a shuttle of about 10 minutes from Gora Station",
     source: "hakonekowakien-mikawaya.jp",
   },
   {
     hotel: hakoneRyokanKyuan,
-    area: "Ninotaira, near Kowakudani",
-    roomBath: "All 10 rooms: open-air in 2, semi-open-air in 8",
-    reservedBath: "Ryujin, 40 minutes, paid, reserve ahead. No public bath",
-    meals: "Kaiseki dinner and breakfast. In-room dining in the annex and two main building rooms",
+    area: "Ninotaira (Kowakudani)",
+    type: "Every room",
+    roomBath: "All 10 rooms: open-air in 2, semi-open-air in 8. No public bath",
+    reservedBath: "Ryujin, 40 minutes, paid, reserve ahead",
+    meals: "Kaiseki dinner and breakfast; in-room dining in some rooms",
     access: "Pickup from Chokoku-no-Mori Station and other points, 14:30 to 17:30, on request",
-    times: "15:00 to 18:00 / 11:00",
     source: "kyuan.jp",
+  },
+  {
+    hotel: hakoneKowakienTenyu,
+    area: "Ninotaira (Kowakudani)",
+    type: "Every room",
+    roomBath: "All 150 rooms: an onsen open-air bath in a Shigaraki-ware tub",
+    reservedBath: "Not listed: the room bath is the private bath",
+    meals: "Japanese-Western buffet at Dining Hakone or set menus; in-room dinner for the 6 special rooms",
+    access: "Bus from Hakone-Yumoto, about 20 minutes to the Tenyu stop; free shuttle from Gora, about 10 minutes",
+    source: "ten-yu.com",
   },
   {
     hotel: hakoneGoraKadan,
     area: "Gora",
-    roomBath: "Open-air bath: Aoi, Fuji and Ume suites; Matsu, Tsubaki, Suzukake and the big stone bath room",
+    type: "Some rooms + private bath",
+    roomBath: "Open-air: Aoi, Fuji and Ume suites; Matsu, Tsubaki, Suzukake and the big stone bath room",
     reservedBath: "A private bath is listed. Ask how it is booked",
     meals: "Dinner and breakfast, generally in your room",
     access: "5 minutes on foot from Gora Station, or a free shuttle by phone call",
-    times: "15:00 / 11:00",
-    source: "gorakadan.com, hakone.or.jp",
+    source: "gorakadan.com",
+  },
+  {
+    hotel: hakoneGoraKaraku,
+    area: "Gora",
+    type: "Every room + 3 private baths",
+    roomBath: "Every room: an onsen open-air bath on the balcony",
+    reservedBath: "3 private baths",
+    meals: "Japanese course dinner at Mutsuki, 17:00 to 21:30, or the grill restaurant",
+    access: "Free shuttle from JR Odawara Station, 2 a day, booked online, 45 to 50 minutes",
+    source: "gora-karaku.orixhotelsandresorts.com",
+  },
+  {
+    hotel: hakoneKaiSengokuhara,
+    area: "Sengokuhara",
+    type: "Every room",
+    roomBath: "All 16 rooms: a private outdoor bath on the terrace",
+    reservedBath: "Not listed",
+    meals: "Kaiseki dinner",
+    access: "About 15 minutes by car from Gora Station. No shuttle",
+    source: "hoshinoresorts.com",
+  },
+  {
+    hotel: hakoneSusukinoharaIchinoyu,
+    area: "Sengokuhara",
+    type: "Every room",
+    roomBath: "Every room: an open-air bath (twin, Japanese-style and sauna suite types)",
+    reservedBath: "Not listed",
+    meals: "Yonezawa beef shabu-shabu with 70 minutes of drinks; Japanese breakfast",
+    access: "Hakone Tozan Bus from Hakone-Yumoto, about 30 minutes to Daigatake, then 1 minute on foot",
+    source: "ichinoyu.co.jp",
+  },
+  {
+    hotel: hakoneAshinokoHanaori,
+    area: "Lake Ashi (Togendai)",
+    type: "Some rooms + reservable bath",
+    roomBath: "Open-air in the deluxe, standard and casual twin room types sold with a bath",
+    reservedBath: "2 semi-open-air baths, 40 minutes for ¥3,000, guests only, reserve ahead",
+    meals: "Japanese-Western buffet dinner and breakfast",
+    access: "On foot from Togendai (ropeway and lake cruise); free shuttle from Gora, about 20 minutes",
+    source: "ashinoko-hanaori.orixhotelsandresorts.com",
   },
 ];
+
+const officialSources = [
+  ["Yoshiike Ryokan", "https://www.yoshiike.org/"],
+  ["Hakone Ginyu", "https://www.hakoneginyu.co.jp/en/"],
+  ["Mikawaya", "https://hakonekowakien-mikawaya.jp/"],
+  ["Kyuan", "https://kyuan.jp/"],
+  ["Ten-yu", "https://www.ten-yu.com/room.html"],
+  ["Gora Kadan", "https://www.gorakadan.com/"],
+  ["Karaku", "https://gora-karaku.orixhotelsandresorts.com/"],
+  ["KAI Sengokuhara", "https://hoshinoresorts.com/en/hotels/kaisengokuhara/"],
+  ["Susukinohara Ichinoyu", "https://www.ichinoyu.co.jp/facilities/susuki/"],
+  ["Hanaori", "https://ashinoko-hanaori.orixhotelsandresorts.com/contents/kashikiri/"],
+] as const;
 
 const areaRows = [
   {
     area: "Hakone-Yumoto",
+    inns: "Yoshiike",
     getting: "Romancecar direct from Shinjuku: fastest 75 minutes, about 90 on some trains",
     sights: "The start of the train and bus routes into the hills",
     colour: "Late November to early December",
   },
   {
     area: "Miyanoshita",
+    inns: "Hakone Ginyu",
     getting: "From Hakone-Yumoto, about 28 minutes on the Hakone Tozan Train",
     sights: "Halfway up the train line, for Gora and for Yumoto",
     colour: "Mid to late November",
   },
   {
     area: "Kowakudani and Ninotaira",
-    getting: "From Hakone-Yumoto, about 20 minutes by bus to Horai-en",
+    inns: "Mikawaya, Kyuan, Ten-yu",
+    getting: "From Hakone-Yumoto, about 20 minutes by bus",
     sights: "Close to Hakone Kowakien Yunessun",
     colour: "Mid to late November",
   },
   {
     area: "Gora",
+    inns: "Gora Kadan, Karaku",
     getting: "From Hakone-Yumoto, about 40 to 45 minutes on the Hakone Tozan Train",
     sights: "Cable car to Sounzan, then the ropeway. Gora Park and the Open-Air Museum nearby",
     colour: "Mid to late November",
   },
   {
     area: "Sengokuhara",
-    getting: "From Hakone-Yumoto, about 30 minutes by T Line bus to Sengoku-kogen",
-    sights: "The pampas grass fields. Bus only",
+    inns: "KAI Sengokuhara, Susukinohara Ichinoyu",
+    getting: "From Hakone-Yumoto, about 30 minutes by bus",
+    sights: "The pampas grass fields. Bus or car only",
     colour: "Early November",
   },
   {
-    area: "Lake Ashi (Moto-Hakone)",
-    getting: "From Hakone-Yumoto, about 35 minutes by bus",
-    sights: "Lake cruise and Hakone Shrine",
+    area: "Lake Ashi",
+    inns: "Hanaori",
+    getting: "From Hakone-Yumoto by bus, or from Gora by cable car and ropeway to Togendai",
+    sights: "Lake cruise, ropeway and Hakone Shrine",
     colour: "Early to mid November",
   },
 ];
 
 const faqItems = [
   {
-    q: "Which Hakone ryokan have a private onsen?",
-    a: `On the inns' own sites, Yoshiike Ryokan in Hakone-Yumoto, Hakone Kowakien Mikawaya Ryokan in Kowakudani, Kyuan in Ninotaira and Gora Kadan in Gora all sell rooms with a private open-air bath. At Kyuan every one of the 10 rooms has an open-air or semi-open-air bath. All four also have a reserved or family bath. Read ${OWN}.`,
+    q: "Which Hakone ryokan have a private onsen in the room?",
+    a: `Of the 10 inns in this guide, 6 put an open-air bath in every room: Hakone Ginyu in Miyanoshita, Kyuan and Ten-yu in Ninotaira, Karaku in Gora, and KAI Sengokuhara and Susukinohara Ichinoyu in Sengokuhara. Yoshiike, Mikawaya, Gora Kadan and Hanaori sell some room types with one. Each is stated on the inn's own site, read ${OWN}.`,
   },
   {
-    q: "Is a private onsen worth it in Hakone?",
-    a: "Yes, if you have tattoos, want to bathe as a couple or a family, or want a bath whenever you like. Otherwise a reserved bath can be enough. Mikawaya's family bath is free and needs no booking, and Yoshiike and Kyuan sell a reserved bath by the session, so you can bathe privately without paying for the room type.",
+    q: "Private open-air bath vs reservable private bath: what's the difference?",
+    a: "A room with an open-air bath has the bath on its own terrace or balcony, and it is yours for the whole stay. A reservable private bath is a separate bath you lock for one session: 40 minutes for ¥3,000 at Hanaori, 40 minutes at Kyuan, and about 60 minutes free of charge at Mikawaya. Semi-open-air means roofed but open to the air on one side.",
   },
   {
-    q: "Where should I stay in Hakone?",
-    a: "Hakone-Yumoto if you want the easiest arrival: the Romancecar runs there directly from Shinjuku. Gora or Kowakudani if you want to be near the cable car, the museums and most of the inns on this page. Sengokuhara and Lake Ashi are quieter and reached by bus.",
+    q: "Which area of Hakone is best for a ryokan?",
+    a: "Gora, Miyanoshita and Kowakudani if you want a bath in every room: 4 of the 6 inns here that have one are there, on the Hakone Tozan Train or a short bus ride. Hakone-Yumoto is the easiest arrival from Shinjuku. Sengokuhara is quieter and reached by bus or car, and Lake Ashi puts you by the ropeway and the lake cruise.",
   },
   {
-    q: "Can I use an onsen with tattoos in Hakone?",
-    a: `Often not in a public bath, so ask first. A room with its own bath avoids the problem. At Yoshiike, tattoos that two 10 × 14 cm cover seals can hide are allowed in the public baths. Mikawaya sends guests with tattoos to the room bath or family bath. Gora Kadan allows small fashion tattoos up to about A4 size and asks others to use the private bath. Read ${OWN}.`,
+    q: "Are tattoos OK in a private onsen?",
+    a: `A bath in your room is yours alone, so it is the simplest answer. Public-bath rules differ by inn: Mikawaya sends guests with tattoos to the room bath or family bath, Gora Kadan asks guests with tattoos larger than about A4 to use the private bath, and Yoshiike allows tattoos that two 10 × 14 cm cover seals can hide. Read ${FIRST_READ}.`,
   },
   {
-    q: "How far ahead should I book a Hakone ryokan?",
-    a: "As soon as your dates are fixed, and earlier for weekends and November's autumn colour. Rooms with a bath are a minority at some inns: 10 of 25 at Mikawaya. Gora Kadan opens reservations six months ahead, on the 1st of the month at 12:30 Japan time. None of the inns gives a sell-out date.",
-  },
-  {
-    q: "What is the difference between a room with an open-air bath and a reserved bath?",
-    a: "A room with an open-air bath has the bath on its own balcony or garden, and it is yours for the whole stay. A reserved or family bath is a separate room you use for one session, about 40 to 60 minutes at the inns here. Semi-open-air means roofed but open to the air on one side.",
-  },
-  {
-    q: "What time is check-in at a Hakone ryokan?",
-    a: `At the inns here, 14:00 or 15:00, with check-out at 10:00 or 11:00. Dinner sets a limit on late arrivals: Yoshiike's last check-in with dinner is 17:00, Kyuan's window closes at 18:00, and Gora Kadan's latest dinner start is 19:00. Read ${OWN}.`,
-  },
-  {
-    q: "Can children stay at a Hakone ryokan with a private onsen?",
-    a: `Yes at all four, on different terms. Gora Kadan has no age limit, Mikawaya and Kyuan say children are welcome, and Yoshiike asks you to state each child's age when you book. Children's meals follow the adult menu at Yoshiike. Kyuan has no elevator. A room with its own bath lets a family bathe together. Read ${OWN}.`,
+    q: "How far in advance should I book?",
+    a: "As soon as your dates are fixed, and earliest for weekends and November's autumn colour. At several inns only some rooms have a bath: 10 of 25 at Mikawaya. Kyuan has 10 rooms in total and KAI Sengokuhara 16. Gora Kadan opens reservations six months ahead, on the 1st of the month at 12:30 Japan time. None of the inns publishes a sell-out date.",
   },
 ];
 
-const TITLE = "Hakone Ryokan with Private Onsen (2026): 4 Inns Compared";
-const H1_LINE = "Hakone Ryokan with Private Onsen (2026):";
+const TITLE = "Hakone Ryokan with Private Onsen: 10 Inns by Area (2026)";
 const DESCRIPTION =
-  "Hakone Ryokan with Private Onsen: four inns compared on room baths, reserved baths, meals and tattoos. Hakone ryokan private onsen areas, Yumoto to Gora.";
+  "Hakone ryokan with private onsen: 10 inns by area, Yumoto and Gora to Lake Ashi, with an open-air bath in the room or a reservable bath, meals and access.";
 
 const ROUTE = "/guides/attractions/hakone-ryokan-private-onsen";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
@@ -176,10 +259,13 @@ const relatedGuides = [
   { href: "/guides/attractions/hakone-free-pass", title: "Hakone Freepass 2026: Price from Shinjuku & Is It Worth It?" },
   { href: "/guides/attractions/hakone-day-trip-from-tokyo", title: "Hakone Day Trip From Tokyo (2026): Timed Itinerary, Cost and Tours" },
   { href: "/guides/attractions/hakone-2-day-itinerary", title: "Hakone 2 Day Itinerary (2026): Loop, Ryokan Night & Freepass" },
+  { href: "/guides/attractions/tokyo-7-day-itinerary", title: "Tokyo 7 Day Itinerary (2026): Day Trips, Passes & Bookings" },
   { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport" },
   { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days: Tokyo, Kyoto, Osaka & Hakone (2026)" },
   { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary: 12 Days, Day by Day (2027)" },
 ];
+
+const cellStyle = { fontSize: "0.86rem" } as const;
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
@@ -259,15 +345,13 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
-          <h1 className={styles.heroTitle}>
-            {H1_LINE} <br />Which Room, Which Area, Which Rules
-          </h1>
+          <h1 className={styles.heroTitle}>{TITLE}</h1>
           <p className={styles.heroSubtitle}>
-            A bath of your own, or one you reserve for an hour. Here is what four inns actually sell, from their
-            own sites.
+            A bath of your own, or one you reserve for 40 minutes. Ten inns from Hakone-Yumoto to Lake Ashi,
+            each bath taken from the inn&apos;s own site.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Room baths checked on official sites", "Six areas compared", "Tattoo rules"].map((t) => (
+            {[`Updated ${updated.label}`, "10 inns, 6 areas", "Room baths checked on official sites", "Tattoo rules"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -289,11 +373,11 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
         {/* Lead paragraph: the whole answer, in the body rather than the hero. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            A <strong>Hakone Ryokan with Private Onsen</strong> is either a room with its own open-air bath or an
-            inn with a bath you reserve for about 40 to 60 minutes. Of the four inns confirmed on their own
-            sites, three are in central Hakone around <strong>Kowakudani and Gora</strong>, and one is 7 minutes
-            on foot from Hakone-Yumoto Station. Stays are usually sold with dinner and breakfast, so book early
-            for weekends and November&apos;s autumn colour. Read {OWN}.
+            Of the 10 <strong>Hakone ryokan with private onsen</strong> in this guide, 6 put an open-air bath in
+            every room, and 4 of those 6 are in <strong>Miyanoshita, Ninotaira and Gora</strong>; the other 2
+            are in Sengokuhara. If you only want a private bath for one session, Mikawaya&apos;s family bath in
+            Kowakudani is free and Hanaori&apos;s two semi-open-air baths at Lake Ashi cost ¥3,000 for 40
+            minutes. Every bath here is stated on the inn&apos;s own site, read {OWN}.
           </p>
         </section>
 
@@ -305,33 +389,33 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
           <div className={styles.verdictBody}>
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>A bath in every room</p>
-                <p className={styles.verdictStatValue}>Kyuan, 10 rooms</p>
+                <p className={styles.verdictStatLabel}>Bath in every room, by train</p>
+                <p className={styles.verdictStatValue}>Hakone Ginyu, 3 min on foot</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Free family bath</p>
-                <p className={styles.verdictStatValue}>Mikawaya</p>
+                <p className={styles.verdictStatLabel}>Largest choice of bath rooms</p>
+                <p className={styles.verdictStatValue}>Ten-yu, all 150 rooms</p>
+              </div>
+              <div className={styles.verdictStat}>
+                <p className={styles.verdictStatLabel}>Private bath without the room</p>
+                <p className={styles.verdictStatValue}>Mikawaya (free) · Hanaori (¥3,000)</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Closest to the Romancecar</p>
                 <p className={styles.verdictStatValue}>Yoshiike, 7 min on foot</p>
               </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Check-in / check-out</p>
-                <p className={styles.verdictStatValue}>14:00–15:00 / 10:00–11:00</p>
-              </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>In short:</strong> pick Kyuan if you want a bath in the room with no public bath to share,
-              Mikawaya for a choice of room types, Yoshiike for the easiest arrival, and Gora Kadan for a top-end
-              stay in Gora.
+              <strong>In short:</strong> for a bath in the room with meals in the room, Hakone Ginyu or Kyuan; for
+              a big inn where every room has one, Ten-yu or Karaku; for the quiet side, KAI Sengokuhara or
+              Susukinohara Ichinoyu; for the lake, Hanaori; for the easiest arrival, Yoshiike.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-              <KlookLink href={hakoneRyokanKyuan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
-                Check Kyuan on Klook →
+              <KlookLink href={hakoneGinyu.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+                Check Hakone Ginyu on Klook →
               </KlookLink>
-              <KlookLink href={hakoneKowakienMikawaya.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
-                Check Mikawaya on Klook →
+              <KlookLink href={hakoneKowakienTenyu.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+                Check Ten-yu on Klook →
               </KlookLink>
             </div>
           </div>
@@ -342,22 +426,33 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
         {/* Inns */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Compare inns</span>
-          <h2 className={styles.sectionTitle}>Which Hakone Ryokan Have a Private Onsen?</h2>
+          <h2 className={styles.sectionTitle}>Which Hakone Ryokan Have a Private Onsen in the Room?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            These four, on their own sites. Only some rooms qualify at three of them, so choose the room type,
-            not just the inn. Prices move by date, so none are listed here: open Klook for yours.
+            Six of these ten have an open-air bath in every room: Hakone Ginyu, Kyuan, Ten-yu, Karaku, KAI
+            Sengokuhara and Susukinohara Ichinoyu. At the other four only some room types have one, so choose the
+            room type, not just the inn. Prices move by date, so none are listed here: open Klook for yours.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Inn", "Area", "Bath in the room", "Reserved or family bath", "Meals", "Getting there", "In / out", "Source & date checked"].map((h) => (
+                    {["Inn", "Area", "Private bath", "Bath in the room", "Reservable private bath", "Dinner", "Getting there", "Book"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
+                  <tr>
+                    <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>Our pick by area and budget</td>
+                    <td colSpan={7} style={cellStyle}>
+                      <strong>A bath in every room:</strong> Miyanoshita (Hakone Ginyu), Ninotaira (Kyuan, Ten-yu) or
+                      Gora (Karaku). <strong>Quieter:</strong> Sengokuhara (KAI Sengokuhara, Susukinohara Ichinoyu).{" "}
+                      <strong>By the lake:</strong> Hanaori. <strong>Easiest arrival:</strong> Yoshiike, 7 minutes
+                      from Hakone-Yumoto Station. <strong>To spend less:</strong> book a standard room and the
+                      reservable bath, free at Mikawaya and ¥3,000 for 40 minutes at Hanaori.
+                    </td>
+                  </tr>
                   {inns.map((row) => (
                     <tr key={row.hotel.title}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>
@@ -365,13 +460,17 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
                           {row.hotel.title}
                         </KlookLink>
                       </td>
-                      <td style={{ fontSize: "0.86rem" }}>{row.area}</td>
-                      <td style={{ fontSize: "0.86rem" }}>{row.roomBath}</td>
-                      <td style={{ fontSize: "0.86rem" }}>{row.reservedBath}</td>
-                      <td style={{ fontSize: "0.86rem" }}>{row.meals}</td>
-                      <td style={{ fontSize: "0.86rem" }}>{row.access}</td>
-                      <td style={{ fontSize: "0.86rem" }}>{row.times}</td>
-                      <td style={{ fontSize: "0.82rem" }}>{row.source}, {OWN}</td>
+                      <td style={cellStyle}>{row.area}</td>
+                      <td style={cellStyle}>{row.type}</td>
+                      <td style={cellStyle}>{row.roomBath}</td>
+                      <td style={cellStyle}>{row.reservedBath}</td>
+                      <td style={cellStyle}>{row.meals}</td>
+                      <td style={cellStyle}>{row.access}</td>
+                      <td style={cellStyle}>
+                        <KlookLink href={row.hotel.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+                          Klook →
+                        </KlookLink>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -379,20 +478,32 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Kyuan&apos;s home page says every room has an open-air bath, while its rooms page splits them into 2
-            open-air and 8 semi-open-air, so this guide uses the rooms page. Its times come from its booking page.
-            Yoshiike&apos;s Hollywood Twin bath is circulated rather than free-flowing, and the whole inn is closed
-            7 to 10 December 2026. Gora Kadan&apos;s walk is from the Hakone tourism association.
+            Last checked: {CHECKED}. Official sites:{" "}
+            {officialSources.map(([name, href], i) => (
+              <span key={href}>
+                {name} <a href={href} target="_blank" rel="noopener noreferrer">{href.replace(/^https:\/\//, "")}</a>
+                {i < officialSources.length - 1 ? "; " : "."}
+              </span>
+            ))}{" "}
+            Yoshiike, Mikawaya, Kyuan and Gora Kadan were first read in full {FIRST_READ}. Kyuan&apos;s rooms page
+            splits its baths into 2 open-air and 8 semi-open-air. Yoshiike is closed 7 to 10 December 2026.
+            Hanaori&apos;s private baths run 15:00 to 22:00 and 7:00 to 9:30.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={hakoneYoshiikeRyokan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
-              Yoshiike Ryokan →
+            <KlookLink href={hakoneGinyu.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Hakone Ginyu →
             </KlookLink>
-            <KlookLink href={hakoneRyokanKyuan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
-              Kyuan →
+            <KlookLink href={hakoneGoraKaraku.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Karaku →
             </KlookLink>
-            <KlookLink href={hakoneGoraKadan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
-              Gora Kadan →
+            <KlookLink href={hakoneKaiSengokuhara.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              KAI Sengokuhara →
+            </KlookLink>
+            <KlookLink href={hakoneAshinokoHanaori.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Hanaori →
+            </KlookLink>
+            <KlookLink href={hakoneHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              All Hakone hotels →
             </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
@@ -407,24 +518,18 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
         {/* Types */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Bath types</span>
-          <h2 className={styles.sectionTitle}>What Is the Difference Between a Room Bath and a Reserved Bath?</h2>
+          <h2 className={styles.sectionTitle}>Private Open-Air Bath vs Reservable Private Bath: What&apos;s the Difference?</h2>
           <p className={styles.bodyText}>
-            A room with an open-air bath has the bath on its own balcony or garden, and it is yours for the whole
-            stay. A reserved or family bath is a separate room that you lock for one session: about 60 minutes at
-            Mikawaya and 40 at Kyuan. Semi-open-air means covered but open to the air on one side. Yoshiike&apos;s
-            two reserved baths are indoors. Booking rules differ: Mikawaya&apos;s is free and first come, while
-            Yoshiike and Kyuan take reservations and charge for it.
+            A room with an open-air bath has the bath on its own terrace or balcony, and it is yours for the whole
+            stay, at any hour. A reservable private bath is a separate bath you lock for one session: 40 minutes for
+            ¥3,000 at Hanaori, 40 minutes at Kyuan, and about 60 minutes free of charge at Mikawaya, where it is
+            first come rather than booked. Semi-open-air means roofed but open to the air on one side. Yoshiike&apos;s
+            two reservable baths are indoors, and Karaku has three. At Hakone Ginyu the whole spa pavilion can be
+            reserved from 21:00 to 23:00.
           </p>
-        </section>
-
-        {/* Worth it */}
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Worth it?</span>
-          <h2 className={styles.sectionTitle}>Is a Private Onsen Worth It in Hakone?</h2>
           <p className={styles.bodyText}>
-            Yes, if you have tattoos, want to bathe as a couple or a family, or want to bathe at any hour. If you
-            only want one private soak, a reserved bath is the cheaper route, because you do not pay for the room
-            type. Mikawaya&apos;s free family bath is the clearest example, open 5:00 to 10:00 and 15:00 to 24:00.
+            Pick the room bath if you have tattoos, travel as a couple or family, or want to bathe late at night and
+            again at dawn. Pick the reservable bath if one private soak is enough: you do not pay for the room type.
             If you want Mt Fuji outside the window instead of the Hakone hills, our guide to the{" "}
             <Link href="/guides/attractions/kawaguchiko-ryokan-mt-fuji-view">Kawaguchiko ryokan with Mt Fuji view and private onsen</Link>{" "}
             does the same comparison for six inns at Lake Kawaguchi.
@@ -433,23 +538,27 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
             <KlookLink href={hakoneKowakienMikawaya.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Check Mikawaya rooms →
             </KlookLink>
+            <KlookLink href={hakoneAshinokoHanaori.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check Hanaori rooms →
+            </KlookLink>
           </div>
         </section>
 
         {/* Areas */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Areas</span>
-          <h2 className={styles.sectionTitle}>Where Should I Stay in Hakone?</h2>
+          <h2 className={styles.sectionTitle}>Which Area of Hakone Is Best for a Ryokan?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Stay in Hakone-Yumoto for the easiest arrival, or Gora and Kowakudani to be near the cable car and
-            museums. Sengokuhara and Lake Ashi are a bus ride from Hakone-Yumoto, so they suit a slower stay.
+            Gora, Miyanoshita and Kowakudani for a bath in every room: 4 of the 6 inns here that have one are there,
+            on the Hakone Tozan Train or a short bus ride. Hakone-Yumoto is the easiest arrival from Shinjuku.
+            Sengokuhara is quieter and reached by bus or car, and Lake Ashi puts you by the ropeway and the cruise.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Area", "Getting there", "For sightseeing", "Autumn colour, usual timing", "Checked"].map((h) => (
+                    {["Area", "Inns here", "Getting there", "For sightseeing", "Autumn colour, usual timing"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -458,10 +567,10 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
                   {areaRows.map((row) => (
                     <tr key={row.area}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.area}</td>
-                      <td style={{ fontSize: "0.86rem" }}>{row.getting}</td>
-                      <td style={{ fontSize: "0.86rem" }}>{row.sights}</td>
-                      <td style={{ fontSize: "0.86rem" }}>{row.colour}</td>
-                      <td style={{ fontSize: "0.82rem" }}>{OWN}</td>
+                      <td style={cellStyle}>{row.inns}</td>
+                      <td style={cellStyle}>{row.getting}</td>
+                      <td style={cellStyle}>{row.sights}</td>
+                      <td style={cellStyle}>{row.colour}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -469,16 +578,20 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Add the Shinjuku to Hakone-Yumoto time to each leg: the fastest Romancecar is 75 minutes on Hakone
-            Navi, and the inns quote about 85 to 90. Train, bus and colour timings come from Hakone Navi, Odakyu,
-            the Hakone tourism association and Mikawaya&apos;s access page, and they vary by service and by year.
-            The Hakone Tozan Train, the cable car and Hakone Tozan Bus (not Izu-Hakone Bus) are covered by the 2-day{" "}
+            Last checked: {CHECKED} for the inns; train, bus and colour timings from Hakone Navi, Odakyu and the
+            Hakone tourism association, read {FIRST_READ}. Add the Shinjuku to Hakone-Yumoto time to each leg: the
+            fastest Romancecar is 75 minutes, and the inns quote about 90. The Hakone Tozan Train, the cable car,
+            the ropeway and Hakone Tozan Bus are covered by the 2-day{" "}
             <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass</Link>, which runs to the last
-            service on the day after you buy it.
+            service on the day after you buy it. Izu-Hakone Bus is not, and its J Line is the bus that Ten-yu
+            and Hanaori both give from Hakone-Yumoto Station.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={hakoneHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               All Hakone hotels on Klook →
+            </KlookLink>
+            <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Hakone Freepass →
             </KlookLink>
           </div>
         </section>
@@ -486,10 +599,11 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
         {/* Tattoos */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Tattoos</span>
-          <h2 className={styles.sectionTitle}>Can I Use an Onsen With Tattoos in Hakone?</h2>
+          <h2 className={styles.sectionTitle}>Are Tattoos OK in a Private Onsen?</h2>
           <p className={styles.bodyText}>
-            Often not in a public bath, which is the best reason to book your own. Japan&apos;s national tourism
-            organization says many onsen refuse guests with tattoos, so check first. The rules differ by inn:
+            Yes in a bath in your own room, which is the best reason to book one: it is yours alone. Japan&apos;s
+            national tourism organization says many onsen refuse guests with tattoos in shared baths, so check the
+            inn&apos;s rule before you use the public bath. Four of the inns state theirs:
           </p>
           <ul className={styles.bodyText}>
             <li><strong>Yoshiike:</strong> tattoos are generally refused in the public baths, but those that two 10 × 14 cm cover seals can hide are allowed. Seals are sold at the front desk.</li>
@@ -497,7 +611,36 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
             <li><strong>Gora Kadan:</strong> small fashion tattoos up to about A4 size are allowed. For larger ones, use the private bath.</li>
             <li><strong>Kyuan:</strong> has no public bath, and its FAQ does not state a tattoo rule. Ask if you plan to use the shared reserved bath.</li>
           </ul>
-          <p className={styles.bodyText}>Read {OWN} on each inn&apos;s site.</p>
+          <p className={styles.bodyText}>
+            Read {FIRST_READ} on each inn&apos;s site. At the six inns with a bath in every room, the room bath
+            avoids the question altogether.
+          </p>
+        </section>
+
+        {/* Booking */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Booking</span>
+          <h2 className={styles.sectionTitle}>How Far in Advance Should I Book?</h2>
+          <p className={styles.bodyText}>
+            As soon as your dates are fixed, and earliest for weekends and November. Rooms with a bath are a limited
+            part of several inns: 10 of 25 at Mikawaya, and Kyuan has only 10 rooms in total and KAI Sengokuhara
+            16. Gora Kadan opens each month six months ahead, on the 1st at 12:30 Japan time. No inn publishes a
+            sell-out date, so treat this as planning advice rather than a rule.
+          </p>
+          <p className={styles.bodyText}>
+            Read the cancellation terms before you pay, because they change with where you book. At Gora Kadan,
+            direct bookings cost nothing to cancel 8 or more days out, while travel agency bookings carry 70% from
+            31 days and 100% from 14 days. Check the terms shown for your room on Klook before you pay. Klook&apos;s
+            Hakone listings also show a bathing tax of ¥150 per person per night.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={hakoneRyokanKyuan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check your dates at Kyuan →
+            </KlookLink>
+            <KlookLink href={hakoneSusukinoharaIchinoyu.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check Susukinohara Ichinoyu →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Children */}
@@ -505,12 +648,12 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
           <span className={styles.sectionLabel}>Families</span>
           <h2 className={styles.sectionTitle}>Can You Stay at a Hakone Ryokan With Children?</h2>
           <p className={styles.bodyText}>
-            Yes at all four, and a room with its own bath lets a family bathe together. Gora Kadan has no age
-            limit and lends baby items such as a cot and a kettle. Mikawaya has a children&apos;s menu but no baby
-            supplies. Yoshiike asks for each child&apos;s age when you book, and its children&apos;s meals follow the
-            adult menu. Kyuan welcomes children but has no elevator. In public baths, Yoshiike and Gora Kadan
-            limit children in the opposite sex&apos;s bath to age 6 or under, and Yoshiike adds a limit of under 120
-            cm. Read {OWN}.
+            Yes at the first four inns in the table, and a room with its own bath lets a family bathe together.
+            Gora Kadan has no age limit and lends baby items such as a cot and a kettle. Mikawaya has a
+            children&apos;s menu but no baby supplies. Yoshiike asks for each child&apos;s age when you book, and its
+            children&apos;s meals follow the adult menu. Kyuan welcomes children but has no elevator. Susukinohara
+            Ichinoyu lists a children&apos;s plate, and KAI Sengokuhara lets children up to 6 share a bed. Read{" "}
+            {FIRST_READ} and {OWN}.
           </p>
         </section>
 
@@ -519,10 +662,10 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
           <span className={styles.sectionLabel}>Times</span>
           <h2 className={styles.sectionTitle}>What Time Is Check-In at a Hakone Ryokan?</h2>
           <p className={styles.bodyText}>
-            Check-in is 14:00 at Yoshiike and 15:00 at the other three. Check-out is 10:00 at Yoshiike and
-            Mikawaya, and 11:00 at Kyuan and Gora Kadan. Arrive in time for dinner: Yoshiike&apos;s last check-in
-            with dinner is 17:00, Kyuan&apos;s check-in closes at 18:00, and Gora Kadan&apos;s latest dinner start is
-            19:00. Tell the inn if you will be late.
+            Check-in is 14:00 at Yoshiike and Hakone Ginyu, 14:30 at KAI Sengokuhara and 15:00 at Mikawaya, Kyuan
+            and Gora Kadan. Check-out is 10:00 at Yoshiike and Mikawaya, and 11:00 at Hakone Ginyu, KAI
+            Sengokuhara, Kyuan and Gora Kadan. Arrive in time for dinner: Yoshiike&apos;s last check-in with dinner
+            is 17:00, Kyuan&apos;s check-in closes at 18:00, and Gora Kadan&apos;s latest dinner start is 19:00.
           </p>
         </section>
 
@@ -532,15 +675,20 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
           <h2 className={styles.sectionTitle}>Should You Stay the Night or Visit Hakone for the Day?</h2>
           <p className={styles.bodyText}>
             Stay if the bath is the point. A night gives you 19 to 20 hours at the inn, with dinner and breakfast,
-            while a day trip usually means a public bath and a train home. It also makes the transport simpler: the
+            while a day trip usually means a public bath and a train home. It also makes the transport simpler: the{" "}
             <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass</Link> has no 1-day version, and
             the 2-day pass from Shinjuku is ¥7,100, with the ¥1,200 Romancecar surcharge on top (read{" "}
             {PASS_DATE}). For the day-out version, see our{" "}
             <Link href="/guides/attractions/hakone-day-trip-from-tokyo">Hakone day trip guide</Link>; for what to
             do around the night, hour by hour, our{" "}
-            <Link href="/guides/attractions/hakone-2-day-itinerary">Hakone 2 day itinerary</Link>. In
-            Kansai, Arima Onsen near Kobe has a ryokan day-use plan with private baths for the afternoon — see our{" "}
-            <Link href="/guides/attractions/arima-onsen-day-trip">Arima Onsen day trip</Link> guide.
+            <Link href="/guides/attractions/hakone-2-day-itinerary">Hakone 2 day itinerary</Link>. If Hakone is
+            one stop on a longer trip, our{" "}
+            <Link href="/guides/attractions/tokyo-7-day-itinerary">Tokyo 7 day itinerary</Link> fits the night in
+            as a day trip out of Tokyo, and our{" "}
+            <Link href="/guides/attractions/japan-winter-itinerary">Japan winter itinerary</Link> pairs it with the
+            snow days. In Kansai, Arima Onsen near Kobe has a ryokan day-use plan with private baths for the
+            afternoon — see our <Link href="/guides/attractions/arima-onsen-day-trip">Arima Onsen day trip</Link>{" "}
+            guide.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={hakoneFreepass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -549,34 +697,8 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
           </div>
         </section>
 
-        {/* Booking */}
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Booking</span>
-          <h2 className={styles.sectionTitle}>How Far Ahead Should I Book a Hakone Ryokan?</h2>
-          <p className={styles.bodyText}>
-            As soon as your dates are fixed, and first for weekends and November. Rooms with a bath are a limited
-            part of each inn: 10 of 25 at Mikawaya, and Kyuan has only 10 rooms in total. Gora Kadan opens each
-            month six months ahead, on the 1st at 12:30 Japan time. No inn publishes a sell-out date, so treat
-            this as planning advice rather than a rule.
-          </p>
-          <p className={styles.bodyText}>
-            Read the cancellation terms before you pay, because they change with where you book. At Gora Kadan,
-            direct bookings cost nothing to cancel 8 or more days out, while travel agency bookings carry 70% from
-            31 days and 100% from 14 days. Check the terms shown for your room on Klook before you pay. Klook&apos;s Hakone
-            listings also show a bathing tax of ¥150 per person per night.
-          </p>
-          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={hakoneRyokanKyuan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
-              Check your dates at Kyuan →
-            </KlookLink>
-            <KlookLink href={hakoneYoshiikeRyokan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
-              Check your dates at Yoshiike →
-            </KlookLink>
-          </div>
-        </section>
-
         <KlookTripPrep
-          label="Before you go"
+          label="Book the same day"
           heading="What Should You Book Around a Night in Hakone?"
           intro="Once the room is settled, these cover the rest of the trip. Open a listing for the price on your dates."
           items={hakoneRyokanTripPrep}
@@ -605,8 +727,8 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
 
         <KlookTourPicks
           heading="Hakone Ryokan on Klook"
-          intro="The four inns in the table. Open one for the current price and the room types on your dates."
-          tours={[hakoneRyokanKyuan, hakoneKowakienMikawaya, hakoneYoshiikeRyokan, hakoneGoraKadan]}
+          intro="The ten inns in the table. Open one for the current price and the room types on your dates."
+          tours={inns.map((row) => row.hotel)}
         />
 
         {/* Related articles */}
@@ -636,11 +758,11 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>Choose the room, not just the inn</h2>
             <p className={styles.ctaBannerDesc}>
-              Rooms with their own bath are limited at most inns, so check your dates first.
+              At four of these ten inns only some rooms have their own bath, so check your dates first.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-              <KlookLink href={hakoneRyokanKyuan.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
-                View Kyuan →
+              <KlookLink href={hakoneGinyu.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
+                View Hakone Ginyu →
               </KlookLink>
               <KlookLink href={hakoneHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 All Hakone Hotels →

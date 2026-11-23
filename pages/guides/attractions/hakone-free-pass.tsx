@@ -608,7 +608,8 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
             <Link href="/guides/attractions/hakone-ryokan-private-onsen" style={linkStyle}>
               Hakone ryokan with private onsen
             </Link>{" "}
-            guide covers the night.
+            guide covers the night: 10 inns by area, from Hakone-Yumoto to Lake Ashi, with the bus or train
+            each one is reached by.
           </p>
         </section>
 
@@ -692,7 +693,7 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Hakone Ryokan with Private Onsen (2026): 4 Inns Compared</p>
+                <p className={styles.relatedTitle}>Hakone Ryokan with Private Onsen: 10 Inns by Area (2026)</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
