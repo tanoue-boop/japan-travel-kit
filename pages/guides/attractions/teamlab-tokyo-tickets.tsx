@@ -40,9 +40,13 @@ const SAME_DAY = teamlabSameDayCards("tokyo", "en");
 // teamlab.art/e/borderless-azabudai and teamlab.art/faq/Tokyo (the Borderless FAQ).
 const ROUTE = "/guides/attractions/teamlab-tokyo-tickets";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
-const TITLE = "teamLab Tokyo Tickets 2026: Planets vs Borderless & Prices";
+//
+// 23 Nov 2026 (task jtk-20261123-21): title and description restored to the comparison
+// wording of 16 Nov (W21), because R01's price-led "Planets from ¥3,800" pulled Planets-only
+// queries back here. The table, FAQ and CTAs from R01 stay as they are.
+const TITLE = "teamLab Tokyo Tickets 2026: Planets or Borderless, Which to Book?";
 const DESC =
-  "teamLab Tokyo tickets: Planets from ¥3,800, Borderless from ¥3,400 per adult. Compare Planets vs Borderless on water, kids, time and sell-outs, then book.";
+  "Planets or Borderless? Tokyo's two teamLab museums sell separate tickets. Compare water vs shoes-on art, kids, hours, sell-outs and cost, then book one.";
 
 const P = PRICES.teamlabPlanets;
 const B = PRICES.teamlabBorderless;
@@ -195,7 +199,7 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            teamLab Tokyo Tickets 2026: <br />Planets vs Borderless &amp; Prices
+            teamLab Tokyo Tickets 2026: <br />Planets or Borderless, Which to Book?
           </h1>
           <p className={styles.heroSubtitle}>
             Tokyo has two teamLab museums, and each sells its own ticket. This page sets them side by side and
@@ -226,13 +230,15 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
           </div>
           <div className={styles.verdictBody}>
             <p className={styles.verdictText}>
-              <strong>teamLab Tokyo tickets</strong> are sold separately for two museums: an adult pays{" "}
-              <strong>{P.adult}</strong> at teamLab Planets in Toyosu and <strong>{B.adult}</strong> at teamLab
-              Borderless in Azabudai Hills, and a child aged 4–12 pays {P.child} at either (official prices, read
-              on {CHECKED}). teamLab puts a Borderless visit at about 1.5–2 hours and publishes no visit length
-              for Planets, so plan on 1.5–2 hours at either. With children, <strong>book Planets</strong>, where
-              you walk barefoot through knee-deep water; on a first visit without children,{" "}
-              <strong>book Borderless</strong>, the shoes-on art maze that also sells tickets at the door.
+              <strong>teamLab Tokyo tickets</strong> are sold separately for two museums, so pick one: with
+              children, <strong>book Planets</strong> in Toyosu, where you walk barefoot through knee-deep water;
+              on a first visit without children, <strong>book Borderless</strong> in Azabudai Hills, the shoes-on
+              art maze that also sells tickets at the door. Prices, hours and booking for{" "}
+              <Link href="/guides/attractions/teamlab-planets-tickets" style={BTN_LINK}>teamLab Planets tickets</Link>{" "}
+              have their own guide. An adult pays <strong>{P.adult}</strong> at Planets and{" "}
+              <strong>{B.adult}</strong> at Borderless, and a child aged 4–12 pays {P.child} at either (official
+              prices, read on {CHECKED}). teamLab puts a Borderless visit at about 1.5–2 hours and publishes no
+              visit length for Planets, so plan on 1.5–2 hours at either.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
