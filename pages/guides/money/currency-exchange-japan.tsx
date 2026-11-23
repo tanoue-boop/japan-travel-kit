@@ -13,9 +13,20 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 const WISE_URL = wiseLink("currency-exchange-japan", WISE_CARD_URL);
 const WISE_FEES_URL = wiseLink("currency-exchange-japan", WISE_PRICING_URL);
 
-const TITLE = "Currency Exchange in Japan 2026: Airport, City or ATM?";
+// C01 (23 Nov 2026): Bing shows this page 132 times a week at 5.55 (CTR 1.52%), so a short
+// exact-match title for Bing, and the meta gives the airport / city / ATM cost per ¥10,000.
+const TITLE = "Currency Exchange in Japan 2026: Best Rates & Where";
+const H1_TEXT = "Currency Exchange in Japan 2026: Best Rates & Where to Exchange";
 const DESCRIPTION =
-  "Where to exchange money in Japan: airport counters, city bureaux or 7-Eleven and Japan Post ATMs, with limits and fees from official pages (Nov 2026).";
+  "Currency exchange in Japan 2026, airport vs city vs ATM: about ¥600, ¥250 and ¥50 (Wise card) per ¥10,000. Best rate: a 7-Eleven or Japan Post ATM.";
+// FAQPage carries five questions; the visible list keeps all of them.
+const FAQ_SCHEMA_QS = new Set([
+  "Where is the best place to exchange money in Japan?",
+  "Is it cheaper to exchange money at the airport in Japan?",
+  "How much can I withdraw at a 7-Eleven ATM in Japan with a foreign card?",
+  "Should I get yen before going to Japan?",
+  "Can I exchange money at a Japanese bank?",
+]);
 
 /**
  * Date the official pages behind the options table were read: narita-airport.jp
@@ -277,7 +288,7 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.filter((item) => FAQ_SCHEMA_QS.has(item.q)).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -290,7 +301,7 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/money/currency-exchange-japan",
-              headline: "Currency Exchange in Japan (2026): Airport Counter, City Bureau or ATM?",
+              headline: H1_TEXT,
               updated,
             }),
           }}
@@ -323,7 +334,7 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Currency Exchange in Japan (2026): <br />Airport Counter, City Bureau or ATM?
+            Currency Exchange in Japan 2026: <br />Best Rates &amp; Where to Exchange
           </h1>
           <p className={styles.heroSubtitle}>
             The options side by side, with the ATM limits and fees the banks themselves publish — and what to pay
@@ -357,13 +368,12 @@ export default function CurrencyExchangeJapanPage({ updated }: { updated: PageUp
         <section className={styles.bodySection} style={{ marginBottom: "2.5rem" }}>
           <p className={styles.bodyText}>
             <strong>
-              To get yen in Japan, a 7-Eleven (Seven Bank) or Japan Post ATM used with a card that charges no
-              foreign transaction fee, such as Wise, beats the airport exchange counter; a city exchange bureau is
-              the better counter if you want to hand over cash.
+              The best rate for currency exchange in Japan in 2026 is a 7-Eleven (Seven Bank) or Japan Post ATM
+              used with a card that charges no foreign transaction fee, such as Wise: about ¥50 per ¥10,000,
+              against roughly ¥250 at a city exchange bureau and ¥600 at an airport counter.
             </strong>{" "}
-            The Narita and Haneda airport pages list their exchange operators but no rates (checked {CHECKED}), so
-            on the typical published fees behind the tool below (September 2026) the cost is roughly ¥600 per
-            ¥10,000 at an airport counter, ¥250 at a city bureau and ¥50 on a Wise card. Cash is needed mainly for
+            Those costs come from the typical published fees behind the tool below (September 2026), because the
+            Narita and Haneda airport pages list their exchange operators but no rates (checked {CHECKED}). Cash is needed mainly for
             small restaurants, temples, coin lockers and IC card top-ups, so pay for airport transport, entry
             tickets and an eSIM by card before you fly.
           </p>

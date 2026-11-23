@@ -104,14 +104,16 @@ const faqItems = [
     a: `It is not expected. JNTO says a private guide or interpreter used to overseas practices may accept a tip as thanks; if you give one, do it discreetly and in an envelope, which convenience stores, stationery stores and 100 yen stores sell. Read on ${CHECKED}.`,
   },
   {
-    q: "Do you tip at a ryokan?",
-    a: `Usually not. JNTO says tipping is not customary except at top luxury ryokan, where a guest may give the staff member who first serves tea in the room a kokorozuke, a gratuity in an envelope. It is optional. Read on ${CHECKED}.`,
+    q: "What is tipping etiquette in Japan in 2026?",
+    a: `Don't tip. JNTO says it is not common to tip in bars, cafes, restaurants, taxis or hotels, and that it is not rude at all to pay the bill without one. There are 3 exceptions, none of them expected: a private tour guide, an interpreter, and the staff member who first serves tea at a top luxury ryokan (a kokorozuke). Any tip goes in an envelope, handed over discreetly. Read on ${CHECKED}.`,
   },
 ];
 
-const TITLE = "Tipping in Japan 2026: Do You Tip? Restaurant, Taxi & Ryokan";
+// C01 (23 Nov 2026): 22 impressions at 9.3, 0 clicks; the landing queries are "tipping etiquette
+// in japan 2026", so the rule and the count of exceptions lead the title, H1 and meta.
+const TITLE = "Tipping in Japan 2026: Etiquette (Don't Tip, 3 Exceptions)";
 const DESCRIPTION =
-  "Do you tip in Japan? No: JNTO says restaurants, taxis and hotels expect no tip. Tipping in Japan by situation: service charges, izakaya otoshi, ryokan.";
+  "Tipping etiquette in Japan 2026: don't tip in restaurants, taxis or hotels (JNTO). 3 exceptions: tour guides, interpreters and top luxury ryokan.";
 const ROUTE = "/guides/money/tipping-in-japan";
 const PAGE_URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
@@ -195,7 +197,7 @@ export default function TippingInJapanPage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tipping in Japan (2026): <br />Do You Tip at Restaurants, Taxis and Ryokan?
+            Tipping in Japan 2026: <br />Etiquette Rules (Don&apos;t Tip, 3 Exceptions)
           </h1>
           <p className={styles.heroSubtitle}>
             Situation by situation, what Japan&apos;s national tourism organization says about tips, and what shows
@@ -219,22 +221,34 @@ export default function TippingInJapanPage({ updated }: { updated: PageUpdated }
           </p>
         </div>
 
-        {/* The answer first: the opening paragraph of the body. */}
-        <div className={styles.verdictBox}>
-          <div className={styles.verdictHeader}>
-            <span className={styles.verdictLabel}>Quick Answer</span>
-          </div>
-          <div className={styles.verdictBody}>
-            <p className={styles.verdictText}>
-              You do not tip in Japan: the Japan National Tourism Organization (JNTO) says it is not common to tip in
-              restaurants, bars, cafes, taxis or hotels, and that taxi drivers do not expect or accept tips. What
-              you may see instead is a <strong>service charge</strong>: JNTO says one is usually included in a
-              restaurant bill, and first-class hotels may add 10 to 15%. At a ryokan, a <em>kokorozuke</em> (a
-              gratuity in an envelope) is optional, and JNTO says tipping is not customary except at top luxury
-              ryokan. Read on {CHECKED}.
-            </p>
-          </div>
-        </div>
+        {/* The answer first: the opening paragraph of the body (C01, 23 Nov 2026: 3 sentences). */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>You do not tip in Japan: the Japan National Tourism Organization (JNTO) says it is not common to tip in
+            restaurants, bars, cafes, taxis or hotels, and taxi drivers do not expect or accept tips.</strong> What you
+            may see instead is a service charge, which JNTO says is usually included in a restaurant bill, while
+            first-class hotels may add 10 to 15%. The 3 exceptions are a private tour guide, an interpreter and a top
+            luxury ryokan, and even there a tip is optional and goes in an envelope (read on {CHECKED}).
+          </p>
+        </section>
+
+        {/* C01 (23 Nov 2026): the landing query as an H2, answered directly below. */}
+        <section className={styles.bodySection}>
+          <h2 className={styles.sectionTitle}>What Is Tipping Etiquette in Japan in 2026?</h2>
+          <p className={styles.bodyText}>
+            Don&apos;t tip, and say &ldquo;arigato&rdquo; instead: JNTO says it is not rude at all to pay the bill
+            without a tip, and a tip offered anyway may be politely refused. The 3 exceptions, none of them expected:
+          </p>
+          <ol className={styles.bodyList}>
+            <li><strong>Private tour guides</strong> used to overseas practice may accept a tip as thanks.</li>
+            <li><strong>Interpreters</strong>, on the same terms as guides.</li>
+            <li><strong>Top luxury ryokan:</strong> a <em>kokorozuke</em> for the staff member who first serves tea in your room.</li>
+          </ol>
+          <p className={styles.bodyText}>
+            If you do give one, put the cash in an envelope (sold at convenience stores, stationery stores and 100 yen
+            stores) and hand it over discreetly.
+          </p>
+        </section>
 
         {/* 1. The situation table. */}
         <section className={styles.comparisonSection}>

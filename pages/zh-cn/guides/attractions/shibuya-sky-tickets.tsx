@@ -46,9 +46,11 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 const LOCALE = "zh-cn" as const;
 const ROUTE = "/zh-cn/guides/attractions/shibuya-sky-tickets";
 // 16 Nov 2026 (C01): the search term 涩谷SKY门票 leads; H1 in the same word order.
-const TITLE = "涩谷SKY门票 2026：价格・预约时间・日落时段";
+// 23 Nov 2026 (C01): still 0% CTR at 6.9; Bing shows the page for 涩谷sky官网预约, so the
+// booking method leads the title, H1 and meta, with a 官网怎么预约 H2 under the lead.
+const TITLE = "涩谷SKY门票 官网预约方法 2026：¥2,700起";
 const DESC =
-  "涩谷SKY门票2026：官网成人15点前¥2,700、15点后¥3,400，入场日两周前日本时间00:00开售，日落时段最先售罄。境外信用卡可在Klook预订。";
+  "涩谷SKY门票官网预约方法2026：两周前日本时间00:00开售，选日期・时段・张数后付款。成人¥2,700／¥3,400，境外卡付不了可用Klook。";
 
 const SHIBUYA_SKY_URL = klookFor(shibuyaSkyTicketUrl, LOCALE);
 const GYG_SLUG = "zh-cn-shibuya-sky-tickets";
@@ -220,6 +222,10 @@ const faqItems: FaqItem[] = [
     a: `官网成人票 10:00～14:59 入场为 ¥2,700，15:00～21:20 入场为 ¥3,400。同样的票在 14 楼窗口买是 ¥3,000 和 ¥3,700，所以不论哪一档，网上预订都省 ¥300。6～12 岁儿童票 ¥1,200，仅在窗口售票；学龄前儿童免费入场。这套票价依据涩谷 Scramble Square 发布的票价调整，自 2025 年 4 月 1 日入场起适用；核查日期 ${CHECKED}。`,
   },
   {
+    q: "涩谷SKY官网怎么预约？",
+    a: `在入场日整整两周前的日本时间 00:00（北京时间前一天 23:00）进入官网购票页面，选择日期、入场时段和张数，再用信用卡付款：10:00～14:59 入场 ¥2,700，15:00～21:20 入场 ¥3,400。自 2024 年 7 月起许多境外发行的信用卡无法在官网付款，这种情况可在 Klook 购买。6～12 岁儿童票只在 14 楼窗口当天售票。核查日期 ${CHECKED}。`,
+  },
+  {
     q: "SHIBUYA SKY 几点开放？最后入场是几点？",
     a: `根据东京都官方旅游网站的信息（核查日期 ${CHECKED}），SHIBUYA SKY 开放时间为 10:00～22:30，最后入场 21:20。元旦闭馆，其他日子也可能临时闭馆或缩短开放时间。开放时间不只影响行程，也影响票价：¥2,700 那一档到 14:59 为止，15:00 到 21:20 截止前一律 ¥3,400。`,
   },
@@ -272,10 +278,10 @@ const faqItems: FaqItem[] = [
 // 16 Nov 2026 (C01): FAQPage carries the five questions the search terms ask; the visible list keeps all.
 const FAQ_SCHEMA_QS = new Set([
   "2026 年涩谷SKY门票多少钱？",
+  "涩谷SKY官网怎么预约？",
   "涩谷SKY门票提前多久开售？",
   "涩谷SKY哪个时段最先售罄？",
   "SHIBUYA SKY 需要提前预约吗？",
-  "SHIBUYA SKY 几点开放？最后入场是几点？",
 ]);
 
 // Klook "book for the same day" — the English page's items, on the zh-CN locale path.
@@ -402,7 +408,7 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <h1 className={styles.heroTitle}>
-            涩谷SKY门票 2026： <br />价格、预约时间与日落时段
+            涩谷SKY门票 官网预约方法 2026： <br />价格、开售时间与日落时段
           </h1>
           <p className={styles.heroSubtitle}>
             东京最好的露天观景体验，位于涩谷十字路口上方 229 米。票价分为两档，提前两周开放预订，
@@ -426,7 +432,8 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         {/* Lead paragraph */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>2026 年 SHIBUYA SKY 官网成人门票：15 点前入场 ¥2,700，15 点后入场 ¥3,400；每个入场日期的门票均在该日期前两周的日本时间 00:00 开售，日落时段最先售罄。</strong>
+            <strong>2026 年涩谷SKY官网门票成人 15 点前入场 ¥2,700、15 点后入场 ¥3,400，每个入场日期的门票均在该日期前两周的日本时间 00:00 开售。</strong>
+            日落时段最先售罄，想看日落就在开售时立即下单。自 2024 年 7 月起许多境外发行的信用卡无法在官网付款，这种情况可改用 Klook 购买。
           </p>
           <p className={styles.bodyText}>
             <strong>SHIBUYA SKY（涩谷天空）门票可在线购买，成人 10:00～14:59 入场票价为 ¥2,700，15:00～21:20 入场票价为
@@ -439,6 +446,28 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             2024 年 7 月起，许多境外发行的信用卡无法在官网成功付款。票价依据涩谷 Scramble Square 2025 年 2 月 27 日发布的票价调整公告
             （核查日期 {CHECKED}）；票价、开放时间与停留规定已于 {LAST_CHECKED} 对照运营方官网与东京都官方旅游网站重新核查。
           </p>
+        </section>
+
+        {/* 23 Nov 2026 (C01): the Bing query 涩谷sky官网预约 as an H2, answered in three steps. */}
+        <section className={styles.bodySection}>
+          <h2 className={styles.sectionTitle}>涩谷SKY官网怎么预约？</h2>
+          <ol className={styles.bodyList}>
+            <li>
+              <strong>算好开售时间：</strong>入场日整整两周前的日本时间 00:00（北京时间前一天 23:00），在
+              <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer" style={sourceLink}>官网购票页面</a>进入网上购票。
+            </li>
+            <li>
+              <strong>选日期、入场时段和张数：</strong>10:00～14:59 入场 ¥2,700，15:00～21:20 入场 ¥3,400（所有日落时段都在这一档）；6～12 岁儿童票只在 14 楼窗口当天售票。
+            </li>
+            <li>
+              <strong>付款：</strong>用信用卡结账；如果境外发行的信用卡付款失败，可在 Klook 购买同样的指定时段门票。
+            </li>
+          </ol>
+          <div className={styles.pickCtaRow}>
+            <KlookLink href={SHIBUYA_SKY_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              在 Klook 预约 SHIBUYA SKY 门票 →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Quick Answer Box */}

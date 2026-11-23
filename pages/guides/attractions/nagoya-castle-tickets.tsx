@@ -77,7 +77,9 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 const ROUTE = "/guides/attractions/nagoya-castle-tickets";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
-const OWN = checkedLabel("2026-11-14");
+// C01 (23 Nov 2026): fee page, visitor information and the keep project page (/en/tenshu/) re-read:
+// adult ¥1,000 from 1 Oct 2026, 9:00–16:30, keep closed for ageing and earthquake resistance.
+const OWN = checkedLabel("2026-11-23");
 const RAIL = checkedLabel("2026-10-28");
 const PARKS = checkedLabel("2026-10-26");
 const GHIBLI = checkedLabel("2026-11-12");
@@ -196,9 +198,18 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Nagoya Castle Tickets 2026: Price, Hours & Can You Go Inside";
+// C01 (23 Nov 2026): 7 impressions at 7.6, 0 clicks: the price, hours and keep closure lead.
+const TITLE = "Nagoya Castle Tickets 2026: ¥1,000, Hours & Keep Closure";
 const DESCRIPTION =
-  "Nagoya Castle tickets: ¥1,000 adults, junior high and under free. Nagoya Castle price, Nagoya Castle hours (9:00–16:30), the closed keep and a Nagoya stop.";
+  "Nagoya Castle tickets 2026: ¥1,000 adults, junior high and under free, open 9:00–16:30. The main keep is closed, no reopening date; the palace is open.";
+// FAQPage carries five questions; the visible list keeps all of them.
+const FAQ_SCHEMA_QS = new Set([
+  "How much are Nagoya Castle tickets?",
+  "Can you go inside Nagoya Castle?",
+  "What are Nagoya Castle's opening hours?",
+  "Do I need to book Nagoya Castle tickets in advance?",
+  "How long do you need at Nagoya Castle?",
+]);
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -229,7 +240,7 @@ export default function NagoyaCastleTicketsPage({ updated }: { updated: PageUpda
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.filter((item) => FAQ_SCHEMA_QS.has(item.q)).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -284,7 +295,7 @@ export default function NagoyaCastleTicketsPage({ updated }: { updated: PageUpda
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Nagoya Castle Tickets 2026: <br />Price, Hours and Whether You Can Go Inside
+            Nagoya Castle Tickets 2026: <br />{ADULT}, Hours and the Main Keep Closure
           </h1>
           <p className={styles.heroSubtitle}>
             The castle is a walk-up ticket with a closed keep and an open palace. What turns a Nagoya stop into
@@ -336,13 +347,12 @@ export default function NagoyaCastleTicketsPage({ updated }: { updated: PageUpda
             </div>
             {/* Answer-first: the first body paragraph, not the hero line. */}
             <p className={styles.verdictText}>
-              <strong>Nagoya Castle tickets</strong> cost <strong>{ADULT}</strong> for an adult from 1 October
-              2026, and children up to junior high school get in <strong>free</strong>. The castle is open{" "}
-              <strong>9:00–16:30</strong> (last entry to the Hommaru Palace at 16:00) and closes only from 29
-              December to 1 January. The nearest station is <strong>Nagoyajo</strong> on the Meijo subway line
-              (formerly Shiyakusho), 5 minutes from Exit 7. The main keep is <strong>closed inside</strong> for its
-              low earthquake resistance while the city plans a wooden rebuild, with no reopening date; the rebuilt
-              Hommaru Palace is open. Allow 1 to 1.5 hours. Read on nagoyajo.city.nagoya.jp {OWN}.
+              <strong>Nagoya Castle tickets cost {ADULT} for an adult from 1 October 2026, and children up to
+              junior high school get in free.</strong> The castle is open <strong>9:00–16:30</strong> (last entry to
+              the Hommaru Palace at 16:00), closing only from 29 December to 1 January, and the nearest station is
+              Nagoyajo on the Meijo subway line, 5 minutes from Exit 7. The main keep is <strong>closed inside</strong>{" "}
+              for its ageing and low earthquake resistance while the city plans a wooden rebuild, with no reopening
+              date, but the rebuilt Hommaru Palace is open (read on nagoyajo.city.nagoya.jp {OWN}).
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={nagoyaSamuraiInuyamaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>

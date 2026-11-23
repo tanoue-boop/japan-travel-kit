@@ -58,7 +58,9 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 const ROUTE = "/guides/attractions/japan-sake-tasting-tour";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
-const OWN = checkedLabel("2026-11-14");
+// C01 (23 Nov 2026): Gekkeikan ¥600 (20+, three tastings; 13–19 ¥100), Hakutsuru free and Sawanoi
+// ¥700 re-read on the three breweries' own pages.
+const OWN = checkedLabel("2026-11-23");
 
 const GEKKEIKAN = "¥600";
 const SAWANOI = "¥700";
@@ -150,9 +152,18 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Sake Tasting Tour Japan 2026: Kyoto, Kobe & Tokyo Breweries";
+// C01 (23 Nov 2026): 6 impressions at 7.0, 0 clicks: the two named districts and "prices" lead.
+const TITLE = "Sake Tasting Tour Japan 2026: Kyoto Fushimi, Kobe Nada Fees";
 const DESCRIPTION =
-  "Sake tasting tour Japan: sake tasting Kyoto in Fushimi (¥600, 3 sakes), Kobe's free Nada museum, sake tasting Tokyo in Ome — sake brewery tour fees, 20+.";
+  "Sake tasting tour Japan 2026: Kyoto Fushimi ¥600 for 3 sakes at Gekkeikan, Kobe Nada free at Hakutsuru, Tokyo Ome ¥700 at Sawanoi. 20+ only.";
+// FAQPage carries five questions; the visible list keeps all of them.
+const FAQ_SCHEMA_QS = new Set([
+  "How much does sake tasting cost in Japan?",
+  "Where can you do sake tasting in Japan?",
+  "Is Fushimi or Nada better for sake tasting?",
+  "Can I do sake tasting in Tokyo?",
+  "How old do you have to be to drink sake in Japan?",
+]);
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -183,7 +194,7 @@ export default function JapanSakeTastingTourPage({ updated }: { updated: PageUpd
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.filter((item) => FAQ_SCHEMA_QS.has(item.q)).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -238,7 +249,7 @@ export default function JapanSakeTastingTourPage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Sake Tasting Tour Japan (2026): <br />Where to Taste, What It Costs, and the 20+ Rule
+            Sake Tasting Tour Japan 2026: <br />Kyoto Fushimi, Kobe Nada &amp; Tokyo Prices
           </h1>
           <p className={styles.heroSubtitle}>
             Three brewing towns a visitor can reach by train — Fushimi, Nada and Ome — with the breweries&apos;
@@ -290,13 +301,11 @@ export default function JapanSakeTastingTourPage({ updated }: { updated: PageUpd
             </div>
             {/* Answer-first: the first body paragraph, not the hero line. */}
             <p className={styles.verdictText}>
-              A <strong>sake tasting tour in Japan</strong> is easiest in three brewing towns: Fushimi in Kyoto,
-              Nada in Kobe and Ome in western Tokyo. Gekkeikan&apos;s museum in Fushimi charges{" "}
-              <strong>{GEKKEIKAN}</strong> with three tastings, Hakutsuru&apos;s museum in Nada is{" "}
-              <strong>free</strong>, and the Sawanoi brewery tour in Ome is <strong>{SAWANOI}</strong>. On your own a
-              brewery visit takes <strong>40–60 minutes</strong>; a guided tasting tour takes about{" "}
-              <strong>3 hours</strong>. You must be <strong>20 or older</strong> to drink in Japan, and breweries
-              check. Fees read on the breweries&apos; own sites {OWN}.
+              <strong>Sake tasting in Japan costs {GEKKEIKAN} at Gekkeikan&apos;s museum in Kyoto Fushimi (three
+              tastings), nothing at Hakutsuru&apos;s museum in Kobe Nada, and {SAWANOI} on the Sawanoi brewery tour in
+              Ome, western Tokyo.</strong> On your own a brewery visit takes <strong>40–60 minutes</strong>, while a
+              guided tasting tour takes about <strong>3 hours</strong>. You must be <strong>20 or older</strong> to
+              drink in Japan, and breweries check (fees read on the breweries&apos; own sites {OWN}).
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={kyotoSakeTastingBreweryTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>

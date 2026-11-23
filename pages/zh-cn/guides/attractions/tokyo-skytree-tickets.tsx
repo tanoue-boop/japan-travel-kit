@@ -48,9 +48,10 @@ const ROUTE = "/zh-cn/guides/attractions/tokyo-skytree-tickets";
 // R02 (19 Nov 2026): re-synced with the English rewrite — answer-first body paragraph, the
 // weekday / weekend price table, the 350 vs 450 table, the Skytree vs Shibuya Sky vs Tokyo
 // Tower table and the five-question FAQPage. Figures as on the English page.
-const TITLE = "东京晴空塔门票价格 2026：350 米 vs 450 米与预订";
+// C01 (23 Nov 2026): 5 impressions at 6.6, 0 clicks. The two decks and both prices lead the title.
+const TITLE = "东京晴空塔门票 2026：350/450 价格对比 ¥1,800起";
 const DESC =
-  "东京晴空塔门票价格（2026年11月19日官网确认）：350 米天望甲板 ¥1,800 起，350＋450 米套票在线 ¥3,000 起，现场每张加 ¥500。";
+  "东京晴空塔门票2026：350米天望甲板成人¥1,800起，350＋450米套票¥3,000起，现场每张加¥500。官网11月19日确认，线上订票更省。";
 
 const LOCALE = "zh-cn" as const;
 const P = PRICES.tokyoSkytree;
@@ -328,7 +329,7 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            东京晴空塔门票价格 2026： <br />350 米 vs 450 米与预订
+            东京晴空塔门票 2026： <br />350 米 vs 450 米价格对比与预订
           </h1>
           <p className={styles.heroSubtitle}>
             东京晴空塔门票：350 米天望甲板成人 ¥1,800 起，加上 450 米天望回廊的套票 ¥3,000 起（官网核查日
@@ -349,10 +350,9 @@ export default function CnTokyoSkytreePage({ updated }: { updated: PageUpdated }
 
         {/* R02: the answer in the first body paragraph, ahead of the boxes */}
         <p className={styles.bodyText}>
-          东京晴空塔门票：350 米天望甲板（Tembo Deck）成人 ¥1,800 起，天望甲板＋450 米天望回廊（Tembo
-          Galleria）套票 ¥3,000 起，均为在官网线上预订指定日期和时段的价格（核查日 {CHECKED}）；6～14 岁儿童分别为
-          ¥900 起和 ¥1,500 起。当天在塔内现场购票，需在所选日期票价的基础上每张加收 ¥500；官网没有另列工作日与周末的票价表，
-          所选日期的价格会在结账时显示。如果可能想登上 450 米空中回廊，就在线购买套票：当天加购要多付 ¥1,400，而且这项销售可能因人数限制暂停。
+          <strong>2026 年东京晴空塔门票线上价格：350 米天望甲板（Tembo Deck）成人 ¥1,800 起，350 米＋450 米天望回廊（Tembo
+          Galleria）套票成人 ¥3,000 起，6～14 岁儿童分别为 ¥900 起和 ¥1,500 起（官网核查日 {CHECKED}）。</strong>
+          当天在塔内现场购票每张加收 ¥500，所选日期的价格会在结账时显示。可能想登上 450 米就在线买套票：当天加购成人要多付 ¥1,400，而且这项销售可能因人数限制暂停。
         </p>
 
         {/* Quick Answer Box */}

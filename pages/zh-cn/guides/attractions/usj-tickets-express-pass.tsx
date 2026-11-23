@@ -48,10 +48,12 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 const ROUTE = "/zh-cn/guides/attractions/usj-tickets-express-pass";
 // 14 Nov 2026 (R01): the query leads the title, H1 and meta, as on the English page.
 // 16 Nov 2026 (C01): 价格・种类・怎么买 order, H1 in the same word order as the title.
-const TITLE = "日本环球影城快速通关 2026：价格・种类・怎么买";
-const H1 = "日本环球影城快速通关 2026：价格、种类与怎么买";
+// 23 Nov 2026 (C01): 40 impressions at 5.6 and still 0 clicks after the 16 Nov change, so the
+// searched phrase 环球影城快速通关 价格 2026 now leads the title, H1 and meta.
+const TITLE = "日本环球影城快速通关 价格 2026：4和7区别・怎么买";
+const H1 = "环球影城快速通关价格 2026：快速通行证 4 和 7、怎么买";
 const DESC =
-  "日本环球影城快速通关2026：分快速通行证4和7，价格随入园日期变动、没有固定价，约提前2个月开售且常售罄。人多的日子就买，可在Klook预订。";
+  "环球影城快速通关价格2026：分快速通行证4和7，没有固定价、按入园日期浮动，约提前2个月开售且常售罄，需另买Studio Pass，官网和Klook都能买。";
 
 const LOCALE = "zh-cn" as const;
 const GYG_SLUG = "zh-cn-usj-tickets-express-pass";
@@ -517,10 +519,9 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>日本环球影城快速通关（Universal Express Pass，USJ 的付费快速通行证，即“fast pass”）</strong>主要分为
-            <strong>快速通行证 4</strong>（4 个项目）和<strong>快速通行证 7</strong>（7 个项目），每张只限一个日期使用，而且不是入园票——同一天还需要
-            Studio Pass。USJ 没有固定价格：种类和价格随入园日期而变，约在入园日前 2 个月开售，每天只卖有限数量，经常提前售罄。如果在周末、日本法定节假日或寒假期间入园，就买快速通行证；人少的工作日，通常只买
-            Studio Pass 就够了。于{CHECKED_USJ}及{CHECKED_TODAY}在 usj.co.jp 查阅。
+            <strong>环球影城快速通关（Universal Express Pass，即“fast pass”）2026 年主要分为快速通行证 4（4 个项目）和快速通行证 7（7 个项目），没有固定价格，价格按入园日期浮动、在结账时显示。</strong>
+            每张只限一个日期使用，约在入园日前 2 个月开售、每天限量、经常提前售罄，而且不是入园票——同一天还需要 Studio Pass。
+            周末、日本法定节假日或寒假期间入园就买快速通行证，人少的工作日通常只买 Studio Pass 就够了（于{CHECKED_USJ}及{CHECKED_TODAY}在 usj.co.jp 查阅）。
           </p>
           <p className={styles.bodyText}>
             <strong>怎么买：</strong>通过 USJ 官方 WEB Ticket Store、Lawson Ticket 或 Klook 等代售平台在线购买指定日期的快速通行证；乐园入口不售当日票，所以要在出发前买好，并另外买同一天的 Studio Pass。

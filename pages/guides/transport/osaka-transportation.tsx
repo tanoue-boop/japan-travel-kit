@@ -11,32 +11,46 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 const attractionRoutes = [
   { dest: "Dotonbori",        from: "Namba",         line: "Walk",             time: "5 min",  price: "Free" },
   { dest: "Universal Studios", from: "Osaka",         line: "JR Yumesaki Line", time: "15 min", price: "¥200" },
-  { dest: "Osaka Castle",     from: "Tanimachi-yonchome", line: "Osaka Metro",  time: "10 min", price: "¥230" },
-  { dest: "Shinsekai",        from: "Dobutsuenmae",   line: "Osaka Metro",      time: "5 min",  price: "¥180" },
-  { dest: "Tenpozan",         from: "Osakako",        line: "Osaka Metro (Chuo)", time: "20 min", price: "¥240" },
+  { dest: "Osaka Castle",     from: "Tanimachi-yonchome", line: "Osaka Metro",  time: "10 min", price: "From ¥190 (Namba ¥240)" },
+  { dest: "Shinsekai",        from: "Dobutsuenmae",   line: "Osaka Metro",      time: "5 min",  price: "From ¥190" },
+  { dest: "Tenpozan",         from: "Osakako",        line: "Osaka Metro (Chuo)", time: "20 min", price: "From ¥190 (Namba ¥290)" },
 ];
 
+// C01 (23 Nov 2026): re-read on subway.osakametro.co.jp. The Enjoy Eco Card is ¥820 / ¥620 / child
+// ¥310, covers Osaka Metro and Osaka City Bus but not Yumeshima Station, with discounts at about 20
+// spots (en/guide/page/enjoy-eco.php). The Yoh-okoshi 30h Pass is ¥1,200 / ¥600, Osaka Metro only
+// including Yumeshima, no buses, on sale 1 Oct 2026 – 30 Sep 2027 (digital_joshaken.php). The
+// ¥1,800 2-day "Osaka Metro Pass" this page listed is the 48-hour ticket whose sale ended on
+// 30 Sep 2026 (osaka-metro-pass guide). Fares ¥190–¥390 and Umeda–Namba ¥240 are the official
+// figures read on 20 Nov 2026 for the osaka-metro-pass guide.
+const FARES_CHECKED = "2026-11-23";
+const ECO_URL = "https://subway.osakametro.co.jp/en/guide/page/enjoy-eco.php";
+const DIGITAL_URL = "https://subway.osakametro.co.jp/guide/fare/category_digital_tickets/digital_tickets/digital_joshaken.php";
+const FARES_URL = "https://subway.osakametro.co.jp/en/guide/fare/fare/price.php";
+
 const dayPasses = [
-  { pass: "Enjoy Eco Card (weekday)",  price: "¥820",   bestFor: "Full day sightseeing — anyone can buy", worth: "Yes" },
-  { pass: "Enjoy Eco Card (weekend)",  price: "¥620",   bestFor: "Weekend & holiday visits",             worth: "Yes" },
-  { pass: "Osaka Metro Pass 2-day",    price: "¥1,800", bestFor: "Two consecutive sightseeing days",      worth: "Yes" },
+  { pass: "Which to buy",              price: "¥620–¥1,200", bestFor: "4+ rides in a day: Enjoy Eco Card. 2–3 rides: ICOCA or Suica. Midday to the next evening: Yoh-okoshi 30h Pass", worth: "Enjoy Eco Card for most days" },
+  { pass: "Enjoy Eco Card (weekday)",  price: "¥820",   bestFor: "Full day sightseeing — anyone can buy", worth: "Yes, from the 4th ¥240 ride" },
+  { pass: "Enjoy Eco Card (Sat, Sun & holidays)", price: "¥620", bestFor: "Weekend & holiday visits", worth: "Yes, from the 3rd ¥240 ride" },
+  { pass: "Yoh-okoshi 30h Pass (digital)", price: "¥1,200", bestFor: "30 hours from first use, Osaka Metro only (incl. Yumeshima), no buses", worth: "If your 30 hours span two days" },
+  { pass: "Single fare (ICOCA / ticket)", price: "¥190–¥390", bestFor: "Umeda–Namba is ¥240", worth: "Cheapest for 2–3 rides" },
 ];
 
 const passCompareRows = [
-  { feature: "Who can buy",        eco: "Anyone (residents & tourists)", pass: "Short-term foreign visitors*" },
-  { feature: "Price",             eco: "¥820 weekday / ¥620 weekend",   pass: "2-day ¥1,800 (1-day also sold)" },
-  { feature: "Child price",        eco: "¥310",                          pass: "Confirm at purchase" },
-  { feature: "Duration",          eco: "1 day",                         pass: "1 or 2 days" },
-  { feature: "Covers",            eco: "Osaka Metro + city buses",      pass: "Osaka Metro + city buses" },
-  { feature: "Reaches Yumeshima", eco: "Yes (Chuo Line)",               pass: "Yes — incl. the Expo 2025 site" },
-  { feature: "Attraction discounts", eco: "~30 facilities",             pass: "Confirm — varies" },
-  { feature: "Sold on Klook",     eco: "No (station machines)",         pass: "Yes" },
+  { feature: "Who can buy",        eco: "Anyone (residents & tourists)", pass: "Anyone, in the e METRO app or on the Surutto QRtto site" },
+  { feature: "Price",             eco: "¥820 weekday / ¥620 Sat, Sun & holidays", pass: "¥1,200" },
+  { feature: "Child price",        eco: "¥310",                          pass: "¥600" },
+  { feature: "Duration",          eco: "1 day",                         pass: "30 hours from first use; start within 30 days of buying" },
+  { feature: "Covers",            eco: "Osaka Metro + Osaka City Bus",  pass: "Osaka Metro only (no buses)" },
+  { feature: "Reaches Yumeshima", eco: "No (Yumeshima Station excluded)", pass: "Yes" },
+  { feature: "Attraction discounts", eco: "About 20 sightseeing spots", pass: "20+ facilities" },
+  { feature: "On sale",           eco: "Station ticket machines",        pass: "1 Oct 2026 – 30 Sep 2027" },
 ];
 
 const passVsRows = [
-  { scenario: "One day, on a weekend or holiday", pick: "Enjoy Eco Card", note: "At ¥620 it's the cheapest unlimited day in any major Japanese city — and anyone can buy it." },
-  { scenario: "One day, on a weekday",            pick: "Enjoy Eco Card", note: "Still good value at ¥820, and it comes with ~30 attraction discounts." },
-  { scenario: "Two full days of sightseeing",     pick: "Osaka Metro Pass", note: "The 2-day pass at ¥1,800 spreads the cost and saves swapping tickets each day." },
+  { scenario: "One day, on a weekend or holiday", pick: "Enjoy Eco Card", note: "At ¥620 it pays for itself on the third ¥240 ride — and anyone can buy it." },
+  { scenario: "One day, on a weekday",            pick: "Enjoy Eco Card", note: "¥820 pays for itself on the fourth ¥240 ride, with discounts at about 20 sightseeing spots." },
+  { scenario: "Midday to the next evening",       pick: "Yoh-okoshi 30h Pass", note: "¥1,200 for 30 hours from first use; the old ¥1,800 2-day pass is no longer sold." },
   { scenario: "Only 2–3 rides in a day",          pick: "ICOCA / Suica",  note: "Pay-as-you-go is cheaper than any day pass at this level of use." },
 ];
 
@@ -97,37 +111,32 @@ const trainTips = [
 const faqItems = [
   {
     q: "What is the best way to get around Osaka?",
-    a: "An IC card (Suica or ICOCA) is the most flexible and cost-effective way to get around Osaka. It works on Osaka Metro, JR lines, private railways, and local buses — tap in, tap out, and the correct fare is deducted automatically. For heavy sightseeing days, consider an Osaka Metro day pass (¥820) or the Enjoy Eco Card on weekends (¥620).",
+    a: "An IC card (Suica or ICOCA) is the most flexible way to get around Osaka. It works on Osaka Metro, JR lines, private railways and local buses — tap in, tap out, and the correct fare is deducted automatically. For a day of four or more subway rides, buy the Enjoy Eco Card: ¥820 on weekdays, ¥620 on Saturdays, Sundays and holidays (Osaka Metro, checked 23 November 2026).",
+  },
+  {
+    q: "How much does Osaka transportation cost per day?",
+    a: "Between ¥620 and ¥820 for unlimited Osaka Metro and Osaka City Bus rides on the Enjoy Eco Card (weekend and weekday price), or ¥190–¥390 per ride on ICOCA. A sightseeing day of Namba, Osaka Castle, Umeda and Tennoji comes to ¥1,010 in single fares, so the card saves ¥190 on a weekday and ¥390 at the weekend. Fares from Osaka Metro, checked 20 and 23 November 2026.",
   },
   {
     q: "Is a day pass worth it in Osaka?",
-    a: "Yes, more often than in Tokyo. The Enjoy Eco Card (¥820 on weekdays) pays for itself after four journeys, which is easy to hit on a full sightseeing day. On weekends and holidays it drops to ¥620 and breaks even at three rides. A single Midosuji Line hop from Umeda to Namba is ¥230, so the maths adds up quickly once you're moving around the city. For two consecutive days, the 2-day Osaka Metro Pass (about ¥1,800) is the better buy.",
+    a: "Yes, more often than in Tokyo. The Enjoy Eco Card (¥820 on weekdays) pays for itself on the fourth ¥240 ride, which is easy to hit on a full sightseeing day; on Saturdays, Sundays and holidays it drops to ¥620 and breaks even on the third. A single Midosuji Line hop from Umeda to Namba is ¥240. The 2-day Osaka Metro Pass (¥1,800) is no longer sold; for a midday-to-next-evening span, the ¥1,200 Yoh-okoshi 30h Pass covers 30 hours of Osaka Metro.",
   },
   {
     q: "Can I use Suica in Osaka?",
     a: "Yes. Suica is accepted on Osaka Metro, JR West, and most private railways in the Kansai region. If you already have a Suica from Tokyo, simply top it up and use it in Osaka — no need to buy a separate ICOCA card. Both cards are interchangeable across Japan.",
   },
   {
-    q: "How do I get from Osaka to Kyoto?",
-    a: "The fastest and most affordable way is the JR Shinkaisoku (Special Rapid) from Osaka Station to Kyoto — takes about 15 minutes and costs around ¥580 with an IC card. Hankyu trains from Umeda and Kintetsu trains from Namba also connect the cities at a similar price. The shinkansen is overkill for this short distance.",
-  },
-  {
-    q: "Is Osaka easy to navigate without Japanese?",
-    a: "Yes — Osaka is very tourist-friendly. Station signs, platform announcements, and ticket machines are all available in English. Google Maps works reliably throughout the city. Osaka Metro stations are colour-coded and numbered, making navigation straightforward even if you can't read Japanese characters.",
-  },
-  {
-    q: "Osaka Metro Pass or Enjoy Eco Card — which should tourists buy?",
-    a: "For a single day, the Enjoy Eco Card is usually the better pick — it's cheaper (¥620 at weekends, ¥820 on weekdays), anyone can buy it, and it includes around 30 attraction discounts. For two consecutive days of heavy sightseeing, the 2-day Osaka Metro Pass (about ¥1,800) spreads the cost and saves swapping tickets. If you'll only take a couple of rides, skip both and use a pay-as-you-go ICOCA.",
-  },
-  {
-    q: "Does the day pass cover the trip to Yumeshima?",
-    a: "Yes. Both the Enjoy Eco Card and the Osaka Metro Pass cover the Chuo Line out to Yumeshima, the island that hosted the Expo 2025 site. As always with extended-area coverage, treat it as a 2026 guide and confirm current conditions before you travel.",
+    q: "Enjoy Eco Card or Yoh-okoshi 30h Pass: which covers Yumeshima?",
+    a: "Only the Yoh-okoshi 30h Pass. Osaka Metro's Enjoy Eco Card page excludes Yumeshima Station, while the ¥1,200 Yoh-okoshi 30h Pass (child ¥600) covers all Osaka Metro lines including Yumeshima but no buses, for 30 hours from first use; it is sold in the e METRO app and on the Surutto QRtto site from 1 October 2026 to 30 September 2027. For a single day in the city, the ¥620–¥820 Enjoy Eco Card is cheaper. Checked 23 November 2026.",
   },
 ];
 
-const TITLE = "Osaka Transportation (2026): Metro, JR and ¥820 Day Pass";
+// C01 (23 Nov 2026): 7 impressions at 9.1, 0 clicks. Fares, passes and ICOCA lead the title, and
+// the lead answers what a day of transport costs.
+const TITLE = "Osaka Transportation 2026: Metro Fares, Passes & ICOCA";
+const H1_TEXT = "Osaka Transportation 2026: Metro Fares, Day Passes & ICOCA";
 const DESCRIPTION =
-  "Osaka transportation: an ICOCA or Suica for a few rides, the ¥820 Enjoy Eco Card (¥620 weekends) for 4+ rides, the ¥3,500 Amazing Pass for paid sights.";
+  "Osaka transportation 2026: Metro fares ¥190–¥390 a ride, Enjoy Eco Card day pass ¥820 (¥620 weekends) from the 4th ride, and ICOCA or Suica for the rest.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/transport/osaka-transportation") } });
 
@@ -215,7 +224,7 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Osaka Transportation (2026): <br />Metro, JR, IC Cards and Day Passes
+            {H1_TEXT}
           </h1>
           <p className={styles.heroSubtitle}>
             Osaka&apos;s subway system is one of the easiest in Japan to navigate. Here&apos;s everything you need to get around the city like a local.
@@ -234,14 +243,15 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
         {/* Answer first */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>Osaka transportation</strong> is the Osaka Metro — the Midosuji Line links Shin-Osaka,
-            Umeda, Namba and Tennoji — plus JR for Universal Studios and day trips, all paid by tapping an
-            ICOCA or Suica. For four or more subway rides in a day, the Enjoy Eco Card is{" "}
-            <strong>¥820 on weekdays and ¥620 at weekends</strong>; the <strong>¥3,500{" "}
+            <strong>A day of Osaka transportation costs ¥620–¥820 on the Enjoy Eco Card (¥820 weekdays, ¥620
+            Saturdays, Sundays and holidays), or ¥190–¥390 a ride on an ICOCA or Suica, with Umeda–Namba at ¥240.</strong>{" "}
+            The network is the Osaka Metro — the Midosuji Line links Shin-Osaka, Umeda, Namba and Tennoji — plus
+            JR for Universal Studios and day trips, and the Enjoy Eco Card pays off from the fourth ¥240 ride on a
+            weekday. The <strong>¥3,500{" "}
             <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass</Link></strong>{" "}
-            only pays off if the admissions you will use come to more than the ¥2,680 difference (prices from
-            our <Link href="/guides/transport/osaka-metro-pass">Osaka Metro pass guide</Link>, checked on 4
-            November 2026).
+            only pays off if the admissions you will use come to more than the ¥2,680 difference (Osaka Metro
+            prices checked 23 November 2026; more in our{" "}
+            <Link href="/guides/transport/osaka-metro-pass">Osaka Metro pass guide</Link>).
           </p>
           <p className={styles.bodyText}>
             Arriving from Tokyo or flying in? The{" "}
@@ -320,7 +330,7 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
           </p>
           <p className={styles.bodyText}>
             Trains run every 2–3 minutes during the day and every 5–8 minutes late at night. A single
-            journey from Umeda to Namba costs ¥230 with an IC card and takes about 7 minutes. This one
+            journey from Umeda to Namba costs ¥240 and takes about 7 minutes. This one
             route covers the majority of what most visitors want to see in Osaka.
           </p>
         </section>
@@ -360,12 +370,18 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            Last checked: {FARES_CHECKED}. Official:{" "}
+            <a href={ECO_URL} target="_blank" rel="noopener noreferrer">Enjoy Eco Card</a>,{" "}
+            <a href={DIGITAL_URL} target="_blank" rel="noopener noreferrer">Yoh-okoshi 30h Pass</a>,{" "}
+            <a href={FARES_URL} target="_blank" rel="noopener noreferrer">Osaka Metro fares</a>.
+          </p>
+          <p className={styles.bodyText}>
             Unlike Tokyo, day passes in Osaka are genuinely good value for sightseers. The break-even
-            point is about four journeys for the ¥820 weekday Enjoy Eco Card — and just three at the ¥620
+            point is four ¥240 journeys for the ¥820 weekday Enjoy Eco Card — and just three at the ¥620
             weekend price — which most visitors hit before lunch. The Enjoy Eco Card is open to residents
             and tourists alike (no passport needed) and is sold at any Osaka Metro station ticket machine;
-            it also unlocks discounts at around 30 Osaka attractions. The tourist-oriented Osaka Metro Pass
-            is sold in 1-day and 2-day versions, with the 2-day pass the version most travellers buy. To
+            it also unlocks discounts at about 20 sightseeing spots, but it does not cover Yumeshima Station.
+            The 2-day Osaka Metro Pass is no longer sold; the nearest thing is the ¥1,200 Yoh-okoshi 30h Pass. To
             choose between the passes, with a sample day priced ride by ride, see our{" "}
             <Link href="/guides/transport/osaka-metro-pass">Osaka Metro pass</Link> guide. One of the
             Amazing Pass&apos;s free admissions is a five-minute walk from Namba Station: the{" "}
@@ -374,14 +390,14 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
           </p>
 
           <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>
-            Enjoy Eco Card vs Osaka Metro Pass
+            Enjoy Eco Card vs Yoh-okoshi 30h Pass
           </h3>
           <div className={styles.tableWrap} style={{ marginTop: "0.5rem" }}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["", "Enjoy Eco Card", "Osaka Metro Pass"].map((h) => (
+                    {["", "Enjoy Eco Card", "Yoh-okoshi 30h Pass"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -399,7 +415,9 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            *Eligibility and prices are a 2026 guide — confirm the current conditions when you buy.
+            Last checked: {FARES_CHECKED} on{" "}
+            <a href={ECO_URL} target="_blank" rel="noopener noreferrer">subway.osakametro.co.jp (Enjoy Eco Card)</a> and{" "}
+            <a href={DIGITAL_URL} target="_blank" rel="noopener noreferrer">its digital tickets page</a>.
           </p>
 
           <h3 style={{ fontSize: "1.1rem", fontWeight: 800, color: "var(--sumi)", marginTop: "1.75rem", marginBottom: "0.5rem" }}>

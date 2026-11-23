@@ -302,10 +302,14 @@ export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/es
 // to best-esim-japan (a pick per trip) and the Reddit angle to best-esim-japan-reddit.
 const FROM = cheapestOverall ? formatUsd(cheapestOverall.priceUsd) : "$1.99";
 // R04 (14 Nov 2026): exact phrase first, then the price and "cost per GB" for "cost of eSIM in Japan".
-const TITLE = `Cheapest eSIM for Japan (2026): ${FROM} Plans & Cost per GB`;
-const H1 = "Cheapest eSIM for Japan (2026): Lowest Price and Cost per GB";
+// C01 (23 Nov 2026): 36 impressions at 7.6 and 0 clicks, so the 1 GB price leads the title
+// and the 10 GB price follows (both from the daily price data, not typed in).
+const ONE_GB = cheapestTwo(1)[0];
 const TEN_GB = cheapestTwo(10)[0];
-const DESCRIPTION = `Cheapest eSIM for Japan: ${FROM} for 1 GB${TEN_GB ? `, ${formatUsd(TEN_GB.priceUsd)} for 10 GB` : ""}, checked daily. Cheap Japan eSIM picks and the cost of eSIM in Japan per GB, by size.`;
+const ONE_GB_PRICE = ONE_GB ? formatUsd(ONE_GB.priceUsd) : FROM;
+const TITLE = `Cheapest Japan eSIM 2026: From ${ONE_GB_PRICE} for 1GB${TEN_GB ? ` (${formatUsd(TEN_GB.priceUsd)}/10GB)` : ""}`;
+const H1 = `Cheapest Japan eSIM 2026: From ${ONE_GB_PRICE} for 1 GB, Cost per GB by Size`;
+const DESCRIPTION = `Cheapest Japan eSIM 2026: from ${ONE_GB_PRICE} for 1 GB${TEN_GB ? ` and ${formatUsd(TEN_GB.priceUsd)} for 10 GB` : ""}, prices checked daily. Cheapest plan by size, cost per GB and unlimited.`;
 
 export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -406,7 +410,7 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
             Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
-            Cheapest eSIM for Japan (2026): <br />Lowest Price and Cost per GB
+            Cheapest Japan eSIM 2026: <br />From {ONE_GB_PRICE} for 1 GB, Cost per GB by Size
           </h1>
           <p className={styles.heroSubtitle}>
             Which Japan eSIM is cheapest at 1, 3, 5, 10, 20 and 50 GB, what each costs per gigabyte, and the cheapest plan for your trip length.
@@ -436,13 +440,12 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             The <strong>cheapest eSIM for Japan</strong> is{" "}
-            {cheapestOverall ? <strong>{cheapestOverall.provider} {cheapestOverall.name} at {FROM}</strong> : "Simbye"}, and
-            at the size most tourists need it is <strong>{rowLabel(cheapestTwo(10)[0])} at {priceOf(cheapestTwo(10)[0] ?? null)}</strong>{" "}
-            (list prices in USD, checked {pricesCheckedAt}). {COST_ANSWER} Cheap here does not mean a weaker
-            network: the same Japanese carriers sit behind every plan.
+            {cheapestOverall ? <strong>{cheapestOverall.provider} {cheapestOverall.name} at {FROM}</strong> : "Simbye"}{" "}
+            (list price in USD, checked {pricesCheckedAt}). At 10 GB, the size most tourists need, the cheapest plan is{" "}
+            <strong>{rowLabel(TEN_GB)} at {priceOf(TEN_GB ?? null)}</strong>. {COST_ANSWER}
           </p>
           <p className={styles.bodyText}>
-            The lowest headline price is not always the lowest cost per gigabyte, so both are below; what a typical plan
+            Cheap here does not mean a weaker network: the same Japanese carriers sit behind every plan. The lowest headline price is not always the lowest cost per gigabyte, so both are below; what a typical plan
             costs — the median price per GB and per day across every provider — is on the{" "}
             <Link href="/guides/esim/japan-esim-price-tracker" className={tools.inlineLink}>how much does an eSIM cost in Japan</Link>{" "}
             page. For picks by

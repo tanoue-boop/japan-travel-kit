@@ -114,7 +114,9 @@ const SEARCH_TERMS = {
     "zh-tw": "teamLab Planets 無界 比較",
     // 2026-11-16 (C01): "东京teamLab门票 2026：Planets与无界价格比较" — still the comparison page
     // (Planets-only ticket terms go to /zh-cn/…/teamlab-planets-tickets via an in-body link).
-    "zh-cn": "Planets与无界",
+    // 2026-11-23 (C01): "teamLab 东京门票 2026：Planets vs 麻布台价格" — the same comparison, the two
+    // museums named head to head.
+    "zh-cn": "Planets vs 麻布台",
     ko: "팀랩 플래닛 보더리스 비교",
     th: "teamLab Planets หรือ Borderless",
   },

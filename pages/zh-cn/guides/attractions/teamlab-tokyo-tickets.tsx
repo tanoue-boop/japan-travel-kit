@@ -47,10 +47,13 @@ const CHILD = priceLabel(P.child, LOCALE);
 const ROUTE = "/zh-cn/guides/attractions/teamlab-tokyo-tickets";
 // 16 Nov 2026 (C01): the search term 东京teamLab门票 leads, with the Planets price question it is
 // found for (行星馆票价); H1 in the same word order. 20 Nov 2026 (R01): unchanged subject.
-const TITLE = "东京teamLab门票 2026：Planets与无界价格比较";
-const H1_LINE = "东京teamLab门票 2026：";
+// 23 Nov 2026 (C01): 14 impressions at 6.3, still 0 clicks after 16 Nov. The title now leads with
+// the official name teamLab and puts the two museums head to head (Planets vs 麻布台), matching the
+// English page's which-to-book intent (W21); the price stays in the meta and the lead.
+const TITLE = "teamLab 东京门票 2026：Planets vs 麻布台价格";
+const H1_LINE = "teamLab 东京门票 2026：";
 const DESC =
-  "东京teamLab门票2026：Planets成人¥3,800起、无界¥3,400起，两馆分开买。带孩子选Planets，首次成人游选无界，可在Klook预订。";
+  "teamLab东京门票2026：丰洲Planets成人¥3,800起、麻布台无界¥3,400起，两馆分开买。带孩子选Planets，首次成人游选麻布台无界。";
 const CHECKED_ISO = "2026-11-20";
 const CHECKED = dateLabel(CHECKED_ISO, LOCALE);
 
@@ -86,7 +89,7 @@ const whoFor = [
 
 const faqItems: FaqItem[] = [
   {
-    q: "teamLab Planets 和无界哪个更好？",
+    q: "teamLab Planets 和麻布台无界哪个更好？",
     a: "没有绝对的好坏。Planets 要赤脚走过深及成人膝盖的水，适合带孩子同行；无界没有地图和固定路线，可以穿鞋慢慢欣赏艺术。带孩子可选 Planets；不带孩子、首次参观可选无界。",
   },
   {
@@ -158,7 +161,7 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <h1 className={styles.heroTitle}>
-            {H1_LINE} <br />Planets 与无界价格比较，两馆怎么选
+            {H1_LINE} <br />Planets vs 麻布台无界，价格比较与两馆怎么选
           </h1>
           <p className={styles.heroSubtitle}>
             东京有两座 teamLab 美术馆，门票需分别购买。这里说明两者的区别，以及该选哪一座。
@@ -209,7 +212,7 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>两馆对比<span className="sr-only">：</span></span>
-          <h2 className={styles.sectionTitle}>teamLab Planets 和无界，该选哪一座？</h2>
+          <h2 className={styles.sectionTitle}>teamLab Planets 和麻布台无界，该选哪一座？</h2>
           <p className={styles.bodyText}>带孩子选 Planets，不带孩子、首次参观的成人选无界；理由逐项列在下表。</p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
