@@ -540,7 +540,7 @@ export default function Tokyo4DayItineraryPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText}>
             It covers Tokyo Metro and Toei lines only — not the JR Yamanote Line, not the Yurikamome to Odaiba, and
             not the bus to Kawaguchiko or Tobu to Nikko. The full break-even is in the{" "}
-            <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket guide</Link>.
+            <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket</Link> guide.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

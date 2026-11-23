@@ -1508,6 +1508,13 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             ticket and the days it is sold), Airport Limousine (the bus + subway sets) and Keikyu (the Hanetoku
             combination, which the operator states cannot be bought at Haneda Airport).
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            The subway pass on its own is also sold on arrival: Tokyo Metro&apos;s sales list (read 23 November 2026)
+            names the Narita Terminal 1 and Terminal 2 arrival lobbies and two tourist information centres on
+            Haneda Terminal 3&apos;s 2nd floor, with a passport check. The{" "}
+            <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket</Link> is ¥1,000 / ¥1,500 /
+            ¥2,000 for 24 / 48 / 72 hours since 14 March 2026, and does not cover the airport train itself.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             <strong>Three things to settle before you pay.</strong> First, whether the ticket is an e-ticket or a
             voucher to exchange: the Skyliner and the bus can both be a QR code you scan, while the N&apos;EX
@@ -1542,7 +1549,7 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
               bus + Tokyo Subway Ticket combination
             </KlookLink>{" "}
             is the one to look at if your days in the city are subway days — see our{" "}
-            <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket guide</Link> for whether the pass
+            <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket</Link> guide for whether the pass
             itself is worth it.
           </p>
         </section>

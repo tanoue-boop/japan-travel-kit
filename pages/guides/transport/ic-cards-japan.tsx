@@ -1124,9 +1124,9 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
             overseas visitors and to domestic visitors from outside the Tokyo region, with a passport check if you buy it
             in Japan. Our{" "}
             <Link href="/guides/attractions/tokyo-subway-ticket" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              Tokyo Subway Ticket guide
+              Tokyo Subway Ticket
             </Link>{" "}
-            and{" "}
+            guide and{" "}
             <Link href="/guides/transport/osaka-metro-pass" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Osaka Metro Pass guide
             </Link>{" "}

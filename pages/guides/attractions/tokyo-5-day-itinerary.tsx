@@ -770,7 +770,9 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            <strong>What to book for Day 1.</strong> The subway ticket for the city days, and the
+            <strong>What to book for Day 1.</strong> The{" "}
+            <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket</Link> for the city days
+            (¥2,000 for 72 hours since the 14 March 2026 price rise, Metro and Toei only), and the
             Shibuya Sky slot if you want sunset. Shibuya Sky is also the one stop here where the booking
             route matters as much as the ticket — the official site has rejected many foreign-issued
             cards since July 2024, which our{" "}
