@@ -4,7 +4,14 @@ import KlookTripPrep from "../../../components/KlookTripPrep";
 import { GygCompareButton } from "../../../components/GygCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
-import { warnerBrosStudioTourTokyo, warnerBrosStudioTourSameDayPrep } from "../../../lib/klook-links";
+import {
+  warnerBrosStudioTourTokyo,
+  warnerBrosStudioTourSameDayPrep,
+  haveFunInTokyoPremiumPass,
+  warnerBrosStudioTourKlookTours,
+  warnerBrosStudioTourHotels,
+  tokyoSubwayTicket,
+} from "../../../lib/klook-links";
 import { gygWarnerBrosStudioTourTokyo } from "../../../lib/gyg-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
@@ -33,6 +40,16 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 // - /en/dinner-at-hogwarts-magical-winter/ and /en/dinner-at-hogwarts-magical-feast-share/.
 // - /en/plan-your-visit/opening-times/ — tickets on sale until 31 March 2027.
 // - /en/plan-your-visit/location/ — Oedo Line 20 min, Seibu 17 min, limousine bus stop.
+// Re-read 23 Nov 2026 (task jtk-20261123-R03):
+// - /en/tickets/ — standard ¥6,600~ / ¥5,500~ / ¥4,000~, prices vary through the year,
+//   3D Secure needed for card payment, WeChat Mini Program for Chinese visitors, on-site
+//   ticket office sells unsold slots, ¥1,500 per change, non-refundable.
+// - /en/faqs/tickets/ — book online by date and time; 7-Eleven (Multi-Copy / 7ticket,
+//   Japanese only); cards Amex, Mastercard, Visa, JCB, UnionPay, Discover, Diners, Apple
+//   Pay, Google Pay; cash only at the on-site office; phone confirmation is fine.
+// - /en/plan-your-visit/opening-times/ — on sale until 31 March 2027; later releases
+//   announced on X, Instagram, Facebook and TikTok. No fixed "N months ahead" rule or
+//   release time is published, so the page gives none.
 // The standard-entry adult and child figures and the check date are owned by
 // lib/attraction-prices.ts, shared with the ticket price table.
 const P = PRICES.wbStudioTour;
@@ -40,6 +57,7 @@ const CHECKED = checkedLabel(P.checked);
 
 const OFFICIAL = {
   tickets: "https://www.wbstudiotour.jp/en/tickets/",
+  faqTickets: "https://www.wbstudiotour.jp/en/faqs/tickets/",
   priceUpdate: "https://www.wbstudiotour.jp/en/news_20251120/",
   revision2025: "https://www.wbstudiotour.jp/en/notice_20250116/",
   priceList: "https://www.wbstudiotour.jp/en/ticket-information/price/",
@@ -66,6 +84,58 @@ const accessRows = [
   { from: "Tokyo Station", route: "No direct line: ride to Shinjuku or Ikebukuro, then take one of the two routes above", time: "Not given officially", pass: "Only on the Oedo Line leg" },
   { from: "Haneda Airport", route: "Airport Limousine Bus (Haneda ⇔ Hikarigaoka/Nerima route) to the \"WARNER BROS. STUDIO TOUR TOKYO\" stop, from 1 Mar 2026", time: "Not given on the location page", pass: "No" },
   { from: "Toshimaen Station", route: "Walk to the entrance", time: "2 min", pass: "—" },
+];
+
+/** How to get a ticket and when they go on sale, as the official site states it on 23 Nov 2026. */
+const buyRows = [
+  { item: "Adult (18+) / Junior (12–17) / Child (4–11)", value: "From ¥6,600 / ¥5,500 / ¥4,000 — the price varies by date and shows at checkout", source: "Tickets page" },
+  { item: "Ages 3 and under", value: "Free — select the free infant ticket", source: "Price list" },
+  { item: "Ticket type", value: "Date and entry-time specified; enter within 30 minutes of your slot", source: "Tickets FAQ" },
+  { item: "On sale now", value: "Visits up to 31 March 2027", source: "Opening times page" },
+  { item: "Next release", value: "No fixed months-ahead rule or release time is published; new dates are announced on the official X, Instagram, Facebook and TikTok, and to newsletter subscribers", source: "Opening times page, tickets page" },
+  { item: "Same-day tickets", value: "On-site ticket office, only for slots that have not sold out; cash is accepted only there", source: "Tickets page, tickets FAQ" },
+  { item: "Buying from abroad", value: "Official website in English with Amex, Mastercard, Visa, JCB, UnionPay, Discover, Diners, Apple Pay or Google Pay; a card without 3D Secure may fail at payment. WeChat Mini Program for Chinese visitors", source: "Tickets page, tickets FAQ" },
+  { item: "Other official channels", value: "7-Eleven Multi-Copy machine or the 7ticket website (Japanese only); authorised distributors including Klook and GetYourGuide", source: "Tickets FAQ, authorised distributors page" },
+  { item: "Confirmation on the day", value: "Show the confirmation email on your phone; no printing needed", source: "Tickets FAQ" },
+];
+
+/** Klook options that add transport or a room — each confirmed live on Klook on 23 Nov 2026, no prices. */
+const packageRows = [
+  {
+    option: haveFunInTokyoPremiumPass.title,
+    ticket: "Yes — pick the studio tour as a Premium A attraction",
+    transport: "Yes — pick the 24-hour Tokyo Subway Ticket as the Premium B item; it covers the Toei Oedo Line to Toshimaen",
+    hotel: "No",
+    url: haveFunInTokyoPremiumPass.url,
+  },
+  {
+    option: "Studio tour ticket + Tokyo Subway Ticket (two bookings, one Klook account)",
+    ticket: "Yes — date- and time-specified admission",
+    transport: "Yes — 24, 48 or 72-hour Tokyo Metro and Toei pass, Oedo Line included",
+    hotel: "No",
+    url: tokyoSubwayTicket.url,
+  },
+  {
+    option: "Klook tours for the studio tour",
+    ticket: "Stated on each listing",
+    transport: "Stated on each listing — read the meeting point before booking",
+    hotel: "No",
+    url: warnerBrosStudioTourKlookTours.url,
+  },
+  {
+    option: "Klook hotels near the studio tour",
+    ticket: "No — book the ticket separately",
+    transport: "No",
+    hotel: "Yes — rooms only",
+    url: warnerBrosStudioTourHotels.url,
+  },
+  {
+    option: "Ticket + hotel + transfer in one booking",
+    ticket: "—",
+    transport: "—",
+    hotel: "No such Klook listing in the Klook search index on 23 Nov 2026",
+    url: null,
+  },
 ];
 
 /** What the official site says about availability — nothing beyond it. */
@@ -176,24 +246,24 @@ const steps = [
 
 const faqItems = [
   {
+    q: "How do I get Harry Potter Studio Tour Tokyo tickets?",
+    a: "Book a date and entry time on the official website, wbstudiotour.jp, which takes Visa, Mastercard, Amex, JCB, UnionPay, Discover, Diners, Apple Pay and Google Pay (cards need 3D Secure). Standard entry starts at ¥6,600 for an adult, ¥5,500 for a junior (12–17) and ¥4,000 for a child (4–11), varying by date; ages 3 and under are free. Authorised distributors such as Klook and GetYourGuide also sell valid tickets; auction and other unauthorised resale tickets are refused at the door. Checked 23 Nov 2026.",
+  },
+  {
+    q: "When do Harry Potter Studio Tour Tokyo tickets go on sale?",
+    a: "On 23 Nov 2026 the official site was selling visits up to 31 March 2027. It publishes no fixed rule such as a set number of months ahead or a release time; new dates are announced on its official X, Instagram, Facebook and TikTok accounts and to newsletter subscribers. Book as soon as your trip dates are set.",
+  },
+  {
+    q: "What if Harry Potter Studio Tour Tokyo tickets are sold out?",
+    a: "Try other entry times on the same date first, then authorised distributors such as Klook, which sells the same date- and time-specified admission. The on-site ticket office sells only slots that have not sold out, so turning up without a booking is a gamble. For the December 2026 Dinner at Hogwarts events the official site says additional tickets may become available. Checked 23 Nov 2026.",
+  },
+  {
+    q: "Which Warner Bros Studio Tour Tokyo packages include transportation?",
+    a: "On Klook, the Have Fun in Tokyo Premium Pass lets you pick the studio tour plus a 24-hour Tokyo Subway Ticket, which covers the Toei Oedo Line from Shinjuku to Toshimaen. You can also book the studio tour ticket and the Tokyo Subway Ticket separately on one Klook account. The official ticket itself includes no transport; Toshimaen Station is a 2-minute walk from the entrance. Checked 23 Nov 2026.",
+  },
+  {
     q: "How much are Harry Potter Studio Tour Tokyo tickets in 2026?",
     a: `For admissions from 1 July 2026, standard entry costs ¥6,600–¥7,300 for an adult (18+), ¥5,500–¥6,000 for a junior (12–17) and ¥4,000–¥4,400 for a child (4–11), depending on the date; ages 3 and under are free on an infant ticket. From 1 April 2025 to 30 June 2026 the same ticket was a flat ¥7,000 / ¥5,800 / ¥4,200. The Afternoon Tea Package is ¥14,000–¥14,700 for an adult. Figures from the official Warner Bros. Studio Tour Tokyo site, checked ${CHECKED}.`,
-  },
-  {
-    q: "Can you buy Warner Bros Studio Tour Tokyo tickets at the door?",
-    a: `Yes, but only for slots that have not sold out. The official site says tickets are also sold at the on-site ticket office, and recommends pre-booking because your preferred admission date and time may be sold out. Every ticket is for a set date and entry time, tickets are non-refundable, and a date or time change costs ¥1,500. Checked ${CHECKED}.`,
-  },
-  {
-    q: "How do I get from Shinjuku to the Harry Potter studio?",
-    a: `Take the Toei Oedo Line from Shinjuku direct to Toshimaen — 20 minutes, according to the official location page — then walk two minutes to the entrance. The Oedo Line is a Toei subway line, so the Tokyo Subway Ticket covers it. From Ikebukuro, the Seibu Ikebukuro Line runs direct to Toshimaen in 17 minutes, but it is a private railway and is not covered. Checked ${CHECKED}.`,
-  },
-  {
-    q: "How long do you need at the Harry Potter Studio Tour Tokyo?",
-    a: `The official FAQ recommends allowing three to four hours, with no time limit once you are inside. You must enter within 30 minutes of the time on your ticket; arrive later and staff offer the next available slot, subject to availability. Add the 20-minute Oedo Line ride each way from Shinjuku, and the visit takes half a day. Checked ${CHECKED}.`,
-  },
-  {
-    q: "What is Dinner at Hogwarts?",
-    a: `Dinner at Hogwarts is a limited-date dinner event in the Great Hall at the Tokyo studio tour, with studio tour admission included. In 2026 there are two: ~Magical Winter~ on 2, 3, 10 and 11 December (¥58,000, ages 18 and over, multi-course dinner with free-flow drinks and an after-hours studio tour, 4:45–10:00 PM), and ~A Magical Feast to Share~ on 5 and 12 December (¥29,000 for adults 20+, ¥15,000 from elementary school age to 19, sharing-style dinner, bookings of three to four guests, 5:30–8:00 PM). On ${CHECKED} the official site showed no tickets currently available for either, with more possibly released.`,
   },
 ];
 
@@ -201,9 +271,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/warner-bros-studio-tour-tokyo-tickets") },
 });
 
-const TITLE = "Harry Potter Tokyo Tickets 2026: Studio Tour Price & Booking";
+const TITLE = "How to Get Harry Potter Tokyo Tickets: Price, Release Dates";
 const DESC =
-  "Harry Potter Tokyo tickets: Warner Bros Studio Tour Tokyo price ¥6,600–¥7,300 adult, ¥4,000–¥4,400 child from Jul 2026, timed entry, 20 min from Shinjuku.";
+  "How to get Harry Potter Tokyo tickets: book a timed slot on the official site from ¥6,600 adult. On sale to 31 Mar 2027; sold out? Klook transport options.";
 
 export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { updated: PageUpdated }) {
   const muted = { marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" } as const;
@@ -294,14 +364,14 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Harry Potter Tokyo Tickets 2026: <br />Warner Bros. Studio Tour Tokyo Price &amp; How to Book
+            How to Get Harry Potter Tokyo Tickets (2026): <br />Price, Release Dates &amp; Sold-Out Options
           </h1>
           <p className={styles.heroSubtitle}>
-            Official prices after the July 2026 price update, the date-and-time booking rules, the train from
-            Shinjuku or Ikebukuro to Toshimaen, and what is already sold out this winter.
+            Where to book Warner Bros. Studio Tour Tokyo tickets, how far ahead they go on sale, what to do when
+            your slot is gone, which Klook options add transport, and the train to Toshimaen.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Official prices & rules", "Access from Shinjuku"].map((t) => (
+            {[`Updated ${updated.label}`, "Official prices & release dates", "Transport options"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -323,13 +393,13 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
         {/* Answer first */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            Harry Potter Tokyo tickets — officially Warner Bros. Studio Tour Tokyo – The Making of Harry
-            Potter — cost ¥6,600–¥7,300 for an adult (18+), ¥5,500–¥6,000 for a junior (12–17) and
-            ¥4,000–¥4,400 for a child (4–11), under the date-based prices the official site applies to
-            admissions from 1 July 2026; ages 3 and under go free. Every ticket is for a set date and entry
-            time, and the on-site ticket office sells only slots that have not sold out, so book before you go.
-            The official FAQ says to allow three to four hours, and Toshimaen Station, a 2-minute walk away, is
-            20 minutes from Shinjuku on the Toei Oedo Line. Checked {CHECKED}.
+            To get Harry Potter Tokyo tickets, book a date and entry time on the official Warner Bros. Studio
+            Tour Tokyo website, where standard entry costs ¥6,600–¥7,300 for an adult (18+), ¥5,500–¥6,000
+            for a junior (12–17) and ¥4,000–¥4,400 for a child (4–11), depending on the date. On 23 November
+            2026 tickets were on sale for visits up to 31 March 2027, and the official site publishes no fixed
+            release schedule for later dates. If your slot is sold out, check other times that day and the
+            authorised distributor Klook, whose Have Fun in Tokyo Premium Pass pairs the studio tour with a
+            24-hour Tokyo Subway Ticket for the Oedo Line ride to Toshimaen.
           </p>
         </section>
 
@@ -367,6 +437,78 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
             </KlookLink>
           </div>
         </div>
+
+        {/* How to get tickets — official channels, prices, release dates */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>How to buy</span>
+          <h2 className={styles.sectionTitle}>How do I get Harry Potter Studio Tour Tokyo tickets?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Book a dated, timed slot on wbstudiotour.jp — it takes overseas cards, Apple Pay and Google Pay — or
+            through an authorised distributor such as Klook. Standard entry starts at ¥6,600 for an adult, and the
+            on-site ticket office sells only the slots that are left.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["What", "Official answer (23 Nov 2026)", "Where it is stated"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>Bottom line</td>
+                    <td colSpan={2} style={{ fontSize: "0.88rem" }}>
+                      <strong>Book online for a set date and time as soon as your trip dates are fixed — visits up to
+                      31 March 2027 are on sale.</strong>
+                    </td>
+                  </tr>
+                  {buyRows.map((row) => (
+                    <tr key={row.item}>
+                      <td className={styles.tdProvider}>{row.item}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.value}</td>
+                      <td style={{ fontSize: "0.82rem" }}>{row.source}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={muted}>
+            Last checked: 2026-11-23. Sources:{" "}
+            <a href={OFFICIAL.tickets} target="_blank" rel="noopener">tickets page</a>,{" "}
+            <a href={OFFICIAL.faqTickets} target="_blank" rel="noopener">tickets FAQ</a>,{" "}
+            <a href={OFFICIAL.openingTimes} target="_blank" rel="noopener">opening times</a> and{" "}
+            <a href={OFFICIAL.priceList} target="_blank" rel="noopener">price list</a> on wbstudiotour.jp.
+          </p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginTop: "1rem" }}>
+            <KlookLink href={warnerBrosStudioTourTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check studio tour tickets on Klook →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* Release dates */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Release dates</span>
+          <h2 className={styles.sectionTitle}>When do Harry Potter Studio Tour Tokyo tickets go on sale?</h2>
+          <p className={styles.bodyText}>
+            On 23 November 2026 the official site was selling visits up to 31 March 2027. It does not publish a
+            fixed rule — no set number of months ahead and no release time — so dates after March 2027 go on sale
+            when the studio tour announces them on its official X, Instagram, Facebook and TikTok accounts, and to
+            its newsletter subscribers.
+          </p>
+          <p className={styles.bodyText}>
+            Special events follow their own releases. Both December 2026 Dinner at Hogwarts events showed no tickets
+            left on the same date, with the official note that more may be released; the Afternoon Tea Package is on
+            sale for visits up to 11 January 2027 and Evening High Tea up to 10 January 2027. Source:{" "}
+            <a href={OFFICIAL.openingTimes} target="_blank" rel="noopener">opening times</a> and{" "}
+            <a href={OFFICIAL.tickets} target="_blank" rel="noopener">tickets</a> on wbstudiotour.jp, last checked
+            2026-11-23.
+          </p>
+        </section>
 
         {/* Same-day block sits high: the ticket itself is in Klook's 2% band, so the
             6.5% hotel and tour rows, the 5% subway pass and the 20% eSIM carry the page. */}
@@ -496,11 +638,17 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
         {/* When it sells out */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Availability</span>
-          <h2 className={styles.sectionTitle}>When do Harry Potter Studio Tour Tokyo tickets sell out?</h2>
+          <h2 className={styles.sectionTitle}>What if Harry Potter Studio Tour Tokyo tickets are sold out?</h2>
+          <p className={styles.bodyText}>
+            Check the other entry times on the same date first, then the authorised distributors — Klook sells the
+            same date- and time-specified admission, and its Premium Pass and tour listings are compared in the next
+            section. The on-site ticket office sells only slots that have not sold out, so arriving without a booking
+            is a fallback, not a plan; for the December Dinner at Hogwarts events the official site says more tickets
+            may be released.
+          </p>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Book as soon as your date is fixed: tickets are on sale only up to 31 March 2027, the official site
-            warns that preferred dates and times may sell out, and both December Dinner at Hogwarts events
-            show no tickets left. It does not publish which days sell out first.
+            The official site warns that preferred dates and times may sell out but does not publish which days go
+            first, so the table below is limited to what it states.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -547,6 +695,72 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
           </p>
         </section>
 
+        {/* Transport and hotel packages */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Packages</span>
+          <h2 className={styles.sectionTitle}>Which Warner Brothers Studios Tokyo packages include transportation?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            The official ticket includes no transport. On Klook, the Have Fun in Tokyo Premium Pass is a
+            listing that lets you take the studio tour and a 24-hour Tokyo Subway Ticket together; otherwise, book the
+            ticket and the subway pass as two items on one account. Hotels near the studio are sold as rooms only.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Klook option", "Studio tour ticket", "Transport", "Hotel"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>Bottom line</td>
+                    <td colSpan={3} style={{ fontSize: "0.88rem" }}>
+                      <strong>For ticket plus transport in one purchase, the Have Fun in Tokyo Premium Pass; for a
+                      single attraction, the studio tour ticket plus a Tokyo Subway Ticket.</strong>
+                    </td>
+                  </tr>
+                  {packageRows.map((row) => (
+                    <tr key={row.option}>
+                      <td className={styles.tdProvider}>
+                        {row.url ? (
+                          <KlookLink href={row.url} target="_blank" rel="sponsored nofollow noopener">
+                            {row.option}
+                          </KlookLink>
+                        ) : (
+                          row.option
+                        )}
+                      </td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.ticket}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.transport}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.hotel}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={muted}>
+            Last checked: 2026-11-23. Each Klook listing was confirmed live on klook.com on that date; prices change
+            by date and currency, so none are given — check the listing. That the Oedo Line is a Toei subway line,
+            20 minutes from Shinjuku to Toshimaen, is from the official{" "}
+            <a href={OFFICIAL.location} target="_blank" rel="noopener">location page</a> on wbstudiotour.jp.
+          </p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginTop: "1rem" }}>
+            <KlookLink href={warnerBrosStudioTourKlookTours.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Compare studio tour tours on Klook →
+            </KlookLink>
+            <KlookLink href={haveFunInTokyoPremiumPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check the Premium Pass on Klook →
+            </KlookLink>
+            <KlookLink href={warnerBrosStudioTourHotels.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Hotels near the studio tour →
+            </KlookLink>
+          </div>
+        </section>
+
         {/* Dinner at Hogwarts */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Special events</span>
@@ -585,7 +799,7 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
         {/* How to book */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Step-by-step</span>
-          <h2 className={styles.sectionTitle}>How do I book Harry Potter Studio Tour Tokyo tickets?</h2>
+          <h2 className={styles.sectionTitle}>What are the booking steps, in order?</h2>
           <div className={styles.stepsList}>
             {steps.map((step, i) => (
               <div key={i} className={styles.stepCard}>
@@ -598,9 +812,9 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
             ))}
           </div>
           <p className={styles.bodyText} style={muted}>
-            The official sources checked on {CHECKED} do not give a date on which each month&apos;s tickets go on
-            sale, or say which days sell out first — only that preferred dates and times may sell out. Check the
-            calendar for your dates as soon as they are fixed.
+            The official site, checked 2026-11-23, sells visits up to 31 March 2027 and gives no fixed release day
+            for later dates, nor which days sell out first — only that preferred dates and times may sell out. Check
+            the calendar for your dates as soon as they are fixed.
           </p>
         </section>
 
@@ -708,9 +922,10 @@ export default function WarnerBrosStudioTourTokyoTicketsPage({ updated }: { upda
         {/* Access */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Getting there</span>
-          <h2 className={styles.sectionTitle}>How do I get from Shinjuku to the Harry Potter studio?</h2>
+          <h2 className={styles.sectionTitle}>How do I get to Toshimaen Station?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Take the Toei Oedo Line from Shinjuku direct to Toshimaen (20 minutes), then walk two minutes. From
+            Take the Toei Oedo Line from Shinjuku direct to Toshimaen (20 minutes), then walk two minutes to the
+            studio tour entrance. From
             Ikebukuro the Seibu Ikebukuro Line takes 17 minutes. The address is 1-1-7 Kasugacho, Nerima-ku,
             Tokyo 179-0074 — north-west Tokyo, well outside the Yamanote loop.
           </p>

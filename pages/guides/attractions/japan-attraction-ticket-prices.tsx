@@ -888,7 +888,10 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
             <Link href="/guides/attractions/shibuya-sky-tickets" className={tools.inlineLink}>Shibuya Sky</Link>,{" "}
             <Link href="/guides/attractions/ghibli-park-tickets" className={tools.inlineLink}>Ghibli Park</Link>,{" "}
             <Link href="/guides/attractions/tokyo-disney-tickets" className={tools.inlineLink}>Tokyo Disney</Link> and{" "}
-            <Link href="/guides/attractions/usj-tickets-express-pass" className={tools.inlineLink}>USJ</Link>.
+            <Link href="/guides/attractions/usj-tickets-express-pass" className={tools.inlineLink}>USJ</Link>. The
+            Warner Bros. studio tour in Nerima sells dated, timed slots only up to a published end date, so check{" "}
+            <Link href="/guides/attractions/warner-bros-studio-tour-tokyo-tickets" className={tools.inlineLink}>Harry Potter Studio Tour Tokyo tickets</Link>{" "}
+            before you fix that day.
           </p>
         </section>
 

@@ -503,6 +503,13 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
             Palace East Gardens and Tokyo Station, which is also where the Narita Express leaves.
           </p>
           <p className={styles.bodyText}>
+            Seven days leaves room to trade one city half-day for the Harry Potter studio tour in Nerima: three to
+            four hours indoors, 20 minutes from Shinjuku on the Toei Oedo Line. It sells dated, timed slots only, so
+            book{" "}
+            <Link href="/guides/attractions/warner-bros-studio-tour-tokyo-tickets">Harry Potter Studio Tour Tokyo tickets</Link>{" "}
+            before you settle which day gives way.
+          </p>
+          <p className={styles.bodyText}>
             The hour-by-hour version of these days, with every admission dated, is in the{" "}
             <Link href="/guides/attractions/tokyo-5-day-itinerary">Tokyo 5 day itinerary</Link> and the{" "}
             <Link href="/guides/attractions/things-to-do-tokyo">things to do in Tokyo</Link> guide. If you

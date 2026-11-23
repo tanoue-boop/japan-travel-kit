@@ -871,7 +871,11 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText}>
             No. It covers Tokyo Metro and Toei Subway only, so JR lines — including the Yamanote Line — and
             private railways are paid separately. In Tokyo that is a large hole: the Yamanote loop that links
-            Shibuya, Shinjuku, Shinagawa, Tokyo and Ueno is JR, and so are the Chuo and Sobu lines.
+            Shibuya, Shinjuku, Shinagawa, Tokyo and Ueno is JR, and so are the Chuo and Sobu lines. The Seibu
+            Ikebukuro Line is a private railway too, which matters if you hold{" "}
+            <Link href="/guides/attractions/warner-bros-studio-tour-tokyo-tickets">Harry Potter Studio Tour Tokyo tickets</Link>:
+            the Seibu ride from Ikebukuro to Toshimaen is not covered, while the Toei Oedo Line from Shinjuku to the
+            same station is.
           </p>
           <p className={styles.bodyText}>
             For a JR-only hop, tap a Suica or Pasmo and pay the single fare; see our{" "}

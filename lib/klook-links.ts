@@ -539,6 +539,34 @@ export const warnerBrosStudioTourTokyo: KlookTour = {
   url: klookLink("https://www.klook.com/en-US/activity/84374-warner-bros-studio-tour-tokyo-making-harry-potter/"),
 };
 
+// Transport and stay options around the studio tour, added 23 Nov 2026 (task
+// jtk-20261123-R03). Klook answers automated reads of these pages with HTTP 403, so
+// each was confirmed as a live en-US page through the www.klook.com search index on
+// 23 Nov 2026, and only what that index states is used: the Premium Pass lets you pick
+// the studio tour as a "Premium A" attraction and the 24-hour Tokyo Subway Ticket as
+// the "Premium B" item, valid for one week from first use. No prices.
+
+/** Multi-attraction pass whose picks include the studio tour and a 24-hour subway ticket. */
+export const haveFunInTokyoPremiumPass: KlookTour = {
+  title: "Have Fun in Tokyo Premium Pass",
+  desc: "Pick the Warner Bros. Studio Tour Tokyo as a Premium A attraction and the 24-hour Tokyo Subway Ticket as the Premium B item; valid one week from first use",
+  url: klookLink("https://www.klook.com/en-US/activity/180427-have-fun-in-tokyo-premium-pass/"),
+};
+
+/** Klook's list of tours for the studio tour destination (tours band). */
+export const warnerBrosStudioTourKlookTours: KlookTour = {
+  title: "Tours for Warner Bros. Studio Tour Tokyo on Klook",
+  desc: "Klook's destination list of tours that include the studio tour; each listing states its own meeting point and whether transport is included",
+  url: klookLink("https://www.klook.com/en-US/destination/p50235622-warner-bros-studio-tour-the-making-of-harry-potter/5-tour/"),
+};
+
+/** Klook hotel search around the studio tour (hotels band). */
+export const warnerBrosStudioTourHotels: KlookTour = {
+  title: "Hotels near Warner Bros. Studio Tour Tokyo on Klook",
+  desc: "Klook's hotel search centred on the studio tour; rooms only — the studio tour ticket is booked separately",
+  url: klookLink("https://www.klook.com/en-US/destination/p50235622-warner-bros-studio-tour-the-making-of-harry-potter/3-hotel/"),
+};
+
 export const tokyoSubwayTicket: KlookTour = {
   title: "Tokyo Subway Ticket (24 / 48 / 72 hour)",
   desc: "Unlimited rides on all Tokyo Metro and Toei Subway lines, collected on arrival instead of queuing for it",

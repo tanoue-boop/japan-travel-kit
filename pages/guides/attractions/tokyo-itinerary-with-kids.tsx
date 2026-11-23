@@ -827,10 +827,11 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
           <p className={styles.bodyText}>
             Four to five. Fewer than four turns the trip into Disney plus jet lag; more than five is where the
             second Disney park, or a second day out, starts to make sense. With older children who have read
-            the books, a sixth day can be the{" "}
-            <Link href="/guides/attractions/warner-bros-studio-tour-tokyo-tickets">Harry Potter Studio Tour Tokyo</Link>{" "}
-            in Nerima — indoors, three to four hours, free for ages 3 and under, with a junior rate for 12–17 and a child
-            rate for 4–11 on the official price list.
+            the books, a sixth day can be the Harry Potter studio tour in Nerima — indoors, three to four hours, free
+            for ages 3 and under, with a junior rate for 12–17 and a child rate for 4–11 on the official price list.
+            Entry is by dated, timed slot, so book{" "}
+            <Link href="/guides/attractions/warner-bros-studio-tour-tokyo-tickets">Harry Potter Studio Tour Tokyo tickets</Link>{" "}
+            once the family&apos;s dates are fixed.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

@@ -693,8 +693,9 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             <Link href="/guides/attractions/tokyo-disney-tickets" style={linkStyle}>Tokyo Disneyland tickets</Link>{" "}
             guide explains how to buy and how to choose between the two parks. For Harry Potter fans, the{" "}
             <strong>Warner Bros. Studio Tour Tokyo</strong> is the Harry Potter studio tour in Nerima, with
-            timed entry, no re-entry and about four hours to allow — details in our{" "}
-            <Link href="/guides/attractions/warner-bros-studio-tour-tokyo-tickets" style={linkStyle}>Harry Potter Studio Tour Tokyo tickets guide</Link>.
+            timed entry, no re-entry and about four hours to allow — how to get{" "}
+            <Link href="/guides/attractions/warner-bros-studio-tour-tokyo-tickets" style={linkStyle}>Harry Potter Studio Tour Tokyo tickets</Link>,
+            when they go on sale and what to do if your slot is sold out are in our guide.
           </p>
         </section>
 
