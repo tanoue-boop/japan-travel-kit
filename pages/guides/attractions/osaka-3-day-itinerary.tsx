@@ -876,7 +876,8 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/transport/haruka-vs-nankai-rapit">HARUKA vs Nankai Rapi:t</Link>. If Day 3
             is Kobe or Himeji by JR, a JR West{" "}
             <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass</Link> covers the HARUKA and
-            those JR hops on the same days.
+            those JR hops on the same days. For the bus, the cheaper JR rapid and Itami arrivals, see the{" "}
+            <Link href="/guides/transport/osaka-airport-transfer">Osaka airport transfer</Link> comparison.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={nankaiRapitUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

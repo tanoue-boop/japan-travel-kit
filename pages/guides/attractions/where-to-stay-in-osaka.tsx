@@ -655,8 +655,8 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
             operators re-read on {TODAY}.
             So: Namba if you are flying in and out of Kansai, Tennoji if you want the shortest Haruka leg,
             Umeda if you are continuing by shinkansen. Our{" "}
-            <Link href="/guides/transport/osaka-airport-transfer">Osaka airport transfer guide</Link> compares
-            every route, and our{" "}
+            <Link href="/guides/transport/osaka-airport-transfer">Osaka airport transfer</Link> guide gives
+            the cheapest and fastest ride to each area by train, bus or private car, and our{" "}
             <Link href="/guides/transport/haruka-vs-nankai-rapit">Haruka vs Nankai Rapi:t comparison</Link>{" "}
             takes the two head to head. Our{" "}
             <Link href="/guides/attractions/japan-10-day-itinerary">10 days in Japan itinerary</Link>{" "}
@@ -865,7 +865,7 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Airport Transfer Guide (2026): KIX &amp; ITM to the City</p>
+                <p className={styles.relatedTitle}>Osaka Airport Transfer 2026: Train vs Bus from KIX &amp; Itami</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

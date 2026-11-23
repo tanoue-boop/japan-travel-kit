@@ -1151,8 +1151,8 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
             inside a longer trip. Our{" "}
             <Link href="/guides/transport/haruka-vs-nankai-rapit">HARUKA vs Nankai Rapi:t guide</Link>{" "}
             compares the two airport trains, our{" "}
-            <Link href="/guides/transport/osaka-airport-transfer">Osaka airport transfer guide</Link>{" "}
-            has the fare tables for Kansai and Itami, and our{" "}
+            <Link href="/guides/transport/osaka-airport-transfer">Osaka airport transfer</Link>{" "}
+            guide has the cheapest and fastest ride from Kansai to Namba, Umeda and Kyoto in one table, and our{" "}
             <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link> runs the break-even against
             point-to-point tickets.
           </p>

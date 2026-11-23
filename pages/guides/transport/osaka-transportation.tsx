@@ -519,10 +519,14 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
             prices the 1day, 2day and 5day passes against single tickets.
           </p>
           <p className={styles.bodyText}>
-            <strong>From Kansai Airport (KIX):</strong> The JR Haruka express reaches Shin-Osaka in 50 minutes (¥3,640)
-            or Tennoji in 33 minutes. The Nankai Rapi:t reaches Namba in 38 minutes for ¥1,450 — better value if
-            your accommodation is in or around Namba. Pre-book the Rapi:t on Klook for guaranteed seating and
-            convenience.
+            <strong>From Kansai Airport (KIX):</strong> The JR Haruka reaches Shin-Osaka in about 50 minutes (¥1,900 on
+            JR West&apos;s HARUKA One-way Ticket for foreign visitors) and Tennoji in about 30. The Nankai Rapi:t reaches
+            Namba in a minimum of 34 minutes for ¥1,410 on Nankai&apos;s Rapi:t Digital Ticket — the better pick if your
+            accommodation is in or around Namba (JR West, Nankai and Kansai Airport, checked 23 Nov 2026). Our{" "}
+            <Link href="/guides/transport/osaka-airport-transfer" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Osaka airport transfer
+            </Link>{" "}
+            table compares train, bus and private car to Namba, Umeda, Shin-Osaka and Kyoto, with Itami too.
           </p>
           <div style={{ margin: "1.5rem 0" }}>
             <KlookLink
@@ -673,7 +677,7 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Airport Transfer Guide (2026): KIX &amp; ITM to the City</p>
+                <p className={styles.relatedTitle}>Osaka Airport Transfer 2026: Train vs Bus from KIX &amp; Itami</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

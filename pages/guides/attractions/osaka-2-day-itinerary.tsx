@@ -965,8 +965,8 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
             singles, since it includes the HARUKA. Our{" "}
             <Link href="/guides/transport/haruka-vs-nankai-rapit">HARUKA vs Nankai Rapi:t comparison</Link>{" "}
             sets the two airport trains against each other, and our{" "}
-            <Link href="/guides/transport/osaka-airport-transfer">Osaka airport transfer guide</Link> covers
-            Itami and the limousine buses as well.
+            <Link href="/guides/transport/osaka-airport-transfer">Osaka airport transfer</Link> guide sets
+            train, limousine bus and private car against each other for Namba, Umeda and Itami.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shinkansenTokyoOsaka.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

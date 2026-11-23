@@ -5,7 +5,7 @@ import KlookStayAreas from "../../../components/KlookStayAreas";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import KlookTripPrep from "../../../components/KlookTripPrep";
-import { jrHarukaUrl, luggageDeliveryCards, nankaiRapitUrl, osakaAirportArrivalPrep, osakaAirportStayAreas } from "../../../lib/klook-links";
+import { jrHarukaUrl, klookEsim, klookLink, luggageDeliveryCards, nankaiRapitUrl, osakaAirportArrivalPrep, osakaAirportStayAreas, osakaStayAreas } from "../../../lib/klook-links";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { pocketWifi } from "../../../lib/pocket-wifi";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -36,8 +36,67 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  *
  * Not confirmed from an operator, so deliberately not stated: Nankai's ordinary fare,
  * Nankai's last train and the regular Haruka fare. Klook prices are never quoted.
+ *
+ * Re-read 23 Nov 2026 (task jtk-20261123-R05), the destination x mode table:
+ *   westjr.co.jp/travel-information/en/tickets-passes/oneway/haruka/
+ *     HARUKA One-way Ticket unchanged: Tennoji ¥1,600, Osaka / Shin-Osaka ¥1,900, Kyoto ¥2,700.
+ *   nankai.co.jp/en_railway/ticket/rapit   Rapi:t Digital Ticket ¥1,410 / ¥1,590, unchanged.
+ *   nankai.co.jp/en_railway/rapit          minimum 34 min KIX to Namba.
+ *   nankai.co.jp/traffic/kix.html          Rapi:t about 38 min, Airport Express about 44 min.
+ *   kansai-airport.or.jp/en/access/from-airport/train
+ *     Haruka: Tennoji about 30, Shin-Osaka about 50, Kyoto about 75 min. Kansai Airport
+ *     Rapid: Tennoji about 45, Osaka about 65 min. Airport Express to Namba about 43 min.
+ *   kansai-airport.or.jp/explorekansai/osaka/21821 (Kansai Airport's own article)
+ *     Kansai Airport Rapid to Osaka Station ¥1,210, about 65–70 min, no express ticket,
+ *     an IC card is enough; Haruka 47 min to Osaka Station, last about 22:16.
+ *   kate.co.jp/en/timetable/detail/{OC,UM,UH,KY,ITM}  bus fares, times and last buses
+ *     unchanged (OCAT ¥1,400 / 50 min, Osaka Sta. ¥1,800 / 60 min, Kyoto ¥2,800, ITM ¥2,200).
+ *   okkbus.co.jp/en/timetable/U/ and /N/ (search index; certificate error on fetch)
+ *     Itami to Umeda ¥650, 25–30 min; Itami to Namba ¥650, about 30 min (stand 10).
+ *   westjr.co.jp/global/en/howto/icoca/    ICOCA usable on railways and buses across Japan;
+ *     visitor ICOCA ¥2,000 incl. ¥500 deposit at the JR ticket office, Kansai-airport Station.
+ *   klook.com/activity/15418 (search index)  private KIX transfer, priced per car.
+ * Nankai's ordinary fare still not stated: only a 2023 fare-search result was readable.
  */
-const CHECKED = checkedLabel("2026-11-06");
+const CHECKED = checkedLabel("2026-11-23");
+const TAXI_CHECKED = checkedLabel("2026-11-06");
+
+const ROUTE = "/guides/transport/osaka-airport-transfer";
+const PAGE_URL = `https://www.japan-travel-kit.com${ROUTE}`;
+const TITLE = "Osaka Airport Transfer 2026: Train vs Bus from KIX & Itami";
+const DESCRIPTION =
+  "Osaka airport transfer (Nov 2026): KIX to Namba by Rapi:t ¥1,410 in 34 min, Umeda by JR Rapid ¥1,210 or Haruka ¥1,900, bus from ¥1,400, Itami ¥650.";
+
+const OFFICIAL_SOURCES = [
+  { name: "JR West, HARUKA One-way Ticket", url: "https://www.westjr.co.jp/travel-information/en/tickets-passes/oneway/haruka/" },
+  { name: "Nankai, Rapi:t Digital Ticket", url: "https://www.nankai.co.jp/en_railway/ticket/rapit" },
+  { name: "Kansai Airport, trains", url: "https://www.kansai-airport.or.jp/en/access/from-airport/train" },
+  { name: "Kansai Airport Transportation, bus fares", url: "https://www.kate.co.jp/en/timetable/" },
+  { name: "Osaka Airport Transport, Itami buses", url: "https://www.okkbus.co.jp/en/timetable/U/" },
+];
+
+/** Klook's private KIX transfer (listing 15418), priced per car; the page's ad id is applied by KlookLink. */
+const kixPrivateTransferUrl = klookLink("https://www.klook.com/en-US/activity/15418-private-kansai-international-airport-transfers-osaka/");
+
+/** The answer table: one row per route, cheapest and fastest confirmed option. Row 0 is the verdict. */
+const answerRows = [
+  { route: "Verdict", cheapest: "Namba: bus ¥1,400 · Umeda: JR Rapid ¥1,210 · Itami: bus ¥650", fastest: "Namba: Rapi:t · Umeda, Shin-Osaka, Kyoto: Haruka", luggage: "Limousine Bus, or a private car for a group" },
+  { route: "KIX → Namba",                cheapest: "Limousine Bus to OCAT, ¥1,400, about 50 min", fastest: "Nankai Rapi:t, ¥1,410, from 34 min", luggage: "Limousine Bus to OCAT" },
+  { route: "KIX → Umeda (Osaka Station)", cheapest: "JR Kansai Airport Rapid, ¥1,210, about 65–70 min", fastest: "JR Haruka, ¥1,900, about 45–50 min", luggage: "Limousine Bus, ¥1,800, about 60 min" },
+  { route: "KIX → Shin-Osaka",           cheapest: "JR Haruka, ¥1,900, about 50 min", fastest: "JR Haruka, ¥1,900, about 50 min", luggage: "JR Haruka (direct, no change)" },
+  { route: "KIX → Kyoto",                cheapest: "JR Haruka, ¥2,700, about 75 min", fastest: "JR Haruka, ¥2,700, about 75 min", luggage: "Limousine Bus, ¥2,800, about 1 hr 25–30 min" },
+  { route: "Itami → Umeda",              cheapest: "Limousine Bus, ¥650, about 25–30 min", fastest: "Limousine Bus, ¥650, about 25–30 min", luggage: "Limousine Bus" },
+  { route: "Itami → Namba",              cheapest: "Limousine Bus, ¥650, about 30 min", fastest: "Limousine Bus, ¥650, about 30 min", luggage: "Limousine Bus" },
+  { route: "KIX → Itami",                cheapest: "Direct Limousine Bus, ¥2,200, about 70–75 min", fastest: "Direct Limousine Bus, ¥2,200, about 70–75 min", luggage: "Direct Limousine Bus" },
+];
+
+const modeRows = [
+  { mode: "Verdict", best: "Train for Namba, Umeda and Kyoto; bus for heavy luggage or Itami; private car for a group or a late flight", price: "—", note: "Your hotel's station decides more than the fare." },
+  { mode: "Train (Rapi:t, Haruka, JR Rapid)", best: "Speed and a fixed journey time", price: "¥1,210–¥2,700 one way", note: "No traffic. The Rapi:t and Haruka need a seat ticket; the JR Rapid and Nankai Airport Express do not." },
+  { mode: "Limousine Bus", best: "Big suitcases, hotels near a bus stop", price: "¥1,400–¥2,800 one way", note: "Bags go in the hold, every passenger is seated, no reservation from the airport; times run longer in traffic." },
+  { mode: "Private transfer (Klook)", best: "Families, groups, door to door", price: "Priced per car on Klook", note: "Booked before you fly, so the driver meets the flight. Compare the per-car price with the per-person train fares." },
+  { mode: "Metered taxi", best: "After the last train and bus", price: `About ¥24,400 with tolls to Kita-ku (${TAXI_CHECKED})`, note: "Kansai Airport's fare page adds 20% between 22:00 and 5:00." },
+];
 
 const kixLimousineUrl =
   "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1265375&k_site=https%3A%2F%2Fwww.klook.com%2Fen-GB%2Factivity%2F18203-kansai-airport-one-way-transfer-osaka%2F";
@@ -57,20 +116,23 @@ const arrivalPrep = [
 ];
 
 const kixOptions = [
-  { option: "Nankai Rapi:t to Namba",           time: "From 34 min",        price: "¥1,410 Digital Ticket",  bestFor: "Namba, Dotonbori" },
-  { option: "Nankai Airport Express to Namba",  time: "About 45 min",       price: "Ordinary fare only",     bestFor: "Namba with no seat ticket" },
-  { option: "JR Haruka to Tennoji",             time: "About 35 min",       price: "¥1,600 discounted",      bestFor: "Tennoji, Abeno" },
-  { option: "JR Haruka to Osaka Station",       time: "About 45 min",       price: "¥1,900 discounted",      bestFor: "Umeda" },
+  { option: "Nankai Rapi:t to Namba",           time: "34–38 min",          price: "¥1,410 Digital Ticket",  bestFor: "Namba, Dotonbori" },
+  { option: "Nankai Airport Express to Namba",  time: "About 43–44 min",    price: "Ordinary fare only",     bestFor: "Namba with no seat ticket" },
+  { option: "JR Haruka to Tennoji",             time: "About 30 min",       price: "¥1,600 discounted",      bestFor: "Tennoji, Abeno" },
+  { option: "JR Haruka to Osaka Station",       time: "About 45–50 min",    price: "¥1,900 discounted",      bestFor: "Umeda" },
+  { option: "JR Kansai Airport Rapid to Osaka Station", time: "About 65–70 min", price: "¥1,210",           bestFor: "Umeda on a budget, ICOCA" },
   { option: "JR Haruka to Shin-Osaka",          time: "About 50 min",       price: "¥1,900 discounted",      bestFor: "Shinkansen connections" },
   { option: "Limousine Bus to Namba (OCAT)",    time: "About 50 min",       price: "¥1,400",                 bestFor: "Heavy luggage, Namba" },
   { option: "Limousine Bus to Osaka Station",   time: "About 60 min",       price: "¥1,800",                 bestFor: "Heavy luggage, Umeda" },
   { option: "Limousine Bus to Uehommachi",      time: "About 55 min",       price: "¥1,800",                 bestFor: "Uehommachi, Shinsaibashi" },
+  { option: "Private transfer (Klook)",         time: "Door to door",       price: "Per car, see Klook",     bestFor: "Families, groups" },
   { option: "Metered taxi to Kita-ku, Osaka",   time: "About 50 min",       price: "About ¥24,400 with tolls", bestFor: "Groups, door to door" },
 ];
 
 const fareRows = [
   { route: "Kansai Airport → Namba",           service: "Rapi:t Digital Ticket, Regular Seat",  adult: "¥1,410", child: "¥710",   source: "Nankai" },
   { route: "Kansai Airport → Namba",           service: "Rapi:t Digital Ticket, Super Seat",    adult: "¥1,590", child: "¥910",   source: "Nankai" },
+  { route: "Kansai Airport → Osaka Station",   service: "JR Kansai Airport Rapid, ordinary ticket or ICOCA", adult: "¥1,210", child: "—", source: "Kansai Airport" },
   { route: "Kansai Airport → Tennoji",         service: "HARUKA One-way Ticket",                adult: "¥1,600", child: "¥800",   source: "JR West" },
   { route: "Kansai Airport → Osaka, Shin-Osaka", service: "HARUKA One-way Ticket",              adult: "¥1,900", child: "¥950",   source: "JR West" },
   { route: "Kansai Airport → Kyoto",           service: "HARUKA One-way Ticket",                adult: "¥2,700", child: "¥1,350", source: "JR West" },
@@ -88,6 +150,7 @@ const itamiBusRows = [
 
 const itmOptions = [
   { option: "Limousine Bus to Umeda",        time: "About 25–30 min", price: "¥650",            bestFor: "Umeda hotels, Osaka Station" },
+  { option: "Limousine Bus to Namba",        time: "About 30 min",    price: "¥650",            bestFor: "Namba, Dotonbori (stand 10)" },
   { option: "Limousine Bus to Shin-Osaka",   time: "About 25 min",    price: "¥510",            bestFor: "Shinkansen connections" },
   { option: "Monorail to Hotarugaike, then Hankyu", time: "About 3 min on the monorail", price: "¥200 monorail, Hankyu fare extra", bestFor: "Rail all the way to Umeda" },
 ];
@@ -110,7 +173,7 @@ const lateRows = [
 const harukaVsRapitRows = [
   { feature: "Operator",           haruka: "JR West",                                   rapit: "Nankai (private rail)" },
   { feature: "One-way fare",       haruka: "¥1,900 Osaka or Shin-Osaka, ¥2,700 Kyoto (discounted)", rapit: "¥1,410 (Digital Ticket)" },
-  { feature: "Journey time",       haruka: "Tennoji 35, Osaka 45, Shin-Osaka 50, Kyoto 75 min", rapit: "From 34 min to Namba" },
+  { feature: "Journey time",       haruka: "Tennoji 30, Osaka 45–50, Shin-Osaka 50, Kyoto 75 min", rapit: "From 34 min to Namba" },
   { feature: "Covered by JR Pass", haruka: "Yes",                                       rapit: "No" },
   { feature: "Kansai Area Pass",   haruka: "Non-reserved seats covered",                rapit: "No" },
   { feature: "Direct to",          haruka: "Tennoji, Osaka, Shin-Osaka, Kyoto",         rapit: "Namba" },
@@ -120,7 +183,7 @@ const harukaVsRapitRows = [
 const destinationRows = [
   { dest: "Namba (Dotonbori, Shinsaibashi)", pick: "Nankai Rapi:t", note: "From 34 min direct, with no change of train." },
   { dest: "Umeda / Osaka Station", pick: "Haruka", note: "About 45 min direct. The limousine bus is about 60 min." },
-  { dest: "Tennoji",        pick: "Haruka", note: "About 35 min direct on the JR Haruka." },
+  { dest: "Tennoji",        pick: "Haruka", note: "About 30 min direct on the JR Haruka." },
   { dest: "Shin-Osaka",     pick: "Haruka", note: "About 50 min direct, for a Shinkansen connection." },
   { dest: "Uehommachi",     pick: "Limousine Bus", note: "About 55 min with no train change, ¥1,800." },
   { dest: "Kyoto",          pick: "Haruka", note: "About 75 min direct, no transfer (¥2,700 discounted one-way, or covered by a JR Pass)." },
@@ -133,7 +196,7 @@ const harukaPoints = [
   },
   {
     title: "Direct connections to Osaka, Kyoto and Shin-Osaka",
-    desc: "The Haruka runs directly from Kansai Airport to Tennoji (about 35 min), Osaka Station (about 45 min), Shin-Osaka (about 50 min) and Kyoto (about 75 min). If you are continuing to Kyoto or boarding the Shinkansen at Shin-Osaka, you stay in one seat the whole way.",
+    desc: "The Haruka runs directly from Kansai Airport to Tennoji (about 30 min), Osaka Station (about 45–50 min), Shin-Osaka (about 50 min) and Kyoto (about 75 min). If you are continuing to Kyoto or boarding the Shinkansen at Shin-Osaka, you stay in one seat the whole way.",
   },
   {
     title: "A discounted one-way ticket for foreign visitors",
@@ -185,44 +248,24 @@ const tips = [
 
 const faqItems = [
   {
-    q: "What is the cheapest way from KIX to Osaka city?",
-    a: "Of the fares confirmed with an operator, the limousine bus to Namba (OCAT) is ¥1,400 for an adult. The Nankai Airport Express needs only the ordinary train fare and no seat ticket, and takes about 45 minutes to Namba; check the current fare on Nankai's fare search. If you hold a JR Pass, the Haruka is covered.",
+    q: "What is the cheapest way from Kansai Airport to Osaka?",
+    a: "To Umeda (Osaka Station), the JR Kansai Airport Rapid is ¥1,210 for an adult in about 65 to 70 minutes, with no seat ticket and ICOCA accepted. To Namba, the limousine bus to OCAT is ¥1,400 in about 50 minutes, ¥10 under the ¥1,410 Rapi:t Digital Ticket. The Nankai Airport Express needs only Nankai's ordinary fare and takes about 43 to 44 minutes.",
   },
   {
-    q: "Can I use the JR Pass from Kansai Airport?",
-    a: "Yes. The Haruka Limited Express is operated by JR West and is covered by the Japan Rail Pass. Reserve a seat at the JR ticket office at Kansai-airport Station. The train runs directly to Tennoji, Osaka, Shin-Osaka and Kyoto.",
+    q: "How much is the train from KIX to Namba?",
+    a: "Nankai's Rapi:t Digital Ticket is ¥1,410 for an adult (¥710 child) in a Regular Seat and ¥1,590 in a Super Seat, fare and limited express ticket together, from 34 minutes. The Nankai Airport Express needs only the ordinary fare and takes about 43 to 44 minutes. The Rapi:t is not covered by a JR Pass.",
   },
   {
-    q: "How long does it take from KIX to Osaka?",
-    a: "It depends on where in Osaka you are going. The Nankai Rapi:t reaches Namba in a minimum of 34 minutes. The JR Haruka reaches Tennoji in about 35 minutes, Osaka Station in about 45 and Shin-Osaka in about 50. The limousine bus takes about 50 minutes to Namba (OCAT) and about 60 to Osaka Station.",
+    q: "Train vs bus vs private transfer from Kansai Airport: which is best?",
+    a: "The train is best for Namba (Rapi:t), Umeda, Shin-Osaka and Kyoto (Haruka): ¥1,210 to ¥2,700 with a fixed journey time. The limousine bus is best with big suitcases, at ¥1,400 to Namba and ¥1,800 to Osaka Station. A private transfer booked on Klook is priced per car, so it pays off for a family or group going door to door.",
   },
   {
-    q: "What is the difference between KIX and ITM?",
-    a: "Kansai International Airport (KIX) handles international flights and some domestic routes, and sits on an artificial island south of the city. Itami Airport (ITM) handles domestic flights only and is north of central Osaka. For visitors arriving from abroad, KIX is almost certainly your arrival point.",
+    q: "How do I get from KIX to Itami?",
+    a: "Take the direct limousine bus: about 1 hour 10 to 15 minutes from Terminal 1 and ¥2,200 for an adult (¥4,000 return within 14 days). There are 8 departures a day from Terminal 1 and 9 from Itami, with no reservations taken, so check the times against your flight.",
   },
   {
-    q: "Is there a direct train from Kansai Airport to Kyoto?",
-    a: "Yes. The JR Haruka Limited Express runs directly from Kansai Airport to Kyoto Station in about 75 minutes with no transfer. JR Pass holders are covered, and eligible foreign visitors can use JR West's HARUKA One-way Ticket at ¥2,700 for an adult.",
-  },
-  {
-    q: "Haruka or Nankai Rapi:t — which is better?",
-    a: "It comes down to your destination. For Namba, Dotonbori and Shinsaibashi, the Nankai Rapi:t is the direct train, from 34 minutes. For Tennoji, Osaka Station, Shin-Osaka or Kyoto, the JR Haruka runs there directly and a JR Pass covers it.",
-  },
-  {
-    q: "Is the Rapi:t cheaper than the Haruka?",
-    a: "On the discounted tickets, yes. Nankai's Rapi:t Digital Ticket to Namba is ¥1,410 for an adult, while JR West's HARUKA One-way Ticket is ¥1,600 to Tennoji and ¥1,900 to Osaka or Shin-Osaka. They go to different stations, though, and a JR Pass covers the Haruka but not the Rapi:t.",
-  },
-  {
-    q: "Is there a direct bus from Kansai Airport to Itami Airport?",
-    a: "Yes. A direct limousine bus links the two airports in about 1 hour 10 to 15 minutes from Terminal 1, for ¥2,200 for an adult. There are 8 departures a day from Terminal 1 and 9 from Itami, with no reservations taken. Gaps between buses can be nearly three hours.",
-  },
-  {
-    q: "Can I buy the Haruka discount ticket at Kansai Airport?",
-    a: "No. JR West says the HARUKA One-way Ticket cannot be bought inside Japan. It is sold through overseas travel agencies and JR-WEST ONLINE TRAIN RESERVATION before you travel, then collected in Japan with your passport.",
-  },
-  {
-    q: "What is the last way into Osaka from KIX at night?",
-    a: "The last Haruka leaves at about 22:16. The last limousine bus to Osaka Station at the normal ¥1,800 fare leaves Terminal 1 at 23:45, and a cashless-only midnight bus leaves at 24:15 for ¥2,700. The Nankai Namba midnight bus is suspended. Check Nankai's timetable search for its last train.",
+    q: "Can I use ICOCA from Kansai Airport?",
+    a: "Yes. ICOCA pays the fare on the JR Kansai Airport Rapid and on Nankai trains, and JR West says it works on railways and buses across Japan. The Haruka and the Rapi:t still need a seat ticket on top. A visitor ICOCA costs ¥2,000 including a ¥500 deposit at the JR ticket office at Kansai-airport Station.",
   },
 ];
 
@@ -232,21 +275,18 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
   return (
     <>
       <Head>
-        <title>Osaka Airport Transfer 2026: KIX &amp; Itami Fares Compared</title>
-        <meta
-          name="description"
-          content="Osaka Airport Transfer fares checked Nov 2026: Rapi:t and Haruka from Kansai, Itami to Umeda, the direct KIX to Itami bus, and late-night arrival options."
-        />
-        <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/osaka-airport-transfer" />
+        <title>{TITLE}</title>
+        <meta name="description" content={DESCRIPTION} />
+        <link rel="canonical" href={PAGE_URL} />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Osaka Airport Transfer 2026: KIX &amp; Itami Fares Compared" />
-        <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/osaka-airport-transfer" />
-        <meta property="og:description" content="Osaka Airport Transfer fares checked Nov 2026: Rapi:t and Haruka from Kansai, Itami to Umeda, the direct KIX to Itami bus, and late-night arrival options." />
+        <meta property="og:title" content={TITLE} />
+        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Osaka Airport Transfer 2026: KIX &amp; Itami Fares Compared" />
-        <meta name="twitter:description" content="Osaka Airport Transfer fares checked Nov 2026: Rapi:t and Haruka from Kansai, Itami to Umeda, the direct KIX to Itami bus, and late-night arrival options." />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESCRIPTION} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -280,8 +320,8 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
-              route: "/guides/transport/osaka-airport-transfer",
-              headline: "Osaka Airport Transfer Guide (2026): KIX & ITM to the City",
+              route: ROUTE,
+              headline: TITLE,
               updated,
             }),
           }}
@@ -314,13 +354,13 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Osaka Airport Transfer Guide (2026): <br />KIX &amp; ITM to the City
+            Osaka Airport Transfer 2026: <br />Train vs Bus from KIX &amp; Itami
           </h1>
           <p className={styles.heroSubtitle}>
-            Osaka has two airports — Kansai International and Itami. Here&apos;s the fastest and cheapest way to get into the city from each.
+            The cheapest and the fastest ride from Kansai and Itami to Namba, Umeda, Shin-Osaka and Kyoto, in one table.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "KIX & ITM", "Haruka vs Rapi:t"].map((t) => (
+            {[`Updated ${updated.label}`, "Destination × mode table", "Train vs bus vs private car"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -332,14 +372,158 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
       <div className={styles.content}>
         {/* The answer, in the first body paragraph */}
         <p className={styles.bodyText}>
-          <strong>From Kansai Airport (KIX) to Namba</strong>, take the Nankai Rapi:t: a minimum of 34 minutes and
-          ¥1,410 on Nankai&apos;s Rapi:t Digital Ticket. <strong>To Osaka Station, Shin-Osaka or Kyoto</strong>, take
-          the JR Haruka: about 45, 50 and 75 minutes, at ¥1,900 to Osaka or Shin-Osaka and ¥2,700 to Kyoto on JR
-          West&apos;s discounted one-way for foreign visitors. <strong>From Itami (ITM) to Umeda</strong>, the
-          limousine bus takes about 25 to 30 minutes and costs ¥650. <strong>Between KIX and Itami</strong>, a direct
-          limousine bus takes about 1 hour 10 to 15 minutes and costs ¥2,200. Adult fares and times are from Nankai,
-          JR West, Kansai Airport Transportation and Osaka Airport Transport, checked on {CHECKED}.
+          <strong>Kansai Airport (KIX) to Namba is the Nankai Rapi:t, from 34 minutes and ¥1,410</strong> on
+          Nankai&apos;s Rapi:t Digital Ticket. <strong>To Umeda (Osaka Station), the JR Kansai Airport Rapid costs
+          ¥1,210 in about 65 to 70 minutes, or the JR Haruka ¥1,900 in about 45 to 50 minutes</strong> on JR
+          West&apos;s one-way for foreign visitors, with no change of train either way. <strong>With heavy luggage,
+          the limousine bus goes direct for ¥1,400 to Namba (OCAT) and ¥1,800 to Osaka Station.</strong>
         </p>
+        <p className={styles.bodyText}>
+          For Kyoto the Haruka is ¥2,700 in about 75 minutes; from Itami the bus to Umeda or Namba is ¥650 in about 30
+          minutes, and the KIX–Itami bus is ¥2,200. Adult one-way fares from JR West, Nankai, Kansai Airport, Kansai
+          Airport Transportation and Osaka Airport Transport, checked {CHECKED}.
+        </p>
+
+        {/* Destination x mode answer table */}
+        <section className={styles.comparisonSection} id="by-destination">
+          <span className={styles.sectionLabel}>Destination × mode</span>
+          <h2 className={styles.sectionTitle}>Which is the best way from the airport to my part of Osaka?</h2>
+          <p className={styles.bodyText}>
+            Read across your destination&apos;s row: the cheapest confirmed option, the fastest, and the one with least
+            effort for big suitcases. The first row is the short answer.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Route", "Cheapest", "Fastest", "Heavy luggage"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {answerRows.map((row, i) => (
+                    <tr key={row.route} style={i === 0 ? { fontWeight: 700 } : undefined}>
+                      <td className={styles.tdProvider}>{row.route}</td>
+                      <td className={styles.tdPrice}>{row.cheapest}</td>
+                      <td>{row.fastest}</td>
+                      <td>{row.luggage}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-23. Adult one-way fares; Haruka fares are JR West&apos;s HARUKA One-way Ticket for
+            foreign passport holders on Temporary Visitor status, which cannot be bought inside Japan. Bus times are from
+            Terminal 1 and run longer in traffic. Sources:{" "}
+            {OFFICIAL_SOURCES.map((s, i) => (
+              <span key={s.url}>
+                <a href={s.url} target="_blank" rel="noopener noreferrer">{s.name}</a>
+                {i < OFFICIAL_SOURCES.length - 1 ? ", " : "."}
+              </span>
+            ))}
+          </p>
+
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.1rem", marginTop: "1.5rem" }}>
+            What should I book before I land?
+          </h3>
+          <p className={styles.bodyText}>
+            The seat tickets and the phone data are the two things to sort at home: the HARUKA One-way Ticket is not sold
+            inside Japan, and an eSIM installed before the flight is working at the bus stand. A private car is the
+            option for a group or a late arrival.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
+            <KlookLink href={jrHarukaUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
+              Haruka ticket on Klook →
+            </KlookLink>
+            <KlookLink href={nankaiRapitUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
+              Rapi:t ticket on Klook →
+            </KlookLink>
+            <KlookLink href={kixPrivateTransferUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
+              Private KIX transfer on Klook →
+            </KlookLink>
+            <KlookLink href={klookEsim.url} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
+              Japan eSIM on Klook →
+            </KlookLink>
+            <KlookLink href={osakaStayAreas[1].url} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
+              Namba hotels on Klook →
+            </KlookLink>
+            <KlookLink href={osakaAirportStayAreas[2].url} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
+              Umeda hotels on Klook →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* Cheapest */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Cheapest</span>
+          <h2 className={styles.sectionTitle}>What is the cheapest way from Kansai Airport to Osaka?</h2>
+          <p className={styles.bodyText}>
+            For Umeda it is the JR Kansai Airport Rapid at ¥1,210, about 65 to 70 minutes with no seat ticket; for Namba
+            it is the limousine bus to OCAT at ¥1,400, ¥10 under the ¥1,410 Rapi:t Digital Ticket. The Nankai Airport
+            Express to Namba needs only Nankai&apos;s ordinary fare and takes about 43 to 44 minutes; check the fare on
+            Nankai&apos;s own search before you travel. A JR Pass holder pays nothing extra on the Haruka.
+          </p>
+          <p className={styles.bodyText}>
+            The JR Rapid stops at many stations and fills up from Hineno and Tennoji, so with large cases the Haruka or
+            the bus is the easier ride. Once in the city, our{" "}
+            <Link href="/guides/transport/osaka-transportation">Osaka transportation guide</Link> covers the subway and
+            day passes.
+          </p>
+        </section>
+
+        {/* Train vs bus vs private */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Train vs bus vs private car</span>
+          <h2 className={styles.sectionTitle}>Train vs bus vs private transfer: which is best?</h2>
+          <p className={styles.bodyText}>
+            The train is best for Namba, Umeda, Shin-Osaka and Kyoto because the journey time does not depend on traffic.
+            The limousine bus wins with big suitcases, and a private transfer, priced per car, pays off for a family or a
+            group going door to door.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Mode", "Best for", "Adult price", "Know before you go"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {modeRows.map((row, i) => (
+                    <tr key={row.mode} style={i === 0 ? { fontWeight: 700 } : undefined}>
+                      <td className={styles.tdProvider}>{row.mode}</td>
+                      <td>{row.best}</td>
+                      <td className={styles.tdPrice}>{row.price}</td>
+                      <td>{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-23 (taxi {TAXI_CHECKED}). Klook prices change by date and car size, so they are not
+            quoted here. Sources: JR West, Nankai, Kansai Airport and Kansai Airport Transportation (links above).
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={kixPrivateTransferUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
+              Check a private KIX transfer on Klook →
+            </KlookLink>
+            <KlookLink href={kixLimousineUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
+              Check the limousine bus on Klook →
+            </KlookLink>
+          </div>
+          <p className={styles.bodyText}>
+            Staying near the park? Our <Link href="/guides/attractions/usj-hotels">USJ hotels guide</Link> has the
+            direct bus from Kansai Airport to Universal City.
+          </p>
+        </section>
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
@@ -402,8 +586,8 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            One-way adult figures, checked {CHECKED}: Nankai, JR West, Kansai Airport Transportation, and Kansai
-            Airport&apos;s taxi table. The discounted Haruka price is JR West&apos;s HARUKA One-way Ticket for eligible
+            Last checked: 2026-11-23 (one-way adult figures from Nankai, JR West, Kansai Airport and Kansai Airport
+            Transportation; Kansai Airport&apos;s taxi table {TAXI_CHECKED}). The discounted Haruka price is JR West&apos;s HARUKA One-way Ticket for eligible
             foreign visitors. Times can run longer in traffic.
           </p>
         </section>
@@ -470,10 +654,11 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
         {/* Fares */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Fares</span>
-          <h2 className={styles.sectionTitle}>How much is the train from Kansai Airport to Osaka?</h2>
+          <h2 className={styles.sectionTitle}>How much is the train from KIX to Namba?</h2>
           <p className={styles.bodyText}>
-            Expect ¥1,410 to Namba on the Rapi:t Digital Ticket and ¥1,900 to Osaka Station or Shin-Osaka on the HARUKA
-            One-way Ticket. Both are discounted one-way adult tickets; other tickets cost differently.
+            The Rapi:t from KIX to Namba is ¥1,410 for an adult (¥710 child) on Nankai&apos;s Rapi:t Digital Ticket,
+            fare and Regular Seat together, or ¥1,590 for a Super Seat. To Osaka Station the JR Kansai Airport Rapid is
+            ¥1,210 and the Haruka ¥1,900 on the HARUKA One-way Ticket.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -504,8 +689,16 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
             Digital Ticket, the Rapi:t costs the ordinary train fare plus a ¥700 adult limited express ticket, and the
             Nankai Airport Express needs the ordinary fare alone. This table leaves out the ordinary Nankai fare and the
             regular Haruka fare because neither could be read from the operator on this date. Check both operators&apos;
-            fare searches before you travel.
+            fare searches before you travel. Last checked: 2026-11-23 —{" "}
+            <a href={OFFICIAL_SOURCES[1].url} target="_blank" rel="noopener noreferrer">Nankai</a>,{" "}
+            <a href={OFFICIAL_SOURCES[0].url} target="_blank" rel="noopener noreferrer">JR West</a>,{" "}
+            <a href={OFFICIAL_SOURCES[2].url} target="_blank" rel="noopener noreferrer">Kansai Airport</a>.
           </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={nankaiRapitUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">
+              Check the Rapi:t ticket on Klook →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Haruka vs Rapi:t */}
@@ -612,7 +805,7 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
         {/* KIX to ITM */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Between the two airports</span>
-          <h2 className={styles.sectionTitle}>How do I get from KIX to Itami (ITM) Airport?</h2>
+          <h2 className={styles.sectionTitle}>How do I get from KIX to Itami?</h2>
           <p className={styles.bodyText}>
             Take the direct limousine bus: about 1 hour 10 to 15 minutes from Terminal 1 and ¥2,200 for an adult. It is
             infrequent, with 8 departures a day from Terminal 1, so check the times against your flight first.
@@ -649,7 +842,8 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
           <span className={styles.sectionLabel}>Itami Airport (ITM)</span>
           <h2 className={styles.sectionTitle}>How do I get from Itami Airport to Osaka?</h2>
           <p className={styles.bodyText}>
-            Take the limousine bus: about 25 to 30 minutes to Umeda for ¥650, or about 25 minutes to Shin-Osaka for ¥510.
+            Take the limousine bus: about 25 to 30 minutes to Umeda for ¥650, about 30 minutes to Namba for ¥650, or
+            about 25 minutes to Shin-Osaka for ¥510.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -675,8 +869,29 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Osaka Airport Transport and Osaka Monorail figures, checked {CHECKED}. Itami handles domestic flights only, so
-            most international visitors arrive at KIX. The Umeda bus leaves from stop 9.
+            Last checked: 2026-11-23 for the Umeda and Namba buses, on{" "}
+            <a href={OFFICIAL_SOURCES[4].url} target="_blank" rel="noopener noreferrer">Osaka Airport Transport</a>; the Shin-Osaka bus and Osaka Monorail figures were checked {TAXI_CHECKED}. Itami handles domestic flights
+            only, so most international visitors arrive at KIX. The Umeda bus leaves from stop 9 and the Namba bus from
+            stop 10.
+          </p>
+        </section>
+
+        {/* ICOCA */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>IC card</span>
+          <h2 className={styles.sectionTitle}>Can I use ICOCA from the airport?</h2>
+          <p className={styles.bodyText}>
+            Yes. ICOCA pays the fare on the JR Kansai Airport Rapid and on Nankai trains from the airport, and JR West
+            says it works on railways and buses across Japan. The Haruka and the Rapi:t still need a seat ticket on top of
+            the fare.
+          </p>
+          <p className={styles.bodyText}>
+            JR West sells a visitor-design ICOCA for ¥2,000, including a ¥500 deposit, at the JR ticket office at
+            Kansai-airport Station; it needs a foreign passport and Temporary Visitor status, one per person. Last
+            checked: 2026-11-23 on{" "}
+            <a href="https://www.westjr.co.jp/global/en/howto/icoca/" target="_blank" rel="noopener noreferrer">JR West&apos;s ICOCA page</a>.
+            How to top up and where else it works is in our{" "}
+            <Link href="/guides/transport/ic-cards-japan">IC cards guide</Link>.
           </p>
         </section>
 
@@ -712,7 +927,7 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Kansai Airport and Kansai Airport Transportation, checked {CHECKED}. Nankai&apos;s last train is not confirmed
+            Kansai Airport and Kansai Airport Transportation, checked {CHECKED} (taxi surcharge {TAXI_CHECKED}). Nankai&apos;s last train is not confirmed
             here from an operator page, so check Nankai&apos;s timetable search for your date.
           </p>
         </section>

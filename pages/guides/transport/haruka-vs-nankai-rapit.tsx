@@ -340,8 +340,9 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
               </div>
             </div>
             <p className={styles.bodyText} style={{ fontSize: "0.85rem", marginTop: "0.75rem" }}>
-              For buses, taxis and Itami Airport as well, see the full{" "}
-              <Link href="/guides/transport/osaka-airport-transfer" style={{ fontWeight: 600 }}>Osaka airport transfer guide</Link>.
+              For the ¥1,210 JR Kansai Airport Rapid, the limousine bus, a private car and Itami Airport, see the{" "}
+              <Link href="/guides/transport/osaka-airport-transfer" style={{ fontWeight: 600 }}>Osaka airport transfer</Link>{" "}
+              comparison.
             </p>
           </div>
         </div>
@@ -515,7 +516,7 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Airport Transfer Guide (2026): KIX &amp; ITM to the City</p>
+                <p className={styles.relatedTitle}>Osaka Airport Transfer 2026: Train vs Bus from KIX &amp; Itami</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

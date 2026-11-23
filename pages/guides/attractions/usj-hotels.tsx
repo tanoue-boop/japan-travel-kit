@@ -558,7 +558,9 @@ export default function UsjHotelsPage({ updated }: { updated: PageUpdated }) {
             By the airport limousine bus: about <strong>50 to 70 minutes</strong> from Terminal 1 to Universal
             Studios Japan, <strong>¥1,800</strong> adult and ¥900 child one way, or ¥3,300 return within 14 days. It
             takes no reservations — first come, first served. By train it is about 65 minutes with a change at
-            Nishikujo. Read on kate.co.jp and usj.co.jp, {OWN}.
+            Nishikujo. Read on kate.co.jp and usj.co.jp, {OWN}. Staying in Namba or Umeda first? The{" "}
+            <Link href="/guides/transport/osaka-airport-transfer">Osaka airport transfer</Link> guide compares the
+            train, bus and private car from Kansai Airport to each area.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={kansaiAirportLimousineBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
