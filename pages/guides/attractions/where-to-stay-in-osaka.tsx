@@ -545,7 +545,8 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
             day and a day trip, which is where an Umeda base starts to earn its place. And if you are still
             deciding what the days hold, our{" "}
             <Link href="/guides/attractions/things-to-do-osaka">things to do in Osaka guide</Link> lists the sights and
-            which of them the Osaka Amazing Pass covers.
+            which of them the{" "}
+            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass</Link> covers.
           </p>
         </section>
 

@@ -237,7 +237,8 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
             <strong>Osaka transportation</strong> is the Osaka Metro — the Midosuji Line links Shin-Osaka,
             Umeda, Namba and Tennoji — plus JR for Universal Studios and day trips, all paid by tapping an
             ICOCA or Suica. For four or more subway rides in a day, the Enjoy Eco Card is{" "}
-            <strong>¥820 on weekdays and ¥620 at weekends</strong>; the <strong>¥3,500 Osaka Amazing Pass</strong>{" "}
+            <strong>¥820 on weekdays and ¥620 at weekends</strong>; the <strong>¥3,500{" "}
+            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass</Link></strong>{" "}
             only pays off if the admissions you will use come to more than the ¥2,680 difference (prices from
             our <Link href="/guides/transport/osaka-metro-pass">Osaka Metro pass guide</Link>, checked on 4
             November 2026).

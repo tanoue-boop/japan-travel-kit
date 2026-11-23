@@ -555,13 +555,13 @@ export default function OsakaFoodTourPage({ updated }: { updated: PageUpdated })
             covers which of the three operators does what.
           </p>
           <p className={styles.bodyText}>
-            If the food tour is one item on a longer list, the Osaka Amazing Pass covers unlimited Osaka Metro and
-            city buses plus admission to more than 40 facilities, which is the 5% transport-and-passes option rather
-            than a tour — worth pricing against your own route in our{" "}
+            If the food tour is one item on a longer list, the{" "}
             <Link href="/guides/attractions/osaka-attractions-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Osaka attractions pass guide
-            </Link>
-            . And if you have two days, our{" "}
+              Osaka Amazing Pass
+            </Link>{" "}
+            covers unlimited Osaka Metro and city buses plus admission to more than 40 facilities, which is the 5%
+            transport-and-passes option rather than a tour — worth pricing against your own route with the guide&apos;s
+            1-day itinerary. And if you have two days, our{" "}
             <Link href="/guides/attractions/osaka-2-day-itinerary" style={{ color: "var(--red)", fontWeight: 600 }}>
               two-day Osaka itinerary
             </Link>{" "}
