@@ -2215,6 +2215,31 @@ export const revolutCardTripPrep: KlookTripPrepItem[] = [
 ];
 
 /**
+ * Airalo Japan review — "Pay before you land" (23 Nov 2026, task jtk-20261123-03). Sits
+ * under the Airalo vs Klook eSIM vs Simbye table: the eSIM is bought at home, and so can the
+ * ride from the airport and the first days of Tokyo subway rides. Airport access and Tokyo
+ * Subway Ticket (5%). No new products: existing tracking links.
+ */
+export const airaloReviewPayBeforeLand: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "Landing at Narita: the train into central Tokyo, paid for at home like the eSIM.",
+  },
+  {
+    ...tripPrepProducts.hanedaLimousine,
+    why: "Landing at Haneda: a bus seat to the main Tokyo hotels and stations, booked before the flight.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "Landing at Kansai Airport: the airport train to Kyoto or Osaka, settled before you fly.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    why: "Unlimited Tokyo Metro and Toei rides for 24, 48 or 72 hours, so no IC card top-ups on the first days.",
+  },
+];
+
+/**
  * Wise vs Revolut — added 5 Nov 2026. The page had no Klook route, and which card
  * wins is the part an AI summary answers in full. Each line is a payment the reader
  * can make on either card before the trip, tied to the weekend window or the ATM

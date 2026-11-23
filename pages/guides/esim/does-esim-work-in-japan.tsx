@@ -1091,7 +1091,11 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
             The most popular Japan eSIM. Tiered plans from 1 GB up to 20 GB plus unlimited, on{" "}
             {getProvider("airalo").network}, and an iOS app that installs the profile for you —
             useful if you are not confident navigating your phone&apos;s eSIM menus.
-            From {priceFromLabel("airalo")}.
+            From {priceFromLabel("airalo")}. The{" "}
+            <Link href="/guides/esim/airalo-japan-review" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Airalo Japan eSIM
+            </Link>{" "}
+            review lists the networks it can switch between and compares its prices with Klook eSIM and Simbye.
           </p>
           <a
             href={link("airalo")}

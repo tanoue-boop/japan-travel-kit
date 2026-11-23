@@ -969,6 +969,13 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             {SPECS_CHECKED} (Simbye: {SIMBYE_SPECS_CHECKED_AT}); the Klook rows are from its own listing data
             of {klookEsim.specsCheckedAt}, and Klook prices change by date, so open the listing for yours.
           </p>
+          <p className={styles.bodyText}>
+            Searched Airalo by name? The{" "}
+            <Link href="/guides/esim/airalo-japan-review" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Airalo Japan eSIM
+            </Link>{" "}
+            review sets each Airalo plan against Klook eSIM, Simbye and Sakura Mobile for the same days and data.
+          </p>
         </section>
 
         <BookingEsimCard lead="Picked one? Install it before you fly." />

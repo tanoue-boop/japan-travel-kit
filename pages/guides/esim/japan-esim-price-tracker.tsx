@@ -679,7 +679,12 @@ export default function JapanEsimPriceTracker({ updated }: { updated: PageUpdate
             A blank cell means the provider does not publish that fact on the page checked — it is left blank rather than
             guessed. Network, tethering and phone-number facts for Airalo, Holafly, eSIM Go, Sakura Mobile and Simbye were read
             on {d(data.tracker.autoFacts.airalo.factsCheckedOn)} ({d(data.tracker.autoFacts.simbye.factsCheckedOn)} for Simbye);
-            their prices are re-read every day.
+            their prices are re-read every day. The{" "}
+            <Link href="/guides/esim/airalo-japan-review" className={tools.inlineLink}>
+              Airalo Japan eSIM
+            </Link>{" "}
+            review puts Airalo&apos;s plans beside Klook eSIM, Simbye and Sakura Mobile for the same days and data, with the
+            networks Airalo&apos;s Japan page lists.
           </p>
           <ul className={styles.bodyText} style={{ fontSize: "0.85rem", paddingLeft: "1.2rem" }}>
             {unpriced.map((p) => (

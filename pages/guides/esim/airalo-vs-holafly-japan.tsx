@@ -314,7 +314,11 @@ export default function AiraloVsHolaflyJapanPage({ updated }: { updated: PageUpd
             Airalo&apos;s biggest advantage is value. From {AIRALO_FROM}, it&apos;s one of the cheapest
             eSIM options for Japan. The tiered data plans let you buy only what you need, so
             you&apos;re never paying for unused data. Its Japan page shows SoftBank as the primary network,
-            plus two others it does not name (checked 1 November 2026).
+            plus two others it does not name (checked 1 November 2026). How the{" "}
+            <Link href="/guides/esim/airalo-japan-review" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Airalo Japan eSIM
+            </Link>{" "}
+            prices up against Klook eSIM and Simbye for the same days and data is in the review.
           </p>
           <Link href="/guides/esim/airalo-japan-review" className={styles.pickCtaInternal} style={{ marginTop: "0.5rem", display: "inline-flex" }}>
             Full Airalo Japan Review →

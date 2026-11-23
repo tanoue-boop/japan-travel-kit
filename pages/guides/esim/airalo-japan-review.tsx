@@ -1,33 +1,124 @@
 import Head from "next/head";
 import Link from "next/link";
 import EsimPageAnswer from "../../../components/EsimPageAnswer";
-import EsimBrandCompare, { brandReviewTitle } from "../../../components/EsimBrandCompare";
+import KlookLink from "../../../components/KlookLink";
+import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
+import buyStyles from "../../../styles/EsimBuyBlocks.module.css";
 import ProviderPlanTable from "../../../components/ProviderPlanTable";
-import { getProvider, priceAtLeastLabel, priceFromLabel, pricesCheckedLabel, unlimitedFromLabel } from "../../../lib/esim-prices";
+import {
+  cheapestAtLeastGb,
+  cheapestPlan,
+  cheapestUnlimited,
+  formatUsd,
+  getProvider,
+  priceFromLabel,
+  pricesCheckedLabel,
+  unlimitedFromLabel,
+  type EsimPlan,
+  type EsimProviderId,
+} from "../../../lib/esim-prices";
+import { airaloTrackedUrl, ESIM_PLACEMENT, pageTag } from "../../../lib/esim-placement";
+import { SIMBYE_DISCOUNT_CODE, SIMBYE_DISCOUNT_PERCENT, simbyeTrackedUrl } from "../../../lib/simbye";
+import { airaloReviewPayBeforeLand, klookEsim } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { esimProductJsonLd } from "../../../lib/esim-picks";
 import { EsimCtaTop } from "../../../components/EsimCta";
 
-// All Airalo prices below are read from data/esim-prices.json (refreshed daily).
+const ROUTE = "/guides/esim/airalo-japan-review";
+const TAG = pageTag(ROUTE);
+// The comparison table keeps the placement (and Klook ad id) of the block it replaced.
+const PLACEMENT = ESIM_PLACEMENT.brandCompare;
+
+// All prices below are read from data/esim-prices.json, the same file as the price tracker
+// (refreshed daily). Airalo's were also read on its own Japan page on 23 Nov 2026 and matched.
 const pricesCheckedAt = pricesCheckedLabel();
 const FROM = priceFromLabel("airalo");
-const FIVE_GB = priceAtLeastLabel("airalo", 5);
 const UNLIMITED = unlimitedFromLabel("airalo", 7);
+const AIRALO_OFFICIAL_URL = "https://www.airalo.com/japan-esim";
+const AIRALO_READ_ON = "23 Nov 2026";
+const LAST_CHECKED = "2026-11-23";
+
+const A_FROM = cheapestPlan("airalo");
+const A_5GB = cheapestAtLeastGb("airalo", 5);
+const A_UNL7 = cheapestUnlimited("airalo", 7);
+
+/** Cheapest plan lasting at least `days` with at least `gb` GB (null = unlimited only). */
+function cheapestFor(id: EsimProviderId, days: number, gb: number | null): EsimPlan | null {
+  const plans = getProvider(id).plans.filter(
+    (p) => p.days >= days && (gb === null ? p.unlimited : p.unlimited || (p.gb ?? 0) >= gb)
+  );
+  return plans.reduce<EsimPlan | null>((a, b) => (!a || b.priceUsd < a.priceUsd ? b : a), null);
+}
+
+const COMPARED: { id: EsimProviderId; name: string }[] = [
+  { id: "airalo", name: "Airalo" },
+  { id: "simbye", name: "Simbye" },
+  { id: "sakura", name: "Sakura Mobile" },
+];
+
+const BANDS: { label: string; days: number; gb: number | null }[] = [
+  { label: "3 GB, 7 days", days: 7, gb: 3 },
+  { label: "5 GB, 7 days", days: 7, gb: 5 },
+  { label: "10 GB, 15 days", days: 15, gb: 10 },
+  { label: "20 GB, 30 days", days: 30, gb: 20 },
+  { label: "Unlimited, 7 days", days: 7, gb: null },
+];
+
+const compareRows = BANDS.map((band) => {
+  const cells = COMPARED.map((c) => ({ ...c, plan: cheapestFor(c.id, band.days, band.gb) }));
+  let winner: (typeof cells)[number] | null = null;
+  for (const c of cells) if (c.plan && (!winner || c.plan.priceUsd < winner.plan!.priceUsd)) winner = c;
+  return { ...band, cells, winner };
+});
+
+const simbyeCheaperRows = compareRows.filter((r) => {
+  const a = r.cells.find((c) => c.id === "airalo")?.plan;
+  const s = r.cells.find((c) => c.id === "simbye")?.plan;
+  return a && s && s.priceUsd < a.priceUsd;
+}).length;
+
+/** "Simbye in all 5 rows" or "Simbye in 4 of 5 rows, Airalo in 1". */
+function winnerSummary(): string {
+  const counts = new Map<string, number>();
+  for (const r of compareRows) if (r.winner) counts.set(r.winner.name, (counts.get(r.winner.name) ?? 0) + 1);
+  const sorted = Array.from(counts.entries()).sort((a, b) => b[1] - a[1]);
+  if (sorted.length === 1) return `${sorted[0][0]} in all ${compareRows.length} rows`;
+  return sorted.map(([n, c], i) => (i === 0 ? `${n} in ${c} of ${compareRows.length} rows` : `${n} in ${c}`)).join(", ");
+}
+
+/** The cheapest of the three priced providers for a plan picker, e.g. unlimited for 7 days. */
+function cheapestOfThree(pick: (id: EsimProviderId) => EsimPlan | null): { name: string; plan: EsimPlan } | null {
+  let best: { name: string; plan: EsimPlan } | null = null;
+  for (const c of COMPARED) {
+    const plan = pick(c.id);
+    if (plan && (!best || plan.priceUsd < best.plan.priceUsd)) best = { name: c.name, plan };
+  }
+  return best;
+}
+const UNL7_BEST = cheapestOfThree((id) => cheapestUnlimited(id, 7));
+const LOWEST = cheapestOfThree((id) => cheapestPlan(id));
+
+function priceWithCode(plan: EsimPlan): string {
+  return plan.discountedUsd ? `${formatUsd(plan.priceUsd)} (${formatUsd(plan.discountedUsd)} with code)` : formatUsd(plan.priceUsd);
+}
+
+const TITLE = "Airalo Japan eSIM Review 2026: Price, Network & Setup";
+const DESCRIPTION = `Airalo's Japan eSIM costs ${A_FROM ? formatUsd(A_FROM.priceUsd) : "—"} for ${A_FROM?.name ?? ""}, ${A_5GB ? formatUsd(A_5GB.priceUsd) : "—"} for ${A_5GB?.name ?? ""}, on SoftBank, KDDI and Rakuten. Price vs Klook eSIM, Simbye and Sakura Mobile.`;
 
 const pros = [
-  "World's largest eSIM marketplace",
+  "Airalo says over 30 million people have used it",
   "Instant activation before you land",
   `Plans from ${FROM} — including unlimited`,
-  "Trusted by 10M+ travellers",
-  "Easy-to-use app",
+  "5G on SoftBank, with KDDI and Rakuten as fallback networks",
+  "Top-ups from the app, no new QR code",
 ];
 
 const cons = [
   "Data-only (no voice calls or SMS)",
   "Requires eSIM-compatible phone",
-  "Customer support can be slow",
+  `Costs more than Simbye in ${simbyeCheaperRows} of ${compareRows.length} same-trip rows in the table above`,
 ];
 
 const whoFor = [
@@ -52,8 +143,8 @@ const whoFor = [
     ),
   },
   {
-    title: "Budget-conscious travellers",
-    desc: `From ${FROM}, Airalo is one of the most affordable options for staying connected in Japan.`,
+    title: "Short, light-data trips",
+    desc: `From ${FROM}, Airalo's small plans cover a few days of maps and messaging; for bigger allowances, compare the table at the top.`,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
@@ -66,65 +157,68 @@ const whoFor = [
 const setupSteps = [
   {
     title: "Download the Airalo app",
-    desc: "Available free on iOS and Android. Create an account — it takes under a minute.",
+    desc: "Available free on iOS and Android, or buy on airalo.com. Create an account.",
   },
   {
-    title: "Purchase your Japan plan",
-    desc: "Search for Japan, pick your plan (we recommend Moshi Moshi M for most visitors), and checkout. You'll receive a QR code instantly.",
+    title: "Buy your Japan plan",
+    desc: "Search for Japan, pick the days and data you need, and check out. The eSIM and its installation details appear in the app.",
   },
   {
-    title: "Scan QR code in Settings",
-    desc: "Go to Settings → Cellular (or Mobile Data) → Add eSIM → Scan QR Code. Takes under 2 minutes and can be done at home before you fly.",
+    title: "Install it at home, on Wi-Fi",
+    desc: "Install from the app, or via Settings → Cellular (or Mobile Data) → Add eSIM. Airalo's instructions: keep a stable internet connection, do not interrupt the installation, and do not delete the eSIM afterwards.",
   },
   {
-    title: "Activate on arrival in Japan",
-    desc: "Switch to your Airalo Japan eSIM profile when your plane lands. You'll have a live 4G signal before you reach baggage claim.",
+    title: "Connect when you land in Japan",
+    desc: "Turn the Airalo line on, select it for mobile data and switch on Data Roaming for it. The plan's validity starts when the eSIM first connects to a network in Japan, not when you install it.",
+  },
+];
+
+/**
+ * The four question H2s answered in a line each, and the page's FAQPage. Prices come from
+ * the price file, network and install facts from airalo.com/japan-esim (read 23 Nov 2026).
+ */
+const answerFaq = [
+  {
+    q: "Does Airalo work in Japan?",
+    a: `Yes. Airalo's Japan eSIM is a data-only 5G eSIM that uses SoftBank as its primary network and may switch to KDDI or Rakuten based on availability and speed, per Airalo's Japan page (checked ${AIRALO_READ_ON}). It has no Japanese phone number, so calls go through apps such as WhatsApp or LINE.`,
+  },
+  {
+    q: "How much is Airalo for Japan?",
+    a: `Airalo's Japan plans run from ${A_FROM ? `${formatUsd(A_FROM.priceUsd)} for ${A_FROM.name}` : "—"} to ${UNLIMITED} for its 7-day unlimited plan; 5 GB for 7 days is ${A_5GB ? formatUsd(A_5GB.priceUsd) : "—"} (prices in USD, checked ${pricesCheckedAt}).`,
+  },
+  {
+    q: "Airalo vs Klook eSIM vs Simbye: which is cheaper?",
+    a: `Of the plans with a published price, the cheapest for the same days and data is ${winnerSummary()} (list prices, checked ${pricesCheckedAt}); Simbye's code ${SIMBYE_DISCOUNT_CODE} takes a further ${SIMBYE_DISCOUNT_PERCENT}% off. Klook eSIM shows from US$1.05 before you choose days and data and names no plan at that price, so its price for each trip is on the Klook listing.`,
+  },
+  {
+    q: "How do I install Airalo before landing?",
+    a: "Buy the plan in the Airalo app or on airalo.com, then install the eSIM at home on Wi-Fi without interrupting the installation. Airalo says the validity period starts when the eSIM connects to a mobile network in its coverage area, so installing before the flight does not use up days; turn the line on and enable Data Roaming when you land.",
   },
 ];
 
 const faqItems = [
   {
     q: "Is Airalo legit?",
-    a: "Yes. Airalo is a legitimate, well-established company founded in 2019 and trusted by over 10 million travellers worldwide. They operate as a licensed eSIM marketplace and partner with major carriers globally, including Docomo and SoftBank in Japan.",
-  },
-  {
-    q: "Does Airalo work in rural Japan?",
-    a: "Airalo's own Japan page shows SoftBank as the primary network, plus two further networks it does not name (checked 1 November 2026). In practice, you'll have signal on popular tourist routes including mountainous areas like Nikko and Hakone. Very remote areas (deep mountains, some islands) may have limited coverage regardless of carrier.",
+    a: "Yes. Airalo is an eSIM store that sells data plans covering 200+ locations through its app and website, and its own site says over 30 million people have chosen it. In Japan its eSIM runs on SoftBank, with KDDI and Rakuten as the other networks it can use.",
   },
   {
     q: "Can I top up my Airalo eSIM in Japan?",
-    a: "Yes. You can purchase an additional plan from the Airalo app while in Japan and it will top up your existing eSIM profile. No need to scan a new QR code.",
-  },
-  {
-    q: "Is Airalo cheaper than roaming?",
-    a: `Almost always, yes. Most international roaming plans charge $10–15 per day. Airalo's Japan plans start at ${FROM} — less than a single day of roaming. For a two-week trip, a 5 GB plan at ${FIVE_GB} is dramatically cheaper than roaming.`,
+    a: "Yes, where a top-up package is offered: buy it in the Airalo app and it is added to the eSIM already on your phone, with no new QR code to scan. Airalo's Japan page describes the eSIM as rechargeable online.",
   },
   {
     q: "Can I use Airalo on iPhone?",
-    a: "Yes. iPhone XS (2018) and later support eSIM. Go to Settings → Cellular → Add eSIM and scan the Airalo QR code. Note: iPhones purchased from some carriers (especially older unlocked units from certain regions) may have eSIM locked. Check with your carrier if unsure.",
+    a: "Yes, on any iPhone that supports eSIM and is not carrier-locked. Go to Settings → Cellular → Add eSIM, or install from the Airalo app. Airalo states that carrier- or network-locked phones cannot use its eSIMs, so check the lock with your home carrier first.",
   },
 ];
 
 const worksInJapanFaq = [
   {
-    q: "Does Airalo actually work in Japan?",
-    a: "Yes — Airalo's Japan page names SoftBank as the primary network (with two further, unnamed networks behind it; checked 1 November 2026), and SoftBank publishes coverage across the cities and the main intercity rail corridors, including the Tohoku Shinkansen. The gaps are deep mountain trails and small remote islands, which have limited coverage regardless of carrier.",
-  },
-  {
     q: "Which network does Airalo use in Japan?",
-    a: "The networks shown on Airalo's own Japan page: SoftBank as the primary network, plus \"+2 others\" that the page does not name — so this review does not name them either (checked 1 November 2026). You won't need to manually select a network; your phone picks the strongest signal automatically.",
-  },
-  {
-    q: "How fast is Airalo in Japan?",
-    a: "Airalo's primary network in Japan is SoftBank, per Airalo's own Japan page (checked 1 November 2026). Japanese 4G LTE typically runs at roughly 30–150 Mbps down in Tokyo, Osaka and Kyoto — more than enough for Google Maps, streaming, and video calls. Rural figures are lower, typically 10–40 Mbps, which is still perfectly usable.",
-  },
-  {
-    q: "Can I use Airalo on the shinkansen?",
-    a: "Yes. Shinkansen trains are covered by SoftBank, Airalo's primary network in Japan, along all major lines, including Tokaido (Tokyo–Osaka), San'yo (Osaka–Hiroshima–Hakata), and Tohoku. Expect brief signal gaps inside tunnels, which can last 30–60 seconds.",
+    a: `SoftBank is the primary network on Airalo's Japan page, and the full network list adds KDDI and Rakuten (checked ${AIRALO_READ_ON}). Airalo notes the eSIM may switch between these networks based on availability and speed, and that you can adjust this in your device settings.`,
   },
   {
     q: "Is Airalo better than buying a SIM at the airport?",
-    a: "For most travellers, yes. Airport SIM vending machines (IIJmio, JTRIP, etc.) require queuing on arrival and often cost more per GB. Airalo can be purchased and installed from home — you'll have live data the moment you land, without any queuing or paperwork.",
+    a: "For most travellers, yes. An airport SIM means finding a counter or vending machine after landing, while Airalo is bought and installed from home and connects once you land, with nothing to collect.",
   },
 ];
 
@@ -147,9 +241,7 @@ const commonIssues = [
   },
 ];
 
-export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/airalo-japan-review") } });
-
-const TITLE = brandReviewTitle("airalo", "Airalo");
+export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
 export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -158,24 +250,24 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
         <title>{TITLE}</title>
         <meta
           name="description"
-          content="Is Airalo worth it for Japan? We break down their Japan eSIM plans, prices, networks and setup. Read our honest review before you buy."
+          content={DESCRIPTION}
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/esim/airalo-japan-review" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/esim/airalo-japan-review" />
-        <meta property="og:description" content="Is Airalo worth it for Japan? We break down their Japan eSIM plans, prices, networks and setup. Read our honest review before you buy." />
+        <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={TITLE} />
-        <meta name="twitter:description" content="Is Airalo worth it for Japan? We break down their Japan eSIM plans, prices, networks and setup. Read our honest review before you buy." />
+        <meta name="twitter:description" content={DESCRIPTION} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: [...worksInJapanFaq, ...faqItems].map((item) => ({
+              mainEntity: answerFaq.map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -194,7 +286,7 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/esim/airalo-japan-review",
-              headline: "Airalo Japan Review 2026: Plans, Coverage & Verdict",
+              headline: TITLE,
               updated,
             }),
           }}
@@ -227,10 +319,11 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
             Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
-            Airalo Japan Review 2026: <br />7-Day Price vs Cheaper eSIMs, Is It Worth It?
+            Airalo Japan eSIM Review 2026: <br />Price, Network &amp; Setup
           </h1>
           <p className={styles.heroSubtitle}>
-            A close look at Airalo&apos;s Japan eSIM. Here&apos;s everything you need to know.
+            Airalo&apos;s Japan plans and prices, the networks it uses, how it compares with Klook eSIM, Simbye and
+            Sakura Mobile, and how to install it before you fly.
           </p>
           <div className={styles.heroBadges}>
             {["Prices checked daily", "Independently Reviewed", "Data-Only eSIM"].map((t) => (
@@ -243,6 +336,19 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
       </section>
 
       <div className={styles.content}>
+        {/* The answer, before anything else (task jtk-20261123-03) */}
+        <p className={styles.bodyText}>
+          <strong>
+            Airalo&apos;s Japan eSIM starts at {A_FROM ? `${formatUsd(A_FROM.priceUsd)} for ${A_FROM.name}` : "—"}, and{" "}
+            {A_5GB ? `${formatUsd(A_5GB.priceUsd)} buys ${A_5GB.name}` : "—"}
+          </strong>
+          , per Airalo&apos;s own Japan page (checked {AIRALO_READ_ON}). It is a data-only 5G eSIM on{" "}
+          <strong>SoftBank as the primary network</strong>, and it may switch to KDDI or Rakuten based on availability
+          and speed. If you need unlimited data, {UNL7_BEST ? `${UNL7_BEST.name}'s 7-day unlimited plan at ${priceWithCode(UNL7_BEST.plan)} is the cheapest week of the three priced in the table below` : "see the table below"}{" "}
+          (Airalo&apos;s is {A_UNL7 ? formatUsd(A_UNL7.priceUsd) : "—"}); for the lowest price overall,{" "}
+          {LOWEST ? `${LOWEST.name}'s ${LOWEST.plan.name} is ${priceWithCode(LOWEST.plan)}` : "see the table below"}.
+        </p>
+
         {/* Disclosure */}
         <div className={styles.disclosure}>
           <p className={styles.disclosureText}>
@@ -253,9 +359,114 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
           </p>
         </div>
 
-        <EsimPageAnswer route="/guides/esim/airalo-japan-review" />
+        {/* Airalo vs Klook eSIM vs Simbye (and Sakura Mobile), same trip side by side */}
+        <section className={styles.comparisonSection} data-placement={PLACEMENT} id="airalo-vs-klook-vs-simbye">
+          <span className={styles.sectionLabel}>Price comparison</span>
+          <h2 className={styles.sectionTitle}>Airalo vs Klook eSIM vs Simbye: which is cheaper?</h2>
+          <p className={styles.bodyText}>{answerFaq[2].a}</p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Trip</th>
+                    {COMPARED.map((c) => (
+                      <th key={c.id}>{c.name}</th>
+                    ))}
+                    <th>Klook eSIM</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>
+                      <strong>Verdict</strong>
+                    </td>
+                    <td colSpan={COMPARED.length + 1}>
+                      <strong>Cheapest list price: {winnerSummary()}.</strong> Airalo is the pick for its app and
+                      in-app top-ups; Klook eSIM if you are already booking tickets or transfers on Klook.
+                    </td>
+                  </tr>
+                  {compareRows.map((row) => (
+                    <tr key={row.label}>
+                      <td className={styles.tdProvider}>{row.label}</td>
+                      {row.cells.map((c) => (
+                        <td key={c.id}>
+                          {c.plan ? (
+                            <>
+                              {row.winner?.id === c.id ? <strong>{formatUsd(c.plan.priceUsd)}</strong> : formatUsd(c.plan.priceUsd)}
+                              {c.plan.discountedUsd ? ` (${formatUsd(c.plan.discountedUsd)} with code)` : ""}
+                              <br />
+                              <span style={{ fontSize: "0.78rem", color: "var(--text-muted)" }}>
+                                {c.plan.name}
+                                {c.plan.dailyCapGb ? ` (${c.plan.dailyCapGb} GB/day)` : ""}
+                              </span>
+                            </>
+                          ) : (
+                            "—"
+                          )}
+                        </td>
+                      ))}
+                      <td>{klookEsim.priceUnknownLabel}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem", lineHeight: 1.6 }}>
+            Last checked: {LAST_CHECKED}. Each cell is that provider&apos;s cheapest plan with at least the row&apos;s days
+            and data, in USD. Airalo prices read on{" "}
+            <a href={AIRALO_OFFICIAL_URL} target="_blank" rel="noopener noreferrer nofollow">
+              airalo.com/japan-esim
+            </a>{" "}
+            on {AIRALO_READ_ON}; Simbye (
+            <a href="https://simbye.com/products/esim-japan" target="_blank" rel="noopener noreferrer nofollow">
+              simbye.com/products/esim-japan
+            </a>
+            ) and Sakura Mobile (
+            <a href={getProvider("sakura").sourceUrl} target="_blank" rel="noopener noreferrer nofollow">
+              sakuramobile.jp/travel/esim
+            </a>
+            ) from the same daily price file as the{" "}
+            <Link href="/guides/esim/japan-esim-price-tracker">Japan eSIM price tracker</Link>, fetched {pricesCheckedAt}.
+            Klook eSIM shows from US$1.05 before you choose days and data and names no plan at that price (listing read{" "}
+            {klookEsim.specsCheckedAt}), so no per-plan price is shown. Unlimited plans differ in their full-speed limits.
+          </p>
+          <div className={buyStyles.buttons}>
+            <KlookLink
+              href={klookEsim.url}
+              adPlacement={PLACEMENT}
+              className={buyStyles.buy}
+              target="_blank"
+              rel="sponsored nofollow noopener"
+            >
+              Check Klook eSIM →
+            </KlookLink>
+            <a href={simbyeTrackedUrl(PLACEMENT, TAG)} className={buyStyles.buy} target="_blank" rel="sponsored nofollow noopener">
+              Get Simbye ({SIMBYE_DISCOUNT_PERCENT}% off with code) →
+            </a>
+            <a href={airaloTrackedUrl(PLACEMENT, TAG)} className={buyStyles.buySecondary} target="_blank" rel="sponsored nofollow noopener">
+              Get Airalo Japan eSIM →
+            </a>
+          </div>
+          <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.5rem" }}>
+            Code <strong>{SIMBYE_DISCOUNT_CODE}</strong> takes {SIMBYE_DISCOUNT_PERCENT}% off any Simbye eSIM plan; the
+            Simbye button applies it for you. Affiliate links.
+          </p>
+        </section>
 
-        <EsimBrandCompare brand="airalo" />
+        {/* Pay before you land (task jtk-20261123-03): directly under the comparison and its buttons. */}
+        <div id="pay-before-you-land" data-placement="pay-before-you-land">
+          <KlookTripPrep
+            label="Pay before you land"
+            heading="What Else Can You Pay for Before You Land?"
+            intro="The eSIM is not the only thing you can settle at home. The airport ride and the first days of Tokyo subway rides are bookable on Klook before you fly; pick the line for the airport you land at:"
+            items={airaloReviewPayBeforeLand}
+            headingLevel={3}
+          />
+        </div>
+
+        <EsimPageAnswer route={ROUTE} />
 
         {/* Quick Verdict */}
         <div className={styles.verdictBox}>
@@ -300,28 +511,36 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>Overview</span>
           <h2 className={styles.sectionTitle}>What is Airalo?</h2>
           <p className={styles.bodyText}>
-            Airalo is the world&apos;s largest eSIM marketplace, founded in 2019 and now trusted by over
-            10 million travellers across 190+ countries. Rather than operating its own network, Airalo
-            partners with local carriers — in Japan&apos;s case, its Japan page shows SoftBank as the primary
-            network plus two others it does not name (checked 1 November 2026) — and sells data-only
-            eSIM plans through its app and website.
+            Airalo is an eSIM store covering 200+ locations, and its own site says over 30 million people have
+            chosen it. It does not run a network of its own: its Japan eSIM uses SoftBank as the primary network,
+            with KDDI and Rakuten in the full network list (Airalo&apos;s Japan page, checked {AIRALO_READ_ON}), and
+            it sells data-only plans through its app and website.
           </p>
           <p className={styles.bodyText}>
-            For Japan, Airalo sells plans under the &ldquo;Moshi Moshi&rdquo; brand. Plans range from {FROM}{" "}
-            up to 20 GB and unlimited options (unlimited from {UNLIMITED}); prices below were checked on {pricesCheckedAt}.
+            For Japan, Airalo sells plans under the &ldquo;Moshi Moshi&rdquo; name. Plans range from {FROM}{" "}
+            up to 20 GB, plus unlimited plans (7 days: {UNLIMITED}); prices below were checked on {pricesCheckedAt}.
             All plans are data-only — there are no voice calls or SMS included.
           </p>
           <p className={styles.bodyText}>
-            The key appeal is simplicity: buy before you fly, scan a QR code, and you have working 4G
-            the moment you land at Narita or Haneda. No queuing at airport SIM vending machines.
+            The key appeal is simplicity: buy and install before you fly, and the plan starts when the eSIM first
+            connects to a network in Japan. There is nothing to collect at the airport.
           </p>
         </section>
 
         {/* Plans table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Pricing</span>
-          <h2 className={styles.sectionTitle}>Airalo Japan Plans</h2>
+          <h2 className={styles.sectionTitle}>How much is Airalo for Japan?</h2>
+          <p className={styles.bodyText}>{answerFaq[1].a}</p>
           <ProviderPlanTable providerId="airalo" />
+          <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.6rem" }}>
+            Last checked: {LAST_CHECKED} on{" "}
+            <a href={AIRALO_OFFICIAL_URL} target="_blank" rel="noopener noreferrer nofollow">
+              airalo.com/japan-esim
+            </a>{" "}
+            (USD). Every Airalo price on this page for the same days and data is also in the{" "}
+            <Link href="/guides/esim/japan-esim-price-tracker">Japan eSIM price tracker</Link>.
+          </p>
         </section>
 
         {/* Pros & Cons */}
@@ -366,7 +585,8 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
         {/* Setup steps */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Setup guide</span>
-          <h2 className={styles.sectionTitle}>How to Set Up Airalo Japan eSIM</h2>
+          <h2 className={styles.sectionTitle}>How do I install Airalo before landing?</h2>
+          <p className={styles.bodyText}>{answerFaq[3].a}</p>
           <div className={styles.stepsList}>
             {setupSteps.map((step, i) => (
               <div key={i} className={styles.stepCard}>
@@ -392,19 +612,17 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
           <span className={styles.sectionLabel}>Bottom line</span>
           <h2 className={styles.sectionTitle}>Verdict</h2>
           <p className={styles.verdictText}>
-            Airalo Japan is an excellent choice for most travellers, especially those visiting for
-            a week to a month. The combination of SoftBank as its primary network, competitive
-            pricing, and near-instant setup makes it hard to beat as a first-time eSIM experience.
+            Airalo Japan suits travellers who want a well-known app, SoftBank as the primary network and top-ups
+            from the same eSIM, for a trip of a few days to a month.
           </p>
           <p className={styles.verdictText}>
-            The only real downsides are the data-only limitation (no calls or SMS) and occasionally
-            slow customer support responses — neither of which will affect most tourists who rely on
-            WhatsApp or LINE for communication.
+            On price alone it is not the cheapest: Simbye costs less in {simbyeCheaperRows} of {compareRows.length}{" "}
+            same-trip rows in the comparison at the top of this page. All plans are data-only, so calls go through
+            WhatsApp or LINE.
           </p>
           <p className={styles.verdictText}>
-            For budget travellers or anyone who wants the simplest possible connectivity solution,
-            Airalo Japan is our top pick. For unlimited data or longer stays with voice requirements,
-            consider Holafly or Sakura Mobile instead.
+            For the lowest price, compare Simbye; if you are booking transfers or tickets on Klook anyway, Klook
+            eSIM keeps it in one checkout.
           </p>
           <a href="https://airalo.pxf.io/c/7213504/1268485/15608" className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
             Get Airalo Japan eSIM →
@@ -414,10 +632,9 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
         {/* Does it work in Japan? */}
         <section className={styles.faqSection}>
           <span className={styles.sectionLabel}>Does Airalo work in Japan?</span>
-          <h2 className={styles.sectionTitle}>Does Airalo Work in Japan? Coverage, Speed &amp; Fixes</h2>
+          <h2 className={styles.sectionTitle}>Does Airalo work in Japan?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Short answer: yes, nationwide. Here&apos;s what the sources show on coverage and speed, plus the quickest fixes for the
-            handful of issues travellers run into.
+            {answerFaq[0].a} Below: which network it uses, and the quickest fixes for the issues travellers run into.
           </p>
           <div className={styles.faqList}>
             {worksInJapanFaq.map((item, i) => (
