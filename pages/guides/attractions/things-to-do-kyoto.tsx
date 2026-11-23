@@ -352,8 +352,9 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
             respectfully). The covered <strong>Nishiki Market</strong> — &ldquo;Kyoto&apos;s kitchen&rdquo; — is
             the place to graze on local specialities. Kyoto is also the best city for traditional experiences:
             slip into a{" "}
-            <Link href="/guides/attractions/kimono-rental-japan" style={linkStyle}>kimono rental</Link> to wander
-            the old streets, or sit down for a{" "}
+            <Link href="/guides/attractions/kyoto-kimono-rental" style={linkStyle}>kimono rental in Kyoto</Link>{" "}
+            (base plans from ¥2,980 before tax at the shops by Kiyomizu-dera) to wander the old streets, or
+            sit down for a{" "}
             <Link href="/guides/attractions/tea-ceremony-japan" style={linkStyle}>Japanese tea ceremony</Link>{" "}
             built around Uji matcha.
           </p>
@@ -625,7 +626,7 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Kyoto Kimono Rental (2026): Which Area, What&apos;s Included, When to Return</p>
+                <p className={styles.relatedTitle}>Kimono Rental Kyoto 2026: Prices by Shop, Near Kyoto Station</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -276,7 +276,7 @@ const relatedGuides = [
   { href: "/guides/attractions/kyoto-2-day-itinerary", title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book" },
   { href: "/guides/attractions/things-to-do-kyoto", title: "Things to Do in Kyoto (2026): Temples, Timing and What to Book" },
   { href: "/guides/attractions/gion-night-walking-tour", title: "Gion Night Walking Tour 2026: Times, Types & Photo Rules" },
-  { href: "/guides/attractions/kyoto-kimono-rental", title: "Kyoto Kimono Rental (2026): Which Area, What's Included, When to Return" },
+  { href: "/guides/attractions/kyoto-kimono-rental", title: "Kimono Rental Kyoto 2026: Prices by Shop, Near Kyoto Station" },
   { href: "/guides/attractions/where-to-stay-in-kyoto", title: "Where to Stay in Kyoto (2026): Best Areas, Compared by Line and Travel Time" },
   { href: "/guides/attractions/osaka-kyoto-3-day-itinerary", title: "Osaka Kyoto 3 Day Itinerary (2026): Day by Day & Bookings" },
 ];
@@ -696,8 +696,9 @@ export default function FushimiInariTourPage({ updated }: { updated: PageUpdated
           </p>
           <p className={styles.bodyText}>
             Going in a kimono? Keep to the lower gates and check your return time. Our{" "}
-            <Link href="/guides/attractions/kyoto-kimono-rental" style={linkStyle}>Kyoto kimono rental guide</Link>{" "}
-            compares the shops by area.
+            <Link href="/guides/attractions/kyoto-kimono-rental" style={linkStyle}>kimono rental Kyoto guide</Link>{" "}
+            compares four shops by price and return time; Okamoto also has a Fushimi Inari Shop near JR Inari
+            Station.
           </p>
         </section>
 

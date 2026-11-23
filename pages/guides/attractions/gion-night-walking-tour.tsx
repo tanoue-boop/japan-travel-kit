@@ -275,7 +275,7 @@ const relatedGuides = [
   { href: "/guides/attractions/kyoto-2-day-itinerary", title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book" },
   { href: "/guides/attractions/things-to-do-kyoto", title: "Things to Do in Kyoto (2026): Temples, Timing and What to Book" },
   { href: "/guides/attractions/where-to-stay-in-kyoto", title: "Where to Stay in Kyoto (2026): Best Areas, Compared by Line and Travel Time" },
-  { href: "/guides/attractions/kyoto-kimono-rental", title: "Kyoto Kimono Rental (2026): Which Area, What's Included, When to Return" },
+  { href: "/guides/attractions/kyoto-kimono-rental", title: "Kimono Rental Kyoto 2026: Prices by Shop, Near Kyoto Station" },
   { href: "/guides/attractions/osaka-kyoto-3-day-itinerary", title: "Osaka Kyoto 3 Day Itinerary (2026): Day by Day & Bookings" },
   { href: "/guides/attractions/tea-ceremony-japan", title: "Tea Ceremony in Tokyo (2026): 8 Places, Prices & How to Book" },
 ];
@@ -700,8 +700,8 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
             <strong>Kimono rental.</strong> Check the return time before you book both. Yumeyakata&apos;s listing
             asks for a same-day return by 17:30, which clashes with every tour above, since even a 16:00 start ends at
             19:00, and it sells a next-day return for a fee. Our{" "}
-            <Link href="/guides/attractions/kyoto-kimono-rental" style={linkStyle}>Kyoto kimono rental guide</Link>{" "}
-            compares the shops by area. The{" "}
+            <Link href="/guides/attractions/kyoto-kimono-rental" style={linkStyle}>Kyoto kimono rental prices by shop</Link>{" "}
+            table lists each shop&apos;s next-day return fee, from ¥1,000 at Okamoto to ¥1,100 at wargo. The{" "}
             <KlookLink href={kyotoKimonoAiwafukuGion.url} target="_blank" rel="sponsored nofollow noopener" style={linkStyle}>
               Aiwafuku Gion Shijo store
             </KlookLink>{" "}

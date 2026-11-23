@@ -434,7 +434,8 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
             guide covers the four Asakusa listings, their return times and the photo spots around Senso-ji, and
             the{" "}
             <Link href="/guides/attractions/kyoto-kimono-rental" style={linkStyle}>Kyoto kimono rental</Link>{" "}
-            guide splits Kyoto by area — Gion and Kiyomizu, Arashiyama, and Kyoto Station. To plan the rest of
+            guide compares four Kyoto shops by base price, hair set and return time, and names the shops
+            nearest Kyoto Station. To plan the rest of
             the day, see{" "}
             <Link href="/guides/attractions/things-to-do-kyoto" style={linkStyle}>things to do in Kyoto</Link>{" "}
             and{" "}
@@ -628,7 +629,7 @@ export default function KimonoRentalJapanPage({ updated }: { updated: PageUpdate
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Kyoto Kimono Rental (2026): Which Area, What&apos;s Included, When to Return</p>
+                <p className={styles.relatedTitle}>Kimono Rental Kyoto 2026: Prices by Shop, Near Kyoto Station</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

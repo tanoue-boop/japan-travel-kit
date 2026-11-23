@@ -16,6 +16,9 @@ import {
   kyotoKimonoMisakiGion,
   kyotoKimonoOokiniArashiyama,
   kyotoKimonoYumeyakata,
+  kyotoGionHigashiyamaWalkingTour,
+  kyotoTeaCeremonyMatchaMaking,
+  klookEsim,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
@@ -49,6 +52,15 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  *   open at all hours and free, and shugakuryoko.kyoto.travel (also Kyoto City)
  *   for Hokan-ji — the Yasaka Pagoda — at 10:00–16:00 with no closed days.
  *
+ * 23 Nov 2026 (Rank R07): retitled for "kimono rental kyoto" and turned into a shop
+ * price comparison. The shop table is read from each shop's own English site on
+ * 23 Nov 2026 — okamoto-kimono-en.com (Set Plan, return methods, shop list),
+ * kyotokimonorental.com (wargo Kyoto Station and Gion stores), ewha-yifu.com
+ * (Rikawafuku Kyoto basic plan and Kyoto Ekimae store) and en-kyoto.yumeyakata.com
+ * (Standard Plan, options, return). Okamoto publishes prices before tax, so they are
+ * shown that way rather than converted. Yumeyakata's ¥4,180 campaign price is
+ * labelled "until August 31, 2026" on its own page, so the ¥5,280 list price leads.
+ *
  * One judgement call: Kiyomizu-dera's regular admission is published at ¥400 in
  * some Kyoto City pages and ¥500 in others, so no Kiyomizu-dera fee is stated
  * here at all — only the gate times, which the temple's own site publishes
@@ -58,6 +70,61 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 /** Every figure on this page was read on this date. */
 const CHECKED_ISO = "2026-10-23";
 const CHECKED = checkedLabel(CHECKED_ISO);
+
+/** The shop price table was read from each shop's official English site on this date. */
+const SHOPS_CHECKED_ISO = "2026-11-23";
+
+const shopRows = [
+  {
+    shop: "Verdict by area",
+    basic: "Cheapest base plan: Okamoto ¥2,980 before tax",
+    hair: "Included in the base price only at wargo",
+    ret: "17:30 at three of the four; Okamoto 17:50",
+    nearest: "Kiyomizu & Gion: Okamoto. Kyoto Station: wargo in Kyoto Tower. Arashiyama: Rikawafuku",
+    url: "",
+    verdict: true,
+  },
+  {
+    shop: "Okamoto",
+    basic: "Set Plan ¥2,980 (tax excluded) — kimono, obi, bag, tabi and sandals as a matched set",
+    hair: "From ¥500 (tax excluded)",
+    ret: "Same day by 17:50, free. Next day by 17:00 for ¥1,000, with a ¥10,000 cash deposit",
+    nearest: "Main Shop and Kiyomizu Shop 1 min on foot from Kiyomizu-dera; Gion Shop 1 min from Kodai-ji; also Yasaka Jinja, Fushimi Inari and Arashiyama",
+    url: "https://www.okamoto-kimono-en.com/kimono/setPlan.html",
+  },
+  {
+    shop: "wargo",
+    basic: "Standard Kimono Plan ¥3,300 paid online (¥4,400 regular), tax included",
+    hair: "Included — the plan list says from ¥3,300 including hair styling",
+    ret: "17:30 (last dressing 15:30). Next day by 15:00 +¥1,100; convenience-store shipping +¥2,750",
+    nearest: "Kyoto Station Store: Kyoto Tower 3F, 2 min from Kyoto Station. Gion Store: 1 min from Keihan Gion-Shijo",
+    url: "https://kyotokimonorental.com/en/shop/5",
+  },
+  {
+    shop: "Rikawafuku (Ewha-yifu)",
+    basic: "Kyoto Kimono Basic Plan ¥4,500, tax included",
+    hair: "Not in the Basic Plan; the Hair Set Plan is ¥6,500",
+    ret: "Final return 17:30 whatever the booking time; an extension fee after that",
+    nearest: "Kyoto Ekimae store 7 min from JR Kyoto Station (Central Exit); also Gion, Kiyomizu-dera and Arashiyama (3 min from Randen Arashiyama)",
+    url: "https://ewha-yifu.com/en/shops/kyoto-area/planlist-kyoto/kyoto-basic-plan/",
+  },
+  {
+    shop: "Yumeyakata (Gojo Shop)",
+    basic: "Standard Plan ¥5,280; the page also shows ¥4,180 for 9:00–16:00 bookings, labelled until 31 Aug 2026",
+    hair: "From ¥1,650; ornaments not included (from ¥770)",
+    ret: "Same day by 17:30, free. Next day by 17:00 for ¥1,100 (¥550 or ¥0 depending on booking time)",
+    nearest: "3 min from Gojo Station (Karasuma subway line); about 10 min by taxi from JR Kyoto Station",
+    url: "https://www.en-kyoto.yumeyakata.com/kimono-rental-plan/kimono/",
+  },
+];
+
+const shopSources = [
+  { label: "Okamoto return methods", url: "https://www.okamoto-kimono-en.com/returnplan/" },
+  { label: "Okamoto shop list", url: "https://www.okamoto-kimono-en.com/storeinfo/" },
+  { label: "wargo Gion Store", url: "https://kyotokimonorental.com/en/shop/6" },
+  { label: "Rikawafuku Kyoto Ekimae", url: "https://ewha-yifu.com/en/shops/kyoto-area/ekimae/" },
+  { label: "Yumeyakata return", url: "https://www.en-kyoto.yumeyakata.com/return/" },
+];
 
 const planRows = [
   {
@@ -206,48 +273,24 @@ const steps = [
 
 const faqItems = [
   {
-    q: "How much is Kyoto kimono rental?",
-    a: "No figure is quoted here, and that is deliberate: rental pricing moves by plan, by grade of kimono and by season, and the booking platforms change prices by date, so no single number holds for your date. What can be said is what changes it. The grade of the kimono is the main lever; a hair set is included free on several Kyoto listings rather than charged; a photo shoot and Japanese-style makeup are the usual paid extras; summer yukata plans are generally the cheaper end; and couple plans normally beat two separate bookings. Open a shop's listing for the current figure on your date.",
+    q: "How much is kimono rental in Kyoto?",
+    a: "A basic women's kimono plan at the four main Kyoto shops costs between ¥2,980 before tax and ¥5,280, read from each shop's own English site on 23 Nov 2026. Okamoto's Set Plan is ¥2,980 plus tax, wargo's Standard Kimono Plan is ¥3,300 paid online (¥4,400 regular) with hair styling included, Rikawafuku's Kyoto Basic Plan is ¥4,500 without hair, and Yumeyakata's Standard Plan is ¥5,280. A hair set adds ¥500 (before tax) at Okamoto, from ¥1,650 at Yumeyakata, and moves you to the ¥6,500 Hair Set Plan at Rikawafuku.",
   },
   {
-    q: "What is included in a Kyoto kimono rental?",
-    a: `More than the garment, which is why a rental is not simply the price of a robe. The standard plan at the shops here is the kimono, the obi, the undergarment, tabi socks, zori sandals and a Japanese handbag — the listings describe it as coming empty-handed — plus professional dressing by trained staff. Several Kyoto shops include the hair set free, with hair ornaments, rather than selling it as an add-on. Men's sets with a haori jacket and children's sizes are stocked as standard. Photo shoots, makeup and premium or antique kimono are the usual extras. Inclusions as the listings state them, read on ${CHECKED}.`,
+    q: "Which kimono rental is near Kyoto Station?",
+    a: "wargo's Kyoto Station Store is the closest: it is on the 3rd floor of Kyoto Tower, 2 minutes on foot from the station, open 10:00 to 17:30 with last dressing at 15:30, from ¥3,300 online with hair styling included. Rikawafuku's Kyoto Ekimae store is 7 minutes on foot from the Central Exit, and Yumeyakata's Gojo Shop is 3 minutes from Gojo Station on the Karasuma subway line, about 10 minutes by taxi from the station. Okamoto has no station shop; its nearest to JR is the Fushimi Inari Shop near JR Inari Station.",
   },
   {
-    q: "What time do you have to return a kimono in Kyoto?",
-    a: `Same-day, and earlier than most people plan for — this is the single detail worth checking before you book anything else in the day. The Yumeyakata listing is the one that publishes all three routes in full: back to the shop by 17:30 on the day, between 09:00 and 17:00 the following day for an additional fee, or returned by post for a fee. Deadlines differ by shop, so read your own listing. The practical consequence is the same everywhere: treat a rental as a half-day with a hard edge, take the earliest dressing slot you can, and finish the walk near the shop rather than across the city. Return terms read on ${CHECKED}.`,
+    q: "What is included in a Kyoto kimono rental (hair, obi, bag)?",
+    a: "The kimono, the obi, a bag, tabi socks and sandals are in every base plan; hair is the part that differs. Okamoto's Set Plan is kimono, obi, bag, tabi and sandals with the undergarments and a towel, plus a scarf in winter; hair styling is from ¥500 before tax. wargo includes hair styling in the ¥3,300 price. Rikawafuku's Basic Plan excludes hair styling, and Yumeyakata charges from ¥1,650 for hair with ornaments sold separately from ¥770. Prices read on 23 Nov 2026.",
   },
   {
-    q: "Which area of Kyoto is best for kimono rental — Gion, Arashiyama or Kyoto Station?",
-    a: "Gion and Kiyomizu, for most people, because the shops sit inside the walking route rather than at one end of a train ride: Yasaka Shrine, the Yasaka Pagoda, Ninenzaka, Kiyomizu-dera, Hanamikoji and Shirakawa are all within about 25 minutes on foot of each other. Pick Arashiyama if your day is already an Arashiyama day — a shop three minutes from the bamboo grove beats a cross-city trip in sandals. Pick Kyoto Station if you are arriving and leaving the same day and need luggage storage more than you need a backdrop; the station shops are built around exactly that itinerary.",
+    q: "Can I keep the kimono overnight in Kyoto?",
+    a: "Yes, at three of the four shops, for a fee. Okamoto charges ¥1,000 for return by 17:00 the next day, with a ¥10,000 cash deposit and ID, or hotel return from ¥1,500 before tax, with the kimono left at your hotel front desk by 9:00. wargo charges ¥1,100 for return by 15:00 the next day, or ¥2,750 to send it back from a convenience store. Yumeyakata charges ¥1,100 for return by 17:00 the next day, cut to ¥550 or free depending on your booking time. Rikawafuku sets a final return of 17:30.",
   },
   {
-    q: "Do you need to book Kyoto kimono rental in advance?",
-    a: "Yes, and in two periods of the year it is not optional. The cherry fortnight from late March into mid-April and the autumn colour weeks from about mid-November into early December are when slots and the best designs sell out, sometimes well ahead. Outside those, a week is usually comfortable and a quiet weekday can be same-day — but a dressing appointment is a fixed slot with a stylist, so turning up and waiting is not a plan. Booking online also fixes what is included and gives you an English checkout, which is the other reason to do it before you fly.",
-  },
-  {
-    q: "What is a good kimono walking route in Kyoto?",
-    a: `The Higashiyama loop, run in this order so it ends near the shop rather than at the top of a hill. Kiyomizu-dera first — the gate opens at 6:00 and closes at 18:00, or 18:30 in July and August, so an early dressing slot gets you there before the crowds. Then down Sannenzaka and Ninenzaka, the stone-paved slopes, which are open streets with no gate. Then the Yasaka Pagoda, which is 10:00 to 16:00 with no closed days if you want to go in, and free from the street if you only want the photograph. Then Kodai-ji at 9:00 to 17:30 with reception closing at 17:00 and admission at ¥800 for an adult. Then Yasaka Shrine, which is open at all hours and free. Then Hanamikoji and Shirakawa in Gion, which puts you two minutes from the Gion Shijo shops at return time. Hours read from each temple's own site and Kyoto City's official tourism pages on ${CHECKED}.`,
-  },
-  {
-    q: "Can men and couples rent kimono in Kyoto?",
-    a: "Yes, and the Kyoto shops treat it as standard rather than as a favour. Men's sets come with a haori jacket, obi, tabi and sandals, and one operator's listing quotes men's sizes from S to 4XL across 200-plus sets. Couple plans put both bookings in the same dressing slot, which matters more than the small discount — two separate bookings at a busy shop can land an hour apart. Children's sizes are widely stocked too, so a family can dress together on one reservation.",
-  },
-  {
-    q: "What happens if it rains on your kimono day?",
-    a: "The outfit copes better than the route does. Zori sandals and tabi socks on wet stone slopes are the real problem — Sannenzaka and Ninenzaka are steep and cobbled — so the rain plan is to shorten the walk, not to cancel it. Shops routinely offer umbrellas, and several Kyoto listings mention cover for stains and mud splashes as part of the plan, which takes the worry out of a puddle. If the forecast is bad, Gion is the better area to be in than Arashiyama: the backdrops are closer together and a covered arcade or a tea house is never far.",
-  },
-  {
-    q: "Should you rent a kimono in Kyoto or in Asakusa?",
-    a: "Kyoto if the photographs are the point; Asakusa if the convenience is. Kyoto gives you preserved wooden streets, stone slopes and temple gates — a backdrop that was not built for this but happens to suit it perfectly — at the cost of needing a Kyoto day. Asakusa gives you Senso-ji, Nakamise and shops within a few minutes of the station, as a half-day you can slot into a Tokyo itinerary without rearranging anything. If you are doing both cities and only one kimono day, do it in Kyoto.",
-  },
-  {
-    q: "What should you wear underneath, and how long does dressing take?",
-    a: "Dressing takes roughly 20 to 30 minutes with a professional, plus the browsing time before it, so allow about an hour at the shop before you are out of the door — longer if a hair set is included. Underneath, something thin and close-fitting: the undergarment is provided, and bulky layers change the line of the kimono. Bring socks you do not mind swapping for tabi, and leave the day pack at the shop, since storage for your own clothes and bags is standard at these listings.",
-  },
-  {
-    q: "Can you keep the kimono overnight or return it the next day?",
-    a: `At some shops, for a fee, and it is worth asking before you assume a full day. The Yumeyakata listing publishes next-day return between 09:00 and 17:00 as a paid option, alongside return by post, also paid. That turns a half-day into an evening — which is the version worth paying for if you want Gion after dark, when the lanes empty out and the lanterns are lit. Not every shop offers it, so confirm on your own listing rather than on this page. Read on ${CHECKED}.`,
+    q: "Should I rent a kimono or a yukata in Kyoto in winter?",
+    a: "A kimono. Yukata are summer wear: Rikawafuku offers yukata and summer kimono in the summer season, and Yumeyakata and wargo list yukata as separate summer plans. In winter, Okamoto's Set Plan adds a scarf, and Yumeyakata's Full Option Plan offers boot rental for +¥3,300 if you would rather not walk in zori. Daylight is the other winter limit: with returns at 17:30, a morning dressing slot leaves the most time outside.",
   },
 ];
 
@@ -255,9 +298,9 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/kyoto-kimono-rental") },
 });
 
-const TITLE = "Kyoto Kimono Rental (2026): Areas, Plans and Return Times";
+const TITLE = "Kimono Rental Kyoto 2026: Prices by Shop, Near Kyoto Station";
 const DESC =
-  "Kyoto kimono rental compared across 3 areas — Gion and Kiyomizu, Arashiyama, Kyoto Station — with what each plan includes and the same-day return time.";
+  "Kimono rental Kyoto prices by shop: basic plans ¥2,980 (before tax) to ¥5,280 at 4 shops, hair sets, 17:30 returns and the shops nearest Kyoto Station.";
 
 export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -347,14 +390,15 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Kyoto Kimono Rental (2026): <br />Which Area, What&apos;s Included, When to Return
+            Kimono Rental Kyoto 2026: <br />Prices by Shop, Near Kyoto Station
           </h1>
           <p className={styles.heroSubtitle}>
-            Three areas, one hard deadline. Where to book so the walk works, what a plan
-            actually comes with, and the Higashiyama loop that ends two minutes from the shop.
+            Four Kyoto shops side by side — base price, hair set, return time and the nearest
+            station — plus where to rent near Kyoto Station and the Higashiyama loop that ends
+            near the shop.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "Gion vs Arashiyama vs the station", "Temple hours, checked"].map((t) => (
+            {[`Updated ${updated.label}`, "4 shops, official prices", "Kyoto Station vs Gion vs Arashiyama"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -381,36 +425,30 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
           <div className={styles.verdictBody}>
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Best area</p>
-                <p className={styles.verdictStatValue}>Gion &amp; Kiyomizu</p>
+                <p className={styles.verdictStatLabel}>Basic plan</p>
+                <p className={styles.verdictStatValue}>¥2,980 + tax to ¥5,280</p>
+              </div>
+              <div className={styles.verdictStat}>
+                <p className={styles.verdictStatLabel}>Near Kyoto Station</p>
+                <p className={styles.verdictStatValue}>wargo, Kyoto Tower, 2 min</p>
+              </div>
+              <div className={styles.verdictStat}>
+                <p className={styles.verdictStatLabel}>Kiyomizu &amp; Gion</p>
+                <p className={styles.verdictStatValue}>Okamoto, 1 min from the temple</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Return by</p>
-                <p className={styles.verdictStatValue}>17:30 same day, typically</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Dressing takes</p>
-                <p className={styles.verdictStatValue}>20–30 min, ~1 hr at the shop</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Book ahead</p>
-                <p className={styles.verdictStatValue}>Weeks, in sakura &amp; autumn</p>
+                <p className={styles.verdictStatValue}>17:30 same day (Okamoto 17:50)</p>
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>In short:</strong> for <strong>Kyoto kimono rental</strong>, book in{" "}
-              <strong>Gion or Kiyomizu</strong> unless your day is already an Arashiyama day or
-              you are changing at Kyoto Station between trains — the Higashiyama shops put you
-              inside a walking route where Yasaka Shrine, the Yasaka Pagoda, Ninenzaka,
-              Kiyomizu-dera and Hanamikoji all sit within about{" "}
-              <strong>25 minutes on foot</strong> of each other. A standard plan includes the
-              kimono, obi, undergarment, tabi, sandals and a bag, with{" "}
-              <strong>a hair set free on several Kyoto listings</strong> and photo shoots as the
-              paid extra. The detail that shapes the whole day is the deadline:{" "}
-              <strong>same-day return, typically by 17:30</strong>, with next-day return
-              09:00–17:00 or return by post available for a fee at some shops. Book{" "}
-              <strong>weeks ahead for the cherry fortnight and the autumn colour weeks</strong>.
-              All read on {CHECKED}.
+              <strong>In short:</strong> <strong>kimono rental in Kyoto</strong> costs{" "}
+              <strong>¥2,980 before tax to ¥5,280</strong> for a basic plan at Okamoto, wargo,
+              Rikawafuku and Yumeyakata. For Kiyomizu and Gion, Okamoto&apos;s main shop is a
+              minute from Kiyomizu-dera; near Kyoto Station, wargo in Kyoto Tower is 2 minutes
+              away at <strong>¥3,300 online with hair styling included</strong>. Return is{" "}
+              <strong>same day by 17:30</strong> at three of the four, with next-day return
+              from ¥1,000. Prices from each shop&apos;s own site, read on 23 Nov 2026.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={kyotoKimonoAiwafukuGion.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -428,30 +466,143 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>What Decision Are You Actually Making?</h2>
+          <h2 className={styles.sectionTitle}>How Much Is Kimono Rental in Kyoto?</h2>
           <p className={styles.bodyText}>
-            Not which shop. Kyoto has hundreds of rental shops and, within any one
-            neighbourhood, they offer close to the same thing: a few hundred to a few thousand
-            kimono, a dresser, a hair set, and a deadline. What genuinely differs is{" "}
-            <strong>which part of Kyoto you are standing in when you are dressed</strong>, and
-            that is a decision about your day rather than about your outfit.
+            Kimono rental in Kyoto costs <strong>¥2,980 before tax to ¥5,280</strong> for a
+            basic women&apos;s plan at the four shops compared below, read from each
+            shop&apos;s own English site on 23 Nov 2026. For Kiyomizu and Gion, Okamoto&apos;s
+            Set Plan is the cheapest at ¥2,980 plus tax, from a shop 1 minute on foot from
+            Kiyomizu-dera; near Kyoto Station, wargo&apos;s store in Kyoto Tower is 2 minutes
+            away at ¥3,300 paid online, hair styling included. Paying online in advance is the
+            cheaper route at wargo — ¥3,300 against the ¥4,400 regular price.
           </p>
           <p className={styles.bodyText}>
-            The second real decision is the <strong>return time</strong>, because it is the
-            thing that turns a rental from a costume into a schedule. Same-day return is the
-            norm and the deadline is earlier than people expect, so the last stop of your walk
-            has to be near the shop you started at. Get the area and the deadline right and the
-            rest is choosing a colour.
+            The rest of the price is the hair set and the return. Hair is included at wargo,
+            ¥500 before tax at Okamoto, from ¥1,650 at Yumeyakata and a separate ¥6,500 plan at
+            Rikawafuku; returns are same day by 17:30 everywhere except Okamoto, which allows
+            until 17:50.
+          </p>
+        </section>
+
+        {/* Shop price table */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Prices by shop</span>
+          <h2 className={styles.sectionTitle}>Kyoto Kimono Rental Prices by Shop</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            The base women&apos;s kimono plan at each shop, as the shop&apos;s own English site
+            lists it. The first row is the answer by area:
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Shop", "Basic plan", "Hair set", "Return", "Nearest / areas"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {shopRows.map((row) => (
+                    <tr key={row.shop} style={row.verdict ? { background: "var(--accent-light, rgba(0,0,0,0.03))" } : undefined}>
+                      <td className={styles.tdProvider} style={{ fontSize: "0.86rem" }}>
+                        {row.url ? (
+                          <a href={row.url} target="_blank" rel="noopener noreferrer">{row.shop}</a>
+                        ) : (
+                          <strong>{row.shop}</strong>
+                        )}
+                      </td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.84rem" }}>{row.verdict ? <strong>{row.basic}</strong> : row.basic}</td>
+                      <td style={{ fontSize: "0.84rem" }}>{row.verdict ? <strong>{row.hair}</strong> : row.hair}</td>
+                      <td style={{ fontSize: "0.84rem" }}>{row.verdict ? <strong>{row.ret}</strong> : row.ret}</td>
+                      <td style={{ fontSize: "0.84rem" }}>{row.verdict ? <strong>{row.nearest}</strong> : row.nearest}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {SHOPS_CHECKED_ISO}. Official sources:{" "}
+            {shopRows
+              .filter((r) => r.url)
+              .map((r) => ({ label: r.shop, url: r.url }))
+              .concat(shopSources)
+              .map((s, i, all) => (
+                <span key={s.url}>
+                  <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>
+                  {i < all.length - 1 ? ", " : "."}
+                </span>
+              ))}{" "}
+            Okamoto lists prices before tax; the other three include tax. Shops may change
+            prices by date, so the figure at checkout is the one that applies.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
+            <KlookLink href={kyotoKimonoAiwafukuStation.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Kyoto kimono rental on Klook →
+            </KlookLink>
+            <KlookLink href={kyotoKimonoAiwafukuGion.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Gion shop on Klook →
+            </KlookLink>
+            <KlookLink href={kyotoKimonoOokiniArashiyama.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Arashiyama shop on Klook →
+            </KlookLink>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            <strong>Booking the same day?</strong> A kimono morning leaves the afternoon for a
+            guided walk or a tea ceremony, and you will want data for the maps between them:
+          </p>
+          <div className={styles.pickCtaRow}>
+            <KlookLink href={kyotoGionHigashiyamaWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Gion &amp; Higashiyama walking tour →
+            </KlookLink>
+            <KlookLink href={kyotoTeaCeremonyMatchaMaking.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Kyoto tea ceremony →
+            </KlookLink>
+            <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Japan eSIM on Klook →
+            </KlookLink>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            This page is the Kyoto shop comparison. For Kyoto against Tokyo as a kimono city,
+            and how a rental plan works in general, see the{" "}
+            <Link href="/guides/attractions/kimono-rental-japan">kimono rental in Japan guide</Link>;
+            for the Tokyo version with Senso-ji shops and return times, compare the{" "}
+            <Link href="/guides/attractions/asakusa-kimono-rental">Asakusa kimono rental guide</Link>.
+          </p>
+        </section>
+
+        {/* Kyoto Station */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Kyoto Station</span>
+          <h2 className={styles.sectionTitle}>Which Kimono Rental Is Near Kyoto Station?</h2>
+          <p className={styles.bodyText}>
+            <strong>wargo&apos;s Kyoto Station Store is the closest</strong>: on the 3rd floor of
+            Kyoto Tower, 2 minutes on foot from the station via the Karasuma (north) side, open
+            10:00 to 17:30 with last dressing at 15:30, from ¥3,300 online with hair styling
+            included. <strong>Rikawafuku Kyoto Ekimae</strong> is 7 minutes on foot from the
+            Central Exit at ¥4,500 for the Basic Plan, and <strong>Yumeyakata&apos;s Gojo
+            Shop</strong> is 3 minutes from Gojo Station on the Karasuma subway line, about 10
+            minutes by taxi from the station.
           </p>
           <p className={styles.bodyText}>
-            This page is the Kyoto-specific version. If you have not yet decided{" "}
-            <em>whether</em> to do this or <em>which city</em>, our{" "}
-            <Link href="/guides/attractions/kimono-rental-japan">kimono rental in Japan guide</Link>{" "}
-            compares Kyoto against Tokyo and explains how a plan works; if you have settled on
-            Tokyo, our{" "}
-            <Link href="/guides/attractions/asakusa-kimono-rental">Asakusa kimono rental guide</Link>{" "}
-            does this job for Senso-ji and Nakamise.
+            A station shop suits a day that starts and ends on a train, but Higashiyama is
+            still a bus or taxi ride away in the outfit. If the walk is the point, dress in
+            Kiyomizu or Gion instead; Okamoto has no station shop, and its nearest to JR is the
+            Fushimi Inari Shop by JR Inari Station. Last checked: {SHOPS_CHECKED_ISO}, from{" "}
+            <a href="https://kyotokimonorental.com/en/shop/5" target="_blank" rel="noopener noreferrer">kyotokimonorental.com</a>,{" "}
+            <a href="https://ewha-yifu.com/en/shops/kyoto-area/ekimae/" target="_blank" rel="noopener noreferrer">ewha-yifu.com</a>{" "}
+            and{" "}
+            <a href="https://www.en-kyoto.yumeyakata.com/" target="_blank" rel="noopener noreferrer">en-kyoto.yumeyakata.com</a>.
           </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
+            <KlookLink href={kyotoKimonoAiwafukuStation.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Kyoto Station kimono rental on Klook →
+            </KlookLink>
+            <KlookLink href={kyotoKimonoMimosaStation.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Station shop with luggage storage →
+            </KlookLink>
+          </div>
         </section>
 
         {/* Area comparison */}
@@ -487,9 +638,9 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Shop locations and walking times are as the individual listings state them, read on{" "}
-            {CHECKED}. No rental price is quoted on this page: pricing moves by plan, grade and
-            season, and the booking platforms change prices by date, so open a listing for the
-            figure on your date.
+            {CHECKED}. For prices, see the shop table above, read from each shop&apos;s own
+            site; Klook listings change prices by date, so open a listing for the figure on
+            your date.
           </p>
           <div className={styles.whoForGrid} style={{ marginTop: "1.5rem" }}>
             {whoFor.map((item) => (
@@ -516,11 +667,18 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
         {/* Plans */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Plans</span>
-          <h2 className={styles.sectionTitle}>What Plans Are There, and What Is Included?</h2>
+          <h2 className={styles.sectionTitle}>What Is Included (Hair, Obi, Bag)?</h2>
+          <p className={styles.bodyText}>
+            <strong>The kimono, obi, bag, tabi socks and sandals are in every base plan; hair
+            is the part that differs.</strong> Okamoto&apos;s ¥2,980 Set Plan is a
+            kimono, obi, bag, tabi and sandals as a matched set, with the undergarments and a
+            towel, and a scarf in winter. wargo includes hair styling in its ¥3,300 price;
+            Rikawafuku&apos;s Basic Plan does not, and Yumeyakata charges from ¥1,650 for hair
+            with ornaments sold from ¥770. Read on the shops&apos; own sites on 23 Nov 2026.
+          </p>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            The base plan is more complete than people expect — the listings describe arriving
-            empty-handed — and the price moves on the grade of the kimono and the extras rather
-            than on what is in the bag:
+            Beyond that, the price moves on the grade of the kimono and the extras rather than
+            on what is in the bag:
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -554,7 +712,21 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
         {/* Return times */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The deadline</span>
-          <h2 className={styles.sectionTitle}>What Time Do You Have to Return the Kimono?</h2>
+          <h2 className={styles.sectionTitle}>Can I Keep the Kimono Overnight?</h2>
+          <p className={styles.bodyText}>
+            <strong>Yes, at three of the four shops, for a fee of about ¥1,000.</strong>{" "}
+            Okamoto charges ¥1,000 for return by 17:00 the next day (ID and a ¥10,000 cash
+            deposit), or hotel return from ¥1,500 before tax with the kimono left at a Kyoto
+            City hotel&apos;s front desk by 9:00. wargo charges ¥1,100 for return by 15:00 the
+            next day, or ¥2,750 to send it back from a convenience store. Yumeyakata charges
+            ¥1,100 for return by 17:00 the next day — ¥550 for a 9:00–11:59 booking and free
+            for a 12:00–16:00 booking. Rikawafuku sets a final return of 17:30. Last checked:{" "}
+            {SHOPS_CHECKED_ISO}, from{" "}
+            <a href="https://www.okamoto-kimono-en.com/returnplan/" target="_blank" rel="noopener noreferrer">okamoto-kimono-en.com</a>,{" "}
+            <a href="https://kyotokimonorental.com/en/shop/5" target="_blank" rel="noopener noreferrer">kyotokimonorental.com</a>{" "}
+            and{" "}
+            <a href="https://www.en-kyoto.yumeyakata.com/return/" target="_blank" rel="noopener noreferrer">en-kyoto.yumeyakata.com</a>.
+          </p>
           <p className={styles.bodyText}>
             <strong>Same day, and typically by 17:30.</strong> The Yumeyakata listing is the one
             that spells out all three routes rather than burying them: back to the shop{" "}
@@ -670,7 +842,16 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
         {/* Crowds and seasons */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Seasons &amp; crowds</span>
-          <h2 className={styles.sectionTitle}>When Does Kyoto Kimono Rental Sell Out?</h2>
+          <h2 className={styles.sectionTitle}>Kimono vs Yukata in Winter?</h2>
+          <p className={styles.bodyText}>
+            <strong>Rent a kimono in winter; yukata are summer wear.</strong> Rikawafuku offers
+            yukata and summer kimono in the summer season, and wargo and Yumeyakata sell yukata
+            as separate summer plans. For the cold, Okamoto&apos;s Set Plan adds a scarf in
+            autumn and winter, and Yumeyakata&apos;s Full Option Plan offers boot rental for
+            +¥3,300 instead of zori. With returns at 17:30, a morning slot leaves the most
+            daylight. Last checked: {SHOPS_CHECKED_ISO}, on each shop&apos;s own site.
+          </p>
+          <h3 className={styles.stepTitle} style={{ marginTop: "1.25rem" }}>When does Kyoto kimono rental sell out?</h3>
           <p className={styles.bodyText}>
             Twice a year, hard. The <strong>cherry fortnight</strong> — late March into mid-April
             — and the <strong>autumn colour weeks</strong>, roughly mid-November into early

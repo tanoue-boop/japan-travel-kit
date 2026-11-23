@@ -280,7 +280,7 @@ const relatedGuides = [
   { href: "/guides/attractions/nara-day-trip", title: "Nara Day Trip (2026): From Osaka or Kyoto, and What Todai-ji Costs" },
   { href: "/guides/attractions/fushimi-inari-tour", title: "Fushimi Inari Tour 2026: Hike Time, Hours & Best Time" },
   { href: "/guides/attractions/gion-night-walking-tour", title: "Gion Night Walking Tour 2026: Times, Types & Photo Rules" },
-  { href: "/guides/attractions/kyoto-kimono-rental", title: "Kyoto Kimono Rental (2026): Which Area, What's Included, When to Return" },
+  { href: "/guides/attractions/kyoto-kimono-rental", title: "Kimono Rental Kyoto 2026: Prices by Shop, Near Kyoto Station" },
   { href: "/guides/attractions/where-to-stay-in-kyoto", title: "Where to Stay in Kyoto (2026): Best Areas, Compared by Line and Travel Time" },
   { href: "/guides/transport/kyoto-to-tokyo-shinkansen", title: "Kyoto to Tokyo Shinkansen: Times, Fares, JR Pass" },
 ];
@@ -454,6 +454,12 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
             Day 3. If you have a fourth day, our{" "}
             <Link href="/guides/attractions/amanohashidate-ine-day-trip">Amanohashidate day trip</Link> guide
             covers the longer trip north to the Sea of Japan.
+          </p>
+          <p className={styles.bodyText}>
+            Day 1 is the kimono day, because Higashiyama and Gion are all on foot. For shop prices,
+            hair sets and return times side by side, see our{" "}
+            <Link href="/guides/attractions/kyoto-kimono-rental">kimono rental Kyoto guide</Link>; the shops
+            near Kiyomizu-dera suit this day better than the ones at Kyoto Station.
           </p>
         </section>
 

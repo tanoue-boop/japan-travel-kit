@@ -699,8 +699,9 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             guide is the cheapest way to not be the reason for them. And the{" "}
             <strong>Fushimi Inari walk</strong>, if a 6:30 start is more likely to happen with someone
             expecting you. Our{" "}
-            <Link href="/guides/attractions/kyoto-kimono-rental">Kyoto kimono rental guide</Link> splits the
-            shops by area and return deadline.
+            <Link href="/guides/attractions/kyoto-kimono-rental">kimono rental Kyoto price comparison</Link>{" "}
+            puts four shops side by side — base plans from ¥2,980 before tax, hair sets and the 17:30
+            return — with the ones nearest Kyoto Station.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={kyotoFushimiInariWalkingTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -1236,7 +1237,7 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Kyoto Kimono Rental (2026): Shops by Area, Prices and Return Deadlines</p>
+                <p className={styles.relatedTitle}>Kimono Rental Kyoto 2026: Prices by Shop, Near Kyoto Station</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

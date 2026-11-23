@@ -231,7 +231,7 @@ const relatedGuides = [
   { href: "/guides/attractions/kyoto-2-day-itinerary", title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book" },
   { href: "/guides/attractions/kyoto-3-day-itinerary", title: "Kyoto 3 Day Itinerary (2026): Day by Day, and What to Book" },
   { href: "/guides/attractions/fushimi-inari-tour", title: "Fushimi Inari Tour 2026: Hike Time, Hours & Best Time" },
-  { href: "/guides/attractions/kyoto-kimono-rental", title: "Kyoto Kimono Rental (2026): Which Area, What's Included, When to Return" },
+  { href: "/guides/attractions/kyoto-kimono-rental", title: "Kimono Rental Kyoto 2026: Prices by Shop, Near Kyoto Station" },
   { href: "/guides/transport/kyoto-transportation", title: "Getting Around Kyoto (2026): Buses, Trains & Taxis Explained" },
 ];
 
@@ -638,8 +638,8 @@ export default function ArashiyamaBambooForestTourPage({ updated }: { updated: P
             Walking shoes, and layers for an early start. The Kyoto AVANTI tour alone covers about 3 km on foot,
             and everything here is outdoors except the temple halls. If you want a kimono, dress in Arashiyama
             so the walk starts at the shop rather than on a train. Our{" "}
-            <Link href="/guides/attractions/kyoto-kimono-rental">Kyoto kimono rental guide</Link> compares the
-            areas.
+            <Link href="/guides/attractions/kyoto-kimono-rental">Kyoto kimono rental guide</Link> compares shop
+            prices, including Rikawafuku&apos;s Arashiyama store 3 minutes from Randen Arashiyama Station.
           </p>
           <p className={styles.bodyText}>
             Two rules matter in the grove. Do not mark the bamboo: Kyoto&apos;s tourism site reports that
