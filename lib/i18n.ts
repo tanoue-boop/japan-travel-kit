@@ -465,6 +465,25 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     thTitle: "เที่ยวญี่ปุ่นหน้าหนาว 2027: แผนเที่ยว 12 วัน",
     thLabel: "เที่ยวญี่ปุ่นหน้าหนาว",
   },
+  // Added 2026-11-24 (task jtk-20261124-TR01): Klook's best-converting English page that had no
+  // translation (8 bookings in 30 days). Each title leads with Hakone Navi's own name for the pass
+  // in that language — 箱根周遊券 / 箱根周游券 / 하코네 프리패스 — and Thai keeps the Latin
+  // "Hakone Free Pass" that Thai results use.
+  {
+    en: "/guides/attractions/hakone-free-pass",
+    zhTw: "/zh-tw/guides/attractions/hakone-free-pass",
+    zhTitle: "箱根周遊券 2026：新宿出發票價與是否划算",
+    zhLabel: "箱根周遊券",
+    zhCn: "/zh-cn/guides/attractions/hakone-free-pass",
+    zhCnTitle: "箱根周游券 2026：新宿出发价格与是否划算",
+    zhCnLabel: "箱根周游券",
+    ko: "/ko/guides/attractions/hakone-free-pass",
+    koTitle: "하코네 프리패스 2026: 신주쿠 출발 가격, 살 만할까?",
+    koLabel: "하코네 프리패스",
+    th: "/th/guides/attractions/hakone-free-pass",
+    thTitle: "Hakone Free Pass 2026: ราคา คุ้มไหม",
+    thLabel: "Hakone Free Pass",
+  },
   {
     en: "/guides/attractions",
     zhTw: "/zh-tw/guides/attractions",

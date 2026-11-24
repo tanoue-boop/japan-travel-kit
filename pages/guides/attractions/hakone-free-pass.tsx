@@ -5,6 +5,7 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
+import { hreflangLinks } from "../../../components/Hreflang";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import {
   hakoneCruiseCableCarTour,
@@ -278,6 +279,7 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
         <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/hakone-free-pass" />
+        {hreflangLinks("/guides/attractions/hakone-free-pass")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/hakone-free-pass" />

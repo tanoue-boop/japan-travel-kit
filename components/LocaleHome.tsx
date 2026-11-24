@@ -155,7 +155,10 @@ const COPY: Record<TranslatedLocale, Copy> = {
         key: "daytrips",
         label: "一日遊",
         desc: "整天出城的行程，要選的是哪一條路線，而不是哪一張票。",
-        routes: ["/zh-tw/guides/attractions/mt-fuji-day-tour-from-tokyo"],
+        routes: [
+          "/zh-tw/guides/attractions/mt-fuji-day-tour-from-tokyo",
+          "/zh-tw/guides/attractions/hakone-free-pass",
+        ],
       },
       {
         key: "cities",
@@ -203,6 +206,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "一律線上購票，超級任天堂世界需要指定入場時段。快速通關 4／7／8 怎麼挑。",
       "/zh-tw/guides/attractions/mt-fuji-day-tour-from-tokyo":
         "四種行程比較：只去富士山，還是加上箱根、五合目是什麼，以及一天要多久。",
+      "/zh-tw/guides/attractions/hakone-free-pass":
+        "新宿出發 2 日券 ¥7,100，一天繞完箱根一圈就划算。浪漫特快另計，以及電子票與實體票怎麼選。",
       "/zh-tw/guides/attractions/things-to-do-tokyo":
         "真正會售罄的門票只有四、五種。哪些要提前訂，哪些可以當天再決定。",
       "/zh-tw/guides/attractions":
@@ -279,7 +284,10 @@ const COPY: Record<TranslatedLocale, Copy> = {
         key: "daytrips",
         label: "一日游",
         desc: "安排一整天的郊外游时，要比较的是行程路线，而不是门票。",
-        routes: ["/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo"],
+        routes: [
+          "/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo",
+          "/zh-cn/guides/attractions/hakone-free-pass",
+        ],
       },
       {
         key: "cities",
@@ -327,6 +335,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "一律在线购票，超级任天堂世界需要指定入园时间。快速通行证 4／7／8 怎么挑。",
       "/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo":
         "四种行程比较：富士山周边游还是加箱根、五合目是什么，以及行程总时长。",
+      "/zh-cn/guides/attractions/hakone-free-pass":
+        "新宿出发 2 日券 ¥7,100，一天绕完箱根一圈就划算。浪漫特快另计，以及电子票和纸质票怎么选。",
       "/zh-cn/guides/attractions/things-to-do-tokyo":
         "真正容易售罄的只有四五个项目。哪些要提前订，哪些可以当天再决定。",
       "/zh-cn/guides/attractions":
@@ -408,6 +418,12 @@ const COPY: Record<TranslatedLocale, Copy> = {
         ],
       },
       {
+        key: "daytrips",
+        label: "근교 여행",
+        desc: "도쿄에서 하루나 이틀 다녀오는 하코네 — 교통 패스 가격과 이득인 경우.",
+        routes: ["/ko/guides/attractions/hakone-free-pass"],
+      },
+      {
         key: "prep",
         label: "여행 준비",
         desc: "도착해서 가장 먼저 쓰는 것 — 휴대폰 데이터.",
@@ -441,6 +457,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "디즈니랜드·디즈니씨 입장권 가격과 예약 방법. 날짜 지정, 현장 판매 없음, 2개월 전 예약 시작.",
       "/ko/guides/attractions/usj-tickets-express-pass":
         "입장권은 온라인으로만 판매하며, 슈퍼 닌텐도 월드는 입장 시간이 지정됩니다.익스프레스 패스 4·7·8 선택법.",
+      "/ko/guides/attractions/hakone-free-pass":
+        "신주쿠 출발 2일권 ¥7,100, 하코네를 하루에 일주해도 이득입니다. 로망스카 별도, 디지털과 종이 티켓 비교.",
       "/ko/guides/esim/best-esim-japan":
         "클룩 일본 eSIM과 Airalo·Holafly·eSIM Go·Sakura Mobile의 요금·회선 비교.",
     },
@@ -507,6 +525,12 @@ const COPY: Record<TranslatedLocale, Copy> = {
         ],
       },
       {
+        key: "daytrips",
+        label: "ทริปใกล้โตเกียว",
+        desc: "ฮาโกเน่แบบไปกลับวันเดียวหรือสองวันจากโตเกียว — ราคาพาสเดินทาง และเมื่อไรที่คุ้ม",
+        routes: ["/th/guides/attractions/hakone-free-pass"],
+      },
+      {
         key: "prep",
         label: "เตรียมทริป",
         desc: "สิ่งแรกที่ได้ใช้เมื่อเดินทางถึงญี่ปุ่น — เน็ตมือถือ",
@@ -538,6 +562,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "บัตรทุกใบระบุวัน และไม่มีขายที่ประตู วิธีซื้อ และเลือกระหว่างแลนด์กับซี",
       "/th/guides/attractions/usj-tickets-express-pass":
         "ขายออนไลน์ทั้งหมด Super Nintendo World ต้องระบุเวลาเข้า และเลือก Express Pass 4／7／8",
+      "/th/guides/attractions/hakone-free-pass":
+        "2 วันจากชินจูกุ ¥7,100 เที่ยวฮาโกเน่ครบวงในวันเดียวก็คุ้ม Romancecar จ่ายแยก และเทียบตั๋วดิจิทัลกับกระดาษ",
       "/th/guides/esim/best-esim-japan":
         "eSIM ญี่ปุ่นของ Klook พร้อมเทียบราคาและเครือข่ายกับ Airalo, Holafly, eSIM Go และ Sakura Mobile",
     },

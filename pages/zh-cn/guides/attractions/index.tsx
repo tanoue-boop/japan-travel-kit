@@ -91,7 +91,7 @@ const groups: CnHubGroup[] = [
     key: "daytrips",
     label: "一日游",
     desc: "安排一整天的近郊游时，重点是选择路线，而不是门票。",
-    routes: ["/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo"],
+    routes: ["/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo", "/zh-cn/guides/attractions/hakone-free-pass"],
   },
   {
     key: "cities",
@@ -124,6 +124,8 @@ const BLURBS: Record<string, string> = {
     "现在一律网上购票，超级任天堂世界需要在指定时段入场。Studio Pass 的不同票种，以及快速通行证 4／7／8 该如何选择。",
   "/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo":
     "对比四种行程：只游览富士山还是同时前往箱根、Subaru Line 五合目是什么，以及全天行程需要多长时间。",
+  "/zh-cn/guides/attractions/hakone-free-pass":
+    "新宿出发 2 日券 ¥7,100，包含小田急线往返和箱根内 8 种交通工具。一天绕完一圈就划算，浪漫特快另计。",
   "/zh-cn/guides/attractions/things-to-do-tokyo":
     "实际上，容易售罄的景点门票只有四五类。这份简短清单列出了哪些景点需要提前多久预订，以及哪些可以当天早上再决定。",
   "/zh-cn/guides/transport/tokyo-airport-transfer":

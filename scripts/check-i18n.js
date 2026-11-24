@@ -176,6 +176,14 @@ const SEARCH_TERMS = {
     ko: "일본 겨울 여행",
     th: "เที่ยวญี่ปุ่นหน้าหนาว",
   },
+  // Added 2026-11-24 (TR01): Hakone Navi's own name for the pass in each language; Thai results
+  // write it in Latin script.
+  "/guides/attractions/hakone-free-pass": {
+    "zh-tw": "箱根周遊券",
+    "zh-cn": "箱根周游券",
+    ko: "하코네 프리패스",
+    th: "Hakone Free Pass",
+  },
 };
 
 /** Klook's own locale path each edition must link. */
