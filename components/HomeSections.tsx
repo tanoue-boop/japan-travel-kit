@@ -164,7 +164,8 @@ export type BookCard = {
   title: string;
   /** Plain text, or text with an inline link (the English home links the eSIM price tracker). */
   desc: ReactNode;
-  ctas: { label: string; url: string }[];
+  /** `placement` goes on the link as data-placement, read by the affiliate_click handler in _app.tsx. */
+  ctas: { label: string; url: string; placement?: string }[];
   guide: { href: string; label: string; hrefLang?: string };
 };
 
@@ -205,6 +206,7 @@ export function BookSection({
                     target="_blank"
                     rel="sponsored nofollow noopener"
                     className={styles.bookCta}
+                    data-placement={cta.placement}
                   >
                     {cta.label}
                   </KlookLink>

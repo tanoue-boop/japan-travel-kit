@@ -7,6 +7,7 @@ import { moneyArticles } from "../lib/guides-money";
 import { attractionArticles } from "../lib/guides-attractions";
 import { articlesForCity } from "../lib/guide-hub";
 import { hreflangLinks } from "../components/Hreflang";
+import { simbyeTrackedUrl } from "../lib/simbye";
 import {
   BOOK_CARDS,
   CITY_HREFS,
@@ -135,7 +136,12 @@ const bookBeforeYouFly: BookCard[] = [
         model first — Pixel 3 and Galaxy S20 and later take one.
       </>
     ),
-    ctas: [{ label: "See eSIM options on Klook →", url: BOOK_CARDS.esim.urls[0] }],
+    // Simbye first (jtk-20261124-P01): the home page had no Simbye link at all. The
+    // existing tracked link from lib/simbye.ts, placement home-esim; Klook stays beside it.
+    ctas: [
+      { label: "Get Simbye →", url: simbyeTrackedUrl("home-esim", "home"), placement: "home-esim" },
+      { label: "See eSIM options on Klook →", url: BOOK_CARDS.esim.urls[0] },
+    ],
     guide: { href: BOOK_CARDS.esim.guide, label: "Read: the best eSIM for Japan" },
   },
   {
