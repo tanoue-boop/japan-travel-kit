@@ -484,6 +484,26 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     thTitle: "Hakone Free Pass 2026: ราคา คุ้มไหม",
     thLabel: "Hakone Free Pass",
   },
+  // Added 2026-11-24 (task jtk-20261124-TR02): Klook 30 days, 2 bookings on the English page and
+  // the line runs only to 29 Dec 2026. Titles lead with the name readers search: 사가노 토롯코 열차
+  // (Korean guides and the operator's Korean page), 嵯峨野小火車 / 嵯峨野小火车 (Taiwan, Hong Kong and
+  // Simplified guides, with 嵐山小火車 as the other common name in H1), and Thai
+  // รถไฟสายโรแมนติกซากาโนะ (Klook th and Thai travel blogs).
+  {
+    en: "/guides/attractions/sagano-romantic-train-tickets",
+    zhTw: "/zh-tw/guides/attractions/sagano-romantic-train-tickets",
+    zhTitle: "嵯峨野小火車 2026：購票時間、座位與運行日",
+    zhLabel: "嵯峨野小火車",
+    zhCn: "/zh-cn/guides/attractions/sagano-romantic-train-tickets",
+    zhCnTitle: "嵯峨野小火车 2026：购票时间、座位与运行日",
+    zhCnLabel: "嵯峨野小火车",
+    ko: "/ko/guides/attractions/sagano-romantic-train-tickets",
+    koTitle: "사가노 토롯코 열차 2026: 예매 시기, 좌석, 운행일",
+    koLabel: "사가노 토롯코 열차",
+    th: "/th/guides/attractions/sagano-romantic-train-tickets",
+    thTitle: "รถไฟสายโรแมนติกซากาโนะ 2026: จองตั๋ว",
+    thLabel: "รถไฟสายโรแมนติกซากาโนะ",
+  },
   {
     en: "/guides/attractions",
     zhTw: "/zh-tw/guides/attractions",

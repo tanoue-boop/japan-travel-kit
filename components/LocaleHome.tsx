@@ -158,6 +158,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         routes: [
           "/zh-tw/guides/attractions/mt-fuji-day-tour-from-tokyo",
           "/zh-tw/guides/attractions/hakone-free-pass",
+          "/zh-tw/guides/attractions/sagano-romantic-train-tickets",
         ],
       },
       {
@@ -208,6 +209,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "四種行程比較：只去富士山，還是加上箱根、五合目是什麼，以及一天要多久。",
       "/zh-tw/guides/attractions/hakone-free-pass":
         "新宿出發 2 日券 ¥7,100，一天繞完箱根一圈就划算。浪漫特快另計，以及電子票與實體票怎麼選。",
+      "/zh-tw/guides/attractions/sagano-romantic-train-tickets":
+        "京都嵐山小火車 1 個月前 00:00 開賣，單程 ¥880。12 月 29 日後冬季停駛，2027 年換新列車。",
       "/zh-tw/guides/attractions/things-to-do-tokyo":
         "真正會售罄的門票只有四、五種。哪些要提前訂，哪些可以當天再決定。",
       "/zh-tw/guides/attractions":
@@ -287,6 +290,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         routes: [
           "/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo",
           "/zh-cn/guides/attractions/hakone-free-pass",
+          "/zh-cn/guides/attractions/sagano-romantic-train-tickets",
         ],
       },
       {
@@ -337,6 +341,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "四种行程比较：富士山周边游还是加箱根、五合目是什么，以及行程总时长。",
       "/zh-cn/guides/attractions/hakone-free-pass":
         "新宿出发 2 日券 ¥7,100，一天绕完箱根一圈就划算。浪漫特快另计，以及电子票和纸质票怎么选。",
+      "/zh-cn/guides/attractions/sagano-romantic-train-tickets":
+        "京都岚山小火车 1 个月前 00:00 开售，单程 ¥880。12 月 29 日后冬季停运，2027 年换新列车。",
       "/zh-cn/guides/attractions/things-to-do-tokyo":
         "真正容易售罄的只有四五个项目。哪些要提前订，哪些可以当天再决定。",
       "/zh-cn/guides/attractions":
@@ -420,8 +426,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "daytrips",
         label: "근교 여행",
-        desc: "도쿄에서 하루나 이틀 다녀오는 하코네 — 교통 패스 가격과 이득인 경우.",
-        routes: ["/ko/guides/attractions/hakone-free-pass"],
+        desc: "도쿄에서 다녀오는 하코네와 교토 아라시야마의 토롯코 열차 — 티켓 가격과 예매 시기.",
+        routes: ["/ko/guides/attractions/hakone-free-pass", "/ko/guides/attractions/sagano-romantic-train-tickets"],
       },
       {
         key: "prep",
@@ -459,6 +465,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "입장권은 온라인으로만 판매하며, 슈퍼 닌텐도 월드는 입장 시간이 지정됩니다.익스프레스 패스 4·7·8 선택법.",
       "/ko/guides/attractions/hakone-free-pass":
         "신주쿠 출발 2일권 ¥7,100, 하코네를 하루에 일주해도 이득입니다. 로망스카 별도, 디지털과 종이 티켓 비교.",
+      "/ko/guides/attractions/sagano-romantic-train-tickets":
+        "교토 아라시야마의 토롯코 열차는 1개월 전 0시에 예매가 열리고 편도 ¥880입니다. 12월 29일 이후 겨울 운휴, 2027년 신형 열차.",
       "/ko/guides/esim/best-esim-japan":
         "클룩 일본 eSIM과 Airalo·Holafly·eSIM Go·Sakura Mobile의 요금·회선 비교.",
     },
@@ -526,9 +534,9 @@ const COPY: Record<TranslatedLocale, Copy> = {
       },
       {
         key: "daytrips",
-        label: "ทริปใกล้โตเกียว",
-        desc: "ฮาโกเน่แบบไปกลับวันเดียวหรือสองวันจากโตเกียว — ราคาพาสเดินทาง และเมื่อไรที่คุ้ม",
-        routes: ["/th/guides/attractions/hakone-free-pass"],
+        label: "ทริปไปกลับ",
+        desc: "ฮาโกเน่จากโตเกียว และรถไฟโทรกโกะที่อาราชิยามะ เกียวโต — ราคาตั๋ว และควรจองเมื่อไร",
+        routes: ["/th/guides/attractions/hakone-free-pass", "/th/guides/attractions/sagano-romantic-train-tickets"],
       },
       {
         key: "prep",
@@ -564,6 +572,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "ขายออนไลน์ทั้งหมด Super Nintendo World ต้องระบุเวลาเข้า และเลือก Express Pass 4／7／8",
       "/th/guides/attractions/hakone-free-pass":
         "2 วันจากชินจูกุ ¥7,100 เที่ยวฮาโกเน่ครบวงในวันเดียวก็คุ้ม Romancecar จ่ายแยก และเทียบตั๋วดิจิทัลกับกระดาษ",
+      "/th/guides/attractions/sagano-romantic-train-tickets":
+        "รถไฟโทรกโกะที่อาราชิยามะเปิดขาย 00:00 น. ล่วงหน้า 1 เดือน เที่ยวเดียว ¥880 หยุดหน้าหนาวหลัง 29 ธ.ค. และมีขบวนใหม่ปี 2027",
       "/th/guides/esim/best-esim-japan":
         "eSIM ญี่ปุ่นของ Klook พร้อมเทียบราคาและเครือข่ายกับ Airalo, Holafly, eSIM Go และ Sakura Mobile",
     },

@@ -184,6 +184,13 @@ const SEARCH_TERMS = {
     ko: "하코네 프리패스",
     th: "Hakone Free Pass",
   },
+  // Added 2026-11-24 (TR02): the names local guides use for the Sagano Romantic Train.
+  "/guides/attractions/sagano-romantic-train-tickets": {
+    "zh-tw": "嵯峨野小火車",
+    "zh-cn": "嵯峨野小火车",
+    ko: "사가노 토롯코 열차",
+    th: "รถไฟสายโรแมนติกซากาโนะ",
+  },
 };
 
 /** Klook's own locale path each edition must link. */

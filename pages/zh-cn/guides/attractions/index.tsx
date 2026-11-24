@@ -91,7 +91,11 @@ const groups: CnHubGroup[] = [
     key: "daytrips",
     label: "一日游",
     desc: "安排一整天的近郊游时，重点是选择路线，而不是门票。",
-    routes: ["/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo", "/zh-cn/guides/attractions/hakone-free-pass"],
+    routes: [
+      "/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo",
+      "/zh-cn/guides/attractions/hakone-free-pass",
+      "/zh-cn/guides/attractions/sagano-romantic-train-tickets",
+    ],
   },
   {
     key: "cities",
@@ -126,6 +130,8 @@ const BLURBS: Record<string, string> = {
     "对比四种行程：只游览富士山还是同时前往箱根、Subaru Line 五合目是什么，以及全天行程需要多长时间。",
   "/zh-cn/guides/attractions/hakone-free-pass":
     "新宿出发 2 日券 ¥7,100，包含小田急线往返和箱根内 8 种交通工具。一天绕完一圈就划算，浪漫特快另计。",
+  "/zh-cn/guides/attractions/sagano-romantic-train-tickets":
+    "京都岚山的嵯峨野小火车：乘车日 1 个月前的日本时间 00:00 开放网上购票，单程 ¥880。2026 年 11、12 月运行日、冬季停运与 2027 年新列车。",
   "/zh-cn/guides/attractions/things-to-do-tokyo":
     "实际上，容易售罄的景点门票只有四五类。这份简短清单列出了哪些景点需要提前多久预订，以及哪些可以当天早上再决定。",
   "/zh-cn/guides/transport/tokyo-airport-transfer":

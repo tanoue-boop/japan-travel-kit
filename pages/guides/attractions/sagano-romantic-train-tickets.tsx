@@ -4,6 +4,7 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import { GygCompareButton } from "../../../components/GygCompare";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
+import { hreflangLinks } from "../../../components/Hreflang";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import {
   arashiyamaEarlyMorningWalk,
@@ -406,6 +407,7 @@ export default function SaganoRomanticTrainTicketsPage({ updated }: { updated: P
         <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/sagano-romantic-train-tickets" />
+        {hreflangLinks("/guides/attractions/sagano-romantic-train-tickets")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/sagano-romantic-train-tickets" />
