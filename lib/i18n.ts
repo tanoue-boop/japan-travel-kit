@@ -504,6 +504,25 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     thTitle: "รถไฟสายโรแมนติกซากาโนะ 2026: จองตั๋ว",
     thLabel: "รถไฟสายโรแมนติกซากาโนะ",
   },
+  // Added 2026-11-24 (task jtk-20261124-TR03): Klook 30 days, 1 booking (¥2,069) on the English
+  // page. Titles lead with the terms readers search: 도쿄 고카트 (Korean guides and Klook ko),
+  // 東京卡丁車 / 东京卡丁车 with 國際駕照 / 国际驾照 (Klook zh-TW / zh-CN and Taiwan, Hong Kong,
+  // Singapore listings), and Thai โกคาร์ทโตเกียว with ใบขับขี่สากล.
+  {
+    en: "/guides/attractions/tokyo-go-kart",
+    zhTw: "/zh-tw/guides/attractions/tokyo-go-kart",
+    zhTitle: "東京卡丁車 2026：價格、國際駕照與路線",
+    zhLabel: "東京卡丁車",
+    zhCn: "/zh-cn/guides/attractions/tokyo-go-kart",
+    zhCnTitle: "东京卡丁车 2026：价格、国际驾照与路线",
+    zhCnLabel: "东京卡丁车",
+    ko: "/ko/guides/attractions/tokyo-go-kart",
+    koTitle: "도쿄 고카트 2026: 가격, 국제운전면허증, 코스",
+    koLabel: "도쿄 고카트",
+    th: "/th/guides/attractions/tokyo-go-kart",
+    thTitle: "โกคาร์ทโตเกียว 2026: ราคา ใบขับขี่สากล",
+    thLabel: "โกคาร์ทโตเกียว",
+  },
   {
     en: "/guides/attractions",
     zhTw: "/zh-tw/guides/attractions",

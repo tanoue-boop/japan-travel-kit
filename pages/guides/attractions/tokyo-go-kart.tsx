@@ -3,6 +3,7 @@ import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
+import { hreflangLinks } from "../../../components/Hreflang";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import {
   akihabaraGoKartTour,
@@ -173,6 +174,7 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
           content="Street karting in Japan: a Tokyo go kart costs ¥5,000–¥25,000 a person on official tables. You need a 1949 Geneva IDP, licence and passport. Book on Klook."
         />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/tokyo-go-kart" />
+        {hreflangLinks("/guides/attractions/tokyo-go-kart")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Tokyo Go Kart 2026: Street Karting in Japan, Price & IDP" />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/tokyo-go-kart" />

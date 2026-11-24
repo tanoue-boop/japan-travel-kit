@@ -191,6 +191,13 @@ const SEARCH_TERMS = {
     ko: "사가노 토롯코 열차",
     th: "รถไฟสายโรแมนติกซากาโนะ",
   },
+  // Added 2026-11-24 (TR03): the terms local guides and Klook listings use for the street kart tour.
+  "/guides/attractions/tokyo-go-kart": {
+    "zh-tw": "東京卡丁車",
+    "zh-cn": "东京卡丁车",
+    ko: "도쿄 고카트",
+    th: "โกคาร์ทโตเกียว",
+  },
 };
 
 /** Klook's own locale path each edition must link. */

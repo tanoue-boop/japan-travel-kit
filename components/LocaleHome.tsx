@@ -164,9 +164,10 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "cities",
         label: "城市與總覽",
-        desc: "東京哪些要先訂票、哪些可以直接去，以及繁體中文版的門票總覽。",
+        desc: "東京哪些要先訂票、哪些可以直接去、街頭卡丁車要帶哪些駕照，以及繁體中文版的門票總覽。",
         routes: [
           "/zh-tw/guides/attractions/things-to-do-tokyo",
+          "/zh-tw/guides/attractions/tokyo-go-kart",
           "/zh-tw/guides/attractions",
         ],
       },
@@ -213,6 +214,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "京都嵐山小火車 1 個月前 00:00 開賣，單程 ¥880。12 月 29 日後冬季停駛，2027 年換新列車。",
       "/zh-tw/guides/attractions/things-to-do-tokyo":
         "真正會售罄的門票只有四、五種。哪些要提前訂，哪些可以當天再決定。",
+      "/zh-tw/guides/attractions/tokyo-go-kart":
+        "官方價目表每人 ¥5,000–¥25,000。需 1949 年日內瓦公約國際駕照、本國駕照與護照正本。",
       "/zh-tw/guides/attractions":
         "繁體中文版的景點門票總覽：官方票價、預約方式與一日遊，依類別整理。",
       "/zh-tw/guides/transport/tokyo-airport-transfer":
@@ -296,9 +299,10 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "cities",
         label: "城市与总览",
-        desc: "东京哪些景点要先订票、哪些可以直接去，以及简体中文版的门票总览。",
+        desc: "东京哪些景点要先订票、哪些可以直接去、街头卡丁车要带哪些驾照，以及简体中文版的门票总览。",
         routes: [
           "/zh-cn/guides/attractions/things-to-do-tokyo",
+          "/zh-cn/guides/attractions/tokyo-go-kart",
           "/zh-cn/guides/attractions",
         ],
       },
@@ -345,6 +349,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "京都岚山小火车 1 个月前 00:00 开售，单程 ¥880。12 月 29 日后冬季停运，2027 年换新列车。",
       "/zh-cn/guides/attractions/things-to-do-tokyo":
         "真正容易售罄的只有四五个项目。哪些要提前订，哪些可以当天再决定。",
+      "/zh-cn/guides/attractions/tokyo-go-kart":
+        "官方价目表每人 ¥5,000–¥25,000。需要 1949 年日内瓦公约国际驾照、本国驾照和护照原件。",
       "/zh-cn/guides/attractions":
         "简体中文版的景点门票总览：官方票价、预约方式与一日游，按类别整理。",
       "/zh-cn/guides/transport/tokyo-airport-transfer":
@@ -404,7 +410,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "tickets",
         label: "입장권",
-        desc: "도쿄의 전망대와 미술관, 그리고 오사카의 도톤보리 리버크루즈 — 공식 요금과 예약 방법.",
+        desc: "도쿄의 전망대, 미술관, 고카트, 그리고 오사카의 도톤보리 리버크루즈 — 공식 요금과 예약 방법.",
         routes: [
           "/ko/guides/attractions/shibuya-sky-tickets",
           "/ko/guides/attractions/tokyo-skytree-tickets",
@@ -412,6 +418,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/ko/guides/attractions/teamlab-borderless-tickets",
           "/ko/guides/attractions/teamlab-tokyo-tickets",
           "/ko/guides/attractions/dotonbori-river-cruise",
+          "/ko/guides/attractions/tokyo-go-kart",
         ],
       },
       {
@@ -467,6 +474,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "신주쿠 출발 2일권 ¥7,100, 하코네를 하루에 일주해도 이득입니다. 로망스카 별도, 디지털과 종이 티켓 비교.",
       "/ko/guides/attractions/sagano-romantic-train-tickets":
         "교토 아라시야마의 토롯코 열차는 1개월 전 0시에 예매가 열리고 편도 ¥880입니다. 12월 29일 이후 겨울 운휴, 2027년 신형 열차.",
+      "/ko/guides/attractions/tokyo-go-kart":
+        "공식 요금표 기준 1인 ¥5,000~¥25,000입니다. 1949년 제네바 협약 국제운전면허증, 본국 면허증, 여권 원본이 필요합니다.",
       "/ko/guides/esim/best-esim-japan":
         "클룩 일본 eSIM과 Airalo·Holafly·eSIM Go·Sakura Mobile의 요금·회선 비교.",
     },
@@ -514,13 +523,14 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "tickets",
         label: "ตั๋วเข้าชม",
-        desc: "จุดชมวิวและพิพิธภัณฑ์ในโตเกียว และล่องเรือโดทงโบริที่โอซาก้า — ราคาทางการและวิธีจอง",
+        desc: "จุดชมวิว พิพิธภัณฑ์ และโกคาร์ทในโตเกียว และล่องเรือโดทงโบริที่โอซาก้า — ราคาทางการและวิธีจอง",
         routes: [
           "/th/guides/attractions/shibuya-sky-tickets",
           "/th/guides/attractions/tokyo-skytree-tickets",
           "/th/guides/attractions/teamlab-planets-tickets",
           "/th/guides/attractions/teamlab-borderless-tickets",
           "/th/guides/attractions/dotonbori-river-cruise",
+          "/th/guides/attractions/tokyo-go-kart",
         ],
       },
       {
@@ -574,6 +584,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "2 วันจากชินจูกุ ¥7,100 เที่ยวฮาโกเน่ครบวงในวันเดียวก็คุ้ม Romancecar จ่ายแยก และเทียบตั๋วดิจิทัลกับกระดาษ",
       "/th/guides/attractions/sagano-romantic-train-tickets":
         "รถไฟโทรกโกะที่อาราชิยามะเปิดขาย 00:00 น. ล่วงหน้า 1 เดือน เที่ยวเดียว ¥880 หยุดหน้าหนาวหลัง 29 ธ.ค. และมีขบวนใหม่ปี 2027",
+      "/th/guides/attractions/tokyo-go-kart":
+        "ราคา ¥5,000–¥25,000 ต่อคนตามตารางราคาทางการ ต้องมีใบขับขี่สากลตามอนุสัญญาเจนีวา 1949 ใบขับขี่ และพาสปอร์ตตัวจริง",
       "/th/guides/esim/best-esim-japan":
         "eSIM ญี่ปุ่นของ Klook พร้อมเทียบราคาและเครือข่ายกับ Airalo, Holafly, eSIM Go และ Sakura Mobile",
     },

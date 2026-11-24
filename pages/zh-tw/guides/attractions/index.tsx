@@ -101,8 +101,8 @@ const groups: ZhHubGroup[] = [
   {
     key: "cities",
     label: "城市攻略",
-    desc: "東京哪些景點需要提前買票，哪些可以直接前往。",
-    routes: ["/zh-tw/guides/attractions/things-to-do-tokyo"],
+    desc: "東京哪些景點需要提前買票，哪些可以直接前往，以及開街頭卡丁車需要哪些駕照。",
+    routes: ["/zh-tw/guides/attractions/things-to-do-tokyo", "/zh-tw/guides/attractions/tokyo-go-kart"],
   },
   {
     key: "prep",
@@ -137,6 +137,8 @@ const BLURBS: Record<string, string> = {
     "京都嵐山的嵯峨野小火車：乘車日 1 個月前的日本時間 00:00 開放線上購票，單程 ¥880。2026 年 11、12 月運行日、冬季停駛與 2027 年新列車。",
   "/zh-tw/guides/attractions/things-to-do-tokyo":
     "真正容易售罄的景點門票只有四、五種。這份短名單說明哪些要提前多久購票，哪些可以等到當天早上再決定。",
+  "/zh-tw/guides/attractions/tokyo-go-kart":
+    "東京街頭卡丁車：Street Kart 官方價目表每人 ¥5,000–¥25,000，澀谷、秋葉原、東京灣等路線比較。需 1949 年日內瓦公約國際駕照、本國駕照與護照正本。",
   "/zh-tw/guides/transport/tokyo-airport-transfer":
     "從成田與羽田機場前往市區的各種交通方式，比較價格、所需時間與便利性，附上 2026 年車資，以及根據飯店位置提供的建議。",
   "/zh-tw/guides/esim/best-esim-japan":

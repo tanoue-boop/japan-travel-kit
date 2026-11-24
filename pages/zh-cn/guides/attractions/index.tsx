@@ -100,8 +100,8 @@ const groups: CnHubGroup[] = [
   {
     key: "cities",
     label: "城市攻略",
-    desc: "东京哪些景点需要提前订票，哪些可以直接前往。",
-    routes: ["/zh-cn/guides/attractions/things-to-do-tokyo"],
+    desc: "东京哪些景点需要提前订票，哪些可以直接前往，以及开街头卡丁车需要哪些驾照。",
+    routes: ["/zh-cn/guides/attractions/things-to-do-tokyo", "/zh-cn/guides/attractions/tokyo-go-kart"],
   },
   {
     key: "prep",
@@ -134,6 +134,8 @@ const BLURBS: Record<string, string> = {
     "京都岚山的嵯峨野小火车：乘车日 1 个月前的日本时间 00:00 开放网上购票，单程 ¥880。2026 年 11、12 月运行日、冬季停运与 2027 年新列车。",
   "/zh-cn/guides/attractions/things-to-do-tokyo":
     "实际上，容易售罄的景点门票只有四五类。这份简短清单列出了哪些景点需要提前多久预订，以及哪些可以当天早上再决定。",
+  "/zh-cn/guides/attractions/tokyo-go-kart":
+    "东京街头卡丁车：Street Kart 官方价目表每人 ¥5,000–¥25,000，比较涩谷、秋叶原、东京湾等路线。需要 1949 年日内瓦公约国际驾照、本国驾照和护照原件。",
   "/zh-cn/guides/transport/tokyo-airport-transfer":
     "从成田机场和羽田机场前往市区的各种交通方式，比较价格、所需时间和便利程度，附 2026 年票价与按酒店位置的建议。",
   "/zh-cn/guides/esim/best-esim-japan":
