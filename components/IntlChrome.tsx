@@ -129,7 +129,7 @@ export const TRAIL_BASE: Record<TranslatedLocale, Crumb[]> = {
   "zh-tw": [{ href: `${LOCALE_PREFIX["zh-tw"]}/guides/attractions`, label: "日本景點門票" }],
   "zh-cn": [{ href: `${LOCALE_PREFIX["zh-cn"]}/guides/attractions`, label: "日本景点门票" }],
   ko: [{ href: LOCALE_PREFIX.ko, label: "일본 여행 준비 가이드" }],
-  th: [{ href: LOCALE_PREFIX.th, label: "ไกด์เที่ยวญี่ปุ่น" }],
+  th: [{ href: LOCALE_PREFIX.th, label: "คู่มือเที่ยวญี่ปุ่น" }],
 };
 
 export function Breadcrumb({ trail }: { trail: Crumb[] }) {
