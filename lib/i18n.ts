@@ -562,6 +562,25 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     thTitle: "JR Kansai Area Pass 2026: ราคา",
     thLabel: "JR Kansai Area Pass",
   },
+  // Added 2026-11-25 (task jtk-20261125-TR03): seasonal (GALA's slopes open 19 Dec 2026), GSC
+  // 28 days, 392 impressions on the English page. Titles lead with the resort's name as each
+  // market searches it: 갈라유자와 스키장 (ko), GALA湯澤滑雪場 / GALA汤泽滑雪场 (JR East's own
+  // Chinese pages write GALA湯澤 / GALA汤泽), and the Latin "GALA Yuzawa" in Thai.
+  {
+    en: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo",
+    zhTw: "/zh-tw/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo",
+    zhTitle: "GALA湯澤滑雪場 2026-27：東京新幹線一日遊與JR Pass",
+    zhLabel: "GALA湯澤滑雪一日遊",
+    zhCn: "/zh-cn/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo",
+    zhCnTitle: "GALA汤泽滑雪场 2026-27：东京新干线一日游与JR Pass",
+    zhCnLabel: "GALA汤泽滑雪一日游",
+    ko: "/ko/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo",
+    koTitle: "갈라유자와 스키장 2026-27: 도쿄 당일치기, JR 패스",
+    koLabel: "갈라유자와 스키장 당일치기",
+    th: "/th/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo",
+    thTitle: "สกี GALA Yuzawa จากโตเกียว 2026-27",
+    thLabel: "สกี GALA Yuzawa วันเดียว",
+  },
   {
     en: "/guides/attractions",
     zhTw: "/zh-tw/guides/attractions",

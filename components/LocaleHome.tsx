@@ -128,6 +128,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/zh-tw/guides/attractions/hokkaido-7-day-itinerary",
           "/zh-tw/guides/attractions/japan-winter-itinerary",
           "/zh-tw/guides/attractions/jigokudani-snow-monkey-tour",
+          "/zh-tw/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo",
         ],
       },
       {
@@ -190,6 +191,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "新千歲機場接送、教練課、四大雪場怎麼選，以及從札幌出發的滑雪行程。",
       "/zh-tw/guides/attractions/hokkaido-7-day-itinerary":
         "7 天每日行程，含周遊券怎麼算才划算，以及冬季要怎麼調整。",
+      "/zh-tw/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo":
+        "東京站搭上越新幹線直達最快 71 分鐘，可用 JR Pass。纜車票 ¥8,000，12 月 19 日開放滑雪，南區本季停業。",
       "/zh-tw/guides/attractions/japan-winter-itinerary":
         "12 天的冬季路線：東京、金澤、京都、大阪，以及 2 月的北海道版本。",
       "/zh-tw/guides/attractions/jigokudani-snow-monkey-tour":
@@ -269,6 +272,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/zh-cn/guides/attractions/hokkaido-7-day-itinerary",
           "/zh-cn/guides/attractions/japan-winter-itinerary",
           "/zh-cn/guides/attractions/jigokudani-snow-monkey-tour",
+          "/zh-cn/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo",
         ],
       },
       {
@@ -331,6 +335,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "新千岁机场接送、滑雪课程、4 大雪场怎么选，以及从札幌出发的滑雪行程。",
       "/zh-cn/guides/attractions/hokkaido-7-day-itinerary":
         "7 天每日行程，含周游券费用的计算方法，以及冬季要怎么调整。",
+      "/zh-cn/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo":
+        "东京站乘上越新干线直达最快 71 分钟，可用 JR Pass。缆车票 ¥8,000，12 月 19 日开放滑雪，南区本季停业。",
       "/zh-cn/guides/attractions/japan-winter-itinerary":
         "12 天的冬季路线：东京、金泽、京都、大阪，以及 2 月的北海道版本。",
       "/zh-cn/guides/attractions/jigokudani-snow-monkey-tour":
@@ -417,6 +423,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/ko/guides/attractions/hokkaido-7-day-itinerary",
           "/ko/guides/attractions/japan-winter-itinerary",
           "/ko/guides/attractions/jigokudani-snow-monkey-tour",
+          "/ko/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo",
         ],
       },
       {
@@ -467,6 +474,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "신치토세 공항 셔틀, 스키 강습, 4개 스키장 선택, 삿포로 출발 스키 투어.",
       "/ko/guides/attractions/hokkaido-7-day-itinerary":
         "7일 일정을 날짜별로 정리하고 교통패스 요금 비교와 겨울철 조정 방법을 담았습니다.",
+      "/ko/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo":
+        "도쿄역에서 신칸센 직행 71분, JR 패스 사용 가능. 리프트권 ¥8,000, 12월 19일 개장, 남부 에어리어는 이번 시즌 휴업.",
       "/ko/guides/attractions/japan-winter-itinerary":
         "도쿄, 가나자와, 교토, 오사카를 잇는 12일 겨울 일정과 2월 홋카이도 버전.",
       "/ko/guides/attractions/jigokudani-snow-monkey-tour":
@@ -539,6 +548,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/th/guides/attractions/hokkaido-7-day-itinerary",
           "/th/guides/attractions/japan-winter-itinerary",
           "/th/guides/attractions/jigokudani-snow-monkey-tour",
+          "/th/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo",
         ],
       },
       {
@@ -588,6 +598,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "รถรับส่งสนามบินชิโตเสะ คลาสสกี การเลือกสี่พื้นที่ และทัวร์สกีจากซัปโปโร",
       "/th/guides/attractions/hokkaido-7-day-itinerary":
         "แผนเที่ยวรายวัน 7 วัน พร้อมวิธีคำนวณพาส และการปรับแผนในหน้าหนาว",
+      "/th/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo":
+        "ชินคันเซ็นตรงจากสถานีโตเกียว 71 นาที ใช้ JR Pass ได้ บัตรลิฟต์สกี ¥8,000 ลานสกีเปิด 19 ธ.ค. และโซน South ปิดฤดูกาลนี้",
       "/th/guides/attractions/japan-winter-itinerary":
         "เส้นทาง 12 วันผ่านโตเกียว คานาซาวะ เกียวโต และโอซาก้า พร้อมแบบฮอกไกโดช่วงกุมภาพันธ์",
       "/th/guides/attractions/jigokudani-snow-monkey-tour":

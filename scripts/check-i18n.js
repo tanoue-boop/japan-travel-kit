@@ -214,6 +214,14 @@ const SEARCH_TERMS = {
     ko: "JR 간사이 패스",
     th: "JR Kansai Area Pass",
   },
+  // Added 2026-11-25 (TR03): the resort's name as Korean, Taiwan / Hong Kong and Simplified
+  // Chinese results write it; Thai results keep the Latin name.
+  "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo": {
+    "zh-tw": "GALA湯澤",
+    "zh-cn": "GALA汤泽",
+    ko: "갈라유자와",
+    th: "GALA Yuzawa",
+  },
 };
 
 /** Klook's own locale path each edition must link. */

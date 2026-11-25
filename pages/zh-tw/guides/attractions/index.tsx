@@ -98,6 +98,7 @@ const groups: ZhHubGroup[] = [
       "/zh-tw/guides/attractions/hakone-free-pass",
       "/zh-tw/guides/attractions/sagano-romantic-train-tickets",
       "/zh-tw/guides/attractions/kansai-area-pass",
+      "/zh-tw/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo",
     ],
   },
   {
@@ -119,6 +120,8 @@ const groups: ZhHubGroup[] = [
 
 /** Short Chinese blurb per page — one line on what it answers. */
 const BLURBS: Record<string, string> = {
+  "/zh-tw/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo":
+    "東京出發的GALA湯澤滑雪一日遊：上越新幹線直達最快 71 分鐘、JR Pass 可用，纜車票 ¥8,000 與裝備租借費用，12 月 19 日開放滑雪，以及 2026-27 雪季南區停業。",
   "/zh-tw/guides/attractions/kansai-area-pass":
     "JR 西日本關西地區鐵路周遊券：1 日 ¥2,700、4 日 ¥6,700，含關西機場 HARUKA，不含新幹線。與關西廣域鐵路周遊券、ICOCA 比較，以及從京都入境為什麼 1 日券就划算。",
   "/zh-tw/guides/attractions/umeda-sky-building-tickets":

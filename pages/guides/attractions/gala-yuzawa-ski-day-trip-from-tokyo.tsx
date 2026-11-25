@@ -25,6 +25,7 @@ import {
 } from "../../../lib/klook-links";
 import KlookSameDayCards from "../../../components/KlookSameDayCards";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import { hreflangLinks } from "../../../components/Hreflang";
 
 /**
  * GALA Yuzawa as a day out of Tokyo, written for the reader searching "Gala
@@ -504,6 +505,7 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
         <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" />
+        {hreflangLinks("/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" />
