@@ -30,6 +30,18 @@ export const trackAffiliateClick = (params: AffiliateClickParams) => {
     ...params,
     transport_type: 'beacon',
   });
+  // eSIM clicks also go out once as their own event, so GA4's built-in
+  // "Event name × Date" report counts eSIM referrals per day without a custom
+  // dimension. affiliate_click above is unchanged (same params, sent once).
+  if (params.product_type === 'esim') {
+    window.gtag?.('event', 'esim_click', {
+      partner: params.partner,
+      product_type: params.product_type,
+      placement: params.placement,
+      link_domain: params.link_domain,
+      transport_type: 'beacon',
+    });
+  }
 };
 
 declare global {
