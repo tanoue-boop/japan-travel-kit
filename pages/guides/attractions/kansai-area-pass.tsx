@@ -9,6 +9,7 @@ import { jrHarukaUrl, jrKansaiAreaPass, jrKansaiMiniPass, kansaiAreaPassSameDayP
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import { hreflangLinks } from "../../../components/Hreflang";
 
 // CTA links — both in Klook's 5% passes-and-transport band. The pass listing (1107)
 // is a new constant in lib/klook-links.ts, confirmed live through the www.klook.com
@@ -323,6 +324,7 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
         <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/kansai-area-pass" />
+        {hreflangLinks("/guides/attractions/kansai-area-pass")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/kansai-area-pass" />

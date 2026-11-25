@@ -543,6 +543,25 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     thTitle: "ตั๋ว Umeda Sky Building 2026: ราคา",
     thLabel: "Umeda Sky Building",
   },
+  // Added 2026-11-25 (task jtk-20261125-TR02): Klook 30 days, 1 booking (¥484, ad id 1528098)
+  // and GSC 28 days, 718 impressions on the English page. Titles lead with JR West's own names
+  // for the pass in each language: 간사이 패스 (westjr.co.jp/global/kr), 關西地區鐵路周遊券 (tc),
+  // 关西地区铁路周游券 (sc); Thai results keep the English "JR Kansai Area Pass".
+  {
+    en: "/guides/attractions/kansai-area-pass",
+    zhTw: "/zh-tw/guides/attractions/kansai-area-pass",
+    zhTitle: "JR關西地區鐵路周遊券 2026：價格與關西廣域比較",
+    zhLabel: "JR關西地區鐵路周遊券",
+    zhCn: "/zh-cn/guides/attractions/kansai-area-pass",
+    zhCnTitle: "JR关西地区铁路周游券 2026：价格与关西广域比较",
+    zhCnLabel: "JR关西地区铁路周游券",
+    ko: "/ko/guides/attractions/kansai-area-pass",
+    koTitle: "JR 간사이 패스 2026: 가격, 하루카, 와이드 패스 비교",
+    koLabel: "JR 간사이 패스",
+    th: "/th/guides/attractions/kansai-area-pass",
+    thTitle: "JR Kansai Area Pass 2026: ราคา",
+    thLabel: "JR Kansai Area Pass",
+  },
   {
     en: "/guides/attractions",
     zhTw: "/zh-tw/guides/attractions",

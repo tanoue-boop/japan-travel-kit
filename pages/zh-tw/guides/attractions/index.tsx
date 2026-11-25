@@ -97,6 +97,7 @@ const groups: ZhHubGroup[] = [
       "/zh-tw/guides/attractions/mt-fuji-day-tour-from-tokyo",
       "/zh-tw/guides/attractions/hakone-free-pass",
       "/zh-tw/guides/attractions/sagano-romantic-train-tickets",
+      "/zh-tw/guides/attractions/kansai-area-pass",
     ],
   },
   {
@@ -118,6 +119,8 @@ const groups: ZhHubGroup[] = [
 
 /** Short Chinese blurb per page — one line on what it answers. */
 const BLURBS: Record<string, string> = {
+  "/zh-tw/guides/attractions/kansai-area-pass":
+    "JR 西日本關西地區鐵路周遊券：1 日 ¥2,700、4 日 ¥6,700，含關西機場 HARUKA，不含新幹線。與關西廣域鐵路周遊券、ICOCA 比較，以及從京都入境為什麼 1 日券就划算。",
   "/zh-tw/guides/attractions/umeda-sky-building-tickets":
     "大阪梅田藍天大廈的空中庭園展望台：成人 ¥2,000、9:30–22:30 開放，沒有入場時段。大阪周遊卡只在 15:00 前免費，並附各季大阪日落時間。",
   "/zh-tw/guides/attractions/shibuya-sky-tickets":

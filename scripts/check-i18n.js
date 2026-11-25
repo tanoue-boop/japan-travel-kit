@@ -206,6 +206,14 @@ const SEARCH_TERMS = {
     ko: "우메다 스카이빌딩",
     th: "ตั๋ว Umeda Sky Building",
   },
+  // Added 2026-11-25 (TR02): JR West's own name for the pass in Korean, Traditional and
+  // Simplified Chinese; Thai results keep the English name.
+  "/guides/attractions/kansai-area-pass": {
+    "zh-tw": "關西地區鐵路周遊券",
+    "zh-cn": "关西地区铁路周游券",
+    ko: "JR 간사이 패스",
+    th: "JR Kansai Area Pass",
+  },
 };
 
 /** Klook's own locale path each edition must link. */
