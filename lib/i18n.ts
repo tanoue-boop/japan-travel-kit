@@ -523,6 +523,26 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     thTitle: "โกคาร์ทโตเกียว 2026: ราคา ใบขับขี่สากล",
     thLabel: "โกคาร์ทโตเกียว",
   },
+  // Added 2026-11-25 (task jtk-20261125-TR01): Klook 7 days, 1 booking (¥592) and 30 days, 21
+  // clicks on the English page. Titles lead with the names readers search: 우메다 스카이빌딩
+  // (Korean guides, osaka-info.jp/ko), 梅田藍天大廈 / 梅田蓝天大厦 (Taiwan, Hong Kong and
+  // Simplified Chinese guides, osaka-info.jp zh) and Thai ตั๋ว Umeda Sky Building (Thai guides
+  // keep the English name).
+  {
+    en: "/guides/attractions/umeda-sky-building-tickets",
+    zhTw: "/zh-tw/guides/attractions/umeda-sky-building-tickets",
+    zhTitle: "梅田藍天大廈門票 2026：票價、營業時間與日落",
+    zhLabel: "梅田藍天大廈",
+    zhCn: "/zh-cn/guides/attractions/umeda-sky-building-tickets",
+    zhCnTitle: "梅田蓝天大厦门票 2026：票价、开放时间与日落",
+    zhCnLabel: "梅田蓝天大厦",
+    ko: "/ko/guides/attractions/umeda-sky-building-tickets",
+    koTitle: "우메다 스카이빌딩 입장료 2026: 공중정원 시간, 일몰",
+    koLabel: "우메다 스카이빌딩",
+    th: "/th/guides/attractions/umeda-sky-building-tickets",
+    thTitle: "ตั๋ว Umeda Sky Building 2026: ราคา",
+    thLabel: "Umeda Sky Building",
+  },
   {
     en: "/guides/attractions",
     zhTw: "/zh-tw/guides/attractions",

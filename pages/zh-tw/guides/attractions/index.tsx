@@ -75,6 +75,7 @@ const groups: ZhHubGroup[] = [
       "/zh-tw/guides/attractions/teamlab-planets-tickets",
       "/zh-tw/guides/attractions/teamlab-borderless-tickets",
       "/zh-tw/guides/attractions/tokyo-skytree-tickets",
+      "/zh-tw/guides/attractions/umeda-sky-building-tickets",
     ],
   },
   {
@@ -117,6 +118,8 @@ const groups: ZhHubGroup[] = [
 
 /** Short Chinese blurb per page — one line on what it answers. */
 const BLURBS: Record<string, string> = {
+  "/zh-tw/guides/attractions/umeda-sky-building-tickets":
+    "大阪梅田藍天大廈的空中庭園展望台：成人 ¥2,000、9:30–22:30 開放，沒有入場時段。大阪周遊卡只在 15:00 前免費，並附各季大阪日落時間。",
   "/zh-tw/guides/attractions/shibuya-sky-tickets":
     "位於澀谷十字路口上方的露天觀景台。官方票價、為什麼日落時段最先售罄，以及海外信用卡無法在官網付款時怎麼購票。",
   "/zh-tw/guides/attractions/teamlab-planets-tickets":

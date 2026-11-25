@@ -198,6 +198,14 @@ const SEARCH_TERMS = {
     ko: "도쿄 고카트",
     th: "โกคาร์ทโตเกียว",
   },
+  // Added 2026-11-25 (TR01): the building's name in Korean, Taiwan / Hong Kong and Simplified
+  // Chinese guides; Thai guides keep the English name.
+  "/guides/attractions/umeda-sky-building-tickets": {
+    "zh-tw": "梅田藍天大廈",
+    "zh-cn": "梅田蓝天大厦",
+    ko: "우메다 스카이빌딩",
+    th: "ตั๋ว Umeda Sky Building",
+  },
 };
 
 /** Klook's own locale path each edition must link. */

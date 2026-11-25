@@ -133,13 +133,14 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "tickets",
         label: "門票與景點",
-        desc: "單一場館的入場券——東京的美術館與展望台，以及大阪的道頓堀遊船。",
+        desc: "單一場館的入場券——東京的美術館與展望台，以及大阪的道頓堀遊船與梅田藍天大廈。",
         routes: [
           "/zh-tw/guides/attractions/shibuya-sky-tickets",
           "/zh-tw/guides/attractions/tokyo-skytree-tickets",
           "/zh-tw/guides/attractions/teamlab-planets-tickets",
           "/zh-tw/guides/attractions/teamlab-borderless-tickets",
           "/zh-tw/guides/attractions/dotonbori-river-cruise",
+          "/zh-tw/guides/attractions/umeda-sky-building-tickets",
         ],
       },
       {
@@ -198,6 +199,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "350 公尺與 450 公尺怎麼選、套票為什麼比現場加購便宜，以及當天購票多 ¥500。",
       "/zh-tw/guides/attractions/dotonbori-river-cruise":
         "とんぼり遊船的票價與班次、大阪周遊卡怎麼換票，以及同一條河上五種遊船比較。",
+      "/zh-tw/guides/attractions/umeda-sky-building-tickets":
+        "空中庭園展望台成人 ¥2,000，9:30–22:30 開放、不需預約。大阪周遊卡只在 15:00 前免費，附大阪日落時間表。",
       "/zh-tw/guides/attractions/teamlab-planets-tickets":
         "豐洲 Planets 的票價、30 分鐘入場時段、涉水區適合穿什麼，以及和無界的比較。",
       "/zh-tw/guides/attractions/teamlab-borderless-tickets":
@@ -268,13 +271,14 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "tickets",
         label: "门票与景点",
-        desc: "单个场馆的门票——东京的美术馆与观景台，以及大阪的道顿堀游船。",
+        desc: "单个场馆的门票——东京的美术馆与观景台，以及大阪的道顿堀游船与梅田蓝天大厦。",
         routes: [
           "/zh-cn/guides/attractions/shibuya-sky-tickets",
           "/zh-cn/guides/attractions/tokyo-skytree-tickets",
           "/zh-cn/guides/attractions/teamlab-planets-tickets",
           "/zh-cn/guides/attractions/teamlab-borderless-tickets",
           "/zh-cn/guides/attractions/dotonbori-river-cruise",
+          "/zh-cn/guides/attractions/umeda-sky-building-tickets",
         ],
       },
       {
@@ -333,6 +337,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "350 米与 450 米观景台怎么选、套票为什么比现场加购便宜，以及当天购票多 ¥500。",
       "/zh-cn/guides/attractions/dotonbori-river-cruise":
         "Tombori River Cruise 的票价与发船时间、大阪周游卡怎么换票，以及同一河道上五种游船的比较。",
+      "/zh-cn/guides/attractions/umeda-sky-building-tickets":
+        "空中庭园观景台成人 ¥2,000，9:30–22:30 开放，不需要预约。大阪周游卡仅在 15:00 前免费，附大阪日落时间表。",
       "/zh-cn/guides/attractions/teamlab-planets-tickets":
         "丰洲 Planets 的票价、30 分钟入场时段、进入涉水区该穿什么，以及与 teamLab Borderless（无界美术馆）的比较。",
       "/zh-cn/guides/attractions/teamlab-borderless-tickets":
@@ -410,7 +416,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "tickets",
         label: "입장권",
-        desc: "도쿄의 전망대, 미술관, 고카트, 그리고 오사카의 도톤보리 리버크루즈 — 공식 요금과 예약 방법.",
+        desc: "도쿄의 전망대, 미술관, 고카트, 그리고 오사카의 도톤보리 리버크루즈와 우메다 스카이빌딩 — 공식 요금과 예약 방법.",
         routes: [
           "/ko/guides/attractions/shibuya-sky-tickets",
           "/ko/guides/attractions/tokyo-skytree-tickets",
@@ -419,6 +425,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/ko/guides/attractions/teamlab-tokyo-tickets",
           "/ko/guides/attractions/dotonbori-river-cruise",
           "/ko/guides/attractions/tokyo-go-kart",
+          "/ko/guides/attractions/umeda-sky-building-tickets",
         ],
       },
       {
@@ -466,6 +473,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "팀랩 플래닛과 팀랩 보더리스는 각각 별도의 티켓이 필요합니다.아이와 함께라면 플래닛, 작품 감상이 목적이면 보더리스.",
       "/ko/guides/attractions/dotonbori-river-cruise":
         "톤보리 리버크루즈의 요금과 운항 시간, 오사카 주유패스 교환 규칙, 배 5종 비교.",
+      "/ko/guides/attractions/umeda-sky-building-tickets":
+        "공중정원 전망대 입장료는 성인 ¥2,000, 9:30~22:30 운영하며 예약은 필요 없습니다. 주유패스 무료 입장은 15:00 전까지이고, 오사카 일몰 시간표도 정리했습니다.",
       "/ko/guides/attractions/tokyo-disney-tickets":
         "디즈니랜드·디즈니씨 입장권 가격과 예약 방법. 날짜 지정, 현장 판매 없음, 2개월 전 예약 시작.",
       "/ko/guides/attractions/usj-tickets-express-pass":
@@ -523,7 +532,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "tickets",
         label: "ตั๋วเข้าชม",
-        desc: "จุดชมวิว พิพิธภัณฑ์ และโกคาร์ทในโตเกียว และล่องเรือโดทงโบริที่โอซาก้า — ราคาทางการและวิธีจอง",
+        desc: "จุดชมวิว พิพิธภัณฑ์ และโกคาร์ทในโตเกียว ล่องเรือโดทงโบริและ Umeda Sky Building ที่โอซาก้า — ราคาทางการและวิธีจอง",
         routes: [
           "/th/guides/attractions/shibuya-sky-tickets",
           "/th/guides/attractions/tokyo-skytree-tickets",
@@ -531,6 +540,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/th/guides/attractions/teamlab-borderless-tickets",
           "/th/guides/attractions/dotonbori-river-cruise",
           "/th/guides/attractions/tokyo-go-kart",
+          "/th/guides/attractions/umeda-sky-building-tickets",
         ],
       },
       {
@@ -576,6 +586,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "Borderless ที่อาซาบุไดฮิลส์: ราคาแบบยืดหยุ่น และความต่างของรอบระบุเวลากับ Flexible Pass",
       "/th/guides/attractions/dotonbori-river-cruise":
         "ราคาและรอบของ Tombori River Cruise กฎการแลกตั๋วของ Osaka Amazing Pass และเทียบเรือห้าลำ",
+      "/th/guides/attractions/umeda-sky-building-tickets":
+        "ผู้ใหญ่ ¥2,000 เปิด 9:30–22:30 น. ไม่ต้องจองรอบ Osaka Amazing Pass เข้าฟรีเฉพาะก่อน 15:00 น. พร้อมตารางเวลาพระอาทิตย์ตกที่โอซาก้า",
       "/th/guides/attractions/tokyo-disney-tickets":
         "บัตรทุกใบระบุวัน และไม่มีขายที่ประตู วิธีซื้อ และเลือกระหว่างแลนด์กับซี",
       "/th/guides/attractions/usj-tickets-express-pass":

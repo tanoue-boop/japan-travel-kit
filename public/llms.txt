@@ -268,7 +268,7 @@ Whole days out of Tokyo, Kyoto and Osaka, where the decision is which itinerary 
 
 ## 繁體中文 (Traditional Chinese edition)
 
-A trial edition of 21 guides in Taiwanese Traditional Chinese, under /zh-tw/, with its own entry page at https://www.japan-travel-kit.com/zh-tw. Each guide is a translation of the English page listed beside it, carrying the same prices, the same operator sources and the same check dates — no figure appears in Chinese that is not also in English. They are written for readers in Taiwan and Hong Kong; both regions are served by the same pages (hreflang zh-Hant-TW and zh-Hant-HK).
+A trial edition of 22 guides in Taiwanese Traditional Chinese, under /zh-tw/, with its own entry page at https://www.japan-travel-kit.com/zh-tw. Each guide is a translation of the English page listed beside it, carrying the same prices, the same operator sources and the same check dates — no figure appears in Chinese that is not also in English. They are written for readers in Taiwan and Hong Kong; both regions are served by the same pages (hreflang zh-Hant-TW and zh-Hant-HK).
 
 - [日本旅遊實用指南（2026）：門票、交通、網卡](https://www.japan-travel-kit.com/zh-tw): the 繁體中文 edition's entry page — every page it has, grouped by category. 繁體中文 counterpart of https://www.japan-travel-kit.com/
 - [澀谷SKY 門票（2026）：票價、最佳時段與預約方式](https://www.japan-travel-kit.com/zh-tw/guides/attractions/shibuya-sky-tickets): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets
@@ -291,11 +291,12 @@ A trial edition of 21 guides in Taiwanese Traditional Chinese, under /zh-tw/, wi
 - [箱根周遊券 2026：新宿出發票價與是否划算](https://www.japan-travel-kit.com/zh-tw/guides/attractions/hakone-free-pass): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/hakone-free-pass
 - [嵯峨野小火車 2026：購票時間、座位與運行日](https://www.japan-travel-kit.com/zh-tw/guides/attractions/sagano-romantic-train-tickets): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/sagano-romantic-train-tickets
 - [東京卡丁車 2026：價格、國際駕照與路線](https://www.japan-travel-kit.com/zh-tw/guides/attractions/tokyo-go-kart): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/tokyo-go-kart
+- [梅田藍天大廈門票 2026：票價、營業時間與日落](https://www.japan-travel-kit.com/zh-tw/guides/attractions/umeda-sky-building-tickets): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/umeda-sky-building-tickets
 - [日本景點門票攻略（2026）：官方票價、預約方式與一日遊](https://www.japan-travel-kit.com/zh-tw/guides/attractions): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions
 
 ## 简体中文 (Simplified Chinese edition)
 
-The same 21 guides in Simplified Chinese, under /zh-cn/, with its own entry page at https://www.japan-travel-kit.com/zh-cn. Written for the Chinese communities of Singapore and Malaysia and for Chinese speakers living outside mainland China (hreflang zh-Hans and zh-Hans-SG). Not a character conversion of the /zh-tw/ pages: the vocabulary is the one these readers use (流量卡 / eSIM rather than 網卡, 一日游 rather than 一日遊, 快速通行证 rather than 快速通關) and the Klook links point at Klook's zh-CN locale. Every price, operator source and check date is identical to the English and Traditional pages.
+The same 22 guides in Simplified Chinese, under /zh-cn/, with its own entry page at https://www.japan-travel-kit.com/zh-cn. Written for the Chinese communities of Singapore and Malaysia and for Chinese speakers living outside mainland China (hreflang zh-Hans and zh-Hans-SG). Not a character conversion of the /zh-tw/ pages: the vocabulary is the one these readers use (流量卡 / eSIM rather than 網卡, 一日游 rather than 一日遊, 快速通行证 rather than 快速通關) and the Klook links point at Klook's zh-CN locale. Every price, operator source and check date is identical to the English and Traditional pages.
 
 - [日本旅游实用指南（2026）：门票、交通、流量卡](https://www.japan-travel-kit.com/zh-cn): the 简体中文 edition's entry page — every page it has, grouped by category. 简体中文 counterpart of https://www.japan-travel-kit.com/
 - [SHIBUYA SKY（涩谷天空）门票（2026）：票价、最佳时段与预约方式](https://www.japan-travel-kit.com/zh-cn/guides/attractions/shibuya-sky-tickets): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets
@@ -318,11 +319,12 @@ The same 21 guides in Simplified Chinese, under /zh-cn/, with its own entry page
 - [箱根周游券 2026：新宿出发价格与是否划算](https://www.japan-travel-kit.com/zh-cn/guides/attractions/hakone-free-pass): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/hakone-free-pass
 - [嵯峨野小火车 2026：购票时间、座位与运行日](https://www.japan-travel-kit.com/zh-cn/guides/attractions/sagano-romantic-train-tickets): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/sagano-romantic-train-tickets
 - [东京卡丁车 2026：价格、国际驾照与路线](https://www.japan-travel-kit.com/zh-cn/guides/attractions/tokyo-go-kart): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/tokyo-go-kart
+- [梅田蓝天大厦门票 2026：票价、开放时间与日落](https://www.japan-travel-kit.com/zh-cn/guides/attractions/umeda-sky-building-tickets): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/umeda-sky-building-tickets
 - [日本景点门票攻略（2026）：官方票价、预约方式与一日游](https://www.japan-travel-kit.com/zh-cn/guides/attractions): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions
 
 ## 한국어 (Korean edition)
 
-A trial edition of 17 guides in Korean, under /ko/ (hreflang ko-KR), with its own entry page at https://www.japan-travel-kit.com/ko. Korea is Japan's largest inbound market and these are the five pages its visitors book from: Shibuya Sky, teamLab Planets, Tokyo Disney, Universal Studios Japan and the eSIM comparison. Each one is a translation of the English page listed beside it, carrying the same prices, the same operator sources and the same check dates — no figure appears in Korean that is not also in English. The Klook links point at Klook's ko storefront. The rest of the site is English only, and the Korean pages label those links as English.
+A trial edition of 18 guides in Korean, under /ko/ (hreflang ko-KR), with its own entry page at https://www.japan-travel-kit.com/ko. Korea is Japan's largest inbound market and these are the five pages its visitors book from: Shibuya Sky, teamLab Planets, Tokyo Disney, Universal Studios Japan and the eSIM comparison. Each one is a translation of the English page listed beside it, carrying the same prices, the same operator sources and the same check dates — no figure appears in Korean that is not also in English. The Klook links point at Klook's ko storefront. The rest of the site is English only, and the Korean pages label those links as English.
 
 - [일본 여행 준비 가이드(2026): 티켓, 교통, eSIM](https://www.japan-travel-kit.com/ko): the 한국어 edition's entry page — every page it has, grouped by category. 한국어 counterpart of https://www.japan-travel-kit.com/
 - [시부야 스카이 예약(2026): 티켓 가격, 추천 시간대, 예약 방법](https://www.japan-travel-kit.com/ko/guides/attractions/shibuya-sky-tickets): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets
@@ -342,10 +344,11 @@ A trial edition of 17 guides in Korean, under /ko/ (hreflang ko-KR), with its ow
 - [하코네 프리패스 2026: 신주쿠 출발 가격, 살 만할까?](https://www.japan-travel-kit.com/ko/guides/attractions/hakone-free-pass): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/hakone-free-pass
 - [사가노 토롯코 열차 2026: 예매 시기, 좌석, 운행일](https://www.japan-travel-kit.com/ko/guides/attractions/sagano-romantic-train-tickets): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/sagano-romantic-train-tickets
 - [도쿄 고카트 2026: 가격, 국제운전면허증, 코스](https://www.japan-travel-kit.com/ko/guides/attractions/tokyo-go-kart): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/tokyo-go-kart
+- [우메다 스카이빌딩 입장료 2026: 공중정원 시간, 일몰](https://www.japan-travel-kit.com/ko/guides/attractions/umeda-sky-building-tickets): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/umeda-sky-building-tickets
 
 ## ไทย (Thai edition)
 
-The same 17 guides in Thai, under /th/ (hreflang th-TH), with its own entry page at https://www.japan-travel-kit.com/th. Thailand is one of Japan's four largest inbound markets, and Thai readers book these attractions through the same platforms. Not a translation of the Korean pages: each is written from the English original, with the search terms Thai readers actually use (ตั๋ว Shibuya Sky, Express Pass USJ, eSIM ญี่ปุ่น) and Klook links pointing at Klook's th storefront. Every price, operator source and check date is identical to the English pages.
+The same 18 guides in Thai, under /th/ (hreflang th-TH), with its own entry page at https://www.japan-travel-kit.com/th. Thailand is one of Japan's four largest inbound markets, and Thai readers book these attractions through the same platforms. Not a translation of the Korean pages: each is written from the English original, with the search terms Thai readers actually use (ตั๋ว Shibuya Sky, Express Pass USJ, eSIM ญี่ปุ่น) and Klook links pointing at Klook's th storefront. Every price, operator source and check date is identical to the English pages.
 
 - [ไกด์เที่ยวญี่ปุ่น 2026: ตั๋ว การเดินทาง eSIM](https://www.japan-travel-kit.com/th): the ไทย edition's entry page — every page it has, grouped by category. ไทย counterpart of https://www.japan-travel-kit.com/
 - [ตั๋ว Shibuya Sky (2026): ราคา รอบเวลาที่ควรไป และวิธีจอง](https://www.japan-travel-kit.com/th/guides/attractions/shibuya-sky-tickets): ไทย version of https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets
@@ -365,6 +368,7 @@ The same 17 guides in Thai, under /th/ (hreflang th-TH), with its own entry page
 - [Hakone Free Pass 2026: ราคา คุ้มไหม](https://www.japan-travel-kit.com/th/guides/attractions/hakone-free-pass): ไทย version of https://www.japan-travel-kit.com/guides/attractions/hakone-free-pass
 - [รถไฟสายโรแมนติกซากาโนะ 2026: จองตั๋ว](https://www.japan-travel-kit.com/th/guides/attractions/sagano-romantic-train-tickets): ไทย version of https://www.japan-travel-kit.com/guides/attractions/sagano-romantic-train-tickets
 - [โกคาร์ทโตเกียว 2026: ราคา ใบขับขี่สากล](https://www.japan-travel-kit.com/th/guides/attractions/tokyo-go-kart): ไทย version of https://www.japan-travel-kit.com/guides/attractions/tokyo-go-kart
+- [ตั๋ว Umeda Sky Building 2026: ราคา](https://www.japan-travel-kit.com/th/guides/attractions/umeda-sky-building-tickets): ไทย version of https://www.japan-travel-kit.com/guides/attractions/umeda-sky-building-tickets
 
 ## Site information
 
