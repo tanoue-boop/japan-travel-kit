@@ -600,6 +600,25 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     thTitle: "ตั๋ว Tokyo Joypolis 2026: ราคา",
     thLabel: "ตั๋ว Tokyo Joypolis",
   },
+  // Added 2026-11-26 (task jtk-20261126-TR02): Klook 30 days, 5 castle tickets (¥252) on the
+  // English page. Titles lead with the names each market searches: 오사카성 천수각 입장료
+  // (osaka-info.jp/ko and Korean guides), 大阪城天守閣門票 / 大阪城天守阁门票 (osaka-info.jp
+  // zh-Hant-HK / zh-CHS, with 御座船 for the boat) and Thai ปราสาทโอซาก้า (Thai guides).
+  {
+    en: "/guides/attractions/osaka-castle-tickets",
+    zhTw: "/zh-tw/guides/attractions/osaka-castle-tickets",
+    zhTitle: "大阪城天守閣門票 2026：票價、開放時間與御座船",
+    zhLabel: "大阪城天守閣門票",
+    zhCn: "/zh-cn/guides/attractions/osaka-castle-tickets",
+    zhCnTitle: "大阪城天守阁门票 2026：票价、开放时间与御座船",
+    zhCnLabel: "大阪城天守阁门票",
+    ko: "/ko/guides/attractions/osaka-castle-tickets",
+    koTitle: "오사카성 천수각 입장료 2026: 시간, 주유패스",
+    koLabel: "오사카성 천수각 입장권",
+    th: "/th/guides/attractions/osaka-castle-tickets",
+    thTitle: "ตั๋วปราสาทโอซาก้า 2026: ราคา เวลาเปิด",
+    thLabel: "ตั๋วปราสาทโอซาก้า",
+  },
   {
     en: "/guides/attractions",
     zhTw: "/zh-tw/guides/attractions",

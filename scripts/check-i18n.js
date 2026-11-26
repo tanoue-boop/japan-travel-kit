@@ -230,6 +230,14 @@ const SEARCH_TERMS = {
     ko: "도쿄 조이폴리스",
     th: "Tokyo Joypolis",
   },
+  // Added 2026-11-26 (TR02): the keep's name as Korean, Taiwan / Hong Kong and Simplified
+  // Chinese results write it, and the Thai name of the castle.
+  "/guides/attractions/osaka-castle-tickets": {
+    "zh-tw": "大阪城天守閣門票",
+    "zh-cn": "大阪城天守阁门票",
+    ko: "오사카성 천수각",
+    th: "ปราสาทโอซาก้า",
+  },
 };
 
 /** Klook's own locale path each edition must link. */

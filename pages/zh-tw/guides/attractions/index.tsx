@@ -76,6 +76,7 @@ const groups: ZhHubGroup[] = [
       "/zh-tw/guides/attractions/teamlab-borderless-tickets",
       "/zh-tw/guides/attractions/tokyo-skytree-tickets",
       "/zh-tw/guides/attractions/umeda-sky-building-tickets",
+      "/zh-tw/guides/attractions/osaka-castle-tickets",
     ],
   },
   {
@@ -121,6 +122,8 @@ const groups: ZhHubGroup[] = [
 
 /** Short Chinese blurb per page — one line on what it answers. */
 const BLURBS: Record<string, string> = {
+  "/zh-tw/guides/attractions/osaka-castle-tickets":
+    "大阪城天守閣門票：成人 ¥1,200、大學生與高中生 ¥600、國中生以下免費，9:00–18:00 開放、最後入場 17:30。城內西之丸庭園、大阪城御座船等 5 項收費設施合計 ¥5,200，持大阪周遊卡全部免費。",
   "/zh-tw/guides/attractions/tokyo-joypolis-tickets":
     "台場的 SEGA 室內遊樂園東京JOYPOLIS：入場券 ¥1,700、設施無限暢玩的通行證 ¥6,000（15:00 起傍晚通行證 ¥5,000），玩到第 5 項就回本。21 項設施中 13 項有身高限制，以及與 teamLab Planets 排在同一天的台場行程。",
   "/zh-tw/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo":

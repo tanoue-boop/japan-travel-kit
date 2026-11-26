@@ -75,6 +75,7 @@ const groups: CnHubGroup[] = [
       "/zh-cn/guides/attractions/teamlab-planets-tickets",
       "/zh-cn/guides/attractions/teamlab-borderless-tickets",
       "/zh-cn/guides/attractions/umeda-sky-building-tickets",
+      "/zh-cn/guides/attractions/osaka-castle-tickets",
     ],
   },
   {
@@ -120,6 +121,8 @@ const groups: CnHubGroup[] = [
 
 /** Short Chinese blurb per page — one line on what it answers. */
 const BLURBS: Record<string, string> = {
+  "/zh-cn/guides/attractions/osaka-castle-tickets":
+    "大阪城天守阁门票：成人 ¥1,200、大学生与高中生 ¥600、初中生及以下免费，9:00–18:00 开放，最后入场 17:30。城内西之丸庭园、大阪城御座船等 5 项收费设施合计 ¥5,200，持大阪周游卡全部免费。",
   "/zh-cn/guides/attractions/tokyo-joypolis-tickets":
     "台场的世嘉室内主题乐园东京JOYPOLIS：入场券 ¥1,700、设施无限次乘坐的通票 ¥6,000（15:00 起傍晚通票 ¥5,000），玩到第 5 项就回本。21 项设施中 13 项有身高限制，以及与 teamLab Planets 排在同一天的台场行程。",
   "/zh-cn/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo":
