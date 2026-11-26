@@ -18,6 +18,7 @@ import {
 } from "../../../lib/klook-links";
 import { shirakawagoLightUp2027NagoyaTour } from "../../../lib/klook-links-winter-hub";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import { hreflangLinks } from "../../../components/Hreflang";
 
 /**
  * The Shirakawa-go winter light-up, written as a dates, reservation and how-to-get-in
@@ -206,6 +207,7 @@ export default function ShirakawagoWinterLightUpPage({ updated }: { updated: Pag
         <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href={URL} />
+        {hreflangLinks(ROUTE)}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:url" content={URL} />

@@ -238,6 +238,14 @@ const SEARCH_TERMS = {
     ko: "오사카성 천수각",
     th: "ปราสาทโอซาก้า",
   },
+  // Added 2026-11-26 (TR03): the event's name as Korean, Taiwan / Hong Kong, Simplified Chinese
+  // and Thai results write it.
+  "/guides/attractions/shirakawago-winter-light-up": {
+    "zh-tw": "白川鄉點燈",
+    "zh-cn": "白川乡点灯",
+    ko: "시라카와고 라이트업",
+    th: "ชิราคาวาโกะ ไลท์อัพ",
+  },
 };
 
 /** Klook's own locale path each edition must link. */

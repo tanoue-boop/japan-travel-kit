@@ -100,6 +100,7 @@ const groups: CnHubGroup[] = [
       "/zh-cn/guides/attractions/sagano-romantic-train-tickets",
       "/zh-cn/guides/attractions/kansai-area-pass",
       "/zh-cn/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo",
+      "/zh-cn/guides/attractions/shirakawago-winter-light-up",
     ],
   },
   {
@@ -125,6 +126,8 @@ const BLURBS: Record<string, string> = {
     "大阪城天守阁门票：成人 ¥1,200、大学生与高中生 ¥600、初中生及以下免费，9:00–18:00 开放，最后入场 17:30。城内西之丸庭园、大阪城御座船等 5 项收费设施合计 ¥5,200，持大阪周游卡全部免费。",
   "/zh-cn/guides/attractions/tokyo-joypolis-tickets":
     "台场的世嘉室内主题乐园东京JOYPOLIS：入场券 ¥1,700、设施无限次乘坐的通票 ¥6,000（15:00 起傍晚通票 ¥5,000），玩到第 5 项就回本。21 项设施中 13 项有身高限制，以及与 teamLab Planets 排在同一天的台场行程。",
+  "/zh-cn/guides/attractions/shirakawago-winter-light-up":
+    "白川乡冬季夜间亮灯：2027 年 1 月 11、17、24、31 日，17:30–19:30，完全预约制、当天不售入场券。五种参加方式、浓飞巴士（¥13,000 起）与北陆铁道（¥18,500）亮灯巴士，以及观景台入场券怎么获得。",
   "/zh-cn/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo":
     "东京出发的GALA汤泽滑雪一日游：上越新干线直达最快 71 分钟、JR Pass 可用，缆车票 ¥8,000 与装备租借费用，12 月 19 日开放滑雪，以及 2026-27 雪季南区停业。",
   "/zh-cn/guides/attractions/kansai-area-pass":

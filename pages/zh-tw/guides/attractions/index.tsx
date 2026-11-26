@@ -101,6 +101,7 @@ const groups: ZhHubGroup[] = [
       "/zh-tw/guides/attractions/sagano-romantic-train-tickets",
       "/zh-tw/guides/attractions/kansai-area-pass",
       "/zh-tw/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo",
+      "/zh-tw/guides/attractions/shirakawago-winter-light-up",
     ],
   },
   {
@@ -126,6 +127,8 @@ const BLURBS: Record<string, string> = {
     "大阪城天守閣門票：成人 ¥1,200、大學生與高中生 ¥600、國中生以下免費，9:00–18:00 開放、最後入場 17:30。城內西之丸庭園、大阪城御座船等 5 項收費設施合計 ¥5,200，持大阪周遊卡全部免費。",
   "/zh-tw/guides/attractions/tokyo-joypolis-tickets":
     "台場的 SEGA 室內遊樂園東京JOYPOLIS：入場券 ¥1,700、設施無限暢玩的通行證 ¥6,000（15:00 起傍晚通行證 ¥5,000），玩到第 5 項就回本。21 項設施中 13 項有身高限制，以及與 teamLab Planets 排在同一天的台場行程。",
+  "/zh-tw/guides/attractions/shirakawago-winter-light-up":
+    "白川鄉冬季點燈：2027 年 1 月 11、17、24、31 日，17：30–19：30，完全預約制、當天不售入場券。五種參加方式、濃飛巴士（¥13,000 起）與北陸鐵道（¥18,500）點燈巴士，以及展望台入場券怎麼取得。",
   "/zh-tw/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo":
     "東京出發的GALA湯澤滑雪一日遊：上越新幹線直達最快 71 分鐘、JR Pass 可用，纜車票 ¥8,000 與裝備租借費用，12 月 19 日開放滑雪，以及 2026-27 雪季南區停業。",
   "/zh-tw/guides/attractions/kansai-area-pass":

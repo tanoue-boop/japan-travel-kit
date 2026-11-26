@@ -619,6 +619,25 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     thTitle: "ตั๋วปราสาทโอซาก้า 2026: ราคา เวลาเปิด",
     thLabel: "ตั๋วปราสาทโอซาก้า",
   },
+  // Added 2026-11-26 (task jtk-20261126-TR03): the January light-up, translated before the December
+  // booking rush. Titles lead with the event's name as each market searches it: 시라카와고 라이트업
+  // (gltjp.com/ko, trvlogue, haveagood-holiday), 白川鄉點燈 (marieclaire.com.tw, funtime.com.tw,
+  // hk01), 白川乡点灯 (gltjp.com/zh-hans, bring-you.info/zh-hans) and ชิราคาวาโกะ ไลท์อัพ (gltjp.com/th).
+  {
+    en: "/guides/attractions/shirakawago-winter-light-up",
+    zhTw: "/zh-tw/guides/attractions/shirakawago-winter-light-up",
+    zhTitle: "白川鄉點燈 2027：日期、預約與點燈巴士",
+    zhLabel: "白川鄉點燈",
+    zhCn: "/zh-cn/guides/attractions/shirakawago-winter-light-up",
+    zhCnTitle: "白川乡点灯 2027：日期、预约与夜间亮灯巴士",
+    zhCnLabel: "白川乡点灯",
+    ko: "/ko/guides/attractions/shirakawago-winter-light-up",
+    koTitle: "시라카와고 라이트업 2027: 날짜, 예약, 투어",
+    koLabel: "시라카와고 라이트업",
+    th: "/th/guides/attractions/shirakawago-winter-light-up",
+    thTitle: "ชิราคาวาโกะ ไลท์อัพ 2027: วันงาน จองทัวร์",
+    thLabel: "ชิราคาวาโกะ ไลท์อัพ",
+  },
   {
     en: "/guides/attractions",
     zhTw: "/zh-tw/guides/attractions",

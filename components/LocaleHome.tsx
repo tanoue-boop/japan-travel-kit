@@ -129,6 +129,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/zh-tw/guides/attractions/japan-winter-itinerary",
           "/zh-tw/guides/attractions/jigokudani-snow-monkey-tour",
           "/zh-tw/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo",
+          "/zh-tw/guides/attractions/shirakawago-winter-light-up",
         ],
       },
       {
@@ -193,6 +194,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "新千歲機場接送、教練課、四大雪場怎麼選，以及從札幌出發的滑雪行程。",
       "/zh-tw/guides/attractions/hokkaido-7-day-itinerary":
         "7 天每日行程，含周遊券怎麼算才划算，以及冬季要怎麼調整。",
+      "/zh-tw/guides/attractions/shirakawago-winter-light-up":
+        "白川鄉合掌村冬季點燈只有 2027 年 1 月 11、17、24、31 日四個晚上，17：30–19：30，完全預約制、當天不售票。比較名古屋、高山、金澤出發的點燈巴士，以及 12 月 1 日開賣的第二輪停車位。",
       "/zh-tw/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo":
         "東京站搭上越新幹線直達最快 71 分鐘，可用 JR Pass。纜車票 ¥8,000，12 月 19 日開放滑雪，南區本季停業。",
       "/zh-tw/guides/attractions/japan-winter-itinerary":
@@ -279,6 +282,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/zh-cn/guides/attractions/japan-winter-itinerary",
           "/zh-cn/guides/attractions/jigokudani-snow-monkey-tour",
           "/zh-cn/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo",
+          "/zh-cn/guides/attractions/shirakawago-winter-light-up",
         ],
       },
       {
@@ -343,6 +347,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "新千岁机场接送、滑雪课程、4 大雪场怎么选，以及从札幌出发的滑雪行程。",
       "/zh-cn/guides/attractions/hokkaido-7-day-itinerary":
         "7 天每日行程，含周游券费用的计算方法，以及冬季要怎么调整。",
+      "/zh-cn/guides/attractions/shirakawago-winter-light-up":
+        "白川乡合掌村冬季夜间亮灯只有 2027 年 1 月 11、17、24、31 日四个晚上，17:30–19:30，完全预约制、当天不售票。比较名古屋、高山、金泽出发的亮灯巴士，以及 12 月 1 日开售的第二轮停车位。",
       "/zh-cn/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo":
         "东京站乘上越新干线直达最快 71 分钟，可用 JR Pass。缆车票 ¥8,000，12 月 19 日开放滑雪，南区本季停业。",
       "/zh-cn/guides/attractions/japan-winter-itinerary":
@@ -436,6 +442,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/ko/guides/attractions/japan-winter-itinerary",
           "/ko/guides/attractions/jigokudani-snow-monkey-tour",
           "/ko/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo",
+          "/ko/guides/attractions/shirakawago-winter-light-up",
         ],
       },
       {
@@ -488,6 +495,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "신치토세 공항 셔틀, 스키 강습, 4개 스키장 선택, 삿포로 출발 스키 투어.",
       "/ko/guides/attractions/hokkaido-7-day-itinerary":
         "7일 일정을 날짜별로 정리하고 교통패스 요금 비교와 겨울철 조정 방법을 담았습니다.",
+      "/ko/guides/attractions/shirakawago-winter-light-up":
+        "시라카와고 겨울 야간 조명 행사는 2027년 1월 11, 17, 24, 31일 4일 저녁, 17:30~19:30이며 완전 사전 예약제로 당일 입장권이 없습니다. 나고야, 다카야마, 가나자와 출발 야간 조명 버스를 비교했습니다.",
       "/ko/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo":
         "도쿄역에서 신칸센 직행 71분, JR 패스 사용 가능. 리프트권 ¥8,000, 12월 19일 개장, 남부 에어리어는 이번 시즌 휴업.",
       "/ko/guides/attractions/japan-winter-itinerary":
@@ -567,6 +576,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/th/guides/attractions/japan-winter-itinerary",
           "/th/guides/attractions/jigokudani-snow-monkey-tour",
           "/th/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo",
+          "/th/guides/attractions/shirakawago-winter-light-up",
         ],
       },
       {
@@ -618,6 +628,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "รถรับส่งสนามบินชิโตเสะ คลาสสกี การเลือกสี่พื้นที่ และทัวร์สกีจากซัปโปโร",
       "/th/guides/attractions/hokkaido-7-day-itinerary":
         "แผนเที่ยวรายวัน 7 วัน พร้อมวิธีคำนวณพาส และการปรับแผนในหน้าหนาว",
+      "/th/guides/attractions/shirakawago-winter-light-up":
+        "ชมไฟประดับชิราคาวาโกะมีเพียง 11, 17, 24 และ 31 มกราคม 2027 เวลา 17:30–19:30 น. ต้องจองล่วงหน้า ไม่มีบัตรขายในวันงาน เทียบรถบัสชมไฟประดับจากนาโกย่า ทาคายามะ และคานาซาวะ",
       "/th/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo":
         "ชินคันเซ็นตรงจากสถานีโตเกียว 71 นาที ใช้ JR Pass ได้ บัตรลิฟต์สกี ¥8,000 ลานสกีเปิด 19 ธ.ค. และโซน South ปิดฤดูกาลนี้",
       "/th/guides/attractions/japan-winter-itinerary":
