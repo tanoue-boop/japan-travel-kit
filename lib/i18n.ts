@@ -581,6 +581,25 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     thTitle: "สกี GALA Yuzawa จากโตเกียว 2026-27",
     thLabel: "สกี GALA Yuzawa วันเดียว",
   },
+  // Added 2026-11-26 (task jtk-20261126-TR01): Klook booking on 25 Nov (Tokyo Joypolis Ticket).
+  // Titles lead with the park's name as each market searches it: 도쿄 조이폴리스 (ko, WAUG and
+  // GO TOKYO's Korean page), 東京JOYPOLIS / 东京JOYPOLIS (GO TOKYO's Chinese pages, LIVE JAPAN),
+  // and the Latin "Tokyo Joypolis" in Thai.
+  {
+    en: "/guides/attractions/tokyo-joypolis-tickets",
+    zhTw: "/zh-tw/guides/attractions/tokyo-joypolis-tickets",
+    zhTitle: "東京JOYPOLIS門票 2026：通行證價格與值不值得",
+    zhLabel: "東京JOYPOLIS門票",
+    zhCn: "/zh-cn/guides/attractions/tokyo-joypolis-tickets",
+    zhCnTitle: "东京JOYPOLIS门票 2026：世嘉室内乐园通票价格",
+    zhCnLabel: "东京JOYPOLIS门票",
+    ko: "/ko/guides/attractions/tokyo-joypolis-tickets",
+    koTitle: "도쿄 조이폴리스 입장권 2026: 패스포트 가격",
+    koLabel: "도쿄 조이폴리스 입장권",
+    th: "/th/guides/attractions/tokyo-joypolis-tickets",
+    thTitle: "ตั๋ว Tokyo Joypolis 2026: ราคา",
+    thLabel: "ตั๋ว Tokyo Joypolis",
+  },
   {
     en: "/guides/attractions",
     zhTw: "/zh-tw/guides/attractions",

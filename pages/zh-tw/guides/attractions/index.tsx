@@ -85,6 +85,7 @@ const groups: ZhHubGroup[] = [
     routes: [
       "/zh-tw/guides/attractions/tokyo-disney-tickets",
       "/zh-tw/guides/attractions/usj-tickets-express-pass",
+      "/zh-tw/guides/attractions/tokyo-joypolis-tickets",
     ],
   },
   {
@@ -120,6 +121,8 @@ const groups: ZhHubGroup[] = [
 
 /** Short Chinese blurb per page — one line on what it answers. */
 const BLURBS: Record<string, string> = {
+  "/zh-tw/guides/attractions/tokyo-joypolis-tickets":
+    "台場的 SEGA 室內遊樂園東京JOYPOLIS：入場券 ¥1,700、設施無限暢玩的通行證 ¥6,000（15:00 起傍晚通行證 ¥5,000），玩到第 5 項就回本。21 項設施中 13 項有身高限制，以及與 teamLab Planets 排在同一天的台場行程。",
   "/zh-tw/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo":
     "東京出發的GALA湯澤滑雪一日遊：上越新幹線直達最快 71 分鐘、JR Pass 可用，纜車票 ¥8,000 與裝備租借費用，12 月 19 日開放滑雪，以及 2026-27 雪季南區停業。",
   "/zh-tw/guides/attractions/kansai-area-pass":

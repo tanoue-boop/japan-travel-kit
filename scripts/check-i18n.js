@@ -222,6 +222,14 @@ const SEARCH_TERMS = {
     ko: "갈라유자와",
     th: "GALA Yuzawa",
   },
+  // Added 2026-11-26 (TR01): the park's name as Korean, Taiwan / Hong Kong and Simplified
+  // Chinese results write it; Thai results keep the Latin name.
+  "/guides/attractions/tokyo-joypolis-tickets": {
+    "zh-tw": "東京JOYPOLIS",
+    "zh-cn": "东京JOYPOLIS",
+    ko: "도쿄 조이폴리스",
+    th: "Tokyo Joypolis",
+  },
 };
 
 /** Klook's own locale path each edition must link. */

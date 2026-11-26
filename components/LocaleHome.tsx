@@ -151,6 +151,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         routes: [
           "/zh-tw/guides/attractions/tokyo-disney-tickets",
           "/zh-tw/guides/attractions/usj-tickets-express-pass",
+          "/zh-tw/guides/attractions/tokyo-joypolis-tickets",
         ],
       },
       {
@@ -213,6 +214,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "每張票都指定日期、門口完全不賣票。怎麼買，以及樂園與海洋怎麼選。",
       "/zh-tw/guides/attractions/usj-tickets-express-pass":
         "一律線上購票，超級任天堂世界需要指定入場時段。快速通關 4／7／8 怎麼挑。",
+      "/zh-tw/guides/attractions/tokyo-joypolis-tickets":
+        "入場券 ¥1,700、設施無限暢玩的通行證 ¥6,000，玩到第 5 項就回本。21 項設施中 13 項有身高限制。",
       "/zh-tw/guides/attractions/mt-fuji-day-tour-from-tokyo":
         "四種行程比較：只去富士山，還是加上箱根、五合目是什麼，以及一天要多久。",
       "/zh-tw/guides/attractions/hakone-free-pass":
@@ -295,6 +298,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         routes: [
           "/zh-cn/guides/attractions/tokyo-disney-tickets",
           "/zh-cn/guides/attractions/usj-tickets-express-pass",
+          "/zh-cn/guides/attractions/tokyo-joypolis-tickets",
         ],
       },
       {
@@ -357,6 +361,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "门票均需指定入园日期，园区入口不设现场售票。怎么买，以及迪士尼乐园与迪士尼海洋怎么选。",
       "/zh-cn/guides/attractions/usj-tickets-express-pass":
         "一律在线购票，超级任天堂世界需要指定入园时间。快速通行证 4／7／8 怎么挑。",
+      "/zh-cn/guides/attractions/tokyo-joypolis-tickets":
+        "入场券 ¥1,700、设施无限次乘坐的通票 ¥6,000，玩到第 5 项就回本。21 项设施中 13 项有身高限制。",
       "/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo":
         "四种行程比较：富士山周边游还是加箱根、五合目是什么，以及行程总时长。",
       "/zh-cn/guides/attractions/hakone-free-pass":
@@ -448,6 +454,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         routes: [
           "/ko/guides/attractions/tokyo-disney-tickets",
           "/ko/guides/attractions/usj-tickets-express-pass",
+          "/ko/guides/attractions/tokyo-joypolis-tickets",
         ],
       },
       {
@@ -498,6 +505,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "디즈니랜드·디즈니씨 입장권 가격과 예약 방법. 날짜 지정, 현장 판매 없음, 2개월 전 예약 시작.",
       "/ko/guides/attractions/usj-tickets-express-pass":
         "입장권은 온라인으로만 판매하며, 슈퍼 닌텐도 월드는 입장 시간이 지정됩니다.익스프레스 패스 4·7·8 선택법.",
+      "/ko/guides/attractions/tokyo-joypolis-tickets":
+        "입장권 ¥1,700, 전 어트랙션 패스포트 ¥6,000으로 5번째 어트랙션부터 이득. 21개 중 13개에 키 제한이 있습니다.",
       "/ko/guides/attractions/hakone-free-pass":
         "신주쿠 출발 2일권 ¥7,100, 하코네를 하루에 일주해도 이득입니다. 로망스카 별도, 디지털과 종이 티켓 비교.",
       "/ko/guides/attractions/kansai-area-pass":
@@ -572,6 +581,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
         routes: [
           "/th/guides/attractions/tokyo-disney-tickets",
           "/th/guides/attractions/usj-tickets-express-pass",
+          "/th/guides/attractions/tokyo-joypolis-tickets",
         ],
       },
       {
@@ -620,6 +630,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "บัตรทุกใบระบุวัน และไม่มีขายที่ประตู วิธีซื้อ และเลือกระหว่างแลนด์กับซี",
       "/th/guides/attractions/usj-tickets-express-pass":
         "ขายออนไลน์ทั้งหมด Super Nintendo World ต้องระบุเวลาเข้า และเลือก Express Pass 4／7／8",
+      "/th/guides/attractions/tokyo-joypolis-tickets":
+        "ค่าเข้า ¥1,700 และ Passport เล่นไม่จำกัด ¥6,000 คุ้มตั้งแต่เครื่องที่ 5 และ 13 จาก 21 เครื่องเล่นมีเกณฑ์ส่วนสูง",
       "/th/guides/attractions/hakone-free-pass":
         "2 วันจากชินจูกุ ¥7,100 เที่ยวฮาโกเน่ครบวงในวันเดียวก็คุ้ม Romancecar จ่ายแยก และเทียบตั๋วดิจิทัลกับกระดาษ",
       "/th/guides/attractions/kansai-area-pass":

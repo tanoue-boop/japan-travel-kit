@@ -84,6 +84,7 @@ const groups: CnHubGroup[] = [
     routes: [
       "/zh-cn/guides/attractions/tokyo-disney-tickets",
       "/zh-cn/guides/attractions/usj-tickets-express-pass",
+      "/zh-cn/guides/attractions/tokyo-joypolis-tickets",
     ],
   },
   {
@@ -119,6 +120,8 @@ const groups: CnHubGroup[] = [
 
 /** Short Chinese blurb per page — one line on what it answers. */
 const BLURBS: Record<string, string> = {
+  "/zh-cn/guides/attractions/tokyo-joypolis-tickets":
+    "台场的世嘉室内主题乐园东京JOYPOLIS：入场券 ¥1,700、设施无限次乘坐的通票 ¥6,000（15:00 起傍晚通票 ¥5,000），玩到第 5 项就回本。21 项设施中 13 项有身高限制，以及与 teamLab Planets 排在同一天的台场行程。",
   "/zh-cn/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo":
     "东京出发的GALA汤泽滑雪一日游：上越新干线直达最快 71 分钟、JR Pass 可用，缆车票 ¥8,000 与装备租借费用，12 月 19 日开放滑雪，以及 2026-27 雪季南区停业。",
   "/zh-cn/guides/attractions/kansai-area-pass":
