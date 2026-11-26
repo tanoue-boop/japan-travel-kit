@@ -3,6 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import KlookSameDayCards from "../../../components/KlookSameDayCards";
 import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
@@ -16,6 +17,7 @@ import {
   kyotoKimonoAiwafukuGion,
   kyotoKimonoAiwafukuKiyomizu,
   kyotoTeaCeremonyTastingMaking,
+  kyotoTeaSameDayCards,
   kyotoTeaTripPrep,
   kyotoTraditionalTeaCeremonyUrl,
   ujiTaihoanWalkingTour,
@@ -391,6 +393,13 @@ export default function KyotoTeaCeremonyPage({ updated }: { updated: PageUpdated
             </div>
           </div>
         </div>
+
+        {/* Same-day cards under the two Gion buttons (26 Nov 2026, task-jtk-20261126-P01):
+            kimono rental, Gion hotels and a Kyoto day tour, all 6.5%. */}
+        <KlookSameDayCards
+          heading="The same afternoon: a kimono, a bed in Gion, the rest of Kyoto"
+          cards={kyotoTeaSameDayCards}
+        />
 
         <EsimCtaTop />
 

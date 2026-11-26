@@ -9583,6 +9583,100 @@ export const kawaguchikoAnswerCards: KlookSameDayCard[] = [
 ];
 
 // ---------------------------------------------------------------------------
+// Same-day cards under the main button of three pages whose Klook ad id had clicks
+// and no booking in the 7 days to 25 Nov 2026 (task-jtk-20261126-P01): teamLab Kyoto
+// (1528225, 10 clicks), Kyoto tea ceremony (1576215, 5) and the JR Kyushu Rail Pass
+// (1554750, 7). The main products were re-read in the www.klook.com search index on
+// 26 Nov 2026 and are on sale and on topic (167098, 233020/177406, 2371), so the
+// buttons stay; these blocks add the 6.5% tour and hotel bookings of the same day.
+// Each block has its own `#same-day-cards` ad id. Existing constants only — every
+// activity id below (184396, 82323, 107086, 95611, 191563) was seen live in the
+// search index the same day. The Kyoto highlight bus tour (94748, 3.0 from two
+// reviews) was passed over for 82323, which leaves from the same Hachijo side of
+// Kyoto Station as the museum. No prices.
+// ---------------------------------------------------------------------------
+
+/** teamLab Kyoto: the hours in front of a slot, and the bed after a late one. Its eSIM is BookingEsimCard. */
+export const teamlabKyotoSameDayCards: KlookSameDayCard[] = [
+  {
+    label: kyotoTeamlabBiovortexWalkingTour.title,
+    kind: "Tour",
+    ctaLabel: "Check the Kyoto & teamLab walk →",
+    url: kyotoTeamlabBiovortexWalkingTour.url,
+    why: "Nishi Hongan-ji and the Kyoto Station light show with a guide, finishing inside teamLab Biovortex.",
+  },
+  {
+    label: "Hotels around Kyoto Station",
+    kind: "Hotel",
+    ctaLabel: "Check Kyoto Station hotels →",
+    url: kyotoStayAreas[0].url,
+    why: "Last entry is 19:30 and the museum closes at 21:00; from the Hachijo East Gate it is a seven-minute walk back.",
+  },
+  {
+    label: kyotoCityFushimiArashiyamaTour.title,
+    kind: "Day tour",
+    ctaLabel: "Check the Kyoto day tour →",
+    url: kyotoCityFushimiArashiyamaTour.url,
+    why: "The daytime half: a guided day from the Hachijo side of Kyoto Station, the same side as the museum.",
+  },
+];
+
+/** Kyoto tea ceremony: the kimono, the Gion bed and the rest of the day. Its eSIM is BookingEsimCard. */
+export const kyotoTeaSameDayCards: KlookSameDayCard[] = [
+  {
+    label: kyotoKimonoAiwafukuGion.title,
+    kind: "Kimono",
+    ctaLabel: "Check Gion kimono rental →",
+    url: kyotoKimonoAiwafukuGion.url,
+    why: "For a tea room with no kimono of its own: a full-day rental with a hair set, worn round Gion after the ceremony.",
+  },
+  {
+    label: "Hotels in Gion and Higashiyama",
+    kind: "Hotel",
+    ctaLabel: "Check Gion hotels →",
+    url: kyotoStayAreas[2].url,
+    why: "The Gion tea rooms on foot, and walking distance to Kiyomizu-dera for the morning after.",
+  },
+  {
+    label: kyotoCityFushimiArashiyamaTour.title,
+    kind: "Day tour",
+    ctaLabel: "Check the Kyoto day tour →",
+    url: kyotoCityFushimiArashiyamaTour.url,
+    why: "The rest of the day: Fushimi Inari, Arashiyama and Kiyomizu-dera with a guide, leaving from Kyoto Station.",
+  },
+];
+
+/** JR Kyushu Rail Pass: where the pass days start, the two day trips it competes with, and data. */
+export const jrKyushuSameDayCards: KlookSameDayCard[] = [
+  {
+    label: "Hotels at Hakata Station",
+    kind: "Hotel",
+    ctaLabel: "Check Hakata hotels →",
+    url: fukuokaStayAreas[1].url,
+    why: "The Kyushu Shinkansen, the Relay Kamome to Nagasaki and the Yufuin no Mori all leave from Hakata.",
+  },
+  {
+    label: yufuinBeppuNoMoriTour.title,
+    kind: "Day tour",
+    ctaLabel: "Check the Yufuin & Beppu tour →",
+    url: yufuinBeppuNoMoriTour.url,
+    why: "If Yufuin and Beppu are the only trip out of Fukuoka, one coach day can cost less than a 3-day pass.",
+  },
+  {
+    label: nagasakiSmallGroupDayTour.title,
+    kind: "Day tour",
+    ctaLabel: "Check the Nagasaki day tour →",
+    url: nagasakiSmallGroupDayTour.url,
+    why: "From Hakata Station at 8:00, back around 18:00: the Atomic Bomb Museum, Peace Park and Glover Garden.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    kind: "eSIM",
+    why: "Seat reservations on JR Kyushu's pass site and the exchange-office hours are online, so data from landing matters.",
+  },
+];
+
+// ---------------------------------------------------------------------------
 // Same-day blocks under the shinkansen ticket button — added 13 Nov 2026 (task
 // jtk-20261113-04, daily PDCA Act). Klook pays 2% on a shinkansen ticket, so each
 // route page now shows the bookings at the arrival end — hotels and tours 6.5%,

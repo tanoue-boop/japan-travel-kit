@@ -612,7 +612,7 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={fujiPhotographyDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
-                Compare Kawaguchiko day tours on Klook →
+                Check the Kawaguchiko day tour on Klook →
               </KlookLink>
               <KlookLink href={tokyoMtFujiHighwayBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
                 Or just the bus seat →

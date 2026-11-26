@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import KlookSameDayCards from "../../../components/KlookSameDayCards";
 import BookingEsimCard from "../../../components/BookingEsimCard";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
@@ -13,6 +14,7 @@ import {
   kyotoTeamlabBiovortexWalkingTour,
   saganoRomanticTrainTicket,
   teamlabBiovortexKyotoTicket,
+  teamlabKyotoSameDayCards,
   teamlabKyotoTripPrep,
   whereToStayKyotoAreas,
 } from "../../../lib/klook-links";
@@ -471,6 +473,13 @@ export default function TeamlabKyotoTicketsPage({ updated }: { updated: PageUpda
             </div>
           </div>
         </div>
+
+        {/* Same-day cards under the ticket button (26 Nov 2026, task-jtk-20261126-P01):
+            walking tour, Kyoto Station hotels and a Kyoto day tour, all 6.5%. */}
+        <KlookSameDayCards
+          heading="Around your slot: the walk in, the day before it, the bed after"
+          cards={teamlabKyotoSameDayCards}
+        />
 
         <EsimCtaTop />
 

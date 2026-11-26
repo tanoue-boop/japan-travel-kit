@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import KlookSameDayCards from "../../../components/KlookSameDayCards";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
@@ -10,6 +11,7 @@ import {
   klookEsim,
   jrKyushuPassTripPrep,
   jrKyushuRailPass,
+  jrKyushuSameDayCards,
   yufuinBeppuNoMoriTour,
   nagasakiSmallGroupDayTour,
 } from "../../../lib/klook-links";
@@ -405,6 +407,13 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
             </div>
           </div>
         </div>
+
+        {/* Same-day cards under the pass button (26 Nov 2026, task-jtk-20261126-P01):
+            Hakata hotels and two Fukuoka day tours 6.5%, Klook eSIM 20%. */}
+        <KlookSameDayCards
+          heading="Book with the pass: a Hakata bed, the day trips, data"
+          cards={jrKyushuSameDayCards}
+        />
 
         <EsimCtaTop />
 
