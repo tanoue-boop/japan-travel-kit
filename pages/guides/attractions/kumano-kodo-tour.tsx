@@ -271,7 +271,7 @@ const faqItems = [
     a: `A section of it, yes; the whole route, no. The usual one-day walk is Hosshinmon-oji to Kumano Hongu Taisha, about 7 km and 2 to 3 hours. From Osaka, coach tours run about 10 to 12 hours 45 minutes and visit the shrines with a short walk. The main Nakahechi route is about 38 km and takes two days. Read ${OWN}.`,
   },
   {
-    q: "Do I need a guide for the Kumano Kodo?",
+    q: "Do you need a guide for the Kumano Kodo?",
     a: "No. A guide is not required by any published rule, and the Tanabe City Kumano Tourism Bureau publishes route pages and maps for walkers on their own. A guide adds the history and the route-finding. The bureau suggests checking that a guide holds a national translator guide license or the Koyasan and Kumano regional guide license.",
   },
   {
@@ -311,16 +311,22 @@ const faqItems = [
 // 16 Nov 2026 (C01): title and H1 open with the same words. "Cost" is left out of the title on
 // purpose: no tour price can be printed (Klook prices are never quoted), so the title promises
 // what the page does answer.
-const TITLE = "Kumano Kodo Tour 2026: Day Trips, Guided Walks & Luggage";
-const H1_LINE = "Kumano Kodo Tour 2026:";
+// 27 Nov 2026 (C02): two title rewrites without a price did not move CTR, so the title now
+// promises prices. Klook answers automated reads with 403; the "from about" figures are the
+// www.klook.com search-index snapshots of the listings linked here, read on PRICE_ISO:
+// 158473 (one-day, choose Kumano) US$74.89–85.89; 172638 (full-day pilgrimage) about US$113;
+// 76602 (private walk, 2-day plan for 2–3 people) US$138.39. Klook prices change by date.
+const PRICE_ISO = "2026-11-27";
+const TITLE = "Kumano Kodo Tour: 1–2 Day Guided Options & Prices";
+const H1_LINE = "Kumano Kodo Tour (2026):";
 const DESCRIPTION =
-  "Kumano Kodo tour 2026: day tours from Osaka run 10 to 12¾ hours; Hosshinmon-oji to Hongu is 7 km in 2–3 hours. Luggage transfer explained, tours on Klook.";
+  "Kumano Kodo tours from Osaka: a guided 10–12¾ hour day from about US$75 on Klook, or two days on foot. No guide is required; the classic half day is 7 km.";
 const RECHECKED = checkedLabel("2026-11-16");
 
 // The five questions carried into FAQPage; the visible list keeps all ten.
 const FAQ_SCHEMA_QS = new Set([
   "Can you do the Kumano Kodo in one day?",
-  "Do I need a guide for the Kumano Kodo?",
+  "Do you need a guide for the Kumano Kodo?",
   "Can I send my luggage ahead on the Kumano Kodo?",
   "How do I get to the Kumano Kodo from Osaka?",
   "How hard is the Kumano Kodo Nakahechi route?",
@@ -416,7 +422,7 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            {H1_LINE} <br />Day Trips, Guided Walks and Luggage
+            {H1_LINE} <br />1–2 Day Guided Options &amp; Prices
           </h1>
           <p className={styles.heroSubtitle}>
             A thousand-year-old pilgrimage road in the Kii Mountains. The choice is a long coach day from Osaka
@@ -447,7 +453,8 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
           <p className={styles.bodyText}>
             A <strong>Kumano Kodo tour</strong> from Osaka is a guided coach day of about{" "}
             <strong>10 to 12 hours 45 minutes</strong> that visits the grand shrines with a short walk on the old
-            road. The classic one-day section, <strong>Hosshinmon-oji to Kumano Hongu Taisha, is about 7 km and 2 to
+            road, from <strong>about US$75</strong> on Klook; a private guided walk with a 2-day plan is about
+            US$138 (Klook listings, {PRICE_ISO}; prices change by date). The classic one-day section, <strong>Hosshinmon-oji to Kumano Hongu Taisha, is about 7 km and 2 to
             3 hours</strong>, mostly downhill (Tanabe City Kumano Tourism Bureau, read {RECHECKED}). A tour takes care
             of the transport; on your own it is about 2 hours by train from Shin-Osaka to Kii-Tanabe and 2.5 hours by
             bus to Hosshinmon, too long for a same-day return. The full Nakahechi, Takijiri-oji to Hongu, is{" "}
@@ -566,6 +573,11 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
             routes, so pick Kumano on the package. Its published 09:30 start is the example for the Awaji route,
             and the operator changes times twice a year, so read the start for your date. Open any listing for the
             current price, the exact meeting point and what your package includes.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {PRICE_ISO} · From-prices on Klook: Kumano Sanzan one-day tour about US$75–86, full-day
+            pilgrimage about US$113, private walking tour (2-day plan, 2–3 people) about US$138. Prices change by
+            date and currency · Source: the klook.com listings linked in the table above.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={kumanoSanzanExpressTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -689,7 +701,7 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
         {/* Guide */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Guides</span>
-          <h2 className={styles.sectionTitle}>Do I Need a Guide for the Kumano Kodo?</h2>
+          <h2 className={styles.sectionTitle}>Do You Need a Guide for the Kumano Kodo?</h2>
           <p className={styles.bodyText}>
             No. A guide is not required by any published rule, and the bureau publishes route pages and maps for walkers on
             their own. It does call a local guide one of the best ways to get the most from the walk, and it says

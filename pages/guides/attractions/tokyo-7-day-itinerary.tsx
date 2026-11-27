@@ -493,7 +493,9 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
           <h2 className={styles.sectionTitle}>What Should I Do on the Four Tokyo Days?</h2>
           <p className={styles.bodyText}>
             One side of the city per day, so you never cross Tokyo twice. <strong>Day 1</strong> is old Tokyo:
-            Senso-ji early, Ueno Park and Ameyoko, and Tokyo Skytree for the evening view.{" "}
+            Senso-ji early, Ueno Park and Ameyoko, and Tokyo Skytree for the evening view; an{" "}
+            <Link href="/guides/attractions/asakusa-kimono-rental">Asakusa kimono rental</Link> fits the Senso-ji
+            morning if you return it before Ueno.{" "}
             <strong>Day 2</strong> is the west: Meiji Jingu in the morning, Harajuku and the Scramble Crossing,
             SHIBUYA SKY at sunset ({PRICES.shibuyaSky.adult} online, before / from 15:00), then Shinjuku&apos;s
             Omoide Yokocho (Skytree, SHIBUYA SKY, Tokyo Tower and the free Tocho deck side by side:{" "}
@@ -502,7 +504,9 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
             ({PRICES.teamlabPlanets.adult}; slots and booking in our{" "}
             <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets</Link> guide) in
             Toyosu, then Odaiba. <strong>Day 7</strong> is Ginza, the Imperial
-            Palace East Gardens and Tokyo Station, which is also where the Narita Express leaves.
+            Palace East Gardens and Tokyo Station, which is also where the Narita Express leaves — and the{" "}
+            <Link href="/guides/transport/tokyo-airport-limousine-bus">airport limousine bus</Link> from the Yaesu
+            North exit if your bags are heavy.
           </p>
           <p className={styles.bodyText}>
             Seven days leaves room to trade one city half-day for the Harry Potter studio tour in Nerima: three to

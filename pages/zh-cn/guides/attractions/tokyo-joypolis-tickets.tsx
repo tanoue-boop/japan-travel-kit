@@ -691,7 +691,7 @@ export default function ZhCnTokyoJoypolisTicketsPage({ updated }: { updated: Pag
             <Link href="/zh-cn/guides/attractions/things-to-do-tokyo" style={linkStyle}>
               东京必玩清单
             </Link>
-            则把东京景点分成需要提前几周购票的和可以直接去的。JOYPOLIS 明确属于后者。
+            则把东京景点分成需要提前几周购票的和可以直接去的。JOYPOLIS 明确属于后者。天气好、想出城一天时，可以看<Link href="/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo" style={linkStyle}>东京出发富士山一日游</Link>的价格与路线。
           </p>
         </section>
 

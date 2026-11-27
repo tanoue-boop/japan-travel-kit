@@ -492,7 +492,9 @@ export default function Tokyo4DayItineraryPage({ updated }: { updated: PageUpdat
             then Tokyo Skytree ({PRICES.tokyoSkytree.adult}, cheaper booked ahead than at the same-day counter) for
             the evening view. With an hour to spare in Asakusa, a{" "}
             <Link href="/guides/attractions/tea-ceremony-japan">tea ceremony in Tokyo</Link> near Senso-ji
-            takes about 90 minutes with a kimono included. <strong>Day 2</strong> is the west: Meiji Jingu in the morning, Takeshita Street in
+            takes about 90 minutes with a kimono included, and{" "}
+            <Link href="/guides/attractions/asakusa-kimono-rental">Asakusa kimono rental</Link> shops near
+            Kaminarimon dress you for the whole Senso-ji morning. <strong>Day 2</strong> is the west: Meiji Jingu in the morning, Takeshita Street in
             Harajuku, the Scramble Crossing and SHIBUYA SKY at sunset ({PRICES.shibuyaSky.adult} online, before /
             from 15:00), then Omoide Yokocho in Shinjuku. Two paid decks in one trip is a lot of skyline; the{" "}
             <Link href="/guides/attractions/tokyo-observation-decks">Shibuya Sky vs Skytree</Link> comparison helps
@@ -544,7 +546,10 @@ export default function Tokyo4DayItineraryPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText}>
             It covers Tokyo Metro and Toei lines only — not the JR Yamanote Line, not the Yurikamome to Odaiba, and
             not the bus to Kawaguchiko or Tobu to Nikko. The full break-even is in the{" "}
-            <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket</Link> guide.
+            <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket</Link> guide. For the ride
+            in from the airport with suitcases, the{" "}
+            <Link href="/guides/transport/tokyo-airport-limousine-bus">airport limousine bus</Link> page lists
+            every Narita and Haneda fare and stop.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

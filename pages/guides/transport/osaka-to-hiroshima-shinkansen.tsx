@@ -488,7 +488,11 @@ export default function OsakaToHiroshimaShinkansenPage({ updated }: { updated: P
             <Link href="/guides/transport/kansai-hiroshima-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
               Kansai Hiroshima Area Pass
             </Link>{" "}
-            page.
+            page. If the trip does carry on to Hakata, the{" "}
+            <Link href="/guides/attractions/yufuin-beppu-tour-from-fukuoka" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Yufuin and Beppu day tour from Fukuoka
+            </Link>{" "}
+            covers both hot spring towns in one day.
           </p>
           <p className={styles.bodyText}>
             The one thing worth deciding before you book is how much of Miyajima you want. Hiroshima city —

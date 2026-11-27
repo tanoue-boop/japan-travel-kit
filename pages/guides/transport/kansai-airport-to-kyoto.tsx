@@ -471,6 +471,9 @@ export default function KansaiAirportToKyotoPage({ updated }: { updated: PageUpd
             <Link href="/guides/attractions/where-to-stay-in-kyoto">where to stay in Kyoto</Link> and{" "}
             <Link href="/guides/transport/kyoto-transportation">getting around Kyoto</Link>; sending the cases ahead
             instead is covered in <Link href="/guides/transport/japan-luggage-delivery">Japan luggage delivery</Link>.
+            Landing in the afternoon with a Gion hotel? A{" "}
+            <Link href="/guides/attractions/gion-night-walking-tour">Gion night walking tour</Link> is a first
+            evening that needs no planning.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={kyotoPrivateKixTransfer.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

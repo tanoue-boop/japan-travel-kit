@@ -393,7 +393,10 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
             our <Link href="/guides/transport/kintetsu-rail-pass">Kintetsu Rail Pass</Link> guide. Choosing a
             base for this and the Kyoto day trips is covered in{" "}
             <Link href="/guides/attractions/where-to-stay-in-osaka">where to stay in Osaka</Link>; Nara as Day 4 of a
-            longer trip, after Arashiyama in the morning, is in the <Link href="/guides/attractions/kansai-5-day-itinerary">Kansai 5 day itinerary</Link>.
+            longer trip, after Arashiyama in the morning, is in the <Link href="/guides/attractions/kansai-5-day-itinerary">Kansai 5 day itinerary</Link>. For
+            an older pilgrimage route further south, the{" "}
+            <Link href="/guides/attractions/kumano-kodo-tour">Kumano Kodo tour</Link> guide covers the guided days
+            from Osaka.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Last checked: 2026-11-04 (Kintetsu fares) and 2026-10-26 (journey times) · https://www.kintetsu.co.jp/ ·

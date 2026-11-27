@@ -602,7 +602,7 @@ export default function ZhCnGalaYuzawaSkiDayTripPage({ updated }: { updated: Pag
           <p className={styles.bodyText}>
             <strong>雪道于 {SLOPES_OPEN}开放，预计营业到 {SLOPES_CLOSE}。</strong>前一周的 {SIGHTSEEING_OPEN}至 2026 年 12 月 18 日只有观光营业：
             运行缆车和观光吊椅，无论积雪多少都不能滑双板或单板；直达的上越新干线也同样在 12 月 12 日开始。GALA汤泽另外说明，营业期间和内容可能因积雪和天气变更。
-            如果在 12 月 12 日至 18 日预订想去滑雪，实际上只能乘缆车。
+            如果在 12 月 12 日至 18 日预订想去滑雪，实际上只能乘缆车。那几天想看雪山，可以改订<Link href="/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo" style={linkStyle}>东京出发富士山一日游</Link>。
           </p>
           <Table head={["2026-27", "日期"]} rows={seasonRows.map((r) => [r.what, r.detail])} />
           <Sources>

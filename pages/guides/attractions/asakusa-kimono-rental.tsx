@@ -51,6 +51,8 @@ const CHECKED_ISO = "2026-10-21";
 const CHECKED = checkedLabel(CHECKED_ISO);
 /** Facts re-read on the shops' and the temple's own sites. */
 const OFFICIAL_ISO = "2026-11-17";
+/** 27 Nov 2026 (C02): plan prices, return times and booking rules re-read on both shop sites. */
+const PRICES_ISO = "2026-11-27";
 const OFFICIAL = checkedLabel(OFFICIAL_ISO);
 
 /** Official shop rates, hours and return times. First row is the answer. */
@@ -210,8 +212,8 @@ const faqItems = [
     a: `Earlier than almost everyone plans for, and the shops do not agree on the time. Aiwafuku's Asakusa page sets the last return at 16:30 if you arrive before 12:00 and 17:30 if you arrive at 12:00 or later, with next-day return before 15:00 for ¥2,200; Rikawafuku Asakusa sets 17:30 whatever time you start. One of the Asakusa shops on Klook asks for the outfit back before 17:00, and another states 17:30. Treat the deadline as the fixed point of the day and plan the route back to the shop into it. Aiwafuku and Rikawafuku read on their own sites on ${OFFICIAL}; the Klook listings as stated on ${CHECKED}.`,
   },
   {
-    q: "Do you need to book Asakusa kimono rental in advance?",
-    a: `Yes in spring and autumn, and it is sensible the rest of the year. Aiwafuku takes same-day bookings when slots are open and welcomes walk-ins, but recommends booking online ahead, especially in busy seasons; Rikawafuku takes web bookings up to 10 minutes before the slot. In cherry-blossom and autumn-colour season the morning slots and the better designs go first. Booking through a reseller also gets you an English checkout and a confirmed slot time, which matters when your day has a 16:30 deadline in it. Booking terms read on the shops' own sites on ${OFFICIAL}.`,
+    q: "How far ahead should I book kimono rental in Asakusa?",
+    a: `Book online before the day in spring and autumn, when the shops recommend it; the rest of the year a same-day slot may still be open. Aiwafuku takes same-day bookings when slots are open and welcomes walk-ins, but recommends booking online ahead, especially in busy seasons; Rikawafuku takes web bookings up to 10 minutes before the slot. In cherry-blossom and autumn-colour season the morning slots and the better designs go first. Booking through a reseller also gets you an English checkout and a confirmed slot time, which matters when your day has a 16:30 deadline in it. Booking terms read on the shops' own sites on ${OFFICIAL}.`,
   },
   {
     q: "Is a hair set included with Asakusa kimono rental?",
@@ -251,9 +253,11 @@ export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/asakusa-kimono-rental") },
 });
 
-const TITLE = "Asakusa Kimono Rental 2026: Price, Hours & Booking";
+// 27 Nov 2026 (C02): price-led title, and the page leans on the Asakusa shop comparison
+// (kimono-rental-japan covers cities). Shop rates re-read on aiwafuku.com and ewha-yifu.com.
+const TITLE = "Asakusa Kimono Rental: Prices from ¥4,000 & Best Shops";
 const DESC =
-  "Asakusa kimono rental 2026: from ¥4,000–¥4,500 at shop rates, open 9:00–18:00, kimono back by 16:30 or 17:30. Compare 4 shops and book a slot on Klook.";
+  "Asakusa kimono rental from ¥4,000 (men) and ¥4,300 (women, hair set included) to ¥4,500 at shop rates, open 9:00–18:00. Compare 4 shops near Kaminarimon.";
 
 export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -343,7 +347,7 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Asakusa Kimono Rental 2026: <br />Price, Hours, Return Time &amp; Booking
+            Asakusa Kimono Rental (2026): <br />Prices from ¥4,000 &amp; Best Shops
           </h1>
           <p className={styles.heroSubtitle}>
             What a rental costs at the shops&apos; own rates, when they open, when the outfit has to
@@ -462,7 +466,7 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            <strong>Last checked: {OFFICIAL_ISO}</strong> · Sources:
+            <strong>Last checked: {PRICES_ISO}</strong> (prices and return times; hours {OFFICIAL_ISO}) · Sources:
             https://aiwafuku.com/shop/asakusa/en-kimono-rental-asakusa/,
             https://ewha-yifu.com/en/shops/asakusa/kimono-planlist/basic-plan/. Klook prices change by
             date and are not listed here: open a listing for the figure on yours.
@@ -540,6 +544,25 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={asakusaKimonoKaminarimon.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Compare Asakusa kimono shops on Klook →
+            </KlookLink>
+          </div>
+        </section>
+
+        {/* Booking lead time */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Booking</span>
+          <h2 className={styles.sectionTitle}>How Far Ahead Should I Book Kimono Rental in Asakusa?</h2>
+          <p className={styles.bodyText}>
+            <strong>Book online before the day in cherry-blossom and autumn-colour season; the rest of the
+            year a same-day slot may still be open.</strong> Aiwafuku takes same-day reservations when time
+            slots are open and welcomes walk-ins, but recommends booking online in advance, especially in
+            busy seasons; Rikawafuku Asakusa takes web bookings up to 10 minutes before the slot. The morning
+            slots go first, and a morning start also means the earlier 16:30 return at Aiwafuku. Read on
+            aiwafuku.com and ewha-yifu.com on {PRICES_ISO}.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={asakusaKimonoAiwafukuNo2.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
+              Check open slots for your date on Klook →
             </KlookLink>
           </div>
         </section>

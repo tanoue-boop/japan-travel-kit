@@ -205,7 +205,7 @@ const faqItems = [
     a: "Possibly, but never on demand. Kyoto's tourism association says Gion is well known as an area where you can encounter maiko, and Klook's main listing offers a chance of seeing a geiko or maiko rather than a promise. If you do see one, she is on her way to an engagement and in a hurry, so step aside and do not stop her or photograph her without permission.",
   },
   {
-    q: "What is the etiquette in Gion at night, and can you take photos?",
+    q: "Can you take photos in Gion at night?",
     a: `Yes on public roads such as Hanamikoji, with limits. Photographing maiko without permission is prohibited on Kyoto's official tourism site, tripods are discouraged, and filming on Gion's private roads has been banned in principle by the local council since 2019. The ¥10,000 warning is on a private lane, Kosode-koji. Read on ${CHECKED}.`,
   },
   {
@@ -234,9 +234,13 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Gion Night Walking Tour (2026): Times, Booking & Etiquette";
+// 27 Nov 2026 (C02): rules and price in the title. The price is the www.klook.com search-index
+// snapshot of listing 87999 (the 3-hour Night Guided Walking Tour), US$27.95 on PRICE_ISO;
+// Klook answers automated reads with 403. Klook prices change by date.
+const PRICE_ISO = "2026-11-27";
+const TITLE = "Gion Night Walking Tour: Geisha District Rules & Prices";
 const DESCRIPTION =
-  "A Gion night walking tour lasts about 3 hours and starts 16:00–20:00. Compare small-group, private and kaiseki tours on Klook, plus Gion's etiquette rules.";
+  "A Gion night walking tour lasts about 3 hours, from about US$28 on Klook. Photos are fine on Hanamikoji, not of maiko without asking or on private lanes.";
 
 /** The tour types in one table; the first row is the answer. */
 const glanceRows = [
@@ -252,7 +256,7 @@ export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } })
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
+  mainEntity: faqItems.slice(0, 5).map((item) => ({
     "@type": "Question",
     name: item.q,
     acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -332,7 +336,7 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Gion Night Walking Tour (2026): <br />Times, Booking &amp; Etiquette
+            Gion Night Walking Tour (2026): <br />Geisha District Rules &amp; Prices
           </h1>
           <p className={styles.heroSubtitle}>
             Five Klook tours side by side, and the rules that apply in Gion after dark, each with who actually
@@ -361,8 +365,9 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
         {/* Lead paragraph: the whole answer, before anything else on the page. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            A <strong>Gion night walking tour</strong> on Klook lasts <strong>about 3 hours</strong> and starts
-            between <strong>16:00 and 20:00</strong> depending on the listing. Book the small-group walk for the
+            A <strong>Gion night walking tour</strong> on Klook lasts <strong>about 3 hours</strong>, starts
+            between <strong>16:00 and 20:00</strong> depending on the listing, and the small-group walk costs
+            from <strong>about US$28</strong> (Klook, {PRICE_ISO}; prices change by date). Book the small-group walk for the
             evening explained, the 17:00–20:00 kaiseki tour (2–10 people, full refund up to 72 hours before) if
             you also need dinner, or the private walk at 16:00, 17:00 or 18:00 for your own start time. The
             etiquette is the same with or without a guide: photographing maiko without permission is prohibited,
@@ -402,7 +407,8 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={noteStyle}>
-            Last checked: 2026-11-04. Tour times from Klook&apos;s listings; etiquette from Kyoto City&apos;s
+            Last checked: 2026-11-04 (times and rules); {PRICE_ISO} for the US$27.95 from-price of the Night
+            Guided Walking Tour on Klook. Tour times from Klook&apos;s listings; etiquette from Kyoto City&apos;s
             official tourism site,{" "}
             <a href="https://kyoto.travel/en/" target="_blank" rel="noopener" style={{ color: "var(--text-muted)" }}>kyoto.travel</a>
             , and Yasaka Shrine&apos;s hours from{" "}
@@ -538,7 +544,7 @@ export default function GionNightWalkingTourPage({ updated }: { updated: PageUpd
         {/* Rules */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Rules</span>
-          <h2 className={styles.sectionTitle}>Can You Take Photos in Gion?</h2>
+          <h2 className={styles.sectionTitle}>Can You Take Photos in Gion at Night?</h2>
           <p className={styles.bodyText}>
             Yes on public roads such as Hanamikoji, but not of maiko without their permission and not on
             Gion&apos;s private lanes. Two different bodies are behind the rules, which is why many summaries

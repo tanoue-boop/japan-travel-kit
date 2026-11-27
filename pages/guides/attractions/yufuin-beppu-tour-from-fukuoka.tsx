@@ -215,8 +215,8 @@ const faqItems = [
     a: "For one day that covers both towns, yes. The tour removes the cross-country leg and gets you to the hells before they close. The train is better if you are staying overnight in Yufuin or Beppu, or if riding the Yufuin no Mori is the point of the trip. Note that it is all reserved and runs only on calendar days.",
   },
   {
-    q: "How long is a Yufuin and Beppu day tour from Fukuoka?",
-    a: `10 to 10.5 hours, as the Klook listings state them (checked ${TODAY}). One listing notes that Japanese law caps vehicle use at 10 hours a day, so guides may reorder or drop a stop for traffic or weather. Expect short stops rather than a slow day.`,
+    q: "How long is a Yufuin and Beppu day tour from Fukuoka, and how much is it?",
+    a: `10 to 10.5 hours, as the Klook listings state them (checked ${TODAY}), from about US$44 per person on the Yufuin no Mori and Beppu Ropeway tours (Klook, 27 Nov 2026; prices change by date). One listing notes that Japanese law caps vehicle use at 10 hours a day, so guides may reorder or drop a stop for traffic or weather. Expect short stops rather than a slow day.`,
   },
   {
     q: "How far is Yufuin from Fukuoka?",
@@ -252,10 +252,14 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Yufuin Beppu Day Trip from Fukuoka (2026): Tour vs Train";
-const H1_LINE = "Yufuin Beppu Day Trip from Fukuoka (2026):";
+// 27 Nov 2026 (C02): time and price in the title. Tour from-price = www.klook.com search-index
+// snapshot of listings 95611 and 129252 (US$44.39 each) on PRICE_ISO; Klook answers automated
+// reads with 403 and prices change by date. Train fare re-read on jrkyushu.co.jp the same day.
+const PRICE_ISO = "2026-11-27";
+const TITLE = "Yufuin & Beppu Day Tour from Fukuoka: Time & Price";
+const H1_LINE = "Yufuin & Beppu Day Tour from Fukuoka (2026):";
 const DESCRIPTION =
-  "Yufuin Beppu day trip from Fukuoka: a coach tour takes 10–10.5 hours; the Yufuin no Mori train is 2h12–2h21 and ¥6,130 one way. Compare six tours on Klook.";
+  "Yufuin & Beppu day tour from Fukuoka: 10–10.5 hours by coach from about US$44 on Klook. By train, Yufuin no Mori takes 2h12–2h21 and costs ¥6,130 one way.";
 
 const ROUTE = "/guides/attractions/yufuin-beppu-tour-from-fukuoka";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
@@ -350,7 +354,7 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            {H1_LINE} <br />Tour vs Train, Times and Fares
+            {H1_LINE} <br />Time, Price &amp; Tour vs Train
           </h1>
           <p className={styles.heroSubtitle}>
             Two hot spring towns in one long day from Fukuoka. The choice is which stops your coach makes, and
@@ -381,7 +385,8 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
           <p className={styles.bodyText}>
             A <strong>Yufuin Beppu day trip from Fukuoka</strong> takes <strong>10 to 10.5 hours</strong> on a
             shared coach tour that covers Beppu&apos;s hot spring &ldquo;hells&rdquo; and free time in Yufuin in one
-            booking. By train, the limited express <strong>Yufuin no Mori</strong> runs Hakata to Yufuin in{" "}
+            booking, from <strong>about US$44</strong> per person on Klook (checked {PRICE_ISO}; prices change by
+            date). By train, the limited express <strong>Yufuin no Mori</strong> runs Hakata to Yufuin in{" "}
             <strong>2 hours 12 to 2 hours 21 minutes</strong> for <strong>{YUFUIN_NO_MORI_FARE}</strong> one way
             (adult, JR Kyushu, checked {LAST_CHECKED}), and only one of its three daily trains goes on to Beppu. For
             both towns in one day, book the tour; take the train for Yufuin alone or a night there.
@@ -540,10 +545,11 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Last checked: {LAST_CHECKED} —{" "}
-            <a href={JRK_TRAIN_URL} target="_blank" rel="noopener">JR Kyushu Yufuin no Mori page</a>{" "}
-            (timetable of 14 March 2026, Hakata–Yufuin {YUFUIN_NO_MORI_FARE} adult fare). Tour lengths as the Klook
-            listings state them; open a listing for the price on your date.
+            Last checked: {PRICE_ISO} for the Hakata–Yufuin {YUFUIN_NO_MORI_FARE} adult fare ({YUFUIN_NET_FARE} Kyushu
+            Net ticket) on the{" "}
+            <a href={JRK_TRAIN_URL} target="_blank" rel="noopener">JR Kyushu Yufuin no Mori page</a>, and for the Klook
+            from-price of about US$44 on the Yufuin no Mori and Beppu Ropeway tours; timetable of 14 March 2026 read{" "}
+            {LAST_CHECKED}. Tour lengths as the Klook listings state them; open a listing for the price on your date.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>Going by train?</strong> Check the Yufuin no Mori calendar first, because it does not run

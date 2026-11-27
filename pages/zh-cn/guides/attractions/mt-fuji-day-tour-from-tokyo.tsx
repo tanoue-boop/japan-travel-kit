@@ -35,9 +35,14 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const LOCALE = "zh-cn" as const;
 const ROUTE = "/zh-cn/guides/attractions/mt-fuji-day-tour-from-tokyo";
-const TITLE = "富士山一日游（东京出发·2026）：行程怎么选、五合目看什么";
+// Nov 27 C02: 3.0位·CTR 0% — query word order 东京出发富士山一日游 + price. The from-price is the
+// www.klook.com search-index snapshot on PRICE_ISO of Klook's Tokyo-departing Mt Fuji coach
+// tours (Fuji & Hakone from US$43.95, Fuji-only about US$46–49); Klook answers automated reads
+// with 403 and prices change by date.
+const PRICE_ISO = "2026-11-27";
+const TITLE = "东京出发富士山一日游 2026：价格与路线";
 const DESC =
-  "比较东京出发的富士山一日游：富士山周边游还是加箱根；富士山五合目是什么地方、行程总时长、境外游客怎么订。与英文版同一组数据、同一个核查日。";
+  "东京出发富士山一日游：Klook 巴士团约 US$44 起，全程约 11 小时，都停富士山五合目。富士山周边游与加箱根两条路线怎么选，一页看懂。";
 const GYG_SLUG = "zh-cn-mt-fuji-day-tour-from-tokyo";
 
 const CHECKED = dateLabel("2026-10-19", LOCALE);
@@ -149,6 +154,10 @@ const steps = [
 
 const faqItems: FaqItem[] = [
   {
+    q: "东京出发的富士山一日游多少钱？",
+    a: "Klook 上东京出发的富士山巴士一日游，富士山加箱根的拼团约 US$44 起，只去富士山周边（河口湖、忍野八海）的拼团约 US$46–49 起；新干线返程或包车行程贵得多。价格按日期变动，箱根海贼船等部分门票需自付，请在行程页确认你出行日期的价格与所含项目。核查日期 2026-11-27。",
+  },
+  {
     q: "东京出发的富士山一日游值得吗？",
     a: "对大多数只有一天可以去郊外的游客来说，值得——主要是因为替代方案比看起来难。富士山五合目坐电车到不了，自己去就得换乘巴士或租车，而山周边的景点又很分散。巴士团把这些收拢成一次预订。要注意的是天气：富士山经常被云层遮挡，没有任何行程能保证你看到它。",
   },
@@ -196,7 +205,7 @@ export default function CnMtFujiDayTourPage({ updated }: { updated: PageUpdated 
     <>
       <Head>
         {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems.slice(0, 5)) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -218,7 +227,7 @@ export default function CnMtFujiDayTourPage({ updated }: { updated: PageUpdated 
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            富士山一日游（东京出发·2026）： <br />行程怎么选、实际能看到什么
+            东京出发富士山一日游 2026： <br />价格与路线怎么选
           </h1>
           <p className={styles.heroSubtitle}>
             每个行程都会停靠富士山五合目（Fuji Subaru Line）。区别在于剩下的时间是安排在富士山周边还是箱根——
@@ -236,6 +245,18 @@ export default function CnMtFujiDayTourPage({ updated }: { updated: PageUpdated 
 
       <div className={styles.content}>
         <Disclosure />
+
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            东京出发的<strong>富士山一日游</strong>在 Klook 上约 <strong>US$44 起</strong>（富士山加箱根拼团巴士），
+            只去河口湖与忍野八海的富士山周边游约 US$46–49 起，全程约 <strong>11 小时</strong>，每条路线都会停富士山五合目。
+            一天里想去两个地方就选加箱根的行程，想在湖边多待就选富士山周边游；山顶能不能看到要看天气，没有行程能保证。
+          </p>
+          <p className={styles.bodyText}>回到东京后的其他天怎么排，<Link href="/zh-cn/guides/attractions/things-to-do-tokyo">东京必去景点</Link>列出了 11 个景点的门票价格与要不要先订。</p>
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {PRICE_ISO} · 价格来自 klook.com 上东京出发的富士山一日游行程页，按日期与币种变动；行程时长按 {CHECKED} 的行程页描述。
+          </p>
+        </section>
 
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -325,7 +346,7 @@ export default function CnMtFujiDayTourPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            内容与时长按 {CHECKED} Klook 行程页上的描述。这里不列价格：Klook 价格随日期变化——请打开行程页查看出行日期的实时价格。
+            内容与时长按 {CHECKED} Klook 行程页上的描述。起价见页首（{PRICE_ISO} 核查）；Klook 价格随日期变化——请打开行程页查看出行日期的实时价格。
           </p>
         </section>
 

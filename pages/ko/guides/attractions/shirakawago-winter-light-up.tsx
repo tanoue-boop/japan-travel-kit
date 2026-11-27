@@ -555,7 +555,11 @@ export default function KoShirakawagoWinterLightUpPage({ updated }: { updated: P
             <Link href="/ko/guides/attractions/japan-winter-itinerary" style={linkStyle}>
               일본 겨울 여행 일정
             </Link>
-            에 정리했습니다.
+            에 정리했습니다. 겨울 여행을 북쪽의 눈 축제로 잡는다면{" "}
+            <Link href="/ko/guides/attractions/hokkaido-7-day-itinerary" style={linkStyle}>
+              홋카이도 7일 여행 코스
+            </Link>
+            를 참고하세요.
           </p>
         </section>
 

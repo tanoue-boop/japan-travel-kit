@@ -657,9 +657,10 @@ const faqItems = [
 ];
 
 // Queries 홋카이도 7일 일정 / 홋카이도 겨울 여행 코스 (Nov 17 C01). One string for <title>, og and headline.
-const TITLE = "홋카이도 7일 일정(2027): 겨울 여행 코스와 패스 계산";
+// Nov 27 C02: 7.1위·CTR 0% — the query word order 홋카이도 7일 여행 코스 + 겨울 leads the title.
+const TITLE = "홋카이도 7일 여행 코스 2026 겨울: 삿포로·후라노 일정";
 const DESC =
-  "홋카이도 7일 일정: 삿포로 4박·후라노 2박 겨울 여행 코스, 철도 ¥17,700. 7일 패스 대신 4일 패스 ¥11,000. 투어는 클룩.";
+  "홋카이도 7일 여행 코스(겨울): 삿포로 4박·후라노 2박, 철도 ¥17,700. 7일 패스 대신 4일 패스 ¥11,000. 투어는 클룩.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -689,7 +690,7 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
 업데이트 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-홋카이도 7일 일정(2027): <br />겨울 여행 코스와 패스 계산
+홋카이도 7일 여행 코스 2026 겨울: <br />삿포로·후라노 일정과 패스 계산
 </h1>
           <p className={styles.heroSubtitle}>
 두 곳을 거점으로 6박, 일자별 일정표로 정리했습니다. JR 홋카이도 요금으로 계산한 철도 패스, 2월과 7월 버전 비교까지.

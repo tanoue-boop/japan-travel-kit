@@ -167,7 +167,7 @@ const SEARCH_TERMS = {
   "/guides/attractions/hokkaido-7-day-itinerary": {
     "zh-tw": "北海道7天行程",
     "zh-cn": "北海道7日游",
-    ko: "홋카이도 7일 일정", // GSC query, switched 2026-11-17 (C01)
+    ko: "홋카이도 7일 여행 코스", // GSC query, switched 2026-11-27 (C02; was 홋카이도 7일 일정 from 11-17 C01)
     th: "เที่ยวฮอกไกโด 7 วัน",
   },
   "/guides/attractions/japan-winter-itinerary": {

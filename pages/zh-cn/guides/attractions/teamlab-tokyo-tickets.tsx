@@ -285,6 +285,7 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           <p className={styles.bodyText}>
             麻布台之丘的 teamLab 无界出售成人 {BORDERLESS_ADULT} 的指定时段门票和不指定入场时间的 Flexible Pass，约在参观日期前两个月的 1 日开售。开售日期、Flexible Pass、闭馆时间变动和现场购票，请看无界门票攻略。
           </p>
+          <p className={styles.bodyText}>teamLab 之外还要排哪些地方，<Link href="/zh-cn/guides/attractions/things-to-do-tokyo">东京必去景点</Link>按门票价格与预约时机列出了 11 个景点。</p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <Link href="/zh-cn/guides/attractions/teamlab-borderless-tickets" className={styles.verdictBtn}>
               查看完整的无界门票攻略 →

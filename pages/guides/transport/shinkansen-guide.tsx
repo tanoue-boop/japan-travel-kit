@@ -668,7 +668,10 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
               JR Kyushu Rail Pass
             </Link>{" "}
             (All Kyushu from ¥22,000 for 3 days); the Hakata–Kokura stretch is JR West&apos;s Sanyo Shinkansen and is
-            not.
+            not. Yufuin is not on the Shinkansen at all — from Hakata it is the Yufuin no Mori limited express or a{" "}
+            <Link href="/guides/attractions/yufuin-beppu-tour-from-fukuoka" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Yufuin and Beppu day tour from Fukuoka
+            </Link>.
           </p>
           <p className={styles.bodyText}>
             What makes the Shinkansen remarkable isn&apos;t just speed: it&apos;s reliability.

@@ -44,9 +44,10 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const ROUTE = "/zh-cn/guides/attractions/things-to-do-tokyo";
 // Queries 东京必去景点 / 东京景点门票 (Nov 17 C01). One string for <title>, og, twitter and the headline.
-const TITLE = "东京必去景点 2026：东京景点门票价格与预约清单";
+// Nov 27 C02: 6.1位·CTR 0% — a count in the title; 11 = the rows of the price table below.
+const TITLE = "东京必去景点 2026：11个景点门票价格与预约清单";
 const DESC =
-  "东京必去景点与东京景点门票：迪士尼成人 ¥8,900 起、teamLab Planets ¥3,800 起须先订，都厅观景台免费，按钮直达 Klook。";
+  "东京必去景点11个门票价格一览：迪士尼成人 ¥8,900 起、teamLab Planets ¥3,800 起须先订，都厅观景台免费，按钮直达 Klook。";
 // Re-read on the official sites on this date: Disney ¥8,900~, teamLab Planets ¥3,800~, Tocho deck free at 202 m.
 const RECHECKED_ISO = "2026-11-17";
 
@@ -338,7 +339,7 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            东京必去景点 2026： <br />东京景点门票价格与预约清单
+            东京必去景点 2026： <br />11个景点门票价格与预约清单
           </h1>
           <p className={styles.heroSubtitle}>
             东京热门景点的官方门票价格、哪些要先订、哪些免费，
@@ -366,7 +367,7 @@ export default function CnThingsToDoTokyoPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText}>
             东京有 5 个必去景点：涩谷SKY、teamLab Planets、东京迪士尼、东京晴空塔，以及 202 米高、免费入场的东京都厅观景室。
             东京景点门票里，东京迪士尼一日护照成人 ¥8,900 起、teamLab Planets 成人 ¥3,800 起，两者都必须提前在线订好（{RECHECKED_ISO} 官网核查）。
-            华纳兄弟哈利·波特影城（{PRICES.wbStudioTour.adult}）与三丽鸥彩虹乐园的入园预约也要提前办理，其他景点大多可以当天再决定。
+            华纳兄弟哈利·波特影城（{PRICES.wbStudioTour.adult}）与三丽鸥彩虹乐园的入园预约也要提前办理，其他景点大多可以当天再决定。下方门票价格表列出 11 个景点的成人票价与核查日期。
           </p>
           <p className={styles.bodyText}>
             这一页只谈东京。京都、大阪与儿童票价请看{" "}

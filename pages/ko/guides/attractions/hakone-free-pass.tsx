@@ -563,7 +563,9 @@ export default function KoHakoneFreePassPage({ updated }: { updated: PageUpdated
             탑승 시간 합계는 이 시간들을 더한 값입니다. 로프웨이와 유람선은 강풍이나 악천후에 운행을 중단하며,
             로프웨이는 매년 정기 점검으로도 운휴합니다. 겨울 운휴 일정은{" "}
             <Link href="/guides/attractions/hakone-2-day-itinerary" style={linkStyle}>하코네 2일 일정(영어)</Link>에
-            정리했습니다.
+            정리했습니다. 눈 속 온천까지 겨울 일주일로 잡는다면 조잔케이 온천이 들어간{" "}
+            <Link href="/ko/guides/attractions/hokkaido-7-day-itinerary" style={linkStyle}>홋카이도 7일 여행 코스</Link>를
+            보세요.
           </p>
         </section>
 
