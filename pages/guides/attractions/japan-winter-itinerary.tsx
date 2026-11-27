@@ -747,7 +747,11 @@ const days: Day[] = [
         reserving rather than walking into, and the shops have winter sets with a haori over the top.
         Where to sleep matters more than what to book: our{" "}
         <Link href="/guides/attractions/where-to-stay-in-kyoto">where to stay in Kyoto guide</Link>{" "}
-        compares the station, the centre and Arashiyama on travel time rather than on atmosphere.
+        compares the station, the centre and Arashiyama on travel time rather than on atmosphere. If
+        your Kyoto day falls before the winter closure or from 1 March, the running days and how seats
+        are sold are in our{" "}
+        <Link href="/guides/attractions/sagano-romantic-train-tickets">Sagano Romantic Train tickets</Link>{" "}
+        guide.
       </>
     ),
     picks: [

@@ -721,7 +721,9 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/transport/kyoto-subway-bus-pass">Kyoto subway and bus pass</Link> guide works
             the break-even ride by ride, and our{" "}
             <Link href="/guides/transport/kyoto-transportation">getting around Kyoto guide</Link> has the
-            details.
+            details. For the JR days themselves — the HARUKA in from the airport, Inari, Arashiyama and Nara —
+            our <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass</Link> guide works out when
+            the JR-only pass beats single tickets.
           </p>
         </section>
 

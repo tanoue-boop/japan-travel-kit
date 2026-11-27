@@ -15,6 +15,7 @@ import {
   type FaqItem,
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
+import NextBookingBlock from "../../../../components/NextBookingBlock";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
 import KlookSameDayCards from "../../../../components/KlookSameDayCards";
@@ -509,6 +510,8 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
               预订前请注意：每个日期的门票在入场日两周前的日本时间 00:00 才开放，更远的日期暂时还选不了。Klook 商品页注明，2026 年 11 月
               19 日及以后入场，预订中的每一位都须携带与预订信息一致的护照原件。
             </p>
+            {/* A34 (27 Nov 2026): the next booking of the same trip (high-EPC guides) — lib/next-booking.ts. */}
+            <NextBookingBlock region="tokyo" locale="zh-cn" />
           </div>
         </div>
 

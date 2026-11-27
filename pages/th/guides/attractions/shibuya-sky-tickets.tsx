@@ -16,6 +16,7 @@ import {
   type FaqItem,
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
+import NextBookingBlock from "../../../../components/NextBookingBlock";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
 import KlookSameDayCards from "../../../../components/KlookSameDayCards";
@@ -473,6 +474,8 @@ export default function ThShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
               ก่อนจอง: ตั๋วของแต่ละวันเปิดขายเวลา 00:00 น. ตามเวลาญี่ปุ่น สองสัปดาห์ก่อนวันเข้าชม วันที่ไกลกว่านั้นจึงยังเลือกไม่ได้
               และหน้าสินค้าของ Klook ระบุว่า สำหรับการเข้าชมตั้งแต่วันที่ 19 พฤศจิกายน 2026 ทุกคนในการจองต้องนำหนังสือเดินทางฉบับจริงที่ตรงกับข้อมูลที่กรอกไว้มาด้วย
             </p>
+            {/* A34 (27 Nov 2026): the next booking of the same trip (high-EPC guides) — lib/next-booking.ts. */}
+            <NextBookingBlock region="tokyo" locale="th" />
           </div>
         </div>
 

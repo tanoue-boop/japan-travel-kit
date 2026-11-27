@@ -16,6 +16,7 @@ import {
   type FaqItem,
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
+import NextBookingBlock from "../../../../components/NextBookingBlock";
 import KlookStayAreas from "../../../../components/KlookStayAreas";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
 import GygCompare, { GygCompareButton } from "../../../../components/GygCompare";
@@ -576,6 +577,8 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               가격은 입장일마다 다르고, 클룩 상품 페이지에는 붐비는 날짜의 판매가 중단될 수 있다는 안내가 있으니
               방문 날짜를 골라 그날 가격과 판매 여부를 확인하세요.
             </p>
+            {/* A34 (27 Nov 2026): the next booking of the same trip (high-EPC guides) — lib/next-booking.ts. */}
+            <NextBookingBlock region="osaka" locale="ko" />
           </div>
         </div>
 

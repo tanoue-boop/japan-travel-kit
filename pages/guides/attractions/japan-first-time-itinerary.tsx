@@ -121,7 +121,9 @@ const days: Day[] = [
         {PRICES.shibuyaSky.adult} (read {checkedLabel(PRICES.teamlabPlanets.checked)} and{" "}
         {checkedLabel(PRICES.shibuyaSky.checked)}). Klook&apos;s SHIBUYA SKY listing now says that for
         visits from 19 November 2026 its buyers must bring the original passport for everyone in the party,
-        and that QR codes are not accepted (read {OWN}), so pack them.
+        and that QR codes are not accepted (read {OWN}), so pack them. Licensed drivers who brought a 1949
+        Geneva IDP can also see Harajuku and the Scramble Crossing from a street kart:{" "}
+        <Link href="/guides/attractions/tokyo-go-kart">go-karting in Tokyo</Link>.
       </>
     ),
     stops: [
@@ -143,7 +145,8 @@ const days: Day[] = [
       <>
         Pick one. Hakone is lake, ropeway and a chance of Mt Fuji, about 80 minutes from Shinjuku on the
         Romancecar. Nikko is shrines and forest, about 1 hour 50 from Asakusa on the SPACIA X, whose
-        timetable shows 9:00 arriving at 10:50. Both read on {OWN}. The Hakone Freepass is{" "}
+        timetable shows 9:00 arriving at 10:50. Both read on {OWN}. The{" "}
+        <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass</Link> is{" "}
         {PRICES.hakoneFreepass.adult} for two days from Shinjuku, with no 1-day version (read{" "}
         {checkedLabel(PRICES.hakoneFreepass.checked)}). If you would rather not plan it, take a coach day.
       </>
@@ -238,7 +241,9 @@ const days: Day[] = [
         Choose by who you are travelling with. The city day is the Osaka Amazing Pass, at{" "}
         {PRICES.osakaAmazingPass.adult} for one day (read {checkedLabel(PRICES.osakaAmazingPass.checked)}),
         which covers the subway and the castle. The park day is Universal Studios Japan, which stopped
-        selling at the gate in May 2025, so that ticket has to be bought before you arrive.
+        selling at the gate in May 2025, so that ticket has to be bought before you arrive. For an
+        afternoon in Umeda, the open-air deck is covered in our{" "}
+        <Link href="/guides/attractions/umeda-sky-building-tickets">Umeda Sky Building tickets</Link> guide.
       </>
     ),
     stops: [
@@ -552,7 +557,9 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
             Tokyo, then Kyoto, then Osaka, on a ticket into Tokyo and home from Kansai, so that no leg is
             repeated. Hakone or Nikko fits from Tokyo and Nara fits from Kyoto, which is why those two are the
             day trips here. If your flights are a return to Haneda, keep the same order and take the shinkansen
-            back on the last morning, as Day 9 sets out.
+            back on the last morning, as Day 9 sets out. Run in reverse (Osaka, Kyoto, then Tokyo), the one long
+            leg is the ride in our{" "}
+            <Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo shinkansen</Link> guide.
           </p>
         </section>
 

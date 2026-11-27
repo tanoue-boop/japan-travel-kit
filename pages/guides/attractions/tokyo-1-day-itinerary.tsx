@@ -392,7 +392,9 @@ export default function Tokyo1DayItineraryPage({ updated }: { updated: PageUpdat
           <h2 className={styles.sectionTitle}>What Is the Best One-Day Route in Tokyo? Asakusa to Skytree</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Route A is the safest first day: old Tokyo in the morning, the tallest deck at midday and Tokyo Tower lit up
-            at night, all on the Ginza, Toei Asakusa and Hibiya lines. Only Skytree is worth booking.
+            at night, all on the Ginza, Toei Asakusa and Hibiya lines. Only Skytree is worth booking — our{" "}
+            <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree tickets</Link> guide compares the
+            350 m and 450 m decks.
           </p>
           <SimpleTable head={stopHead} rows={stopRows(routeA)} />
           <p className={styles.bodyText} style={note}>
@@ -410,7 +412,9 @@ export default function Tokyo1DayItineraryPage({ updated }: { updated: PageUpdat
           <h3 className={styles.sectionTitle} style={h3}>Route B: Meiji Jingu, Harajuku, Shibuya and Shinjuku</h3>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             The west side, almost all on the Fukutoshin Line. The fixed point is the SHIBUYA SKY sunset slot: book it
-            first and fit the afternoon around it.
+            first and fit the afternoon around it. If you hold a driving licence and a 1949 Geneva International
+            Driving Permit, street karts also run past Shibuya Crossing and Harajuku — see{" "}
+            <Link href="/guides/attractions/tokyo-go-kart">go-karting in Tokyo</Link>.
           </p>
           <SimpleTable head={stopHead} rows={stopRows(routeB)} />
           <p className={styles.bodyText} style={note}>
@@ -422,7 +426,9 @@ export default function Tokyo1DayItineraryPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             The bay side, for a food morning and a waterfront evening. The Tsukiji Outer Market asks visitors to
             refrain from sightseeing and group tours in December, when New Year shoppers fill it, so in December take
-            Route A or B instead.
+            Route A or B instead. If it rains at the Odaiba end, Sega&apos;s indoor park in DECKS Tokyo Beach is the
+            covered swap — see our <Link href="/guides/attractions/tokyo-joypolis-tickets">Tokyo Joypolis tickets</Link>{" "}
+            guide.
           </p>
           <SimpleTable head={stopHead} rows={stopRows(routeC)} />
           <p className={styles.bodyText} style={note}>

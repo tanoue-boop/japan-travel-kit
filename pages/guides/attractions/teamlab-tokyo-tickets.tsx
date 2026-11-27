@@ -4,6 +4,7 @@ import KlookTourPicks from "../../../components/KlookTourPicks";
 import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
+import NextBookingBlock from "../../../components/NextBookingBlock";
 import {
   fujiDayTour,
   teamlabBorderlessTicketUrl,
@@ -253,6 +254,8 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
               Both museums price adult tickets by date and publish only the lowest price, so pick your date and
               time on the listing to see the real price and the open slots.
             </p>
+            {/* A34 (27 Nov 2026): the next booking of the same trip (high-EPC guides) — lib/next-booking.ts. */}
+            <NextBookingBlock region="tokyo" />
           </div>
         </div>
 

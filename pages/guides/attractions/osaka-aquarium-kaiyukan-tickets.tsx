@@ -5,6 +5,7 @@ import KlookTripPrep from "../../../components/KlookTripPrep";
 import KlookSameDayCards from "../../../components/KlookSameDayCards";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
+import NextBookingBlock from "../../../components/NextBookingBlock";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -511,6 +512,8 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
               Check Kaiyukan tickets for your date on Klook →
             </KlookLink>
           </div>
+          {/* A34 (27 Nov 2026): the next booking of the same trip (high-EPC guides) — lib/next-booking.ts. */}
+          <NextBookingBlock region="osaka" />
         </section>
 
         <KlookSameDayCards

@@ -489,7 +489,8 @@ export default function Tokyo4DayItineraryPage({ updated }: { updated: PageUpdat
           <h2 className={styles.sectionTitle}>What Should You Do on Days 1, 2 and 4?</h2>
           <p className={styles.bodyText}>
             <strong>Day 1</strong> is old Tokyo: Senso-ji before the crowds, Nakamise-dori, Ueno Park and Ameyoko,
-            then Tokyo Skytree ({PRICES.tokyoSkytree.adult}, cheaper booked ahead than at the same-day counter) for
+            then Tokyo Skytree ({PRICES.tokyoSkytree.adult}, cheaper booked ahead than at the same-day counter — see{" "}
+            <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree tickets</Link>) for
             the evening view. With an hour to spare in Asakusa, a{" "}
             <Link href="/guides/attractions/tea-ceremony-japan">tea ceremony in Tokyo</Link> near Senso-ji
             takes about 90 minutes with a kimono included, and{" "}
@@ -503,7 +504,9 @@ export default function Tokyo4DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/tokyo-food-tour">Tokyo food tours comparison</Link>), a walk through Ginza, teamLab Planets in Toyosu ({PRICES.teamlabPlanets.adult}, timed
             entry, nothing sold on site — see the{" "}
             <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets</Link> guide) and the
-            Odaiba seafront before the airport. Licensed drivers can see the same bay from street level: the{" "}
+            Odaiba seafront before the airport (if it rains, Sega&apos;s indoor park two minutes from
+            Odaiba-Kaihinkoen Station is covered in our{" "}
+            <Link href="/guides/attractions/tokyo-joypolis-tickets">Tokyo Joypolis tickets</Link> guide). Licensed drivers can see the same bay from street level: the{" "}
             <Link href="/guides/attractions/tokyo-go-kart">Tokyo go-kart</Link> guide lists the 1.5 to 2-hour
             Tokyo Bay course past Rainbow Bridge and Tokyo Tower, and the paper 1949 Geneva IDP it requires.
             Prefer shoes-on art in central Tokyo? Swap in Azabudai Hills with

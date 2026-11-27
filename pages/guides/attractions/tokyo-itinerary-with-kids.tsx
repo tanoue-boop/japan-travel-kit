@@ -767,7 +767,9 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             {day.id === "day-5" && (
               <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
                 Kotoku-in is {KOTOKUIN.adult} for an adult and {KOTOKUIN.child} for ages 6–12 (read{" "}
-                {checkedLabel(KOTOKUIN.checked)}). The Hakone Freepass from Shinjuku is {HAKONE.adult} adult and{" "}
+                {checkedLabel(KOTOKUIN.checked)}). The{" "}
+                <Link href="/guides/attractions/hakone-free-pass" style={{ color: "var(--text)", fontWeight: 600 }}>Hakone Freepass</Link>{" "}
+                from Shinjuku is {HAKONE.adult} adult and{" "}
                 {HAKONE.child} child for two days, and the Romancecar adds ¥1,200 adult and ¥600 child from
                 Shinjuku to Hakone-Yumoto (Odakyu, read {checkedLabel(HAKONE.checked)}). Both days are covered in our{" "}
                 <Link href="/guides/attractions/kamakura-day-trip" style={{ color: "var(--text)", fontWeight: 600 }}>Kamakura</Link>{" "}
@@ -961,7 +963,9 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             nowhere near that. The Hakone option is on Odakyu, which no JR Pass covers. A pass starts to pay only
             when you add a shinkansen to Kyoto or Osaka; our{" "}
             <Link href="/guides/transport/jr-pass-guide" style={linkStyle}>JR Pass guide</Link> has the
-            break-even calculator.
+            break-even calculator, and the{" "}
+            <Link href="/guides/transport/kyoto-to-tokyo-shinkansen" style={linkStyle}>Kyoto to Tokyo shinkansen</Link>{" "}
+            guide covers the ride back if Tokyo is your last stop.
           </p>
         </section>
 

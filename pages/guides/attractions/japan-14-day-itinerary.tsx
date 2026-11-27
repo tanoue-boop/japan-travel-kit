@@ -318,7 +318,11 @@ const legs: Leg[] = [
             <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets guide</Link>{" "}
             also covers what to wear, because parts of it are walked barefoot through water. Skytree
             is worth booking for a different reason: the same-day counter adds a service fee per
-            ticket, so buying ahead is cheaper rather than safer.
+            ticket, so buying ahead is cheaper rather than safer — our{" "}
+            <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree tickets</Link> guide sets
+            out Floor 350 against the 350 + 450 combo. The Akihabara hours need nothing booked, unless
+            you hold a 1949 Geneva driving permit and want to see the district from a street kart — see{" "}
+            <Link href="/guides/attractions/tokyo-go-kart">go-karting in Tokyo</Link>.
           </>
         ),
         picks: [
@@ -801,7 +805,9 @@ const legs: Leg[] = [
             <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass guide</Link>{" "}
             works the break-even against single admissions and names the two attractions everyone
             assumes are on it that are not — Universal Studios Japan being one, which matters for Day
-            12. Getting around is covered in our{" "}
+            12. If you pick the Umeda deck, our{" "}
+            <Link href="/guides/attractions/umeda-sky-building-tickets">Umeda Sky Building tickets</Link>{" "}
+            guide has the hours and the heavy-rain rooftop rule. Getting around is covered in our{" "}
             <Link href="/guides/transport/osaka-transportation">Getting Around Osaka guide</Link>.
           </>
         ),

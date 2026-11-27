@@ -448,7 +448,11 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
             Tokyo Teleport Station), Tsukiji and Ginza; and the Green route Shinjuku, Shibuya and Tokyo Tower.
             The bus does not include the decks themselves — what Skytree, Tokyo Tower and SHIBUYA SKY cost to go up
             is compared in{" "}
-            <Link href="/guides/attractions/tokyo-observation-decks">Tokyo observation decks</Link>.
+            <Link href="/guides/attractions/tokyo-observation-decks">Tokyo observation decks</Link>, and
+            Skytree on its own in{" "}
+            <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree tickets</Link>. If you get off at
+            the Odaiba stop on a wet day, Sega&apos;s indoor park there is in our{" "}
+            <Link href="/guides/attractions/tokyo-joypolis-tickets">Tokyo Joypolis tickets</Link> guide.
           </p>
           <p className={styles.bodyText}>
             Commentary is an audio guide in seven languages, not a live guide, and seats are not reserved — if a
@@ -496,7 +500,10 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
             The Sky Hop Bus <strong>1 Day Ticket is ¥4,800</strong> (children ¥2,400) and the{" "}
             <strong>2 Day Ticket ¥7,000</strong> (¥3,500); both cover all three routes — <strong>Red</strong> for Asakusa, Tokyo Skytree, Ryogoku, Ueno and Akihabara,{" "}
             <strong>Blue</strong> for Tokyo Tower, Odaiba, Tsukiji and Ginza, and <strong>Green</strong> for
-            Shinjuku, Shibuya and Tokyo Tower — with 19 stops in all.
+            Shinjuku, Shibuya and Tokyo Tower — with 19 stops in all. For licensed drivers, a self-drive
+            alternative through Akihabara or Shibuya is the street kart — see{" "}
+            <Link href="/guides/attractions/tokyo-go-kart">Tokyo go-kart</Link> for the International Driving
+            Permit it needs.
           </p>
           <p className={styles.bodyText}>
             Three things Sky Hop Bus states that decide whether it suits you: the one-day ticket is valid on the

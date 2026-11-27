@@ -342,7 +342,8 @@ const days: Day[] = [
         {PRICES.tokyoSkytree.adult} for an adult, buying ahead is simply cheaper than the same-day
         counter, as our{" "}
         <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree tickets guide</Link>{" "}
-        explains.
+        explains. If the evening goes out to Odaiba, Sega&apos;s indoor park there is covered in our{" "}
+        <Link href="/guides/attractions/tokyo-joypolis-tickets">Tokyo Joypolis tickets</Link> guide.
       </>
     ),
     picks: [
@@ -804,7 +805,10 @@ const days: Day[] = [
         student, 9:00–18:00 with last admission 17:30, read on {OSAKA_CASTLE_CHECKED} — and that one
         <em>is</em> on the pass, as our{" "}
         <Link href="/guides/attractions/osaka-castle-tickets">Osaka Castle tickets guide</Link>{" "}
-        prices out. The Kaiyukan sells 15-minute entry slots and prices by date; the detail is in our{" "}
+        prices out. For the Umeda deck after the pass&apos;s 15:00 cut-off, the ticket price and opening
+        hours are in our{" "}
+        <Link href="/guides/attractions/umeda-sky-building-tickets">Umeda Sky Building tickets</Link> guide.
+        The Kaiyukan sells 15-minute entry slots and prices by date; the detail is in our{" "}
         <Link href="/guides/attractions/osaka-aquarium-kaiyukan-tickets">Kaiyukan tickets guide</Link>.
         If the answer is USJ, our{" "}
         <Link href="/guides/attractions/usj-tickets-express-pass">USJ tickets and Express Pass guide</Link>{" "}
@@ -2082,7 +2086,9 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
             miss. Seat classes and the luggage rules are in our{" "}
             <Link href="/guides/transport/shinkansen-guide">shinkansen guide</Link>, and the train
             types and fares for the one long leg in our{" "}
-            <Link href="/guides/transport/tokyo-to-kyoto">Tokyo to Kyoto guide</Link>.
+            <Link href="/guides/transport/tokyo-to-kyoto">Tokyo to Kyoto guide</Link> &mdash; or, if you
+            run the trip in reverse, the eastbound line and its stops in our{" "}
+            <Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo shinkansen</Link> guide.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shinkansenTokyoKyoto.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

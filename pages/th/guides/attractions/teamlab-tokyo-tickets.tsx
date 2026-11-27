@@ -22,6 +22,7 @@ import {
   type FaqItem,
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
+import NextBookingBlock from "../../../../components/NextBookingBlock";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
 import { fujiDayTour, klookEsim, tokyoSightseeingBusTour, tokyoSubwayTicket } from "../../../../lib/klook-links";
 import { thTeamlabBorderless, thTeamlabPlanets } from "../../../../lib/klook-links-th";
@@ -202,6 +203,8 @@ export default function ThTeamLabTokyoPage({ updated }: { updated: PageUpdated }
                 { label: "eSIM ญี่ปุ่นของ Klook", url: klookFor(klookEsim.url, "th") },
               ]}
             />
+            {/* A34 (27 Nov 2026): the next booking of the same trip (high-EPC guides) — lib/next-booking.ts. */}
+            <NextBookingBlock region="tokyo" locale="th" />
           </div>
         </div>
 

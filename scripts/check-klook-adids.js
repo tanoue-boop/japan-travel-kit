@@ -160,13 +160,18 @@ if (BUILT) {
       placementKeys.filter((k) => k.startsWith(`${route}#`)).map((k) => [allPages[k], k]),
     );
     const markup = fs.readFileSync(file, "utf8");
-    const hrefs = [...markup.matchAll(/<a\s[^>]*href="([^"]*klook\.com[^"]*)"/g)].map((m) =>
-      m[1].replace(/&amp;/g, "&"),
-    );
-    for (const href of hrefs) {
+    const anchors = [...markup.matchAll(/<a\s[^>]*href="([^"]*klook\.com[^"]*)"[^>]*>/g)].map((m) => ({
+      href: m[1].replace(/&amp;/g, "&"),
+      // A next-booking row (lib/next-booking.ts) carries the ad id of the guide it is about.
+      adPage: (m[0].match(/data-ad-page="([^"]+)"/) || [])[1],
+    }));
+    for (const { href, adPage } of anchors) {
       total++;
       const adId = (href.match(/[?&]aff_adid=(\d+)/) || [])[1];
-      if (expected === undefined) {
+      if (adPage && allPages[adPage] !== undefined) {
+        if (Number(adId) === allPages[adPage]) correct++;
+        else wrong.push(`${route}: expected aff_adid=${allPages[adPage]} (data-ad-page ${adPage}), got ${adId || "none"}`);
+      } else if (expected === undefined) {
         if (adId) wrong.push(`${route}: ad id ${adId} on a page with none assigned — ${href.slice(0, 90)}`);
         else fallback.set(route, (fallback.get(route) || 0) + 1);
       } else if (Number(adId) === expected) {

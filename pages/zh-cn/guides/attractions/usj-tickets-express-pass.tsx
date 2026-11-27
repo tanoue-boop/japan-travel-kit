@@ -15,6 +15,7 @@ import {
   type FaqItem,
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
+import NextBookingBlock from "../../../../components/NextBookingBlock";
 import KlookStayAreas from "../../../../components/KlookStayAreas";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
 import GygCompare, { GygCompareButton } from "../../../../components/GygCompare";
@@ -570,6 +571,8 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
                 { label: "关西机场⇄USJ 利木津巴士", url: klookFor(kansaiAirportLimousineBus.url, LOCALE) },
               ]}
             />
+            {/* A34 (27 Nov 2026): the next booking of the same trip (high-EPC guides) — lib/next-booking.ts. */}
+            <NextBookingBlock region="osaka" locale="zh-cn" />
           </div>
         </div>
 

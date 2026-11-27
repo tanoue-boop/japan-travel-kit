@@ -15,6 +15,7 @@ import {
   type FaqItem,
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
+import NextBookingBlock from "../../../../components/NextBookingBlock";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
 import GygCompare, { GygCompareButton } from "../../../../components/GygCompare";
@@ -457,6 +458,8 @@ export default function ThTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
               </KlookLink>
               <GygCompareButton slug={GYG_SLUG} listing={gygTokyoDisneyResort} />
             </div>
+            {/* A34 (27 Nov 2026): the next booking of the same trip (high-EPC guides) — lib/next-booking.ts. */}
+            <NextBookingBlock region="tokyo" locale="th" />
           </div>
         </div>
 

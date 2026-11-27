@@ -537,7 +537,7 @@ export default function Japan3WeekItineraryPage({ updated }: { updated: PageUpda
           <h2 className={styles.sectionTitle}>What Should I Do in Tokyo, Nikko and Hakone (Days 1–6)?</h2>
           <p className={styles.bodyText}>
             Four full Tokyo days give each side of the city its own day: the old east (Asakusa, Ueno,
-            Skytree) on Day 2, the west (Meiji Jingu, Harajuku, Shibuya Sky) on Day 3, the bay (teamLab
+            Skytree — see <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree tickets</Link>) on Day 2, the west (Meiji Jingu, Harajuku, Shibuya Sky) on Day 3, the bay (teamLab
             Planets, Tsukiji, Ginza) on Day 4, and Day 5 free or on a tour. The two timed tickets are Shibuya
             Sky ({PRICES.shibuyaSky.adult} online, before / from 15:00) and teamLab Planets (
             {PRICES.teamlabPlanets.adult}). For the full Tokyo days, see the{" "}
@@ -547,7 +547,8 @@ export default function Japan3WeekItineraryPage({ updated }: { updated: PageUpda
             <strong>Day 6 — Nikko or Hakone?</strong> Nikko for Toshogu ({TOSHOGU_ADULT}, toshogu.jp,{" "}
             {TOSHOGU_CHECKED}) and Kegon Falls; it is on JR via Utsunomiya, so a JR Pass would cover it, or
             about two hours by Tobu from Asakusa. Hakone for the ropeway, Lake Ashi and an onsen night; it is
-            Odakyu&apos;s territory, and the Hakone Freepass ({PRICES.hakoneFreepass.adult} for two days) is the
+            Odakyu&apos;s territory, and the{" "}
+            <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass</Link> ({PRICES.hakoneFreepass.adult} for two days) is the
             ticket. Either way you come back through Tokyo on Day 7 for the Kanazawa train.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
@@ -611,7 +612,9 @@ export default function Japan3WeekItineraryPage({ updated }: { updated: PageUpda
             <strong>Kyoto, Days 12–14:</strong> Fushimi Inari early and Kiyomizu-dera on Day 12, Kinkaku-ji
             ({KINKAKUJI_ADULT}, shokoku-ji.jp, {KINKAKUJI_CHECKED}) and Arashiyama on Day 13, and Nara on Day 14
             (Todai-ji {PRICES.todaiji.adult}). The <Link href="/guides/attractions/kyoto-3-day-itinerary">Kyoto
-            3 day itinerary</Link> has these days hour by hour.
+            3 day itinerary</Link> has these days hour by hour. To add the scenic train out of Arashiyama on
+            Day 13, check the running days and the winter closure in our{" "}
+            <Link href="/guides/attractions/sagano-romantic-train-tickets">Sagano Romantic Train tickets</Link> guide.
           </p>
           <p className={styles.bodyText}>
             <strong>Osaka, Days 15–17:</strong> Dotonbori on arrival, Universal Studios Japan on Day 16, and
@@ -673,7 +676,9 @@ export default function Japan3WeekItineraryPage({ updated }: { updated: PageUpda
             west, the 5-day Kansai-Hiroshima Area Pass ({yen(KANSAI_HIROSHIMA_PASS)}, JR West, {SANYO_CHECKED})
             covers Shin-Osaka–Hiroshima, JR around Kansai and the Miyajima ferry; Shin-Osaka → Hiroshima alone
             is {yen(FARE_OSAKA_HIROSHIMA)}, so it pays only if you also come back east through Shin-Osaka or
-            add JR day trips inside its five days. The 7-day{" "}
+            add JR day trips inside its five days. For the Kyoto, Nara and Osaka days alone, the 1- to 4-day{" "}
+            <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass</Link> covers JR West in Kansai but not
+            the shinkansen or the subway. The 7-day{" "}
             <Link href="/guides/transport/hokuriku-arch-pass">Hokuriku Arch Pass</Link> is the regional pass built
             for Tokyo → Kanazawa → Kyoto and Osaka, but this route leaves Kanazawa by bus for Takayama, so in its
             seven days it would cover little more than the Day 7 shinkansen and fall short of single tickets.

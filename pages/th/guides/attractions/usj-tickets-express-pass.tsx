@@ -16,6 +16,7 @@ import {
   type FaqItem,
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
+import NextBookingBlock from "../../../../components/NextBookingBlock";
 import KlookStayAreas from "../../../../components/KlookStayAreas";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
 import GygCompare, { GygCompareButton } from "../../../../components/GygCompare";
@@ -718,6 +719,8 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
                 Studio Pass USJ →
               </KlookLink>
             </div>
+            {/* A34 (27 Nov 2026): the next booking of the same trip (high-EPC guides) — lib/next-booking.ts. */}
+            <NextBookingBlock region="osaka" locale="th" />
           </div>
         </div>
 

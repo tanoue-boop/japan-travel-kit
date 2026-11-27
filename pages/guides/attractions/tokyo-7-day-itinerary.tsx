@@ -493,17 +493,23 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
           <h2 className={styles.sectionTitle}>What Should I Do on the Four Tokyo Days?</h2>
           <p className={styles.bodyText}>
             One side of the city per day, so you never cross Tokyo twice. <strong>Day 1</strong> is old Tokyo:
-            Senso-ji early, Ueno Park and Ameyoko, and Tokyo Skytree for the evening view; an{" "}
+            Senso-ji early, Ueno Park and Ameyoko, and Tokyo Skytree for the evening view (deck choice and
+            booking in our <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree tickets</Link>{" "}
+            guide); an{" "}
             <Link href="/guides/attractions/asakusa-kimono-rental">Asakusa kimono rental</Link> fits the Senso-ji
             morning if you return it before Ueno.{" "}
-            <strong>Day 2</strong> is the west: Meiji Jingu in the morning, Harajuku and the Scramble Crossing,
+            <strong>Day 2</strong> is the west: Meiji Jingu in the morning, Harajuku and the Scramble Crossing
+            (licensed drivers with a 1949 Geneva IDP can see both from a street kart — see{" "}
+            <Link href="/guides/attractions/tokyo-go-kart">Tokyo go-kart</Link>),
             SHIBUYA SKY at sunset ({PRICES.shibuyaSky.adult} online, before / from 15:00), then Shinjuku&apos;s
             Omoide Yokocho (Skytree, SHIBUYA SKY, Tokyo Tower and the free Tocho deck side by side:{" "}
             <Link href="/guides/attractions/tokyo-observation-decks">Tokyo observation decks</Link>).{" "}
             <strong>Day 4</strong> is the bay: breakfast at Tsukiji Outer Market, teamLab Planets
             ({PRICES.teamlabPlanets.adult}; slots and booking in our{" "}
             <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets</Link> guide) in
-            Toyosu, then Odaiba. <strong>Day 7</strong> is Ginza, the Imperial
+            Toyosu, then Odaiba, where Sega&apos;s indoor park is the rainy-day pick (our{" "}
+            <Link href="/guides/attractions/tokyo-joypolis-tickets">Tokyo Joypolis tickets</Link> guide).{" "}
+            <strong>Day 7</strong> is Ginza, the Imperial
             Palace East Gardens and Tokyo Station, which is also where the Narita Express leaves — and the{" "}
             <Link href="/guides/transport/tokyo-airport-limousine-bus">airport limousine bus</Link> from the Yaesu
             North exit if your bags are heavy.

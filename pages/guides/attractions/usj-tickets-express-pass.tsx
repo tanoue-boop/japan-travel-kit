@@ -5,6 +5,7 @@ import KlookTripPrep from "../../../components/KlookTripPrep";
 import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
+import NextBookingBlock from "../../../components/NextBookingBlock";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
@@ -574,6 +575,8 @@ export default function UsjTicketsExpressPassPage({ updated }: { updated: PageUp
               Pick your park date on the listing to see that day&apos;s price and whether it is still on sale:
               the price changes by date, and Klook&apos;s listing warns that sales for busy dates can pause.
             </p>
+            {/* A34 (27 Nov 2026): the next booking of the same trip (high-EPC guides) — lib/next-booking.ts. */}
+            <NextBookingBlock region="osaka" />
           </div>
         </div>
 

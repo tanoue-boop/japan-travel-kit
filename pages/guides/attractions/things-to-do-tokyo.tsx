@@ -772,7 +772,9 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             <Link href="/guides/attractions/fuji-q-highland-tickets" style={linkStyle}>Fuji-Q Highland tickets guide</Link>{" "}
             explains the free entry and the 1-Day Pass priced by date.{" "}
             <Link href="/guides/attractions/hakone-day-trip-from-tokyo" style={linkStyle}>Hakone</Link> is the
-            hot-spring alternative, where one pass covers the entire loop.
+            hot-spring alternative, where one pass covers the entire loop — what the{" "}
+            <Link href="/guides/attractions/hakone-free-pass" style={linkStyle}>Hakone Free Pass</Link> includes is
+            in its own guide.
           </p>
         </section>
 

@@ -7,6 +7,7 @@ import { GygCompareButton } from "../../../components/GygCompare";
 import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
+import NextBookingBlock from "../../../components/NextBookingBlock";
 import {
   fujiHakoneDayTour,
   shibuyaAnnexGoKartTour,
@@ -652,6 +653,8 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
               </KlookLink>
               <GygCompareButton slug="shibuya-sky-tickets" listing={gygShibuyaSky} />
             </div>
+            {/* A34 (27 Nov 2026): the next booking of the same trip (high-EPC guides) — lib/next-booking.ts. */}
+            <NextBookingBlock region="tokyo" />
           </div>
         </div>
 

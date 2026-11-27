@@ -16,6 +16,7 @@ import {
   type FaqItem,
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
+import NextBookingBlock from "../../../../components/NextBookingBlock";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
 import KlookSameDayCards from "../../../../components/KlookSameDayCards";
@@ -494,6 +495,8 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
               없습니다. 클룩 상품 페이지는 2026년 11월 19일 이후 입장분에 대해 예약한 모든 사람이 예약 시 입력한 정보와 같은 여권
               원본을 지참하도록 안내합니다.
             </p>
+            {/* A34 (27 Nov 2026): the next booking of the same trip (high-EPC guides) — lib/next-booking.ts. */}
+            <NextBookingBlock region="tokyo" locale="ko" />
           </div>
         </div>
 

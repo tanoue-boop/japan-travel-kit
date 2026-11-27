@@ -576,7 +576,9 @@ export default function HakoneDayTripFromTokyoPage({ updated }: { updated: PageU
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             Coming from further afield? The{" "}
-            <Link href="/guides/transport/shinkansen-guide">shinkansen guide</Link> covers the Odawara approach.
+            <Link href="/guides/transport/shinkansen-guide">shinkansen guide</Link> covers the Odawara approach,
+            and if you are heading east from Kyoto, the line&apos;s stops (Odawara among them) are listed in our{" "}
+            <Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo shinkansen</Link> guide.
             For the Tokyo end of the journey, see{" "}
             <Link href="/guides/transport/tokyo-transportation">getting around Tokyo</Link>, and for other days out
             the <Link href="/guides/attractions">things to do in Japan hub</Link>.

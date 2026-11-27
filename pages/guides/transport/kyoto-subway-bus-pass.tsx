@@ -465,7 +465,12 @@ export default function KyotoSubwayBusPassPage({ updated }: { updated: PageUpdat
           <h2 className={styles.sectionTitle}>Which pass (or no pass) fits my day?</h2>
           <p className={styles.bodyText}>
             Count the rides first: five or more with buses in the mix, the Subway &amp; Bus Pass; a subway-only day of four
-            or more, the Subway Pass; a JR day to Arashiyama or Fushimi Inari, neither.
+            or more, the Subway Pass; a JR day to Arashiyama or Fushimi Inari, neither — if Osaka, Nara or Kobe is
+            also on the trip, the JR-only{" "}
+            <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass</Link> covers the JR side. On an
+            Arashiyama day, the scenic train is its own ticket: see our{" "}
+            <Link href="/guides/attractions/sagano-romantic-train-tickets">Sagano Romantic Train tickets</Link>{" "}
+            guide.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

@@ -850,7 +850,9 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
             and on no other day of this trip. The condition: the <strong>Umeda deck is free on the pass only
             if you enter before 15:00</strong>, and from 15:00 the pass becomes a 10% discount instead. So a
             pass day and a sunset on the rooftop do not overlap — move the deck to late morning if you are
-            holding the pass, or buy that one ticket separately and keep the dusk. The{" "}
+            holding the pass, or buy that one ticket separately and keep the dusk (our{" "}
+            <Link href="/guides/attractions/umeda-sky-building-tickets">Umeda Sky Building tickets</Link> guide
+            has the single ticket). The{" "}
             <strong>Tombori River Cruise</strong> is a timed ticket whose after-dark departures fill first,
             and pass holders exchange at the pier desk for a departure time; note that the boat is open to
             the sky. One thing to be clear about: Klook does not sell the operator&apos;s own Tombori boat as
@@ -971,7 +973,10 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
             <strong>What to book for Day 3.</strong> If it is <strong>USJ</strong>, a dated Studio Pass, about
             two months ahead — see the section below, because this is the one booking in the trip with no
             flexibility in it at all. If it is <strong>Nara or Kyoto&apos;s west side</strong>, either nothing
-            or one guided coach day, which is the version that does the routing for you. If it is{" "}
+            or one guided coach day, which is the version that does the routing for you — plus, for
+            Arashiyama, a reserved seat on the scenic train, whose sale dates and winter closure are in our{" "}
+            <Link href="/guides/attractions/sagano-romantic-train-tickets">Sagano Romantic Train tickets</Link>{" "}
+            guide. If it is{" "}
             <strong>Kaiyukan</strong>, a 15-minute entry slot, bookable from 30 days out — our{" "}
             <Link href="/guides/attractions/osaka-aquarium-kaiyukan-tickets">Osaka Aquarium Kaiyukan tickets
             guide</Link> has the dated price bands and the re-entry rule. Our{" "}

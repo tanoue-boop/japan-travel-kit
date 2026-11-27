@@ -395,7 +395,9 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
             whole day — and if you hold a rail pass, mind that it covers Hikari and Sakura services but not
             Nozomi. Osaka is the other obvious neighbour; our{" "}
             <Link href="/guides/attractions/things-to-do-osaka" style={linkStyle}>Osaka round-up</Link> covers
-            where a pass pays there.
+            where a pass pays there, and if you are moving between Kyoto, Osaka and Nara by JR, the{" "}
+            <Link href="/guides/attractions/kansai-area-pass" style={linkStyle}>Kansai Area Pass</Link> guide
+            checks whether the JR-only pass is worth it.
           </p>
         </section>
 

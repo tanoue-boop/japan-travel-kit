@@ -487,7 +487,8 @@ export default function Kansai5DayItineraryPage({ updated }: { updated: PageUpda
             USJ takes the whole day and is the one dated, non-refundable booking on this plan: Studio Passes are
             sold for a fixed date about two months ahead, and Express Passes are priced on demand. If USJ is not on
             your list, Day 2 is Osaka Castle at 9:00 ({CASTLE.adult} for the keep), the Tombori River Cruise in
-            Dotonbori and the Umeda Sky Building at sunset ({UMEDA.adult}) — a day the{" "}
+            Dotonbori and the Umeda Sky Building at sunset ({UMEDA.adult}; hours and the rooftop rules in our{" "}
+            <Link href="/guides/attractions/umeda-sky-building-tickets">Umeda Sky Building tickets</Link> guide) — a day the{" "}
             <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass</Link> ({AMAZING.adult})
             covers, subway included. Times and tickets for the park are in the{" "}
             <Link href="/guides/attractions/usj-tickets-express-pass">USJ tickets guide</Link>.
@@ -598,7 +599,10 @@ export default function Kansai5DayItineraryPage({ updated }: { updated: PageUpda
           </p>
           <h3 className={styles.sectionTitle} style={h3}>What fills up on Day 4?</h3>
           <p className={styles.bodyText}>
-            The Sagano Romantic Train in the autumn-leaf and cherry-blossom seasons, and the join-in coach tours,
+            The Sagano Romantic Train in the autumn-leaf and cherry-blossom seasons (when seats open and the
+            winter closure are in our{" "}
+            <Link href="/guides/attractions/sagano-romantic-train-tickets">Sagano Romantic Train tickets</Link>{" "}
+            guide), and the join-in coach tours,
             which sell by date and can be cancelled if they do not reach their minimum group size — read the
             listing&apos;s minimum and cancellation terms before you plan around one. Himeji Castle has no timed entry, but the
             keep can queue for about an hour in peak season. A coach tour from Osaka is the alternative to three

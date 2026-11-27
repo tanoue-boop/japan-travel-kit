@@ -21,6 +21,7 @@ import {
   type FaqItem,
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
+import NextBookingBlock from "../../../../components/NextBookingBlock";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
 import { fujiDayTour, klookEsim, tokyoSightseeingBusTour, tokyoSubwayTicket } from "../../../../lib/klook-links";
 import { zhTeamlabBorderless, zhTeamlabPlanets } from "../../../../lib/klook-links-zh-tw";
@@ -204,6 +205,8 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
                 { label: "Klook 日本 eSIM 網卡", url: klookFor(klookEsim.url, "zh-tw") },
               ]}
             />
+            {/* A34 (27 Nov 2026): the next booking of the same trip (high-EPC guides) — lib/next-booking.ts. */}
+            <NextBookingBlock region="tokyo" locale="zh-tw" />
           </div>
         </div>
 

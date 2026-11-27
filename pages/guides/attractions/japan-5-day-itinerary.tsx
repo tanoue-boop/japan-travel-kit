@@ -246,10 +246,17 @@ const days: Day[] = [
     book: (
       <>
         Your exit. The Haruka one-way ticket to Kyoto is {yen(HARUKA)} for an adult from 1 November 2026,
-        read off JR West on {RAIL_READ}. If you fly home from Tokyo instead, take the shinkansen back and
+        read off JR West on {RAIL_READ}. The JR Nara Line, the JR Sagano Line and the Haruka are all JR
+        West trains that the{" "}
+        <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass</Link> covers; whether one day
+        of it beats single tickets is worked out in that guide. If you fly home from Tokyo instead, take the{" "}
+        <Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo shinkansen</Link> back and
         allow the 130 minutes plus the airport run; that trade is in the table at the top. If you would
         rather hand the morning to a guide, Klook lists a full-day tour of Fushimi Inari, Arashiyama and
-        Kiyomizu-dera leaving from the Hachijo side of Kyoto Station.
+        Kiyomizu-dera leaving from the Hachijo side of Kyoto Station. The scenic train out of Arashiyama
+        has its own running days and a winter closure; see our{" "}
+        <Link href="/guides/attractions/sagano-romantic-train-tickets">Sagano Romantic Train tickets</Link>{" "}
+        guide before you plan it in.
       </>
     ),
     picks: [

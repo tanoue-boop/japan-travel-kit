@@ -6,6 +6,7 @@ import KlookTripPrep from "../../../components/KlookTripPrep";
 import BookingEsimCard from "../../../components/BookingEsimCard";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
+import NextBookingBlock from "../../../components/NextBookingBlock";
 import { fujiDayTour, tokyoDisneyTripPrep, tokyoSightseeingBusTour } from "../../../lib/klook-links";
 import GygCompare, { GygCompareButton } from "../../../components/GygCompare";
 import { gygTokyoDisneyResort, gygTokyoDisneySea } from "../../../lib/gyg-links";
@@ -560,6 +561,8 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
               </KlookLink>
               <GygCompareButton slug="tokyo-disney-tickets" listing={gygTokyoDisneyResort} />
             </div>
+            {/* A34 (27 Nov 2026): the next booking of the same trip (high-EPC guides) — lib/next-booking.ts. */}
+            <NextBookingBlock region="tokyo" />
           </div>
         </div>
 

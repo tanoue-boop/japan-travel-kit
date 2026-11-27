@@ -26,10 +26,19 @@ import { klookAffiliateUrl } from "../lib/klook-adids";
  * pass straight through, and a non-Klook `href` comes out untouched. `adPlacement`
  * names a block with its own ad id: see lib/klook-adids.ts.
  */
-type KlookLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; adPlacement?: string };
+type KlookLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  href: string;
+  adPlacement?: string;
+  /**
+   * Label the click with another page's ad id instead of this one's — only for a row
+   * that sells that page's own product (lib/next-booking.ts, task A34). Rendered as
+   * `data-ad-page` so scripts/check-klook-adids.js --built can accept the foreign id.
+   */
+  adPage?: string;
+};
 
-export default function KlookLink({ href, adPlacement, ...rest }: KlookLinkProps) {
+export default function KlookLink({ href, adPlacement, adPage, ...rest }: KlookLinkProps) {
   const router = useRouter();
-  const pagePath = router.asPath.includes("[") ? router.pathname : router.asPath;
-  return <a {...rest} href={klookAffiliateUrl(href, pagePath, adPlacement)} />;
+  const pagePath = adPage ?? (router.asPath.includes("[") ? router.pathname : router.asPath);
+  return <a {...rest} data-ad-page={adPage} href={klookAffiliateUrl(href, pagePath, adPlacement)} />;
 }

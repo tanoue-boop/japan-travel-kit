@@ -862,7 +862,8 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
             board. That is the part that is worth settling before you fly: a seat on a named
             departure, an English checkout on a foreign card, and no queue at the arrivals counter
             after a long flight. Klook also lists a Narita bus sold together with either a Tokyo
-            Subway 24-hour ticket or a Hakone Freepass. Prices and the cancellation window are set
+            Subway 24-hour ticket or a{" "}
+            <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass</Link>. Prices and the cancellation window are set
             per listing, so check the listing for your date before you pay.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
