@@ -787,6 +787,11 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Back in the city, the <Link href="/guides/attractions/kobe-nunobiki-herb-gardens-ropeway" style={{ color: "var(--red)", fontWeight: 600 }}>Nunobiki Herb Gardens & Ropeway</Link> runs from near Shin-Kobe Station (closed 23 January – 12 February 2027).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

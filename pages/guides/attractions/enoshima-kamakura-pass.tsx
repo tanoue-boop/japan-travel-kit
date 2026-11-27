@@ -460,6 +460,11 @@ export default function EnoshimaKamakuraPassPage({ updated }: { updated: PageUpd
             If Hakone is on the same trip, the <Link href="/guides/transport/hakone-kamakura-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Hakone Kamakura Pass</Link> covers both areas and all Odakyu lines for three days.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            The pass does not cover admission; <Link href="/guides/attractions/enoshima-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Enoshima Aquarium tickets</Link> are ¥2,800 for adults.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

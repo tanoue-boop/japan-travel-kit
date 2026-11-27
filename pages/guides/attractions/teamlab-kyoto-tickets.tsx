@@ -752,6 +752,11 @@ export default function TeamlabKyotoTicketsPage({ updated }: { updated: PageUpda
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Two more indoor stops near Kyoto Station: <Link href="/guides/attractions/kyoto-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto Aquarium</Link> and the <Link href="/guides/attractions/kyoto-railway-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto Railway Museum</Link> in Umekoji Park.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

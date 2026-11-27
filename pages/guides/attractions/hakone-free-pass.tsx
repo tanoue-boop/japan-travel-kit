@@ -755,6 +755,11 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
             For a spa afternoon, <Link href="/guides/attractions/yunessun-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Yunessun tickets</Link> explains the Yunessun, Mori no Yu and Passport prices.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On the Hakone Tozan Train, get off at Chokoku-no-Mori for the <Link href="/guides/attractions/hakone-open-air-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hakone Open-Air Museum</Link> (¥2,000 at the gate, ¥1,800 online).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

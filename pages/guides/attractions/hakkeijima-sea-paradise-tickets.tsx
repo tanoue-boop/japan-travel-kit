@@ -124,6 +124,7 @@ export default function HakkeijimaSeaParadiseTicketsPage({ updated }: { updated:
           <Link href="/guides/attractions/tokyo-itinerary-with-kids" style={linkStyle}>Tokyo itinerary with kids</Link>{" "}
           and{" "}
           <Link href="/guides/attractions/yomiuriland-tickets" style={linkStyle}>Yomiuriland tickets</Link>.
+          {" "}Other aquariums near Tokyo: <Link href="/guides/attractions/enoshima-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Enoshima Aquarium</Link> (¥2,800) and <Link href="/guides/attractions/kamogawa-sea-world-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kamogawa Sea World</Link> (¥3,300, about 2 hours from Tokyo).
         </p>
       }
       faq={[

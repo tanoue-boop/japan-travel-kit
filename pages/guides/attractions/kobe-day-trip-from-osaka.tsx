@@ -826,6 +826,11 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
             On Port Island, <Link href="/guides/attractions/kobe-animal-kingdom-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kobe Animal Kingdom</Link> costs ¥2,400 for adults; in November 2026 it closes on Thursdays.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Above Shin-Kobe, the <Link href="/guides/attractions/kobe-nunobiki-herb-gardens-ropeway" style={{ color: "var(--red)", fontWeight: 600 }}>Nunobiki ropeway and herb gardens</Link> cost ¥2,500 round trip by day; in winter the last ride up is 16:45.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

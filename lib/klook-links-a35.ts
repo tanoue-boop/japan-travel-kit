@@ -334,3 +334,74 @@ export const okinawaWorldTicket: KlookTour = {
   desc: "Entry to Okinawa World in Nanjo; the way in is through the Gyokusendo limestone cave",
   url: klookLink("https://www.klook.com/en-US/activity/37791-okinawa-world-ticket/"),
 };
+
+// ---------------------------------------------------------------------------
+// Day 5 (task jtk-20261201-A35, run 28 Nov 2026): aquariums, museums and a ropeway
+// with no page of their own. Activity ids from the www.klook.com search index that
+// day (product pages still answer automated reads with 403, so no Klook price is
+// printed). The Hakone Open-Air Museum page uses hakoneOpenAirMuseumTicket (22229)
+// from lib/klook-links.ts. Every yen figure on the pages is the operator's own.
+// ---------------------------------------------------------------------------
+
+/** Kyoto Aquarium (Umekoji Park) — admission. */
+export const kyotoAquariumTicket: KlookTour = {
+  title: "Kyoto Aquarium admission ticket",
+  desc: "Entry on the date you pick to the aquarium in Umekoji Park, about 15 minutes on foot from Kyoto Station",
+  url: klookLink("https://www.klook.com/en-US/activity/15334-aquarium-admission-ticket-kyoto/"),
+};
+
+/** Kyoto Railway Museum (Umekoji) — admission. */
+export const kyotoRailwayMuseumTicket: KlookTour = {
+  title: "Kyoto Railway Museum ticket",
+  desc: "Admission to JR West's railway museum in Umekoji Park, one stop from Kyoto Station",
+  url: klookLink("https://www.klook.com/en-US/activity/27246-kyoto-railway-museum-ticket/"),
+};
+
+/** Kobe Nunobiki Herb Gardens & Ropeway — round-trip ropeway with garden entry. */
+export const kobeNunobikiHerbGardensRopeway: KlookTour = {
+  title: "Kobe Nunobiki Herb Gardens & Ropeway ticket",
+  desc: "The round-trip ropeway from near Shin-Kobe Station up to the herb gardens and their observation deck",
+  url: klookLink("https://www.klook.com/en-US/activity/37865-kobe-nunobiki-herb-gardens-ticket/"),
+};
+
+/** Noboribetsu Date Jidaimura (Edo-period theme village, Hokkaido) — admission. */
+export const noboribetsuDateJidaimuraTicket: KlookTour = {
+  title: "Noboribetsu Date Jidaimura ticket",
+  desc: "Admission to the Edo-period village near Noboribetsu, with its ninja and samurai theatres",
+  url: klookLink("https://www.klook.com/en-US/activity/25126-noboribetsu-date-jidaimura-ticket-hokkaido/"),
+};
+
+/** Kamogawa Sea World (Chiba) — admission. */
+export const kamogawaSeaWorldTicket: KlookTour = {
+  title: "Kamogawa Sea World ticket",
+  desc: "Admission to the seaside aquarium in Kamogawa, Chiba, with its orca, beluga and dolphin performances",
+  url: klookLink("https://www.klook.com/en-US/activity/33911-kamogawa-sea-world-ticket/"),
+};
+
+/** Enoshima Aquarium (Fujisawa) — admission. */
+export const enoshimaAquariumTicket: KlookTour = {
+  title: "Enoshima Aquarium ticket",
+  desc: "Entry to the aquarium on Katase Beach facing Enoshima, with day-long re-entry",
+  url: klookLink("https://www.klook.com/en-US/activity/41174-enoshima-aquarium/"),
+};
+
+/** Maxell Aqua Park Shinagawa — admission. */
+export const maxellAquaParkShinagawaTicket: KlookTour = {
+  title: "Maxell Aqua Park Shinagawa ticket",
+  desc: "The aquarium inside the Shinagawa Prince Hotel, two minutes from Shinagawa Station, open into the evening",
+  url: klookLink("https://www.klook.com/en-US/activity/5609-aqua-park-shinagawa-ticket-tokyo/"),
+};
+
+/** Port of Nagoya Public Aquarium — admission. */
+export const portOfNagoyaAquariumTicket: KlookTour = {
+  title: "Port of Nagoya Public Aquarium ticket",
+  desc: "Admission to the aquarium at Nagoya Port's Garden Pier, with orcas, belugas and the dolphin performance",
+  url: klookLink("https://www.klook.com/en-US/activity/1759-port-of-nagoya-public-aquarium-nagoya/"),
+};
+
+/** SCMAGLEV and Railway Park (JR Central, Kinjofuto) — admission. */
+export const scmaglevRailwayParkTicket: KlookTour = {
+  title: "SCMAGLEV and Railway Park ticket",
+  desc: "Admission to JR Central's museum at Kinjofuto, Nagoya: 39 trains including the maglev and early shinkansen",
+  url: klookLink("https://www.klook.com/en-US/activity/142201-scmaglev-and-railway-park-ticket/"),
+};

@@ -119,6 +119,7 @@ export default function SumidaAquariumTicketsPage({ updated }: { updated: PageUp
           <Link href="/guides/attractions/tokyo-3-day-itinerary" style={linkStyle}>Tokyo 3-day itinerary</Link> fits
           the Skytree into a first trip. See also{" "}
           <Link href="/guides/attractions/sunshine-aquarium-tickets" style={linkStyle}>Sunshine Aquarium in Ikebukuro</Link>.
+          {" "}Compare <Link href="/guides/attractions/maxell-aqua-park-shinagawa-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Maxell Aqua Park Shinagawa</Link>, open until 20:00, and <Link href="/guides/attractions/kamogawa-sea-world-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kamogawa Sea World</Link>, a day trip to the Boso coast.
         </p>
       }
       faq={[

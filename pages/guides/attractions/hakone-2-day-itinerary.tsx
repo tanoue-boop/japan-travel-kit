@@ -608,6 +608,11 @@ export default function Hakone2DayItineraryPage({ updated }: { updated: PageUpda
             For a spa stop on either day, see <Link href="/guides/attractions/yunessun-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Yunessun tickets</Link> (Kowakien): Yunessun, Mori no Yu and the Passport.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Prices and hours for the sculpture park are in <Link href="/guides/attractions/hakone-open-air-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hakone Open-Air Museum tickets</Link> (adults ¥2,000, or ¥1,800 online).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

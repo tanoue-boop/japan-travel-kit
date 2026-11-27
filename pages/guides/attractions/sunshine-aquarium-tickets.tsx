@@ -116,6 +116,7 @@ export default function SunshineAquariumTicketsPage({ updated }: { updated: Page
           <Link href="/guides/attractions/where-to-stay-in-tokyo" style={linkStyle}>where to stay in Tokyo</Link> covers
           Ikebukuro as a base. The other big aquarium in the city is{" "}
           <Link href="/guides/attractions/sumida-aquarium-tickets" style={linkStyle}>Sumida Aquarium at the Skytree</Link>.
+          {" "}Another aquarium inside the city: <Link href="/guides/attractions/maxell-aqua-park-shinagawa-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Maxell Aqua Park Shinagawa</Link>, 2 minutes from Shinagawa Station (¥2,800 for adults).
         </p>
       }
       faq={[

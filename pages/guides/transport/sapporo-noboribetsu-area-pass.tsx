@@ -152,6 +152,7 @@ export default function SapporoNoboribetsuAreaPassPage({ updated }: { updated: P
           show where the pass days fit. For winter, see{" "}
           <Link href="/guides/attractions/hokkaido-winter-tours" style={linkStyle}>Hokkaido winter tours</Link>; for the whole island, the{" "}
           <Link href="/guides/transport/hokkaido-rail-pass" style={linkStyle}>Hokkaido Rail Pass guide</Link>.
+          {" "}Near JR Noboribetsu Station, <Link href="/guides/attractions/noboribetsu-date-jidaimura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Noboribetsu Date Jidaimura</Link> costs ¥3,300 for adults; winter entry ends at 15:00.
         </p>
       }
       faq={[

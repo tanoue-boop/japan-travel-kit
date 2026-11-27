@@ -819,6 +819,11 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
             Staying in Nagoya for the parks? <Link href="/guides/attractions/nagashima-spa-land-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nagashima Spa Land tickets</Link> covers the coaster park at Nagashima Resort.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On another Nagoya day, the <Link href="/guides/attractions/scmaglev-railway-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>SCMAGLEV and Railway Park</Link> (closed Tuesdays) and the <Link href="/guides/attractions/port-of-nagoya-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Port of Nagoya Public Aquarium</Link> are both by the port.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

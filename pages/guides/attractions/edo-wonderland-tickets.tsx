@@ -136,6 +136,7 @@ export default function EdoWonderlandTicketsPage({ updated }: { updated: PageUpd
           <Link href="/guides/attractions/samurai-ninja-experience-tokyo" style={linkStyle}>samurai and ninja experiences in Tokyo</Link>,
           and for the rest of the city,{" "}
           <Link href="/guides/attractions/things-to-do-tokyo" style={linkStyle}>things to do in Tokyo</Link>.
+          {" "}In Hokkaido, <Link href="/guides/attractions/noboribetsu-date-jidaimura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Noboribetsu Date Jidaimura</Link> is a similar Edo-period village near the onsen town.
         </p>
       }
       faq={[

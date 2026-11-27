@@ -1287,6 +1287,11 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
           none is published.
         </p>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In Noboribetsu, <Link href="/guides/attractions/noboribetsu-date-jidaimura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Noboribetsu Date Jidaimura</Link> is an Edo-period village with theatre shows (¥3,300; 9:00–16:00 in winter).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -445,6 +445,11 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
             West of the city, the <Link href="/guides/attractions/hozugawa-river-boat-ride" style={{ color: "var(--red)", fontWeight: 600 }}>Hozugawa river boat ride</Link> takes about 2 hours down the gorge from Kameoka to Arashiyama.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Near Kyoto Station, Umekoji Park has <Link href="/guides/attractions/kyoto-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto Aquarium</Link> (¥2,600, open every day) and the <Link href="/guides/attractions/kyoto-railway-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto Railway Museum</Link> (¥1,500, closed Wednesdays).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

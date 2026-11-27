@@ -514,6 +514,11 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
             The region&apos;s other theme parks: <Link href="/guides/attractions/nagashima-spa-land-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nagashima Spa Land</Link> near Nagoya and <Link href="/guides/attractions/shima-spain-village-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shima Spain Village</Link> in Ise-Shima.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            At the same station, the <Link href="/guides/attractions/scmaglev-railway-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>SCMAGLEV and Railway Park</Link> is ¥1,200 for adults; the <Link href="/guides/attractions/port-of-nagoya-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Port of Nagoya Public Aquarium</Link> is another family day by the port.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

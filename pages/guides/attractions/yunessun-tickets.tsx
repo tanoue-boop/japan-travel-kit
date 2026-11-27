@@ -121,6 +121,7 @@ export default function YunessunTicketsPage({ updated }: { updated: PageUpdated 
           and the <Link href="/guides/attractions/hakone-2-day-itinerary" style={linkStyle}>Hakone 2-day itinerary</Link>.
           Staying the night? See{" "}
           <Link href="/guides/attractions/hakone-ryokan-private-onsen" style={linkStyle}>Hakone ryokan with a private onsen</Link>.
+          {" "}One stop below Gora on the Tozan Train, the <Link href="/guides/attractions/hakone-open-air-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hakone Open-Air Museum</Link> is open 9:00–17:00 every day.
         </p>
       }
       faq={[

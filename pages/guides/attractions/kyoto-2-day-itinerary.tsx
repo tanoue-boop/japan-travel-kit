@@ -1056,6 +1056,11 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             On the Arashiyama day, <Link href="/guides/attractions/toei-kyoto-studio-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Toei Kyoto Studio Park</Link> sells set tickets with the Sagano Romantic Train and the Randen.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a rainy morning by the station, <Link href="/guides/attractions/kyoto-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto Aquarium</Link> and the <Link href="/guides/attractions/kyoto-railway-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto Railway Museum</Link> share Umekoji Park, one stop away on the JR Sagano Line.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -590,6 +590,11 @@ export default function HakoneDayTripFromTokyoPage({ updated }: { updated: PageU
             For a swimsuit spa or onsen stop, see <Link href="/guides/attractions/yunessun-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hakone Kowakien Yunessun</Link> (from ¥2,500 for adults, date-based prices).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For art on the way up to Gora, see <Link href="/guides/attractions/hakone-open-air-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hakone Open-Air Museum tickets</Link>: open 9:00–17:00 every day, 2 minutes from Chokoku-no-Mori.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -871,6 +871,11 @@ export default function Nagoya2DayItineraryPage({ updated }: { updated: PageUpda
             Two theme parks a day from Nagoya: <Link href="/guides/attractions/nagashima-spa-land-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nagashima Spa Land</Link> (Passport ¥6,000 for adults) and, further into Mie, <Link href="/guides/attractions/shima-spain-village-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shima Spain Village</Link>.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            By the port, the <Link href="/guides/attractions/port-of-nagoya-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Port of Nagoya Public Aquarium</Link> (¥2,030) and, at Kinjofuto, the <Link href="/guides/attractions/scmaglev-railway-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>SCMAGLEV and Railway Park</Link> (¥1,200, closed Tuesdays).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

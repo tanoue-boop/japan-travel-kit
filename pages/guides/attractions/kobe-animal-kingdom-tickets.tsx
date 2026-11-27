@@ -117,6 +117,7 @@ export default function KobeAnimalKingdomTicketsPage({ updated }: { updated: Pag
           <Link href="/guides/attractions/arima-onsen-day-trip" style={linkStyle}>Arima Onsen day trip</Link>, and for
           the wider trip, the{" "}
           <Link href="/guides/attractions/osaka-3-day-itinerary" style={linkStyle}>Osaka 3-day itinerary</Link>.
+          {" "}Another Kobe ticket: the <Link href="/guides/attractions/kobe-nunobiki-herb-gardens-ropeway" style={{ color: "var(--red)", fontWeight: 600 }}>Nunobiki Herb Gardens & Ropeway</Link> above Shin-Kobe (¥2,500 round trip for adults).
         </p>
       }
       faq={[

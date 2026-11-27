@@ -642,6 +642,11 @@ export default function NagoyaCastleTicketsPage({ updated }: { updated: PageUpda
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Two more Nagoya tickets: the <Link href="/guides/attractions/scmaglev-railway-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>SCMAGLEV and Railway Park</Link> and the <Link href="/guides/attractions/port-of-nagoya-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Port of Nagoya Public Aquarium</Link>.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

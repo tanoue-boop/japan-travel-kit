@@ -625,6 +625,11 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
           items={whereToStayKyotoTripPrep}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Staying by Kyoto Station? <Link href="/guides/attractions/kyoto-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto Aquarium</Link> is about 15 minutes on foot, next to the <Link href="/guides/attractions/kyoto-railway-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto Railway Museum</Link>.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.bodySection}>

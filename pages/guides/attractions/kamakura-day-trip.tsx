@@ -443,6 +443,11 @@ export default function KamakuraDayTripPage({ updated }: { updated: PageUpdated 
             Travelling with children? <Link href="/guides/attractions/hakkeijima-sea-paradise-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hakkeijima Sea Paradise</Link> in Yokohama has four aquariums and rides on one day pass.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On the Enoshima end of the day, <Link href="/guides/attractions/enoshima-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Enoshima Aquarium</Link> is ¥2,800 for adults and open 10:00–17:00 in winter, with same-day re-entry.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

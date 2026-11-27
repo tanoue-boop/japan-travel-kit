@@ -984,6 +984,11 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             More indoor options: <Link href="/guides/attractions/sumida-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sumida Aquarium</Link> at the Skytree, <Link href="/guides/attractions/sunshine-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sunshine Aquarium</Link> in Ikebukuro and the miniature museum <Link href="/guides/attractions/small-worlds-tokyo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>SMALL WORLDS</Link> in Ariake.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Three more aquariums: <Link href="/guides/attractions/maxell-aqua-park-shinagawa-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Maxell Aqua Park Shinagawa</Link> by Shinagawa Station, <Link href="/guides/attractions/enoshima-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Enoshima Aquarium</Link> on the Shonan coast and, for a full day, <Link href="/guides/attractions/kamogawa-sea-world-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kamogawa Sea World</Link> in Chiba.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

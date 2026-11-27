@@ -447,6 +447,11 @@ export default function KobeBeefDinnerPage({ updated }: { updated: PageUpdated }
           tours={[kobeBeefSakuraTeppanyaki, kobeBeefRedOneCourse, kobegyuMiyabiCourse, kobeBeefHarbourKitanoDayTour]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Before dinner, ride the <Link href="/guides/attractions/kobe-nunobiki-herb-gardens-ropeway" style={{ color: "var(--red)", fontWeight: 600 }}>Nunobiki ropeway</Link> up to the herb gardens; see the winter hours first.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>
