@@ -138,20 +138,10 @@ const sameTripItems: KlookTripPrepItem[] = [
 
 const faqItems = [
   {
-    q: "How much is the Hakone Freepass?",
-    a: `From Odakyu's own site: the 2-day pass from Shinjuku is ¥7,100 for an adult and ¥1,600 for a child, and the 3-day is ¥7,500 / ¥1,850. The Hakone-area-only version from Odawara is ¥6,000 / ¥1,500 for 2 days and ¥6,400 / ¥1,750 for 3. The Romancecar limited express is not included and costs ¥1,200 (adult) or ¥600 (child) extra from Shinjuku to Hakone-Yumoto. Prices checked on ${CHECKED}.`,
-  },
-  {
-    q: "Is there a 1-day Hakone Freepass?",
-    a: `No. The pass is sold as a 2-day or 3-day ticket only, which is the single most important thing to know before planning Hakone as a day trip. From Shinjuku the 2-day pass is ¥7,100 for an adult, so a one-day visit means paying for a day of validity you will not use. Either stay the night — Hakone is an onsen town and the second day is already paid for — or take a guided coach day tour instead, where the transport is priced for one day. Checked ${CHECKED}.`,
-  },
-  {
-    q: "What does the Hakone Freepass cover?",
-    a: "Unlimited rides on eight modes of transport: the Odakyu Line from Shinjuku to Hakone-Yumoto, the Hakone Tozan Train, the Hakone Tozan Cable Car, the Hakone Ropeway, the Hakone Sightseeing Cruise on Lake Ashi, the Hakone Tozan Bus in designated areas, the Odakyu Highway Bus and the Tokai Bus in designated areas. That set is exactly the classic Hakone loop, which is why the pass is the default way to do it. The Klook listing adds that the pass carries discounts at over 70 local facilities.",
-  },
-  {
-    q: "Is the Romancecar included in the Hakone Freepass?",
-    a: `No. The Freepass covers travel on the Odakyu Line, but the Romancecar is a limited express with a separate reserved-seat charge: ¥1,200 for an adult and ¥600 for a child from Shinjuku to Hakone-Yumoto. On a tight day trip it is usually money well spent, because it is the fastest and most comfortable way out of Tokyo and it guarantees you a seat. Checked ${CHECKED}.`,
+    // R17 (27 Nov 2026): the Freepass price, coverage and Romancecar questions moved to the
+    // Hakone Freepass page, which owns them; this page keeps only the day-trip angle.
+    q: "Which ticket do I need for a Hakone day trip?",
+    a: `Either the Hakone Freepass or a guided day tour. The Freepass has no 1-day version, but the 2-day pass from Shinjuku (¥7,100) still costs less than the single fares of one full loop, and the Romancecar seat (¥1,200 each way) is extra. A coach day tour replaces the pass and the train with one booking. Prices, the ride-by-ride fares and where to buy are on our Hakone Freepass guide. Checked ${CHECKED}.`,
   },
   {
     q: "Should I do Hakone independently or on a tour?",
@@ -459,7 +449,9 @@ export default function HakoneDayTripFromTokyoPage({ updated }: { updated: PageU
           <p className={styles.bodyText}>
             About ¥11,500 for an adult doing it independently: the Freepass, the Romancecar both ways and one
             museum, before food. The Freepass already covers the ropeway (¥2,000 one way on its own) and the Lake
-            Ashi cruise (¥1,700 one way on its own).
+            Ashi cruise (¥1,700 one way on its own); the fare of every ride on the loop, and the ride on which
+            the pass pays for itself, are in the{" "}
+            <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass break-even table</Link>.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -559,8 +551,9 @@ export default function HakoneDayTripFromTokyoPage({ updated }: { updated: PageU
           <p className={styles.bodyText}>
             Only as far as Odawara. The Tokaido Shinkansen stops there (Kodama and some Hikari services), but the
             lines inside Hakone — the Tozan Train, cable car, ropeway, cruise and buses — are not JR. Pair the JR
-            Pass with the Odawara version of the Freepass, ¥6,000 for 2 days, which covers Hakone only and not
-            the Odakyu Line to Shinjuku (Odakyu, read {READ}). The{" "}
+            Pass with the Odawara version of the{" "}
+            <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass</Link>, ¥6,000 for 2 days, which
+            covers Hakone only and not the Odakyu Line to Shinjuku (Odakyu, read {READ}). The{" "}
             <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link> works out whether a pass is worth it
             for the rest of your trip.
           </p>

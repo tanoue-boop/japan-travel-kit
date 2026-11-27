@@ -987,7 +987,9 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
             what three days in the city actually hold, and the honest answer is that a Fuji day inside
             three is a bad trade. If you would rather have a hot-spring loop than a mountain view,{" "}
             <Link href="/guides/attractions/hakone-day-trip-from-tokyo">Hakone</Link> is the easier of
-            the two to do independently, because one pass covers the whole circuit. And if the roller
+            the two to do independently, because one pass covers the whole circuit: the{" "}
+            <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass</Link>, ¥7,100 for 2 days from
+            Shinjuku. And if the roller
             coasters are the real draw,{" "}
             Fuji-Q Highland is one stop before Kawaguchiko on the same bus route — entry is free, and our{" "}
             <Link href="/guides/attractions/fuji-q-highland-tickets">Fuji-Q Highland tickets</Link> guide

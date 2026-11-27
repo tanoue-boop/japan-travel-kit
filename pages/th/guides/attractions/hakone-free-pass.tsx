@@ -38,16 +38,18 @@ import HotelStayBlock from "../../../../components/HotelStayBlock";
 // script, with "ราคา" / "คุ้มไหม" around it. Paragraphs stay on one line: a JSX line break
 // renders as a space, and in Thai a space is a sentence break.
 
+// R17 (2026-11-27, task-jtk-20261127-R17): the ride-by-ride break-even table, the route table
+// and the 1-day-or-2-day table mirror the English page with the same figures and sources.
 const LOCALE = "th" as const;
 const ROUTE = "/th/guides/attractions/hakone-free-pass";
 const TITLE = "Hakone Free Pass 2026: ราคา คุ้มไหม";
 const H1 = "Hakone Free Pass 2026: ราคาจากชินจูกุ เส้นทาง และคุ้มไหม";
 const DESC =
-  "Hakone Free Pass: ชินจูกุ 2 วัน ¥7,100 โอดาวาระ ¥6,000 เดินทางครบเส้นทางวงรอบโดยไม่ใช้พาส ¥8,322 วันเดียวก็คุ้ม";
+  "Hakone Free Pass: ชินจูกุ 2 วัน ¥7,100 โอดาวาระ ¥6,000 ตั๋วเดี่ยวรวม ¥8,322 ถูกกว่า ¥1,222";
 
-const CHECKED_ISO = "2026-11-20";
+const CHECKED_ISO = "2026-11-27";
 const CHECKED = dateLabel(CHECKED_ISO, LOCALE);
-const BUY_CHECKED_ISO = "2026-11-13";
+const BUY_CHECKED_ISO = "2026-11-27";
 const BUY_CHECKED = dateLabel(BUY_CHECKED_ISO, LOCALE);
 const LOOP_URL = "https://www.hakonenavi.jp/international/en/article/4252";
 const JR_URL = "https://odakyu-global.com/blog/2053/";
@@ -56,6 +58,11 @@ const LOOP_SAVING = "¥1,222";
 const NAVI_URL = "https://www.hakonenavi.jp/international/en/discount_passes/free_pass";
 const ODAKYU_URL = "https://www.odakyu.jp/english/passes/hakone/";
 const FARE_NOTICE_URL = "https://www.hakonenavi.jp/international/en/wp-content/uploads/sites/2/2025/09/re_price202510.pdf";
+const BREAKDOWN_URL = "https://www.hakonenavi.jp/feature/22866";
+const LP_URL = "https://www.hakonenavi.jp/lp/hakone-freepass/";
+const ROPEWAY_URL = "https://www.hakonenavi.jp/international/en/transportation/hakone-ropeway";
+const CRUISE_URL = "https://www.hakonenavi.jp/international/en/transportation/hakone-kankosen";
+const ITINERARY_URL = "https://hakonetrip.odakyu-global.com/feature/hakone-2-day-itinerary/";
 
 const PASS_2_DAY_SHINJUKU = "¥7,100";
 const PASS_3_DAY_SHINJUKU = "¥7,500";
@@ -136,24 +143,38 @@ const coverageRows = [
   { mode: "Izu-Hakone Bus", included: "✗ ไม่รวม", note: "เป็นรถบัสของผู้ให้บริการรายอื่น โปรดตรวจสอบชื่อผู้ให้บริการก่อนขึ้นรถ" },
 ];
 
-const legRows = [
-  {
-    leg: `เดินทางครบเส้นทางวงรอบจากชินจูกุในหนึ่งวัน: ไม่ใช้พาส ${LOOP_REGULAR} ใช้พาส ${PASS_2_DAY_SHINJUKU}`,
-    adult: `ประหยัด ${LOOP_SAVING}`,
-    child: "—",
-    source: "Hakone Navi (Odakyu Hakone) ค่าโดยสารเมื่อใช้บัตร IC ไม่รวม Romancecar",
-  },
-  {
-    leg: "เดินทางครบเส้นทางวงรอบโดยไม่ใช้พาส: รถไฟสายโอดะคิวไปกลับ รถไฟโทซัน รถรางไต่เขา กระเช้าลอยฟ้า เรือ และรถบัส",
-    adult: LOOP_REGULAR,
-    child: "—",
-    source: "ค่าโดยสารรวมตามข้อมูลของ Hakone Navi (เมื่อใช้บัตร IC)",
-  },
-  { leg: "Hakone Freepass แบบ 2 วันจากชินจูกุ", adult: PASS_2_DAY_SHINJUKU, child: "¥1,600", source: "odakyu-global.com / hakonenavi.jp" },
-  { leg: "รายการที่รวมอยู่ในค่าโดยสารทั้งหมด: กระเช้าลอยฟ้าฮาโกเน่ โซอุนซัง → โทเง็นได (เที่ยวเดียว)", adult: ROPEWAY, child: "¥700", source: "ประกาศค่าโดยสาร Odakyu Hakone ตั้งแต่ 1 ต.ค. 2025" },
-  { leg: "รายการที่รวมอยู่ในค่าโดยสารทั้งหมด: เรือทะเลสาบอาชิ โทเง็นได → ฮาโกเน่มาจิ / โมโตะฮาโกเน่ (เที่ยวเดียว)", adult: CRUISE, child: "¥850", source: "ประกาศค่าโดยสาร Odakyu Hakone ตั้งแต่ 1 ต.ค. 2025" },
-  { leg: "รถไฟสายโอดะคิว ชินจูกุ ⇄ โอดาวาระ (ค่าโดยสารปกติ ต่อเที่ยว)", adult: "¥910", child: "—", source: "odakyu.jp" },
-  { leg: "นั่ง Romancecar ทั้งขาไปและขากลับ", adult: `${PASS_2_DAY_SHINJUKU} + ¥2,400 = ¥9,500`, child: "—", source: "ตัวอย่างการคำนวณของ odakyu.jp" },
+const fareRows: ReactNode[][] = [
+  ["สรุป", "พาสคุ้มทุนในช่วงที่ 7 ของวงรอบ คือรถไฟขากลับชินจูกุ", LOOP_REGULAR, `มากกว่าพาส ${PASS_2_DAY_SHINJUKU} อยู่ ${LOOP_SAVING}`],
+  ["1. รถไฟสายโอดะคิว + สายโทซัน", "ชินจูกุ → ฮาโกเน่ยุโมโตะ", "¥1,261", "¥1,261"],
+  ["2. รถไฟฮาโกเน่โทซัน", "ฮาโกเน่ยุโมโตะ → โชโกกุโนะโมริ (ก่อนถึงโกระ 1 สถานี)", "¥460", "¥1,721"],
+  ["3. รถรางไต่เขาฮาโกเน่โทซัน", "โกระ → โซอุนซัง", "¥430", "¥2,151"],
+  ["4. กระเช้าลอยฟ้าฮาโกเน่", "โซอุนซัง → โอวาคุดานิ → โทเง็นได", ROPEWAY, "¥4,151"],
+  ["5. เรือท่องเที่ยวฮาโกเน่ (เรือโจรสลัด)", "โทเง็นได → โมโตะฮาโกเน่", CRUISE, "¥5,851"],
+  ["6. รถบัสฮาโกเน่โทซัน", "โมโตะฮาโกเน่ → ฮาโกเน่ยุโมโตะ", "¥1,210", "¥7,061 — ยังน้อยกว่าพาส ¥39"],
+  ["7. รถไฟสายโอดะคิว + สายโทซัน", "ฮาโกเน่ยุโมโตะ → ชินจูกุ", "¥1,261", `${LOOP_REGULAR} — พาสคุ้มทุนแล้ว`],
+  ["พาส 2 วันจากชินจูกุ", "วงรอบเดียวกันด้วยพาส", PASS_2_DAY_SHINJUKU, `ประหยัด ${LOOP_SAVING} ในวันเดียว`],
+  ["พาส 3 วันจากชินจูกุ", "วงรอบเดียวกันด้วยพาส", PASS_3_DAY_SHINJUKU, "ประหยัด ¥822 ในวันเดียว"],
+  ["แผน 2 วันของ Hakone Navi", "วงรอบ + รถบัสอีก 4 เที่ยวไปพิพิธภัณฑ์และสวนพฤกษชาติพื้นที่ชุ่มน้ำ", "¥10,622", `ประหยัด ¥3,522 ด้วยพาส ${PASS_2_DAY_SHINJUKU}`],
+  ["พาสจากโอดาวาระ คิดเฉพาะช่วงที่ 2–6", "จากฮาโกเน่ยุโมโตะวนรอบแล้วกลับมา", "¥5,800", `น้อยกว่าพาส ${PASS_2_DAY_ODAWARA} อยู่ ¥200 — คุ้มเมื่อรวมรถไฟโอดาวาระ ⇄ ฮาโกเน่ยุโมโตะ หรือใช้วันที่สอง`],
+];
+
+const routeRows: ReactNode[][] = [
+  ["ทั้งวงรอบ", "ฮาโกเน่ยุโมโตะ → โกระ → โซอุนซัง → โอวาคุดานิ → โทเง็นได → โมโตะฮาโกเน่ → ฮาโกเน่ยุโมโตะ", "เวลานั่งรวมประมาณ 2.5–3 ชั่วโมง ไม่รวมเวลาเปลี่ยนรถและแวะเที่ยว", "✓ ทุกช่วง"],
+  ["1. Romancecar หรือรถไฟสายโอดะคิว", "ชินจูกุ → ฮาโกเน่ยุโมโตะ", "Romancecar ประมาณ 80 นาทีแบบไม่ต้องเปลี่ยนขบวน รถไฟธรรมดามักต้องเปลี่ยนที่โอดาวาระ", `✓ รถไฟสายโอดะคิว (พาสจากชินจูกุ ไปกลับ 1 ครั้ง) · ✗ ค่าที่นั่ง Romancecar +${ROMANCECAR}`],
+  ["2. รถไฟฮาโกเน่โทซัน", "ฮาโกเน่ยุโมโตะ → โกระ (สวิตช์แบ็ก)", "ประมาณ 40 นาทีถึงโชโกกุโนะโมริ สถานีถัดไปคือโกระ", "✓"],
+  ["3. รถรางไต่เขาฮาโกเน่โทซัน", "โกระ → โซอุนซัง", "ประมาณ 10 นาที", "✓"],
+  ["4. กระเช้าลอยฟ้าฮาโกเน่", "โซอุนซัง → โอวาคุดานิ → อุบาโกะ → โทเง็นได", "ประมาณ 15 นาทีต่อช่วง เปลี่ยนกระเช้าที่โอวาคุดานิ", "✓"],
+  ["5. เรือท่องเที่ยวฮาโกเน่ (เรือโจรสลัด)", "โทเง็นได → ฮาโกเน่มาจิ หรือโมโตะฮาโกเน่", "ประมาณ 25–35 นาที", "✓ (ห้องโดยสารพิเศษ +¥800)"],
+  ["6. รถบัสฮาโกเน่โทซัน", "โมโตะฮาโกเน่ → ฮาโกเน่ยุโมโตะ", "ประมาณ 40 นาที (สาย H) หรือ 35 นาที (สาย K)", "✓ · ✗ Izu-Hakone Bus"],
+  ["7. รถไฟสายโอดะคิว หรือ Romancecar", "ฮาโกเน่ยุโมโตะ → ชินจูกุ", "เหมือนช่วงที่ 1", "✓ รถไฟสายโอดะคิว · ✗ ค่าที่นั่ง Romancecar"],
+];
+
+const passChoiceRows: ReactNode[][] = [
+  ["สรุป: Hakone Freepass ไม่มีแบบ 1 วัน", "ถ้าเดินทางครบวงรอบ ซื้อแบบ 2 วันแม้ไปวันเดียว", `${PASS_2_DAY_SHINJUKU} จากชินจูกุ ถูกกว่าตั๋วเดี่ยว ${LOOP_SAVING}`],
+  ["Hakone Freepass (2 หรือ 3 วัน)", "เที่ยวครบวงรอบ ค้างคืนในฮาโกเน่ หรือทั้งสองอย่าง", `จากชินจูกุ ${PASS_2_DAY_SHINJUKU} / ${PASS_3_DAY_SHINJUKU} จากโอดาวาระ ${PASS_2_DAY_ODAWARA} / ${PASS_3_DAY_ODAWARA}`],
+  ["Owakudani 2-Day Pass", "เฉพาะโอวาคุดานิและกระเช้าลอยฟ้า: รถไฟโทซัน รถรางไต่เขา กระเช้าลอยฟ้าตลอดสาย เข้าสวนโกระฟรี — ไม่รวมเรือและรถบัส", "จากโอดาวาระ ผู้ใหญ่ ¥5,000 เด็ก ¥1,300"],
+  ["Sightseeing Cruise & Ropeway Pass (1 วัน)", "มาด้วยรถยนต์: เฉพาะกระเช้าลอยฟ้าและเรือทะเลสาบอาชิ", "ผู้ใหญ่ ¥5,000 เด็ก ¥1,400"],
+  ["ตั๋วเดี่ยว", "ไปเฉพาะฮาโกเน่ยุโมโตะเพื่อแช่ออนเซ็นและรับประทานอาหารกลางวัน", "จ่ายเป็นเที่ยว ๆ"],
 ];
 
 const worthRows = [
@@ -199,8 +220,8 @@ const faqItems: FaqItem[] = [
     a: `แบบ 2 วันจากชินจูกุ ผู้ใหญ่ ${PASS_2_DAY_SHINJUKU} เด็ก (6–11 ปี) ¥1,600 และแบบ 3 วัน ${PASS_3_DAY_SHINJUKU} / ¥1,850 ส่วนพาสแบบเริ่มต้นจากโอดาวาระที่ใช้ได้เฉพาะในพื้นที่ฮาโกเน่ แบบ 2 วัน ${PASS_2_DAY_ODAWARA} / ¥1,500 และแบบ 3 วัน ${PASS_3_DAY_ODAWARA} / ¥1,750 ราคานี้ใช้ตั้งแต่ 1 ตุลาคม 2025 ตรวจสอบจาก hakonenavi.jp และ odakyu.jp เมื่อ ${CHECKED}`,
   },
   {
-    q: "Hakone Free Pass ใช้วันเดียวคุ้มไหม?",
-    a: `คุ้มค่าหากเดินทางครบเส้นทางวงรอบ แต่พาสนี้ไม่มีแบบ 1 วัน ทั้งนี้ Hakone Navi ซึ่งเป็นเว็บไซต์ของ Odakyu Hakone เอง คิดค่าโดยสารวงรอบจากชินจูกุ (รถไฟสายโอดะคิวไปกลับ รถไฟโทซัน รถรางไต่เขา กระเช้าลอยฟ้า เรือทะเลสาบอาชิ และรถบัส) ตามค่าโดยสารปกติเมื่อใช้บัตร IC ไว้ที่ ${LOOP_REGULAR} เทียบกับพาส 2 วัน ${PASS_2_DAY_SHINJUKU} จึงประหยัด ${LOOP_SAVING} ในวันเดียว ส่วนที่ประหยัดได้ส่วนใหญ่มาจากค่ากระเช้าลอยฟ้า (เที่ยวเดียว ${ROPEWAY}) และค่าเรือ (${CRUISE}) ถ้าไปแค่ฮาโกเน่ยุโมโตะจะไม่คุ้มค่า ตรวจสอบเมื่อ ${CHECKED}`,
+    q: "Hakone Free Pass คุ้มไหม?",
+    a: `คุ้มหากเดินทางครบวงรอบ แม้ไปวันเดียว ตามค่าตั๋วเดี่ยวของ Hakone Navi วงรอบจากชินจูกุ ได้แก่ รถไฟสายโอดะคิวเที่ยวละ ¥1,261 (ไปและกลับ) รถไฟโทซัน ¥460 รถรางไต่เขา ¥430 กระเช้าลอยฟ้า ${ROPEWAY} เรือทะเลสาบอาชิ ${CRUISE} และรถบัสขากลับ ¥1,210 รวมเป็น ${LOOP_REGULAR} เทียบกับพาส 2 วัน ${PASS_2_DAY_SHINJUKU} จึงประหยัด ${LOOP_SAVING} และประหยัด ¥3,522 ตามแผน 2 วันของ Hakone Navi พาสคุ้มทุนในช่วงที่ 7 คือรถไฟขากลับ ถ้าไปแค่ฮาโกเน่ยุโมโตะจะไม่คุ้ม ตรวจสอบเมื่อ ${CHECKED}`,
   },
   {
     q: "ซื้อ Hakone Free Pass ได้ที่ไหน?",
@@ -211,8 +232,8 @@ const faqItems: FaqItem[] = [
     a: `ไม่รวม พาสแบบเริ่มต้นจากชินจูกุรวมค่าโดยสารรถไฟสายโอดะคิวไปกลับ 1 ครั้ง แต่รถไฟด่วนพิเศษ Romancecar ต้องซื้อตั๋วที่นั่งรถไฟด่วนพิเศษแยกต่างหาก ผู้ใหญ่ ${ROMANCECAR} เด็ก ¥600 ต่อเที่ยวระหว่างชินจูกุกับฮาโกเน่ยุโมโตะ หรือ ¥200 / ¥100 จากโอดาวาระ ใช้เวลาประมาณ 80 นาทีแบบไม่ต้องเปลี่ยนขบวน และจองที่นั่งผ่าน EMot Online Tickets ถูกกว่า ¥50 ตัวอย่างของโอดะคิวเอง: พาส ${PASS_2_DAY_SHINJUKU} + Romancecar ไปกลับ ¥2,400 = ¥9,500 ตรวจสอบเมื่อ ${CHECKED}`,
   },
   {
-    q: "ใช้ Hakone Free Pass คู่กับ JR Pass ได้ไหม?",
-    a: `ใช้คู่กันได้ แต่ใช้แทนกันไม่ได้ โอดะคิวระบุว่า JR Pass และ JR Tokyo Wide Pass ใช้ภายในพื้นที่ฮาโกเน่ไม่ได้ แต่ใช้เดินทางด้วยรถไฟ JR ไปถึงสถานีโอดาวาระได้ จากนั้นให้ซื้อ Hakone Free Pass แบบเริ่มต้นจากโอดาวาระ (2 วัน ${PASS_2_DAY_ODAWARA} 3 วัน ${PASS_3_DAY_ODAWARA}) ซึ่งใช้ได้เฉพาะพื้นที่ฮาโกเน่และไม่รวมค่าโดยสารรถไฟสายโอดะคิวที่คุณไม่ได้นั่ง ตรวจสอบเมื่อ ${CHECKED}`,
+    q: "1 วันหรือ 2 วัน: ควรซื้อพาสฮาโกเน่แบบไหน?",
+    a: `Hakone Freepass ไม่มีแบบ 1 วัน มีเฉพาะแบบ 2 วันและ 3 วัน ถ้าเดินทางครบวงรอบให้ซื้อแบบ 2 วัน (${PASS_2_DAY_SHINJUKU} จากชินจูกุ) แม้ไปวันเดียว เพราะถูกกว่าตั๋วเดี่ยว ${LOOP_SAVING} ถ้าไปเฉพาะโอวาคุดานิโดยไม่ไปทะเลสาบ Owakudani 2-Day Pass (¥5,000 จากโอดาวาระ) รวมรถไฟโทซัน รถรางไต่เขา และกระเช้าลอยฟ้า ถ้ามาด้วยรถยนต์ Sightseeing Cruise & Ropeway Pass แบบ 1 วันราคา ¥5,000 ตรวจสอบจากประกาศค่าโดยสาร Odakyu Hakone และ Hakone Navi เมื่อ ${CHECKED}`,
   },
 ];
 
@@ -347,7 +368,7 @@ export default function ThHakoneFreePassPage({ updated }: { updated: PageUpdated
 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>Hakone Freepass</strong> ราคา <strong>{PASS_2_DAY_SHINJUKU} สำหรับ 2 วัน และ {PASS_3_DAY_SHINJUKU} สำหรับ 3 วันจากชินจูกุ</strong> (ผู้ใหญ่) หรือ {PASS_2_DAY_ODAWARA} และ {PASS_3_DAY_ODAWARA} จากโอดาวาระ ตรวจสอบจากหน้าทางการของโอดะคิวเมื่อ {CHECKED} พาสนี้ใช้กับรถไฟฮาโกเน่โทซัน รถรางไต่เขา กระเช้าลอยฟ้าฮาโกเน่ เรือโจรสลัดในทะเลสาบอาชิ และรถบัสในฮาโกเน่ได้ และพาสแบบเริ่มต้นจากชินจูกุรวมค่าโดยสารรถไฟสายโอดะคิวไปกลับ 1 ครั้ง ตามการคำนวณของ Hakone Navi หากเดินทางครบเส้นทางวงรอบนี้ภายในวันเดียว <strong>ไม่ใช้พาสจะเสีย {LOOP_REGULAR}</strong> พาสจากชินจูกุจึง<strong>ประหยัด {LOOP_SAVING} ในวันเดียว</strong> ส่วนค่าที่นั่งรถไฟ Romancecar (เที่ยวละ {ROMANCECAR}) ต้องจ่ายเพิ่มไม่ว่าจะเลือกพาสแบบใด
+            <strong>Hakone Freepass</strong> แบบ 2 วัน ผู้ใหญ่ราคา <strong>{PASS_2_DAY_SHINJUKU} จากชินจูกุ และ {PASS_2_DAY_ODAWARA} จากโอดาวาระ</strong> (แบบ 3 วัน {PASS_3_DAY_SHINJUKU} / {PASS_3_DAY_ODAWARA}) นั่งระบบขนส่ง 8 ประเภทในฮาโกเน่ได้ไม่จำกัดเที่ยว ถ้าเดินทางครบวงรอบหนึ่งรอบจากชินจูกุ (รถไฟสายโอดะคิว รถไฟโทซัน รถรางไต่เขา กระเช้าลอยฟ้า เรือทะเลสาบอาชิ และรถบัส) <strong>ค่าตั๋วเดี่ยวรวมเป็น {LOOP_REGULAR}</strong> พาสจึง<strong>ถูกกว่า {LOOP_SAVING} แม้ไปกลับวันเดียว</strong> ค่าที่นั่ง Romancecar (เที่ยวละ {ROMANCECAR} จากชินจูกุ) ต้องจ่ายเพิ่ม ราคาทั้งหมดตรวจสอบจากหน้าทางการของโอดะคิวและ Hakone Navi เมื่อ {CHECKED}
           </p>
           <p className={styles.bodyText}>
             หน้านี้อธิบายรายละเอียดของ Hakone Free Pass ทั้งราคา ระบบขนส่งที่ใช้ได้ และช่องทางการซื้อ ส่วนแผนเที่ยวแต่ละจุดภายในหนึ่งวันอยู่ใน <Link href="/guides/attractions/hakone-day-trip-from-tokyo" style={linkStyle}>คู่มือเที่ยวฮาโกเน่ 1 วันจากโตเกียว (ภาษาอังกฤษ)</Link> และการใช้พาสทั้งสองวันโดยพักค้างคืนหนึ่งคืนอยู่ใน <Link href="/guides/attractions/hakone-2-day-itinerary" style={linkStyle}>แผนเที่ยวฮาโกเน่ 2 วัน (ภาษาอังกฤษ)</Link>
@@ -457,13 +478,13 @@ export default function ThHakoneFreePassPage({ updated }: { updated: PageUpdated
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>คุ้มไหม</span>
-          <h2 className={styles.sectionTitle}>Hakone Freepass ใช้วันเดียวคุ้มไหม?</h2>
+          <h2 className={styles.sectionTitle}>Hakone Freepass คุ้มไหม?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            คุ้มค่าหากเดินทางครบเส้นทางวงรอบ Hakone Navi ซึ่งเป็นเว็บไซต์ของ Odakyu Hakone เอง คิดค่าโดยสารเส้นทางยอดนิยมจากชินจูกุตามค่าโดยสารปกติเมื่อใช้บัตร IC ไว้ที่ {LOOP_REGULAR} เทียบกับพาส {PASS_2_DAY_SHINJUKU} จึงประหยัด {LOOP_SAVING} แม้กลับโตเกียวในเย็นวันเดียวกัน
+            คุ้มหากเดินทางครบวงรอบ แม้ไปวันเดียว ค่าตั๋วเดี่ยว 7 ช่วงจากชินจูกุแล้วกลับชินจูกุรวมเป็น {LOOP_REGULAR} เทียบกับพาส {PASS_2_DAY_SHINJUKU} จึงประหยัด {LOOP_SAVING} ยอดสะสมแซงราคาพาสในช่วงที่ 7 คือรถไฟขากลับชินจูกุ
           </p>
-          <Table head={["เส้นทาง (ผู้ใหญ่ ไม่รวม Romancecar)", "ผู้ใหญ่", "เด็ก", "แหล่งข้อมูล"]} rows={legRows.map((r) => [r.leg, r.adult, r.child, r.source])} />
+          <Table head={["ช่วง (ตามลำดับวงรอบ)", "เส้นทาง", "ค่าตั๋วเดี่ยว ผู้ใหญ่", "ยอดสะสม"]} rows={fareRows} />
           <p className={styles.bodyText} style={noteStyle}>
-            ตรวจสอบล่าสุด: {CHECKED_ISO} — <a href={LOOP_URL} target="_blank" rel="noopener noreferrer">Hakone Navi (ค่าโดยสารรวมทั้งเส้นทางวงรอบ)</a>, <a href={FARE_NOTICE_URL} target="_blank" rel="noopener noreferrer">ประกาศค่าโดยสาร Odakyu Hakone (PDF)</a>, <a href={ODAKYU_URL} target="_blank" rel="noopener noreferrer">odakyu.jp</a> Hakone Navi ไม่ได้แจกแจงค่าโดยสารรวม {LOOP_REGULAR} ตามแต่ละช่วง หน้านี้จึงไม่ได้ระบุค่าโดยสารรถไฟโทซัน รถรางไต่เขา และรถบัสทีละช่วง ค่าห้องโดยสารพิเศษบนเรือเพิ่มอีก ¥800 / ¥400 ต่อเที่ยว
+            ตรวจสอบล่าสุด: {CHECKED_ISO} — <a href={BREAKDOWN_URL} target="_blank" rel="noopener noreferrer">Hakone Navi ค่าโดยสารแต่ละช่วง (ภาษาญี่ปุ่น)</a>, <a href={LOOP_URL} target="_blank" rel="noopener noreferrer">Hakone Navi (ค่าโดยสารรวมทั้งเส้นทางวงรอบ)</a>, <a href={FARE_NOTICE_URL} target="_blank" rel="noopener noreferrer">ประกาศค่าโดยสาร Odakyu Hakone (PDF)</a>, <a href={NAVI_URL} target="_blank" rel="noopener noreferrer">hakonenavi.jp (Hakone Freepass)</a> ค่าโดยสารผู้ใหญ่เมื่อใช้บัตร IC ไม่รวม Romancecar ถ้านั่งรถไฟโทซันต่อไปถึงโกระเพิ่มอีก ¥160 ตารางคำนวณไม่มีค่าโดยสารเด็กแต่ละช่วง กระเช้าลอยฟ้าเด็กเที่ยวละ ¥700 และเรือ ¥850 ผู้ถือพาสเข้าสวนฮาโกเน่โกระ (¥650) ได้ฟรี และห้องโดยสารพิเศษบนเรือเพิ่มอีก ¥800 ต่อเที่ยว
           </p>
           <Table head={["แผนของคุณ", "คำแนะนำ", "เหตุผล"]} rows={worthRows.map((r) => [r.plan, r.verdict, r.why])} />
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
@@ -477,6 +498,30 @@ export default function ThHakoneFreePassPage({ updated }: { updated: PageUpdated
               เทียบทัวร์ฮาโกเน่ 1 วัน →
             </KlookLink>
           </div>
+        </section>
+
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>แผนที่เส้นทาง</span>
+          <h2 className={styles.sectionTitle}>เส้นทาง Hakone Freepass นั่งตามลำดับอย่างไร?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            วงรอบมี 7 ช่วง: รถไฟสายโอดะคิวไปฮาโกเน่ยุโมโตะ รถไฟโทซันขึ้นไปโกระ รถรางไต่เขาไปโซอุนซัง กระเช้าลอยฟ้าผ่านโอวาคุดานิไปโทเง็นได เรือโจรสลัดข้ามทะเลสาบอาชิ รถบัสกลับฮาโกเน่ยุโมโตะ แล้วนั่งรถไฟสายโอดะคิวกลับ ทุกช่วงใช้พาสได้ และเที่ยวย้อนทิศทางก็ได้
+          </p>
+          <Table head={["ยานพาหนะ", "เส้นทาง", "เวลา", "ใช้พาสได้ไหม?"]} rows={routeRows} />
+          <p className={styles.bodyText} style={noteStyle}>
+            ตรวจสอบล่าสุด: {CHECKED_ISO} — <a href={ODAKYU_URL} target="_blank" rel="noopener noreferrer">odakyu.jp (เวลา Romancecar)</a>, <a href={ITINERARY_URL} target="_blank" rel="noopener noreferrer">Odakyu HAKONE TRIP (เวลารถไฟโทซัน)</a>, <a href={LP_URL} target="_blank" rel="noopener noreferrer">หน้า Freepass ของ Hakone Navi (รถรางไต่เขา ภาษาญี่ปุ่น)</a>, <a href={ROPEWAY_URL} target="_blank" rel="noopener noreferrer">FAQ กระเช้าลอยฟ้าฮาโกเน่</a>, <a href={CRUISE_URL} target="_blank" rel="noopener noreferrer">FAQ เรือท่องเที่ยวฮาโกเน่ (เวลาเรือและรถบัส)</a> เวลานั่งรวมได้จากการบวกเวลาเหล่านี้ กระเช้าลอยฟ้าและเรือหยุดให้บริการเมื่อมีลมแรงหรือสภาพอากาศไม่ดี และกระเช้าลอยฟ้าหยุดซ่อมบำรุงประจำปีด้วย ดูวันหยุดช่วงฤดูหนาวได้ใน <Link href="/guides/attractions/hakone-2-day-itinerary" style={linkStyle}>แผนเที่ยวฮาโกเน่ 2 วัน (ภาษาอังกฤษ)</Link>
+          </p>
+        </section>
+
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>เลือกพาส</span>
+          <h2 className={styles.sectionTitle}>1 วันหรือ 2 วัน: ควรซื้อพาสฮาโกเน่แบบไหน?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            ถ้าเดินทางครบวงรอบ ให้ซื้อ Hakone Freepass แบบ 2 วันแม้ไปวันเดียว เพราะไม่มี Freepass แบบ 1 วัน และแบบ 2 วันยังถูกกว่าตั๋วเดี่ยว {LOOP_SAVING} พาสที่ครอบคลุมน้อยกว่าจะคุ้มก็ต่อเมื่อไม่ไปทะเลสาบหรือไม่ขึ้นกระเช้าลอยฟ้า
+          </p>
+          <Table head={["พาส", "เหมาะกับ", "ราคาผู้ใหญ่"]} rows={passChoiceRows} />
+          <p className={styles.bodyText} style={noteStyle}>
+            ตรวจสอบล่าสุด: {CHECKED_ISO} — <a href={FARE_NOTICE_URL} target="_blank" rel="noopener noreferrer">ประกาศค่าโดยสาร Odakyu Hakone (PDF)</a>, <a href={LOOP_URL} target="_blank" rel="noopener noreferrer">พาสส่วนลดของ Hakone Navi</a>, <a href={NAVI_URL} target="_blank" rel="noopener noreferrer">hakonenavi.jp (Hakone Freepass)</a>
+          </p>
         </section>
 
         <section className={styles.bodySection}>

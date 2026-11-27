@@ -38,16 +38,18 @@ import HotelStayBlock from "../../../../components/HotelStayBlock";
 // (hakonenavi.jp/international/tw/discount_passes/free_pass) and in Taiwan / Hong Kong results.
 // Body text is kept on one line per paragraph: a JSX line break inside Chinese text renders as a space.
 
+// R17 (2026-11-27, task-jtk-20261127-R17): the ride-by-ride break-even table, the route table
+// and the 1-day-or-2-day table mirror the English page with the same figures and sources.
 const LOCALE = "zh-tw" as const;
 const ROUTE = "/zh-tw/guides/attractions/hakone-free-pass";
 const TITLE = "箱根周遊券 2026：新宿出發票價與是否划算";
 const H1 = "箱根周遊券 2026：新宿出發票價、路線與是否划算";
 const DESC =
-  "箱根周遊券（Hakone Freepass）2026：新宿出發2日券 ¥7,100、小田原出發 ¥6,000。不用周遊券走完環狀路線 ¥8,322，當天來回也划算。";
+  "箱根周遊券 2026：新宿出發2日券 ¥7,100、小田原 ¥6,000，8種交通工具無限搭乘。環狀路線單程票合計 ¥8,322，當天來回也省 ¥1,222。";
 
-const CHECKED_ISO = "2026-11-20";
+const CHECKED_ISO = "2026-11-27";
 const CHECKED = dateLabel(CHECKED_ISO, LOCALE);
-const BUY_CHECKED_ISO = "2026-11-13";
+const BUY_CHECKED_ISO = "2026-11-27";
 const BUY_CHECKED = dateLabel(BUY_CHECKED_ISO, LOCALE);
 const LOOP_URL = "https://www.hakonenavi.jp/international/en/article/4252";
 const JR_URL = "https://odakyu-global.com/blog/2053/";
@@ -56,6 +58,11 @@ const LOOP_SAVING = "¥1,222";
 const NAVI_URL = "https://www.hakonenavi.jp/international/en/discount_passes/free_pass";
 const ODAKYU_URL = "https://www.odakyu.jp/english/passes/hakone/";
 const FARE_NOTICE_URL = "https://www.hakonenavi.jp/international/en/wp-content/uploads/sites/2/2025/09/re_price202510.pdf";
+const BREAKDOWN_URL = "https://www.hakonenavi.jp/feature/22866";
+const LP_URL = "https://www.hakonenavi.jp/lp/hakone-freepass/";
+const ROPEWAY_URL = "https://www.hakonenavi.jp/international/en/transportation/hakone-ropeway";
+const CRUISE_URL = "https://www.hakonenavi.jp/international/en/transportation/hakone-kankosen";
+const ITINERARY_URL = "https://hakonetrip.odakyu-global.com/feature/hakone-2-day-itinerary/";
 
 const PASS_2_DAY_SHINJUKU = "¥7,100";
 const PASS_3_DAY_SHINJUKU = "¥7,500";
@@ -136,24 +143,38 @@ const coverageRows = [
   { mode: "伊豆箱根巴士", included: "✗ 不含", note: "屬於不同業者。上車前請先確認是哪一家巴士公司。" },
 ];
 
-const legRows = [
-  {
-    leg: `從新宿出發一天走完環狀路線：不用周遊券 ${LOOP_REGULAR}，用周遊券 ${PASS_2_DAY_SHINJUKU}`,
-    adult: `省 ${LOOP_SAVING}`,
-    child: "—",
-    source: "箱根Navi（小田急箱根），IC 卡車資，不含浪漫特快",
-  },
-  {
-    leg: "不用周遊券走完環狀路線：小田急線來回、登山電車、登山纜車、空中纜車、海賊觀光船、巴士",
-    adult: LOOP_REGULAR,
-    child: "—",
-    source: "箱根 Navi 試算總額（IC 卡車資）",
-  },
-  { leg: "箱根周遊券 新宿出發 2 日券", adult: PASS_2_DAY_SHINJUKU, child: "¥1,600", source: "odakyu-global.com／hakonenavi.jp" },
-  { leg: "其中一段的車資：箱根空中纜車 早雲山 → 桃源台（單程）", adult: ROPEWAY, child: "¥700", source: "小田急箱根票價公告，2025 年 10 月 1 日起" },
-  { leg: "其中一段的車資：蘆之湖海賊觀光船 桃源台 → 箱根町／元箱根（單程）", adult: CRUISE, child: "¥850", source: "小田急箱根票價公告，2025 年 10 月 1 日起" },
-  { leg: "小田急線 新宿 ⇄ 小田原（一般車資，單程）", adult: "¥910", child: "—", source: "odakyu.jp" },
-  { leg: "來回都搭浪漫特快時", adult: `${PASS_2_DAY_SHINJUKU} + ¥2,400 = ¥9,500`, child: "—", source: "odakyu.jp 試算範例" },
+const fareRows: ReactNode[][] = [
+  ["結論", "環狀路線的第 7 段、也就是回新宿的電車，周遊券就回本", LOOP_REGULAR, `比 ${PASS_2_DAY_SHINJUKU} 的周遊券多 ${LOOP_SAVING}`],
+  ["1. 小田急線＋登山線", "新宿 → 箱根湯本", "¥1,261", "¥1,261"],
+  ["2. 箱根登山電車", "箱根湯本 → 雕刻之森（強羅的前一站）", "¥460", "¥1,721"],
+  ["3. 箱根登山纜車", "強羅 → 早雲山", "¥430", "¥2,151"],
+  ["4. 箱根空中纜車", "早雲山 → 大涌谷 → 桃源台", ROPEWAY, "¥4,151"],
+  ["5. 箱根海賊觀光船", "桃源台 → 元箱根", CRUISE, "¥5,851"],
+  ["6. 箱根登山巴士", "元箱根 → 箱根湯本", "¥1,210", "¥7,061——仍比周遊券少 ¥39"],
+  ["7. 小田急線＋登山線", "箱根湯本 → 新宿", "¥1,261", `${LOOP_REGULAR}——周遊券已回本`],
+  ["新宿出發 2 日券", "用周遊券走同一條路線", PASS_2_DAY_SHINJUKU, `一天省 ${LOOP_SAVING}`],
+  ["新宿出發 3 日券", "用周遊券走同一條路線", PASS_3_DAY_SHINJUKU, "一天省 ¥822"],
+  ["箱根Navi 的兩天行程", "環狀路線加上前往美術館與濕生花園的 4 段巴士", "¥10,622", `用 ${PASS_2_DAY_SHINJUKU} 的周遊券省 ¥3,522`],
+  ["小田原出發周遊券，只算第 2–6 段", "從箱根湯本繞一圈再回來", "¥5,800", `比 ${PASS_2_DAY_ODAWARA} 的周遊券少 ¥200——加上小田原 ⇄ 箱根湯本的電車或第二天就回本`],
+];
+
+const routeRows: ReactNode[][] = [
+  ["整條環狀路線", "箱根湯本 → 強羅 → 早雲山 → 大涌谷 → 桃源台 → 元箱根 → 箱根湯本", "搭乘時間約 2.5–3 小時，另加轉乘與停留時間", "✓ 每一段都可用"],
+  ["1. 浪漫特快或小田急線", "新宿 → 箱根湯本", "浪漫特快直達約 80 分鐘；一般列車通常在小田原轉車", `✓ 小田急線（新宿出發版，來回一次）· ✗ 浪漫特快座位費 +${ROMANCECAR}`],
+  ["2. 箱根登山電車", "箱根湯本 → 強羅（之字形折返）", "到雕刻之森約 40 分鐘，下一站就是強羅", "✓"],
+  ["3. 箱根登山纜車", "強羅 → 早雲山", "約 10 分鐘", "✓"],
+  ["4. 箱根空中纜車", "早雲山 → 大涌谷 → 姥子 → 桃源台", "每段約 15 分鐘，在大涌谷換車", "✓"],
+  ["5. 箱根海賊觀光船", "桃源台 → 箱根町或元箱根", "約 25–35 分鐘", "✓（特別船艙 +¥800）"],
+  ["6. 箱根登山巴士", "元箱根 → 箱根湯本", "約 40 分鐘（H 線）或 35 分鐘（K 線）", "✓ · ✗ 伊豆箱根巴士"],
+  ["7. 小田急線或浪漫特快", "箱根湯本 → 新宿", "同第 1 段", "✓ 小田急線 · ✗ 浪漫特快座位費"],
+];
+
+const passChoiceRows: ReactNode[][] = [
+  ["結論：箱根周遊券沒有 1 日券", "走完整條環狀路線的話，只玩一天也買 2 日券", `新宿出發 ${PASS_2_DAY_SHINJUKU}，比單買便宜 ${LOOP_SAVING}`],
+  ["箱根周遊券（2 日或 3 日）", "完整環狀路線、在箱根住一晚，或兩者都要", `新宿出發 ${PASS_2_DAY_SHINJUKU}／${PASS_3_DAY_SHINJUKU}，小田原出發 ${PASS_2_DAY_ODAWARA}／${PASS_3_DAY_ODAWARA}`],
+  ["大涌谷 2 日券（Owakudani 2-Day Pass）", "只去大涌谷與空中纜車：登山電車、登山纜車與全線空中纜車，強羅公園免費入園——不含海賊觀光船與巴士", "小田原出發成人 ¥5,000、兒童 ¥1,300"],
+  ["觀光船＆空中纜車周遊券（1 日）", "開車前往：只含空中纜車與蘆之湖海賊觀光船", "成人 ¥5,000、兒童 ¥1,400"],
+  ["單程票", "只到箱根湯本泡溫泉、吃午餐", "每段分開付費"],
 ];
 
 const worthRows = [
@@ -199,8 +220,8 @@ const faqItems: FaqItem[] = [
     a: `新宿出發 2 日券成人 ${PASS_2_DAY_SHINJUKU}、兒童（6–11 歲）¥1,600，3 日券為 ${PASS_3_DAY_SHINJUKU}／¥1,850。只含箱根地區的小田原出發周遊券，2 日券 ${PASS_2_DAY_ODAWARA}／¥1,500，3 日券 ${PASS_3_DAY_ODAWARA}／¥1,750。以上價格自 2025 年 10 月 1 日起適用，於 ${CHECKED} 在 hakonenavi.jp 與 odakyu.jp 查核。`,
   },
   {
-    q: "箱根周遊券只用一天划算嗎？",
-    a: `走完這條環狀路線就划算。周遊券沒有 1 日券，但小田急箱根的官方網站箱根Navi 計算，從新宿出發的環狀路線（小田急線來回、登山電車、登山纜車、空中纜車、蘆之湖海賊觀光船與巴士）以 IC 卡一般車資計為 ${LOOP_REGULAR}，與 2 日券 ${PASS_2_DAY_SHINJUKU} 相比，一天就省 ${LOOP_SAVING}。其中大部分來自空中纜車（單程 ${ROPEWAY}）與海賊觀光船（${CRUISE}）。只去箱根湯本的話並不划算。${CHECKED} 查核。`,
+    q: "箱根周遊券划算嗎？",
+    a: `走完整條環狀路線就划算，只玩一天也一樣。依箱根Navi 的單程票價，從新宿出發的環狀路線——小田急線單程 ¥1,261（來回各一次）、登山電車 ¥460、登山纜車 ¥430、空中纜車 ${ROPEWAY}、蘆之湖海賊觀光船 ${CRUISE}、回程巴士 ¥1,210——合計 ${LOOP_REGULAR}，2 日券是 ${PASS_2_DAY_SHINJUKU}，省 ${LOOP_SAVING}；箱根Navi 的兩天行程則省 ¥3,522。周遊券在第 7 段（回程電車）回本。只去箱根湯本的話並不划算。${CHECKED} 查核。`,
   },
   {
     q: "箱根周遊券在哪裡買？",
@@ -211,8 +232,8 @@ const faqItems: FaqItem[] = [
     a: `不包含。新宿出發的周遊券含小田急線來回一次，但特急浪漫特快需另購特急券：新宿到箱根湯本單程成人 ${ROMANCECAR}、兒童 ¥600，從小田原出發則是 ¥200／¥100。直達車程約 80 分鐘，透過 EMot 線上預訂座位便宜 ¥50。小田急官方提供的試算範例：周遊券 ${PASS_2_DAY_SHINJUKU} + 浪漫特快來回 ¥2,400 = ¥9,500。${CHECKED} 查核。`,
   },
   {
-    q: "箱根周遊券可以和 JR Pass 一起用嗎？",
-    a: `可以搭配使用，但兩者無法互相取代。小田急表示，JR Pass 與 JR 東京廣域周遊券不能在箱根地區內使用，但可以搭 JR 線到小田原。抵達小田原後，請買只含箱根地區、不包含不需要搭乘的小田急線的小田原出發箱根周遊券（2 日券 ${PASS_2_DAY_ODAWARA}，3 日券 ${PASS_3_DAY_ODAWARA}）。${CHECKED} 查核。`,
+    q: "1 日還是 2 日：該買哪一種箱根周遊券？",
+    a: `箱根周遊券沒有 1 日券，只有 2 日券與 3 日券。走完整條環狀路線的話，只玩一天也買 2 日券（新宿出發 ${PASS_2_DAY_SHINJUKU}），因為比單買便宜 ${LOOP_SAVING}。只去大涌谷、不去蘆之湖時，大涌谷 2 日券（小田原出發 ¥5,000）含登山電車、登山纜車與空中纜車；開車前往的話，1 日有效的觀光船＆空中纜車周遊券是 ¥5,000。${CHECKED} 依小田急箱根票價公告與箱根Navi 查核。`,
   },
 ];
 
@@ -347,7 +368,7 @@ export default function ZhTwHakoneFreePassPage({ updated }: { updated: PageUpdat
 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>箱根周遊券（Hakone Freepass）</strong>成人票價為<strong>新宿出發 2 日券 {PASS_2_DAY_SHINJUKU}、3 日券 {PASS_3_DAY_SHINJUKU}</strong>，小田原出發則是 {PASS_2_DAY_ODAWARA} 與 {PASS_3_DAY_ODAWARA}，於 {CHECKED} 在小田急官方網頁查核。可搭乘箱根登山電車、登山纜車、箱根空中纜車、蘆之湖海賊觀光船與箱根的巴士，新宿出發的周遊券另含小田急線來回一次。依箱根Navi 的計算，一天走完這條環狀路線，<strong>不用周遊券的交通費為 {LOOP_REGULAR}</strong>，所以新宿出發的周遊券<strong>一天就能省 {LOOP_SAVING}</strong>；無論買哪一種周遊券，搭乘浪漫特快都須另付座位費（單程 {ROMANCECAR}）。
+            <strong>箱根周遊券（Hakone Freepass）</strong>2 日券成人票價為<strong>新宿出發 {PASS_2_DAY_SHINJUKU}、小田原出發 {PASS_2_DAY_ODAWARA}</strong>（3 日券 {PASS_3_DAY_SHINJUKU}／{PASS_3_DAY_ODAWARA}），箱根內 8 種交通工具不限次數搭乘。從新宿出發走一圈環狀路線（小田急線、登山電車、登山纜車、空中纜車、蘆之湖海賊觀光船與巴士），<strong>單程票合計 {LOOP_REGULAR}</strong>，所以<strong>當天來回也比單買便宜 {LOOP_SAVING}</strong>。浪漫特快座位費（新宿出發單程 {ROMANCECAR}）另計；以上價格於 {CHECKED} 在小田急與箱根Navi 官方網頁查核。
           </p>
           <p className={styles.bodyText}>
             本頁介紹的是周遊券本身：箱根周遊券的價格、可搭乘的範圍與購買地點。一天之內每一站怎麼安排，請看
@@ -469,13 +490,13 @@ export default function ZhTwHakoneFreePassPage({ updated }: { updated: PageUpdat
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>划算嗎？</span>
-          <h2 className={styles.sectionTitle}>箱根周遊券只用一天划算嗎？</h2>
+          <h2 className={styles.sectionTitle}>箱根周遊券划算嗎？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            走完這條環狀路線就划算。根據小田急箱根官方網站箱根 Navi 的試算，從新宿出發走完經典路線，IC 卡一般車資合計為 {LOOP_REGULAR}，周遊券是 {PASS_2_DAY_SHINJUKU}，因此即使當天晚上返回東京，也能省 {LOOP_SAVING}。
+            走完整條環狀路線就划算，只玩一天也一樣：從新宿出發再回到新宿的 7 段單程票合計 {LOOP_REGULAR}，周遊券是 {PASS_2_DAY_SHINJUKU}，省 {LOOP_SAVING}。累計金額在第 7 段、也就是回新宿的電車時超過周遊券價格。
           </p>
-          <Table head={["路線（成人，不含浪漫特快）", "成人", "兒童", "資料來源"]} rows={legRows.map((r) => [r.leg, r.adult, r.child, r.source])} />
+          <Table head={["路段（依環狀路線順序）", "區間", "成人單程票價", "累計"]} rows={fareRows} />
           <p className={styles.bodyText} style={noteStyle}>
-            最後查核：{CHECKED_ISO}——<a href={LOOP_URL} target="_blank" rel="noopener noreferrer">箱根Navi（環狀路線合計）</a>、<a href={FARE_NOTICE_URL} target="_blank" rel="noopener noreferrer">小田急箱根票價公告（PDF）</a>、<a href={ODAKYU_URL} target="_blank" rel="noopener noreferrer">odakyu.jp</a>。箱根Navi 沒有把 {LOOP_REGULAR} 拆成各段車資，因此本頁不逐一列出登山電車、登山纜車與巴士的車資。海賊觀光船的特別船艙單程另加 ¥800／¥400。
+            最後查核：{CHECKED_ISO}——<a href={BREAKDOWN_URL} target="_blank" rel="noopener noreferrer">箱根Navi 各段票價（日文）</a>、<a href={LOOP_URL} target="_blank" rel="noopener noreferrer">箱根Navi（環狀路線合計）</a>、<a href={FARE_NOTICE_URL} target="_blank" rel="noopener noreferrer">小田急箱根票價公告（PDF）</a>、<a href={NAVI_URL} target="_blank" rel="noopener noreferrer">hakonenavi.jp（箱根周遊券）</a>。成人 IC 卡票價，不含浪漫特快。登山電車坐到強羅再加 ¥160。試算中沒有各段的兒童票價；空中纜車兒童單程 ¥700、海賊觀光船 ¥850。持周遊券可免費進入箱根強羅公園（¥650），海賊觀光船特別船艙單程另加 ¥800。
           </p>
           <Table head={["您的行程", "建議", "原因"]} rows={worthRows.map((r) => [r.plan, r.verdict, r.why])} />
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
@@ -493,6 +514,30 @@ export default function ZhTwHakoneFreePassPage({ updated }: { updated: PageUpdat
               比較箱根一日遊 →
             </KlookLink>
           </div>
+        </section>
+
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>路線圖</span>
+          <h2 className={styles.sectionTitle}>箱根周遊券路線圖：依什麼順序搭乘？</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            環狀路線共 7 段：搭小田急線到箱根湯本、登山電車上到強羅、登山纜車到早雲山、空中纜車經大涌谷到桃源台、海賊觀光船橫越蘆之湖、巴士回到箱根湯本，再搭小田急線回去。每一段都能用周遊券，反方向走也可以。
+          </p>
+          <Table head={["交通工具", "區間", "所需時間", "周遊券可用？"]} rows={routeRows} />
+          <p className={styles.bodyText} style={noteStyle}>
+            最後查核：{CHECKED_ISO}——<a href={ODAKYU_URL} target="_blank" rel="noopener noreferrer">odakyu.jp（浪漫特快所需時間）</a>、<a href={ITINERARY_URL} target="_blank" rel="noopener noreferrer">Odakyu HAKONE TRIP（登山電車所需時間）</a>、<a href={LP_URL} target="_blank" rel="noopener noreferrer">箱根Navi 周遊券頁面（登山纜車，日文）</a>、<a href={ROPEWAY_URL} target="_blank" rel="noopener noreferrer">箱根空中纜車常見問題</a>、<a href={CRUISE_URL} target="_blank" rel="noopener noreferrer">箱根海賊觀光船常見問題（船與巴士所需時間）</a>。搭乘時間合計是這些時間相加的結果。空中纜車與海賊觀光船遇強風或惡劣天候會停駛，空中纜車每年也會停駛進行定期維修，冬季停駛日期請看<Link href="/guides/attractions/hakone-2-day-itinerary" style={linkStyle}>箱根兩天行程（英文）</Link>。
+          </p>
+        </section>
+
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>選哪一種</span>
+          <h2 className={styles.sectionTitle}>1 日還是 2 日：該買哪一種箱根周遊券？</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            走完整條環狀路線的話，只玩一天也買 2 日券——箱根周遊券沒有 1 日券，而 2 日券仍比單買便宜 {LOOP_SAVING}。不去蘆之湖或不搭空中纜車時，範圍較小的周遊券才划算。
+          </p>
+          <Table head={["周遊券", "適合", "成人票價"]} rows={passChoiceRows} />
+          <p className={styles.bodyText} style={noteStyle}>
+            最後查核：{CHECKED_ISO}——<a href={FARE_NOTICE_URL} target="_blank" rel="noopener noreferrer">小田急箱根票價公告（PDF）</a>、<a href={LOOP_URL} target="_blank" rel="noopener noreferrer">箱根Navi 優惠票券</a>、<a href={NAVI_URL} target="_blank" rel="noopener noreferrer">hakonenavi.jp（箱根周遊券）</a>。
+          </p>
         </section>
 
         <section className={styles.bodySection}>

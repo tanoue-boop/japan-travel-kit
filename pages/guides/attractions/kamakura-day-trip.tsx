@@ -423,7 +423,9 @@ export default function KamakuraDayTripPage({ updated }: { updated: PageUpdated 
             your whole trip. If you would rather spend the day on a mountain than a coastline,{" "}
             <Link href="/guides/attractions/hakone-day-trip-from-tokyo">Hakone</Link> and{" "}
             <Link href="/guides/attractions/mt-fuji-day-trip-tokyo">Lake Kawaguchi</Link> are the other two
-            easy days out of Tokyo. Yokohama is on the same JR line, between Tokyo and Kamakura — the{" "}
+            easy days out of Tokyo; for Hakone, the{" "}
+            <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass</Link> covers the whole loop and
+            costs less than its single fares even in one day. Yokohama is on the same JR line, between Tokyo and Kamakura — the{" "}
             <Link href="/guides/attractions/yokohama-day-trip">Yokohama day trip</Link> guide has its trains,
             day passes and a half-day route if you want to stop on the way back.
           </p>

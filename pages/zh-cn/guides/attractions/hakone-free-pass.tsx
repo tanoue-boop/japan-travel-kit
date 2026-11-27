@@ -38,16 +38,18 @@ import HotelStayBlock from "../../../../components/HotelStayBlock";
 // (hakonenavi.jp/international/cn/discount_passes/free_pass) and in Simplified-Chinese results.
 // Body text is kept on one line per paragraph: a JSX line break inside Chinese text renders as a space.
 
+// R17 (2026-11-27, task-jtk-20261127-R17): the ride-by-ride break-even table, the route table
+// and the 1-day-or-2-day table mirror the English page with the same figures and sources.
 const LOCALE = "zh-cn" as const;
 const ROUTE = "/zh-cn/guides/attractions/hakone-free-pass";
 const TITLE = "箱根周游券 2026：新宿出发价格与是否划算";
 const H1 = "箱根周游券 2026：新宿出发价格、路线与是否划算";
 const DESC =
-  "箱根周游券（Hakone Freepass）2026：新宿出发2日券 ¥7,100，小田原出发 ¥6,000。不使用周游券游览箱根环线需 ¥8,322，当天往返也划算。";
+  "箱根周游券 2026：新宿出发2日券 ¥7,100，小田原 ¥6,000，8种交通工具不限次数乘坐。环线单程票合计 ¥8,322，当天往返也省 ¥1,222。";
 
-const CHECKED_ISO = "2026-11-20";
+const CHECKED_ISO = "2026-11-27";
 const CHECKED = dateLabel(CHECKED_ISO, LOCALE);
-const BUY_CHECKED_ISO = "2026-11-13";
+const BUY_CHECKED_ISO = "2026-11-27";
 const BUY_CHECKED = dateLabel(BUY_CHECKED_ISO, LOCALE);
 const LOOP_URL = "https://www.hakonenavi.jp/international/en/article/4252";
 const JR_URL = "https://odakyu-global.com/blog/2053/";
@@ -56,6 +58,11 @@ const LOOP_SAVING = "¥1,222";
 const NAVI_URL = "https://www.hakonenavi.jp/international/en/discount_passes/free_pass";
 const ODAKYU_URL = "https://www.odakyu.jp/english/passes/hakone/";
 const FARE_NOTICE_URL = "https://www.hakonenavi.jp/international/en/wp-content/uploads/sites/2/2025/09/re_price202510.pdf";
+const BREAKDOWN_URL = "https://www.hakonenavi.jp/feature/22866";
+const LP_URL = "https://www.hakonenavi.jp/lp/hakone-freepass/";
+const ROPEWAY_URL = "https://www.hakonenavi.jp/international/en/transportation/hakone-ropeway";
+const CRUISE_URL = "https://www.hakonenavi.jp/international/en/transportation/hakone-kankosen";
+const ITINERARY_URL = "https://hakonetrip.odakyu-global.com/feature/hakone-2-day-itinerary/";
 
 const PASS_2_DAY_SHINJUKU = "¥7,100";
 const PASS_3_DAY_SHINJUKU = "¥7,500";
@@ -136,24 +143,38 @@ const coverageRows = [
   { mode: "伊豆箱根巴士", included: "✗ 不含", note: "由其他公司运营，上车前请确认巴士的运营公司。" },
 ];
 
-const legRows = [
-  {
-    leg: `从新宿出发，当天游览完整条箱根环线：不使用周游券 ${LOOP_REGULAR}，使用周游券 ${PASS_2_DAY_SHINJUKU}`,
-    adult: `省 ${LOOP_SAVING}`,
-    child: "—",
-    source: "箱根Navi（小田急箱根），IC 卡票价，不含浪漫特快",
-  },
-  {
-    leg: "不使用周游券游览箱根环线：小田急线往返、登山电车、登山缆车、空中缆车、海贼观光船、巴士",
-    adult: LOOP_REGULAR,
-    child: "—",
-    source: "箱根Navi 合计（IC 卡票价）",
-  },
-  { leg: "箱根周游券 新宿出发 2 日券", adult: PASS_2_DAY_SHINJUKU, child: "¥1,600", source: "odakyu-global.com／hakonenavi.jp" },
-  { leg: "分段票价：箱根空中缆车 早云山 → 桃源台（单程）", adult: ROPEWAY, child: "¥700", source: "小田急箱根票价公告，2025 年 10 月 1 日起" },
-  { leg: "分段票价：芦之湖海贼观光船 桃源台 → 箱根町／元箱根（单程）", adult: CRUISE, child: "¥850", source: "小田急箱根票价公告，2025 年 10 月 1 日起" },
-  { leg: "小田急线 新宿 ⇄ 小田原（普通票价，单程）", adult: "¥910", child: "—", source: "odakyu.jp" },
-  { leg: "往返都乘坐浪漫特快时", adult: `${PASS_2_DAY_SHINJUKU} + ¥2,400 = ¥9,500`, child: "—", source: "odakyu.jp 费用计算示例" },
+const fareRows: ReactNode[][] = [
+  ["结论", "坐到箱根环线的第 7 段、也就是返回新宿的电车时，周游券就回本了", LOOP_REGULAR, `比 ${PASS_2_DAY_SHINJUKU} 的周游券多 ${LOOP_SAVING}`],
+  ["1. 小田急线＋登山线", "新宿 → 箱根汤本", "¥1,261", "¥1,261"],
+  ["2. 箱根登山电车", "箱根汤本 → 雕刻之森（强罗的前一站）", "¥460", "¥1,721"],
+  ["3. 箱根登山缆车", "强罗 → 早云山", "¥430", "¥2,151"],
+  ["4. 箱根空中缆车", "早云山 → 大涌谷 → 桃源台", ROPEWAY, "¥4,151"],
+  ["5. 箱根海贼观光船", "桃源台 → 元箱根", CRUISE, "¥5,851"],
+  ["6. 箱根登山巴士", "元箱根 → 箱根汤本", "¥1,210", "¥7,061——仍比周游券少 ¥39"],
+  ["7. 小田急线＋登山线", "箱根汤本 → 新宿", "¥1,261", `${LOOP_REGULAR}——周游券已回本`],
+  ["新宿出发 2 日券", "用周游券走同一条路线", PASS_2_DAY_SHINJUKU, `一天省 ${LOOP_SAVING}`],
+  ["新宿出发 3 日券", "用周游券走同一条路线", PASS_3_DAY_SHINJUKU, "一天省 ¥822"],
+  ["箱根Navi 的两天行程", "箱根环线加上前往美术馆和湿生花园的 4 段巴士", "¥10,622", `使用 ${PASS_2_DAY_SHINJUKU} 的周游券省 ¥3,522`],
+  ["小田原出发周游券，只算第 2–6 段", "从箱根汤本绕一圈再回来", "¥5,800", `比 ${PASS_2_DAY_ODAWARA} 的周游券少 ¥200——加上小田原 ⇄ 箱根汤本的电车或第二天就回本`],
+];
+
+const routeRows: ReactNode[][] = [
+  ["整条箱根环线", "箱根汤本 → 强罗 → 早云山 → 大涌谷 → 桃源台 → 元箱根 → 箱根汤本", "乘坐时间约 2.5–3 小时，另加换乘和游览时间", "✓ 每一段都可用"],
+  ["1. 浪漫特快或小田急线", "新宿 → 箱根汤本", "浪漫特快直达约 80 分钟；普通列车通常在小田原换乘", `✓ 小田急线（新宿出发版，往返一次）· ✗ 浪漫特快特急券 +${ROMANCECAR}`],
+  ["2. 箱根登山电车", "箱根汤本 → 强罗（之字形折返）", "到雕刻之森约 40 分钟，下一站就是强罗", "✓"],
+  ["3. 箱根登山缆车", "强罗 → 早云山", "约 10 分钟", "✓"],
+  ["4. 箱根空中缆车", "早云山 → 大涌谷 → 姥子 → 桃源台", "每段约 15 分钟，在大涌谷换乘", "✓"],
+  ["5. 箱根海贼观光船", "桃源台 → 箱根町或元箱根", "约 25–35 分钟", "✓（特别船舱 +¥800）"],
+  ["6. 箱根登山巴士", "元箱根 → 箱根汤本", "约 40 分钟（H 线）或 35 分钟（K 线）", "✓ · ✗ 伊豆箱根巴士"],
+  ["7. 小田急线或浪漫特快", "箱根汤本 → 新宿", "同第 1 段", "✓ 小田急线 · ✗ 浪漫特快特急券"],
+];
+
+const passChoiceRows: ReactNode[][] = [
+  ["结论：箱根周游券没有 1 日券", "游览完整条箱根环线的话，只玩一天也买 2 日券", `新宿出发 ${PASS_2_DAY_SHINJUKU}，比单独买票便宜 ${LOOP_SAVING}`],
+  ["箱根周游券（2 日或 3 日）", "完整的箱根环线、在箱根住一晚，或两者都要", `新宿出发 ${PASS_2_DAY_SHINJUKU}／${PASS_3_DAY_SHINJUKU}，小田原出发 ${PASS_2_DAY_ODAWARA}／${PASS_3_DAY_ODAWARA}`],
+  ["大涌谷 2 日券（Owakudani 2-Day Pass）", "只去大涌谷和坐空中缆车：登山电车、登山缆车和空中缆车全线，强罗公园免费入园——不含海贼观光船和巴士", "小田原出发成人 ¥5,000、儿童 ¥1,300"],
+  ["观光船＆空中缆车周游券（1 日）", "自驾前往：只含空中缆车和芦之湖海贼观光船", "成人 ¥5,000、儿童 ¥1,400"],
+  ["单程票", "只去箱根汤本泡温泉、吃午饭", "每段单独付费"],
 ];
 
 const worthRows = [
@@ -199,8 +220,8 @@ const faqItems: FaqItem[] = [
     a: `新宿出发 2 日券成人 ${PASS_2_DAY_SHINJUKU}、儿童（6–11 岁）¥1,600，3 日券为 ${PASS_3_DAY_SHINJUKU}／¥1,850。仅包含箱根地区交通的小田原出发周游券，2 日券 ${PASS_2_DAY_ODAWARA}／¥1,500，3 日券 ${PASS_3_DAY_ODAWARA}／¥1,750。以上票价自 2025 年 10 月 1 日起执行，并已于 ${CHECKED}通过 hakonenavi.jp 和 odakyu.jp 核实。`,
   },
   {
-    q: "箱根周游券只用一天划算吗？",
-    a: `游览完整条箱根环线就划算。周游券没有 1 日券，但小田急箱根的官方网站箱根Navi 计算，从新宿出发的箱根环线（小田急线往返、登山电车、登山缆车、空中缆车、芦之湖海贼观光船和巴士）按 IC 卡普通票价为 ${LOOP_REGULAR}，与 2 日券 ${PASS_2_DAY_SHINJUKU} 相比，一天就能省 ${LOOP_SAVING}。省下的费用大部分来自空中缆车（单程 ${ROPEWAY}）和海贼观光船（${CRUISE}）。只去箱根汤本的话并不划算。${CHECKED}核实。`,
+    q: "箱根周游券划算吗？",
+    a: `游览完整条箱根环线就划算，只玩一天也一样。按箱根Navi 的单程票价，从新宿出发的箱根环线——小田急线单程 ¥1,261（往返各一次）、登山电车 ¥460、登山缆车 ¥430、空中缆车 ${ROPEWAY}、芦之湖海贼观光船 ${CRUISE}、返程巴士 ¥1,210——合计 ${LOOP_REGULAR}，2 日券是 ${PASS_2_DAY_SHINJUKU}，省 ${LOOP_SAVING}；箱根Navi 的两天行程则省 ¥3,522。周游券在第 7 段（返程电车）回本。只去箱根汤本的话并不划算。${CHECKED}核实。`,
   },
   {
     q: "箱根周游券在哪里买？",
@@ -211,8 +232,8 @@ const faqItems: FaqItem[] = [
     a: `不包含。新宿出发的周游券还包含一次小田急线往返，但特急浪漫特快需要另购特急券：新宿到箱根汤本单程成人 ${ROMANCECAR}、儿童 ¥600，从小田原出发则是 ¥200／¥100。直达约 80 分钟，通过 EMot 在线购买特急券便宜 ¥50。小田急官方提供的费用计算示例：周游券 ${PASS_2_DAY_SHINJUKU} + 浪漫特快往返 ¥2,400 = ¥9,500。${CHECKED}核实。`,
   },
   {
-    q: "箱根周游券可以和 JR Pass 一起用吗？",
-    a: `可以搭配使用，但两者不能互相替代。小田急表示，JR Pass 和 JR 东京广域周游券不能在箱根地区内使用，但可用于乘坐 JR 列车前往小田原。从小田原开始，请选择小田原出发的箱根周游券：仅包含箱根地区交通，无需为不使用的小田急线付费（2 日券 ${PASS_2_DAY_ODAWARA}，3 日券 ${PASS_3_DAY_ODAWARA}）。${CHECKED}核实。`,
+    q: "1 日还是 2 日：该买哪一种箱根周游券？",
+    a: `箱根周游券没有 1 日券，只有 2 日券和 3 日券。游览完整条箱根环线的话，只玩一天也买 2 日券（新宿出发 ${PASS_2_DAY_SHINJUKU}），因为比单独买票便宜 ${LOOP_SAVING}。只去大涌谷、不去芦之湖时，大涌谷 2 日券（小田原出发 ¥5,000）包含登山电车、登山缆车和空中缆车；自驾前往的话，1 日有效的观光船＆空中缆车周游券是 ¥5,000。${CHECKED}根据小田急箱根票价公告和箱根Navi 核实。`,
   },
 ];
 
@@ -347,7 +368,7 @@ export default function ZhCnHakoneFreePassPage({ updated }: { updated: PageUpdat
 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>箱根周游券（Hakone Freepass）</strong>成人票价为<strong>新宿出发 2 日券 {PASS_2_DAY_SHINJUKU}、3 日券 {PASS_3_DAY_SHINJUKU}</strong>，小田原出发则是 {PASS_2_DAY_ODAWARA} 和 {PASS_3_DAY_ODAWARA}，已于 {CHECKED}通过小田急官方网站核实。持券可乘坐箱根登山电车、登山缆车、箱根空中缆车、芦之湖海贼观光船及箱根地区的巴士，新宿出发的周游券还包含一次小田急线往返。根据箱根Navi 的计算，一天内游览完整条环线，<strong>不使用周游券，交通费合计 {LOOP_REGULAR}</strong>，所以新宿出发的周游券<strong>一天就能省 {LOOP_SAVING}</strong>。无论购买哪种周游券，均需另购浪漫特快特急券（单程 {ROMANCECAR}）。
+            <strong>箱根周游券（Hakone Freepass）</strong>2 日券成人票价为<strong>新宿出发 {PASS_2_DAY_SHINJUKU}、小田原出发 {PASS_2_DAY_ODAWARA}</strong>（3 日券 {PASS_3_DAY_SHINJUKU}／{PASS_3_DAY_ODAWARA}），箱根地区 8 种交通工具不限次数乘坐。从新宿出发游览一圈箱根环线（小田急线、登山电车、登山缆车、空中缆车、芦之湖海贼观光船和巴士），<strong>单程票合计 {LOOP_REGULAR}</strong>，所以<strong>当天往返也比单独买票便宜 {LOOP_SAVING}</strong>。浪漫特快特急券（新宿出发单程 {ROMANCECAR}）另计；以上票价已于 {CHECKED}通过小田急和箱根Navi 官方网页核实。
           </p>
           <p className={styles.bodyText}>
             本页介绍的是周游券本身：箱根周游券的价格、可乘坐的范围和购票渠道。一天之内每一站怎么安排，请看
@@ -469,13 +490,13 @@ export default function ZhCnHakoneFreePassPage({ updated }: { updated: PageUpdat
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>划算吗？</span>
-          <h2 className={styles.sectionTitle}>箱根周游券只用一天划算吗？</h2>
+          <h2 className={styles.sectionTitle}>箱根周游券划算吗？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            游览完整条箱根环线就划算。根据小田急箱根的官方网站箱根Navi，按 IC 卡普通票价计算，从新宿出发游览经典路线的交通费合计为 {LOOP_REGULAR}，周游券是 {PASS_2_DAY_SHINJUKU}，所以即使当天晚上就回东京，也能省 {LOOP_SAVING}。
+            游览完整条箱根环线就划算，只玩一天也一样：从新宿出发再回到新宿的 7 段单程票合计 {LOOP_REGULAR}，周游券是 {PASS_2_DAY_SHINJUKU}，省 {LOOP_SAVING}。累计金额在第 7 段、也就是返回新宿的电车时超过周游券票价。
           </p>
-          <Table head={["路线（成人，不含浪漫特快）", "成人", "儿童", "资料来源"]} rows={legRows.map((r) => [r.leg, r.adult, r.child, r.source])} />
+          <Table head={["区段（按环线顺序）", "区间", "成人单程票价", "累计"]} rows={fareRows} />
           <p className={styles.bodyText} style={noteStyle}>
-            最后核实：{CHECKED_ISO}。来源：<a href={LOOP_URL} target="_blank" rel="noopener noreferrer">箱根Navi（箱根环线合计）</a>、<a href={FARE_NOTICE_URL} target="_blank" rel="noopener noreferrer">小田急箱根票价公告（PDF）</a>、<a href={ODAKYU_URL} target="_blank" rel="noopener noreferrer">odakyu.jp</a>。箱根Navi 未提供 {LOOP_REGULAR} 的各区间票价明细，因此本页不逐一列出登山电车、登山缆车和巴士的票价。乘坐海贼观光船的特别船舱，单程需另付 ¥800／¥400。
+            最后核实：{CHECKED_ISO}。来源：<a href={BREAKDOWN_URL} target="_blank" rel="noopener noreferrer">箱根Navi 各区间票价（日文）</a>、<a href={LOOP_URL} target="_blank" rel="noopener noreferrer">箱根Navi（箱根环线合计）</a>、<a href={FARE_NOTICE_URL} target="_blank" rel="noopener noreferrer">小田急箱根票价公告（PDF）</a>、<a href={NAVI_URL} target="_blank" rel="noopener noreferrer">hakonenavi.jp（箱根周游券）</a>。成人 IC 卡票价，不含浪漫特快。登山电车坐到强罗再加 ¥160。费用计算中没有各区间的儿童票价；空中缆车儿童单程 ¥700、海贼观光船 ¥850。持周游券可免费进入箱根强罗公园（¥650），海贼观光船特别船舱单程另付 ¥800。
           </p>
           <Table head={["你的行程", "建议", "原因"]} rows={worthRows.map((r) => [r.plan, r.verdict, r.why])} />
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
@@ -493,6 +514,30 @@ export default function ZhCnHakoneFreePassPage({ updated }: { updated: PageUpdat
               比较箱根一日游 →
             </KlookLink>
           </div>
+        </section>
+
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>路线图</span>
+          <h2 className={styles.sectionTitle}>箱根周游券路线图：按什么顺序乘坐？</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            箱根环线共 7 段：乘小田急线到箱根汤本、登山电车上到强罗、登山缆车到早云山、空中缆车经大涌谷到桃源台、海贼观光船横渡芦之湖、巴士返回箱根汤本，再乘小田急线回去。每一段都能使用周游券，反方向游览也可以。
+          </p>
+          <Table head={["交通工具", "区间", "所需时间", "周游券可用？"]} rows={routeRows} />
+          <p className={styles.bodyText} style={noteStyle}>
+            最后核实：{CHECKED_ISO}。来源：<a href={ODAKYU_URL} target="_blank" rel="noopener noreferrer">odakyu.jp（浪漫特快所需时间）</a>、<a href={ITINERARY_URL} target="_blank" rel="noopener noreferrer">Odakyu HAKONE TRIP（登山电车所需时间）</a>、<a href={LP_URL} target="_blank" rel="noopener noreferrer">箱根Navi 周游券页面（登山缆车，日文）</a>、<a href={ROPEWAY_URL} target="_blank" rel="noopener noreferrer">箱根空中缆车常见问题</a>、<a href={CRUISE_URL} target="_blank" rel="noopener noreferrer">箱根海贼观光船常见问题（船和巴士所需时间）</a>。乘坐时间合计为以上时间相加的结果。空中缆车和海贼观光船遇到强风或恶劣天气会停运，空中缆车每年也会停运进行定期检修，冬季停运日期请看<Link href="/guides/attractions/hakone-2-day-itinerary" style={linkStyle}>箱根两天行程（英文）</Link>。
+          </p>
+        </section>
+
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>选哪一种</span>
+          <h2 className={styles.sectionTitle}>1 日还是 2 日：该买哪一种箱根周游券？</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            游览完整条箱根环线的话，只玩一天也买 2 日券——箱根周游券没有 1 日券，而 2 日券仍比单独买票便宜 {LOOP_SAVING}。不去芦之湖或不坐空中缆车时，范围更小的周游券才划算。
+          </p>
+          <Table head={["周游券", "适合", "成人票价"]} rows={passChoiceRows} />
+          <p className={styles.bodyText} style={noteStyle}>
+            最后核实：{CHECKED_ISO}。来源：<a href={FARE_NOTICE_URL} target="_blank" rel="noopener noreferrer">小田急箱根票价公告（PDF）</a>、<a href={LOOP_URL} target="_blank" rel="noopener noreferrer">箱根Navi 优惠票券</a>、<a href={NAVI_URL} target="_blank" rel="noopener noreferrer">hakonenavi.jp（箱根周游券）</a>。
+          </p>
         </section>
 
         <section className={styles.bodySection}>

@@ -37,16 +37,18 @@ import HotelStayBlock from "../../../../components/HotelStayBlock";
 // Title term: 하코네 프리패스 — the name on Hakone Navi's own Korean page
 // (hakonenavi.jp/international/kr/discount_passes/free_pass) and in Korean results.
 
+// R17 (2026-11-27, task-jtk-20261127-R17): the ride-by-ride break-even table, the route table
+// and the 1-day-or-2-day table mirror the English page with the same figures and sources.
 const LOCALE = "ko" as const;
 const ROUTE = "/ko/guides/attractions/hakone-free-pass";
 const TITLE = "하코네 프리패스 2026: 신주쿠 출발 가격, 살 만할까?";
 const H1 = "하코네 프리패스 2026: 신주쿠 출발 가격, 이용 구간, 살 만할까?";
 const DESC =
-  "하코네 프리패스 2026: 신주쿠 출발 2일권 ¥7,100, 오다와라 ¥6,000. 패스 없이 일주하면 ¥8,322라 하루만 써도 이득입니다.";
+  "하코네 프리패스 2026: 신주쿠 2일권 ¥7,100, 오다와라 ¥6,000. 일주 단품 운임 ¥8,322라 하루만 써도 ¥1,222 이득.";
 
-const CHECKED_ISO = "2026-11-20";
+const CHECKED_ISO = "2026-11-27";
 const CHECKED = dateLabel(CHECKED_ISO, LOCALE);
-const BUY_CHECKED_ISO = "2026-11-13";
+const BUY_CHECKED_ISO = "2026-11-27";
 const BUY_CHECKED = dateLabel(BUY_CHECKED_ISO, LOCALE);
 const LOOP_URL = "https://www.hakonenavi.jp/international/en/article/4252";
 const JR_URL = "https://odakyu-global.com/blog/2053/";
@@ -55,6 +57,11 @@ const LOOP_SAVING = "¥1,222";
 const NAVI_URL = "https://www.hakonenavi.jp/international/en/discount_passes/free_pass";
 const ODAKYU_URL = "https://www.odakyu.jp/english/passes/hakone/";
 const FARE_NOTICE_URL = "https://www.hakonenavi.jp/international/en/wp-content/uploads/sites/2/2025/09/re_price202510.pdf";
+const BREAKDOWN_URL = "https://www.hakonenavi.jp/feature/22866";
+const LP_URL = "https://www.hakonenavi.jp/lp/hakone-freepass/";
+const ROPEWAY_URL = "https://www.hakonenavi.jp/international/en/transportation/hakone-ropeway";
+const CRUISE_URL = "https://www.hakonenavi.jp/international/en/transportation/hakone-kankosen";
+const ITINERARY_URL = "https://hakonetrip.odakyu-global.com/feature/hakone-2-day-itinerary/";
 
 const PASS_2_DAY_SHINJUKU = "¥7,100";
 const PASS_3_DAY_SHINJUKU = "¥7,500";
@@ -135,24 +142,38 @@ const coverageRows = [
   { mode: "이즈하코네 버스", included: "✗ 포함 안 됨", note: "다른 버스 회사가 운행하는 노선입니다. 타기 전에 버스 회사를 확인하세요." },
 ];
 
-const legRows = [
-  {
-    leg: `신주쿠 출발 일주 코스를 하루에: 패스 없이 ${LOOP_REGULAR}, 패스로 ${PASS_2_DAY_SHINJUKU}`,
-    adult: `${LOOP_SAVING} 절약`,
-    child: "—",
-    source: "하코네 나비(오다큐 하코네), IC 카드 운임, 로망스카 제외",
-  },
-  {
-    leg: "패스 없이 일주: 오다큐선 왕복, 등산전차, 케이블카, 로프웨이, 유람선, 버스",
-    adult: LOOP_REGULAR,
-    child: "—",
-    source: "하코네 나비 합계(IC 카드 운임)",
-  },
-  { leg: "하코네 프리패스 신주쿠 출발 2일권", adult: PASS_2_DAY_SHINJUKU, child: "¥1,600", source: "odakyu-global.com / hakonenavi.jp" },
-  { leg: "합계에 포함된 구간: 하코네 로프웨이 소운잔 → 도겐다이(편도)", adult: ROPEWAY, child: "¥700", source: "오다큐 하코네 운임 안내, 2025년 10월 1일부터" },
-  { leg: "합계에 포함된 구간: 아시노코 유람선 도겐다이 → 하코네마치 / 모토하코네(편도)", adult: CRUISE, child: "¥850", source: "오다큐 하코네 운임 안내, 2025년 10월 1일부터" },
-  { leg: "오다큐선 신주쿠 ⇄ 오다와라(일반 운임, 편도)", adult: "¥910", child: "—", source: "odakyu.jp" },
-  { leg: "로망스카를 왕복으로 이용할 때", adult: `${PASS_2_DAY_SHINJUKU} + ¥2,400 = ¥9,500`, child: "—", source: "odakyu.jp 계산 예시" },
+const fareRows: ReactNode[][] = [
+  ["결론", "일주 7번째 구간, 신주쿠로 돌아가는 열차에서 패스 본전을 뽑습니다", LOOP_REGULAR, `${PASS_2_DAY_SHINJUKU} 패스보다 ${LOOP_SAVING} 많음`],
+  ["1. 오다큐선 + 등산선", "신주쿠 → 하코네유모토", "¥1,261", "¥1,261"],
+  ["2. 하코네 등산전차", "하코네유모토 → 조코쿠노모리(고라 한 정거장 전)", "¥460", "¥1,721"],
+  ["3. 하코네 등산 케이블카", "고라 → 소운잔", "¥430", "¥2,151"],
+  ["4. 하코네 로프웨이", "소운잔 → 오와쿠다니 → 도겐다이", ROPEWAY, "¥4,151"],
+  ["5. 하코네 관광선(해적선)", "도겐다이 → 모토하코네", CRUISE, "¥5,851"],
+  ["6. 하코네 등산버스", "모토하코네 → 하코네유모토", "¥1,210", "¥7,061 — 아직 패스보다 ¥39 적음"],
+  ["7. 오다큐선 + 등산선", "하코네유모토 → 신주쿠", "¥1,261", `${LOOP_REGULAR} — 패스 본전 회수`],
+  ["신주쿠 출발 2일권", "같은 일주를 패스로", PASS_2_DAY_SHINJUKU, `하루에 ${LOOP_SAVING} 절약`],
+  ["신주쿠 출발 3일권", "같은 일주를 패스로", PASS_3_DAY_SHINJUKU, "하루에 ¥822 절약"],
+  ["하코네 나비의 2일 코스", "일주 + 미술관·습생화원행 버스 4회", "¥10,622", `${PASS_2_DAY_SHINJUKU} 패스로 ¥3,522 절약`],
+  ["오다와라 출발 패스, 2~6번 구간만", "하코네유모토에서 한 바퀴 돌아 복귀", "¥5,800", `${PASS_2_DAY_ODAWARA} 패스보다 ¥200 적음 — 오다와라 ⇄ 하코네유모토 열차나 둘째 날 이용으로 본전`],
+];
+
+const routeRows: ReactNode[][] = [
+  ["일주 전체", "하코네유모토 → 고라 → 소운잔 → 오와쿠다니 → 도겐다이 → 모토하코네 → 하코네유모토", "탑승 시간 약 2시간 30분~3시간, 환승·관광 시간 별도", "✓ 모든 구간"],
+  ["1. 로망스카 또는 오다큐선", "신주쿠 → 하코네유모토", "로망스카 직통 약 80분, 일반 열차는 보통 오다와라에서 환승", `✓ 오다큐선(신주쿠 출발 패스, 왕복 1회) · ✗ 로망스카 좌석 +${ROMANCECAR}`],
+  ["2. 하코네 등산전차", "하코네유모토 → 고라(스위치백)", "조코쿠노모리까지 약 40분, 다음 역이 고라", "✓"],
+  ["3. 하코네 등산 케이블카", "고라 → 소운잔", "약 10분", "✓"],
+  ["4. 하코네 로프웨이", "소운잔 → 오와쿠다니 → 우바코 → 도겐다이", "구간당 약 15분, 오와쿠다니에서 환승", "✓"],
+  ["5. 하코네 관광선(해적선)", "도겐다이 → 하코네마치 또는 모토하코네", "약 25~35분", "✓ (특별 선실 +¥800)"],
+  ["6. 하코네 등산버스", "모토하코네 → 하코네유모토", "약 40분(H선) 또는 35분(K선)", "✓ · ✗ 이즈하코네 버스"],
+  ["7. 오다큐선 또는 로망스카", "하코네유모토 → 신주쿠", "1번과 같음", "✓ 오다큐선 · ✗ 로망스카 좌석"],
+];
+
+const passChoiceRows: ReactNode[][] = [
+  ["결론: 1일권 하코네 프리패스는 없습니다", "일주 전체를 탄다면 당일치기여도 2일권", `신주쿠 출발 ${PASS_2_DAY_SHINJUKU}, 단품 합계보다 ${LOOP_SAVING} 저렴`],
+  ["하코네 프리패스(2일·3일)", "일주 전체, 하코네 1박, 또는 둘 다", `신주쿠 출발 ${PASS_2_DAY_SHINJUKU} / ${PASS_3_DAY_SHINJUKU}, 오다와라 출발 ${PASS_2_DAY_ODAWARA} / ${PASS_3_DAY_ODAWARA}`],
+  ["오와쿠다니 2일 패스", "오와쿠다니와 로프웨이만: 등산전차, 케이블카, 로프웨이 전 구간, 고라 공원 무료 — 유람선·버스 제외", "오다와라 출발 어른 ¥5,000, 어린이 ¥1,300"],
+  ["관광선 & 로프웨이 패스(1일)", "자동차로 방문: 로프웨이와 아시노코 유람선만", "어른 ¥5,000, 어린이 ¥1,400"],
+  ["단품 승차권", "하코네유모토에서 온천과 점심만", "탈 때마다 지불"],
 ];
 
 const worthRows = [
@@ -198,8 +219,8 @@ const faqItems: FaqItem[] = [
     a: `신주쿠 출발 2일권은 어른 ${PASS_2_DAY_SHINJUKU}, 어린이(6~11세) ¥1,600이고, 3일권은 ${PASS_3_DAY_SHINJUKU} / ¥1,850입니다. 하코네 지역만 이용하는 오다와라 출발 패스는 2일권 ${PASS_2_DAY_ODAWARA} / ¥1,500, 3일권 ${PASS_3_DAY_ODAWARA} / ¥1,750입니다. 2025년 10월 1일부터 적용된 요금이며, hakonenavi.jp와 odakyu.jp에서 ${CHECKED}에 확인했습니다.`,
   },
   {
-    q: "하코네 프리패스는 하루만 써도 이득인가요?",
-    a: `일주 코스의 교통편을 모두 이용한다면 교통비를 절약할 수 있습니다. 1일권은 없지만, 오다큐 하코네의 공식 사이트인 하코네 나비는 신주쿠 출발 일주 코스(오다큐선 왕복, 등산전차, 케이블카, 로프웨이, 아시노코 유람선, 버스)를 IC 카드 일반 운임으로 ${LOOP_REGULAR}로 계산합니다. 2일권 ${PASS_2_DAY_SHINJUKU}과 비교하면 하루에 ${LOOP_SAVING}를 절약합니다. 차액의 대부분은 로프웨이(편도 ${ROPEWAY})와 유람선(${CRUISE}) 요금에서 나옵니다. 하코네유모토만 방문한다면 교통비를 절약할 수 없습니다. ${CHECKED} 확인.`,
+    q: "하코네 프리패스는 살 만할까요?",
+    a: `일주 전체를 탄다면 하루만 써도 이득입니다. 하코네 나비의 단품 운임으로 신주쿠 출발 일주(오다큐선 편도 ¥1,261 왕복, 등산전차 ¥460, 케이블카 ¥430, 로프웨이 ${ROPEWAY}, 아시노코 유람선 ${CRUISE}, 돌아오는 버스 ¥1,210)는 합계 ${LOOP_REGULAR}이고 2일권은 ${PASS_2_DAY_SHINJUKU}이므로 ${LOOP_SAVING}를 절약하며, 하코네 나비의 2일 코스로는 ¥3,522를 절약합니다. 7번째 구간인 귀가 열차에서 본전을 뽑습니다. 하코네유모토만 방문한다면 이득이 없습니다. ${CHECKED} 확인.`,
   },
   {
     q: "하코네 프리패스는 어디서 사나요?",
@@ -210,8 +231,8 @@ const faqItems: FaqItem[] = [
     a: `포함되지 않습니다. 신주쿠 출발 패스에는 오다큐선 왕복 1회가 포함되지만, 특급 로망스카는 별도 특급권이 필요합니다. 신주쿠 ⇄ 하코네유모토 편도 어른 ${ROMANCECAR}, 어린이 ¥600이고, 오다와라에서는 ¥200 / ¥100입니다. 환승 없이 약 80분이 걸리며, EMot 온라인 티켓으로 좌석을 예약하면 ¥50 저렴합니다. 오다큐의 계산 예시는 패스 ${PASS_2_DAY_SHINJUKU} + 로망스카 왕복 ¥2,400 = ¥9,500입니다. ${CHECKED} 확인.`,
   },
   {
-    q: "JR 패스와 하코네 프리패스를 함께 쓸 수 있나요?",
-    a: `함께 쓸 수 있지만 서로를 대신하지는 않습니다. 오다큐에 따르면 JR 패스와 JR 도쿄 와이드 패스는 하코네 지역 안에서 쓸 수 없고, JR 노선으로 오다와라까지 가는 데 쓸 수 있습니다. 오다와라부터는 하코네 지역만 포함하고 이용하지 않는 오다큐선 운임이 빠진 오다와라 출발 하코네 프리패스(2일권 ${PASS_2_DAY_ODAWARA}, 3일권 ${PASS_3_DAY_ODAWARA})를 사세요. ${CHECKED} 확인.`,
+    q: "1일권과 2일권: 어떤 하코네 패스를 사야 할까요?",
+    a: `하코네 프리패스에는 1일권이 없고 2일권과 3일권만 있습니다. 일주 전체를 탄다면 당일치기여도 2일권(신주쿠 출발 ${PASS_2_DAY_SHINJUKU})을 사세요. 단품 합계보다 ${LOOP_SAVING} 저렴합니다. 아시노코 없이 오와쿠다니만 간다면 오와쿠다니 2일 패스(오다와라 출발 ¥5,000)가 등산전차, 케이블카, 로프웨이를 포함하고, 자동차로 간다면 1일권 관광선 & 로프웨이 패스가 ¥5,000입니다. 오다큐 하코네 운임 안내와 하코네 나비에서 ${CHECKED} 확인.`,
   },
 ];
 
@@ -349,13 +370,11 @@ export default function KoHakoneFreePassPage({ updated }: { updated: PageUpdated
 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>하코네 프리패스</strong>는 <strong>신주쿠 출발 2일권 {PASS_2_DAY_SHINJUKU}, 3일권{" "}
-            {PASS_3_DAY_SHINJUKU}</strong>(어른)이고, 오다와라 출발은 {PASS_2_DAY_ODAWARA}과 {PASS_3_DAY_ODAWARA}
-            입니다. 오다큐 공식 페이지에서 {CHECKED}에 확인했습니다. 하코네 등산전차, 케이블카, 하코네 로프웨이,
-            아시노코 해적선, 하코네의 버스를 이용할 수 있고, 신주쿠 출발 패스에는 오다큐선 왕복 1회가 포함됩니다.
-            하코네 나비의 계산으로는 하루 동안 이 일주 코스를 모두 이용하면 <strong>패스 없이 {LOOP_REGULAR}</strong>
-            이므로, 신주쿠 출발 패스로 <strong>하루에 {LOOP_SAVING}를 절약</strong>합니다. 어느 패스를 사든 로망스카
-            좌석 요금(편도 {ROMANCECAR})은 별도입니다.
+            <strong>하코네 프리패스</strong> 2일권은 어른 기준 <strong>신주쿠 출발 {PASS_2_DAY_SHINJUKU}, 오다와라 출발 {PASS_2_DAY_ODAWARA}</strong>(3일권 {PASS_3_DAY_SHINJUKU} / {PASS_3_DAY_ODAWARA})이며,
+            하코네의 교통수단 8종을 무제한으로 탈 수 있습니다. 신주쿠에서 출발해 오다큐선, 등산전차, 케이블카, 로프웨이,
+            아시노코 유람선, 버스로 한 바퀴 돌면 <strong>단품 운임 합계가 {LOOP_REGULAR}</strong>이므로{" "}
+            <strong>당일치기여도 패스가 {LOOP_SAVING} 저렴</strong>합니다. 로망스카 좌석 요금(신주쿠 출발 편도{" "}
+            {ROMANCECAR})은 별도이며, 모든 요금은 {CHECKED}에 오다큐와 하코네 나비 공식 페이지에서 확인했습니다.
           </p>
           <p className={styles.bodyText}>
             이 페이지에서는 하코네 프리패스의 요금, 이용 범위, 구매처를 안내합니다. 정거장별로 하루를
@@ -487,20 +506,22 @@ export default function KoHakoneFreePassPage({ updated }: { updated: PageUpdated
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>살 만할까?</span>
-          <h2 className={styles.sectionTitle}>하코네 프리패스는 하루만 써도 이득인가요?</h2>
+          <h2 className={styles.sectionTitle}>하코네 프리패스는 살 만할까요?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            일주 코스의 교통편을 모두 이용한다면 교통비를 절약할 수 있습니다. 오다큐 하코네의 공식 사이트인 하코네 나비는 신주쿠 출발 대표 코스를
-            IC 카드 일반 운임 {LOOP_REGULAR}로 계산하므로, {PASS_2_DAY_SHINJUKU} 패스로 당일 저녁에 돌아와도{" "}
-            {LOOP_SAVING}를 절약합니다.
+            일주 전체를 탄다면 하루만 써도 이득입니다. 신주쿠에서 출발해 돌아오는 7개 구간의 단품 운임 합계는{" "}
+            {LOOP_REGULAR}, 패스는 {PASS_2_DAY_SHINJUKU}로 {LOOP_SAVING}를 절약합니다. 누계는 7번째 구간, 신주쿠로
+            돌아가는 열차에서 패스 가격을 넘습니다.
           </p>
-          <Table head={["구간(어른, 로망스카 제외)", "어른", "어린이", "출처"]} rows={legRows.map((r) => [r.leg, r.adult, r.child, r.source])} />
+          <Table head={["구간(일주 순서)", "구간", "어른 단품 운임", "누계"]} rows={fareRows} />
           <p className={styles.bodyText} style={noteStyle}>
             최종 확인: {CHECKED_ISO} —{" "}
+            <a href={BREAKDOWN_URL} target="_blank" rel="noopener noreferrer">하코네 나비 구간별 운임(일본어)</a>,{" "}
             <a href={LOOP_URL} target="_blank" rel="noopener noreferrer">하코네 나비(일주 합계)</a>,{" "}
             <a href={FARE_NOTICE_URL} target="_blank" rel="noopener noreferrer">오다큐 하코네 운임 안내(PDF)</a>,{" "}
-            <a href={ODAKYU_URL} target="_blank" rel="noopener noreferrer">odakyu.jp</a>. 하코네 나비가 총운임 {LOOP_REGULAR}의
-            구간별 요금을 공개하지 않아, 등산전차, 케이블카, 버스는 이 표에 개별 운임을 적지 않았습니다. 유람선 특별 선실은
-            편도 ¥800 / ¥400이 추가됩니다.
+            <a href={NAVI_URL} target="_blank" rel="noopener noreferrer">hakonenavi.jp(하코네 프리패스)</a>. 어른 IC 카드
+            운임, 로망스카 제외. 등산전차를 고라까지 타면 ¥160이 추가됩니다. 구간별 어린이 운임은 계산표에 없으며,
+            로프웨이 어린이 편도는 ¥700, 유람선은 ¥850입니다. 패스가 있으면 하코네 고라 공원(¥650)이 무료이고, 유람선
+            특별 선실은 편도 ¥800이 추가됩니다.
           </p>
           <Table head={["일정", "판단", "이유"]} rows={worthRows.map((r) => [r.plan, r.verdict, r.why])} />
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
@@ -521,6 +542,45 @@ export default function KoHakoneFreePassPage({ updated }: { updated: PageUpdated
               하코네 당일 투어 비교 →
             </KlookLink>
           </div>
+        </section>
+
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>노선도</span>
+          <h2 className={styles.sectionTitle}>하코네 프리패스 노선도: 어떤 순서로 타나요?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            7개 구간을 한 바퀴 돕니다. 오다큐선으로 하코네유모토, 등산전차로 고라, 케이블카로 소운잔, 로프웨이로
+            오와쿠다니를 지나 도겐다이, 해적선으로 아시노코를 건너고, 버스로 하코네유모토에 돌아와 오다큐선으로
+            귀가합니다. 모든 구간이 프리패스 대상이며 반대 방향으로 돌아도 됩니다.
+          </p>
+          <Table head={["교통수단", "구간", "소요 시간", "프리패스 이용?"]} rows={routeRows} />
+          <p className={styles.bodyText} style={noteStyle}>
+            최종 확인: {CHECKED_ISO} —{" "}
+            <a href={ODAKYU_URL} target="_blank" rel="noopener noreferrer">odakyu.jp(로망스카 소요 시간)</a>,{" "}
+            <a href={ITINERARY_URL} target="_blank" rel="noopener noreferrer">Odakyu HAKONE TRIP(등산전차 소요 시간)</a>,{" "}
+            <a href={LP_URL} target="_blank" rel="noopener noreferrer">하코네 나비 프리패스 페이지(케이블카, 일본어)</a>,{" "}
+            <a href={ROPEWAY_URL} target="_blank" rel="noopener noreferrer">하코네 로프웨이 FAQ</a>,{" "}
+            <a href={CRUISE_URL} target="_blank" rel="noopener noreferrer">하코네 관광선 FAQ(유람선·버스 소요 시간)</a>.
+            탑승 시간 합계는 이 시간들을 더한 값입니다. 로프웨이와 유람선은 강풍이나 악천후에 운행을 중단하며,
+            로프웨이는 매년 정기 점검으로도 운휴합니다. 겨울 운휴 일정은{" "}
+            <Link href="/guides/attractions/hakone-2-day-itinerary" style={linkStyle}>하코네 2일 일정(영어)</Link>에
+            정리했습니다.
+          </p>
+        </section>
+
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>패스 선택</span>
+          <h2 className={styles.sectionTitle}>1일권과 2일권: 어떤 하코네 패스를 사야 할까요?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            일주 전체를 탄다면 하루만 써도 2일권 하코네 프리패스입니다. 1일권 프리패스는 없고, 2일권도 단품 합계보다{" "}
+            {LOOP_SAVING} 저렴합니다. 아시노코나 로프웨이를 빼는 경우에만 범위가 좁은 패스가 맞습니다.
+          </p>
+          <Table head={["패스", "이럴 때", "어른 요금"]} rows={passChoiceRows} />
+          <p className={styles.bodyText} style={noteStyle}>
+            최종 확인: {CHECKED_ISO} —{" "}
+            <a href={FARE_NOTICE_URL} target="_blank" rel="noopener noreferrer">오다큐 하코네 운임 안내(PDF)</a>,{" "}
+            <a href={LOOP_URL} target="_blank" rel="noopener noreferrer">하코네 나비 할인 패스</a>,{" "}
+            <a href={NAVI_URL} target="_blank" rel="noopener noreferrer">hakonenavi.jp(하코네 프리패스)</a>.
+          </p>
         </section>
 
         <section className={styles.bodySection}>

@@ -351,7 +351,9 @@ const days: Day[] = [
         want and the snow is not, this slot can be a night in Hakone instead, about 90 minutes from Shinjuku
         by Romancecar: our{" "}
         <Link href="/guides/attractions/hakone-ryokan-private-onsen">Hakone ryokan with private onsen</Link>{" "}
-        guide compares 10 inns by area, six with an open-air bath in every room. If the snow part of the trip
+        guide compares 10 inns by area, six with an open-air bath in every room, and the 2-day{" "}
+        <Link href="/guides/attractions/hakone-free-pass">Hakone Freepass</Link>{" "}
+        (¥7,100 from Shinjuku) covers the Odakyu Line, the ropeway and the lake cruise on both days. If the snow part of the trip
         goes further — Yuzawa and Niigata on the Joetsu Shinkansen, Nagano on the Hokuriku Shinkansen, or Zao and
         Ginzan Onsen off the Yamagata Shinkansen — the{" "}
         <Link href="/guides/transport/jr-east-pass">JR East Pass</Link>{" "}
