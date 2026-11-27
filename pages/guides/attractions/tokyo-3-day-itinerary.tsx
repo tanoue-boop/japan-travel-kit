@@ -672,7 +672,9 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             minutes from Kamiyacho Station on the Hibiya Line — the line this plan leaves Tokyo Tower on — and is
             usually open until 21:00. Its slots go on sale about two months ahead; our{" "}
             <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless tickets</Link> guide
-            covers the price, the release date and how to book.
+            covers the price, the release date and how to book, and{" "}
+            <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Tokyo tickets: Planets vs Borderless</Link>{" "}
+            sets it beside the Day 2 museum if you only have time for one.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             The &ldquo;time to allow&rdquo; column in all three tables is our own planning allowance, not

@@ -32,6 +32,10 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
+import { dotonboriSameDayCards } from "../../../../lib/dotonbori-same-day-cards";
+
+const SAME_DAY = dotonboriSameDayCards("zh-cn");
 
 // Mirrors the English guide (pages/guides/attractions/dotonbori-river-cruise.tsx) as of
 // 2026-11-01: same sections, tables, FAQ and Klook CTAs in the same order. Every figure
@@ -48,7 +52,7 @@ const DESC =
   "道顿堀游船（とんぼりリバークルーズ）票价：成人¥2,000、约20分钟，11:00–21:00每30分钟一班，太左卫门桥码头出发，大阪周游卡免费。";
 
 const L = "zh-cn" as const;
-const CHECKED_ISO = "2026-11-20";
+const CHECKED_ISO = "2026-11-27"; // re-read 27 Nov 2026 (task-jtk-20261127-04), unchanged
 const CHECKED = dateLabel(CHECKED_ISO, L);
 const ROOF_CHECKED = dateLabel("2026-11-01", L);
 const OSAKA_INFO_URL = "https://osaka-info.jp/en/spot/tombori-river-cruise/";
@@ -326,6 +330,9 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
             </KlookLink>
           </div>
         </section>
+
+        {/* Same-day cards directly under the main pass button (task-jtk-20261127-04). */}
+        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
 
         {/* Quick Answer */}
         <div className={styles.verdictBox}>

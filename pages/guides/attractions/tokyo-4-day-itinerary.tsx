@@ -508,7 +508,9 @@ export default function Tokyo4DayItineraryPage({ updated }: { updated: PageUpdat
             Tokyo Bay course past Rainbow Bridge and Tokyo Tower, and the paper 1949 Geneva IDP it requires.
             Prefer shoes-on art in central Tokyo? Swap in Azabudai Hills with
             our <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless tickets</Link> guide
-            — its timed slots open around the 1st of the month, two months ahead. A wet Day 2 can go to the Harry
+            — its timed slots open around the 1st of the month, two months ahead. Still deciding between the two
+            museums? Our <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Tokyo tickets</Link> guide
+            sets Planets and Borderless side by side. A wet Day 2 can go to the Harry
             Potter studio tour instead: Toshimaen is 20 minutes from Shinjuku on the Toei Oedo Line, inside the
             72-hour subway ticket, and entry is by dated, timed slot, so check{" "}
             <Link href="/guides/attractions/warner-bros-studio-tour-tokyo-tickets">Harry Potter Studio Tour Tokyo tickets</Link>{" "}

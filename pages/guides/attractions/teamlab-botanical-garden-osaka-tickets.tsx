@@ -642,7 +642,11 @@ export default function TeamlabBotanicalGardenOsakaTicketsPage({ updated }: { up
             <Link href="/guides/attractions/where-to-stay-in-osaka" style={{ color: "var(--red)", fontWeight: 600 }}>
               where to stay in Osaka guide
             </Link>{" "}
-            explains why a Midosuji base is worth paying for. If you are arriving from Kansai Airport the same
+            explains why a Midosuji base is worth paying for. With the afternoon in Namba first, the 20-minute{" "}
+            <Link href="/guides/attractions/dotonbori-river-cruise" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Dotonbori river cruise
+            </Link>{" "}
+            leaves Tazaemonbashi Pier every half hour from 11:00. If you are arriving from Kansai Airport the same
             day, our{" "}
             <Link href="/guides/transport/osaka-airport-transfer" style={{ color: "var(--red)", fontWeight: 600 }}>
               Osaka airport transfer guide

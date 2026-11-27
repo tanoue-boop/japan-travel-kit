@@ -18,6 +18,10 @@ import {
   osakaWonderCruise,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import KlookSameDayCards from "../../../components/KlookSameDayCards";
+import { dotonboriSameDayCards } from "../../../lib/dotonbori-same-day-cards";
+
+const SAME_DAY = dotonboriSameDayCards("en");
 
 /**
  * Dotonbori river cruise — the Tombori River Cruise, and the three other boats
@@ -91,8 +95,13 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  * "Boarding location: Tazaemonbashi Pier", web reservations to 10 minutes before. Unchanged.
  * Retitled the same day with the official name in brackets, because the page-one results
  * for "dotonbori cruise price" lead with "Tombori River Cruise".
+ *
+ * Re-checked 27 Nov 2026 (task-jtk-20261127-04): osaka-info.jp Tombori spot page (¥2,000 /
+ * ¥1,000 / ¥500, 11:00-21:00 on the hour and half hour, 20 minutes, Tazaemonbashi Pier) and
+ * osaka-amazing-pass.com (/en/service_free.html "7 Tombori River Cruise", same fares and
+ * schedule; /en/ 1day ¥3,500). Unchanged.
  */
-const CHECKED_ISO = "2026-11-20";
+const CHECKED_ISO = "2026-11-27";
 const CHECKED = checkedLabel(CHECKED_ISO);
 const OSAKA_INFO_URL = "https://osaka-info.jp/en/spot/tombori-river-cruise/";
 
@@ -450,6 +459,10 @@ export default function DotonboriRiverCruisePage({ updated }: { updated: PageUpd
             </KlookLink>
           </div>
         </section>
+
+        {/* Same-day cards directly under the main pass button (task-jtk-20261127-04):
+            food walk 6.5%, pass and Rapi:t 5%, Klook eSIM 20%. */}
+        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>

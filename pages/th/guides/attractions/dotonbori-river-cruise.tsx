@@ -32,6 +32,10 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
+import { dotonboriSameDayCards } from "../../../../lib/dotonbori-same-day-cards";
+
+const SAME_DAY = dotonboriSameDayCards("th");
 
 // Mirrors the English guide (pages/guides/attractions/dotonbori-river-cruise.tsx) as of
 // 1 November 2026, section for section and CTA for CTA. Every figure comes from that page,
@@ -47,7 +51,7 @@ const TITLE = "ล่องเรือโดทงโบริ (Tombori) 2026: 
 const DESC =
   "Tombori ล่องเรือโดทงโบริ ¥2,000 20 นาที ทุก 30 นาที 11:00–21:00 ฟรีด้วย Amazing Pass";
 
-const CHECKED_ISO = "2026-11-20";
+const CHECKED_ISO = "2026-11-27"; // re-read 27 Nov 2026 (task-jtk-20261127-04), unchanged
 const CHECKED = dateLabel(CHECKED_ISO, "th");
 const ROOF_CHECKED = dateLabel("2026-11-01", "th");
 const OSAKA_INFO_URL = "https://osaka-info.jp/en/spot/tombori-river-cruise/";
@@ -324,6 +328,9 @@ export default function ThDotonboriRiverCruisePage({ updated }: { updated: PageU
             </KlookLink>
           </div>
         </section>
+
+        {/* Same-day cards directly under the main pass button (task-jtk-20261127-04). */}
+        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
 
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>

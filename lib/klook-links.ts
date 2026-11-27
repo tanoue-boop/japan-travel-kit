@@ -8186,6 +8186,20 @@ export const teamlabTokyoSameDayCards: KlookSameDayCard[] = [
     ...tokyoBayCruiseCard,
     why: "One hour on the bay from Shibaura after either museum, past Odaiba and under Rainbow Bridge.",
   },
+  // 27 Nov 2026 (task-jtk-20261127-04): ad id 1528122 had 26 clicks and no booking in
+  // the 7 days to 24 Nov, with only 6.5% cards here. Added the 5% subway ticket and the
+  // 20% eSIM; 1552 and 109393 seen live in the www.klook.com index that day. Planets
+  // keeps its three cards.
+  {
+    ...tripPrepProducts.subway,
+    kind: "Subway pass",
+    why: "Borderless is 2 minutes from Exit 5 of Kamiyacho on the Hibiya Line, a Tokyo Metro line the ticket covers. The Yurikamome to Planets is not covered.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    kind: "eSIM",
+    why: "Both museums sell timed tickets as phone vouchers, shown at the entrance, so you need data on the way in.",
+  },
 ];
 
 // Re-ordered 19 Nov 2026 (task-jtk-20261119-R08): the Tempozan half of the day first —
@@ -12577,5 +12591,44 @@ export const kobeBeefSameDayCards: KlookSameDayCard[] = [
     ...tripPrepProducts.esim,
     kind: "Data",
     why: "The voucher and the map pin to the restaurant are on your phone.",
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Dotonbori river cruise, same-day cards directly under the main pass button
+// (task-jtk-20261127-04). Klook 18–24 Nov 2026: ko ad id 1538089 had 22 clicks and
+// no booking, en 1528088 had 4. Klook sells no standalone Tombori River Cruise, so
+// the main button stays on the Osaka Amazing Pass (82312, live in the www.klook.com
+// search index on 27 Nov 2026), which includes the cruise. These cards add the 6.5%
+// food walk, the 5% pass and airport train and the 20% eSIM. Every activity id was
+// seen live in the same index on 27 Nov 2026 (103864, 82312, 599, 109393).
+// The pass figures were re-read on osaka-amazing-pass.com the same day: 1day ¥3,500
+// (/en/), "7 Tombori River Cruise" on the free list (/en/service_free.html), adult
+// cruise fare ¥2,000. This file cannot read lib/attraction-prices.ts (that file
+// imports from here), so ¥3,500 is written out; keep it in step with that file.
+// Translations: lib/dotonbori-same-day-cards.ts. No Klook prices.
+// ---------------------------------------------------------------------------
+export const dotonboriCruiseSameDayCards: KlookSameDayCard[] = [
+  {
+    label: "Osaka Dotonbori daytime food tour",
+    kind: "Food tour",
+    ctaLabel: "Check the Dotonbori food tour →",
+    url: dotonboriDaytimeFoodTour.url,
+    why: "A three-hour join-in walk listed at 11:00–14:00 in Dotonbori: lunch on foot, then the pier is a minute from Ebisubashi.",
+  },
+  {
+    ...tripPrepProducts.osakaPass,
+    kind: "Pass",
+    why: "The cruise is facility 7 on the pass's free list. A 1-day pass is ¥3,500 against the ¥2,000 fare, so it pays once you use ¥1,500 more of free entries or subway rides that day.",
+  },
+  {
+    ...tripPrepProducts.rapit,
+    kind: "Airport train",
+    why: "Kansai Airport to Namba direct (about 34 minutes on the Klook listing); the pier is a 5–10 minute walk from Namba.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    kind: "eSIM",
+    why: "The Osaka Amazing Pass is a smartphone pass, so you need data from the arrivals hall.",
   },
 ];

@@ -32,6 +32,10 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
+import { dotonboriSameDayCards } from "../../../../lib/dotonbori-same-day-cards";
+
+const SAME_DAY = dotonboriSameDayCards("ko");
 
 // Mirrors the English guide (pages/guides/attractions/dotonbori-river-cruise.tsx) as of
 // 1 November 2026, section for section and CTA for CTA. Every figure comes from that page,
@@ -49,7 +53,9 @@ const TITLE = "톤보리 리버크루즈 가격 ¥2,000・20분｜도톤보리 �
 const DESC =
   "도톤보리 리버크루즈(톤보리) 가격 성인 ¥2,000, 약 20분, 11:00~21:00 30분 간격, 다자에몬바시 선착장. 주유패스 무료.";
 
-const CHECKED_ISO = "2026-11-22";
+// 27 Nov 2026 (task-jtk-20261127-04): fares, times, 20 minutes and the pier re-read on
+// osaka-info.jp and osaka-amazing-pass.com — unchanged, same values as the English page.
+const CHECKED_ISO = "2026-11-27";
 const CHECKED = dateLabel(CHECKED_ISO, "ko");
 const ROOF_CHECKED = dateLabel("2026-11-01", "ko");
 const OSAKA_INFO_URL = "https://osaka-info.jp/en/spot/tombori-river-cruise/";
@@ -291,6 +297,9 @@ export default function KoDotonboriRiverCruisePage({ updated }: { updated: PageU
             </KlookLink>
           </div>
         </section>
+
+        {/* Same-day cards directly under the main pass button (task-jtk-20261127-04). */}
+        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
 
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>

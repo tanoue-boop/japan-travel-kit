@@ -771,7 +771,12 @@ export default function KoKansaiAreaPassPage({ updated }: { updated: PageUpdated
             <Link href="/guides/transport/osaka-airport-transfer" style={linkStyle}>
               오사카 공항 이동 가이드(영어)
             </Link>
-            는 이타미 공항까지 다룹니다. 이 패스가 공항 티켓으로 맞는지는 숙소 위치로 정해집니다.
+            는 이타미 공항까지 다룹니다. 이 패스가 공항 티켓으로 맞는지는 숙소 위치로 정해집니다. 난바에 묵는다면
+            저녁에는{" "}
+            <Link href="/ko/guides/attractions/dotonbori-river-cruise" style={linkStyle}>
+              도톤보리 리버크루즈
+            </Link>
+            (성인 ¥2,000, 약 20분)도 걸어서 갈 수 있습니다.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={KANSAI_PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>

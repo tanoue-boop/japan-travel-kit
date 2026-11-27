@@ -32,6 +32,10 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
+import { dotonboriSameDayCards } from "../../../../lib/dotonbori-same-day-cards";
+
+const SAME_DAY = dotonboriSameDayCards("zh-tw");
 
 // Mirrors the English guide (pages/guides/attractions/dotonbori-river-cruise.tsx) as of
 // 2026-11-01: same sections, tables, FAQ and Klook CTAs in the same order. Every figure
@@ -312,7 +316,7 @@ export default function ZhDotonboriRiverCruisePage({ updated }: { updated: PageU
             <strong>道頓堀遊船（とんぼりリバークルーズ）</strong>成人 <strong>¥2,000</strong>、學生{" "}
             <strong>¥1,000</strong>、兒童 <strong>¥500</strong>，航程<strong>約 20 分鐘</strong>。從
             <strong>太左衛門橋碼頭</strong>出發，<strong>11:00–21:00 每 30 分鐘一班</strong>；持大阪周遊卡換成指定時間的船票後
-            <strong>免費</strong>。數據來自大阪官方觀光網站，最後查核 2026-11-20。
+            <strong>免費</strong>。數據來自大阪官方觀光網站，最後查核 2026-11-27。
           </p>
           <div className={styles.pickCtaRow} style={{ marginBottom: "0.5rem" }}>
             <KlookLink href={K.pass} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
@@ -320,6 +324,9 @@ export default function ZhDotonboriRiverCruisePage({ updated }: { updated: PageU
             </KlookLink>
           </div>
         </section>
+
+        {/* Same-day cards directly under the main pass button (task-jtk-20261127-04). */}
+        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
 
         {/* Quick Answer */}
         <div className={styles.verdictBox}>
