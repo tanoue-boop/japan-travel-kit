@@ -614,6 +614,9 @@ export default function Kanazawa2DayItineraryPage({ updated }: { updated: PageUp
             if you want Takayama too: the join-in day from Kanazawa is listed at 8 to 10 hours with an
             English-speaking licensed guide, and can drop you in Takayama instead of bringing you back. Check the
             cancellation terms for snow on the listing; on a two-day trip there is no spare day to move it to.
+            If these two days sit inside a longer winter trip, our{" "}
+            <Link href="/guides/attractions/japan-winter-itinerary">Japan winter itinerary</Link> builds 7- and
+            10-day routes around them, with skiing in Hakuba on the same Hokuriku Shinkansen line.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shirakawagoTakayamaKanazawaDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -880,7 +883,7 @@ export default function Kanazawa2DayItineraryPage({ updated }: { updated: PageUp
               { href: "/guides/attractions/shirakawago-winter-light-up", title: "Shirakawago Winter Light Up 2027: Dates, Tickets & Tours" },
               { href: "/guides/transport/tokyo-to-kanazawa", title: "Tokyo to Kanazawa Shinkansen (2026): Time, Price, Passes" },
               { href: "/guides/transport/hokuriku-arch-pass", title: "JR Hokuriku Arch Pass 2026: Price, Coverage, Is It Worth It?" },
-              { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary: Kanazawa, Shirakawa-go and Takayama" },
+              { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary 2026-27: 7 & 10 Days (Snow, Onsen, Ski)" },
               { href: "/guides/attractions/japan-3-week-itinerary", title: "Japan 3 Week Itinerary: 21 Days, Day by Day" },
               { href: "/guides/attractions/kyoto-2-day-itinerary", title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book" },
               { href: "/guides/attractions", title: "More Things to Do in Japan →" },

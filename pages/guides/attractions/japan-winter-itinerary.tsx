@@ -59,6 +59,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import { WinterClosuresSection, WinterRoutesSection } from "../../../components/WinterRouteTables";
 
 /**
  * Japan in winter, as a twelve-day route — written 28 Oct 2026 for the exact phrase
@@ -144,7 +145,7 @@ const sameTripItems: KlookTripPrepItem[] = [
     label: hokurikuArchPass.title,
     ctaLabel: "Check the Hokuriku Arch Pass →",
     url: hokurikuArchPass.url,
-    why: "The pass actually shaped like this itinerary — seven consecutive days covering the Hokuriku Shinkansen out of Tokyo and the Kansai area at the far end. It does not cover the Tokaido Shinkansen, so it only works going out one way and back the other.",
+    why: "The pass shaped like this itinerary — seven consecutive days covering the Hokuriku Shinkansen out of Tokyo and the Kansai area at the far end. At ¥35,000 it pays once you add side trips such as a Nagano day; the straight run is about ¥22,800 on single tickets.",
   },
   {
     label: jrPassWholeJapanCurrent.title,
@@ -467,9 +468,10 @@ const days: Day[] = [
         <Link href="/guides/transport/tokyo-to-kanazawa">Tokyo to Kanazawa guide</Link> has the times,
         the seat classes and the Hakutaka alternative that does have non-reserved cars. On passes: the
         nationwide JR Pass is rarely the right answer for this shape of trip, and the{" "}
-        <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link> has the calculator — but the
-        Hokuriku Arch Pass very often is, because it covers exactly Tokyo → Kanazawa → Kansai and
-        deliberately does not cover the Tokaido Shinkansen back.
+        <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link> has the calculator. The
+        Hokuriku Arch Pass is shaped like this route — Tokyo → Kanazawa → Kansai — but at ¥35,000 it only
+        beats single tickets (about ¥22,800 for the straight run) once you add Hokuriku Shinkansen side trips,
+        as our <Link href="/guides/transport/hokuriku-arch-pass">Hokuriku Arch Pass guide</Link> works out.
       </>
     ),
     picks: [
@@ -964,52 +966,37 @@ const hokkaidoRows = [
   { leg: "Day 12", plan: "Out of New Chitose, or back down to Tokyo. The one risk on this version is a February snow day closing the airport, so do not book the last flight of the day" },
 ];
 
+// R15 (27 Nov 2026): five questions, the ones the GSC queries ask, each answered in its first sentence.
+const R15 = checkedLabel("2026-11-27");
 const faqItems = [
   {
-    q: "Is Japan worth visiting in winter?",
-    a: `Yes, and for three reasons that do not apply in any other season. The crowds at the walk-in sites — which is most of Kyoto and all of Nara Park — are at their thinnest between the New Year week and the plum blossom. The air on the Pacific side is dry and clear, which is the only time Mt. Fuji is reliably visible from Tokyo's observation decks. And the Sea of Japan side of the country, which is a secondary detour in summer, becomes the main event: Kanazawa's Kenroku-en and the thatched village at Shirakawa-go are both better under snow. The trade-off is daylight. It is dark by about half past four in December, which cuts your sightseeing day short and is why this itinerary puts evening attractions on every Tokyo day rather than treating them as extras.`,
+    q: "What is the best Japan itinerary for winter?",
+    a: `For 7 days: Tokyo (3 nights), Kanazawa (2) and Kyoto (1), with a snow day at GALA Yuzawa and a Shirakawa-go day from Kanazawa. For 10 days: add 2 nights of skiing in Hakuba on the way to Kanazawa, since the Hokuriku Shinkansen stops at Nagano. The 12-day version adds Takayama and Osaka. GALA's slopes run 19 December 2026 to 5 May 2027 and the Shirakawa-go light-up is on 11, 17, 24 and 31 January 2027 only (checked ${R15}).`,
   },
   {
-    q: "What should I pack for Japan in winter?",
-    a: `Layers under a windproof shell, shoes with grip, gloves, and markedly less than you think. The numbers that matter are the Japan Meteorological Agency's 1991–2020 normals, read on ${CHECKED}: Tokyo's January mean daily minimum is 1.2°C, Kyoto's monthly mean is 4.8°C, Osaka's is 6.2°C, and Sapporo's mean daily minimum is −6.4°C. So Honshu is cold-coat weather rather than expedition weather, and Hokkaido genuinely is not. Three practical points. Every train, shop and restaurant is heated hard, so one thick garment you cannot take off is worse than three thin ones. The outdoor parts of a winter trip are nearly all after dark, which is when the temperature is at its minimum rather than its mean. And if you are skiing, rent the gear at the resort — it is bookable before you fly.`,
+    q: "Can I combine skiing, onsen and Kanazawa in one winter trip?",
+    a: `Yes, in 10 days. Nagano (for Hakuba and Nozawa Onsen) and Kanazawa are on the same Hokuriku Shinkansen line from Tokyo: about 80 minutes to Nagano, then the Alpico bus to Hakuba in 70 minutes. Ginzan Onsen is on the Yamagata Shinkansen instead — about 3 hours 20 minutes to Oishida plus a 35–40 minute bus — so adding it costs a night and a return through Tokyo, which makes a Tokyo, Ginzan, Nagano and Kanazawa trip about 12 days.`,
   },
   {
-    q: "How cold is Japan in December, January and February?",
-    a: `On the Japan Meteorological Agency's 1991–2020 normals, Tokyo averages 7.7°C in December, 5.4°C in January and 6.1°C in February, with January's mean daily maximum at 9.8°C and minimum at 1.2°C. Kyoto is a degree colder than Tokyo through all three months — 7.2°C, 4.8°C and 5.4°C — and Osaka is a degree warmer at 8.7°C, 6.2°C and 6.6°C. Sapporo is a different country: −0.9°C, −3.2°C and −2.7°C, with January's mean daily maximum below freezing at −0.4°C and 137 cm of snowfall in that month alone. January is the coldest month everywhere on this list, and February is marginally milder than January rather than colder. Read on ${CHECKED}.`,
+    q: "What closes in Japan over New Year?",
+    a: `Bank branches close 31 December – 3 January and national government offices 29 December – 3 January; the Tokyo National Museum closes 26–31 December 2026 and reopens on 1 January 2027 (12:00–20:00). Shrines, temples such as Kinkaku-ji (open every day, 9:00–17:00), the shinkansen and the ski resorts stay open. In Kyoto, the Sagano Romantic Train's last run is 29 December 2026 and the new train starts on 1 March 2027.`,
   },
   {
-    q: "Where can I see snow in Japan?",
-    a: `Not usually in Tokyo, Kyoto or Osaka — all three are Pacific-side cities where snow is an event rather than a season. The snow is on the Sea of Japan side and in the mountains, and the closest reliable version to Tokyo is Yuzawa in Niigata: GALA Yuzawa is reached on the Joetsu Shinkansen from Tokyo Station with no transfer, and its base station and lift station are the same building, which makes a ski day possible without a ski holiday. Hakuba in Nagano is the other day-trip option and the better skiing. For snow as scenery rather than sport, Shirakawa-go and Takayama in January and February are the ones this itinerary is built around. And Hokkaido has snow as a given: Sapporo's January snowfall normal is 137 cm.`,
+    q: "Is a JR Pass worth it for a winter trip?",
+    a: `Usually not. Tokyo → Kanazawa → Kyoto → Kansai Airport is about ¥22,800 on single tickets (¥14,400 + ¥6,500 + ¥1,900), against ¥35,000 for the 7-day Hokuriku Arch Pass and ¥50,000 for a 7-day JR Pass bought online. A pass pays only when you add long legs — Hokuriku Shinkansen side trips for the Arch Pass, or the Yamagata and Joetsu lines (Ginzan, GALA) for the ¥35,000 5-day JR EAST PASS. Private buses to Shirakawa-go, Hakuba and Ginzan are never covered.`,
   },
   {
     q: "Do I need to book winter tours in advance?",
-    a: `For two things on this itinerary, yes, absolutely — and for the rest, less than you would guess. The Shirakawa-go light-up runs on four evenings only in 2027 (11, 17, 24 and 31 January, each 17:30–19:30) on a fully advance-reservation basis, and the association's own notice states that entry tickets are not sold on the day. The Kanazawa–Shirakawa-go highway bus is reserved-seating and Hokuriku Railroad requires it to be booked before boarding, with no walk-up fallback. Beyond those, a Kagayaki on the Hokuriku Shinkansen has no non-reserved car at all, ski rental is the piece that runs out of your size first, and SHIBUYA SKY's sunset slots go the moment a date opens two weeks ahead. Almost everything else — Kyoto's temples, Kenroku-en, the free Tokyo illuminations, the Snow Festival sites — is walk-in.`,
-  },
-  {
-    q: "How many days do you need for a winter trip to Japan?",
-    a: "Ten at the absolute minimum for the route on this page, twelve to do it without rushing, and fourteen if you want Hokkaido as well as the Hokuriku side. Winter specifically punishes a short trip, for two reasons: the daylight is short, so each day holds less than the same day would in May, and the weather risk is real, so a plan with no slack in it has nowhere to move a snowed-off day to. If you only have a week, cut the Takayama and Kanazawa leg rather than the Tokyo days and run the Tokyo, Kyoto and Osaka week instead, with illuminations added to the evenings. If you have ten days, our 10-day itinerary is the same corridor and absorbs a winter plan comfortably.",
-  },
-  {
-    q: "Does the shinkansen run in snow?",
-    a: `Yes, and it is one of the more reassuring things about travelling in Japan in February — the Joetsu and Tohoku lines run through some of the heaviest snowfall in the developed world as a matter of routine, with sprinkler systems and snow sheds built for it. What does happen is delay rather than cancellation, and it propagates: snow in Niigata or Gifu can hold trains on the Tokaido line hours away. The practical rules are to leave an hour of slack on any day with a flight at the end of it, to not book the last departure of the day out of Kansai or New Chitose, and to keep your phone online — the delay notices and the replacement-service announcements all arrive that way rather than at a counter.`,
-  },
-  {
-    q: "Is the New Year period a bad time to go?",
-    a: `It is the one week of winter we would plan around rather than into. From about 29 December to 3 January, museums and many restaurants close, the trains and the shinkansen run at their fullest of the whole year, and hotel rates in every city on this itinerary peak. The shrines are the exception and the reason some people go anyway — hatsumode, the first shrine visit of the year, is a genuine spectacle at Meiji Jingu and Fushimi Inari, and both are free. If your dates are fixed to that week, book the rail seats the moment reservations open thirty days ahead and expect the walk-in sites to behave like booked ones.`,
-  },
-  {
-    q: "Is a JR Pass worth it for this winter route?",
-    a: `Probably not the nationwide one, and quite possibly the Hokuriku Arch Pass. The nationwide pass has to be paid for by a lot of long legs, and this route has two: Tokyo to Kanazawa and the Takayama-to-Kyoto day. The Hokuriku Arch Pass is seven consecutive days covering the Hokuriku Shinkansen between Tokyo and Tsuruga plus the Kansai area, and it deliberately does not cover the Tokaido Shinkansen — which is exactly the shape of a trip that goes out through Kanazawa and comes back through Kyoto and Osaka. Neither pass covers the highway buses to Shirakawa-go, which are private rather than JR, so budget those fares separately. Our JR Pass guide has the break-even calculator for your own legs.`,
-  },
-  {
-    q: "Can you do this itinerary with children in winter?",
-    a: `Most of it, with two adjustments. The first is the evenings: the illuminations, the Shirakawa-go light-up and the teamLab garden are all after-dark outings in the cold, and Nohi Bus's light-up coach is not back in Takayama until 20:20 at the earliest, which is a late night for a small child. The second is the Day 9 travel day, which is most of a day on two trains — worth splitting or cutting if the ages are young. What works well is the snow day, because snow play needs no skill and no lift pass; Hokkaido's snow-park half days are built for exactly that. teamLab Botanical Garden Osaka is also the cheapest family ticket on the whole route at ¥500 for ages 6 to 15 and free for preschool children, though its listing warns of flashing lights and loud noises.`,
+    a: `For the Shirakawa-go light-up, yes: entry is by advance ticket only and the Shirakawa-go Tourist Association sells nothing on the day. The Kanazawa–Shirakawa-go bus is reserved-seating and must be booked before boarding, every seat on a Kagayaki shinkansen is reserved, and ski rental runs out of sizes first. Kyoto's temples, Kenroku-en and the free Tokyo illuminations are walk-in.`,
   },
 ];
 
-const TITLE = "Japan Winter Itinerary: 12 Days, Day by Day (2027)";
+// R15 (27 Nov 2026): the title leads with the 7- and 10-day lengths searchers ask for; the
+// 12-day day-by-day plan stays below as the long version.
+const TITLE = "Japan Winter Itinerary 2026-27: 7/10 Days (Snow, Onsen, Ski)";
+const H1 = "Japan Winter Itinerary 2026-27: 7 & 10 Days (Snow, Onsen, Ski)";
 const DESCRIPTION =
-  "A 12-day Japan winter itinerary: Tokyo, Kanazawa, Shirakawa-go, Takayama, Kyoto and Osaka, with a table per day, dated winter events and what to book.";
+  "Japan winter itinerary for 7 or 10 days: Tokyo, Hakuba skiing, onsen, Kanazawa and Kyoto, plus what closes over New Year and whether a JR Pass pays.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/japan-winter-itinerary") },
@@ -1107,15 +1094,13 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
-          <h1 className={styles.heroTitle}>
-            Japan Winter Itinerary: <br />12 Days in Japan, Day by Day
-          </h1>
+          <h1 className={styles.heroTitle}>{H1}</h1>
           <p className={styles.heroSubtitle}>
-            Tokyo, Kanazawa, Shirakawa-go, Takayama, Kyoto and Osaka — with the two winter events that
-            are on fixed dates, and the one that sells nothing at the door.
+            Two model routes — 7 and 10 days — through Tokyo, the snow, an onsen, Kanazawa and Kyoto, with
+            what closes over New Year and a 12-day day-by-day plan underneath.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "A table for each of the 12 days", "Dated 2027 winter events", "Official temperatures"].map((t) => (
+            {[`Updated ${updated.label}`, "7- and 10-day routes", "New Year closures", "Dated 2027 winter events"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -1133,6 +1118,23 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* R15: answer first — the 7- and 10-day routes and the three winter closures, in numbers. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            The best <strong>Japan winter itinerary</strong> is <strong>7 days</strong> of Tokyo (3 nights),
+            Kanazawa (2) and Kyoto (1), or <strong>10 days</strong> that add 2 nights of skiing in Hakuba on
+            the way to Kanazawa. Three winter dates shape both: the{" "}
+            <strong>Shirakawa-go light-up runs only on 11, 17, 24 and 31 January 2027</strong>, the{" "}
+            <strong>Sagano Romantic Train in Kyoto makes its last run on 29 December 2026 and does not return
+            until 1 March 2027</strong>, and <strong>GALA Yuzawa&apos;s slopes open on 19 December 2026</strong>{" "}
+            (sightseeing only from 12 December). Over New Year, banks close 31 December – 3 January, while
+            shrines, the shinkansen and the ski resorts stay open. Last checked: {checkedLabel("2026-11-27")}, on
+            the operators&apos; own pages cited under each table.
+          </p>
+        </section>
+
+        <WinterRoutesSection locale="en" />
 
         {/* Winter booking block (task A21): the bookable tours, ahead of the long read. */}
         <WinterBookingTop
@@ -1175,7 +1177,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
         {/* Lead paragraph — the whole answer, before anything else on the page. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            This <strong>Japan winter itinerary</strong> runs <strong>twelve days across five bases</strong> —
+            The long version of this <strong>Japan winter itinerary</strong> runs <strong>twelve days across five bases</strong> —
             Tokyo 4 nights, Kanazawa 2, Takayama 2, Kyoto 2 and Osaka 1 — and it is built around the
             three things winter changes rather than around a list of sights. The spine is a{" "}
             <strong>2 hour 28 minute</strong> Hokuriku Shinkansen ride from Tokyo to Kanazawa on JR
@@ -1201,7 +1203,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Length</p>
-                <p className={styles.verdictStatValue}>12 days, 5 bases</p>
+                <p className={styles.verdictStatValue}>7 or 10 days (12-day plan below)</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Book first</p>
@@ -1262,6 +1264,9 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
         />
 
         <EsimCtaTop />
+
+        {/* R15: what closes over New Year, and which pass pays. */}
+        <WinterClosuresSection locale="en" />
 
         {/* How the days split */}
         <section className={styles.comparisonSection}>
@@ -1463,8 +1468,8 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             two, so price it rather than assume it. The{" "}
             <strong>Hokuriku Arch Pass</strong> is the one shaped like this trip — seven consecutive
             days covering the Hokuriku Shinkansen between Tokyo and Tsuruga plus the Kansai area, and
-            deliberately not the Tokaido Shinkansen, which is why it only works going out one way and
-            back the other. Neither covers the Shirakawa-go buses, which are private rather than JR.
+            deliberately not the Tokaido Shinkansen — but at ¥35,000 it needs side trips on top of the
+            straight run, which is about ¥22,800 on single tickets. Neither covers the Shirakawa-go buses, which are private rather than JR.
             Our <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link> has the break-even
             calculator for your own legs, and our{" "}
             <Link href="/guides/transport/shinkansen-guide">shinkansen guide</Link> covers seat classes

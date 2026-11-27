@@ -452,17 +452,18 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
   {
     en: "/guides/attractions/japan-winter-itinerary",
     zhTw: "/zh-tw/guides/attractions/japan-winter-itinerary",
-    zhTitle: "日本冬季行程（2027）：12 天路線逐日安排",
+    zhTitle: "日本冬季行程 2026–27：7天・10天（雪景溫泉滑雪）",
     zhLabel: "日本冬季行程",
     zhCn: "/zh-cn/guides/attractions/japan-winter-itinerary",
     // 2026-11-22 (C01): season + the three winter terms first (北海道・雪景・滑雪), then the route length.
-    zhCnTitle: "日本冬季行程 2026-27：北海道・雪景・滑雪・12天路线",
+    // 2026-11-27 (R15): 7- and 10-day lengths first, then the three winter terms.
+    zhCnTitle: "日本冬季行程 2026-27：7天・10天（雪景温泉滑雪）",
     zhCnLabel: "日本冬季行程",
     ko: "/ko/guides/attractions/japan-winter-itinerary",
-    koTitle: "일본 겨울 여행 12일 일정(2027): 일자별 코스",
+    koTitle: "일본 겨울 여행 일정 2026~27: 7일·10일 코스",
     koLabel: "일본 겨울 여행",
     th: "/th/guides/attractions/japan-winter-itinerary",
-    thTitle: "เที่ยวญี่ปุ่นหน้าหนาว 2027: แผนเที่ยว 12 วัน",
+    thTitle: "เที่ยวญี่ปุ่นหน้าหนาว 2026-27: 7 และ 10 วัน",
     thLabel: "เที่ยวญี่ปุ่นหน้าหนาว",
   },
   // Added 2026-11-24 (task jtk-20261124-TR01): Klook's best-converting English page that had no

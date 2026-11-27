@@ -325,7 +325,10 @@ export default function GinzanOnsenTourPage({ updated }: { updated: PageUpdated 
             Take the <strong>Yamagata Shinkansen to Oishida</strong> (about 3 hours to 3 hours 20 minutes), then
             the <strong>bus to its final stop, Ginzan Onsen</strong> (about 35–40 minutes). The bus runs about
             every 60–90 minutes, so plan the train around it. From Sendai, the onsen&apos;s own page gives an
-            express bus towards Shinjo and a change at Obanazawa.
+            express bus towards Shinjo and a change at Obanazawa. Because the Yamagata line is a different
+            direction from Nagano and Kanazawa, Ginzan adds a night and a return through Tokyo to a wider trip —
+            our <Link href="/guides/attractions/japan-winter-itinerary">Japan winter itinerary</Link> has a
+            12-day 20 December – 1 January route with Ginzan, skiing in Nagano and Kanazawa.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

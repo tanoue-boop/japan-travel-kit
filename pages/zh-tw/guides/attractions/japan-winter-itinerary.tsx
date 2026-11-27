@@ -70,6 +70,7 @@ import {
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
 import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
+import { WinterClosuresSection, WinterRoutesSection } from "../../../../components/WinterRouteTables";
 
 // Mirrors the English guide (pages/guides/attractions/japan-winter-itinerary.tsx) as of 6 November 2026,
 // section for section. Every figure comes from that page; none was added for this edition.
@@ -371,7 +372,7 @@ const days: Day[] = [
     ],
     book: (
       <>
-電車，以及終點的兩晚。要搭的是 <strong>Kagayaki</strong>，它有個特別的規定：全車對號，沒有自由座，所以這段不能留到當天早上。<Link href="/guides/transport/tokyo-to-kanazawa" hrefLang="en">東京到金澤攻略（英文）</Link>有時間、座位等級和有自由座的 Hakutaka。周遊券方面，全國版 JR Pass 很少適合這種旅程，<Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR Pass 攻略（英文）</Link>有計算工具；北陸拱型周遊券則常常適合，因為它正好涵蓋東京 → 金澤 → 關西，並刻意不含回程的東海道新幹線。同一條北陸新幹線會經過長野（東京出發最快 79 分鐘），想在去金澤前多留一天看泡湯雪猴，請看<Link href="/zh-tw/guides/attractions/jigokudani-snow-monkey-tour">地獄谷野猿公苑交通與門票</Link>。
+電車，以及終點的兩晚。要搭的是 <strong>Kagayaki</strong>，它有個特別的規定：全車對號，沒有自由座，所以這段不能留到當天早上。<Link href="/guides/transport/tokyo-to-kanazawa" hrefLang="en">東京到金澤攻略（英文）</Link>有時間、座位等級和有自由座的 Hakutaka。周遊券方面，全國版 JR Pass 很少適合這種旅程，<Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR Pass 攻略（英文）</Link>有計算工具；北陸拱型周遊券正好涵蓋東京 → 金澤 → 關西，但要 ¥35,000，直走這條線用單程票約 ¥22,800 更便宜，要再加北陸新幹線來回才划算。同一條北陸新幹線會經過長野（東京出發最快 79 分鐘），想在去金澤前多留一天看泡湯雪猴，請看<Link href="/zh-tw/guides/attractions/jigokudani-snow-monkey-tour">地獄谷野猿公苑交通與門票</Link>。
 </>
     ),
     picks: [
@@ -804,52 +805,34 @@ const hokkaidoRows = [
   { leg: "第 12 天", plan: "從新千歲離開，或回到東京。這個版本唯一的風險是 2 月下雪關閉機場，所以不要訂當天最後一班" },
 ];
 
+// R15 (27 Nov 2026): five questions, mirrored from the English page.
 const faqItems = [
   {
-    q: "日本冬天值得去嗎？",
-    a: `值得，而且有三個其他季節沒有的理由。可直接入內的景點，也就是京都大部分和整個奈良公園，在新年週到梅花開之間人最少。太平洋側空氣乾燥清澈，只有這時能穩定從東京展望台看到富士山。而夏天只是次要繞路的日本海側成了主角：金澤兼六園和白川鄉合掌村在雪中都更美。代價是日照。12 月下午四點半左右就天黑，觀光時間變短，所以這份行程在東京每天都排了晚上的活動，而不是當成附加。`,
+    q: "日本冬季行程怎麼排最好？",
+    a: `7 天：東京 3 晚、金澤 2 晚、京都 1 晚，加上 GALA 湯澤玩雪日與金澤出發的白川鄉。10 天：經北陸新幹線停靠的長野，加 2 晚白馬滑雪。GALA 滑雪期為 2026 年 12 月 19 日至 2027 年 5 月 5 日，白川鄉點燈只有 2027 年 1 月 11、17、24、31 日（2026 年 11 月 27 日查核）。`,
   },
   {
-    q: "冬天去日本要帶什麼？",
-    a: `防風外殼加多層穿搭、有抓地力的鞋、手套，以及比您想的少得多的行李。重要數字是日本氣象廳 1991–2020 年平年值（查核日：${CHECKED}）：1 月平均最低東京 1.2°C，月均溫京都 4.8°C、大阪 6.2°C，平均最低札幌 −6.4°C。所以本州穿大衣就能應對，還不需要專業戶外裝備，北海道則真的很冷。有三個實用重點：電車、商店和餐廳暖氣都很強，一件脫不掉的厚衣服比三件薄的差。冬季旅程的戶外部分幾乎都在天黑後，氣溫接近最低。要滑雪就在度假村租，出發前就能預訂。`,
+    q: "滑雪、溫泉和金澤可以排進同一趟冬季旅行嗎？",
+    a: `可以，10 天就夠。長野（白馬、野澤溫泉）和金澤在同一條北陸新幹線上：東京到長野約 80 分鐘，再搭 Alpico 巴士 70 分鐘到白馬。銀山溫泉在山形新幹線（東京–大石田約 3 小時 20 分＋巴士 35–40 分），要多住一晚並經東京往返，整趟約 12 天。`,
   },
   {
-    q: "日本 12 月、1 月、2 月有多冷？",
-    a: `依日本氣象廳 1991–2020 年平年值，東京 12 月 7.7°C、1 月 5.4°C、2 月 6.1°C，1 月平均最高 9.8°C、最低 1.2°C。京都三個月都比東京低約一度：7.2°C、4.8°C、5.4°C。大阪高約一度：8.7°C、6.2°C、6.6°C。札幌完全是另一回事：−0.9°C、−3.2°C、−2.7°C，1 月平均最高在冰點以下 −0.4°C，光 1 月降雪就有 137 公分。1 月是這些地方最冷的月份，2 月比 1 月略暖。查核日：${CHECKED}。`,
+    q: "日本過年期間哪些地方會休息？",
+    a: `銀行櫃台 12 月 31 日至 1 月 3 日、政府機關 12 月 29 日至 1 月 3 日休息；東京國立博物館 2026 年 12 月 26–31 日休館，2027 年 1 月 1 日（12:00–20:00）開館。神社寺院（金閣寺每天 9:00–17:00）、新幹線和滑雪場照常。京都嵯峨野觀光小火車 2026 年 12 月 29 日最後營運，新車 2027 年 3 月 1 日起。`,
   },
   {
-    q: "在日本哪裡看得到雪？",
-    a: `通常不是東京、京都或大阪，這三座太平洋側城市下雪會上新聞，而不是每年冬天的常態。雪在日本海側和山區，離東京最近又可靠的是新潟湯澤：GALA 湯澤從東京站搭上越新幹線不用轉車，車站和纜車站是同一棟建築，所以不用滑雪假期也能滑一天。長野白馬也能當天往返，雪質更好。把雪當風景而不是運動的話，1、2 月的白川鄉和高山就是這份行程的核心。北海道當然有雪：札幌 1 月降雪平年值 137 公分。`,
+    q: "冬季旅行買 JR Pass 划算嗎？",
+    a: `通常不划算。東京→金澤→京都→關西機場用單程票約 ¥22,800（¥14,400＋¥6,500＋¥1,900），低於北陸拱型周遊券 7 天 ¥35,000 和線上 JR Pass 7 天 ¥50,000。加上北陸新幹線來回時拱型周遊券可能划算，加上山形、上越路線（銀山、GALA）時 5 天 ¥35,000 的 JR 東日本鐵路周遊券可能划算。民營巴士都不包含。`,
   },
   {
-    q: "日本冬季行程要提前預訂什麼？",
-    a: `這份行程有兩件事絕對要，其他比您想的少。白川鄉點燈 2027 年只有四個晚上（1 月 11、17、24、31 日，每晚 17:30–19:30），完全事前預約，協會公告寫明當天不售入場券。金澤到白川鄉高速巴士全車對號，北陸鐵道要求上車前預訂，沒有現場備案。此外，北陸新幹線 Kagayaki 完全沒有自由座，滑雪租借最先缺您的尺寸，SHIBUYA SKY 日落時段在開賣瞬間就賣完。其他幾乎都能直接去：京都寺院、兼六園、東京免費燈飾、雪祭會場。`,
-  },
-  {
-    q: "日本冬季行程要排幾天？",
-    a: "本頁路線最少 10 天，不趕要 12 天，想加北海道和北陸兩邊要 14 天。冬天對短程特別不利，原因有二：白天短，同樣的一天比 5 月能做的少；天氣風險真實存在，行程排得太滿，就沒有空檔調整因雪取消的一天。只有一週的話，刪高山和金澤而不是東京，改走東京、京都、大阪的一週，晚上加燈飾。有 10 天的話，10 天行程是同一路線，也放得下冬季計畫。",
-  },
-  {
-    q: "新幹線下雪時會開嗎？",
-    a: `會，這是 2 月在日本旅行最讓人安心的事之一。上越和東北線照常穿過已開發國家中雪量最大的地區，配有灑水設備和防雪棚。真正會發生的是延誤而不是停駛，而且會擴散：新潟或岐阜的雪可能讓幾小時外的東海道線延誤。實用原則是：當天有班機就留一小時緩衝，不要訂關西或新千歲的最後一班，手機保持上網，延誤和替代交通的通知都這樣傳來。`,
-  },
-  {
-    q: "新年期間不適合去嗎？",
-    a: `這是冬天唯一要繞開而不是排進去的一週。約 12 月 29 日到 1 月 3 日，博物館和許多餐廳休息，電車和新幹線是全年最滿，這份行程每座城市的房價都到最高。神社是例外，也是有人還是去的原因：初詣，也就是新年第一次參拜，在明治神宮和伏見稻荷很壯觀，都免費。如果只能在這一週出發，請在 30 天前開放預訂時立刻訂鐵路座位，並把可直接入內的景點當成要預訂的來看待。`,
-  },
-  {
-    q: "這條冬季路線值得買 JR Pass 嗎？",
-    a: `全國版大概不值得，北陸拱型周遊券則很可能值得。全國版要靠很多長途才回本，這條路線只有兩段：東京到金澤，以及高山到京都那天。北陸拱型周遊券連續七天涵蓋東京到敦賀的北陸新幹線和關西地區，刻意不含東海道新幹線，正好符合從金澤出去、經京都大阪回來的旅程。兩種都不含往白川鄉的高速巴士，那是民營，請另外編預算。JR Pass 攻略有依自己路段計算的工具。`,
-  },
-  {
-    q: "冬天可以帶小孩走這份行程嗎？",
-    a: `大部分可以，要調整兩處。第一是晚上：燈飾、白川鄉點燈和 teamLab 庭園都是天黑後的寒冷外出，濃飛巴士點燈巴士最早 20:20 才回到高山，對年紀較小的孩子來說太晚。第二是第 9 天的移動日，大半天都在兩班車上，孩子小的話值得拆開或刪掉。適合的是玩雪日，玩雪不需技術也不用纜車票，北海道的雪上樂園半日就是為此設計。teamLab 植物園大阪也是全線最便宜的親子票，6 到 15 歲 ¥500、學齡前免費，但商品說明提醒有閃光和大聲響。`,
+    q: "冬季行程需要提前預訂嗎？",
+    a: `白川鄉點燈一定要：只售預約門票，當天不售票。金澤–白川鄉巴士為預約制，Kagayaki 新幹線全車對號，滑雪裝備租借會先缺尺寸。京都寺院、兼六園和東京免費燈飾都可直接前往。`,
   },
 ];
 
-const TITLE = "日本冬季行程 2026–27：12 天逐日路線、點燈與雪祭";
+const TITLE = "日本冬季行程 2026–27：7天・10天（雪景溫泉滑雪）";
+const H1 = "日本冬季行程 2026–27：7 天・10 天路線（雪景、溫泉、滑雪）";
 const DESC =
-  "日本冬季行程 2026–27 怎麼排？12 天走東京、金澤、白川鄉、高山、京都與大阪。白川鄉點燈只有 4 晚且當天不售票，附每日表格與 Klook 預訂。";
+  "日本冬季行程：7 天走東京、金澤、京都，10 天加白馬滑雪。附過年休息清單、嵯峨野小火車停駛日期與 JR Pass 是否划算。";
 
 /** 一張表看完 12 天；第一列就是答案。 */
 const glanceRows = [
@@ -887,7 +870,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 更新於 {monthLabel(updated.iso, LOCALE)}
 </p>
           <h1 className={styles.heroTitle}>
-日本冬季行程 2026–27： <br />12 天逐日安排
+{H1}
 </h1>
           <p className={styles.heroSubtitle}>
 東京、金澤、白川鄉、高山、京都與大阪，加上日期固定的兩個冬季活動，其中一個完全不販售當日票。
@@ -904,6 +887,15 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 
       <div className={styles.content}>
                 <Disclosure />
+
+        {/* R15 (27 Nov 2026): answer first — the 7- and 10-day routes and the winter closures. */}
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+<strong>日本冬季行程</strong>最推薦 <strong>7 天</strong>：東京 3 晚、金澤 2 晚、京都 1 晚；<strong>10 天</strong>則在前往金澤途中加 2 晚白馬滑雪。三個日期決定行程：<strong>白川鄉點燈只在 2027 年 1 月 11、17、24、31 日</strong>，<strong>京都嵯峨野觀光小火車 2026 年 12 月 29 日最後營運，2027 年 3 月 1 日才恢復</strong>，<strong>GALA 湯澤 2026 年 12 月 19 日開滑</strong>（12 月 12 日起僅觀光營業）。過年期間銀行 12 月 31 日至 1 月 3 日休息，但神社、新幹線和滑雪場照常。Last checked：2026年11月27日，以各表下方的官方頁面為準。
+</p>
+        </section>
+
+        <WinterRoutesSection locale="zh-tw" />
 
                 <WinterBookingTop
           heading={"日本冬季行程要先訂什麼？"}
@@ -940,7 +932,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
 
                 <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-這份 2026–27 年冬的<strong>日本冬季行程</strong>共<strong>12 天、5 個住宿據點</strong>：東京 4 晚、金澤 2 晚、高山 2 晚、京都 2 晚、大阪 1 晚，東京到金澤搭北陸新幹線約 <strong>2 小時 28 分鐘</strong>（JR 西日本）。最先要訂的是<strong>白川鄉冬季點燈</strong>，2027 年只有 1 月 11、17、24、31 日四個晚上（17:30–19:30），主辦單位當天完全不售票；<strong>第 77 屆札幌雪祭</strong>是 2027 年 2 月 4–11 日，免費入場。
+這份 2026–27 年冬的<strong>日本冬季行程</strong>完整版共<strong>12 天、5 個住宿據點</strong>：東京 4 晚、金澤 2 晚、高山 2 晚、京都 2 晚、大阪 1 晚，東京到金澤搭北陸新幹線約 <strong>2 小時 28 分鐘</strong>（JR 西日本）。最先要訂的是<strong>白川鄉冬季點燈</strong>，2027 年只有 1 月 11、17、24、31 日四個晚上（17:30–19:30），主辦單位當天完全不售票；<strong>第 77 屆札幌雪祭</strong>是 2027 年 2 月 4–11 日，免費入場。
 </p>
           <p className={styles.bodyText}>
 這份行程不是單純羅列景點，而是依冬季旅行的三項變化來安排：搭北陸新幹線到金澤後，搭乘須預約的高速巴士進入山區，再經東海道線前往關西。白天很短，12 月下午四點半左右就天黑，依日本氣象廳 1991–2020 年平年值，1 月均溫東京 5.4°C、札幌 −3.2°C。想把雪祭排進去，請看<Link href="/zh-tw/guides/attractions/sapporo-snow-festival-tours" style={{ color: "var(--red)", fontWeight: 600 }}>札幌雪祭行程攻略</Link>和<Link href="/zh-tw/guides/attractions/hokkaido-7-day-itinerary" style={{ color: "var(--red)", fontWeight: 600 }}>北海道 7 天行程</Link>；其他景點門票在<Link href="/zh-tw/guides/attractions" style={{ color: "var(--red)", fontWeight: 600 }}>日本景點攻略總覽</Link>。下面的活動日期、氣溫和票價都附出處：活動日期和巴士票價於 {REREAD} 重新查核，氣候平年值於 {CHECKED} 查核。
@@ -1049,6 +1041,8 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
         />
 
         <EsimCtaTop />
+
+        <WinterClosuresSection locale="zh-tw" />
 
                 <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>
@@ -1197,7 +1191,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             </li>
           </ul>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-周遊券方面，全國版 JR Pass 要靠長途回本，這條路線只有兩段，所以請實際計算，不要憑感覺。<strong>北陸拱型周遊券</strong>才符合這趟旅程的路線：連續七天涵蓋東京到敦賀的北陸新幹線和關西地區，刻意不含東海道新幹線，所以只適合去回走不同路線。兩者都不含民營的白川鄉巴士。<Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR Pass 攻略（英文）</Link>有依自己路段計算的工具，<Link href="/guides/transport/shinkansen-guide" hrefLang="en">新幹線攻略（英文）</Link>說明座位等級和預訂。
+周遊券方面，全國版 JR Pass 要靠長途回本，這條路線只有兩段，所以請實際計算，不要憑感覺。<strong>北陸拱型周遊券</strong>才符合這趟旅程的路線：連續七天涵蓋東京到敦賀的北陸新幹線和關西地區，刻意不含東海道新幹線；但要 ¥35,000，直走用單程票約 ¥22,800，需加來回路段才划算。兩者都不含民營的白川鄉巴士。<Link href="/guides/transport/jr-pass-guide" hrefLang="en">JR Pass 攻略（英文）</Link>有依自己路段計算的工具，<Link href="/guides/transport/shinkansen-guide" hrefLang="en">新幹線攻略（英文）</Link>說明座位等級和預訂。
 </p>
           <div className={styles.pickCtaRow}>
             <KlookLink href={klookFor(hokurikuArchPass.url, LOCALE)} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

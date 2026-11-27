@@ -299,7 +299,7 @@ const crumbSep = (
 
 const related = [
   { href: "/guides/attractions/tokyo-new-years-eve", title: "Tokyo New Year's Eve 2026: Countdown, Trains & Hatsumode" },
-  { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary: 12 Days, Day by Day (2027)" },
+  { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary 2026-27: 7 & 10 Days (Snow, Onsen, Ski)" },
   { href: "/guides/attractions/tokyo-4-day-itinerary", title: "Tokyo 4 Day Itinerary (2026): Day by Day, Day Trip & Costs" },
   { href: "/guides/attractions/kyoto-2-day-itinerary", title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book" },
   { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas Compared" },

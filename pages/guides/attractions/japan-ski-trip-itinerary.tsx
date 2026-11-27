@@ -256,7 +256,7 @@ const related = [
   { href: "/guides/attractions/niseko-ski-tours", title: "Niseko Ski Tours (2027): Transfers, Lessons & 4 Areas" },
   { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "How to Get to Gala Yuzawa from Tokyo: Shinkansen & JR Pass" },
   { href: "/guides/attractions/sapporo-ski-day-trip", title: "Sapporo Ski Day Trip 2026-27: Teine, Kiroro & Rusutsu Tours" },
-  { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary: 12 Days, Day by Day (2027)" },
+  { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary 2026-27: 7 & 10 Days (Snow, Onsen, Ski)" },
   { href: "/guides/money/japan-ski-travel-insurance", title: "Japan Ski Travel Insurance: What Standard Policies Exclude" },
   { href: "/guides/esim/best-esim-japan", title: "Best eSIM for Japan (2026): Providers, Prices and Which to Pick" },
   { href: "/guides/attractions", title: "More Things to Do in Japan →" },

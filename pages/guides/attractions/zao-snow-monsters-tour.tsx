@@ -486,7 +486,10 @@ export default function ZaoSnowMonstersTourPage({ updated }: { updated: PageUpda
             the ropeway and the old hot-spring street in one day. On your own it is harder, because Ginzan Onsen and
             Zao Onsen are far apart and each is reached by its own bus. <strong>From Tokyo</strong>, the
             tours on Klook that combine the two are two-day tours, with a night at an onsen hotel in between. For the onsen street itself, its winter shuttle and staying the night, see the{" "}
-            <Link href="/guides/attractions/ginzan-onsen-tour">Ginzan Onsen tour guide</Link>.
+            <Link href="/guides/attractions/ginzan-onsen-tour">Ginzan Onsen tour guide</Link>. To fit Zao or
+            Ginzan into a longer trip with skiing and Kanazawa, our{" "}
+            <Link href="/guides/attractions/japan-winter-itinerary">Japan winter itinerary</Link> sets out 7- and
+            10-day routes and which rail pass pays.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={zaoGinzanDayTourFromSendai.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

@@ -545,8 +545,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/japan-winter-itinerary",
     badge: "Itinerary",
-    title: "Japan Winter Itinerary: 12 Days, Day by Day (2027)",
-    desc: "Tokyo 4 nights, Kanazawa 2, Takayama 2, Kyoto 2, Osaka 1 — the Hokuriku route winter is actually better for, with a table per day, the four reservation-only Shirakawa-go light-up evenings, the 2027 Sapporo Snow Festival dates and the JMA temperature normals.",
+    title: "Japan Winter Itinerary 2026-27: 7 & 10 Days (Snow, Onsen, Ski)",
+    desc: "7 days of Tokyo, Kanazawa and Kyoto, or 10 with skiing in Hakuba on the way — plus what closes over New Year, the four Shirakawa-go light-up evenings, the Sagano train's winter break and whether a JR Pass pays. A 12-day day-by-day plan follows.",
     group: "cities",
     // Nationwide: the twelve days run Tokyo → Kanazawa → Shirakawa-go → Takayama → Kyoto → Osaka,
     // with a February Hokkaido variant.
