@@ -8,6 +8,7 @@ import { attractionArticles } from "../lib/guides-attractions";
 import { articlesForCity } from "../lib/guide-hub";
 import { hreflangLinks } from "../components/Hreflang";
 import { simbyeTrackedUrl } from "../lib/simbye";
+import HotelStayEntry from "../components/HotelStayEntry";
 import {
   BOOK_CARDS,
   CITY_HREFS,
@@ -263,6 +264,17 @@ export default function HomePage({ pricesChecked }: { pricesChecked: string }) {
       />
 
       <StatsBand stats={stats} />
+
+      {/* Where to stay — the city where-to-stay guides and a Klook hotel search per city.
+          Added 27 Nov 2026 (jtk-20261127-A28): hotels pay 6.5% against 2% for most tickets. */}
+      <HomeSection
+        tone="white"
+        eyebrow="Where to stay"
+        title="Where to Stay in Japan"
+        desc="The area decides more of the trip than the room does."
+      >
+        <HotelStayEntry bare />
+      </HomeSection>
 
       {/* The official-price database behind the "Official prices checked" count above
           (jtk-20261111-D02). Numbers come from data/attraction-prices.json. */}

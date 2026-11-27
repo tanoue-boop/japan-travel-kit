@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/Guides.module.css";
 import PartnerPick, { PartnerTextLink } from "../../components/PartnerPick";
+import HotelStayEntry from "../../components/HotelStayEntry";
 import { fujiDayTour, klookEsim, tokyoSubwayTicket } from "../../lib/klook-links";
 import { esimCategory } from "../../lib/guides-esim";
 import { transportCategory } from "../../lib/guides-transport";
@@ -199,6 +200,9 @@ export default function GuidesIndexPage() {
           <PartnerTextLink href={tokyoSubwayTicket.url}>Tokyo Subway Ticket</PartnerTextLink> for your first days in
           the city, and a <PartnerTextLink href={fujiDayTour.url}>Mt. Fuji day tour</PartnerTextLink> for a day out.
         </PartnerPick>
+
+        {/* A28 (27 Nov 2026): the way into the where-to-stay guides and Klook hotels (6.5%). */}
+        <HotelStayEntry />
 
         {/* Full index — every guide, under the same intent groups as its hub */}
         <p className={styles.sectionLabel}>Every guide</p>

@@ -42,14 +42,20 @@ const resolvePartner = (hostname: string): string | null => {
 // eSIM 送客を GA4 だけで数えるための区分。管理画面にログインできない週でも週次の eSIM 送客数を出せるようにする。
 const ESIM_PARTNERS = new Set(["simbye", "airalo", "sakura", "breeze", "holafly", "esimgo"]);
 const ESIM_CARD_SELECTOR = '[data-cta="booking-esim-card"], [data-placement="booking-esim-card"]';
+const HOTEL_BLOCK_SELECTOR = '[data-product-type="hotel"]';
 
 const resolveProductType = (partner: string, url: URL, anchor: Element): AffiliateClickParams["product_type"] => {
   if (ESIM_PARTNERS.has(partner)) return "esim";
   if (anchor.closest(ESIM_CARD_SELECTOR)) return "esim";
+  // ホテル送客（Klook ホテル 6.5%）を GA4 で数えるための区分。components/HotelStayBlock.tsx は data-product-type="hotel" を付ける。
+  if (anchor.closest(HOTEL_BLOCK_SELECTOR)) return "hotel";
   if (partner === "klook") {
     // Klook のリンクは affiliate.klook.com/redirect?k_site=<商品URL>。商品URL（無ければリンク自体）に esim を含めば eSIM 商品。
-    const product = url.searchParams.get("k_site") ?? url.href;
-    return product.toLowerCase().includes("esim") ? "esim" : "klook";
+    const product = (url.searchParams.get("k_site") ?? url.href).toLowerCase();
+    if (product.includes("esim")) return "esim";
+    // ホテル一覧（destination/…/3-hotel/）・ホテル詳細（/hotels/）はブロック外のリンクでも hotel。
+    if (product.includes("/3-hotel/") || product.includes("/hotels/")) return "hotel";
+    return "klook";
   }
   return "other";
 };
