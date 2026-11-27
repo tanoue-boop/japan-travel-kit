@@ -916,6 +916,11 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
             More single tickets: <Link href="/guides/attractions/nago-pineapple-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nago Pineapple Park</Link> in Nago (¥1,500), <Link href="/guides/attractions/ryukyu-mura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Ryukyu Mura</Link> on Route 58 in Onna (¥2,000, about 60 minutes from Naha) and <Link href="/guides/attractions/southeast-botanical-gardens-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Southeast Botanical Gardens</Link> in Okinawa City, lit 17:00–22:00 from late October to late May.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In Nago, <Link href="/guides/attractions/busena-marine-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Busena Marine Park</Link> has an underwater observatory (¥1,050) and a glass-bottom boat (¥1,560), or ¥2,100 for both.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

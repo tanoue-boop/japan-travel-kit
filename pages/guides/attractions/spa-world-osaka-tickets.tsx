@@ -120,6 +120,7 @@ export default function SpaWorldOsakaTicketsPage({ updated }: { updated: PageUpd
           onsen town rather than a city spa, see the{" "}
           <Link href="/guides/attractions/arima-onsen-taiko-no-yu" style={linkStyle}>Taiko no Yu</Link> guide.
           {" "}For a family morning before the baths, <Link href="/guides/attractions/kids-plaza-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kids Plaza Osaka</Link> opens at 9:30 (¥1,500 for adults).
+          {" "}For a second bathhouse, <Link href="/guides/attractions/solaniwa-onsen-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Solaniwa Onsen</Link> at Osaka Bay Tower is ¥2,310–3,630 for adults by date, ¥1,980 after 5 p.m. on A and B days.
         </p>
       }
       faq={[

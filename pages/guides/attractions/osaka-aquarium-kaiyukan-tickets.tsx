@@ -1023,6 +1023,11 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
             The Kaiyukan&apos;s sister museum, <Link href="/guides/attractions/nifrel-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>NIFREL</Link>, is at Expocity in Suita: ¥2,400 for adults, closed 19–20 January 2027.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In Shikoku, the <Link href="/guides/attractions/shikoku-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shikoku Aquarium</Link> in Kagawa is ¥2,600 for adults, ¥1,400 for elementary and junior high.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

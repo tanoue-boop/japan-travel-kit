@@ -118,6 +118,7 @@ export default function NagoPineappleParkTicketsPage({ updated }: { updated: Pag
           <Link href="/guides/attractions/junglia-okinawa-tickets" style={linkStyle}>JUNGLIA tickets</Link> and{" "}
           <Link href="/guides/attractions/okinawa-day-tours" style={linkStyle}>Okinawa day tours</Link> if you are
           not driving.
+          {" "}Nearby in Nago, <Link href="/guides/attractions/busena-marine-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Busena Marine Park</Link> is ¥2,100 for adults for the underwater observatory and the glass-bottom boat.
         </p>
       }
       faq={[

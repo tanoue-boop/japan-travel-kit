@@ -796,3 +796,118 @@ export const shinhotakaRopewayTicket: KlookTour = {
   desc: "The round trip from Shin-Hotaka Onsen to Nishi-Hotakaguchi on both ropeways; boarding from the middle station is not allowed",
   url: klookLink("https://www.klook.com/en-US/activity/134705-shin-hotaka-ropeway-round-trip-ticket/"),
 };
+
+// Day 12 (task jtk-20261208-A35, run 28 Nov 2026). Activity ids from the www.klook.com search index;
+// prices on the pages are the operators' own, read 28 Nov 2026.
+
+/** Solaniwa Onsen Osaka Bay Tower — admission ticket. */
+export const solaniwaOnsenTicket: KlookTour = {
+  title: "Solaniwa Onsen admission ticket",
+  desc: "Entry to Solaniwa Onsen, the onsen theme park at Osaka Bay Tower in Bentencho, with yukata and towels included",
+  url: klookLink("https://www.klook.com/en-US/activity/21381-solaniwa-onsen-admission-ticket-osaka/"),
+};
+
+/** Hells of Beppu (Beppu Jigoku Meguri) — common ticket for the seven hells. */
+export const beppuJigokuTicket: KlookTour = {
+  title: "Hells of Beppu ticket (all seven hells)",
+  desc: "One ticket for the seven hot-spring hells of Beppu, exchanged at the first hell you visit",
+  url: klookLink("https://www.klook.com/en-US/activity/29063-beppu-jigoku-onsen-ticket/"),
+};
+
+/** Suzuka Circuit Park (Mie) — park passport with unlimited rides, or admission only. */
+export const suzukaCircuitParkTicket: KlookTour = {
+  title: "Suzuka Circuit Park ticket",
+  desc: "A dated Suzuka Circuit Park ticket: the park passport with unlimited rides, admission only, or a fast ride add-on",
+  url: klookLink("https://www.klook.com/en-US/activity/38434-suzukacircuit-motopia-amusement-park-pass/"),
+};
+
+/** Yokohama Anpanman Children's Museum — dated admission ticket. */
+export const yokohamaAnpanmanMuseumTicket: KlookTour = {
+  title: "Yokohama Anpanman Children's Museum ticket",
+  desc: "A dated ticket for the 2nd and 3rd floor museum in Minatomirai; valid only at the Yokohama museum",
+  url: klookLink("https://www.klook.com/en-US/activity/181093-yokohama-anpanman-chidlren-museum/"),
+};
+
+/** Busena Marine Park (Okinawa) — underwater observatory and glass-bottom boat tickets. */
+export const busenaMarineParkTicket: KlookTour = {
+  title: "Busena Underwater Observatory + glass-bottom boat",
+  desc: "Tickets for the Busena underwater observatory and the glass-bottom boat at Busena Marine Park in Nago",
+  url: klookLink("https://www.klook.com/en-US/activity/45330-Busena-Underwater-Observatory-and-glass-bottom-boat-tickets-Okinawa/"),
+};
+
+/** Sendai Umino-Mori Aquarium — admission ticket. */
+export const uminoMoriAquariumTicket: KlookTour = {
+  title: "Sendai Umino-Mori Aquarium ticket",
+  desc: "Admission to the Sendai Umino-Mori Aquarium; the voucher is exchanged for a ticket at the ticket office",
+  url: klookLink("https://www.klook.com/en-US/activity/43404-uminomori-aquarium-sendai/"),
+};
+
+/** Aqua World Ibaraki Oarai Aquarium — admission ticket. */
+export const aquaWorldOaraiTicket: KlookTour = {
+  title: "Aqua World Oarai Aquarium ticket",
+  desc: "An e-voucher for the Ibaraki Prefectural Oarai Aquarium, scanned by the staff at the entrance",
+  url: klookLink("https://www.klook.com/en-US/activity/37909-aqua-world-ibaraki-oarai-aquarium-ticket/"),
+};
+
+/** Fujiko F Fujio Museum (Kawasaki) — timed admission ticket. */
+export const fujikoMuseumTicket: KlookTour = {
+  title: "Fujiko F Fujio Museum (Doraemon) ticket",
+  desc: "A timed ticket for the Doraemon creator's museum in Kawasaki; the museum sells no tickets at the door",
+  url: klookLink("https://www.klook.com/en-US/activity/5952-fujiko-f-fujio-museum-ticket-tokyo/"),
+};
+
+/** Izu Shaboten Zoo (Ito, Shizuoka) — web admission ticket. */
+export const izuShabotenZooTicket: KlookTour = {
+  title: "Izu Shaboten Zoo ticket",
+  desc: "A web ticket for Izu Shaboten Zoo, home of the capybara hot bath; the voucher is scanned at the gate",
+  url: klookLink("https://www.klook.com/en-US/activity/32135-izu-shaboten-zoo-ticket-nagoya/"),
+};
+
+/** Shikoku Aquarium (Utazu, Kagawa) — admission ticket. */
+export const shikokuAquariumTicket: KlookTour = {
+  title: "Shikoku Aquarium ticket",
+  desc: "Admission to the Shikoku Aquarium on the Seto Inland Sea shore in Utazu, Kagawa",
+  url: klookLink("https://www.klook.com/en-US/activity/74358-shikoku-aquarium/"),
+};
+
+/** iZoo reptile zoo (Kawazu, Izu) — admission ticket. */
+export const izooTicket: KlookTour = {
+  title: "iZoo reptile zoo ticket",
+  desc: "Admission to iZoo, the reptile and amphibian zoo in Kawazu on the Izu Peninsula",
+  url: klookLink("https://www.klook.com/en-US/activity/45323-izoo-izu/"),
+};
+
+/** Sendai day trip — Shiogama Shrine, a Matsushima Bay cruise and Chuson-ji. */
+export const matsushimaChusonjiDayTour: KlookTour = {
+  title: "Matsushima, Shiogama & Chuson-ji day trip from Sendai",
+  desc: "A day tour from Sendai Station to Shiogama Shrine, Matsushima with a bay cruise, and Chuson-ji in Hiraizumi",
+  url: klookLink("https://www.klook.com/en-US/activity/147070-one-day-tour-to-shiogama-shrine-matsushima-and-chusonji-temple/"),
+};
+
+/** Day tour from Tokyo — Oarai Isosaki Shrine, Hitachi Seaside Park and the Ashikaga illumination. */
+export const hitachiAshikagaIlluminationTour: KlookTour = {
+  title: "Hitachi Seaside Park & Ashikaga illumination day tour",
+  desc: "A day tour from Tokyo to Isosaki Shrine on the Oarai coast, Hitachi Seaside Park and the Ashikaga Flower Fantasy illumination",
+  url: klookLink("https://www.klook.com/en-US/activity/168925-hitachi-seaside-park-ashikaga-flower-park-illumination-day-tour/"),
+};
+
+/** Day trip from Tokyo — Ashikaga Flower Park, strawberry picking and Sano outlets. */
+export const ashikagaStrawberryOutletTour: KlookTour = {
+  title: "Ashikaga Flower Park, strawberries & Sano outlets day trip",
+  desc: "A day trip from Tokyo with Ashikaga Flower Park, all-you-can-eat strawberries and Sano Premium Outlets",
+  url: klookLink("https://www.klook.com/en-US/activity/83823-ashikaga-flower-park-bus-tour-tokyo/"),
+};
+
+/** Ryobi ferry Takamatsu – Shodoshima (Ikeda Port) round trip. */
+export const shodoshimaFerryTakamatsu: KlookTour = {
+  title: "Takamatsu – Shodoshima ferry round trip",
+  desc: "A round-trip ferry ticket from Takamatsu to Ikeda Port on Shodoshima",
+  url: klookLink("https://www.klook.com/en-US/activity/69511-ryobi-shodoshima-ferry-round-trip-ticket/"),
+};
+
+/** Kagawa private day tour by car from Takamatsu (Kotohira-gu, Takaya Shrine, Naruto, Shikoku Aquarium). */
+export const takamatsuCharterCarTour: KlookTour = {
+  title: "Kagawa private car day tour from Takamatsu",
+  desc: "An 8-hour private car tour from Takamatsu that can include Kotohira-gu, Takaya Shrine, the Naruto whirlpools and the Shikoku Aquarium",
+  url: klookLink("https://www.klook.com/en-US/activity/90937-takamatsu-departure-1-day-customize-charter-car-tour/"),
+};

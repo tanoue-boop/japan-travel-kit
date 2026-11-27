@@ -174,6 +174,7 @@ export default function AllShikokuRailPassPage({ updated }: { updated: PageUpdat
           <Link href="/guides/transport/jr-pass-guide" style={linkStyle}>JR Pass guide</Link>, and for a longer
           route that can include Shikoku, the{" "}
           <Link href="/guides/attractions/japan-3-week-itinerary" style={linkStyle}>Japan 3 week itinerary</Link>.
+          {" "}In Kagawa, the <Link href="/guides/attractions/shikoku-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shikoku Aquarium</Link> in Utazu is ¥2,600 for adults, 9:00–18:00, closed 2–4 February 2027.
         </p>
       }
       faq={[

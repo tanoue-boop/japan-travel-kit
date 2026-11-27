@@ -886,6 +886,11 @@ export default function Nagoya2DayItineraryPage({ updated }: { updated: PageUpda
             For an evening out of the city, <Link href="/guides/attractions/nabana-no-sato-illumination-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nabana no Sato</Link> in Kuwana is lit until 21:00 on December weekdays (¥3,200); for a day on the coast, <Link href="/guides/attractions/toba-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Toba Aquarium</Link> is ¥2,800 for adults.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            With children, <Link href="/guides/attractions/suzuka-circuit-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Suzuka Circuit Park</Link> in Mie has a ride passport from ¥4,800 online for adults and ¥3,400 for children.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

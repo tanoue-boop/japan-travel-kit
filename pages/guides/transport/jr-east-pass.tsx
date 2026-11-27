@@ -798,6 +798,11 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
             In Iwate, a day of skiing at <Link href="/guides/attractions/appi-kogen-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>APPI Kogen</Link> is ¥9,500 for adults from 19 December, and at <Link href="/guides/attractions/shizukuishi-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Shizukuishi</Link> ¥6,800.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In Sendai, the <Link href="/guides/attractions/sendai-umino-mori-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sendai Umino-Mori Aquarium</Link> is ¥2,400 for adults, open 10:00–17:00 until 19 March.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

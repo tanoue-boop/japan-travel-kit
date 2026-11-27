@@ -145,6 +145,7 @@ export default function NagashimaSpaLandTicketsPage({ updated }: { updated: Page
           <Link href="/guides/attractions/shima-spain-village-tickets" style={linkStyle}>Shima Spain Village</Link>{" "}
           is the other theme park.
           {" "}In the same Nagashima Resort, the <Link href="/guides/attractions/nabana-no-sato-illumination-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nabana no Sato</Link> illumination is ¥3,200 at the gate (¥3,000 at convenience stores), 10:00–21:00 on December weekdays.
+          {" "}For another ride park in Mie, the <Link href="/guides/attractions/suzuka-circuit-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Suzuka Circuit Park</Link> passport is from ¥4,800 online for adults, ¥500 more at the gate.
         </p>
       }
       faq={[

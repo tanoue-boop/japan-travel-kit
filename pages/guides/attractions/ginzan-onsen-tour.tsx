@@ -614,6 +614,11 @@ export default function GinzanOnsenTourPage({ updated }: { updated: PageUpdated 
 
         <BookingEsimCard lead="Timed shuttle tickets, bus times and tour messages all live on your phone. Get mobile data before you land." />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Back in Sendai, the <Link href="/guides/attractions/sendai-umino-mori-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sendai Umino-Mori Aquarium</Link> is ¥2,400 for adults and ¥1,200 for elementary school children.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

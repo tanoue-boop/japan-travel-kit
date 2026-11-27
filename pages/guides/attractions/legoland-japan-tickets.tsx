@@ -524,6 +524,11 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
             Another Aichi day: <Link href="/guides/attractions/meiji-mura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Meiji Mura</Link>, the open-air museum near Inuyama (¥2,500 for adults, ¥700 for pupils).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For another family park near Nagoya, the <Link href="/guides/attractions/suzuka-circuit-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Suzuka Circuit Park</Link> passport with unlimited rides is from ¥4,800 online for adults.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

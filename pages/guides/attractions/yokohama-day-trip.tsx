@@ -581,6 +581,11 @@ export default function YokohamaDayTripPage({ updated }: { updated: PageUpdated 
             With children, the island aquarium and park in the south of the city has its own guide: <Link href="/guides/attractions/hakkeijima-sea-paradise-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hakkeijima Sea Paradise tickets</Link>.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            With small children, the <Link href="/guides/attractions/yokohama-anpanman-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Yokohama Anpanman Children&apos;s Museum</Link> in Minatomirai is ¥2,200–2,800 for everyone aged 1 and over, by dated web ticket.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

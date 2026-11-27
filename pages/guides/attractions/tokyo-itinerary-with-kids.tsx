@@ -1009,6 +1009,11 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             For a day outside the city, <Link href="/guides/attractions/moominvalley-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Moominvalley Park</Link> in Hanno is ¥3,900 for adults in advance and ¥1,000 for children; in Ueno, the <Link href="/guides/attractions/tokyo-national-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tokyo National Museum</Link> is free for under-18s.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            More family days near Tokyo: the <Link href="/guides/attractions/yokohama-anpanman-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Yokohama Anpanman Children&apos;s Museum</Link> (¥2,200–2,800 from age 1), the <Link href="/guides/attractions/fujiko-f-fujio-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Fujiko F Fujio (Doraemon) Museum</Link> (¥1,000 for adults, timed entry), <Link href="/guides/attractions/aqua-world-oarai-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Aqua World Oarai</Link> (¥2,300 for adults) and <Link href="/guides/attractions/izu-shaboten-zoo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Izu Shaboten Zoo</Link> (¥2,800 on weekdays).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

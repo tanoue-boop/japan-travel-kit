@@ -854,6 +854,11 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
             Inside Fukuoka City, the <Link href="/guides/transport/fukuoka-tourist-city-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Fukuoka Tourist City Pass</Link> covers buses, trains, subway and ferries for a day (¥2,500).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In Beppu, one <Link href="/guides/attractions/beppu-hells-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hells of Beppu</Link> ticket (¥2,400 for adults) covers all seven hells for two days.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -139,6 +139,7 @@ export default function YomiurilandTicketsPage({ updated }: { updated: PageUpdat
           winter lights across the city, see{" "}
           <Link href="/guides/attractions/tokyo-illumination-tours" style={linkStyle}>Tokyo illumination tours</Link>.
           {" "}In central Tokyo, <Link href="/guides/attractions/tokyo-dome-city-attractions-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tokyo Dome City Attractions</Link> is free to enter; its one-day passport is ¥4,900–5,800 for adults by date.
+          {" "}Nearby in Kawasaki, the <Link href="/guides/attractions/fujiko-f-fujio-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Fujiko F Fujio (Doraemon) Museum</Link> is ¥1,000 for adults and ¥500 from age 4, with no tickets sold at the door.
         </p>
       }
       faq={[

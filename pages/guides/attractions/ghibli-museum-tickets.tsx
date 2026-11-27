@@ -185,6 +185,7 @@ export default function GhibliMuseumTicketsPage({ updated }: { updated: PageUpda
           the JR lines is covered in{" "}
           <Link href="/guides/transport/tokyo-transportation" style={linkStyle}>getting around Tokyo</Link>.
           {" "}Another storybook park near Tokyo: <Link href="/guides/attractions/moominvalley-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Moominvalley Park</Link> in Hanno (¥3,900 in advance for adults).
+          {" "}For another character museum, the <Link href="/guides/attractions/fujiko-f-fujio-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Fujiko F Fujio (Doraemon) Museum</Link> in Kawasaki is ¥1,000 for adults, timed entry only.
         </p>
       }
       faq={[

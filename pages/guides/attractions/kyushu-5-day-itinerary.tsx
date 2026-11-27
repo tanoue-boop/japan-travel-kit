@@ -1013,6 +1013,11 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
             With children in Oita, <Link href="/guides/attractions/harmonyland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sanrio Harmonyland</Link> is ¥3,600 or ¥4,200 for a day passport (10:00–17:00 in December).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In Beppu, the <Link href="/guides/attractions/beppu-hells-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hells of Beppu</Link> ticket is ¥2,400 for adults for all seven hells, valid on the day and the next, 8:00–17:00.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

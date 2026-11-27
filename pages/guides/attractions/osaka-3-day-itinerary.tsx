@@ -939,6 +939,11 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
             For a day of rides outside the centre, <Link href="/guides/attractions/hirakata-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hirakata Park</Link> is ¥5,300 with the Free Pass; check its December closed days.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            To end a day with a bath, <Link href="/guides/attractions/solaniwa-onsen-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Solaniwa Onsen</Link> costs ¥1,980 for adults after 5 p.m. on its A and B dates, yukata included.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

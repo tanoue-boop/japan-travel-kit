@@ -109,6 +109,7 @@ export default function MotherFarmTicketsPage({ updated }: { updated: PageUpdate
           For a family trip, see the <Link href="/guides/attractions/tokyo-itinerary-with-kids" style={linkStyle}>Tokyo itinerary with kids</Link>,
           <Link href="/guides/attractions/kamogawa-sea-world-tickets" style={linkStyle}>Kamogawa Sea World tickets</Link> and the
           <Link href="/guides/attractions/tokyo-7-day-itinerary" style={linkStyle}>Tokyo 7-day itinerary</Link>.
+          {" "}For another animal day, <Link href="/guides/attractions/izu-shaboten-zoo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Izu Shaboten Zoo</Link> is ¥2,800–3,000 for adults, 9:30–16:00 every day.
         </p>
       }
       faq={[

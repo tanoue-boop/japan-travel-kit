@@ -148,6 +148,7 @@ export default function KamogawaSeaWorldTicketsPage({ updated }: { updated: Page
           <Link href="/guides/attractions/enoshima-aquarium-tickets" style={linkStyle}>Enoshima Aquarium</Link> and{" "}
           <Link href="/guides/attractions/maxell-aqua-park-shinagawa-tickets" style={linkStyle}>Maxell Aqua Park Shinagawa</Link>.
           {" "}On the same peninsula, <Link href="/guides/attractions/mother-farm-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Mother Farm</Link> is ¥1,800 for adults (closed 14–18 December 2026), by bus from JR Kimitsu.
+          {" "}For another large aquarium near Tokyo, <Link href="/guides/attractions/aqua-world-oarai-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Aqua World Oarai</Link> is ¥2,300 for adults with free parking.
         </p>
       }
       faq={[

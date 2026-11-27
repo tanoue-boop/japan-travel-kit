@@ -110,6 +110,7 @@ export default function HarmonylandTicketsPage({ updated }: { updated: PageUpdat
           <Link href="/guides/attractions/yufuin-beppu-tour-from-fukuoka" style={linkStyle}>Yufuin and Beppu tour from Fukuoka</Link> and the
           <Link href="/guides/transport/sunq-pass" style={linkStyle}>SUNQ Pass</Link>. For the Tokyo park, see
           <Link href="/guides/attractions/sanrio-puroland-tickets" style={linkStyle}>Sanrio Puroland tickets</Link>.
+          {" "}On the same trip to Oita, the <Link href="/guides/attractions/beppu-hells-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hells of Beppu</Link> common ticket is ¥2,400 for adults and ¥1,200 for children.
         </p>
       }
       faq={[

@@ -571,6 +571,11 @@ export default function ZaoSnowMonstersTourPage({ updated }: { updated: PageUpda
             For skiing elsewhere in Tohoku, <Link href="/guides/attractions/appi-kogen-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>APPI Kogen</Link> is ¥9,500 a day for adults from 19 December and <Link href="/guides/attractions/shizukuishi-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Shizukuishi</Link> ¥6,800.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On a free day in Sendai, the <Link href="/guides/attractions/sendai-umino-mori-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sendai Umino-Mori Aquarium</Link> is ¥2,400 for adults, 10:00–17:00 in winter.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -723,6 +723,11 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
             Also in Oita, <Link href="/guides/attractions/harmonyland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sanrio Harmonyland</Link> is a Sanrio park with a ¥3,600–4,200 day passport; check its closed days first.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            To see the hells on your own, the <Link href="/guides/attractions/beppu-hells-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hells of Beppu</Link> common ticket is ¥2,400 for adults and covers all seven over two days.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

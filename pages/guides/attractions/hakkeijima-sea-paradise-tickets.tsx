@@ -125,6 +125,7 @@ export default function HakkeijimaSeaParadiseTicketsPage({ updated }: { updated:
           and{" "}
           <Link href="/guides/attractions/yomiuriland-tickets" style={linkStyle}>Yomiuriland tickets</Link>.
           {" "}Other aquariums near Tokyo: <Link href="/guides/attractions/enoshima-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Enoshima Aquarium</Link> (¥2,800) and <Link href="/guides/attractions/kamogawa-sea-world-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kamogawa Sea World</Link> (¥3,300, about 2 hours from Tokyo).
+          {" "}In central Yokohama, the <Link href="/guides/attractions/yokohama-anpanman-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Yokohama Anpanman Children&apos;s Museum</Link> is ¥2,200–2,800 per person aged 1 and over; tickets go on sale 28 days ahead.
         </p>
       }
       faq={[

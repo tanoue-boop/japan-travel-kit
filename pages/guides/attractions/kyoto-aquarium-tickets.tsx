@@ -120,6 +120,7 @@ export default function KyotoAquariumTicketsPage({ updated }: { updated: PageUpd
           into a short stay, and{" "}
           <Link href="/guides/attractions/where-to-stay-in-kyoto" style={linkStyle}>where to stay in Kyoto</Link>{" "}
           covers the hotels around Kyoto Station.
+          {" "}Across the Seto Inland Sea, the <Link href="/guides/attractions/shikoku-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shikoku Aquarium</Link> in Kagawa is ¥2,600 for adults and ¥1,400 for children.
         </p>
       }
       faq={[

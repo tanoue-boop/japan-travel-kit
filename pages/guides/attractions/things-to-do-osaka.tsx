@@ -348,6 +348,11 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
             With children, <Link href="/guides/attractions/kids-plaza-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kids Plaza Osaka</Link> at Ogimachi is ¥1,500 for adults, and <Link href="/guides/attractions/hirakata-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hirakata Park</Link> on the Keihan line is ¥5,300 with the Free Pass.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For an onsen evening by Osaka Bay, <Link href="/guides/attractions/solaniwa-onsen-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Solaniwa Onsen</Link> is ¥2,310–3,630 for adults depending on the date, open to 11 p.m.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

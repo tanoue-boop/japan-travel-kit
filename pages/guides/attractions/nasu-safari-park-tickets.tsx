@@ -122,6 +122,7 @@ export default function NasuSafariParkTicketsPage({ updated }: { updated: PageUp
           If you travel by shinkansen, the{" "}
           <Link href="/guides/transport/jr-east-pass" style={linkStyle}>JR East Pass</Link> guide covers the rail
           passes for the Tohoku line.
+          {" "}For capybaras, <Link href="/guides/attractions/izu-shaboten-zoo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Izu Shaboten Zoo</Link> in Izu is ¥2,800 for adults on weekdays and ¥3,000 on weekends.
         </p>
       }
       faq={[

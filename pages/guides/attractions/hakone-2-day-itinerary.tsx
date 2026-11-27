@@ -618,6 +618,11 @@ export default function Hakone2DayItineraryPage({ updated }: { updated: PageUpda
             In Sengokuhara, the <Link href="/guides/attractions/hakone-glass-forest-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hakone Glass Forest</Link> (Venetian Glass Museum) is ¥1,800 for adults.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            To continue down the Izu Peninsula, <Link href="/guides/attractions/izu-shaboten-zoo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Izu Shaboten Zoo</Link> in Ito is ¥2,800 for adults on weekdays and ¥3,000 on weekends, open every day.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -842,6 +842,11 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
             For Moomin fans, <Link href="/guides/attractions/moominvalley-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Moominvalley Park</Link> in Hanno, Saitama, sells a one-day pass at ¥3,900 in advance.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For Doraemon, the <Link href="/guides/attractions/fujiko-f-fujio-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Fujiko F Fujio (Doraemon) Museum</Link> is ¥1,000 for adults; book a timed ticket in advance.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}
