@@ -25,6 +25,7 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
+import HotelStayBlock from "../../../../components/HotelStayBlock";
 
 /**
  * Mirrors the English page (pages/guides/attractions/tokyo-disney-tickets.tsx) as of
@@ -460,6 +461,9 @@ export default function ZhTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
             </div>
           </div>
         </div>
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="tokyo-disney" />
 
         <EsimCtaTop />
 

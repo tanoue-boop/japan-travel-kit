@@ -37,6 +37,7 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
+import HotelStayBlock from "../../../../components/HotelStayBlock";
 
 // Korean edition of /guides/attractions/shibuya-sky-tickets. Mirrors the English page as
 // of 2026-11-01 block by block — same sections, tables, FAQ, Klook and GetYourGuide CTAs —
@@ -494,6 +495,9 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         <KlookSameDayCards heading="시부야 스카이와 같은 날 예약해 두면 좋은 것" cards={sameDayCards} />
 
         <BookingEsimCard />
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="tokyo" areas={["shibuya", "shinjuku", "tokyoStation", "ueno"]} />
 
         <EsimCtaTop />
 

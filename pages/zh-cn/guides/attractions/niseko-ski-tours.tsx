@@ -38,6 +38,7 @@ import {
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
 import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
+import HotelStayBlock from "../../../../components/HotelStayBlock";
 
 // Mirrors the English guide (pages/guides/attractions/niseko-ski-tours.tsx) as of 6 November 2026,
 // section for section. Every figure comes from that page; none was added for this edition.
@@ -412,6 +413,9 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
           intro={"先订好上网套餐和机场巴士，因为这份清单上的其他项目即使当天出了问题，也不至于影响整趟行程。Niseko United 的交通页标出了差距：预约巴士 2.5 小时，不预约的 JR 列车加巴士 3 小时。"}
           items={nisekoSameTrip}
         />
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="niseko" />
 
         <EsimCtaTop />
 

@@ -40,6 +40,7 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
 import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
+import HotelStayBlock from "../../../../components/HotelStayBlock";
 
 // Mirrors the English page (/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo) section by
 // section as of 2026-11-25 (task-jtk-20261125-TR03): same sections, tables, FAQ and Klook CTAs in
@@ -523,6 +524,9 @@ export default function KoGalaYuzawaSkiDayTripPage({ updated }: { updated: PageU
           intro="모바일 데이터와 공항 교통을 먼저, 그다음 패스, 마지막으로 갈라유자와에서 따로 사야 하는 것입니다. 처음 스키 당일치기를 하는 사람이 빠뜨리기 쉬운 것은 리프트권과 스키 강습입니다. 클룩 가격은 날짜에 따라 달라지므로 여행 날짜로 상품 페이지에서 확인하세요."
           items={tripPrepItems}
         />
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="yuzawa" />
 
         <EsimCtaTop />
 

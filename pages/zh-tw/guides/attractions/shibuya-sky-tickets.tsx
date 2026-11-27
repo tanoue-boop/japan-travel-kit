@@ -37,6 +37,7 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel, priceLabel } from "../../../../lib/i18n";
 import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
+import HotelStayBlock from "../../../../components/HotelStayBlock";
 
 // Mirrors the English guide (/guides/attractions/shibuya-sky-tickets) block for block as of
 // 2026-11-01: same sections, tables, Klook and GetYourGuide CTAs in the same places. Every
@@ -467,6 +468,9 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         <KlookSameDayCards heading="澀谷 SKY 同一天還能預訂什麼？" cards={sameDayCards} />
 
         <BookingEsimCard />
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="tokyo" areas={["shibuya", "shinjuku", "tokyoStation", "ueno"]} />
 
         <EsimCtaTop />
 

@@ -38,6 +38,7 @@ import {
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
 import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
+import HotelStayBlock from "../../../../components/HotelStayBlock";
 
 // Mirrors the English guide (pages/guides/attractions/niseko-ski-tours.tsx) as of 6 November 2026,
 // section for section. Every figure comes from that page; none was added for this edition.
@@ -412,6 +413,9 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
           intro={"เตรียมอินเทอร์เน็ตมือถือและจองรถบัสสนามบินก่อน เพราะรายการอื่นยังจัดการได้ในวันนั้น หน้าการเดินทางของ Niseko United แสดงส่วนต่าง รถบัสที่ต้องจองล่วงหน้า 2.5 ชั่วโมง ส่วนรถไฟและรถบัสแบบไม่จอง 3 ชั่วโมง"}
           items={nisekoSameTrip}
         />
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="niseko" />
 
         <EsimCtaTop />
 
