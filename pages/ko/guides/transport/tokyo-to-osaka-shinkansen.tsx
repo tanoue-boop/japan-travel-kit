@@ -650,8 +650,8 @@ export default function KoTokyoToOsakaShinkansenPage({ updated }: { updated: Pag
               도중하차 안내 페이지
             </a>
             와 smart-ex.jp에서 2026년 11월 13일에 확인한 규정입니다. 나고야에서 보낼 하루는{" "}
-            <Link href="/guides/transport/tokyo-to-nagoya-shinkansen" style={linkStyle}>
-              도쿄–나고야 신칸센 가이드(영어)
+            <Link href="/ko/guides/transport/tokyo-to-nagoya-shinkansen" style={linkStyle}>
+              도쿄 나고야 신칸센 가이드
             </Link>
             에 정리했습니다.
           </p>
@@ -823,7 +823,7 @@ export default function KoTokyoToOsakaShinkansenPage({ updated }: { updated: Pag
             { href: "/guides/transport/shinkansen-guide", title: "신칸센 가이드 2026: 티켓, 패스, 처음 타는 사람을 위한 팁(영어)" },
             { href: "/guides/transport/tokyo-to-kyoto", title: "도쿄에서 교토 가는 법(2026): 가장 싸고 빠른 방법(영어)" },
             { href: "/ko/guides/transport/kyoto-to-tokyo-shinkansen", title: "교토 도쿄 신칸센 2026: 가격, 소요 시간, 예매 방법" },
-            { href: "/guides/transport/tokyo-to-nagoya-shinkansen", title: "도쿄–나고야 신칸센: 소요 시간, 요금, JR 패스(영어)" },
+            { href: "/ko/guides/transport/tokyo-to-nagoya-shinkansen", title: "도쿄 나고야 신칸센 2026: 가격, 소요 시간, 예매 방법" },
             { href: "/guides/transport/jr-pass-guide", title: "JR 패스 가격 2026: 10월 1일 새 가격과 이득인 경우(영어)" },
             { href: "/ko", title: "한국어 가이드 전체 보기 →" },
           ]}

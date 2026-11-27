@@ -113,10 +113,11 @@ const groups: ZhHubGroup[] = [
   {
     key: "prep",
     label: "行前準備",
-    desc: "抵達日本當天就會用到的交通與手機上網：機場到市區、東京與大阪、京都之間的新幹線，以及日本 eSIM。",
+    desc: "抵達日本當天就會用到的交通與手機上網：機場到市區、東京與名古屋、大阪、京都之間的新幹線，以及日本 eSIM。",
     routes: [
       "/zh-tw/guides/transport/tokyo-airport-transfer",
       "/zh-tw/guides/transport/tokyo-to-osaka-shinkansen",
+      "/zh-tw/guides/transport/tokyo-to-nagoya-shinkansen",
       "/zh-tw/guides/transport/kyoto-to-tokyo-shinkansen",
       "/zh-tw/guides/esim/best-esim-japan",
     ],
@@ -163,6 +164,8 @@ const BLURBS: Record<string, string> = {
     "從成田與羽田機場前往市區的各種交通方式，比較價格、所需時間與便利性，附上 2026 年車資，以及根據飯店位置提供的建議。",
   "/zh-tw/guides/transport/tokyo-to-osaka-shinkansen":
     "東京到大阪新幹線：希望號最快 2 小時 21 分，指定席車站 ¥14,720、smartEX ¥14,520，自由席 ¥13,870。JR Pass 搭希望號另付 ¥4,960，smartEX、Klook 與車站購票比較，以及 2027 年漲價。",
+  "/zh-tw/guides/transport/tokyo-to-nagoya-shinkansen":
+    "東京到名古屋新幹線：希望號最快 1 小時 33 分直達，smartEX 指定席 ¥11,100。JR Pass 可搭直達的光號（1 小時 41 分起），以及從名古屋前往吉卜力公園、樂高樂園、白川鄉與伊勢的交通。",
   "/zh-tw/guides/transport/kyoto-to-tokyo-shinkansen":
     "京都到東京新幹線：希望號約 2 小時 12 分、每小時 8–12 班，smartEX 指定席 ¥13,970、自由席 ¥13,320，車站購票 ¥14,170。JR Pass 搭希望號另付 ¥4,960，京都車站 11、12 號月台，以及在東京、品川、新橫濱哪一站下車。",
   "/zh-tw/guides/esim/best-esim-japan":

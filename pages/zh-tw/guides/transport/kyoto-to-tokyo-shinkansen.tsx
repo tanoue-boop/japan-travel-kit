@@ -982,7 +982,7 @@ export default function ZhTwKyotoToTokyoShinkansenPage({ updated }: { updated: P
             { href: "/guides/transport/tokyo-to-kyoto", title: "東京到京都（2026）：最便宜與最快的方式（英文）" },
             { href: "/guides/transport/shinkansen-guide", title: "新幹線指南 2026：車票、周遊卡與新手須知（英文）" },
             { href: "/guides/transport/jr-pass-guide", title: "JR Pass 指南 2026：價格、值不值得與購買方式（英文）" },
-            { href: "/guides/transport/tokyo-to-nagoya-shinkansen", title: "東京到名古屋新幹線：車程、票價與 JR Pass（英文）" },
+            { href: "/zh-tw/guides/transport/tokyo-to-nagoya-shinkansen", title: "東京到名古屋新幹線 2026：票價、車程時間與購票方式" },
             { href: "/guides/transport/tokyo-to-hiroshima-shinkansen", title: "東京到廣島新幹線：車程、票價與 JR Pass（英文）" },
             { href: "/guides/transport/kyoto-transportation", title: "京都交通攻略（2026）：巴士、電車與計程車（英文）" },
             { href: "/guides/attractions/where-to-stay-in-tokyo", title: "東京住宿區域指南（2026）：依路線與機場比較（英文）" },

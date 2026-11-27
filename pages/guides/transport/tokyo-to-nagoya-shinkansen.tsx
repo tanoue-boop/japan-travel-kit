@@ -25,6 +25,7 @@ import {
   shirakawagoTakayamaOldTownDayTour,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import { hreflangLinks } from "../../../components/Hreflang";
 
 /**
  * Tokyo to Nagoya on the Tokaido Shinkansen. Added 28 Oct 2026, and the first
@@ -347,6 +348,7 @@ export default function TokyoToNagoyaShinkansenPage({ updated }: { updated: Page
         <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/transport/tokyo-to-nagoya-shinkansen" />
+        {hreflangLinks("/guides/transport/tokyo-to-nagoya-shinkansen")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/transport/tokyo-to-nagoya-shinkansen" />

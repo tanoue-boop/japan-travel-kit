@@ -262,6 +262,14 @@ const SEARCH_TERMS = {
     ko: "도쿄 오사카 신칸센",
     th: "ชินคันเซ็น โตเกียว โอซาก้า",
   },
+  // Added 2026-11-28 (TR03): the route as Ekitan's Korean, Traditional, Simplified and Thai route
+  // pages write it.
+  "/guides/transport/tokyo-to-nagoya-shinkansen": {
+    "zh-tw": "東京到名古屋新幹線",
+    "zh-cn": "东京到名古屋新干线",
+    ko: "도쿄 나고야 신칸센",
+    th: "ชินคันเซ็น โตเกียว นาโกย่า",
+  },
 };
 
 /** Klook's own locale path each edition must link. */

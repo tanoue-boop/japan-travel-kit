@@ -112,10 +112,11 @@ const groups: CnHubGroup[] = [
   {
     key: "prep",
     label: "行前准备",
-    desc: "抵达日本当天就需要用到的交通与上网：机场到市区、东京与大阪、京都之间的新干线，以及日本 eSIM。",
+    desc: "抵达日本当天就需要用到的交通与上网：机场到市区、东京与名古屋、大阪、京都之间的新干线，以及日本 eSIM。",
     routes: [
       "/zh-cn/guides/transport/tokyo-airport-transfer",
       "/zh-cn/guides/transport/tokyo-to-osaka-shinkansen",
+      "/zh-cn/guides/transport/tokyo-to-nagoya-shinkansen",
       "/zh-cn/guides/transport/kyoto-to-tokyo-shinkansen",
       "/zh-cn/guides/esim/best-esim-japan",
     ],
@@ -160,6 +161,8 @@ const BLURBS: Record<string, string> = {
     "从成田机场和羽田机场前往市区的各种交通方式，比较价格、所需时间和便利程度，附 2026 年票价与按酒店位置的建议。",
   "/zh-cn/guides/transport/tokyo-to-osaka-shinkansen":
     "东京到大阪新干线：希望号最快 2 小时 21 分，指定席车站 ¥14,720、smartEX ¥14,520，自由席 ¥13,870。JR Pass 乘希望号另付 ¥4,960，smartEX、Klook 与车站购票比较，以及 2027 年涨价。",
+  "/zh-cn/guides/transport/tokyo-to-nagoya-shinkansen":
+    "东京到名古屋新干线：希望号最快 1 小时 33 分直达，smartEX 指定席 ¥11,100。JR Pass 可乘直达的光号（1 小时 41 分起），以及从名古屋前往吉卜力公园、乐高乐园、白川乡与伊势的交通。",
   "/zh-cn/guides/transport/kyoto-to-tokyo-shinkansen":
     "京都到东京新干线：希望号约 2 小时 12 分、每小时 8–12 班，smartEX 指定席 ¥13,970、自由席 ¥13,320，车站购票 ¥14,170。JR Pass 乘希望号另付 ¥4,960，京都站 11、12 号站台，以及在东京、品川、新横滨哪一站下车。",
   "/zh-cn/guides/esim/best-esim-japan":

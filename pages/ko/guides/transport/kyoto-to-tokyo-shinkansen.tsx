@@ -1026,7 +1026,7 @@ export default function KoKyotoToTokyoShinkansenPage({ updated }: { updated: Pag
             { href: "/guides/transport/tokyo-to-kyoto", title: "도쿄에서 교토 가는 법(2026): 가장 싸고 빠른 방법(영어)" },
             { href: "/guides/transport/shinkansen-guide", title: "신칸센 가이드 2026: 티켓, 패스, 처음 타는 사람을 위한 팁(영어)" },
             { href: "/guides/transport/jr-pass-guide", title: "JR 패스 가이드 2026: 가격, 이득인 경우, 구매 방법(영어)" },
-            { href: "/guides/transport/tokyo-to-nagoya-shinkansen", title: "도쿄–나고야 신칸센: 소요 시간, 요금, JR 패스(영어)" },
+            { href: "/ko/guides/transport/tokyo-to-nagoya-shinkansen", title: "도쿄 나고야 신칸센 2026: 가격, 소요 시간, 예매 방법" },
             { href: "/guides/transport/tokyo-to-hiroshima-shinkansen", title: "도쿄–히로시마 신칸센: 소요 시간, 요금, JR 패스(영어)" },
             { href: "/guides/transport/kyoto-transportation", title: "교토 교통 가이드(2026): 버스, 열차, 택시(영어)" },
             { href: "/guides/attractions/where-to-stay-in-tokyo", title: "도쿄 숙소 지역 가이드(2026): 노선과 공항별 비교(영어)" },

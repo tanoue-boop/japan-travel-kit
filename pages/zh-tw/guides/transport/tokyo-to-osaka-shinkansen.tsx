@@ -642,8 +642,8 @@ export default function ZhTwTokyoToOsakaShinkansenPage({ updated }: { updated: P
               中途下車說明頁
             </a>
             與 smart-ex.jp 查核。在名古屋怎麼安排這一天，請見
-            <Link href="/guides/transport/tokyo-to-nagoya-shinkansen" style={linkStyle}>
-              東京到名古屋新幹線指南（英文）
+            <Link href="/zh-tw/guides/transport/tokyo-to-nagoya-shinkansen" style={linkStyle}>
+              東京到名古屋新幹線指南
             </Link>
             。
           </p>
@@ -807,7 +807,7 @@ export default function ZhTwTokyoToOsakaShinkansenPage({ updated }: { updated: P
             { href: "/guides/transport/shinkansen-guide", title: "新幹線指南 2026：車票、周遊卡與新手須知（英文）" },
             { href: "/guides/transport/tokyo-to-kyoto", title: "東京到京都（2026）：最便宜與最快的方式（英文）" },
             { href: "/zh-tw/guides/transport/kyoto-to-tokyo-shinkansen", title: "京都到東京新幹線 2026：票價、車程時間與購票方式" },
-            { href: "/guides/transport/tokyo-to-nagoya-shinkansen", title: "東京到名古屋新幹線：車程、票價與 JR Pass（英文）" },
+            { href: "/zh-tw/guides/transport/tokyo-to-nagoya-shinkansen", title: "東京到名古屋新幹線 2026：票價、車程時間與購票方式" },
             { href: "/guides/transport/jr-pass-guide", title: "JR Pass 價格 2026：10 月 1 日新價格與值不值得（英文）" },
             { href: "/zh-tw", title: "繁體中文版所有攻略 →" },
           ]}

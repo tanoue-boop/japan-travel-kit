@@ -602,7 +602,7 @@ export default function ThTokyoToOsakaShinkansenPage({ updated }: { updated: Pag
             แวะนาโกย่าระหว่างทางจากโตเกียวไปโอซาก้าได้ไหม?
           </h3>
           <p className={styles.bodyText}>
-            ได้ ถ้าใช้ตั๋วค่าโดยสารพื้นฐานที่ระยะทางเกิน 100 กม.: JR Central อนุญาตให้แวะพัก (ออกจากประตูตรวจตั๋วแล้วกลับเข้ามาใหม่) ที่สถานีระหว่างต้นทางและปลายทาง โดยห้ามย้อนกลับ ตั๋วด่วนพิเศษของชินคันเซ็นใช้แวะพักไม่ได้ จึงต้องซื้อโตเกียว → นาโกย่า และนาโกย่า → ชินโอซาก้าแยกกัน ส่วน smartEX แวะพักไม่ได้ และช่วงที่ยังไม่ได้นั่งจะใช้ไม่ได้ทันทีเมื่อลงจากรถ กฎนี้ตรวจสอบจาก <a href="https://global.jr-central.co.jp/en/tickets/type/stopovers.html" target="_blank" rel="noopener">หน้าการแวะพักระหว่างทาง</a> ของ JR Central และ smart-ex.jp เมื่อ 13 พฤศจิกายน 2026 ส่วนจะใช้เวลาที่นาโกย่าอย่างไร ดูได้ใน <Link href="/guides/transport/tokyo-to-nagoya-shinkansen" style={linkStyle}>ไกด์ชินคันเซ็นโตเกียว–นาโกย่า (ภาษาอังกฤษ)</Link>
+            ได้ ถ้าใช้ตั๋วค่าโดยสารพื้นฐานที่ระยะทางเกิน 100 กม.: JR Central อนุญาตให้แวะพัก (ออกจากประตูตรวจตั๋วแล้วกลับเข้ามาใหม่) ที่สถานีระหว่างต้นทางและปลายทาง โดยห้ามย้อนกลับ ตั๋วด่วนพิเศษของชินคันเซ็นใช้แวะพักไม่ได้ จึงต้องซื้อโตเกียว → นาโกย่า และนาโกย่า → ชินโอซาก้าแยกกัน ส่วน smartEX แวะพักไม่ได้ และช่วงที่ยังไม่ได้นั่งจะใช้ไม่ได้ทันทีเมื่อลงจากรถ กฎนี้ตรวจสอบจาก <a href="https://global.jr-central.co.jp/en/tickets/type/stopovers.html" target="_blank" rel="noopener">หน้าการแวะพักระหว่างทาง</a> ของ JR Central และ smart-ex.jp เมื่อ 13 พฤศจิกายน 2026 ส่วนจะใช้เวลาที่นาโกย่าอย่างไร ดูได้ใน <Link href="/th/guides/transport/tokyo-to-nagoya-shinkansen" style={linkStyle}>คู่มือชินคันเซ็น โตเกียว นาโกย่า</Link>
           </p>
         </section>
 
@@ -730,7 +730,7 @@ export default function ThTokyoToOsakaShinkansenPage({ updated }: { updated: Pag
             { href: "/guides/transport/shinkansen-guide", title: "ไกด์ชินคันเซ็น 2026: ตั๋ว พาส และเคล็ดลับสำหรับมือใหม่ (ภาษาอังกฤษ)" },
             { href: "/guides/transport/tokyo-to-kyoto", title: "โตเกียวไปเกียวโต 2026: วิธีที่ถูกที่สุดและเร็วที่สุด (ภาษาอังกฤษ)" },
             { href: "/th/guides/transport/kyoto-to-tokyo-shinkansen", title: "ชินคันเซ็น เกียวโต โตเกียว 2026: เวลาเดินทาง ราคา และวิธีจองตั๋ว" },
-            { href: "/guides/transport/tokyo-to-nagoya-shinkansen", title: "ชินคันเซ็นโตเกียว–นาโกย่า: เวลา ค่าโดยสาร JR Pass (ภาษาอังกฤษ)" },
+            { href: "/th/guides/transport/tokyo-to-nagoya-shinkansen", title: "ชินคันเซ็น โตเกียว นาโกย่า 2026: ราคา" },
             { href: "/guides/transport/jr-pass-guide", title: "ราคา JR Pass 2026: ราคาใหม่ตั้งแต่ 1 ต.ค. และคุ้มไหม (ภาษาอังกฤษ)" },
             { href: "/th", title: "ไกด์ภาษาไทยทั้งหมด →" },
           ]}

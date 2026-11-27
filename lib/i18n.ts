@@ -677,6 +677,25 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     thTitle: "ชินคันเซ็น โตเกียว โอซาก้า 2026: ราคา",
     thLabel: "ชินคันเซ็น โตเกียว โอซาก้า",
   },
+  // Added 2026-11-28 (task jtk-20261127-TR03): the Tokyo → Nagoya Shinkansen page (Klook 30 days:
+  // 2 bookings). Titles lead with the route as each market searches it, the wording of Ekitan's
+  // localized route pages: 도쿄 나고야 신칸센 (ekitan.com/ko), 東京到名古屋新幹線 (ekitan.com/zh-tw),
+  // 东京到名古屋新干线 (ekitan.com/zh-cn) and ชินคันเซ็น โตเกียว นาโกย่า (ekitan.com/th).
+  {
+    en: "/guides/transport/tokyo-to-nagoya-shinkansen",
+    zhTw: "/zh-tw/guides/transport/tokyo-to-nagoya-shinkansen",
+    zhTitle: "東京到名古屋新幹線 2026：票價、車程時間與購票方式",
+    zhLabel: "東京到名古屋新幹線",
+    zhCn: "/zh-cn/guides/transport/tokyo-to-nagoya-shinkansen",
+    zhCnTitle: "东京到名古屋新干线 2026：票价、车程时间与购票方式",
+    zhCnLabel: "东京到名古屋新干线",
+    ko: "/ko/guides/transport/tokyo-to-nagoya-shinkansen",
+    koTitle: "도쿄 나고야 신칸센 2026: 가격, 소요 시간, 예매 방법",
+    koLabel: "도쿄 나고야 신칸센",
+    th: "/th/guides/transport/tokyo-to-nagoya-shinkansen",
+    thTitle: "ชินคันเซ็น โตเกียว นาโกย่า 2026: ราคา",
+    thLabel: "ชินคันเซ็น โตเกียว นาโกย่า",
+  },
   {
     en: "/guides/attractions",
     zhTw: "/zh-tw/guides/attractions",

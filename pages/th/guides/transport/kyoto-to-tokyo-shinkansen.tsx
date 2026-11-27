@@ -914,7 +914,7 @@ export default function ThKyotoToTokyoShinkansenPage({ updated }: { updated: Pag
             { href: "/guides/transport/tokyo-to-kyoto", title: "โตเกียวไปเกียวโต 2026: วิธีที่ถูกที่สุดและเร็วที่สุด (ภาษาอังกฤษ)" },
             { href: "/guides/transport/shinkansen-guide", title: "ไกด์ชินคันเซ็น 2026: ตั๋ว พาส และเคล็ดลับสำหรับมือใหม่ (ภาษาอังกฤษ)" },
             { href: "/guides/transport/jr-pass-guide", title: "ไกด์ JR Pass 2026: ราคา คุ้มไหม และวิธีซื้อ (ภาษาอังกฤษ)" },
-            { href: "/guides/transport/tokyo-to-nagoya-shinkansen", title: "ชินคันเซ็นโตเกียว–นาโกย่า: เวลา ค่าโดยสาร JR Pass (ภาษาอังกฤษ)" },
+            { href: "/th/guides/transport/tokyo-to-nagoya-shinkansen", title: "ชินคันเซ็น โตเกียว นาโกย่า 2026: ราคา" },
             { href: "/guides/transport/tokyo-to-hiroshima-shinkansen", title: "ชินคันเซ็นโตเกียว–ฮิโรชิมะ: เวลา ค่าโดยสาร JR Pass (ภาษาอังกฤษ)" },
             { href: "/guides/transport/kyoto-transportation", title: "การเดินทางในเกียวโต 2026: รถเมล์ รถไฟ แท็กซี่ (ภาษาอังกฤษ)" },
             { href: "/guides/attractions/where-to-stay-in-tokyo", title: "พักย่านไหนในโตเกียว 2026: เทียบตามสายรถไฟและสนามบิน (ภาษาอังกฤษ)" },
