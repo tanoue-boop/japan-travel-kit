@@ -12,7 +12,9 @@ import KlookLink from "./KlookLink";
  * this is the short version that sits next to the button itself. Two links at most,
  * so the ticket stays the main action.
  *
- * The links carry the page's own ad id (spare ids ran out on 27 Nov 2026); the
+ * The links pass `placement` to KlookLink as `adPlacement`, so a page with a
+ * `<page>#addon-line` key in data/klook-adids.json gets its own row in Klook's report
+ * (task-jtk-20261127-A33); without the key they carry the page's own ad id. The
  * wrapper's `data-placement="addon-line"` separates them in GA4's affiliate_click.
  * No prices.
  */
@@ -39,6 +41,7 @@ export default function KlookAddOnLine({ lead, items, placement = "addon-line" }
           {i > 0 && " ・ "}
           <KlookLink
             href={item.url}
+            adPlacement={placement}
             target="_blank"
             rel="sponsored nofollow noopener"
             style={{ color: "var(--red)", fontWeight: 600 }}
