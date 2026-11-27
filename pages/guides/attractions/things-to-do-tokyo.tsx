@@ -830,6 +830,11 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             With children, <Link href="/guides/attractions/legoland-discovery-center-tokyo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>LEGOLAND Discovery Center Tokyo</Link> in Odaiba is ¥2,350–¥3,300 online, and <Link href="/guides/attractions/tobu-zoo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tobu Zoo</Link> in Saitama combines a zoo with rides.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a soak in the city, <Link href="/guides/attractions/spa-laqua-tokyo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Spa LaQua</Link> at Tokyo Dome City is ¥3,500–4,700 (no tattoos) and <Link href="/guides/attractions/manyo-club-toyosu-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Manyo Club Toyosu</Link> by Toyosu Market ¥3,850; for rides, <Link href="/guides/attractions/tokyo-dome-city-attractions-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tokyo Dome City Attractions</Link> is free to enter.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

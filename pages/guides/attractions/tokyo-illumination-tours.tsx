@@ -810,6 +810,11 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
             Yomiuriland&apos;s Jewellumination has a cheaper evening ticket, the After Pass from 15:00 — see <Link href="/guides/attractions/yomiuriland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Yomiuriland tickets</Link>.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Without a tour, the <Link href="/guides/attractions/sagamiko-illumillion-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sagamiko Illumillion</Link> in western Kanagawa runs to 9 May 2027 (entry from ¥2,000, lights from 16:00), and near Nagoya <Link href="/guides/attractions/nabana-no-sato-illumination-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nabana no Sato</Link> is ¥3,200 at the gate.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

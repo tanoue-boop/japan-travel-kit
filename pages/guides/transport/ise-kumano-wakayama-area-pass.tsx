@@ -145,6 +145,7 @@ export default function IseKumanoWakayamaAreaPassPage({ updated }: { updated: Pa
           <Link href="/guides/transport/koyasan-world-heritage-ticket" style={linkStyle}>Koyasan World Heritage Ticket</Link>{" "}
           covers it from Osaka. Stopping in Shirahama? See{" "}
           <Link href="/guides/attractions/adventure-world-tickets" style={linkStyle}>Adventure World tickets</Link>.
+          {" "}In Toba, <Link href="/guides/attractions/toba-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Toba Aquarium</Link> is ¥2,800 for adults, about 10 minutes on foot from the station.
         </p>
       }
       faq={[

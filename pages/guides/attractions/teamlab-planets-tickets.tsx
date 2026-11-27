@@ -689,6 +689,11 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
             Nearby in Ariake, <Link href="/guides/attractions/small-worlds-tokyo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>SMALL WORLDS Tokyo</Link> is an indoor 1/80-scale miniature museum (¥3,200 for adults).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Next to Toyosu Market, <Link href="/guides/attractions/manyo-club-toyosu-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Manyo Club Toyosu</Link> is ¥3,850 for adults (plus ¥150 bath tax), 4 minutes from Shijo-mae Station.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

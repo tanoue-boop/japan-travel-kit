@@ -1002,6 +1002,11 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
             Staying more than a day? Compare Fujikyu&apos;s <Link href="/guides/transport/mt-fuji-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Mt. Fuji Pass</Link>, Odakyu&apos;s <Link href="/guides/transport/fuji-hakone-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Fuji Hakone Pass</Link> (Hakone and the lakes from Shinjuku) and, from the Shizuoka side, the <Link href="/guides/transport/mt-fuji-shizuoka-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Mt. Fuji-Shizuoka Area Tourist Pass Mini</Link>.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Two single tickets for the lake: the <Link href="/guides/attractions/mt-fuji-panoramic-ropeway-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Mt. Fuji Panoramic Ropeway</Link> (¥1,200 return, closed 7–17 December 2026) and the <Link href="/guides/attractions/kawaguchiko-music-forest-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kawaguchiko Music Forest Museum</Link> (¥1,800 weekdays, 10:00–17:30).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

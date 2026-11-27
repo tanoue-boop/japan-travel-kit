@@ -686,6 +686,11 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
             If the boat lands you in Odaiba, <Link href="/guides/attractions/legoland-discovery-center-tokyo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>LEGOLAND Discovery Center Tokyo</Link> is close to Odaiba-kaihinkoen Station.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On the Toyosu side of the bay, <Link href="/guides/attractions/manyo-club-toyosu-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Manyo Club Toyosu</Link> is ¥3,850 for adults, 10:00 to 3:00.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

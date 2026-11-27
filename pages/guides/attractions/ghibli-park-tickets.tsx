@@ -829,6 +829,11 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
             For another Aichi day, <Link href="/guides/attractions/meiji-mura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Meiji Mura</Link> near Inuyama is ¥2,500 for adults; check its December closures first.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For an evening near Nagoya, <Link href="/guides/attractions/nabana-no-sato-illumination-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nabana no Sato</Link> in Kuwana is ¥3,200 at the gate, with a ¥1,000 voucher.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

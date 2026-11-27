@@ -914,6 +914,11 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
             Two theme parks on the Kintetsu side of Mie: <Link href="/guides/attractions/shima-spain-village-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shima Spain Village</Link> (Kintetsu to Ugata, then bus) and <Link href="/guides/attractions/nagashima-spa-land-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nagashima Spa Land</Link>.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Near Toba Station on the Kintetsu line, <Link href="/guides/attractions/toba-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Toba Aquarium</Link> is ¥2,800 for adults and opens every day 9:30–17:00.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

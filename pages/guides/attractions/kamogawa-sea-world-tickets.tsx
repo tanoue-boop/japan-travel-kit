@@ -147,6 +147,7 @@ export default function KamogawaSeaWorldTicketsPage({ updated }: { updated: Page
           in Yokohama,{" "}
           <Link href="/guides/attractions/enoshima-aquarium-tickets" style={linkStyle}>Enoshima Aquarium</Link> and{" "}
           <Link href="/guides/attractions/maxell-aqua-park-shinagawa-tickets" style={linkStyle}>Maxell Aqua Park Shinagawa</Link>.
+          {" "}On the same peninsula, <Link href="/guides/attractions/mother-farm-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Mother Farm</Link> is ¥1,800 for adults (closed 14–18 December 2026), by bus from JR Kimitsu.
         </p>
       }
       faq={[

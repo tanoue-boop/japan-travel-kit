@@ -1787,6 +1787,11 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Two winter light shows sold as single tickets: the <Link href="/guides/attractions/sagamiko-illumillion-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sagamiko Illumillion</Link> near Tokyo (from ¥2,000) and <Link href="/guides/attractions/nabana-no-sato-illumination-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nabana no Sato</Link> near Nagoya (¥3,200, with a ¥1,000 voucher).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

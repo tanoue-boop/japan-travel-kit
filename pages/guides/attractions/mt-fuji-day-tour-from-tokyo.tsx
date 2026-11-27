@@ -449,6 +449,11 @@ export default function MtFujiDayTourFromTokyoPage({ updated }: { updated: PageU
           listings={[gygFujiFromTokyo, gygFujiBusTours]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On your own at the lake, the <Link href="/guides/attractions/kawaguchiko-music-forest-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kawaguchiko Music Forest Museum</Link> is ¥1,800 on weekdays, 26 minutes from Kawaguchiko Station by the loop bus.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

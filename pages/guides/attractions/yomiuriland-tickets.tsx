@@ -138,6 +138,7 @@ export default function YomiurilandTicketsPage({ updated }: { updated: PageUpdat
           <Link href="/guides/attractions/things-to-do-tokyo" style={linkStyle}>things to do in Tokyo</Link>. For
           winter lights across the city, see{" "}
           <Link href="/guides/attractions/tokyo-illumination-tours" style={linkStyle}>Tokyo illumination tours</Link>.
+          {" "}In central Tokyo, <Link href="/guides/attractions/tokyo-dome-city-attractions-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tokyo Dome City Attractions</Link> is free to enter; its one-day passport is ¥4,900–5,800 for adults by date.
         </p>
       }
       faq={[

@@ -121,6 +121,7 @@ export default function PortOfNagoyaAquariumTicketsPage({ updated }: { updated: 
           stop, and the{" "}
           <Link href="/guides/attractions/nagoya-castle-tickets" style={linkStyle}>Nagoya Castle tickets</Link> guide
           covers the city centre.
+          {" "}For the evening, the <Link href="/guides/attractions/nabana-no-sato-illumination-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nabana no Sato</Link> illumination in Kuwana is ¥3,200 at the gate; further south, <Link href="/guides/attractions/toba-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Toba Aquarium</Link> is ¥2,800.
         </p>
       }
       faq={[

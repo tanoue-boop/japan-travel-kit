@@ -718,6 +718,11 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
             For a day trip by train instead, the <Link href="/guides/transport/dazaifu-yanagawa-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Dazaifu & Yanagawa pass</Link> covers Nishitetsu trains and the Yanagawa river boat (¥3,620 digital).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Also in Oita, <Link href="/guides/attractions/harmonyland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sanrio Harmonyland</Link> is a Sanrio park with a ¥3,600–4,200 day passport; check its closed days first.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -538,6 +538,11 @@ export default function MtTakaoDayTripPage({ updated }: { updated: PageUpdated }
           tours={[mtTakaoHikingTour, keioMtTakaoTicket, nikkoWorldHeritageDayTour]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Further along the Chuo Line, the <Link href="/guides/attractions/sagamiko-illumillion-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sagamiko Illumillion</Link> lights up from 16:00 (entry ¥2,000 for adults on ordinary days).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

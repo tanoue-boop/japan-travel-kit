@@ -525,3 +525,76 @@ export const hanayashikiTicket: KlookTour = {
   desc: "Entry to the Asakusa amusement park that calls itself Japan's oldest, with a ride-pass option",
   url: klookLink("https://www.klook.com/en-US/activity/113292-asakusa-hanayashiki-attraction-experience/"),
 };
+
+// Day 8 (task jtk-20261204-A35, run 28 Nov 2026). Activity ids from the www.klook.com search index;
+// prices on the pages are the operators' own, read 28 Nov 2026.
+
+/** Sagamiko MORI MORI (Pleasure Forest) — admission, Illumillion season. */
+export const sagamikoMoriMoriTicket: KlookTour = {
+  title: "Sagamiko MORI MORI admission ticket",
+  desc: "Entry to the hillside amusement park at Lake Sagami, home of the Sagamiko Illumillion light show",
+  url: klookLink("https://www.klook.com/en-US/activity/38768-sagamiko-resort-pleasure-forest-ticket-tokyo/"),
+};
+
+/** Nabana no Sato (Kuwana, Mie) — winter illumination admission. */
+export const nabanaNoSatoIlluminationTicket: KlookTour = {
+  title: "Nabana no Sato illumination ticket",
+  desc: "Entry to Nabana no Sato's winter illumination in Kuwana, with the park's ¥1,000 voucher and the Begonia Garden",
+  url: klookLink("https://www.klook.com/en-US/activity/33097-nabana-no-sato-winter-illumination-ticket-kuwana/"),
+};
+
+/** Sanrio Harmonyland (Oita) — day passport. */
+export const harmonylandTicket: KlookTour = {
+  title: "Sanrio Harmonyland ticket",
+  desc: "A day passport for Sanrio's character park in Oita Prefecture",
+  url: klookLink("https://www.klook.com/en-US/activity/2610-sanrio-puroland-harmonyland-fukuoka/"),
+};
+
+/** Spa LaQua (Tokyo Dome City) — admission. */
+export const spaLaquaTicket: KlookTour = {
+  title: "Spa LaQua admission ticket",
+  desc: "Entry to the natural hot-spring spa at Tokyo Dome City, with towels and loungewear included",
+  url: klookLink("https://www.klook.com/en-US/activity/71618-spa-laqua-admission-tokyo/"),
+};
+
+/** Tokyo Toyosu Manyo Club (Senkyaku Banrai) — admission. */
+export const manyoClubToyosuTicket: KlookTour = {
+  title: "Toyosu Manyo Club onsen ticket",
+  desc: "Entry to the onsen next to Toyosu Market, with yukata and towels included",
+  url: klookLink("https://www.klook.com/en-US/activity/103671-toyosu-manyo-club-onsen-experience-tokyo/"),
+};
+
+/** Mother Farm (Futtsu, Chiba) — admission. */
+export const motherFarmTicket: KlookTour = {
+  title: "Mother Farm ticket",
+  desc: "Entry to the farm park in Chiba, with animals and seasonal flowers",
+  url: klookLink("https://www.klook.com/en-US/activity/5621-chiba-mother-farm-ticket-tokyo/"),
+};
+
+/** Toba Aquarium (Toba, Mie) — admission. */
+export const tobaAquariumTicket: KlookTour = {
+  title: "Toba Aquarium ticket",
+  desc: "Entry to the aquarium near Toba Station on the Ise-Shima coast",
+  url: klookLink("https://www.klook.com/en-US/activity/45815-toba-aquarium-admission-ticket/"),
+};
+
+/** Mt. Fuji Panoramic Ropeway (Kawaguchiko) — round trip. */
+export const mtFujiPanoramicRopewayTicket: KlookTour = {
+  title: "Mt. Fuji Panoramic Ropeway round trip",
+  desc: "Return ride from Lake Kawaguchi to the Kachi Kachi Yama observation deck, with Mt. Fuji views",
+  url: klookLink("https://www.klook.com/en-US/activity/89462-mt-fuji-panoramic-ropeway-round-trip-ticket-yamanashi/"),
+};
+
+/** Kawaguchiko Music Forest Museum — admission. */
+export const kawaguchikoMusicForestTicket: KlookTour = {
+  title: "Kawaguchiko Music Forest Museum ticket",
+  desc: "Entry to the music-box museum and gardens on Lake Kawaguchi, with organ concerts in the hall",
+  url: klookLink("https://www.klook.com/en-US/activity/85583-kawaguchiko-music-forest-museum-admission-admission-yamanashi/"),
+};
+
+/** Tokyo Dome City Attractions — ride passport. */
+export const tokyoDomeCityAttractionsTicket: KlookTour = {
+  title: "Tokyo Dome City Attractions ticket",
+  desc: "Rides at the free-entry amusement park beside Tokyo Dome, including the Thunder Dolphin coaster",
+  url: klookLink("https://www.klook.com/en-US/activity/17371-tokyo-dome-attractions-ticket-tokyo/"),
+};

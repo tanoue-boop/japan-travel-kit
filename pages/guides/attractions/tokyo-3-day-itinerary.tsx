@@ -897,6 +897,11 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             At the Skytree, <Link href="/guides/attractions/sumida-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sumida Aquarium</Link> is in the same complex and open every day.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            To end a day in a hot-spring bath, <Link href="/guides/attractions/spa-laqua-tokyo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Spa LaQua</Link> is open until 9:00 the next morning (¥3,500–4,700 for adults).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

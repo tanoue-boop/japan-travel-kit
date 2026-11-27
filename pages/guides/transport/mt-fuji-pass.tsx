@@ -146,6 +146,7 @@ export default function MtFujiPassPage({ updated }: { updated: PageUpdated }) {
           <Link href="/guides/attractions/kawaguchiko-ryokan-mt-fuji-view" style={linkStyle}>Kawaguchiko ryokan with a Mt. Fuji view</Link>.
           Prefer a guided day? See{" "}
           <Link href="/guides/attractions/mt-fuji-day-tour-from-tokyo" style={linkStyle}>Mt. Fuji day tours from Tokyo</Link>.
+          {" "}Without a pass, the <Link href="/guides/attractions/mt-fuji-panoramic-ropeway-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Mt. Fuji Panoramic Ropeway</Link> is ¥1,200 return for adults (fares from 1 November 2026).
         </p>
       }
       faq={[

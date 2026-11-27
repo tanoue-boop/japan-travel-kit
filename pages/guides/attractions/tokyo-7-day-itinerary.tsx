@@ -773,6 +773,11 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
             For the Nikko day, Tobu&apos;s <Link href="/guides/transport/nikko-pass" style={{ color: "var(--red)", fontWeight: 600 }}>NIKKO PASS</Link> covers the Asakusa round trip and the buses; the guide explains which of the two to buy.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a day in the Chiba countryside, <Link href="/guides/attractions/mother-farm-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Mother Farm</Link> is ¥1,800 for adults; in winter it opens 10:00–16:00 on weekdays.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

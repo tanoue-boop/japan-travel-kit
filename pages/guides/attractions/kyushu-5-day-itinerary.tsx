@@ -1008,6 +1008,11 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
             For Dazaifu and Yanagawa from Tenjin, the <Link href="/guides/transport/dazaifu-yanagawa-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Dazaifu & Yanagawa pass</Link> bundles the Nishitetsu trains and the river boat (¥3,620 digital, two days).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            With children in Oita, <Link href="/guides/attractions/harmonyland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sanrio Harmonyland</Link> is ¥3,600 or ¥4,200 for a day passport (10:00–17:00 in December).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

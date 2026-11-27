@@ -132,6 +132,7 @@ export default function ShimaSpainVillageTicketsPage({ updated }: { updated: Pag
           and the region&apos;s other parks,{" "}
           <Link href="/guides/attractions/legoland-japan-tickets" style={linkStyle}>LEGOLAND Japan</Link> and{" "}
           <Link href="/guides/attractions/nagashima-spa-land-tickets" style={linkStyle}>Nagashima Spa Land</Link>.
+          {" "}On the way, <Link href="/guides/attractions/toba-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Toba Aquarium</Link> is 10 minutes on foot from Toba Station (¥2,800 for adults).
         </p>
       }
       faq={[

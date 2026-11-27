@@ -704,6 +704,11 @@ export default function HakoneRyokanPrivateOnsenPage({ updated }: { updated: Pag
           items={hakoneRyokanTripPrep}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Staying in Tokyo instead? <Link href="/guides/attractions/spa-laqua-tokyo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Spa LaQua</Link> (from ¥3,500) and <Link href="/guides/attractions/manyo-club-toyosu-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Manyo Club Toyosu</Link> (¥3,850) are hot-spring baths in the city; both refuse uncovered tattoos.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

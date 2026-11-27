@@ -881,6 +881,11 @@ export default function Nagoya2DayItineraryPage({ updated }: { updated: PageUpda
             North of the city near Inuyama, <Link href="/guides/attractions/meiji-mura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Meiji Mura</Link> is ¥2,500 for adults and open 10:00–16:00 in winter (closed 14–18 and 31 December 2026).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For an evening out of the city, <Link href="/guides/attractions/nabana-no-sato-illumination-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nabana no Sato</Link> in Kuwana is lit until 21:00 on December weekdays (¥3,200); for a day on the coast, <Link href="/guides/attractions/toba-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Toba Aquarium</Link> is ¥2,800 for adults.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

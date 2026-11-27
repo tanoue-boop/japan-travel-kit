@@ -863,6 +863,11 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
             Also in Odaiba, <Link href="/guides/attractions/legoland-discovery-center-tokyo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>LEGOLAND Discovery Center Tokyo</Link> is ¥2,350–¥3,300 online; adults must come with a child aged 15 or under.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For outdoor rides, <Link href="/guides/attractions/tokyo-dome-city-attractions-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tokyo Dome City Attractions</Link> is free to enter, with a one-day passport from ¥4,900 for adults.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

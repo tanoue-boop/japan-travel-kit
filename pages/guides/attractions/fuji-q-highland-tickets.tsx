@@ -807,6 +807,11 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
             Seeing more of the lakes around the park? Fujikyu&apos;s <Link href="/guides/transport/mt-fuji-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Mt. Fuji Pass</Link> covers the buses and trains round Mt. Fuji for one to three days.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Nearby on Lake Kawaguchi, the <Link href="/guides/attractions/mt-fuji-panoramic-ropeway-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Mt. Fuji Panoramic Ropeway</Link> is ¥1,200 return and the <Link href="/guides/attractions/kawaguchiko-music-forest-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kawaguchiko Music Forest Museum</Link> ¥1,800 on weekdays.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

@@ -999,6 +999,11 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             In Asakusa, <Link href="/guides/attractions/asakusa-hanayashiki-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Asakusa Hanayashiki</Link> has a One Day Pass at ¥4,600 for adults and ¥3,400 for children; under-5s enter free.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            More single tickets for families: <Link href="/guides/attractions/mother-farm-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Mother Farm</Link> in Chiba (¥1,800 adult, ¥900 child) and the rides at <Link href="/guides/attractions/tokyo-dome-city-attractions-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tokyo Dome City Attractions</Link> (free entry, passport from ¥4,900).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

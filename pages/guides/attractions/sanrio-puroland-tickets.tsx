@@ -832,6 +832,11 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
             Another park on the west side of Tokyo: <Link href="/guides/attractions/yomiuriland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Yomiuriland tickets</Link>, with the One-Day Pass and the evening After Pass.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Sanrio&apos;s second park, <Link href="/guides/attractions/harmonyland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sanrio Harmonyland</Link> in Oita, has a day passport at ¥3,600 or ¥4,200.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

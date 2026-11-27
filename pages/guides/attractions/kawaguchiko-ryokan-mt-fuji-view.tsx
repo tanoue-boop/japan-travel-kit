@@ -614,6 +614,11 @@ export default function KawaguchikoRyokanMtFujiViewPage({ updated }: { updated: 
           items={kawaguchikoRyokanTripPrep}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For the day before or after, the <Link href="/guides/attractions/kawaguchiko-music-forest-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kawaguchiko Music Forest Museum</Link> is ¥1,800 for adults on weekdays (¥2,100 at weekends), 10:00–17:30.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

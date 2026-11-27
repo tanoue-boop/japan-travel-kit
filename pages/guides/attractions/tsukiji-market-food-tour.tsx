@@ -576,6 +576,11 @@ export default function TsukijiMarketFoodTourPage({ updated }: { updated: PageUp
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Across the river, <Link href="/guides/attractions/manyo-club-toyosu-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Manyo Club Toyosu</Link> by Toyosu Market is ¥3,850 for adults, open from 10:00.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}
