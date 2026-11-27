@@ -765,7 +765,9 @@ export default function JapanSkiTripItineraryPage({ updated }: { updated: PageUp
             <a href={SAFETYWING_URL} target="_blank" rel="sponsored nofollow noopener noreferrer">
               SafetyWing
             </a>{" "}
-            is one option it covers.
+            is one option it covers. For the whole trip, not just the slopes, our guide to the{" "}
+            <Link href="/guides/money/best-travel-insurance-japan">best travel insurance for Japan</Link> compares
+            medical limits, ski wording and the price of a week.
           </p>
         </section>
 

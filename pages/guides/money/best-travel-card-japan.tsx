@@ -888,6 +888,12 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
             the card rather than the moment you spend, so you are accepting whatever was on sale that day for
             the whole trip — and you cannot undo it if the yen moves.
           </p>
+          <p className={styles.bodyText}>
+            Counting on a credit card&apos;s travel insurance? Many card-linked policies are pay-and-claim, so a
+            Japanese hospital asks for the full bill first; check the card&apos;s medical limit, or compare the{" "}
+            <Link href="/guides/money/best-travel-insurance-japan">best travel insurance for Japan</Link> before you
+            fly.
+          </p>
         </section>
 
         {/* Cards to Avoid */}

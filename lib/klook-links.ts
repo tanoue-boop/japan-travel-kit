@@ -1913,6 +1913,30 @@ export const japanTravelInsuranceTripPrep: KlookTripPrepItem[] = [
 ];
 
 /**
+ * Best Travel Insurance for Japan, "Pay before you land" (task jtk-20261127-R01): the three
+ * Klook bands that can be paid at home with the policy — Klook eSIM (20%), the airport train
+ * (5%) and a day tour (6.5%). SafetyWing stays the page's main CTA.
+ */
+export const bestTravelInsuranceTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "The insurer's assistance line, JNTO's hospital search and claim photos all need data from the moment you land.",
+  },
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "Landing at Narita: a reserved seat into Tokyo, Shinjuku or Yokohama, paid before the flight along with the policy.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "Landing at Kansai Airport: the JR train to Kyoto, Shin-Osaka and Tennoji. Klook's listing states it is sold only to non-Japanese passport holders with a Temporary Visitor stamp.",
+  },
+  {
+    ...tripPrepProducts.fujiHakoneTour,
+    why: "A prepaid day out from Tokyo. If it is non-refundable, it is also part of what cancellation cover would need to protect.",
+  },
+];
+
+/**
  * Currency Exchange — the reader is deciding where to change money, so each line is
  * a cost that can be settled in their own currency instead of out of the yen they
  * exchange on arrival. Hotels were added 22 Oct 2026: the room is the largest line

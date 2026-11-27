@@ -747,6 +747,12 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
             </Link>{" "}
             page.
           </p>
+          <p className={styles.bodyText}>
+            Travel insurance is the one line this budget leaves out. A week on SafetyWing Essential was US$15.68 at
+            ages 10–39 on its own calculator (9 Nov 2026); the other insurers, and what a hospital in Japan can charge
+            a visitor, are compared in our guide to the{" "}
+            <Link href="/guides/money/best-travel-insurance-japan">best travel insurance for Japan</Link>.
+          </p>
         </section>
 
         <KlookTripPrep
