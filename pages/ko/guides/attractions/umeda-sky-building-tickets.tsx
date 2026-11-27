@@ -637,7 +637,12 @@ export default function KoUmedaSkyBuildingTicketsPage({ updated }: { updated: Pa
             <Link href="/guides/attractions/where-to-stay-in-osaka" style={linkStyle}>
               오사카 숙소 지역 가이드(영어)
             </Link>
-            도 있습니다. 도보 시간은 {CHECKED}에 확인했습니다.
+            도 있습니다. 도보 시간은 {CHECKED}에 확인했습니다. 우메다·오사카역은 유니버설 스튜디오 재팬으로 가는 JR
+            유메사키선을 이용하기 좋은 거점이기도 하며, 파크 날짜에 필요한 익스프레스 패스는{" "}
+            <Link href="/ko/guides/attractions/usj-tickets-express-pass" style={linkStyle}>
+              유니버설 재팬 익스프레스 패스 가이드
+            </Link>
+            에서 4·7 차이와 매진 시기를 확인하세요.
           </p>
         </section>
 

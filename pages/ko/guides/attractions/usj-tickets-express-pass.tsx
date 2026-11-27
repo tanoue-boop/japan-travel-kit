@@ -50,16 +50,18 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const ROUTE = "/ko/guides/attractions/usj-tickets-express-pass";
 // 2026-11-14: the exact query leads the title, H1 and meta, in the same order (mirrors English).
-const TITLE = "유니버설 스튜디오 재팬 익스프레스 패스 2026: 종류·가격";
-const H1 = "유니버설 스튜디오 재팬 익스프레스 패스 2026: 종류, 가격, 구매할 만할까?";
+// 2026-11-27 (task-jtk-20261127-R11): "가격·종류" ahead of the year, as Korean searches phrase it.
+const TITLE = "유니버설 스튜디오 재팬 익스프레스 패스 가격·종류 2026";
+const H1 = "유니버설 스튜디오 재팬 익스프레스 패스 가격·종류 2026: 4와 7 차이, 꼭 사야 할까?";
 const DESC =
-  "유니버셜 스튜디오 재팬 익스프레스 패스(USJ 익스프레스 패스) 2026: 4·7 차이, 날짜별 가격, 매진 시기와 살 시점.";
+  "유니버셜 스튜디오 재팬 익스프레스 패스 2026: 4·7 차이, 날짜별 가격, 닌텐도 월드 입장 확약권, 매진 시기와 구매처.";
 
 const LOCALE = "ko" as const;
 const GYG_SLUG = "ko-usj-tickets-express-pass";
 const CHECKED = dateLabel("2026-10-26", LOCALE);
 const CHECKED_USJ = dateLabel("2026-10-27", LOCALE);
 const CHECKED_TODAY = dateLabel("2026-11-14", LOCALE);
+const CHECKED_R11 = dateLabel("2026-11-27", LOCALE);
 const USJ_EXPRESS_URL = "https://www.usj.co.jp/web/en/us/tickets/express-pass";
 const VARIANT_PRICE = "입장일에 따라 다름 — 결제 화면에 표시";
 
@@ -80,7 +82,7 @@ const variantRows = [
   },
   {
     pass: "익스프레스 패스 4",
-    covers: "우선 탑승 혜택이 적용되는 어트랙션 4개. USJ는 꼭 타야 할 어트랙션을 위한 패스로 설명하며, 어떤 네 개인지는 버전과 날짜별로 정해집니다.",
+    covers: "우선 탑승 혜택이 적용되는 어트랙션 4개. USJ는 꼭 타야 할 어트랙션을 위한 패스로 설명하며, 어떤 네 개인지는 버전과 날짜별로 정해집니다. 예: 공식 WEB 티켓 스토어의 ‘トロッコ＆レース’ 구성은 동키콩 트로코, 마리오 카트, 미니언 라이드, 죠스 4개입니다(공식 이름: ドンキーコングのクレイジー・トロッコ, マリオカート ～クッパの挑戦状～, ミニオン・ハチャメチャ・ライド, ジョーズ. 판매 기간 한정).",
     snw: "포함된다고 명시된 버전에만 제공",
     price: VARIANT_PRICE,
     bestFor: "짧은 하루, 재방문, 또는 인기 어트랙션만 타면 되는 한가한 날짜",
@@ -91,6 +93,13 @@ const variantRows = [
     snw: "포함된다고 명시된 버전에만 제공",
     price: VARIANT_PRICE,
     bestFor: "하루 일정, 첫 방문, 붐비는 날짜",
+  },
+  {
+    pass: "익스프레스 패스 프리미엄",
+    covers: "USJ의 최상위 익스프레스 패스로, 공식 페이지는 인기 어트랙션 전체의 대기 시간을 줄여 준다고 설명합니다. 대상 어트랙션은 입장일에 따라 다릅니다.",
+    snw: "입장일의 상품 설명에서 확인",
+    price: VARIANT_PRICE,
+    bestFor: "하루에 최대한 많이 타고 싶은 사람",
   },
   {
     pass: "그 밖의 개수·테마 버전",
@@ -263,12 +272,20 @@ const faqItems: FaqItem[] = [
     a: "그렇습니다. 유니버설 스튜디오 재팬은 게이트에서 당일권 판매를 중단했으므로 가기 전에 온라인으로 사야 합니다. 클룩 같은 판매처를 통해 예약하면 영어 결제 화면을 쓸 수 있고, 해외 카드를 받으며, 입장할 때 스캔하는 전자 티켓을 보내 줍니다.",
   },
   {
-    q: "2026년 USJ 익스프레스 패스는 살 만한가요?",
+    q: "익스프레스 패스는 꼭 사야 하나요?",
     a: `붐비는 날이라면 그렇습니다. 2026년은 USJ 25주년이고(파크 공식 뉴스룸에 2026년 9월 14일과 28일 기념 보도자료가 올라왔습니다, ${CHECKED_USJ} 확인), 주말이나 공휴일에는 익스프레스 패스로 일반 대기줄 대신 우선 탑승 전용 대기줄을 이용할 수 있어 몇 시간씩 걸리는 대기 시간을 줄여 주며, 입장 확약권이 포함된 버전이라면 슈퍼 닌텐도 월드 입장도 해결됩니다. 한가한 비수기 평일에는 훨씬 덜 필요합니다. 일반 대기 줄이 가장 짧고, 앱을 통한 무료 정리권도 남아 있을 가능성이 가장 높기 때문입니다.`,
   },
   {
-    q: "익스프레스 패스 4와 익스프레스 패스 7은 무엇이 다른가요?",
+    q: "익스프레스 패스 4와 7의 차이는?",
     a: "숫자는 우선 탑승 혜택을 이용할 수 있는 어트랙션 수, 즉 4개 또는 7개를 뜻합니다. USJ는 익스프레스 패스 4를 꼭 타야 할 어트랙션을 위한 패스로 설명하고, 익스프레스 패스 7은 둘 중 범위가 넓은 패스입니다. 실제 어트랙션 목록은 버전과 날짜별로 정해지고, 슈퍼 닌텐도 월드 입장 확약권은 포함된다고 명시된 버전에만 제공되므로 사기 전에 본인 날짜의 포함 내용을 확인하세요.",
+  },
+  {
+    q: "익스프레스 패스는 어디서 사는 게 가장 싼가요?",
+    a: `가격은 판매처가 아니라 USJ가 입장일과 종류별로 정하므로, 기준이 되는 가격은 USJ 공식 WEB 티켓 스토어에서 그 날짜를 골랐을 때의 금액입니다. USJ가 공식 판매처로 밝힌 곳은 WEB 티켓 스토어와 로손 티켓이고, 클룩·GetYourGuide 같은 판매처는 같은 날짜 지정 상품을 한국어·영어 결제 화면과 해외 카드로 팝니다. 판매처에서는 같은 날짜를 넣어 공식 가격과 비교하고, 판매 수량은 판매처별로 배정되므로 한 곳에서 매진된 날짜도 다른 곳에 남아 있을 수 있습니다. ${CHECKED_R11} 확인.`,
+  },
+  {
+    q: "익스프레스 패스는 당일 구매가 되나요?",
+    a: `파크 입장 게이트에서는 살 수 없습니다. USJ는 현재 게이트에서 당일권을 팔지 않으므로 익스프레스 패스도 온라인으로 사야 하고, 하루 판매 수량이 한정되어 주말·일본 공휴일·겨울 방학 날짜에는 미리 매진되는 경우가 많습니다. 당일 구매를 전제로 하지 말고, 방문일 약 2개월 전 판매가 시작되면 바로 예약하세요. ${CHECKED_R11} 확인.`,
   },
   {
     q: "스튜디오 패스 없이 USJ 익스프레스 패스만으로 들어갈 수 있나요?",
@@ -309,11 +326,12 @@ const faqItems: FaqItem[] = [
 ];
 
 /** The FAQPage markup carries five questions; the visible list keeps all of them. */
+// 2026-11-27 (R11): the four question H2s of the page, plus the Studio Pass question.
 const FAQ_SCHEMA_QS = new Set([
-  "USJ 익스프레스 패스는 패스트 패스와 같은 건가요?",
-  "2026년 USJ 익스프레스 패스는 살 만한가요?",
-  "익스프레스 패스 4와 익스프레스 패스 7은 무엇이 다른가요?",
-  "유니버설 스튜디오 재팬 익스프레스 패스는 얼마인가요?",
+  "익스프레스 패스는 꼭 사야 하나요?",
+  "익스프레스 패스 4와 7의 차이는?",
+  "익스프레스 패스는 어디서 사는 게 가장 싼가요?",
+  "익스프레스 패스는 당일 구매가 되나요?",
   "스튜디오 패스 없이 USJ 익스프레스 패스만으로 들어갈 수 있나요?",
 ]);
 const faqSchemaItems = faqItems.filter((item) => FAQ_SCHEMA_QS.has(item.q));
@@ -345,10 +363,14 @@ const expressSameDayPrep: KlookTripPrepItem[] = [
 
 // The first three of those as cards under the first Klook button (task-jtk-20261122-04);
 // the eSIM is the BookingEsimCard directly below them.
-const KO_SAME_DAY_KINDS = ["공식 호텔", "공식 호텔", "공항 버스"];
-const koUsjSameDayCards: KlookSameDayCard[] = expressSameDayPrep
-  .slice(0, 3)
-  .map((item, i) => ({ ...item, kind: KO_SAME_DAY_KINDS[i] }));
+// 27 Nov 2026 (R11): five cards, as on the English page — the two official hotels (6.5%),
+// the Osaka food tour (6.5%), the Osaka Amazing Pass (5%) and the Kansai Airport bus (5%).
+// The tour and the pass are the translated entries of `sameDayPrep` below.
+const KO_SAME_DAY_KINDS = ["공식 호텔", "공식 호텔", "오사카 투어", "오사카 패스", "공항 버스"];
+const koUsjSameDayCards = (sameDay: KlookTripPrepItem[]): KlookSameDayCard[] =>
+  [expressSameDayPrep[0], expressSameDayPrep[1], sameDay[3], sameDay[1], expressSameDayPrep[2]].map(
+    (item, i) => ({ ...item, kind: KO_SAME_DAY_KINDS[i] }),
+  );
 
 const sameDayPrep: KlookTripPrepItem[] = [
   withKlookLocale(usjSameDayPrep[0], LOCALE, {
@@ -508,11 +530,12 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <p className={styles.bodyText}>
             <strong>유니버설 스튜디오 재팬 익스프레스 패스</strong>(USJ의 유료 &ldquo;패스트 패스&rdquo;)는
             주로 <strong>익스프레스 패스 4</strong>(어트랙션 4개)와 <strong>익스프레스 패스 7</strong>(어트랙션
-            7개)로 팔리며, 각각 하나의 날짜에 묶여 있고 입장권이 아니므로 같은 날짜의 스튜디오 패스가 따로
-            필요합니다. USJ는 고정 가격을 정하지 않아 종류와 가격이 입장일에 따라 다르고, 방문 약 2개월 전에
-            판매가 시작되며, 하루 판매 수량이 한정되어 미리 매진되는 경우가 많습니다. 주말이나 일본 공휴일, 겨울 방학
-            기간에 방문한다면 구매하고, 한가한 평일이라면 대개 스튜디오 패스만으로 충분합니다. usj.co.jp에서 {CHECKED_USJ},{" "}
-            {CHECKED_TODAY} 확인.
+            7개), 그리고 최상위인 익스프레스 패스 프리미엄으로 팔리며, 가격은 고정 금액이 없고 USJ가 2018년부터 쓰는
+            수요 기반 체계에 따라 입장일과 종류별로 달라집니다. 익스프레스 패스는 입장권이 아니므로 같은 날짜의 스튜디오
+            패스(또는 연간 패스)를 따로 사야 합니다. 판매는 방문일 약 2개월 전에 시작되고 하루 판매 수량이 한정되어,
+            주말·일본 공휴일·겨울 방학(2026년은 USJ 25주년) 날짜에는 미리 매진되는 경우가 많으니 그런 날짜라면 판매가
+            시작되자마자 구매하세요. 한가한 평일이라면 대개 스튜디오 패스만으로 충분합니다. usj.co.jp에서 {CHECKED_USJ},{" "}
+            {CHECKED_R11} 확인.
           </p>
         </section>
 
@@ -558,7 +581,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
 
         {/* 22 Nov 2026 (task-jtk-20261122-04): the same-day bookings moved up from under the
             Express Pass box to directly under the first Klook button, as three cards. */}
-        <KlookSameDayCards heading="USJ 방문일에 함께 예약할 것" cards={koUsjSameDayCards} />
+        <KlookSameDayCards heading="같은 날 예약할 것: USJ 공식 호텔·오사카 투어·패스·공항 버스" cards={koUsjSameDayCards(sameDayPrep)} />
 
         <BookingEsimCard />
 
@@ -706,7 +729,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            최종 확인: 2026-11-14 —{" "}
+            최종 확인: 2026-11-27 —{" "}
             <a href={USJ_EXPRESS_URL} target="_blank" rel="noopener noreferrer">USJ 공식 유니버설 익스프레스 패스 페이지</a>.
             가격대를 적지 않는 이유: usj.co.jp의 여러 티켓 목록 페이지에 실린 &ldquo;~부터&rdquo; 금액이 서로
             일치하지 않고, WEB 티켓 스토어 목록은 가격이 입장일에 따라 다르다고 적고 있습니다. 본인 날짜에 해당하지
@@ -717,9 +740,9 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>패스 종류 비교</span>
-          <h2 className={styles.sectionTitle}>USJ 익스프레스 패스, 4와 7 중 어떤 것을 구매할까?</h2>
+          <h2 className={styles.sectionTitle}>익스프레스 패스 4와 7의 차이는?</h2>
           <p className={styles.bodyText}>
-            붐비는 날짜에 첫 방문이라면 익스프레스 패스 7, 비교적 한가한 날짜나 짧은 하루, 또는 인기 어트랙션 몇 개만
+            차이는 우선 탑승할 수 있는 어트랙션 수(4개 또는 7개)이며, 붐비는 날짜에 첫 방문이라면 익스프레스 패스 7, 비교적 한가한 날짜나 짧은 하루, 또는 인기 어트랙션 몇 개만
             이용하고 싶은 재방문이라면 익스프레스 패스 4입니다. 숫자는 우선 탑승 혜택을 이용할 수 있는 어트랙션 수를 뜻하며,
             어트랙션 목록 자체는 버전과 날짜별로 정해져 있습니다. 패스 이름에 붙은 숫자보다 방문 날짜에 어떤 어트랙션이 포함되는지
             확인하세요.
@@ -729,7 +752,7 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["익스프레스 패스 종류", "포함 내용", "슈퍼 닌텐도 월드 입장", "공식 가격", "어울리는 경우"].map((h) => (
+                    {["익스프레스 패스 종류", "포함 어트랙션", "닌텐도 월드 입장 확약", "가격대", "어울리는 경우"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -749,9 +772,10 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            최종 확인: 2026-11-14 —{" "}
-            <a href={USJ_EXPRESS_URL} target="_blank" rel="noopener noreferrer">USJ 공식 유니버설 익스프레스 패스 페이지</a>.
-            버전 이름과 슈퍼 닌텐도 월드 입장 규칙은 usj.co.jp에서 {CHECKED_USJ} 확인. {CHECKED_TODAY}에 다시 확인한
+            최종 확인: 2026-11-27 —{" "}
+            <a href={USJ_EXPRESS_URL} target="_blank" rel="noopener noreferrer">USJ 공식 유니버설 익스프레스 패스 페이지</a>{" "}
+            및 <a href="https://www.usj.co.jp/ticket/expresspass/" target="_blank" rel="noopener noreferrer">공식 WEB 티켓 스토어 익스프레스 패스 목록</a>
+            (usj.co.jp 검색 색인 기준). 가격대 칸에 엔화를 적지 않은 이유는 위 가격 항목의 설명과 같습니다. 버전 이름과 슈퍼 닌텐도 월드 입장 규칙은 usj.co.jp에서 {CHECKED_USJ} 확인. {CHECKED_TODAY}에 다시 확인한
             USJ 공식 익스프레스 패스 목록에는 익스프레스 패스 프리미엄과 여러 테마별 익스프레스 패스 4 구성도
             있으며, 각각 정해진 입장 기간에 판매됩니다. 특정 날짜에 어떤 버전이 있는지는 날짜별 문제이므로, 위 표는
             고정된 상품 목록이 아니라 구성의 형태를 보여 줍니다.
@@ -768,11 +792,11 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>구매할까 말까</span>
-          <h2 className={styles.sectionTitle}>USJ 익스프레스 패스, 살 만한가요?</h2>
+          <h2 className={styles.sectionTitle}>익스프레스 패스는 꼭 사야 하나요?</h2>
           <p className={styles.bodyText}>
-            주말, 일본 공휴일, 겨울 방학 날짜라면 그렇고, 한가한 평일이라면 대개 아닙니다. 거의 전적으로 여러분이 아니라 날짜에 달려 있습니다. 한가한 평일에는 대개 스튜디오 패스만으로
-            충분하고, 주말이나 일본 공휴일, 25주년 기념 날짜에는 익스프레스 패스가 인기 어트랙션을 타느냐 줄만
-            서느냐를 가릅니다.
+            주말, 일본 공휴일, 겨울 방학 날짜라면 사는 것이 좋고, 한가한 평일이라면 대개 아닙니다. 구매 여부는 개인 취향보다 방문 날짜에 거의 전적으로 좌우됩니다. 한가한 평일에는 대개 스튜디오 패스만으로
+            충분하고, 주말이나 일본 공휴일, 25주년 기념 날짜에는 익스프레스 패스가 있느냐에 따라 인기 어트랙션을 탈 수 있느냐,
+            줄만 서다 끝나느냐가 갈립니다.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -872,9 +896,10 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>구매 방법</span>
-          <h2 className={styles.sectionTitle}>유니버설 스튜디오 재팬 익스프레스 패스는 어떻게 사나요?</h2>
+          <h2 className={styles.sectionTitle}>익스프레스 패스는 어디서 사는 게 가장 싼가요?</h2>
           <p className={styles.bodyText}>
-            방문 날짜를 지정해 온라인으로 구매하며, USJ 공식 사이트나 판매처를 이용합니다. USJ의 구매 기간 안내는 공식 WEB
+            가격은 판매처가 아니라 USJ가 입장일과 종류별로 정하므로, 기준이 되는 가격은 USJ 공식 WEB 티켓 스토어에서 그
+            날짜를 골랐을 때의 금액입니다. 판매처에서는 같은 날짜를 넣어 그 금액과 비교하세요. 방문 날짜를 지정해 온라인으로 구매하며, USJ 공식 사이트나 판매처를 이용합니다. USJ의 구매 기간 안내는 공식 WEB
             티켓 스토어와 로손 티켓을 판매처로 명시하고 판매 기간을 방문일 약 2개월 전부터로 정하고 있으며,
             판매처들은 같은 날짜 지정 상품을 영어 결제 화면으로 팝니다.
           </p>
@@ -921,6 +946,29 @@ export default function KoUsjTicketsPage({ updated }: { updated: PageUpdated }) 
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>당일 구매</span>
+          <h2 className={styles.sectionTitle}>익스프레스 패스는 당일 구매가 되나요?</h2>
+          <p className={styles.bodyText}>
+            파크 입장 게이트에서는 살 수 없습니다. USJ는 현재 게이트에서 당일권을 팔지 않으므로 익스프레스 패스도
+            온라인으로 사야 하고, 하루 판매 수량이 한정되어 주말·일본 공휴일·겨울 방학 날짜에는 미리 매진되는 경우가
+            많습니다. 당일 구매를 전제로 하지 말고, 방문일 약 2개월 전 판매가 시작되면 바로 예약하세요. 한 판매처에서
+            매진됐다면 다른 판매처도 확인해 보세요.
+          </p>
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            최종 확인: 2026-11-27 —{" "}
+            <a href={USJ_EXPRESS_URL} target="_blank" rel="noopener noreferrer">USJ 공식 유니버설 익스프레스 패스 페이지</a>
+            (하루 판매 한도·매진) 및{" "}
+            <a href="https://www.usj.co.jp/company/company_e/news/2025/0421/" target="_blank" rel="noopener noreferrer">USJ 구매 기간 안내</a>
+            (약 2개월 전 판매 시작).
+          </p>
+          <div className={styles.pickCtaRow}>
+            <KlookLink href={koUsjExpressPass.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              클룩에서 남은 날짜 확인 →
+            </KlookLink>
           </div>
         </section>
 

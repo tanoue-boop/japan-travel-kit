@@ -828,7 +828,10 @@ export default function KoTokyoDisneyTicketsPage({ updated }: { updated: PageUpd
           <p className={styles.bodyText}>
             필요하지 않습니다. 디즈니 프리미어 액세스는 파크에 입장한 뒤 공식 앱에서 사는 유료 서비스이고, 모든
             어트랙션은 줄을 서서 이용할 수 있습니다. 무료 40주년 프라이어리티 패스는 2026년 8월 31일에 종료되었고,
-            무료 스탠바이 패스와 엔트리 리퀘스트는 그대로 있습니다.
+            무료 스탠바이 패스와 엔트리 리퀘스트는 그대로 있습니다. 오사카의 유니버설 스튜디오 재팬은 방식이 달라,
+            유료 대기 단축권을 방문 전에 날짜 지정으로 사야 하며 하루 수량이 한정되어 있습니다. 종류와 구매 시기는{" "}
+            <Link href="/ko/guides/attractions/usj-tickets-express-pass">유니버셜 스튜디오 재팬 익스프레스 패스 가이드</Link>
+            를 보세요.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

@@ -675,7 +675,12 @@ export default function KoKansaiAreaPassPage({ updated }: { updated: PageUpdated
             <Link href="/guides/attractions/osaka-attractions-pass" style={linkStyle}>
               오사카 주유패스 가이드(영어)
             </Link>
-            가 간사이 패스로 대신할 수 없는 도시 패스를 다룹니다. 기노사키 온천은 간사이 패스로 특급 고노토리를 탈 수
+            가 간사이 패스로 대신할 수 없는 도시 패스를 다룹니다. 어떤 JR 패스도 유니버설 스튜디오 재팬 입장권은
+            포함하지 않으며, 파크 당일에 필요한 스튜디오 패스와 익스프레스 패스 4·7의 차이는{" "}
+            <Link href="/ko/guides/attractions/usj-tickets-express-pass" style={linkStyle}>
+              USJ 익스프레스 패스 가격·종류 가이드
+            </Link>
+            에 정리했습니다. 기노사키 온천은 간사이 패스로 특급 고노토리를 탈 수
             없고, 와이드 패스에는 고노토리 지정석이 포함됩니다.{" "}
             <Link href="/guides/attractions/kinosaki-onsen-day-trip" style={linkStyle}>
               기노사키 온천 당일치기 가이드(영어)

@@ -626,7 +626,12 @@ export default function KoOsakaCastleTicketsPage({ updated }: { updated: PageUpd
             <Link href="/guides/attractions/himeji-castle-day-trip" hrefLang="en" style={linkStyle}>
               오사카에서 가는 히메지성 당일치기(영어)
             </Link>
-            를 보세요. JR 신쾌속으로 편도 약 1시간입니다.
+            를 보세요. JR 신쾌속으로 편도 약 1시간입니다. 유니버설 스튜디오 재팬은 주유패스에 포함되지 않아 입장권을
+            따로 사야 하며, 붐비는 날짜에 필요한 익스프레스 패스 4·7의 차이와 매진 시기는{" "}
+            <Link href="/ko/guides/attractions/usj-tickets-express-pass" style={linkStyle}>
+              유니버설 스튜디오 재팬 익스프레스 패스 가격·종류
+            </Link>
+            에 정리했습니다.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1.25rem" }}>
             <KlookLink href={PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>

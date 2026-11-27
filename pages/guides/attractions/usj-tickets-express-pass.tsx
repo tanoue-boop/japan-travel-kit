@@ -31,10 +31,16 @@ import KlookSameDayCards from "../../../components/KlookSameDayCards";
 // The two official hotels (6.5%) and the Kansai Airport limousine bus (5%) from the
 // Express Pass same-day list, as cards under the first Klook button (task-jtk-20261122-04).
 // Its fourth item, the eSIM, is the BookingEsimCard directly below the cards.
-const USJ_SAME_DAY_KINDS = ["Official hotel", "Official hotel", "Airport bus"];
-const USJ_SAME_DAY: KlookSameDayCard[] = usjExpressSameDayPrep
-  .slice(0, 3)
-  .map((item, i) => ({ ...item, kind: USJ_SAME_DAY_KINDS[i] }));
+// 27 Nov 2026 (task-jtk-20261127-R11, ko page): five cards — the Osaka food tour (6.5%) and
+// the Osaka Amazing Pass (5%) from `usjSameDayPrep` added between the hotels and the bus.
+const USJ_SAME_DAY_KINDS = ["Official hotel", "Official hotel", "Osaka tour", "Osaka pass", "Airport bus"];
+const USJ_SAME_DAY: KlookSameDayCard[] = [
+  usjExpressSameDayPrep[0],
+  usjExpressSameDayPrep[1],
+  usjSameDayPrep[3],
+  usjSameDayPrep[1],
+  usjExpressSameDayPrep[2],
+].map((item, i) => ({ ...item, kind: USJ_SAME_DAY_KINDS[i] }));
 
 // CTA links — Klook affiliate redirects.
 const STUDIO_PASS_URL = "https://affiliate.klook.com/redirect?aid=119070&aff_adid=1299137&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F46604-universal-studios-japan-e-ticket-osaka-qr-code-direct-entry%2F";
