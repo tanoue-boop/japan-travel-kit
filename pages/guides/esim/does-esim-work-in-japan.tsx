@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
-import EsimPageAnswer from "../../../components/EsimPageAnswer";
+import EsimVerdictBox from "../../../components/EsimVerdictBox";
+import { verdictPrices } from "../../../lib/esim-verdict";
 import EsimDaysTable from "../../../components/EsimDaysTable";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
@@ -499,80 +500,44 @@ export default function DoesEsimWorkInJapanPage({ updated }: { updated: PageUpda
           off airplane mode.
         </p>
 
-        <div style={{ margin: "0.5rem 0 1.5rem" }}>
-          <KlookLink
-            href={klookEsim.url}
-            className={styles.pickCta}
-            target="_blank"
-            rel="sponsored nofollow noopener"
-            style={{ display: "inline-flex" }}
-          >
-            {klookEsim.ctaLabel}
-          </KlookLink>
-          <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.5rem", lineHeight: 1.6 }}>
-            Klook eSIM runs on SoftBank 5G and IIJ (docomo) 4G LTE, as its listing title states.
-          </p>
-        </div>
+        {/* The one conclusion box (A31) — it replaces the Klook button that sat here, the
+            EsimPageAnswer box and the old "Quick Answer" box, whose text follows as body copy. */}
+        <EsimVerdictBox
+          route="/guides/esim/does-esim-work-in-japan"
+          lead={
+            <>
+              <strong>Yes — travel eSIMs run on Japan&apos;s own networks (docomo, SoftBank, KDDI/au).</strong>{" "}
+              <strong>Most travellers: Klook Japan eSIM</strong> (SoftBank 5G or IIJ/docomo, data only).{" "}
+              <strong>Long stay or need a Japanese phone number: Sakura Mobile</strong>, from{" "}
+              {verdictPrices.sakuraMonthly5Gb} a month.
+            </>
+          }
+        />
 
         <BookingEsimCard lead="Is your phone ready? Get the eSIM before you fly" />
 
-        <EsimPageAnswer route="/guides/esim/does-esim-work-in-japan" />
-
         <EsimDaysTable />
 
-        {/* Quick Answer Box */}
-        <div className={styles.verdictBox}>
-          <div className={styles.verdictHeader}>
-            <span className={styles.verdictLabel}>Quick Answer</span>
-            <span style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>Yes ✓</span>
-          </div>
-          <div className={styles.verdictBody}>
-            <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-              <strong>Yes — an eSIM works anywhere in Japan, on two conditions: the phone
-              must have eSIM hardware and must be carrier-unlocked.</strong>{" "}
-              Travel eSIMs sold for Japan run on the three tier-one networks — Docomo,
-              SoftBank and au/KDDI, which is what the six providers in the network table state
-              on their own Japan pages (checked 21 Nov 2026) — and they are data-only: you keep
-              your home number for calls and texts, and you get no Japanese phone number
-              unless you buy a voice plan, which needs an in-person ID check after you land.
-              You buy and install it at home over WiFi days before the flight, and the plan
-              starts counting the first time your phone registers on a Japanese network after
-              you turn off airplane mode — nothing has to be shown to anyone, and there is no
-              SIM registration in Japan for data-only plans.
-            </p>
-            <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-              <strong>What actually goes wrong is at your end, not Japan&apos;s</strong> — a
-              carrier-locked handset, a phone with no eSIM hardware, or a device bought in a
-              market where Apple disabled eSIM. The three checks below are the whole risk.
-            </p>
-            <div className={styles.verdictGrid}>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Check 1 — hardware</p>
-                <p className={styles.verdictStatValue}>An EID in Settings → About</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Check 2 — carrier lock</p>
-                <p className={styles.verdictStatValue}>The #1 cause of failure</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Check 3 — where you bought it</p>
-                <p className={styles.verdictStatValue}>Mainland China: no eSIM at all</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Cheapest way to test it</p>
-                <p className={styles.verdictStatValue}>eSIM Go, from {priceFrom("esimgo")}</p>
-              </div>
-            </div>
-            <a
-              href={link("airalo")}
-              className={styles.verdictBtn}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-            >
-              Get a Japan eSIM →
-            </a>
-          </div>
-        </div>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <strong>An eSIM works anywhere in Japan on two conditions: the phone must have eSIM hardware
+            and must be carrier-unlocked.</strong>{" "}
+            Travel eSIMs sold for Japan run on the three tier-one networks — Docomo, SoftBank and
+            au/KDDI, which is what the six providers in the network table state on their own Japan pages
+            (checked 21 Nov 2026) — and they are data-only: you keep your home number for calls and
+            texts, and you get no Japanese phone number unless you buy a voice plan, which needs an
+            in-person ID check after you land. You buy and install it at home over WiFi days before the
+            flight, and the plan starts counting the first time your phone registers on a Japanese
+            network after you turn off airplane mode — nothing has to be shown to anyone, and there is
+            no SIM registration in Japan for data-only plans.
+          </p>
+          <p className={styles.bodyText}>
+            <strong>What actually goes wrong is at your end, not Japan&apos;s</strong> — a carrier-locked
+            handset (the #1 cause of failure), a phone with no eSIM hardware (look for an EID in Settings →
+            About), or a device bought in mainland China, where Apple sells no eSIM at all. The cheapest
+            way to test one is eSIM Go, from {priceFrom("esimgo")}.
+          </p>
+        </section>
 
         <EsimCtaTop />
 

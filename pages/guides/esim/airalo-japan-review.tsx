@@ -26,6 +26,8 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { esimProductJsonLd } from "../../../lib/esim-picks";
 import { EsimCtaTop } from "../../../components/EsimCta";
+import EsimPromoLine from "../../../components/EsimPromoLine";
+import { isEsimPromoLive } from "../../../lib/esim-verdict";
 
 const ROUTE = "/guides/esim/airalo-japan-review";
 const TAG = pageTag(ROUTE);
@@ -242,9 +244,12 @@ const commonIssues = [
   },
 ];
 
-export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
+export const getStaticProps = () => ({
+  // promoLive is decided at build time, so a build after the offer's end leaves the line out.
+  props: { updated: pageUpdated(ROUTE), promoLive: isEsimPromoLive("airalo-black-friday-2026") },
+});
 
-export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdated }) {
+export default function AiraloJapanReviewPage({ updated, promoLive }: { updated: PageUpdated; promoLive: boolean }) {
   return (
     <>
       <Head>
@@ -359,6 +364,9 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* A31: Airalo's dated Unlimited offer, one line, gone by itself after its end date. */}
+        <EsimPromoLine id="airalo-black-friday-2026" live={promoLive} route={ROUTE} />
 
         {/* Airalo vs Klook eSIM vs Simbye (and Sakura Mobile), same trip side by side */}
         <section className={styles.comparisonSection} data-placement={PLACEMENT} id="airalo-vs-klook-vs-simbye">

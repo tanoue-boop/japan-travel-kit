@@ -13,6 +13,10 @@ export const ESIM_PLACEMENT = {
   bookingCard: "booking-esim-card",
   daysTable: "esim-days-table",
   brandCompare: "brand-compare-table",
+  /** components/EsimVerdictBox.tsx — the conclusion box at the top of six eSIM pages (task jtk-20261127-A31). */
+  verdict: "esim-verdict",
+  /** components/EsimPromoLine.tsx — a partner's time-limited offer, one line near the top. */
+  promo: "esim-promo",
 } as const;
 
 /** "/ko/guides/attractions/shibuya-sky-tickets" -> "ko-shibuya-sky-tickets". */

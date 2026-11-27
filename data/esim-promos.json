@@ -1,0 +1,14 @@
+{
+  "_comment": "Time-limited partner offers shown on eSIM pages. Each entry disappears on its own once `endsAt` has passed: pages read isEsimPromoLive() at build time and components/EsimPromoLine.tsx re-checks the reader's clock after load. Add an offer only after reading its terms on the partner's own site, and record where and when in `source` / `checkedAt`.",
+  "airalo-black-friday-2026": {
+    "partner": "airalo",
+    "text": "Airalo Black Friday: 25% off every Unlimited package with code BLACK25, until 30 Nov 2026.",
+    "code": "BLACK25",
+    "percentOff": 25,
+    "appliesTo": "All Airalo Unlimited packages (Japan Unlimited included)",
+    "endsLabel": "30 Nov 2026",
+    "endsAt": "2026-12-01T00:00:00+09:00",
+    "source": "https://www.airalo.com/m/esim/unlimited-packages",
+    "checkedAt": "2026-11-27"
+  }
+}

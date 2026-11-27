@@ -18,6 +18,7 @@ import {
   latestCheckedAt,
   priceAtLeastLabel,
   priceFromLabel,
+  siteCheapestFrom,
   unlimitedFromLabel,
   type EsimPlanRow,
   type EsimProviderId,
@@ -31,6 +32,7 @@ import { articleJsonLd, itemListJsonLd, productOfferJsonLd } from "../../../lib/
 import { hreflangLinks } from "../../../components/Hreflang";
 import { EsimCtaTop } from "../../../components/EsimCta";
 import BookingEsimCard from "../../../components/BookingEsimCard";
+import EsimVerdictBox from "../../../components/EsimVerdictBox";
 
 /**
  * Rank pass, 29 Oct 2026.
@@ -105,7 +107,9 @@ const SPECS_CHECKED = "29 Oct 2026";
 // lives on cheapest-esim-japan, the unlimited term on japan-esim-unlimited, traveller advice
 // on best-esim-japan-reddit and the day-by-day price history on japan-esim-price-tracker.
 // "6" is the count actually compared: Simbye, Airalo, Holafly, eSIM Go, Sakura Mobile, Klook.
-const TITLE = "Best eSIM for Japan 2026: 6 Providers Compared (Price Table)";
+// A31 (27 Nov 2026): the title opens with the answer and a number — the cheapest Japan plan on
+// the daily feed (Simbye 1 GB / 7 days, US$1.99 on its partner feed read 27 Nov 2026) — for CTR.
+const TITLE = `Best Japan eSIM 2026: Cheapest Plans from ${siteCheapestFrom()} Compared`;
 const DESCRIPTION = `Best eSIM Japan 2026, a Japan eSIM comparison of 6 providers: Simbye ${
   cheapestAtLeastGb("simbye", 10) ? formatUsd(cheapestAtLeastGb("simbye", 10)!.priceUsd) : ""
 } for 10 GB, Airalo for unlimited, Sakura Mobile with a phone number.`;
@@ -919,7 +923,7 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
-            Best eSIM for Japan 2026: <br />6 Providers Compared (Price Table)
+            Best Japan eSIM 2026: <br />Cheapest Plans from {siteCheapestFrom()} Compared
           </h1>
           <p className={styles.heroSubtitle}>
             A Japan eSIM comparison of 7-day and 15-day prices, data, network, phone number and
@@ -945,6 +949,9 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* The one conclusion box (A31), then the answer by use with each price and date. */}
+        <EsimVerdictBox route="/guides/esim/best-esim-japan" />
 
         {/* The answer first: one sentence per use, with the price and the date in it. */}
         <section className={styles.bodySection}>

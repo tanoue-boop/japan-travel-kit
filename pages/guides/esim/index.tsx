@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import BookingEsimCard from "../../../components/BookingEsimCard";
-import EsimPageAnswer from "../../../components/EsimPageAnswer";
+import EsimVerdictBox from "../../../components/EsimVerdictBox";
 import GuideHub from "../../../components/GuideHub";
 import KlookLink from "../../../components/KlookLink";
 import PartnerPick, { PartnerTextLink } from "../../../components/PartnerPick";
@@ -351,6 +351,9 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
         dates={dates}
         lead={
           <>
+            {/* The one conclusion box (A31), first under the H1; it replaces the EsimPageAnswer box that sat in the picks. */}
+            <EsimVerdictBox route={ROUTE} />
+
             <section className={styles.bodySection} style={{ marginBottom: "2rem" }}>
               <p className={styles.bodyText}>
                 To <strong>get an eSIM for Japan</strong>, buy it online before you fly, install it from the QR code on
@@ -488,8 +491,6 @@ export default function GuidesEsimPage({ updated, dates }: { updated: PageUpdate
         }
         picks={
           <>
-          <EsimPageAnswer route="/guides/esim" />
-
           {/* (1) Pick by use */}
           <section className={styles.comparisonSection} style={{ marginTop: "2.5rem" }}>
             <span className={styles.sectionLabel}>Pick by trip</span>

@@ -22,6 +22,9 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
 import { EsimCtaTop } from "../../../components/EsimCta";
 import BookingEsimCard from "../../../components/BookingEsimCard";
+import EsimVerdictBox from "../../../components/EsimVerdictBox";
+import EsimPromoLine from "../../../components/EsimPromoLine";
+import { isEsimPromoLive, verdictPrices } from "../../../lib/esim-verdict";
 
 // Every price on this page is read from data/esim-prices.json (refreshed daily).
 const pricesCheckedAt = pricesCheckedLabel();
@@ -349,7 +352,13 @@ const whoShouldGet = [
   },
 ];
 
-export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/japan-esim-unlimited") } });
+export const getStaticProps = () => ({
+  props: {
+    updated: pageUpdated("/guides/esim/japan-esim-unlimited"),
+    // Decided at build time, so a build after the offer's end leaves the line out of the HTML.
+    promoLive: isEsimPromoLive("airalo-black-friday-2026"),
+  },
+});
 
 // Owns "unlimited eSIM Japan". "Best" is left to best-esim-japan and "cheapest" to
 // cheapest-esim-japan, so the three do not compete for one another's term.
@@ -368,7 +377,7 @@ const H1_SUB = "Is It Really Unlimited?";
 const H1 = `${H1_LEAD} ${H1_SUB}`;
 const DESCRIPTION = `Unlimited data eSIM for Japan from ${SIMBYE_UNL} for 7 days, but most slow after 1–10 GB a day. Daily caps, networks and hotspot limits for 7 plans.`;
 
-export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdated }) {
+export default function JapanEsimUnlimitedPage({ updated, promoLive }: { updated: PageUpdated; promoLive: boolean }) {
   return (
     <>
       <Head>
@@ -493,6 +502,22 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
           </p>
         </div>
 
+        {/* A31: Airalo's dated Unlimited offer (gone by itself after its end date), then the one
+            conclusion box. The old "Quick Answer" box below the answer was removed for it. */}
+        <EsimPromoLine id="airalo-black-friday-2026" live={promoLive} route="/guides/esim/japan-esim-unlimited" />
+        <EsimVerdictBox
+          route="/guides/esim/japan-esim-unlimited"
+          lead={
+            <>
+              <strong>Unlimited data: Airalo Unlimited</strong>, from {verdictPrices.airaloUnlimited3Days} for 3 days or{" "}
+              {verdictPrices.airaloUnlimited7Days} for 7 (3 GB a day at full speed, then slower).{" "}
+              <strong>Most travellers: Klook Japan eSIM. Long stay or a Japanese number: Sakura Mobile</strong>, whose
+              Unlimited travel eSIM on au has no daily cap on the phone ({verdictPrices.sakuraTravel7DaysUnlimited} for 7
+              days).
+            </>
+          }
+        />
+
         {/* The answer: a pick in the first sentence, then the table the query is asking for. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
@@ -525,39 +550,6 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
 
         <BookingEsimCard lead="Want no hard stop on your data? Unlimited plans:" />
 
-        {/* Quick Answer Box */}
-        <div className={styles.verdictBox}>
-          <div className={styles.verdictHeader}>
-            <span className={styles.verdictLabel}>Quick Answer</span>
-          </div>
-          <div className={styles.verdictBody}>
-            <div className={styles.verdictGrid}>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Cheapest unlimited</p>
-                <p className={styles.verdictStatValue}>Simbye — {SIMBYE_UNL} / 7 days</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Most full speed a day + tethering</p>
-                <p className={styles.verdictStatValue}>Klook eSIM — 10 GB/day</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>No daily cap on the phone</p>
-                <p className={styles.verdictStatValue}>Sakura Mobile (au) — {usdFor7Days("sakura")}</p>
-              </div>
-            </div>
-            <a
-              href={getProvider("simbye").affiliateUrl}
-              className={styles.verdictBtn}
-              target="_blank"
-              rel="sponsored nofollow noopener"
-            >
-              Get Simbye Unlimited →
-            </a>
-            <KlookLink href={klookEsim.url} className={styles.verdictBtn} target="_blank" rel="sponsored nofollow noopener" style={{ marginTop: "0.6rem" }}>
-              {klookEsim.ctaLabel}
-            </KlookLink>
-          </div>
-        </div>
 
         <SimbyeOffer />
         <div data-placement="esim-page-answer">

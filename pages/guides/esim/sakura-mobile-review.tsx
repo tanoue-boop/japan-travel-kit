@@ -21,6 +21,8 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { esimProductJsonLd } from "../../../lib/esim-picks";
 import { EsimCtaTop } from "../../../components/EsimCta";
+import EsimVerdictBox from "../../../components/EsimVerdictBox";
+import { VERDICT_CHECKED, verdictPrices } from "../../../lib/esim-verdict";
 
 // Two sources, two dates, deliberately.
 //
@@ -130,7 +132,6 @@ const FROM = priceFromLabel("sakura");
 const THIRTY_DAY = priceAtLeastLabel("sakura", 90);
 const UNLIMITED_30 = unlimitedFromLabel("sakura", 30);
 const AIRALO_FROM = priceFromLabel("airalo");
-const SIMBYE_WEEK = plansFor("simbye").find((p) => p.days === 7 && p.unlimited) ?? null;
 
 // Yen prices as Sakura Mobile's own comparison post prints them, read on
 // OFFICIAL_CHECKED. The USD column is not hard-coded here — it is looked up from
@@ -352,7 +353,10 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/sakura-mobile-review") } });
 
-const TITLE = "Sakura Mobile Review (2026): eSIM, SIM & WiFi Prices";
+// A31 (27 Nov 2026): "sakura mobile" brand searches are most of this page's 3,395 impressions
+// at 8.8th (CTR 0.4%), so the title answers the brand searcher's three questions — price,
+// plans, how to sign up — and the page opens with the sign-up button.
+const TITLE = "Sakura Mobile Review 2026: Price, Plans & How to Sign Up";
 const DESCRIPTION =
   "Sakura Mobile Unlimited eSIM has no daily cap on au (hotspot up to 30 GB); the 3 GB/day plan slows to 200 kbps. eSIM from ¥1,375, 7 days ¥4,620.";
 
@@ -430,7 +434,7 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
             Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
-            Sakura Mobile Review (2026): <br />eSIM, SIM &amp; WiFi Prices
+            Sakura Mobile Review 2026: <br />Price, Plans &amp; How to Sign Up
           </h1>
           <p className={styles.heroSubtitle}>
             Monthly plans with a Japanese number for residents, travel eSIMs and SIM cards for visitors, and
@@ -456,6 +460,24 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
             <Link href="/disclaimer" style={{ color: "var(--text)", fontWeight: 600 }}>Full disclaimer →</Link>
           </p>
         </div>
+
+        {/* The one conclusion box (A31): the brand searcher's sign-up button first, then the
+            three-row pick by use. Replaces the old "Quick Verdict" box further down. */}
+        <EsimVerdictBox
+          route="/guides/esim/sakura-mobile-review"
+          label="Sakura Mobile in one line"
+          top="sakura"
+          lead={
+            <>
+              <strong>Sakura Mobile&apos;s travel eSIM starts from {verdictPrices.sakuraTravelFrom}</strong> —{" "}
+              {verdictPrices.sakuraTravel7Days3Gb} for 7 days on 3 GB/day or {verdictPrices.sakuraTravel7DaysUnlimited} on
+              Unlimited — and <strong>its monthly Voice + Data plan with a Japanese number from{" "}
+              {verdictPrices.sakuraMonthly5Gb} a month</strong> plus {verdictPrices.sakuraActivation} activation, tax
+              included (sakuramobile.jp, read {VERDICT_CHECKED}). You sign up on its own site; for a one- or two-week,
+              data-only trip, the Klook eSIM in the table is the simpler buy.
+            </>
+          }
+        />
 
         {/* Answer first: what it is, what it costs, who it is for — in the first body paragraph. */}
         <p className={styles.bodyText}>
@@ -490,64 +512,6 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
           Cheapest Simbye plan {SIMBYE_FROM} before its code <strong>{SIMBYE_DISCOUNT_CODE}</strong> (price feed
           checked {pricesCheckedAt}). No Klook price is shown — it changes by date.
         </p>
-
-        {/* Quick Verdict — first thing under the hero, because the "sakura mobile" searcher
-            wants three things before anything else: what it costs, whether it suits them,
-            and where to sign up. */}
-        <div className={styles.verdictBox}>
-          <div className={styles.verdictHeader}>
-            <span className={styles.verdictLabel}>Quick Verdict</span>
-            <div className={styles.verdictStarRow}>
-              <div className={styles.verdictStars}>
-                <span className={styles.starFull}>★</span>
-                <span className={styles.starFull}>★</span>
-                <span className={styles.starFull}>★</span>
-                <span className={styles.starFull}>★</span>
-                <span className={styles.starHalf}>★</span>
-              </div>
-              <span className={styles.verdictScore}>4.4 / 5</span>
-            </div>
-          </div>
-          <div className={styles.verdictBody}>
-            <div className={styles.verdictGrid}>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>3 GB/day eSIM (docomo)</p>
-                <p className={styles.verdictStatValue}>¥2,750 / 3 days · ¥4,620 / 7 · ¥9,900 / 30</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Unlimited eSIM (au)</p>
-                <p className={styles.verdictStatValue}>¥3,245 / 3 days · ¥5,775 / 7 · ¥14,575 / 30</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Best For</p>
-                <p className={styles.verdictStatValue}>Long stays, rural Japan, a Japanese number</p>
-              </div>
-            </div>
-            <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", margin: "0 0 0.9rem", lineHeight: 1.6 }}>
-              Data only on these two plans; a separate Voice+Data eSIM adds a Japanese number. Not the pick
-              for the cheapest week of data. Yen prices from sakuramobile.jp, checked {YEN_PRICES_CHECKED};
-              USD equivalents last refreshed {pricesCheckedAt}.
-            </p>
-            <a href={SAKURA_AFFILIATE} className={styles.verdictBtn} target="_blank" rel="noopener noreferrer nofollow">
-              Get Sakura Mobile →
-            </a>
-            {/* Brand search first, then the cheaper comparison, highest commission first. */}
-            {SIMBYE_WEEK?.discountedUsd ? (
-              <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.7rem", lineHeight: 1.6 }}>
-                Only need a week of data? Unlimited for 7 days is {usdFor(7, true)} here against{" "}
-                {formatUsd(SIMBYE_WEEK.priceUsd)} at{" "}
-                <a href={esimLink("simbye")} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
-                  Simbye
-                </a>{" "}
-                ({formatUsd(SIMBYE_WEEK.discountedUsd)} with code {SIMBYE_DISCOUNT_CODE}), or compare the{" "}
-                <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
-                  Klook Japan eSIM
-                </KlookLink>
-                .
-              </p>
-            ) : null}
-          </div>
-        </div>
 
         <EsimBrandCompare brand="sakura" />
 

@@ -20,6 +20,7 @@ import {
   priceFromLabel,
   pricesCheckedLabel,
   siteCheapest,
+  siteCheapestFrom,
   unlimitedFromLabel,
   type EsimPlan,
   type EsimProviderId,
@@ -28,6 +29,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd, itemListJsonLd } from "../../../lib/structured-data";
 import { EsimCtaTop } from "../../../components/EsimCta";
 import BookingEsimCard from "../../../components/BookingEsimCard";
+import EsimVerdictBox from "../../../components/EsimVerdictBox";
 
 // Every price quoted on this page is read from data/esim-prices.json (refreshed daily),
 // so the figures the threads argue over are always checked against today's catalogue.
@@ -399,7 +401,10 @@ const ONE_GB = (["simbye", "esimgo", "airalo"] as EsimProviderId[])
   .sort((a, b) => a.plan.priceUsd - b.plan.priceUsd);
 const oneGbSentence = ONE_GB.map((x) => `${formatUsd(x.plan.priceUsd)} at ${x.name}`).join(", ");
 
-const TITLE = "Best eSIM for Japan (Reddit Picks, 2026): 1 GB Prices";
+// A31 (27 Nov 2026): 9.7th, 1,834 impressions, CTR 0.4% in the 28 days to 24 Nov. The title
+// now opens with the year, the answer and a number: the cheapest Japan plan on the daily feed
+// (Simbye 1 GB / 7 days, US$1.99 on its partner feed read 27 Nov 2026).
+const TITLE = `Best Japan eSIM 2026 (Reddit): Cheapest Plans from ${siteCheapestFrom()}`;
 const META_DESCRIPTION =
   `Japan eSIMs Reddit threads weigh up, price-checked: 1 GB costs ${oneGbSentence}. ` +
   `Networks, caps and fixes compared.`;
@@ -485,7 +490,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Best eSIM for Japan (Reddit Picks, 2026): <br />1 GB Prices
+            Best Japan eSIM 2026 (Reddit): <br />Cheapest Plans from {siteCheapestFrom()}
           </h1>
           <p className={styles.heroSubtitle}>
             The eSIMs travellers weigh up for Japan, checked against official prices: networks, 7- and
@@ -512,74 +517,41 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
           </p>
         </div>
 
-        {/* Quick Answer Box */}
-        <div className={styles.verdictBox}>
-          <div className={styles.verdictHeader}>
-            <span className={styles.verdictLabel}>The short answer</span>
-          </div>
-          <div className={styles.verdictBody}>
-            <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-              If you searched Reddit for the best eSIM for Japan, the answer on today&apos;s official prices is{" "}
-              <strong>Simbye</strong>:{" "}
-              {simbye7 ? `${formatUsd(simbye7.priceUsd)} for ${simbye7.name}` : `from ${priceFrom("simbye")}`}
-              {simbye7Unl ? ` or ${formatUsd(simbye7Unl.priceUsd)} for unlimited 7 days` : ""}, on{" "}
-              {getProvider("simbye").network}. <strong>Airalo</strong> costs{" "}
-              {airalo7 ? `${formatUsd(airalo7.priceUsd)} for ${airalo7.name}` : `from ${priceFrom("airalo")}`} on
-              SoftBank, and <strong>Klook eSIM</strong> runs on SoftBank 5G or IIJ (docomo), the easy add-on if
-              the rest of your trip is already booked on Klook. On the cheapest 1 GB plan, the three data-only
-              eSIMs at the top of the table cost {oneGbSentence} (each provider&apos;s own price, checked{" "}
-              {pricesCheckedAt}).
-            </p>
-            <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-              The cheapest unlimited week on current prices is{" "}
-              <strong>
-                {weekUnlimited
-                  ? `${weekUnlimited.provider} at ${formatUsd(weekUnlimited.plan.priceUsd)} (${weekUnlimited.plan.name})`
-                  : "listed in the table below"}
-              </strong>
-              , and the cheapest Japan eSIM of any size is{" "}
-              <strong>
-                {siteCheapestPlan
-                  ? `${siteCheapestPlan.provider}'s ${siteCheapestPlan.name} at ${formatUsd(siteCheapestPlan.priceUsd)}`
-                  : "listed in the table below"}
-              </strong>
-              . Every price is read from the providers&apos; own sites, last checked {pricesCheckedAt}.
-            </p>
-            <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-              <strong>eSIM Go</strong> starts at {priceFrom("esimgo")} and <strong>Airalo</strong> at{" "}
-              {priceFrom("airalo")}: Airalo is an easy default, but not the cheap one. If you need a Japanese
-              phone number, <strong>Sakura Mobile</strong> is the only provider here that sells one.
-            </p>
-            <div className={styles.verdictGrid}>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Holds up</p>
-                <p className={styles.verdictStatValue}>Airalo — from {priceFrom("airalo")}</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Holds up</p>
-                <p className={styles.verdictStatValue}>eSIM Go — from {priceFrom("esimgo")}</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Out of date</p>
-                <p className={styles.verdictStatValue}>Holafly unlimited — {priceFrom("holafly")}</p>
-              </div>
-            </div>
-            <a href={link("simbye")} className={styles.verdictBtn} target="_blank" rel="sponsored nofollow noopener">
-              Get Simbye Japan eSIM from {priceFrom("simbye")} →
-            </a>
-            <p style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "0.7rem", lineHeight: 1.6 }}>
-              Already booking tickets or transport on Klook?{" "}
-              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={{ color: "var(--accent)", fontWeight: 600 }}>
-                {klookEsim.ctaLabel}
-              </KlookLink>{" "}
-              — one checkout for the eSIM and the rest of the trip. Prefer Airalo&apos;s app?{" "}
-              <a href={link("airalo")} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>
-                Get Airalo Japan eSIM
-              </a>
-              .
-            </p>
-          </div>
-        </div>
+        {/* The one conclusion box (A31). The old "short answer" box's price paragraphs follow it as body text. */}
+        <EsimVerdictBox route="/guides/esim/best-esim-japan-reddit" />
+
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            If you searched Reddit for the best eSIM for Japan, the cheapest on today&apos;s official prices is{" "}
+            <strong>Simbye</strong>:{" "}
+            {simbye7 ? `${formatUsd(simbye7.priceUsd)} for ${simbye7.name}` : `from ${priceFrom("simbye")}`}
+            {simbye7Unl ? ` or ${formatUsd(simbye7Unl.priceUsd)} for unlimited 7 days` : ""}, on{" "}
+            {getProvider("simbye").network}. <strong>Airalo</strong> costs{" "}
+            {airalo7 ? `${formatUsd(airalo7.priceUsd)} for ${airalo7.name}` : `from ${priceFrom("airalo")}`} on
+            SoftBank, and <strong>Klook eSIM</strong> runs on SoftBank 5G or IIJ (docomo), the easy add-on if
+            the rest of your trip is already booked on Klook. On the cheapest 1 GB plan, the three data-only
+            eSIMs at the top of the table cost {oneGbSentence} (each provider&apos;s own price, checked{" "}
+            {pricesCheckedAt}).
+          </p>
+          <p className={styles.bodyText}>
+            The cheapest unlimited week on current prices is{" "}
+            <strong>
+              {weekUnlimited
+                ? `${weekUnlimited.provider} at ${formatUsd(weekUnlimited.plan.priceUsd)} (${weekUnlimited.plan.name})`
+                : "listed in the table below"}
+            </strong>
+            , and the cheapest Japan eSIM of any size is{" "}
+            <strong>
+              {siteCheapestPlan
+                ? `${siteCheapestPlan.provider}'s ${siteCheapestPlan.name} at ${formatUsd(siteCheapestPlan.priceUsd)}`
+                : "listed in the table below"}
+            </strong>
+            . <strong>eSIM Go</strong> starts at {priceFrom("esimgo")} and <strong>Airalo</strong> at{" "}
+            {priceFrom("airalo")}; if you need a Japanese phone number, <strong>Sakura Mobile</strong> is the only
+            provider here that sells one. Every price is read from the providers&apos; own sites, last checked{" "}
+            {pricesCheckedAt}.
+          </p>
+        </section>
 
         {/* The two high-rate options (Simbye 25%, Klook eSIM 20%) straight after the answer. */}
         <BookingEsimCard lead="Get online the moment you land in Japan" />
