@@ -566,6 +566,11 @@ export default function ZaoSnowMonstersTourPage({ updated }: { updated: PageUpda
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For skiing elsewhere in Tohoku, <Link href="/guides/attractions/appi-kogen-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>APPI Kogen</Link> is ¥9,500 a day for adults from 19 December and <Link href="/guides/attractions/shizukuishi-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Shizukuishi</Link> ¥6,800.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

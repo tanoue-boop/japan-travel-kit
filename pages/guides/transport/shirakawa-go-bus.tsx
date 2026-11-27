@@ -127,6 +127,7 @@ export default function ShirakawaGoBusPage({ updated }: { updated: PageUpdated }
           and the{" "}
           <Link href="/guides/transport/takayama-hokuriku-area-pass" style={linkStyle}>Takayama-Hokuriku Area
           Pass</Link>.
+          {" "}For the Northern Alps on another day, the <Link href="/guides/attractions/shinhotaka-ropeway-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shinhotaka Ropeway</Link> is ¥3,800 return for adults, with cars every 30 minutes.
         </p>
       }
       faq={[

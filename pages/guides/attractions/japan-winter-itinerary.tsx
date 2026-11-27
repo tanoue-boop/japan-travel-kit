@@ -1792,6 +1792,11 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             Two winter light shows sold as single tickets: the <Link href="/guides/attractions/sagamiko-illumillion-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sagamiko Illumillion</Link> near Tokyo (from ¥2,000) and <Link href="/guides/attractions/nabana-no-sato-illumination-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nabana no Sato</Link> near Nagoya (¥3,200, with a ¥1,000 voucher).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For winter days in the mountains: <Link href="/guides/attractions/appi-kogen-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>APPI Kogen</Link> and <Link href="/guides/attractions/shizukuishi-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Shizukuishi</Link> lift tickets in Iwate, and the <Link href="/guides/attractions/shinhotaka-ropeway-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shinhotaka Ropeway</Link> into the Northern Alps (¥3,800 return, open all year).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

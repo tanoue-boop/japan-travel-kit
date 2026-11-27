@@ -710,6 +710,11 @@ export default function NozawaOnsenSkiPage({ updated }: { updated: PageUpdated }
             For every ticket type, see <Link href="/guides/attractions/nozawa-onsen-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Nozawa Onsen lift ticket prices</Link>; in Hakuba, a day at <Link href="/guides/attractions/tsugaike-kogen-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Tsugaike</Link> is ¥9,800 for adults.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Nearby in Myoko, a day at <Link href="/guides/attractions/myoko-suginohara-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Myoko Suginohara</Link> is ¥9,000 for adults from 19 December 2026 to 28 March 2027, free up to elementary school.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

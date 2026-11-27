@@ -604,6 +604,11 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
             For a longer ski trip from Tokyo, <Link href="/guides/attractions/hakuba-happo-one-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Happo-one</Link> in Hakuba is ¥9,800 a day for adults at peak and ¥6,400 in December before the 19th.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Lift prices near Tokyo for 2026-27: <Link href="/guides/attractions/fujiten-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Fujiten</Link> ¥5,800 a day on weekdays, <Link href="/guides/attractions/karuizawa-prince-ski-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Karuizawa Prince Hotel Ski Resort</Link> ¥8,000 now and ¥10,000 from 19 December, and <Link href="/guides/attractions/naeba-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Naeba</Link> ¥9,800, for adults.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

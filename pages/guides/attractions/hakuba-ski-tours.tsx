@@ -728,6 +728,11 @@ export default function HakubaSkiToursPage({ updated }: { updated: PageUpdated }
             Lift prices by resort for 2026-27: <Link href="/guides/attractions/hakuba-happo-one-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Happo-one</Link> ¥9,800 a day at peak, <Link href="/guides/attractions/hakuba-goryu-47-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Hakuba47 and Goryu</Link> ¥9,500 online and <Link href="/guides/attractions/tsugaike-kogen-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Tsugaike</Link> ¥9,800 at the window.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Beyond Hakuba, <Link href="/guides/attractions/myoko-suginohara-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Myoko Suginohara</Link> in Myoko is ¥9,000 a day for adults and free up to elementary school age.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

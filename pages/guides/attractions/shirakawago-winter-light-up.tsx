@@ -596,6 +596,11 @@ export default function ShirakawagoWinterLightUpPage({ updated }: { updated: Pag
             On ordinary days, the <Link href="/guides/transport/shirakawa-go-bus" style={{ color: "var(--red)", fontWeight: 600 }}>Shirakawa-go bus</Link> from Takayama is ¥2,900 one way from 1 December 2026; to Kanazawa it is also ¥2,900.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a winter view of the Northern Alps, the <Link href="/guides/attractions/shinhotaka-ropeway-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shinhotaka Ropeway</Link> runs all year: ¥3,800 return for adults.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -723,3 +723,76 @@ export const nozawaOnsenLiftTicket: KlookTour = {
   desc: "A one-day lift ticket for Nozawa Onsen Ski Resort in northern Nagano",
   url: klookLink("https://www.klook.com/en-US/activity/136277-nozawa-onsen-ski-resort-lift-ticket/"),
 };
+
+// Day 11 (task jtk-20261207-A35, run 28 Nov 2026). Activity ids from the www.klook.com search index;
+// prices on the pages are the operators' own, read 28 Nov 2026.
+
+/** Naeba Ski Resort — 1-day lift ticket with a one-way direct bus from Narita Airport. */
+export const naebaNaritaBusLiftTicket: KlookTour = {
+  title: "Naeba lift ticket + bus from Narita Airport",
+  desc: "A Naeba one-day lift ticket packaged with the direct bus from Narita Airport; the voucher is exchanged at the lift ticket counter in the Day Trip Ski Center",
+  url: klookLink("https://www.klook.com/en-US/activity/97850-skiing-experience-while-enjoying-view-joetsu-border-dragondora-boasts-longest-lengths-world/"),
+};
+
+/** Karuizawa Prince Hotel Ski Resort — 1-day lift ticket (gear and bus options). */
+export const karuizawaPrinceLiftTicket: KlookTour = {
+  title: "Karuizawa Prince Hotel ski lift ticket",
+  desc: "A one-day lift ticket for the Karuizawa Prince Hotel Ski Resort next to Karuizawa Station, shown on your phone to the staff on the day",
+  url: klookLink("https://www.klook.com/en-US/activity/82221-1-day-join-skiing-nagano/"),
+};
+
+/** APPI Kogen Ski Resort (Iwate) — 1-day BLUE PASS lift ticket. */
+export const appiKogenLiftTicket: KlookTour = {
+  title: "APPI Kogen 1-day lift ticket (BLUE PASS)",
+  desc: "A one-day BLUE PASS for APPI Kogen in Iwate, valid on every lift and the gondola; check the season named on the option",
+  url: klookLink("https://www.klook.com/en-US/activity/102827-appi-kogen-ski-resort-1-day-lift-ticket-iwate/"),
+};
+
+/** Fujiten Snow Resort (Yamanashi) — lift ticket. */
+export const fujitenLiftTicket: KlookTour = {
+  title: "Fujiten Snow Resort lift ticket",
+  desc: "A lift ticket for Fujiten, the ski area on the northern slope of Mt. Fuji near the Fuji Five Lakes",
+  url: klookLink("https://www.klook.com/en-US/activity/142929-fujiten-snow-resort/"),
+};
+
+/** Myoko Suginohara Ski Resort (Niigata) — lift ticket. */
+export const suginoharaLiftTicket: KlookTour = {
+  title: "Myoko Suginohara lift ticket",
+  desc: "A lift ticket for Myoko Suginohara, the Prince resort in Myoko, Niigata, scanned by the staff on the day",
+  url: klookLink("https://www.klook.com/en-US/activity/82258-myoko-suginohara-ski-resort-lift-ticket-niigata/"),
+};
+
+/** Shizukuishi Ski Resort (Iwate) — 1-day lift ticket (listed as an early-bird ticket). */
+export const shizukuishiLiftTicket: KlookTour = {
+  title: "Shizukuishi Ski Resort 1-day lift ticket",
+  desc: "A one-day lift ticket for Shizukuishi, the Prince resort below Mt. Iwate; Klook lists it as an early-bird ticket, so check the dates it covers",
+  url: klookLink("https://www.klook.com/en-US/activity/100688-snow-resorts-northern-tohoku-view-majestic-mt-iwate/"),
+};
+
+/** Ishiuchi Maruyama Ski Resort (Niigata) — 1-day lift ticket. */
+export const ishiuchiMaruyamaLiftTicket: KlookTour = {
+  title: "Ishiuchi Maruyama 1-day lift ticket",
+  desc: "A one-day lift ticket for Ishiuchi Maruyama, the large resort in Minami-Uonuma near Echigo-Yuzawa",
+  url: klookLink("https://www.klook.com/en-US/activity/82610-1-day-join-skiing-ishiuchi-maruyama-ski-resort/"),
+};
+
+/** Kandatsu Snow Resort (Niigata) — 1-day lift ticket with gear and clothing rental. */
+export const kandatsuLiftRental: KlookTour = {
+  title: "Kandatsu 1-day lift ticket + rental",
+  desc: "A one-day Kandatsu lift ticket with a ski or snowboard set and ski wear; unused tickets or rentals are not refunded",
+  url: klookLink("https://www.klook.com/en-US/activity/134936-kandatsu-snow-resort-1-day-lift-ticket-with-gear-clothing-rental/"),
+};
+
+/** Maiko Snow Resort (Niigata) — 1-day lift ticket. */
+export const maikoLiftTicket: KlookTour = {
+  title: "Maiko Snow Resort 1-day lift ticket",
+  desc: "A one-day Maiko lift ticket collected from the automatic machine with the QR code, so you can skip the counter",
+  url: klookLink("https://www.klook.com/en-US/activity/98089-maiko-snow-resort/"),
+};
+
+/** Shin-Hotaka Ropeway (Gifu) — round trip on the No. 1 and No. 2 ropeways. */
+export const shinhotakaRopewayTicket: KlookTour = {
+  title: "Shin-Hotaka Ropeway round-trip ticket",
+  desc: "The round trip from Shin-Hotaka Onsen to Nishi-Hotakaguchi on both ropeways; boarding from the middle station is not allowed",
+  url: klookLink("https://www.klook.com/en-US/activity/134705-shin-hotaka-ropeway-round-trip-ticket/"),
+};

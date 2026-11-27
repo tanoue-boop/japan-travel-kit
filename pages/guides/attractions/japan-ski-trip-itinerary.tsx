@@ -810,6 +810,11 @@ export default function JapanSkiTripItineraryPage({ updated }: { updated: PageUp
             Lift prices for 2026-27 by resort: <Link href="/guides/attractions/niseko-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Niseko lift ticket prices</Link> (¥13,500 a day at peak), <Link href="/guides/attractions/hakuba-happo-one-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Happo-one</Link> (¥9,800 at peak) and <Link href="/guides/attractions/nozawa-onsen-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Nozawa Onsen lift ticket prices</Link> (¥7,800 a day).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            More lift prices for 2026-27: <Link href="/guides/attractions/appi-kogen-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>APPI Kogen</Link> ¥9,500 a day from 19 December, <Link href="/guides/attractions/shizukuishi-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Shizukuishi</Link> ¥6,800, <Link href="/guides/attractions/myoko-suginohara-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Myoko Suginohara</Link> ¥9,000 and <Link href="/guides/attractions/naeba-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Naeba</Link> ¥9,800, for adults.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

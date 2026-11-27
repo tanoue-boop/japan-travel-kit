@@ -1007,6 +1007,11 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
             Two single tickets for the lake: the <Link href="/guides/attractions/mt-fuji-panoramic-ropeway-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Mt. Fuji Panoramic Ropeway</Link> (¥1,200 return, closed 7–17 December 2026) and the <Link href="/guides/attractions/kawaguchiko-music-forest-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kawaguchiko Music Forest Museum</Link> (¥1,800 weekdays, 10:00–17:30).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In winter, <Link href="/guides/attractions/fujiten-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Fujiten</Link> on the northern slope of Mt. Fuji is ¥5,800 a day for adults on weekdays and ¥6,800 on weekends.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

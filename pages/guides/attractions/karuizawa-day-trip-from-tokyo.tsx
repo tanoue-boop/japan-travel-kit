@@ -666,6 +666,11 @@ export default function KaruizawaDayTripFromTokyoPage({ updated }: { updated: Pa
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            To ski on the same trip, <Link href="/guides/attractions/karuizawa-prince-ski-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Karuizawa Prince Hotel Ski Resort</Link> by the station is open from 31 October 2026, at ¥8,000 a day for adults until 18 December and ¥10,000 after.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

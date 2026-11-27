@@ -758,6 +758,11 @@ export default function JigokudaniSnowMonkeyTourPage({ updated }: { updated: Pag
             To ski on the same trip, see <Link href="/guides/attractions/nozawa-onsen-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Nozawa Onsen lift ticket prices</Link> (¥7,800 a day) or <Link href="/guides/attractions/hakuba-happo-one-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Happo-one</Link> in Hakuba (¥9,800 at peak).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            To ski on the same trip, see <Link href="/guides/attractions/myoko-suginohara-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Myoko Suginohara</Link> in Myoko: ¥9,000 a day for adults, free for children up to elementary school.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

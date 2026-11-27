@@ -1424,6 +1424,11 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a ski day in Yuzawa, see <Link href="/guides/attractions/ishiuchi-maruyama-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Ishiuchi Maruyama</Link> (¥8,500 a day at the window), <Link href="/guides/attractions/kandatsu-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Kandatsu</Link> (¥5,800 on weekdays) and <Link href="/guides/attractions/maiko-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Maiko</Link> (¥7,300), for adults in 2026-27.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

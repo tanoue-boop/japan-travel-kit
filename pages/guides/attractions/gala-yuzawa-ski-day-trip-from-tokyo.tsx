@@ -1376,6 +1376,11 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             For a longer trip to Nagano, <Link href="/guides/attractions/hakuba-goryu-47-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Hakuba47 and Goryu</Link> in Hakuba is ¥10,000 a day for adults at the window, ¥6,500 for ages 13–22.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Other Yuzawa-area lift prices for 2026-27: <Link href="/guides/attractions/naeba-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Naeba</Link> ¥9,800 a day, <Link href="/guides/attractions/ishiuchi-maruyama-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Ishiuchi Maruyama</Link> ¥8,500 at the window, <Link href="/guides/attractions/kandatsu-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Kandatsu</Link> ¥5,800 on weekdays and <Link href="/guides/attractions/maiko-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Maiko</Link> ¥7,300, all for adults.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

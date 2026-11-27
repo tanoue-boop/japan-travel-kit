@@ -490,6 +490,11 @@ export default function MtFujiDayTripTokyoPage({ updated }: { updated: PageUpdat
             At Lake Kawaguchi, the <Link href="/guides/attractions/mt-fuji-panoramic-ropeway-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Mt. Fuji Panoramic Ropeway</Link> is ¥1,200 return for adults; it is closed for inspection from 7 to 17 December 2026.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            To ski with a Mt. Fuji view, see <Link href="/guides/attractions/fujiten-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Fujiten</Link>: ¥5,800 a day for adults on weekdays, with night skiing at weekends.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

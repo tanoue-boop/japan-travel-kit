@@ -793,6 +793,11 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
             On the Tohoku side, <Link href="/guides/attractions/nasu-safari-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nasu Safari Park</Link> is a bus ride from Nasushiobara or Kuroiso Station (¥3,200 for adults, safari bus extra).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In Iwate, a day of skiing at <Link href="/guides/attractions/appi-kogen-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>APPI Kogen</Link> is ¥9,500 for adults from 19 December, and at <Link href="/guides/attractions/shizukuishi-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Shizukuishi</Link> ¥6,800.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

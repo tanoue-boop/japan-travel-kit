@@ -896,6 +896,11 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             Without a tour, the <Link href="/guides/transport/shirakawa-go-bus" style={{ color: "var(--red)", fontWeight: 600 }}>Shirakawa-go bus</Link> from Takayama is ¥2,900 one way from 1 December 2026 (about 50 minutes).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For the Northern Alps, the <Link href="/guides/attractions/shinhotaka-ropeway-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shinhotaka Ropeway</Link> is ¥3,800 return for adults and runs all year.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -172,6 +172,7 @@ export default function TakayamaHokurikuAreaPassPage({ updated }: { updated: Pag
           and{" "}
           <Link href="/guides/transport/tokyo-to-nagoya-shinkansen" style={linkStyle}>Tokyo to Nagoya by shinkansen</Link>.
           {" "}Without the pass, the <Link href="/guides/transport/shirakawa-go-bus" style={{ color: "var(--red)", fontWeight: 600 }}>Shirakawa-go bus</Link> from Takayama is ¥2,900 and from Shirakawa-go to Kanazawa ¥2,900, one way from 1 December 2026.
+          {" "}For the mountains, the <Link href="/guides/attractions/shinhotaka-ropeway-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shinhotaka Ropeway</Link> from Shin-Hotaka Onsen is ¥3,800 return for adults and ¥1,900 for children.
         </p>
       }
       faq={[

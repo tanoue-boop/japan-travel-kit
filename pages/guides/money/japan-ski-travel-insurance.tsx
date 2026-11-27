@@ -1073,6 +1073,11 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
             For lift prices by resort, see <Link href="/guides/attractions/niseko-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Niseko lift ticket prices</Link>, <Link href="/guides/attractions/hakuba-goryu-47-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Hakuba47 and Goryu</Link> (¥10,000 a day at the window) and <Link href="/guides/attractions/tsugaike-kogen-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Tsugaike</Link> (¥9,800 a day).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For lift prices, see <Link href="/guides/attractions/ishiuchi-maruyama-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Ishiuchi Maruyama</Link> (¥8,500 a day at the window), <Link href="/guides/attractions/kandatsu-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Kandatsu</Link> (¥5,800 on weekdays), <Link href="/guides/attractions/appi-kogen-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>APPI Kogen</Link> (¥9,500) and <Link href="/guides/attractions/karuizawa-prince-ski-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Karuizawa Prince Hotel Ski Resort</Link> (¥10,000 in the main season).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}
