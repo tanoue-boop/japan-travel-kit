@@ -25,6 +25,7 @@ import {
 } from "../../../lib/klook-links";
 import KlookSameDayCards from "../../../components/KlookSameDayCards";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import HotelStayBlock from "../../../components/HotelStayBlock";
 import { hreflangLinks } from "../../../components/Hreflang";
 
 /**
@@ -1139,6 +1140,9 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             </KlookLink>
           </div>
         </section>
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="yuzawa" />
 
         {/* Tour vs DIY */}
         <section className={styles.comparisonSection}>

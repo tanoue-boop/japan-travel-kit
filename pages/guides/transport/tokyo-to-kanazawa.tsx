@@ -22,6 +22,7 @@ import {
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import BookingEsimCard from "../../../components/BookingEsimCard";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import HotelStayBlock from "../../../components/HotelStayBlock";
 
 /**
  * Tokyo to Kanazawa on the Hokuriku Shinkansen. Added 27 Oct 2026; rewritten
@@ -630,6 +631,9 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
             </KlookLink>
           </div>
         </section>
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="kanazawa" />
 
         {/* Onward to Kansai */}
         <section className={styles.bodySection}>

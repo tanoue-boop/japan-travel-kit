@@ -18,6 +18,7 @@ import { checkedLabel } from "../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import HotelStayBlock from "../../../components/HotelStayBlock";
 
 /**
  * Rebuilt 8 Nov 2026 (task jtk-20261108-03) on the figures osaka-airport-transfer
@@ -472,6 +473,10 @@ export default function HarukaVsNankaiRapitPage({ updated }: { updated: PageUpda
         </section>
 
         <EsimCtaBottom />
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="osaka" areas={["namba", "tennoji", "umeda"]} />
+        <HotelStayBlock city="kyoto" />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

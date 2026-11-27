@@ -16,6 +16,7 @@ import {
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import HotelStayBlock from "../../../components/HotelStayBlock";
 
 /**
  * ---------------------------------------------------------------------------
@@ -762,6 +763,9 @@ export default function HokkaidoRailPassPage({ updated }: { updated: PageUpdated
         </section>
 
         <EsimCtaBottom />
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="sapporo" />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

@@ -20,6 +20,7 @@ import {
   tokyoSightseeingBusTour,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import HotelStayBlock from "../../../components/HotelStayBlock";
 
 /**
  * Tokyo Airport Limousine Bus — restored 22 Oct 2026.
@@ -945,6 +946,9 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
         </section>
 
         <EsimCtaBottom />
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="tokyo" areas={["shinjuku", "tokyoStation", "ginza", "ueno"]} />
 
         {/* FAQ */}
         <section className={styles.faqSection}>

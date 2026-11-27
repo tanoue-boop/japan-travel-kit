@@ -23,6 +23,7 @@ import {
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import BookingEsimCard from "../../../components/BookingEsimCard";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import HotelStayBlock from "../../../components/HotelStayBlock";
 
 /**
  * Osaka to Hiroshima on the Sanyo Shinkansen. Added 28 Oct 2026. Sister page to
@@ -679,6 +680,9 @@ export default function OsakaToHiroshimaShinkansenPage({ updated }: { updated: P
             what the day is competing with.
           </p>
         </section>
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="hiroshima" />
 
         {/* Reservations and luggage */}
         <section className={styles.bodySection}>

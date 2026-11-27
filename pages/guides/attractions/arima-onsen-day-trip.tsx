@@ -16,6 +16,7 @@ import {
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import HotelStayBlock from "../../../components/HotelStayBlock";
 
 // CTA links. The headline CTA is the guided day out of Osaka (6.5% tours band);
 // the Rokkosan Tourist Pass is the 5% passes band and the independent-traveller
@@ -706,6 +707,9 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
             {" "}instead and keep Arima for a second visit.
           </p>
         </section>
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="arima" />
 
         {/* Tour vs DIY */}
         <section className={styles.comparisonSection}>

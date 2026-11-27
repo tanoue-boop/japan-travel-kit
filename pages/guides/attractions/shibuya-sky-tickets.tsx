@@ -23,6 +23,7 @@ import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data"
 import { hreflangLinks } from "../../../components/Hreflang";
 import { PRICES, checkedLabel } from "../../../lib/attraction-prices";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import HotelStayBlock from "../../../components/HotelStayBlock";
 
 // CTA link — Klook affiliate redirect, shared with the ticket price table.
 const SHIBUYA_SKY_URL = shibuyaSkyTicketUrl;
@@ -605,6 +606,9 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
             </>
           }
         />
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="tokyo" areas={["shibuya", "shinjuku", "tokyoStation", "ueno"]} />
 
         <EsimCtaTop />
 

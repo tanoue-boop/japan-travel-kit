@@ -20,6 +20,7 @@ import {
   type KlookTripPrepItem,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import HotelStayBlock from "../../../components/HotelStayBlock";
 
 /**
  * Nozawa Onsen as a ski stay from Tokyo, for the reader searching "Nozawa Onsen
@@ -682,6 +683,9 @@ export default function NozawaOnsenSkiPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
         </section>
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="nozawa" />
 
         {/* Pairing */}
         <section className={styles.bodySection}>

@@ -14,6 +14,7 @@ import {
   skylinerVsNexSameDayPrep,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import HotelStayBlock from "../../../components/HotelStayBlock";
 
 /**
  * Skyliner vs N'EX — restored 3 Nov 2026 (task jtk-20261103-05).
@@ -576,6 +577,9 @@ export default function SkylinerVsNexPage({ updated }: { updated: PageUpdated })
             compares the neighbourhoods.
           </p>
         </section>
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="tokyo" areas={["ueno", "tokyoStation", "shinjuku"]} />
 
         {/* Alternatives */}
         <section className={styles.comparisonSection}>

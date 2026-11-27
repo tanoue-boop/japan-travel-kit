@@ -20,6 +20,7 @@ import {
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import HotelStayBlock from "../../../components/HotelStayBlock";
 
 /**
  * Hakone 2-day itinerary, added 21 Nov 2026 (task-jtk-20261121-01).
@@ -506,6 +507,9 @@ export default function Hakone2DayItineraryPage({ updated }: { updated: PageUpda
             </KlookLink>
           </div>
         </section>
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="hakone" />
 
         {/* (2) Freepass vs single tickets */}
         <section className={styles.comparisonSection}>

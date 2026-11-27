@@ -26,6 +26,7 @@ import {
   type KlookTripPrepItem,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import HotelStayBlock from "../../../components/HotelStayBlock";
 
 /**
  * Japan ski trip itinerary — the planning page that sits above the four resort
@@ -550,6 +551,9 @@ export default function JapanSkiTripItineraryPage({ updated }: { updated: PageUp
             </KlookLink>
           </div>
         </section>
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="japan-ski" heading="Where to stay for a Japan ski trip" />
 
         {/* 7-day */}
         <section className={styles.comparisonSection}>

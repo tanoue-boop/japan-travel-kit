@@ -21,6 +21,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import HotelStayBlock from "../../../components/HotelStayBlock";
 
 // Pass price bands, the free-entry rule, the coaster names and the rail/bus access
 // below were first read off fujiq.jp (/en/, /en/ticket/ and /en/access/) on 20 Oct 2026.
@@ -426,6 +427,9 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
             </KlookLink>
           </div>
         </div>
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="kawaguchiko" areas={["fujiQ", "kawaguchikoStation", "lakeKawaguchi"]} />
 
         <EsimCtaTop />
 

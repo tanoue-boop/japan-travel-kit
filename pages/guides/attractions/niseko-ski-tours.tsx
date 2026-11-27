@@ -28,6 +28,7 @@ import {
   type KlookTripPrepItem,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import HotelStayBlock from "../../../components/HotelStayBlock";
 
 /**
  * Niseko as the thing you book rather than the place you read about, written
@@ -833,6 +834,9 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             </KlookLink>
           </div>
         </section>
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="niseko" />
 
         {/* Which month */}
         <section className={styles.comparisonSection}>

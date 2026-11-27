@@ -16,6 +16,7 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { hreflangLinks } from "../../../components/Hreflang";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import HotelStayBlock from "../../../components/HotelStayBlock";
 import KlookSameDayCards from "../../../components/KlookSameDayCards";
 import { teamlabSameDayCards } from "../../../lib/teamlab-same-day-cards";
 
@@ -260,6 +261,9 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
         <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
 
         {/* eSIM box straight after the answer (jtk-20261122-P01): it sat below three H2 sections. */}
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="tokyo" areas={["ginza", "odaiba", "roppongi", "tokyoStation"]} />
+
         <EsimCtaTop />
 
         <section className={styles.comparisonSection}>

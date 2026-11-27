@@ -17,6 +17,7 @@ import {
   tokyoMtFujiHighwayBus,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import HotelStayBlock from "../../../components/HotelStayBlock";
 
 /**
  * The Kawaguchiko-only day trip, as distinct from the two Fuji guides either side of it:
@@ -803,6 +804,9 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
             lists inns with the view from the room.
           </p>
         </section>
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="kawaguchiko" />
 
         {/* Which version */}
         <section className={styles.whoForSection}>

@@ -9,6 +9,7 @@ import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { kyotoArrivalShinkansenPrep, shinkansenTokyoKyoto, tokyoToKyotoTripPrep } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import HotelStayBlock from "../../../components/HotelStayBlock";
 
 /**
  * Tokyo to Kyoto: how to make the journey, and what to book around it. Rebuilt on
@@ -588,6 +589,9 @@ export default function TokyoToKyotoPage({ updated }: { updated: PageUpdated }) 
           intro="The same short list, in the order most trips need it: train, hotel, guided days, then data."
           items={tokyoToKyotoTripPrep}
         />
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="kyoto" />
 
         {/* Tips */}
         <section className={styles.whoForSection}>

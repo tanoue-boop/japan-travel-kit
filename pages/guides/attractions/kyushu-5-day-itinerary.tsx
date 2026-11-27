@@ -26,6 +26,7 @@ import {
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import HotelStayBlock from "../../../components/HotelStayBlock";
 
 /**
  * Five days in northern Kyushu, based in Fukuoka. Added 7 Nov 2026.
@@ -919,6 +920,9 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
             </div>
           </div>
         </section>
+
+        {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
+        <HotelStayBlock city="beppu-yufuin" areas={["hakata", "beppu", "yufuin"]} heading="Where to stay in Fukuoka, Beppu and Yufuin" />
 
         {/* Booking checklist */}
         <section className={styles.comparisonSection}>
