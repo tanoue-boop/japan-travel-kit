@@ -1319,6 +1319,11 @@ export default function Tokyo5DayItineraryPage({ updated }: { updated: PageUpdat
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Making one day a Nikko trip? The <Link href="/guides/transport/nikko-pass" style={{ color: "var(--red)", fontWeight: 600 }}>NIKKO PASS</Link> guide compares Tobu&apos;s two passes from Asakusa.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

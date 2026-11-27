@@ -480,6 +480,11 @@ export default function MtFujiDayTripTokyoPage({ updated }: { updated: PageUpdat
           listings={[gygFujiFromTokyo, gygFujiBusTours]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Passes for the Fuji side: Fujikyu&apos;s <Link href="/guides/transport/mt-fuji-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Mt. Fuji Pass</Link> for the buses and trains round the lakes, Odakyu&apos;s <Link href="/guides/transport/fuji-hakone-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Fuji Hakone Pass</Link> if Hakone is on the same trip, and JR Central&apos;s <Link href="/guides/transport/mt-fuji-shizuoka-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Mt. Fuji-Shizuoka Area Tourist Pass Mini</Link> for the Shizuoka side.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

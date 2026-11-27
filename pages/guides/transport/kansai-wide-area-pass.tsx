@@ -173,7 +173,9 @@ export default function KansaiWideAreaPassPage({ updated }: { updated: PageUpdat
           shorter pass, read our{" "}
           <Link href="/guides/attractions/kansai-area-pass" style={linkStyle}>Kansai Area Pass guide</Link>, and the{" "}
           <Link href="/guides/attractions/kansai-5-day-itinerary" style={linkStyle}>Kansai 5 day itinerary</Link>{" "}
-          for a five-day plan the pass can carry.
+          for a five-day plan the pass can carry. Going on round Shikoku? The{" "}
+          <Link href="/guides/transport/all-shikoku-rail-pass" style={linkStyle}>ALL SHIKOKU Rail Pass</Link>{" "}
+          covers JR Shikoku and the island&apos;s private lines; its prices change for passes sold from 1 December 2026.
         </p>
       }
       faq={[

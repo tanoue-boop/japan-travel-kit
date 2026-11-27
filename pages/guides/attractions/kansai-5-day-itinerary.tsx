@@ -674,6 +674,11 @@ export default function Kansai5DayItineraryPage({ updated }: { updated: PageUpda
           tours={[kyotoCityFushimiArashiyamaTour, kyotoNaraArashiyamaTour, himejiCastleOsakaBusTour, kobeBeefHarbourKitanoDayTour]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Two day trips from Osaka have their own tickets: Nankai&apos;s <Link href="/guides/transport/koyasan-world-heritage-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Koyasan World Heritage Ticket</Link> for Mt. Koya, and JR&apos;s <Link href="/guides/transport/ise-kumano-wakayama-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Ise-Kumano-Wakayama Area Tourist Pass</Link> for Ise and Kumano.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

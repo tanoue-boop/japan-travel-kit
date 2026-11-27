@@ -802,6 +802,11 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
           Shinjuku, where the Fuji-Q bus leaves from, is also the first-trip pick in our <Link href="/guides/attractions/where-to-stay-in-tokyo">where to stay in Tokyo</Link> guide.
         </p>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Seeing more of the lakes around the park? Fujikyu&apos;s <Link href="/guides/transport/mt-fuji-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Mt. Fuji Pass</Link> covers the buses and trains round Mt. Fuji for one to three days.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

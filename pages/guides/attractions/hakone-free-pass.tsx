@@ -745,6 +745,11 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
           </LastChecked>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Two Odakyu passes go further than Hakone: the <Link href="/guides/transport/fuji-hakone-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Fuji Hakone Pass</Link> adds the Fuji Five Lakes, and the <Link href="/guides/transport/hakone-kamakura-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Hakone Kamakura Pass</Link> adds the Enoden to Kamakura.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -328,6 +328,11 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
           listings={[gygOsaka, gygNaraFromOsaka]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For Mt. Koya as a day trip or overnight, the <Link href="/guides/transport/koyasan-world-heritage-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Koyasan World Heritage Ticket</Link> guide covers Nankai&apos;s train-and-bus ticket from Namba.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

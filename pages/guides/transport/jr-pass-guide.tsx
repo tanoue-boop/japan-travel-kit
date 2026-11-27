@@ -1311,6 +1311,11 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
             Each JR West regional pass now has its own page: the <Link href="/guides/transport/jr-west-all-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>JR West All Area Pass</Link> (Hakata and Kanazawa in one week), the <Link href="/guides/transport/sanyo-sanin-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Sanyo-San&apos;in Area Pass</Link> and the <Link href="/guides/transport/kansai-wide-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Kansai WIDE Area Pass</Link>.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            More regional passes with their own pages: the <Link href="/guides/transport/okayama-hiroshima-yamaguchi-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Okayama-Hiroshima-Yamaguchi Area Pass</Link>, the <Link href="/guides/transport/all-shikoku-rail-pass" style={{ color: "var(--red)", fontWeight: 600 }}>ALL SHIKOKU Rail Pass</Link> (new prices from 1 December 2026), JR Central&apos;s <Link href="/guides/transport/ise-kumano-wakayama-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Ise-Kumano-Wakayama Area Tourist Pass</Link> and the <Link href="/guides/transport/mt-fuji-shizuoka-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Mt. Fuji-Shizuoka Area Tourist Pass Mini</Link>.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

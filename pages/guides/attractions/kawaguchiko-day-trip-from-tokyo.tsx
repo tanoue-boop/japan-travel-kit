@@ -997,6 +997,11 @@ export default function KawaguchikoDayTripFromTokyoPage({ updated }: { updated: 
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Staying more than a day? Compare Fujikyu&apos;s <Link href="/guides/transport/mt-fuji-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Mt. Fuji Pass</Link>, Odakyu&apos;s <Link href="/guides/transport/fuji-hakone-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Fuji Hakone Pass</Link> (Hakone and the lakes from Shinjuku) and, from the Shizuoka side, the <Link href="/guides/transport/mt-fuji-shizuoka-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Mt. Fuji-Shizuoka Area Tourist Pass Mini</Link>.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

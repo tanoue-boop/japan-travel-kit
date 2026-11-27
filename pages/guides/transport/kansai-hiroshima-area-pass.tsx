@@ -527,6 +527,11 @@ export default function KansaiHiroshimaAreaPassPage({ updated }: { updated: Page
             Going further than Hiroshima? The <Link href="/guides/transport/sanyo-sanin-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Sanyo-San&apos;in Area Pass</Link> runs the shinkansen to Hakata and adds the San&apos;in coast, and the <Link href="/guides/transport/jr-west-all-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>JR West All Area Pass</Link> adds Kanazawa too. For Kansai day trips only, compare the <Link href="/guides/transport/kansai-wide-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Kansai WIDE Area Pass</Link> and the <Link href="/guides/transport/kansai-sanin-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Kansai-San&apos;in Area Pass</Link>.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Already in Hiroshima, or starting from Okayama? The <Link href="/guides/transport/hiroshima-yamaguchi-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Hiroshima-Yamaguchi Area Pass</Link> (Mihara to Hakata) and the <Link href="/guides/transport/okayama-hiroshima-yamaguchi-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Okayama-Hiroshima-Yamaguchi Area Pass</Link> (Okayama to Hakata) are the five-day passes for the western end, and the <Link href="/guides/transport/all-shikoku-rail-pass" style={{ color: "var(--red)", fontWeight: 600 }}>ALL SHIKOKU Rail Pass</Link> covers the island across the bridge.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

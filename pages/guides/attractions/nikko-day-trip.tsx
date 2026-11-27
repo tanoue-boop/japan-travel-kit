@@ -425,6 +425,11 @@ export default function NikkoDayTripPage({ updated }: { updated: PageUpdated }) 
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Tobu&apos;s two passes from Asakusa are compared in our <Link href="/guides/transport/nikko-pass" style={{ color: "var(--red)", fontWeight: 600 }}>NIKKO PASS guide</Link>: the World Heritage Area pass for two days, the All Area pass for four.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -901,6 +901,11 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
             Carrying on west after Hiroshima? The <Link href="/guides/transport/sanyo-sanin-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Sanyo-San&apos;in Area Pass</Link> covers the shinkansen to Hakata for seven days, and the <Link href="/guides/transport/jr-west-all-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>JR West All Area Pass</Link> adds Kanazawa as well.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Two JR West passes start in this area: the <Link href="/guides/transport/hiroshima-yamaguchi-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Hiroshima-Yamaguchi Area Pass</Link> from Mihara, and the <Link href="/guides/transport/okayama-hiroshima-yamaguchi-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Okayama-Hiroshima-Yamaguchi Area Pass</Link> if Okayama or Kurashiki comes first. Both include the Miyajima ferry.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

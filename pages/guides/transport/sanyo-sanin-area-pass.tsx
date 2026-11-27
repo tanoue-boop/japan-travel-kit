@@ -173,7 +173,11 @@ export default function SanyoSaninAreaPassPage({ updated }: { updated: PageUpdat
           <Link href="/guides/transport/jr-kyushu-rail-pass" style={linkStyle}>JR Kyushu Rail Pass</Link>{" "}
           starts where this one stops. Adding Kanazawa? The{" "}
           <Link href="/guides/transport/jr-west-all-area-pass" style={linkStyle}>JR West All Area Pass</Link>{" "}
-          covers both.
+          covers both. Crossing to Shikoku? The{" "}
+          <Link href="/guides/transport/all-shikoku-rail-pass" style={linkStyle}>ALL SHIKOKU Rail Pass</Link>{" "}
+          starts at Kojima. For five days in the west only, the{" "}
+          <Link href="/guides/transport/okayama-hiroshima-yamaguchi-area-pass" style={linkStyle}>Okayama-Hiroshima-Yamaguchi Area Pass</Link>{" "}
+          is the smaller pass.
         </p>
       }
       faq={[

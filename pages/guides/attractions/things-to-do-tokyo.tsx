@@ -815,6 +815,11 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             One Tokyo sight that sells out by date is the Ghibli Museum in Mitaka: our <Link href="/guides/attractions/ghibli-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Ghibli Museum tickets guide</Link> has the monthly release time.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a day in Nikko, Tobu&apos;s <Link href="/guides/transport/nikko-pass" style={{ color: "var(--red)", fontWeight: 600 }}>NIKKO PASS</Link> includes the round trip from Asakusa and the local buses.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

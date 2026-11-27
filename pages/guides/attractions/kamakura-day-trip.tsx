@@ -433,6 +433,11 @@ export default function KamakuraDayTripPage({ updated }: { updated: PageUpdated 
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Combining Kamakura with Hakone? Odakyu&apos;s <Link href="/guides/transport/hakone-kamakura-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Hakone Kamakura Pass</Link> covers both for three days, Enoden included.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

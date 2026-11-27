@@ -480,6 +480,11 @@ export default function HiroshimaMiyajimaDayTripPage({ updated }: { updated: Pag
           ]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Spending several days in the region? The <Link href="/guides/transport/hiroshima-yamaguchi-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Hiroshima-Yamaguchi Area Pass</Link> and the <Link href="/guides/transport/okayama-hiroshima-yamaguchi-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Okayama-Hiroshima-Yamaguchi Area Pass</Link> both cover the JR Miyajima ferry for five days.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

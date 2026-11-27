@@ -861,6 +861,11 @@ export default function Nagoya2DayItineraryPage({ updated }: { updated: PageUpda
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Heading south to Ise and Kumano from Nagoya? The <Link href="/guides/transport/ise-kumano-wakayama-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Ise-Kumano-Wakayama Area Tourist Pass</Link> covers the loop to Osaka in five days.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

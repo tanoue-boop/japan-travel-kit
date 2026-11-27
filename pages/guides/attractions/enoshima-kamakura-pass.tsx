@@ -455,6 +455,11 @@ export default function EnoshimaKamakuraPassPage({ updated }: { updated: PageUpd
           tours={[kamakuraEnoshimaDayTour, yokohamaKamakuraPrivateGuide, enoshimaKamakuraFreepassKlook]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            If Hakone is on the same trip, the <Link href="/guides/transport/hakone-kamakura-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Hakone Kamakura Pass</Link> covers both areas and all Odakyu lines for three days.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

@@ -598,6 +598,11 @@ export default function Hakone2DayItineraryPage({ updated }: { updated: PageUpda
           tours={[hakoneHotels, hakoneOpenAirMuseumTicket, romancecarShinjukuHakoneYumoto, hakoneFreepass, hakoneLoopBusTour]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Adding a third day? Odakyu&apos;s <Link href="/guides/transport/fuji-hakone-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Fuji Hakone Pass</Link> adds Kawaguchiko, and the <Link href="/guides/transport/hakone-kamakura-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Hakone Kamakura Pass</Link> adds Kamakura and Enoshima.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

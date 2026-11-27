@@ -768,6 +768,11 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
           ]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For the Nikko day, Tobu&apos;s <Link href="/guides/transport/nikko-pass" style={{ color: "var(--red)", fontWeight: 600 }}>NIKKO PASS</Link> covers the Asakusa round trip and the buses; the guide explains which of the two to buy.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

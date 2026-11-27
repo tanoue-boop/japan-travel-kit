@@ -924,6 +924,11 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
           items={kumanoKodoTripPrep}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Going without a tour? JR Central&apos;s <Link href="/guides/transport/ise-kumano-wakayama-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Ise-Kumano-Wakayama Area Tourist Pass</Link> covers five days round the Kii Peninsula with the Nachi and Hongu buses, and Nankai&apos;s <Link href="/guides/transport/koyasan-world-heritage-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Koyasan World Heritage Ticket</Link> covers Mt. Koya from Osaka.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}
