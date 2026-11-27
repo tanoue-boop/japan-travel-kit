@@ -2,7 +2,9 @@ import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Head from "next/head";
+import Script from "next/script";
 import "../styles/globals.css";
+import { STAY22_LMA_SNIPPET } from "../lib/stay22";
 import { fontVariableClass } from "../lib/fonts";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -29,6 +31,9 @@ const AFFILIATE_PARTNERS: { partner: string; hosts: string[] }[] = [
   { partner: "safetywing", hosts: ["safetywing.com"] },
   { partner: "heymondo", hosts: ["heymondo.com"] },
   { partner: "worldnomads", hosts: ["worldnomads.com"] },
+  // Stay22 (A30): links its script rewrites go through stay22.com. Clicks inside the
+  // map iframes cannot be seen from here; Stay22's own report counts those.
+  { partner: "stay22", hosts: ["stay22.com"] },
 ];
 
 const resolvePartner = (hostname: string): string | null => {
@@ -49,6 +54,7 @@ const resolveProductType = (partner: string, url: URL, anchor: Element): Affilia
   if (anchor.closest(ESIM_CARD_SELECTOR)) return "esim";
   // ホテル送客（Klook ホテル 6.5%）を GA4 で数えるための区分。components/HotelStayBlock.tsx は data-product-type="hotel" を付ける。
   if (anchor.closest(HOTEL_BLOCK_SELECTOR)) return "hotel";
+  if (partner === "stay22") return "hotel";
   if (partner === "klook") {
     // Klook のリンクは affiliate.klook.com/redirect?k_site=<商品URL>。商品URL（無ければリンク自体）に esim を含めば eSIM 商品。
     const product = (url.searchParams.get("k_site") ?? url.href).toLowerCase();
@@ -116,6 +122,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="twitter:image" content="https://www.japan-travel-kit.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+      {/* Stay22 Let Me Allez (task jtk-20261127-A30): after hydration so it never
+          competes with the first paint. The snippet and its lmaID are in lib/stay22.ts. */}
+      <Script id="stay22-lma" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: STAY22_LMA_SNIPPET }} />
     {/* The font variables are declared on <html> in _document.tsx, so body's
         font-family: var(--font-body) in globals.css resolves and is inherited from here down.
         This wrapper only owns the sticky-footer layout. The class is kept so the generated

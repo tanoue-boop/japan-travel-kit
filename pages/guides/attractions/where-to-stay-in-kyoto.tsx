@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookStayAreas from "../../../components/KlookStayAreas";
+import { STAY22_KYOTO_MAPS } from "../../../lib/stay22";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
@@ -458,6 +459,7 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
           heading="Where to Stay in Kyoto: Hotel Search by Area"
           intro="This is the step the comparison above cannot finish for you. Which rooms are left, and at what price, is a per-date question — so each area below links straight into Klook's own hotel search for that district. Set your dates and your party size, and compare two or three of them against each other."
           areas={whereToStayKyotoAreas}
+          maps={STAY22_KYOTO_MAPS}
         />
 
         {/* Question headings */}

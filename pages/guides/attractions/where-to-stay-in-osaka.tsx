@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import KlookStayAreas from "../../../components/KlookStayAreas";
+import { STAY22_OSAKA_MAPS } from "../../../lib/stay22";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
@@ -513,6 +514,7 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
           heading="Where to Stay in Osaka: Hotel Search by Area"
           intro="This is the step the comparison above cannot finish. Which rooms are left, at what price, is a per-date question, so each area below links straight into Klook's own hotel search for that district — set your dates and compare two or three of them against each other."
           areas={whereToStayOsakaAreas}
+          maps={STAY22_OSAKA_MAPS}
         />
 
         {/* Question headings */}

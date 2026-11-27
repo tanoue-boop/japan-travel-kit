@@ -1,8 +1,10 @@
 import Link from "next/link";
 import styles from "../styles/BestEsimJapan.module.css";
 import KlookLink from "./KlookLink";
+import Stay22Map from "./Stay22Map";
 import { useComponentLocale } from "./componentLocale";
 import {
+  HOTEL_AREA_MAP,
   HOTEL_AREAS,
   HOTEL_CITIES,
   hotelAreaUrl,
@@ -39,6 +41,8 @@ type Props = {
   locale?: Locale;
   /** Render the heading as h3 when the block sits inside an existing section. */
   as?: "h2" | "h3";
+  /** The area the Stay22 map centres on; defaults to the first area. `false` hides the map. */
+  mapArea?: HotelAreaKey | false;
 };
 
 const COPY: Record<Locale, { label: string; heading: (city: string) => string; cta: string; station: string; guide: (city: string) => string; note: string }> = {
@@ -84,12 +88,13 @@ const COPY: Record<Locale, { label: string; heading: (city: string) => string; c
   },
 };
 
-export default function HotelStayBlock({ city, areas, heading, intro, locale, as = "h2" }: Props) {
+export default function HotelStayBlock({ city, areas, heading, intro, locale, as = "h2", mapArea }: Props) {
   const loc = useComponentLocale(locale);
   const copy = COPY[loc];
   const def: HotelCityDef = HOTEL_CITIES[city];
   const cityName = pickText(def.name, loc);
   const keys = areas ?? def.areas;
+  const mapKey = mapArea === false ? null : mapArea ?? keys[0];
   const Heading = as;
   return (
     <section className={styles.bodySection} data-placement="hotel-stay" data-product-type="hotel">
@@ -120,6 +125,8 @@ export default function HotelStayBlock({ city, areas, heading, intro, locale, as
           );
         })}
       </div>
+      {/* Stay22 map of the lead area, under the Klook buttons (task jtk-20261127-A30). */}
+      {mapKey && <Stay22Map address={HOTEL_AREA_MAP[mapKey]} label={pickText(HOTEL_AREAS[mapKey].name, loc)} locale={loc} />}
       {(def.guide || def.extra) && (
         <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.9rem" }}>
           {def.guide && (

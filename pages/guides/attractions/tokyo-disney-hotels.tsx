@@ -3,6 +3,7 @@ import Link from "next/link";
 import KlookLink from "../../../components/KlookLink";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import Stay22Map from "../../../components/Stay22Map";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import {
@@ -451,6 +452,7 @@ export default function TokyoDisneyHotelsPage({ updated }: { updated: PageUpdate
               Hotels near DisneySea →
             </KlookLink>
           </div>
+          <Stay22Map address="Tokyo Disney Resort, Urayasu, Japan" label="Tokyo Disney Resort" />
         </section>
 
         {/* Happy Entry */}
@@ -506,6 +508,7 @@ export default function TokyoDisneyHotelsPage({ updated }: { updated: PageUpdate
               Urayasu / Shin-Urayasu hotels →
             </KlookLink>
           </div>
+          <Stay22Map address="Shin-Urayasu, Urayasu, Japan" label="Shin-Urayasu" />
         </section>
 
         {/* Tokyo Station */}
@@ -525,6 +528,7 @@ export default function TokyoDisneyHotelsPage({ updated }: { updated: PageUpdate
               Tokyo Station hotels →
             </KlookLink>
           </div>
+          <Stay22Map address="Tokyo Station, Tokyo, Japan" label="Tokyo Station" />
         </section>
 
         {/* Booking */}

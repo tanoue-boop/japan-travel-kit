@@ -578,6 +578,57 @@ export const HOTEL_AREAS = {
 
 export type HotelAreaKey = keyof typeof HOTEL_AREAS;
 
+/**
+ * The Stay22 map address for each area ("Area, City, Japan"), for the map under the
+ * Klook buttons (components/Stay22Map.tsx, task jtk-20261127-A30). Each one was
+ * checked on 27 Nov 2026 against the place Stay22 resolves it to: "Niseko Hirafu,
+ * Kutchan" returns a 404 so Hirafu is written "Hirafu, Niseko", and "Tennoji" alone
+ * resolves to the whole ward, so the station is named.
+ */
+export const HOTEL_AREA_MAP: Record<HotelAreaKey, string> = {
+  shinjuku: "Shinjuku, Tokyo, Japan",
+  tokyoStation: "Tokyo Station, Tokyo, Japan",
+  ueno: "Ueno, Tokyo, Japan",
+  shibuya: "Shibuya, Tokyo, Japan",
+  ginza: "Ginza, Tokyo, Japan",
+  odaiba: "Odaiba, Tokyo, Japan",
+  roppongi: "Roppongi, Tokyo, Japan",
+  disneyResort: "Tokyo Disney Resort, Urayasu, Japan",
+  maihama: "Maihama, Urayasu, Japan",
+  hakone: "Hakone, Kanagawa, Japan",
+  hakoneOnsen: "Hakone-Yumoto, Hakone, Japan",
+  lakeAshi: "Moto-Hakone, Hakone, Japan",
+  kawaguchikoStation: "Kawaguchiko Station, Fujikawaguchiko, Japan",
+  lakeKawaguchi: "Lake Kawaguchi, Fujikawaguchiko, Japan",
+  fujiQ: "Fuji-Q Highland, Fujiyoshida, Japan",
+  kyotoStation: "Kyoto Station, Kyoto, Japan",
+  karasumaOike: "Karasuma Oike, Kyoto, Japan",
+  gion: "Gion, Kyoto, Japan",
+  umeda: "Umeda, Osaka, Japan",
+  namba: "Namba, Osaka, Japan",
+  tennoji: "Tennoji Station, Osaka, Japan",
+  hiroshimaStation: "Hiroshima Station, Hiroshima, Japan",
+  peacePark: "Hiroshima Peace Memorial Park, Hiroshima, Japan",
+  miyajima: "Miyajima, Hatsukaichi, Japan",
+  kanazawa: "Kanazawa Station, Kanazawa, Japan",
+  kenrokuen: "Kenroku-en, Kanazawa, Japan",
+  higashiChaya: "Higashi Chaya District, Kanazawa, Japan",
+  sapporoStation: "Sapporo Station, Sapporo, Japan",
+  susukino: "Susukino, Sapporo, Japan",
+  niseko: "Hirafu, Niseko, Japan",
+  hakuba: "Hakuba, Nagano, Japan",
+  nozawa: "Nozawa Onsen, Nagano, Japan",
+  nagano: "Nagano Station, Nagano, Japan",
+  yuzawa: "Echigo-Yuzawa Station, Yuzawa, Japan",
+  gala: "GALA Yuzawa, Yuzawa, Japan",
+  arima: "Arima Onsen, Kobe, Japan",
+  kobe: "Sannomiya, Kobe, Japan",
+  hakata: "Hakata Station, Fukuoka, Japan",
+  tenjin: "Tenjin, Fukuoka, Japan",
+  beppu: "Beppu, Oita, Japan",
+  yufuin: "Yufuin, Oita, Japan",
+};
+
 // ---------------------------------------------------------------------------
 // Cities — the default areas and the "how to choose" page, where one exists
 // ---------------------------------------------------------------------------

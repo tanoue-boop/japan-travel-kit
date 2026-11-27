@@ -4,7 +4,7 @@ import styles from "../styles/LegalPage.module.css";
 import PartnerPick, { PartnerTextLink } from "../components/PartnerPick";
 import { klookEsim } from "../lib/klook-links";
 
-const UPDATED = "April 20, 2026";
+const UPDATED = "November 27, 2026";
 
 export default function PrivacyPolicyPage() {
   return (
@@ -102,6 +102,10 @@ export default function PrivacyPolicyPage() {
             </li>
             <li>
               <strong>Affiliate networks (Airalo, Klook, etc.):</strong> May set cookies to track referrals. These operate under their own privacy policies.
+            </li>
+            <li>
+              <strong>Stay22:</strong> Our hotel maps and some hotel links are provided by Stay22, whose script may turn links to Booking.com, Expedia, Agoda, Trip.com and similar booking sites into affiliate links, and which may set cookies to track referrals under{" "}
+              <a href="https://www.stay22.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>Stay22&apos;s Privacy Policy</a>.
             </li>
           </ul>
           <p className={styles.text}>

@@ -1,5 +1,6 @@
 import styles from "../styles/BestEsimJapan.module.css";
 import KlookLink from "./KlookLink";
+import Stay22Map, { STAY22_CAPTION } from "./Stay22Map";
 import { useComponentLocale } from "./componentLocale";
 import type { KlookStayArea } from "../lib/klook-links";
 import type { Locale } from "../lib/i18n";
@@ -20,6 +21,11 @@ type Props = {
   areas: KlookStayArea[];
   /** Defaults to the locale of the route the block renders on. */
   locale?: Locale;
+  /**
+   * Stay22 map address ("Area, City, Japan") per area name. An area listed here gets
+   * a lazy map under its line (task jtk-20261127-A30, the where-to-stay pages).
+   */
+  maps?: Record<string, string>;
 };
 
 const COPY: Record<Locale, { label: string; cta: string; note: string }> = {
@@ -50,8 +56,9 @@ const COPY: Record<Locale, { label: string; cta: string; note: string }> = {
   },
 };
 
-export default function KlookStayAreas({ heading, intro, areas, locale }: Props) {
-  const copy = COPY[useComponentLocale(locale)];
+export default function KlookStayAreas({ heading, intro, areas, locale, maps }: Props) {
+  const loc = useComponentLocale(locale);
+  const copy = COPY[loc];
   return (
     <section className={styles.bodySection}>
       <span className={styles.sectionLabel}>{copy.label}</span>
@@ -59,7 +66,7 @@ export default function KlookStayAreas({ heading, intro, areas, locale }: Props)
       <p className={styles.bodyText}>{intro}</p>
       <ul className={styles.pickList}>
         {areas.map((a) => (
-          <li key={a.area}>
+          <li key={a.area} style={maps?.[a.area] ? { flexWrap: "wrap" } : undefined}>
             <span className={styles.proIcon}>▸</span>
             <span>
               <strong>{a.area}</strong> — {a.why}{" "}
@@ -72,9 +79,19 @@ export default function KlookStayAreas({ heading, intro, areas, locale }: Props)
                 {copy.cta}
               </KlookLink>
             </span>
+            {maps?.[a.area] && (
+              <div style={{ flexBasis: "100%", width: "100%", marginBottom: "0.75rem" }}>
+                <Stay22Map address={maps[a.area]} label={a.area} locale={loc} bare />
+              </div>
+            )}
           </li>
         ))}
       </ul>
+      {maps && (
+        <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.78rem", color: "var(--text-muted)" }}>
+          {STAY22_CAPTION[loc]}
+        </p>
+      )}
       <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
         {copy.note}
       </p>

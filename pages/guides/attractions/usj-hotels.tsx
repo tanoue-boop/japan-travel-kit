@@ -3,6 +3,7 @@ import Link from "next/link";
 import KlookLink from "../../../components/KlookLink";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookStayAreas from "../../../components/KlookStayAreas";
+import { STAY22_OSAKA_MAPS } from "../../../lib/stay22";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import { checkedLabel } from "../../../lib/attraction-prices";
@@ -509,6 +510,7 @@ export default function UsjHotelsPage({ updated }: { updated: PageUpdated }) {
           heading="Hotels Near Universal Studios Japan, Area by Area"
           intro="Rooms and prices change by date, so each area links to Klook's hotel search for it."
           areas={usjStayAreas}
+          maps={STAY22_OSAKA_MAPS}
         />
 
         {/* Booking */}
