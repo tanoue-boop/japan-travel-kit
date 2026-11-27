@@ -1,4 +1,5 @@
 import Head from "next/head";
+import NextStepCards from "../../../components/NextStepCards";
 import Link from "next/link";
 import BookingEsimCard from "../../../components/BookingEsimCard";
 import KlookTripPrep from "../../../components/KlookTripPrep";
@@ -609,6 +610,10 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
             Open a Wise account →
           </a>
         </section>
+
+        {/* A29 (27 Nov 2026): the next step right under the answer — this page sent 0 affiliate_click
+            in GA4 for 20–26 Nov. Cards per path in lib/next-step.ts. */}
+        <NextStepCards />
 
         {/* eSIM card next to the answer (task jtk-20261118-P01): Simbye 25%, Klook eSIM 20%. */}
         <BookingEsimCard lead="Card chosen? Get mobile data before you land." />

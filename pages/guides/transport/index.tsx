@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import GuideHub from "../../../components/GuideHub";
 import KlookTripPrep from "../../../components/KlookTripPrep";
+import NextStepCards from "../../../components/NextStepCards";
 import PartnerPick, { PartnerTextLink } from "../../../components/PartnerPick";
 import { transportArticles, transportCategory } from "../../../lib/guides-transport";
 import { jrPassWholeJapan, tokyoSubwayTicket, transportHubArrivalPrep } from "../../../lib/klook-links";
@@ -289,6 +290,8 @@ export default function GuidesTransportPage({ updated, dates }: { updated: PageU
         dates={dates}
         lead={
           <>
+            {/* A29 (27 Nov 2026): one paid entry per purpose at the top — 0 affiliate_click in GA4 for 20–26 Nov. Set in lib/next-step.ts. */}
+            <NextStepCards />
             <section className={styles.bodySection} style={{ marginBottom: "2rem" }}>
               <p className={styles.bodyText}>
                 A Tokyo subway ride costs <strong>¥178</strong> on an IC card, a reserved Nozomi shinkansen from{" "}

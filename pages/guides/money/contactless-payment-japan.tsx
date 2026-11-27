@@ -1,4 +1,5 @@
 import Head from "next/head";
+import NextStepCards from "../../../components/NextStepCards";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookTripPrep from "../../../components/KlookTripPrep";
@@ -429,6 +430,10 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
             Osaka, Nankai and Fukuoka were read on {CHECKED}.
           </p>
         </section>
+
+        {/* A29 (27 Nov 2026): the next step right under the answer — this page sent 0 affiliate_click
+            in GA4 for 20–26 Nov. Cards per path in lib/next-step.ts. */}
+        <NextStepCards />
 
         {/* The two questions as searchers type them (19 Nov 2026, C01), each answered in its first line */}
         <section className={styles.bodySection}>

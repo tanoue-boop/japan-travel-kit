@@ -1,4 +1,5 @@
 import Head from "next/head";
+import NextStepCards from "../../../components/NextStepCards";
 import Link from "next/link";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import styles from "../../../styles/BestEsimJapan.module.css";
@@ -469,6 +470,10 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
             has the train times from Osaka and the bath pass.
           </p>
         </section>
+
+        {/* A29 (27 Nov 2026): the next step right under the answer — this page sent 0 affiliate_click
+            in GA4 for 20–26 Nov. Cards per path in lib/next-step.ts. */}
+        <NextStepCards />
 
         {/* Access table */}
         <section className={styles.comparisonSection}>

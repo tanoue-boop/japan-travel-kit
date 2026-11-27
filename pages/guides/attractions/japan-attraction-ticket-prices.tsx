@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import Head from "next/head";
+import NextStepCards from "../../../components/NextStepCards";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import tools from "../../../styles/Tools.module.css";
@@ -848,6 +849,10 @@ export default function JapanAttractionTicketPricesPage({ updated }: { updated: 
             <Link href="/guides/attractions" className={tools.inlineLink}>what to book in advance hub</Link>.
           </p>
         </section>
+
+        {/* A29 (27 Nov 2026): the next step right under the answer — this page sent 0 affiliate_click
+            in GA4 for 20–26 Nov. Cards per path in lib/next-step.ts. */}
+        <NextStepCards />
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Book ahead or not</span>

@@ -2373,6 +2373,17 @@ export const jrKansaiAreaPass: KlookTour = {
   url: klookLink("https://www.klook.com/en-US/activity/1107-jr-west-kansai-rail-pass-osaka/"),
 };
 
+/**
+ * Listing 3276 — the live replacement for 1107, which showed "not currently available"
+ * in the www.klook.com index on 23 Nov 2026. Defined here, before the lists that use it
+ * (a `const` read before its line throws at module load).
+ */
+export const jrKansaiAreaPass3276: KlookTour = {
+  title: "JR West Kansai Area Pass",
+  desc: "The JR West pass for Osaka, Kyoto, Kobe, Nara and Himeji with the HARUKA from Kansai Airport, for visitors on a Temporary Visitor stamp",
+  url: klookLink("https://www.klook.com/en-US/activity/3276-4-day-jr-west-kansai-rail-pass-jr-pass/"),
+};
+
 export const jrKansaiMiniPass: KlookTour = {
   title: "JR Kansai Mini Pass (3 day)",
   desc: "The cheaper three-day version for travellers who will not use the Haruka — rapid and local JR West trains only, with the Kansai-Airport Rapid Service",
@@ -2727,9 +2738,9 @@ export const transportHubArrivalPrep: KlookTripPrepItem[] = [
     why: "Landing at Kansai Airport: the Haruka runs direct to Osaka Station in about 45 minutes and to Kyoto in about 75, with no change.",
   },
   {
-    label: jrKansaiAreaPass.title,
+    label: jrKansaiAreaPass3276.title,
     ctaLabel: "Check the Kansai pass →",
-    url: jrKansaiAreaPass.url,
+    url: jrKansaiAreaPass3276.url,
     why: "An Osaka–Kyoto–Nara stay without the shinkansen: the pass covers JR West trains around the Kansai and the Haruka from the airport, so it replaces the single airport ticket above.",
   },
   {
@@ -6556,7 +6567,7 @@ export const osakaAirportArrivalPrep: KlookTripPrepItem[] = [
   {
     label: "JR Kansai Area Pass",
     ctaLabel: "Check the Kansai Area Pass →",
-    url: jrKansaiAreaPass.url,
+    url: jrKansaiAreaPass3276.url,
     why: "Worth pricing if you are also riding JR to Kyoto, Nara or Himeji, because JR West's pass covers the Haruka's non-reserved seats.",
   },
   {
@@ -12050,12 +12061,7 @@ export const mtTakaoTripPrep: KlookTripPrepItem[] = [
 // currently available" with 2016–17 reviews, so this page links 3276 instead.
 // ---------------------------------------------------------------------------
 
-/** JR West Kansai Area Pass, Klook listing 3276 — live en-US in the index on 23 Nov 2026. */
-export const jrKansaiAreaPass3276: KlookTour = {
-  title: "JR West Kansai Area Pass",
-  desc: "The JR West pass for Osaka, Kyoto, Kobe, Nara and Himeji with the HARUKA from Kansai Airport, for visitors on a Temporary Visitor stamp",
-  url: klookLink("https://www.klook.com/en-US/activity/3276-4-day-jr-west-kansai-rail-pass-jr-pass/"),
-};
+// jrKansaiAreaPass3276 moved up next to jrKansaiAreaPass (27 Nov 2026, A29) so earlier lists can use it.
 
 /** Where to sleep for five Kansai nights — one base or two. */
 export const kansai5DayStayAreas: KlookStayArea[] = [

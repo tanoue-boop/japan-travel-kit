@@ -1,4 +1,5 @@
 import Head from "next/head";
+import NextStepCards from "../../../components/NextStepCards";
 import Link from "next/link";
 import EsimPageAnswer from "../../../components/EsimPageAnswer";
 import KlookLink from "../../../components/KlookLink";
@@ -454,6 +455,10 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
             Simbye button applies it for you. Affiliate links.
           </p>
         </section>
+
+        {/* A29 (27 Nov 2026): the next step right under the answer — this page sent 0 affiliate_click
+            in GA4 for 20–26 Nov. Cards per path in lib/next-step.ts. */}
+        <NextStepCards />
 
         {/* Pay before you land (task jtk-20261123-03): directly under the comparison and its buttons. */}
         <div id="pay-before-you-land" data-placement="pay-before-you-land">

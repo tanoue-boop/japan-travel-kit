@@ -1,4 +1,5 @@
 import Head from "next/head";
+import NextStepCards from "../../../components/NextStepCards";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookLink from "../../../components/KlookLink";
@@ -363,6 +364,10 @@ export default function WiseVsRevolutJapanPage({ updated }: { updated: PageUpdat
             {CHECKED}, not from the live pages, so check them on Revolut&apos;s site. Plus adds 0.5% at weekends; Premium, Metal and Ultra add nothing.
           </p>
         </section>
+
+        {/* A29 (27 Nov 2026): the next step right under the answer — this page sent 0 affiliate_click
+            in GA4 for 20–26 Nov. Cards per path in lib/next-step.ts. */}
+        <NextStepCards />
 
         {/* ATM table */}
         <section className={styles.comparisonSection}>

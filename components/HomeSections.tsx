@@ -105,6 +105,7 @@ export function HomeHero({
   primary,
   secondary,
   imageAlt,
+  extra,
 }: {
   eyebrow: string;
   title: string;
@@ -113,6 +114,8 @@ export function HomeHero({
   primary: ButtonLink;
   secondary: ButtonLink;
   imageAlt: string;
+  /** Rendered under the buttons, e.g. the purpose-by-purpose booking links (A29). */
+  extra?: ReactNode;
 }) {
   return (
     <section className={styles.hero}>
@@ -133,6 +136,7 @@ export function HomeHero({
               {secondary.label}
             </Link>
           </div>
+          {extra}
         </div>
 
         <figure className={styles.heroFigure}>

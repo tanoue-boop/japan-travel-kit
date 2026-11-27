@@ -1,4 +1,5 @@
 import Head from "next/head";
+import NextStepCards from "../../../components/NextStepCards";
 import Link from "next/link";
 import EsimPageAnswer from "../../../components/EsimPageAnswer";
 import EsimDaysTable from "../../../components/EsimDaysTable";
@@ -569,6 +570,10 @@ export default function JapanEsimIphonePage({ updated }: { updated: PageUpdated 
             ))}
           </p>
         </section>
+
+        {/* A29 (27 Nov 2026): the next step right under the answer — this page sent 0 affiliate_click
+            in GA4 for 20–26 Nov. Cards per path in lib/next-step.ts. */}
+        <NextStepCards />
 
         {/* Question headings for the two setup questions travellers search verbatim. */}
         <section className={styles.bodySection} id="when-to-install">

@@ -1,4 +1,5 @@
 import Head from "next/head";
+import NextStepCards from "../../../components/NextStepCards";
 import Link from "next/link";
 import BookingEsimCard from "../../../components/BookingEsimCard";
 import KlookStayAreas from "../../../components/KlookStayAreas";
@@ -828,6 +829,10 @@ export default function JapanTravelBudgetPage({ updated }: { updated: PageUpdate
             <a href="#per-category" style={{ color: "var(--red)", fontWeight: 600 }}>per-day breakdown</a> further down.
           </p>
         </section>
+
+        {/* A29 (27 Nov 2026): the next step right under the answer — this page sent 0 affiliate_click
+            in GA4 for 20–26 Nov. Cards per path in lib/next-step.ts. */}
+        <NextStepCards />
 
         {/* Klook, all bands, directly under the answer: what can be paid before arrival. Moved here 16 Nov 2026. */}
         <KlookTripPrep

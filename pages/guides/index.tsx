@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../../styles/Guides.module.css";
 import PartnerPick, { PartnerTextLink } from "../../components/PartnerPick";
 import HotelStayEntry from "../../components/HotelStayEntry";
+import NextStepCards from "../../components/NextStepCards";
 import { fujiDayTour, klookEsim, tokyoSubwayTicket } from "../../lib/klook-links";
 import { esimCategory } from "../../lib/guides-esim";
 import { transportCategory } from "../../lib/guides-transport";
@@ -150,6 +151,10 @@ export default function GuidesIndexPage() {
       </section>
 
       <div className={styles.content}>
+        {/* A29 (27 Nov 2026): one paid entry per purpose above the topic list — this hub sent
+            0 affiliate_click in GA4 for 20–26 Nov. Set in lib/next-step.ts. */}
+        <NextStepCards />
+
         <p className={styles.sectionLabel}>Browse by topic</p>
         <h2 className={styles.sectionTitle}>All Categories</h2>
 

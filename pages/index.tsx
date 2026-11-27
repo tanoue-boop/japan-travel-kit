@@ -9,6 +9,7 @@ import { articlesForCity } from "../lib/guide-hub";
 import { hreflangLinks } from "../components/Hreflang";
 import { simbyeTrackedUrl } from "../lib/simbye";
 import HotelStayEntry from "../components/HotelStayEntry";
+import NextStepCards from "../components/NextStepCards";
 import {
   BOOK_CARDS,
   CITY_HREFS,
@@ -245,6 +246,10 @@ export default function HomePage({ pricesChecked }: { pricesChecked: string }) {
         primary={{ href: "/guides/attractions", label: "Browse Tours & Tickets" }}
         secondary={{ href: "#categories", label: "Plan Your Trip" }}
         imageAlt="An empty early-morning street in the Higashiyama district of Kyoto, with the Yasaka Pagoda beyond the machiya rooftops"
+        // A29 (27 Nov 2026): one booking link per purpose inside the hero, so the first
+        // screen on a phone has a paid route (the home page sent 0 affiliate_click in
+        // GA4 for 20–26 Nov). The set is in lib/next-step.ts.
+        extra={<NextStepCards compact />}
       />
 
       {/* Book before you fly — the one outbound booking block on the page, directly

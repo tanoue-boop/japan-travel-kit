@@ -1,4 +1,5 @@
 import Head from "next/head";
+import NextStepCards from "../../../components/NextStepCards";
 import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookTripPrep from "../../../components/KlookTripPrep";
@@ -395,6 +396,10 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
             charge before you confirm the withdrawal.
           </p>
         </section>
+
+        {/* A29 (27 Nov 2026): the next step right under the answer — this page sent 0 affiliate_click
+            in GA4 for 20–26 Nov. Cards per path in lib/next-step.ts. */}
+        <NextStepCards />
 
         {/* Klook — requirement (e): moved up to sit directly behind the first table, in the
             "what you can pay for before you withdraw anything" frame. */}
