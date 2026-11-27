@@ -116,6 +116,7 @@ export default function OtaruAquariumTicketsPage({ updated }: { updated: PageUpd
           another winter animal day, see{" "}
           <Link href="/guides/attractions/asahiyama-zoo-day-trip-from-sapporo" style={linkStyle}>Asahiyama Zoo from Sapporo</Link>.
           {" "}Back in Sapporo, <Link href="/guides/attractions/shiroi-koibito-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shiroi Koibito Park</Link> is ¥1,200 for adults and ¥600 for children.
+          {" "}For a ski day from Sapporo, <Link href="/guides/attractions/sapporo-kokusai-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Sapporo Kokusai</Link> above Jozankei is ¥6,700 online for adults and runs to 5 May 2027.
         </p>
       }
       faq={[

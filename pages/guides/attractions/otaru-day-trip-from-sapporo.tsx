@@ -968,6 +968,11 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
             On the Sapporo side, <Link href="/guides/attractions/shiroi-koibito-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shiroi Koibito Park</Link> in Nishi-ku is ¥1,200 for adults, 10:00–17:30.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a ski day nearby, a <Link href="/guides/attractions/kiroro-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Kiroro</Link> one-day pass is ¥9,200 for adults from 12 December 2026, and ¥5,800 before that.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

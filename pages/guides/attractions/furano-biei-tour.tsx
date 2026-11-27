@@ -729,6 +729,11 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
             Some coach tours from Sapporo pair Biei with the zoo; see the <Link href="/guides/attractions/asahiyama-zoo-day-trip-from-sapporo" style={{ color: "var(--red)", fontWeight: 600 }}>Asahiyama Zoo day trip from Sapporo</Link> for its winter hours (10:30–15:30).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            To ski while you are in Furano, a day at <Link href="/guides/attractions/furano-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Furano Ski Resort</Link> is ¥9,000 for adults from 5 December, and lift tickets are free up to elementary school age.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

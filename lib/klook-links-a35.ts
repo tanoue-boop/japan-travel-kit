@@ -671,3 +671,55 @@ export const igaNinjaMuseumTicket: KlookTour = {
   desc: "Entry to the ninja house and museum in Ueno Park, Iga, with a guided tour of the trick house",
   url: klookLink("https://www.klook.com/en-US/activity/92163-ninja-museum-igaryu-admission-ticket-mie/"),
 };
+
+// Day 10 (task jtk-20261206-A35, run 28 Nov 2026). Activity ids from the www.klook.com search index;
+// prices on the pages are the ski resorts' own, read 28 Nov 2026.
+
+/** Rusutsu Resort — 1-day lift pass and round-trip bus from Sapporo. */
+export const rusutsuLiftPassBusSapporo: KlookTour = {
+  title: "Rusutsu 1-day lift pass & bus from Sapporo",
+  desc: "A one-day Rusutsu lift pass with the round-trip ski bus from central Sapporo; the pass is valid only on the day of the bus",
+  url: klookLink("https://www.klook.com/en-US/activity/98771-rusutsu-ski-resort-1-day-lift-pass-bus-package/"),
+};
+
+/** Sapporo Teine — round-trip bus and lift ticket from Sapporo. */
+export const teineBusLiftTicket: KlookTour = {
+  title: "Sapporo Teine bus & lift ticket",
+  desc: "The round-trip bus from downtown Sapporo to Sapporo Teine with a lift ticket, collected at the resort counter with your booking reference",
+  url: klookLink("https://www.klook.com/en-US/activity/36425-skiing-experience-sapporo-teine-ski-resort-bus-lift-ticket/"),
+};
+
+/** Furano Ski Resort — Hokkaido Ski Bus round trip from Sapporo with lift ticket. */
+export const furanoSkiBusLiftTicket: KlookTour = {
+  title: "Furano ski bus & lift ticket from Sapporo",
+  desc: "The Hokkaido Ski Bus between Sapporo and Furano both ways, with the lift ticket handed out on board",
+  url: klookLink("https://www.klook.com/en-US/activity/17974-shared-round-trip-bus-transfer-furano-ski-resort-lift-ticket/"),
+};
+
+/** Sapporo Kokusai Ski Resort (Jozankei) — lift ticket. */
+export const sapporoKokusaiLiftTicket: KlookTour = {
+  title: "Sapporo Kokusai Ski Resort lift ticket",
+  desc: "A lift ticket for Sapporo Kokusai, the ski area above Jozankei in the south of Sapporo city",
+  url: klookLink("https://www.klook.com/en-US/activity/189564-sapporo-kokusai-ski-resort-lift-ticket/"),
+};
+
+/** Hakuba Goryu & Hakuba47 — common lift ticket with ski or snowboard rental. */
+export const hakubaGoryu47LiftRental: KlookTour = {
+  title: "Hakuba Goryu & Hakuba47 lift ticket + rental",
+  desc: "The common lift ticket for the linked Hakuba Goryu and Hakuba47 areas, with a ski or snowboard set",
+  url: klookLink("https://www.klook.com/en-US/activity/239041-hakuba-goryu-hakuba47-lift-ticket-ski-snowboard-rental-hakuba-47/"),
+};
+
+/** Hakuba Tsugaike Kogen — 1-day lift ticket with optional gear and clothing rental. */
+export const tsugaikeLiftTicketRental: KlookTour = {
+  title: "Tsugaike Kogen lift ticket (rental optional)",
+  desc: "A one-day Tsugaike Kogen lift ticket for the northern end of the Hakuba valley, with gear and ski-wear rental as options",
+  url: klookLink("https://www.klook.com/en-US/activity/134928-tsugaike-kogen-ski-resort-lift-ticket-gear-clothing-rental/"),
+};
+
+/** Nozawa Onsen Ski Resort — 1-day lift ticket. */
+export const nozawaOnsenLiftTicket: KlookTour = {
+  title: "Nozawa Onsen 1-day lift ticket",
+  desc: "A one-day lift ticket for Nozawa Onsen Ski Resort in northern Nagano",
+  url: klookLink("https://www.klook.com/en-US/activity/136277-nozawa-onsen-ski-resort-lift-ticket/"),
+};

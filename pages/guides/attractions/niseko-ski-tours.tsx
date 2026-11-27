@@ -977,6 +977,11 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For every season and multi-day rate, see <Link href="/guides/attractions/niseko-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Niseko lift ticket prices</Link>; next door, a day at <Link href="/guides/attractions/rusutsu-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Rusutsu</Link> is ¥13,200 online in the regular season.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

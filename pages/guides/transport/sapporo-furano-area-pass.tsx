@@ -150,6 +150,7 @@ export default function SapporoFuranoAreaPassPage({ updated }: { updated: PageUp
           <Link href="/guides/attractions/otaru-day-trip-from-sapporo" style={linkStyle}>Otaru day trip</Link>{" "}
           is on the pass too. Going further than Asahikawa? Read the{" "}
           <Link href="/guides/transport/hokkaido-rail-pass" style={linkStyle}>Hokkaido Rail Pass guide</Link>.
+          {" "}In Furano, <Link href="/guides/attractions/furano-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Furano Ski Resort</Link> sells a one-day adult ticket at ¥9,000 from 5 December 2026 to 22 March 2027.
         </p>
       }
       faq={[

@@ -705,6 +705,11 @@ export default function NozawaOnsenSkiPage({ updated }: { updated: PageUpdated }
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For every ticket type, see <Link href="/guides/attractions/nozawa-onsen-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Nozawa Onsen lift ticket prices</Link>; in Hakuba, a day at <Link href="/guides/attractions/tsugaike-kogen-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Tsugaike</Link> is ¥9,800 for adults.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

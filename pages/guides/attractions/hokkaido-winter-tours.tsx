@@ -653,6 +653,11 @@ export default function HokkaidoWinterToursPage({ updated }: { updated: PageUpda
             On your own in winter, <Link href="/guides/attractions/noboribetsu-bear-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Noboribetsu Bear Park</Link> opens 9:30–16:30 and <Link href="/guides/attractions/shiroi-koibito-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shiroi Koibito Park</Link> 10:00–17:30.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For ski days, see <Link href="/guides/attractions/niseko-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Niseko lift ticket prices</Link>, <Link href="/guides/attractions/kiroro-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Kiroro</Link> (¥9,200 a day from 12 December) and <Link href="/guides/attractions/furano-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Furano Ski Resort</Link> (¥9,000 a day, free for children up to elementary school age).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

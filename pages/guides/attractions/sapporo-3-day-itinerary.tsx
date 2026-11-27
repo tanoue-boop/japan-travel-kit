@@ -856,6 +856,11 @@ export default function Sapporo3DayItineraryPage({ updated }: { updated: PageUpd
             For an indoor stop in the city, <Link href="/guides/attractions/shiroi-koibito-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shiroi Koibito Park</Link> is ¥1,200 for adults, with the factory line in the paid area.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a ski morning inside the city, <Link href="/guides/attractions/sapporo-teine-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Sapporo Teine</Link> is ¥8,800 online and <Link href="/guides/attractions/sapporo-kokusai-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Sapporo Kokusai</Link> ¥6,700 online for an adult day.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

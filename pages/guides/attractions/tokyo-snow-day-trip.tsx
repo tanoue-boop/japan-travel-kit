@@ -599,6 +599,11 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
           Fujiten is reached from Kawaguchiko Station, on the same Fujikyu corridor as the coaster park; to add rides to a Fuji-area day, see our <Link href="/guides/attractions/fuji-q-highland-tickets">Fuji-Q Highland tickets guide</Link>.
         </p>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a longer ski trip from Tokyo, <Link href="/guides/attractions/hakuba-happo-one-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Happo-one</Link> in Hakuba is ¥9,800 a day for adults at peak and ¥6,400 in December before the 19th.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

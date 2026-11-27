@@ -956,6 +956,11 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             Between festival sites, <Link href="/guides/attractions/shiroi-koibito-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shiroi Koibito Park</Link> is ¥1,200 for the paid area (last entry 16:30).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Skiing on the same trip: <Link href="/guides/attractions/sapporo-teine-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Sapporo Teine</Link> is inside Sapporo city, with night tickets for 16:00–20:00 at ¥2,900 online.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

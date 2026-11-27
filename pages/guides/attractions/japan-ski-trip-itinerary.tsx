@@ -805,6 +805,11 @@ export default function JapanSkiTripItineraryPage({ updated }: { updated: PageUp
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Lift prices for 2026-27 by resort: <Link href="/guides/attractions/niseko-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Niseko lift ticket prices</Link> (¥13,500 a day at peak), <Link href="/guides/attractions/hakuba-happo-one-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Happo-one</Link> (¥9,800 at peak) and <Link href="/guides/attractions/nozawa-onsen-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Nozawa Onsen lift ticket prices</Link> (¥7,800 a day).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

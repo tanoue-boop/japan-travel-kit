@@ -1371,6 +1371,11 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
           The shinkansen to GALA leaves from Tokyo Station, which is why our <Link href="/guides/attractions/where-to-stay-in-tokyo">where to stay in Tokyo</Link> guide suggests the Tokyo Station area for trips built around day trips.
         </p>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a longer trip to Nagano, <Link href="/guides/attractions/hakuba-goryu-47-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Hakuba47 and Goryu</Link> in Hakuba is ¥10,000 a day for adults at the window, ¥6,500 for ages 13–22.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

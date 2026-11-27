@@ -1068,6 +1068,11 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For lift prices by resort, see <Link href="/guides/attractions/niseko-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Niseko lift ticket prices</Link>, <Link href="/guides/attractions/hakuba-goryu-47-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Hakuba47 and Goryu</Link> (¥10,000 a day at the window) and <Link href="/guides/attractions/tsugaike-kogen-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Tsugaike</Link> (¥9,800 a day).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

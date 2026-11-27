@@ -567,6 +567,11 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
 
         <BookingEsimCard lead="Pick-up messages, lift status and bus times all reach your phone. Get mobile data before you land." />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Lift prices for 2026-27: <Link href="/guides/attractions/sapporo-teine-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Sapporo Teine</Link> ¥8,800 online, <Link href="/guides/attractions/sapporo-kokusai-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Sapporo Kokusai</Link> ¥6,700 online, <Link href="/guides/attractions/kiroro-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Kiroro</Link> ¥9,200 and <Link href="/guides/attractions/rusutsu-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Rusutsu</Link> ¥13,200 online, for one adult day in the main season.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}
