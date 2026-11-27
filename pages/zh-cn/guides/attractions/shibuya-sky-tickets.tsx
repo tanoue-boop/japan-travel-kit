@@ -504,6 +504,11 @@ export default function CnShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
               </KlookLink>
               <GygCompareButton slug={GYG_SLUG} listing={gygShibuyaSky} />
             </div>
+            {/* A32 (27 Nov 2026): what the Klook listing says before the reader picks a date (same facts as the English page). */}
+            <p className={styles.bodyText} style={{ marginTop: "0.5rem", marginBottom: 0, fontSize: "0.85rem" }}>
+              预订前请注意：每个日期的门票在入场日两周前的日本时间 00:00 才开放，更远的日期暂时还选不了。Klook 商品页注明，2026 年 11 月
+              19 日及以后入场，预订中的每一位都须携带与预订信息一致的护照原件。
+            </p>
           </div>
         </div>
 

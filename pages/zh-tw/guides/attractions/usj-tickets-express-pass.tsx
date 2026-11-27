@@ -589,11 +589,19 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             <a href={USJ_EXPRESS_URL} target="_blank" rel="noopener noreferrer">USJ 官方 Universal Express Pass 頁面</a>
             （種類與價格依日期而異、需另外的入園票）。販售管道與開賣時間出自 USJ 2025年4月21日的購票期間公告。USJ 不公布固定金額，所以表中不列日圓價格。
           </p>
+          {/* A32 (27 Nov 2026): the first button was the Express Pass, which Klook pays 0% on. The Studio
+              Pass everyone needs is the button now; the Express Pass stays as a text link. */}
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={EXPRESS_PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
-              在 Klook 查看快速通關日期 →
+            <KlookLink href={STUDIO_PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
+              先買 USJ 門票（Studio Pass）→
             </KlookLink>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.88rem" }}>
+            快速通關是加購項目，不是入園票：
+            <KlookLink href={EXPRESS_PASS_URL} target="_blank" rel={KLOOK_REL} style={linkStyle}>
+              在 Klook 查看快速通關日期
+            </KlookLink>
+          </p>
         </section>
 
         {/* 2026-11-22 (R04): the bookings that share the Express Pass date, right under the answer:

@@ -25,6 +25,7 @@ import {
   klookEsim,
   nankaiRapitUrl,
   parkFrontHotelUsjKlook,
+  kansaiAirportLimousineBus,
   usjExpressSameDayPrep,
   usjSameDayPrep,
   usjStayAreas,
@@ -36,6 +37,7 @@ import {
 } from "../../../../lib/klook-links";
 import { cnUsjExpressPass, cnUsjStudioPass } from "../../../../lib/klook-links-zh-cn";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
+import KlookAddOnLine from "../../../../components/KlookAddOnLine";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
@@ -560,6 +562,14 @@ export default function CnUsjTicketsPage({ updated }: { updated: PageUpdated }) 
                 USJ 门票（Studio Pass）→
               </KlookLink>
             </div>
+            {/* A32 (27 Nov 2026): one line of 6.5% / 5% under the main ticket button, above the 0% Express Pass box. */}
+            <KlookAddOnLine
+              lead="同一天一起订："
+              items={[
+                { label: "USJ 官方酒店 The Park Front Hotel", url: klookFor(parkFrontHotelUsjKlook.url, LOCALE) },
+                { label: "关西机场⇄USJ 利木津巴士", url: klookFor(kansaiAirportLimousineBus.url, LOCALE) },
+              ]}
+            />
           </div>
         </div>
 

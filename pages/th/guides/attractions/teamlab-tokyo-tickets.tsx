@@ -23,9 +23,10 @@ import {
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
-import { fujiDayTour, tokyoSightseeingBusTour, tokyoSubwayTicket } from "../../../../lib/klook-links";
+import { fujiDayTour, klookEsim, tokyoSightseeingBusTour, tokyoSubwayTicket } from "../../../../lib/klook-links";
 import { thTeamlabBorderless, thTeamlabPlanets } from "../../../../lib/klook-links-th";
-import { withKlookLocale } from "../../../../lib/klook-locale";
+import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
+import KlookAddOnLine from "../../../../components/KlookAddOnLine";
 import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
@@ -193,6 +194,14 @@ export default function ThTeamLabTokyoPage({ updated }: { updated: PageUpdated }
                 ดูตั๋ว Borderless →
               </KlookLink>
             </div>
+            {/* A32 (27 Nov 2026): one line of 5% / 20% under the 2% ticket buttons. */}
+            <KlookAddOnLine
+              lead="จองไปพร้อมกันสำหรับวันเดียวกัน:"
+              items={[
+                { label: "Tokyo Subway Ticket (24 / 48 / 72 ชั่วโมง)", url: klookFor(tokyoSubwayTicket.url, "th") },
+                { label: "eSIM ญี่ปุ่นของ Klook", url: klookFor(klookEsim.url, "th") },
+              ]}
+            />
           </div>
         </div>
 

@@ -662,10 +662,14 @@ export default function ThUsjTicketsPage({ updated }: { updated: PageUpdated }) 
             <KlookLink href={thUsjStudioPass.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
               ดู Studio Pass USJ บน Klook →
             </KlookLink>
-            <KlookLink href={thUsjExpressPass.url} target="_blank" rel={KLOOK_REL} className={styles.pickCta}>
-              ดูวันที่ของ Express Pass บน Klook →
-            </KlookLink>
           </div>
+          {/* A32 (27 Nov 2026): Klook pays 0% on the Express Pass, so it is a text link here, not a main button. */}
+          <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.88rem" }}>
+            Express Pass เป็นของเสริม ไม่ใช่บัตรเข้าสวน:{" "}
+            <KlookLink href={thUsjExpressPass.url} target="_blank" rel={KLOOK_REL} style={linkStyle}>
+              ดูวันที่ของ Express Pass บน Klook
+            </KlookLink>
+          </p>
         </section>
 
         {/* 22 Nov 2026 (R07), as on zh-tw (R04): the bookings that share the park date, right under the answer:

@@ -22,9 +22,10 @@ import {
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
-import { fujiDayTour, tokyoSightseeingBusTour, tokyoSubwayTicket } from "../../../../lib/klook-links";
+import { fujiDayTour, klookEsim, tokyoSightseeingBusTour, tokyoSubwayTicket } from "../../../../lib/klook-links";
 import { cnTeamlabBorderless, cnTeamlabPlanets } from "../../../../lib/klook-links-zh-cn";
-import { withKlookLocale } from "../../../../lib/klook-locale";
+import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
+import KlookAddOnLine from "../../../../components/KlookAddOnLine";
 import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
@@ -208,6 +209,14 @@ export default function CnTeamLabTokyoPage({ updated }: { updated: PageUpdated }
                 查看无界门票 →
               </KlookLink>
             </div>
+            {/* A32 (27 Nov 2026): one line of 5% / 20% under the 2% ticket buttons. */}
+            <KlookAddOnLine
+              lead="同一天一起订："
+              items={[
+                { label: "东京地铁通票（24／48／72 小时）", url: klookFor(tokyoSubwayTicket.url, "zh-cn") },
+                { label: "Klook 日本 eSIM", url: klookFor(klookEsim.url, "zh-cn") },
+              ]}
+            />
           </div>
         </div>
 

@@ -468,6 +468,11 @@ export default function ThShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
               </KlookLink>
               <GygCompareButton slug={GYG_SLUG} listing={gygShibuyaSky} />
             </div>
+            {/* A32 (27 Nov 2026): what the Klook listing says before the reader picks a date (same facts as the English page). */}
+            <p className={styles.bodyText} style={{ marginTop: "0.5rem", marginBottom: 0, fontSize: "0.85rem" }}>
+              ก่อนจอง: ตั๋วของแต่ละวันเปิดขายเวลา 00:00 น. ตามเวลาญี่ปุ่น สองสัปดาห์ก่อนวันเข้าชม วันที่ไกลกว่านั้นจึงยังเลือกไม่ได้
+              และหน้าสินค้าของ Klook ระบุว่า สำหรับการเข้าชมตั้งแต่วันที่ 19 พฤศจิกายน 2026 ทุกคนในการจองต้องนำหนังสือเดินทางฉบับจริงที่ตรงกับข้อมูลที่กรอกไว้มาด้วย
+            </p>
           </div>
         </div>
 

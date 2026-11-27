@@ -22,9 +22,10 @@ import {
 } from "../../../../components/IntlChrome";
 import KlookLink from "../../../../components/KlookLink";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
-import { fujiDayTour, tokyoSightseeingBusTour, tokyoSubwayTicket } from "../../../../lib/klook-links";
+import { fujiDayTour, klookEsim, tokyoSightseeingBusTour, tokyoSubwayTicket } from "../../../../lib/klook-links";
 import { koTeamlabBorderless, koTeamlabPlanets } from "../../../../lib/klook-links-ko";
-import { withKlookLocale } from "../../../../lib/klook-locale";
+import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
+import KlookAddOnLine from "../../../../components/KlookAddOnLine";
 import { PRICES } from "../../../../lib/attraction-prices";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
@@ -192,6 +193,14 @@ export default function KoTeamLabTokyoPage({ updated }: { updated: PageUpdated }
                 보더리스 티켓 보기 →
               </KlookLink>
             </div>
+            {/* A32 (27 Nov 2026): one line of 5% / 20% under the 2% ticket buttons. */}
+            <KlookAddOnLine
+              lead="같은 날 함께:"
+              items={[
+                { label: "도쿄 서브웨이 티켓(24·48·72시간)", url: klookFor(tokyoSubwayTicket.url, "ko") },
+                { label: "클룩 일본 eSIM", url: klookFor(klookEsim.url, "ko") },
+              ]}
+            />
           </div>
         </div>
 

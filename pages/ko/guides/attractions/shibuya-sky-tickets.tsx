@@ -488,6 +488,12 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
               </KlookLink>
               <GygCompareButton slug={GYG_SLUG} listing={gygShibuyaSky} />
             </div>
+            {/* A32 (27 Nov 2026): what the Klook listing says before the reader picks a date (same facts as the English page). */}
+            <p className={styles.bodyText} style={{ marginTop: "0.5rem", marginBottom: 0, fontSize: "0.85rem" }}>
+              예약 전에 확인하세요: 각 날짜의 티켓은 입장일 2주 전 일본 시간 00:00에 열리므로, 그보다 먼 날짜는 아직 선택할 수
+              없습니다. 클룩 상품 페이지는 2026년 11월 19일 이후 입장분에 대해 예약한 모든 사람이 예약 시 입력한 정보와 같은 여권
+              원본을 지참하도록 안내합니다.
+            </p>
           </div>
         </div>
 
