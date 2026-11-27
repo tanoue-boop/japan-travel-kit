@@ -499,7 +499,11 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             Weighing a rail pass for the wider trip? The{" "}
             <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link> works through the break-even, and
-            notes that a Kansai-only itinerary rarely justifies one.
+            notes that a Kansai-only itinerary rarely justifies one. For Kyoto and Nara by JR without a tour,
+            the{" "}
+            <Link href="/guides/attractions/kansai-area-pass">JR Kansai Area Pass</Link> is the regional
+            option: ¥2,700 for 1 day, covering the JR lines Osaka–Kyoto, Kyoto–Nara and the HARUKA from
+            Kansai Airport, but not the Kintetsu.
           </p>
         </section>
 

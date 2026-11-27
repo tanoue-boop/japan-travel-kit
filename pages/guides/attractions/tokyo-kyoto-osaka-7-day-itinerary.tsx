@@ -629,7 +629,9 @@ const days: Day[] = [
         <Link href="/guides/transport/haruka-vs-nankai-rapit">Haruka vs Nankai Rapi:t comparison</Link>{" "}
         puts them side by side and our{" "}
         <Link href="/guides/transport/osaka-airport-transfer">Osaka airport transfer guide</Link> adds
-        the Itami routes. If you are claiming consumption tax back on the week&apos;s shopping, our{" "}
+        the Itami routes. If the Kyoto–Osaka move and the airport run share a day, the 1-day{" "}
+        <Link href="/guides/attractions/kansai-area-pass">JR Kansai Area Pass</Link> (¥2,700, JR West)
+        covers both the JR Special Rapid and the HARUKA. If you are claiming consumption tax back on the week&apos;s shopping, our{" "}
         <Link href="/guides/money/tax-free-shopping-japan">tax-free shopping guide</Link> explains the
         order the airport wants it done in.
       </>

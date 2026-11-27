@@ -18,7 +18,14 @@ import {
 import KlookLink from "../../../../components/KlookLink";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
-import { jrHarukaUrl, jrKansaiAreaPass, jrKansaiMiniPass, kansaiAreaPassSameDayPrep } from "../../../../lib/klook-links";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
+import {
+  jrHarukaUrl,
+  jrKansaiAreaPass3276,
+  jrKansaiMiniPass,
+  kansaiAreaPassSameDayCards,
+  kansaiAreaPassSameDayPrep,
+} from "../../../../lib/klook-links";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd, productOfferJsonLd } from "../../../../lib/structured-data";
@@ -36,9 +43,11 @@ const ROUTE = "/th/guides/attractions/kansai-area-pass";
 const TITLE = "JR Kansai Area Pass 2026: ราคา";
 const H1 = "JR Kansai Area Pass 2026: ราคา และเทียบกับ Kansai Wide Area Pass";
 const DESC =
-  "JR Kansai Area Pass 1 วัน ¥2,700 รวม HARUKA ไม่รวมชินคันเซ็น เทียบ Kansai Wide";
+  "JR Kansai Area Pass ¥2,700–¥6,700 KIX→เกียวโต+นารา ตั๋วเที่ยวเดียว ¥4,140 รวม HARUKA";
 
-const CHECKED_ISO = "2026-11-20";
+// R18 (2026-11-27): re-read with the English page — same ordinary fares, itinerary table,
+// coverage table and KANSAI ONE PASS notice; Klook pass listing moved to 3276.
+const CHECKED_ISO = "2026-11-27";
 const CHECKED = dateLabel(CHECKED_ISO, LOCALE);
 const R04_CHECKED = dateLabel("2026-11-13", LOCALE);
 const PREV_CHECKED = dateLabel("2026-11-03", LOCALE);
@@ -46,8 +55,11 @@ const OFFICIAL_URL = "https://www.westjr.co.jp/global/en/ticket/westqr/kansaiare
 const HARUKA_OFFICIAL_URL = "https://www.westjr.co.jp/global/en/ticket/westqr/haruka/";
 const WIDE_OFFICIAL_URL = "https://www.westjr.co.jp/global/en/ticket/pass/kansai_wide/";
 const ICOCA_OFFICIAL_URL = "https://www.westjr.co.jp/global/en/howto/icoca/";
+const FARE_PDF_URL = "https://www.westjr.co.jp/press/article/items/240515_00_press_keihanshin_unchin.pdf";
+const HIMEJI_FARE_URL = "https://www.westjr.co.jp/press/article/items/260225_00_press_JRWESTQR2daypass_1.pdf";
+const KOP_NOTICE_URL = "https://www.hanshin.co.jp/press/docs/20241223-toshikotsu-wanpasssyuryo2.pdf";
 
-const KANSAI_PASS_URL = klookFor(jrKansaiAreaPass.url, LOCALE);
+const KANSAI_PASS_URL = klookFor(jrKansaiAreaPass3276.url, LOCALE);
 const HARUKA_URL = klookFor(jrHarukaUrl, LOCALE);
 
 const QR_1_DAY = "¥2,700";
@@ -105,7 +117,34 @@ const breakEvenRows = [
   { trip: "เข้าเกียวโตและออกจากเกียวโต 4 วัน", singles: "¥2,700 + ¥2,700 = ¥5,400", pass: `${QR_4_DAY} (4 วัน)`, result: "ต้องนั่ง JR เที่ยวอื่นอีก ¥1,300 ใน 4 วันจึงคุ้ม" },
 ];
 
+// R18: ordinary JR West adult fares (same sources and figures as the English page).
+const fareRows = [
+  { route: "สนามบินคันไซ → เกียวโต (HARUKA One-way Ticket)", fare: "¥2,700", onPass: "✓ HARUKA ที่นั่งไม่จอง หรือใช้ที่นั่งจอง 1 ใน 2 ครั้ง" },
+  { route: "สนามบินคันไซ → โอซาก้า / ชินโอซาก้า (HARUKA One-way Ticket)", fare: "¥1,900", onPass: "✓ HARUKA (ชินโอซาก้า) หรือ Kansai Airport Rapid" },
+  { route: "โอซาก้า ↔ เกียวโต (JR Kyoto Line Special Rapid)", fare: "¥580", onPass: "✓ Special Rapid; ✗ ชินคันเซ็นชินโอซาก้า–เกียวโต" },
+  { route: "เกียวโต ↔ นารา (JR Nara Line)", fare: "¥720", onPass: "✓" },
+  { route: "เท็นโนจิ ↔ นารา (JR Yamatoji Line)", fare: "¥510", onPass: "✓" },
+  { route: "โอซาก้า ↔ ซันโนมิยะ โกเบ (JR Kobe Line)", fare: "¥420", onPass: "✓" },
+  { route: "โอซาก้า ↔ ฮิเมจิ (JR Kobe Line Special Rapid)", fare: "¥1,460", onPass: "✓ Special Rapid; ✗ ชินคันเซ็นชินโอซาก้า–ฮิเมจิ" },
+];
+
+// R18: itineraries priced as singles vs the pass (the lead row is the verdict).
+const itineraryRows = [
+  { plan: "วันที่ 1: สนามบินคันไซ → เกียวโต แล้วไปกลับเกียวโต ↔ นารา", singles: "¥2,700 + ¥720 + ¥720 = ¥4,140", pass: "¥2,700 (1 วัน)", result: "✓ พาสประหยัด ¥1,440" },
+  { plan: "ไปกลับโอซาก้า ↔ ฮิเมจิ 1 วัน", singles: "¥1,460 × 2 = ¥2,920", pass: "¥2,700 (1 วัน)", result: "✓ พาสประหยัด ¥220" },
+  { plan: "ไปกลับโอซาก้า ↔ เกียวโต อย่างเดียว", singles: "¥580 × 2 = ¥1,160", pass: "¥2,700 (1 วัน)", result: "✗ ตั๋วเที่ยวเดียวถูกกว่า ¥1,540" },
+  { plan: "ไปกลับเท็นโนจิ ↔ นารา อย่างเดียว", singles: "¥510 × 2 = ¥1,020", pass: "¥2,700 (1 วัน)", result: "✗ ตั๋วเที่ยวเดียวถูกกว่า ¥1,680" },
+  { plan: "3 วัน: KIX → เกียวโต; ไปกลับเกียวโต ↔ นารา; เกียวโต → โอซาก้า → KIX", singles: "¥2,700 + ¥1,440 + ¥580 + ¥1,900 = ¥6,620", pass: "¥5,500 (3 วัน)", result: "✓ พาสประหยัด ¥1,120" },
+  { plan: "4 วัน: แผน 3 วัน + ไปกลับโอซาก้า ↔ ฮิเมจิ ในวันที่ 3", singles: "¥6,620 + ¥2,920 = ¥9,540", pass: `${QR_4_DAY} (4 วัน)`, result: "✓ พาสประหยัด ¥2,840" },
+  { plan: "2 วัน อยู่แต่โอซาก้า: KIX → โอซาก้า, โอซาก้า → KIX", singles: "¥1,900 × 2 = ¥3,800", pass: "¥4,700 (2 วัน)", result: "✗ ตั๋วเที่ยวเดียวถูกกว่า ¥900" },
+];
+
+const lineLead = "รถไฟธรรมดาของ JR West บวก HARUKA ไม่รวมชินคันเซ็น รถด่วนพิเศษอื่น รถไฟใต้ดิน รถบัส หรือรถไฟเอกชน";
+
 const lineRows = [
+  { service: "JR Kyoto Line / Kobe Line Special Rapid (Shinkaisoku)", allowed: "✓ ไม่จำกัดเที่ยว", note: "รถไฟ JR สายเร็วเกียวโต–โอซาก้า–ซันโนมิยะ–ฮิเมจิ ที่นั่งธรรมดา ตู้ A-Seat ต้องจ่ายเพิ่ม" },
+  { service: "JR Nara Line และ Yamatoji Line", allowed: "✓ ไม่จำกัดเที่ยว", note: "เกียวโต–อินาริ (ฟูชิมิอินาริ)–นาราบน Nara Line และเท็นโนจิ/JR นัมบะ–นาราบน Yamatoji Line" },
+  { service: "Kansai Airport Line Rapid", allowed: "✓ ไม่จำกัดเที่ยว", note: "รถไฟสนามบินสาย JR ที่ช้ากว่า วิ่งผ่านเท็นโนจิไปโอซาก้า เป็นทางเลือกเมื่อเวลาของ HARUKA ไม่สะดวก" },
   { service: "Kansai-Airport Express HARUKA ที่นั่งไม่จอง", allowed: "✓ ไม่จำกัดเที่ยว", note: "รถไฟสนามบินจากสนามบินคันไซไปเท็นโนจิ ชินโอซาก้า และเกียวโต นี่คือเหตุผลหลักที่สุดในการซื้อพาสนี้" },
   { service: "Kansai-Airport Express HARUKA ที่นั่งจองรถธรรมดา", allowed: "✓ 2 ครั้ง", note: "รวมที่นั่งจอง 2 ครั้งโดยไม่ต้องจ่ายเพิ่ม จองได้บนเว็บไซต์ WEST-QR ตั้งแต่ 30 วันก่อนขึ้นรถ JR West ระบุว่าจองบนรถไฟ ที่เครื่องขายตั๋ว หรือที่เคาน์เตอร์ขายตั๋วไม่ได้" },
   { service: "HARUKA Green Car (ชั้นหนึ่ง)", allowed: "✗ ไม่รวม", note: "ต้องซื้อตั๋วแยก พาสใช้ได้เฉพาะรถธรรมดา" },
@@ -134,7 +173,7 @@ const worthRows = [
   { plan: "บินเข้าสนามบินคันไซแล้วไปเกียวโตทันที", verdict: "✓ ซื้อแบบ 1 วัน", why: "HARUKA One-way Ticket ไปเกียวโตราคา ¥2,700 สำหรับตั๋วที่ขายตั้งแต่ 1 พฤศจิกายน 2026 เท่ากับพาส 1 วันพอดี พาสจึงไม่มีค่าใช้จ่ายเพิ่ม และ JR ทุกเที่ยวที่คุณนั่งในวันเดียวกันก็ไม่ต้องจ่ายเพิ่ม" },
   { plan: "เที่ยวโอซาก้า เกียวโต นารา และโกเบ 3–4 วัน เดินทางระหว่างเมืองด้วย JR", verdict: "✓ ซื้อแบบ 3 หรือ 4 วัน", why: `${QR_4_DAY} สำหรับ 4 วัน ใช้ได้ทั้งช่วงสนามบินขาไปขากลับและการเดินทางระหว่างเมือง แค่ช่วงสนามบิน คือเข้าเกียวโต ¥2,700 และออกจากโอซาก้า ¥1,900 ด้วยตั๋ว HARUKA เที่ยวเดียว ก็เป็น ¥4,600 จาก ¥6,700 แล้ว เหลือ ¥2,100 ที่ต้องนั่งเพิ่ม` },
   { plan: "พักเมืองเดียว เที่ยวด้วยการเดิน รถไฟใต้ดิน และรถบัส", verdict: "✗ ไม่ต้องซื้อ", why: "พาสใช้กับ Osaka Metro รถไฟใต้ดินเกียวโต และรถบัสในเมืองไม่ได้เลย ถ้าคุณเที่ยวอยู่ในเมืองเดียว บัตร IC คู่กับพาสเมืองถูกกว่า และพาสนี้ซ้ำกับช่วงสนามบินเท่านั้น" },
-  { plan: "เที่ยววัดในเกียวโตด้วย Hankyu, Keihan หรือ Kintetsu", verdict: "✗ พาสไม่ตรงกับแผน", why: "ฟูชิมิอินาริ อาราชิยามะ และนารา ไปได้ด้วยรถไฟเอกชนที่พาสนี้ใช้ไม่ได้ ก่อนซื้อสินค้าของ JR ให้ตรวจสอบว่าสถานีที่จะไปเป็นของบริษัทไหน" },
+  { plan: "เที่ยววัดในเกียวโตด้วย Hankyu, Keihan หรือ Kintetsu", verdict: "✗ พาสไม่ตรงกับแผน", why: "ฟูชิมิอินาริ อาราชิยามะ และนารา มีทั้งสถานี JR และสถานีรถไฟเอกชน พาสใช้ได้เฉพาะสถานี JR (อินาริ, ซากะ-อาราชิยามะ, JR นารา) ก่อนซื้อสินค้าของ JR ให้ตรวจสอบว่าสถานีที่จะไปเป็นของบริษัทไหน" },
   { plan: "มีโตเกียวในทริปเดียวกัน หรือมีช่วงชินคันเซ็น", verdict: "✗ ไม่ใช่พาสนี้", why: "ใช้กับชินคันเซ็นไม่ได้ทุกช่วง และพื้นที่ใช้งานไปไม่ถึงโตเกียว ให้เทียบราคา JAPAN RAIL PASS ทั่วประเทศ หรือซื้อตั๋วชินคันเซ็นช่วงนั้นแยก แล้วใช้ Kansai Area Pass เฉพาะวันที่อยู่คันไซ" },
   { plan: "ถือพาสปอร์ตญี่ปุ่นหรืออาศัยอยู่ในญี่ปุ่น", verdict: "✗ ไม่มีสิทธิ์ซื้อ", why: "JR West ขายให้เฉพาะผู้ถือพาสปอร์ตที่ออกโดยรัฐบาลต่างประเทศและเข้าญี่ปุ่นด้วยสถานะ Temporary Visitor (ผู้พำนักระยะสั้น) คนสัญชาติญี่ปุ่นใช้ไม่ได้ และชาวต่างชาติที่มีสิทธิ์พำนักถาวรในญี่ปุ่นก็ใช้ไม่ได้" },
 ];
@@ -149,17 +188,39 @@ const faqItems: FaqItem[] = [
     a: `ทริปคันไซครั้งแรกส่วนใหญ่ใช้ Kansai Area Pass ส่วน Kansai WIDE Area Pass เหมาะเฉพาะเมื่อไปไกลกว่าฮิเมจิ Area Pass ราคา ${QR_1_DAY}–${QR_4_DAY} สำหรับ 1–4 วัน และใช้กับชินคันเซ็นไม่ได้ ส่วน WIDE ราคา ¥12,000 สำหรับ 5 วันติดกัน และเพิ่มที่นั่งจองชินคันเซ็นซันโยระหว่างชินโอซาก้ากับโอกายามะ รวมถึงคิโนซากิออนเซ็น อามาโนะฮาชิดาเตะ ทตโตริ ชิราฮามะ และทาคามัตสึ ถ้าแผนของคุณคือเกียวโต โอซาก้า นารา โกเบ และฮิเมจิ Area Pass แบบ 4 วัน (${QR_4_DAY}) ถูกกว่า ¥5,300 ทั้งสองแบบตรวจสอบจาก westjr.co.jp เมื่อ ${CHECKED}`,
   },
   {
-    q: "Kansai Area Pass ใช้นั่ง HARUKA จากสนามบินคันไซได้ไหม?",
-    a: `ได้ ตามหน้า WEST QR ของ JR West พาสนี้ใช้นั่งที่นั่งไม่จองของรถด่วนพิเศษ HARUKA ระหว่างสนามบินคันไซกับเท็นโนจิ ชินโอซาก้า และเกียวโตได้ไม่จำกัดเที่ยว และใช้ที่นั่งจองรถธรรมดาได้ 2 ครั้ง ซึ่งต้องจองบนเว็บไซต์ WEST-QR ตั้งแต่ 30 วันก่อนขึ้นรถ จองบนรถไฟหรือที่เคาน์เตอร์ขายตั๋วที่สถานีไม่ได้ Green Car ต้องซื้อตั๋วแยก และใช้กับ Nankai Rapi:t ไปนัมบะไม่ได้ ตรวจสอบ ${CHECKED}`,
+    q: "KANSAI ONE PASS หยุดขายแล้วหรือยัง?",
+    a: `หยุดขายแล้ว KANSAI ONE PASS เป็นบัตร IC เติมเงิน ไม่ใช่พาสรถไฟ ทยอยหยุดขายทีละบริษัทตั้งแต่ 1 พฤศจิกายน 2025 เมื่อสต็อกหมด และจะหยุดขายทั้งหมดภายในสิ้นปีงบประมาณ 2026 (มีนาคม 2027) ตามประกาศร่วมลงวันที่ 23 ธันวาคม 2024 ของ JR West และผู้ให้บริการอีก 9 ราย บัตรที่ซื้อไปแล้วยังใช้เป็นบัตร IC ได้ ส่วนสิทธิพิเศษที่ร้านค้าและสถานที่ท่องเที่ยวสิ้นสุดพร้อมปีงบประมาณ 2026 ประกาศนี้ไม่ได้ระบุบัตรที่มาแทน ตรวจสอบ ${CHECKED}`,
   },
   {
     q: "Kansai Area Pass คุ้มไหมสำหรับเที่ยวเกียวโตและโอซาก้า?",
-    a: `คุ้ม ถ้าคุณบินเข้าสนามบินคันไซและเดินทางระหว่างเกียวโตกับโอซาก้าด้วย JR แต่ไม่คุ้มถ้าอยู่เมืองเดียวและนั่งรถไฟใต้ดิน HARUKA One-way Ticket จากสนามบินคันไซไปเกียวโตราคา ¥2,700 สำหรับตั๋วที่ขายตั้งแต่ 1 พฤศจิกายน 2026 เท่ากับพาส 1 วัน และในทริป 3 วันที่เข้าเกียวโตและออกจากโอซาก้า ตั๋วเที่ยวเดียวสองใบ (¥4,600) ต่างจากพาส 3 วัน (¥5,500) เพียง ¥900 ซึ่งนั่ง JR ระหว่างเมืองเพิ่มก็ได้คืน พาสนี้ใช้กับ Osaka Metro รถไฟใต้ดินเกียวโต รถบัสในเมือง และสาย Kintetsu, Hankyu, Keihan, Nankai ไม่ได้ ค่าโดยสารตรวจสอบจาก westjr.co.jp เมื่อ ${CHECKED}`,
+    a: `คุ้ม ถ้าคุณลงที่สนามบินคันไซและเดินทางระหว่างเมืองด้วย JR แต่ไม่คุ้มสำหรับการไปกลับโอซาก้า–เกียวโตเพียงเที่ยวเดียว ตามค่าโดยสารของ JR West ตั๋ว HARUKA เที่ยวเดียวสนามบินคันไซ–เกียวโต (¥2,700) บวกไปกลับเกียวโต–นารา (¥1,440) รวม ¥4,140 เทียบกับพาส 1 วัน ¥2,700 และแผน 3 วัน KIX → เกียวโต → นารา → โอซาก้า → KIX ใช้ตั๋วเที่ยวเดียวรวม ¥6,620 เทียบกับพาส ¥5,500 ส่วนไปกลับโอซาก้า–เกียวโตแค่ ¥1,160 (เที่ยวละ ¥580) จึงไม่คุ้มกับพาส ¥2,700 ต่อวัน พาสนี้ใช้กับ Osaka Metro รถไฟใต้ดินเกียวโต รถบัสในเมือง และสาย Kintetsu, Hankyu, Keihan, Nankai ไม่ได้ ค่าโดยสารจาก westjr.co.jp ตรวจสอบ ${CHECKED}`,
   },
   {
-    q: "Kansai Area Pass ใช้กับชินคันเซ็นได้ไหม?",
-    a: `ไม่ได้ JR West ระบุว่า WEST QR Kansai Area Pass "ใช้กับชินคันเซ็นไม่ได้ แม้จะจ่ายค่าโดยสารเพิ่ม" การนั่งชินคันเซ็นจากชินโอซาก้าไปเกียวโตต้องซื้อตั๋วแยก ถ้าต้องการพาสคันไซที่มีชินคันเซ็น Kansai WIDE Area Pass (¥12,000, 5 วัน) รวมที่นั่งจองชินคันเซ็นซันโยชินโอซาก้า ⇔ โอกายามะ และ Kansai-Hiroshima Area Pass (¥17,000, 5 วัน) รวมชินโอซาก้า ⇔ ฮิโรชิม่า ตรวจสอบ ${CHECKED} (Kansai-Hiroshima ตรวจสอบ ${R04_CHECKED})`,
+    q: "Kansai Area Pass ใช้กับชินคันเซ็น HARUKA และรถไฟใต้ดินได้ไหม?",
+    a: `ใช้กับ HARUKA ได้ แต่ใช้กับชินคันเซ็นและรถไฟใต้ดินไม่ได้ JR West ระบุว่า WEST QR Kansai Area Pass นั่ง HARUKA ที่นั่งไม่จองได้ไม่จำกัดเที่ยวพร้อมที่นั่งจอง 2 ครั้ง และ "ใช้กับชินคันเซ็นไม่ได้ แม้จะจ่ายค่าโดยสารเพิ่ม" Osaka Metro รถไฟใต้ดินเกียวโต รถบัสในเมือง และรถไฟเอกชนไม่ใช่ของ JR West จึงใช้ไม่ได้ ถ้าต้องการพาสคันไซที่มีชินคันเซ็น Kansai WIDE Area Pass (¥12,000, 5 วัน) รวมที่นั่งจองชินคันเซ็นซันโยชินโอซาก้า ⇔ โอกายามะ และ Kansai-Hiroshima Area Pass (¥17,000, 5 วัน) รวมชินโอซาก้า ⇔ ฮิโรชิม่า ตรวจสอบ ${CHECKED} (Kansai-Hiroshima ตรวจสอบ ${R04_CHECKED})`,
   },
+];
+
+// R18: the same-day cards sit under the main CTA (localized here).
+const sameDayCards = [
+  withKlookLocale(kansaiAreaPassSameDayCards[0], LOCALE, {
+    label: "ทัวร์เกียวโตและนารา 1 วัน (วัดคิโยมิสึ ฟูชิมิอินาริ และสวนนารา)",
+    kind: "ทัวร์ 1 วัน",
+    ctaLabel: "ดูทัวร์เกียวโต–นารา 1 วัน →",
+    why: "ทัวร์รถบัสพร้อมไกด์พาไปเกียวโตและสวนนาราในการจองครั้งเดียว รวมช่วงรถบัสและเดินระหว่างจุดเที่ยวที่พาส JR ไม่ครอบคลุม",
+  }),
+  withKlookLocale(kansaiAreaPassSameDayCards[1], LOCALE, {
+    label: "โรงแรมใกล้สถานีเกียวโต",
+    kind: "โรงแรม",
+    ctaLabel: "ดูโรงแรมใกล้สถานีเกียวโต →",
+    why: "สถานีเกียวโตเป็นปลายทางของ HARUKA และต้นทางของ JR Nara Line สองเส้นทางที่ใช้พาสบ่อยที่สุดจึงเริ่มหน้าที่พัก",
+  }),
+  withKlookLocale(kansaiAreaPassSameDayCards[2], LOCALE, {
+    label: "Klook Japan eSIM",
+    kind: "eSIM",
+    ctaLabel: "ดู eSIM บน Klook →",
+    why: "WEST QR pass คือ QR code ในโทรศัพท์ การกด \"Use ticket\" (ใช้ตั๋ว) และการจองที่นั่ง HARUKA 2 ครั้งต้องใช้อินเทอร์เน็ตตั้งแต่ถึงสนามบิน",
+  }),
 ];
 
 const tripPrepItems = [
@@ -193,11 +254,11 @@ const tripPrepItems = [
     ctaLabel: "ดูโรงแรมใกล้สถานีเกียวโต →",
     why: "สถานีเกียวโตเป็นปลายทางของ HARUKA จากสนามบินคันไซ พักที่นี่แล้วช่วงสนามบินของพาสไม่ต้องเปลี่ยนรถเลย",
   }),
-];
+].filter((p) => !sameDayCards.some((c) => c.url === p.url));
 
 const tourPicks = [
-  withKlookLocale(jrKansaiAreaPass, LOCALE, {
-    title: "JR-West Kansai Rail Pass (1–4 วัน)",
+  withKlookLocale(jrKansaiAreaPass3276, LOCALE, {
+    title: "JR West Kansai Area Pass",
     desc: "Kansai Area Pass ตามที่ Klook ขาย นั่งรถไฟ Local, Rapid และ Special Rapid ของ JR West รอบโอซาก้า เกียวโต โกเบ นารา และฮิเมจิได้ไม่จำกัดเที่ยว พร้อม HARUKA จากสนามบินคันไซ",
   }),
   withKlookLocale(jrKansaiMiniPass, LOCALE, {
@@ -301,7 +362,7 @@ export default function ThKansaiAreaPassPage({ updated }: { updated: PageUpdated
 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>JR West Kansai Area Pass</strong> ราคา <strong>{QR_1_DAY} สำหรับ 1 วัน ¥4,700 สำหรับ 2 วัน ¥5,500 สำหรับ 3 วัน และ {QR_4_DAY} สำหรับ 4 วัน</strong> สำหรับผู้ใหญ่ (เด็ก 6–11 ปีครึ่งราคา) ตามหน้า WEST QR ทางการของ JR West ที่ตรวจสอบเมื่อ {CHECKED} ใช้กับรถไฟ JR West ระหว่าง <strong>เกียวโต โอซาก้า นารา โกเบ และสนามบินคันไซ</strong> รวมที่นั่งไม่จองของรถด่วนสนามบิน <strong>HARUKA</strong> แบบไม่จำกัดเที่ยว แต่ใช้กับชินคันเซ็นและสาย Kintetsu, Hankyu, Keihan, Nankai ไม่ได้ เลือก <strong>Kansai Wide Area Pass</strong> (¥12,000 สำหรับ 5 วัน) เฉพาะเมื่อคุณไปไกลกว่าฮิเมจิถึงโอกายามะ คิโนซากิออนเซ็น หรืออามาโนะฮาชิดาเตะ และใช้บัตร <strong>ICOCA</strong> แทนทั้งสองแบบถ้าคุณอยู่ในเมืองเดียวและนั่งรถไฟใต้ดิน
+            <strong>JR West Kansai Area Pass</strong> ราคา <strong>{QR_1_DAY} สำหรับ 1 วัน ¥4,700 สำหรับ 2 วัน ¥5,500 สำหรับ 3 วัน และ {QR_4_DAY} สำหรับ 4 วัน</strong> สำหรับผู้ใหญ่ (เด็ก 6–11 ปีครึ่งราคา) ตามหน้า WEST QR ทางการของ JR West ที่ตรวจสอบเมื่อ {CHECKED} พาสนี้ขายผ่านตัวแทนท่องเที่ยวในต่างประเทศเท่านั้น จึงไม่มีราคาแยกสำหรับซื้อในญี่ปุ่น พาส 1 วันราคา {QR_1_DAY} เท่ากับ HARUKA One-way Ticket จากสนามบินคันไซไปเกียวโต และถ้าไปกลับเกียวโต–นารา (เที่ยวละ ¥720) ในวันเดียวกัน พาสจะถูกกว่าตั๋วเที่ยวเดียว ¥1,440 ใช้กับรถไฟ JR West ระหว่าง <strong>เกียวโต โอซาก้า นารา โกเบ และสนามบินคันไซ</strong> รวมที่นั่งไม่จองของรถด่วนสนามบิน <strong>HARUKA</strong> แบบไม่จำกัดเที่ยว แต่ใช้กับชินคันเซ็นและสาย Kintetsu, Hankyu, Keihan, Nankai ไม่ได้ เลือก <strong>Kansai Wide Area Pass</strong> (¥12,000 สำหรับ 5 วัน) เฉพาะเมื่อคุณไปไกลกว่าฮิเมจิถึงโอกายามะ คิโนซากิออนเซ็น หรืออามาโนะฮาชิดาเตะ และใช้บัตร <strong>ICOCA</strong> แทนทั้งสองแบบถ้าคุณอยู่ในเมืองเดียวและนั่งรถไฟใต้ดิน
           </p>
         </section>
 
@@ -341,6 +402,38 @@ export default function ThKansaiAreaPassPage({ updated }: { updated: PageUpdated
             </div>
           </div>
         </div>
+
+        <KlookSameDayCards heading="จองอะไรเพิ่มสำหรับวันเดียวกับ Kansai Area Pass" cards={sameDayCards} locale={LOCALE} />
+
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>พาสเทียบตั๋วเที่ยวเดียว</span>
+          <h2 className={styles.sectionTitle}>Kansai Area Pass คุ้มกับแผนเที่ยวของคุณไหม?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            คุ้มในวันที่เริ่มด้วย HARUKA ไปเกียวโตหรือไปไกลถึงฮิเมจิ ไม่คุ้มในวันที่มีแค่ไปกลับโอซาก้า–เกียวโตหรือโอซาก้า–นารา ตามค่าโดยสารของ JR West ทริป 3 วัน สนามบินคันไซ → เกียวโต → นารา → โอซาก้า → สนามบินคันไซ ใช้ตั๋วเที่ยวเดียวรวม ¥6,620 เทียบกับพาส 3 วัน ¥5,500
+          </p>
+          <Table
+            head={["แผนเที่ยว", "ตั๋วเที่ยวเดียว (ผู้ใหญ่)", "พาส", "ผลลัพธ์"]}
+            lead={{ label: "สรุป", text: "ซื้อเมื่อเข้าทางเกียวโต มีวันไปฮิเมจิ หรือเดินทางระหว่างเมือง 3–4 วัน ไม่ต้องซื้อถ้ามีแค่ไปกลับโอซาก้า–เกียวโตหรือโอซาก้า–นาราเที่ยวเดียว" }}
+            rows={itineraryRows.map((r) => [r.plan, r.singles, r.pass, r.result])}
+          />
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.15rem", marginTop: "1.5rem" }}>ตั๋ว JR เที่ยวเดียวราคาเท่าไร?</h3>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            ผู้ใหญ่ โอซาก้า–เกียวโต ¥580 เกียวโต–นารา ¥720 และโอซาก้า–ฮิเมจิ ¥1,460 บนรถไฟธรรมดาของ JR West ส่วน HARUKA เที่ยวเดียวจากสนามบินคันไซไปเกียวโตราคา ¥2,700
+          </p>
+          <Table
+            head={["เส้นทาง", "ผู้ใหญ่ เที่ยวเดียว", "ใช้ Kansai Area Pass ได้ไหม?"]}
+            lead={{ label: "สรุป", text: "ทุกเส้นทางในตารางใช้พาสได้ด้วยรถไฟธรรมดาของ JR หรือ HARUKA แต่ใช้กับชินคันเซ็นไม่ได้" }}
+            rows={fareRows.map((r) => [r.route, r.fare, r.onPass])}
+          />
+          <p className={styles.bodyText} style={noteStyle}>
+            ตรวจสอบล่าสุด: {CHECKED_ISO} — แหล่งข้อมูลทางการ: <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer">JR West, WEST QR Kansai Area Pass</a>, <a href={HARUKA_OFFICIAL_URL} target="_blank" rel="noopener noreferrer">JR West, WEST QR HARUKA One-way Ticket</a> (ค่าโดยสารสำหรับตั๋วที่ขายตั้งแต่ 1 พฤศจิกายน 2026), <a href={FARE_PDF_URL} target="_blank" rel="noopener noreferrer">JR West, ตารางค่าโดยสารเคฮันชิน (ค่าโดยสารพิเศษ ตั้งแต่ 1 เมษายน 2025)</a> และ <a href={HIMEJI_FARE_URL} target="_blank" rel="noopener noreferrer">ข่าวประชาสัมพันธ์ JR West 25 กุมภาพันธ์ 2026 (โอซาก้า–ฮิเมจิ ¥1,460)</a> ค่าโดยสารจากสถานีโอซาก้าไปนาราไม่อยู่ในรายการค่าโดยสารพิเศษ แถวของนาราจึงเริ่มที่เท็นโนจิ ค่าโดยสารเป็นราคาตั๋วกระดาษผู้ใหญ่ เด็กครึ่งราคา
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={KANSAI_PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+              ดู Kansai Area Pass บน Klook →
+            </KlookLink>
+          </div>
+        </section>
 
         <EsimCtaTop />
 
@@ -406,20 +499,20 @@ export default function ThKansaiAreaPassPage({ updated }: { updated: PageUpdated
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>รวมและไม่รวม</span>
-          <h2 className={styles.sectionTitle}>Kansai Area Pass ใช้กับอะไรได้บ้าง?</h2>
+          <h2 className={styles.sectionTitle}>Kansai Area Pass ใช้กับชินคันเซ็น HARUKA และรถไฟใต้ดินได้ไหม?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            รถไฟธรรมดาของ JR West (Special Rapid, Rapid และ Local) ในพื้นที่คันไซ บวกรถด่วนสนามบิน HARUKA (ที่นั่งไม่จองไม่จำกัดเที่ยว ที่นั่งจอง 2 ครั้ง) นอกนั้นใช้ไม่ได้ทั้งหมด ไม่มีชินคันเซ็น รถด่วนพิเศษอื่น รถไฟใต้ดิน รถบัส หรือรถไฟเอกชน สิ่งที่ไม่รวมมักเป็นตัวตัดสินว่าจะซื้อพาสนี้หรือไม่ มากกว่าสิ่งที่รวม
+            ใช้กับ HARUKA ได้ (ที่นั่งไม่จองไม่จำกัดเที่ยว ที่นั่งจอง 2 ครั้ง) แต่ใช้กับชินคันเซ็นและรถไฟใต้ดินไม่ได้ นอกจาก HARUKA แล้วใช้ได้เฉพาะรถไฟธรรมดาของ JR West (Special Rapid, Rapid และ Local) บนสาย JR Kyoto, Kobe, Nara, Yamatoji และ Kansai Airport ไม่รวมรถด่วนพิเศษอื่น รถบัส หรือรถไฟเอกชน สิ่งที่ไม่รวมมักเป็นตัวตัดสินว่าจะซื้อพาสนี้หรือไม่ มากกว่าสิ่งที่รวม
           </p>
-          <Table head={["บริการ", "ใช้พาสได้ไหม", "หมายความว่า"]} rows={lineRows.map((r) => [r.service, r.allowed, r.note])} />
+          <Table head={["บริการ", "ใช้พาสได้ไหม", "หมายความว่า"]} lead={{ label: "สรุป", text: lineLead }} rows={lineRows.map((r) => [r.service, r.allowed, r.note])} />
           <p className={styles.bodyText} style={noteStyle}>
-            ขอบเขตการใช้งานตรวจสอบจาก westjr.co.jp เมื่อ {CHECKED} การเดินทางในเมืองที่พาสไม่รวมอยู่ใน <Link href="/guides/transport/osaka-transportation" style={linkStyle}>คู่มือการเดินทางในโอซาก้า (ภาษาอังกฤษ)</Link> และ <Link href="/guides/transport/kyoto-transportation" style={linkStyle}>คู่มือการเดินทางในเกียวโต (ภาษาอังกฤษ)</Link> ทั้งสองคู่มือรวมรถไฟใต้ดิน รถบัส และตัวเลือก <Link href="/guides/transport/ic-cards-japan" style={linkStyle}>บัตร IC (ภาษาอังกฤษ)</Link> ที่คุณยังต้องใช้เพิ่ม
+            ตรวจสอบล่าสุด: {CHECKED_ISO} — แหล่งข้อมูลทางการ: <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer">JR West, WEST QR Kansai Area Pass</a> (ตารางการใช้กับขบวนรถ) การเดินทางในเมืองที่พาสไม่รวมอยู่ใน <Link href="/guides/transport/osaka-transportation" style={linkStyle}>คู่มือการเดินทางในโอซาก้า (ภาษาอังกฤษ)</Link> และ <Link href="/guides/transport/kyoto-transportation" style={linkStyle}>คู่มือการเดินทางในเกียวโต (ภาษาอังกฤษ)</Link> ทั้งสองคู่มือรวมรถไฟใต้ดิน รถบัส และตัวเลือก <Link href="/guides/transport/ic-cards-japan" style={linkStyle}>บัตร IC (ภาษาอังกฤษ)</Link> ที่คุณยังต้องใช้เพิ่ม
           </p>
         </section>
 
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>จากสนามบิน</span>
-          <h2 className={styles.sectionTitle}>Kansai Area Pass ใช้นั่ง HARUKA จากสนามบินคันไซได้ไหม?</h2>
-          <p className={styles.bodyText}>ได้ ที่นั่งไม่จองบน HARUKA ระหว่างสนามบินคันไซกับเท็นโนจิ ชินโอซาก้า และเกียวโตใช้ได้ไม่จำกัดเที่ยว และรวมที่นั่งจองรถธรรมดา 2 ครั้ง (Green Car ต้องจ่ายเพิ่ม)</p>
+          <h2 className={styles.sectionTitle}>ใช้ Kansai Area Pass นั่ง HARUKA จากสนามบินคันไซอย่างไร?</h2>
+          <p className={styles.bodyText}>สแกน QR code ที่ประตูตรวจตั๋ว JR แล้วขึ้น HARUKA ขบวนไหนก็ได้ ที่นั่งไม่จองระหว่างสนามบินคันไซกับเท็นโนจิ ชินโอซาก้า และเกียวโตใช้ได้ไม่จำกัดเที่ยว และรวมที่นั่งจองรถธรรมดา 2 ครั้ง (Green Car ต้องจ่ายเพิ่ม)</p>
           <h3 className={styles.sectionTitle} style={{ fontSize: "1.15rem" }}>Kansai Area Pass ใช้กับชินคันเซ็นได้ไหม?</h3>
           <p className={styles.bodyText}>ไม่ได้ JR West ระบุว่าพาสนี้ &quot;ใช้กับชินคันเซ็นไม่ได้ แม้จะจ่ายค่าโดยสารเพิ่ม&quot; พาสคันไซที่รวมชินคันเซ็นคือ Kansai Wide Area Pass ซึ่งใช้ที่นั่งจองชินคันเซ็นซันโยระหว่างชินโอซาก้ากับโอกายามะได้</p>
           <p className={styles.bodyText}>
@@ -453,7 +546,7 @@ export default function ThKansaiAreaPassPage({ updated }: { updated: PageUpdated
             rows={cmpRest.map((r) => [r.option, r.price, r.covers, r.pick])}
           />
           <p className={styles.bodyText} style={noteStyle}>
-            ตรวจสอบล่าสุด: หน้า Kansai Area, HARUKA One-way และ Kansai WIDE Area Pass ของ JR West (westjr.co.jp) เมื่อ {CHECKED_ISO} หน้า Kansai Mini และ Kansai-Hiroshima Area Pass และ Kintetsu (kintetsu.co.jp/foreign/english/ticket/) เมื่อ {R04_CHECKED} พาสทั่วประเทศจาก japanrailpass.net, Osaka Amazing Pass จากเว็บไซต์ทางการ และประกาศ KANSAI ONE PASS เมื่อ {PREV_CHECKED} ถ้านาราเป็นวันเที่ยวหลัก <Link href="/guides/transport/kintetsu-rail-pass" style={linkStyle}>คู่มือ KINTETSU RAIL PASS (ภาษาอังกฤษ)</Link> คำนวณว่าเมื่อไรพาส Kintetsu ถูกกว่าตั๋วเที่ยวเดียว สำหรับหนึ่งวันในโอซาก้า <Link href="/guides/attractions/osaka-attractions-pass" style={linkStyle}>คู่มือ Osaka Amazing Pass (ภาษาอังกฤษ)</Link> อธิบายพาสเมืองที่ Kansai Area Pass ใช้แทนไม่ได้ สำหรับคิโนซากิออนเซ็น Kansai Area Pass ใช้กับรถด่วนพิเศษ Konotori ไม่ได้ ส่วน WIDE pass รวมที่นั่งจองของขบวนนี้ <Link href="/guides/attractions/kinosaki-onsen-day-trip" style={linkStyle}>คู่มือทริปคิโนซากิออนเซ็น 1 วัน (ภาษาอังกฤษ)</Link> มีเวลา Konotori จากโอซาก้า HARUKA One-way Ticket คือตั๋วเที่ยวเดียวราคาพิเศษสำหรับผู้ถือพาสปอร์ตต่างประเทศที่เข้าญี่ปุ่นด้วยสถานะ Temporary Visitor ค่าโดยสารที่แสดงใช้กับตั๋วที่ขายตั้งแต่ 1 พฤศจิกายน 2026 ซึ่งเป็นวันที่ JR West ปรับราคาขึ้น ตอนนี้ตั๋วเที่ยวเดียวไปเกียวโตจึงราคาเท่ากับพาส 1 วัน จุดคุ้มทุนของพาสทั่วประเทศดูได้ใน <Link href="/guides/transport/jr-pass-guide" style={linkStyle}>คู่มือ JR Pass (ภาษาอังกฤษ)</Link> สำหรับเส้นทางวงรอบที่เริ่มจากโตเกียวและเข้าคันไซผ่านคานาซาวะ <Link href="/guides/transport/hokuriku-arch-pass" style={linkStyle}>Hokuriku Arch Pass (ภาษาอังกฤษ)</Link> แบบ 7 วันใช้กับ Thunderbird และ HARUKA ได้ รวมถึงชินคันเซ็นโฮคุริคุ สำหรับฮิโรชิม่าซึ่งพาสคันไซแบบไหนก็ไปไม่ถึง <Link href="/guides/transport/osaka-to-hiroshima-shinkansen" style={linkStyle}>คู่มือชินคันเซ็นโอซาก้า–ฮิโรชิม่า (ภาษาอังกฤษ)</Link> เทียบ Kansai-Hiroshima Area Pass ของ JR West กับตั๋วเที่ยวเดียว ICOCA &amp; HARUKA ไม่ได้รวมไว้ เพราะหน้าภาษาอังกฤษปัจจุบันของ JR West ไม่แสดงราคาในวันที่ตรวจสอบ
+            ตรวจสอบล่าสุด: หน้า Kansai Area, HARUKA One-way, Kansai Mini และ Kansai WIDE Area Pass ของ JR West (westjr.co.jp) และประกาศ KANSAI ONE PASS เมื่อ {CHECKED_ISO} หน้า Kansai-Hiroshima Area Pass และ Kintetsu (kintetsu.co.jp/foreign/english/ticket/) เมื่อ {R04_CHECKED} พาสทั่วประเทศจาก japanrailpass.net และ Osaka Amazing Pass จากเว็บไซต์ทางการ เมื่อ {PREV_CHECKED} ถ้านาราเป็นวันเที่ยวหลัก <Link href="/guides/transport/kintetsu-rail-pass" style={linkStyle}>คู่มือ KINTETSU RAIL PASS (ภาษาอังกฤษ)</Link> คำนวณว่าเมื่อไรพาส Kintetsu ถูกกว่าตั๋วเที่ยวเดียว สำหรับหนึ่งวันในโอซาก้า <Link href="/guides/attractions/osaka-attractions-pass" style={linkStyle}>คู่มือ Osaka Amazing Pass (ภาษาอังกฤษ)</Link> อธิบายพาสเมืองที่ Kansai Area Pass ใช้แทนไม่ได้ สำหรับคิโนซากิออนเซ็น Kansai Area Pass ใช้กับรถด่วนพิเศษ Konotori ไม่ได้ ส่วน WIDE pass รวมที่นั่งจองของขบวนนี้ <Link href="/guides/attractions/kinosaki-onsen-day-trip" style={linkStyle}>คู่มือทริปคิโนซากิออนเซ็น 1 วัน (ภาษาอังกฤษ)</Link> มีเวลา Konotori จากโอซาก้า HARUKA One-way Ticket คือตั๋วเที่ยวเดียวราคาพิเศษสำหรับผู้ถือพาสปอร์ตต่างประเทศที่เข้าญี่ปุ่นด้วยสถานะ Temporary Visitor ค่าโดยสารที่แสดงใช้กับตั๋วที่ขายตั้งแต่ 1 พฤศจิกายน 2026 ซึ่งเป็นวันที่ JR West ปรับราคาขึ้น ตอนนี้ตั๋วเที่ยวเดียวไปเกียวโตจึงราคาเท่ากับพาส 1 วัน จุดคุ้มทุนของพาสทั่วประเทศดูได้ใน <Link href="/guides/transport/jr-pass-guide" style={linkStyle}>คู่มือ JR Pass (ภาษาอังกฤษ)</Link> สำหรับเส้นทางวงรอบที่เริ่มจากโตเกียวและเข้าคันไซผ่านคานาซาวะ <Link href="/guides/transport/hokuriku-arch-pass" style={linkStyle}>Hokuriku Arch Pass (ภาษาอังกฤษ)</Link> แบบ 7 วันใช้กับ Thunderbird และ HARUKA ได้ รวมถึงชินคันเซ็นโฮคุริคุ สำหรับฮิโรชิม่าซึ่งพาสคันไซแบบไหนก็ไปไม่ถึง <Link href="/guides/transport/osaka-to-hiroshima-shinkansen" style={linkStyle}>คู่มือชินคันเซ็นโอซาก้า–ฮิโรชิม่า (ภาษาอังกฤษ)</Link> เทียบ Kansai-Hiroshima Area Pass ของ JR West กับตั๋วเที่ยวเดียว ICOCA &amp; HARUKA ไม่ได้รวมไว้ เพราะหน้าภาษาอังกฤษปัจจุบันของ JR West ไม่แสดงราคาในวันที่ตรวจสอบ
           </p>
         </section>
 
@@ -521,7 +614,10 @@ export default function ThKansaiAreaPassPage({ updated }: { updated: PageUpdated
             กำลังทยอยหยุดขาย และไม่เคยเป็นพาสรถไฟของ JR KANSAI ONE PASS เป็นบัตร IC เติมเงินสำหรับนักท่องเที่ยว ในประกาศร่วมลงวันที่ 23 ธันวาคม 2024 JR West, Hankyu, Kintetsu, Keihan, Nankai, Hanshin, Osaka Metro, Osaka City Bus และสำนักงานขนส่งของเมืองเกียวโตและโกเบ แจ้งว่าแต่ละบริษัทจะหยุดขายตั้งแต่ 1 พฤศจิกายน 2025 เมื่อสต็อกหมด และจะหยุดขายทั้งหมดภายในสิ้นปีงบประมาณ 2026 (มีนาคม 2027)
           </p>
           <p className={styles.bodyText}>
-            ประกาศเดียวกันระบุว่าบัตรที่ซื้อไปแล้วยังใช้เป็นบัตร IC เติมเงินได้ ส่วนสิทธิพิเศษที่ร้านค้าและสถานที่ท่องเที่ยวสิ้นสุดพร้อมปีงบประมาณ 2026 บัตรนี้ไม่เคยใช้แทน Kansai Area Pass ได้ เพราะบัตร IC จ่ายค่าโดยสารทุกเที่ยว ส่วนพาสใช้แทนค่าโดยสารเหล่านั้น ตรวจสอบ {PREV_CHECKED}
+            ประกาศเดียวกันระบุว่าบัตรที่ซื้อไปแล้วยังใช้เป็นบัตร IC เติมเงินได้ ส่วนสิทธิพิเศษที่ร้านค้าและสถานที่ท่องเที่ยวสิ้นสุดพร้อมปีงบประมาณ 2026 ประกาศไม่ได้ระบุบัตรที่มาแทน แต่ให้เหตุผลว่าตั๋วอิเล็กทรอนิกส์ของ KANSAI MaaS สำหรับนักท่องเที่ยวแพร่หลายมากขึ้น บัตรนี้ไม่เคยใช้แทน Kansai Area Pass ได้ เพราะบัตร IC จ่ายค่าโดยสารทุกเที่ยว ส่วนพาสใช้แทนค่าโดยสารเหล่านั้น ถ้าจะจ่ายตามการใช้จริง ICOCA ทำหน้าที่เดียวกัน
+          </p>
+          <p className={styles.bodyText} style={noteStyle}>
+            ตรวจสอบล่าสุด: {CHECKED_ISO} — แหล่งข้อมูลทางการ: <a href={KOP_NOTICE_URL} target="_blank" rel="noopener noreferrer">ประกาศร่วมวันที่ 23 ธันวาคม 2024 (JR West, Hankyu, Kintetsu, Keihan, Nankai, Hanshin, Osaka Metro และอื่น ๆ) บน hanshin.co.jp</a>
           </p>
         </section>
 

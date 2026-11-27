@@ -18,7 +18,16 @@ import {
 import KlookLink from "../../../../components/KlookLink";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
-import { jrHarukaUrl, jrKansaiAreaPass, jrKansaiMiniPass, kansaiAreaPassSameDayPrep } from "../../../../lib/klook-links";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
+import {
+  jrHarukaUrl,
+  jrKansaiAreaPass3276,
+  jrKansaiMiniPass,
+  kansaiAreaPassSameDayCards,
+  kansaiAreaPassSameDayPrep,
+  type KlookSameDayCard,
+  type KlookTripPrepItem,
+} from "../../../../lib/klook-links";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd, productOfferJsonLd } from "../../../../lib/structured-data";
@@ -38,9 +47,12 @@ const ROUTE = "/zh-tw/guides/attractions/kansai-area-pass";
 const TITLE = "JR關西地區鐵路周遊券 2026：價格與關西廣域比較";
 const H1 = "JR關西地區鐵路周遊券 2026：價格、HARUKA 與關西廣域周遊券比較";
 const DESC =
-  "JR關西地區鐵路周遊券 2026 價格：1 日 ¥2,700、3 日 ¥5,500，含關西機場 HARUKA，不含新幹線。與關西廣域周遊券、ICOCA 比較。";
+  "JR關西地區鐵路周遊券 2026：1 日 ¥2,700 至 4 日 ¥6,700。關西機場到京都加奈良，單程票合計 ¥4,140。含 HARUKA，不含新幹線。";
 
-const CHECKED_ISO = "2026-11-20";
+// R18 (2026-11-27, task jtk-20261127-R18): aligned with the English page — itinerary
+// table at JR West ordinary fares, coverage question H2, KANSAI ONE PASS re-check,
+// same-day cards under the main CTA, Klook pass listing 1107 → 3276.
+const CHECKED_ISO = "2026-11-27";
 const CHECKED = dateLabel(CHECKED_ISO, LOCALE);
 const R04_CHECKED = dateLabel("2026-11-13", LOCALE);
 const PREV_CHECKED = dateLabel("2026-11-03", LOCALE);
@@ -48,8 +60,11 @@ const OFFICIAL_URL = "https://www.westjr.co.jp/global/en/ticket/westqr/kansaiare
 const HARUKA_OFFICIAL_URL = "https://www.westjr.co.jp/global/en/ticket/westqr/haruka/";
 const WIDE_OFFICIAL_URL = "https://www.westjr.co.jp/global/en/ticket/pass/kansai_wide/";
 const ICOCA_OFFICIAL_URL = "https://www.westjr.co.jp/global/en/howto/icoca/";
+const FARE_PDF_URL = "https://www.westjr.co.jp/press/article/items/240515_00_press_keihanshin_unchin.pdf";
+const HIMEJI_FARE_URL = "https://www.westjr.co.jp/press/article/items/260225_00_press_JRWESTQR2daypass_1.pdf";
+const KOP_NOTICE_URL = "https://www.hanshin.co.jp/press/docs/20241223-toshikotsu-wanpasssyuryo2.pdf";
 
-const KANSAI_PASS_URL = klookFor(jrKansaiAreaPass.url, LOCALE);
+const KANSAI_PASS_URL = klookFor(jrKansaiAreaPass3276.url, LOCALE);
 const HARUKA_URL = klookFor(jrHarukaUrl, LOCALE);
 
 const QR_1_DAY = "¥2,700";
@@ -107,7 +122,32 @@ const breakEvenRows = [
   { trip: "京都進、京都出，4 天", singles: "¥2,700 + ¥2,700 = ¥5,400", pass: `${QR_4_DAY}（4 日券）`, result: "4 天內還要再搭 ¥1,300 的 JR 才划算" },
 ];
 
+// R18: JR West ordinary adult fares (same sources and numbers as the English page).
+const fareRows = [
+  { route: "關西機場 → 京都（HARUKA 單程票）", fare: "¥2,700", onPass: "✓ HARUKA 自由席，或 2 次指定席之一" },
+  { route: "關西機場 → 大阪／新大阪（HARUKA 單程票）", fare: "¥1,900", onPass: "✓ HARUKA（新大阪）或關空快速" },
+  { route: "大阪 ↔ 京都（JR 京都線新快速）", fare: "¥580", onPass: "✓ 新快速；✗ 新大阪–京都的新幹線" },
+  { route: "京都 ↔ 奈良（JR 奈良線）", fare: "¥720", onPass: "✓" },
+  { route: "天王寺 ↔ 奈良（JR 大和路線）", fare: "¥510", onPass: "✓" },
+  { route: "大阪 ↔ 三之宮（神戶，JR 神戶線）", fare: "¥420", onPass: "✓" },
+  { route: "大阪 ↔ 姬路（JR 神戶線新快速）", fare: "¥1,460", onPass: "✓ 新快速；✗ 新大阪–姬路的新幹線" },
+];
+
+// R18: itineraries priced as singles vs the pass (lead row = verdict).
+const itineraryRows = [
+  { plan: "第 1 天：關西機場 → 京都，再京都 ↔ 奈良來回", singles: "¥2,700 + ¥720 + ¥720 = ¥4,140", pass: "¥2,700（1 日券）", result: "✓ 周遊券省 ¥1,440" },
+  { plan: "大阪 ↔ 姬路一日遊", singles: "¥1,460 × 2 = ¥2,920", pass: "¥2,700（1 日券）", result: "✓ 周遊券省 ¥220" },
+  { plan: "只有大阪 ↔ 京都一日遊", singles: "¥580 × 2 = ¥1,160", pass: "¥2,700（1 日券）", result: "✗ 單程票便宜 ¥1,540" },
+  { plan: "只有天王寺 ↔ 奈良一日遊", singles: "¥510 × 2 = ¥1,020", pass: "¥2,700（1 日券）", result: "✗ 單程票便宜 ¥1,680" },
+  { plan: "3 天：關西機場 → 京都；京都 ↔ 奈良；京都 → 大阪 → 關西機場", singles: "¥2,700 + ¥1,440 + ¥580 + ¥1,900 = ¥6,620", pass: "¥5,500（3 日券）", result: "✓ 周遊券省 ¥1,120" },
+  { plan: "4 天：上述 3 天行程，第 3 天加大阪 ↔ 姬路", singles: "¥6,620 + ¥2,920 = ¥9,540", pass: `${QR_4_DAY}（4 日券）`, result: "✓ 周遊券省 ¥2,840" },
+  { plan: "2 天，只在大阪：關西機場 → 大阪、大阪 → 關西機場", singles: "¥1,900 × 2 = ¥3,800", pass: "¥4,700（2 日券）", result: "✗ 單程票便宜 ¥900" },
+];
+
 const lineRows = [
+  { service: "JR 京都線／神戶線新快速", allowed: "✓ 不限次數", note: "京都–大阪–三之宮–姬路之間的快速 JR 列車，一般座位。付費的 A-Seat 車廂需加價。" },
+  { service: "JR 奈良線與大和路線", allowed: "✓ 不限次數", note: "奈良線為京都–稻荷（伏見稻荷）–奈良，大和路線為天王寺／JR 難波–奈良。" },
+  { service: "關西機場線快速（關空快速）", allowed: "✓ 不限次數", note: "經天王寺到大阪、全程 JR 的較慢機場列車；HARUKA 時間不合適時的選擇。" },
   { service: "關西機場特快 HARUKA，自由席", allowed: "✓ 不限次數", note: "從關西機場到天王寺、新大阪、京都的機場列車。這是買這張周遊券最主要的理由。" },
   { service: "關西機場特快 HARUKA，普通車廂指定席", allowed: "✓ 2 次", note: "含 2 次指定席，不需另外付費。請在乘車日 30 天前起於 WEST-QR 網站預約；JR 西日本說明無法在車上、售票機或售票櫃檯預約。" },
   { service: "HARUKA 綠色車廂（頭等）", allowed: "✗ 不含", note: "需另外購票。周遊券只能搭普通車廂。" },
@@ -136,7 +176,7 @@ const worthRows = [
   { plan: "抵達關西機場後直接去京都", verdict: "✓ 買 1 日券", why: "2026 年 11 月 1 日起售出的 HARUKA 單程票到京都為 ¥2,700，與 1 日券同價。周遊券不用多花錢，當天搭的其他 JR 也全都不用再付車資。" },
   { plan: "在大阪、京都、奈良、神戶之間搭 JR 玩 3 或 4 天", verdict: "✓ 買 3 日或 4 日券", why: `4 天 ${QR_4_DAY} 涵蓋機場來回與城市間移動。光是機場兩段：HARUKA 單程到京都 ¥2,700、從大阪出 ¥1,900，就占了 ¥6,700 中的 ¥4,600，只剩 ¥2,100 要靠其他行程補足。` },
   { plan: "住在一座城市，靠步行、地鐵與公車觀光", verdict: "✗ 不用買", why: "大阪地鐵、京都市營地下鐵與市區公車都不能搭。如果每天都在同一座城市，IC 卡加城市周遊卡比較便宜，周遊券只會和機場路段重複。" },
-  { plan: "搭阪急、京阪或近鐵逛京都寺廟", verdict: "✗ 買錯票", why: "伏見稻荷、嵐山與奈良都可以搭這張周遊券不能用的私鐵前往。買 JR 票券之前，請先確認要去的車站是哪家公司的路線。" },
+  { plan: "搭阪急、京阪或近鐵逛京都寺廟", verdict: "✗ 買錯票", why: "伏見稻荷、嵐山與奈良都同時有 JR 與私鐵可到；周遊券只能用在 JR 車站（稻荷、嵯峨嵐山、JR 奈良）。買 JR 票券之前，請先確認要去的車站是哪家公司的路線。" },
   { plan: "同一趟有東京，或有新幹線路段", verdict: "✗ 不是這張", why: "任何區間的新幹線都不能搭，有效區域也遠遠到不了東京。請比較全國版 JR Pass 的價格，或另外買新幹線那一段，只在關西的日子使用關西周遊券。" },
   { plan: "持日本護照或居住在日本", verdict: "✗ 不符合資格", why: "JR 西日本只販售給持外國政府核發護照、以「短期滯在」身分入境的旅客。日本國籍者不能使用，在日本有永住權的外國人也不能使用。" },
 ];
@@ -151,55 +191,70 @@ const faqItems: FaqItem[] = [
     a: `第一次去關西，大多數人買關西地區鐵路周遊券就夠了；只有要去比姬路更遠的地方，才需要關西廣域鐵路周遊券。關西地區鐵路周遊券 1 至 4 天 ${QR_1_DAY}–${QR_4_DAY}，不能搭新幹線。關西廣域鐵路周遊券連續 5 天 ¥12,000，另外包含新大阪與岡山之間的山陽新幹線指定席，以及城崎溫泉、天橋立、鳥取、白濱與高松。如果行程只有京都、大阪、奈良、神戶與姬路，4 日券（${QR_4_DAY}）便宜 ¥5,300。兩者皆於${CHECKED}在 westjr.co.jp 確認。`,
   },
   {
-    q: "關西地區鐵路周遊券可以從關西機場搭 HARUKA 嗎？",
-    a: `可以。依 JR 西日本 WEST QR 頁面，關西機場與天王寺、新大阪、京都之間的特急 HARUKA 自由席可不限次數搭乘，另含 2 次普通車廂指定席；指定席需在乘車日 30 天前起於 WEST-QR 網站預約，無法在車上或車站售票櫃檯預約。綠色車廂需另外購票。往難波的南海 Rapi:t 不能搭。${CHECKED}確認。`,
+    q: "KANSAI ONE PASS 停售了嗎？",
+    a: `是。KANSAI ONE PASS 是可儲值的 IC 卡，不是鐵路周遊券。依 JR 西日本等 10 家業者 2024 年 12 月 23 日的聯合公告，各公司自 2025 年 11 月 1 日起庫存售完即停售，並預定於 2026 財政年度結束前（2027 年 3 月）全面停售。已購買的卡片仍可作為 IC 卡使用，商店與景點優惠則在 2026 財政年度結束。公告沒有指定替代的卡片。${CHECKED}確認。`,
   },
   {
     q: "去京都和大阪，買關西地區鐵路周遊券划算嗎？",
-    a: `從關西機場入境、在京都與大阪之間搭 JR 移動的話划算；只待在一座城市搭地鐵的話不划算。2026 年 11 月 1 日起售出的關西機場到京都 HARUKA 單程票為 ¥2,700，與 1 日券同價；京都進、大阪出的 3 天行程，兩張單程票（¥4,600）與 3 日券（¥5,500）只差 ¥900，用 JR 移動補足即可。大阪地鐵、京都市營地下鐵、市區公車，以及近鐵、阪急、京阪、南海都不能搭。車資於${CHECKED}在 westjr.co.jp 確認。`,
+    a: `從關西機場入境、在城市之間搭 JR 移動的話划算；只有一趟大阪–京都來回的話不划算。依 JR 西日本的車資，關西機場到京都的 HARUKA 單程票（¥2,700）加上京都–奈良來回（¥1,440）共 ¥4,140，1 日券只要 ¥2,700；關西機場 → 京都 → 奈良 → 大阪 → 關西機場的 3 天行程，單程票合計 ¥6,620，3 日券為 ¥5,500。大阪–京都來回只要 ¥1,160（單程 ¥580），光這一趟不值得買 ¥2,700 的 1 日券。大阪地鐵、京都市營地下鐵、市區公車，以及近鐵、阪急、京阪、南海都不能搭。車資來自 westjr.co.jp，${CHECKED}確認。`,
   },
   {
-    q: "關西地區鐵路周遊券可以搭新幹線嗎？",
-    a: `不行。JR 西日本說明 WEST QR 關西地區鐵路周遊券「即使支付追加費用，也不能搭乘新幹線」，新大阪到京都搭新幹線需另外購票。想要含新幹線區間的關西周遊券，關西廣域鐵路周遊券（¥12,000，5 天）包含山陽新幹線新大阪 ⇔ 岡山指定席，關西&廣島地區鐵路周遊券（¥17,000，5 天）則是新大阪 ⇔ 廣島。${CHECKED}確認（關西&廣島為${R04_CHECKED}）。`,
+    q: "關西地區鐵路周遊券可以搭新幹線、HARUKA 和地鐵嗎？",
+    a: `可以搭 HARUKA，但不能搭新幹線與地鐵。JR 西日本說明 WEST QR 關西地區鐵路周遊券可不限次數搭乘 HARUKA 自由席，另含 2 次指定席，且「即使支付追加費用，也不能搭乘新幹線」。大阪地鐵、京都市營地下鐵、市區公車與私鐵都不是 JR 西日本，也不能搭。想要含新幹線區間的關西周遊券，關西廣域鐵路周遊券（¥12,000，5 天）包含山陽新幹線新大阪 ⇔ 岡山指定席，關西&廣島地區鐵路周遊券（¥17,000，5 天）則是新大阪 ⇔ 廣島。${CHECKED}確認（關西&廣島為${R04_CHECKED}）。`,
   },
 ];
 
-const tripPrepItems = [
-  withKlookLocale(kansaiAreaPassSameDayPrep[0], LOCALE, {
+// R18: the three same-day cards sit under the main CTA, in the order of
+// kansaiAreaPassSameDayCards (Kyoto & Nara tour, Kyoto Station hotel, Klook eSIM).
+const sameDayCards: KlookSameDayCard[] = [
+  withKlookLocale(kansaiAreaPassSameDayCards[0], LOCALE, {
     label: "京都、奈良一日遊（清水寺、伏見稻荷、奈良公園）",
+    kind: "一日遊",
     ctaLabel: "查看京都奈良一日遊 →",
-    why: "周遊券可以搭 JR 到京都與奈良，但不能搭往伏見稻荷的京阪，也不能搭進奈良公園的近鐵；巴士一日遊一次預訂就能走完這三個地方。",
+    why: "巴士導覽一日遊一次預訂就能走完京都與奈良公園，景點之間的巴士與步行路段都包含在內，這些是 JR 周遊券涵蓋不到的。",
   }),
-  withKlookLocale(kansaiAreaPassSameDayPrep[1], LOCALE, {
+  withKlookLocale(kansaiAreaPassSameDayCards[1], LOCALE, {
+    label: "京都站周邊飯店",
+    kind: "飯店",
+    ctaLabel: "查看京都站周邊飯店 →",
+    why: "京都站是 HARUKA 的終點站，也是 JR 奈良線的起點，周遊券最常搭的兩段路線都從飯店門口出發。",
+  }),
+  withKlookLocale(kansaiAreaPassSameDayCards[2], LOCALE, {
+    label: "Klook 日本 eSIM",
+    kind: "eSIM",
+    ctaLabel: "查看 Klook eSIM →",
+    why: "WEST QR 周遊券是手機上的 QR 碼：按下「Use ticket（使用車票）」與預約 2 次 HARUKA 指定席，從抵達大廳起就需要行動數據。",
+  }),
+];
+
+// The lower list drops the products already shown as same-day cards (matched on the source URL).
+const prepPairs: [KlookTripPrepItem, Partial<KlookTripPrepItem>][] = [
+  [kansaiAreaPassSameDayPrep[0], {}],
+  [kansaiAreaPassSameDayPrep[1], {
     label: "大阪出發姬路城巴士一日遊（團體行程）",
     ctaLabel: "查看姬路一日遊 →",
     why: "姬路在周遊券的 JR 有效區域內；如果不想自己安排姬路城這一天，可以改參加從大阪出發的巴士團體行程。",
-  }),
-  withKlookLocale(kansaiAreaPassSameDayPrep[2], LOCALE, {
+  }],
+  [kansaiAreaPassSameDayPrep[2], {
     label: "JR HARUKA 機場特快車票（關西機場）",
     ctaLabel: "查看 HARUKA 車票 →",
     why: "如果機場路段不在周遊券的有效天數內，或整趟只有這一段搭 JR，要拿來和周遊券比價的關西機場車票就是 HARUKA 單程票。",
-  }),
-  withKlookLocale(kansaiAreaPassSameDayPrep[3], LOCALE, {
-    label: "Klook 日本 eSIM",
-    ctaLabel: "查看 Klook eSIM →",
-    why: "WEST QR 周遊券是手機上的 QR 碼：按下「Use ticket（使用車票）」與線上預約 2 次 HARUKA 指定席都要上網，從抵達的那一刻起就需要行動數據。",
-  }),
-  withKlookLocale(kansaiAreaPassSameDayPrep[4], LOCALE, {
+  }],
+  [kansaiAreaPassSameDayPrep[3], {}],
+  [kansaiAreaPassSameDayPrep[4], {
     label: "梅田／大阪站周邊飯店",
     ctaLabel: "查看大阪站周邊飯店 →",
     why: "大阪站是 JR 西日本往京都、神戶、姬路新快速的轉乘站，而多日周遊券要划算，靠的正是這些城市間的移動。",
-  }),
-  withKlookLocale(kansaiAreaPassSameDayPrep[5], LOCALE, {
-    label: "京都站周邊飯店",
-    ctaLabel: "查看京都站周邊飯店 →",
-    why: "京都站是從關西機場出發的 HARUKA 終點站，住在這裡，周遊券的機場路段就不用轉車。",
-  }),
+  }],
+  [kansaiAreaPassSameDayPrep[5], {}],
 ];
+const tripPrepItems = prepPairs
+  .filter(([src]) => !kansaiAreaPassSameDayCards.some((c) => c.url === src.url))
+  .map(([src, overrides]) => withKlookLocale(src, LOCALE, overrides));
 
 const tourPicks = [
-  withKlookLocale(jrKansaiAreaPass, LOCALE, {
-    title: "JR 西日本關西地區鐵路周遊券（1–4 日）",
+  withKlookLocale(jrKansaiAreaPass3276, LOCALE, {
+    title: "JR 西日本關西地區鐵路周遊券",
     desc: "Klook 販售的關西地區鐵路周遊券：大阪、京都、神戶、奈良、姬路一帶的 JR 西日本普通、快速與新快速列車不限次數搭乘，並含關西機場的 HARUKA。",
   }),
   withKlookLocale(jrKansaiMiniPass, LOCALE, {
@@ -303,7 +358,7 @@ export default function ZhTwKansaiAreaPassPage({ updated }: { updated: PageUpdat
 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            依 JR 西日本官方 WEST QR 頁面（{CHECKED}確認），<strong>JR 西日本關西地區鐵路周遊券</strong>成人 <strong>1 日 {QR_1_DAY}、2 日 ¥4,700、3 日 ¥5,500、4 日 {QR_4_DAY}</strong>（6 至 11 歲兒童半價）。可搭乘 <strong>京都、大阪、奈良、神戶與關西機場</strong>之間的 JR 西日本列車，包含機場特快 <strong>HARUKA</strong> 自由席不限次數，但不能搭新幹線，也不能搭近鐵、阪急、京阪與南海。只有要越過姬路去岡山、城崎溫泉或天橋立時，才選 <strong>關西廣域鐵路周遊券</strong>（5 天 ¥12,000）；如果只在一座城市裡搭地鐵，兩張都不用買，改用 <strong>ICOCA</strong> 卡即可。
+            依 JR 西日本官方 WEST QR 頁面（{CHECKED}確認），<strong>JR 西日本關西地區鐵路周遊券</strong>成人 <strong>1 日 {QR_1_DAY}、2 日 ¥4,700、3 日 ¥5,500、4 日 {QR_4_DAY}</strong>（6 至 11 歲兒童半價）；只透過海外旅行社販售，因此沒有另外的日本國內價格。1 日券與關西機場到京都的 HARUKA 單程票同為 {QR_1_DAY}，同一天再加上京都–奈良來回（單程 ¥720），周遊券就比單程票便宜 ¥1,440。可搭乘 <strong>京都、大阪、奈良、神戶與關西機場</strong>之間的 JR 西日本列車，包含機場特快 <strong>HARUKA</strong> 自由席不限次數，但不能搭新幹線，也不能搭近鐵、阪急、京阪與南海。只有要越過姬路去岡山、城崎溫泉或天橋立時，才選 <strong>關西廣域鐵路周遊券</strong>（5 天 ¥12,000）；如果只在一座城市裡搭地鐵，兩張都不用買，改用 <strong>ICOCA</strong> 卡即可。
           </p>
         </section>
 
@@ -343,6 +398,40 @@ export default function ZhTwKansaiAreaPassPage({ updated }: { updated: PageUpdat
             </div>
           </div>
         </div>
+
+        {/* R18: the 6.5% tour and hotel and the 20% eSIM, directly under the main pass CTA. */}
+        <KlookSameDayCards heading="和關西地區鐵路周遊券同一天預訂" cards={sameDayCards} locale={LOCALE} />
+
+        {/* R18: itinerary-by-itinerary break-even at JR West's ordinary fares. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>周遊券與單程票</span>
+          <h2 className={styles.sectionTitle}>依您的行程，關西地區鐵路周遊券划算嗎？</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            從關西機場搭 HARUKA 到京都的那一天，或遠到姬路的那一天就划算；只有大阪–京都或大阪–奈良來回的那一天就不划算。依 JR 西日本的車資，關西機場 → 京都 → 奈良 → 大阪 → 關西機場的 3 天行程，單程票合計 ¥6,620，3 日券為 ¥5,500。
+          </p>
+          <Table
+            head={["行程", "單程票（成人）", "周遊券", "結果"]}
+            lead={{ label: "結論", text: "從京都入境、去姬路的一日遊，或 3–4 天在城市之間移動就買；只有一趟大阪–京都或大阪–奈良來回就不用買" }}
+            rows={itineraryRows.map((r) => [r.plan, r.singles, r.pass, r.result])}
+          />
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.15rem", marginTop: "1.5rem" }}>JR 單程票要多少錢？</h3>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            JR 西日本一般列車成人單程：大阪–京都 ¥580、京都–奈良 ¥720、大阪–姬路 ¥1,460；關西機場到京都的 HARUKA 單程票為 ¥2,700。
+          </p>
+          <Table
+            head={["路線", "成人單程", "關西地區鐵路周遊券可以搭嗎？"]}
+            lead={{ label: "結論", text: "以下路線都能用周遊券搭 JR 一般列車或 HARUKA，但都不能搭新幹線" }}
+            rows={fareRows.map((r) => [r.route, r.fare, r.onPass])}
+          />
+          <p className={styles.bodyText} style={noteStyle}>
+            最後確認：{CHECKED_ISO}。官方來源：<a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer">JR 西日本，WEST QR 關西地區鐵路周遊券</a>、<a href={HARUKA_OFFICIAL_URL} target="_blank" rel="noopener noreferrer">JR 西日本，WEST QR HARUKA One-way Ticket</a>（2026 年 11 月 1 日起售出車票的票價）、<a href={FARE_PDF_URL} target="_blank" rel="noopener noreferrer">JR 西日本，京阪神車資表（特定車資，2025 年 4 月 1 日起）</a>、<a href={HIMEJI_FARE_URL} target="_blank" rel="noopener noreferrer">JR 西日本新聞稿，2026 年 2 月 25 日（大阪–姬路 ¥1,460）</a>。大阪站–奈良不是公告的特定車資，所以奈良路線以天王寺為起點。以上為成人紙本車票的一般車資，兒童半價。
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={KANSAI_PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+              在 Klook 查看關西地區鐵路周遊券 →
+            </KlookLink>
+          </div>
+        </section>
 
         <EsimCtaTop />
 
@@ -408,20 +497,24 @@ export default function ZhTwKansaiAreaPassPage({ updated }: { updated: PageUpdat
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>包含與不含</span>
-          <h2 className={styles.sectionTitle}>關西地區鐵路周遊券可以搭哪些車？</h2>
+          <h2 className={styles.sectionTitle}>關西地區鐵路周遊券可以搭新幹線、HARUKA 和地鐵嗎？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            關西有效區域內的 JR 西日本一般列車（新快速、快速、普通），加上機場特快 HARUKA（自由席不限次數、指定席 2 次）。其他都不能搭：沒有新幹線、其他特急、地鐵、公車或私鐵。決定要不要買這張票的，往往是它不含的部分，而不是它包含的部分。
+            可以搭 HARUKA（自由席不限次數、指定席 2 次），但不能搭新幹線與地鐵。HARUKA 以外只能搭 JR 西日本一般列車（新快速、快速、普通），路線包括 JR 京都線、神戶線、奈良線、大和路線與關西機場線；其他特急、公車與私鐵都不能搭。決定要不要買這張票的，往往是它不含的部分，而不是它包含的部分。
           </p>
-          <Table head={["交通工具", "可以搭嗎？", "代表什麼"]} rows={lineRows.map((r) => [r.service, r.allowed, r.note])} />
+          <Table
+            head={["交通工具", "可以搭嗎？", "代表什麼"]}
+            lead={{ label: "結論", text: "JR 西日本一般列車加上 HARUKA。不能搭新幹線、其他特急、地鐵、公車或私鐵。" }}
+            rows={lineRows.map((r) => [r.service, r.allowed, r.note])}
+          />
           <p className={styles.bodyText} style={noteStyle}>
-            適用範圍於{CHECKED}在 westjr.co.jp 確認。周遊券不含的市區交通，請看 <Link href="/guides/transport/osaka-transportation" style={linkStyle}>大阪交通攻略（英文）</Link>與 <Link href="/guides/transport/kyoto-transportation" style={linkStyle}>京都交通攻略（英文）</Link>，兩篇都整理了仍需另外準備的地鐵、公車與 <Link href="/guides/transport/ic-cards-japan" style={linkStyle}>IC 卡（英文）</Link>選擇。
+            最後確認：{CHECKED_ISO}。官方來源：<a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer">JR 西日本，WEST QR 關西地區鐵路周遊券</a>（可搭乘列車一覽）。周遊券不含的市區交通，請看 <Link href="/guides/transport/osaka-transportation" style={linkStyle}>大阪交通攻略（英文）</Link>與 <Link href="/guides/transport/kyoto-transportation" style={linkStyle}>京都交通攻略（英文）</Link>，兩篇都整理了仍需另外準備的地鐵、公車與 <Link href="/guides/transport/ic-cards-japan" style={linkStyle}>IC 卡（英文）</Link>選擇。
           </p>
         </section>
 
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>從機場出發</span>
-          <h2 className={styles.sectionTitle}>關西地區鐵路周遊券可以從關西機場搭 HARUKA 嗎？</h2>
-          <p className={styles.bodyText}>可以。關西機場與天王寺、新大阪、京都之間的 HARUKA 自由席不限次數，另含 2 次普通車廂指定席（綠色車廂需加價）。</p>
+          <h2 className={styles.sectionTitle}>從關西機場搭 HARUKA 時，關西地區鐵路周遊券怎麼用？</h2>
+          <p className={styles.bodyText}>在 JR 剪票口掃描 QR 碼，就能搭任何一班 HARUKA：關西機場與天王寺、新大阪、京都之間的自由席不限次數，另含 2 次普通車廂指定席（綠色車廂需加價）。</p>
           <h3 className={styles.sectionTitle} style={{ fontSize: "1.15rem" }}>關西地區鐵路周遊券可以搭新幹線嗎？</h3>
           <p className={styles.bodyText}>不行。JR 西日本說明這張周遊券「即使支付追加費用，也不能搭乘新幹線」。含新幹線的關西周遊券是關西廣域鐵路周遊券，可搭新大阪與岡山之間的山陽新幹線指定席。</p>
           <p className={styles.bodyText}>
@@ -455,7 +548,7 @@ export default function ZhTwKansaiAreaPassPage({ updated }: { updated: PageUpdat
             rows={cmpRest.map((r) => [r.option, r.price, r.covers, r.pick])}
           />
           <p className={styles.bodyText} style={noteStyle}>
-            最後確認：JR 西日本關西地區、HARUKA 單程票與關西廣域鐵路周遊券頁面（westjr.co.jp）為 {CHECKED_ISO}；關西迷你與關西&廣島頁面，以及近鐵（kintetsu.co.jp/foreign/english/ticket/）為{R04_CHECKED}；全國版 JR Pass（japanrailpass.net）、大阪周遊卡官網與 KANSAI ONE PASS 公告為{PREV_CHECKED}。如果奈良是主要的一日遊，<Link href="/guides/transport/kintetsu-rail-pass" style={linkStyle}>近鐵周遊券攻略（英文）</Link>算出近鐵周遊券何時比單程票划算；在大阪市區玩一天，<Link href="/guides/attractions/osaka-attractions-pass" style={linkStyle}>大阪周遊卡攻略（英文）</Link>介紹關西地區鐵路周遊券無法取代的城市周遊卡。去城崎溫泉的話，關西地區鐵路周遊券不能搭特急 KONOTORI（東方白鸛號），廣域周遊券則含其指定席；<Link href="/guides/attractions/kinosaki-onsen-day-trip" style={linkStyle}>城崎溫泉一日遊攻略（英文）</Link>整理了從大阪出發的 KONOTORI 時刻。HARUKA 單程票是給以短期滯在身分入境的外國護照持有人的優惠單程票；上表票價適用於 2026 年 11 月 1 日 JR 西日本調漲後售出的車票，京都單程現在與 1 日券同價。全國版周遊券的划算計算請看 <Link href="/guides/transport/jr-pass-guide" style={linkStyle}>JR Pass 攻略（英文）</Link>；從東京出發、經金澤進入關西的環線，7 天的 <Link href="/guides/transport/hokuriku-arch-pass" style={linkStyle}>北陸拱型鐵路周遊券（英文）</Link>可搭北陸新幹線，也可搭 Thunderbird 與 HARUKA；任何關西周遊券都到不了的廣島，<Link href="/guides/transport/osaka-to-hiroshima-shinkansen" style={linkStyle}>大阪到廣島新幹線攻略（英文）</Link>比較了 JR 西日本關西&廣島地區鐵路周遊券與單程票。ICOCA &amp; HARUKA 未列入：確認當天 JR 西日本目前的英文頁面沒有標示價格。
+            最後確認：JR 西日本關西地區、HARUKA 單程票、關西迷你與關西廣域鐵路周遊券頁面（westjr.co.jp），以及 KANSAI ONE PASS 公告為 {CHECKED_ISO}；關西&廣島頁面與近鐵（kintetsu.co.jp/foreign/english/ticket/）為{R04_CHECKED}；全國版 JR Pass（japanrailpass.net）與大阪周遊卡官網為{PREV_CHECKED}。如果奈良是主要的一日遊，<Link href="/guides/transport/kintetsu-rail-pass" style={linkStyle}>近鐵周遊券攻略（英文）</Link>算出近鐵周遊券何時比單程票划算；在大阪市區玩一天，<Link href="/guides/attractions/osaka-attractions-pass" style={linkStyle}>大阪周遊卡攻略（英文）</Link>介紹關西地區鐵路周遊券無法取代的城市周遊卡。去城崎溫泉的話，關西地區鐵路周遊券不能搭特急 KONOTORI（東方白鸛號），廣域周遊券則含其指定席；<Link href="/guides/attractions/kinosaki-onsen-day-trip" style={linkStyle}>城崎溫泉一日遊攻略（英文）</Link>整理了從大阪出發的 KONOTORI 時刻。HARUKA 單程票是給以短期滯在身分入境的外國護照持有人的優惠單程票；上表票價適用於 2026 年 11 月 1 日 JR 西日本調漲後售出的車票，京都單程現在與 1 日券同價。全國版周遊券的划算計算請看 <Link href="/guides/transport/jr-pass-guide" style={linkStyle}>JR Pass 攻略（英文）</Link>；從東京出發、經金澤進入關西的環線，7 天的 <Link href="/guides/transport/hokuriku-arch-pass" style={linkStyle}>北陸拱型鐵路周遊券（英文）</Link>可搭北陸新幹線，也可搭 Thunderbird 與 HARUKA；任何關西周遊券都到不了的廣島，<Link href="/guides/transport/osaka-to-hiroshima-shinkansen" style={linkStyle}>大阪到廣島新幹線攻略（英文）</Link>比較了 JR 西日本關西&廣島地區鐵路周遊券與單程票。ICOCA &amp; HARUKA 未列入：確認當天 JR 西日本目前的英文頁面沒有標示價格。
           </p>
         </section>
 
@@ -473,7 +566,7 @@ export default function ZhTwKansaiAreaPassPage({ updated }: { updated: PageUpdat
             />
           </div>
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            最後確認：{CHECKED_ISO}。官方來源：<a href={HARUKA_OFFICIAL_URL} target="_blank" rel="noopener noreferrer">JR 西日本，WEST QR HARUKA One-way Ticket</a>（2026 年 11 月 1 日起售出車票的成人票價）與 <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer">WEST QR 關西地區鐵路周遊券</a>。單程票只有單程，來回就是兩張；周遊券只有在機場來回都落在連續有效天數內時才包含回程。其餘京都–大阪、大阪–奈良、大阪–姬路的車資這裡沒有列出，請用 JR 西日本的車資查詢輸入您的車站確認。
+            最後確認：{CHECKED_ISO}。官方來源：<a href={HARUKA_OFFICIAL_URL} target="_blank" rel="noopener noreferrer">JR 西日本，WEST QR HARUKA One-way Ticket</a>（2026 年 11 月 1 日起售出車票的成人票價）與 <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer">WEST QR 關西地區鐵路周遊券</a>。單程票只有單程，來回就是兩張；周遊券只有在機場來回都落在連續有效天數內時才包含回程。京都–大阪、京都–奈良、大阪–姬路等城市間的 JR 車資，請看上方「依您的行程，關西地區鐵路周遊券划算嗎？」的車資表。
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem", marginBottom: "1.5rem" }}>
             <KlookLink href={KANSAI_PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
@@ -523,7 +616,10 @@ export default function ZhTwKansaiAreaPassPage({ updated }: { updated: PageUpdat
             是，正在逐步停售，而且它從來就不是 JR 鐵路周遊券。KANSAI ONE PASS 是給旅客用的可儲值交通 IC 卡。在 2024 年 12 月 23 日的聯合公告中，JR 西日本、阪急、近鐵、京阪、南海、阪神、大阪地鐵、大阪市巴士，以及京都市與神戶市交通局表示，各公司自 2025 年 11 月 1 日起庫存售完即停止販售，並於 2026 財政年度結束前（2027 年 3 月）全面停售。
           </p>
           <p className={styles.bodyText}>
-            同一份公告說明，已購買的卡片仍可作為儲值 IC 卡繼續使用，商店與景點優惠則在 2026 財政年度結束。這張卡從來不能取代關西地區鐵路周遊券：IC 卡按次付費，周遊券則取代這些車資。{PREV_CHECKED}確認。
+            同一份公告說明，已購買的卡片仍可作為儲值 IC 卡繼續使用，商店與景點優惠則在 2026 財政年度結束。公告沒有指定替代的卡片，停售的理由是「KANSAI MaaS」電子票券等服務已普及。這張卡從來不能取代關西地區鐵路周遊券：IC 卡按次付費，周遊券則取代這些車資。要按次扣款的話，ICOCA 也能做到一樣的事。
+          </p>
+          <p className={styles.bodyText} style={noteStyle}>
+            最後確認：{CHECKED_ISO}。官方來源：<a href={KOP_NOTICE_URL} target="_blank" rel="noopener noreferrer">2024 年 12 月 23 日聯合公告（JR 西日本、阪急、近鐵、京阪、南海、阪神、大阪地鐵等），hanshin.co.jp</a>。
           </p>
         </section>
 

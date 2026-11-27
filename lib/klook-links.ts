@@ -6502,6 +6502,29 @@ export const kansaiAreaPassSameDayPrep: KlookTripPrepItem[] = [
   },
 ];
 
+/**
+ * Kansai Area Pass (task jtk-20261127-R18): the three same-day cards directly under the
+ * main pass CTA — a 6.5% Kyoto & Nara day tour, a 6.5% Kansai hotel and the 20% Klook eSIM.
+ * The page filters these out of kansaiAreaPassSameDayPrep so nothing is listed twice.
+ */
+export const kansaiAreaPassSameDayCards: KlookSameDayCard[] = [
+  {
+    ...tripPrepProducts.kyotoNaraTour,
+    kind: "Day tour",
+    why: "A guided coach day puts Kyoto and Nara Park in one booking, including the bus and walking legs between sights that the JR pass does not cover.",
+  },
+  {
+    ...tripPrepProducts.hotelKyotoStation,
+    kind: "Hotel",
+    why: "Kyoto Station is where the HARUKA ends and the JR Nara Line starts, so the pass's two busiest rides begin at the door.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    kind: "eSIM",
+    why: "The WEST QR pass is a QR code on your phone: \"Use ticket\" and the two HARUKA seat bookings both need data from the arrivals hall.",
+  },
+];
+
 // ---------------------------------------------------------------------------
 // First-time Japan itinerary and the Tokyo to Osaka shinkansen, added 4 Nov 2026
 // (task jtk-20261104-01). One new URL, `kyotoCityFushimiArashiyamaTour`, because

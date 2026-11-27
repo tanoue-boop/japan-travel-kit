@@ -279,7 +279,11 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
             <Link href="/guides/attractions/kyoto-nara-day-tour-from-osaka" style={linkStyle}>Kyoto and Nara day tours</Link>{" "}
             depart from here, which saves the Kyoto hotel premium in peak season. And{" "}
             <Link href="/guides/attractions/hiroshima-miyajima-day-trip" style={linkStyle}>Hiroshima and Miyajima</Link>{" "}
-            is about 90 minutes by shinkansen — a long day, but a single one.
+            is about 90 minutes by shinkansen — a long day, but a single one. Doing the Kyoto, Nara and
+            Himeji days yourself on JR, the{" "}
+            <Link href="/guides/attractions/kansai-area-pass" style={linkStyle}>JR Kansai Area Pass</Link>{" "}
+            (¥2,700 for 1 day, JR West) pays on a Himeji round trip from Osaka alone (¥1,460 each way), but
+            not on a single Osaka–Kyoto return (¥580 each way).
           </p>
         </section>
 

@@ -757,8 +757,9 @@ export default function OsakaAirportTransferPage({ updated }: { updated: PageUpd
             Three limits matter. You need a foreign passport and Temporary Visitor status. JR West says it cannot be
             bought inside Japan, so a plan to buy it at the airport will not work. And you cannot get off at an
             intermediate station, because doing so makes the ticket invalid. If you are riding JR on other trips the
-            same day, price the <Link href="/guides/attractions/kansai-area-pass">Kansai Area Pass</Link> as well, since
-            it covers the Haruka&apos;s non-reserved seats.
+            same day, price the <Link href="/guides/attractions/kansai-area-pass">JR Kansai Area Pass</Link> as well
+            (¥2,700 for 1 day, ¥5,500 for 3 days), since it covers the Haruka&apos;s non-reserved seats and two
+            reserved ones.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={jrHarukaUrl} className={styles.pickCta} target="_blank" rel="sponsored nofollow noopener">

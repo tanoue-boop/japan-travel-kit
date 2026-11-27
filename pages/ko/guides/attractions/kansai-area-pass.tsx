@@ -18,7 +18,14 @@ import {
 import KlookLink from "../../../../components/KlookLink";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
 import KlookTripPrep from "../../../../components/KlookTripPrep";
-import { jrHarukaUrl, jrKansaiAreaPass, jrKansaiMiniPass, kansaiAreaPassSameDayPrep } from "../../../../lib/klook-links";
+import KlookSameDayCards from "../../../../components/KlookSameDayCards";
+import {
+  jrHarukaUrl,
+  jrKansaiAreaPass3276,
+  jrKansaiMiniPass,
+  kansaiAreaPassSameDayCards,
+  kansaiAreaPassSameDayPrep,
+} from "../../../../lib/klook-links";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd, productOfferJsonLd } from "../../../../lib/structured-data";
@@ -30,15 +37,18 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 // places. Every figure, date and source is the English page's; nothing is added.
 // Title term: JR 간사이 패스 — JR West's own Korean name for the pass ("WEST QR간사이 패스" on
 // westjr.co.jp/global/kr/ticket/westqr/kansaiarea/) and the name Korean results use.
+// 2026-11-27 (task-jtk-20261127-R18): aligned with the English R18 rewrite — itinerary and
+// ordinary-fare tables, coverage H2 (Shinkansen / Haruka / subway), KANSAI ONE PASS FAQ,
+// same-day cards under the main CTA, Klook pass listing 1107 → 3276. Same numbers as English.
 
 const LOCALE = "ko" as const;
 const ROUTE = "/ko/guides/attractions/kansai-area-pass";
 const TITLE = "JR 간사이 패스 2026: 가격, 하루카, 와이드 패스 비교";
 const H1 = "JR 간사이 패스 2026: 가격과 간사이 와이드 패스 비교";
 const DESC =
-  "JR 간사이 패스 2026: 1일권 ¥2,700, 3일권 ¥5,500. 하루카 포함, 신칸센 제외. 와이드 패스, ICOCA와 비교.";
+  "JR 간사이 패스 2026: 1일 ¥2,700~4일 ¥6,700. 간사이 공항→교토+나라는 편도 합계 ¥4,140. 하루카 포함, 신칸센 제외.";
 
-const CHECKED_ISO = "2026-11-20";
+const CHECKED_ISO = "2026-11-27";
 const CHECKED = dateLabel(CHECKED_ISO, LOCALE);
 const R04_CHECKED = dateLabel("2026-11-13", LOCALE);
 const PREV_CHECKED = dateLabel("2026-11-03", LOCALE);
@@ -46,8 +56,11 @@ const OFFICIAL_URL = "https://www.westjr.co.jp/global/en/ticket/westqr/kansaiare
 const HARUKA_OFFICIAL_URL = "https://www.westjr.co.jp/global/en/ticket/westqr/haruka/";
 const WIDE_OFFICIAL_URL = "https://www.westjr.co.jp/global/en/ticket/pass/kansai_wide/";
 const ICOCA_OFFICIAL_URL = "https://www.westjr.co.jp/global/en/howto/icoca/";
+const FARE_PDF_URL = "https://www.westjr.co.jp/press/article/items/240515_00_press_keihanshin_unchin.pdf";
+const HIMEJI_FARE_URL = "https://www.westjr.co.jp/press/article/items/260225_00_press_JRWESTQR2daypass_1.pdf";
+const KOP_NOTICE_URL = "https://www.hanshin.co.jp/press/docs/20241223-toshikotsu-wanpasssyuryo2.pdf";
 
-const KANSAI_PASS_URL = klookFor(jrKansaiAreaPass.url, LOCALE);
+const KANSAI_PASS_URL = klookFor(jrKansaiAreaPass3276.url, LOCALE);
 const HARUKA_URL = klookFor(jrHarukaUrl, LOCALE);
 
 const QR_1_DAY = "¥2,700";
@@ -105,7 +118,46 @@ const breakEvenRows = [
   { trip: "교토 도착, 교토 출발, 4일", singles: "¥2,700 + ¥2,700 = ¥5,400", pass: `${QR_4_DAY}(4일권)`, result: "4일 동안 다른 JR을 ¥1,300어치 더 타야 이득" },
 ];
 
+// R18: JR West ordinary adult fares (sources as in the English page header).
+const fareRows = [
+  { route: "간사이 공항 → 교토(하루카 편도 티켓)", fare: "¥2,700", onPass: "✓ 하루카 자유석 또는 지정석 2회 중 1회" },
+  { route: "간사이 공항 → 오사카 / 신오사카(하루카 편도 티켓)", fare: "¥1,900", onPass: "✓ 하루카(신오사카) 또는 간사이 공항 쾌속" },
+  { route: "오사카 ↔ 교토(JR 교토선 신쾌속)", fare: "¥580", onPass: "✓ 신쾌속, ✗ 신오사카–교토 신칸센" },
+  { route: "교토 ↔ 나라(JR 나라선)", fare: "¥720", onPass: "✓" },
+  { route: "덴노지 ↔ 나라(JR 야마토지선)", fare: "¥510", onPass: "✓" },
+  { route: "오사카 ↔ 산노미야, 고베(JR 고베선)", fare: "¥420", onPass: "✓" },
+  { route: "오사카 ↔ 히메지(JR 고베선 신쾌속)", fare: "¥1,460", onPass: "✓ 신쾌속, ✗ 신오사카–히메지 신칸센" },
+];
+
+// R18: itineraries priced as singles vs the pass (lead row = verdict).
+const itineraryRows = [
+  { plan: "1일차: 간사이 공항 → 교토, 교토 ↔ 나라 왕복", singles: "¥2,700 + ¥720 + ¥720 = ¥4,140", pass: "¥2,700(1일권)", result: "✓ 패스가 ¥1,440 저렴" },
+  { plan: "오사카 ↔ 히메지 당일치기", singles: "¥1,460 × 2 = ¥2,920", pass: "¥2,700(1일권)", result: "✓ 패스가 ¥220 저렴" },
+  { plan: "오사카 ↔ 교토 당일치기만", singles: "¥580 × 2 = ¥1,160", pass: "¥2,700(1일권)", result: "✗ 편도가 ¥1,540 저렴" },
+  { plan: "덴노지 ↔ 나라 당일치기만", singles: "¥510 × 2 = ¥1,020", pass: "¥2,700(1일권)", result: "✗ 편도가 ¥1,680 저렴" },
+  { plan: "3일: 간사이 공항 → 교토, 교토 ↔ 나라, 교토 → 오사카 → 간사이 공항", singles: "¥2,700 + ¥1,440 + ¥580 + ¥1,900 = ¥6,620", pass: "¥5,500(3일권)", result: "✓ 패스가 ¥1,120 저렴" },
+  { plan: "4일: 위 3일 일정 + 3일차에 오사카 ↔ 히메지", singles: "¥6,620 + ¥2,920 = ¥9,540", pass: `${QR_4_DAY}(4일권)`, result: "✓ 패스가 ¥2,840 저렴" },
+  { plan: "2일, 오사카만: 간사이 공항 → 오사카, 오사카 → 간사이 공항", singles: "¥1,900 × 2 = ¥3,800", pass: "¥4,700(2일권)", result: "✗ 편도가 ¥900 저렴" },
+];
+
+const LINE_LEAD = "JR 서일본 일반 열차와 하루카만 이용 가능. 신칸센, 다른 특급, 지하철, 버스, 사철은 불가.";
+
 const lineRows = [
+  {
+    service: "JR 교토선 / 고베선 신쾌속",
+    allowed: "✓ 무제한",
+    note: "교토–오사카–산노미야–히메지를 잇는 빠른 JR 열차의 일반 좌석입니다. 유료 A-Seat 차량은 추가 요금이 필요합니다.",
+  },
+  {
+    service: "JR 나라선, 야마토지선",
+    allowed: "✓ 무제한",
+    note: "나라선은 교토–이나리(후시미 이나리)–나라, 야마토지선은 덴노지 / JR 난바–나라 구간입니다.",
+  },
+  {
+    service: "간사이 공항선 쾌속",
+    allowed: "✓ 무제한",
+    note: "덴노지를 거쳐 오사카까지 가는 느린 JR 공항 열차입니다. 하루카 시간이 맞지 않을 때의 선택지입니다.",
+  },
   {
     service: "간사이 공항 특급 하루카, 자유석",
     allowed: "✓ 무제한",
@@ -235,7 +287,7 @@ const worthRows = [
   {
     plan: "한큐, 게이한, 긴테쓰로 교토 사찰 순례",
     verdict: "✗ 맞지 않는 패스",
-    why: "후시미 이나리, 아라시야마, 나라는 모두 이 패스로 탈 수 없는 사철로 갈 수 있습니다. JR 상품을 사기 전에 가려는 역이 어느 회사 노선인지 확인하세요.",
+    why: "후시미 이나리, 아라시야마, 나라는 JR과 사철이 모두 다니며, 패스로 탈 수 있는 것은 JR역(이나리, 사가아라시야마, JR 나라)뿐입니다. JR 상품을 사기 전에 가려는 역이 어느 회사 노선인지 확인하세요.",
   },
   {
     plan: "같은 여행에 도쿄 또는 신칸센 구간",
@@ -259,16 +311,16 @@ const faqItems: FaqItem[] = [
     a: `처음 가는 간사이 여행이라면 대부분 간사이 패스가 맞고, 히메지보다 멀리 갈 때만 간사이 와이드 패스가 맞습니다. 간사이 패스는 1~4일 ${QR_1_DAY}~${QR_4_DAY}이며 신칸센은 이용할 수 없습니다. 와이드 패스는 연속 5일 ¥12,000이며, 신오사카와 오카야마 사이의 산요 신칸센 지정석과 기노사키 온천, 아마노하시다테, 돗토리, 시라하마, 다카마쓰가 추가됩니다. 교토, 오사카, 나라, 고베, 히메지만 간다면 간사이 패스 4일권(${QR_4_DAY})이 ¥5,300 저렴합니다. 두 패스 모두 westjr.co.jp에서 ${CHECKED}에 확인했습니다.`,
   },
   {
-    q: "간사이 패스로 간사이 공항에서 하루카를 탈 수 있나요?",
-    a: `탈 수 있습니다. JR 서일본의 WEST QR 페이지에 따르면 간사이 공항과 덴노지, 신오사카, 교토 사이의 특급 하루카 자유석을 무제한으로 이용할 수 있고, 보통차 지정석도 2회 이용할 수 있습니다. 지정석은 승차 30일 전부터 WEST-QR 웹사이트에서 예약하며, 열차 안이나 역 매표소에서는 예약할 수 없습니다. 그린차는 별도 티켓이 필요합니다. 난바로 가는 난카이 라피트는 이용할 수 없습니다. ${CHECKED} 확인.`,
+    q: "KANSAI ONE PASS는 판매가 끝났나요?",
+    a: `네. 철도 패스가 아니라 충전식 IC 카드인 KANSAI ONE PASS는 2025년 11월 1일부터 재고가 떨어진 회사부터 차례로 판매가 끝났고, 2026 회계연도 말(2027년 3월)까지 모든 판매가 종료될 예정입니다. JR 서일본 등 10개 회사·국의 2024년 12월 23일 공동 공지에 따른 내용입니다. 이미 산 카드는 IC 카드로 계속 쓸 수 있고, 상점과 관광지 혜택은 2026 회계연도로 끝납니다. 공지에 후속 카드는 나와 있지 않습니다. ${CHECKED} 확인.`,
   },
   {
     q: "교토와 오사카 여행에 간사이 패스를 사는 게 이득인가요?",
-    a: `간사이 공항에 도착해 교토와 오사카 사이를 JR로 이동한다면 이득이고, 한 도시에서 지하철로만 다닌다면 이득이 없습니다. 2026년 11월 1일 이후 판매분의 간사이 공항–교토 하루카 편도 티켓은 ¥2,700으로 1일권과 같은 가격입니다. 교토로 들어와 오사카에서 나가는 3일 일정이라면 편도 두 장(¥4,600)과 3일권(¥5,500)의 차이 ¥900만 JR로 더 타면 됩니다. 오사카 메트로, 교토 지하철, 시내버스, 긴테쓰, 한큐, 게이한, 난카이 노선에는 쓸 수 없습니다. 운임은 westjr.co.jp에서 ${CHECKED}에 확인했습니다.`,
+    a: `간사이 공항에 도착해 도시 사이를 JR로 이동한다면 이득이고, 오사카–교토 왕복 하나뿐이라면 이득이 없습니다. JR 서일본 운임으로 간사이 공항–교토 하루카 편도(¥2,700)와 교토–나라 왕복(¥1,440)을 더하면 ¥4,140이고 1일권은 ¥2,700입니다. 간사이 공항 → 교토 → 나라 → 오사카 → 간사이 공항 3일 일정은 편도 합계 ¥6,620, 3일권은 ¥5,500입니다. 오사카–교토 왕복은 ¥1,160(편도 ¥580)이므로 그것만으로는 ¥2,700의 1일권을 살 이유가 없습니다. 오사카 메트로, 교토 지하철, 시내버스, 긴테쓰, 한큐, 게이한, 난카이 노선에는 쓸 수 없습니다. 운임은 westjr.co.jp에서 ${CHECKED}에 확인했습니다.`,
   },
   {
-    q: "간사이 패스로 신칸센을 탈 수 있나요?",
-    a: `탈 수 없습니다. JR 서일본은 WEST QR 간사이 패스가 "추가 요금을 내더라도 신칸센에는 이용할 수 없다"고 안내합니다. 신오사카에서 교토까지 신칸센을 타려면 별도 티켓이 필요합니다. 신칸센 구간이 포함된 간사이 패스로는 간사이 와이드 패스(¥12,000, 5일)에 산요 신칸센 지정석 신오사카 ⇔ 오카야마가, 간사이 히로시마 패스(¥17,000, 5일)에 신오사카 ⇔ 히로시마가 포함됩니다. ${CHECKED} 확인(간사이 히로시마 패스는 ${R04_CHECKED}).`,
+    q: "간사이 패스로 신칸센, 하루카, 지하철을 탈 수 있나요?",
+    a: `하루카는 탈 수 있지만 신칸센과 지하철은 탈 수 없습니다. JR 서일본은 WEST QR 간사이 패스로 하루카 자유석을 무제한, 지정석을 2회 이용할 수 있고, "추가 요금을 내더라도 신칸센에는 이용할 수 없다"고 안내합니다. 오사카 메트로, 교토 지하철, 시내버스, 사철은 JR 서일본이 아니므로 이용할 수 없습니다. 신칸센 구간이 포함된 간사이 패스로는 간사이 와이드 패스(¥12,000, 5일)에 산요 신칸센 지정석 신오사카 ⇔ 오카야마가, 간사이 히로시마 패스(¥17,000, 5일)에 신오사카 ⇔ 히로시마가 포함됩니다. ${CHECKED} 확인(간사이 히로시마 패스는 ${R04_CHECKED}).`,
   },
 ];
 
@@ -276,7 +328,7 @@ const tripPrepItems = [
   withKlookLocale(kansaiAreaPassSameDayPrep[0], LOCALE, {
     label: "교토·나라 당일 투어(기요미즈데라, 후시미 이나리, 나라 공원)",
     ctaLabel: "교토·나라 당일 투어 보기 →",
-    why: "패스로 교토와 나라까지 JR은 탈 수 있지만, 후시미 이나리로 가는 게이한이나 나라 공원으로 가는 긴테쓰는 탈 수 없습니다. 버스 투어 하나로 세 곳을 모두 예약할 수 있습니다.",
+    why: "패스로 교토와 나라까지 JR은 탈 수 있지만, 게이한이나 긴테쓰는 탈 수 없습니다. 버스 투어 하나로 세 곳을 모두 예약할 수 있습니다.",
   }),
   withKlookLocale(kansaiAreaPassSameDayPrep[1], LOCALE, {
     label: "오사카 출발 히메지성 그룹 버스 투어",
@@ -305,8 +357,32 @@ const tripPrepItems = [
   }),
 ];
 
+// R18: three same-day cards under the main CTA (6.5% tour, 6.5% hotel, 20% eSIM).
+const sameDayCards = [
+  withKlookLocale(kansaiAreaPassSameDayCards[0], LOCALE, {
+    kind: "당일 투어",
+    label: "교토·나라 당일 투어(기요미즈데라, 후시미 이나리, 나라 공원)",
+    ctaLabel: "교토·나라 당일 투어 보기 →",
+    why: "가이드 동행 버스 투어로 교토와 나라 공원을 한 번에 예약할 수 있고, JR 패스로 해결되지 않는 관광지 사이의 버스·도보 구간도 포함됩니다.",
+  }),
+  withKlookLocale(kansaiAreaPassSameDayCards[1], LOCALE, {
+    kind: "호텔",
+    label: "교토역 주변 호텔",
+    ctaLabel: "교토역 주변 호텔 보기 →",
+    why: "교토역은 하루카의 종착역이자 JR 나라선의 출발역이므로, 패스로 가장 많이 타는 두 구간이 숙소 앞에서 시작됩니다.",
+  }),
+  withKlookLocale(kansaiAreaPassSameDayCards[2], LOCALE, {
+    kind: "eSIM",
+    label: "클룩 일본 eSIM",
+    ctaLabel: "클룩 eSIM 보기 →",
+    why: "WEST QR 패스는 휴대폰의 QR 코드입니다. 'Use ticket(티켓 사용)'과 하루카 지정석 2회 예약 모두 도착 직후부터 데이터가 필요합니다.",
+  }),
+];
+// The lower trip-prep block drops the three cards above so nothing is listed twice.
+const lowerPrep = tripPrepItems.filter((p) => !sameDayCards.some((c) => c.url === p.url));
+
 const tourPicks = [
-  withKlookLocale(jrKansaiAreaPass, LOCALE, {
+  withKlookLocale(jrKansaiAreaPass3276, LOCALE, {
     title: "JR 서일본 간사이 패스(1~4일)",
     desc: "클룩에서 판매하는 간사이 패스입니다. 오사카, 교토, 고베, 나라, 히메지 일대의 JR 서일본 보통, 쾌속, 신쾌속 열차와 간사이 공항 하루카를 이용할 수 있습니다.",
   }),
@@ -420,7 +496,9 @@ export default function KoKansaiAreaPassPage({ updated }: { updated: PageUpdated
           <p className={styles.bodyText}>
             <strong>JR 서일본 간사이 패스</strong>는 성인 기준 <strong>1일 {QR_1_DAY}, 2일 ¥4,700, 3일 ¥5,500, 4일{" "}
             {QR_4_DAY}</strong>이고 6~11세 어린이는 절반입니다. JR 서일본의 공식 WEST QR 페이지에서 {CHECKED}에
-            확인했습니다. <strong>교토, 오사카, 나라, 고베, 간사이 공항</strong> 사이의 JR 서일본 열차를 탈 수 있고,
+            확인했으며, 해외 여행사에서만 판매하므로 일본 국내 가격은 따로 없습니다. 1일권은 간사이 공항–교토 하루카
+            편도 티켓과 같은 {QR_1_DAY}이고, 같은 날 교토–나라 왕복(편도 ¥720)을 더하면 편도 티켓보다 ¥1,440
+            저렴합니다. <strong>교토, 오사카, 나라, 고베, 간사이 공항</strong> 사이의 JR 서일본 열차를 탈 수 있고,
             공항 특급 <strong>하루카</strong> 자유석도 무제한이지만, 신칸센과 긴테쓰, 한큐, 게이한, 난카이 노선은
             이용할 수 없습니다. 히메지를 넘어 오카야마, 기노사키 온천, 아마노하시다테까지 갈 때만{" "}
             <strong>간사이 와이드 패스</strong>(5일 ¥12,000)를, 한 도시 안에서 지하철로만 다닌다면 두 패스 대신{" "}
@@ -475,6 +553,54 @@ export default function KoKansaiAreaPassPage({ updated }: { updated: PageUpdated
             </div>
           </div>
         </div>
+
+        {/* R18: the 6.5% tour and hotel and the 20% eSIM, directly under the main pass CTA. */}
+        <KlookSameDayCards heading="간사이 패스와 같은 날 예약할 것" cards={sameDayCards} locale={LOCALE} />
+
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>패스와 편도 비교</span>
+          <h2 className={styles.sectionTitle}>내 일정에서 간사이 패스가 이득인가요?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            하루카로 교토에 도착하는 날이나 히메지까지 가는 날은 이득이고, 오사카–교토나 오사카–나라 왕복만 하는 날은
+            이득이 아닙니다. JR 서일본 운임으로 간사이 공항 → 교토 → 나라 → 오사카 → 간사이 공항 3일 일정은 편도 합계
+            ¥6,620, 3일권은 ¥5,500입니다.
+          </p>
+          <Table
+            head={["일정", "편도 티켓 합계(성인)", "패스", "결과"]}
+            lead={{
+              label: "결론",
+              text: "교토 도착, 히메지 당일치기, 도시 사이를 오가는 3~4일이라면 사고, 오사카–교토나 오사카–나라 왕복 하나뿐이라면 사지 마세요",
+            }}
+            rows={itineraryRows.map((r) => [r.plan, r.singles, r.pass, r.result])}
+          />
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.15rem", marginTop: "1.5rem" }}>
+            JR 편도 티켓은 얼마인가요?
+          </h3>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            JR 서일본 일반 열차의 성인 운임은 오사카–교토 ¥580, 교토–나라 ¥720, 오사카–히메지 ¥1,460이고, 간사이
+            공항–교토 하루카 편도는 ¥2,700입니다.
+          </p>
+          <Table
+            head={["구간", "성인 편도", "간사이 패스 이용"]}
+            lead={{ label: "결론", text: "아래 구간은 모두 JR 일반 열차나 하루카로 패스를 쓸 수 있습니다. 신칸센은 불가입니다" }}
+            rows={fareRows.map((r) => [r.route, r.fare, r.onPass])}
+          />
+          <p className={styles.bodyText} style={noteStyle}>
+            최종 확인: {CHECKED_ISO} — 공식 출처:{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer">JR 서일본, WEST QR 간사이 패스</a>,{" "}
+            <a href={HARUKA_OFFICIAL_URL} target="_blank" rel="noopener noreferrer">JR 서일본, WEST QR HARUKA One-way Ticket</a>
+            (2026년 11월 1일 이후 판매분),{" "}
+            <a href={FARE_PDF_URL} target="_blank" rel="noopener noreferrer">JR 서일본, 게이한신 운임표(특정 운임, 2025년 4월 1일부터)</a>,{" "}
+            <a href={HIMEJI_FARE_URL} target="_blank" rel="noopener noreferrer">JR 서일본 보도자료, 2026년 2월 25일(오사카–히메지 ¥1,460)</a>.
+            오사카역–나라는 특정 운임 목록에 없어 나라 구간은 덴노지 기준으로 적었습니다. 운임은 성인 일반 승차권
+            기준이며 어린이는 절반입니다.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={KANSAI_PASS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+              클룩에서 간사이 패스 보기 →
+            </KlookLink>
+          </div>
+        </section>
 
         <EsimCtaTop />
 
@@ -533,7 +659,7 @@ export default function KoKansaiAreaPassPage({ updated }: { updated: PageUpdated
             label="같은 여행에 함께 예약"
             heading="간사이 패스와 함께 무엇을 예약할까요?"
             intro="패스는 도시 사이의 이동을 해결합니다. 나머지는 패스로 탈 수 있는 JR 노선 가까이의 숙소, 나라나 히메지로 가는 가이드 동행 하루, 그리고 QR 코드에 필요한 모바일 데이터입니다. 가격은 적지 않았으니 각 상품 페이지에서 현재 가격을 확인하세요."
-            items={tripPrepItems}
+            items={lowerPrep}
           />
         </section>
 
@@ -577,15 +703,22 @@ export default function KoKansaiAreaPassPage({ updated }: { updated: PageUpdated
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>포함 여부</span>
-          <h2 className={styles.sectionTitle}>간사이 패스로 무엇을 탈 수 있나요?</h2>
+          <h2 className={styles.sectionTitle}>간사이 패스로 신칸센, 하루카, 지하철을 탈 수 있나요?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            간사이 이용 구역 안의 JR 서일본 일반 열차(신쾌속, 쾌속, 보통)와 공항 특급 하루카(자유석 무제한, 지정석
-            2회)입니다. 그 밖에는 이용할 수 없습니다. 신칸센, 다른 특급, 지하철, 버스, 사철은 모두 제외입니다. 이
-            패스를 살지 말지는 포함되는 것보다 제외되는 것으로 정해지는 경우가 많습니다.
+            하루카(자유석 무제한, 지정석 2회)는 탈 수 있지만 신칸센과 지하철은 탈 수 없습니다. 하루카 외에는 JR 교토선,
+            고베선, 나라선, 야마토지선, 간사이 공항선의 JR 서일본 일반 열차(신쾌속, 쾌속, 보통)만 이용할 수 있고, 다른
+            특급, 버스, 사철은 제외입니다. 이 패스를 살지 말지는 포함되는 것보다 제외되는 것으로 정해지는 경우가
+            많습니다.
           </p>
-          <Table head={["교통편", "패스 이용", "의미"]} rows={lineRows.map((r) => [r.service, r.allowed, r.note])} />
+          <Table
+            head={["교통편", "패스 이용", "의미"]}
+            lead={{ label: "결론", text: LINE_LEAD }}
+            rows={lineRows.map((r) => [r.service, r.allowed, r.note])}
+          />
           <p className={styles.bodyText} style={noteStyle}>
-            이용 범위는 westjr.co.jp에서 {CHECKED}에 확인했습니다. 패스로 이용할 수 없는 도시 안 교통은{" "}
+            최종 확인: {CHECKED_ISO} — 공식 출처:{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer">JR 서일본, WEST QR 간사이 패스</a>
+            (이용 가능 열차 표). 패스로 이용할 수 없는 도시 안 교통은{" "}
             <Link href="/guides/transport/osaka-transportation" style={linkStyle}>
               오사카 교통 가이드(영어)
             </Link>
@@ -603,10 +736,10 @@ export default function KoKansaiAreaPassPage({ updated }: { updated: PageUpdated
 
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>공항에서</span>
-          <h2 className={styles.sectionTitle}>간사이 패스로 간사이 공항에서 하루카를 탈 수 있나요?</h2>
+          <h2 className={styles.sectionTitle}>간사이 공항에서 간사이 패스로 하루카를 어떻게 타나요?</h2>
           <p className={styles.bodyText}>
-            탈 수 있습니다. 간사이 공항과 덴노지, 신오사카, 교토 사이의 하루카 자유석은 무제한이고, 보통차 지정석도
-            2회 포함됩니다(그린차는 추가 요금).
+            JR 개찰구에서 QR 코드를 스캔하고 하루카에 타면 됩니다. 간사이 공항과 덴노지, 신오사카, 교토 사이의 하루카
+            자유석은 무제한이고, 보통차 지정석도 2회 포함됩니다(그린차는 추가 요금).
           </p>
           <h3 className={styles.sectionTitle} style={{ fontSize: "1.15rem" }}>간사이 패스로 신칸센을 탈 수 있나요?</h3>
           <p className={styles.bodyText}>
@@ -664,10 +797,9 @@ export default function KoKansaiAreaPassPage({ updated }: { updated: PageUpdated
             rows={cmpRest.map((r) => [r.option, r.price, r.covers, r.pick])}
           />
           <p className={styles.bodyText} style={noteStyle}>
-            최종 확인: JR 서일본의 간사이 패스, 하루카 편도, 간사이 와이드 패스 페이지(westjr.co.jp)는 {CHECKED_ISO},
-            간사이 미니 패스와 간사이 히로시마 패스 페이지, 긴테쓰(kintetsu.co.jp/foreign/english/ticket/)는{" "}
-            {R04_CHECKED}, 전국 JR 패스(japanrailpass.net), 오사카 주유패스 공식 사이트, KANSAI ONE PASS 공지는{" "}
-            {PREV_CHECKED}. 나라가 주요 일정이라면{" "}
+            최종 확인: JR 서일본의 간사이 패스, 하루카 편도, 간사이 미니 패스, 간사이 와이드 패스 페이지(westjr.co.jp)와
+            KANSAI ONE PASS 공지는 {CHECKED_ISO}, 간사이 히로시마 패스 페이지와 긴테쓰(kintetsu.co.jp/foreign/english/ticket/)는{" "}
+            {R04_CHECKED}, 전국 JR 패스(japanrailpass.net)와 오사카 주유패스 공식 사이트는 {PREV_CHECKED}. 나라가 주요 일정이라면{" "}
             <Link href="/guides/transport/kintetsu-rail-pass" style={linkStyle}>
               긴테쓰 레일 패스 가이드(영어)
             </Link>
@@ -810,8 +942,16 @@ export default function KoKansaiAreaPassPage({ updated }: { updated: PageUpdated
           </p>
           <p className={styles.bodyText}>
             같은 공지에 따르면 이미 산 카드는 충전식 IC 카드로 계속 쓸 수 있고, 상점과 관광지 혜택은 2026 회계연도로
-            끝납니다. 이 카드는 처음부터 간사이 패스를 대신하는 상품이 아니었습니다. IC 카드는 탈 때마다 운임을 내고,
-            패스는 그 운임을 대신합니다. {PREV_CHECKED} 확인.
+            끝납니다. 공지에 후속 카드는 나와 있지 않으며, 판매 종료 이유로 방문객용 KANSAI MaaS 전자 티켓의 보급을
+            들고 있습니다. 이 카드는 처음부터 간사이 패스를 대신하는 상품이 아니었습니다. IC 카드는 탈 때마다 운임을
+            내고, 패스는 그 운임을 대신합니다. 탈 때마다 결제하려면 ICOCA로도 같은 역할을 할 수 있습니다.
+          </p>
+          <p className={styles.bodyText} style={noteStyle}>
+            최종 확인: {CHECKED_ISO} — 공식 출처:{" "}
+            <a href={KOP_NOTICE_URL} target="_blank" rel="noopener noreferrer">
+              2024년 12월 23일 공동 공지(JR 서일본, 한큐, 긴테쓰, 게이한, 난카이, 한신, 오사카 메트로 등), hanshin.co.jp
+            </a>
+            .
           </p>
         </section>
 
