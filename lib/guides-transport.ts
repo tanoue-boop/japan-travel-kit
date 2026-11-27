@@ -216,7 +216,7 @@ export const transportArticles: GuideArticle[] = [
   {
     href: "/guides/transport/ic-cards-japan",
     badge: "Guide",
-    title: "IC Card Japan 2026: Suica vs PASMO vs ICOCA for Tourists",
+    title: "Japan IC Cards 2026: Suica vs PASMO vs ICOCA (Which to Get)",
     desc: "Seven cards, one network: Suica, PASMO, ICOCA, TOICA, Welcome Suica, TOURIST PASMO and the Wallet version. Deposit, refund, expiry and where to buy each, with the operators' own figures.",
     group: "fares",
     city: "other",

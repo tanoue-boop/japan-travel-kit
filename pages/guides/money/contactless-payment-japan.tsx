@@ -590,12 +590,13 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
           </p>
           <p className={styles.bodyText}>
             They also work at every 7-Eleven, Lawson and FamilyMart, most vending machines, and an increasing
-            number of taxis and restaurants. Adding Suica to Apple Wallet works on iPhone 7 and later, and on
-            most modern Android phones that support NFC. For the deposit, refunds and top-up mechanics, see our{" "}
+            number of taxis and restaurants. Adding Suica to Apple Wallet works on iPhone 7 and later; Android
+            phones bought outside Japan are generally not supported, according to PASMO. For the deposit, refunds,
+            top-ups and Suica vs PASMO vs ICOCA card by card, see our{" "}
             <Link href="/guides/transport/ic-cards-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              IC card Japan
+              Japan IC card
             </Link>{" "}
-            guide — transit IC cards only, card by card.
+            guide — transit IC cards only.
           </p>
           <KlookLink
             href={SUICA_URL}

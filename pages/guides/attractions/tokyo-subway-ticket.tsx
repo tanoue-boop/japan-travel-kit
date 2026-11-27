@@ -721,7 +721,7 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
             <a href={OFFICIAL_FARES} target="_blank" rel="noopener">single fares</a>; JR East:{" "}
             <a href={JR_WIDE} target="_blank" rel="noopener">JR TOKYO Wide Pass</a>. The Common One-day Ticket was ¥900
             until 13 March 2026. How Suica and PASMO work for visitors is in our{" "}
-            <Link href="/guides/transport/ic-cards-japan">IC card Japan</Link> guide, and the JR pass&apos;s
+            <Link href="/guides/transport/ic-cards-japan">Japan IC card</Link> guide, and the JR pass&apos;s
             break-even is in our <Link href="/guides/transport/tokyo-wide-pass">JR TOKYO Wide Pass guide</Link>.
           </p>
         </section>
@@ -878,8 +878,8 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
             same station is.
           </p>
           <p className={styles.bodyText}>
-            For a JR-only hop, tap a Suica or Pasmo and pay the single fare; see our{" "}
-            <Link href="/guides/transport/ic-cards-japan">guide to Japanese IC cards</Link>. Many JR stops also have
+            For a JR-only hop, tap a Suica or Pasmo and pay the single fare; which to get is in our{" "}
+            <Link href="/guides/transport/ic-cards-japan">Suica vs PASMO</Link> comparison. Many JR stops also have
             a subway station a short walk away, so check the subway route first in a map app before paying for the
             JR leg. If your days are built around the loop rather than the subway,{" "}
             <Link href="/guides/transport/tokyo-transportation">getting around Tokyo</Link> explains how JR, Metro

@@ -672,7 +672,7 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
           </p>
           <p className={styles.bodyText}>
             For the ways to get a card, including Apple Wallet and which Android phones do and do not work, see our{" "}
-            <Link href="/guides/transport/ic-cards-japan" style={{ fontWeight: 600 }}>IC card guide</Link>. An IC card does
+            <Link href="/guides/transport/ic-cards-japan" style={{ fontWeight: 600 }}>Japan IC card guide</Link>. An IC card does
             not lower the fare: it saves you handling coins at every stop.
           </p>
           <KlookLink

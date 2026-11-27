@@ -652,7 +652,7 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
             </a>{" "}
             (PDF, in Japanese). Only taking two or three rides? Pay as you go on an ICOCA instead — where to buy one
             and how the deposit works is in our{" "}
-            <Link href="/guides/transport/ic-cards-japan" style={{ fontWeight: 600 }}>IC card Japan</Link> guide.
+            <Link href="/guides/transport/ic-cards-japan" style={{ fontWeight: 600 }}>Japan IC card</Link> guide.
           </p>
         </section>
 

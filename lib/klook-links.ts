@@ -2089,6 +2089,33 @@ export const wiseCardPayBeforeLand: KlookTripPrepItem[] = [
   },
 ];
 
+/**
+ * Japan IC cards — "Pay before you land" under the first answer (task jtk-20261127-R04):
+ * the subway pass (5%), the airport trains (5%) and the Klook eSIM (20%).
+ */
+export const icCardsPayBeforeLand: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.subway,
+    why: "Unlimited Tokyo Metro and Toei rides for 24, 48 or 72 hours — the one fare an IC card cannot cap, and it does not cover JR, so the card stays for the Yamanote Line.",
+  },
+  {
+    ...tripPrepProducts.skyliner,
+    why: "Narita to Ueno or Nippori on a reserved seat, which a tap at the gate cannot buy; TOURIST PASMO is sold at the Keisei counter in the same stations.",
+  },
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "The JR train from the Narita stations where the Welcome Suica machines are — again a reserved seat, bought separately from the fare.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "For Kansai Airport arrivals: the JR Haruka to Kyoto or Osaka, from the station whose ticket office sells the visitor ICOCA.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "A phone card in Wallet, or Welcome Suica Mobile, is topped up over data — and route apps need it before you have found the Wi-Fi.",
+  },
+];
+
 /** Cash vs Card — the reader wants to know what to carry. */
 export const cashVsCardTripPrep: KlookTripPrepItem[] = [
   {

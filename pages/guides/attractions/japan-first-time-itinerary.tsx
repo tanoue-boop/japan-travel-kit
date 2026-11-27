@@ -715,7 +715,8 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
             for 24 hours, ¥1,500 for 48 and ¥2,000 for 72 (read{" "}
             {checkedLabel(PRICES.tokyoSubwayTicket.checked)}), but it does not cover JR or the Yamanote Line. In
             Kyoto most of the trip is bus and on foot, and in Osaka the Amazing Pass covers the Metro. Our{" "}
-            <Link href="/guides/transport/ic-cards-japan">IC card guide</Link> sets out the cards.
+            <Link href="/guides/transport/ic-cards-japan">Japan IC card guide</Link> sets out the cards, Suica vs
+            PASMO vs ICOCA.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
