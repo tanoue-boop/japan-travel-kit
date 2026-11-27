@@ -492,7 +492,9 @@ export default function KyotoTeaCeremonyPage({ updated }: { updated: PageUpdated
             for ¥6,000, with dressing an hour before the ceremony at the studio next door; it cannot dress pregnant
             guests and offers a haori set instead. The Garden Teahouse and the Uji tea houses do not dress you, so rent
             first — the <Link href="/guides/attractions/kyoto-kimono-rental">Kyoto kimono rental</Link> guide compares shops
-            and return times.
+            and return times, and{" "}
+            <Link href="/guides/attractions/kimono-rental-japan">kimono rental in Japan</Link> sets Kyoto against
+            Tokyo, Kamakura, Osaka and Kanazawa if the ceremony is elsewhere on your route.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={kyotoKimonoAiwafukuGion.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

@@ -823,8 +823,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/kimono-rental-japan",
     badge: "Experience",
-    title: "Kimono Rental in Japan 2026: Prices, Where to Rent & How to Book",
-    desc: "Standard plans at the official shops checked run ¥3,300–¥5,500, the shop visit takes 45–70 minutes, and the outfit goes back by 17:30. Tokyo vs Kyoto, and how far ahead to book.",
+    title: "Kimono Rental in Japan 2026: Prices, Best Cities & How Far Ahead to Book",
+    desc: "Standard plans at the official shops checked run ¥3,300–¥5,500 with a simple hair set free at most, and the outfit goes back by 17:30. Kyoto, Asakusa, Kamakura, Osaka and Kanazawa compared.",
     group: "experiences",
     city: "kyoto",
   },

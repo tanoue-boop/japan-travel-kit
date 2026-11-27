@@ -171,7 +171,7 @@ const crumbSep = (
 
 const related = [
   { href: "/guides/attractions/asakusa-kimono-rental", title: "Asakusa Kimono Rental (2026): Return Times, Hair Sets and Where to Photograph" },
-  { href: "/guides/attractions/kimono-rental-japan", title: "Kimono Rental in Japan 2026: Prices, Where to Rent & How to Book" },
+  { href: "/guides/attractions/kimono-rental-japan", title: "Kimono Rental in Japan 2026: Prices, Best Cities & How Far Ahead to Book" },
   { href: "/guides/attractions/shibuya-sky-tickets", title: "Shibuya Sky Tickets 2026: Price, Hours & Sunset Slots" },
   { href: "/guides/attractions/tokyo-bike-tour", title: "Tokyo Bike Tour (2026): E-Bike, Night Rides & Bike Rules" },
   { href: "/guides/attractions/things-to-do-tokyo", title: "Things to Do in Tokyo 2026: Top Picks and Ticket Prices" },

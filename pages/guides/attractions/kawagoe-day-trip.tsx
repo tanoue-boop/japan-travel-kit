@@ -199,7 +199,7 @@ const crumbSep = (
 
 const related = [
   { href: "/guides/attractions/asakusa-kimono-rental", title: "Asakusa Kimono Rental (2026): Return Times, Hair Sets and Where to Photograph" },
-  { href: "/guides/attractions/kimono-rental-japan", title: "Kimono Rental in Japan 2026: Prices, Where to Rent & How to Book" },
+  { href: "/guides/attractions/kimono-rental-japan", title: "Kimono Rental in Japan 2026: Prices, Best Cities & How Far Ahead to Book" },
   { href: "/guides/attractions/yokohama-day-trip", title: "Yokohama Day Trip from Tokyo (2026): Trains & Day Passes" },
   { href: "/guides/attractions/nikko-day-trip", title: "Nikko Day Trip From Tokyo (2026): Costs and Tour or Not" },
   { href: "/guides/attractions/tokyo-4-day-itinerary", title: "Tokyo 4 Day Itinerary (2026): Day by Day, Day Trip & Costs" },
@@ -485,7 +485,7 @@ export default function KawagoeDayTripPage({ updated }: { updated: PageUpdated }
             layers under the kimono; the route is outdoors most of the day. Kimono rental in Tokyo itself is
             compared in{" "}
             <Link href="/guides/attractions/asakusa-kimono-rental">Asakusa kimono rental</Link>, and across Japan
-            in <Link href="/guides/attractions/kimono-rental-japan">kimono rental in Japan</Link>.
+            in <Link href="/guides/attractions/kimono-rental-japan">kimono rental in Japan by city</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={kawagoeKimonoVasara.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

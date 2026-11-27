@@ -511,8 +511,8 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
             For Shibuya, Meguro or a hotel tea room, none of which lists a kimono, rent one first: our{" "}
             <Link href="/guides/attractions/asakusa-kimono-rental" style={linkStyle}>Asakusa kimono rental</Link>{" "}
             guide compares return times, which decide how late a ceremony slot can be, and the wider{" "}
-            <Link href="/guides/attractions/kimono-rental-japan" style={linkStyle}>kimono rental</Link> guide covers
-            other cities. Maikoya&apos;s etiquette guide asks everyone to wear socks and to avoid hats, ripped
+            <Link href="/guides/attractions/kimono-rental-japan" style={linkStyle}>kimono rental in Japan</Link> guide
+            shows which city is best for kimono rental, from Kyoto to Kamakura and Kanazawa. Maikoya&apos;s etiquette guide asks everyone to wear socks and to avoid hats, ripped
             jeans and sleeveless tops.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
@@ -780,7 +780,7 @@ export default function TeaCeremonyJapanPage({ updated }: { updated: PageUpdated
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Kimono Rental in Japan 2026: Prices, Where to Rent &amp; How to Book</p>
+                <p className={styles.relatedTitle}>Kimono Rental in Japan 2026: Prices, Best Cities &amp; How Far Ahead to Book</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

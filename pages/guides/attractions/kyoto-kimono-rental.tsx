@@ -564,9 +564,9 @@ export default function KyotoKimonoRentalPage({ updated }: { updated: PageUpdate
             </KlookLink>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            This page is the Kyoto shop comparison. For Kyoto against Tokyo as a kimono city,
-            and how a rental plan works in general, see the{" "}
-            <Link href="/guides/attractions/kimono-rental-japan">kimono rental in Japan guide</Link>;
+            This page is the Kyoto shop comparison. For Kyoto against Tokyo, Kamakura, Osaka and
+            Kanazawa as a kimono city, and how a rental plan works in general, see{" "}
+            <Link href="/guides/attractions/kimono-rental-japan">kimono rental in Japan: prices and best cities</Link>;
             for the Tokyo version with Senso-ji shops and return times, compare the{" "}
             <Link href="/guides/attractions/asakusa-kimono-rental">Asakusa kimono rental guide</Link>.
           </p>

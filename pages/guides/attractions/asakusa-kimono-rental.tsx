@@ -487,9 +487,9 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
           </p>
           <p className={styles.bodyText}>
             This page assumes you have already settled on Asakusa. If you are still weighing it
-            against Kyoto, or you want the general explanation of what a rental includes and how the
-            pricing works, that is our{" "}
-            <Link href="/guides/attractions/kimono-rental-japan">kimono rental in Japan guide</Link>,
+            against Kyoto, Kamakura or Kanazawa, or you want the general explanation of what a rental
+            includes and how the pricing works, that is our{" "}
+            <Link href="/guides/attractions/kimono-rental-japan">kimono rental in Japan guide to the best cities</Link>,
             and if the photographs are the trip, our{" "}
             <Link href="/guides/attractions/kyoto-kimono-rental">Kyoto kimono rental guide</Link> covers
             Gion, Kiyomizu-dera and next-day return. What follows here is the Asakusa detail: the return deadlines, which differ shop to shop
