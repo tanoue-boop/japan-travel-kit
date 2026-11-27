@@ -658,6 +658,25 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     thTitle: "ชินคันเซ็น เกียวโต โตเกียว 2026: ราคา",
     thLabel: "ชินคันเซ็น เกียวโต โตเกียว",
   },
+  // Added 2026-11-27 (task jtk-20261127-TR02): the Tokyo → Osaka Shinkansen page (Klook 30 days:
+  // 1 booking). Titles lead with the route as each market searches it: 도쿄 오사카 신칸센
+  // (ekitan.com/ko, shinkansentickets.net/kr), 東京到大阪新幹線 (ekitan.com/zh-tw), 东京到大阪新干线
+  // (ekitan.com/zh-cn) and ชินคันเซ็น โตเกียว โอซาก้า (ekitan.com/th, nomadotravel.app/th).
+  {
+    en: "/guides/transport/tokyo-to-osaka-shinkansen",
+    zhTw: "/zh-tw/guides/transport/tokyo-to-osaka-shinkansen",
+    zhTitle: "東京到大阪新幹線 2026：票價、車程時間與購票方式",
+    zhLabel: "東京到大阪新幹線",
+    zhCn: "/zh-cn/guides/transport/tokyo-to-osaka-shinkansen",
+    zhCnTitle: "东京到大阪新干线 2026：票价、车程时间与购票方式",
+    zhCnLabel: "东京到大阪新干线",
+    ko: "/ko/guides/transport/tokyo-to-osaka-shinkansen",
+    koTitle: "도쿄 오사카 신칸센 2026: 가격, 소요 시간, 예매 방법",
+    koLabel: "도쿄 오사카 신칸센",
+    th: "/th/guides/transport/tokyo-to-osaka-shinkansen",
+    thTitle: "ชินคันเซ็น โตเกียว โอซาก้า 2026: ราคา",
+    thLabel: "ชินคันเซ็น โตเกียว โอซาก้า",
+  },
   {
     en: "/guides/attractions",
     zhTw: "/zh-tw/guides/attractions",

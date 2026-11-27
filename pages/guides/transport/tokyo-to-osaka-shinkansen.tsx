@@ -24,6 +24,7 @@ import {
   tokyoOsakaArrivalStayAreas,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import { hreflangLinks } from "../../../components/Hreflang";
 
 /**
  * Tokyo to Osaka on the Tokaido Shinkansen, added 4 Nov 2026 and rebuilt 12 Nov 2026
@@ -304,6 +305,7 @@ export default function TokyoToOsakaShinkansenPage({ updated }: { updated: PageU
         <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href={URL} />
+        {hreflangLinks(ROUTE)}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:url" content={URL} />

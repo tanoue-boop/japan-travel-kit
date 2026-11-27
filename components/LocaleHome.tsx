@@ -180,9 +180,10 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "prep",
         label: "行前準備",
-        desc: "抵達日本當天就會用到的交通與手機上網：機場到市區、京都到東京的新幹線，以及日本 eSIM。",
+        desc: "抵達日本當天就會用到的交通與手機上網：機場到市區、東京與大阪、京都之間的新幹線，以及日本 eSIM。",
         routes: [
           "/zh-tw/guides/transport/tokyo-airport-transfer",
+          "/zh-tw/guides/transport/tokyo-to-osaka-shinkansen",
           "/zh-tw/guides/transport/kyoto-to-tokyo-shinkansen",
           "/zh-tw/guides/esim/best-esim-japan",
         ],
@@ -239,6 +240,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "繁體中文版的景點門票總覽：官方票價、預約方式與一日遊，依類別整理。",
       "/zh-tw/guides/transport/tokyo-airport-transfer":
         "從成田與羽田機場進市區的所有交通方式，比價格、時間與方便度，附 2026 年車資。",
+      "/zh-tw/guides/transport/tokyo-to-osaka-shinkansen":
+        "希望號最快 2 小時 21 分。指定席 ¥14,720（smartEX ¥14,520）、自由席 ¥13,870，JR Pass 搭希望號另付 ¥4,960。smartEX、Klook 與車站購票比較，以及 2027 年漲價。",
       "/zh-tw/guides/transport/kyoto-to-tokyo-shinkansen":
         "希望號 2 小時 12 分、每小時 8–12 班。smartEX 指定席 ¥13,970、自由席 ¥13,320，JR Pass 搭希望號另付 ¥4,960。京都車站 11、12 號月台，以及在東京、品川、新橫濱哪一站下車。",
       "/zh-tw/guides/esim/best-esim-japan":
@@ -336,9 +339,10 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "prep",
         label: "行前准备",
-        desc: "抵达日本当天就会用到的交通与上网：机场到市区、京都到东京的新干线，以及日本 eSIM。",
+        desc: "抵达日本当天就会用到的交通与上网：机场到市区、东京与大阪、京都之间的新干线，以及日本 eSIM。",
         routes: [
           "/zh-cn/guides/transport/tokyo-airport-transfer",
+          "/zh-cn/guides/transport/tokyo-to-osaka-shinkansen",
           "/zh-cn/guides/transport/kyoto-to-tokyo-shinkansen",
           "/zh-cn/guides/esim/best-esim-japan",
         ],
@@ -395,6 +399,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "简体中文版的景点门票总览：官方票价、预约方式与一日游，按类别整理。",
       "/zh-cn/guides/transport/tokyo-airport-transfer":
         "从成田机场和羽田机场前往市区的各种交通方式，比较价格、时间与便利程度，附 2026 年票价。",
+      "/zh-cn/guides/transport/tokyo-to-osaka-shinkansen":
+        "希望号最快 2 小时 21 分。指定席 ¥14,720（smartEX ¥14,520）、自由席 ¥13,870，JR Pass 乘希望号另付 ¥4,960。smartEX、Klook 与车站购票比较，以及 2027 年涨价。",
       "/zh-cn/guides/transport/kyoto-to-tokyo-shinkansen":
         "希望号 2 小时 12 分、每小时 8–12 班。smartEX 指定席 ¥13,970、自由席 ¥13,320，JR Pass 乘希望号另付 ¥4,960。京都站 11、12 号站台，以及在东京、品川、新横滨哪一站下车。",
       "/zh-cn/guides/esim/best-esim-japan":
@@ -490,8 +496,12 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "prep",
         label: "여행 준비",
-        desc: "도착해서 가장 먼저 쓰는 모바일 데이터와 교토에서 도쿄로 가는 신칸센.",
-        routes: ["/ko/guides/esim/best-esim-japan", "/ko/guides/transport/kyoto-to-tokyo-shinkansen"],
+        desc: "도착해서 가장 먼저 쓰는 모바일 데이터와 도쿄, 오사카, 교토를 잇는 신칸센.",
+        routes: [
+          "/ko/guides/esim/best-esim-japan",
+          "/ko/guides/transport/tokyo-to-osaka-shinkansen",
+          "/ko/guides/transport/kyoto-to-tokyo-shinkansen",
+        ],
       },
     ],
     blurbs: {
@@ -501,6 +511,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "신치토세 공항 셔틀, 스키 강습, 4개 스키장 선택, 삿포로 출발 스키 투어.",
       "/ko/guides/attractions/hokkaido-7-day-itinerary":
         "7일 일정을 날짜별로 정리하고 교통패스 요금 비교와 겨울철 조정 방법을 담았습니다.",
+      "/ko/guides/transport/tokyo-to-osaka-shinkansen":
+        "노조미 최단 2시간 21분. 지정석 ¥14,720(smartEX ¥14,520), 자유석 ¥13,870, JR 패스는 노조미 ¥4,960 추가. smartEX, 클룩, 역 구매 비교와 2027년 요금 인상.",
       "/ko/guides/transport/kyoto-to-tokyo-shinkansen":
         "노조미 2시간 12분, 1시간에 8~12편. smartEX 지정석 ¥13,970, 자유석 ¥13,320, JR 패스는 노조미 ¥4,960 추가. 교토역 11, 12번 선과 도쿄, 시나가와, 신요코하마 중 내릴 역.",
       "/ko/guides/attractions/shirakawago-winter-light-up":
@@ -625,8 +637,12 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "prep",
         label: "เตรียมทริป",
-        desc: "อินเทอร์เน็ตมือถือที่ได้ใช้ทันทีเมื่อเดินทางถึงญี่ปุ่น และชินคันเซ็นจากเกียวโตไปโตเกียว",
-        routes: ["/th/guides/esim/best-esim-japan", "/th/guides/transport/kyoto-to-tokyo-shinkansen"],
+        desc: "อินเทอร์เน็ตมือถือที่ได้ใช้ทันทีเมื่อเดินทางถึงญี่ปุ่น และชินคันเซ็นระหว่างโตเกียว โอซาก้า และเกียวโต",
+        routes: [
+          "/th/guides/esim/best-esim-japan",
+          "/th/guides/transport/tokyo-to-osaka-shinkansen",
+          "/th/guides/transport/kyoto-to-tokyo-shinkansen",
+        ],
       },
     ],
     blurbs: {
@@ -636,6 +652,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "รถรับส่งสนามบินชิโตเสะ คลาสสกี การเลือกสี่พื้นที่ และทัวร์สกีจากซัปโปโร",
       "/th/guides/attractions/hokkaido-7-day-itinerary":
         "แผนเที่ยวรายวัน 7 วัน พร้อมวิธีคำนวณพาส และการปรับแผนในหน้าหนาว",
+      "/th/guides/transport/tokyo-to-osaka-shinkansen":
+        "โนโซมิเร็วสุด 2 ชม. 21 นาที ที่นั่งจอง ¥14,720 (smartEX ¥14,520) ที่นั่งไม่จอง ¥13,870 JR Pass ขึ้นโนโซมิจ่ายเพิ่ม ¥4,960 เทียบการจองผ่าน smartEX, Klook และสถานี พร้อมการขึ้นราคาปี 2027",
       "/th/guides/transport/kyoto-to-tokyo-shinkansen":
         "โนโซมิ 2 ชม. 12 นาที ชั่วโมงละ 8–12 ขบวน smartEX ที่นั่งจอง ¥13,970 ที่นั่งไม่จอง ¥13,320 JR Pass ขึ้นโนโซมิจ่ายเพิ่ม ¥4,960 ชานชาลา 11 และ 12 ที่สถานีเกียวโต และควรลงที่โตเกียว ชินางาวะ หรือชินโยโกฮาม่า",
       "/th/guides/attractions/shirakawago-winter-light-up":

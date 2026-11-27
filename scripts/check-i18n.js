@@ -254,6 +254,14 @@ const SEARCH_TERMS = {
     ko: "교토 도쿄 신칸센",
     th: "ชินคันเซ็น เกียวโต โตเกียว",
   },
+  // Added 2026-11-27 (TR02): the route as Korean, Taiwan / Hong Kong, Simplified Chinese and
+  // Thai results write it.
+  "/guides/transport/tokyo-to-osaka-shinkansen": {
+    "zh-tw": "東京到大阪新幹線",
+    "zh-cn": "东京到大阪新干线",
+    ko: "도쿄 오사카 신칸센",
+    th: "ชินคันเซ็น โตเกียว โอซาก้า",
+  },
 };
 
 /** Klook's own locale path each edition must link. */

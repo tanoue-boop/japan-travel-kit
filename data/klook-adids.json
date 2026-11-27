@@ -476,14 +476,13 @@
     "/ko/guides/transport/kyoto-to-tokyo-shinkansen": 1598339,
     "/zh-tw/guides/transport/kyoto-to-tokyo-shinkansen": 1598340,
     "/zh-cn/guides/transport/kyoto-to-tokyo-shinkansen": 1598341,
-    "/th/guides/transport/kyoto-to-tokyo-shinkansen": 1598342
+    "/th/guides/transport/kyoto-to-tokyo-shinkansen": 1598342,
+    "/ko/guides/transport/tokyo-to-osaka-shinkansen": 1598343,
+    "/zh-tw/guides/transport/tokyo-to-osaka-shinkansen": 1598344,
+    "/zh-cn/guides/transport/tokyo-to-osaka-shinkansen": 1598345,
+    "/th/guides/transport/tokyo-to-osaka-shinkansen": 1598346
   },
-  "spare": [
-    1598343,
-    1598344,
-    1598345,
-    1598346
-  ],
+  "spare": [],
   "borrowed": {},
   "_borrowedNote": "borrowed: spare が足りないページが英語版のIDを一時的に借りる置き場所。2026-11-06 の A21b で翻訳版20ページが借り、A25 で全ページを pages へ移したので今は空。"
 }
