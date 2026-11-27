@@ -583,7 +583,7 @@ export default function AiraloVsHolaflyJapanPage({ updated }: { updated: PageUpd
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best eSIM for Japan Reddit 2026: Picks, Networks, Prices</p>
+                <p className={styles.relatedTitle}>Best eSIM for Japan (Reddit Picks, 2026): 1 GB Prices</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

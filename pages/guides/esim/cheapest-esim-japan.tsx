@@ -456,6 +456,10 @@ export default function CheapestEsimJapanPage({ updated }: { updated: PageUpdate
             <Link href="/guides/esim/best-esim-japan-reddit" className={tools.inlineLink}>best eSIM for Japan reddit</Link> check; and if
             you need no cap at all, the{" "}
             <Link href="/guides/esim/japan-esim-unlimited" className={tools.inlineLink}>unlimited eSIM comparison</Link>.
+            Studying abroad for a month or a term? The cheapest data by stay length is in{" "}
+            <Link href="/guides/esim/japan-esim-students" className={tools.inlineLink}>Japan eSIM for students</Link>; if you
+            need a Japanese number as well, read the{" "}
+            <Link href="/guides/esim/sakura-mobile-review" className={tools.inlineLink}>Sakura Mobile review</Link>.
             New to eSIMs?{" "}
             <Link href="/guides/esim" className={tools.inlineLink}>How to get an eSIM for Japan</Link> covers the 4 steps
             (check your phone, buy, install from the QR code, switch it on when you land), with a pick for each kind of trip.

@@ -350,10 +350,13 @@ const moreFaqItems = [
 // tower prices" and "where to go instead of shibuya sky", so the title leads with the three
 // names in the searched order. "Prices &" would push it past 60 characters, so the title keeps
 // "Which to Pick" and the H1 (same word order) and the description carry the prices.
-const TITLE = "Shibuya Sky vs Skytree vs Tokyo Tower (2026): Which to Pick";
-const H1 = "Shibuya Sky vs Skytree vs Tokyo Tower (2026): Prices & Which to Pick";
+// Task jtk-20261127-C01: Bing ranks this page 4.55 with no clicks, and Bing rewards a
+// short exact-match title (11/11), so the title is now the query itself; the "vs"
+// wording moves to the second half of the H1.
+const TITLE = "Tokyo Observation Decks 2026: Prices Compared";
+const H1 = "Tokyo Observation Decks 2026: Prices Compared — Shibuya Sky vs Skytree vs Tokyo Tower";
 const DESC =
-  "Tokyo observation decks compared: Shibuya Sky ¥2,700–¥3,400 (sunset), Skytree from ¥1,800 (450 m), Tokyo Tower ¥1,500, and the free observation deck.";
+  "Tokyo observation decks cost ¥1,500–¥3,400 online: Tokyo Tower ¥1,500, Skytree from ¥1,800, Shibuya Sky ¥2,700–¥3,400. Tocho's 202 m deck is free.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/tokyo-observation-decks") } });
 
@@ -469,6 +472,8 @@ export default function TokyoObservationDecksPage({ updated }: { updated: PageUp
           <span className={styles.sectionLabel}>The short answer</span>
           <h2 className={styles.sectionTitle}>Shibuya Sky vs Skytree vs Tokyo Tower: which should you pick?</h2>
           <p className={styles.bodyText}>
+            <strong>Tokyo&apos;s three big observation decks cost an adult ¥1,500 to ¥3,400 online, and the Tokyo
+            Metropolitan Government Building&apos;s 202 m deck is free.</strong>{" "}
             <strong>SHIBUYA SKY</strong> costs an adult ¥2,700 online before 15:00 or ¥3,400 from 15:00, is an
             open-air rooftop 229 m up, and is the best of the four at sunset. <strong>Tokyo Skytree</strong> costs
             from ¥1,800 for Floor 350 or from ¥3,000 for both floors, reaches 450 m, and is indoors, so it is the

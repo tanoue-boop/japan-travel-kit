@@ -637,6 +637,8 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
             <Link href="/guides/esim/holafly-japan-review" style={{ color: "var(--accent)", fontWeight: 600 }}>Holafly Japan review</Link>{" "}
             covers it in full, and Sakura Mobile&apos;s Japan-based support and voice SIM are in our{" "}
             <Link href="/guides/esim/sakura-mobile-review" style={{ color: "var(--accent)", fontWeight: 600 }}>Sakura Mobile review</Link>.
+            Students on a study-abroad month or term rarely need unlimited — the tiers they do need are priced in{" "}
+            <Link href="/guides/esim/japan-esim-students" style={{ color: "var(--accent)", fontWeight: 600 }}>Japan eSIM for students</Link>.
             The wider comparison, fixed plans included, is in our{" "}
             <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>best eSIM for Japan guide</Link>; whether
             the common &ldquo;go unlimited&rdquo; forum advice holds up is checked on the{" "}

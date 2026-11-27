@@ -1116,7 +1116,10 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
             to Kyoto, Shin-Osaka or Tennoji, or Nankai&apos;s Rapi:t to Namba. Every figure below is the
             operator&apos;s or the official tourism body&apos;s own published number — and one of them changes
             on 1 November 2026. Staying five days, with Nara or Himeji and Kobe on the way out? See the{" "}
-            <Link href="/guides/attractions/kansai-5-day-itinerary">Kansai 5 day itinerary</Link>.
+            <Link href="/guides/attractions/kansai-5-day-itinerary">Kansai 5 day itinerary</Link>. With a spare day
+            for the Sea of Japan coast, the{" "}
+            <Link href="/guides/attractions/amanohashidate-ine-day-trip">Amanohashidate day trip</Link> from Kyoto or
+            Osaka is 9–11 hours by tour.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

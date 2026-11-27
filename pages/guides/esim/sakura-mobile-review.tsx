@@ -49,7 +49,13 @@ const SAKURA_ESIM_URL = "https://www.sakuramobile.jp/travel/esim/";
 const TRUSTPILOT_URL = "https://www.trustpilot.com/review/sakuramobile.jp";
 const TRUSTPILOT_CHECKED = "11 November 2026";
 
-const SAKURA_AFFILIATE = "https://p.sakuramobile.jp/idevaffiliate.php?id=486";
+// Task jtk-20261127-C01: the unlimited conditions (au, no daily limit, hotspot
+// capped at up to 30 GB, sold 1–31 days), the 3 GB/day 200 kbps throttle and the
+// "from 1,375 JPY tax incl." headline were re-read on /travel/esim/ on this date.
+const CTR_CHECKED = "27 November 2026";
+const CTR_CHECKED_ISO = "2026-11-27";
+
+const SAKURA_AFFILIATE ="https://p.sakuramobile.jp/idevaffiliate.php?id=486";
 
 // Task jtk-20261118-R01: the plan-by-product table, the application-steps table,
 // the opening answer and the five FAQ answers were read on this date off
@@ -69,7 +75,7 @@ const SAKURA_VOICE_URL = "https://www.sakuramobile.jp/monthly/voice/";
 // Every Sakura row is tax included, as printed on the official pages on PLANS_CHECKED.
 const productRows = [
   { product: "Travel eSIM — 3 GB/day (docomo)", length: "1–90 days", data: "3 GB a day, then 200 kbps", price: "¥4,620 / 7 days · ¥9,900 / 30 days", calls: "No — data only" },
-  { product: "Travel eSIM — Unlimited (au)", length: "1–90 days", data: "Unlimited on the phone", price: "¥5,775 / 7 days · ¥14,575 / 30 days", calls: "No — data only" },
+  { product: "Travel eSIM — Unlimited (au)", length: "1–31 days", data: "Unlimited on the phone", price: "¥5,775 / 7 days · ¥14,575 / 30 days", calls: "No — data only" },
   { product: "Travel Voice+Data eSIM (au)", length: "Up to 90 days", data: "3 GB a day", price: "See the official table", calls: "Yes — Japanese number, up to 480 min domestic calls; in-person ID check" },
   { product: "Travel SIM card", length: "4–93 days", data: "3 GB/day or unlimited", price: "From ¥3,850", calls: "No — data only" },
   { product: "Travel pocket WiFi rental", length: "Per day", data: "Shared WiFi for any device", price: "From ¥329 a day", calls: "No" },
@@ -331,24 +337,24 @@ const faqItems = [
     a: `Tax included, as printed on sakuramobile.jp on ${PLANS_CHECKED}: the monthly Voice+Data SIM or eSIM with a Japanese number is ¥3,278 a month for 5 GB up to ¥12,078 for 100 GB, and Data Only is ¥2,728 to ¥11,528, each plus a ¥5,500 activation fee. The travel eSIM is ¥4,620 for 7 days or ¥9,900 for 30 days on 3 GB/day, and ¥5,775 or ¥14,575 unlimited. The travel SIM card starts at ¥3,850, pocket WiFi rental at ¥329 a day, and Home WiFi at ¥7,678 a month.`,
   },
   {
-    q: "Does Sakura Mobile have eSIM?",
-    a: `Yes. The travel eSIM is sold for 1 to 90 days as a 3 GB/day plan on docomo, an Unlimited plan on au, or a 3 GB/day Voice+Data eSIM with a Japanese number; the data eSIMs arrive by email with no pickup. The monthly Voice+Data and Data Only plans are also available as an eSIM. The phone must be SIM-free, and the China, Hong Kong and Macau versions of iPhones and Apple Watches are not compatible with eSIM. Read on sakuramobile.jp on ${PLANS_CHECKED}.`,
+    q: "Is Sakura Mobile really unlimited?",
+    a: `On the phone itself, yes: the Unlimited eSIM runs on au (KDDI) 5G with no daily limit, sold for 1 to 31 days (¥5,775 for 7 days, tax included). The limit is on hotspot use, which is capped at up to 30 GB depending on plan length. The cheaper 3 GB/day plan on docomo is not unlimited — after 3 GB in a day the eSIM slows to 200 kbps until the next day. Read on sakuramobile.jp/travel/esim/ on ${CTR_CHECKED}.`,
+  },
+  {
+    q: "Sakura Mobile eSIM or SIM card?",
+    a: `The eSIM for most travellers: it arrives by email, nothing ships, and the travel eSIM starts from ¥1,375 tax included. Take the SIM card (from ¥3,850, ordered at least 3 days before pickup at Narita, Haneda, Kansai or Fukuoka airport, a hotel or a post office) if your phone cannot take an eSIM — including the China, Hong Kong and Macau iPhones — or if you want the gentler throttle: after 3 GB in a day the SIM card drops to 1 Mbps, the eSIM to 200 kbps. Read on sakuramobile.jp on ${CTR_CHECKED}.`,
   },
   {
     q: "Does Sakura Mobile give you a Japanese phone number?",
     a: `Only on its Voice+Data plans. The monthly Voice+Data SIM or eSIM gives a normal 070, 080 or 090 number, which Sakura Mobile says can be used to open a bank account and rent an apartment; domestic calls are 16.5 JPY per 30 seconds. The travel 3 GB/day Voice+Data eSIM adds a number and up to 480 minutes of domestic calls on the longest plans, but needs an in-person ID check at a counter before it starts. The travel data eSIMs and SIM cards are data only. Read on sakuramobile.jp on ${PLANS_CHECKED}.`,
   },
-  {
-    q: "Can I cancel Sakura Mobile?",
-    a: `Yes. The monthly plans are month-to-month with no lock-in, and Sakura Mobile says you can cancel online in English; Home WiFi has no early-termination penalty. A travel eSIM order can be cancelled for a full refund at any time before the eSIM QR code has been made visible to you, by emailing contact@sakuramobile.jp. Read on sakuramobile.jp on ${PLANS_CHECKED}.`,
-  },
 ];
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/sakura-mobile-review") } });
 
-const TITLE = "Sakura Mobile Review 2026: SIM Card & eSIM Plans, Worth It?";
+const TITLE = "Sakura Mobile Review (2026): eSIM, SIM & WiFi Prices";
 const DESCRIPTION =
-  "Sakura Mobile review 2026: monthly SIM card or eSIM with a Japanese number from ¥3,278, travel eSIM ¥4,620/week. Best for 1+ month stays, not a cheap week.";
+  "Sakura Mobile Unlimited eSIM has no daily cap on au (hotspot up to 30 GB); the 3 GB/day plan slows to 200 kbps. eSIM from ¥1,375, 7 days ¥4,620.";
 
 export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -424,7 +430,7 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
             Prices checked {pricesCheckedAt}
           </p>
           <h1 className={styles.heroTitle}>
-            Sakura Mobile Review 2026: <br />SIM Card &amp; eSIM Plans, Worth It?
+            Sakura Mobile Review (2026): <br />eSIM, SIM &amp; WiFi Prices
           </h1>
           <p className={styles.heroSubtitle}>
             Monthly plans with a Japanese number for residents, travel eSIMs and SIM cards for visitors, and
@@ -452,6 +458,14 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
         </div>
 
         {/* Answer first: what it is, what it costs, who it is for — in the first body paragraph. */}
+        <p className={styles.bodyText}>
+          <strong>Sakura Mobile suits travellers staying a few weeks to a month and long-stay residents better
+          than a one-week trip:</strong> its travel eSIM starts from <strong>¥1,375</strong>, but 7 days costs{" "}
+          <strong>¥4,620</strong> on 3 GB/day (docomo, 200 kbps after 3 GB) or <strong>¥5,775</strong> on
+          Unlimited (au, no daily cap, hotspot capped at up to 30 GB, sold for 1–31 days), tax included. For a
+          stay of three months or more, its monthly SIM or eSIM with a Japanese number is the better buy (read
+          on sakuramobile.jp, {CTR_CHECKED}).
+        </p>
         <p className={styles.bodyText}>
           <strong>Sakura Mobile</strong> is a Japanese provider that sells both short-term travel plans — a{" "}
           <strong>Sakura Mobile eSIM</strong> from <strong>¥4,620 for 7 days</strong> or a SIM card from ¥3,850 —
@@ -715,7 +729,7 @@ export default function SakuraMobileReviewPage({ updated }: { updated: PageUpdat
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Last checked: {OPENING_PRICES_CHECKED_ISO} (7, 10 and 30 days; also 14 days at ¥6,930 on 3 GB/day
+            Last checked: {CTR_CHECKED_ISO} (7, 10 and 30 days; also 14 days at ¥6,930 on 3 GB/day
             and ¥9,240 unlimited) —{" "}
             <a href={SAKURA_ESIM_URL} target="_blank" rel="noopener noreferrer" className={tools.inlineLink}>
               Sakura Mobile travel eSIM page

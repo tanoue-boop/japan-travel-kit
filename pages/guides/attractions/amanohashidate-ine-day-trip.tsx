@@ -307,7 +307,7 @@ const faqItems = [
   },
   {
     q: "Is an Amanohashidate day tour worth it?",
-    a: `For a single day, yes, because Ine is the hard part: it has no railway, and on your own the day is built around a handful of bus departures. A tour covers Amanohashidate, the Ine Funaya boathouses and usually the Ine Bay boat with no changes. Going on your own costs about ¥8,300 to ¥9,300 in transport by bus, before the ¥1,200 boat, and suits you if you want more time at either place or are staying the night.`,
+    a: `For a single day, yes, because Ine is the hard part: it has no railway, and on your own the day is built around a handful of bus departures. A tour covers Amanohashidate, the Ine Funaya boathouses and usually the Ine Bay boat with no changes, in 9 to 11 hours, from about US$51 a person on Klook (listing price on 27 November 2026; it changes by date). Going on your own costs about ¥8,300 to ¥9,300 in transport by bus, before the ¥1,200 boat, and suits you if you want more time at either place or are staying the night.`,
   },
   {
     q: "How long is the Ine boat ride?",
@@ -350,10 +350,17 @@ const moreFaqItems = [
   },
 ];
 
-const TITLE = "Amanohashidate Day Trip from Kyoto 2026: Tour vs Train & Ine";
-const H1_LINE = "Amanohashidate Day Trip from Kyoto (2026):";
+// Task jtk-20261127-C01: the one tour price on this page. Klook answers automated
+// reads with 403, so it is the figure Klook's own listing 110091 shows in the
+// www.klook.com search index on this date (US$51.65 per person; other Kyoto/Osaka
+// listings in the same index sit at about US$51). Prices move by date.
+const TOUR_FROM = "about US$51";
+const TOUR_PRICE_CHECKED = "2026-11-27";
+
+const TITLE = "Amanohashidate & Ine Day Trip from Kyoto (2026): Tour Prices";
+const H1_LINE = "Amanohashidate & Ine Day Trip from Kyoto (2026):";
 const DESCRIPTION =
-  "Amanohashidate day trip from Kyoto: 2h14 by limited express (¥4,790) or a 9–11 hour day tour with the Ine Funaya boathouses and boat. Tour vs train.";
+  "Amanohashidate & Ine day tours from Kyoto take 9–11 hours, from about US$51 a person on Klook. On your own: 2h14 by train (¥4,790), Ine boat ¥1,200.";
 
 const ROUTE = "/guides/attractions/amanohashidate-ine-day-trip";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
@@ -446,7 +453,7 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            {H1_LINE} <br />Day Tour vs Train, and the Ine Funaya Boathouses
+            {H1_LINE} <br />Tour Prices vs Train, and the Ine Funaya Boathouses
           </h1>
           <p className={styles.heroSubtitle}>
             A pine sandbar and a bay of boathouses on the Sea of Japan. The hard part is the last hour of the
@@ -479,6 +486,12 @@ export default function AmanohashidateIneDayTripPage({ updated }: { updated: Pag
           </div>
           <div className={styles.verdictBody}>
             {/* Answer-first: the first body paragraph of the article, not the hero line. */}
+            <p className={styles.verdictText}>
+              <strong>An Amanohashidate &amp; Ine day tour from Kyoto takes 9 to 11 hours and costs from{" "}
+              {TOUR_FROM} a person on Klook</strong> (listing price, {TOUR_PRICE_CHECKED}; it changes by date), with
+              the boat and cable car extra on some plans. Doing it yourself costs about ¥8,300–¥9,300 in buses
+              plus the ¥1,200 Ine Bay boat.
+            </p>
             <p className={styles.verdictText}>
               <strong>Amanohashidate</strong> is <strong>2 hours 14 minutes</strong> from Kyoto Station on the
               Hashidate limited express with no change (about <strong>¥4,790</strong>), or 2 hours 5 minutes on

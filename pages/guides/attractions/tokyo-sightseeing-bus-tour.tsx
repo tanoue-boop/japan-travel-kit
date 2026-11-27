@@ -446,6 +446,9 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
             ticket lets you get on and off at any stop and change between routes. Its Red route covers Asakusa,
             Tokyo Skytree, Ryogoku, Ueno and Akihabara; the Blue route Tokyo Tower, Odaiba (Fuji Television and
             Tokyo Teleport Station), Tsukiji and Ginza; and the Green route Shinjuku, Shibuya and Tokyo Tower.
+            The bus does not include the decks themselves — what Skytree, Tokyo Tower and SHIBUYA SKY cost to go up
+            is compared in{" "}
+            <Link href="/guides/attractions/tokyo-observation-decks">Tokyo observation decks</Link>.
           </p>
           <p className={styles.bodyText}>
             Commentary is an audio guide in seven languages, not a live guide, and seats are not reserved — if a

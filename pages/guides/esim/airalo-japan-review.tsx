@@ -431,7 +431,11 @@ export default function AiraloJapanReviewPage({ updated }: { updated: PageUpdate
             ) from the same daily price file as the{" "}
             <Link href="/guides/esim/japan-esim-price-tracker">Japan eSIM price tracker</Link>, fetched {pricesCheckedAt}.
             Klook eSIM shows from US$1.05 before you choose days and data and names no plan at that price (listing read{" "}
-            {klookEsim.specsCheckedAt}), so no per-plan price is shown. Unlimited plans differ in their full-speed limits.
+            {klookEsim.specsCheckedAt}), so no per-plan price is shown. Unlimited plans differ in their full-speed limits. Sakura Mobile&apos;s plans,
+            networks and Japanese-number option are covered in our{" "}
+            <Link href="/guides/esim/sakura-mobile-review">Sakura Mobile review</Link>, and the eSIMs travellers argue
+            over on Reddit, price-checked, in{" "}
+            <Link href="/guides/esim/best-esim-japan-reddit">best eSIM for Japan (Reddit picks)</Link>.
           </p>
           <div className={buyStyles.buttons}>
             <KlookLink

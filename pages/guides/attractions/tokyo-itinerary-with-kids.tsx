@@ -740,7 +740,9 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
                 LEGOLAND Discovery Center&apos;s prices, the under-3 rule and the accompanied-adults rule are off its
                 own ticket page, read {CHECKED}. Hours are set per day — the official calendar showed 09:30–19:00 and
                 10:00–18:00 on consecutive days that week — and the 4D Cinema is closed for maintenance from 30
-                November to 4 December 2026.
+                November to 4 December 2026. The full outdoor LEGO park is in Nagoya, 24 minutes from Nagoya Station
+                on the Aonami Line — see{" "}
+                <Link href="/guides/attractions/legoland-japan-tickets">LEGOLAND Japan tickets</Link> for its prices.
               </p>
             )}
             {day.id === "day-4" && (
@@ -1002,7 +1004,7 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
               { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport" },
               { href: "/guides/attractions/tokyo-5-day-itinerary", title: "Tokyo 5-Day Itinerary (2026): 5 Days in Tokyo, Day by Day" },
               { href: "/guides/attractions/tokyo-3-day-itinerary", title: "Tokyo 3 Day Itinerary (2026): What to Book, and in What Order" },
-              { href: "/guides/attractions/legoland-japan-tickets", title: "LEGOLAND Japan Tickets (2026): Prices, Hours and Is It Worth It?" },
+              { href: "/guides/attractions/legoland-japan-tickets", title: "LEGOLAND Japan Tickets 2026: Prices from ¥4,900 & Hours" },
               { href: "/guides/attractions/tokyo-snow-day-trip", title: "Tokyo Snow Day Trip (2026–27): Yeti, Fujiten or Gala" },
               { href: "/guides/transport/tokyo-airport-transfer", title: "Tokyo Airport Transfer Guide (2026): Narita & Haneda to the City" },
               { href: "/guides/attractions/tokyo-subway-ticket", title: "Tokyo Subway Ticket (2026): 24, 48 or 72 Hours — Is It Worth It?" },

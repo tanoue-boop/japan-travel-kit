@@ -11,6 +11,7 @@ import { klookEsim } from "../../../lib/klook-links";
 import { esimSpec } from "../../../lib/esim-specs";
 import {
   cheapestUnlimited,
+  cheapestWithGb,
   findPlansForTrip,
   formatUsd,
   getProvider,
@@ -389,11 +390,19 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/best-esim-japan-reddit") } });
 
-const TITLE = "Best eSIM for Japan Reddit 2026: Picks, Networks, Prices";
+// The three data-only eSIMs at the top of the comparison table, priced on their
+// cheapest 1 GB plan from the same daily feed (data/esim-prices.json) the table reads.
+// This is a price order, not a count of Reddit mentions: Reddit refuses automated reads.
+const ONE_GB = (["simbye", "esimgo", "airalo"] as EsimProviderId[])
+  .map((id) => ({ id, name: getProvider(id).name, plan: cheapestWithGb(id, 1) }))
+  .filter((x): x is { id: EsimProviderId; name: string; plan: EsimPlan } => x.plan !== null)
+  .sort((a, b) => a.plan.priceUsd - b.plan.priceUsd);
+const oneGbSentence = ONE_GB.map((x) => `${formatUsd(x.plan.priceUsd)} at ${x.name}`).join(", ");
+
+const TITLE = "Best eSIM for Japan (Reddit Picks, 2026): 1 GB Prices";
 const META_DESCRIPTION =
-  `Best eSIM for Japan reddit question, price-checked: Simbye from ${priceFrom("simbye")}, ` +
-  `Airalo ${airalo7 ? `${formatUsd(airalo7.priceUsd)} a week` : `from ${priceFrom("airalo")}`}, Klook eSIM on SoftBank/docomo. ` +
-  `Compare networks, caps, fixes.`;
+  `Japan eSIMs Reddit threads weigh up, price-checked: 1 GB costs ${oneGbSentence}. ` +
+  `Networks, caps and fixes compared.`;
 
 export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -476,7 +485,7 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Best eSIM for Japan Reddit 2026: <br />Picks, Networks, Prices
+            Best eSIM for Japan (Reddit Picks, 2026): <br />1 GB Prices
           </h1>
           <p className={styles.heroSubtitle}>
             The eSIMs travellers weigh up for Japan, checked against official prices: networks, 7- and
@@ -517,7 +526,9 @@ export default function BestEsimJapanRedditPage({ updated }: { updated: PageUpda
               {getProvider("simbye").network}. <strong>Airalo</strong> costs{" "}
               {airalo7 ? `${formatUsd(airalo7.priceUsd)} for ${airalo7.name}` : `from ${priceFrom("airalo")}`} on
               SoftBank, and <strong>Klook eSIM</strong> runs on SoftBank 5G or IIJ (docomo), the easy add-on if
-              the rest of your trip is already booked on Klook.
+              the rest of your trip is already booked on Klook. On the cheapest 1 GB plan, the three data-only
+              eSIMs at the top of the table cost {oneGbSentence} (each provider&apos;s own price, checked{" "}
+              {pricesCheckedAt}).
             </p>
             <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
               The cheapest unlimited week on current prices is{" "}

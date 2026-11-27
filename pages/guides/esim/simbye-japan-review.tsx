@@ -288,7 +288,9 @@ export default function SimbyeJapanReviewPage({ updated }: { updated: PageUpdate
             <Link href="/guides/esim/sakura-mobile-review" className={tools.inlineLink}>Sakura Mobile review</Link>{" "}
             or the{" "}
             <Link href="/guides/esim/best-esim-japan" className={tools.inlineLink}>best Japan eSIM ranking</Link>{" "}
-            instead. Prices checked {pricesCheckedAt}.
+            instead. Prices checked {pricesCheckedAt}. How it compares with the other eSIMs travellers name on
+            Reddit, by price per GB, is in{" "}
+            <Link href="/guides/esim/best-esim-japan-reddit" className={tools.inlineLink}>best eSIM for Japan Reddit picks</Link>.
           </p>
           <a href={esimLink("simbye")} className={styles.verdictBtn} target="_blank" rel="sponsored nofollow noopener">
             Get Simbye Japan — from {priceLabel(ENTRY)} →

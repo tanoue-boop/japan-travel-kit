@@ -723,6 +723,11 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
               With NIFREL at Expocity →
             </KlookLink>
           </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem" }}>
+            The LEGOLAND next door is the indoor Discovery Center, not the outdoor park. The full park is LEGOLAND
+            Japan in Nagoya — prices, hours and the Aonami Line from Nagoya Station are in our{" "}
+            <Link href="/guides/attractions/legoland-japan-tickets">LEGOLAND Japan tickets</Link> guide.
+          </p>
         </section>
 
         {/* Hours */}

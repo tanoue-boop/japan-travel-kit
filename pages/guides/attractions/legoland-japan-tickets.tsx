@@ -129,9 +129,12 @@ const faqItems = [
   },
 ];
 
-const TITLE = "LEGOLAND Japan Tickets (2026): Prices and Is It Worth It?";
+const TITLE = "LEGOLAND Japan Tickets 2026: Prices from ¥4,900 & Hours";
 const DESCRIPTION =
-  "LEGOLAND Japan tickets in 2026: the 1 Day Pass and SEA LIFE combo prices, the 2-to-12 target age, and the 24-minute Aonami Line run from Nagoya.";
+  "LEGOLAND Japan 1 Day Pass from ¥4,900 adult (19+) and ¥3,700 child (3–18); online rates vary by date. Open 10:00–17:00, 24 min from Nagoya Station.";
+// Task jtk-20261127-C01: the 1 Day Pass, combo and SEA LIFE prices re-read on
+// legoland.jp/en/tickets/ on this date — unchanged from OWN.
+const PRICES_RECHECKED = "2026-11-27";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/legoland-japan-tickets") } });
 
@@ -223,7 +226,7 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            LEGOLAND Japan Tickets (2026): <br />Prices, Hours and Is It Worth It?
+            LEGOLAND Japan Tickets 2026: <br />Prices from ¥4,900 &amp; Hours
           </h1>
           <p className={styles.heroSubtitle}>
             A park built for 2 to 12-year-olds, priced by calendar date, 24 minutes from Nagoya Station —
@@ -274,8 +277,9 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>In short:</strong> the operator&apos;s online rates start at ¥4,900~ for an adult and
-              ¥3,700~ for a child aged 3 to 18, and they vary by date — so price your own date rather than
+              <strong>In short:</strong> a LEGOLAND Japan 1 Day Pass costs from <strong>¥4,900</strong> for an
+              adult (19+) and <strong>¥3,700</strong> for a child aged 3 to 18 on legoland.jp, checked{" "}
+              {PRICES_RECHECKED}, and the online rate varies by date — so price your own date rather than
               a headline figure. The park runs 10:00 to 17:00, which is short enough that the hotel package
               with two-day tickets is the booking worth comparing if you have travelled to get there.
             </p>
@@ -345,7 +349,11 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            LEGOLAND Japan&apos;s own ticket page, read on {OWN}. The &ldquo;~&rdquo; is the operator&apos;s:
+            Last checked: {PRICES_RECHECKED} —{" "}
+            <a href="https://www.legoland.jp/en/tickets/" target="_blank" rel="noopener noreferrer">
+              legoland.jp/en/tickets/
+            </a>{" "}
+            (first read {OWN}; the 1 Day Pass, combo and SEA LIFE prices were unchanged). The &ldquo;~&rdquo; is the operator&apos;s:
             these are online promotional rates and it states they vary by date, with a price list and calendar
             published for date-specific figures. The Overnight Plan figure is per person and includes
             breakfast and two-day combo tickets. There is no standalone 2 Day Pass price on the ticket page —

@@ -232,7 +232,10 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
             <Link href="/guides/attractions" style={linkStyle}>Japan attraction tickets to book in advance</Link>.
             For a hot-spring day out of Osaka, the{" "}
             <Link href="/guides/attractions/arima-onsen-day-trip" style={linkStyle}>Arima Onsen day trip guide</Link>{" "}
-            covers the coach from Osaka or Sannomiya and the Kin no Yu and Gin no Yu bath prices.
+            covers the coach from Osaka or Sannomiya and the Kin no Yu and Gin no Yu bath prices. For the Sea of Japan
+            coast, the{" "}
+            <Link href="/guides/attractions/amanohashidate-ine-day-trip" style={linkStyle}>Amanohashidate day trip</Link>{" "}
+            guide covers the 9–11 hour tours from Osaka or Kyoto and the Ine Funaya boathouses.
           </p>
         </section>
 

@@ -78,11 +78,11 @@ const withCode = (p: EsimPlan | null) => (p?.discountedUsd ? formatUsd(p.discoun
  */
 const RESIDENT_CHECKED = "2026-11-17";
 
-const TITLE = "Japan eSIM for Students 2026: Cheapest Data for Study Trips";
-const H1 = "Japan eSIM for Students (2026): Cheapest Data for Study Trips";
+const TITLE = `Japan eSIM for Students (2026): Study Abroad, from ${priceLabel(SIMBYE_MONTH)}/mo`;
+const H1 = `Japan eSIM for Students (2026): Study Abroad Plans from ${priceLabel(SIMBYE_MONTH)} a Month`;
 const DESCRIPTION =
-  `Japan eSIM for students: ${dataLabel(SIMBYE_MONTH)} for a study month is ${priceLabel(SIMBYE_MONTH)} ` +
-  `on Simbye, a 3-month term ${priceLabel(SIMBYE_TERM)}. Student eSIM Japan picks by stay length and phone number.`;
+  `Japan eSIM for students and study abroad: ${dataLabel(SIMBYE_MONTH)} for a month is ${priceLabel(SIMBYE_MONTH)} ` +
+  `on Simbye, a 3-month term ${priceLabel(SIMBYE_TERM)}. Staying 3+ months? Get a monthly SIM.`;
 
 const linkStyle = { color: "var(--accent)", fontWeight: 600 } as const;
 const lastChecked = { marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)", lineHeight: 1.6 } as const;
