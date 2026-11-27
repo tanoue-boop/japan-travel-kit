@@ -340,7 +340,7 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo",
     badge: "Ski day trip",
-    title: "Tokyo to Gala Yuzawa 2026-27: Shinkansen Day Trip & JR Pass",
+    title: "How to Get to Gala Yuzawa from Tokyo: Shinkansen & JR Pass",
     desc: "The one Japanese resort with a shinkansen station inside it — 71 minutes from Tokyo Station, slopes open 19 Dec 2026, a ¥8,000 lift day at the window, and the South Area shut for the whole season.",
     group: "daytrips",
     // The day starts and ends at Tokyo Station, so it belongs to the Tokyo hub

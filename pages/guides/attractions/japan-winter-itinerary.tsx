@@ -342,7 +342,7 @@ const days: Day[] = [
         half day of sledging and a long lunch. GALA&apos;s own calendar has the slopes open from 19
         December 2026 to 5 May 2027, with 12 to 18 December sightseeing only and the South Area shut
         for the whole season; our{" "}
-        <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo">Gala Yuzawa day trip from Tokyo</Link>{" "}
+        <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo">how to get to Gala Yuzawa from Tokyo</Link>{" "}
         guide has the direct shinkansen times, the JR Pass rules and the lift prices in full. If you would rather look at snow than ski on it,
         our{" "}
         <Link href="/guides/attractions/jigokudani-snow-monkey-tour">Jigokudani snow monkey tour guide</Link>{" "}
@@ -2011,7 +2011,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo to Gala Yuzawa 2026-27: Shinkansen Day Trip & JR Pass</p>
+                <p className={styles.relatedTitle}>How to Get to Gala Yuzawa from Tokyo: Shinkansen & JR Pass</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

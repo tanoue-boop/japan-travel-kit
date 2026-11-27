@@ -254,7 +254,7 @@ const related = [
   { href: "/guides/attractions/hakuba-ski-tours", title: "Hakuba Ski Tours (2026-27): Tokyo Access, Lifts & Resorts" },
   { href: "/guides/attractions/nozawa-onsen-ski", title: "Nozawa Onsen Ski (2026-27): Tokyo Access, Lifts & Onsen" },
   { href: "/guides/attractions/niseko-ski-tours", title: "Niseko Ski Tours (2027): Transfers, Lessons & 4 Areas" },
-  { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "Tokyo to Gala Yuzawa 2026-27: Shinkansen Day Trip & JR Pass" },
+  { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "How to Get to Gala Yuzawa from Tokyo: Shinkansen & JR Pass" },
   { href: "/guides/attractions/sapporo-ski-day-trip", title: "Sapporo Ski Day Trip 2026-27: Teine, Kiroro & Rusutsu Tours" },
   { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary: 12 Days, Day by Day (2027)" },
   { href: "/guides/money/japan-ski-travel-insurance", title: "Japan Ski Travel Insurance: What Standard Policies Exclude" },
@@ -491,9 +491,9 @@ export default function JapanSkiTripItineraryPage({ updated }: { updated: PageUp
             <strong>Seven days for one Nagano resort; ten or more for Niseko.</strong> From Tokyo, Hakuba and
             Nozawa Onsen are a morning away by shinkansen and bus, so a week gives about three and a half days
             on the snow. Niseko adds a domestic flight and a 2.5-hour coach each way, which is why it suits a
-            longer trip. If you only have one day, the{" "}
-            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo">GALA Yuzawa day trip</Link>{" "}
-            is 71 minutes from Tokyo Station with the slopes at the station.
+            longer trip. If you only have one day, see{" "}
+            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo">how to get to Gala Yuzawa from Tokyo</Link>:
+            the direct shinkansen is 71 minutes from Tokyo Station with the slopes at the station.
           </p>
         </section>
 

@@ -233,7 +233,7 @@ const SAFETYWING_URL = "https://safetywing.com/nomad-insurance?referenceID=26614
 const related = [
   { href: "/guides/attractions/hakuba-ski-tours", title: "Hakuba Ski Tours (2026-27): Tokyo Access, Lifts & Resorts" },
   { href: "/guides/attractions/niseko-ski-tours", title: "Niseko Ski Tours (2027): Transfers, Lessons & 4 Areas" },
-  { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "Tokyo to Gala Yuzawa 2026-27: Shinkansen Day Trip & JR Pass" },
+  { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "How to Get to Gala Yuzawa from Tokyo: Shinkansen & JR Pass" },
   { href: "/guides/attractions/japan-ski-trip-itinerary", title: "Japan Ski Trip Itinerary: 7 & 10 Days, Hakuba to Niseko" },
   { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary: 12 Days, Day by Day (2027)" },
   { href: "/guides/money/japan-ski-travel-insurance", title: "Japan Ski Travel Insurance: What Standard Policies Exclude" },
@@ -490,8 +490,9 @@ export default function NozawaOnsenSkiPage({ updated }: { updated: PageUpdated }
             <strong>Possible, but it is over four hours of travelling for one day on the snow.</strong>{" "}
             {SHINKANSEN_TIME} to Iiyama and {LINER_TIME} on the Liner each way, before any wait for the
             connection. Nozawa Onsen rewards two nights or more — the baths are the evening. For a day trip,
-            the <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo">GALA Yuzawa day trip</Link>{" "}
-            is 71 minutes from Tokyo Station with the slopes at the station.
+            see{" "}
+            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo">how to get to Gala Yuzawa from Tokyo</Link>:
+            the direct shinkansen is 71 minutes from Tokyo Station with the slopes at the station.
           </p>
         </section>
 

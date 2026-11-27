@@ -1134,7 +1134,7 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo to Gala Yuzawa 2026-27: Shinkansen Day Trip & JR Pass</p>
+                <p className={styles.relatedTitle}>How to Get to Gala Yuzawa from Tokyo: Shinkansen & JR Pass</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

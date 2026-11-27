@@ -766,7 +766,7 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
             Both are on the JR East Pass, but if they are your only trips out of Tokyo, the ¥16,000 Tokyo Wide Pass
             or a booked day tour costs less. Our{" "}
             <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Gala Yuzawa day trip from Tokyo
+              how to get to Gala Yuzawa from Tokyo
             </Link>
             ,{" "}
             <Link href="/guides/attractions/karuizawa-day-trip-from-tokyo" style={{ color: "var(--red)", fontWeight: 600 }}>

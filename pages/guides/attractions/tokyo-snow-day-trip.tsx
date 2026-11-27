@@ -403,7 +403,7 @@ export default function TokyoSnowDayTripPage({ updated }: { updated: PageUpdated
             A clear view of the summit is never certain: cloud can hide it on any day, at either resort. If skiing
             is the main event rather than the snow, our{" "}
             <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Gala Yuzawa day trip from Tokyo
+              how to get to Gala Yuzawa from Tokyo
             </Link>{" "}
             guide covers the ski version: the direct shinkansen from Tokyo Station, the JR Pass rules, and
             GALA&apos;s lift and rental prices.

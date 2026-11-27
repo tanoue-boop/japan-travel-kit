@@ -259,7 +259,7 @@ const SAFETYWING_URL = "https://safetywing.com/nomad-insurance?referenceID=26614
 const related = [
   { href: "/guides/attractions/nozawa-onsen-ski", title: "Nozawa Onsen Ski (2026-27): Tokyo Access, Lifts & Onsen" },
   { href: "/guides/attractions/niseko-ski-tours", title: "Niseko Ski Tours (2027): Transfers, Lessons & 4 Areas" },
-  { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "Tokyo to Gala Yuzawa 2026-27: Shinkansen Day Trip & JR Pass" },
+  { href: "/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo", title: "How to Get to Gala Yuzawa from Tokyo: Shinkansen & JR Pass" },
   { href: "/guides/attractions/japan-ski-trip-itinerary", title: "Japan Ski Trip Itinerary: 7 & 10 Days, Hakuba to Niseko" },
   { href: "/guides/attractions/japan-winter-itinerary", title: "Japan Winter Itinerary: 12 Days, Day by Day (2027)" },
   { href: "/guides/money/japan-ski-travel-insurance", title: "Japan Ski Travel Insurance: What Standard Policies Exclude" },
@@ -646,8 +646,9 @@ export default function HakubaSkiToursPage({ updated }: { updated: PageUpdated }
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             Details for each: <Link href="/guides/attractions/nozawa-onsen-ski">Nozawa Onsen ski</Link>,{" "}
-            <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours</Link> and the{" "}
-            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo">GALA Yuzawa day trip from Tokyo</Link>.
+            <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours</Link> and, for a single day,{" "}
+            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo">how to get to Gala Yuzawa from Tokyo</Link>{" "}
+            by direct shinkansen.
           </p>
         </section>
 

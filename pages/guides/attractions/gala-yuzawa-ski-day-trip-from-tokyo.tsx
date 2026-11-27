@@ -101,7 +101,8 @@ import { hreflangLinks } from "../../../components/Hreflang";
  * reserved seats; and JR East's note that GALA Yuzawa station operates only in
  * winter and spring.
  *
- * What is deliberately absent: a Tokyo–GALA point-to-point shinkansen fare. JR
+ * (Superseded 27 Nov 2026: the ¥7,130 one-way fare is now printed — see R09 below.)
+ * What was deliberately absent: a Tokyo–GALA point-to-point shinkansen fare. JR
  * East publishes no English fare table that could be read, and tokyo-wide-pass
  * made the same call for the same reason — a guessed shinkansen fare is exactly
  * the figure that makes a break-even table worthless. The arithmetic here is
@@ -164,13 +165,42 @@ import { hreflangLinks } from "../../../components/Hreflang";
  *   prices (Tokyo–Niigata ¥10,560, which JR East's own revision pamphlet raises to
  *   ¥10,780), so no Tokyo–GALA fare is printed; the reader sees it at checkout.
  *
+ * Re-read 27 November 2026 (task jtk-20261127-R09, "how to get to Gala Yuzawa from
+ * Tokyo" still ranking 31–60): title, H1 and opening now lead with the route steps.
+ *
+ *   gala.co.jp/winter/hours-pricing/, /rental/, /gelande/, /activities/, /access/:
+ *                              dates, lift, rental and activity prices unchanged; access
+ *                              still 東京駅から上越新幹線で最速71分 and the free shuttle of
+ *                              about 10 min from Echigo-Yuzawa. South Area still shut.
+ *   eki-net joetsu_normal.pdf  (pdfjs) Tokyo–GALA Yuzawa e-ticket, reserved, regular
+ *                              season: limited express charge ¥3,280; its fare column is
+ *                              still pre-revision (¥3,740), and JR East's 2026 revision
+ *                              pamphlet puts the 201–220 km band at ¥3,850 — so ¥7,130
+ *                              one way, the same figure tokyo-wide-pass.tsx confirmed on
+ *                              19 Nov against the Tokudane discount tables.
+ *   jre-travel.com/seasonal/ski/gala/  JR SKISKI is now on sale: ワンデーGALA (Tokyo ⇄
+ *                              GALA Yuzawa shinkansen + gondola & lift 1-day pass)
+ *                              ¥16,100, 4-hour pass version ¥15,400, gondola & Barouche
+ *                              version ¥15,700, adult, prices as of 19 Nov 2026, Japanese-
+ *                              language booking through eki-net. Night skiing on 15, 16,
+ *                              29, 30 Jan and 12, 13, 26, 27 Feb 2027, with the extra
+ *                              return train from GALA on the Saturdays only.
+ *   JR East gives no end date for the direct trains this winter; GALA's own
+ *   spring sightseeing runs to 6 May 2027.
+ *   Klook 99585 (lift ticket, now titled with gear-rental options) shows as live in
+ *   the klook.com search index; the product page itself answers automated reads with 403.
+ *
  * Nothing here is first-hand. The top block shows the one from-price a klook.com
  * index result tied to its listing; the body has none, because Klook answers
  * automated reads of its product pages with HTTP 403.
  */
 
-const OWN_ISO = "2026-11-15";
+const OWN_ISO = "2026-11-27";
 const OWN = checkedLabel(OWN_ISO);
+/** Tokyo–GALA Yuzawa one way, e-ticket, reserved ordinary seat, regular season (¥3,850 fare + ¥3,280 charge). */
+const FARE_ONE_WAY = "¥7,130";
+/** JR SKISKI ワンデーGALA: shinkansen round trip + 1-day gondola & lift pass, adult, as of 19 Nov 2026. */
+const SKISKI_DAY = "¥16,100";
 /** The pass prices and JR East's worked example were re-read on this date. */
 const PASS_CHECKED = checkedLabel("2026-11-15");
 const JRP_7DAY = "¥50,000";
@@ -194,7 +224,8 @@ const accessRows = [
     leg: "Best: Tokyo Station → GALA Yuzawa, direct Joetsu Shinkansen (Tanigawa)",
     time: `${FASTEST} at fastest — e.g. Tanigawa 71, Tokyo 6:24 → GALA Yuzawa 7:35; JR East's destination page also says about 1 h 20 min on the Tanigawa`,
     trains: "Seasonal: from 12 December 2026 JR East extends regular Tanigawa trains to GALA Yuzawa and adds extra trains; also calls at Ueno and Omiya",
-    cost: `Covered by the JAPAN RAIL PASS, JR TOKYO Wide Pass (${PASS_ADULT}) and JR EAST PASS; otherwise a shinkansen ticket priced at checkout`,
+    cost: `${FARE_ONE_WAY} one way (e-ticket, reserved seat, regular season); covered by the JAPAN RAIL PASS, JR TOKYO Wide Pass (${PASS_ADULT}) and JR EAST PASS`,
+    book: "Reserve a seat by date for the fare shown; pass holders reserve their seat free",
     note: "GALA Yuzawa is a seasonal shinkansen station built into the ski centre, so you walk out of the ticket gate into the building where the lift tickets and the rental are sold. No bus, no transfer, no taxi. Not every Tanigawa runs through, so pick a train that shows GALA Yuzawa as its terminus.",
   },
   {
@@ -202,13 +233,23 @@ const accessRows = [
     time: "The shinkansen to Echigo-Yuzawa, then about 10 minutes on the resort's free shuttle",
     trains: "Echigo-Yuzawa is a year-round Joetsu Shinkansen station, one stop before GALA Yuzawa",
     cost: "Shuttle free; the rail leg is covered by the same three passes",
+    book: "Shuttle: no booking. Train: same as the direct route",
     note: "The fallback when the through train you want is full or not running that day, and the only way in outside GALA's season: Echigo-Yuzawa is a year-round station one stop away, while GALA Yuzawa station runs only in winter and spring on JR East's own note.",
+  },
+  {
+    leg: "JR SKISKI package: shinkansen + lift pass (JR East's travel site)",
+    time: `Same direct train, ${FASTEST} at fastest`,
+    trains: "Day plans Tokyo ⇄ GALA Yuzawa from 12 December 2026 (lift plans from the ski season)",
+    cost: `${SKISKI_DAY} adult for the round trip + a 1-day gondola & lift pass (ワンデーGALA, price as of 19 Nov 2026); 4-hour pass plan ¥15,400`,
+    book: "Yes — booked ahead through eki-net, Japanese-language pages; the lift pass is collected with a QR code at the resort",
+    note: `The cheapest way to do the day without a rail pass: ${SKISKI_DAY} against ${FARE_ONE_WAY} × 2 for the train and ¥7,500 for the web lift pass bought separately. The catch is the booking site, which is in Japanese only.`,
   },
   {
     leg: "Booked coach day from Tokyo (ski bus tour)",
     time: "11 to 12.5 hours door to door, pick-up in Tokyo",
     trains: "Fixed departure dates on the listing",
     cost: "Per seat, by date — open the listing for your date",
+    book: "Yes — book the date on Klook",
     note: "A different product rather than a cheaper one: the coach days go to Iwappara, a neighbouring Yuzawa resort rather than GALA, with round-trip transport in one booking and rental or lessons as options. Slower than the shinkansen, and nothing left to assemble.",
   },
   {
@@ -216,6 +257,7 @@ const accessRows = [
     time: "10-hour charter, door to door",
     trains: "Any date the operator accepts",
     cost: "Per vehicle, by date — open the listing",
+    book: "Yes — book the date and pick-up on Klook",
     note: "The version for a family or a group with gear, or for a morning too early for the first train. The resort is picked at booking, so it covers a GALA day and a Naeba day on the same listing.",
   },
 ];
@@ -229,8 +271,13 @@ const costRows = [
   },
   {
     item: "Shinkansen, Tokyo ⇄ GALA Yuzawa",
-    price: `Pass, or a ticket priced at checkout`,
-    note: `The JR TOKYO Wide Pass is ${PASS_ADULT} for 3 days; JR East's own example of a GALA return plus a Nikko return in reserved seats is ${JR_EXAMPLE}. JR East revised its fares on 14 March 2026, so check the one-way price for your date at checkout.`,
+    price: `${FARE_ONE_WAY} one way, ¥14,260 return`,
+    note: `E-ticket, reserved ordinary seat, regular season (¥3,850 fare + ¥3,280 limited express charge); the charge moves by about ¥200 in peak and off-peak periods. The JR TOKYO Wide Pass is ${PASS_ADULT} for 3 days, so one GALA return alone does not repay it.`,
+  },
+  {
+    item: "JR SKISKI ワンデーGALA package (train + lift)",
+    price: SKISKI_DAY,
+    note: "JR East's own travel arm, adult, round-trip shinkansen plus a 1-day gondola & lift pass, price as of 19 November 2026. Japanese-language booking.",
   },
   {
     item: "Gondola & lift pass, 1 day (adult)",
@@ -268,9 +315,9 @@ const costRows = [
 const seasonRows = [
   { what: "Slopes open (skiing and snowboarding)", detail: `${SLOPES_OPEN} → ${SLOPES_CLOSE}` },
   { what: "Sightseeing-only week", detail: `${SIGHTSEEING_OPEN} → 18 December 2026: gondola and sightseeing lift only, no skiing whatever the snow` },
-  { what: "Direct shinkansen to GALA Yuzawa", detail: "From 12 December 2026, when GALA starts operating: regular Tanigawa trains extended to GALA Yuzawa plus extra trains (JR East, 22 Oct 2026). JR East gives no end date in that notice; the station operates in winter and spring only" },
-  { what: "Night-skiing return train", detail: "Tanigawa 198, GALA Yuzawa 20:19 → Tokyo 21:40, on 16 and 30 January and 13 and 27 February 2027" },
-  { what: "JR SKISKI shinkansen + lift packages", detail: "Still \"Coming Soon\" on JR East's travel site, with bookings expected from mid-November 2026" },
+  { what: "Direct shinkansen to GALA Yuzawa", detail: "From 12 December 2026, when GALA starts operating: regular Tanigawa trains extended to GALA Yuzawa plus extra trains (JR East, 22 Oct 2026). JR East gives no end date in that notice; GALA's spring sightseeing runs to 6 May 2027" },
+  { what: "Night skiing (18:00–20:00)", detail: "15, 16, 29 and 30 January and 12, 13, 26 and 27 February 2027; the extra return train, Tanigawa 198 GALA Yuzawa 20:19 → Tokyo 21:40, runs on the Saturdays only (16 and 30 Jan, 13 and 27 Feb)" },
+  { what: "JR SKISKI shinkansen + lift packages", detail: `Now on sale on JR East's travel site: ワンデーGALA ${SKISKI_DAY} adult (price as of 19 Nov 2026)` },
   { what: "Daily hours", detail: "2026-27 daily hours awaiting the official announcement; dates and hours can change with snow and weather" },
 ];
 
@@ -376,8 +423,7 @@ const shapeRows = [
   {
     shape: "Shinkansen + a JR East pass",
     covers: "The rail legs covered by the TOKYO Wide Pass or the JR EAST PASS",
-    verdict: "Worth pricing only if GALA is one of two or three day trips, not if it is the only one",
-    note: `The pass is ${PASS_ADULT} for three consecutive days, and JR East's own worked example — a GALA return plus a Nikko return in reserved seats — is ${JR_EXAMPLE}. One GALA day on its own does not get there.`,
+    verdict: "Worth pricing only if GALA is one of two or three day trips, not if it is the only one",    note: `The pass is ${PASS_ADULT} for three consecutive days, and JR East's own worked example — a GALA return plus a Nikko return in reserved seats — is ${JR_EXAMPLE}. One GALA day on its own does not get there.`,
   },
   {
     shape: "Booked coach day from Tokyo",
@@ -397,7 +443,7 @@ const shapeRows = [
 const faqItems = [
   {
     q: "How do I get to Gala Yuzawa from Tokyo?",
-    a: `Take the Joetsu Shinkansen (Tanigawa) from Tokyo Station straight to GALA Yuzawa Station — ${FASTEST} on the fastest train, with no transfer, because the station is built into the ski centre and the gondola leaves from the same building. The direct trains are seasonal: JR East extends regular Tanigawa services to GALA Yuzawa from 12 December 2026, when the resort starts operating, and adds extra trains. If your train stops at Echigo-Yuzawa, or you travel outside the season, GALA's free shuttle covers the last stretch in about 10 minutes. The alternatives are a booked coach day from Tokyo (to Iwappara, a neighbouring Yuzawa resort) or a chartered car. Checked ${OWN}.`,
+    a: `Take the Joetsu Shinkansen (Tanigawa) from Tokyo Station straight to GALA Yuzawa Station — ${FASTEST} on the fastest train and ${FARE_ONE_WAY} one way for a reserved e-ticket in the regular season, with no transfer, because the station is built into the ski centre and the gondola leaves from the same building. The direct trains are seasonal: JR East extends regular Tanigawa services to GALA Yuzawa from 12 December 2026, when the resort starts operating, and adds extra trains. If your train stops at Echigo-Yuzawa, or you travel outside the season, GALA's free shuttle covers the last stretch in about 10 minutes. The alternatives are a booked coach day from Tokyo (to Iwappara, a neighbouring Yuzawa resort) or a chartered car. Checked ${OWN}.`,
   },
   {
     q: "How long is the shinkansen from Tokyo to Gala Yuzawa?",
@@ -405,11 +451,11 @@ const faqItems = [
   },
   {
     q: "Can I use the JR Pass to Gala Yuzawa?",
-    a: `Yes. The nationwide JAPAN RAIL PASS covers all JR Group shinkansen except NOZOMI and MIZUHO, so the Joetsu Shinkansen to GALA Yuzawa is included (Gran Class needs extra fees); the 7-day ordinary pass is ${JRP_7DAY} online. The JR TOKYO Wide Pass (${PASS_ADULT}, 3 consecutive days) and the JR EAST PASS (${EAST_PASS_5DAY}, 5 days) also cover it — JR East names GALA Yuzawa among the Wide Pass's destinations. One GALA day alone does not repay the Wide Pass: JR East's own example of a GALA return plus a Nikko return is ${JR_EXAMPLE}. Checked ${PASS_CHECKED}.`,
+    a: `Yes. The nationwide JAPAN RAIL PASS covers all JR Group shinkansen except NOZOMI and MIZUHO, so the Joetsu Shinkansen to GALA Yuzawa is included (Gran Class needs extra fees); the 7-day ordinary pass is ${JRP_7DAY} online. The JR TOKYO Wide Pass (${PASS_ADULT}, 3 consecutive days) and the JR EAST PASS (${EAST_PASS_5DAY}, 5 days) also cover it — JR East names GALA Yuzawa among the Wide Pass's destinations. One GALA day alone does not repay the Wide Pass: the return is ¥14,260 against ${PASS_ADULT}. The train-and-lift package JR East sells for GALA is its own JR SKISKI ワンデーGALA at ${SKISKI_DAY} adult (as of 19 November 2026), booked in Japanese. Checked ${OWN}.`,
   },
   {
-    q: "When does Gala Yuzawa open for the 2026-27 season?",
-    a: `The slopes open on ${SLOPES_OPEN} and are scheduled to run until ${SLOPES_CLOSE}. From ${SIGHTSEEING_OPEN} to 18 December 2026 only the gondola and the sightseeing lift run, and no skiing is allowed whatever the snow. The direct shinkansen starts with the resort on 12 December. The 2026-27 daily hours are awaiting the official announcement, and GALA states that dates and hours can change with snow and weather. Checked ${OWN}.`,
+    q: "Is Gala Yuzawa open in 2026-27?",
+    a: `Yes. The slopes open on ${SLOPES_OPEN} and are scheduled to run until ${SLOPES_CLOSE}, with the South Area closed all season. From ${SIGHTSEEING_OPEN} to 18 December 2026 only the gondola and the sightseeing lift run, and no skiing is allowed whatever the snow. The direct shinkansen starts with the resort on 12 December. The 2026-27 daily hours are awaiting the official announcement, and GALA states that dates and hours can change with snow and weather. Checked ${OWN}.`,
   },
   {
     q: "Is Gala Yuzawa good for beginners or non-skiers?",
@@ -442,6 +488,36 @@ const GALA_SAME_DAY: KlookSameDayCard[] = [
     ctaLabel: "See eSIM options on Klook →",
     url: klookEsim.url,
     why: "GALA states its operating dates and hours change with snow and weather, and the Klook listing asks for the lift-ticket voucher on a phone with internet access.",
+  },
+];
+
+/**
+ * Under the shinkansen buttons in "How do I get to Gala Yuzawa from Tokyo?" (task
+ * jtk-20261127-R09): the train is a 2% booking, so the same-day block offers what the
+ * day still needs at higher bands — the lift ticket with rental options and the coach
+ * day (6.5%), and the eSIM (20%). Ski insurance is the footnote, an internal guide.
+ */
+const GALA_AFTER_TRAIN: KlookSameDayCard[] = [
+  {
+    kind: "Lift + rental",
+    label: galaYuzawaLiftTicket.title,
+    ctaLabel: "Check the GALA lift ticket →",
+    url: galaYuzawaLiftTicket.url,
+    why: "The train ticket stops at the gate. The listing sells the lift day with gear-rental options, at a resort that charges ¥500 more at the window.",
+  },
+  {
+    kind: "Ski day tour",
+    label: yuzawaIwapparaSkiDayTourTokyo.title,
+    ctaLabel: "Check the Tokyo ski day tour →",
+    url: yuzawaIwapparaSkiDayTourTokyo.url,
+    why: "If the train seats you want are gone: one booking with the coach from Tokyo, to Iwappara in the same Yuzawa basin rather than GALA.",
+  },
+  {
+    kind: "eSIM",
+    label: "Klook Japan eSIM",
+    ctaLabel: "See eSIM options on Klook →",
+    url: klookEsim.url,
+    why: "GALA updates its operating status every morning around 6:00 on its own site, and the Klook voucher has to be shown on a phone at the resort.",
   },
 ];
 
@@ -491,9 +567,9 @@ const sameTripItems: KlookTripPrepItem[] = [
   },
 ];
 
-const TITLE = "Tokyo to Gala Yuzawa 2026-27: Shinkansen Day Trip & JR Pass";
+const TITLE = "How to Get to Gala Yuzawa from Tokyo: Shinkansen & JR Pass";
 const DESCRIPTION =
-  "How to get to Gala Yuzawa from Tokyo: 71 min by direct shinkansen, JR Pass valid. Gala Yuzawa day trip costs, 2026-27 dates and tickets to book.";
+  "How to get to Gala Yuzawa from Tokyo: direct shinkansen in 71 min, ¥7,130 one way, JR Pass valid. 2026-27 dates, train + lift package and day costs.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo") },
@@ -587,7 +663,7 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tokyo to Gala Yuzawa 2026-27: <br />Shinkansen Day Trip, JR Pass and How to Get There
+            How to Get to Gala Yuzawa from Tokyo: <br />Direct Shinkansen, Time &amp; Price (2026-27)
           </h1>
           <p className={styles.heroSubtitle}>
             The one Japanese ski resort with a shinkansen station inside it. The slopes open{" "}
@@ -615,14 +691,14 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
 
         <WinterBookingTop
           heading="Which Gala Yuzawa Day Trip from Tokyo Can You Book Now?"
-          checkedIso="2026-11-15"
+          checkedIso="2026-11-27"
           deadline={
             <>
               Book by 30 November for any date from 19 December through the New Year, when the slopes
               first open: 12–18 December is gondola-only, with no skiing. For January and February, book
-              at least three weeks out. As of 15 November JR East&apos;s own JR SKISKI shinkansen-and-lift
-              packages were still &ldquo;Coming Soon&rdquo; with bookings expected from mid-November, and
-              GALA&apos;s PICK UP BOX rental booking opens a month before opening day.
+              at least three weeks out. JR East&apos;s own JR SKISKI shinkansen-and-lift packages are now
+              on sale (ワンデーGALA {SKISKI_DAY} adult, in Japanese), and GALA&apos;s PICK UP BOX rental
+              booking opens a month before opening day.
             </>
           }
           tours={[
@@ -660,7 +736,17 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
           }
         />
 
-        <KlookSameDayCards heading="What to Book for the Same GALA Day" cards={GALA_SAME_DAY} />
+        <KlookSameDayCards
+          heading="What to Book for the Same GALA Day"
+          cards={GALA_SAME_DAY}
+          footnote={
+            <>
+              Skiing is the day most travel policies treat differently: see{" "}
+              <Link href="/guides/money/japan-ski-travel-insurance">Japan ski travel insurance</Link>{" "}
+              before you go.
+            </>
+          }
+        />
 
         {/* Quick Answer Box */}
         <div className={styles.verdictBox}>
@@ -688,18 +774,17 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             </div>
             {/* Answer-first: the first body paragraph of the article, not the hero line. */}
             <p className={styles.verdictText}>
-              To get to Gala Yuzawa from Tokyo, take the <strong>Joetsu Shinkansen from Tokyo Station
-              straight to GALA Yuzawa Station in {FASTEST}</strong> on the fastest train (JR East&apos;s
-              Tanigawa 71 leaves Tokyo at 6:24 and arrives at 7:35), and the station is inside the ski
-              centre, but the direct trains run only in the winter season, from{" "}
-              <strong>{SIGHTSEEING_OPEN}</strong>. GALA&apos;s <strong>slopes open on {SLOPES_OPEN}</strong>{" "}
-              and run to {SLOPES_CLOSE}; 12–18 December is gondola sightseeing only. The{" "}
-              <strong>JAPAN RAIL PASS</strong> (7 days {JRP_7DAY} online), the{" "}
+              To get to Gala Yuzawa from Tokyo, take the <strong>direct Joetsu Shinkansen (Tanigawa) from
+              Tokyo Station to GALA Yuzawa Station, {FASTEST} at fastest and {FARE_ONE_WAY} one way</strong>{" "}
+              for a reserved e-ticket in the regular season, with the ski centre inside the station. The
+              direct trains are seasonal and start on <strong>{SIGHTSEEING_OPEN}</strong>; GALA&apos;s{" "}
+              <strong>slopes open on {SLOPES_OPEN}</strong> and run to {SLOPES_CLOSE}, and 12–18 December
+              is gondola sightseeing only. The <strong>JAPAN RAIL PASS</strong>, the{" "}
               <strong>JR TOKYO Wide Pass</strong> ({PASS_ADULT}, 3 days) and the{" "}
-              <strong>JR EAST PASS</strong> ({EAST_PASS_5DAY}, 5 days) all cover the train, and a
-              gear-free Gala Yuzawa day trip adds <strong>¥19,500</strong> at GALA&apos;s web prices
-              ({LIFT_WEB} lift pass + {SKI_SET} ski set + {WEAR} wear). Checked {OWN} on GALA&apos;s and
-              JR East&apos;s own sites; 2026-27 daily hours are awaiting the official announcement.
+              <strong>JR EAST PASS</strong> ({EAST_PASS_5DAY}, 5 days) all cover the train, and JR
+              East&apos;s own <strong>train-and-lift day package costs {SKISKI_DAY}</strong> (ワンデーGALA, as
+              of 19 November 2026). Checked {OWN} on GALA&apos;s and JR East&apos;s own sites; 2026-27 daily
+              hours are awaiting the official announcement.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={galaYuzawaLiftTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -737,7 +822,8 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
           <h2 className={styles.sectionTitle}>How Do I Get to Gala Yuzawa from Tokyo?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             <strong>Take the direct Joetsu Shinkansen (Tanigawa) from Tokyo Station to GALA Yuzawa</strong>{" "}
-            — {FASTEST} on the fastest train, no transfer, and the ticket gate opens into the ski centre.
+            — {FASTEST} on the fastest train and {FARE_ONE_WAY} one way reserved, no transfer, and the
+            ticket gate opens into the ski centre.
             The direct trains are seasonal and start on {SIGHTSEEING_OPEN}; the fallback is the shinkansen to
             Echigo-Yuzawa and GALA&apos;s free 10-minute shuttle, and the slower alternatives are a booked
             coach day or a chartered car.
@@ -747,7 +833,7 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Route", "Time", "Trains / season", "Cost", "Notes"].map((h) => (
+                    {["Route", "Time", "Trains / season", "Cost", "Book ahead?", "Notes"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -759,6 +845,7 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
                       <td style={{ fontSize: "0.88rem" }}>{row.time}</td>
                       <td style={{ fontSize: "0.86rem" }}>{row.trains}</td>
                       <td className={styles.tdPrice} style={{ fontSize: "0.86rem" }}>{row.cost}</td>
+                      <td style={{ fontSize: "0.86rem" }}>{row.book}</td>
                       <td style={{ fontSize: "0.86rem" }}>{row.note}</td>
                     </tr>
                   ))}
@@ -773,8 +860,13 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             <a href="https://www.jreast.co.jp/press/2026/niigata_j/20261022_n01.pdf" target="_blank" rel="noopener noreferrer">jreast.co.jp</a>)
             and JR East&apos;s GALA page (
             <a href="https://www.jreast.co.jp/en/multi/destinations/gala.html" target="_blank" rel="noopener noreferrer">jreast.co.jp/en/multi/destinations/gala.html</a>).
-            No one-way fare is printed: JR East revised its fares on 14 March 2026, and the price for
-            your date shows at checkout. Coach and charter times are the Klook listings&apos; own.
+            Fare: the limited express charge from eki-net&apos;s Shinkansen e-ticket table (
+            <a href="https://www.eki-net.com/top/e-ticket/pdf_pr/joetsu_normal.pdf" target="_blank" rel="noopener noreferrer">eki-net.com</a>)
+            plus the basic fare from JR East&apos;s 14 March 2026 fare revision (
+            <a href="https://www.jreast.co.jp/2026unchin-kaitei/" target="_blank" rel="noopener noreferrer">jreast.co.jp/2026unchin-kaitei/</a>).
+            Package: JR SKISKI (
+            <a href="https://www.jre-travel.com/seasonal/ski/gala/" target="_blank" rel="noopener noreferrer">jre-travel.com/seasonal/ski/gala/</a>).
+            Coach and charter times are the Klook listings&apos; own.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>What no AI answer can settle for you</strong> is whether the train you want runs
@@ -795,6 +887,18 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             </KlookLink>
           </div>
         </section>
+
+        <KlookSameDayCards
+          heading="Booked the Train? What Else the GALA Day Needs"
+          cards={GALA_AFTER_TRAIN}
+          footnote={
+            <>
+              And check your cover before the lift ticket: our{" "}
+              <Link href="/guides/money/japan-ski-travel-insurance">Japan ski travel insurance</Link> guide
+              sets out which policies cover on-piste skiing and what voids it.
+            </>
+          }
+        />
 
         {/* Journey time */}
         <section className={styles.bodySection}>
@@ -841,15 +945,17 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Last checked: {OWN_ISO}. Sources: GALA Yuzawa lift prices (
+            Last checked: {OWN_ISO} (pass prices {PASS_CHECKED}). Sources: GALA Yuzawa lift prices (
             <a href="https://gala.co.jp/winter/hours-pricing/" target="_blank" rel="noopener noreferrer">gala.co.jp/winter/hours-pricing/</a>),
             rental (
             <a href="https://gala.co.jp/winter/rental/" target="_blank" rel="noopener noreferrer">gala.co.jp/winter/rental/</a>),
             activities (
             <a href="https://gala.co.jp/winter/activities/" target="_blank" rel="noopener noreferrer">gala.co.jp/winter/activities/</a>),
             JR East pass prices (
-            <a href="https://www.jreast.co.jp/en/multi/pass/tokyowidepass.html" target="_blank" rel="noopener noreferrer">jreast.co.jp</a>)
-            and SPA Gala no Yu on JR East&apos;s travel site (
+            <a href="https://www.jreast.co.jp/en/multi/pass/tokyowidepass.html" target="_blank" rel="noopener noreferrer">jreast.co.jp</a>),
+            the shinkansen fare (
+            <a href="https://www.eki-net.com/top/e-ticket/pdf_pr/joetsu_normal.pdf" target="_blank" rel="noopener noreferrer">eki-net.com</a>)
+            and JR SKISKI and SPA Gala no Yu on JR East&apos;s travel site (
             <a href="https://www.jre-travel.com/seasonal/ski/gala/" target="_blank" rel="noopener noreferrer">jre-travel.com</a>).
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
@@ -865,9 +971,9 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
         {/* Season dates */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Season</span>
-          <h2 className={styles.sectionTitle}>When Does Gala Yuzawa Open for the 2026-27 Season?</h2>
+          <h2 className={styles.sectionTitle}>Is Gala Yuzawa Open in 2026-27?</h2>
           <p className={styles.bodyText}>
-            <strong>The slopes open on {SLOPES_OPEN} and are scheduled to run to {SLOPES_CLOSE}.</strong>{" "}
+            <strong>Yes — the slopes open on {SLOPES_OPEN} and are scheduled to run to {SLOPES_CLOSE}.</strong>{" "}
             The week before, {SIGHTSEEING_OPEN} to 18 December 2026, is sightseeing operation only — the
             gondola and the sightseeing lift, with skiing and snowboarding not permitted whatever the
             snow — and the direct shinkansen starts with it on 12 December. GALA attaches its own caveat
@@ -1177,12 +1283,13 @@ export default function GalaYuzawaSkiDayTripFromTokyoPage({ updated }: { updated
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
-            <strong>One booking detail no AI answer can finish for you</strong>, and it is live right now.
-            As of {OWN}, JR East&apos;s own travel site still listed its 2026-27 <em>JR SKISKI</em> GALA
-            shinkansen-and-lift packages as &ldquo;Coming Soon&rdquo;, with reservations expected around
-            mid-November 2026. So the official bundled version is not bookable yet for this season, while
-            the reseller listings below are on sale, take a foreign card and read in English. If the
-            package is what you want, diary mid-November; if you want the date held now, book the pieces.
+            <strong>The official bundle is now on sale.</strong> JR East&apos;s travel site sells its
+            2026-27 <em>JR SKISKI</em> GALA day plans: ワンデーGALA, the Tokyo ⇄ GALA Yuzawa shinkansen
+            plus a 1-day gondola &amp; lift pass, at <strong>{SKISKI_DAY}</strong> for an adult, a 4-hour
+            pass version at ¥15,400 and a gondola &amp; Barouche version at ¥15,700 (prices as of 19
+            November 2026). Bought separately, the train alone is ¥14,260 return. The booking runs
+            through eki-net in Japanese; the reseller listings below read in English and take a foreign
+            card. Checked {OWN}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={yuzawaIwapparaSkiDayTourTokyo.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
