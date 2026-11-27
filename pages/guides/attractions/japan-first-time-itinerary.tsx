@@ -825,7 +825,12 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
               Not sure which eSIM?{" "}
               <Link href="/guides/esim/best-esim-japan" style={{ color: "inherit", fontWeight: 600 }}>
                 Best eSIM for Japan, by need →
-              </Link>
+              </Link>{" "}
+              Three or more of you sharing one connection? Compare{" "}
+              <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "inherit", fontWeight: 600 }}>
+                pocket WiFi rental in Japan
+              </Link>{" "}
+              prices and airport pickup.
             </p>
           </div>
         </div>

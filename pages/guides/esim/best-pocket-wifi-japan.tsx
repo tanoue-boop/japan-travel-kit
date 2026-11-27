@@ -5,23 +5,34 @@ import StarRating from "../../../components/StarRating";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import cardStyles from "../../../styles/SIMCardCard.module.css";
 import KlookLink from "../../../components/KlookLink";
-import { pricesCheckedLabel, siteCheapestFrom } from "../../../lib/esim-prices";
+import { cheapestUnlimited, formatUsd, pricesCheckedLabel } from "../../../lib/esim-prices";
 import { pocketWifi, pocketWifis, specsCheckedAt } from "../../../lib/pocket-wifi";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd, productOfferJsonLd } from "../../../lib/structured-data";
 import { EsimCtaTop } from "../../../components/EsimCta";
 import BookingEsimCard from "../../../components/BookingEsimCard";
+import { klookEsim } from "../../../lib/klook-links";
+import { KLOOK_ESIM_FROM } from "../../../lib/klook-esim-facts";
+import { ESIM_PLACEMENT, pageTag } from "../../../lib/esim-placement";
+import { simbyeTrackedUrl } from "../../../lib/simbye";
 
 // Rental specs for the two Klook products come from lib/pocket-wifi.ts (what each Klook
-// listing states). Klook prices are deliberately NOT shown on this page (site rule since
-// 2026-11: Klook prices are per-locale and drift) — only prices printed on a company's own
-// site are, with the date they were read. eSIM prices come from data/esim-prices.json.
+// listing states). Klook rental prices are deliberately NOT shown on this page (site rule
+// since 2026-11: Klook prices are per-locale and drift) — only prices printed on a
+// company's own site are, with the date they were read. eSIM prices come from
+// data/esim-prices.json; the Klook eSIM figure is its listing's from-price only.
 // "Router or eSIM" in depth belongs to pocket-wifi-vs-esim-japan; this page answers it in
-// one paragraph and links there.
+// one short section and links there with the "pocket WiFi vs eSIM" anchor.
+const ROUTE = "/guides/esim/best-pocket-wifi-japan";
+const TAG = pageTag(ROUTE);
 const AIRPORT = pocketWifi("ninja-wifi");
 const HOTEL = pocketWifi("hotel-delivery");
-const ESIM_FROM = siteCheapestFrom();
 const pricesCheckedAt = pricesCheckedLabel();
+/** Simbye's cheapest unlimited plan of at least 7 days (list and code price from the daily feed). */
+const SIMBYE_WEEK = cheapestUnlimited("simbye", 7);
+const SIMBYE_WEEK_PRICE = SIMBYE_WEEK ? formatUsd(SIMBYE_WEEK.discountedUsd ?? SIMBYE_WEEK.priceUsd) : "—";
+const SIMBYE_WEEK_DAYS = SIMBYE_WEEK?.days ?? 7;
+const SIMBYE_URL = simbyeTrackedUrl(ESIM_PLACEMENT.brandCompare, TAG);
 
 const badgeColorMap: Record<string, string> = {
   "bg-blue-500": cardStyles.badgeBlue,
@@ -33,95 +44,131 @@ const badgeColorMap: Record<string, string> = {
 const SAKURA_URL = "https://p.sakuramobile.jp/idevaffiliate.php?id=486";
 const SAKURA_REL = "sponsored noopener noreferrer nofollow";
 
-/** Date the official rental pages below were read (Sakura Mobile, Japan Wireless). */
-const OFFICIAL_CHECKED = "2026-11-18";
+/** Date the official rental pages below were read (Sakura Mobile, Japan Wireless, Ninja WiFi). */
+const OFFICIAL_CHECKED = "2026-11-27";
 const SAKURA_SRC = "https://www.sakuramobile.jp/travel/wifi/";
+const SAKURA_FUP_SRC =
+  "https://support.sakuramobile.jp/hc/en-us/articles/29139634752921--Travel-Pocket-WiFi-I-am-confused-about-unlimited-data-What-does-unlimited-data-service-mean";
 const JW_SRC = "https://www.japan-wireless.com/";
 const JW_RATES_SRC = "https://www.japan-wireless.com/en/rates";
 /**
- * Ninja WiFi's own site refuses automated page loads, so its plan and pickup pages were
- * checked through the search index of ninjawifi.com on 2026-11-18: Infinite Unlimited
- * (SoftBank) ¥1,980 a day, 10GB-a-day plan ¥1,320, 5G unlimited (docomo) ¥2,200; counters
- * at Narita, Haneda, Kansai, Chubu and Fukuoka (no counter in Haneda Terminal 1); counter
- * pickup and return free, hotel delivery ¥550 each way; power bank an extra ¥110 a day.
+ * Ninja WiFi's own site refuses automated page loads (HTTP 403), so its plan and pickup
+ * pages were read through the search index of ninjawifi.com on 2026-11-27: Infinite
+ * Unlimited (SoftBank) ¥1,980 a day tax included, 10GB-a-day plan ¥1,320, 5G unlimited
+ * (docomo) ¥2,200; "unlimited plans" may be suspended temporarily above 15GB a day
+ * (home page); counter pickup free; Haneda Terminal 3 counter 06:30–23:00 (2F), Kansai
+ * Terminal 1 06:30–22:30; the Narita Terminal 3 counter is listed as temporarily closed.
  */
-const NINJA_CHECKED = "2026-11-18";
+const NINJA_CHECKED = "2026-11-27";
 const NINJA_PLAN_SRC = "https://ninjawifi.com/en/plan";
-const NINJA_PICKUP_SRC = "https://ninjawifi.com/en/receive/index.html";
+const NINJA_HOME_SRC = "https://ninjawifi.com/en";
+const NINJA_PICKUP_SRC = "https://ninjawifi.com/en/receive/airport.html";
 
 /**
- * Sakura Mobile travel pocket WiFi, as sakuramobile.jp/travel/wifi/ printed it on
- * 2026-11-18 (unchanged from 2026-11-11): unlimited data on docomo 4G/LTE, up to 15
- * connections, 20-hour battery, pickup at Narita, Haneda, Kansai and Fukuoka airports or
+ * Sakura Mobile travel pocket WiFi, as sakuramobile.jp/travel/wifi/ priced it on
+ * 2026-11-27 (its price simulator, pricing3.1.js): the regular prices ¥7,500 / ¥9,900 /
+ * ¥18,300 are now struck through and the long-term discount brings 5 days to ¥6,380, 7
+ * days to ¥7,780 and 14 days to ¥10,560 before tax. `yen` below is the tax-included
+ * figure the page prints beside each. Unlimited data on docomo 4G/LTE, up to 15
+ * connections, 20-hour battery, pickup at Narita, Haneda, Kansai or Fukuoka airport or
  * delivery to a hotel, home or post office, return by prepaid envelope in any Japan Post
- * box by midnight on the return date. Totals per rental length are the page's own
- * figures; JPY only.
+ * box by midnight on the return date. JPY only.
  */
-const SAKURA_PRICES: { days: number; yen: number }[] = [
-  { days: 5, yen: 7500 },
-  { days: 7, yen: 9900 },
-  { days: 14, yen: 18300 },
+const SAKURA_PRICES: { days: number; yen: number; regular: number }[] = [
+  { days: 5, yen: 7018, regular: 7500 },
+  { days: 7, yen: 8558, regular: 9900 },
+  { days: 14, yen: 11616, regular: 18300 },
 ];
 const yen = (n: number) => `¥${n.toLocaleString("en-US")}`;
 const perDay = (p: { days: number; yen: number }) => yen(Math.round(p.yen / p.days));
-const SAKURA_7 = yen(9900);
+const SAKURA_5 = yen(SAKURA_PRICES[0].yen);
+const SAKURA_7 = yen(SAKURA_PRICES[1].yen);
+const SAKURA_14 = yen(SAKURA_PRICES[2].yen);
 /** Sakura Mobile per-day cost, 14-day and 5-day rentals (its own totals ÷ days). */
 const SAKURA_DAY_LOW = perDay(SAKURA_PRICES[2]);
 const SAKURA_DAY_HIGH = perDay(SAKURA_PRICES[0]);
 const NINJA_DAY = yen(1980);
+/** Japan Wireless: site headline and the 14-day estimate its rates page printed (taxes included). */
+const JW_FROM = "US$4.68";
+const JW_14 = "US$88.95";
 
-/** One row per option for the main comparison table. First row is the recommendation. */
+/** One row per option for the main comparison table. First row is the conclusion. */
 const compareRows = [
   {
     name: "Sakura Mobile",
-    verdict: "Our pick: most devices, longest battery",
-    price: `${SAKURA_DAY_LOW}–${SAKURA_DAY_HIGH} a day (${SAKURA_7} for 7 days)`,
-    data: "Unlimited · docomo 4G/LTE",
+    verdict: "Cheapest per day for a group: 15 devices, 20-hour battery",
+    price: `${SAKURA_DAY_LOW}–${SAKURA_DAY_HIGH} a day (${SAKURA_7} for 7 days, tax incl.)`,
+    data: "Unlimited · docomo 4G/LTE · 10GB a day guaranteed at high speed",
     devices: "Up to 15",
-    battery: "20 hours",
     pickup: "Narita, Haneda, Kansai or Fukuoka airport; or hotel, home or post office delivery",
     ret: "Prepaid envelope, any Japan Post box",
+    href: SAKURA_URL,
+    kind: "sakura" as const,
+  },
+  {
+    name: `${AIRPORT.name} (Klook WiFi)`,
+    verdict: "Airport counter pickup, most booked on Klook",
+    price: `${NINJA_DAY} a day on its own site; Klook price on the listing`,
+    data: `${AIRPORT.data} · ${AIRPORT.network}`,
+    devices: `Up to ${AIRPORT.maxDevices}`,
+    pickup: "Airport counter (Narita, Haneda, Kansai, Chubu, New Chitose, Fukuoka, Naha and others)",
+    ret: AIRPORT.returnBy,
+    href: AIRPORT.affiliateUrl,
+    kind: "klook" as const,
+  },
+  {
+    name: `${HOTEL.name} (Klook WiFi)`,
+    verdict: "Waiting at your hotel, posted back",
+    price: "See current price on Klook",
+    data: `${HOTEL.data} · ${HOTEL.network}`,
+    devices: `Up to ${HOTEL.maxDevices}`,
+    pickup: "Hotel delivery in Tokyo, Osaka, Nagoya, Fukuoka and Hokkaido only",
+    ret: HOTEL.returnBy,
+    href: HOTEL.affiliateUrl,
+    kind: "klook" as const,
   },
   {
     name: "Japan Wireless",
     verdict: "No fair-usage policy stated",
-    price: "From US$4.7 a day (site headline)",
-    data: "Unlimited, no daily limit · SoftBank 4G",
+    price: `From ${JW_FROM} a day (${JW_14} for 14 days, taxes incl.)`,
+    data: "Unlimited, no daily cap · SoftBank 4G",
     devices: "Up to 8",
-    battery: "8–10 hours",
-    pickup: "Narita, Haneda, Kansai, Chubu Centrair, Fukuoka or New Chitose airport; or hotel delivery",
-    ret: "Prepaid envelope in a post box",
+    pickup: "Narita, Haneda or Kansai airport counter; or hotel delivery",
+    ret: "Prepaid envelope in a post box by noon the day after the rental ends",
+    href: JW_RATES_SRC,
+    kind: "official" as const,
   },
   {
-    name: `${AIRPORT.name} (Klook WiFi)`,
-    verdict: "Airport counter, most booked on Klook",
-    price: `${NINJA_DAY} a day on its own site; Klook price on the listing`,
-    data: `${AIRPORT.data} · ${AIRPORT.network}`,
-    devices: `Up to ${AIRPORT.maxDevices}`,
-    battery: AIRPORT.batteryHours,
-    pickup: "Airport counter (Narita, Haneda, Kansai, Chubu, New Chitose, Fukuoka, Naha and others)",
-    ret: AIRPORT.returnBy,
+    name: "Klook eSIM (no router)",
+    verdict: "Solo traveller: cheaper than any router",
+    price: `From ${KLOOK_ESIM_FROM} (Klook's from-price; plan not stated)`,
+    data: "Unlimited plans: high speed up to 10GB a day · SoftBank 5G / IIJ (Docomo)",
+    devices: "1 phone (tethering allowed)",
+    pickup: "QR code by email, before you fly",
+    ret: "Nothing to return",
+    href: klookEsim.url,
+    kind: "klook" as const,
   },
   {
-    name: `${HOTEL.name} (Klook WiFi)`,
-    verdict: "Hotel delivery booked through Klook",
-    price: "See current price on Klook",
-    data: `${HOTEL.data} · ${HOTEL.network}`,
-    devices: `Up to ${HOTEL.maxDevices}`,
-    battery: HOTEL.batteryHours,
-    pickup: "Hotel delivery in Tokyo, Osaka, Nagoya, Fukuoka and Hokkaido only",
-    ret: HOTEL.returnBy,
+    name: "Simbye eSIM (no router)",
+    verdict: "Cheapest unlimited eSIM for a week",
+    price: `${SIMBYE_WEEK_PRICE} for ${SIMBYE_WEEK_DAYS} days unlimited, with our code`,
+    data: "Unlimited: 2GB a day at full speed, then 1 Mbps · all four networks",
+    devices: "1 phone (tethering allowed)",
+    pickup: "QR code by email, before you fly",
+    ret: "Nothing to return",
+    href: SIMBYE_URL,
+    kind: "simbye" as const,
   },
 ];
 
-/** Pocket WiFi vs eSIM, row by row. First row is the conclusion. */
-const wifiVsEsimRows = [
-  { k: "Better for", wifi: "3 or more people or devices sharing", esim: "1–2 people, one phone each" },
-  { k: "People and devices", wifi: `One router for up to ${HOTEL.maxDevices}–15 devices, depending on the company`, esim: "One phone per eSIM (hotspot depends on the plan)" },
-  { k: "Price", wifi: `${SAKURA_7} for 7 days per router (Sakura Mobile), split across the group`, esim: `From ${ESIM_FROM} per person (checked ${pricesCheckedAt})` },
-  { k: "Battery", wifi: `A second device to charge: ${AIRPORT.batteryHours} (Klook rentals) to 20 hours (Sakura Mobile)`, esim: "Runs on your phone's battery" },
-  { k: "Pickup and return", wifi: "Airport counter, hotel or post office; return at the counter or in a post box", esim: "QR code by email; nothing to return" },
-  { k: "If you get separated", wifi: "Whoever is away from the router is offline", esim: "Each phone stays online" },
+/** What "unlimited" means at each company, in its own words. First row is the conclusion. */
+const unlimitedRows = [
+  { name: "Japan Wireless", rule: "No fair-usage policy, no daily cap and no throttling; it credits the rental if policy throttling ever happens", src: JW_RATES_SRC, srcLabel: "japan-wireless.com/en/rates" },
+  { name: "Sakura Mobile", rule: "10GB a day guaranteed at high speed; above that the speed may drop, and the allowance resets at midnight", src: SAKURA_FUP_SRC, srcLabel: "Sakura Mobile support" },
+  { name: "Ninja WiFi", rule: "Unlimited plans may be suspended temporarily above 15GB in a day; the 10GB-a-day plan (¥1,320) slows after 10GB", src: NINJA_HOME_SRC, srcLabel: "ninjawifi.com" },
+  { name: "Simbye eSIM", rule: "2GB a day at full speed, then unlimited at 1 Mbps", src: SIMBYE_URL, srcLabel: "Simbye Japan eSIM" },
+  { name: "Klook eSIM", rule: "Unlimited plans run at high speed up to 10GB a day", src: klookEsim.url, srcLabel: "Klook listing (read 6 Nov 2026)" },
 ];
 
 /** Who rents at the three main gateways, off each airport's own listing. */
@@ -135,37 +182,39 @@ const counterRows = [
 const faqItems = [
   {
     q: "Do I need WiFi in Japan in 2026?",
-    a: `You need mobile data for maps, train routes and translation, but not necessarily a pocket WiFi: one or two travellers are better served by an eSIM from ${ESIM_FROM} each (checked ${pricesCheckedAt}). A pocket WiFi pays off when three or more people or devices share it — Sakura Mobile's router is ${SAKURA_7} for 7 days in total, for up to 15 devices (sakuramobile.jp, ${OFFICIAL_CHECKED}).`,
+    a: `You need mobile data for maps, train routes and translation, but not necessarily a pocket WiFi: a solo traveller is better served by an eSIM, from ${KLOOK_ESIM_FROM} on Klook or ${SIMBYE_WEEK_PRICE} for ${SIMBYE_WEEK_DAYS} days of unlimited data on Simbye (checked ${pricesCheckedAt}). A pocket WiFi pays off when three or more people or devices share it — Sakura Mobile's router is ${SAKURA_7} for 7 days in total, tax included, for up to 15 devices (sakuramobile.jp, ${OFFICIAL_CHECKED}).`,
   },
   {
-    q: "How much is pocket WiFi in Japan per day?",
-    a: `About ${SAKURA_DAY_LOW} to ${NINJA_DAY} a day for unlimited data. Sakura Mobile works out at ${SAKURA_DAY_LOW}–${SAKURA_DAY_HIGH} a day (${yen(7500)} for 5 days, ${SAKURA_7} for 7, ${yen(18300)} for 14), Ninja WiFi lists ${NINJA_DAY} a day for its unlimited SoftBank plan, and Japan Wireless advertises from US$4.7 a day (all on the companies' own sites, ${OFFICIAL_CHECKED}). The price is per router, not per person.`,
+    q: "How much is pocket WiFi in Japan?",
+    a: `About ${SAKURA_DAY_LOW} to ${NINJA_DAY} a day for unlimited data. Sakura Mobile charges ${SAKURA_5} for 5 days, ${SAKURA_7} for 7 and ${SAKURA_14} for 14 (tax included, ${SAKURA_DAY_LOW}–${SAKURA_DAY_HIGH} a day), Ninja WiFi lists ${NINJA_DAY} a day for its Infinite Unlimited plan, and Japan Wireless advertises from ${JW_FROM} a day (all on the companies' own sites, ${OFFICIAL_CHECKED}). The price is per router, not per person.`,
   },
   {
-    q: "Where do I pick up pocket WiFi at the airport?",
-    a: `At the rental company's counter in arrivals, booked before you fly. Sakura Mobile lists Narita, Haneda, Kansai and Fukuoka; Japan Wireless adds Chubu Centrair and New Chitose; Ninja WiFi lists counters at Narita, Haneda, Kansai, Chubu and Fukuoka, with none in Haneda Terminal 1 (official sites, ${OFFICIAL_CHECKED}). Counters close overnight — most at Narita run 07:00–21:00 (airport listing, ${AIRPORTS_CHECKED}).`,
+    q: "Where do I pick up pocket WiFi at Narita or Haneda?",
+    a: `At the rental company's counter in the arrivals area, booked before you fly. Ninja WiFi's Haneda counter is on the 2nd floor of Terminal 3 (06:30–23:00) and its Kansai counter in the Terminal 1 arrivals lobby (06:30–22:30); its Narita Terminal 3 counter is listed as temporarily closed (ninjawifi.com, ${NINJA_CHECKED}). Sakura Mobile and Japan Wireless also hand routers over at Narita, Haneda and Kansai, or deliver to your hotel.`,
+  },
+  {
+    q: "Is unlimited pocket WiFi really unlimited?",
+    a: `Not always. Japan Wireless states no fair-usage policy and no throttling; Sakura Mobile guarantees 10GB a day at high speed and may slow the router above that; Ninja WiFi says its unlimited plans may be suspended temporarily above 15GB in a day (each company's own site, ${OFFICIAL_CHECKED}). The limit matters most when several people stream or run a laptop on one router.`,
   },
   {
     q: "Is pocket WiFi or eSIM better for Japan?",
-    a: `For one or two people, an eSIM: plans start from ${ESIM_FROM} (checked ${pricesCheckedAt}) and there is nothing to collect, charge or return. A pocket WiFi is better when three or more people or devices share it, or when a laptop, tablet or a phone that cannot take an eSIM needs to get online.`,
-  },
-  {
-    q: "Is Ninja WiFi good?",
-    a: `For airport pickup, yes: its Klook listing is rated 4.7/5 from ${AIRPORT.reviews} reviews with unlimited SoftBank data for up to ${AIRPORT.maxDevices} devices and a ${AIRPORT.batteryHours} battery (read ${specsCheckedAt}). Ninja WiFi's own site lists ${NINJA_DAY} a day for the unlimited plan, free pickup and return at its airport counters, ¥550 each way for hotel delivery and the power bank as a paid option (${NINJA_CHECKED}). For more than ${AIRPORT.maxDevices} devices, Sakura Mobile (15) or Japan Wireless (8) fit better.`,
+    a: `For one or two people, an eSIM: Simbye's ${SIMBYE_WEEK_DAYS}-day unlimited plan is ${SIMBYE_WEEK_PRICE} with our code (checked ${pricesCheckedAt}) against ${SAKURA_7} for a 7-day Sakura Mobile router, and there is nothing to collect, charge or return. A pocket WiFi is better when three or more people or devices share it, or when a phone cannot take an eSIM.`,
   },
 ];
 
-export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/esim/best-pocket-wifi-japan") } });
+export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
 // Owns "pocket WiFi Japan" / "Japan WiFi rental" (rental prices, which router to rent).
 // /wifi-pocket has 301'd here since 2026-10-19; "router or eSIM" stays with
 // pocket-wifi-vs-esim-japan, which links here for the per-day rental prices.
 // 2026-11-11 (R07): title/H1/meta lead with the exact query and official Sakura Mobile specs.
 // 2026-11-18 (R05): title leads with per-day rental prices; H1 adds "Japan WiFi rental".
-const TITLE = "Pocket WiFi Japan 2026: Rental Prices Compared (Per Day)";
-const HEADLINE = "Pocket WiFi Japan 2026: Japan WiFi Rental Prices Compared (Per Day)";
+// 2026-11-27 (R02): "Pocket WiFi Rental in Japan (2026): Prices Compared", the shape the
+// top results use; brand dropped from the title to stay within 60 characters.
+const TITLE = "Pocket WiFi Rental in Japan (2026): Prices Compared";
+const HEADLINE = "Pocket WiFi Rental in Japan (2026): Prices Compared";
 const DESCRIPTION =
-  "Pocket WiFi Japan: a Japan WiFi rental costs ¥1,307–¥1,980 a day. Sakura Mobile is ¥9,900 for 7 days, 15 devices. Airport pickup, post-box return.";
+  "Pocket WiFi Japan price: a rental costs ¥830–¥1,980 a day. Pick up at Narita, Haneda or Kansai or get hotel delivery. Solo? A Klook eSIM costs less.";
 
 export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -212,10 +261,10 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
             __html: productOfferJsonLd({
               route: "/guides/esim/best-pocket-wifi-japan",
               name: "Sakura Mobile Japan pocket WiFi rental (7 days)",
-              description: "Unlimited data on docomo 4G/LTE, up to 15 devices, 20-hour battery, airport pickup or hotel delivery, return by prepaid envelope. Price is the 7-day rental as listed on sakuramobile.jp.",
+              description: "Unlimited data on docomo 4G/LTE, up to 15 devices, 20-hour battery, airport pickup or hotel delivery, return by prepaid envelope. Price is the 7-day rental, tax included, as listed on sakuramobile.jp.",
               brand: "Sakura Mobile",
               currency: "JPY",
-              lowPrice: 9900,
+              lowPrice: SAKURA_PRICES[1].yen,
             }),
           }}
         />
@@ -229,7 +278,7 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
                 { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
                 { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
                 { "@type": "ListItem", position: 3, name: "eSIM & SIM Cards", item: "https://www.japan-travel-kit.com/guides/esim" },
-                { "@type": "ListItem", position: 4, name: "Pocket WiFi Japan", item: "https://www.japan-travel-kit.com/guides/esim/best-pocket-wifi-japan" },
+                { "@type": "ListItem", position: 4, name: "Pocket WiFi Rental in Japan", item: "https://www.japan-travel-kit.com/guides/esim/best-pocket-wifi-japan" },
               ],
             }),
           }}
@@ -251,7 +300,7 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg><span className="sr-only"> / </span>
-          <span className={styles.breadCurrent}>Pocket WiFi Japan</span>
+          <span className={styles.breadCurrent}>Pocket WiFi Rental in Japan</span>
         </div>
       </div>
 
@@ -262,11 +311,12 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Pocket WiFi Japan 2026: <br />Japan WiFi Rental Prices Compared (Per Day)
+            Pocket WiFi Rental in Japan (2026): <br />Prices Compared
           </h1>
           <p className={styles.heroSubtitle}>
             Unlimited-data routers from Sakura Mobile, Japan Wireless and Ninja WiFi (on Klook),
-            compared on price per day, devices, battery, airport pickup and return.
+            compared on price per day, devices, airport pickup and return — with the eSIM a solo
+            traveller should buy instead.
           </p>
           <div className={styles.heroBadges}>
             {[`Official prices checked ${OFFICIAL_CHECKED}`, `Klook listings read ${specsCheckedAt}`, "All options unlimited data"].map((t) => (
@@ -292,16 +342,15 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
         {/* Lead answer: price per day, pickup/return, router or eSIM — in numbers */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            A pocket WiFi in Japan costs about {SAKURA_DAY_LOW} to {NINJA_DAY} a day for unlimited
-            data: Sakura Mobile charges {yen(7500)} for 5 days, {SAKURA_7} for 7 days and{" "}
-            {yen(18300)} for 14 days ({SAKURA_DAY_LOW}–{SAKURA_DAY_HIGH} a day), and Ninja WiFi lists{" "}
-            {NINJA_DAY} a day for its unlimited plan (both companies&apos; own sites, checked{" "}
-            {OFFICIAL_CHECKED}). You collect the router at an airport counter (Narita, Haneda, Kansai,
-            Fukuoka and others) or have it sent to your hotel or a post office, and return it at
-            the counter or in a prepaid envelope dropped in any Japan Post box. Rent one when three
-            or more people or devices will share it — one router covers {AIRPORT.maxDevices} to 15
-            devices for a single price — and buy an eSIM (from {ESIM_FROM} per person, checked{" "}
-            {pricesCheckedAt}) if you are one or two people travelling with one phone each.
+            A pocket WiFi rental in Japan costs about {SAKURA_DAY_LOW} to {NINJA_DAY} a day for
+            unlimited data: Sakura Mobile charges {SAKURA_7} for 7 days and {SAKURA_14} for 14 days,
+            tax included, Ninja WiFi lists {NINJA_DAY} a day for its unlimited plan and Japan Wireless
+            starts from {JW_FROM} a day (each company&apos;s own site, checked {OFFICIAL_CHECKED}). You
+            collect the router at an airport counter at Narita, Haneda or Kansai, or have it delivered
+            to your hotel, and return it at the counter or in a prepaid envelope in any Japan Post box.
+            Travelling alone, a Klook eSIM (from {KLOOK_ESIM_FROM}) or Simbye&apos;s {SIMBYE_WEEK_DAYS}-day
+            unlimited eSIM at {SIMBYE_WEEK_PRICE} costs less than the {SAKURA_7} a 7-day router does,
+            and there is nothing to pick up or return.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginTop: "1rem" }}>
             <KlookLink href={AIRPORT.affiliateUrl} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
@@ -310,32 +359,30 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
             <KlookLink href={HOTEL.affiliateUrl} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
               Book Klook WiFi: hotel delivery →
             </KlookLink>
+            <KlookLink href={klookEsim.url} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
+              Solo? Check Klook eSIM →
+            </KlookLink>
           </div>
         </section>
 
-        <BookingEsimCard lead="Travelling alone or as a couple? One eSIM per phone is cheaper than a router and there is nothing to collect or return." />
+        <EsimPageAnswer route={ROUTE} />
 
-        <EsimPageAnswer route="/guides/esim/best-pocket-wifi-japan" />
-
-        <EsimCtaTop />
-
-        {/* Main comparison — first row is the recommendation */}
+        {/* Main comparison — first row is the conclusion */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Comparison</span>
-          <h2 className={styles.sectionTitle}>Which Japan WiFi Rental Is Cheapest per Day?</h2>
+          <h2 className={styles.sectionTitle}>Which Pocket WiFi Rental in Japan Is Cheapest?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Sakura Mobile is the best-value pocket WiFi rental for most groups in Japan: about{" "}
-            {SAKURA_DAY_LOW}–{SAKURA_DAY_HIGH} a day for up to 15 devices and a 20-hour battery. Every
-            option below sells unlimited data, so compare price per day, devices, the pickup airport
-            and how you return it.
+            Sakura Mobile is the cheapest pocket WiFi rental per day for a group in Japan: {SAKURA_DAY_LOW}–
+            {SAKURA_DAY_HIGH} a day, tax included, for up to 15 devices. For one phone, either eSIM in the
+            last two rows costs less than any router.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Company", "Best for", "Price per day", "Data · network", "Devices", "Battery", "Pickup airports", "Return"].map((h) => (
-                      <th key={h}>{h}</th>
+                    {["Company", "Best for", "Price per day", "Data · network", "Devices", "Pickup", "Return", ""].map((h, i) => (
+                      <th key={h || `c${i}`}>{h}</th>
                     ))}
                   </tr>
                 </thead>
@@ -347,9 +394,23 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
                       <td style={{ fontSize: "0.88rem" }}>{row.price}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.data}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.devices}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.battery}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.pickup}</td>
                       <td style={{ fontSize: "0.88rem" }}>{row.ret}</td>
+                      <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>
+                        {row.kind === "klook" ? (
+                          <KlookLink href={row.href} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                            Klook →
+                          </KlookLink>
+                        ) : row.kind === "official" ? (
+                          <a href={row.href} target="_blank" rel="noopener noreferrer nofollow" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                            Official site →
+                          </a>
+                        ) : (
+                          <a href={row.href} target="_blank" rel={SAKURA_REL} style={{ color: "var(--accent)", fontWeight: 600 }}>
+                            {row.kind === "sakura" ? "Sakura Mobile →" : "Simbye →"}
+                          </a>
+                        )}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -358,24 +419,42 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.8rem", color: "var(--text-muted)" }}>
             Last checked: {OFFICIAL_CHECKED}. Sources:{" "}
-            <a href={SAKURA_SRC} target="_blank" rel="noopener noreferrer nofollow">Sakura Mobile pocket WiFi</a>,{" "}
+            <a href={SAKURA_SRC} target="_blank" rel="noopener noreferrer nofollow">Sakura Mobile pocket WiFi</a>{" "}
+            (price simulator, long-term discount applied) and{" "}
+            <a href={SAKURA_FUP_SRC} target="_blank" rel="noopener noreferrer nofollow">its unlimited-data FAQ</a>,{" "}
             <a href={JW_SRC} target="_blank" rel="noopener noreferrer nofollow">Japan Wireless</a> and{" "}
             <a href={JW_RATES_SRC} target="_blank" rel="noopener noreferrer nofollow">its rates page</a>,{" "}
-            <a href={NINJA_PLAN_SRC} target="_blank" rel="noopener noreferrer nofollow">Ninja WiFi plans</a>{" "}
-            ({NINJA_CHECKED}). Sakura Mobile&apos;s per-day figures are its 14-day and 5-day totals divided by
-            the days. Devices, battery, pickup and return for the two Klook WiFi rows are what their Klook
-            listings state (read {specsCheckedAt}); Klook prices change by date and currency, so check them
-            on the listing.
+            <a href={NINJA_PLAN_SRC} target="_blank" rel="noopener noreferrer nofollow">Ninja WiFi plans</a>. Sakura
+            Mobile&apos;s per-day figures are its 14-day and 5-day tax-included totals divided by the days. Devices,
+            pickup and return for the two Klook WiFi rows are what their Klook listings state (read {specsCheckedAt});
+            Klook rental prices change by date and currency, so check them on the listing. The Klook eSIM figure is
+            the listing&apos;s from-price (read 6 Nov 2026); the Simbye price is from our daily price check ({pricesCheckedAt}).
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginTop: "1rem" }}>
-            <a href={SAKURA_URL} target="_blank" rel={SAKURA_REL} className={styles.pickCta}>
-              Check Sakura Mobile pocket WiFi →
-            </a>
             <KlookLink href={AIRPORT.affiliateUrl} className={styles.pickCta} target="_blank" rel="noopener noreferrer nofollow">
               {AIRPORT.ctaText} →
             </KlookLink>
+            <a href={SAKURA_URL} target="_blank" rel={SAKURA_REL} className={styles.pickCta}>
+              Check Sakura Mobile pocket WiFi →
+            </a>
           </div>
         </section>
+
+        {/* Do I need it at all */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Do you need one?</span>
+          <h2 className={styles.sectionTitle}>Do I Need WiFi in Japan in 2026?</h2>
+          <p className={styles.bodyText}>
+            You need mobile data in Japan for maps, train routes and translation, but a pocket WiFi only
+            pays off when three or more people or devices share it. Free WiFi in stations, hotels and
+            convenience stores does not cover the walk between them, so one or two travellers are better
+            off with an eSIM on each phone and a group with a router it splits.
+          </p>
+        </section>
+
+        <BookingEsimCard lead="Travelling alone or as a couple? One eSIM per phone is cheaper than a router and there is nothing to collect or return." />
+
+        <EsimCtaTop />
 
         {/* Quick Answer */}
         <section className={styles.choiceSection}>
@@ -460,11 +539,12 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
         {/* Prices — official price list only (no Klook prices on this page) */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Prices</span>
-          <h2 className={styles.sectionTitle}>How Much Is Pocket WiFi in Japan for 5, 7 or 14 Days?</h2>
+          <h2 className={styles.sectionTitle}>How Much Is Pocket WiFi in Japan?</h2>
           <p className={styles.bodyText}>
             A week of pocket WiFi from Sakura Mobile costs {SAKURA_7} in total, 5 days cost{" "}
-            {yen(7500)} and two weeks cost {yen(18300)}, on its own price list; Ninja WiFi&apos;s
-            unlimited plan at {NINJA_DAY} a day comes to {yen(1980 * 7)} for a week. That is one price for the router, not per person:
+            {SAKURA_5} and two weeks cost {SAKURA_14}, tax included, on its own price list; Ninja WiFi&apos;s
+            unlimited plan at {NINJA_DAY} a day comes to {yen(1980 * 7)} for a week, and Japan Wireless
+            quotes {JW_14} for 14 days. That is one price for the router, not per person:
             the total is the same whether one phone uses it or 15 devices do, which is the whole
             economic case for renting one — the break-even headcount is worked out in our{" "}
             <Link href="/guides/esim/japan-esim-family-group" style={{ color: "var(--accent)", fontWeight: 600 }}>
@@ -477,7 +557,7 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Rental length", "Sakura Mobile total", "Per day", "Per person, 3 sharing", "Per person, 4 sharing", `Ninja WiFi at ${NINJA_DAY}/day`].map((h) => (
+                    {["Rental length", "Sakura Mobile total (tax incl.)", "Per day", "Per person, 3 sharing", "Per person, 4 sharing", `Ninja WiFi at ${NINJA_DAY}/day`].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -500,12 +580,14 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.8rem", color: "var(--text-muted)" }}>
             Last checked: {OFFICIAL_CHECKED}. Source:{" "}
             <a href={SAKURA_SRC} target="_blank" rel="noopener noreferrer nofollow">sakuramobile.jp/travel/wifi/</a>{" "}
-            (totals as listed; payment in JPY only; 10% off when renting two or more devices) and{" "}
+            (tax-included totals from its price simulator, after the long-term discount on regular prices of{" "}
+            {SAKURA_PRICES.map((p) => `${yen(p.regular)} for ${p.days} days`).join(", ")} before tax; payment in
+            JPY only; 10% off when renting two or more devices) and{" "}
             <a href={NINJA_PLAN_SRC} target="_blank" rel="noopener noreferrer nofollow">ninjawifi.com/en/plan</a>{" "}
-            (Infinite Unlimited, SoftBank, {NINJA_DAY} a day, checked {NINJA_CHECKED}; options such as a
-            power bank cost extra). Per-day, per-person and Ninja WiFi totals are our arithmetic on those
+            (Infinite Unlimited, SoftBank, {NINJA_DAY} a day tax included, checked {NINJA_CHECKED}; options
+            cost extra). Per-day, per-person and Ninja WiFi totals are our arithmetic on those
             figures. Japan Wireless advertises
-            from US$4.7 a day on{" "}
+            from {JW_FROM} a day and printed {JW_14} for 14 days, taxes included, on{" "}
             <a href={JW_SRC} target="_blank" rel="noopener noreferrer nofollow">japan-wireless.com</a>{" "}
             and lists a ¥40,000 charge for a lost router and SIM without its cover plan (
             <a href={JW_RATES_SRC} target="_blank" rel="noopener noreferrer nofollow">rates page</a>
@@ -524,17 +606,18 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
         {/* Pickup and return */}
         <section className={styles.installSection}>
           <span className={styles.sectionLabel}>Pickup &amp; return</span>
-          <h2 className={styles.sectionTitle}>Where Do I Pick Up Pocket WiFi at the Airport in Japan?</h2>
+          <h2 className={styles.sectionTitle}>Where Do I Pick Up Pocket WiFi at Narita or Haneda?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1.5rem" }}>
-            You pick up pocket WiFi at the rental company&apos;s airport counter or have it delivered to
-            your hotel, and you return it either at the counter or by dropping a prepaid envelope in a
-            Japan Post box. Sakura Mobile lists pickup at Narita, Haneda, Kansai and Fukuoka airports
-            plus hotel, home or post-office delivery, with a post-box return by midnight on the return
-            date. Ninja WiFi&apos;s own site lists counters at Narita, Haneda, Kansai, Chubu and Fukuoka —
-            none in Haneda Terminal 1 — with free counter pickup and return and ¥550 each way for hotel
-            delivery (
-            <a href={NINJA_PICKUP_SRC} target="_blank" rel="noopener noreferrer nofollow">ninjawifi.com pickup page</a>,
-            checked {NINJA_CHECKED}). This is the part travellers under-plan.
+            You pick up pocket WiFi at Narita or Haneda from the rental company&apos;s counter in arrivals,
+            booked before you fly, or have it delivered to your hotel instead. Ninja WiFi&apos;s Haneda
+            counter is on the 2nd floor of Terminal 3 (06:30–23:00) and its Kansai counter in the Terminal
+            1 arrivals lobby (06:30–22:30), with free counter pickup; its Narita Terminal 3 counter is
+            listed as temporarily closed (
+            <a href={NINJA_PICKUP_SRC} target="_blank" rel="noopener noreferrer nofollow">ninjawifi.com airport counters</a>,
+            checked {NINJA_CHECKED}). Sakura Mobile hands over at Narita, Haneda, Kansai and Fukuoka airports
+            or delivers to a hotel, home or post office, with a post-box return by midnight on the return
+            date; Japan Wireless has counters at Narita, Haneda and Kansai or delivers to your hotel (official
+            sites, {OFFICIAL_CHECKED}).
           </p>
           <div className={styles.stepsList}>
             {[
@@ -638,12 +721,57 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
             and a cable.
           </p>
           <p className={styles.bodyText}>
-            <strong>Data is where there is nothing to decide.</strong> Every option on this page sells
-            unlimited data — Sakura Mobile on docomo, the others on {AIRPORT.network}. Network is not
-            a differentiator in this market — all three Japanese carriers cover the tourist route
-            well — so any rental comparison that leads on &ldquo;nationwide 4G coverage&rdquo; is
-            selling you something every rental already has. Compare the device limit, the collection
-            method and the price instead.
+            <strong>Network matters less than the daily limit.</strong> Every rental on this page sells
+            unlimited data — Sakura Mobile on docomo, the others on {AIRPORT.network} — but
+            &ldquo;unlimited&rdquo; means something different at each company, as the next table shows.
+          </p>
+        </section>
+
+        {/* What "unlimited" means */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Unlimited data</span>
+          <h2 className={styles.sectionTitle}>Is Unlimited Pocket WiFi Really Unlimited?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Only at Japan Wireless, which states no fair-usage policy and no throttling; Sakura Mobile
+            guarantees 10GB a day at high speed, and Ninja WiFi says its unlimited plans may be suspended
+            temporarily above 15GB in a day. The limit matters most when several people stream, take video
+            calls or run a laptop on one router all day.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Company", "What “unlimited” means", "Source"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {unlimitedRows.map((row) => (
+                    <tr key={row.name}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.name}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.rule}</td>
+                      <td style={{ fontSize: "0.88rem" }}>
+                        {row.src.includes("klook.com") ? (
+                          <KlookLink href={row.src} target="_blank" rel="noopener noreferrer nofollow">{row.srcLabel}</KlookLink>
+                        ) : (
+                          <a href={row.src} target="_blank" rel={row.src === SIMBYE_URL ? SAKURA_REL : "noopener noreferrer nofollow"}>{row.srcLabel}</a>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.8rem", color: "var(--text-muted)" }}>
+            Last checked: {OFFICIAL_CHECKED}. Sources:{" "}
+            <a href={JW_RATES_SRC} target="_blank" rel="noopener noreferrer nofollow">Japan Wireless rates and FAQ</a>,{" "}
+            <a href={SAKURA_FUP_SRC} target="_blank" rel="noopener noreferrer nofollow">Sakura Mobile unlimited-data FAQ</a>,{" "}
+            <a href={NINJA_HOME_SRC} target="_blank" rel="noopener noreferrer nofollow">Ninja WiFi</a> (its pages
+            give different thresholds for different plans, so check the plan you book). The Simbye rule is from our
+            daily price feed ({pricesCheckedAt}); the Klook eSIM rule is from its listing (read 6 Nov 2026).
           </p>
         </section>
 
@@ -744,99 +872,55 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
           </div>
         </section>
 
-        {/* When an eSIM is the better buy */}
+        {/* Router or eSIM — short answer only; the full comparison lives on pocket-wifi-vs-esim-japan */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The other option</span>
-          <h2 className={styles.sectionTitle}>Is Pocket WiFi or eSIM Better for Japan?</h2>
+          <h2 className={styles.sectionTitle}>Pocket WiFi or eSIM for Japan?</h2>
           <p className={styles.bodyText}>
-            Get a pocket WiFi if three or more people or devices will share one connection; get an
-            eSIM if you travel alone or with one other phone.
-          </p>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["", "Pocket WiFi", "eSIM"].map((h) => (
-                      <th key={h || "row"}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {wifiVsEsimRows.map((row) => (
-                    <tr key={row.k}>
-                      <td className={styles.tdProvider}>{row.k}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.wifi}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.esim}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.8rem", color: "var(--text-muted)" }}>
-            Last checked: {OFFICIAL_CHECKED}. Sources:{" "}
-            <a href={SAKURA_SRC} target="_blank" rel="noopener noreferrer nofollow">sakuramobile.jp/travel/wifi/</a>{" "}
-            (router price, devices, battery) and the Klook WiFi listings (read {specsCheckedAt}); the eSIM
-            price is the cheapest Japan plan in our daily price check ({pricesCheckedAt}).
+            Get a pocket WiFi if three or more people or devices will share one connection; get an eSIM if
+            you travel alone or as a couple with one phone each. A {SIMBYE_WEEK_DAYS}-day unlimited Simbye
+            eSIM is {SIMBYE_WEEK_PRICE} with our code (checked {pricesCheckedAt}) against {SAKURA_7} for a
+            7-day Sakura Mobile router, and an eSIM has nothing to collect, charge or return. The full{" "}
+            <Link href="/guides/esim/pocket-wifi-vs-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              pocket WiFi vs eSIM
+            </Link>{" "}
+            comparison works through price by group size, battery and what happens when you split up.
           </p>
           <div style={{ marginTop: "1rem" }}>
             <BookingEsimCard lead="One or two of you? An eSIM per phone:" />
           </div>
           <p className={styles.bodyText}>
-            A router is a flat cost shared
-            across any number of devices; an eSIM is a per-person cost with no hardware at all.
-            Japan eSIM plans start from {ESIM_FROM} (checked {pricesCheckedAt}), which undercuts
-            even a short rental for one person — and a solo traveller gets nothing from a limit of{" "}
-            {HOTEL.maxDevices} devices. Moving into a flat rather than touring? The monthly cost of a
-            home router or fibre line is in{" "}
-            <Link href="/guides/esim/japan-home-internet-for-foreigners" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              home internet in Japan for foreigners
-            </Link>
-            .
-          </p>
-          <p className={styles.bodyText}>
-            Rent the router when the cost is genuinely shared — three or more people, a family with
-            tablets, a work trip with a laptop — or when somebody in the party has a handset that
-            cannot take an eSIM. Buy an eSIM when you are travelling alone, when you are moving
-            between people rather than with them, or when you simply do not want a second device to
-            charge and return. If you have not made that call yet, our{" "}
-            <Link href="/guides/esim/pocket-wifi-vs-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              Pocket WiFi vs eSIM comparison
-            </Link>{" "}
-            puts the two side by side on price and convenience, the{" "}
-            <Link href="/guides/esim/japan-esim-price-tracker" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              Japan eSIM cost
-            </Link>{" "}
-            tracker gives an eSIM&apos;s price per day to set against a router&apos;s, and{" "}
+            If you land on the eSIM side,{" "}
             <Link href="/guides/esim/best-esim-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Best eSIM for Japan
             </Link>{" "}
-            names the provider to buy if you land on that side of it. If the handset that cannot take
-            an eSIM belongs to you, our{" "}
-            <Link href="/guides/esim/sakura-mobile-review" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              Sakura Mobile review
+            names the provider to buy and the{" "}
+            <Link href="/guides/esim/japan-esim-price-tracker" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Japan eSIM cost
             </Link>{" "}
-            covers a company that sells a physical travel SIM card, an eSIM and a pocket WiFi
-            rental side by side; for common eSIM advice checked against current prices, see the{" "}
-            <Link href="/guides/esim/best-esim-japan-reddit" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              best eSIM for Japan Reddit check
-            </Link>
-            . Not sure your phone can take one? See{" "}
+            tracker gives an eSIM&apos;s price per day to set against a router&apos;s. Not sure your phone can
+            take one? See{" "}
             <Link href="/guides/esim/does-esim-work-in-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               does an eSIM work in Japan
             </Link>
-            ; and for where the connection matters most on a route, our{" "}
+            ; if it cannot, the{" "}
+            <Link href="/guides/esim/sakura-mobile-review" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Sakura Mobile review
+            </Link>{" "}
+            covers a company that sells a travel SIM card, an eSIM and a pocket WiFi side by side. Moving into a
+            flat rather than touring? The monthly cost of a home router or fibre line is in{" "}
+            <Link href="/guides/esim/japan-home-internet-for-foreigners" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              home internet in Japan for foreigners
+            </Link>
+            ; common eSIM advice is checked against current prices in the{" "}
+            <Link href="/guides/esim/best-esim-japan-reddit" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              best eSIM for Japan Reddit check
+            </Link>
+            , and our{" "}
             <Link href="/guides/attractions/japan-10-day-itinerary" style={{ color: "var(--accent)", fontWeight: 600 }}>
               10-day Japan itinerary
             </Link>{" "}
-            plans the days.
-          </p>
-          <p className={styles.bodyText}>
-            There is also a middle option nobody advertises, because it sells two products instead
-            of one: a router for the group plus a cheap eSIM on one phone. It costs a few dollars
-            more and it removes the two failure modes that actually ruin a day — being offline
-            between landing and hotel check-in, and the router going flat with everybody on it.
+            plans the days the connection has to cover.
           </p>
         </section>
 

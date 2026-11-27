@@ -607,8 +607,9 @@ export default function JapanEsimUnlimitedPage({ updated }: { updated: PageUpdat
             works out how many GB a fixed plan needs for your trip length. What unlimited data costs per day against a fixed
             plan&apos;s price per GB, at the median across every provider, is in the{" "}
             <Link href="/guides/esim/japan-esim-price-tracker" style={{ color: "var(--accent)", fontWeight: 600 }}>Japan eSIM cost</Link>{" "}
-            tracker. Sharing one connection across a group is usually cheaper on a{" "}
-            <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>rented pocket WiFi</Link>.
+            tracker. Sharing one connection across a group is usually cheaper with a rented router: see{" "}
+            <Link href="/guides/esim/best-pocket-wifi-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>unlimited pocket WiFi in Japan</Link>,
+            where each rental company&apos;s daily data limit is listed.
           </p>
           <div className={styles.pickTarget} style={{ marginTop: "1.25rem", flexWrap: "wrap", gap: "0.6rem" }}>
             <span className={styles.pickTargetLabel}>Also on Klook:</span>

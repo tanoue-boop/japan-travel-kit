@@ -77,8 +77,8 @@ export const esimArticles: GuideArticle[] = [
   {
     href: "/guides/esim/best-pocket-wifi-japan",
     badge: "Comparison",
-    title: "Pocket WiFi Japan 2026: Rental Prices Compared (Per Day)",
-    desc: "Japan WiFi rental prices per day by company, the total for 5, 7 and 14 days, airport pickup counters and post-box return, and when an eSIM is the better buy.",
+    title: "Pocket WiFi Rental in Japan (2026): Prices Compared",
+    desc: "Pocket WiFi rental prices in Japan per day by company, the total for 5, 7 and 14 days, Narita and Haneda pickup, what \"unlimited\" really means, and when an eSIM is cheaper.",
     group: "compare",
     city: "other",
   },
