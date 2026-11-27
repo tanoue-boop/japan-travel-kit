@@ -283,6 +283,8 @@ export default function ZhTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             同一趟想再加一個展望台，晴空塔 350 公尺與 450 公尺展望台的票價比較請看{" "}
             <Link href="/zh-tw/guides/attractions/tokyo-skytree-tickets">東京晴空塔門票攻略</Link>。
+            teamLab 和迪士尼都要先選日期再買票；帶小孩的話，迪士尼的兒童票適用 4–11 歲、3 歲以下免費，請看{" "}
+            <Link href="/zh-tw/guides/attractions/tokyo-disney-tickets">東京迪士尼門票攻略</Link>。
           </p>
         </section>
 

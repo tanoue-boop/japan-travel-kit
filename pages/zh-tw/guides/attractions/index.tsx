@@ -32,7 +32,7 @@ const DESC =
 const popularLinks = [
   { href: "/zh-tw/guides/attractions/usj-tickets-express-pass", label: "大阪：日本環球影城門票與快速通關" },
   { href: "/zh-tw/guides/attractions/shibuya-sky-tickets", label: "東京：澀谷SKY 門票" },
-  { href: "/zh-tw/guides/attractions/tokyo-disney-tickets", label: "東京：東京迪士尼門票" },
+  { href: "/zh-tw/guides/attractions/tokyo-disney-tickets", label: "東京：東京迪士尼門票價格與兒童票" },
   { href: "/zh-tw/guides/attractions/tokyo-skytree-tickets", label: "東京：晴空塔門票" },
   { href: "/zh-tw/guides/attractions/things-to-do-tokyo", label: "東京必去景點與購票時機" },
 ];
@@ -144,7 +144,7 @@ const BLURBS: Record<string, string> = {
   "/zh-tw/guides/attractions/tokyo-skytree-tickets":
     "晴空塔門票怎麼買：350 公尺天望甲板與 450 公尺天望迴廊的票價比較、線上購票省下現場服務費，以及傍晚時段為什麼要先訂。",
   "/zh-tw/guides/attractions/tokyo-disney-tickets":
-    "每張票都指定日期、不提供現場售票。購票方式（包括官網不接受海外信用卡時），以及樂園與海洋怎麼選。",
+    "成人一日護照 ¥8,900–¥12,400、兒童（4–11 歲）¥5,300 起，沒有敬老票。星光票（After 3／After 5 護照）怎麼買、DPA 入園後另購，以及官網不接受海外信用卡時的購票方式。",
   "/zh-tw/guides/attractions/usj-tickets-express-pass":
     "現在都必須在線上購票，超級任天堂世界需要指定時間入園。Studio Pass 的分級、快速通關 4／7／8 怎麼挑。",
   "/zh-tw/guides/attractions/mt-fuji-day-tour-from-tokyo":

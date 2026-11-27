@@ -911,6 +911,8 @@ export default function ZhUsjTicketsPage({ updated }: { updated: PageUpdated }) 
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             園區指定時段入場要在官方 App 裡辦理，網卡怎麼選請見{" "}
             <Link href="/zh-tw/guides/esim/best-esim-japan">日本eSIM推薦</Link>。
+            同一趟也要去東京的迪士尼？那邊的門票同樣綁定日期，DPA（尊享卡）則要入園後在 App 另外買，請見{" "}
+            <Link href="/zh-tw/guides/attractions/tokyo-disney-tickets">東京迪士尼門票價格與購買方式</Link>。
           </p>
         </section>
 

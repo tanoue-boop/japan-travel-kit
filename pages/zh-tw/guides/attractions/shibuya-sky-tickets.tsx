@@ -699,6 +699,10 @@ export default function ZhShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             <Link href="/zh-tw/guides/esim/best-esim-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
               日本eSIM推薦
             </Link>
+            。同一趟要排一天去舞濱的話，迪士尼也是指定日期、兩個月前開賣的票，成人一日護照依日期為 ¥8,900–¥12,400，請見{" "}
+            <Link href="/zh-tw/guides/attractions/tokyo-disney-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
+              東京迪士尼門票價格與兒童票
+            </Link>
             。
           </p>
         </section>

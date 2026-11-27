@@ -275,7 +275,7 @@ A trial edition of 27 guides in Taiwanese Traditional Chinese, under /zh-tw/, wi
 - [teamLab 無界 門票（2026）：票價、時段預約與購票管道](https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-borderless-tickets): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/teamlab-borderless-tickets
 - [teamLab Planets 門票 2026：票價、時間與預約方式](https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-planets-tickets): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/teamlab-planets-tickets
 - [teamLab Planets 無界 比較：東京該去哪一館（2026）](https://www.japan-travel-kit.com/zh-tw/guides/attractions/teamlab-tokyo-tickets): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/teamlab-tokyo-tickets
-- [東京迪士尼門票（2026）：樂園與海洋怎麼買、怎麼選](https://www.japan-travel-kit.com/zh-tw/guides/attractions/tokyo-disney-tickets): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/tokyo-disney-tickets
+- [東京迪士尼門票 2026：價格、兒童票、星光票怎麼買](https://www.japan-travel-kit.com/zh-tw/guides/attractions/tokyo-disney-tickets): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/tokyo-disney-tickets
 - [日本環球影城門票與快速通關（2026）：該買哪一種](https://www.japan-travel-kit.com/zh-tw/guides/attractions/usj-tickets-express-pass): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/usj-tickets-express-pass
 - [東京晴空塔門票（2026）：票價、350 與 450 樓怎麼選](https://www.japan-travel-kit.com/zh-tw/guides/attractions/tokyo-skytree-tickets): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/tokyo-skytree-tickets
 - [道頓堀遊船（2026）：票價、班次時間與搭船處](https://www.japan-travel-kit.com/zh-tw/guides/attractions/dotonbori-river-cruise): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/dotonbori-river-cruise
