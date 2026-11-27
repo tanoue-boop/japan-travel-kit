@@ -5923,11 +5923,14 @@ export const shibuyaSkySameDayCards: KlookSameDayCard[] = [
  * Tokyo Subway Ticket (5%) and the Klook eSIM (20%). Existing constants only, no new
  * URL and no price. The translated pages keep `shibuyaSkySameDayCards`.
  */
+// 27 Nov 2026 (R10): the first card is now the Shibuya night tour (6.5%) rather than the
+// Shibuya hotel search — the page's HotelStayBlock sits directly below these cards and
+// already carries the hotels, so the hotel card was the same 6.5% product twice.
 export const shibuyaSkyAnswerCards: KlookSameDayCard[] = [
   {
-    ...tripPrepProducts.hotelShibuya,
-    kind: "Hotel",
-    why: "A sunset entry ends after dark; a bed in Shibuya makes the trip back a walk from the station the deck sits on.",
+    ...tripPrepProducts.shibuyaBarTour,
+    kind: "Night tour",
+    why: "The hours after a sunset or night slot, in the streets under the deck: three hours, two local bars and izakaya, an English-speaking guide.",
   },
   {
     ...tripPrepProducts.subway,

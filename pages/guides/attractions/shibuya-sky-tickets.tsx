@@ -32,6 +32,9 @@ const SHIBUYA_SKY_URL = shibuyaSkyTicketUrl;
 // Tokyo Subway Ticket (5%) and the Klook eSIM (20%), so the two lower blocks drop those rather
 // than repeat them. The Shibuya go-kart, which was a top card from 14 Nov, moves into the
 // "rest of the day" block below with its link unchanged.
+// R10 (27 Nov 2026): the hotel card became the Shibuya night tour (6.5%), since HotelStayBlock
+// directly under the cards already carries the hotels; the hotel search moves back into the
+// "rest of the day" block through the same filter.
 const inTopCards = (url: string) => shibuyaSkyAnswerCards.some((c) => c.url === url);
 const sameDayPrep = shibuyaSkySameDayPrep.filter((item) => !inTopCards(item.url));
 const goKartItem: KlookTripPrepItem = {
@@ -104,9 +107,25 @@ const P = PRICES.shibuyaSky;
  *                                     everyone in the booking, matching the details entered
  * The "official site rejects many foreign cards since July 2024" line could not be re-read
  * on an official page that day, so it is no longer stated as fact here.
+ *
+ * 27 Nov 2026 (task R10): question H2s for sunset sell-outs, same-day tickets and rooftop
+ * weather closures; a Web / counter / Klook table; what a "slot" is, with a slot-by-slot
+ * table. Re-read that day:
+ *   …/20250227scsq.pdf                the same prices and sale rule; the rooftop and 46F outdoor
+ *                                     area can close for rain, lightning, strong wind or heat;
+ *                                     web tickets then cancel free on the day before entry, but
+ *                                     not once a set time past the slot has gone; the 46F indoor
+ *                                     gallery stays open; no re-entry after leaving
+ *   shibuya-scramble-square.com/en/   "10:00 - 22:30 (Final admission: 21:20)"
+ *   gotokyo.org/en/spot/1749          the same prices; sunset "is usually a popular time, make
+ *                                     sure to leave some extra time for the queue"
+ *   klook.com …/activity/70672        (search index) free cancellation before 23:59 JST the day
+ *                                     before; date and time cannot be changed; passport at entry
+ * Neither the operator nor Klook publishes how far ahead sunset slots sell out, so the page
+ * states only the earliest moment they can be bought.
  */
 const CHECKED = checkedLabel(P.checked);
-const LAST_CHECKED = "2026-11-17";
+const LAST_CHECKED = "2026-11-27";
 const OFFICIAL_URL = "https://www.shibuya-scramble-square.com/sky/ticket/";
 const RELEASE_URL = "https://www.shibuya-scramble-square.com/assets/pdf/about/20250227scsq.pdf";const GOTOKYO_URL = "https://www.gotokyo.org/en/spot/1749/index.html";
 const NAOJ_URL = "https://eco.mtk.nao.ac.jp/koyomi/dni/2026/s1311.html";
@@ -210,6 +229,50 @@ const bookingRows = [
   {
     q: "What is counter-only?",
     a: "Child tickets. Ages 6–11 (and 12-year-olds still in elementary school) are ¥1,200 and are sold at the 14th-floor counter on the day, not online — so a family booking online buys adult tickets and pays for the children on arrival.",
+  },
+];
+
+/** R10: the three ways to buy, as one row each — price, when it opens, cancellation. */
+const ticketTypeRows = [
+  {
+    type: "Web ticket (official site)",
+    price: "¥2,700 (10:00–14:59) / ¥3,400 (15:00–21:20)",
+    opens: "00:00 JST, two weeks before the date",
+    cancel: "Free until the day before; on the day, up to entry, if the rooftop is closed at your slot",
+  },
+  {
+    type: "14F counter (on the day)",
+    price: "¥3,000 / ¥3,700; ages 6–11 ¥1,200 (counter only)",
+    opens: "On the day, only for slots still unsold — none if adult tickets are sold out online",
+    cancel: "Cannot be cancelled",
+  },
+  {
+    type: "Klook (activity 70672)",
+    price: "Shown in your own currency at checkout",
+    opens: "The listing states 00:00 JST, two weeks ahead",
+    cancel: "Free before 23:59 JST the day before; rooftop-closure refund if claimed by 23:59 JST that day",
+  },
+];
+
+/** R10: the three parts of the day a slot can fall in. Demand is relative, not a count. */
+const slotRows = [
+  {
+    slot: "Daytime (10:00–14:59)",
+    price: "¥2,700",
+    demand: "The lower-demand band; the easiest to get at short notice",
+    pick: "Price, and the clearest long view (Mt. Fuji on a dry, clear day)",
+  },
+  {
+    slot: "Sunset (entry 30–60 min before sunset)",
+    price: "¥3,400",
+    demand: "The popular slot — leave extra time for the queue at entry",
+    pick: "Daylight, golden hour and the city lights in one visit — book at release",
+  },
+  {
+    slot: "Night (after sunset, last entry 21:20)",
+    price: "¥3,400",
+    demand: "Lower demand than sunset, same price band",
+    pick: "The lit-up crossing and skyline; the fallback when sunset has gone",
   },
 ];
 
@@ -317,32 +380,36 @@ const steps = [
   },
 ];
 
-/** The five questions in the FAQPage schema (R01, 17 Nov 2026). */
+/** The five questions in the FAQPage schema (R01, 17 Nov 2026; R10, 27 Nov 2026). */
 const faqItems = [
   {
-    q: "How much are Shibuya Sky tickets in 2026?",
-    a: "An adult web ticket (age 12 and over) is ¥2,700 for an entry between 10:00 and 14:59 and ¥3,400 for an entry from 15:00 to 21:20. The same tickets at the 14th-floor counter are ¥3,000 and ¥3,700, so booking online saves ¥300 either way. Ages 6–11 are ¥1,200 at the counter only, and children aged 5 and under enter free. Those prices have applied since 1 April 2025 under Shibuya Scramble Square's own ticket revision, re-checked on 2026-11-17.",
+    q: "How much are Shibuya Sky tickets?",
+    a: `An adult web ticket (age 12 and over) is ¥2,700 for an entry between 10:00 and 14:59 and ¥3,400 for an entry from 15:00 to 21:20. The same tickets at the 14th-floor counter are ¥3,000 and ¥3,700, so booking online saves ¥300 either way. Ages 6–11 are ¥1,200 at the counter only, and children aged 5 and under enter free. Those prices have applied since 1 April 2025 under Shibuya Scramble Square's own ticket revision, re-checked on ${LAST_CHECKED}.`,
   },
   {
-    q: "When do Shibuya Sky tickets go on sale?",
-    a: "At 00:00 Japan time exactly two weeks before the admission date, in 20-minute entry slots, under the operator's own release (re-checked 2026-11-17). Klook's listing states the same release time. That is 15:00 the previous day in London (GMT) and 10:00 the previous morning in New York (EST).",
-  },
-  {
-    q: "How do I get a sunset slot?",
-    a: "Look up the sunset time for your month (16:29 in mid-December to 18:58 in mid-June, NAOJ 2026), aim for an entry 30–60 minutes before it, and be at the checkout at 00:00 JST two weeks ahead — sunset is the slot that sells out first. Every sunset entry is in the ¥3,400 band. If the slot has gone on the official site, check Klook, which shows its own availability.",
+    q: "When do Shibuya Sky sunset slots sell out?",
+    a: `Shibuya Scramble Square does not publish a sell-out time, but no slot can be bought earlier than 00:00 Japan time exactly two weeks before the date, and sunset is the slot in demand — so book it at that moment. Every sunset entry is in the ¥3,400 band, from 16:29 sunset in mid-December to 18:58 in mid-June (NAOJ 2026). If the slot has gone on the official site, check Klook, which shows its own availability. Re-checked ${LAST_CHECKED}.`,
   },
   {
     q: "Can I buy Shibuya Sky tickets on the day?",
-    a: "Yes, while slots last: the 14th-floor counter sells adult tickets at ¥3,000 before 15:00 and ¥3,700 from 15:00, and any slot still unsold online can be booked on the day. But if adult tickets are sold out online, they are unavailable at the counter too (Tokyo Metropolitan Government listing, re-checked 2026-11-17) — which is usually the case for sunset on a busy date.",
+    a: `Yes, while slots last: the 14th-floor counter sells adult tickets at ¥3,000 before 15:00 and ¥3,700 from 15:00, and any slot still unsold online can be booked on the day for ¥300 less. But if adult tickets are sold out online, they are unavailable at the counter too (Tokyo Metropolitan Government listing, re-checked ${LAST_CHECKED}), and counter tickets cannot be cancelled.`,
   },
   {
-    q: "Is Shibuya Sky worth it?",
-    a: "If you want the open-air rooftop 229 m above the Scramble Crossing, yes — no other Tokyo deck looks straight down on it. It costs ¥2,700 before 15:00 or ¥3,400 from 15:00 online, with no time limit inside. If the budget matters more than the crossing, the Tokyo Metropolitan Government Building decks in Shinjuku are free, and Tokyo Skytree is the pick for sheer height.",
+    q: "What happens if the Shibuya Sky rooftop closes for weather?",
+    a: `The open-air rooftop (and the 46F outdoor area) can close for rain, lightning, strong wind or heat, while the 46F indoor gallery stays open. If the rooftop is closed at your entry time, an official web ticket can be cancelled free on the day, up to entry — not once a set time past your slot has gone; counter tickets cannot be cancelled. Klook refunds a rooftop closure if you claim by 23:59 JST that day. Re-checked ${LAST_CHECKED}.`,
+  },
+  {
+    q: "When do Shibuya Sky tickets go on sale?",
+    a: `At 00:00 Japan time exactly two weeks before the admission date, in 20-minute entry slots, under the operator's own release (re-checked ${LAST_CHECKED}). Klook's listing states the same release time. That is 15:00 the previous day in London (GMT) and 10:00 the previous morning in New York (EST).`,
   },
 ];
 
 /** Further questions, shown on the page but kept out of the FAQPage schema. */
 const moreFaqItems = [
+  {
+    q: "Is Shibuya Sky worth it?",
+    a: "If you want the open-air rooftop 229 m above the Scramble Crossing, yes — no other Tokyo deck looks straight down on it. It costs ¥2,700 before 15:00 or ¥3,400 from 15:00 online, with no time limit inside. If the budget matters more than the crossing, the Tokyo Metropolitan Government Building decks in Shinjuku are free, and Tokyo Skytree is the pick for sheer height.",
+  },
   {
     q: "What time is Shibuya Sky open, and when is last admission?",
     a: `Shibuya Sky is open 10:00 to 22:30 with last admission at 21:20, on the Tokyo Metropolitan Government's official tourism listing read on ${CHECKED}. It closes on New Year's Day and may close temporarily or run shortened hours on other days. The hours matter for the price as well as the plan: the ¥2,700 band ends at 14:59 and everything from 15:00 to the 21:20 cut-off is ¥3,400.`,
@@ -361,7 +428,7 @@ const moreFaqItems = [
   },
   {
     q: "Can I cancel or change a Shibuya Sky ticket?",
-    a: "Web tickets bought from the operator cancel free until the day before your visit, and on the day if the rooftop is closed at your entry time; counter tickets cannot be cancelled, and the date and time cannot be changed — you cancel and rebook. Klook's listing states free cancellation until 23:59 JST the day before. Both re-checked 2026-11-17.",
+    a: `Web tickets bought from the operator cancel free until the day before your visit, and on the day if the rooftop is closed at your entry time; counter tickets cannot be cancelled, and the date and time cannot be changed — you cancel and rebook. Klook's listing states free cancellation until 23:59 JST the day before. Both re-checked ${LAST_CHECKED}.`,
   },
   {
     q: "Can I buy Shibuya Sky tickets with a foreign credit card?",
@@ -615,7 +682,7 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
         {/* Q1 — price */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Price</span>
-          <h2 className={styles.sectionTitle}>How Much Are Shibuya Sky Tickets in 2026?</h2>
+          <h2 className={styles.sectionTitle}>How Much Are Shibuya Sky Tickets?</h2>
           <p className={styles.bodyText}>
             ¥2,700 for an adult entering before 15:00, ¥3,400 from 15:00 — and ¥300 more on each if you buy at
             the counter instead of online. That two-band structure is the thing most guides still get wrong:
@@ -679,12 +746,52 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
         {/* R01: official site vs Klook — the choice an AI answer does not make for the reader. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Where to buy</span>
-          <h2 className={styles.sectionTitle}>Should You Book Shibuya Sky Tickets on the Official Site or Klook?</h2>
+          <h2 className={styles.sectionTitle}>Should You Buy Shibuya Sky Tickets Online, at the Counter or on Klook?</h2>
           <p className={styles.bodyText}>
-            Either sells the same 20-minute timed entry from 00:00 JST two weeks ahead. The official site gives you
-            the published ¥2,700 / ¥3,400 price and free cancellation until the day before; Klook is the English
-            checkout to fall back on when a card or a sunset slot fails on the official site, with free
-            cancellation until 23:59 JST the day before.
+            Online, on the official site or Klook: both sell the same 20-minute timed entry from 00:00 JST two weeks
+            ahead and both cancel free until the day before, while the counter costs ¥300 more and cannot be
+            cancelled. The official site gives you the published ¥2,700 / ¥3,400 price; Klook is the English
+            checkout to fall back on when a card or a sunset slot fails on the official site.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Ticket type", "Adult price", "On sale", "Cancellation"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colSpan={4} style={{ fontSize: "0.9rem" }}>
+                      <strong>Bottom line: buy online (official site or Klook) at 00:00 JST two weeks ahead — the counter is ¥300 more, sells only what is left and cannot be cancelled.</strong>
+                    </td>
+                  </tr>
+                  {ticketTypeRows.map((row) => (
+                    <tr key={row.type}>
+                      <td className={styles.tdProvider}>{row.type}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.price}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.opens}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.cancel}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {LAST_CHECKED}</strong> · Web and counter rows:{" "}
+            <a href={RELEASE_URL} target="_blank" rel="noopener" style={sourceLink}>Shibuya Scramble Square release (PDF)</a>
+            {" "}and{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener" style={sourceLink}>shibuya-scramble-square.com/sky/ticket/</a>
+            ; the counter sell-out rule from{" "}
+            <a href={GOTOKYO_URL} target="_blank" rel="noopener" style={sourceLink}>gotokyo.org</a>
+            . Klook row: Klook&apos;s own SHIBUYA SKY listing.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
+            Side by side, point by point:
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -836,23 +943,90 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
           </div>
         </section>
 
+        {/* R10 — same-day tickets, as its own question */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>On the day</span>
+          <h2 className={styles.sectionTitle}>Can I Buy Shibuya Sky Tickets on the Day?</h2>
+          <p className={styles.bodyText}>
+            Yes, but only for slots still unsold: the 14th-floor counter sells adult tickets on the day at ¥3,000
+            before 15:00 and ¥3,700 from 15:00, and once adult tickets are sold out online the counter has none
+            either. A same-day web booking, where a slot is left, is ¥300 cheaper and can be made from your phone
+            on the way; counter tickets cannot be cancelled.
+          </p>
+          <ul className={styles.bodyList}>
+            <li><strong>Children:</strong> ages 6–11 are ¥1,200 and sold at the counter on the day only, so a family books the adults online and pays for the children on arrival.</li>
+            <li><strong>Sunset on the day:</strong> plan on a daytime or night slot instead — those are the bands with lower demand.</li>
+            <li><strong>Re-entry:</strong> none. There is no time limit inside, but leaving ends the visit.</li>
+          </ul>
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {LAST_CHECKED}</strong> · Sources:{" "}
+            <a href={RELEASE_URL} target="_blank" rel="noopener" style={sourceLink}>Shibuya Scramble Square release (PDF)</a>
+            {" "}and{" "}
+            <a href={GOTOKYO_URL} target="_blank" rel="noopener" style={sourceLink}>gotokyo.org</a>.
+          </p>
+        </section>
+
         <BookingEsimCard />
 
         {/* Q4 — which slot */}
         <section className={styles.whoForSection}>
           <span className={styles.sectionLabel}>Which slot</span>
-          <h2 className={styles.sectionTitle}>Which Shibuya Sky Time Slot Should You Book?</h2>
+          <h2 className={styles.sectionTitle}>What Is a Shibuya Sky Slot?</h2>
+          <p className={styles.bodyText}>
+            A slot is the 20-minute entry window printed on a Shibuya Sky ticket: every ticket is for a set date and
+            a set entry time, and you go in during that window. Once inside there is no time limit, but there is no
+            re-entry, and the date and time cannot be changed — you cancel and rebook.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Time of day", "Adult (web)", "Demand", "Best for"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colSpan={4} style={{ fontSize: "0.9rem" }}>
+                      <strong>Bottom line: sunset if you can book it at release, daytime for price, night when sunset has gone.</strong>
+                    </td>
+                  </tr>
+                  {slotRows.map((row) => (
+                    <tr key={row.slot}>
+                      <td className={styles.tdProvider}>{row.slot}</td>
+                      <td className={styles.tdPrice}>{row.price}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.demand}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.pick}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {LAST_CHECKED}</strong> · Slots, prices and the no-re-entry rule:{" "}
+            <a href={RELEASE_URL} target="_blank" rel="noopener" style={sourceLink}>Shibuya Scramble Square release (PDF)</a>
+            ; sunset as the popular time with a queue:{" "}
+            <a href={GOTOKYO_URL} target="_blank" rel="noopener" style={sourceLink}>gotokyo.org</a>
+            . The &ldquo;Demand&rdquo; column is relative — the operator publishes no sell-out counts.
+          </p>
+          <h3 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            Which Shibuya Sky Time Slot Should You Book?
+          </h3>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Sunset if you can get it, before 15:00 if price is the deciding factor, late evening if sunset has
             gone. Sunset in Tokyo moves from 16:29 in mid-December to 18:58 in mid-June, so the slot in demand
             is not the same slot all year — but it always falls inside the ¥3,400 band.
           </p>
-          <h3 className={styles.pickName} style={{ marginTop: "1.25rem", marginBottom: "0.6rem" }}>
-            When Is the Shibuya Sky Sunset Slot Each Month?
-          </h3>
+          <h2 className={styles.sectionTitle} style={{ marginTop: "1.75rem" }}>
+            When Do Shibuya Sky Sunset Slots Sell Out?
+          </h2>
           <p className={styles.bodyText}>
-            Book an entry 30–60 minutes before the sunset time below. That slot is the first to sell out, so book
-            it when your date opens at 00:00 Japan time two weeks ahead.
+            Shibuya Scramble Square publishes no sell-out time, but a sunset slot cannot be bought before
+            00:00 Japan time exactly two weeks ahead, and sunset is the popular slot — so book at that moment. Aim
+            for an entry 30–60 minutes before the sunset time below.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -999,6 +1173,28 @@ export default function ShibuyaSkyTicketsPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
             From the operator&apos;s ticket FAQ as checked on {RULES_CHECKED}; the rules can change, so confirm
             them on the day.
+          </p>
+        </section>
+
+        {/* R10 — weather closures */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Weather</span>
+          <h2 className={styles.sectionTitle}>What Happens If the Shibuya Sky Rooftop Closes for Weather?</h2>
+          <p className={styles.bodyText}>
+            The 46F indoor gallery stays open, and an official web ticket can be cancelled free on the day, up to
+            entry, if the rooftop is closed at your entry time. The rooftop and the 46F outdoor area can close for
+            rain, lightning, strong wind or heat.
+          </p>
+          <ul className={styles.bodyList}>
+            <li><strong>Official web ticket:</strong> free same-day cancellation while the rooftop is closed at your slot — not once a set time past the slot has gone. A different day means buying a new ticket.</li>
+            <li><strong>Counter ticket:</strong> cannot be cancelled, rooftop closed or not.</li>
+            <li><strong>Klook ticket:</strong> a full refund for a rooftop closure at your entry time if every ticket in the booking is unused and you contact Klook by 23:59 JST that day.</li>
+            <li><strong>Where to check:</strong> the rooftop&apos;s open or closed status is posted on SHIBUYA SKY&apos;s official X account and website.</li>
+          </ul>
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: {LAST_CHECKED}</strong> · Sources:{" "}
+            <a href={RELEASE_URL} target="_blank" rel="noopener" style={sourceLink}>Shibuya Scramble Square release (PDF)</a>
+            {" "}(rooftop-closure cancellation service) and Klook&apos;s own SHIBUYA SKY listing.
           </p>
         </section>
 
