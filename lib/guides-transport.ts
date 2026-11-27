@@ -192,8 +192,8 @@ export const transportArticles: GuideArticle[] = [
   {
     href: "/guides/transport/tokyo-transportation",
     badge: "Guide",
-    title: "Getting Around Tokyo (2026): Trains, Subway & IC Cards Explained",
-    desc: "Tokyo has the world's most complex train network — but once you know the basics, it's easy. We cover the Yamanote Line, Tokyo Metro, IC cards, the Tokyo Subway Ticket, and key routes for every tourist destination.",
+    title: "Tokyo Transport Cost (2026): Fares per Ride & per Day",
+    desc: "How much getting around Tokyo costs: about ¥620–¥840 a day for four train rides on Suica, JR from ¥155, Tokyo Metro from ¥178, Toei buses ¥210, taxis from ¥500, and when the Tokyo Subway Ticket is cheaper.",
     group: "cities",
     city: "tokyo",
   },

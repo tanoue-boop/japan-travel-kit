@@ -467,7 +467,8 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
             {/* Answer-first: the first body paragraph, not the hero line. */}
             <p className={styles.verdictText}>
               <strong>2 days in Hiroshima</strong> work best as one day per site, with a night in the city
-              between them. On{" "}
+              between them — unlike a one-day Hiroshima and Miyajima trip, which fits both into a single day, or
+              a 2–5 hour guided Peace Park tour, which covers the city side only. On{" "}
               <strong>Day 1</strong>, walk the Peace Memorial Park and the Atomic Bomb Dome, then give the{" "}
               <strong>Peace Memorial Museum</strong> about two hours (<strong>{MUSEUM_ADULT}</strong> for an
               adult, open from <strong>7:30</strong>). On <strong>Day 2</strong>, go to{" "}

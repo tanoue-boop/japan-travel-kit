@@ -939,7 +939,7 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             For the wider picture — how Metro, Toei and JR divide up the city, and where an IC card beats any
-            pass — see <Link href="/guides/transport/tokyo-transportation">getting around Tokyo</Link> and our{" "}
+            pass — see <Link href="/guides/transport/tokyo-transportation">how much transport costs in Tokyo</Link> and our{" "}
             <Link href="/guides/transport/ic-cards-japan">guide to Japanese IC cards</Link>. If you are arriving
             at Narita or Haneda, <Link href="/guides/transport/tokyo-airport-transfer">Tokyo airport transfers</Link>{" "}
             covers the routes into town, several of which are bundled with this pass.

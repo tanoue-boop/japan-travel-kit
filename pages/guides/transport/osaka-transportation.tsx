@@ -326,7 +326,9 @@ export default function OsakaTransportationPage({ updated }: { updated: PageUpda
             Key stations on the Midosuji Line include: <strong>Umeda</strong> (shopping, Osaka Station connections,
             department stores), <strong>Shinsaibashi</strong> (America-mura, fashion, shopping arcades),
             <strong> Namba</strong> (Dotonbori, Kuromon Market, nightlife), and <strong>Tennoji</strong> (Abeno Harukas,
-            Shinsekai gateway, zoo).
+            Shinsekai gateway, zoo). Those four stops are also the shortlist for{" "}
+            <Link href="/guides/attractions/where-to-stay-in-osaka">where to stay in Osaka</Link>, compared by
+            the airport train and the shinkansen each one is closest to.
           </p>
           <p className={styles.bodyText}>
             Trains run every 2–3 minutes during the day and every 5–8 minutes late at night. A single

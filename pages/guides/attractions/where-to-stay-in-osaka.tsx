@@ -162,7 +162,7 @@ const quickRows = [
   {
     area: "Umeda / Osaka Station",
     stations: "JR Osaka, Umeda (Midosuji), Hankyu and Hanshin Osaka-umeda",
-    kix: "JR Haruka, direct, about 45 min",
+    kix: "JR Haruka, direct, about 45 min (¥1,900 one-way*)",
     shinOsaka: "JR Kyoto Line approx. 4 min (Midosuji approx. 7 min)",
     usj: "About 20 min by JR",
     bestFor: "Moving around: the shinkansen, Kyoto days, Kobe",
@@ -170,7 +170,7 @@ const quickRows = [
   {
     area: "Tennoji",
     stations: "JR Tennoji, Tennoji (Midosuji), Kintetsu Osaka-Abenobashi",
-    kix: "JR Haruka, direct, about 30 min",
+    kix: "JR Haruka, direct, about 30 min (¥1,600 one-way*)",
     shinOsaka: "Midosuji Line, direct",
     usj: "—",
     bestFor: "Haruka arrivals, Nara days, a quieter base",
@@ -226,9 +226,13 @@ const faqItems = [
 // Rebuilt 22 Nov 2026 (task jtk-20261122-I01): still 0 impressions while indexed, so the
 // title leads with the plain query and "first-timers" (the itineraries and usj-hotels own
 // the other angles), and the section headings became the questions searchers type (58 chars).
-const TITLE = "Where to Stay in Osaka (2026): Best Areas for First-Timers";
+// Rebuilt 27 Nov 2026 (task jtk-20261127-I01): a fourth check with 0 impressions, so the page
+// becomes the "Namba vs Umeda" comparison: the area table moved directly under the Quick Answer,
+// Tennoji named in the title, Haruka one-way prices added to the airport column (56 chars).
+// If it still has no impressions on 10 Dec 2026, it is the merge candidate.
+const TITLE = "Where to Stay in Osaka (2026): Namba vs Umeda vs Tennoji";
 const DESCRIPTION =
-  "Where to stay in Osaka: Namba for first-timers (Rapi:t to Kansai Airport in 34 min), Umeda for Shin-Osaka (4 min by JR), Universal City for USJ.";
+  "Where to stay in Osaka: Namba for a first trip (Rapi:t to Kansai Airport in 34 min), Umeda for Shin-Osaka (4 min by JR), Tennoji for the ¥1,600 Haruka.";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/attractions/where-to-stay-in-osaka") } });
 
@@ -320,7 +324,7 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Where to Stay in Osaka (2026): <br />The Best Areas for First-Timers, Namba vs Umeda vs USJ
+            Where to Stay in Osaka (2026): <br />Namba vs Umeda vs Tennoji, Compared by Station
           </h1>
           <p className={styles.heroSubtitle}>
             Namba, Shinsaibashi, Umeda, Tennoji and Universal City, compared on the stations under them rather
@@ -386,6 +390,64 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
           </div>
         </div>
 
+        {/* Area comparison table */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Compare</span>
+          <h2 className={styles.sectionTitle}>Namba vs Umeda vs Tennoji: Which Is the Best Area to Stay in Osaka?</h2>
+          <p className={styles.bodyText}>
+            <strong>Namba wins for a first trip, Umeda for the shinkansen, Tennoji for the cheapest Haruka leg
+            (¥1,600) and Nara, Universal City for a USJ day.</strong> The table puts each area&apos;s main
+            stations next to the official journey time to the three places a hotel choice in Osaka turns on —
+            Kansai Airport, Shin-Osaka and the USJ gates; a dash means there is no direct train and no
+            published time.
+          </p>
+          <div className={styles.tableWrap} style={{ marginBottom: "0.5rem" }}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Area", "Main stations", "Kansai Airport", "Shin-Osaka", "USJ gates", "Best for"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider}>Verdict</td>
+                    <td colSpan={5} style={{ fontSize: "0.9rem" }}>
+                      <strong>First trip → Namba · Shinkansen → Umeda · Haruka and Nara → Tennoji · Shopping → Shinsaibashi · USJ → Universal City</strong>
+                    </td>
+                  </tr>
+                  {quickRows.map((r) => (
+                    <tr key={r.area}>
+                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{r.area}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{r.stations}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{r.kix}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{r.shinOsaka}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{r.usj}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{r.bestFor}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: 2026-11-27 —{" "}
+            <a href="https://www.nankai.co.jp/en_railway/rapit" target="_blank" rel="noopener noreferrer">nankai.co.jp</a>{" "}
+            (Rapi:t, minimum 34 min),{" "}
+            <a href="https://www.westjr.co.jp/travel-information/en/tickets-passes/oneway/haruka/" target="_blank" rel="noopener noreferrer">westjr.co.jp</a>{" "}
+            (HARUKA routes; *the discounted one-way for foreign passport holders: ¥1,600 Tennoji, ¥1,900
+            Osaka / Shin-Osaka, adult) and the Osaka Convention &amp; Tourism Bureau&apos;s{" "}
+            <a href="https://osaka-info.jp/en/special/universal/tourism/" target="_blank" rel="noopener noreferrer">osaka-info.jp</a>{" "}
+            (Shin-Osaka to Osaka Station and Umeda),{" "}
+            <a href="https://osaka-info.jp/en/special/universal/course03/" target="_blank" rel="noopener noreferrer">to Namba</a> and{" "}
+            <a href="https://osaka-info.jp/en/spot/post_8/" target="_blank" rel="noopener noreferrer">to Shinsaibashi</a>.
+            Haruka journey times are Kansai Airport&apos;s own, read on {HARUKA_TIMES}; the USJ times are from{" "}
+            <a href="https://osaka-info.jp/en/" target="_blank" rel="noopener noreferrer">osaka-info.jp</a>, read on {OWN}.
+          </p>
+        </section>
+
         <EsimCtaTop />
 
         {/* Answer-first intro */}
@@ -419,60 +481,10 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
           </p>
         </section>
 
-        {/* Area comparison table */}
+        {/* Line-by-line detail */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Compare</span>
-          <h2 className={styles.sectionTitle}>Namba vs Umeda vs Shinsaibashi: Which Is the Best Area to Stay in Osaka?</h2>
-          <p className={styles.bodyText}>
-            <strong>Namba wins for a first trip, Umeda for the shinkansen and the Haruka, Universal City for a
-            USJ day.</strong> The table puts each area&apos;s main stations next to the official journey time
-            to the three places a hotel choice in Osaka turns on — Kansai Airport, Shin-Osaka and the USJ
-            gates; a dash means there is no direct train and no published time.
-          </p>
-          <div className={styles.tableWrap} style={{ marginBottom: "0.5rem" }}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["Area", "Main stations", "Kansai Airport", "Shin-Osaka", "USJ gates", "Best for"].map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className={styles.tdProvider}>Verdict</td>
-                    <td colSpan={5} style={{ fontSize: "0.9rem" }}>
-                      <strong>First trip → Namba · Shinkansen and Haruka → Umeda · Shopping → Shinsaibashi · USJ → Universal City</strong>
-                    </td>
-                  </tr>
-                  {quickRows.map((r) => (
-                    <tr key={r.area}>
-                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{r.area}</td>
-                      <td style={{ fontSize: "0.85rem" }}>{r.stations}</td>
-                      <td style={{ fontSize: "0.85rem" }}>{r.kix}</td>
-                      <td style={{ fontSize: "0.85rem" }}>{r.shinOsaka}</td>
-                      <td style={{ fontSize: "0.85rem" }}>{r.usj}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{r.bestFor}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Last checked: 2026-11-19 —{" "}
-            <a href="https://www.nankai.co.jp/en_railway/rapit" target="_blank" rel="noopener noreferrer">nankai.co.jp</a>{" "}
-            (Rapi:t, minimum 34 min),{" "}
-            <a href="https://www.westjr.co.jp/travel-information/en/tickets-passes/oneway/haruka/" target="_blank" rel="noopener noreferrer">westjr.co.jp</a>{" "}
-            (HARUKA routes) and the Osaka Convention &amp; Tourism Bureau&apos;s{" "}
-            <a href="https://osaka-info.jp/en/special/universal/tourism/" target="_blank" rel="noopener noreferrer">osaka-info.jp</a>{" "}
-            (Shin-Osaka to Osaka Station and Umeda),{" "}
-            <a href="https://osaka-info.jp/en/special/universal/course03/" target="_blank" rel="noopener noreferrer">to Namba</a> and{" "}
-            <a href="https://osaka-info.jp/en/spot/post_8/" target="_blank" rel="noopener noreferrer">to Shinsaibashi</a>.
-            Haruka journey times are Kansai Airport&apos;s own, read on {HARUKA_TIMES}; the USJ times are from{" "}
-            <a href="https://osaka-info.jp/en/" target="_blank" rel="noopener noreferrer">osaka-info.jp</a>, read on {OWN}.
-          </p>
+          <span className={styles.sectionLabel}>Detail</span>
+          <h2 className={styles.sectionTitle}>How Do the Five Osaka Areas Compare Line by Line?</h2>
           <p className={styles.bodyText} style={{ marginTop: "1.5rem", marginBottom: "1rem" }}>
             Osaka is simpler than Tokyo in one respect: four of the five areas below are stops on the same
             subway line, the Midosuji, so the choice between them is mostly a choice of which{" "}

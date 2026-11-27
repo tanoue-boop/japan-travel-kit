@@ -72,7 +72,7 @@ const fareRows: FareRow[] = [
     route: "Tokyo Metro, 1–6 km (most hops between central stations)",
     fare: "¥178 on an IC card, ¥180 ticket (up to ¥324 / ¥330 for 28–40 km)",
     time: "A few minutes per hop",
-    guide: <Link href="/guides/transport/tokyo-transportation" style={L}>How to get around Tokyo</Link>,
+    guide: <Link href="/guides/transport/tokyo-transportation" style={L}>Tokyo transport cost</Link>,
     source: { href: "https://www.tokyometro.jp/en/ticket/regular/index.html", label: "tokyometro.jp", checked: "2026-11-16" },
   },
   {
@@ -311,7 +311,7 @@ export default function GuidesTransportPage({ updated, dates }: { updated: PageU
               <p className={styles.bodyText}>
                 This page covers Japan as a whole. For the trains inside one city — JR from ¥155 and Tokyo Metro
                 from ¥178 on an IC card, and about ¥620–¥840 for a day of four rides — see{" "}
-                <Link href="/guides/transport/tokyo-transportation">how to get around Tokyo</Link>.
+                <Link href="/guides/transport/tokyo-transportation">how much transport costs in Tokyo</Link>.
               </p>
             </section>
             <KlookTripPrep

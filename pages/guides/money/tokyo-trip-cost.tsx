@@ -568,7 +568,7 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
             Most of that can go on a card, and the subway pass and timed tickets can be paid before you fly (how
             many rides make the <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket</Link>{" "}
             cheaper than single fares is worked out against the official fares, and our guide on{" "}
-            <Link href="/guides/transport/tokyo-transportation">how to get around Tokyo</Link> prices a day of
+            <Link href="/guides/transport/tokyo-transportation">Tokyo transport cost</Link> prices a day of
             JR and subway rides on an IC card at about ¥620–¥840). The
             part that has to be cash (some temples, market stalls, coin lockers) is smaller; our{" "}
             <Link href="/guides/money/how-much-yen-to-bring-japan">how much yen to bring guide</Link> sizes it, and

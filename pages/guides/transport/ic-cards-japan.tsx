@@ -1217,11 +1217,11 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
             <Link href="/guides/transport/osaka-metro-pass" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Osaka Metro Pass guide
             </Link>{" "}
-            do the break-even in full; the guide on{" "}
+            do the break-even in full; the guide to{" "}
             <Link href="/guides/transport/tokyo-transportation" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              how to get around Tokyo
+              Tokyo transport cost
             </Link>{" "}
-            shows which lines are Metro, Toei or JR and when a bus or taxi fits, and{" "}
+            prices a day of Metro, Toei and JR rides on an IC card and when a bus or taxi fits, and{" "}
             the{" "}
             <Link href="/guides/transport" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Japan transportation guide

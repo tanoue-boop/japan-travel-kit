@@ -9,6 +9,14 @@ import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 
 /*
+ * Nov 27 I01: still 0 Google impressions while indexed, but Bing shows the page at about 6.5 for
+ * "roughly how much does it cost for transport around tokyo". No other page targets the cost of
+ * getting around Tokyo (tokyo-trip-cost = a whole trip, tokyo-subway-ticket = one pass,
+ * ic-cards-japan = which card, /guides/transport = Japan-wide), so the page is kept (no 301) and
+ * narrowed to that question: title, H1 and the opening answer lead with the daily cost, and the
+ * per-day table now comes first. Tokyo Metro fares, the Subway Ticket and the taxi list re-read
+ * on 27 Nov 2026; Toei Bus stays at its 23 Nov reading and JR East at 16 Nov.
+ *
  * Scope (Nov 23 I01): "how to get around Tokyo" for a first visit — which way to travel (train,
  * subway, bus, taxi, walking), when each one fits and what a day of it costs. Pass prices and
  * break-evens belong to /guides/attractions/tokyo-subway-ticket, IC card deposits / refunds /
@@ -34,8 +42,9 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  * Route fares below are the band for each pair's JR / Metro distance (Shibuya–Harajuku 1.2 km,
  * Shinjuku–Shibuya 3.4 km, Tokyo–Ueno 3.6 km, Ginza Line Asakusa–Shibuya 14.2 km).
  */
-const METRO_CHECKED = "23 November 2026";
-const LAST_CHECKED = "2026-11-23";
+const METRO_CHECKED = "27 November 2026";
+const LAST_CHECKED = "2026-11-27";
+const BUS_CHECKED = "2026-11-23";
 const JR_CHECKED = "2026-11-16";
 const JR_FARES = "https://www.jreast.co.jp/press/2025/20250801_ho03.pdf";
 const JR_PASSES = "https://www.jreast.co.jp/2026unchin-kaitei/assets/pdf/pamphlet2.pdf";
@@ -45,11 +54,11 @@ const TOEI_BUS_FARES = "https://www.kotsu.metro.tokyo.jp/bus/fare/regular.html";
 const TOEI_BUS_HOWTO = "https://www.kotsu.metro.tokyo.jp/eng/tips/bus_ride.html";
 const TAXI_FARES = "https://www.taxi-tokyo.or.jp/call/pricelist.html";
 
-const TITLE = "How to Get Around Tokyo (2026): Trains, Subway, Bus & Taxi";
-const H1_LINE1 = "How to Get Around Tokyo (2026):";
-const H1_LINE2 = "Trains, Subway, Bus & Taxi";
+const TITLE = "Tokyo Transport Cost (2026): Fares per Ride & per Day";
+const H1_LINE1 = "How Much Does Transport Cost in Tokyo?";
+const H1_LINE2 = "2026 Fares per Ride and per Day";
 const DESCRIPTION =
-  "How to get around Tokyo: subway and JR from ¥155 a ride, buses ¥210, taxis from ¥500, and the daily transport cost (about ¥620–¥840 on Suica).";
+  "Transport in Tokyo costs about ¥620–¥840 a day for 4 train rides on Suica: JR from ¥155, Tokyo Metro from ¥178, buses ¥210 and taxis from ¥500.";
 
 // Row 1 is the answer; the rest are the options in the order a first visit uses them.
 const modeRows = [
@@ -72,9 +81,10 @@ const fareRows = [
 ];
 
 const dailyRows = [
-  { day: "Typical sightseeing day: 4 rides", payg: "About ¥620–¥840", better: "Pay as you go, or the 72-hour Subway Ticket (¥667 a day) if all 4 are subway" },
+  { day: "Answer — typical sightseeing day: 4 rides", payg: "About ¥620–¥840", better: "Pay as you go, or the 72-hour Subway Ticket (¥667 a day) if all 4 are subway" },
   { day: "Light day: 2 rides", payg: "About ¥310–¥420", better: "Pay as you go" },
   { day: "Busy day: 6 rides", payg: "About ¥930–¥1,250", better: "Tokyo Subway Ticket if they are Metro / Toei rides" },
+  { day: "3 days of 4 rides", payg: "About ¥1,860–¥2,520", better: "72-hour Tokyo Subway Ticket (¥2,000) if they are all Metro / Toei" },
   { day: "Mostly JR (Yamanote loop)", payg: "¥155–¥209 a ride", better: "Suica or PASMO — the Subway Ticket does not cover JR" },
 ];
 
@@ -141,12 +151,12 @@ const trainTips = [
 
 const faqItems = [
   {
-    q: "What is the best way to get around Tokyo?",
-    a: "The subway plus the JR Yamanote Line, paid with a Suica or PASMO IC card. The same card works on JR East, Tokyo Metro, Toei Subway and Toei buses, so one tap covers every line; buses fill short gaps at a flat ¥210, and taxis (from ¥500) are for after the last train or for a group with luggage.",
-  },
-  {
     q: "How much does transport cost per day in Tokyo?",
     a: "About ¥620 to ¥840 for a typical day of four train rides paid by IC card, and roughly ¥930 to ¥1,250 for a busy day of six. If you will ride mostly the subway for three days or more, the 72-hour Tokyo Subway Ticket (¥2,000) works out at ¥667 a day, but it does not cover JR lines.",
+  },
+  {
+    q: "What is the cheapest way to get around Tokyo?",
+    a: "The subway plus the JR Yamanote Line, paid with a Suica or PASMO IC card, plus walking between neighbouring areas. IC fares are the cheaper ones (¥155 against ¥160 for the shortest JR ride), the same card works on JR East, Tokyo Metro, Toei Subway and Toei buses, buses cost a flat ¥210, and taxis (from ¥500) only pay off after the last train or for a group of three or four.",
   },
   {
     q: "How much is a train ride in Tokyo?",
@@ -217,7 +227,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
                 { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com/" },
                 { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
                 { "@type": "ListItem", position: 3, name: "Transport", item: "https://www.japan-travel-kit.com/guides/transport" },
-                { "@type": "ListItem", position: 4, name: "How to Get Around Tokyo", item: "https://www.japan-travel-kit.com/guides/transport/tokyo-transportation" },
+                { "@type": "ListItem", position: 4, name: "Tokyo Transport Cost", item: "https://www.japan-travel-kit.com/guides/transport/tokyo-transportation" },
               ],
             }),
           }}
@@ -239,7 +249,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg><span className="sr-only"> / </span>
-          <span className={styles.breadCurrent}>How to Get Around Tokyo</span>
+          <span className={styles.breadCurrent}>Tokyo Transport Cost</span>
         </div>
       </div>
 
@@ -253,11 +263,11 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             {H1_LINE1} <br />{H1_LINE2}
           </h1>
           <p className={styles.heroSubtitle}>
-            A first-timer&apos;s guide to getting around Tokyo: when to take the train, the subway, a bus, a taxi
-            or simply walk, and what a day of it costs.
+            What getting around Tokyo costs: a train, subway, bus or taxi ride, a day of sightseeing, and when a
+            pass is cheaper than paying per ride.
           </p>
           <div className={styles.heroBadges}>
-            {[`Updated ${updated.label}`, "2026 fares", "Train · Subway · Bus · Taxi"].map((t) => (
+            {[`Updated ${updated.label}`, "2026 fares", "Per ride · Per day · Per trip"].map((t) => (
               <span key={t} className={styles.heroBadge}>
                 <span className={styles.heroBadgeCheck}>✓</span> {t}
               </span>
@@ -274,11 +284,11 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
           </div>
           <div className={styles.verdictBody}>
             <p className={styles.verdictText} style={{ marginTop: 0 }}>
-              Getting around Tokyo means the subway plus the JR Yamanote Line, and a sightseeing day of four rides
-              on a Suica or PASMO card costs about <strong>¥620–¥840</strong>. A JR ride starts at{" "}
-              <strong>¥155</strong> and a Tokyo Metro ride at <strong>¥178</strong> on an IC card. If you will ride
-              mostly the subway for three days or more, the 72-hour Tokyo Subway Ticket (<strong>¥2,000</strong>)
-              works out at ¥667 a day.
+              Transport in Tokyo costs about <strong>¥620–¥840 a day</strong> for a sightseeing day of four train
+              rides on a Suica or PASMO card. A JR ride starts at <strong>¥155</strong> and a Tokyo Metro ride at{" "}
+              <strong>¥178</strong> on an IC card, a Toei bus is a flat <strong>¥210</strong> and a taxi starts at{" "}
+              <strong>¥500</strong>. If you will ride mostly the subway for three days or more, the 72-hour Tokyo
+              Subway Ticket (<strong>¥2,000</strong>) works out at ¥667 a day.
             </p>
             <div className={styles.verdictGrid} style={{ marginTop: "1rem" }}>
               <div className={styles.verdictStat}>
@@ -305,30 +315,31 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
           </div>
         </div>
 
-        {/* Modes */}
+        {/* Per day */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Ways to get around</span>
-          <h2 className={styles.sectionTitle}>What Is the Best Way to Get Around Tokyo?</h2>
+          <span className={styles.sectionLabel}>Budget</span>
+          <h2 className={styles.sectionTitle}>How Much Does Transport Cost per Day in Tokyo?</h2>
           <p className={styles.bodyText}>
-            The subway and the JR Yamanote Line, on one IC card: between them they reach every district a first
-            visit covers, at ¥155–¥252 a ride. Buses, taxis and walking fill the gaps.
+            About ¥620–¥840 for a typical day of four rides paid by IC card, and about ¥1,860–¥2,520 for three
+            such days. The figures multiply the per-ride fares in the next table; a pass is only cheaper on days
+            that are mostly Tokyo Metro and Toei.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["How to travel", "Best for", "Adult fare"].map((h) => (
+                    {["Your day", "Pay as you go (IC)", "Cheaper option"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {modeRows.map((row) => (
-                    <tr key={row.mode}>
-                      <td className={styles.tdProvider}>{row.mode}</td>
-                      <td>{row.when}</td>
-                      <td className={styles.tdPrice}>{row.fare}</td>
+                  {dailyRows.map((row) => (
+                    <tr key={row.day}>
+                      <td className={styles.tdProvider}>{row.day}</td>
+                      <td className={styles.tdPrice}>{row.payg}</td>
+                      <td>{row.better}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -336,19 +347,17 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Last checked: {LAST_CHECKED}. Tokyo Metro fares from{" "}
-            <a href={METRO_FARES} target="_blank" rel="noopener noreferrer">tokyometro.jp</a>; Toei Bus fare from{" "}
-            <a href={TOEI_BUS_FARES} target="_blank" rel="noopener noreferrer">kotsu.metro.tokyo.jp</a>; taxi
-            fares (maximum fares, 23 wards) from the{" "}
-            <a href={TAXI_FARES} target="_blank" rel="noopener noreferrer">Tokyo Hire-Taxi Association</a>; JR East
-            fares from its{" "}
-            <a href={JR_FARES} target="_blank" rel="noopener noreferrer">fare revision release</a> (checked{" "}
-            {JR_CHECKED}).
-          </p>
-          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            Arriving or leaving by plane is a different question with its own fares: the{" "}
+            Last checked: {LAST_CHECKED}. Tokyo Subway Ticket price from{" "}
+            <a href={METRO_PASSES} target="_blank" rel="noopener noreferrer">tokyometro.jp</a>. For the airport legs,
+            the{" "}
             <Link href="/guides/transport/tokyo-airport-transfer" style={{ color: "var(--text)", fontWeight: 600 }}>Tokyo airport transfer guide</Link>{" "}
-            compares Narita and Haneda to the city by train, bus and taxi.
+            compares Narita to Tokyo and Haneda to Tokyo by train, bus and taxi, and the{" "}
+            <Link href="/guides/transport/tokyo-airport-limousine-bus" style={{ color: "var(--text)", fontWeight: 600 }}>Airport Limousine Bus Tokyo</Link>{" "}
+            page has every bus fare and timetable time; for the shinkansen and the JR Pass, the{" "}
+            <Link href="/guides/transport" style={{ color: "var(--text)", fontWeight: 600 }}>Japan transportation guide</Link>{" "}
+            has the nationwide fares; for a whole trip&apos;s numbers, see the{" "}
+            <Link href="/guides/money/tokyo-trip-cost" style={{ color: "var(--text)", fontWeight: 600 }}>Tokyo trip cost</Link>{" "}
+            breakdown.
           </p>
         </section>
 
@@ -393,30 +402,31 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
           </p>
         </section>
 
-        {/* Per day */}
+        {/* Modes */}
         <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>Budget</span>
-          <h2 className={styles.sectionTitle}>How Much Does Transport Cost per Day in Tokyo?</h2>
+          <span className={styles.sectionLabel}>Ways to get around</span>
+          <h2 className={styles.sectionTitle}>What Is the Cheapest Way to Get Around Tokyo?</h2>
           <p className={styles.bodyText}>
-            About ¥620–¥840 for a typical day of four rides paid by IC card. The figures below multiply the fares
-            above; a pass is only cheaper on a day that is mostly Tokyo Metro and Toei.
+            The subway and the JR Yamanote Line, on one IC card: between them they reach every district a first
+            visit covers, at ¥155–¥252 a ride. Walking is free between neighbouring areas, a bus is ¥210, and a
+            taxi from ¥500 only pays off after the last train or for a group.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Your day", "Pay as you go (IC)", "Cheaper option"].map((h) => (
+                    {["How to travel", "Best for", "Adult fare"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {dailyRows.map((row) => (
-                    <tr key={row.day}>
-                      <td className={styles.tdProvider}>{row.day}</td>
-                      <td className={styles.tdPrice}>{row.payg}</td>
-                      <td>{row.better}</td>
+                  {modeRows.map((row) => (
+                    <tr key={row.mode}>
+                      <td className={styles.tdProvider}>{row.mode}</td>
+                      <td>{row.when}</td>
+                      <td className={styles.tdPrice}>{row.fare}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -424,17 +434,20 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Last checked: {LAST_CHECKED}. Tokyo Subway Ticket price from{" "}
-            <a href={METRO_PASSES} target="_blank" rel="noopener noreferrer">tokyometro.jp</a>. For the airport legs,
-            the{" "}
+            Last checked: {LAST_CHECKED}. Tokyo Metro fares from{" "}
+            <a href={METRO_FARES} target="_blank" rel="noopener noreferrer">tokyometro.jp</a>; Toei Bus fare from{" "}
+            <a href={TOEI_BUS_FARES} target="_blank" rel="noopener noreferrer">kotsu.metro.tokyo.jp</a> (checked{" "}
+            {BUS_CHECKED}); taxi
+            fares (maximum fares, 23 wards) from the{" "}
+            <a href={TAXI_FARES} target="_blank" rel="noopener noreferrer">Tokyo Hire-Taxi Association</a>; JR East
+            fares from its{" "}
+            <a href={JR_FARES} target="_blank" rel="noopener noreferrer">fare revision release</a> (checked{" "}
+            {JR_CHECKED}).
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            Arriving or leaving by plane is a different question with its own fares: the{" "}
             <Link href="/guides/transport/tokyo-airport-transfer" style={{ color: "var(--text)", fontWeight: 600 }}>Tokyo airport transfer guide</Link>{" "}
-            compares Narita to Tokyo and Haneda to Tokyo by train, bus and taxi, and the{" "}
-            <Link href="/guides/transport/tokyo-airport-limousine-bus" style={{ color: "var(--text)", fontWeight: 600 }}>Airport Limousine Bus Tokyo</Link>{" "}
-            page has every bus fare and timetable time; for the shinkansen and the JR Pass, the{" "}
-            <Link href="/guides/transport" style={{ color: "var(--text)", fontWeight: 600 }}>Japan transportation guide</Link>{" "}
-            has the nationwide fares; for a whole trip&apos;s numbers, see the{" "}
-            <Link href="/guides/money/tokyo-trip-cost" style={{ color: "var(--text)", fontWeight: 600 }}>Tokyo trip cost</Link>{" "}
-            breakdown.
+            compares Narita and Haneda to the city by train, bus and taxi.
           </p>
         </section>
 
@@ -513,7 +526,7 @@ export default function TokyoTransportationPage({ updated }: { updated: PageUpda
             Tokyo&apos;s traffic.
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Last checked: {LAST_CHECKED}. Fare from Toei Transportation&apos;s{" "}
+            Last checked: {BUS_CHECKED}. Fare from Toei Transportation&apos;s{" "}
             <a href={TOEI_BUS_FARES} target="_blank" rel="noopener noreferrer">regular fare page</a>; boarding and
             payment from its{" "}
             <a href={TOEI_BUS_HOWTO} target="_blank" rel="noopener noreferrer">How to use the Toei Bus</a> page.
