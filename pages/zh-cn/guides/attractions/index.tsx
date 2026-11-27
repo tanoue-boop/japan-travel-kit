@@ -112,9 +112,10 @@ const groups: CnHubGroup[] = [
   {
     key: "prep",
     label: "行前准备",
-    desc: "抵达日本当天就需要用到的两项服务：机场到市区的交通，以及手机上网。",
+    desc: "抵达日本当天就需要用到的交通与上网：机场到市区、京都到东京的新干线，以及日本 eSIM。",
     routes: [
       "/zh-cn/guides/transport/tokyo-airport-transfer",
+      "/zh-cn/guides/transport/kyoto-to-tokyo-shinkansen",
       "/zh-cn/guides/esim/best-esim-japan",
     ],
   },
@@ -156,6 +157,8 @@ const BLURBS: Record<string, string> = {
     "东京街头卡丁车：Street Kart 官方价目表每人 ¥5,000–¥25,000，比较涩谷、秋叶原、东京湾等路线。需要 1949 年日内瓦公约国际驾照、本国驾照和护照原件。",
   "/zh-cn/guides/transport/tokyo-airport-transfer":
     "从成田机场和羽田机场前往市区的各种交通方式，比较价格、所需时间和便利程度，附 2026 年票价与按酒店位置的建议。",
+  "/zh-cn/guides/transport/kyoto-to-tokyo-shinkansen":
+    "京都到东京新干线：希望号约 2 小时 12 分、每小时 8–12 班，smartEX 指定席 ¥13,970、自由席 ¥13,320，车站购票 ¥14,170。JR Pass 乘希望号另付 ¥4,960，京都站 11、12 号站台，以及在东京、品川、新横滨哪一站下车。",
   "/zh-cn/guides/esim/best-esim-japan":
     "对比 Klook 日本 eSIM 与 Airalo、Holafly、eSIM Go、Sakura Mobile 的价格和网络。价格每天核查。",
 };

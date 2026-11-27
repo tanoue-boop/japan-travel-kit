@@ -22,6 +22,7 @@ import {
   tokyoSharedAirportTransfer,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import { hreflangLinks } from "../../../components/Hreflang";
 
 /**
  * Kyoto to Tokyo on the Tokaido Shinkansen. Added 29 Oct 2026 as the eastbound
@@ -577,6 +578,7 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
         <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href={CANONICAL} />
+        {hreflangLinks("/guides/transport/kyoto-to-tokyo-shinkansen")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:url" content={CANONICAL} />

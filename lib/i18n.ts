@@ -639,6 +639,25 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     thTitle: "ชิราคาวาโกะ ไลท์อัพ 2027: วันงาน จองทัวร์",
     thLabel: "ชิราคาวาโกะ ไลท์อัพ",
   },
+  // Added 2026-11-27 (task jtk-20261127-TR01): the Kyoto → Tokyo Shinkansen page (Klook 30 days:
+  // 4 bookings). Titles lead with the route as each market searches it: 교토 도쿄 신칸센
+  // (ekitan.com/ko, shinkansen-ticket.com/ko), 京都到東京新幹線 (ekitan.com/zh-tw), 京都到东京新干线
+  // (ekitan.com/zh-cn, railmonsters.com/zh) and ชินคันเซ็น เกียวโต โตเกียว (ekitan.com/th).
+  {
+    en: "/guides/transport/kyoto-to-tokyo-shinkansen",
+    zhTw: "/zh-tw/guides/transport/kyoto-to-tokyo-shinkansen",
+    zhTitle: "京都到東京新幹線 2026：票價、車程時間與購票方式",
+    zhLabel: "京都到東京新幹線",
+    zhCn: "/zh-cn/guides/transport/kyoto-to-tokyo-shinkansen",
+    zhCnTitle: "京都到东京新干线 2026：票价、车程时间与购票方式",
+    zhCnLabel: "京都到东京新干线",
+    ko: "/ko/guides/transport/kyoto-to-tokyo-shinkansen",
+    koTitle: "교토 도쿄 신칸센 2026: 가격, 소요 시간, 예매 방법",
+    koLabel: "교토 도쿄 신칸센",
+    th: "/th/guides/transport/kyoto-to-tokyo-shinkansen",
+    thTitle: "ชินคันเซ็น เกียวโต โตเกียว 2026: ราคา",
+    thLabel: "ชินคันเซ็น เกียวโต โตเกียว",
+  },
   {
     en: "/guides/attractions",
     zhTw: "/zh-tw/guides/attractions",

@@ -180,9 +180,10 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "prep",
         label: "行前準備",
-        desc: "抵達日本當天就會用到的兩件事：機場到市區的交通，以及手機上網。",
+        desc: "抵達日本當天就會用到的交通與手機上網：機場到市區、京都到東京的新幹線，以及日本 eSIM。",
         routes: [
           "/zh-tw/guides/transport/tokyo-airport-transfer",
+          "/zh-tw/guides/transport/kyoto-to-tokyo-shinkansen",
           "/zh-tw/guides/esim/best-esim-japan",
         ],
       },
@@ -238,6 +239,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "繁體中文版的景點門票總覽：官方票價、預約方式與一日遊，依類別整理。",
       "/zh-tw/guides/transport/tokyo-airport-transfer":
         "從成田與羽田機場進市區的所有交通方式，比價格、時間與方便度，附 2026 年車資。",
+      "/zh-tw/guides/transport/kyoto-to-tokyo-shinkansen":
+        "希望號 2 小時 12 分、每小時 8–12 班。smartEX 指定席 ¥13,970、自由席 ¥13,320，JR Pass 搭希望號另付 ¥4,960。京都車站 11、12 號月台，以及在東京、品川、新橫濱哪一站下車。",
       "/zh-tw/guides/esim/best-esim-japan":
         "Klook 日本 eSIM，加上 Airalo、Holafly、eSIM Go、Sakura Mobile 的價格比較。",
     },
@@ -333,9 +336,10 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "prep",
         label: "行前准备",
-        desc: "抵达日本当天就会用到的两件事：机场到市区的交通，以及手机上网。",
+        desc: "抵达日本当天就会用到的交通与上网：机场到市区、京都到东京的新干线，以及日本 eSIM。",
         routes: [
           "/zh-cn/guides/transport/tokyo-airport-transfer",
+          "/zh-cn/guides/transport/kyoto-to-tokyo-shinkansen",
           "/zh-cn/guides/esim/best-esim-japan",
         ],
       },
@@ -391,6 +395,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "简体中文版的景点门票总览：官方票价、预约方式与一日游，按类别整理。",
       "/zh-cn/guides/transport/tokyo-airport-transfer":
         "从成田机场和羽田机场前往市区的各种交通方式，比较价格、时间与便利程度，附 2026 年票价。",
+      "/zh-cn/guides/transport/kyoto-to-tokyo-shinkansen":
+        "希望号 2 小时 12 分、每小时 8–12 班。smartEX 指定席 ¥13,970、自由席 ¥13,320，JR Pass 乘希望号另付 ¥4,960。京都站 11、12 号站台，以及在东京、品川、新横滨哪一站下车。",
       "/zh-cn/guides/esim/best-esim-japan":
         "Klook 日本 eSIM，加上 Airalo、Holafly、eSIM Go、Sakura Mobile 的价格比较。",
     },
@@ -484,8 +490,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "prep",
         label: "여행 준비",
-        desc: "도착해서 가장 먼저 쓰는 것 — 휴대폰 데이터.",
-        routes: ["/ko/guides/esim/best-esim-japan"],
+        desc: "도착해서 가장 먼저 쓰는 모바일 데이터와 교토에서 도쿄로 가는 신칸센.",
+        routes: ["/ko/guides/esim/best-esim-japan", "/ko/guides/transport/kyoto-to-tokyo-shinkansen"],
       },
     ],
     blurbs: {
@@ -495,6 +501,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "신치토세 공항 셔틀, 스키 강습, 4개 스키장 선택, 삿포로 출발 스키 투어.",
       "/ko/guides/attractions/hokkaido-7-day-itinerary":
         "7일 일정을 날짜별로 정리하고 교통패스 요금 비교와 겨울철 조정 방법을 담았습니다.",
+      "/ko/guides/transport/kyoto-to-tokyo-shinkansen":
+        "노조미 2시간 12분, 1시간에 8~12편. smartEX 지정석 ¥13,970, 자유석 ¥13,320, JR 패스는 노조미 ¥4,960 추가. 교토역 11, 12번 선과 도쿄, 시나가와, 신요코하마 중 내릴 역.",
       "/ko/guides/attractions/shirakawago-winter-light-up":
         "시라카와고 겨울 야간 조명 행사는 2027년 1월 11, 17, 24, 31일 4일 저녁, 17:30~19:30이며 완전 사전 예약제로 당일 입장권이 없습니다. 나고야, 다카야마, 가나자와 출발 야간 조명 버스를 비교했습니다.",
       "/ko/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo":
@@ -617,8 +625,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "prep",
         label: "เตรียมทริป",
-        desc: "สิ่งแรกที่ได้ใช้เมื่อเดินทางถึงญี่ปุ่น — เน็ตมือถือ",
-        routes: ["/th/guides/esim/best-esim-japan"],
+        desc: "อินเทอร์เน็ตมือถือที่ได้ใช้ทันทีเมื่อเดินทางถึงญี่ปุ่น และชินคันเซ็นจากเกียวโตไปโตเกียว",
+        routes: ["/th/guides/esim/best-esim-japan", "/th/guides/transport/kyoto-to-tokyo-shinkansen"],
       },
     ],
     blurbs: {
@@ -628,6 +636,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "รถรับส่งสนามบินชิโตเสะ คลาสสกี การเลือกสี่พื้นที่ และทัวร์สกีจากซัปโปโร",
       "/th/guides/attractions/hokkaido-7-day-itinerary":
         "แผนเที่ยวรายวัน 7 วัน พร้อมวิธีคำนวณพาส และการปรับแผนในหน้าหนาว",
+      "/th/guides/transport/kyoto-to-tokyo-shinkansen":
+        "โนโซมิ 2 ชม. 12 นาที ชั่วโมงละ 8–12 ขบวน smartEX ที่นั่งจอง ¥13,970 ที่นั่งไม่จอง ¥13,320 JR Pass ขึ้นโนโซมิจ่ายเพิ่ม ¥4,960 ชานชาลา 11 และ 12 ที่สถานีเกียวโต และควรลงที่โตเกียว ชินางาวะ หรือชินโยโกฮาม่า",
       "/th/guides/attractions/shirakawago-winter-light-up":
         "ชมไฟประดับชิราคาวาโกะมีเพียง 11, 17, 24 และ 31 มกราคม 2027 เวลา 17:30–19:30 น. ต้องจองล่วงหน้า ไม่มีบัตรขายในวันงาน เทียบรถบัสชมไฟประดับจากนาโกย่า ทาคายามะ และคานาซาวะ",
       "/th/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo":

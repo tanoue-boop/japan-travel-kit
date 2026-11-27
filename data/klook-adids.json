@@ -472,13 +472,13 @@
     "/guides/transport/sapporo-furano-area-pass": 1598335,
     "/guides/transport/sapporo-noboribetsu-area-pass": 1598336,
     "/guides/transport/hokuriku-area-pass": 1598337,
-    "/guides/attractions/ghibli-museum-tickets": 1598338
+    "/guides/attractions/ghibli-museum-tickets": 1598338,
+    "/ko/guides/transport/kyoto-to-tokyo-shinkansen": 1598339,
+    "/zh-tw/guides/transport/kyoto-to-tokyo-shinkansen": 1598340,
+    "/zh-cn/guides/transport/kyoto-to-tokyo-shinkansen": 1598341,
+    "/th/guides/transport/kyoto-to-tokyo-shinkansen": 1598342
   },
   "spare": [
-    1598339,
-    1598340,
-    1598341,
-    1598342,
     1598343,
     1598344,
     1598345,

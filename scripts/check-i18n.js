@@ -246,6 +246,14 @@ const SEARCH_TERMS = {
     ko: "시라카와고 라이트업",
     th: "ชิราคาวาโกะ ไลท์อัพ",
   },
+  // Added 2026-11-27 (TR01): the route as Korean, Taiwan / Hong Kong, Simplified Chinese and
+  // Thai results write it.
+  "/guides/transport/kyoto-to-tokyo-shinkansen": {
+    "zh-tw": "京都到東京新幹線",
+    "zh-cn": "京都到东京新干线",
+    ko: "교토 도쿄 신칸센",
+    th: "ชินคันเซ็น เกียวโต โตเกียว",
+  },
 };
 
 /** Klook's own locale path each edition must link. */
