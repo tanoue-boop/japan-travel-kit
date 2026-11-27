@@ -850,6 +850,11 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
             For an aquarium, <Link href="/guides/attractions/marine-world-uminonakamichi-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Marine World Uminonakamichi</Link> is ¥2,500 for adults, open 10:00–17:00 in winter, reached by the JR Kashii Line from Hakata.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For getting around, the <Link href="/guides/transport/fukuoka-tourist-city-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Fukuoka Tourist City Pass</Link> is ¥2,500 a day (¥2,800 with Dazaifu); for Dazaifu plus the Yanagawa boat, Nishitetsu&apos;s <Link href="/guides/transport/dazaifu-yanagawa-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Dazaifu & Yanagawa pass</Link> is ¥3,620 digital.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

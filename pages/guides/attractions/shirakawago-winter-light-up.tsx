@@ -591,6 +591,11 @@ export default function ShirakawagoWinterLightUpPage({ updated }: { updated: Pag
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On ordinary days, the <Link href="/guides/transport/shirakawa-go-bus" style={{ color: "var(--red)", fontWeight: 600 }}>Shirakawa-go bus</Link> from Takayama is ¥2,900 one way from 1 December 2026; to Kanazawa it is also ¥2,900.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

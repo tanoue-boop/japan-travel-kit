@@ -1003,6 +1003,11 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
             In Fukuoka, <Link href="/guides/attractions/marine-world-uminonakamichi-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Marine World Uminonakamichi</Link> is 11 + 20 minutes from Hakata by JR with a change at Kashii (¥2,500 for adults).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For Dazaifu and Yanagawa from Tenjin, the <Link href="/guides/transport/dazaifu-yanagawa-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Dazaifu & Yanagawa pass</Link> bundles the Nishitetsu trains and the river boat (¥3,620 digital, two days).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

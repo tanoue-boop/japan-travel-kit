@@ -588,6 +588,11 @@ export default function OsakaFoodTourPage({ updated }: { updated: PageUpdated })
           areas={osakaTwoDayStayAreas}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            After a Shinsekai food walk, <Link href="/guides/attractions/spa-world-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Spa World</Link> is by Dobutsuen-mae Station (onsen ¥1,500, open 10:00 to 8:45 the next morning).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

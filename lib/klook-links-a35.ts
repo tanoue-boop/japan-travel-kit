@@ -472,3 +472,56 @@ export const shinagawaAquariumTicket: KlookTour = {
   desc: "An e-ticket for the aquarium in Katsushima, Shinagawa (free bus from Oimachi Station), used any time within opening hours on the day",
   url: klookLink("https://www.klook.com/en-US/activity/45664-shinagawa-aquarium-tokyo/"),
 };
+
+// ---------------------------------------------------------------------------
+// Day 7 (task jtk-20261203-A35, run 28 Nov 2026): onsen, parks and a museum with no
+// page of their own. Activity ids from the www.klook.com search index that day
+// (product pages still answer automated reads with 403, so no Klook price is printed).
+// The Taiko no Yu, Fukuoka Tourist City Pass, Dazaifu & Yanagawa and Shirakawa-go bus
+// pages use the existing constants in lib/klook-links.ts (1417, 94833, 152456, 149343).
+// Dropped: Miyajima Aquarium (114213; its own site says it is closed 1 Dec 2026 –
+// 31 Mar 2027), the Santa Maria cruise and the Mt. Fuji Panoramic Ropeway (their own
+// sites could not be read that day). Every yen figure on the pages is the operator's own.
+// ---------------------------------------------------------------------------
+
+/** Spa World (Shinsekai, Osaka) — admission. */
+export const spaWorldTicket: KlookTour = {
+  title: "Spa World admission ticket",
+  desc: "Entry to the 24-hour onsen complex by Shinsekai, with options for the pool and the stone saunas",
+  url: klookLink("https://www.klook.com/en-US/activity/16107-spa-world-admission-ticket-osaka/"),
+};
+
+/** NIFREL (Expo '70 Commemorative Park, Suita) — e-ticket. */
+export const nifrelTicket: KlookTour = {
+  title: "NIFREL e-ticket",
+  desc: "Entry to the Kaiyukan's 'living museum' of fish, birds and mammals at Expocity, a QR code scanned at the gate",
+  url: klookLink("https://www.klook.com/en-US/activity/13116-nifrel-interactive-aquazoo-eticket-osaka/"),
+};
+
+/** Nago Pineapple Park (Nago, Okinawa) — admission. */
+export const nagoPineappleParkTicket: KlookTour = {
+  title: "Nago Pineapple Park ticket",
+  desc: "Admission to the pineapple theme park in Nago, with the self-driving Pineapple Train ride, a QR code shown at the counter",
+  url: klookLink("https://www.klook.com/en-US/activity/14671-nago-pineapple-park-ticket-okinawa-ishigaki/"),
+};
+
+/** Ryukyu Mura (Onna, Okinawa) — admission. */
+export const ryukyuMuraTicket: KlookTour = {
+  title: "Ryukyu Mura Village ticket",
+  desc: "Entry to the Ryukyu village of old Okinawan houses in Onna, exchanged for a paper ticket at the gate",
+  url: klookLink("https://www.klook.com/en-US/activity/13427-ryukyu-mura-churaumi-aquarium-ticket-okinawa/"),
+};
+
+/** Southeast Botanical Gardens (Okinawa City) — admission. */
+export const southeastBotanicalGardensTicket: KlookTour = {
+  title: "Southeast Botanical Gardens ticket",
+  desc: "Day, night (illumination) or 1-day entry to the botanical gardens in Okinawa City, redeemed at the counter inside",
+  url: klookLink("https://www.klook.com/en-US/activity/13582-southeast-botanical-gardens-e-ticket-okinawa/"),
+};
+
+/** Asakusa Hanayashiki (Asakusa, Tokyo) — admission / ride pass. */
+export const hanayashikiTicket: KlookTour = {
+  title: "Asakusa Hanayashiki ticket",
+  desc: "Entry to the Asakusa amusement park that calls itself Japan's oldest, with a ride-pass option",
+  url: klookLink("https://www.klook.com/en-US/activity/113292-asakusa-hanayashiki-attraction-experience/"),
+};

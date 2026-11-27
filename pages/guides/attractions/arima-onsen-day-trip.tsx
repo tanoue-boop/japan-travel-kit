@@ -792,6 +792,11 @@ export default function ArimaOnsenDayTripPage({ updated }: { updated: PageUpdate
             Back in the city, the <Link href="/guides/attractions/kobe-nunobiki-herb-gardens-ropeway" style={{ color: "var(--red)", fontWeight: 600 }}>Nunobiki Herb Gardens & Ropeway</Link> runs from near Shin-Kobe Station (closed 23 January – 12 February 2027).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For the bath itself, see <Link href="/guides/attractions/arima-onsen-taiko-no-yu" style={{ color: "var(--red)", fontWeight: 600 }}>Taiko no Yu</Link>: ¥2,750 for adults on weekdays and ¥2,970 at weekends, open 10:00–22:00.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

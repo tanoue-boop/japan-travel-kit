@@ -125,6 +125,7 @@ export default function SunqPassPage({ updated }: { updated: PageUpdated }) {
           <Link href="/guides/attractions/kyushu-5-day-itinerary" style={linkStyle}>Kyushu 5-day itinerary</Link>, the{" "}
           <Link href="/guides/attractions/fukuoka-2-day-itinerary" style={linkStyle}>Fukuoka 2-day itinerary</Link> and the{" "}
           <Link href="/guides/attractions/yufuin-beppu-tour-from-fukuoka" style={linkStyle}>Yufuin and Beppu day trip guide</Link>.
+          {" "}For a single day in and around Fukuoka, compare the <Link href="/guides/transport/fukuoka-tourist-city-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Fukuoka Tourist City Pass</Link> (¥2,500, ¥2,800 with Dazaifu) and the <Link href="/guides/transport/dazaifu-yanagawa-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Dazaifu & Yanagawa pass</Link> (¥3,620 with the Yanagawa boat).
         </p>
       }
       faq={[

@@ -656,6 +656,11 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In the same neighbourhood, <Link href="/guides/attractions/asakusa-hanayashiki-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Asakusa Hanayashiki</Link> is ¥1,600 for entry or ¥4,600 with unlimited rides; its roller coaster is shut 30 November – 11 December 2026.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

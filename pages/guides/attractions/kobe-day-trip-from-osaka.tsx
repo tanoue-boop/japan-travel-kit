@@ -831,6 +831,11 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
             Above Shin-Kobe, the <Link href="/guides/attractions/kobe-nunobiki-herb-gardens-ropeway" style={{ color: "var(--red)", fontWeight: 600 }}>Nunobiki ropeway and herb gardens</Link> cost ¥2,500 round trip by day; in winter the last ride up is 16:45.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            To add Arima Onsen, <Link href="/guides/attractions/arima-onsen-taiko-no-yu" style={{ color: "var(--red)", fontWeight: 600 }}>Taiko no Yu</Link> is about 30 minutes from Sannomiya by subway and Kobe Electric Railway (¥2,750 weekdays).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

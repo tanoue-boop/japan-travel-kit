@@ -338,6 +338,11 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
             For anime fans, <Link href="/guides/attractions/nijigen-no-mori-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nijigen no Mori</Link> on Awaji Island sells a ticket per attraction — NARUTO from ¥3,300.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Two more tickets: <Link href="/guides/attractions/spa-world-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Spa World</Link> by Shinsekai (onsen from ¥1,500; no tattoos) and <Link href="/guides/attractions/nifrel-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>NIFREL</Link> at Expocity (¥2,400 for adults, 10:00–18:00 on December weekdays).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

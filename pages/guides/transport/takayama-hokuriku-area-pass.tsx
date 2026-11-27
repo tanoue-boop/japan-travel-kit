@@ -171,6 +171,7 @@ export default function TakayamaHokurikuAreaPassPage({ updated }: { updated: Pag
           <Link href="/guides/attractions/nagoya-2-day-itinerary" style={linkStyle}>Nagoya 2 day itinerary</Link>{" "}
           and{" "}
           <Link href="/guides/transport/tokyo-to-nagoya-shinkansen" style={linkStyle}>Tokyo to Nagoya by shinkansen</Link>.
+          {" "}Without the pass, the <Link href="/guides/transport/shirakawa-go-bus" style={{ color: "var(--red)", fontWeight: 600 }}>Shirakawa-go bus</Link> from Takayama is ¥2,900 and from Shirakawa-go to Kanazawa ¥2,900, one way from 1 December 2026.
         </p>
       }
       faq={[

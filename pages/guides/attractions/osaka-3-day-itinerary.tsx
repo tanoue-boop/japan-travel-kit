@@ -929,6 +929,11 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
             With children on the Kobe day, see <Link href="/guides/attractions/kobe-animal-kingdom-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kobe Animal Kingdom tickets</Link> for prices and closed days.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a morning in the north of the city, <Link href="/guides/attractions/nifrel-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>NIFREL</Link> is by Bampaku-kinen-koen Station on the Osaka Monorail (¥2,400 for adults).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

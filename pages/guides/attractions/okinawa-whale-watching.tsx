@@ -521,6 +521,11 @@ export default function OkinawaWhaleWatchingPage({ updated }: { updated: PageUpd
             After a morning on the water, <Link href="/guides/attractions/okinawa-world-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Okinawa World</Link> and Gyokusendo Cave are open until 17:30 (last entry 16:00).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For an evening after a whale-watching morning, <Link href="/guides/attractions/southeast-botanical-gardens-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Southeast Botanical Gardens</Link> has a night illumination ticket at ¥2,500 for adults.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

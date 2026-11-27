@@ -891,6 +891,11 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
             Doing it by train and bus instead of a tour? The <Link href="/guides/transport/takayama-hokuriku-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Takayama-Hokuriku Area Pass</Link> includes the Shirakawa-go buses; from Osaka without the mountains, the <Link href="/guides/transport/kansai-hokuriku-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Kansai-Hokuriku Area Pass</Link> is the JR West option.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Without a tour, the <Link href="/guides/transport/shirakawa-go-bus" style={{ color: "var(--red)", fontWeight: 600 }}>Shirakawa-go bus</Link> from Takayama is ¥2,900 one way from 1 December 2026 (about 50 minutes).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

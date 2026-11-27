@@ -121,6 +121,7 @@ export default function MarineWorldUminonakamichiTicketsPage({ updated }: { upda
           rail pass, the{" "}
           <Link href="/guides/transport/jr-kyushu-rail-pass" style={linkStyle}>JR Kyushu Rail Pass</Link> guide explains
           what it covers.
+          {" "}For more of the city on the same day, the <Link href="/guides/transport/fukuoka-tourist-city-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Fukuoka Tourist City Pass</Link> is ¥2,500 for one day of buses, trains, subway and ferries.
         </p>
       }
       faq={[

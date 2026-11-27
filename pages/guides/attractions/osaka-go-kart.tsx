@@ -653,6 +653,11 @@ export default function OsakaGoKartPage({ updated }: { updated: PageUpdated }) {
 
         <BookingEsimCard lead="Shop maps, your booking QR code and the operator's messages all live on your phone. Get mobile data before you land." />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In the same Shinsekai area, <Link href="/guides/attractions/spa-world-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Spa World</Link> has onsen-only tickets from ¥1,500 for adults.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

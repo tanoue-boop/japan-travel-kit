@@ -124,6 +124,7 @@ export default function KobeNunobikiHerbGardensRopewayPage({ updated }: { update
           the mountains, and{" "}
           <Link href="/guides/attractions/kobe-animal-kingdom-tickets" style={linkStyle}>Kobe Animal Kingdom</Link> is on
           Port Island.
+          {" "}Over the mountain in Arima, <Link href="/guides/attractions/arima-onsen-taiko-no-yu" style={{ color: "var(--red)", fontWeight: 600 }}>Taiko no Yu</Link> is ¥2,750 for adults on weekdays (next closed 6 January 2027).
         </p>
       }
       faq={[

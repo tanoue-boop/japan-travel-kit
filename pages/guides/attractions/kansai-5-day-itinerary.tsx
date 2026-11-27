@@ -689,6 +689,11 @@ export default function Kansai5DayItineraryPage({ updated }: { updated: PageUpda
             Two more days out with children: <Link href="/guides/attractions/kobe-animal-kingdom-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kobe Animal Kingdom</Link> on Port Island and <Link href="/guides/attractions/adventure-world-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Adventure World</Link> in Shirahama, about 2 hours from Tennoji.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On the Kobe day, Arima&apos;s <Link href="/guides/attractions/arima-onsen-taiko-no-yu" style={{ color: "var(--red)", fontWeight: 600 }}>Taiko no Yu</Link> is open 10:00–22:00 (¥2,750 weekdays, ¥3,300 from 26 December to 3 January).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

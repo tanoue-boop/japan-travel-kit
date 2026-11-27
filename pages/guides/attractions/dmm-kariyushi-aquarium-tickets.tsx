@@ -117,6 +117,7 @@ export default function DmmKariyushiAquariumTicketsPage({ updated }: { updated: 
           <Link href="/guides/attractions/okinawa-3-day-itinerary" style={linkStyle}>Okinawa 3-day itinerary</Link> and{" "}
           <Link href="/guides/attractions/okinawa-day-tours" style={linkStyle}>Okinawa day tours</Link>; nearby in Nanjo is{" "}
           <Link href="/guides/attractions/okinawa-world-tickets" style={linkStyle}>Okinawa World and Gyokusendo Cave</Link>.
+          {" "}Other single tickets for the same trip: <Link href="/guides/attractions/ryukyu-mura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Ryukyu Mura</Link> (¥2,000, open every day) and the winter illumination at <Link href="/guides/attractions/southeast-botanical-gardens-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Southeast Botanical Gardens</Link> (17:00–22:00).
         </p>
       }
       faq={[

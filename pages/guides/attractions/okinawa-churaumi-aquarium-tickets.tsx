@@ -667,6 +667,11 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
             Prices, the Premium Pass and hours for the park itself are in <Link href="/guides/attractions/junglia-okinawa-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>JUNGLIA Okinawa tickets</Link> (from ¥8,800 for adults).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <Link href="/guides/attractions/nago-pineapple-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nago Pineapple Park</Link> is 25–30 minutes away by car (¥1,500 for adults, 10:00–18:00 every day).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

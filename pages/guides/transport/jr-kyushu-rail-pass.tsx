@@ -849,6 +849,11 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
             From Hakata, the JR Kashii Line runs to Uminonakamichi for <Link href="/guides/attractions/marine-world-uminonakamichi-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Marine World Uminonakamichi</Link> (¥2,500 for adults).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Inside Fukuoka City, the <Link href="/guides/transport/fukuoka-tourist-city-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Fukuoka Tourist City Pass</Link> covers buses, trains, subway and ferries for a day (¥2,500).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

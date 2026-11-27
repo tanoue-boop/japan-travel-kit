@@ -1018,6 +1018,11 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
           />
         </div>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            The Kaiyukan&apos;s sister museum, <Link href="/guides/attractions/nifrel-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>NIFREL</Link>, is at Expocity in Suita: ¥2,400 for adults, closed 19–20 January 2027.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

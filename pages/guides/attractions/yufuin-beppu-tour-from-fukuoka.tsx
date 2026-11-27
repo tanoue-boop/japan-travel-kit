@@ -713,6 +713,11 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
             Going on your own by expressway bus? See the <Link href="/guides/transport/sunq-pass" style={{ color: "var(--red)", fontWeight: 600 }}>SUNQ Pass</Link> for unlimited buses in northern Kyushu.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a day trip by train instead, the <Link href="/guides/transport/dazaifu-yanagawa-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Dazaifu & Yanagawa pass</Link> covers Nishitetsu trains and the Yanagawa river boat (¥3,620 digital).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

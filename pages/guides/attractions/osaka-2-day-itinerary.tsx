@@ -1039,6 +1039,11 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
           listings={[gygUsj, gygUsjExpressPass, gygOsaka]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            To end a Shinsekai evening in the baths, <Link href="/guides/attractions/spa-world-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Spa World</Link> is ¥1,500 for the onsen; leave before midnight to avoid the ¥1,300 late-night charge.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

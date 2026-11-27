@@ -911,6 +911,11 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
             For a theme-park day in the north, see <Link href="/guides/attractions/junglia-okinawa-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>JUNGLIA Okinawa tickets</Link>: the 1 Day Ticket is from ¥8,800 for adults, and a ¥4,950 afternoon ticket starts in December 2026.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            More single tickets: <Link href="/guides/attractions/nago-pineapple-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nago Pineapple Park</Link> in Nago (¥1,500), <Link href="/guides/attractions/ryukyu-mura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Ryukyu Mura</Link> on Route 58 in Onna (¥2,000, about 60 minutes from Naha) and <Link href="/guides/attractions/southeast-botanical-gardens-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Southeast Botanical Gardens</Link> in Okinawa City, lit 17:00–22:00 from late October to late May.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -737,6 +737,11 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
             On a day of your own in the north, <Link href="/guides/attractions/junglia-okinawa-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>JUNGLIA Okinawa tickets</Link> covers the park&apos;s tickets and the direct bus from Naha (about 120 minutes).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Driving yourself? <Link href="/guides/attractions/nago-pineapple-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nago Pineapple Park</Link> (¥1,500), <Link href="/guides/attractions/ryukyu-mura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Ryukyu Mura</Link> in Onna (¥2,000) and the night illumination at <Link href="/guides/attractions/southeast-botanical-gardens-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Southeast Botanical Gardens</Link> (¥2,500) are single tickets.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

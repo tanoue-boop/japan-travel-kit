@@ -780,6 +780,11 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
             Another Fukuoka ticket: <Link href="/guides/attractions/marine-world-uminonakamichi-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Marine World Uminonakamichi</Link> (¥2,500 for adults; the dolphin show pauses 12 January – 9 April 2027).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a day of buses and trains around the city, the <Link href="/guides/transport/fukuoka-tourist-city-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Fukuoka Tourist City Pass</Link> is ¥2,500 for overseas visitors.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -199,6 +199,31 @@ export const transportArticles: GuideArticle[] = [
     group: "passes",
     city: "other",
   },
+  // Added 28 Nov 2026 (task jtk-20261203-A35, day 7); figures from each operator's own page that day.
+  {
+    href: "/guides/transport/fukuoka-tourist-city-pass",
+    badge: "Pass",
+    title: "Fukuoka Tourist City Pass 2026: Price, Dazaifu & How to Buy",
+    desc: "One day of buses, trains, subway and ferries: Fukuoka City ¥2,500, with Dazaifu ¥2,800 for adults; overseas visitors only, passport required.",
+    group: "passes",
+    city: "other",
+  },
+  {
+    href: "/guides/transport/dazaifu-yanagawa-pass",
+    badge: "Pass",
+    title: "Dazaifu & Yanagawa Pass 2026: Price, Boat Ride & Rules",
+    desc: "Nishitetsu trains from Tenjin to Dazaifu and Yanagawa plus the river boat: ¥3,620 digital, ¥3,730 paper for adults; two days.",
+    group: "passes",
+    city: "other",
+  },
+  {
+    href: "/guides/transport/shirakawa-go-bus",
+    badge: "Bus",
+    title: "Shirakawa-go Bus 2026: Takayama & Kanazawa Fares, Tickets",
+    desc: "Nohi Bus from 1 December 2026: Takayama – Shirakawa-go ¥2,900 (about 50 min), Shirakawa-go – Kanazawa ¥2,900, Toyama ¥2,400.",
+    group: "fares",
+    city: "other",
+  },
   {
     href: "/guides/transport/kintetsu-rail-pass",
     badge: "Pass",

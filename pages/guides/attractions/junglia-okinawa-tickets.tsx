@@ -120,6 +120,7 @@ export default function JungliaOkinawaTicketsPage({ updated }: { updated: PageUp
           <Link href="/guides/attractions/okinawa-day-tours" style={linkStyle}>Okinawa day tours</Link>. In the south,{" "}
           <Link href="/guides/attractions/okinawa-world-tickets" style={linkStyle}>Okinawa World</Link> has the
           Gyokusendo cave.
+          {" "}Also in the north, <Link href="/guides/attractions/nago-pineapple-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nago Pineapple Park</Link> is ¥1,500 for adults and open every day 10:00–18:00.
         </p>
       }
       faq={[

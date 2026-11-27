@@ -766,6 +766,11 @@ export default function TokyoGoKartPage({ updated }: { updated: PageUpdated }) {
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            After the Asakusa kart ride, <Link href="/guides/attractions/asakusa-hanayashiki-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Asakusa Hanayashiki</Link> is open 10:00–18:00 (entry ¥1,600 for adults).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

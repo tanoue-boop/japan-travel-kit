@@ -689,6 +689,11 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
             Once in Kanazawa, the four-day <Link href="/guides/transport/hokuriku-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>JR Hokuriku Area Pass</Link> covers JR trips inside Fukui, Ishikawa and Toyama.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            From Kanazawa, the <Link href="/guides/transport/shirakawa-go-bus" style={{ color: "var(--red)", fontWeight: 600 }}>Shirakawa-go bus</Link> is ¥2,900 one way from 1 December 2026.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

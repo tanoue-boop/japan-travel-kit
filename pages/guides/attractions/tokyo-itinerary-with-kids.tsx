@@ -994,6 +994,11 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             Three more family tickets: <Link href="/guides/attractions/legoland-discovery-center-tokyo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>LEGOLAND Discovery Center Tokyo</Link> (¥2,350–¥3,300 online; adults need a child with them), <Link href="/guides/attractions/shinagawa-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shinagawa Aquarium</Link> (¥1,350, free bus from Oimachi) and, a train ride out, <Link href="/guides/attractions/tobu-zoo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tobu Zoo</Link> in Saitama (¥2,300, rides extra).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In Asakusa, <Link href="/guides/attractions/asakusa-hanayashiki-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Asakusa Hanayashiki</Link> has a One Day Pass at ¥4,600 for adults and ¥3,400 for children; under-5s enter free.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}
