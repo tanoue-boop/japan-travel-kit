@@ -684,6 +684,11 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
             nothing on this page should be taken as a certification check. If
             that matters to you, ask the restaurant for its registration number at booking.
           </p>
+          <p className={styles.bodyText}>
+            For the meal itself — five restaurants&apos; lunch and dinner prices, which ones take courses only by
+            reservation, and the bronze statue and 10-digit ID that mark real Kobe beef — see our{" "}
+            <Link href="/guides/attractions/kobe-beef-dinner">Kobe beef dinner and restaurant guide</Link>.
+          </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={kobeBeefSakuraTeppanyaki.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Teppanyaki course in Kobe →

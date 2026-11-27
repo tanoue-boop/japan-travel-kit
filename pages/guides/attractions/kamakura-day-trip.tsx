@@ -414,7 +414,9 @@ export default function KamakuraDayTripPage({ updated }: { updated: PageUpdated 
             The simplest approach is the direct JR Yokosuka Line from Tokyo Station, or the JR Shonan-Shinjuku
             Line from Shinjuku — both around 50 to 60 minutes, and both valid with a Japan Rail Pass. Once you
             arrive, the coastal Enoden tram links the central station with Hase, for the Great Buddha and
-            Hase-dera, in just a few minutes.
+            Hase-dera, in just a few minutes. Starting from Shinjuku on Odakyu instead, the{" "}
+            <Link href="/guides/attractions/enoshima-kamakura-pass">Enoshima-Kamakura Freepass</Link> covers the
+            round trip and every Enoden ride for the day, and our break-even table shows when it beats single tickets.
           </p>
           <p className={styles.bodyText}>
             For how IC cards and the Tokyo end of the journey work, see{" "}

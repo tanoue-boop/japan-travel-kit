@@ -720,7 +720,11 @@ export default function HakoneFreePassPage({ updated }: { updated: PageUpdated }
             <Link href="/guides/transport/tokyo-wide-pass" style={linkStyle}>
               JR Tokyo Wide Pass guide
             </Link>
-            .
+            . Odakyu&apos;s other one-day pass from Shinjuku, the{" "}
+            <Link href="/guides/attractions/enoshima-kamakura-pass" style={linkStyle}>
+              Enoshima-Kamakura Freepass
+            </Link>
+            , works the same way for the coast: an Odakyu return plus unlimited Enoden rides.
           </p>
           <p className={styles.bodyText} style={noteStyle}>
             Last checked: {CHECKED_ISO} —{" "}

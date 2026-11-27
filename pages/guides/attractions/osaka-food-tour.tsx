@@ -521,6 +521,11 @@ export default function OsakaFoodTourPage({ updated }: { updated: PageUpdated })
             tendon and deep-fried skewers, with bonito dashi in much of the rest — so Klook&apos;s modern vegetarian
             sushi class is a more honest answer than a kushikatsu crawl with substitutions.
           </p>
+          <p className={styles.bodyText}>
+            For a sit-down Kobe beef meal rather than a street-food crawl, go to Kobe itself, about 30 minutes away:
+            the <Link href="/guides/attractions/kobe-beef-dinner">Kobe beef restaurant guide</Link> compares lunch and
+            dinner prices at five restaurants and how far ahead to book.
+          </p>
         </section>
 
         <KlookTourPicks

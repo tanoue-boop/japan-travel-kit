@@ -288,6 +288,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/enoshima-kamakura-pass",
+    badge: "Pass",
+    title: "Enoshima-Kamakura Freepass: ¥1,640 — Is It Worth It? (2026)",
+    desc: "Odakyu's one-day pass from Shinjuku against single tickets: ¥2,030 for the Hase–Kamakura–Enoshima loop, so it saves ¥390 and pays from two Enoden rides — plus the Romancecar and JR options.",
+    group: "daytrips",
+    city: "tokyo",
+  },
+  {
     href: "/guides/attractions/mt-takao-day-trip",
     badge: "Day trip",
     title: "Mt Takao Day Trip (2026): Trains, Trails & Cable Car Fares",
@@ -685,6 +693,15 @@ export const attractionArticles: GuideArticle[] = [
     group: "daytrips",
     // Kobe is in Hyogo, but the day is planned and sold out of Osaka — same rule as
     // himeji-castle-day-trip and arima-onsen-day-trip.
+    city: "osaka",
+  },
+  {
+    href: "/guides/attractions/kobe-beef-dinner",
+    badge: "Food",
+    title: "Kobe Beef Dinner in Kobe (2026): Prices & How to Book",
+    desc: "Five Kobe restaurants' own menus — teppanyaki, steakhouse and yakiniku — from ¥2,508 at lunch to ¥30,800 for a dinner course, how far ahead to book, and the bronze statue and 10-digit ID that prove it is real.",
+    group: "daytrips",
+    // Same rule as kobe-day-trip-from-osaka: the meal is planned out of Osaka.
     city: "osaka",
   },
   {

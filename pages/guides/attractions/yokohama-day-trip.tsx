@@ -541,7 +541,9 @@ export default function YokohamaDayTripPage({ updated }: { updated: PageUpdated 
             booking (the Cup Noodles Factory) that helps. It is a city day — harbour, museum, food — rather than
             temples or mountains. For temples on the same JR line, go on to{" "}
             <Link href="/guides/attractions/kamakura-day-trip">Kamakura</Link>, which is past Yokohama on the
-            Yokosuka and Shonan-Shinjuku lines; for old streets and kimono, the{" "}
+            Yokosuka and Shonan-Shinjuku lines (from Shinjuku by Odakyu, the{" "}
+            <Link href="/guides/attractions/enoshima-kamakura-pass">Enoshima-Kamakura Freepass</Link> is ¥1,640
+            with the Enoden included); for old streets and kimono, the{" "}
             <Link href="/guides/attractions/kawagoe-day-trip">Kawagoe day trip</Link> is the north-side
             equivalent.
           </p>

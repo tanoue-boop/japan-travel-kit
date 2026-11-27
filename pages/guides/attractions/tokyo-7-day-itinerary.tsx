@@ -556,7 +556,9 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
             ); the other dates are in the table. Official sites:{" "}
             <a href="https://odakyu-global.com/passes/hakone-freepass/" target="_blank" rel="noopener noreferrer">odakyu-global.com</a>,{" "}
             <a href="https://bus.fujikyu.co.jp/" target="_blank" rel="noopener noreferrer">bus.fujikyu.co.jp</a>.
-            The JR fare to Kamakura is not priced on this site; pay it with an IC card.
+            The JR fare to Kamakura is not priced on this site; pay it with an IC card. From Shinjuku, the{" "}
+            <Link href="/guides/attractions/enoshima-kamakura-pass">Enoshima-Kamakura Freepass</Link> (Odakyu, ¥1,640)
+            covers the round trip and every Enoden ride, Enoshima included.
           </p>
 
           <h3 className={styles.sectionTitle} style={{ fontSize: "1.1rem", marginTop: "1.5rem" }}>

@@ -12416,3 +12416,149 @@ export const tokyoOneDaySameDayCards: KlookSameDayCard[] = [
     why: "The deck's QR code and the time slot are on your phone, and the slot does not wait for a lost signal.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Enoshima-Kamakura Freepass and Kobe beef dinner, added 27 Nov 2026
+// (task-jtk-20261127-02, re-run of 20261125-02 / 20261124-02).
+//
+// New listings, confirmed as live en-US pages through the www.klook.com search
+// index on 27 Nov 2026 (Klook answers automated reads with 403, so no price):
+//   241456  "Digital Enoshima-Kamakura Freepass" (Odakyu)                 5%
+//   10760   "Kobe Beef Red One" premium course, Motomachi, Kobe           6.5%
+//   21811   "Kobegyu Miyabi" Yu / Miyabi course with reservation, Kobe    6.5%
+// Everything else reuses a constant above. Neither page has an ad id yet (spare
+// ran out on 26 Nov), so these links fall back to ?aid=119070 until one is added
+// to data/klook-adids.json.
+// ---------------------------------------------------------------------------
+
+/** Odakyu's own pass, sold on Klook as a QR ticket. */
+export const enoshimaKamakuraFreepassKlook: KlookTour = {
+  title: "Digital Enoshima-Kamakura Freepass (Odakyu)",
+  desc: "Odakyu's one-day pass as a QR ticket: a discounted round trip from your Odakyu station to Fujisawa, plus unlimited rides on the Enoden and on the Odakyu line between Fujisawa and Katase-Enoshima",
+  url: klookLink("https://www.klook.com/en-US/activity/241456-enoshima-kamakura-freepass/"),
+};
+
+/** The Kamakura and Enoshima guided day already used by the Kamakura guide, as a tour card. */
+export const kamakuraEnoshimaDayTour: KlookTour = {
+  title: "Kamakura & Enoshima day tour from Tokyo",
+  desc: "A guided day out of Tokyo covering the Great Buddha, Hase-dera and Enoshima, with the transport arranged for you",
+  url: kamakuraEnoshimaDayTourUrl,
+};
+
+/** Before the day: the pass (5%), two guided options (6.5%) and data (20%). */
+export const enoshimaKamakuraTripPrep: KlookTripPrepItem[] = [
+  {
+    label: enoshimaKamakuraFreepassKlook.title,
+    ctaLabel: "Check the Freepass on Klook →",
+    url: enoshimaKamakuraFreepassKlook.url,
+    why: "The same Odakyu pass as a QR code on your phone, so there is no ticket machine to queue at in Shinjuku on the morning.",
+  },
+  {
+    label: kamakuraEnoshimaDayTour.title,
+    ctaLabel: "Check the Kamakura day tour →",
+    url: kamakuraEnoshimaDayTour.url,
+    why: "If you would rather not route the Enoden and the Odakyu yourself, a guided day covers the Great Buddha, Hase-dera and Enoshima in one booking.",
+  },
+  {
+    label: yokohamaKamakuraPrivateGuide.title,
+    ctaLabel: "Check the private guide →",
+    url: yokohamaKamakuraPrivateGuide.url,
+    why: "A licensed guide for six hours, for a family or group that wants Kamakura's temples explained rather than just reached.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The Enoden runs every 12–15 minutes, and the QR pass, the timetable and the walk from Hase to the Great Buddha are all on your phone.",
+  },
+];
+
+/** Next to the 5% pass button: the 6.5% tours and 20% data. */
+export const enoshimaKamakuraSameDayCards: KlookSameDayCard[] = [
+  {
+    label: kamakuraEnoshimaDayTour.title,
+    kind: "Day tour",
+    ctaLabel: "Check the Kamakura day tour →",
+    url: kamakuraEnoshimaDayTour.url,
+    why: "The guided version of the same loop, with the Great Buddha, Hase-dera and Enoshima in one day.",
+  },
+  {
+    label: yokohamaKamakuraPrivateGuide.title,
+    kind: "Private guide",
+    ctaLabel: "Check the private guide →",
+    url: yokohamaKamakuraPrivateGuide.url,
+    why: "Six hours with a licensed guide in Kamakura, Yokohama or both, on a route you set.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    kind: "Data",
+    why: "The QR pass and the Enoden timetable live on your phone.",
+  },
+];
+
+/** Kobe beef in Kobe: a premium course with the table reserved through Klook. */
+export const kobeBeefRedOneCourse: KlookTour = {
+  title: "Kobe Beef Red One premium course, Motomachi",
+  desc: "A Kobe beef course in Motomachi, Kobe, booked through Klook with the table reservation included",
+  url: klookLink("https://www.klook.com/en-US/activity/10760-kobe-beef-red-one-kobe-osaka/"),
+};
+
+/** Kobe beef in Sannomiya: the Yu and Miyabi courses with a free table reservation. */
+export const kobegyuMiyabiCourse: KlookTour = {
+  title: "Kobegyu Miyabi Yu / Miyabi course with reservation, Sannomiya",
+  desc: "Two Kobe beef courses at a Sannomiya restaurant, with the table reservation included in the booking",
+  url: klookLink("https://www.klook.com/en-US/activity/21811-kobegyu-miyabi-kobe/"),
+};
+
+/** Before the dinner: three restaurant bookings and a Kobe day tour (6.5%), and data (20%). */
+export const kobeBeefTripPrep: KlookTripPrepItem[] = [
+  {
+    label: kobeBeefSakuraTeppanyaki.title,
+    ctaLabel: "Check the teppanyaki course →",
+    url: kobeBeefSakuraTeppanyaki.url,
+    why: "A teppanyaki course with the table reserved in lunch and dinner slots, paid in your own currency.",
+  },
+  {
+    label: kobegyuMiyabiCourse.title,
+    ctaLabel: "Check the Miyabi course →",
+    url: kobegyuMiyabiCourse.url,
+    why: "A second Sannomiya restaurant, worth opening when the first has no table on your date.",
+  },
+  {
+    label: kobeBeefRedOneCourse.title,
+    ctaLabel: "Check the Red One course →",
+    url: kobeBeefRedOneCourse.url,
+    why: "A Motomachi option, a short walk from Nankinmachi and the harbour end of the day.",
+  },
+  {
+    label: kobeBeefHarbourKitanoDayTour.title,
+    ctaLabel: "Check the day tour with Kobe beef →",
+    url: kobeBeefHarbourKitanoDayTour.url,
+    why: "A guided day from Osaka with the Kobe beef meal inside the price, so there is no separate table to find.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "The booking voucher, the restaurant's map pin and the train back to Osaka are all on your phone.",
+  },
+];
+
+/** Under the restaurant buttons: the 6.5% tours and 20% data. */
+export const kobeBeefSameDayCards: KlookSameDayCard[] = [
+  {
+    label: kobeBeefHarbourKitanoDayTour.title,
+    kind: "Day tour",
+    ctaLabel: "Check the day tour with Kobe beef →",
+    url: kobeBeefHarbourKitanoDayTour.url,
+    why: "Harbour, Kitano, Arima and Rokko with the Kobe beef meal already booked.",
+  },
+  {
+    label: kobePrivateHalfDayWalkingTour.title,
+    kind: "Walking tour",
+    ctaLabel: "Check the Kobe walking tour →",
+    url: kobePrivateHalfDayWalkingTour.url,
+    why: "A local guide for the half day before or after the meal.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    kind: "Data",
+    why: "The voucher and the map pin to the restaurant are on your phone.",
+  },
+];

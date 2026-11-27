@@ -649,7 +649,10 @@ export default function Kansai5DayItineraryPage({ updated }: { updated: PageUpda
             three, drop Day 4 and Day 5 and follow the{" "}
             <Link href="/guides/attractions/osaka-kyoto-3-day-itinerary">Osaka Kyoto 3 day itinerary</Link>. Day 5 in
             Kobe is the easiest to change: it is about 30 minutes from Osaka, and the harbour and Kitano are free —
-            see the <Link href="/guides/attractions/kobe-day-trip-from-osaka">Kobe day trip</Link> guide.
+            see the <Link href="/guides/attractions/kobe-day-trip-from-osaka">Kobe day trip</Link> guide. The one thing
+            to book for Day 5 is the lunch table: the{" "}
+            <Link href="/guides/attractions/kobe-beef-dinner">Kobe beef restaurant guide</Link> has five restaurants&apos;
+            lunch prices from ¥2,508 and how far ahead each needs a booking.
           </p>
         </section>
 
