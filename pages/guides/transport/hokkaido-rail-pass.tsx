@@ -762,6 +762,11 @@ export default function HokkaidoRailPassPage({ updated }: { updated: PageUpdated
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            The two smaller passes have their own guides: the <Link href="/guides/transport/sapporo-furano-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Sapporo-Furano Area Pass</Link> for Asahikawa, Biei and Furano, and the <Link href="/guides/transport/sapporo-noboribetsu-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Sapporo-Noboribetsu Area Pass</Link> for Otaru and Noboribetsu.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}

@@ -969,6 +969,11 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a Ghibli day in Tokyo, the <Link href="/guides/attractions/ghibli-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Ghibli Museum tickets guide</Link> explains the advance-only booking and the children&apos;s prices.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

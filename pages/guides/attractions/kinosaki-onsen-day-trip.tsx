@@ -605,6 +605,11 @@ export default function KinosakiOnsenDayTripPage({ updated }: { updated: PageUpd
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On a rail pass, the <Link href="/guides/transport/kansai-wide-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Kansai WIDE Area Pass</Link> lists Kinosaki Onsen among its day trips, and the <Link href="/guides/transport/kansai-sanin-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Kansai-San&apos;in Area Pass</Link> carries on to Tottori and Matsue.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -684,6 +684,11 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
           ]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Once in Kanazawa, the four-day <Link href="/guides/transport/hokuriku-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>JR Hokuriku Area Pass</Link> covers JR trips inside Fukui, Ishikawa and Toyama.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

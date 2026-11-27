@@ -809,6 +809,11 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
           items={ghibliParkTripPrep}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In Tokyo instead? The museum in Mitaka has its own monthly release: see <Link href="/guides/attractions/ghibli-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Ghibli Museum tickets</Link>.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

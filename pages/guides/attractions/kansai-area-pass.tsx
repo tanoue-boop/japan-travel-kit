@@ -1236,6 +1236,11 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For trips beyond the Kansai core, the <Link href="/guides/transport/kansai-wide-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Kansai WIDE Area Pass</Link> guide covers the five-day pass with the shinkansen to Okayama, and the <Link href="/guides/transport/kansai-sanin-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Kansai-San&apos;in Area Pass</Link> guide the seven-day pass to Tottori and Matsue.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

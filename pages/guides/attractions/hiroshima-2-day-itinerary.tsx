@@ -896,6 +896,11 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
           items={hiroshimaTwoDayTripPrep}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Carrying on west after Hiroshima? The <Link href="/guides/transport/sanyo-sanin-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Sanyo-San&apos;in Area Pass</Link> covers the shinkansen to Hakata for seven days, and the <Link href="/guides/transport/jr-west-all-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>JR West All Area Pass</Link> adds Kanazawa as well.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

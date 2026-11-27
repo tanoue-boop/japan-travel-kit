@@ -810,6 +810,11 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           Visiting between December and March? A <Link href="/guides/attractions/tokyo-snow-day-trip">Tokyo snow day trip</Link> to Yeti or Fujiten on Mt. Fuji gives you sledding and snow play without a ski holiday.
         </p>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            One Tokyo sight that sells out by date is the Ghibli Museum in Mitaka: our <Link href="/guides/attractions/ghibli-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Ghibli Museum tickets guide</Link> has the monthly release time.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

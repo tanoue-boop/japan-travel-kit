@@ -719,6 +719,11 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
           items={furanoBieiTripPrep}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Going by train? The <Link href="/guides/transport/sapporo-furano-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Sapporo-Furano Area Pass</Link> covers Sapporo to Asahikawa, Biei and Furano for four days.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

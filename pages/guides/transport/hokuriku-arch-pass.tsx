@@ -1074,6 +1074,11 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Starting in Osaka rather than Tokyo? The <Link href="/guides/transport/kansai-hokuriku-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Kansai-Hokuriku Area Pass</Link> covers Kansai to Kanazawa and Toyama for seven days, the <Link href="/guides/transport/hokuriku-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>JR Hokuriku Area Pass</Link> covers four days inside Hokuriku only, the <Link href="/guides/transport/takayama-hokuriku-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Takayama-Hokuriku Area Pass</Link> adds the Shirakawa-go buses, and the <Link href="/guides/transport/jr-west-all-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>JR West All Area Pass</Link> adds Hiroshima and Hakata.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

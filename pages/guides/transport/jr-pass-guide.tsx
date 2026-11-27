@@ -1306,6 +1306,11 @@ export default function JrPassGuidePage({ updated }: { updated: PageUpdated }) {
           items={jrPassTripPrep}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Each JR West regional pass now has its own page: the <Link href="/guides/transport/jr-west-all-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>JR West All Area Pass</Link> (Hakata and Kanazawa in one week), the <Link href="/guides/transport/sanyo-sanin-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Sanyo-San&apos;in Area Pass</Link> and the <Link href="/guides/transport/kansai-wide-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Kansai WIDE Area Pass</Link>.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

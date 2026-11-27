@@ -846,6 +846,11 @@ export default function Kanazawa2DayItineraryPage({ updated }: { updated: PageUp
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Coming by rail pass? Compare the <Link href="/guides/transport/kansai-hokuriku-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Kansai-Hokuriku Area Pass</Link> from Osaka, the four-day <Link href="/guides/transport/hokuriku-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>JR Hokuriku Area Pass</Link> for days inside Hokuriku, and the <Link href="/guides/transport/takayama-hokuriku-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Takayama-Hokuriku Area Pass</Link> if Shirakawa-go is on the way.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -1146,6 +1146,15 @@ export const attractionArticles: GuideArticle[] = [
     city: "kyoto",
   },
   {
+    // Added 27 Nov 2026 (task jtk-20261127-A35); figures from ghibli-museum.jp that day.
+    href: "/guides/attractions/ghibli-museum-tickets",
+    badge: "Tickets",
+    title: "Ghibli Museum Tickets 2026: Price, Release Date & Booking",
+    desc: "¥1,000 for adults, advance booking only: LAWSON TICKET releases the next month at 10:00 JST on the 10th, with a dated entry time. Open 10:00–18:00, 15 minutes on foot from JR Mitaka; Klook as the agent route.",
+    group: "tickets",
+    city: "tokyo",
+  },
+  {
     href: "/guides/attractions/ghibli-park-tickets",
     badge: "Tickets",
     title: "Ghibli Park Tickets 2026: How to Buy, Prices & Release Dates",

@@ -886,6 +886,11 @@ export default function TakayamaShirakawagoTourPage({ updated }: { updated: Page
           ]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Doing it by train and bus instead of a tour? The <Link href="/guides/transport/takayama-hokuriku-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Takayama-Hokuriku Area Pass</Link> includes the Shirakawa-go buses; from Osaka without the mountains, the <Link href="/guides/transport/kansai-hokuriku-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Kansai-Hokuriku Area Pass</Link> is the JR West option.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

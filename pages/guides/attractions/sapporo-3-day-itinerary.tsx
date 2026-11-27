@@ -836,6 +836,11 @@ export default function Sapporo3DayItineraryPage({ updated }: { updated: PageUpd
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For day trips by train, compare the <Link href="/guides/transport/sapporo-furano-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Sapporo-Furano Area Pass</Link> (Furano, Biei, Asahikawa) with the <Link href="/guides/transport/sapporo-noboribetsu-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Sapporo-Noboribetsu Area Pass</Link> (Otaru, Noboribetsu).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}
