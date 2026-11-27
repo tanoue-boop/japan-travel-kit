@@ -543,7 +543,9 @@ export default function Kansai5DayItineraryPage({ updated }: { updated: PageUpda
             Kyoto, Day 4&apos;s Nara or Himeji, and the HARUKA from Kobe to the airport on Day 5, so you buy no
             other JR ticket. On Day 2 use the Osaka Amazing Pass or an ICOCA; neither JR pass helps on the subway.
             The pass does not cover the shinkansen, Kintetsu, Hankyu or Nankai lines, so the Rapi:t to Namba on Day
-            1 is always a separate ticket.
+            1 is always a separate ticket. If Day 4 is Nara from Namba on the Kintetsu instead, the{" "}
+            <Link href="/guides/transport/kintetsu-rail-pass">Kintetsu Rail Pass</Link> is the pass to price, though a
+            plain return is cheaper on two ¥680 singles.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={jrKansaiAreaPass3276.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

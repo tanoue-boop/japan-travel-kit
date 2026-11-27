@@ -390,7 +390,7 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
             Journey times from Nara Prefecture&apos;s official travel guide, read {TIMES_CHECKED}; Kintetsu fares
             from Kintetsu&apos;s fare tables, read {FARES_CHECKED}. Kintetsu is a private railway, so the{" "}
             <Link href="/guides/transport/jr-pass-guide">JR Pass</Link> does not cover it — whether the Kintetsu Rail Pass ever pays for a Nara-only trip is worked out in
-            our <Link href="/guides/transport/kintetsu-rail-pass">Kintetsu Rail Pass guide</Link>. Choosing a
+            our <Link href="/guides/transport/kintetsu-rail-pass">Kintetsu Rail Pass</Link> guide. Choosing a
             base for this and the Kyoto day trips is covered in{" "}
             <Link href="/guides/attractions/where-to-stay-in-osaka">where to stay in Osaka</Link>; Nara as Day 4 of a
             longer trip, after Arashiyama in the morning, is in the <Link href="/guides/attractions/kansai-5-day-itinerary">Kansai 5 day itinerary</Link>.
@@ -579,7 +579,7 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Kintetsu Rail Pass (2026): Prices and Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Kintetsu Rail Pass 2026: Prices, Coverage & Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

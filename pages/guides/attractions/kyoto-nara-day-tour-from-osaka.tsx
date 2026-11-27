@@ -538,7 +538,7 @@ export default function KyotoNaraDayTourFromOsakaPage({ updated }: { updated: Pa
         />
 
         <p className={styles.bodyText}>
-          Would rather go without a tour? Our <Link href="/guides/attractions/nara-day-trip">Nara day trip from Kyoto or Osaka</Link> guide covers the trains, about 34 minutes on Kintetsu, and what Todai-ji costs.
+          Would rather go without a tour? Our <Link href="/guides/attractions/nara-day-trip">Nara day trip from Kyoto or Osaka</Link> guide covers the trains, about 34 minutes on Kintetsu, and what Todai-ji costs. Doing Osaka, Nara and Kyoto by train in one day is the trip where the <Link href="/guides/transport/kintetsu-rail-pass">Kintetsu Rail Pass</Link> pays for itself.
         </p>
 
         <EsimCtaBottom />

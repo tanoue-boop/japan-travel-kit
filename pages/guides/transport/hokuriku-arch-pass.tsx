@@ -1116,7 +1116,7 @@ export default function HokurikuArchPassPage({ updated }: { updated: PageUpdated
               { href: "/guides/attractions/takayama-shirakawago-tour", title: "Takayama and Shirakawa-go Tours" },
               { href: "/guides/attractions/karuizawa-day-trip-from-tokyo", title: "Karuizawa Day Trip From Tokyo" },
               { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary" },
-              { href: "/guides/transport/kintetsu-rail-pass", title: "Kintetsu Rail Pass (2026): Prices and Is It Worth It?" },
+              { href: "/guides/transport/kintetsu-rail-pass", title: "Kintetsu Rail Pass 2026: Prices, Coverage & Is It Worth It?" },
               { href: "/guides/transport", title: "More Transport Guides →" },
             ].map((item) => (
               <Link key={item.href} href={item.href} className={styles.relatedCard}>

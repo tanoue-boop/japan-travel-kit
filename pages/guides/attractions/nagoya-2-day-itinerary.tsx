@@ -784,7 +784,11 @@ export default function Nagoya2DayItineraryPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Each row carries the date its figure was read. Shinkansen times and smartEX fares are the regular-season
             NOZOMI figures; the train choice, the JR Pass and luggage rules are in our{" "}
-            <Link href="/guides/transport/tokyo-to-nagoya-shinkansen">Tokyo to Nagoya shinkansen guide</Link>.
+            <Link href="/guides/transport/tokyo-to-nagoya-shinkansen">Tokyo to Nagoya shinkansen guide</Link>. From
+            Osaka-Namba, the slower Kintetsu line reaches Kintetsu-Nagoya for a ¥2,860 basic fare plus a ¥1,930 limited
+            express charge, and the 5-day{" "}
+            <Link href="/guides/transport/kintetsu-rail-pass">Kintetsu Rail Pass</Link> covers that fare and Ise-Shima
+            as well.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shinkansenTokyoNagoya.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

@@ -702,7 +702,9 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
             Nara for temples and the deer; Kobe for the harbour, the old foreign quarter and a Kobe beef
             meal. Nara is about 34 minutes from Osaka-Namba on Kintetsu for {KINTETSU_NARA}, and the only
             admission on a standard visit is Todai-ji at {TODAIJI_ADULT}. Kobe is about 30 minutes from
-            Umeda. If you would rather add Kyoto as well, a guided Kyoto and Nara day from Osaka covers
+            Umeda. Whether the{" "}
+            <Link href="/guides/transport/kintetsu-rail-pass">Kintetsu Rail Pass</Link> beats two singles to Nara
+            depends on adding a second journey, such as Kyoto, the same day. If you would rather add Kyoto as well, a guided Kyoto and Nara day from Osaka covers
             both — see the{" "}
             <Link href="/guides/attractions/kyoto-nara-day-tour-from-osaka">Kyoto and Nara day tour guide</Link>{" "}
             and the <Link href="/guides/attractions/nara-day-trip">Nara day trip guide</Link>.

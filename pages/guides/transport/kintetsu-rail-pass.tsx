@@ -41,27 +41,59 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  * Deliberately absent: bus fares, which is why the 5day Plus has no break-even
  * row, and any JR single fare to Nara, which no operator page we read prints.
  * No Klook price appears.
+ *
+ * Re-read on 27 November 2026 (Nov 27 R07):
+ *   - kintetsu.co.jp/foreign/english/ticket/ — the four pass prices, unchanged.
+ *   - kintetsu.co.jp/senden/aoniyoshi/ and its fare image img_price202603.png —
+ *     AONIYOSHI basic fare / limited express charge / special car charge per adult:
+ *     Osaka-Namba–Kintetsu-Nara (680) 520 210, Kyoto–Kintetsu-Nara (760) 520 210,
+ *     Osaka-Namba–Kyoto (1,140) 920 210. Runs daily except, in principle, Thursdays.
+ *     The basic fares match the Nov 4 figures in the fare table.
+ *   - kintetsu.co.jp/foreign/english/about/limited_express/type.html — AONIYOSHI is
+ *     a limited express, so a Limited Express ticket is needed on top of the fare.
+ *   - japanrailpass.net/en/use/conditions-for-use/ — the JR Pass covers JR Group
+ *     trains and buses, the Tokyo Monorail and a few named non-JR sections, and
+ *     lines run by other companies need a separate fare. Kintetsu is not named.
  * ---------------------------------------------------------------------------
  */
 
-const CHECKED = checkedLabel("2026-11-04");
+const CHECKED = checkedLabel("2026-11-27");
+const FARES_CHECKED = checkedLabel("2026-11-04");
 const KANSAI_CHECKED = checkedLabel("2026-11-03");
+const LAST_CHECKED = "2026-11-27";
+
+const OFFICIAL_PASS_URL = "https://www.kintetsu.co.jp/foreign/english/ticket/";
+const OFFICIAL_AONIYOSHI_URL = "https://www.kintetsu.co.jp/senden/aoniyoshi/";
+const OFFICIAL_FARES_URL = "https://www.kintetsu.co.jp/gyoumu/kippu/pdf/kirotei_20260314.pdf";
+const OFFICIAL_JRP_URL = "https://japanrailpass.net/en/use/conditions-for-use/";
 
 const ROUTE = "/guides/transport/kintetsu-rail-pass";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
-const TITLE = "Kintetsu Rail Pass (2026): Prices and Is It Worth It?";
+const TITLE = "Kintetsu Rail Pass 2026: Prices, Coverage & Is It Worth It?";
 const DESCRIPTION =
-  "Kintetsu Rail Pass prices for 2026: ¥1,900 for 1 day, ¥3,700 for 2, ¥4,900 for 5, ¥6,700 for 5day Plus. What it covers and which trips pay it back.";
+  "Kintetsu Rail Pass 2026: ¥1,900 for 1 day, ¥3,700 for 2, ¥4,900 for 5, ¥6,700 for 5day Plus. Where it goes, why limited express is extra, and when it pays.";
+
+const smallNote = { marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" } as const;
 
 /** Table 1 — the four passes. */
 const priceRows = [
+  {
+    pass: "The answer",
+    adult: "¥1,900–¥6,700",
+    child: "Half price",
+    valid: "1, 2 or 5 days",
+    zone: "1day/2day: Osaka, Nara, Kyoto. 5day/Plus: all Kintetsu lines, so Nagoya and Ise-Shima too",
+    express: "Never included: buy a limited express ticket on top",
+    bus: "Nara Kotsu on all but the 5day; Ise-Shima buses on the Plus only",
+  },
   {
     pass: "1day",
     adult: "¥1,900",
     child: "¥950",
     valid: "The date of use",
     zone: "Osaka-Namba–Kintetsu-Nara, Kyoto–Tsutsui, Nagata–Ikoma, Toriimae–Ikomasanjo",
+    express: "Extra: ¥520 Namba–Nara; AONIYOSHI ¥520 + ¥210",
     bus: "Nara Kotsu: Nara Park, Nishinokyo, Horyuji",
   },
   {
@@ -70,6 +102,7 @@ const priceRows = [
     child: "¥1,850",
     valid: "2 consecutive days",
     zone: "All Kintetsu lines in Osaka, Nara and Kyoto prefectures",
+    express: "Extra: ¥920 Namba–Kyoto; AONIYOSHI ¥920 + ¥210",
     bus: "Nara Kotsu: the above plus Asuka, Muro and Yamanobe-no-Michi",
   },
   {
@@ -78,6 +111,7 @@ const priceRows = [
     child: "¥2,450",
     valid: "5 consecutive days",
     zone: "All Kintetsu lines plus the Iga Tetsudo line, so Nagoya, Ise and Shima too",
+    express: "Extra: ¥1,340 Namba or Nagoya–Ise-shi on standard seats; HINOTORI and Shimakaze premium seats cost more",
     bus: "None",
   },
   {
@@ -86,12 +120,18 @@ const priceRows = [
     child: "¥3,350",
     valid: "5 consecutive days",
     zone: "All Kintetsu lines plus the Iga Tetsudo line",
+    express: "Same as the 5day: always a separate ticket",
     bus: "Nara Kotsu, Mie Kotsu and Toba City Kamome buses in their zones",
   },
 ];
 
 /** Table 2 — coverage. */
 const coverageRows = [
+  {
+    service: "The answer",
+    allowed: "Kintetsu trains only",
+    note: "Local and express trains in your zone, with no extra ticket. Limited express trains (AONIYOSHI, HINOTORI, Shimakaze and the rest) need a limited express ticket on top. No JR, Osaka Metro or airport trains.",
+  },
   {
     service: "Kintetsu local and express trains",
     allowed: "✓ Inside your zone",
@@ -141,6 +181,7 @@ const coverageRows = [
 
 /** Table 3 — fares, adult, from Kintetsu's own fare tables. */
 const fareRows = [
+  { journey: "The answer", basic: "The pass covers this", express: "You always pay this", total: "Without a pass" },
   { journey: "Osaka-Namba → Kintetsu-Nara", basic: "¥680", express: "¥520", total: "¥1,200" },
   { journey: "Kyoto → Kintetsu-Nara", basic: "¥760", express: "¥520", total: "¥1,280" },
   { journey: "Osaka-Namba → Kyoto", basic: "¥1,140", express: "¥920", total: "¥2,060" },
@@ -154,6 +195,12 @@ const fareRows = [
 
 /** Table 4 — break-even on basic fares, since the pass never pays the express charge. */
 const worthRows = [
+  {
+    plan: "The answer",
+    sum: "One out-and-back rarely pays; two connected journeys usually do",
+    pass: "Any",
+    verdict: "Add up your basic fares",
+  },
   {
     plan: "Osaka ⇄ Nara and back",
     sum: "¥680 × 2 = ¥1,360",
@@ -191,6 +238,12 @@ const worthRows = [
     verdict: "✓ ¥640 saved",
   },
   {
+    plan: "Nagoya ⇄ Ise-shi return",
+    sum: "¥1,740 × 2 = ¥3,480",
+    pass: "5day ¥4,900",
+    verdict: "✗ ¥1,420 short",
+  },
+  {
     plan: "Nagoya ⇄ Kashikojima return",
     sum: "¥2,370 × 2 = ¥4,740",
     pass: "5day ¥4,900",
@@ -206,6 +259,11 @@ const worthRows = [
 
 /** Table 5 — Kintetsu or JR for Nara. */
 const compareRows = [
+  {
+    item: "The answer",
+    kintetsu: "A Namba hotel, Nara, Ise or Yoshino",
+    jr: "A Kansai Airport arrival, or a trip mostly on JR",
+  },
   {
     item: "Price",
     kintetsu: "¥1,900 for 1 day, or ¥680 single from Osaka-Namba",
@@ -236,17 +294,26 @@ const compareRows = [
     kintetsu: "Ise, Shima and Nagoya on the 5-day passes",
     jr: "Kobe, Himeji and the rest of JR West's Kansai area",
   },
+];
+
+/** Table 6 — AONIYOSHI, adult, per person when a twin seat is shared by two. */
+const aoniyoshiRows = [
   {
-    item: "Pick it if",
-    kintetsu: "You are staying near Namba or are heading to Ise or Yoshino",
-    jr: "You land at Kansai Airport or the trip is mostly on JR",
+    journey: "The answer",
+    basic: "Covered by the pass",
+    express: "Pay on top",
+    special: "Pay on top",
+    withPass: "¥730–¥1,130",
   },
+  { journey: "Osaka-Namba ⇄ Kintetsu-Nara", basic: "¥680", express: "¥520", special: "¥210", withPass: "¥730" },
+  { journey: "Kyoto ⇄ Kintetsu-Nara", basic: "¥760", express: "¥520", special: "¥210", withPass: "¥730" },
+  { journey: "Osaka-Namba ⇄ Kyoto", basic: "¥1,140", express: "¥920", special: "¥210", withPass: "¥1,130" },
 ];
 
 const buySteps = [
   {
     title: "Buy online, or through an agency abroad",
-    desc: `Kintetsu sells the pass as a digital ticket online, 24 hours a day, and through overseas travel agencies, Klook among them. A reservation holds up to four tickets. Checked ${CHECKED}.`,
+    desc: `Kintetsu sells the pass as a digital ticket online, 24 hours a day, and through overseas travel agencies, Klook among them. A reservation holds up to four tickets. Checked ${FARES_CHECKED}.`,
   },
   {
     title: "There is nothing to pick up",
@@ -266,50 +333,34 @@ const buySteps = [
   },
   {
     title: "Carry your passport",
-    desc: "The pass is for foreign visitors with Temporary Visitor status, cannot be transferred, and Kintetsu asks you to carry your passport so you can show it.",
+    desc: "The pass is for foreign visitors with Temporary Visitor status, cannot be transferred, and Kintetsu asks you to carry your passport so you can show it. Klook's listing states it is not available to Japanese passport holders or residents.",
+  },
+  {
+    title: "Know the refund rules before you pay",
+    desc: "Kintetsu's conditions state refunds for passes bought online or through an agent cannot be given at a station ticket office, and none is given for delays. Activation cannot be cancelled. If you buy through Klook, its cancellation terms on the listing apply.",
   },
 ];
 
 const faqItems = [
   {
     q: "How much is the Kintetsu Rail Pass?",
-    a: `¥1,900 for the 1day, ¥3,700 for the 2day, ¥4,900 for the 5day and ¥6,700 for the 5day Plus, for an adult aged 12 or over. Children aged 6 to 11 pay ¥950, ¥1,850, ¥2,450 and ¥3,350, and under-6s ride free. The 2day and both 5-day passes run on consecutive days. Limited express tickets are extra on all four. Read off kintetsu.co.jp on ${CHECKED}.`,
+    a: `The Kintetsu Rail Pass costs ¥1,900 for the 1day, ¥3,700 for the 2day, ¥4,900 for the 5day and ¥6,700 for the 5day Plus, for an adult aged 12 or over. Children aged 6 to 11 pay ¥950, ¥1,850, ¥2,450 and ¥3,350, and under-6s ride free. Limited express tickets are extra on all four. Read off kintetsu.co.jp on ${CHECKED}.`,
   },
   {
-    q: "Is the Kintetsu Rail Pass worth it?",
-    a: `Only if you ride more than one return trip. An Osaka-Namba to Nara return is ¥1,360 and a Kyoto to Nara return ¥1,520, both below the ¥1,900 1day. It wins when you make a triangle of Osaka, Nara and Kyoto in a day (¥2,580), or on the 5day when you go to Kashikojima and back (¥5,540 against ¥4,900). An Ise-shi return from Osaka is ¥4,340, which falls ¥560 short, unless you add a Nara day. These sums use basic fares, because the pass never covers the limited express charge. Read ${CHECKED}.`,
+    q: "Is the Kintetsu Rail Pass worth it for Nara and Kyoto?",
+    a: `Only if you make more than one return trip. An Osaka-Namba to Nara return is ¥1,360 and a Kyoto to Nara return ¥1,520, both below the ¥1,900 1day. It pays when you do Osaka, Nara and Kyoto as a triangle in one day (¥2,580 in basic fares, ¥680 saved). These sums use basic fares, because the pass never covers the limited express charge.`,
   },
   {
-    q: "Does the Kintetsu Rail Pass include limited express trains?",
-    a: "No. Kintetsu states the pass alone does not let you board a limited express train, so you must buy a limited express ticket on top. All limited express seats are reserved. The pass stands in for the basic fare, so you pay only the charge: ¥520 for Osaka-Namba to Nara, ¥1,340 for Osaka-Namba to Ise-shi and ¥1,640 to Kashikojima. Express and local trains need no extra ticket.",
+    q: "Does the JR Pass cover Kintetsu trains?",
+    a: "No. The Japan Rail Pass is a JR Group pass, and its conditions say lines run by companies other than JR need a separate fare; Kintetsu is not among the few non-JR sections it lists. The JR Kansai Area Pass does not cover Kintetsu either. From Kyoto, JR Pass holders can take the JR Nara Line to JR Nara instead.",
   },
   {
-    q: "Kintetsu Rail Pass or Kansai Area Pass for Nara?",
-    a: `Kintetsu if you are staying near Namba and only going to Nara, and even then a pair of ¥680 singles beats the ¥1,900 pass. The JR Kansai Area Pass suits a trip that starts or ends at Kansai Airport, since it includes the Haruka, at ¥2,700 for one day or ¥6,700 for four, read ${KANSAI_CHECKED}. Kintetsu-Nara is the closer station to Nara Park. Neither pass covers the other company's trains.`,
+    q: "Can I ride the AONIYOSHI with the Kintetsu Rail Pass?",
+    a: "Yes, but not on the pass alone. The AONIYOSHI is a sightseeing limited express, so the pass covers only the basic fare and you buy the limited express ticket and the special car ticket on top: ¥520 + ¥210 = ¥730 per adult between Osaka-Namba or Kyoto and Kintetsu-Nara, or ¥920 + ¥210 = ¥1,130 between Osaka-Namba and Kyoto, when two share a twin seat. It runs daily except, in principle, Thursdays.",
   },
   {
-    q: "Can I use the Kintetsu Rail Pass to Ise?",
-    a: "Yes, on the 5day or 5day Plus. The 1day and 2day stop at their Osaka, Nara and Kyoto zones. You can ride express trains on the pass alone, or buy a limited express ticket on top, which is ¥1,340 from Osaka-Namba or Kintetsu-Nagoya to Ise-shi. Only the 5day Plus adds the Mie Kotsu and Toba Kamome buses around Ise, Toba and Shima.",
-  },
-  {
-    q: "Where do I pick up the Kintetsu Rail Pass?",
-    a: "You do not. It is a digital ticket, so you open the QR code on your phone and scan it at the gate. Kintetsu says it can be used immediately after online payment, but you must tap Activate Tickets on your first day and that cannot be undone. At gates without a reader, show the ticket to staff. You will need data on your phone, since screenshots of the code are refused.",
-  },
-  {
-    q: "What is included in the 5day Plus?",
-    a: "Everything on the 5day, meaning all Kintetsu lines and the Iga Tetsudo line, plus buses: Nara Kotsu in its zone, and Mie Kotsu and Toba City Kamome buses around Matsusaka, Ise, Toba and Shima, Nabari to Akame, Yunoyama Onsen and Kuwana to Nabana-no-sato. The extra is ¥1,800 over the 5day. The Gozaisho Ropeway itself is not included.",
-  },
-  {
-    q: "Does the Kintetsu Rail Pass work on the Osaka Metro?",
-    a: "No. Kintetsu says the pass does not cover the Osaka Metro, the Kyoto Municipal Subway or Hanshin. If your train continues onto one of them, stop at the last Kintetsu station, which is Nagata, Osaka-Namba or Takeda, or buy a regular ticket for the whole ride at your boarding station.",
-  },
-  {
-    q: "Who can buy the Kintetsu Rail Pass?",
-    a: "Kintetsu describes it as exclusively for foreign visitors, for people visiting for sightseeing with Temporary Visitor status, and asks you to carry your passport when using it. The pass is for the holder only. Klook's listing states it is not available to Japanese passport holders or residents.",
-  },
-  {
-    q: "Can I get a refund on the Kintetsu Rail Pass?",
-    a: "Kintetsu's conditions state refunds for passes bought online or through an agent cannot be given at a station ticket office, and none is given for delays. Activation also cannot be cancelled. If you buy through Klook, its cancellation terms on the listing apply, so read them before you pay.",
+    q: "Can I use the Kintetsu Rail Pass to Ise and Nagoya?",
+    a: "Yes, on the 5day or 5day Plus; the 1day and 2day stop at their Osaka, Nara and Kyoto zones. A plain Nagoya to Ise-shi return is ¥3,480 in basic fares and an Osaka-Namba to Ise-shi return ¥4,340, both under the ¥4,900 pass, so it pays only when you go on to Kashikojima or add another day out. The limited express to Ise-shi is ¥1,340 extra each way.",
   },
 ];
 
@@ -392,7 +443,7 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Kintetsu Rail Pass (2026): <br />Prices &amp; Is It Worth It?
+            Kintetsu Rail Pass 2026: <br />Prices, Coverage &amp; Is It Worth It?
           </h1>
           <p className={styles.heroSubtitle}>
             Four digital passes for Kintetsu trains around Osaka, Nara, Kyoto, Nagoya and Ise-Shima. Here is what each
@@ -444,13 +495,13 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
             </div>
             {/* Answer-first: this is the article's first body paragraph, not the hero line. */}
             <p className={styles.verdictText}>
-              The <strong>Kintetsu Rail Pass</strong> gives unlimited rides on Kintetsu trains around Osaka, Kyoto and
-              Nara, and with the 5-day versions Nagoya and Ise-Shima too. Adult prices are <strong>¥1,900 for 1 day</strong>,{" "}
+              The <strong>Kintetsu Rail Pass</strong> costs <strong>¥1,900 for 1 day</strong>,{" "}
               <strong>¥3,700 for 2 days</strong>, <strong>¥4,900 for 5 days</strong> and <strong>¥6,700 for the 5day
-              Plus</strong> (children ¥950, ¥1,850, ¥2,450 and ¥3,350). The 5-day passes cover <strong>all Kintetsu
-              lines</strong>, but no pass includes limited express trains, which need a separate ticket. Only the Plus
-              adds Mie Kotsu and Toba buses as well as Nara Kotsu. It pays on a triangle of Osaka, Nara and Kyoto in a
-              day (¥2,580 in fares) or a return to Kashikojima (¥5,540), not on a plain Nara return (¥1,360). Read off
+              Plus</strong> per adult, with children half price. The 1day and 2day cover Kintetsu lines around Osaka,
+              Nara and Kyoto, while both 5-day passes cover all Kintetsu lines out to Nagoya and Ise-Shima. Limited
+              express trains such as the AONIYOSHI and HINOTORI are never included, so you pay the limited express
+              charge on top (¥520 from Osaka-Namba to Nara), and the pass pays only on two connected journeys, such as
+              Osaka, Nara and Kyoto in one day (¥2,580 in fares), not on a plain Nara return (¥1,360). Read off
               kintetsu.co.jp on {CHECKED}.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
@@ -472,6 +523,15 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
               >
                 Or a Guided Nara Day →
               </KlookLink>
+              <KlookLink
+                href={klookEsim.url}
+                target="_blank"
+                rel="sponsored nofollow noopener"
+                className={styles.verdictBtn}
+                style={{ flex: "1 1 200px" }}
+              >
+                {klookEsim.ctaLabel}
+              </KlookLink>
             </div>
           </div>
         </div>
@@ -492,7 +552,7 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Pass", "Adult", "Child", "Valid", "Kintetsu zone", "Buses"].map((h) => (
+                    {["Pass", "Adult", "Child", "Valid", "Kintetsu zone", "Limited express & AONIYOSHI", "Buses"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -505,6 +565,7 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
                       <td style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{row.child}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.valid}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.zone}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.express}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.bus}</td>
                     </tr>
                   ))}
@@ -513,8 +574,11 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Read off Kintetsu&apos;s pass pages on {CHECKED}. Each pass also carries benefits at about 40 facilities
-            (1day and 2day) or about 70 (5-day passes), one use per facility.
+            Each pass also carries benefits at about 40 facilities (1day and 2day) or about 70 (5-day passes), one use
+            per facility. Limited express charges are per adult, standard seat, from Kintetsu&apos;s fare tables.
+          </p>
+          <p className={styles.bodyText} style={smallNote}>
+            Last checked: {LAST_CHECKED} · {OFFICIAL_PASS_URL} · {OFFICIAL_AONIYOSHI_URL}
           </p>
         </section>
 
@@ -545,7 +609,8 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Read off Kintetsu&apos;s pass, conditions, digital ticket and FAQ pages on {CHECKED}.
+            Read off Kintetsu&apos;s pass, conditions, digital ticket and FAQ pages on {FARES_CHECKED}; prices and the
+            limited express rule read again on {CHECKED}.
           </p>
         </section>
 
@@ -566,12 +631,76 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
           </p>
         </section>
 
+        {/* AONIYOSHI */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>AONIYOSHI</span>
+          <h2 className={styles.sectionTitle}>Can I Ride the AONIYOSHI With the Kintetsu Rail Pass?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Yes, but you pay ¥730 to ¥1,130 on top per adult. The AONIYOSHI is a sightseeing limited express between
+            Osaka-Namba, Kintetsu-Nara and Kyoto, so the pass covers the basic fare and you buy the limited express
+            ticket and the special car ticket. It runs daily except, in principle, Thursdays, and Kintetsu does not sell
+            connecting limited express tickets with it.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Journey", "Basic fare", "Limited express", "Special car", "You pay with the pass"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {aoniyoshiRows.map((row) => (
+                    <tr key={row.journey}>
+                      <td className={styles.tdProvider}>{row.journey}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.basic}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.express}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.special}</td>
+                      <td className={styles.tdPrice}>{row.withPass}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={smallNote}>
+            Adult, per person, when two share a twin seat or three or four share a salon seat; children pay half,
+            rounded up to ¥10. One person alone in a twin seat also buys a child limited express and special car
+            ticket. From Kintetsu&apos;s AONIYOSHI page, read {CHECKED}.
+          </p>
+          <p className={styles.bodyText} style={smallNote}>
+            Last checked: {LAST_CHECKED} · {OFFICIAL_AONIYOSHI_URL}
+          </p>
+        </section>
+
+        {/* JR Pass */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>JR Pass</span>
+          <h2 className={styles.sectionTitle}>Does the JR Pass Cover Kintetsu Trains?</h2>
+          <p className={styles.bodyText}>
+            No. The Japan Rail Pass is a JR Group pass, and its conditions say lines run by companies other than JR need
+            a separate fare; Kintetsu is not among the few non-JR sections it names. The JR Kansai Area Pass does not
+            cover Kintetsu either. With a{" "}
+            <Link href="/guides/transport/jr-pass-guide" style={{ color: "var(--red)", fontWeight: 600 }}>
+              JR Pass
+            </Link>
+            , take the JR Nara Line from Kyoto to JR Nara instead, or pay the ¥760 Kintetsu fare from Kyoto to
+            Kintetsu-Nara.
+          </p>
+          <p className={styles.bodyText} style={smallNote}>
+            Last checked: {LAST_CHECKED} · {OFFICIAL_JRP_URL}
+          </p>
+        </section>
+
         {/* Break-even */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Break-even</span>
-          <h2 className={styles.sectionTitle}>Is the Kintetsu Rail Pass Worth It?</h2>
+          <h2 className={styles.sectionTitle}>Is the Kintetsu Rail Pass Worth It for Nara and Kyoto?</h2>
           <p className={styles.bodyText}>
-            Add up the basic fares for your own days. The limited express charge does not belong in this sum, because
+            Only with two connected journeys: a plain Osaka–Nara return (¥1,360) or Kyoto–Nara return (¥1,520) costs
+            less than the ¥1,900 1day, while Osaka, Nara and Kyoto in one day (¥2,580) saves ¥680. Add up the basic fares for your own days. The limited express charge does not belong in this sum, because
             you pay it with or without a pass. All fares below are adult, one way, from Kintetsu&apos;s own tables. Half
             the adult fare, rounded up to the nearest ¥10, gives the child fare.
           </p>
@@ -599,8 +728,14 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            From Kintetsu&apos;s limited express fare tables, cross-checked on {CHECKED} against its fare table as of 14
-            March 2026. The limited express figures are the standard charge, and premium seats cost more.
+            From Kintetsu&apos;s limited express fare tables, cross-checked on {FARES_CHECKED} against its fare table as
+            of 14 March 2026. The Osaka-Namba, Kyoto and Nara rows were read again on {CHECKED} from Kintetsu&apos;s
+            AONIYOSHI fare table and are unchanged. The limited express figures are the standard charge, and premium
+            seats cost more.
+          </p>
+          <p className={styles.bodyText} style={smallNote}>
+            Last checked: {LAST_CHECKED} (Osaka, Kyoto and Nara fares) and 2026-11-04 (Ise and Nagoya fares) ·{" "}
+            {OFFICIAL_AONIYOSHI_URL} · {OFFICIAL_FARES_URL}
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1.5rem" }}>
             <div className={styles.tableScroll}>

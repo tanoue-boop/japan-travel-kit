@@ -354,7 +354,7 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Kintetsu Rail Pass (2026): Prices and Is It Worth It?</p>
+                <p className={styles.relatedTitle}>Kintetsu Rail Pass 2026: Prices, Coverage & Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

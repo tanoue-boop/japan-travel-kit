@@ -37,7 +37,7 @@ export const transportArticles: GuideArticle[] = [
   {
     href: "/guides/transport/kintetsu-rail-pass",
     badge: "Pass",
-    title: "Kintetsu Rail Pass (2026): Prices and Is It Worth It?",
+    title: "Kintetsu Rail Pass 2026: Prices, Coverage & Is It Worth It?",
     desc: "¥1,900 for 1 day, ¥3,700 for 2, ¥4,900 for 5 and ¥6,700 for the 5day Plus. Limited express seats are always extra, a plain Nara return is cheaper on singles, and Kashikojima is where the 5day starts to pay.",
     group: "passes",
     city: "osaka",
