@@ -4875,14 +4875,23 @@ export const kyotoToTokyoArrivalStayAreas: KlookStayArea[] = [
  * table on kyoto-to-tokyo-shinkansen. No new Klook ids — all three products are
  * the shared `tripPrepProducts` entries.
  */
+// 27 Nov 2026 (R06): reordered to subway ticket (5%), Tokyo evening tour (6.5%), hotel
+// (6.5%), eSIM (20%), and the tour added — 90253 was on sale on www.klook.com's search
+// index that day (4.8, 1K+ booked). 97057 was not used: its page now reads Shibuya-only.
 export const kyotoToTokyoTripPrep: KlookTripPrepItem[] = [
-  {
-    ...tripPrepProducts.hotelTokyoStation,
-    why: "The Tokaido Shinkansen terminates inside Tokyo Station, so a Marunouchi room is a short walk from the platform rather than a cross-city ride with the cases at the end of the day.",
-  },
   {
     ...tripPrepProducts.subway,
     why: "The shinkansen ticket ends at the gate. This one covers every Tokyo Metro and Toei Subway line for 24, 48 or 72 hours, for the days after you arrive.",
+  },
+  {
+    label: shinjukuBarHoppingNightTour.title,
+    ctaLabel: "Check the Shinjuku evening tour →",
+    url: shinjukuBarHoppingNightTour.url,
+    why: "A Nozomi leaving Kyoto by mid-afternoon is in Tokyo before dark, and Shinjuku is a few stops from Tokyo or Shinagawa — a three-hour join-in evening with food and drinks included turns the arrival day into a first Tokyo night.",
+  },
+  {
+    ...tripPrepProducts.hotelTokyoStation,
+    why: "The Tokaido Shinkansen terminates inside Tokyo Station, so a Marunouchi room is a short walk from the platform rather than a cross-city ride with the cases at the end of the day.",
   },
   {
     ...tripPrepProducts.esim,

@@ -1016,7 +1016,9 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             two-day Kyoto stop inside a wider trip, that is usually the fact that decides whether a pass is
             worth it at all. Our{" "}
             <Link href="/guides/transport/tokyo-to-kyoto">Tokyo to Kyoto guide</Link> compares the trains and
-            the fares, and our{" "}
+            the fares, the{" "}
+            <Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo train</Link> guide covers
+            the way back after day two — Nozomi times, fares and the large-luggage seats — and our{" "}
             <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link> runs the break-even against
             point-to-point tickets.
           </p>

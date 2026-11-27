@@ -131,21 +131,39 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  * figure, and no operator page gives a Hikari station price for the pair (the ¥13,850
  * seen elsewhere comes from jr-group.jp, which states it is a private site), so there is
  * no official number to change it to. Journey times stay the 11 Nov timetable reads.
+ *
+ * 27 Nov 2026 (task-jtk-20261127-R06, re-run of 20261126-R06; "kyoto to tokyo train" at
+ * 13th). Title/H1 now "Kyoto to Tokyo Train (Shinkansen) 2026: Time, Price & Tickets";
+ * the question H2s and FAQ match the four head questions; the train table has separate
+ * reserved / non-reserved columns and the trains-per-hour count. Re-read on 27 Nov 2026:
+ *  - JR Central's train information (traininfo.jr-central.co.jp, Kyoto eastbound list
+ *    for 27 Nov 2026, every train's own stop list): 151 Nozomi, 30 Hikari and 12 Kodama
+ *    reach Tokyo; Nozomi 2h07–2h15 (median 2h12, fastest Nozomi 64 21:38 → 23:45),
+ *    Hikari 2h24–2h51, Kodama 3h38 (08:10 → 11:48 hourly); Nozomi 6–12 an hour, 8–12 in
+ *    every hour from 07:00 to 20:59; Hikari 2 an hour, Kodama 1; first 06:14, last 21:38.
+ *    These replace Klook's "352 trains" and "4h 1m average", which do not match JR's list;
+ *  - smartEX PDFs ("As of April 1, 2025"): ¥13,970 / ¥13,650 / ¥13,320, unchanged;
+ *  - japanrailpass.net: NOZOMI MIZUHO Ticket Tokyo–Kyoto ¥4,960, unchanged;
+ *  - JR Central's oversized-baggage page: 160 cm / 161–250 cm reserved / ¥1,000, unchanged.
+ * data/jr-fares.json tokyo-kyoto: the 13970 is the Nozomi figure, so its label is now
+ * "Tokaido Shinkansen (Nozomi)" and its minutes 132 (JR's median Nozomi), which removes
+ * the 11/8 mismatch with this page.
  */
 
 const OWN_ISO = "2026-10-29";
 const OWN = checkedLabel(OWN_ISO);
 const NOW_ISO = "2026-11-11";
 const NOW = checkedLabel(NOW_ISO);
-const TODAY_ISO = "2026-11-18";
+const TODAY_ISO = "2026-11-27";
 const TODAY = checkedLabel(TODAY_ISO);
 
-/** Official pages behind the fares and the JR Pass rule, re-read on TODAY_ISO. */
+/** Official pages behind the fares, times and the JR Pass rule, re-read on TODAY_ISO. */
 const FARE_SOURCES = [
   { label: "smartEX fares (JR Central)", href: "https://smart-ex.jp/en/product/plan/service/" },
+  { label: "JR Central train information", href: "https://traininfo.jr-central.co.jp/shinkansen/sp/en/" },
   { label: "JR Central fare release", href: "https://jr-central.co.jp/news/release/_pdf/000046069.pdf" },
   { label: "JAPAN RAIL PASS NOZOMI MIZUHO Ticket", href: "https://japanrailpass.net/en/use/special-ticket/" },
-  { label: "JR West Kyoto timetable", href: "https://timetable.jr-odekake.net/" },
+  { label: "JR Central oversized baggage", href: "https://global.jr-central.co.jp/en/info/oversized-baggage/" },
 ];
 
 /** Station-price constant: JR Central's standard Nozomi fare, valid until 1 July 2027 purchases. */
@@ -179,36 +197,41 @@ const nozomiAllReservedPeriods = [
 ];
 
 /**
- * (a) Nozomi, Hikari, Kodama side by side. Times are one real train of each type
- * on JR West's Kyoto timetable for 11 Nov 2026; fares are smartEX regular season.
+ * (a) Nozomi, Hikari, Kodama side by side. Times and counts are every Tokyo-bound
+ * train in JR Central's Kyoto departure list for 27 Nov 2026; fares are smartEX
+ * regular season, one adult.
  */
 const trainTypeRows = [
   {
     train: "Bottom line: take a Nozomi",
-    example: "The fastest of the three; no change of train",
-    time: "2h 11m",
-    fare: `${NOZOMI_RESERVED} reserved on smartEX (${STATION_NOZOMI} at the station)`,
-    pass: `JR Pass holders: Hikari at no extra cost, or Nozomi plus the ${NOZOMI_TICKET} ticket`,
+    time: "2h 12m on most trains, no change",
+    count: "8–12 an hour through the day",
+    reserved: `${NOZOMI_RESERVED} (${STATION_NOZOMI} at the station)`,
+    nonReserved: NON_RESERVED,
+    pass: `Hikari at no extra cost, or Nozomi plus the ${NOZOMI_TICKET} ticket`,
   },
   {
     train: "Nozomi",
-    example: "Nozomi 76: Kyoto 08:13 → Tokyo 10:24",
-    time: "2h 11m",
-    fare: `${NOZOMI_RESERVED} reserved / ${NON_RESERVED} non-reserved`,
-    pass: `Not covered on its own — a pass holder buys the ${NOZOMI_TICKET} NOZOMI/MIZUHO ticket each time`,
+    time: "2h 7m – 2h 15m",
+    count: "151 a day; 8–12 an hour 07:00–21:00",
+    reserved: NOZOMI_RESERVED,
+    nonReserved: `${NON_RESERVED} (none on the all-reserved peak dates)`,
+    pass: `Special charge: the ${NOZOMI_TICKET} NOZOMI/MIZUHO ticket each ride`,
   },
   {
     train: "Hikari",
-    example: "Hikari 642: Kyoto 08:33 → Tokyo 11:12",
-    time: "2h 39m",
-    fare: `${HIKARI_RESERVED} reserved / ${NON_RESERVED} non-reserved`,
+    time: "2h 24m – 2h 51m",
+    count: "30 a day; 2 an hour",
+    reserved: HIKARI_RESERVED,
+    nonReserved: NON_RESERVED,
     pass: "Covered, seat reservation free",
   },
   {
     train: "Kodama",
-    example: "Kodama 808: Kyoto 08:10 → Tokyo 11:48",
     time: "3h 38m",
-    fare: `${HIKARI_RESERVED} reserved / ${NON_RESERVED} non-reserved`,
+    count: "12 a day; 1 an hour (08:10–19:10)",
+    reserved: HIKARI_RESERVED,
+    nonReserved: NON_RESERVED,
     pass: "Covered, seat reservation free — stops at every station",
   },
 ];
@@ -270,9 +293,9 @@ const bookingRows = [
   },
   {
     item: "Remaining 2026–27 dates when every Nozomi seat is reserved",
-    answer: "21–23 Nov 2026; 25 Dec 2026 – 5 Jan 2027; 9–11 Jan 2027; 20–22 Mar 2027",
+    answer: "25 Dec 2026 – 5 Jan 2027; 9–11 Jan 2027; 20–22 Mar 2027",
     detail:
-      "On these dates the Nozomi has no non-reserved car at all, so a walk-up Nozomi ticket is not possible. JR Central publishes no separate rule for the autumn-leaf season; its November dates are the 21–23 November long weekend. Hikari and Kodama keep their non-reserved cars but JR Central warns they “may be overcrowded”",
+      "On these dates the Nozomi has no non-reserved car at all, so a walk-up Nozomi ticket is not possible. Hikari and Kodama keep their non-reserved cars but JR Central warns they “may be overcrowded”",
     source: `railway.jr-central.co.jp/nozomi and global.jr-central.co.jp/en/nozomi, ${OWN}`,
   },
   {
@@ -299,24 +322,24 @@ const bookingRows = [
 const routeRows = [
   {
     item: "Fastest Kyoto → Tokyo journey",
-    value: "About 2 hours 10 minutes, no transfer",
+    value: "2 hours 7 minutes; 2 hours 12 minutes on most Nozomi",
     detail:
-      'On JR West\'s own timetable for 11 November 2026, Nozomi 76 leaves Kyoto at 08:13 and reaches Tokyo at 10:24 — 2 hours 11 minutes. JR Central\'s own Tokaido Shinkansen page puts the leg at "130 minutes", and Klook\'s eastbound rail page states the route "features 0 transfer(s)"',
-    source: `timetable.jr-odekake.net, ${NOW}; global.jr-central.co.jp and klook.com rail page, ${OWN}`,
+      "On JR Central's own train information for 27 November 2026, every Tokyo-bound Nozomi from Kyoto takes between 2h 7m and 2h 15m, with no change of train; the quickest that day was the last one, Nozomi 64, 21:38 → 23:45",
+    source: `traininfo.jr-central.co.jp, ${TODAY}`,
   },
   {
-    item: "Average journey on the booking page",
-    value: "4 hours 1 minute",
+    item: "Trains from Kyoto to Tokyo in a day",
+    value: "193: 151 Nozomi, 30 Hikari, 12 Kodama",
     detail:
-      "Klook's average across the whole day, and the gap between that and the 2-hour fastest is the KODAMA — the all-stops Tokaido service, which adds roughly two hours between Kyoto and Tokyo. The average is not the journey you will take unless you book badly",
-    source: `klook.com rail page, ${OWN}`,
+      "JR Central's list for 27 November 2026, counting only trains that run through to Tokyo. That is 8 to 12 Nozomi in every hour from 07:00 to 21:00, two Hikari an hour and one Kodama an hour — the all-stops service, about an hour and a half slower than a Nozomi",
+    source: `traininfo.jr-central.co.jp, ${TODAY}`,
   },
   {
     item: "First and last train to Tokyo",
     value: "06:14 and 21:38 (arrives 23:45)",
     detail:
-      "JR West's Kyoto timetable for 11 November 2026: the first Tokyo-bound departure is Nozomi 230 at 06:14 and the last is Nozomi 64 at 21:38, into Tokyo at 23:45. The four eastbound departures after it that evening run only as far as Nagoya. Klook's rail page counted 352 trains across its sample day (4 November 2026)",
-    source: `timetable.jr-odekake.net, ${NOW}; klook.com rail page, ${OWN}`,
+      "The first Tokyo-bound departure is Nozomi 230 at 06:14 and the last is Nozomi 64 at 21:38, into Tokyo at 23:45. Later eastbound departures that evening run only as far as Nagoya",
+    source: `traininfo.jr-central.co.jp, ${TODAY}; timetable.jr-odekake.net, ${NOW}`,
   },
   {
     item: "Seat classes sold for the route",
@@ -418,13 +441,13 @@ const compareRows = [
   {
     option: "JAPAN RAIL PASS on the HIKARI or KODAMA",
     cost: `${JR_PASS_7} online, ¥53,000 as an Exchange Order`,
-    gets: "The journey at no extra charge, plus the Yamanote and the Narita Express at the Tokyo end — on a HIKARI (2h39 on the 11 November timetable) or a KODAMA (3h38), both direct.",
+    gets: "The journey at no extra charge, plus the Yamanote and the Narita Express at the Tokyo end — on a HIKARI (2h24–2h51 on JR Central's 27 November list) or a KODAMA (3h38), both direct.",
     pick: "Only if the same week already has Hiroshima, Kanazawa or Tohoku in it. A Kyoto–Tokyo single plus a Tokyo–Kyoto single does not come close to ¥50,000.",
   },
   {
     option: "JAPAN RAIL PASS plus the NOZOMI ticket",
     cost: `${JR_PASS_7} plus ${NOZOMI_TICKET} for this leg`,
-    gets: "The pass, and the fast train — the 2h11 run rather than the HIKARI's 2h39.",
+    gets: "The pass, and the fast train — about 2h12 rather than the HIKARI's 2h24–2h51.",
     pick: "Worth it on the one leg where you are catching a flight or have a timed booking in Tokyo. JR prices it the same whether you then sit in Green, reserved or non-reserved.",
   },
   {
@@ -502,29 +525,30 @@ const arrivalRows = [
 const faqItems = [
   {
     q: "How long is the train from Kyoto to Tokyo?",
-    a: `About 2 hours 11 minutes on the fastest train, a Nozomi, with no change. On JR West's own Kyoto timetable for 11 November 2026, Nozomi 76 leaves Kyoto at 08:13 and reaches Tokyo at 10:24 (2h 11m); Hikari 642 leaves at 08:33 and arrives at 11:12 (2h 39m); and Kodama 808, which stops at every station, leaves at 08:10 and arrives at 11:48 (3h 38m). The first Tokyo-bound train that day was at 06:14 and the last at 21:38, arriving 23:45. Read on ${NOW}; times vary slightly by train and date.`,
+    a: `About 2 hours 12 minutes on a Nozomi, the fastest train, with no change — between 2h 7m and 2h 15m on every Nozomi in JR Central's Kyoto departure list for 27 November 2026. A Hikari takes 2h 24m to 2h 51m and a Kodama, which stops at every station, 3h 38m. There are 8 to 12 Nozomi an hour through the day, plus two Hikari and one Kodama; the first train to Tokyo leaves at 06:14 and the last at 21:38, arriving 23:45. Checked on ${TODAY}; times vary slightly by train and date.`,
   },
   {
-    q: "How much is the Kyoto to Tokyo shinkansen?",
+    q: "How much is the Shinkansen from Kyoto to Tokyo?",
     a: `${NOZOMI_RESERVED} one way for a reserved seat on a Nozomi on JR Central's smartEX, ${HIKARI_RESERVED} on a Hikari or Kodama, and ${NON_RESERVED} non-reserved — one adult, regular season, from smartEX's price list "As of April 1, 2025", checked on ${TODAY}. At a station ticket machine or office the Nozomi reserved seat is ${STATION_NOZOMI}, JR Central's standard fare. Off-peak dates are ¥200 cheaper and peak dates ¥200–¥400 dearer for a reserved seat. JR Central has announced that the Nozomi reserved-seat charge for Tokyo–Kyoto rises by ¥700 for tickets bought from 1 July 2027; non-reserved does not change.`,
   },
   {
-    q: "Can I use the JR Pass from Kyoto to Tokyo?",
-    a: `Yes. The JAPAN RAIL PASS covers the Hikari and Kodama between Kyoto and Tokyo at no extra charge, with free seat reservations. For a Nozomi you buy the ${NOZOMI_TICKET} NOZOMI MIZUHO Ticket for each ride, the same price for Green, reserved or non-reserved seats (japanrailpass.net, checked on ${TODAY}). For this one leg the pass does not pay: a 7-day Ordinary pass is ${JR_PASS_7} online or ¥53,000 as an Exchange Order, against a one-way smartEX fare of ${NOZOMI_RESERVED}. It starts to make sense when the same week includes Hiroshima, Kanazawa or Tohoku.`,
+    q: "Can I use the JR Pass on the Nozomi from Kyoto?",
+    a: `Only with a special charge: a JAPAN RAIL PASS holder buys the ${NOZOMI_TICKET} NOZOMI MIZUHO Ticket for each Nozomi ride between Kyoto and Tokyo, while the Hikari and Kodama are covered at no extra charge, with free seat reservations. The Nozomi ticket is sold from one month before the day of travel and costs the same price for Green, reserved or non-reserved seats (japanrailpass.net, checked on ${TODAY}). For this one leg the pass does not pay: a 7-day Ordinary pass is ${JR_PASS_7} online or ¥53,000 as an Exchange Order, against a one-way smartEX fare of ${NOZOMI_RESERVED}. It starts to make sense when the same week includes Hiroshima, Kanazawa or Tohoku.`,
+  },
+  {
+    q: "Should I book Kyoto to Tokyo Shinkansen tickets in advance?",
+    a: `Yes on the peak dates, with a big case, or when a flight or a booked Tokyo night is waiting; otherwise a non-reserved ticket at ${NON_RESERVED} works, with 8 to 12 Nozomi an hour from Kyoto. On JR Central's peak dates every Nozomi car is reserved (remaining 2026–27 dates: 25 Dec 2026 – 5 Jan 2027; 9–11 Jan 2027; 20–22 Mar 2027), and a case of 161–250 cm needs a reserved seat with an oversized baggage area — free with the ticket, or a ${BAGGAGE_FEE} fee if you board without one. Reserved seats go on sale one month before the day of travel at stations; smartEX takes requests up to a year ahead and changes are free before departure. Checked on ${TODAY}.`,
   },
   {
     q: "Which side to sit for Mt Fuji from Kyoto to Tokyo?",
     a: `The left side in the direction of travel — book seat E in an Ordinary car or seat D in the Green Car. JR Central's own Shinkansen Perfect Guide says "For the best view of Mt. Fuji, choose Seat E in Standard Class or Seat D in Green Class"; seat letters are fixed to the carriage, so heading east from Kyoto that window is on your left. The mountain comes late on this run, on the Shizuoka–Shin-Fuji–Mishima stretch in the last third of the journey, and it is often hidden by cloud. Read on ${OWN}.`,
   },
-  {
-    q: "Do I need to reserve a seat?",
-    a: `Not on most days — every Nozomi, Hikari and Kodama has non-reserved cars outside the peak periods, at ${NON_RESERVED}. But on JR Central's peak dates every Nozomi car is reserved (remaining 2026–27 dates: 21–23 Nov 2026; 25 Dec 2026 – 5 Jan 2027; 9–11 Jan 2027; 20–22 Mar 2027), and a case over 160 cm needs a reserved seat with an oversized baggage area or a ${BAGGAGE_FEE} fee. Reserved seats go on sale one month before the day of travel at stations; smartEX takes requests up to a year ahead. On a last Kyoto morning with a flight or a booked Tokyo night, reserve. Read on ${OWN} and ${TODAY}.`,
-  },
 ];
 
-const TITLE = "Kyoto to Tokyo Train 2026: Shinkansen Time, Price & Tickets";
+/** 60 characters; "& " would make it 61, and the brand suffix does not fit either. */
+const TITLE = "Kyoto to Tokyo Train (Shinkansen) 2026: Time, Price, Tickets";
 const DESCRIPTION =
-  "Kyoto to Tokyo train: fastest Kyoto to Tokyo shinkansen 2h11 (Nozomi), ¥13,970 reserved on smartEX (18 Nov 2026). JR Pass: Hikari free, Nozomi +¥4,960.";
+  "Kyoto to Tokyo train: the Nozomi shinkansen takes 2h12 (fastest 2h07), 8–12 an hour, ¥13,970 reserved or ¥13,320 non-reserved. JR Pass: Nozomi +¥4,960.";
 
 /** "Last checked … Official pages: …" under each table. */
 function SourcesLine({ what }: { what: string }) {
@@ -633,7 +657,7 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Kyoto to Tokyo Train 2026: <br />Kyoto to Tokyo Shinkansen Time, Price &amp; Tickets
+            Kyoto to Tokyo Train (Shinkansen) 2026: <br />Time, Price &amp; Tickets
           </h1>
           <p className={styles.heroSubtitle}>
             Leaving from Kyoto Station: the Nozomi, Hikari and Kodama compared, smartEX against the station
@@ -669,7 +693,7 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Fastest journey</p>
-                <p className={styles.verdictStatValue}>2h 11m on a Nozomi, no transfer</p>
+                <p className={styles.verdictStatValue}>2h 12m on a Nozomi (2h 7m at best), no transfer</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Reserved seat (smartEX)</p>
@@ -686,16 +710,19 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
             </div>
             {/* Answer-first: the first body paragraph of the article, not the hero line. */}
             <p className={styles.verdictText}>
-              The <strong>Kyoto to Tokyo train</strong> is the Tokaido Shinkansen, and the fastest one, a Nozomi,
-              takes <strong>about 2 hours 11 minutes</strong> with no change (JR West timetable, {NOW}). A reserved
-              seat costs <strong>{NOZOMI_RESERVED}</strong> one way on JR Central&apos;s smartEX ({STATION_NOZOMI} at
-              the station; {HIKARI_RESERVED} on a Hikari or Kodama; adult, regular season, checked {TODAY}). With
-              a <strong>JAPAN RAIL PASS</strong> the Hikari and Kodama cost nothing extra, while the Nozomi needs
-              a <strong>{NOZOMI_TICKET}</strong> NOZOMI MIZUHO Ticket for each ride (japanrailpass.net, {TODAY}).
+              The <strong>Kyoto to Tokyo train</strong> is the Tokaido Shinkansen Nozomi, which takes{" "}
+              <strong>about 2 hours 12 minutes</strong> (2h 7m on the fastest) with no change, on JR
+              Central&apos;s own train information for {TODAY}. A Nozomi seat costs{" "}
+              <strong>{NOZOMI_RESERVED} reserved</strong> or <strong>{NON_RESERVED} non-reserved</strong> one way
+              on JR Central&apos;s smartEX (adult, regular season; {STATION_NOZOMI} reserved at the station). Kyoto
+              has <strong>8 to 12 Nozomi to Tokyo every hour</strong> from 07:00 to 21:00 — 151 a day — plus two
+              Hikari and one Kodama an hour.
             </p>
             <p className={styles.verdictText}>
-              Trains leave from tracks 11 and 12 on Kyoto Station&apos;s Hachijo (south) side, and the last one
-              to Tokyo is 21:38. This page is the eastbound trip; going the other way, see{" "}
+              With a <strong>JAPAN RAIL PASS</strong> the Hikari and Kodama cost nothing extra, while the Nozomi
+              needs a <strong>{NOZOMI_TICKET}</strong> NOZOMI MIZUHO Ticket for each ride (japanrailpass.net,{" "}
+              {TODAY}). Trains leave from tracks 11 and 12 on Kyoto Station&apos;s Hachijo (south) side, and the
+              last one to Tokyo is 21:38. This page is the eastbound trip; going the other way, see{" "}
               <Link href="/guides/transport/tokyo-to-kyoto">Tokyo to Kyoto</Link>.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
@@ -712,8 +739,8 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
         <KlookTripPrep
           headingLevel={3}
           label="Book with the train"
-          heading="Book the Same Day: Tokyo Hotel, Subway Ticket, eSIM, Luggage"
-          intro="The train ends inside Tokyo Station. A room near it, a subway ticket for the days after, data for the journey and a bag service for the airport day are the four bookings the shinkansen ticket does not cover."
+          heading="Book the Same Day: Subway Ticket, Tokyo Evening Tour, Hotel, eSIM"
+          intro="The train ends inside Tokyo Station. A subway ticket for the days after, a first-evening tour, a room near the platform, data for the journey and a bag service for the airport day are the bookings the shinkansen ticket does not cover."
           items={[...kyotoToTokyoTripPrep, luggageDeliveryCards.kyotoToTokyo]}
         />
 
@@ -754,17 +781,17 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
           <span className={styles.sectionLabel}>The train</span>
           <h2 className={styles.sectionTitle}>How Long Is the Train from Kyoto to Tokyo?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            About 2 hours 10 minutes on a Nozomi, 2 hours 40 minutes on a Hikari and 3 hours 40 minutes on a
-            Kodama — all direct, with no transfer. The times below are one real morning train of each type on
-            JR West&apos;s own Kyoto timetable for 11 November 2026, and the fares are JR Central&apos;s smartEX
-            prices for one adult in the regular season, both read on {NOW}.
+            About 2 hours 12 minutes on a Nozomi, 2 hours 24 to 2 hours 51 minutes on a Hikari and 3 hours
+            38 minutes on a Kodama — all direct, with no transfer. The times and counts below cover every
+            Tokyo-bound train in JR Central&apos;s own Kyoto departure list for 27 November 2026, and the fares
+            are JR Central&apos;s smartEX prices for one adult in the regular season, both checked on {TODAY}.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Train", "Example (11 Nov 2026)", "Kyoto → Tokyo", "Fare, one adult (smartEX)", "On a JR Pass"].map((h) => (
+                    {["Train", "Kyoto → Tokyo", "Trains from Kyoto", "Reserved seat (smartEX)", "Non-reserved (smartEX)", "On a JR Pass"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -773,9 +800,10 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
                   {trainTypeRows.map((row) => (
                     <tr key={row.train}>
                       <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>{row.train}</td>
-                      <td style={{ fontSize: "0.85rem" }}>{row.example}</td>
                       <td className={styles.tdPrice} style={{ fontSize: "0.86rem" }}>{row.time}</td>
-                      <td style={{ fontSize: "0.85rem" }}>{row.fare}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.count}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.reserved}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.nonReserved}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.pass}</td>
                     </tr>
                   ))}
@@ -783,7 +811,13 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
               </table>
             </div>
           </div>
-          <SourcesLine what={`smartEX fares and the JR Pass ticket; example train times from JR West's timetable for ${NOW_ISO}`} />
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.85rem" }}>
+            <strong>Large luggage:</strong> a case whose three sides add up to 161–250 cm needs a reserved
+            &ldquo;seat with an oversized baggage area&rdquo;, booked with the ticket at no extra charge; board
+            without one and JR Central charges {BAGGAGE_FEE} including tax. Up to 160 cm needs no booking, and
+            over 250 cm cannot be brought on board.
+          </p>
+          <SourcesLine what="train times and counts from JR Central's Kyoto departure list, smartEX fares, the JR Pass ticket and JR Central's baggage rule" />
           <p className={styles.bodyText} style={{ margin: "1rem 0" }}>
             The rest of the route, with the first and last trains and the stations before Tokyo:
           </p>
@@ -829,7 +863,7 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
         {/* Prices */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Prices</span>
-          <h2 className={styles.sectionTitle}>How Much Is the Kyoto to Tokyo Shinkansen?</h2>
+          <h2 className={styles.sectionTitle}>How Much Is the Shinkansen from Kyoto to Tokyo?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             <strong>{NOZOMI_RESERVED}</strong> one way for a reserved Ordinary seat on a Nozomi,{" "}
             <strong>{HIKARI_RESERVED}</strong> on a Hikari or Kodama and <strong>{NON_RESERVED}</strong>{" "}
@@ -921,10 +955,11 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
         {/* Pass comparison */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Compare</span>
-          <h2 className={styles.sectionTitle}>Can I Use the JR Pass from Kyoto to Tokyo?</h2>
+          <h2 className={styles.sectionTitle}>Can I Use the JR Pass on the Nozomi from Kyoto?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Yes: the Hikari and Kodama are covered with a free seat reservation, and the Nozomi needs the{" "}
-            <strong>{NOZOMI_TICKET}</strong> NOZOMI/MIZUHO ticket per ride. Buying a pass for this leg alone
+            Only with a special charge: a pass holder buys the <strong>{NOZOMI_TICKET}</strong> NOZOMI/MIZUHO
+            ticket for each Nozomi ride to Tokyo, while the Hikari and Kodama are covered with a free seat
+            reservation. Buying a pass for this leg alone
             does not pay, though. A 7-day Ordinary <strong>JAPAN RAIL PASS</strong> is {JR_PASS_7} online and
             ¥53,000 as an Exchange Order bought abroad, against a one-way smartEX fare of {NOZOMI_RESERVED}{" "}
             on a Nozomi — so even a round trip between the two cities does not get there. What changes the
@@ -1113,10 +1148,12 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
         {/* Reservations */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Reservations</span>
-          <h2 className={styles.sectionTitle}>Do I Need to Reserve a Seat from Kyoto to Tokyo?</h2>
+          <h2 className={styles.sectionTitle}>Should I Book Kyoto to Tokyo Shinkansen Tickets in Advance?</h2>
           <p className={styles.bodyText}>
-            Most of the year, no — but book as soon as your date is fixed on the peak dates below, or if a
-            case is over 160 cm. Reserved seats go on sale one month before the day of travel.
+            Book ahead on the peak dates below, with a case over 160 cm, or when a flight is waiting in Tokyo;
+            on other days a {NON_RESERVED} non-reserved ticket works, with 8 to 12 Nozomi an hour. Reserved
+            seats go on sale one month before the day of travel at stations, and smartEX takes requests up to a
+            year ahead.
           </p>
           <div className={styles.tableWrap} style={{ margin: "1rem 0" }}>
             <div className={styles.tableScroll}>
@@ -1142,7 +1179,7 @@ export default function KyotoToTokyoShinkansenPage({ updated }: { updated: PageU
             </div>
           </div>
           <p className={styles.bodyText}>
-            Outside the peak dates, walking up works. With <strong>352 eastbound departures</strong> on Klook&apos;s sample date,
+            Outside the peak dates, walking up works. With <strong>193 trains a day</strong> from Kyoto to Tokyo on JR Central&apos;s list for 27 November 2026,
             turning up and taking the next train on a non-reserved ticket is a reasonable plan rather than a
             gamble. On eight sets of dates it stops being optional: JR Central runs{" "}
             <strong>every NOZOMI car as a reserved car</strong> through the peak periods, so the fast train to
