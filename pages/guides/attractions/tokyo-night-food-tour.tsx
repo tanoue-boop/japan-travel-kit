@@ -486,7 +486,11 @@ export default function TokyoNightFoodTourPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/tsukiji-market-food-tour" style={{ color: "var(--red)", fontWeight: 600 }}>
               Tsukiji market food tour
             </Link>{" "}
-            is open to all ages.
+            is open to all ages. To see the city by day before an evening tour, a{" "}
+            <Link href="/guides/attractions/tokyo-sightseeing-bus-tour" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Tokyo bus tour
+            </Link>{" "}
+            covers Asakusa, Tokyo Tower and the Imperial Palace in a half-day.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shinjukuBarHoppingNightTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>

@@ -10699,6 +10699,18 @@ export const hatoBusMorningTour: KlookTour = {
   url: klookLink("https://www.klook.com/en-US/activity/101129-tokyo-hato-bus-join-half-day-bus-tour/"),
 };
 
+/**
+ * Skyhop Bus 1-day / 2-day ticket, Klook activity 617 — added 27 Nov 2026
+ * (task-jtk-20261127-R08). Confirmed as a live listing ("Tokyo Hop-On Hop-off
+ * sightseeing bus by Skyhop Bus (1day / 2days ticket)") through the www.klook.com
+ * search index on 27 Nov 2026. 6.5% tour. No price.
+ */
+export const skyhopBusDayTicket: KlookTour = {
+  title: "Sky Hop Bus 1-day / 2-day ticket (Klook)",
+  desc: "The open-top hop-on hop-off ticket for all three Sky Hop Bus routes — Red (Asakusa, Skytree), Blue (Tokyo Tower, Odaiba, Ginza) and Green (Shinjuku, Shibuya) — exchanged at the Marunouchi Mitsubishi Building counter or on board",
+  url: klookLink("https://www.klook.com/en-US/activity/617-sky-hop-on-hop-off-bus-tokyo/"),
+};
+
 /** Book these on the same trip: 6.5% hotel, 5% subway pass, 20% eSIM. */
 export const tokyoBusTourTripPrep: KlookTripPrepItem[] = [
   {

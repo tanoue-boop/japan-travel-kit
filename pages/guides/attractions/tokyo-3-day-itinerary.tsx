@@ -663,7 +663,9 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/tokyo-tower-tickets">Tokyo Tower tickets guide</Link> sets
             out the difference. The other option for Day 3 is to stop planning it: a guided sightseeing
             coach ties the Imperial Palace gardens, Asakusa and Skytree together with commentary, which
-            is the version to pick if three days of navigating sounds like work.
+            is the version to pick if three days of navigating sounds like work. The{" "}
+            <Link href="/guides/attractions/tokyo-sightseeing-bus-tour">Tokyo hop-on hop-off bus</Link> is the
+            middle way: three open-top routes from Marunouchi, getting off where you like.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem" }}>
             Want a timed indoor stop for the Day 3 evening instead? teamLab Borderless is in Azabudai Hills, 2

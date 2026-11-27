@@ -612,8 +612,9 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
             fee; the{" "}
             <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree tickets guide</Link> has the
             350 m and 450 m prices), and the teamLab Planets slot if you are going. If you would rather hand the east side to a
-            guide, the sightseeing bus day tour covers the Imperial Palace gardens, Asakusa and Skytree; the
-            Tsukiji street-food walk is a two-hour version of lunch. For an indoor hour in Asakusa, our{" "}
+            guide, the sightseeing bus day tour covers the Imperial Palace gardens, Asakusa and Skytree, and our{" "}
+            <Link href="/guides/attractions/tokyo-sightseeing-bus-tour">Tokyo bus tour</Link> guide compares it
+            with the Hato Bus half-day and the hop-on hop-off; the Tsukiji street-food walk is a two-hour version of lunch. For an indoor hour in Asakusa, our{" "}
             <Link href="/guides/attractions/tea-ceremony-japan">tea ceremony in Tokyo</Link> guide compares
             the kimono sessions near Senso-ji, which take about 90 minutes including dressing.
           </p>
@@ -960,7 +961,7 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
               { href: "/guides/attractions/tokyo-5-day-itinerary", title: "Tokyo 5-Day Itinerary (2026): 5 Days in Tokyo, Day by Day" },
               { href: "/guides/attractions/things-to-do-tokyo", title: "Things to Do in Tokyo 2026: Top Picks and Ticket Prices" },
               { href: "/guides/attractions/tokyo-subway-ticket", title: "Tokyo Subway Ticket (2026): 24, 48 or 72 Hours — Is It Worth It?" },
-              { href: "/guides/attractions/tokyo-sightseeing-bus-tour", title: "Tokyo Sightseeing Bus Tour 2026: Hato Bus vs Sky Hop Bus" },
+              { href: "/guides/attractions/tokyo-sightseeing-bus-tour", title: "Tokyo Bus Tours 2026: Hop-On Hop-Off vs Hato Bus (Prices)" },
               { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport" },
               { href: "/guides/transport/tokyo-airport-transfer", title: "Tokyo Airport Transfer Guide (2026): Narita & Haneda to the City" },
               { href: "/guides/attractions", title: "More Things to Do in Japan →" },

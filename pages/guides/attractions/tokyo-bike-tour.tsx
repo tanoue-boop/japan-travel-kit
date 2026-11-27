@@ -199,7 +199,7 @@ const crumbSep = (
 
 const related = [
   { href: "/guides/attractions/things-to-do-tokyo", title: "Things to Do in Tokyo 2026: Top Picks and Ticket Prices" },
-  { href: "/guides/attractions/tokyo-sightseeing-bus-tour", title: "Tokyo Sightseeing Bus Tour 2026: Hato Bus vs Sky Hop Bus" },
+  { href: "/guides/attractions/tokyo-sightseeing-bus-tour", title: "Tokyo Bus Tours 2026: Hop-On Hop-Off vs Hato Bus (Prices)" },
   { href: "/guides/attractions/tokyo-photoshoot", title: "Tokyo Photoshoot (2026): Spots, Kimono Shoots & How to Book" },
   { href: "/guides/attractions/tokyo-subway-ticket", title: "Tokyo Subway Ticket 2026: 24/48/72-Hour Price, Worth It?" },
   { href: "/guides/attractions/asakusa-kimono-rental", title: "Asakusa Kimono Rental (2026): Return Times, Hair Sets and Where to Photograph" },

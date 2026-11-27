@@ -613,7 +613,10 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText}>
             It covers Tokyo Metro and Toei lines but not JR, so the Yamanote Line is not included. Our{" "}
             <Link href="/guides/attractions/tokyo-subway-ticket" style={linkStyle}>Tokyo Subway Ticket guide</Link>{" "}
-            has the full break-even. Prices and fares read off tokyometro.jp on {SUBWAY_CHECKED}.
+            has the full break-even. Prices and fares read off tokyometro.jp on {SUBWAY_CHECKED}. To skip
+            the route planning for one day, the{" "}
+            <Link href="/guides/attractions/tokyo-sightseeing-bus-tour" style={linkStyle}>Tokyo hop-on hop-off bus</Link>{" "}
+            links Asakusa, Tokyo Tower, Odaiba, Shibuya and Shinjuku on three open-top routes.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -847,7 +850,7 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo Sightseeing Bus Tour 2026: Hato Bus vs Sky Hop Bus</p>
+                <p className={styles.relatedTitle}>Tokyo Bus Tours 2026: Hop-On Hop-Off vs Hato Bus (Prices)</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

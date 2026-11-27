@@ -8,6 +8,8 @@ import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import {
   hatoBusAfternoonTour,
   hatoBusMorningTour,
+  klookEsim,
+  skyhopBusDayTicket,
   skyhopHopOnHopOffBus,
   tokyoBusTourTripPrep,
   tokyoOpenTopBusSightseeing,
@@ -52,52 +54,86 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  * Klook facts (full-day coach 5672, open-top loop 89277, Hato Bus 102622 / 101129) come
  * from the www.klook.com search index on 15 Nov 2026. No Klook price appears, and
  * nothing here is first-hand.
+ *
+ * Rank pass, 27 Nov 2026 (task-jtk-20261127-R08): retitled around "Tokyo bus tours" and
+ * "hop-on hop-off", which is what the page's search queries ask for. skyhopbus.com (home
+ * and /faq) re-read by node fetch on 27 Nov 2026 — same prices, three routes, 19 stops,
+ * Marunouchi Mitsubishi Building (2-5 Marunouchi) as stop B1 of every route, under-6s
+ * free on a lap. Hato Bus's English course list re-read through the search index on the
+ * same day: AE301 / AE302 still ¥6,300. Klook 617 (Skyhop 1day / 2days ticket) and 5672
+ * confirmed live in the www.klook.com index on 27 Nov 2026.
  * ---------------------------------------------------------------------------
  */
 
-const CHECKED_ISO = "2026-11-15";
+const CHECKED_ISO = "2026-11-27";
 const CHECKED = checkedLabel(CHECKED_ISO);
 const HATO_URL = "https://www.hatobus.com/v01/en/course";
 const SKYHOP_URL = "https://skyhopbus.com/";
+const SKYHOP_FAQ_URL = "https://skyhopbus.com/faq/";
 const METRO_URL = "https://www.tokyometro.jp/en/ticket/travel/index.html";
 
-const TITLE = "Tokyo Sightseeing Bus Tour 2026: Hato Bus vs Sky Hop Bus";
+const TITLE = "Tokyo Bus Tours 2026: Hop-On Hop-Off vs Hato Bus (Prices)";
 const DESCRIPTION =
-  "Tokyo Sightseeing Bus Tour: a Hato Bus English tour is ¥6,300 for a half day from Tokyo Station, the Sky Hop Bus ¥4,800 a day. Which Tokyo bus tour fits?";
+  "Tokyo bus tours compared: the Sky Hop Bus hop-on hop-off is ¥4,800 for 1 day or ¥7,000 for 2 days on 3 routes; Hato Bus English half-day tours are ¥6,300.";
 
-/** Table 1 — the main bus options. First row is the default pick. */
+/** Table 1 — every bus option, one row per course. First row is the verdict. */
 const busRows = [
   {
-    name: "Hato Bus English half-day (Tokyo Morning / Tokyo Afternoon) — pick this if unsure",
-    type: "Guided tour, set route",
-    time: "About 4–4.5 hours (08:20 to about 13:00, or 14:00 to about 18:00)",
-    stops: "Imperial Palace Plaza, Tokyo Tower, Senso-ji and Nakamise in Asakusa",
-    english: "English-speaking guide",
+    name: "Verdict: first visit with half a day → Hato Bus English half-day; your own pace → Sky Hop Bus 1-day ticket",
+    price: "¥6,300 / ¥4,800",
+    time: "About 4–4.5 hours / the whole boarding day",
+    board: "Tokyo Station Marunouchi South Exit / Marunouchi Mitsubishi Building",
+    english: "Live English guide / audio guide",
+    verdict: true,
+  },
+  {
+    name: "Hato Bus AE301 Tokyo Morning",
     price: "¥6,300",
-  },
-  {
-    name: "Sky Hop Bus (hop-on hop-off)",
-    type: "Open-top bus, three loops",
-    time: "Any part of the day; the ticket is for one calendar day",
-    stops: "19 stops: Asakusa, Skytree, Ueno, Akihabara, Tokyo Tower, Odaiba, Ginza, Shibuya, Shinjuku",
-    english: "Audio guide in 7 languages",
-    price: "¥4,800 (child ¥2,400); 2 days ¥7,000",
-  },
-  {
-    name: "Full-day guided coach (Klook listing)",
-    type: "Guided tour, set route",
-    time: "A full day",
-    stops: "Imperial Palace garden, Asakusa, Tokyo Skytree admission, a Tokyo Bay cruise that is sometimes replaced",
+    time: "08:20–09:00 start, back about 13:00",
+    board: "Shinjuku Station East Exit or Tokyo Station Marunouchi South Exit",
     english: "English-speaking guide",
-    price: "See the listing",
   },
   {
-    name: "Open-top 70-minute loop (Klook listing)",
-    type: "Open-top bus, no stops",
-    time: "70 minutes",
-    stops: "Tokyo Station, Marunouchi, Ginza, Roppongi and Tokyo Tower from the top deck",
-    english: "Recorded multilingual guidance",
+    name: "Hato Bus AE302 Tokyo Afternoon",
+    price: "¥6,300",
+    time: "14:00 start, back about 18:00",
+    board: "Tokyo Station Marunouchi South Exit",
+    english: "English-speaking guide",
+  },
+  {
+    name: "Sky Hop Bus Red route (Asakusa, Tokyo Skytree, Ryogoku, Ueno, Akihabara)",
+    price: "1 day ¥4,800 (child ¥2,400); 2 days ¥7,000 (¥3,500) — all routes on one ticket",
+    time: "Hop on and off until the last bus; 1-day ticket valid on the boarding day only",
+    board: "Marunouchi Mitsubishi Building, or any Red stop",
+    english: "Audio guide in 7 languages",
+  },
+  {
+    name: "Sky Hop Bus Blue route (Tokyo Tower, Odaiba, Tsukiji, Ginza)",
+    price: "Same ticket",
+    time: "Same ticket validity",
+    board: "Marunouchi Mitsubishi Building, or any Blue stop",
+    english: "Audio guide in 7 languages",
+  },
+  {
+    name: "Sky Hop Bus Green route (Shinjuku, Shibuya, Tokyo Tower)",
+    price: "Same ticket",
+    time: "Same ticket validity",
+    board: "Marunouchi Mitsubishi Building, or any Green stop",
+    english: "Audio guide in 7 languages",
+  },
+  {
+    name: "Tokyo 1-day bus tour (Klook): Imperial Palace garden, Asakusa, Skytree, Tokyo Bay cruise (sometimes replaced)",
     price: "See the listing",
+    time: "A full day",
+    board: "Set in the listing",
+    english: "English-speaking guide",
+  },
+  {
+    name: "Open-top 70-minute loop (Klook)",
+    price: "See the listing",
+    time: "70 minutes, no stops",
+    board: "Check-in at the Tokyo VIP Lounge, per the listing",
+    english: "Recorded multilingual guidance",
   },
 ];
 
@@ -131,32 +167,20 @@ const compareRows = [
 
 const faqItems = [
   {
-    q: "What is the best Tokyo sightseeing bus tour for first-timers?",
-    a: "A Hato Bus English half-day tour. For ¥6,300 it covers the Imperial Palace Plaza, Tokyo Tower and Senso-ji in Asakusa with an English-speaking guide in about four and a half hours, from Tokyo Station (or Shinjuku in the morning). If you would rather choose your own stops, the Sky Hop Bus at ¥4,800 a day is the alternative.",
+    q: "What is the best Tokyo bus tour for first-timers?",
+    a: "A Hato Bus English half-day tour. For ¥6,300 it covers the Imperial Palace Plaza, Tokyo Tower and Senso-ji in Asakusa with an English-speaking guide in about four to four and a half hours, from Tokyo Station (or Shinjuku in the morning). If you would rather choose your own stops, the Sky Hop Bus at ¥4,800 for the day is the alternative.",
   },
   {
-    q: "How much is a Hato Bus English tour?",
-    a: "¥6,300 for an adult on both the Tokyo Morning (AE301) and Tokyo Afternoon (AE302) half-day courses on Hato Bus's English course list, checked on 15 November 2026 for the editions running until December 2026. A new edition is listed from January 2027, so check the date you travel.",
-  },
-  {
-    q: "Is the Sky Hop Bus worth it?",
-    a: "Yes on a dry day when you want to see several districts without planning trains: ¥4,800 covers all three loops for the calendar day. It is less good value if you only want one district, if rain is forecast (the bus is open-top and hands out ponchos), or late in the day, because the ticket is not 24 hours.",
-  },
-  {
-    q: "Where do Tokyo bus tours depart from?",
-    a: "Hato Bus's English half-day tours leave from the Marunouchi South Exit of Tokyo Station; the morning course can also start at Shinjuku Station East Exit. The Sky Hop Bus routes meet at the Marunouchi Mitsubishi Building, a short walk from Tokyo Station, and you can board at any of its 19 stops.",
+    q: "Is the Sky Hop Bus 1-day ticket valid for 24 hours?",
+    a: "No. Sky Hop Bus states the 1-day ticket is valid only on the day of boarding, not for 24 hours, and the 2-day ticket for two consecutive days from the first boarding, not 48 hours. Start in the morning to get the most from it.",
   },
   {
     q: "Do Tokyo bus tours run in the rain?",
-    a: "The Sky Hop Bus runs in the rain and hands out ponchos; it may pause for lightning or very heavy rain, and some buses have a roof. A Hato Bus coach tour is enclosed, so rain affects only the walking stops.",
+    a: "The Sky Hop Bus runs in the rain and hands out ponchos; it may stop running in thunderstorms or very heavy rain. A Hato Bus coach tour is enclosed, so rain affects only the walking stops.",
   },
   {
-    q: "Can children ride Tokyo sightseeing buses?",
-    a: "Yes. On the Sky Hop Bus, under-6s ride free on a guardian's lap and elementary-school children pay the ¥2,400 child fare. There are no toilets on board and no space for luggage. For Hato Bus, check the child price on the booking page, because it was not readable for the current edition.",
-  },
-  {
-    q: "Do I need to book a Tokyo bus tour in advance?",
-    a: "For a guided coach, yes: seats are limited and Klook's Hato Bus listing states late arrivals and no-shows are not refunded. Sky Hop Bus tickets can be bought at the Marunouchi counter or on board, but buying online means one less queue, and online tickets can be used within three months without changing the date.",
+    q: "Can children ride the Sky Hop Bus?",
+    a: "Yes. Under-6s ride free on a guardian's lap, and a child who needs a seat pays the ¥2,400 child fare for one day. There are no toilets on board and no space for luggage.",
   },
   {
     q: "Bus tour or Tokyo Subway Ticket?",
@@ -198,7 +222,7 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
                 {
                   "@type": "ListItem",
                   position: 4,
-                  name: "Tokyo Sightseeing Bus Tour",
+                  name: "Tokyo Bus Tours",
                   item: "https://www.japan-travel-kit.com/guides/attractions/tokyo-sightseeing-bus-tour",
                 },
               ],
@@ -247,7 +271,7 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg><span className="sr-only"> / </span>
-          <span className={styles.breadCurrent}>Tokyo Sightseeing Bus Tour</span>
+          <span className={styles.breadCurrent}>Tokyo Bus Tours</span>
         </div>
       </div>
 
@@ -256,11 +280,11 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tokyo Sightseeing Bus Tour (2026): <br />Hato Bus English Tour or Sky Hop Bus?
+            Tokyo Bus Tours 2026: <br />Hop-On Hop-Off vs Hato Bus (Prices)
           </h1>
           <p className={styles.heroSubtitle}>
-            The guided half-day, the open-top hop-on hop-off and the full-day coach, compared on the operators&apos;
-            own prices — and against simply taking the subway.
+            The Sky Hop Bus hop-on hop-off, Hato Bus&apos;s English half-day and Klook&apos;s 1-day bus tour,
+            compared on price, time, boarding point and English — and against simply taking the subway.
           </p>
           <div className={styles.heroBadges}>
             {[`Prices checked ${CHECKED}`, "Operators' own figures", "Bus vs subway vs guide"].map((t) => (
@@ -290,51 +314,62 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
           <div className={styles.verdictBody}>
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
+                <p className={styles.verdictStatLabel}>Sky Hop Bus 1 day / 2 days</p>
+                <p className={styles.verdictStatValue}>¥4,800 / ¥7,000</p>
+              </div>
+              <div className={styles.verdictStat}>
+                <p className={styles.verdictStatLabel}>Sky Hop Bus routes</p>
+                <p className={styles.verdictStatValue}>3 routes, 19 stops</p>
+              </div>
+              <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Hato Bus English half-day</p>
                 <p className={styles.verdictStatValue}>¥6,300</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Sky Hop Bus 1 day</p>
-                <p className={styles.verdictStatValue}>¥4,800</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Guided tour length</p>
-                <p className={styles.verdictStatValue}>About 4–4.5 hours</p>
-              </div>
-              <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Departs from</p>
-                <p className={styles.verdictStatValue}>Tokyo Station</p>
+                <p className={styles.verdictStatLabel}>Boarding</p>
+                <p className={styles.verdictStatValue}>Marunouchi, Tokyo Station</p>
               </div>
             </div>
             {/* Answer-first: this is the article's first body paragraph, not the hero line. */}
             <p className={styles.verdictText}>
-              A <strong>Tokyo sightseeing bus tour</strong> comes in two kinds: a guided half-day such as the{" "}
-              <strong>Hato Bus English tour</strong> (¥6,300, about 4 to 4.5 hours from Tokyo Station, with the
-              Imperial Palace Plaza, Tokyo Tower and Senso-ji), and the open-top <strong>Sky Hop Bus</strong>{" "}
-              (¥4,800 for a one-day ticket, 19 stops on three loops, get on and off as you like). On a first visit
-              with little time, take the guided half-day; to go at your own pace, take the hop-on hop-off. Prices
-              from Hato Bus and Sky Hop Bus, checked {CHECKED}.
+              Tokyo&apos;s <strong>hop-on hop-off bus</strong>, the open-top <strong>Sky Hop Bus</strong>, costs{" "}
+              <strong>¥4,800 for a 1-day ticket and ¥7,000 for a 2-day ticket</strong> (adults) on 3 routes with 19
+              stops, all starting at the Marunouchi Mitsubishi Building by Tokyo Station. Hato Bus&apos;s{" "}
+              <strong>English-guided half-day tours</strong> (Tokyo Morning and Tokyo Afternoon) cost{" "}
+              <strong>¥6,300</strong> for about 4 to 4.5 hours from Tokyo Station. On a first visit with half a day,
+              take the Hato Bus tour; to choose your own stops, take the Sky Hop Bus. Prices from Sky Hop Bus and
+              Hato Bus, checked {CHECKED}.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1rem" }}>
               <KlookLink
-                href={hatoBusAfternoonTour.url}
+                href={skyhopBusDayTicket.url}
                 target="_blank"
                 rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
                 style={{ flex: "1 1 200px" }}
               >
-                Hato Bus English tour on Klook →
+                Sky Hop Bus 1-day / 2-day ticket →
               </KlookLink>
               <KlookLink
-                href={skyhopHopOnHopOffBus.url}
+                href={tokyoSightseeingBusTour.url}
                 target="_blank"
                 rel="sponsored nofollow noopener"
                 className={styles.verdictBtn}
                 style={{ flex: "1 1 200px" }}
               >
-                Sky Hop Bus ticket on Klook →
+                Tokyo 1-day bus tour →
               </KlookLink>
             </div>
+            <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.85rem" }}>
+              For the rest of the trip:{" "}
+              <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" style={bodyLink}>
+                Tokyo Subway Ticket (24 / 48 / 72 hours) →
+              </KlookLink>{" "}
+              ·{" "}
+              <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" style={bodyLink}>
+                Japan eSIM for maps and the audio guide →
+              </KlookLink>
+            </p>
           </div>
         </div>
 
@@ -343,31 +378,30 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
         {/* Compare */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Compare</span>
-          <h2 className={styles.sectionTitle}>Which Tokyo Bus Tour Is Best for First-Timers?</h2>
+          <h2 className={styles.sectionTitle}>Which Tokyo Bus Tour Should You Take?</h2>
           <p className={styles.bodyText}>
-            The Hato Bus English half-day: one booking, an English-speaking guide, and Tokyo&apos;s three classic
-            sights in a morning or an afternoon. The other options trade the guide for freedom (Sky Hop Bus) or for a
-            longer day with Skytree included (the full-day coach).
+            On a first visit with half a day, the Hato Bus English half-day; with a full day and your own plan, the
+            Sky Hop Bus. The table puts every course side by side: price, time, where you board and the kind of
+            English commentary.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Tour", "Type", "Duration", "Main stops", "English", "Official price (adult)"].map((h) => (
+                    {["Tour", "Price (adult)", "Duration", "Where to board", "English"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {busRows.map((row) => (
-                    <tr key={row.name}>
+                    <tr key={row.name} style={row.verdict ? { fontWeight: 600 } : undefined}>
                       <td className={styles.tdProvider}>{row.name}</td>
-                      <td style={{ fontSize: "0.85rem" }}>{row.type}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.85rem" }}>{row.price}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.time}</td>
-                      <td style={{ fontSize: "0.85rem" }}>{row.stops}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.board}</td>
                       <td style={{ fontSize: "0.85rem" }}>{row.english}</td>
-                      <td className={styles.tdPrice}>{row.price}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -375,33 +409,56 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
             </div>
           </div>
           <p className={styles.bodyText} style={muted}>
-            Last checked {CHECKED}:{" "}
+            Last checked: {CHECKED}. Sources:{" "}
+            <a href={SKYHOP_URL} target="_blank" rel="noopener" style={sourceLink}>
+              skyhopbus.com
+            </a>{" "}
+            (tickets, routes, stops) and its{" "}
+            <a href={SKYHOP_FAQ_URL} target="_blank" rel="noopener" style={sourceLink}>
+              FAQ
+            </a>{" "}
+            (ticket validity, children);{" "}
             <a href={HATO_URL} target="_blank" rel="noopener" style={sourceLink}>
               Hato Bus English course list
             </a>{" "}
-            (editions running until December 2026) and{" "}
-            <a href={SKYHOP_URL} target="_blank" rel="noopener" style={sourceLink}>
-              skyhopbus.com
-            </a>
-            . The full-day coach and the 70-minute loop are described as their Klook listings describe them; open a
-            listing for the price on your date.
+            (editions running until December 2026). The Klook 1-day tour and the 70-minute loop are described as
+            their Klook listings describe them; open a listing for the price on your date.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={skyhopBusDayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Sky Hop Bus ticket →
+            </KlookLink>
+            <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Tokyo 1-day bus tour →
+            </KlookLink>
             <KlookLink href={hatoBusMorningTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Hato Bus morning tour →
             </KlookLink>
-            <KlookLink href={tokyoSightseeingBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
-              Full-day coach tour →
-            </KlookLink>
           </div>
+        </section>
+
+        {/* Is there a hop-on hop-off bus */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>Hop-on hop-off</span>
+          <h2 className={styles.sectionTitle}>Is There a Hop-On Hop-Off Bus in Tokyo?</h2>
+          <p className={styles.bodyText}>
+            Yes: the <strong>Sky Hop Bus</strong>, an open-top double-decker on 3 routes with 19 stops, where one
+            ticket lets you get on and off at any stop and change between routes. Its Red route covers Asakusa,
+            Tokyo Skytree, Ryogoku, Ueno and Akihabara; the Blue route Tokyo Tower, Odaiba (Fuji Television and
+            Tokyo Teleport Station), Tsukiji and Ginza; and the Green route Shinjuku, Shibuya and Tokyo Tower.
+          </p>
+          <p className={styles.bodyText}>
+            Commentary is an audio guide in seven languages, not a live guide, and seats are not reserved — if a
+            bus is full, you wait for the next one.
+          </p>
         </section>
 
         {/* Hato Bus */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Hato Bus</span>
-          <h2 className={styles.sectionTitle}>How Much Is a Hato Bus English Tour?</h2>
+          <h2 className={styles.sectionTitle}>Does Hato Bus Have English Tours?</h2>
           <p className={styles.bodyText}>
-            <strong>¥6,300</strong> for an adult on either English half-day course. <strong>Tokyo Morning
+            Yes: two English-guided half-day courses, each <strong>¥6,300</strong> for an adult. <strong>Tokyo Morning
             (AE301)</strong> starts between 08:20 and 09:00 from Shinjuku Station East Exit or Tokyo Station
             Marunouchi South Exit and finishes around 13:00. <strong>Tokyo Afternoon (AE302)</strong> leaves Tokyo
             Station Marunouchi South Exit at 14:00 and finishes around 18:00. Both stop at the Imperial Palace Plaza,
@@ -430,12 +487,11 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
 
         {/* Sky Hop Bus */}
         <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Hop-on hop-off</span>
-          <h2 className={styles.sectionTitle}>Is the Sky Hop Bus Worth It?</h2>
+          <span className={styles.sectionLabel}>Sky Hop Bus price</span>
+          <h2 className={styles.sectionTitle}>How Much Is the Tokyo Hop-On Hop-Off Bus?</h2>
           <p className={styles.bodyText}>
-            Yes on a dry day when you want to see several districts without planning transfers. The{" "}
-            <strong>1 Day Ticket is ¥4,800</strong> (children ¥2,400) and the 2 Day Ticket ¥7,000 (¥3,500); both
-            cover all three loops — <strong>Red</strong> for Asakusa, Tokyo Skytree, Ryogoku, Ueno and Akihabara,{" "}
+            The Sky Hop Bus <strong>1 Day Ticket is ¥4,800</strong> (children ¥2,400) and the{" "}
+            <strong>2 Day Ticket ¥7,000</strong> (¥3,500); both cover all three routes — <strong>Red</strong> for Asakusa, Tokyo Skytree, Ryogoku, Ueno and Akihabara,{" "}
             <strong>Blue</strong> for Tokyo Tower, Odaiba, Tsukiji and Ginza, and <strong>Green</strong> for
             Shinjuku, Shibuya and Tokyo Tower — with 19 stops in all.
           </p>
@@ -443,11 +499,26 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
             Three things Sky Hop Bus states that decide whether it suits you: the one-day ticket is valid on the
             calendar day only, <strong>not for 24 hours</strong>, so start in the morning; seats are not reserved,
             and a full bus means waiting for the next one; and there is no luggage space and no toilet on board. The
-            commentary is an audio guide in seven languages rather than a live guide.
+            commentary is an audio guide in seven languages rather than a live guide. It is worth it on a dry day
+            when you want several districts without planning trains; for one district, the subway is cheaper.
+          </p>
+          <p className={styles.bodyText} style={muted}>
+            Last checked: {CHECKED}. Source:{" "}
+            <a href={SKYHOP_URL} target="_blank" rel="noopener" style={sourceLink}>
+              skyhopbus.com
+            </a>{" "}
+            and its{" "}
+            <a href={SKYHOP_FAQ_URL} target="_blank" rel="noopener" style={sourceLink}>
+              FAQ
+            </a>
+            .
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={skyhopBusDayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Sky Hop Bus 1-day / 2-day ticket →
+            </KlookLink>
             <KlookLink href={skyhopHopOnHopOffBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
-              Check the Sky Hop Bus →
+              Other Sky Hop Bus listing →
             </KlookLink>
             <KlookLink href={tokyoOpenTopBusSightseeing.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               70-minute open-top loop →
@@ -465,12 +536,16 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
         {/* Departure */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Where to go</span>
-          <h2 className={styles.sectionTitle}>Where Do Tokyo Bus Tours Depart From?</h2>
+          <h2 className={styles.sectionTitle}>Where Do I Board the Sky Hop Bus?</h2>
           <p className={styles.bodyText}>
-            The Marunouchi side of Tokyo Station. Hato Bus&apos;s English tours leave from the Marunouchi South Exit
-            (the morning course also from Shinjuku Station East Exit). The Sky Hop Bus loops meet at the Marunouchi
-            Mitsubishi Building, a short walk from the station — but you can board at any of the 19 stops. If you are staying in Shinjuku or Shibuya, the Sky Hop Bus Green loop or the Hato
-            Bus morning start at Shinjuku saves the trip across town.
+            At the <strong>Marunouchi Mitsubishi Building</strong> (2-5 Marunouchi, Chiyoda-ku), stop B1 and the
+            starting point of all three routes, on the Marunouchi side of Tokyo Station; the Skybus ticket counter
+            there sells tickets, and you can also board at any of the other 18 stops and pay on the bus. If you are
+            staying in Shinjuku or Shibuya, start on the Green route there.
+          </p>
+          <p className={styles.bodyText}>
+            Hato Bus&apos;s English tours leave from the Tokyo Station Marunouchi South Exit (the morning course
+            also from Shinjuku Station East Exit), so both operators start within walking distance of each other.
           </p>
         </section>
 
@@ -580,7 +655,7 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
         <KlookTourPicks
           heading="Tokyo Bus Tours on Klook"
           intro="The guided half-days, the hop-on hop-off ticket and the full-day coach. Open a listing for the current price on your dates."
-          tours={[hatoBusAfternoonTour, skyhopHopOnHopOffBus, tokyoSightseeingBusTour]}
+          tours={[skyhopBusDayTicket, tokyoSightseeingBusTour, hatoBusAfternoonTour]}
         />
 
         {/* Related */}
@@ -627,7 +702,7 @@ export default function TokyoSightseeingBusTourPage({ updated }: { updated: Page
               <KlookLink href={hatoBusAfternoonTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Hato Bus tour →
               </KlookLink>
-              <KlookLink href={skyhopHopOnHopOffBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
+              <KlookLink href={skyhopBusDayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>
                 View the Sky Hop Bus →
               </KlookLink>
             </div>

@@ -208,7 +208,7 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/tokyo-sightseeing-bus-tour",
     badge: "Bus tour",
-    title: "Tokyo Sightseeing Bus Tour 2026: Hato Bus vs Sky Hop Bus",
+    title: "Tokyo Bus Tours 2026: Hop-On Hop-Off vs Hato Bus (Prices)",
     desc: "A Hato Bus English half-day is ¥6,300 from Tokyo Station with the Imperial Palace, Tokyo Tower and Senso-ji; the open-top Sky Hop Bus is ¥4,800 a day on three loops. Which to pick, where they leave from, and bus vs subway.",
     group: "daytrips",
     city: "tokyo",

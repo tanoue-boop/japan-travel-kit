@@ -576,6 +576,12 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             Klook listings set 18 as the minimum age, every driver needs a licence valid in Japan, and the karts
             are single-seat, so there is no passenger seat for a child.
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem" }}>
+            For a sightseeing day with less walking, a{" "}
+            <Link href="/guides/attractions/tokyo-sightseeing-bus-tour" style={linkStyle}>Tokyo bus tour</Link>{" "}
+            works with children: on the Sky Hop Bus, under-6s ride free on a guardian&apos;s lap and the child
+            1-day ticket is ¥2,400, but there are no toilets on board.
+          </p>
         </section>
 
         {/* Quick answer */}
@@ -1000,7 +1006,7 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
               { href: "/guides/attractions/tokyo-snow-day-trip", title: "Tokyo Snow Day Trip (2026–27): Yeti, Fujiten or Gala" },
               { href: "/guides/transport/tokyo-airport-transfer", title: "Tokyo Airport Transfer Guide (2026): Narita & Haneda to the City" },
               { href: "/guides/attractions/tokyo-subway-ticket", title: "Tokyo Subway Ticket (2026): 24, 48 or 72 Hours — Is It Worth It?" },
-              { href: "/guides/attractions/tokyo-sightseeing-bus-tour", title: "Tokyo Sightseeing Bus Tour 2026: Hato Bus vs Sky Hop Bus" },
+              { href: "/guides/attractions/tokyo-sightseeing-bus-tour", title: "Tokyo Bus Tours 2026: Hop-On Hop-Off vs Hato Bus (Prices)" },
             ].map((r) => (
               <Link key={r.href} href={r.href} className={styles.relatedCard}>
                 <div className={styles.relatedIcon}>

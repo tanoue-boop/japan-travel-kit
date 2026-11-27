@@ -1008,7 +1008,7 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo Sightseeing Bus Tour 2026: Hato Bus vs Sky Hop Bus</p>
+                <p className={styles.relatedTitle}>Tokyo Bus Tours 2026: Hop-On Hop-Off vs Hato Bus (Prices)</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
