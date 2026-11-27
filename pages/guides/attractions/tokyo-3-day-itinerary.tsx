@@ -892,6 +892,11 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            At the Skytree, <Link href="/guides/attractions/sumida-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sumida Aquarium</Link> is in the same complex and open every day.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

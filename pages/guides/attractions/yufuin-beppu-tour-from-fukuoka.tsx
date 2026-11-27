@@ -708,6 +708,11 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
           items={yufuinBeppuTripPrep}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Going on your own by expressway bus? See the <Link href="/guides/transport/sunq-pass" style={{ color: "var(--red)", fontWeight: 600 }}>SUNQ Pass</Link> for unlimited buses in northern Kyushu.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

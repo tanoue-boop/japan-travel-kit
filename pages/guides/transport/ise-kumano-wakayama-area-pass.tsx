@@ -143,7 +143,8 @@ export default function IseKumanoWakayamaAreaPassPage({ updated }: { updated: Pa
           <Link href="/guides/attractions/kansai-5-day-itinerary" style={linkStyle}>Kansai 5 day itinerary</Link>. Koyasan is
           not on this pass — the{" "}
           <Link href="/guides/transport/koyasan-world-heritage-ticket" style={linkStyle}>Koyasan World Heritage Ticket</Link>{" "}
-          covers it from Osaka.
+          covers it from Osaka. Stopping in Shirahama? See{" "}
+          <Link href="/guides/attractions/adventure-world-tickets" style={linkStyle}>Adventure World tickets</Link>.
         </p>
       }
       faq={[

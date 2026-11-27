@@ -684,6 +684,11 @@ export default function Kansai5DayItineraryPage({ updated }: { updated: PageUpda
             An anime day on Awaji Island: <Link href="/guides/attractions/nijigen-no-mori-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nijigen no Mori tickets</Link> explains the per-attraction prices.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Two more days out with children: <Link href="/guides/attractions/kobe-animal-kingdom-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kobe Animal Kingdom</Link> on Port Island and <Link href="/guides/attractions/adventure-world-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Adventure World</Link> in Shirahama, about 2 hours from Tennoji.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

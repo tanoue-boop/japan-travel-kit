@@ -1161,6 +1161,11 @@ export default function SaganoRomanticTrainTicketsPage({ updated }: { updated: P
             Toei Kyoto Studio Park sells a set of a one-way Sagano Romantic Train ticket with park entry: see <Link href="/guides/attractions/toei-kyoto-studio-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Toei Kyoto Studio Park tickets</Link>.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            The boat back down the gorge has its own guide: <Link href="/guides/attractions/hozugawa-river-boat-ride" style={{ color: "var(--red)", fontWeight: 600 }}>Hozugawa river boat ride</Link> (¥6,000 for adults, about 2 hours to Arashiyama).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

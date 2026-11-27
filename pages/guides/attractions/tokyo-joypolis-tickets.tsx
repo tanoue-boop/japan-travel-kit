@@ -853,6 +853,11 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
           items={tokyoJoypolisTripPrep}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Another indoor stop on the Yurikamome: <Link href="/guides/attractions/small-worlds-tokyo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>SMALL WORLDS Tokyo</Link>, 3 minutes from Ariake Tennis no Mori.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

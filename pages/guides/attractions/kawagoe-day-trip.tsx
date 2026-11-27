@@ -536,6 +536,11 @@ export default function KawagoeDayTripPage({ updated }: { updated: PageUpdated }
           tours={[kawagoeKimonoVasara, kawagoeMorningWalkingTour, kawagoePrivateCarTour, seibuKawagoePass]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Back in Ikebukuro, <Link href="/guides/attractions/sunshine-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sunshine Aquarium</Link> in Sunshine City has date-based prices from ¥2,600 for adults.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

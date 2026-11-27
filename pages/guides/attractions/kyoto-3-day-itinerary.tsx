@@ -752,6 +752,11 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
           items={kyotoThreeDayTripPrep}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On the Arashiyama day, the <Link href="/guides/attractions/hozugawa-river-boat-ride" style={{ color: "var(--red)", fontWeight: 600 }}>Hozugawa river boat</Link> runs four times a day in winter — check the times before you go.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

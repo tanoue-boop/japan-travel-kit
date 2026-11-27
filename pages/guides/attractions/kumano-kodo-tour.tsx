@@ -929,6 +929,11 @@ export default function KumanoKodoTourPage({ updated }: { updated: PageUpdated }
             Going without a tour? JR Central&apos;s <Link href="/guides/transport/ise-kumano-wakayama-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Ise-Kumano-Wakayama Area Tourist Pass</Link> covers five days round the Kii Peninsula with the Nachi and Hongu buses, and Nankai&apos;s <Link href="/guides/transport/koyasan-world-heritage-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Koyasan World Heritage Ticket</Link> covers Mt. Koya from Osaka.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On the coast road to Kumano, Shirahama has <Link href="/guides/attractions/adventure-world-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Adventure World</Link>, a zoo, aquarium and park (1-Day Pass ¥5,300).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

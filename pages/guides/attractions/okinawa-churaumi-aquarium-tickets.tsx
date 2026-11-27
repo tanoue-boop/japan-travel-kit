@@ -657,6 +657,11 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
           areas={okinawaChuraumiStayAreas}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Short on time? <Link href="/guides/attractions/dmm-kariyushi-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>DMM Kariyushi Aquarium</Link> is about 20 minutes by car from Naha Airport.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

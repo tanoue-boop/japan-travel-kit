@@ -839,6 +839,11 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
             In Nagasaki Prefecture, the two tickets worth booking before you go are <Link href="/guides/attractions/huis-ten-bosch-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Huis Ten Bosch</Link> and the <Link href="/guides/attractions/gunkanjima-tour" style={{ color: "var(--red)", fontWeight: 600 }}>Battleship Island landing tour</Link>.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Travelling by bus instead? The <Link href="/guides/transport/sunq-pass" style={{ color: "var(--red)", fontWeight: 600 }}>SUNQ Pass</Link> covers expressway and local buses across Kyushu, from ¥8,500 for 3 days.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

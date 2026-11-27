@@ -694,6 +694,11 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In the same building, <Link href="/guides/attractions/sumida-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sumida Aquarium</Link> is on the 5th and 6th floors of Tokyo Solamachi (¥2,700 for adults).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

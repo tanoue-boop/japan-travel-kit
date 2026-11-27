@@ -590,6 +590,11 @@ export default function WhereToStayInTokyoPage({ updated }: { updated: PageUpdat
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Staying in Ikebukuro? <Link href="/guides/attractions/sunshine-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sunshine Aquarium</Link> is in Sunshine City; book a time slot on weekends.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

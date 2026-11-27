@@ -840,6 +840,11 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
             Adding Nagasaki to the trip? See <Link href="/guides/attractions/huis-ten-bosch-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Huis Ten Bosch tickets</Link> for the theme park and the <Link href="/guides/attractions/gunkanjima-tour" style={{ color: "var(--red)", fontWeight: 600 }}>Gunkanjima tour</Link> for Battleship Island.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For day trips by bus from Fukuoka, the <Link href="/guides/transport/sunq-pass" style={{ color: "var(--red)", fontWeight: 600 }}>SUNQ Pass</Link> covers expressway and local buses (Northern Kyushu ¥10,000 for 3 days, digital).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

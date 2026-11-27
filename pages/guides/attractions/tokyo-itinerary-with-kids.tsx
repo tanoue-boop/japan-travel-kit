@@ -979,6 +979,11 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             For a theme-park day: <Link href="/guides/attractions/yomiuriland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Yomiuriland tickets</Link> (One-Day Pass ¥5,900 for adults) and <Link href="/guides/attractions/hakkeijima-sea-paradise-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hakkeijima Sea Paradise tickets</Link> (four aquariums and the rides).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            More indoor options: <Link href="/guides/attractions/sumida-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sumida Aquarium</Link> at the Skytree, <Link href="/guides/attractions/sunshine-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sunshine Aquarium</Link> in Ikebukuro and the miniature museum <Link href="/guides/attractions/small-worlds-tokyo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>SMALL WORLDS</Link> in Ariake.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

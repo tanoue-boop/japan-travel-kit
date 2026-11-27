@@ -656,6 +656,11 @@ export default function ArashiyamaBambooForestTourPage({ updated }: { updated: P
           items={arashiyamaTripPrep}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Arriving by river? The <Link href="/guides/attractions/hozugawa-river-boat-ride" style={{ color: "var(--red)", fontWeight: 600 }}>Hozugawa river boat ride</Link> from Kameoka ends in Arashiyama; see its prices and winter timetable.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

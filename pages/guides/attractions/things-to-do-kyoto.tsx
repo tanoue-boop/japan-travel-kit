@@ -440,6 +440,11 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
             The period-drama film set in Uzumasa has its own guide: <Link href="/guides/attractions/toei-kyoto-studio-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Toei Kyoto Studio Park tickets</Link> (¥2,800 for adults, 10:00–21:00).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            West of the city, the <Link href="/guides/attractions/hozugawa-river-boat-ride" style={{ color: "var(--red)", fontWeight: 600 }}>Hozugawa river boat ride</Link> takes about 2 hours down the gorge from Kameoka to Arashiyama.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

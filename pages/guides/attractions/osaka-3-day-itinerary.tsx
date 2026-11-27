@@ -924,6 +924,11 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
           tours={[kuromonMarketFoodTour, osakaWalkingFoodTour, kyotoNaraKiyomizuTour, kobeFerrisKitanoArimaRokkoDayTour]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            With children on the Kobe day, see <Link href="/guides/attractions/kobe-animal-kingdom-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kobe Animal Kingdom tickets</Link> for prices and closed days.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

@@ -684,6 +684,11 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Nearby in Ariake, <Link href="/guides/attractions/small-worlds-tokyo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>SMALL WORLDS Tokyo</Link> is an indoor 1/80-scale miniature museum (¥3,200 for adults).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

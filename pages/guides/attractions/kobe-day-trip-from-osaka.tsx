@@ -821,6 +821,11 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
             Across the strait on Awaji Island, the anime park has its own guide: <Link href="/guides/attractions/nijigen-no-mori-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nijigen no Mori tickets</Link> (NARUTO, Godzilla, Dragon Quest).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On Port Island, <Link href="/guides/attractions/kobe-animal-kingdom-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kobe Animal Kingdom</Link> costs ¥2,400 for adults; in November 2026 it closes on Thursdays.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

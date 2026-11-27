@@ -585,6 +585,11 @@ export default function HakoneDayTripFromTokyoPage({ updated }: { updated: PageU
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a swimsuit spa or onsen stop, see <Link href="/guides/attractions/yunessun-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hakone Kowakien Yunessun</Link> (from ¥2,500 for adults, date-based prices).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -190,6 +190,15 @@ export const transportArticles: GuideArticle[] = [
     group: "passes",
     city: "tokyo",
   },
+  // Added 28 Nov 2026 (task jtk-20261130-A35, day 4); figures from each operator's own page that day.
+  {
+    href: "/guides/transport/sunq-pass",
+    badge: "Pass",
+    title: "SUNQ Pass 2026: Kyushu Bus Pass Price & Coverage",
+    desc: "Unlimited buses and some ferries across Kyushu: All Kyushu ¥12,000 (3 days) or ¥15,000 (4 days), Northern ¥10,000, Southern ¥8,500 (digital).",
+    group: "passes",
+    city: "other",
+  },
   {
     href: "/guides/transport/kintetsu-rail-pass",
     badge: "Pass",

@@ -901,6 +901,11 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In the south of the island, <Link href="/guides/attractions/okinawa-world-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Okinawa World and Gyokusendo Cave</Link> (¥2,000) and, near the airport, <Link href="/guides/attractions/dmm-kariyushi-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>DMM Kariyushi Aquarium</Link>.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -264,3 +264,73 @@ export const nabanaNoSatoNagashimaTour: KlookTour = {
   desc: "A day from Nagoya to the Nagashima resort: the outlet, an onsen and the Nabana no Sato illuminations after dark",
   url: klookLink("https://www.klook.com/en-US/activity/190620-nagoya-mitsui-outlet-park-nabana-no-sato-full-day-shopping-onsen-tour/"),
 };
+
+// ---------------------------------------------------------------------------
+// Day 4 (task jtk-20261130-A35, run 28 Nov 2026). Activity ids from the
+// www.klook.com search index that day; every yen figure on the pages is the
+// operator's own (Klook still answers automated reads with 403). The Hozugawa
+// boat page uses hozugawaRiverBoatTicket (74947) from lib/klook-links.ts.
+// ---------------------------------------------------------------------------
+
+/** SUNQ PASS — Kyushu-wide bus and ferry pass. */
+export const sunqPassKyushu: KlookTour = {
+  title: "SUNQ PASS (Kyushu bus & ferry pass)",
+  desc: "Unlimited expressway buses, local buses and some ferries across Kyushu and Shimonoseki: All, Northern or Southern Kyushu",
+  url: klookLink("https://www.klook.com/en-US/activity/28320-kyushu-sunq-pass/"),
+};
+
+/** Adventure World, Shirahama (Wakayama) — admission. */
+export const adventureWorldTicket: KlookTour = {
+  title: "Adventure World admission ticket (Shirahama)",
+  desc: "One-day entry to the zoo, aquarium and amusement park in Shirahama, Wakayama",
+  url: klookLink("https://www.klook.com/en-US/activity/97834-adventure-world/"),
+};
+
+/** Hakone Kowakien Yunessun — hot-spring theme park, one-day ticket. */
+export const yunessunTicket: KlookTour = {
+  title: "Hakone Kowakien Yunessun ticket",
+  desc: "The swimsuit spa park and the Mori no Yu onsen at Kowakien, Hakone",
+  url: klookLink("https://www.klook.com/en-US/activity/13954-hakone-kowaki-en-yunessun-hot-spring-theme-park-one-day-ticket-tokyo/"),
+};
+
+/** Sumida Aquarium (Tokyo Skytree Town) — admission. Same activity as skytreeAquariumCombo. */
+export const sumidaAquariumTicket: KlookTour = {
+  title: "Sumida Aquarium ticket",
+  desc: "Entry to the aquarium on the 5th and 6th floors of Tokyo Solamachi at the foot of the Skytree",
+  url: klookLink("https://www.klook.com/en-US/activity/59360-tokyo-skytree-sumida-aquarium-combo-ticket/"),
+};
+
+/** SMALL WORLDS Tokyo (Ariake) — admission passport. */
+export const smallWorldsTokyoTicket: KlookTour = {
+  title: "SMALL WORLDS Tokyo ticket",
+  desc: "The indoor 1/80-scale miniature museum in Ariake: Evangelion, Space Center and Kansai Airport areas",
+  url: klookLink("https://www.klook.com/en-US/activity/66249-small-worlds-tokyo-admission-passport/"),
+};
+
+/** Kobe Animal Kingdom (Port Island) — admission. */
+export const kobeAnimalKingdomTicket: KlookTour = {
+  title: "Kobe Animal Kingdom ticket",
+  desc: "The animal and flower park on Port Island, Kobe",
+  url: klookLink("https://www.klook.com/en-US/activity/33264-kobe-animal-kingdom-ticket/"),
+};
+
+/** Sunshine Aquarium (Ikebukuro) — admission. */
+export const sunshineAquariumTicket: KlookTour = {
+  title: "Sunshine Aquarium ticket (Ikebukuro)",
+  desc: "The aquarium in Sunshine City, Ikebukuro, with its outdoor Marine Garden",
+  url: klookLink("https://www.klook.com/en-US/activity/14547-sunshine-aquarium-ticket-tokyo/"),
+};
+
+/** DMM Kariyushi Aquarium (Tomigusuku, Okinawa) — admission. */
+export const dmmKariyushiAquariumTicket: KlookTour = {
+  title: "DMM Kariyushi Aquarium ticket (Okinawa)",
+  desc: "The aquarium in Tomigusuku, about 20 minutes by car from Naha Airport",
+  url: klookLink("https://www.klook.com/en-US/activity/55241-dmm-kariyushi-aquarium-ticket-okinawa/"),
+};
+
+/** Okinawa World (Gyokusendo Cave), Nanjo — admission. */
+export const okinawaWorldTicket: KlookTour = {
+  title: "Okinawa World ticket (Gyokusendo Cave)",
+  desc: "Entry to Okinawa World in Nanjo; the way in is through the Gyokusendo limestone cave",
+  url: klookLink("https://www.klook.com/en-US/activity/37791-okinawa-world-ticket/"),
+};
