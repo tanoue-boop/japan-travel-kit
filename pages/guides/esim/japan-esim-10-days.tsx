@@ -734,7 +734,9 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
             For most ten-day trips, no — it is {unlimitedPremium} more than a plan carrying a
             gigabyte a day, and no &quot;unlimited&quot; Japan plan is unmetered at full speed. Every
             one of them publishes a threshold, and on a ten-day trip those thresholds are what you
-            are actually buying:
+            are actually buying (every plan&apos;s daily cap, network and hotspot limit is compared on the{" "}
+            <Link href="/guides/esim/japan-esim-unlimited" className={tools.inlineLink}>unlimited data eSIM for Japan</Link>{" "}
+            page):
           </p>
           <div className={styles.tableWrap} style={{ marginTop: "1rem" }}>
             <div className={styles.tableScroll}>
@@ -1012,7 +1014,7 @@ export default function JapanEsim10DaysPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best Unlimited eSIM for Japan (2026): Top Picks for Heavy Users</p>
+                <p className={styles.relatedTitle}>Unlimited Data eSIM for Japan (2026): Is It Really Unlimited?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

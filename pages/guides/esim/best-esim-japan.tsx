@@ -1331,7 +1331,7 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
             is the sixth unlimited seller and caps its hotspot at 1 GB a day; it is in the comparison table
             above and has no link here, because it runs no affiliate programme this site can join.{" "}
             <Link href="/guides/esim/japan-esim-unlimited" className={tools.inlineLink}>
-              Unlimited eSIMs for Japan, in detail →
+              Unlimited data eSIM for Japan: is it really unlimited? →
             </Link>
           </p>
         </section>
@@ -1879,7 +1879,7 @@ export default function BestEsimJapanPage({ updated }: { updated: PageUpdated })
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best Unlimited eSIM for Japan (2026): Top Picks for Heavy Users</p>
+                <p className={styles.relatedTitle}>Unlimited Data eSIM for Japan (2026): Is It Really Unlimited?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

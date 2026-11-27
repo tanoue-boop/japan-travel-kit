@@ -475,7 +475,7 @@ export default function HolaflyJapanReviewPage({ updated }: { updated: PageUpdat
             So it suits one phone that streams a lot, not a laptop tethered all day. Simbye&apos;s unlimited plan gives
             2 GB a day at full speed and then 1 Mbps; Sakura Mobile&apos;s au plan lists high speed as unlimited with a
             hotspot allowance by plan length. Every unlimited plan&apos;s threshold is in the{" "}
-            <Link href="/guides/esim/japan-esim-unlimited" style={inline}>Japan eSIM unlimited data comparison</Link>.
+            <Link href="/guides/esim/japan-esim-unlimited" style={inline}>unlimited data eSIM for Japan</Link> comparison.
           </p>
         </section>
 

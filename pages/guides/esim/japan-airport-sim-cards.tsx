@@ -597,7 +597,10 @@ export default function JapanAirportSimCardsPage({ updated }: { updated: PageUpd
           </div>
           <p className={styles.bodyText} style={noteStyle}>
             Comparing eSIM providers on data, network and price rather than where to collect? That is our{" "}
-            <Link href="/guides/esim/best-esim-japan" style={linkStyle}>best eSIM for Japan guide</Link>.
+            <Link href="/guides/esim/best-esim-japan" style={linkStyle}>best eSIM for Japan guide</Link>; if you want
+            no hard stop on data, the{" "}
+            <Link href="/guides/esim/japan-esim-unlimited" style={linkStyle}>unlimited data eSIM for Japan</Link>{" "}
+            page compares each plan&apos;s daily speed cap, network and hotspot limit.
           </p>
         </section>
 

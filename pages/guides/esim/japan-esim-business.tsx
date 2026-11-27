@@ -247,7 +247,12 @@ export default function JapanEsimBusinessPage({ updated }: { updated: PageUpdate
               Avoid Holafly if the laptop is the point: it caps shareable data at 1 GB a day. If you
               would rather have 24/7 live chat than the lowest price, Airalo from{" "}
               {priceFrom("airalo")} is the alternative. Prices checked {pricesCheckedAt}; tethering
-              and phone-number clauses {SPECS_CHECKED_AT}.
+              and phone-number clauses {SPECS_CHECKED_AT}. Each unlimited plan&apos;s daily speed cap
+              and hotspot limit is on the{" "}
+              <Link href="/guides/esim/japan-esim-unlimited" style={{ color: "var(--accent)", fontWeight: 600 }}>
+                unlimited data eSIM for Japan
+              </Link>{" "}
+              page.
             </p>
             <div className={styles.verdictGrid}>
               <div className={styles.verdictStat}>
@@ -584,7 +589,7 @@ export default function JapanEsimBusinessPage({ updated }: { updated: PageUpdate
               Japan eSIM for Family &amp; Group Travel (2026): Cost Per Head
             </EsimRelatedCard>
             <EsimRelatedCard href="/guides/esim/japan-esim-unlimited">
-              Best Unlimited eSIM for Japan (2026): Top Picks for Heavy Users
+              Unlimited Data eSIM for Japan (2026): Is It Really Unlimited?
             </EsimRelatedCard>
           </div>
         </section>

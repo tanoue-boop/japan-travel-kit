@@ -567,7 +567,12 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
             {planLabel(bestValue)} for a capped plan. None of them is genuinely unmetered either:
             eSIM Go throttles after a daily high-speed allowance, Holafly caps hotspot use at
             1 GB/day, and Airalo applies a fair-use policy. Worth it for remote workers who video
-            call all day or anyone tethering constantly; rarely worth it otherwise.
+            call all day or anyone tethering constantly; rarely worth it otherwise. Each plan&apos;s daily
+            speed cap, network and hotspot limit is compared on the{" "}
+            <Link href="/guides/esim/japan-esim-unlimited" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              unlimited data eSIM for Japan
+            </Link>{" "}
+            page.
           </p>
           <a
             href={link("airalo")}
@@ -804,7 +809,7 @@ export default function JapanEsim2WeeksPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Best Unlimited eSIM for Japan (2026)</p>
+                <p className={styles.relatedTitle}>Unlimited Data eSIM for Japan (2026): Is It Really Unlimited?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

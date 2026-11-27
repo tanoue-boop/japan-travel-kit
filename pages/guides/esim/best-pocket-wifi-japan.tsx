@@ -772,6 +772,9 @@ export default function BestPocketWifiJapanPage({ updated }: { updated: PageUpda
             <a href={NINJA_HOME_SRC} target="_blank" rel="noopener noreferrer nofollow">Ninja WiFi</a> (its pages
             give different thresholds for different plans, so check the plan you book). The Simbye rule is from our
             daily price feed ({pricesCheckedAt}); the Klook eSIM rule is from its listing (read 6 Nov 2026).
+            Every eSIM plan&apos;s daily cap, network and hotspot limit is compared on the{" "}
+            <Link href="/guides/esim/japan-esim-unlimited" style={{ color: "var(--accent)", fontWeight: 600 }}>unlimited data eSIM for Japan</Link>{" "}
+            page.
           </p>
         </section>
 
