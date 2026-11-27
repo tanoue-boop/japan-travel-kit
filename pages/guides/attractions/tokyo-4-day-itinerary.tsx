@@ -709,6 +709,11 @@ export default function Tokyo4DayItineraryPage({ updated }: { updated: PageUpdat
           adds Enoshima without working out the Enoden.
         </p>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a museum morning in Ueno, the <Link href="/guides/attractions/tokyo-national-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tokyo National Museum</Link> opens at 9:30 (¥1,000 for adults).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

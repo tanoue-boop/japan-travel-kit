@@ -951,6 +951,11 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Between festival sites, <Link href="/guides/attractions/shiroi-koibito-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shiroi Koibito Park</Link> is ¥1,200 for the paid area (last entry 16:30).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -1309,6 +1309,11 @@ export default function OsakaKyotoThreeDayItineraryPage({ updated }: { updated: 
           items={osakaKyotoThreeDayTripPrep}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Between the two cities, <Link href="/guides/attractions/hirakata-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hirakata Park</Link> sits by Hirakatakoen Station on the Keihan line (entry ¥1,900 online).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

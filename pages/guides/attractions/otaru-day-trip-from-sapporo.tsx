@@ -963,6 +963,11 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
             <Link href="/guides/attractions/otaru-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Otaru Aquarium</Link> is closed 24 November – 11 December 2026; from 12 December it is open 10:00–16:00 (¥1,300 for adults in winter).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On the Sapporo side, <Link href="/guides/attractions/shiroi-koibito-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shiroi Koibito Park</Link> in Nishi-ku is ¥1,200 for adults, 10:00–17:30.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

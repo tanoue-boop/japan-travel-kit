@@ -920,6 +920,11 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In Ueno, the <Link href="/guides/attractions/tokyo-national-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tokyo National Museum</Link> is ¥1,000 for adults and free for under-18s; it is closed on Mondays.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.bodySection}>

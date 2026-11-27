@@ -510,6 +510,11 @@ export default function NaraDayTripPage({ updated }: { updated: PageUpdated }) {
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Further along the Kintetsu line, the <Link href="/guides/attractions/iga-ninja-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Iga Ninja Museum</Link> is ¥1,000 for adults; change at Iga-Kambe for the Iga Railway.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

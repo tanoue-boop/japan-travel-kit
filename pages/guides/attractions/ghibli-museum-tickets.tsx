@@ -184,6 +184,7 @@ export default function GhibliMuseumTicketsPage({ updated }: { updated: PageUpda
           <Link href="/guides/attractions/tokyo-4-day-itinerary" style={linkStyle}>Tokyo 4 day itinerary</Link>. Getting to Mitaka on
           the JR lines is covered in{" "}
           <Link href="/guides/transport/tokyo-transportation" style={linkStyle}>getting around Tokyo</Link>.
+          {" "}Another storybook park near Tokyo: <Link href="/guides/attractions/moominvalley-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Moominvalley Park</Link> in Hanno (¥3,900 in advance for adults).
         </p>
       }
       faq={[

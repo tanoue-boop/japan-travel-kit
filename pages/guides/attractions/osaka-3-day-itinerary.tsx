@@ -934,6 +934,11 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
             For a morning in the north of the city, <Link href="/guides/attractions/nifrel-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>NIFREL</Link> is by Bampaku-kinen-koen Station on the Osaka Monorail (¥2,400 for adults).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a day of rides outside the centre, <Link href="/guides/attractions/hirakata-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hirakata Park</Link> is ¥5,300 with the Free Pass; check its December closed days.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

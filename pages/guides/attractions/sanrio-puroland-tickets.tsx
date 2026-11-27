@@ -837,6 +837,11 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
             Sanrio&apos;s second park, <Link href="/guides/attractions/harmonyland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sanrio Harmonyland</Link> in Oita, has a day passport at ¥3,600 or ¥4,200.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For Moomin fans, <Link href="/guides/attractions/moominvalley-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Moominvalley Park</Link> in Hanno, Saitama, sells a one-day pass at ¥3,900 in advance.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

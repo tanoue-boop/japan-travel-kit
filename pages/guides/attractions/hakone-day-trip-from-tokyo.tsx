@@ -595,6 +595,11 @@ export default function HakoneDayTripFromTokyoPage({ updated }: { updated: PageU
             For art on the way up to Gora, see <Link href="/guides/attractions/hakone-open-air-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hakone Open-Air Museum tickets</Link>: open 9:00–17:00 every day, 2 minutes from Chokoku-no-Mori.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On the bus to Lake Ashi, the <Link href="/guides/attractions/hakone-glass-forest-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hakone Glass Forest</Link> in Sengokuhara is ¥1,800 for adults, 10:00–17:30.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

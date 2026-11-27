@@ -135,6 +135,7 @@ export default function ToeiKyotoStudioParkTicketsPage({ updated }: { updated: P
           <Link href="/guides/attractions/kyoto-2-day-itinerary" style={linkStyle}>Kyoto 2 day itinerary</Link>; for
           samurai and ninja in Tokyo,{" "}
           <Link href="/guides/attractions/samurai-ninja-experience-tokyo" style={linkStyle}>samurai and ninja experiences</Link>.
+          {" "}In central Kyoto, the <Link href="/guides/attractions/kyoto-international-manga-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto International Manga Museum</Link> at Karasuma-Oike is ¥1,200 for adults (closed on Wednesdays).
         </p>
       }
       faq={[

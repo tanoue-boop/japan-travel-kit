@@ -450,6 +450,11 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
             Near Kyoto Station, Umekoji Park has <Link href="/guides/attractions/kyoto-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto Aquarium</Link> (¥2,600, open every day) and the <Link href="/guides/attractions/kyoto-railway-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto Railway Museum</Link> (¥1,500, closed Wednesdays).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a rainy afternoon, the <Link href="/guides/attractions/kyoto-international-manga-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto International Manga Museum</Link> at Karasuma-Oike is ¥1,200 for adults (closed on Wednesdays).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

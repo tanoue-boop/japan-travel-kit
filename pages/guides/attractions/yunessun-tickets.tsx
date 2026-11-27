@@ -122,6 +122,7 @@ export default function YunessunTicketsPage({ updated }: { updated: PageUpdated 
           Staying the night? See{" "}
           <Link href="/guides/attractions/hakone-ryokan-private-onsen" style={linkStyle}>Hakone ryokan with a private onsen</Link>.
           {" "}One stop below Gora on the Tozan Train, the <Link href="/guides/attractions/hakone-open-air-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hakone Open-Air Museum</Link> is open 9:00–17:00 every day.
+          {" "}Nearby in Sengokuhara, the <Link href="/guides/attractions/hakone-glass-forest-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hakone Glass Forest</Link> is ¥1,800 for adults, open 10:00–17:30.
         </p>
       }
       faq={[

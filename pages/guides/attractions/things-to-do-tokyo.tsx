@@ -835,6 +835,11 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             For a soak in the city, <Link href="/guides/attractions/spa-laqua-tokyo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Spa LaQua</Link> at Tokyo Dome City is ¥3,500–4,700 (no tattoos) and <Link href="/guides/attractions/manyo-club-toyosu-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Manyo Club Toyosu</Link> by Toyosu Market ¥3,850; for rides, <Link href="/guides/attractions/tokyo-dome-city-attractions-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tokyo Dome City Attractions</Link> is free to enter.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For Japanese art, the <Link href="/guides/attractions/tokyo-national-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tokyo National Museum</Link> in Ueno Park is ¥1,000 for adults, open to 20:00 on Fridays and Saturdays.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

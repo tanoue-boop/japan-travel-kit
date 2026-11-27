@@ -514,6 +514,11 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
             Outside Tokyo, two Edo-period theme parks have their own guides: <Link href="/guides/attractions/edo-wonderland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Edo Wonderland</Link> in Nikko and <Link href="/guides/attractions/toei-kyoto-studio-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Toei Kyoto Studio Park</Link> in Kyoto.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In Mie, the <Link href="/guides/attractions/iga-ninja-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Iga Ninja Museum</Link> shows a real ninja trick house (¥1,000 for adults, ninja show ¥600).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

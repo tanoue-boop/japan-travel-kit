@@ -121,6 +121,7 @@ export default function NoboribetsuDateJidaimuraTicketsPage({ updated }: { updat
           Noboribetsu into a trip, and{" "}
           <Link href="/guides/attractions/edo-wonderland-tickets" style={linkStyle}>Edo Wonderland in Nikko</Link> is
           the Edo village near Tokyo.
+          {" "}In Noboribetsu Onsen, <Link href="/guides/attractions/noboribetsu-bear-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Noboribetsu Bear Park</Link> is ¥3,200 for adults with the return ropeway included.
         </p>
       }
       faq={[

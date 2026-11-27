@@ -919,6 +919,11 @@ export default function KintetsuRailPassPage({ updated }: { updated: PageUpdated
             Near Toba Station on the Kintetsu line, <Link href="/guides/attractions/toba-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Toba Aquarium</Link> is ¥2,800 for adults and opens every day 9:30–17:00.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Two tickets along the line: <Link href="/guides/attractions/mikimoto-pearl-island-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Mikimoto Pearl Island</Link> by Toba Station (¥1,650) and the <Link href="/guides/attractions/iga-ninja-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Iga Ninja Museum</Link> near Uenoshi Station (¥1,000).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

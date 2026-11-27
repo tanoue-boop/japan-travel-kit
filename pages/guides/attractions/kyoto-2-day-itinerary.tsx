@@ -1061,6 +1061,11 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             For a rainy morning by the station, <Link href="/guides/attractions/kyoto-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto Aquarium</Link> and the <Link href="/guides/attractions/kyoto-railway-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto Railway Museum</Link> share Umekoji Park, one stop away on the JR Sagano Line.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Indoors and central, the <Link href="/guides/attractions/kyoto-international-manga-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto International Manga Museum</Link> is ¥1,200 for adults, 2 minutes from Karasuma-Oike Station.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

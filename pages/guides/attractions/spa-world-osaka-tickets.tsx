@@ -119,6 +119,7 @@ export default function SpaWorldOsakaTicketsPage({ updated }: { updated: PageUpd
           <Link href="/guides/attractions/osaka-2-day-itinerary" style={linkStyle}>Osaka 2-day itinerary</Link>. For an
           onsen town rather than a city spa, see the{" "}
           <Link href="/guides/attractions/arima-onsen-taiko-no-yu" style={linkStyle}>Taiko no Yu</Link> guide.
+          {" "}For a family morning before the baths, <Link href="/guides/attractions/kids-plaza-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kids Plaza Osaka</Link> opens at 9:30 (¥1,500 for adults).
         </p>
       }
       faq={[

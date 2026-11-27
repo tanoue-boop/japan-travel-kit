@@ -1297,6 +1297,11 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
             In Asahikawa, see the <Link href="/guides/attractions/asahiyama-zoo-day-trip-from-sapporo" style={{ color: "var(--red)", fontWeight: 600 }}>Asahiyama Zoo day trip from Sapporo</Link> (¥1,000, winter hours 10:30–15:30); in Otaru, <Link href="/guides/attractions/otaru-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Otaru Aquarium</Link> reopens for winter on 12 December 2026.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Two single tickets for the trip: <Link href="/guides/attractions/shiroi-koibito-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shiroi Koibito Park</Link> in Sapporo (¥1,200) and <Link href="/guides/attractions/noboribetsu-bear-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Noboribetsu Bear Park</Link> in Noboribetsu (¥3,200 with the ropeway).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

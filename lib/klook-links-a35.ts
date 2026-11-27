@@ -598,3 +598,76 @@ export const tokyoDomeCityAttractionsTicket: KlookTour = {
   desc: "Rides at the free-entry amusement park beside Tokyo Dome, including the Thunder Dolphin coaster",
   url: klookLink("https://www.klook.com/en-US/activity/17371-tokyo-dome-attractions-ticket-tokyo/"),
 };
+
+// Day 9 (task jtk-20261205-A35, run 28 Nov 2026). Activity ids from the www.klook.com search index;
+// prices on the pages are the operators' own, read 28 Nov 2026.
+
+/** Hirakata Park (Hirakata, Osaka) — admission. */
+export const hirakataParkTicket: KlookTour = {
+  title: "Hirakata Park ticket",
+  desc: "Entry to the amusement park on the Keihan line between Osaka and Kyoto, with rides and the Winter Carnival in season",
+  url: klookLink("https://www.klook.com/en-US/activity/49191-hirakata-park/"),
+};
+
+/** Moominvalley Park (Hanno, Saitama) — one-day pass. */
+export const moominvalleyParkTicket: KlookTour = {
+  title: "Moominvalley Park ticket",
+  desc: "A one-day pass for the Moomin theme park by Lake Miyazawa in Hanno, Saitama",
+  url: klookLink("https://www.klook.com/en-US/activity/36646-moominvalley-park-ticket-hanno/"),
+};
+
+/** Noboribetsu Bear Park (Noboribetsu Onsen) — admission with ropeway. */
+export const noboribetsuBearParkTicket: KlookTour = {
+  title: "Noboribetsu Bear Park ticket",
+  desc: "Entry to the bear park above Noboribetsu Onsen, with the return ropeway ride included",
+  url: klookLink("https://www.klook.com/en-US/activity/38936-noboribetsu-bear-park-ticket/"),
+};
+
+/** Hakone Glass Forest (Venetian Glass Museum, Sengokuhara) — admission. */
+export const hakoneGlassMuseumTicket: KlookTour = {
+  title: "Hakone Glass Forest ticket",
+  desc: "Entry to the Venetian glass museum and garden in Sengokuhara, Hakone",
+  url: klookLink("https://www.klook.com/en-US/activity/86036-hakone-venetian-glass-museum/"),
+};
+
+/** Mikimoto Pearl Island (Toba, Mie) — admission. */
+export const mikimotoPearlIslandTicket: KlookTour = {
+  title: "Mikimoto Pearl Island ticket",
+  desc: "Entry to the Pearl Museum, the Memorial Hall and the ama diver demonstration in Toba",
+  url: klookLink("https://www.klook.com/en-US/activity/38353-mikimoto-pearl-island-ticket/"),
+};
+
+/** Kids Plaza Osaka (Ogimachi) — admission. */
+export const kidsPlazaOsakaTicket: KlookTour = {
+  title: "Kids Plaza Osaka ticket",
+  desc: "Entry to the hands-on children’s museum at Ogimachi in Osaka",
+  url: klookLink("https://www.klook.com/en-US/activity/37845-kids-plaza-osaka-admission-ticket/"),
+};
+
+/** Shiroi Koibito Park (Sapporo) — paid-area admission. */
+export const shiroiKoibitoParkTicket: KlookTour = {
+  title: "Shiroi Koibito Park ticket",
+  desc: "Entry to the paid area of the chocolate factory park in Sapporo, including the factory line",
+  url: klookLink("https://www.klook.com/en-US/activity/204811-shiroi-koibito-park-admission-ticket/"),
+};
+
+/** Kyoto International Manga Museum (Karasuma-Oike) — admission. */
+export const kyotoMangaMuseumTicket: KlookTour = {
+  title: "Kyoto International Manga Museum ticket",
+  desc: "Entry to the manga museum in a former school building at Karasuma-Oike, Kyoto",
+  url: klookLink("https://www.klook.com/en-US/activity/67219-kyoto-international-manga-museum-ticket/"),
+};
+
+/** Tokyo National Museum (Ueno) — collection exhibitions. */
+export const tokyoNationalMuseumTicket: KlookTour = {
+  title: "Tokyo National Museum ticket",
+  desc: "Entry to the collection exhibitions of the Tokyo National Museum in Ueno Park",
+  url: klookLink("https://www.klook.com/en-US/activity/115796-tokyo-national-museum/"),
+};
+
+/** Ninja Museum of Igaryu (Iga, Mie) — admission. */
+export const igaNinjaMuseumTicket: KlookTour = {
+  title: "Ninja Museum of Igaryu ticket",
+  desc: "Entry to the ninja house and museum in Ueno Park, Iga, with a guided tour of the trick house",
+  url: klookLink("https://www.klook.com/en-US/activity/92163-ninja-museum-igaryu-admission-ticket-mie/"),
+};

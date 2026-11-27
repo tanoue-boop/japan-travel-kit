@@ -753,6 +753,11 @@ export default function AkihabaraAnimeTourPage({ updated }: { updated: PageUpdat
             In Kansai, the anime theme park is <Link href="/guides/attractions/nijigen-no-mori-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nijigen no Mori on Awaji Island</Link>, with NARUTO & BORUTO and Godzilla attractions.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In Kyoto, the <Link href="/guides/attractions/kyoto-international-manga-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto International Manga Museum</Link> at Karasuma-Oike is ¥1,200 for adults (closed on Wednesdays).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

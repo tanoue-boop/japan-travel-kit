@@ -541,6 +541,11 @@ export default function KawagoeDayTripPage({ updated }: { updated: PageUpdated }
             Back in Ikebukuro, <Link href="/guides/attractions/sunshine-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sunshine Aquarium</Link> in Sunshine City has date-based prices from ¥2,600 for adults.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            From Kawagoe Station, a free direct bus (reservation needed) runs to <Link href="/guides/attractions/moominvalley-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Moominvalley Park</Link>, where a one-day pass is ¥3,900 in advance.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

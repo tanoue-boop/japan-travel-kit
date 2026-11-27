@@ -118,6 +118,7 @@ export default function AsakusaHanayashikiTicketsPage({ updated }: { updated: Pa
           <Link href="/guides/attractions/tokyo-itinerary-with-kids" style={linkStyle}>Tokyo with kids</Link> and{" "}
           <Link href="/guides/attractions/tokyo-skytree-tickets" style={linkStyle}>Tokyo Skytree tickets</Link>. For more ideas, see{" "}
           <Link href="/guides/attractions/things-to-do-tokyo" style={linkStyle}>things to do in Tokyo</Link>.
+          {" "}A short ride away in Ueno, the <Link href="/guides/attractions/tokyo-national-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tokyo National Museum</Link> is ¥1,000 for adults (closed Mondays).
         </p>
       }
       faq={[

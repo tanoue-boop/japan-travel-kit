@@ -1004,6 +1004,11 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             More single tickets for families: <Link href="/guides/attractions/mother-farm-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Mother Farm</Link> in Chiba (¥1,800 adult, ¥900 child) and the rides at <Link href="/guides/attractions/tokyo-dome-city-attractions-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tokyo Dome City Attractions</Link> (free entry, passport from ¥4,900).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a day outside the city, <Link href="/guides/attractions/moominvalley-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Moominvalley Park</Link> in Hanno is ¥3,900 for adults in advance and ¥1,000 for children; in Ueno, the <Link href="/guides/attractions/tokyo-national-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tokyo National Museum</Link> is free for under-18s.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

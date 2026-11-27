@@ -120,6 +120,7 @@ export default function NifrelOsakaTicketsPage({ updated }: { updated: PageUpdat
           <Link href="/guides/attractions/osaka-aquarium-kaiyukan-tickets" style={linkStyle}>Kaiyukan tickets</Link>{" "}
           for NIFREL&apos;s sister aquarium by the bay. For the evening, see the{" "}
           <Link href="/guides/attractions/dotonbori-river-cruise" style={linkStyle}>Dotonbori river cruise</Link>.
+          {" "}For another family stop, <Link href="/guides/attractions/kids-plaza-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kids Plaza Osaka</Link> is ¥1,500 for adults and ¥800 for children aged 6–15.
         </p>
       }
       faq={[

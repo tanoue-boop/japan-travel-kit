@@ -118,6 +118,7 @@ export default function HakoneOpenAirMuseumTicketsPage({ updated }: { updated: P
           the museum into the route, and{" "}
           <Link href="/guides/attractions/yunessun-tickets" style={linkStyle}>Yunessun</Link> in Kowakien is a spa stop
           nearby.
+          {" "}For a second museum, the <Link href="/guides/attractions/hakone-glass-forest-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hakone Glass Forest</Link> in Sengokuhara is ¥1,800 for adults, about 20 minutes from Gora by the sightseeing bus.
         </p>
       }
       faq={[

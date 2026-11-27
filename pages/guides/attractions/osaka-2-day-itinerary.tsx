@@ -1044,6 +1044,11 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
             To end a Shinsekai evening in the baths, <Link href="/guides/attractions/spa-world-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Spa World</Link> is ¥1,500 for the onsen; leave before midnight to avoid the ¥1,300 late-night charge.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            If it rains, <Link href="/guides/attractions/kids-plaza-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kids Plaza Osaka</Link> at Ogimachi Station opens 9:30–17:00 (closed on the second and third Mondays).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -648,6 +648,11 @@ export default function HokkaidoWinterToursPage({ updated }: { updated: PageUpda
             For hours and admission at the zoo itself, see the <Link href="/guides/attractions/asahiyama-zoo-day-trip-from-sapporo" style={{ color: "var(--red)", fontWeight: 600 }}>Asahiyama Zoo day trip from Sapporo</Link> (¥1,000 for adults, children free).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On your own in winter, <Link href="/guides/attractions/noboribetsu-bear-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Noboribetsu Bear Park</Link> opens 9:30–16:30 and <Link href="/guides/attractions/shiroi-koibito-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shiroi Koibito Park</Link> 10:00–17:30.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

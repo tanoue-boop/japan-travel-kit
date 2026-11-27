@@ -694,6 +694,11 @@ export default function Kansai5DayItineraryPage({ updated }: { updated: PageUpda
             On the Kobe day, Arima&apos;s <Link href="/guides/attractions/arima-onsen-taiko-no-yu" style={{ color: "var(--red)", fontWeight: 600 }}>Taiko no Yu</Link> is open 10:00–22:00 (¥2,750 weekdays, ¥3,300 from 26 December to 3 January).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For ninja history, the <Link href="/guides/attractions/iga-ninja-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Iga Ninja Museum</Link> in Iga is ¥1,000 for adults, reached by Kintetsu and the Iga Railway.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

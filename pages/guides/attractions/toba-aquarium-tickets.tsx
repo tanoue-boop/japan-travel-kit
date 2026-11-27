@@ -108,6 +108,7 @@ export default function TobaAquariumTicketsPage({ updated }: { updated: PageUpda
           <Link href="/guides/attractions/shima-spain-village-tickets" style={linkStyle}>Shima Spain Village tickets</Link>, the
           <Link href="/guides/transport/ise-kumano-wakayama-area-pass" style={linkStyle}>Ise-Kumano-Wakayama Area Pass</Link> and the
           <Link href="/guides/attractions/nagoya-2-day-itinerary" style={linkStyle}>Nagoya 2-day itinerary</Link>.
+          {" "}Also by Toba Station, <Link href="/guides/attractions/mikimoto-pearl-island-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Mikimoto Pearl Island</Link> is ¥1,650 for adults, with ama diver demonstrations through the day.
         </p>
       }
       faq={[

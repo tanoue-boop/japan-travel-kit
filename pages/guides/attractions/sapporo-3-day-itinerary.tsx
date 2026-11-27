@@ -851,6 +851,11 @@ export default function Sapporo3DayItineraryPage({ updated }: { updated: PageUpd
             Two more winter days out: the <Link href="/guides/attractions/asahiyama-zoo-day-trip-from-sapporo" style={{ color: "var(--red)", fontWeight: 600 }}>Asahiyama Zoo day trip from Sapporo</Link> (zoo ¥1,000, open 10:30–15:30) and <Link href="/guides/attractions/otaru-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Otaru Aquarium</Link>, which reopens on 12 December 2026.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For an indoor stop in the city, <Link href="/guides/attractions/shiroi-koibito-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shiroi Koibito Park</Link> is ¥1,200 for adults, with the factory line in the paid area.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

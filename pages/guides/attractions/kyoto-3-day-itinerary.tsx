@@ -757,6 +757,11 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
             On the Arashiyama day, the <Link href="/guides/attractions/hozugawa-river-boat-ride" style={{ color: "var(--red)", fontWeight: 600 }}>Hozugawa river boat</Link> runs four times a day in winter — check the times before you go.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For manga fans, the <Link href="/guides/attractions/kyoto-international-manga-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto International Manga Museum</Link> opens 10:00–17:00 except Wednesdays (¥1,200 for adults).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

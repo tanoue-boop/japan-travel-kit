@@ -343,6 +343,11 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
             Two more tickets: <Link href="/guides/attractions/spa-world-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Spa World</Link> by Shinsekai (onsen from ¥1,500; no tattoos) and <Link href="/guides/attractions/nifrel-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>NIFREL</Link> at Expocity (¥2,400 for adults, 10:00–18:00 on December weekdays).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            With children, <Link href="/guides/attractions/kids-plaza-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kids Plaza Osaka</Link> at Ogimachi is ¥1,500 for adults, and <Link href="/guides/attractions/hirakata-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hirakata Park</Link> on the Keihan line is ¥5,300 with the Free Pass.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

@@ -115,6 +115,7 @@ export default function OtaruAquariumTicketsPage({ updated }: { updated: PageUpd
           <Link href="/guides/attractions/hokkaido-7-day-itinerary" style={linkStyle}>Hokkaido 7-day itinerary</Link>; for
           another winter animal day, see{" "}
           <Link href="/guides/attractions/asahiyama-zoo-day-trip-from-sapporo" style={linkStyle}>Asahiyama Zoo from Sapporo</Link>.
+          {" "}Back in Sapporo, <Link href="/guides/attractions/shiroi-koibito-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shiroi Koibito Park</Link> is ¥1,200 for adults and ¥600 for children.
         </p>
       }
       faq={[

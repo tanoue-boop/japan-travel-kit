@@ -725,6 +725,11 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
           items={osakaCastleTripPrep.filter(notInTopCards)}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            With children, <Link href="/guides/attractions/kids-plaza-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kids Plaza Osaka</Link> is a short subway ride away at Ogimachi (¥1,500 for adults, ¥500 for ages 3–5).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

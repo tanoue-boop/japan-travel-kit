@@ -120,6 +120,7 @@ export default function KyotoRailwayMuseumTicketsPage({ updated }: { updated: Pa
           the{" "}
           <Link href="/guides/attractions/kyoto-2-day-itinerary" style={linkStyle}>Kyoto 2-day itinerary</Link> fit it
           into a short stay.
+          {" "}Three subway stops from Kyoto Station, the <Link href="/guides/attractions/kyoto-international-manga-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto International Manga Museum</Link> is ¥1,200 for adults.
         </p>
       }
       faq={[
