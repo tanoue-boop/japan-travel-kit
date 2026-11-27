@@ -54,7 +54,8 @@ const resolveProductType = (partner: string, url: URL, anchor: Element): Affilia
   if (anchor.closest(ESIM_CARD_SELECTOR)) return "esim";
   // ホテル送客（Klook ホテル 6.5%）を GA4 で数えるための区分。components/HotelStayBlock.tsx は data-product-type="hotel" を付ける。
   if (anchor.closest(HOTEL_BLOCK_SELECTOR)) return "hotel";
-  if (partner === "stay22") return "hotel";
+  // Stay22 itself, or a hotel site its script swapped in (booking, expedia, agoda, …).
+  if (partner === "stay22" || (url.hostname.includes("stay22.com") && partner !== "getyourguide")) return "hotel";
   if (partner === "klook") {
     // Klook のリンクは affiliate.klook.com/redirect?k_site=<商品URL>。商品URL（無ければリンク自体）に esim を含めば eSIM 商品。
     const product = (url.searchParams.get("k_site") ?? url.href).toLowerCase();
@@ -94,8 +95,15 @@ export default function App({ Component, pageProps }: AppProps) {
       }
       if (url.hostname === window.location.hostname) return;
 
-      const partner = resolvePartner(url.hostname);
+      let partner = resolvePartner(url.hostname);
       if (!partner) return;
+      // Stay22's script swaps some partner links for stay22.com/allez/<partner>?… (seen
+      // on production for every GetYourGuide link, 27 Nov 2026). Report the partner the
+      // reader is actually sent to, so GetYourGuide clicks keep their own line in GA4.
+      if (partner === "stay22") {
+        const swapped = url.pathname.match(/^\/allez\/([a-z0-9-]+)/i)?.[1]?.toLowerCase();
+        if (swapped) partner = resolvePartner(`${swapped}.com`) ?? swapped;
+      }
 
       trackAffiliateClick({
         partner,
