@@ -988,6 +988,11 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
           items={kyushuItineraryTripPrep}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Two Nagasaki bookings to make ahead: <Link href="/guides/attractions/huis-ten-bosch-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Huis Ten Bosch tickets</Link> (1 DAY Passport from ¥7,600) and the <Link href="/guides/attractions/gunkanjima-tour" style={{ color: "var(--red)", fontWeight: 600 }}>Gunkanjima (Battleship Island) landing tour</Link>, which sails only twice a day.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -1051,6 +1051,11 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
           items={kyotoTwoDayTripPrep}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On the Arashiyama day, <Link href="/guides/attractions/toei-kyoto-studio-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Toei Kyoto Studio Park</Link> sells set tickets with the Sagano Romantic Train and the Randen.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

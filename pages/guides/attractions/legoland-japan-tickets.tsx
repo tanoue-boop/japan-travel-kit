@@ -509,6 +509,11 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
           items={legolandJapanTripPrep}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            The region&apos;s other theme parks: <Link href="/guides/attractions/nagashima-spa-land-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nagashima Spa Land</Link> near Nagoya and <Link href="/guides/attractions/shima-spain-village-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shima Spain Village</Link> in Ise-Shima.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

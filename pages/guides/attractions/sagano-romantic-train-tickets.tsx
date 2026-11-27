@@ -1156,6 +1156,11 @@ export default function SaganoRomanticTrainTicketsPage({ updated }: { updated: P
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Toei Kyoto Studio Park sells a set of a one-way Sagano Romantic Train ticket with park entry: see <Link href="/guides/attractions/toei-kyoto-studio-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Toei Kyoto Studio Park tickets</Link>.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

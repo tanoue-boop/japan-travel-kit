@@ -834,6 +834,11 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In Nagasaki Prefecture, the two tickets worth booking before you go are <Link href="/guides/attractions/huis-ten-bosch-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Huis Ten Bosch</Link> and the <Link href="/guides/attractions/gunkanjima-tour" style={{ color: "var(--red)", fontWeight: 600 }}>Battleship Island landing tour</Link>.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

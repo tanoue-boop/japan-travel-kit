@@ -532,6 +532,11 @@ export default function KansaiHiroshimaAreaPassPage({ updated }: { updated: Page
             Already in Hiroshima, or starting from Okayama? The <Link href="/guides/transport/hiroshima-yamaguchi-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Hiroshima-Yamaguchi Area Pass</Link> (Mihara to Hakata) and the <Link href="/guides/transport/okayama-hiroshima-yamaguchi-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Okayama-Hiroshima-Yamaguchi Area Pass</Link> (Okayama to Hakata) are the five-day passes for the western end, and the <Link href="/guides/transport/all-shikoku-rail-pass" style={{ color: "var(--red)", fontWeight: 600 }}>ALL SHIKOKU Rail Pass</Link> covers the island across the bridge.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            A stop in Okayama on the pass: the <Link href="/guides/attractions/betty-smith-jeans-making-experience" style={{ color: "var(--red)", fontWeight: 600 }}>Betty Smith jeans-making experience</Link> in Kurashiki, from ¥11,000.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

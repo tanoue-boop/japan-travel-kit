@@ -866,6 +866,11 @@ export default function Nagoya2DayItineraryPage({ updated }: { updated: PageUpda
             Heading south to Ise and Kumano from Nagoya? The <Link href="/guides/transport/ise-kumano-wakayama-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Ise-Kumano-Wakayama Area Tourist Pass</Link> covers the loop to Osaka in five days.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Two theme parks a day from Nagoya: <Link href="/guides/attractions/nagashima-spa-land-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nagashima Spa Land</Link> (Passport ¥6,000 for adults) and, further into Mie, <Link href="/guides/attractions/shima-spain-village-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shima Spain Village</Link>.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

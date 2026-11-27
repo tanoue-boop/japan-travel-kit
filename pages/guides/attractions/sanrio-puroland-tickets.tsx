@@ -827,6 +827,11 @@ export default function SanrioPurolandTicketsPage({ updated }: { updated: PageUp
           tours={[tokyoSightseeingBusTour, warnerBrosStudioTourTokyo]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Another park on the west side of Tokyo: <Link href="/guides/attractions/yomiuriland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Yomiuriland tickets</Link>, with the One-Day Pass and the evening After Pass.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

@@ -159,3 +159,108 @@ export const nikkoHeritageWalkingTour: KlookTour = {
   desc: "A join-in walking day round Nikko Toshogu Shrine and Kanmangafuchi Abyss",
   url: klookLink("https://www.klook.com/en-US/activity/100052-world-heritage-nikko-kanmangafuchi-abyss-nikko-toshogu-shrine-join-one-day-walking-tour/"),
 };
+
+// ---------------------------------------------------------------------------
+// Day 3 (task jtk-20261129-A35, run 28 Nov 2026): theme-park and experience
+// tickets with no page of their own. Activity ids from the www.klook.com search
+// index that day (product pages still answer automated reads with 403, so no
+// Klook price is printed). The yen figures on the pages are the operators' own.
+// ---------------------------------------------------------------------------
+
+/** Huis Ten Bosch (Sasebo, Nagasaki) — 1 DAY Passport and other park tickets. */
+export const huisTenBoschTicket: KlookTour = {
+  title: "Huis Ten Bosch ticket (1 DAY Passport)",
+  desc: "Admission and the park's attractions for the day at Huis Ten Bosch in Nagasaki, scanned at the gate from your phone",
+  url: klookLink("https://www.klook.com/en-US/activity/7254-huis-ten-bosch-ticket-fukuoka-kumamoto/"),
+};
+
+/** Edo Wonderland Nikko Edomura — one-day admission. */
+export const edoWonderlandTicket: KlookTour = {
+  title: "Edo Wonderland Nikko Edomura ticket",
+  desc: "One-day admission to the Edo-period theme town in Nikko, with its theatres and ninja show",
+  url: klookLink("https://www.klook.com/en-US/activity/13833-edo-wonderland-ticket-tokyo/"),
+};
+
+/** Yomiuriland (Inagi, Tokyo) — One-Day Pass. */
+export const yomiurilandTicket: KlookTour = {
+  title: "Yomiuriland ticket (One-Day Pass)",
+  desc: "Admission and most rides for the day at Yomiuriland, 35 minutes from Shinjuku",
+  url: klookLink("https://www.klook.com/en-US/activity/20251-yomiuriland-admission-ticket-tokyo/"),
+};
+
+/** Nagashima Spa Land (Kuwana, Mie) — admission with the unlimited-rides passport. */
+export const nagashimaSpaLandTicket: KlookTour = {
+  title: "Nagashima Spa Land passport (admission + unlimited rides)",
+  desc: "The roller-coaster park near Nagoya: admission with the ride passport, for Steel Dragon 2000 and Hakugei",
+  url: klookLink("https://www.klook.com/en-US/activity/32241-nagashima-spa-land-ticket-kuwana/"),
+};
+
+/** Yokohama Hakkeijima Sea Paradise — One-Day Pass. */
+export const hakkeijimaSeaParadiseTicket: KlookTour = {
+  title: "Yokohama Hakkeijima Sea Paradise ticket",
+  desc: "The four aquariums and the island's rides on one day pass, in Yokohama",
+  url: klookLink("https://www.klook.com/en-US/activity/7891-hakkeijima-sea-paradise-yokohama-tokyo/"),
+};
+
+/** Shima Spain Village PARQUE ESPANA (Ise-Shima, Mie) — 1-day Passport. */
+export const parqueEspanaTicket: KlookTour = {
+  title: "Shima Spain Village PARQUE ESPANA ticket",
+  desc: "The Spanish-themed park in Ise-Shima: admission, rides and shows on one passport",
+  url: klookLink("https://www.klook.com/en-US/activity/83388-shima-spain-village-parque-espana-admission-mie/"),
+};
+
+/** Nijigen no Mori (Awaji Island) — NARUTO & BORUTO Shinobi-Zato ticket. */
+export const nijigenNarutoTicket: KlookTour = {
+  title: "Nijigen no Mori NARUTO & BORUTO Shinobi-Zato ticket",
+  desc: "The Naruto attraction on Awaji Island: the ninja village, the 3D maze and the mission rally",
+  url: klookLink("https://www.klook.com/en-US/activity/49769-naruto-boruto-awajishima/"),
+};
+
+/** Nijigen no Mori — Godzilla Interception Operation ticket. */
+export const nijigenGodzillaTicket: KlookTour = {
+  title: "Nijigen no Mori Godzilla Interception Operation ticket",
+  desc: "The Godzilla attraction on Awaji Island: the pre-show theatre, a zip line ride and the shooting game",
+  url: klookLink("https://www.klook.com/en-US/activity/49995-nijigen-no-mori-godzilla/"),
+};
+
+/** Nijigen no Mori — Dragon Quest Island ticket. */
+export const nijigenDragonQuestTicket: KlookTour = {
+  title: "Nijigen no Mori Dragon Quest Island ticket",
+  desc: "The walk-through Dragon Quest adventure in the same park on Awaji Island",
+  url: klookLink("https://www.klook.com/en-US/activity/56549-nijigen-no-mori-dragon-quest-island/"),
+};
+
+/** UZUMASA KYOTO VILLAGE (Toei Kyoto Studio Park) — admission. */
+export const toeiKyotoStudioParkTicket: KlookTour = {
+  title: "Toei Kyoto Studio Park (UZUMASA KYOTO VILLAGE) ticket",
+  desc: "Admission to the working period-drama film set in Uzumasa, Kyoto",
+  url: klookLink("https://www.klook.com/en-US/activity/48327-toei-kyoto-studio-park/"),
+};
+
+/** Betty Smith jeans-making experience, Kojima (Kurashiki, Okayama). */
+export const bettySmithJeansMaking: KlookTour = {
+  title: "Jeans-making experience in Okayama (Betty Smith, Kojima)",
+  desc: "Choose a pair, hammer in your own buttons and rivets and take the jeans home the same day, at Betty Smith in Kojima",
+  url: klookLink("https://www.klook.com/en-US/activity/50987-jeans-making-experience-in-okayama/"),
+};
+
+/** Kojima tour bus day pass with the Betty Smith denim experience. */
+export const kojimaBusDenimPass: KlookTour = {
+  title: "Kojima tour bus day pass with a denim experience",
+  desc: "A day on the Kojima sightseeing bus with a hand-made denim experience at the Betty Smith Jeans Museum",
+  url: klookLink("https://www.klook.com/en-US/activity/26581-kojima-bus-day-pass-denim-handmade-experience/"),
+};
+
+/** Gunkanjima (Battleship Island) landing cruise from Nagasaki — Gunkanjima Concierge. */
+export const gunkanjimaCruiseTour: KlookTour = {
+  title: "Battleship Island (Gunkanjima) landing cruise, Nagasaki",
+  desc: "The landing cruise from Tokiwa pier in Nagasaki, checking in at the Gunkanjima Digital Museum before you sail",
+  url: klookLink("https://www.klook.com/en-US/activity/127726-battleship-island-cruise-experience-in-nagasaki/"),
+};
+
+/** Nabana no Sato illuminations and Jazz Dream Nagashima day tour from Nagoya. */
+export const nabanaNoSatoNagashimaTour: KlookTour = {
+  title: "Nabana no Sato light show & Nagashima outlet day tour",
+  desc: "A day from Nagoya to the Nagashima resort: the outlet, an onsen and the Nabana no Sato illuminations after dark",
+  url: klookLink("https://www.klook.com/en-US/activity/190620-nagoya-mitsui-outlet-park-nabana-no-sato-full-day-shopping-onsen-tour/"),
+};

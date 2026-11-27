@@ -509,6 +509,11 @@ export default function SamuraiNinjaExperienceTokyoPage({ updated }: { updated: 
           listings={[gygTokyoSamuraiNinja]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Outside Tokyo, two Edo-period theme parks have their own guides: <Link href="/guides/attractions/edo-wonderland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Edo Wonderland</Link> in Nikko and <Link href="/guides/attractions/toei-kyoto-studio-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Toei Kyoto Studio Park</Link> in Kyoto.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

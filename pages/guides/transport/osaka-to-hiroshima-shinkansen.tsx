@@ -771,6 +771,11 @@ export default function OsakaToHiroshimaShinkansenPage({ updated }: { updated: P
             Staying on after Hiroshima? The <Link href="/guides/transport/okayama-hiroshima-yamaguchi-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Okayama-Hiroshima-Yamaguchi Area Pass</Link> covers the shinkansen from Okayama to Hakata for five days, and the <Link href="/guides/transport/hiroshima-yamaguchi-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Hiroshima-Yamaguchi Area Pass</Link> from Mihara; neither covers Shin-Osaka to Okayama.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Breaking the trip at Okayama? See the <Link href="/guides/attractions/betty-smith-jeans-making-experience" style={{ color: "var(--red)", fontWeight: 600 }}>Betty Smith jeans-making experience</Link> in Kurashiki.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

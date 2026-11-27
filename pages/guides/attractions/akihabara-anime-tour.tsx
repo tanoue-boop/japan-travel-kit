@@ -748,6 +748,11 @@ export default function AkihabaraAnimeTourPage({ updated }: { updated: PageUpdat
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In Kansai, the anime theme park is <Link href="/guides/attractions/nijigen-no-mori-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nijigen no Mori on Awaji Island</Link>, with NARUTO & BORUTO and Godzilla attractions.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -906,6 +906,11 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
             Two JR West passes start in this area: the <Link href="/guides/transport/hiroshima-yamaguchi-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Hiroshima-Yamaguchi Area Pass</Link> from Mihara, and the <Link href="/guides/transport/okayama-hiroshima-yamaguchi-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Okayama-Hiroshima-Yamaguchi Area Pass</Link> if Okayama or Kurashiki comes first. Both include the Miyajima ferry.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Stopping in Okayama on the way? The <Link href="/guides/attractions/betty-smith-jeans-making-experience" style={{ color: "var(--red)", fontWeight: 600 }}>Betty Smith jeans-making experience</Link> in Kurashiki lets you make a pair and take it home the same day.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

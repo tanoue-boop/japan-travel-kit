@@ -333,6 +333,11 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
             For Mt. Koya as a day trip or overnight, the <Link href="/guides/transport/koyasan-world-heritage-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Koyasan World Heritage Ticket</Link> guide covers Nankai&apos;s train-and-bus ticket from Namba.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For anime fans, <Link href="/guides/attractions/nijigen-no-mori-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nijigen no Mori</Link> on Awaji Island sells a ticket per attraction — NARUTO from ¥3,300.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

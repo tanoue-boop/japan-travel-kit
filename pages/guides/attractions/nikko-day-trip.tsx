@@ -430,6 +430,11 @@ export default function NikkoDayTripPage({ updated }: { updated: PageUpdated }) 
             Tobu&apos;s two passes from Asakusa are compared in our <Link href="/guides/transport/nikko-pass" style={{ color: "var(--red)", fontWeight: 600 }}>NIKKO PASS guide</Link>: the World Heritage Area pass for two days, the All Area pass for four.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Edo Wonderland Nikko Edomura has its own guide: <Link href="/guides/attractions/edo-wonderland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Edo Wonderland tickets, prices and hours</Link> (¥5,800 for adults, 9:30–16:00 in winter).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

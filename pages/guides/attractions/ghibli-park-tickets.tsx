@@ -814,6 +814,11 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
             In Tokyo instead? The museum in Mitaka has its own monthly release: see <Link href="/guides/attractions/ghibli-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Ghibli Museum tickets</Link>.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Staying in Nagoya for the parks? <Link href="/guides/attractions/nagashima-spa-land-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nagashima Spa Land tickets</Link> covers the coaster park at Nagashima Resort.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

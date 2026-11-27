@@ -974,6 +974,11 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             For a Ghibli day in Tokyo, the <Link href="/guides/attractions/ghibli-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Ghibli Museum tickets guide</Link> explains the advance-only booking and the children&apos;s prices.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a theme-park day: <Link href="/guides/attractions/yomiuriland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Yomiuriland tickets</Link> (One-Day Pass ¥5,900 for adults) and <Link href="/guides/attractions/hakkeijima-sea-paradise-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hakkeijima Sea Paradise tickets</Link> (four aquariums and the rides).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

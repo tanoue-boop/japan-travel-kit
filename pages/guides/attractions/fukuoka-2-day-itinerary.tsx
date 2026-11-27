@@ -835,6 +835,11 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Adding Nagasaki to the trip? See <Link href="/guides/attractions/huis-ten-bosch-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Huis Ten Bosch tickets</Link> for the theme park and the <Link href="/guides/attractions/gunkanjima-tour" style={{ color: "var(--red)", fontWeight: 600 }}>Gunkanjima tour</Link> for Battleship Island.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

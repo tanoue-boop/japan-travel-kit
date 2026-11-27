@@ -805,6 +805,11 @@ export default function TokyoIlluminationsPage({ updated }: { updated: PageUpdat
           areas={tokyoStayAreas}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Yomiuriland&apos;s Jewellumination has a cheaper evening ticket, the After Pass from 15:00 — see <Link href="/guides/attractions/yomiuriland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Yomiuriland tickets</Link>.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}
