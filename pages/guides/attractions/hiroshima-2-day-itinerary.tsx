@@ -99,7 +99,7 @@ const day1: Stop[] = [
   {
     time: "Morning",
     place: "Arrive by shinkansen; leave bags at the hotel or in station lockers",
-    allow: "Tokyo 3h 39m at the fastest, Osaka 1h 20m",
+    allow: "Tokyo 3h 47m at the fastest, Osaka 1h 20m",
     getting: "Tokaido–Sanyo or Sanyo Shinkansen to Hiroshima Station",
     booking: "Reserved seat recommended; Nozomi needs a supplement with a JR Pass",
   },
@@ -172,7 +172,7 @@ const day2: Stop[] = [
   {
     time: "Evening",
     place: "Shinkansen on to the next city, or a night on the island",
-    allow: "Osaka 1h 20m, Tokyo 3h 39m at the fastest",
+    allow: "Osaka 1h 20m, Tokyo 3h 47m at the fastest",
     getting: "Sanyo Shinkansen from Hiroshima Station",
     booking: "Reserve the onward seat with the arrival",
   },
@@ -474,9 +474,11 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
               <strong>Miyajima</strong>: JR to Miyajimaguchi, then the JR ferry, about{" "}
               <strong>10 minutes</strong> on the water and {FERRY_ONE_WAY} one way, plus the{" "}
               <strong>{VISITOR_TAX} Miyajima visitor tax</strong>. Itsukushima Shrine is {SHRINE_ADULT} and the
-              Mt. Misen ropeway {ROPEWAY_RETURN} return. Hiroshima is <strong>3h 39m</strong> from Tokyo and{" "}
-              <strong>1h 20m</strong> from Osaka by shinkansen at the fastest. Official figures read {OWN};
-              train times {RAIL}.
+              Mt. Misen ropeway {ROPEWAY_RETURN} return. Hiroshima is <strong>3h 47m</strong> from Tokyo on the
+              fastest{" "}
+              <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen">Tokyo to Hiroshima bullet train</Link>{" "}
+              and <strong>1h 20m</strong> from Osaka by shinkansen at the fastest. Official figures read {OWN};
+              train times {RAIL}, the Tokyo time from JR Central&apos;s timetable for 27 Nov 2026.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={hiroshimaMiyajimaPrivateDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -928,7 +930,7 @@ export default function Hiroshima2DayItineraryPage({ updated }: { updated: PageU
             {[
               { href: "/guides/attractions/hiroshima-miyajima-day-trip", title: "Hiroshima and Miyajima Day Trip (2026): Is One Day Enough?" },
               { href: "/guides/attractions/hiroshima-peace-memorial-tours", title: "Hiroshima Peace Memorial Tour: Guides, Museum & Tickets" },
-              { href: "/guides/transport/tokyo-to-hiroshima-shinkansen", title: "Tokyo to Hiroshima Shinkansen 2026: Bullet Train Price, Time" },
+              { href: "/guides/transport/tokyo-to-hiroshima-shinkansen", title: "Tokyo to Hiroshima Bullet Train: Shinkansen Time & Price" },
               { href: "/guides/transport/osaka-to-hiroshima-shinkansen", title: "Osaka to Hiroshima Shinkansen (2026): Time and Price" },
               { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day" },
               { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days: Tokyo, Kyoto, Osaka & Hakone (2026)" },

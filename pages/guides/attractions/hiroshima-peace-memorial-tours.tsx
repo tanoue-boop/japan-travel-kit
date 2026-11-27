@@ -591,7 +591,7 @@ export default function HiroshimaPeaceMemorialToursPage({ updated }: { updated: 
           </ul>
           <p className={styles.bodyText}>
             To reach Hiroshima, see our guides to the{" "}
-            <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen" style={LINK}>Tokyo to Hiroshima shinkansen</Link>{" "}
+            <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen" style={LINK}>Tokyo to Hiroshima bullet train</Link>{" "}
             (with a train-versus-flight table) and{" "}
             <Link href="/guides/transport/osaka-to-hiroshima-shinkansen" style={LINK}>Osaka to Hiroshima</Link> by
             shinkansen.

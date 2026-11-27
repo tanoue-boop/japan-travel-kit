@@ -95,8 +95,8 @@ const routeRows = [
   {
     route: "Tokyo → Hiroshima",
     href: "/guides/transport/tokyo-to-hiroshima-shinkansen",
-    anchor: "Tokyo to Hiroshima shinkansen",
-    time: "3h 39m fastest, direct Nozomi",
+    anchor: "Tokyo to Hiroshima bullet train",
+    time: "3h 47m fastest, direct Nozomi",
     nozomi: "¥19,560",
     hikari: "—",
     pass: "Hikari + Sakura with a change; Nozomi + ¥6,500",
@@ -406,7 +406,10 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
             site or app (English, credit card, QR-ticket boarding, from one year ahead to 4 minutes before
             departure), at a JR ticket office or machine at the station, or on <strong>Klook</strong> before you
             fly. On smartEX a reserved Nozomi seat from Tokyo costs <strong>¥13,970 to Kyoto</strong> (about 2h 15m),{" "}
-            <strong>¥14,520 to Shin-Osaka</strong> (2h 21m) and <strong>¥19,560 to Hiroshima</strong> (3h 39m). The
+            <strong>¥14,520 to Shin-Osaka</strong> (2h 21m) and <strong>¥19,560 to Hiroshima</strong> (3h 47m on
+            the fastest{" "}
+            <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen">Tokyo to Hiroshima bullet train</Link>, JR
+            Central timetable, 27 Nov 2026). The
             7-day JR Pass is now <strong>¥50,000</strong> online and leaves out the Nozomi, so a Tokyo–Kyoto return
             (¥27,940) and even a Tokyo–Kyoto–Hiroshima–Tokyo loop (¥45,270) cost less as single tickets. Fares
             checked on smart-ex.jp and japanrailpass.net, 17 Nov 2026.
@@ -908,7 +911,7 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo to Hiroshima Shinkansen 2026: Bullet Train Price, Time</p>
+                <p className={styles.relatedTitle}>Tokyo to Hiroshima Bullet Train: Shinkansen Time & Price</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

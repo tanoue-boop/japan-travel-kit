@@ -14,6 +14,7 @@ import {
   hiroshimaMiyajimaMultiCityDayTour,
   hiroshimaMiyajimaPrivateDayTour,
   hiroshimaStayAreas,
+  jrKansaiHiroshimaAreaPass,
   jrPassWholeJapan,
   jrSanyoSaninAreaPass,
   klookEsim,
@@ -74,6 +75,23 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  * Miyajima about 45 minutes and ¥620, World Heritage Sea Route about 45 minutes and ¥2,200
  * (dive-hiroshima.com), ¥100 Miyajima visitor tax (city.hatsukaichi.hiroshima.jp).
  * No airfare is printed: ANA and JAL fares move by date and fare type.
+ *
+ * 27 Nov 2026 (task-jtk-20261127-R14) — rank fix for "tokyo to hiroshima bullet train".
+ * Read on 27 November 2026, from official sources only:
+ *  - JR Central traininfo (departure_info_1_2.json + train_info_*.json, Tokyo westbound, 27 Nov):
+ *    62 NOZOMI run Tokyo → Hiroshima direct, 227–240 min (median 234). Fastest NOZOMI 3,
+ *    06:15 → 10:02 (3h 47m); NOZOMI 1 06:00 → 09:49; last 20:00 → 23:54; 3–6 departures an hour,
+ *    4–6 in most hours from 06:00 to 18:00. No HIKARI runs through to Hiroshima. The earlier
+ *    "3h 39m shortest / 3h 49m average / 157 trains" came from Klook and contradicts JR Central,
+ *    so it has been removed;
+ *  - smart-ex.jp service_fares_reserved.pdf: Tokyo – Hiroshima ¥19,560 (NOZOMI/MIZUHO, p1) and
+ *    ¥18,710 (HIKARI/SAKURA/KODAMA only, p2), reserved, regular season;
+ *  - JR Central / JR West release of 16 Oct 2026 (000046069.pdf, 別紙1): Tokyo ⇔ Hiroshima NOZOMI
+ *    reserved, regular season, current ¥19,760 at the window (¥20,620 for purchases from 1 Jul
+ *    2027). The window HIKARI price, ¥18,910, is that figure less the current NOZOMI add-on
+ *    (¥1,710 − ¥860 = ¥850, 別紙1-2);
+ *  - japanrailpass.net: 7-day Ordinary ¥50,000 online / ¥53,000 overseas; special ticket ¥6,500;
+ *  - hij.airport.jp: JAL253 06:45 → 08:10, ANA671 07:10 → 08:35; hiroden.co.jp: bus ¥1,500.
  */
 
 const OWN_ISO = "2026-10-28";
@@ -81,7 +99,20 @@ const OWN = checkedLabel(OWN_ISO);
 /** The date our attractions dataset last read the Hiroshima and Miyajima admissions. */
 const SIGHTS_CHECKED = checkedLabel(PRICES.peaceMuseum.checked);
 
-const yen = (n: number) => `¥${n.toLocaleString("en-US")}`;
+/**
+ * Same-day block under the main seat CTA (2% rail): the 6.5% Miyajima tours and the station hotel
+ * from the shared arrival list, plus one 5% pass item for the trip that carries on to Kansai.
+ * The 20% Klook eSIM is the BookingEsimCard directly below.
+ */
+const sameDayPrep = [
+  ...hiroshimaArrivalShinkansenPrep,
+  {
+    label: jrKansaiHiroshimaAreaPass.title,
+    ctaLabel: "Check the Kansai-Hiroshima Area Pass →",
+    url: jrKansaiHiroshimaAreaPass.url,
+    why: "If Hiroshima is followed by Osaka or Kyoto: JR West's pass covers reserved Sanyo Shinkansen seats Hiroshima – Shin-Osaka and the JR Miyajima ferry, though not the Tokyo leg.",
+  },
+];
 const tokyoHiroshima = fares.segments.find((s) => s.id === "tokyo-hiroshima")!;
 const osakaHiroshima = fares.segments.find((s) => s.id === "osaka-hiroshima")!;
 /** "2026-09" -> "September 2026", for the one non-operator figure on the page. */
@@ -102,16 +133,33 @@ const SANYO_SANIN = "¥23,000";
 const AIRPORT_BUS = "¥1,500";
 const TRAM = "¥240";
 
-/** The R04 re-read (17 Nov 2026). */
-const LAST_CHECKED = "2026-11-17";
+/** The R14 re-read (27 Nov 2026): timetable, fares, pass prices, flights, airport bus. */
+const LAST_CHECKED = "2026-11-27";
 const TODAY = checkedLabel(LAST_CHECKED);
+/** The R04 read (17 Nov 2026) of the streetcar time and the tram fare. */
+const ARRIVAL_CHECKED = "2026-11-17";
 const PASS_ROUTE_HOURS = Math.floor(tokyoHiroshima.minutes / 60);
+
+/** JR Central's timetable for 27 Nov 2026 (traininfo), Tokyo → Hiroshima direct NOZOMI. */
+const FASTEST = "3h 47m";
+const FASTEST_LONG = "3 hours 47 minutes";
+const MEDIAN_LONG = "3 hours 54 minutes";
+const NOZOMI_PER_DAY = 62;
+const NOZOMI_PER_HOUR = "3 to 6 an hour (4 to 6 in most hours before 18:00)";
+/** Window (station ticket office) prices, JR Central / JR West release of 16 Oct 2026. */
+const WINDOW_NOZOMI = "¥19,760";
+const WINDOW_HIKARI = "¥18,910";
+const SMART_EX_HIKARI = "¥18,710";
+/** Two reserved NOZOMI singles on Smart EX: 2 × ¥19,560. */
+const ROUND_TRIP = "¥39,120";
 
 const linkStyle = { color: "var(--text)" } as const;
 
-/** Official pages behind the three R04 tables. */
+/** Official pages behind the train and fare tables. */
 const OFFICIAL_RAIL = [
-  { label: "JR West Smart EX fare table", href: "https://tickets.jr-odekake.net/shohindb/view/consumer/tokutoku/detail.html?shnId=125000054" },
+  { label: "JR Central timetable (traininfo)", href: "https://traininfo.jr-central.co.jp/shinkansen/sp/en/" },
+  { label: "Smart EX fare table (PDF)", href: "https://smart-ex.jp/en/product/plan/service/pdf/service_fares_reserved.pdf" },
+  { label: "JR Central / JR West window fares, 16 Oct 2026 release (PDF)", href: "https://jr-central.co.jp/news/release/_pdf/000046069.pdf" },
   { label: "JAPAN RAIL PASS prices", href: "https://japanrailpass.net/en/purchase/price/" },
   { label: "NOZOMI special ticket", href: "https://japanrailpass.net/en/use/special-ticket/" },
 ];
@@ -127,37 +175,37 @@ const OFFICIAL_ARRIVAL = [
   { label: "Dive! Hiroshima (city tourism)", href: "https://dive-hiroshima.com/" },
 ];
 
-/** Table 1: which train. Row 1 is the answer. */
+/** Table 1: every way from Tokyo to Hiroshima. Row 1 is the answer. */
 const trainRows = [
   {
     train: "The answer",
-    time: "NOZOMI, direct: 3h 39m – 3h 49m",
-    fare: `${SMART_EX_TOKYO} reserved`,
-    pass: `Buying tickets: take the NOZOMI. On a JR Pass: HIKARI + SAKURA at no extra cost, or ${NOZOMI_SUPPLEMENT} each way for the NOZOMI`,
+    time: `Direct NOZOMI: ${FASTEST} – 4h 00m`,
+    fare: `${SMART_EX_TOKYO} on Smart EX, ${WINDOW_NOZOMI} at the window`,
+    pass: `Buying tickets: take the NOZOMI. A 7-day JR Pass (${JR_PASS_7}) costs more than the ${ROUND_TRIP} round trip, so it only pays with about ¥11,000 of other JR travel in the same week`,
   },
   {
-    train: "NOZOMI (no change)",
-    time: "3h 39m shortest, 3h 49m average; NOZOMI 1 leaves Tokyo 06:00, arrives 09:49",
-    fare: `${SMART_EX_TOKYO} reserved, ${SMART_EX_NONRES} non-reserved, ${SMART_EX_GREEN} Green`,
+    train: "NOZOMI direct (no change)",
+    time: `${FASTEST} fastest (NOZOMI 3, 06:15 → 10:02), 3h 54m median; ${NOZOMI_PER_DAY} a day, ${NOZOMI_PER_HOUR}`,
+    fare: `${SMART_EX_TOKYO} reserved on Smart EX (${SMART_EX_NONRES} non-reserved, ${SMART_EX_GREEN} Green); ${WINDOW_NOZOMI} reserved at the window`,
     pass: `Not covered: a ${NOZOMI_SUPPLEMENT} special ticket each way`,
   },
   {
-    train: "HIKARI to Shin-Osaka, then SAKURA or HIKARI",
-    time: `About ${PASS_ROUTE_HOURS} hours, one change at Shin-Osaka`,
-    fare: `About ${yen(tokyoHiroshima.fareYen)} (our rounded reference value)`,
-    pass: "Covered; seat reservations are free",
+    train: "NOZOMI to Shin-Osaka, change to a MIZUHO, SAKURA or HIKARI",
+    time: "Longer than the direct NOZOMI by the change; only worth it when the direct trains are full",
+    fare: `One ticket: ¥19,230 at the window with a SAKURA or HIKARI onward (${WINDOW_HIKARI} plus JR's ¥320 NOZOMI add-on for Tokyo – Shin-Osaka); the direct price with a MIZUHO`,
+    pass: `Not covered on the NOZOMI or MIZUHO without the ${NOZOMI_SUPPLEMENT} special ticket`,
   },
   {
-    train: "MIZUHO",
-    time: "Does not start at Tokyo: Shin-Osaka westward only",
-    fare: "Not a Tokyo option",
-    pass: "Needs the special ticket",
+    train: "JR Pass route: HIKARI to Shin-Osaka, then SAKURA or HIKARI",
+    time: `About ${PASS_ROUTE_HOURS} hours with one change (our reference value)`,
+    fare: `${SMART_EX_HIKARI} on Smart EX, ${WINDOW_HIKARI} at the window, if you buy it as a ticket`,
+    pass: "Covered, seat reservations free. Break-even: the pass beats two singles only with a third long leg in the week",
   },
   {
-    train: "SAKURA",
-    time: "Does not start at Tokyo: the Shin-Osaka → Hiroshima leg of the pass route",
-    fare: "Not a Tokyo option",
-    pass: "Covered",
+    train: "Fly Haneda → Hiroshima Airport + limousine bus",
+    time: "About 1h 25m in the air + 50-minute bus to Hiroshima Station, plus the trip to Haneda and check-in",
+    fare: `Airfare by date (ANA, JAL) + ${AIRPORT_BUS} bus`,
+    pass: "No JR pass covers the flight or the bus",
   },
 ];
 
@@ -165,14 +213,14 @@ const trainRows = [
 const flightRows = [
   {
     option: "The answer",
-    ride: "Train: one 3h 39m – 3h 49m ride. Plane: 1h 25m flight + 50-minute bus",
+    ride: `Train: one ${FASTEST} – 4h 00m ride. Plane: 1h 25m flight + 50-minute bus`,
     transfer: "The plane adds the trip to Haneda, check-in and the bus; the train adds nothing",
     fare: `${SMART_EX_TOKYO} by train; airfare varies by date`,
     arrive: "Near tie: 09:20 by air + bus vs 09:49 by train. Take the train unless you sleep near Haneda",
   },
   {
     option: "Shinkansen (NOZOMI)",
-    ride: "3h 39m – 3h 49m, Tokyo or Shinagawa → Hiroshima Station",
+    ride: `${FASTEST} – 4h 00m, Tokyo or Shinagawa → Hiroshima Station`,
     transfer: "None: Hiroshima Station is where the trams and the Miyajimaguchi trains leave from",
     fare: `${SMART_EX_TOKYO} reserved (Smart EX)`,
     arrive: "09:49 on NOZOMI 1 (Tokyo 06:00)",
@@ -247,21 +295,21 @@ const nozomiAllReservedPeriods = [
 const routeRows = [
   {
     item: "Shortest Tokyo → Hiroshima journey",
-    value: "3 hours 39 minutes",
-    detail: 'A direct NOZOMI. Klook\'s own rail page for the route gives this as the shortest departure and states the route "features 0 transfer(s)"',
-    source: `klook.com rail page, ${OWN}`,
+    value: FASTEST_LONG,
+    detail: "NOZOMI 3, Tokyo 06:15 → Hiroshima 10:02, with no change of train",
+    source: `JR Central timetable (traininfo), ${TODAY}`,
   },
   {
-    item: "Average journey on the same page",
-    value: "3 hours 49 minutes",
-    detail: "The average across the day's departures — the ten-minute spread is how many stops the NOZOMI you pick makes west of Shin-Osaka",
-    source: `klook.com rail page, ${OWN}`,
+    item: "Typical journey",
+    value: `${MEDIAN_LONG} (median); the slowest direct NOZOMI is 4 hours`,
+    detail: "The 13-minute spread is how many stops the NOZOMI you pick makes west of Shin-Osaka",
+    source: `JR Central timetable (traininfo), ${TODAY}`,
   },
   {
-    item: "Departures per day",
-    value: "157 trains on 23 Nov 2026, first at 06:00, last at 20:07",
-    detail: "Klook's count for a sample date; NOZOMI 1 leaves Tokyo at 06:00 and reaches Hiroshima at 09:49. In practice you plan this route around which train your ticket lets you board, not the timetable",
-    source: `klook.com rail page, ${TODAY}`,
+    item: "Direct NOZOMI per day",
+    value: `${NOZOMI_PER_DAY} on 27 Nov 2026, first 06:00, last 20:00`,
+    detail: `${NOZOMI_PER_HOUR}. NOZOMI 1 leaves Tokyo at 06:00 and reaches Hiroshima at 09:49; the last through train arrives at 23:54. No HIKARI runs Tokyo to Hiroshima straight through`,
+    source: `JR Central timetable (traininfo), ${TODAY}`,
   },
   {
     item: "Pass-eligible route (HIKARI + SAKURA)",
@@ -294,21 +342,27 @@ const priceRows = [
   {
     item: "Tokyo → Hiroshima, one way, reserved Ordinary",
     price: SMART_EX_TOKYO,
-    covers: `JR's own Smart EX online price for one adult, NOZOMI or MIZUHO, regular season; ${SMART_EX_NONRES} non-reserved and ${SMART_EX_GREEN} Green on the same table. Shin-Osaka → Hiroshima is ¥10,750`,
-    source: `JR West's Smart EX product page on tickets.jr-odekake.net, ${TODAY}`,
+    covers: `JR's own Smart EX online price for one adult, NOZOMI or MIZUHO, regular season; ${SMART_EX_NONRES} non-reserved and ${SMART_EX_GREEN} Green. Shin-Osaka → Hiroshima is ¥10,750`,
+    source: `Smart EX fare table (smart-ex.jp), ${TODAY}`,
+  },
+  {
+    item: "Same seat bought at the station window",
+    price: WINDOW_NOZOMI,
+    covers: "Reserved Ordinary NOZOMI, one adult, regular season, at a JR ticket office or machine. JR has announced ¥20,620 for tickets bought from 1 July 2027",
+    source: `JR Central / JR West release of 16 Oct 2026, ${TODAY}`,
   },
   {
     item: "Tokyo → Hiroshima on pass-eligible trains",
-    price: `About ${yen(tokyoHiroshima.fareYen)}`,
-    covers: "Basic fare plus the reserved-seat limited express charge on a HIKARI and SAKURA combination — the trains a JAPAN RAIL PASS covers without a supplement",
-    source: `Our own JR fare dataset, as of ${FARE_AS_OF} — a rounded reference value, not an operator table`,
+    price: `${SMART_EX_HIKARI} Smart EX, ${WINDOW_HIKARI} window`,
+    covers: "Reserved HIKARI and SAKURA (or KODAMA) only — the trains a JAPAN RAIL PASS covers without a supplement. The window figure is the NOZOMI price less JR's current ¥850 NOZOMI add-on for Tokyo – Hiroshima",
+    source: `Smart EX fare table p.2 and the JR release of 16 Oct 2026, ${TODAY}`,
   },
   {
     item: "NOZOMI / MIZUHO supplement for pass holders",
     price: `${NOZOMI_SUPPLEMENT} Tokyo – Hiroshima`,
     covers:
       'The special ticket a JAPAN RAIL PASS holder buys to ride a NOZOMI. JR states "the same prices apply to Green Car tickets, reserved seat tickets in an ordinary car and non-reserved seat tickets in an ordinary car"',
-    source: `japanrailpass.net, ${OWN}`,
+    source: `japanrailpass.net, ${TODAY}`,
   },
   {
     item: "JAPAN RAIL PASS, Ordinary",
@@ -336,8 +390,8 @@ const compareRows = [
   {
     option: "A single reserved NOZOMI ticket each way",
     cost: `${SMART_EX_TOKYO} one way on Smart EX`,
-    gets: "The 3h 39m direct train, no transfer, and nothing else to buy or plan.",
-    pick: "The default. If Hiroshima is a there-and-back from Tokyo, two singles are about ¥39,000 against ¥50,000 (official site) or ¥53,000 (agency) for a 7-day pass — the pass loses.",
+    gets: "The 3h 47m direct train, no transfer, and nothing else to buy or plan.",
+    pick: "The default. If Hiroshima is a there-and-back from Tokyo, two singles are ¥39,120 against ¥50,000 (official site) or ¥53,000 (agency) for a 7-day pass — the pass loses.",
   },
   {
     option: "JAPAN RAIL PASS, 7-day Ordinary, on HIKARI and SAKURA",
@@ -374,35 +428,39 @@ const compareRows = [
 const faqItems = [
   {
     q: "How long is the bullet train from Tokyo to Hiroshima?",
-    a: `3 hours 39 minutes at the fastest, direct, on a NOZOMI; 3 hours 49 minutes on average. Those are the figures on Klook's own rail page for the route, which states the route "features 0 transfer(s)" and lists NOZOMI 1 leaving Tokyo at 06:00 and reaching Hiroshima at 09:49; read on ${TODAY}. The number changes if you are holding a JAPAN RAIL PASS, because the pass does not cover the NOZOMI: the pass-eligible route is a HIKARI to Shin-Osaka and a SAKURA or HIKARI onward, which our own dataset puts at about ${Math.floor(tokyoHiroshima.minutes / 60)} hours with the change. That hour-and-a-quarter difference is the single most important thing to settle before you buy anything, because it decides whether Hiroshima is a day trip or a night.`,
+    a: `${FASTEST_LONG} at the fastest, direct, on a NOZOMI, and ${MEDIAN_LONG} on a typical one. JR Central's timetable for 27 November 2026 has ${NOZOMI_PER_DAY} NOZOMI running Tokyo to Hiroshima without a change, ${NOZOMI_PER_HOUR}; the fastest is NOZOMI 3 (06:15 → 10:02) and the first is NOZOMI 1 (06:00 → 09:49). On a JAPAN RAIL PASS without the NOZOMI special ticket, the route is a HIKARI to Shin-Osaka and a SAKURA or HIKARI onward, about ${PASS_ROUTE_HOURS} hours with the change on our own reference figure.`,
   },
   {
     q: "How much is the shinkansen from Tokyo to Hiroshima?",
-    a: `${SMART_EX_TOKYO} one way for a reserved Ordinary seat, on JR's own Smart EX price; ${SMART_EX_NONRES} non-reserved and ${SMART_EX_GREEN} in the Green Car. Those figures are from JR West's Smart EX product page, for one adult in the regular season on a NOZOMI, read on ${TODAY}. Two reserved singles are therefore about ¥39,000, which is the number to hold against the ${JR_PASS_7} a 7-day Ordinary JAPAN RAIL PASS costs online (${JR_PASS_7_AGENCY} from an overseas agency). If you are travelling on pass-eligible trains instead, our own rounded reference figure for the HIKARI and SAKURA combination is ${yen(tokyoHiroshima.fareYen)} — labelled as ours rather than an operator's, because neither JR East nor JR Central publishes the window price as a static table.`,
+    a: `${SMART_EX_TOKYO} one way for a reserved Ordinary NOZOMI seat on JR's Smart EX, and ${WINDOW_NOZOMI} for the same seat bought at a station ticket window (one adult, regular season). Smart EX also lists ${SMART_EX_NONRES} non-reserved and ${SMART_EX_GREEN} Green, and ${SMART_EX_HIKARI} if you ride only HIKARI and SAKURA (${WINDOW_HIKARI} at the window). Two reserved NOZOMI singles come to ${ROUND_TRIP}. Sources: smart-ex.jp and the JR Central / JR West release of 16 October 2026, read ${TODAY}; JR has announced ¥20,620 at the window for tickets bought from 1 July 2027.`,
   },
   {
-    q: "Is the JR Pass worth it for Tokyo to Hiroshima?",
-    a: `Not for the round trip on its own. A 7-day Ordinary JAPAN RAIL PASS is ${JR_PASS_7} bought online — ${JR_PASS_7_AGENCY} as an Exchange Order from an overseas agency since the October 2026 revision — and two reserved singles to Hiroshima and back come to roughly ¥39,000 on JR's own Smart EX price. Even adding Kyoto to the week, our reference fares put a Tokyo–Kyoto–Hiroshima–Tokyo run at about ¥44,000, still under the pass. The pass starts winning when a third long leg appears: Kanazawa, Sendai, Hakata. And remember what it does not buy — the NOZOMI and the MIZUHO need a separate ticket "issued only to JAPAN RAIL PASS holders", ${NOZOMI_SUPPLEMENT} for Tokyo–Hiroshima, the same price whether you sit in Green, reserved or non-reserved. All pass figures from japanrailpass.net, ${TODAY}.`,
+    q: "Can I use the JR Pass on the Nozomi to Hiroshima?",
+    a: `Not on the pass alone: the NOZOMI and MIZUHO need a special ticket "issued only to JAPAN RAIL PASS holders", which costs ${NOZOMI_SUPPLEMENT} one way for Tokyo – Hiroshima at the same price in Green, reserved or non-reserved. Without it, a pass holder rides a HIKARI to Shin-Osaka and a SAKURA or HIKARI onward at no extra cost. A 7-day Ordinary pass is ${JR_PASS_7} online (${JR_PASS_7_AGENCY} from an overseas agency), against ${ROUND_TRIP} for two Smart EX NOZOMI singles, so for Tokyo – Hiroshima and back alone the pass does not pay; it needs about ¥11,000 of other JR travel in the same week. Figures from japanrailpass.net and smart-ex.jp, read ${TODAY}.`,
   },
   {
-    q: "Should I fly or take the train to Hiroshima?",
-    a: `Take the train, unless you are already staying by Haneda. The flight is about 1 hour 25 minutes — JAL253 leaves Haneda at 06:45 and lands at 08:10 on Hiroshima Airport's timetable for 25 October 2026 to 31 January 2027 — but the airport is a 50-minute, ${AIRPORT_BUS} limousine bus from Hiroshima Station, and the 08:30 bus arrives at 09:20. The first NOZOMI from Tokyo Station leaves at 06:00 and arrives at 09:49, with no airport to reach and no check-in. So the two are within half an hour of each other into the city, and the train does it from central Tokyo with a ${SMART_EX_TOKYO} reserved seat and a JR Pass option the flight does not have. Read ${TODAY}; airfares are not printed because they move by date.`,
-  },
-  {
-    q: "Can I do Hiroshima as a day trip from Tokyo?",
-    a: `Yes, but it is about seven and a half hours on trains. NOZOMI 1 leaves Tokyo at 06:00 and reaches Hiroshima at 09:49 on Klook's rail page, so with a late NOZOMI back the Peace Memorial Park — about 25 minutes from the station by streetcar, for ${TRAM} — fits into one day. Miyajima does not fit well: it is about 45 more minutes each way by JR and ferry, and the floating torii depends on the tide. One night in Hiroshima turns the trip into two half-days; if the single day is fixed, a guided Hiroshima and Miyajima day tour puts the ferry and the timing inside the booking. Read ${TODAY}.`,
+    q: "Is it better to fly or take the train to Hiroshima?",
+    a: `The train is better unless you are staying by Haneda: the first NOZOMI from Tokyo Station (06:00) reaches Hiroshima Station at 09:49, and the first flight plus bus gets there at 09:20. The flight is about 1 hour 25 minutes (JAL253 Haneda 06:45 → Hiroshima 08:10 on Hiroshima Airport's timetable for 25 October 2026 – 31 January 2027), but the airport is a 50-minute, ${AIRPORT_BUS} limousine bus from the station, and you have to get to Haneda and check in first. The train runs from central Tokyo for ${SMART_EX_TOKYO} reserved and has a JR Pass option the flight does not. Read ${TODAY}; airfares are not printed because they move by date.`,
   },
 ];
 
-/** Shown on the page, not in the FAQPage markup (which carries the five target questions). */
+/** Shown on the page, not in the FAQPage markup (which carries the four target questions). */
 const moreFaqItems = [
+  {
+    q: "Is the JR Pass worth it for Tokyo to Hiroshima?",
+    a: `Not for the round trip on its own. A 7-day Ordinary JAPAN RAIL PASS is ${JR_PASS_7} bought online — ${JR_PASS_7_AGENCY} as an Exchange Order from an overseas agency since the October 2026 revision — and two reserved singles to Hiroshima and back come to ${ROUND_TRIP} on JR's own Smart EX price. Even adding Kyoto to the week, our reference fares put a Tokyo–Kyoto–Hiroshima–Tokyo run at about ¥44,000, still under the pass. The pass starts winning when a third long leg appears: Kanazawa, Sendai, Hakata. All pass figures from japanrailpass.net, ${TODAY}.`,
+  },
+  {
+    q: "Can I do Hiroshima as a day trip from Tokyo?",
+    a: `Yes, but it is about seven and three-quarter hours on trains. NOZOMI 1 leaves Tokyo at 06:00 and reaches Hiroshima at 09:49 on JR Central's timetable, so with a late NOZOMI back the Peace Memorial Park — about 25 minutes from the station by streetcar, for ${TRAM} — fits into one day. Miyajima does not fit well: it is about 45 more minutes each way by JR and ferry, and the floating torii depends on the tide. One night in Hiroshima turns the trip into two half-days; if the single day is fixed, a guided Hiroshima and Miyajima day tour puts the ferry and the timing inside the booking. Read ${TODAY}.`,
+  },
   {
     q: "Do I need to reserve a seat?",
     a: `Usually no, and on eight sets of dates absolutely yes. JR Central's own page lists the periods in which every NOZOMI car runs as a reserved car with no non-reserved section at all: ${nozomiAllReservedPeriods.join("; ")}. Outside those windows the NOZOMI keeps its non-reserved cars, and JR Central notes that the HIKARI, KODAMA, MIZUHO, SAKURA and TSUBAME keep theirs as usual throughout. Reserved seats go on sale at 10:00 one month before the day the train leaves its originating station — so 10:00 on 1 March for a 1 April departure. If you are holding a rail pass the reservation is free, which means there is no reason not to make one.`,
   },
   {
     q: "Nozomi or Hikari: which should I take?",
-    a: `NOZOMI unless a pass is making the decision for you. The NOZOMI is the only service that runs Tokyo to Hiroshima straight through, at 3 hours 39 minutes on Klook's own figure for the route. The HIKARI does not: a pass-eligible journey is a HIKARI to Shin-Osaka and a SAKURA or HIKARI onward, which adds a change and about an hour and a quarter. If you hold a JAPAN RAIL PASS you can buy the NOZOMI back for ${NOZOMI_SUPPLEMENT} each way and it is often worth it on this leg specifically, because the time you lose is larger here than on Tokyo–Kyoto. If you are buying ordinary tickets, there is no reason to choose the HIKARI route at all.`,
+    a: `NOZOMI unless a pass is making the decision for you. The NOZOMI is the only service that runs Tokyo to Hiroshima straight through, at ${FASTEST_LONG} at the fastest on JR Central's timetable. The HIKARI does not: a pass-eligible journey is a HIKARI to Shin-Osaka and a SAKURA or HIKARI onward, which adds a change and about an hour. If you hold a JAPAN RAIL PASS you can buy the NOZOMI back for ${NOZOMI_SUPPLEMENT} each way and it is often worth it on this leg specifically, because the time you lose is larger here than on Tokyo–Kyoto. If you are buying ordinary tickets, there is no reason to choose the HIKARI route at all.`,
   },
   {
     q: "What are the luggage rules on this train?",
@@ -422,9 +480,9 @@ const moreFaqItems = [
   },
 ];
 
-const TITLE = "Tokyo to Hiroshima Shinkansen 2026: Bullet Train Price, Time";
+const TITLE = "Tokyo to Hiroshima Bullet Train: Shinkansen Time & Price";
 const DESCRIPTION =
-  "Tokyo to Hiroshima shinkansen: 3h39m direct, ¥19,560 reserved. The Tokyo to Hiroshima bullet train vs JR Pass vs flight, then book your seat.";
+  "Tokyo to Hiroshima bullet train: the direct Nozomi shinkansen takes 3h47m, 62 trains a day, ¥19,560 on Smart EX or ¥19,760 at the window. JR Pass vs plane.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/transport/tokyo-to-hiroshima-shinkansen") },
@@ -522,7 +580,7 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Tokyo to Hiroshima Shinkansen 2026: <br />Bullet Train Price, Time, Train vs Flight
+            Tokyo to Hiroshima Bullet Train: <br />Shinkansen Time, Price &amp; Nozomi vs JR Pass
           </h1>
           <p className={styles.heroSubtitle}>
             The Tokyo to Hiroshima bullet train, the JR Pass route, and the Tokyo to Hiroshima train
@@ -557,7 +615,7 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Fastest journey</p>
-                <p className={styles.verdictStatValue}>3h 39m, no transfer</p>
+                <p className={styles.verdictStatValue}>{FASTEST}, no transfer</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Reserved Ordinary</p>
@@ -574,19 +632,22 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
             </div>
             {/* Answer-first: the first body paragraph of the article, not the hero line. */}
             <p className={styles.verdictText}>
-              The <strong>Tokyo to Hiroshima shinkansen</strong> takes <strong>3 hours 39 minutes</strong>{" "}
-              at the fastest on a direct NOZOMI, and a reserved Ordinary seat costs{" "}
-              <strong>{SMART_EX_TOKYO}</strong> one way on JR&apos;s Smart EX ({SMART_EX_NONRES}{" "}
-              non-reserved). A <strong>JAPAN RAIL PASS</strong> ({JR_PASS_7} online, {JR_PASS_7_AGENCY} from
-              an overseas agency after the October 2026 revision) does not cover the NOZOMI, so a pass holder
-              either pays <strong>{NOZOMI_SUPPLEMENT}</strong> each way or rides a HIKARI to Shin-Osaka and
-              changes to a SAKURA, about {PASS_ROUTE_HOURS} hours in all. Flying Haneda to Hiroshima is about{" "}
-              <strong>1 hour 25 minutes</strong>, but the airport is a <strong>50-minute, {AIRPORT_BUS}</strong>{" "}
-              bus from Hiroshima Station, so the first flight and the first NOZOMI reach the station within
-              half an hour of each other (09:20 vs 09:49). Read {TODAY}.
+              The <strong>Tokyo to Hiroshima bullet train</strong> takes <strong>{FASTEST_LONG}</strong> at
+              the fastest on a direct NOZOMI ({MEDIAN_LONG} typical), with <strong>{NOZOMI_PER_DAY} direct
+              NOZOMI a day</strong>, {NOZOMI_PER_HOUR}, on JR Central&apos;s timetable. A reserved Ordinary
+              seat costs <strong>{SMART_EX_TOKYO}</strong> one way on JR&apos;s Smart EX and{" "}
+              <strong>{WINDOW_NOZOMI}</strong> at a station ticket window. Flying Haneda to Hiroshima is about
+              1 hour 25 minutes, but with the <strong>50-minute, {AIRPORT_BUS}</strong> airport bus the first
+              flight reaches Hiroshima Station at 09:20, against 09:49 for the first NOZOMI from Tokyo Station.
+              Read {TODAY}.
             </p>
             <p className={styles.verdictText} style={{ marginTop: "0.75rem" }}>
-              At 3 hours 39 minutes each way, most trips from Tokyo stay overnight: our{" "}
+              A <strong>JAPAN RAIL PASS</strong> ({JR_PASS_7} online, {JR_PASS_7_AGENCY} from an overseas
+              agency) does not cover the NOZOMI: a pass holder pays <strong>{NOZOMI_SUPPLEMENT}</strong> each
+              way or rides a HIKARI to Shin-Osaka and changes to a SAKURA, about {PASS_ROUTE_HOURS} hours in all.
+            </p>
+            <p className={styles.verdictText} style={{ marginTop: "0.75rem" }}>
+              At nearly four hours each way, most trips from Tokyo stay overnight: our{" "}
               <Link href="/guides/attractions/hiroshima-2-day-itinerary">2 days in Hiroshima itinerary</Link>{" "}
               plans the two days after you arrive.
             </p>
@@ -611,7 +672,7 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
           label="Book with the train"
           heading="What to Book in Hiroshima With Your Seat"
           intro="The train ends at Hiroshima Station. A guided Miyajima day with the ferry included, and a room by the station the Miyajimaguchi trains leave from, are the bookings to settle in the same sitting."
-          items={hiroshimaArrivalShinkansenPrep}
+          items={sameDayPrep}
         />
 
         <BookingEsimCard />
@@ -633,8 +694,8 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
           <p className={styles.bodyText}>
             So the decision tree is short. Buying ordinary tickets? Take the NOZOMI; there is no reason not
             to. Holding a <strong>JAPAN RAIL PASS</strong>? You are choosing between a{" "}
-            {NOZOMI_SUPPLEMENT} supplement each way and a change at Shin-Osaka that adds about an hour and a
-            quarter. Not yet bought a pass? Two reserved singles are roughly ¥39,000 against {JR_PASS_7},
+            {NOZOMI_SUPPLEMENT} supplement each way and a change at Shin-Osaka that adds about an hour. Not
+            yet bought a pass? Two reserved singles are {ROUND_TRIP} against {JR_PASS_7},
             and that gap is the whole argument.
           </p>
           <p className={styles.bodyText}>
@@ -651,16 +712,17 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
           <span className={styles.sectionLabel}>The train</span>
           <h2 className={styles.sectionTitle}>How Long Is the Bullet Train From Tokyo to Hiroshima?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            3 hours 39 minutes at the fastest and 3 hours 49 minutes on average, direct on a NOZOMI; about{" "}
-            {PASS_ROUTE_HOURS} hours on the HIKARI + SAKURA route a JR Pass covers. Which train you can board
-            decides the time, so the table starts there.
+            {FASTEST_LONG} at the fastest and {MEDIAN_LONG} on a typical direct NOZOMI, with{" "}
+            {NOZOMI_PER_DAY} a day; about {PASS_ROUTE_HOURS} hours on the HIKARI + SAKURA route a JR Pass
+            covers. The table compares every way there — train, change, pass and plane — by time, fare and
+            whether the JR Pass covers it.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    {["Train", "Tokyo → Hiroshima time", "One-way fare (adult)", "JR Pass?"].map((h) => (
+                    {["Way to go", "Tokyo → Hiroshima time", "One-way fare (adult)", "JR Pass?"].map((h) => (
                       <th key={h}>{h}</th>
                     ))}
                   </tr>
@@ -686,8 +748,9 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
                 {i < OFFICIAL_RAIL.length - 1 ? "; " : "."}
               </span>
             ))}{" "}
-            Journey times and the NOZOMI 1 timings from Klook&apos;s Tokyo–Hiroshima rail page. The HIKARI +
-            SAKURA time and fare are our own rounded reference values (JR dataset as of {FARE_AS_OF}).
+            Journey times and train counts are JR Central&apos;s timetable for 27 November 2026; flight times
+            and the airport bus are in the train-or-plane table below. The HIKARI + SAKURA journey time is our
+            own rounded reference value (JR dataset as of {FARE_AS_OF}).
           </p>
           <p className={styles.bodyText} style={{ margin: "1rem 0" }}>
             The detail behind those rows, each with its source and the date it was read:
@@ -736,10 +799,9 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
           <span className={styles.sectionLabel}>Prices</span>
           <h2 className={styles.sectionTitle}>How Much Is the Shinkansen From Tokyo to Hiroshima?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            {SMART_EX_TOKYO} one way for a reserved Ordinary seat. That is JR&apos;s own online price, read
-            off JR West&apos;s Smart EX product page on {OWN} — one adult, regular season, NOZOMI or MIZUHO.
-            One honest caveat: neither JR Central nor JR East publishes the station-window fare as a static
-            table, so the pass-eligible row below is our own rounded reference value and is marked as such.
+            {SMART_EX_TOKYO} one way for a reserved Ordinary NOZOMI seat on Smart EX, and {WINDOW_NOZOMI} at
+            a station ticket window — one adult, regular season. The Smart EX figure is JR&apos;s own fare
+            table; the window figure is from JR Central and JR West&apos;s fare release of 16 October 2026.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -765,19 +827,26 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Subject to change — confirm before buying. {fares.note} Smart EX prices are the online figures
-            and differ from the station-window price; peak and off-peak dates move the reserved-seat charge
-            by a couple of hundred yen either way. No Klook price appears on this page: Klook prices
-            change by date, so check the listing for your date.
+            Last checked: {LAST_CHECKED}. Official sources:{" "}
+            {OFFICIAL_RAIL.slice(1).map((o, i, arr) => (
+              <span key={o.href}>
+                <a href={o.href} target="_blank" rel="noopener noreferrer" style={linkStyle}>{o.label}</a>
+                {i < arr.length - 1 ? "; " : "."}
+              </span>
+            ))}{" "}
+            Subject to change — confirm before buying. Smart EX prices are the online figures and differ
+            from the station-window price; peak and off-peak dates move the reserved-seat charge by a few
+            hundred yen either way. No Klook price appears on this page: Klook prices change by date, so
+            check the listing for your date.
           </p>
         </section>
 
         {/* Train vs flight (R04) */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Train or plane</span>
-          <h2 className={styles.sectionTitle}>Should I Fly or Take the Train From Tokyo to Hiroshima?</h2>
+          <h2 className={styles.sectionTitle}>Is It Better to Fly or Take the Train to Hiroshima?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Take the train unless you are staying by Haneda. The flight is about 1 hour 25 minutes, but with
+            The train is better unless you are staying by Haneda. The flight is about 1 hour 25 minutes, but with
             the 50-minute airport bus the first flight reaches Hiroshima Station at 09:20 against 09:49 for
             the first NOZOMI from Tokyo Station — and the train needs no airport trip or check-in.
           </p>
@@ -832,11 +901,13 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
         {/* Pass comparison */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Compare</span>
-          <h2 className={styles.sectionTitle}>Is the JR Pass Worth It for Tokyo to Hiroshima?</h2>
+          <h2 className={styles.sectionTitle}>Can I Use the JR Pass on the Nozomi to Hiroshima?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            Not on its own — and the reason is arithmetic rather than opinion. Two reserved singles are
-            about ¥39,000 at JR&apos;s own Smart EX price; a 7-day Ordinary pass is {JR_PASS_7} online and
-            ¥53,000 as an Exchange Order bought abroad.
+            Only with a {NOZOMI_SUPPLEMENT} special ticket each way: the JAPAN RAIL PASS does not cover the
+            NOZOMI or MIZUHO, but it covers the HIKARI to Shin-Osaka and the SAKURA onward at no extra cost.
+            For Tokyo – Hiroshima and back alone the pass does not pay — two Smart EX NOZOMI singles are{" "}
+            {ROUND_TRIP}, a 7-day Ordinary pass {JR_PASS_7} online or {JR_PASS_7_AGENCY} from an overseas
+            agency — so it needs about ¥11,000 of other JR travel in the same week to break even.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -954,9 +1025,9 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
           <h2 className={styles.sectionTitle}>Can I Do Hiroshima as a Day Trip From Tokyo?</h2>
           <p className={styles.bodyText}>
             Physically yes; sensibly, only if Hiroshima city is all you want. NOZOMI 1 leaves Tokyo at{" "}
-            <strong>06:00</strong> and reaches Hiroshima at <strong>09:49</strong> on Klook&apos;s rail
-            page (read {TODAY}), so an early NOZOMI out and a late one back gives you a full working
-            afternoon in the city — at the cost of seven and a half hours on a train.
+            <strong>06:00</strong> and reaches Hiroshima at <strong>09:49</strong> on JR Central&apos;s
+            timetable (read {TODAY}), so an early NOZOMI out and a late one back gives you a full working
+            afternoon in the city — at the cost of about seven and three-quarter hours on a train.
           </p>
           <p className={styles.bodyText}>
             The reason to stay a night is Miyajima. The island is a local JR train on to Miyajimaguchi and
@@ -1008,7 +1079,8 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Last checked: {LAST_CHECKED} for the streetcar, tram fare and airport bus; the Miyajima routes,
+            Last checked: {LAST_CHECKED} for the airport bus, {ARRIVAL_CHECKED} for the streetcar and tram
+            fare; the Miyajima routes,
             fares and visitor tax read on {checkedLabel("2026-11-08")}. Official sources:{" "}
             {OFFICIAL_ARRIVAL.map((o, i) => (
               <span key={o.href}>
@@ -1242,8 +1314,8 @@ export default function TokyoToHiroshimaShinkansenPage({ updated }: { updated: P
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>One train, one ticket decision</h2>
             <p className={styles.ctaBannerDesc}>
-              Book the NOZOMI if you are buying tickets; price the {NOZOMI_SUPPLEMENT} supplement against an
-              hour and a quarter if you are holding a pass. Then decide whether Miyajima is worth a night —
+              Book the NOZOMI if you are buying tickets; price the {NOZOMI_SUPPLEMENT} supplement against about
+              an hour if you are holding a pass. Then decide whether Miyajima is worth a night —
               because on a single day from Tokyo, it is the half that gets cut.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>

@@ -472,8 +472,9 @@ export default function OsakaToHiroshimaShinkansenPage({ updated }: { updated: P
             Because it is short, frequent and entirely inside one operator&apos;s territory. Shin-Osaka to
             Hiroshima is a single hop down the <strong>Sanyo Shinkansen</strong> with no change, 181
             departures on Klook&apos;s count for a sample date, and a fastest time of{" "}
-            <strong>1 hour 20 minutes</strong>. Nothing about the route needs planning the way the Tokyo
-            leg does — which is why the interesting question here is not <em>how</em> but{" "}
+            <strong>1 hour 20 minutes</strong>. Nothing about the route needs planning the way the{" "}
+            <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen">Tokyo to Hiroshima bullet train</Link>{" "}
+            does — which is why the interesting question here is not <em>how</em> but{" "}
             <em>on what ticket</em>.
           </p>
           <p className={styles.bodyText}>

@@ -439,7 +439,7 @@ export default function HiroshimaMiyajimaDayTripPage({ updated }: { updated: Pag
             five-day pass that covers that train and the Miyajima ferry is on our{" "}
             <Link href="/guides/transport/kansai-hiroshima-area-pass">Kansai Hiroshima Area Pass</Link> page; coming
             from the capital, our{" "}
-            <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen">Tokyo to Hiroshima shinkansen</Link>{" "}
+            <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen">Tokyo to Hiroshima bullet train</Link>{" "}
             guide has the NOZOMI times, the JR Pass route and the train-versus-flight table. If you are basing yourself in
             Kansai for this, our <Link href="/guides/attractions/things-to-do-osaka">Osaka</Link> and{" "}
             <Link href="/guides/attractions/things-to-do-kyoto">Kyoto</Link> round-ups cover the days either
@@ -547,7 +547,7 @@ export default function HiroshimaMiyajimaDayTripPage({ updated }: { updated: Pag
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Tokyo to Hiroshima Shinkansen 2026: Bullet Train Price, Time</p>
+                <p className={styles.relatedTitle}>Tokyo to Hiroshima Bullet Train: Shinkansen Time & Price</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
