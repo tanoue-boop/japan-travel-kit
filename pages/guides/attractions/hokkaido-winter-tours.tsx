@@ -643,6 +643,11 @@ export default function HokkaidoWinterToursPage({ updated }: { updated: PageUpda
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For hours and admission at the zoo itself, see the <Link href="/guides/attractions/asahiyama-zoo-day-trip-from-sapporo" style={{ color: "var(--red)", fontWeight: 600 }}>Asahiyama Zoo day trip from Sapporo</Link> (¥1,000 for adults, children free).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

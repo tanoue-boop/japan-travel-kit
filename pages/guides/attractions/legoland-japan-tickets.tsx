@@ -519,6 +519,11 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
             At the same station, the <Link href="/guides/attractions/scmaglev-railway-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>SCMAGLEV and Railway Park</Link> is ¥1,200 for adults; the <Link href="/guides/attractions/port-of-nagoya-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Port of Nagoya Public Aquarium</Link> is another family day by the port.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Another Aichi day: <Link href="/guides/attractions/meiji-mura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Meiji Mura</Link>, the open-air museum near Inuyama (¥2,500 for adults, ¥700 for pupils).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

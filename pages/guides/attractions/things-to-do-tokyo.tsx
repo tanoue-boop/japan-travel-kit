@@ -825,6 +825,11 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             Amusement parks within reach of the city: <Link href="/guides/attractions/yomiuriland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Yomiuriland</Link> in Inagi, <Link href="/guides/attractions/hakkeijima-sea-paradise-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hakkeijima Sea Paradise</Link> in Yokohama, and <Link href="/guides/attractions/edo-wonderland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Edo Wonderland</Link> in Nikko.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            With children, <Link href="/guides/attractions/legoland-discovery-center-tokyo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>LEGOLAND Discovery Center Tokyo</Link> in Odaiba is ¥2,350–¥3,300 online, and <Link href="/guides/attractions/tobu-zoo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tobu Zoo</Link> in Saitama combines a zoo with rides.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

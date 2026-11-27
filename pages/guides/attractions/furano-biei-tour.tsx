@@ -724,6 +724,11 @@ export default function FuranoBieiTourPage({ updated }: { updated: PageUpdated }
             Going by train? The <Link href="/guides/transport/sapporo-furano-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Sapporo-Furano Area Pass</Link> covers Sapporo to Asahikawa, Biei and Furano for four days.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Some coach tours from Sapporo pair Biei with the zoo; see the <Link href="/guides/attractions/asahiyama-zoo-day-trip-from-sapporo" style={{ color: "var(--red)", fontWeight: 600 }}>Asahiyama Zoo day trip from Sapporo</Link> for its winter hours (10:30–15:30).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -151,6 +151,7 @@ export default function NikkoPassPage({ updated }: { updated: PageUpdated }) {
           <Link href="/guides/attractions/tokyo-7-day-itinerary" style={linkStyle}>Tokyo 7 day itinerary</Link>. The pass starts
           at Asakusa — getting there is in{" "}
           <Link href="/guides/transport/tokyo-transportation" style={linkStyle}>getting around Tokyo</Link>.
+          {" "}At Kinugawa, <Link href="/guides/attractions/tobu-world-square-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tobu World Square</Link> is ¥2,800 for adults and has its own station on the Tobu line; it closes 18–24 January 2027.
         </p>
       }
       faq={[

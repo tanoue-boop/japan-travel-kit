@@ -844,6 +844,11 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
             Travelling by bus instead? The <Link href="/guides/transport/sunq-pass" style={{ color: "var(--red)", fontWeight: 600 }}>SUNQ Pass</Link> covers expressway and local buses across Kyushu, from ¥8,500 for 3 days.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            From Hakata, the JR Kashii Line runs to Uminonakamichi for <Link href="/guides/attractions/marine-world-uminonakamichi-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Marine World Uminonakamichi</Link> (¥2,500 for adults).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

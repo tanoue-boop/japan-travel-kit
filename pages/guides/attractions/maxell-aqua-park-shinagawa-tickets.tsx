@@ -125,6 +125,7 @@ export default function MaxellAquaParkShinagawaTicketsPage({ updated }: { update
           Ikebukuro, and see{" "}
           <Link href="/guides/attractions/where-to-stay-in-tokyo" style={linkStyle}>where to stay in Tokyo</Link> for
           Shinagawa hotels.
+          {" "}Not to be confused with <Link href="/guides/attractions/shinagawa-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shinagawa Aquarium</Link> in Katsushima, reached by free bus from Oimachi (¥1,350 for adults).
         </p>
       }
       faq={[

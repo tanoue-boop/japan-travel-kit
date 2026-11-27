@@ -1292,6 +1292,11 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
             In Noboribetsu, <Link href="/guides/attractions/noboribetsu-date-jidaimura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Noboribetsu Date Jidaimura</Link> is an Edo-period village with theatre shows (¥3,300; 9:00–16:00 in winter).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In Asahikawa, see the <Link href="/guides/attractions/asahiyama-zoo-day-trip-from-sapporo" style={{ color: "var(--red)", fontWeight: 600 }}>Asahiyama Zoo day trip from Sapporo</Link> (¥1,000, winter hours 10:30–15:30); in Otaru, <Link href="/guides/attractions/otaru-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Otaru Aquarium</Link> reopens for winter on 12 December 2026.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

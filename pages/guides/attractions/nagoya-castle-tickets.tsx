@@ -647,6 +647,11 @@ export default function NagoyaCastleTicketsPage({ updated }: { updated: PageUpda
             Two more Nagoya tickets: the <Link href="/guides/attractions/scmaglev-railway-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>SCMAGLEV and Railway Park</Link> and the <Link href="/guides/attractions/port-of-nagoya-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Port of Nagoya Public Aquarium</Link>.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For Meiji-era buildings rather than a castle keep, see <Link href="/guides/attractions/meiji-mura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Meiji Mura</Link> (¥2,500 for adults, near Inuyama).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -118,6 +118,7 @@ export default function SmallWorldsTokyoTicketsPage({ updated }: { updated: Page
           <Link href="/guides/attractions/tokyo-itinerary-with-kids" style={linkStyle}>Tokyo itinerary with kids</Link>,
           and for anime fans, the{" "}
           <Link href="/guides/attractions/akihabara-anime-tour" style={linkStyle}>Akihabara anime guide</Link>.
+          {" "}Another indoor day out with miniatures: <Link href="/guides/attractions/legoland-discovery-center-tokyo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>LEGOLAND Discovery Center Tokyo</Link> in Odaiba (¥2,350–¥3,300 online, 2–3 hours typical).
         </p>
       }
       faq={[

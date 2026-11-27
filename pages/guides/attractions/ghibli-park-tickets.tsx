@@ -824,6 +824,11 @@ export default function GhibliParkTicketsPage({ updated }: { updated: PageUpdate
             On another Nagoya day, the <Link href="/guides/attractions/scmaglev-railway-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>SCMAGLEV and Railway Park</Link> (closed Tuesdays) and the <Link href="/guides/attractions/port-of-nagoya-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Port of Nagoya Public Aquarium</Link> are both by the port.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For another Aichi day, <Link href="/guides/attractions/meiji-mura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Meiji Mura</Link> near Inuyama is ¥2,500 for adults; check its December closures first.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

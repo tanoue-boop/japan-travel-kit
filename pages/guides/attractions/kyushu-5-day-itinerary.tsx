@@ -998,6 +998,11 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
             For the bus legs (Fukuoka–Yufuin, Fukuoka–Nagasaki), compare the <Link href="/guides/transport/sunq-pass" style={{ color: "var(--red)", fontWeight: 600 }}>SUNQ Pass</Link>, Kyushu&apos;s unlimited bus pass.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In Fukuoka, <Link href="/guides/attractions/marine-world-uminonakamichi-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Marine World Uminonakamichi</Link> is 11 + 20 minutes from Hakata by JR with a change at Kashii (¥2,500 for adults).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

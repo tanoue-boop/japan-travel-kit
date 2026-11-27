@@ -117,6 +117,7 @@ export default function OkinawaWorldTicketsPage({ updated }: { updated: PageUpda
           <Link href="/guides/attractions/okinawa-whale-watching" style={linkStyle}>whale watching from Naha</Link>; on the
           way back to the airport, there is{" "}
           <Link href="/guides/attractions/dmm-kariyushi-aquarium-tickets" style={linkStyle}>DMM Kariyushi Aquarium</Link>.
+          {" "}For a full day in the north instead, see <Link href="/guides/attractions/junglia-okinawa-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>JUNGLIA Okinawa tickets</Link> (from ¥8,800 for adults; closed most Mondays from January 2027).
         </p>
       }
       faq={[

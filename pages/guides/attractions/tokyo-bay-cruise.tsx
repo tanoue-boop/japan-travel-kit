@@ -681,6 +681,11 @@ export default function TokyoBayCruisePage({ updated }: { updated: PageUpdated }
           ]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            If the boat lands you in Odaiba, <Link href="/guides/attractions/legoland-discovery-center-tokyo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>LEGOLAND Discovery Center Tokyo</Link> is close to Odaiba-kaihinkoen Station.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

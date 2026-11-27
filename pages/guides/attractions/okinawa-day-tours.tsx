@@ -732,6 +732,11 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
             Two southern sights you can book on your own: <Link href="/guides/attractions/okinawa-world-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Okinawa World</Link> in Nanjo and <Link href="/guides/attractions/dmm-kariyushi-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>DMM Kariyushi Aquarium</Link> in Tomigusuku.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On a day of your own in the north, <Link href="/guides/attractions/junglia-okinawa-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>JUNGLIA Okinawa tickets</Link> covers the park&apos;s tickets and the direct bus from Naha (about 120 minutes).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

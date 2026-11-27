@@ -858,6 +858,11 @@ export default function TokyoJoypolisTicketsPage({ updated }: { updated: PageUpd
             Another indoor stop on the Yurikamome: <Link href="/guides/attractions/small-worlds-tokyo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>SMALL WORLDS Tokyo</Link>, 3 minutes from Ariake Tennis no Mori.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Also in Odaiba, <Link href="/guides/attractions/legoland-discovery-center-tokyo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>LEGOLAND Discovery Center Tokyo</Link> is ¥2,350–¥3,300 online; adults must come with a child aged 15 or under.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

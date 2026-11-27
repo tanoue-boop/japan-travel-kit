@@ -876,6 +876,11 @@ export default function Nagoya2DayItineraryPage({ updated }: { updated: PageUpda
             By the port, the <Link href="/guides/attractions/port-of-nagoya-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Port of Nagoya Public Aquarium</Link> (¥2,030) and, at Kinjofuto, the <Link href="/guides/attractions/scmaglev-railway-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>SCMAGLEV and Railway Park</Link> (¥1,200, closed Tuesdays).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            North of the city near Inuyama, <Link href="/guides/attractions/meiji-mura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Meiji Mura</Link> is ¥2,500 for adults and open 10:00–16:00 in winter (closed 14–18 and 31 December 2026).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

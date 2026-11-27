@@ -120,6 +120,7 @@ export default function SumidaAquariumTicketsPage({ updated }: { updated: PageUp
           the Skytree into a first trip. See also{" "}
           <Link href="/guides/attractions/sunshine-aquarium-tickets" style={linkStyle}>Sunshine Aquarium in Ikebukuro</Link>.
           {" "}Compare <Link href="/guides/attractions/maxell-aqua-park-shinagawa-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Maxell Aqua Park Shinagawa</Link>, open until 20:00, and <Link href="/guides/attractions/kamogawa-sea-world-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kamogawa Sea World</Link>, a day trip to the Boso coast.
+          {" "}A cheaper option: <Link href="/guides/attractions/shinagawa-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shinagawa Aquarium</Link>, ¥1,350 for adults, open 10:00–17:00 with a free bus from Oimachi Station.
         </p>
       }
       faq={[

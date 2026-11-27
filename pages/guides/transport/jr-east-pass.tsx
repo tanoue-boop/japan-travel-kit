@@ -788,6 +788,11 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
           </div>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On the Tohoku side, <Link href="/guides/attractions/nasu-safari-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nasu Safari Park</Link> is a bus ride from Nasushiobara or Kuroiso Station (¥3,200 for adults, safari bus extra).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

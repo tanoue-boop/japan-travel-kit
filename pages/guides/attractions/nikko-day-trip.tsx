@@ -435,6 +435,11 @@ export default function NikkoDayTripPage({ updated }: { updated: PageUpdated }) 
             Edo Wonderland Nikko Edomura has its own guide: <Link href="/guides/attractions/edo-wonderland-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Edo Wonderland tickets, prices and hours</Link> (¥5,800 for adults, 9:30–16:00 in winter).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Near Kinugawa, <Link href="/guides/attractions/tobu-world-square-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tobu World Square</Link> (¥2,800, 9:30–16:00 in December) has its own station; in the north of Tochigi, <Link href="/guides/attractions/nasu-safari-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nasu Safari Park</Link> is ¥3,200 plus ¥1,200 for the Lion Bus. On the way up the Tobu line, <Link href="/guides/attractions/tobu-zoo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tobu Zoo</Link> is 10 minutes from Tobu-Dobutsu-Koen Station.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

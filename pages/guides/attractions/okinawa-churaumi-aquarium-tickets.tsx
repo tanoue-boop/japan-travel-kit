@@ -662,6 +662,11 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
             Short on time? <Link href="/guides/attractions/dmm-kariyushi-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>DMM Kariyushi Aquarium</Link> is about 20 minutes by car from Naha Airport.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Prices, the Premium Pass and hours for the park itself are in <Link href="/guides/attractions/junglia-okinawa-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>JUNGLIA Okinawa tickets</Link> (from ¥8,800 for adults).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

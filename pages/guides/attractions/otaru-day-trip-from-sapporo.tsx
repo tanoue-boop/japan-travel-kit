@@ -958,6 +958,11 @@ export default function OtaruDayTripFromSapporoPage({ updated }: { updated: Page
             Otaru is on both JR Hokkaido area passes: the <Link href="/guides/transport/sapporo-noboribetsu-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Sapporo-Noboribetsu Area Pass</Link> and the <Link href="/guides/transport/sapporo-furano-area-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Sapporo-Furano Area Pass</Link>.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <Link href="/guides/attractions/otaru-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Otaru Aquarium</Link> is closed 24 November – 11 December 2026; from 12 December it is open 10:00–16:00 (¥1,300 for adults in winter).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -405,3 +405,70 @@ export const scmaglevRailwayParkTicket: KlookTour = {
   desc: "Admission to JR Central's museum at Kinjofuto, Nagoya: 39 trains including the maglev and early shinkansen",
   url: klookLink("https://www.klook.com/en-US/activity/142201-scmaglev-and-railway-park-ticket/"),
 };
+
+// ---------------------------------------------------------------------------
+// Day 6 (task jtk-20261202-A35, run 28 Nov 2026): theme parks, zoos and aquariums
+// with no page of their own. Activity ids from the www.klook.com search index that
+// day (product pages still answer automated reads with 403, so no Klook price is
+// printed). LEGOLAND Discovery Center Tokyo uses legolandDiscoveryCenterTokyoTicket
+// (5563) from lib/klook-links.ts and the Asahiyama Zoo page uses
+// asahiyamaBieiHighlightsTour (161857) from lib/klook-links-winter-hokkaido.ts.
+// Madame Tussauds Tokyo (13730) was dropped: its own site says it closed on
+// 30 September 2026. Every yen figure on the pages is the operator's own.
+// ---------------------------------------------------------------------------
+
+/** JUNGLIA OKINAWA (northern Okinawa) — 1-day park ticket. */
+export const jungliaOkinawaTicket: KlookTour = {
+  title: "JUNGLIA OKINAWA ticket",
+  desc: "Dated entry to the theme park in northern Okinawa, with Klook's options for the Premium Pass and the Churaumi combo",
+  url: klookLink("https://www.klook.com/en-US/activity/141671-junglia-okinawa/"),
+};
+
+/** Nasu Safari Park (Tochigi) — admission. */
+export const nasuSafariParkTicket: KlookTour = {
+  title: "Nasu Safari Park ticket",
+  desc: "Admission to the drive-through safari park in the Nasu highlands, Tochigi; the way you tour the safari zone (bus, rental car or your own car) costs extra",
+  url: klookLink("https://www.klook.com/en-US/activity/45161-nasu-safar-park/"),
+};
+
+/** Tobu World Square (Kinugawa, Nikko) — admission. */
+export const tobuWorldSquareTicket: KlookTour = {
+  title: "Tobu World Square ticket",
+  desc: "Admission to the park of miniature world landmarks in Kinugawa, exchanged for a paper ticket at the counter",
+  url: klookLink("https://www.klook.com/en-US/activity/144433-tobu-world-square-admission-ticket-tochigi/"),
+};
+
+/** Tobu Zoo (Miyashiro, Saitama) — admission. */
+export const tobuZooTicket: KlookTour = {
+  title: "Tobu Zoo ticket",
+  desc: "Admission to the zoo-and-amusement park ten minutes on foot from Tobu-Dobutsu-Koen Station",
+  url: klookLink("https://www.klook.com/en-US/activity/6002-tobu-zoo-ticket-tokyo/"),
+};
+
+/** Meiji Mura (open-air architecture museum, Inuyama) — admission. */
+export const meijiMuraTicket: KlookTour = {
+  title: "Meiji Mura admission",
+  desc: "Entry to the open-air museum of Meiji-era buildings near Inuyama, north of Nagoya",
+  url: klookLink("https://www.klook.com/en-US/activity/83638-meiji-mura-admission/"),
+};
+
+/** Marine World Uminonakamichi (Fukuoka) — admission. */
+export const marineWorldUminonakamichiTicket: KlookTour = {
+  title: "Marine World Uminonakamichi ticket",
+  desc: "Admission to Fukuoka's aquarium at Uminonakamichi, Higashi-ku, a QR voucher scanned at the gate",
+  url: klookLink("https://www.klook.com/en-US/activity/28959-uminonakamichi-marine-world-ticket-fukuoka/"),
+};
+
+/** Otaru Aquarium (Shukutsu, Otaru) — admission. */
+export const otaruAquariumTicket: KlookTour = {
+  title: "Otaru Aquarium admission",
+  desc: "Entry to the aquarium on the Shukutsu coast, a bus ride from JR Otaru Station",
+  url: klookLink("https://www.klook.com/en-US/activity/141992-otaru-aquarium-admission/"),
+};
+
+/** Shinagawa Aquarium (Katsushima, Shinagawa) — admission. */
+export const shinagawaAquariumTicket: KlookTour = {
+  title: "Shinagawa Aquarium ticket",
+  desc: "An e-ticket for the aquarium in Katsushima, Shinagawa (free bus from Oimachi Station), used any time within opening hours on the day",
+  url: klookLink("https://www.klook.com/en-US/activity/45664-shinagawa-aquarium-tokyo/"),
+};

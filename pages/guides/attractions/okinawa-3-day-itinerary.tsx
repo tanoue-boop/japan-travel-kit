@@ -906,6 +906,11 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
             In the south of the island, <Link href="/guides/attractions/okinawa-world-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Okinawa World and Gyokusendo Cave</Link> (¥2,000) and, near the airport, <Link href="/guides/attractions/dmm-kariyushi-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>DMM Kariyushi Aquarium</Link>.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a theme-park day in the north, see <Link href="/guides/attractions/junglia-okinawa-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>JUNGLIA Okinawa tickets</Link>: the 1 Day Ticket is from ¥8,800 for adults, and a ¥4,950 afternoon ticket starts in December 2026.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

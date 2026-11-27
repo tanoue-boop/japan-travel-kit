@@ -845,6 +845,11 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
             For day trips by bus from Fukuoka, the <Link href="/guides/transport/sunq-pass" style={{ color: "var(--red)", fontWeight: 600 }}>SUNQ Pass</Link> covers expressway and local buses (Northern Kyushu ¥10,000 for 3 days, digital).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For an aquarium, <Link href="/guides/attractions/marine-world-uminonakamichi-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Marine World Uminonakamichi</Link> is ¥2,500 for adults, open 10:00–17:00 in winter, reached by the JR Kashii Line from Hakata.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -699,6 +699,11 @@ export default function TokyoSkytreeTicketsPage({ updated }: { updated: PageUpda
             In the same building, <Link href="/guides/attractions/sumida-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sumida Aquarium</Link> is on the 5th and 6th floors of Tokyo Solamachi (¥2,700 for adults).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            From Tokyo Skytree Station, the limited express Ryomo reaches <Link href="/guides/attractions/tobu-zoo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tobu Zoo</Link> in from 35 minutes (¥2,300 for adults; winter illumination to 20:00).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

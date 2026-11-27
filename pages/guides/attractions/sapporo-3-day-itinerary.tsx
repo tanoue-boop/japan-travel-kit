@@ -846,6 +846,11 @@ export default function Sapporo3DayItineraryPage({ updated }: { updated: PageUpd
             On a Noboribetsu day, <Link href="/guides/attractions/noboribetsu-date-jidaimura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Noboribetsu Date Jidaimura</Link> is about 6 minutes by bus from JR Noboribetsu Station.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Two more winter days out: the <Link href="/guides/attractions/asahiyama-zoo-day-trip-from-sapporo" style={{ color: "var(--red)", fontWeight: 600 }}>Asahiyama Zoo day trip from Sapporo</Link> (zoo ¥1,000, open 10:30–15:30) and <Link href="/guides/attractions/otaru-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Otaru Aquarium</Link>, which reopens on 12 December 2026.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

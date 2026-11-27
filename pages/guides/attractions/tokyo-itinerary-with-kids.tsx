@@ -989,6 +989,11 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             Three more aquariums: <Link href="/guides/attractions/maxell-aqua-park-shinagawa-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Maxell Aqua Park Shinagawa</Link> by Shinagawa Station, <Link href="/guides/attractions/enoshima-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Enoshima Aquarium</Link> on the Shonan coast and, for a full day, <Link href="/guides/attractions/kamogawa-sea-world-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kamogawa Sea World</Link> in Chiba.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Three more family tickets: <Link href="/guides/attractions/legoland-discovery-center-tokyo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>LEGOLAND Discovery Center Tokyo</Link> (¥2,350–¥3,300 online; adults need a child with them), <Link href="/guides/attractions/shinagawa-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shinagawa Aquarium</Link> (¥1,350, free bus from Oimachi) and, a train ride out, <Link href="/guides/attractions/tobu-zoo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tobu Zoo</Link> in Saitama (¥2,300, rides extra).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

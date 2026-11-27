@@ -775,6 +775,11 @@ export default function TeamlabFukuokaTicketsPage({ updated }: { updated: PageUp
           areas={fukuokaStayAreas}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Another Fukuoka ticket: <Link href="/guides/attractions/marine-world-uminonakamichi-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Marine World Uminonakamichi</Link> (¥2,500 for adults; the dolphin show pauses 12 January – 9 April 2027).
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}
