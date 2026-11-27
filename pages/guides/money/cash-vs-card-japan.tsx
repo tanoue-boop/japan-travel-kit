@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "../../../styles/BestEsimJapan.module.css";
 import KlookTripPrep from "../../../components/KlookTripPrep";
 import { siteCheapestFrom } from "../../../lib/esim-prices";
-import { cashVsCardTripPrep } from "../../../lib/klook-links";
+import { cashVsCardPayBeforeLand } from "../../../lib/klook-links";
 import { pageUpdated, type PageUpdated } from "../../../lib/page-dates";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { wiseLink, WISE_REL, WISE_CARD_URL, WISE_VERIFIED } from "../../../lib/wise-links";
@@ -26,6 +26,36 @@ const RAIL_CHECKED = "23 October 2026";
 
 /** ATM figures carried over from our ATM guide, read on each operator's own pages. */
 const ATM_CHECKED = "26 October 2026";
+
+/**
+ * 27 Nov 2026 (task jtk-20261127-03): JNTO's cashless-payments and credit-cards pages,
+ * Tokyo Metro's Tap to Ride release and 7-Eleven's in-store payment page re-read with a
+ * plain fetch for the opening answer and the "Last checked" line under the table.
+ */
+const LAST_CHECKED_ISO = "2026-11-27";
+
+/** Official pages behind the by-place table, linked under it. */
+const SOURCES = {
+  jntoCashless: "https://www.japan.travel/en/plan/cashless-payments-in-japan/",
+  jntoCards: "https://www.japan.travel/en/plan/credit-cards/",
+  tokyoMetro: "https://www.tokyometro.jp/lang_en/news/223896.html",
+  sevenEleven: "https://www.sej.co.jp/in/en/payment/",
+  /** Read through the search index on 27 Nov 2026 (the old /webguide/en/bus/fare.html returns 404). */
+  kyotoBus: "https://www2.city.kyoto.lg.jp/kotsu/webguide/en/fare/fare_bus.html",
+} as const;
+
+/**
+ * Cash per day, kept identical to the float table in /guides/money/how-much-yen-to-bring-japan
+ * (built there from published unit prices: a ¥420–¥490 counter meal, a ¥200–¥800 temple gate,
+ * Kyoto's flat ¥230 bus fare and JNTO's ¥300–¥600 coin-locker range). Change both together.
+ */
+const DAILY = {
+  arrival: "¥10,000–¥20,000",
+  budget: "¥2,000–¥3,000",
+  mid: "¥3,000–¥5,000",
+  eatOut: "¥5,000–¥8,000",
+  range: "¥2,000–¥8,000",
+} as const;
 
 /**
  * METI's own figures, published 31 March 2026. The ministry revised its method
@@ -53,16 +83,26 @@ const METI = {
  */
 const placeRows = [
   {
+    place: "Answer: cards for most of the day",
+    sub: "Cash for gates, stalls, rural buses and inns",
+    cash: "Always works",
+    card: "Yes in cities, at chains and on most city trains",
+    ic: "Yes on all transit and at convenience stores",
+    published:
+      "JNTO: Visa, JCB and Mastercard are accepted at major hotels, department stores, large shopping centres and urban restaurants — but “many places, especially in rural areas, may still only accept cash, even hotels”.",
+    conclusion: true,
+  },
+  {
     place: "Convenience stores",
     sub: "7-Eleven, FamilyMart, Lawson",
     cash: "Yes",
     card: "Yes",
     ic: "Yes",
     published:
-      "7-Eleven lists credit cards, brand debit and brand prepaid cards, transit IC money, nanaco, iD, QUICPay and Rakuten Edy, plus barcode apps including PayPay, Alipay+ and WeChat Pay.",
+      "7-Eleven lists Visa, Mastercard, JCB, American Express, Diners Club International, Discover and UnionPay, with Apple Pay and Google Pay for contactless; nine transit IC cards from Kitaca to HAYAKAKEN; and WeChat Pay, Alipay+ and PayPay. Cash only in yen, and not at fully self-service tills.",
   },
   {
-    place: "Trains — Tokyo Metro, Toei and eight other Kanto operators",
+    place: "Trains — Tokyo Metro, Toei and nine other Kanto operators",
     sub: "Also Osaka Metro, Nankai, Fukuoka City Subway",
     cash: "Yes, at ticket machines",
     card: "Yes at the gate; passes only at the machine",
@@ -105,6 +145,24 @@ const placeRows = [
     ic: "Shop by shop",
     published:
       "Tsukiji Outer Market's official directory prints the methods for each shop, and they differ: one knife shop lists cash, credit card, phone payment and transit IC; one food shop lists cash and credit card with a ¥5,000 minimum on the card.",
+  },
+  {
+    place: "Local & rural buses",
+    sub: "Kyoto City Bus; country lines",
+    cash: "Yes — exact coins in the fare box",
+    card: "No on Kyoto City Bus; varies elsewhere",
+    ic: "Yes on city lines",
+    published:
+      "Kyoto City Bus charges a flat ¥230 an adult ride in the flat-fare zone, paid in cash or with an IC card such as ICOCA or Suica; its own guide states that QR code payment and credit cards cannot be used to tap. Outside the cities JNTO's advice is to check with facilities before travelling and “prepare some cash”.",
+  },
+  {
+    place: "Rural inns & some ryokan",
+    sub: "Countryside, onsen towns",
+    cash: "Yes",
+    card: "Check with the inn",
+    ic: "Rarely listed",
+    published:
+      "JNTO warns that many places in rural areas “may still only accept cash, even hotels”, and asks visitors to check with accommodation before travelling. Big-city chains, by contrast, publish card payment — see the hotel row.",
   },
   {
     place: "Hotels",
@@ -163,7 +221,7 @@ const cashCons = [
 
 const cardPros = [
   "Accepted at every chain, department store and hotel with a published list in the sources checked",
-  "Opens ticket gates on Tokyo Metro, Toei and eight other Kanto operators, and on Osaka Metro",
+  "Opens ticket gates on Tokyo Metro, Toei and nine other Kanto operators, and on Osaka Metro",
   "Settles the large, plannable costs — flights, hotels, passes, tours — before you leave home",
   "A multi-currency card gives you the mid-market rate instead of a desk rate",
 ];
@@ -220,12 +278,24 @@ const noTipPlaces = [
 
 const faqItems = [
   {
+    q: "Can I rely on cards instead of cash in Japan?",
+    a: `Yes, in most cities: JNTO states that Visa, JCB and Mastercard are accepted at major hotels, department stores, large shopping centres and urban restaurants, 7-Eleven takes seven card brands plus Apple Pay and Google Pay, and Tokyo Metro, Toei and nine other Kanto operators open their gates to a contactless card. Not everywhere: temple and shrine gates, market stalls, buses such as Kyoto City Bus (cash or IC card only) and, in JNTO's words, many rural places "even hotels" still want yen. Arrive with ${DAILY.arrival} and keep ${DAILY.range} a day in cash. Checked ${LAST_CHECKED_ISO}.`,
+  },
+  {
+    q: "Where do you still need cash in Japan?",
+    a: `At temple and shrine gates (¥200–¥800 admissions, no major site publishes card acceptance), at market stalls and street food (Tsukiji Outer Market's directory shows cash-only shops and a ¥5,000 card minimum), on local buses (Kyoto City Bus: ¥230 in cash or by IC card, credit cards cannot be tapped), at coin lockers, and at rural inns and some ryokan — JNTO warns many rural places "may still only accept cash, even hotels". IC card top-ups at station machines are cash only too. Checked ${LAST_CHECKED_ISO}.`,
+  },
+  {
+    q: "How much cash should I carry per day in Japan?",
+    a: `${DAILY.budget} a day on a budget trip, ${DAILY.mid} mid-range and ${DAILY.eatOut} if you eat out a lot, plus ${DAILY.arrival} on arrival for the first day. Those figures assume hotels, long-distance trains and booked tickets go on a card, and are built from published prices: a ¥420–¥490 counter meal, a ¥200–¥800 temple gate, Kyoto's ¥230 bus fare and a ¥300–¥600 coin locker. Withdraw the rest at a 7-Eleven ATM, which allows ¥100,000 a withdrawal.`,
+  },
+  {
     q: "Is Japan more cash or card in 2026?",
     a: `More card, on the only official measure of it — but not by enough to leave the cash at home. Japan's Ministry of Economy, Trade and Industry calculated the country's cashless payment ratio for ${METI.year} at ${METI.ratio} of consumer spending, or ${METI.amount}, published ${METI.published}; credit cards were ${METI.creditShare} of that total (${METI.creditAmount}) and code payments ${METI.codeShare}. The ministry revised its method for this calculation, so the comparable figure for the previous year is ${METI.previousYear} rather than the 42.8% published for 2024 under the old denominator. What the ratio does not tell you is which of your own payments fall in the remaining share: temple admissions, market stalls, small independent restaurants and most local buses, which is where the yen in your pocket goes.`,
   },
   {
     q: "Should I travel to Japan with cash or a credit card?",
-    a: `Both, with a job for each. The card is for everything with a published brand list — hotels, chains, department stores, taxis, convenience stores, airport trains and the ticket gates of Tokyo Metro, Toei and eight other Kanto operators — and for the big costs you can settle before you fly. The cash is for the places that publish nothing: Kiyomizu-dera's FAQ covers who pays its admission and says nothing about how, Tsukiji Outer Market's own shop directory shows shops that take cash only or set a ¥5,000 minimum on a card, and buses outside the city tap schemes still want coins or an IC card. Travelling to Japan with cash or a credit card alone both work badly for the same reason: each leaves out a part of the day. Operator pages checked ${CHECKED}.`,
+    a: `Both, with a job for each. The card is for everything with a published brand list — hotels, chains, department stores, taxis, convenience stores, airport trains and the ticket gates of Tokyo Metro, Toei and nine other Kanto operators — and for the big costs you can settle before you fly. The cash is for the places that publish nothing: Kiyomizu-dera's FAQ covers who pays its admission and says nothing about how, Tsukiji Outer Market's own shop directory shows shops that take cash only or set a ¥5,000 minimum on a card, and buses outside the city tap schemes still want coins or an IC card. Travelling to Japan with cash or a credit card alone both work badly for the same reason: each leaves out a part of the day. Operator pages checked ${CHECKED}.`,
   },
   {
     q: "Can I pay temple and shrine admission by card in Japan?",
@@ -233,7 +303,7 @@ const faqItems = [
   },
   {
     q: "Do I need cash in Japan?",
-    a: `Yes, for four things that recur daily: temple and shrine admissions and offerings, market stalls and street food, small independent restaurants and izakaya, and local buses and coin lockers outside the city tap schemes. Everything else now has a published list of accepted brands — 7-Eleven, km Taxi in Tokyo, Toyoko Inn, Coca-Cola's vending machines and Tokyo Metro's ticket gates all print theirs. Carrying ¥10,000–¥20,000 and topping up at a convenience-store ATM covers the first group without turning you into a courier for the second.`,
+    a: `Yes, for four things that recur daily: temple and shrine admissions and offerings, market stalls and street food, small independent restaurants and izakaya, and local buses and coin lockers outside the city tap schemes. Everything else now has a published list of accepted brands — 7-Eleven, km Taxi in Tokyo, Toyoko Inn, Coca-Cola's vending machines and Tokyo Metro's ticket gates all print theirs. Arriving with ${DAILY.arrival}, then carrying ${DAILY.range} a day and topping up at a convenience-store ATM, covers the first group without turning you into a courier for the second.`,
   },
   {
     q: "How much cash should I bring to Japan?",
@@ -249,7 +319,7 @@ const faqItems = [
   },
   {
     q: "Do contactless payments work on Japanese trains?",
-    a: `On many operators now, and the answer changed in March 2026. Tokyo Metro states that it runs Tap to Ride on all of its lines, together with Toei Subway and eight other Kanto operators, for Visa, Mastercard, JCB, American Express, Diners Club, Discover and UnionPay — adult fares only, and the card may not be used for more than one passenger. Osaka Metro, Nankai, Fukuoka City Subway and part of JR Kyushu run equivalent schemes. JR East does not: on the Yamanote Line and the Narita Express you still need an IC card, a paper ticket or a pass. Operator pages checked ${RAIL_CHECKED}.`,
+    a: `On many operators now, and the answer changed in March 2026. Tokyo Metro states that it runs Tap to Ride on all of its lines, together with Toei Subway and nine other Kanto operators, for Visa, Mastercard, JCB, American Express, Diners Club, Discover and UnionPay — adult fares only, and the card may not be used for more than one passenger. Osaka Metro, Nankai, Fukuoka City Subway and part of JR Kyushu run equivalent schemes. JR East does not: on the Yamanote Line and the Narita Express you still need an IC card, a paper ticket or a pass. Operator pages checked ${RAIL_CHECKED}.`,
   },
   {
     q: "Can I use Apple Pay or Google Pay in Japan?",
@@ -269,10 +339,11 @@ const faqItems = [
   },
 ];
 
-const pageTitle = "Cash vs Card in Japan 2026: Carry ¥10,000–¥20,000 a Day";
+// "| Japan Travel Kit" would take this past 60 characters, so the brand is left off (as on the other money guides).
+const pageTitle = "Cash vs Card in Japan 2026: Can You Rely on Cards?";
 const pageDescription =
-  "Cash vs card in Japan 2026: cashless is 58.0% of spending (METI), but temples, stalls and local buses want yen. Carry ¥10,000–¥20,000 and compare cards.";
-const headline = "Cash vs Card in Japan (2026): Where Cards Work and Where You Need Yen";
+  "Cards work in most of urban Japan, but temples, stalls, local buses and rural inns want yen. Carry ¥2,000–¥8,000 a day plus ¥10,000–¥20,000 on arrival.";
+const headline = "Cash vs Card in Japan (2026): Can You Rely on Cards, and How Much Yen to Carry?";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated("/guides/money/cash-vs-card-japan") } });
 
@@ -297,7 +368,8 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              // FAQPage carries the first five only (the three question H2s first); the rest stay visible below.
+              mainEntity: faqItems.slice(0, 5).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -343,7 +415,7 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Cash vs Card in Japan 2026: <br />How Much Yen to Carry a Day, Where Cards Work
+            Cash vs Card in Japan 2026: <br />Can You Rely on Cards, and How Much Yen to Carry?
           </h1>
           <p className={styles.heroSubtitle}>
             Cashless now covers most Japanese spending — and almost none of the places a visitor
@@ -374,9 +446,36 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
             <strong>
-              Carry both: a card covers nearly everything you will plan for in Japan, and a couple of
-              ¥10,000 notes cover what it will not.
+              Yes, in most cities you can rely on a card in Japan: hotels, department stores, convenience
+              stores, taxis and the gates of Tokyo Metro, Toei and nine other Kanto railways all take Visa
+              or Mastercard.
             </strong>{" "}
+            Cards do not work at temple and shrine gates (¥200–¥800 admissions), most street-food and
+            market stalls, local buses such as Kyoto City Bus (¥230, cash or IC card only), and some rural
+            inns and ryokan, which JNTO says &ldquo;may still only accept cash, even hotels&rdquo;. Arrive
+            with {DAILY.arrival} in yen, then carry {DAILY.range} a day — {DAILY.mid} on a mid-range trip
+            — the same figures as our{" "}
+            <Link href="/guides/money/how-much-yen-to-bring-japan" style={{ color: "var(--text)", fontWeight: 600 }}>
+              how much yen to bring
+            </Link>{" "}
+            table.
+          </p>
+        </section>
+
+        {/* Pay before you land (task jtk-20261127-03): directly under the answer — the part an AI
+            summary of "can I rely on cards" leaves out is that the biggest yen costs can be paid now. */}
+        <div id="pay-before-you-land">
+          <KlookTripPrep
+            label="Pay before you land"
+            heading="What Can You Put on a Card Before You Land?"
+            intro="The less you pay at a counter in Japan, the less the cash question matters. Data, the Tokyo subway, the airport train and a day tour are all bookable on Klook in your own currency before you fly — pick the airport line for the airport you land at:"
+            items={cashVsCardPayBeforeLand}
+            headingLevel={3}
+          />
+        </div>
+
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
             Japan&apos;s Ministry of Economy, Trade and Industry put the country&apos;s cashless payment
             ratio for {METI.year} at {METI.ratio} of consumer spending — {METI.amount}, of which credit
             cards were {METI.creditShare} — published {METI.published}, and at the places visitors
@@ -386,9 +485,9 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
             contactless Visa on all of its lines. The gap is the small, old and outdoor end of the day:
             Kiyomizu-dera&apos;s own FAQ says nothing about paying its admission by card, Tsukiji Outer
             Market&apos;s shop directory lists shops that take cash only or set a ¥5,000 minimum on a card,
-            and local buses outside the city tap schemes still want coins or an IC card — so
-            ¥10,000–¥20,000 in your pocket, topped up at a convenience-store ATM rather than bought at an
-            exchange desk at home, is the amount that gets you through a day of those. Every payment method,
+            and local buses outside the city tap schemes still want coins or an IC card — so a few thousand
+            yen a day, topped up at a convenience-store ATM rather than bought at an exchange desk at home,
+            is the amount that gets you through those. Every payment method,
             where it works and what it costs, is in one table in our{" "}
             <Link href="/guides/money" style={{ color: "var(--text)", fontWeight: 600 }}>money in Japan</Link> guide.
           </p>
@@ -406,8 +505,8 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
                 <p className={styles.verdictStatValue}>{METI.ratio}</p>
               </div>
               <div className={styles.verdictStat}>
-                <p className={styles.verdictStatLabel}>Cash to carry per day</p>
-                <p className={styles.verdictStatValue}>¥10,000–¥20,000</p>
+                <p className={styles.verdictStatLabel}>Cash per day (+{DAILY.arrival} on arrival)</p>
+                <p className={styles.verdictStatValue}>{DAILY.range}</p>
               </div>
               <div className={styles.verdictStat}>
                 <p className={styles.verdictStatLabel}>Best ATM for a foreign card</p>
@@ -432,12 +531,13 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>At a glance</span>
-          <h2 className={styles.sectionTitle}>Is Japan more cash or card?</h2>
+          <h2 className={styles.sectionTitle}>Can I rely on cards instead of cash in Japan?</h2>
           <p className={styles.bodyText}>
-            More card, on the only official measure: METI&apos;s cashless payment ratio for {METI.year} was{" "}
-            {METI.ratio} of consumer spending ({METI.amount}), against {METI.previousYear} the year before
-            on the same basis. The Japan cash vs card question is really about the other share — and that
-            share is concentrated in a short, predictable list of places, which is what the table sets out.
+            Yes for most of a city day, no for all of it: a card or a Suica covers stores, hotels, taxis and
+            most city trains, while temple gates, stalls, local buses and rural inns still need yen. On the
+            only official measure, METI&apos;s cashless payment ratio for {METI.year} was {METI.ratio} of
+            consumer spending ({METI.amount}), against {METI.previousYear} the year before on the same
+            basis — and the cash share left over is concentrated in the short list of places in the table.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -451,7 +551,7 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
                 </thead>
                 <tbody>
                   {placeRows.map((row) => (
-                    <tr key={row.place}>
+                    <tr key={row.place} style={"conclusion" in row && row.conclusion ? { background: "var(--accent-light, #fff7ed)" } : undefined}>
                       <td className={styles.tdProvider} style={{ minWidth: "150px" }}>
                         {row.place}
                         <span className={styles.tdBestFor} style={{ display: "block", fontWeight: 400 }}>{row.sub}</span>
@@ -467,7 +567,17 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
-            Sources, all read {CHECKED} except where noted: METI&apos;s {METI.year} cashless payment ratio
+            Last checked: {LAST_CHECKED_ISO} — answer row, convenience stores and rural rows re-read on the
+            official pages:{" "}
+            <a href={SOURCES.jntoCashless} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>JNTO cashless payments</a>,{" "}
+            <a href={SOURCES.jntoCards} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>JNTO credit cards</a>,{" "}
+            <a href={SOURCES.tokyoMetro} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>Tokyo Metro Tap to Ride</a>,{" "}
+            <a href={SOURCES.sevenEleven} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>7-Eleven payment methods</a>{" "}
+            and{" "}
+            <a href={SOURCES.kyotoBus} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>Kyoto City Bus fares</a>.
+          </p>
+          <p className={styles.bodyText} style={{ fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Other sources, read {CHECKED} except where noted: METI&apos;s {METI.year} cashless payment ratio
             release (published {METI.published}); 7-Eleven Japan&apos;s accepted-payment page; Tokyo
             Metro&apos;s Tap to Ride and multi-function ticket machine pages; km Taxi&apos;s payment page;
             Kiyomizu-dera&apos;s FAQ; Tsukiji Outer Market&apos;s shop directory; Toyoko Inn&apos;s
@@ -489,12 +599,21 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
         {/* Q2 */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The short answer</span>
-          <h2 className={styles.sectionTitle}>Do I need cash in Japan in 2026?</h2>
+          <h2 className={styles.sectionTitle}>Where do you still need cash in Japan?</h2>
           <p className={styles.bodyText}>
-            Yes — for four things, and only four. Temple and shrine admissions and offerings; market stalls
-            and street food; small independent restaurants and izakaya; and local buses, trams and coin
-            lockers outside the city tap schemes. Everything else on this page has a published list of
-            accepted brands, which is a different kind of answer from &ldquo;probably fine&rdquo;.
+            At temple and shrine gates, market stalls and street food, small independent restaurants, local
+            buses and coin lockers, and rural inns — and for topping up an IC card, which JNTO says station
+            machines take in cash only. Everything else on this page has a published list of accepted
+            brands, which is a different kind of answer from &ldquo;probably fine&rdquo;.
+          </p>
+          <p className={styles.bodyText}>
+            The rural line is the one to plan around: JNTO asks visitors heading to the countryside to
+            &ldquo;check with accommodations and facilities prior to traveling and prepare some cash&rdquo;.
+            In the cities, the cash points are small and frequent rather than large — and the{" "}
+            <Link href="/guides/money/contactless-payment-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              contactless payment in Japan
+            </Link>{" "}
+            guide lists, operator by operator, which train and bus lines a tapped Visa now opens.
           </p>
           <p className={styles.bodyText}>
             That is why &ldquo;cash or credit card in Japan&rdquo; is the wrong framing. Both work, for
@@ -512,39 +631,66 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
           </p>
         </section>
 
-        {/* Rule (5): the Klook block sits directly behind the "pay for it before you fly" paragraph —
-            the part of the answer an AI summary cannot complete for the reader. */}
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>Prepay</span>
-          <h2 className={styles.sectionTitle}>How to need less cash: pay the big things before you fly</h2>
-          <p className={styles.bodyText}>
-            The cash-versus-card question shrinks with every item already paid for. Airport trains, city
-            transport passes, day tours and mobile data are all normally settled in yen on arrival — at a
-            counter, in a queue, sometimes in cash — and all four can be bought on a card from home in your
-            own currency instead. Do that and the yen you carry is only ever for temple gates and food
-            stalls, which is a few notes rather than a trip&apos;s budget.
-          </p>
-        </section>
-
-        <KlookTripPrep
-          heading="Costs You Can Put on a Card Before You Leave"
-          intro="These three are among the few Japanese travel costs that can be settled in your own currency, on a card, before the cash question arises at all:"
-          items={cashVsCardTripPrep}
-        />
-
-        {/* Q3 */}
+        {/* Q3 — the daily figures are the how-much-yen-to-bring-japan float table, verbatim. */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>How much</span>
-          <h2 className={styles.sectionTitle}>How much cash should I carry in Japan?</h2>
+          <h2 className={styles.sectionTitle}>How much cash should I carry per day?</h2>
           <p className={styles.bodyText}>
-            ¥10,000–¥20,000 on you, topped up every couple of days — not a trip&apos;s worth brought from
-            home. The reason is arithmetic rather than caution: a Japanese ATM fee is charged per
+            {DAILY.range} a day in cash — {DAILY.mid} for most visitors — plus {DAILY.arrival} on arrival
+            for the first day, assuming hotels, long-distance trains and booked tickets go on a card.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Travel style</th>
+                    <th>Cash per day</th>
+                    <th>What it covers</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style={{ background: "var(--accent-light, #fff7ed)" }}>
+                    <td className={styles.tdProvider}>Answer for most visitors</td>
+                    <td style={{ fontWeight: 600 }}>{DAILY.mid}, plus {DAILY.arrival} on arrival</td>
+                    <td>Two temple gates, a counter meal, a market stall, a bus ride and a locker</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider}>Budget</td>
+                    <td style={{ fontWeight: 600 }}>{DAILY.budget}</td>
+                    <td>One ¥420–¥490 counter meal, one ¥200–¥800 gate, a ¥230 bus or two, a ¥300–¥600 locker</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider}>Mid-range</td>
+                    <td style={{ fontWeight: 600 }}>{DAILY.mid}</td>
+                    <td>Two of each, plus a market stall and a short taxi</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider}>Eating out</td>
+                    <td style={{ fontWeight: 600 }}>{DAILY.eatOut}</td>
+                    <td>The same, plus an unreserved restaurant bill that may be cash only</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.84rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED_ISO} for the ¥230 bus fare (
+            <a href={SOURCES.kyotoBus} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>Kyoto City Bus</a>
+            ); meal, admission and locker prices with their own check dates and official links in{" "}
+            <Link href="/guides/money/how-much-yen-to-bring-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              how much yen to bring to Japan
+            </Link>
+            , which also has the 3-, 7- and 14-day totals.
+          </p>
+          <p className={styles.bodyText}>
+            Top up rather than carry a trip&apos;s worth from home. The reason is arithmetic rather than caution: a Japanese ATM fee is charged per
             withdrawal, not per yen, so the cheap pattern is few and large. Seven Bank allows ¥100,000 in a
             single withdrawal and Japan Post Bank ¥50,000, and a 7-Eleven is open when the exchange desk is
-            not. ATM figures read off the operators&apos; own pages on {ATM_CHECKED}. The cash per day by
-            travel style, and the 2-week total, are in{" "}
-            <Link href="/guides/money/how-much-yen-to-bring-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              how much yen to bring
+            not. ATM figures read off the operators&apos; own pages on {ATM_CHECKED}; which machines take a
+            foreign card, and what each one charges, is in{" "}
+            <Link href="/guides/money/atms-in-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              ATMs in Japan for foreign cards
             </Link>
             .
           </p>
@@ -627,14 +773,14 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
             account. Neither tells you anything about a ¥500 admission at a temple gate.
           </p>
           <p className={styles.bodyText}>
-            What has genuinely changed is transport, and recently. Tokyo Metro, Toei Subway and eight other
+            What has genuinely changed is transport, and recently. Tokyo Metro, Toei Subway and nine other
             Kanto operators began mutual use of Tap to Ride in March 2026; Osaka Metro has run its own
             scheme since October 2024; Nankai, Fukuoka City Subway and part of JR Kyushu have followed. JR
             East has not, which is why an IC card is still the only tap that works on every line.
           </p>
           <p className={styles.bodyText}>
-            <strong>The safe rule:</strong> keep ¥10,000–¥20,000 on you. You will use it, and a 7-Eleven is
-            close enough that topping up is never a detour.
+            <strong>The safe rule:</strong> arrive with {DAILY.arrival}, then keep {DAILY.range} a day on
+            you. You will use it, and a 7-Eleven is close enough that topping up is never a detour.
           </p>
         </section>
 
@@ -737,7 +883,11 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
             country your account is registered in — {WISE_VERIFIED.freeAtmUk} on a UK-registered account,
             then {WISE_VERIFIED.overAtmFeeUk} of the excess — read off Wise&apos;s own pages on{" "}
             {WISE_VERIFIED.checkedAt}. Allowances differ by account country, so check yours rather than
-            ours.
+            ours — the{" "}
+            <Link href="/guides/money/wise-card-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Wise card in Japan
+            </Link>{" "}
+            guide tables them by country, with the ATMs that take it.
           </p>
           <p className={styles.bodyText}>
             Some US checking accounts reimburse foreign ATM fees, which changes the arithmetic again. The
@@ -767,7 +917,7 @@ export default function CashVsCardJapanPage({ updated }: { updated: PageUpdated 
           </p>
           <p className={styles.bodyText}>
             <strong>Contactless credit cards now open some ticket gates too</strong> — Tokyo Metro, Toei and
-            eight other Kanto operators since March 2026, Osaka Metro since October 2024 — but{" "}
+            nine other Kanto operators since March 2026, Osaka Metro since October 2024 — but{" "}
             <strong>not JR East</strong>. <strong>QR pay is mostly for residents:</strong> PayPay and LINE
             Pay need a Japanese bank account for full functionality, so skip them.
           </p>

@@ -2116,19 +2116,36 @@ export const icCardsPayBeforeLand: KlookTripPrepItem[] = [
   },
 ];
 
-/** Cash vs Card — the reader wants to know what to carry. */
-export const cashVsCardTripPrep: KlookTripPrepItem[] = [
+/**
+ * Cash vs Card — "Pay before you land" directly under the first answer (task jtk-20261127-03,
+ * re-run of jtk-20261125-03): Klook eSIM (20%), Tokyo Subway Ticket and airport access (5%), one
+ * day tour (6.5%). Each line is a cost that would otherwise come out of the cash float or need a
+ * card at a counter on arrival. No new products: existing tracking links.
+ */
+export const cashVsCardPayBeforeLand: KlookTripPrepItem[] = [
   {
     ...tripPrepProducts.esim,
-    why: "Most cash-or-card calls come down to checking a place before you go, and that needs data rather than a search for free Wi-Fi.",
-  },
-  {
-    ...tripPrepProducts.naritaExpress,
-    why: "Airport train tickets are among the few Japanese transport fares you can pay by card in advance instead of in yen at the counter.",
+    why: "Whether a ryokan, a market stall or a rural bus takes cards is a question you answer on the spot — with data from the arrivals gate rather than a hunt for Wi-Fi.",
   },
   {
     ...tripPrepProducts.subway,
-    why: "Buying the 24, 48 or 72-hour subway ticket up front settles the transport cost that is hardest to put on a foreign card once you arrive.",
+    why: "Unlimited Tokyo Metro and Toei rides for 24, 48 or 72 hours, paid once on your card — and no IC card top-ups, which station machines take in cash only (JNTO).",
+  },
+  {
+    ...tripPrepProducts.naritaExpress,
+    why: "The first fare of the trip, settled in your own currency before you fly instead of out of the yen you just withdrew at the airport.",
+  },
+  {
+    ...tripPrepProducts.skyliner,
+    why: "Narita to Ueno or Nippori on a reserved seat — the other Narita line, also paid ahead on the card.",
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "For Kansai Airport arrivals: the JR Haruka to Kyoto or Osaka, bought before you land rather than at the JR counter.",
+  },
+  {
+    ...tripPrepProducts.fujiHakoneTour,
+    why: "A day out to Fuji or Hakone is one large charge on the card instead of a day of small rural payments — some of which are where the cash-only places are.",
   },
 ];
 

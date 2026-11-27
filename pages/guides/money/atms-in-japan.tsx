@@ -484,7 +484,11 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
             <Link href="/guides/money/contactless-payment-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
               Where contactless payment works in Japan
             </Link>{" "}
-            shows which places still need the cash you withdraw here.
+            shows which places still need the cash you withdraw here, and{" "}
+            <Link href="/guides/money/cash-vs-card-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              cash vs card in Japan
+            </Link>{" "}
+            puts the daily cash figure next to it.
           </p>
         </section>
 
@@ -570,7 +574,11 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
             machine allows — because the fee is per withdrawal, not per yen, four withdrawals of ¥25,000 cost
             four fees where one of ¥100,000 costs one. Japan still runs on cash for small temples, markets,
             older restaurants and rural buses, so the question is how much of the trip is unavoidably cash,
-            not whether to carry any.
+            not whether to carry any —{" "}
+            <Link href="/guides/money/cash-vs-card-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
+              where you still need cash in Japan
+            </Link>{" "}
+            lists those places, with the card, IC and cash answer for each.
           </p>
           <p className={styles.bodyText}>
             Three guides size that properly:{" "}

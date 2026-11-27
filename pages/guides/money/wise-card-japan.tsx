@@ -883,7 +883,9 @@ export default function WiseCardJapanPage({ updated }: { updated: PageUpdated })
           <h2 className={styles.sectionTitle}>You&apos;ll Still Need Some Cash</h2>
           <p className={styles.bodyText}>
             Even with a good card, Japan still runs on cash in plenty of places — small restaurants, izakayas,
-            temples, shrines and market stalls are often cash only. One larger withdrawal on arrival, held as a
+            temples, shrines and market stalls are often cash only (the places, one by one:{" "}
+            <Link href="/guides/money/cash-vs-card-japan" style={{ color: "var(--red)", fontWeight: 600 }}>can you rely on cards instead of cash in Japan</Link>
+            ). One larger withdrawal on arrival, held as a
             running reserve, costs you less in operator fees than topping up every other day.
           </p>
           <p className={styles.bodyText}>
