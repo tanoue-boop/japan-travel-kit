@@ -503,7 +503,10 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/tokyo-3-day-itinerary">Tokyo 3 day itinerary</Link> adds, and any
             day trip to Mt. Fuji, Hakone or Kamakura, which the{" "}
             <Link href="/guides/attractions/tokyo-5-day-itinerary">5 day Tokyo itinerary</Link> fits in. If you
-            have only one night between flights, use the layover version further down.
+            have only one night between flights, use the layover version further down; with a single day and
+            no night in the city, the{" "}
+            <Link href="/guides/attractions/tokyo-1-day-itinerary">Tokyo 1 day itinerary</Link> has three one-day
+            routes and a same-day layover table.
           </p>
         </section>
 
@@ -830,7 +833,10 @@ export default function Tokyo2DayItineraryPage({ updated }: { updated: PageUpdat
             in <strong>34 minutes</strong> from Terminal 3. From Narita, the Skyliner takes{" "}
             <strong>41 minutes</strong> to Keisei-Ueno, so sleep on the Ueno or Asakusa side. The official
             sources checked do not give a minimum layover time; allow for immigration on arrival and for the
-            airline&apos;s check-in deadline on the way back. Airport times read {AIRPORT}.
+            airline&apos;s check-in deadline on the way back. Airport times read {AIRPORT}. For a layover with no
+            night in Tokyo, see{" "}
+            <Link href="/guides/attractions/tokyo-1-day-itinerary">what to do in Tokyo on a layover</Link>, by
+            6, 8 and 10 hours.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

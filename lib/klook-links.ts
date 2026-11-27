@@ -12341,3 +12341,78 @@ export const kansaiAirportKyotoTripPrep: KlookTripPrepItem[] = [
     why: "Priced per car rather than per person, so it narrows the gap for a family or group, and it runs after the last train.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Tokyo 1 day itinerary, added 27 Nov 2026 (task-jtk-20261127-01).
+//
+// No new Klook listing: every product reuses a constant above (Tokyo Subway Ticket
+// 1552, Keisei Skyliner 1410, Haneda limousine bus 150434, Tokyo sightseeing bus day
+// tour 5672, Tokyo hotel–airport luggage delivery 27664, Shinjuku night food tour and
+// the eSIM). The page has no ad id yet (spare ran out on 26 Nov), so these links fall
+// back to ?aid=119070 until one is added to data/klook-adids.json. No price appears.
+// ---------------------------------------------------------------------------
+
+/** Before-you-land block: 5% pass and transfers, the 6.5% tour, 5% luggage, 20% data. */
+export const tokyoOneDayTripPrep: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.subway,
+    label: "Tokyo Subway Ticket (24 hours)",
+    why: "All three routes on this page run on Tokyo Metro and Toei lines, so one 24-hour ticket covers every subway leg of the day. It does not cover JR or the Yurikamome.",
+    guide: { href: "/guides/attractions/tokyo-subway-ticket", label: "Is it worth it? →" },
+  },
+  {
+    ...tripPrepProducts.skyliner,
+    why: "On a Narita layover the Skyliner to Keisei-Ueno is the fast leg in and out, and Ueno is next to the start of the Asakusa route.",
+  },
+  {
+    label: hanedaLimousineBus.title,
+    ctaLabel: "Check the Haneda limousine bus →",
+    url: hanedaLimousineBus.url,
+    why: "From Haneda straight to Tokyo Station or Shinjuku with your case in the hold, if you land with luggage and no hotel to leave it at.",
+  },
+  {
+    label: tokyoSightseeingBusTour.title,
+    ctaLabel: "Check the Tokyo day tour →",
+    url: tokyoSightseeingBusTour.url,
+    why: "One guided loop of the Imperial Palace gardens, Asakusa and Skytree, for a single day you would rather not route yourself.",
+  },
+  {
+    label: tokyoHotelAirportLuggageDelivery.title,
+    ctaLabel: "Check the luggage delivery →",
+    url: tokyoHotelAirportLuggageDelivery.url,
+    why: "Send the case between the airport and your hotel and walk the day with a day bag only.",
+    guide: { href: "/guides/transport/japan-luggage-delivery", label: "How luggage delivery works →" },
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Timed QR tickets, the subway route between stops and the train back to the airport all live on your phone.",
+  },
+];
+
+/** Under the 2% deck tickets: a 6.5% tour, the 5% pass, and 20% data. */
+export const tokyoOneDaySameDayCards: KlookSameDayCard[] = [
+  {
+    label: tokyoSightseeingBusTour.title,
+    kind: "Day tour",
+    ctaLabel: "Check the Tokyo day tour →",
+    url: tokyoSightseeingBusTour.url,
+    why: "Asakusa, Skytree and the Imperial Palace gardens on one coach with audio guidance — most of Route A without changing trains.",
+  },
+  {
+    label: shinjukuNightFoodWalkingTour.title,
+    kind: "Evening tour",
+    ctaLabel: "Check the Shinjuku food tour →",
+    url: shinjukuNightFoodWalkingTour.url,
+    why: "The end of Route B with a guide: Omoide Yokocho, Kabukicho and Golden Gai after the sunset slot.",
+  },
+  {
+    ...tripPrepProducts.subway,
+    kind: "Pass",
+    why: "The 24-hour ticket covers every subway leg between the decks; buy it with the deck ticket so both are on your phone.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    kind: "Data",
+    why: "The deck's QR code and the time slot are on your phone, and the slot does not wait for a lost signal.",
+  },
+];

@@ -616,7 +616,9 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
             has the full break-even. Prices and fares read off tokyometro.jp on {SUBWAY_CHECKED}. To skip
             the route planning for one day, the{" "}
             <Link href="/guides/attractions/tokyo-sightseeing-bus-tour" style={linkStyle}>Tokyo hop-on hop-off bus</Link>{" "}
-            links Asakusa, Tokyo Tower, Odaiba, Shibuya and Shinjuku on three open-top routes.
+            links Asakusa, Tokyo Tower, Odaiba, Shibuya and Shinjuku on three open-top routes. With only one day,
+            our <Link href="/guides/attractions/tokyo-1-day-itinerary" style={linkStyle}>one day in Tokyo</Link>{" "}
+            itinerary puts these sights into three timed routes on the 24-hour ticket.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={tokyoSubwayTicket.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

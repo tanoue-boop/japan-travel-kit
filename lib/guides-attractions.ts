@@ -765,6 +765,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "tokyo",
   },
   {
+    href: "/guides/attractions/tokyo-1-day-itinerary",
+    badge: "Itinerary",
+    title: "One Day in Tokyo: 1 Day Itinerary, 3 Routes & Layover",
+    desc: "Three one-day routes with times — Asakusa to Skytree, Harajuku to Shinjuku, Tsukiji to Odaiba — on the ¥1,000 24-hour subway ticket, plus what a 6, 8 or 10-hour layover at Haneda or Narita leaves you in the city.",
+    group: "cities",
+    city: "tokyo",
+  },
+  {
     href: "/guides/attractions/tokyo-2-day-itinerary",
     badge: "Itinerary",
     title: "Tokyo 2 Day Itinerary (2026): Day by Day, and What to Book",

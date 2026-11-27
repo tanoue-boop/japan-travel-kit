@@ -569,7 +569,9 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
             many rides make the <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket</Link>{" "}
             cheaper than single fares is worked out against the official fares, and our guide on{" "}
             <Link href="/guides/transport/tokyo-transportation">Tokyo transport cost</Link> prices a day of
-            JR and subway rides on an IC card at about ¥620–¥840). The
+            JR and subway rides on an IC card at about ¥620–¥840; a single sightseeing day on the 24-hour
+            subway ticket with one or two decks is costed route by route in our{" "}
+            <Link href="/guides/attractions/tokyo-1-day-itinerary">Tokyo 1 day itinerary</Link>). The
             part that has to be cash (some temples, market stalls, coin lockers) is smaller; our{" "}
             <Link href="/guides/money/how-much-yen-to-bring-japan">how much yen to bring guide</Link> sizes it, and
             our <Link href="/guides/money/currency-exchange-japan">currency exchange guide</Link> compares the

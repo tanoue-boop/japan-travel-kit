@@ -1075,7 +1075,10 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             That matters when you are still choosing flights. If the Narita fare is more than about ¥2,500 cheaper
             per person than the Haneda one, the transfer cancels the saving out — and the same arithmetic runs the
             other way on the day you leave, because a pre-dawn departure from Narita starts before the Skyliner
-            does. Figures read on {CHECKED}.
+            does. Figures read on {CHECKED}. The same gap decides a layover: Haneda gives you a city stop from
+            about 6 hours between flights, Narita from about 8 — the{" "}
+            <Link href="/guides/attractions/tokyo-1-day-itinerary">Tokyo layover itinerary</Link> works out what
+            each length leaves you in the city.
           </p>
         </section>
 
