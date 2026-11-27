@@ -193,6 +193,13 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
             boat are in our{" "}
             <Link href="/guides/attractions/dotonbori-river-cruise" style={linkStyle}>Dotonbori River Cruise guide</Link>.
           </p>
+          <p className={styles.bodyText}>
+            Dotonbori can also be seen from the road: street go-kart tours from Akiba Kart (Street Kart), JAPANKART
+            and others drive past the Glico sign and through Namba, starting from ¥7,000 per person for about an
+            hour, and every driver needs a 1949 Geneva International Driving Permit. Shops, routes and licence rules
+            are in the{" "}
+            <Link href="/guides/attractions/osaka-go-kart" style={linkStyle}>Osaka go kart guide</Link>.
+          </p>
         </section>
 
         {/* USJ & Kaiyukan */}

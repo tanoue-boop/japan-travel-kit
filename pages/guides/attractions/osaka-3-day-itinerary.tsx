@@ -404,7 +404,7 @@ const related = [
   { href: "/guides/attractions/kyoto-nara-day-tour-from-osaka", title: "Kyoto and Nara Day Tour from Osaka" },
   { href: "/guides/attractions/where-to-stay-in-osaka", title: "Where to Stay in Osaka (2026): Best Areas for First-Timers" },
   { href: "/guides/attractions/things-to-do-osaka", title: "Things to Do in Osaka (2026)" },
-  { href: "/guides/attractions/osaka-go-kart", title: "Osaka Go Kart 2026: IDP Rules, Routes and Which Tour to Book" },
+  { href: "/guides/attractions/osaka-go-kart", title: "Osaka Go Kart 2026: Shops, Routes, Prices & License Rules" },
   { href: "/guides/transport/haruka-vs-nankai-rapit", title: "HARUKA vs Nankai Rapi:t: Kansai Airport to Osaka" },
   { href: "/guides/attractions", title: "More Things to Do in Japan →" },
 ];
@@ -584,6 +584,9 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
             ticket and the cruise are only worth buying separately if you are not on the pass. Details are
             in the <Link href="/guides/attractions/osaka-castle-tickets">Osaka Castle tickets guide</Link>{" "}
             and the <Link href="/guides/attractions/dotonbori-river-cruise">Dotonbori river cruise guide</Link>.
+            Drivers with a 1949 Geneva International Driving Permit can add an{" "}
+            <Link href="/guides/attractions/osaka-go-kart">Osaka go kart</Link> tour after dark: about an hour
+            past the Dotonbori signs and through Namba, from ¥7,000 per person.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

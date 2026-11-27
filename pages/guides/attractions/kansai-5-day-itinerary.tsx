@@ -492,6 +492,11 @@ export default function Kansai5DayItineraryPage({ updated }: { updated: PageUpda
             covers, subway included. Times and tickets for the park are in the{" "}
             <Link href="/guides/attractions/usj-tickets-express-pass">USJ tickets guide</Link>.
           </p>
+          <p className={styles.bodyText}>
+            Drivers with a 1949 Geneva International Driving Permit can swap the cruise for an hour on the road:
+            an <Link href="/guides/attractions/osaka-go-kart">Osaka go kart</Link> tour runs through Dotonbori and
+            Namba from ¥7,000 per person, and JAPANKART&apos;s 90-minute course passes Osaka Castle.
+          </p>
         </section>
 
         <KlookSameDayCards

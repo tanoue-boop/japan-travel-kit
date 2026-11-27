@@ -651,7 +651,10 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/osaka-castle-tickets">Osaka Castle tickets guide</Link> covers
             the four other paid facilities inside the park walls, and our{" "}
             <Link href="/guides/attractions/dotonbori-river-cruise">Dotonbori river cruise guide</Link>{" "}
-            compares the four boats that work the same stretch of water.
+            compares the four boats that work the same stretch of water. If you carry a 1949 Geneva
+            International Driving Permit, an evening{" "}
+            <Link href="/guides/attractions/osaka-go-kart">Osaka go kart</Link> tour is the one paid extra
+            that drives the same Dotonbori and Namba streets, from ¥7,000 per person for about an hour.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={osakaAmazingPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

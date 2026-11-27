@@ -897,8 +897,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/osaka-go-kart",
     badge: "Experience",
-    title: "Osaka Go Kart 2026: IDP Rules, Routes and Which Tour to Book",
-    desc: "About an hour through Dotonbori, Namba and Shinsaibashi, on a Japanese licence or a 1949 Geneva IDP issued before you fly — five operators compared on route, length, costume and cancellation.",
+    title: "Osaka Go Kart 2026: Shops, Routes, Prices & License Rules",
+    desc: "From ¥7,000 for about an hour through Dotonbori, Namba and Shinsaibashi, on a Japanese licence or a 1949 Geneva IDP issued before you fly — Akiba Kart, JAPANKART and three more shops compared on route, price and costume.",
     group: "experiences",
     // The Osaka version of tokyo-go-kart, same group.
     city: "osaka",
