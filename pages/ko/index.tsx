@@ -31,7 +31,9 @@ export default function KoHomePage({ dates }: { dates: Record<string, string> })
             정리했습니다. 도쿄 디즈니랜드·디즈니씨는 모든 티켓이 날짜 지정이고 현장 판매가 없으며 방문 2개월 전
             14시에 예약이 시작되므로, 가격과 예약 방법, 랜드·씨 선택 기준은{" "}
             <Link href="/ko/guides/attractions/tokyo-disney-tickets">도쿄 디즈니 티켓</Link> 가이드에서
-            먼저 확인하세요. 2월에 홋카이도로 간다면 먼저 예약할 것은 숙소입니다. 행사장 3곳이 모두 무료인 2027년
+            먼저 확인하세요. 시부야 스카이도 입장일 2주 전 0시에 예약이 열리고 일몰 시간대가 가장 먼저 매진되므로, 웹 성인
+            ¥2,700・¥3,400 가격과 예약 오픈 시간은{" "}
+            <Link href="/ko/guides/attractions/shibuya-sky-tickets">시부야 스카이 예약</Link> 가이드에 정리했습니다. 2월에 홋카이도로 간다면 먼저 예약할 것은 숙소입니다. 행사장 3곳이 모두 무료인 2027년
             2월 4~11일의 일정과 축제 전후의 당일 투어는{" "}
             <Link href="/ko/guides/attractions/sapporo-snow-festival-tours">삿포로 눈축제 투어</Link> 가이드에
             정리했습니다.

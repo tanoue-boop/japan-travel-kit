@@ -63,10 +63,21 @@ import HotelStayBlock from "../../../../components/HotelStayBlock";
 //                              大人 WEB 完売なら窓口も完売, 小人は当日窓口のみ・5歳以下無料,
 //                              10:00~22:30(最終入場 21:20), 元旦休館, 日没の30分前頃がおすすめ
 //   shibuya-scramble-square.com/sky/ticket/ (search index): "2週間先の日付まで販売"
+
+// 2026-11-28 (R04): WebSearch still showed "일본 티켓 가이드(영어)시부야 스카이 예약". Traced again:
+// the live HTML (fetched 11-28) has no such string in <title>, og:title, Article headline,
+// BreadcrumbList or any visible text; the label was TRAIL_BASE.ko until ef8bcc7 and no file in
+// pages/, components/ or lib/ contains it, so the snippet is Google's old crawl. This pass makes the
+// title the "예약·티켓 가격 / 예약 오픈 시간" form, rewrites the first paragraph as three numbers-first
+// sentences and adds the 일몰 매진・현장 구매・가는 법 question H2s. Re-read on 2026-11-28:
+//   gotokyo.org/jp/spot/1749   web ¥2,700(~14:59)|¥3,400(15:00~), counter ¥3,000|¥3,700,
+//                              大人 WEB 完売なら窓口も完売, 小人は当日窓口のみ・5歳以下無料,
+//                              10:00~22:30(最終入場 21:20), 元旦休館, 日没の30分前頃がおすすめ(人気の時間帯),
+//                              渋谷駅直結: 東横・田園都市・副都心・半蔵門線 → B2F, JR・井の頭・銀座線 → 1F/3F
 const ROUTE = "/ko/guides/attractions/shibuya-sky-tickets";
-const TITLE = "시부야 스카이 예약 2026: 티켓 가격·오픈 시간·선셋 팁";
+const TITLE = "시부야 스카이 예약·티켓 가격 2026｜예약 오픈 시간";
 const DESC =
-  "시부야 스카이 예약·티켓 가격: 웹 성인 ¥2,700·¥3,400(15시~), 현장 +¥300. 입장 2주 전 0시 오픈, 선셋부터 매진.";
+  "시부야 스카이 예약은 입장 2주 전 0시 오픈. 웹 성인 ¥2,700·¥3,400(15시~), 현장 +¥300. 일몰 시간대가 가장 먼저 매진.";
 
 const LOCALE = "ko" as const;
 const P = PRICES.shibuyaSky;
@@ -74,7 +85,7 @@ const CHECKED = dateLabel(P.checked, LOCALE);
 const ADULT = priceLabel(P.adult, LOCALE);
 const AT_DOOR = priceLabel(P.atDoor, LOCALE);
 const LAST_CHECKED = dateLabel("2026-11-11", LOCALE);
-const TODAY_CHECKED = dateLabel("2026-11-20", LOCALE);
+const TODAY_CHECKED = dateLabel("2026-11-28", LOCALE);
 const GOTOKYO_JP_URL = "https://www.gotokyo.org/jp/spot/1749/index.html";
 const RELEASE_URL = "https://www.shibuya-scramble-square.com/assets/pdf/about/20250227scsq.pdf";
 const OFFICIAL_URL = "https://www.shibuya-scramble-square.com/sky/ticket/";
@@ -268,19 +279,19 @@ const steps = [
 const faqItems: FaqItem[] = [
   {
     q: "시부야 스카이 예약은 언제 열리나요?",
-    a: `입장일 2주 전 0시(일본 시간)에 열립니다. 한국과 일본은 시차가 없으므로 한국 시간으로도 0시입니다. 예를 들어 12월 1일 입장분은 11월 17일 0시에 판매가 시작됩니다. 티켓은 날짜와 20분 단위 입장 시간을 지정하는 방식이고, 선셋(일몰) 시간대가 가장 먼저 매진되므로 일몰이 목적이라면 오픈 직후에 예약하세요. 운영사 2025년 2월 27일 공지와 공식 티켓 페이지("2주 후 날짜까지 판매") 기준, ${TODAY_CHECKED} 확인.`,
+    a: `입장일 2주 전 0시(일본 시간)에 열립니다. 한국과 일본은 시차가 없으므로 한국 시간으로도 0시입니다. 예를 들어 12월 1일 입장분은 11월 17일 0시에 판매가 시작됩니다. 티켓은 날짜와 20분 단위 입장 시간을 지정하는 방식이고, 선셋(일몰) 시간대가 가장 먼저 매진되므로 일몰이 목적이라면 오픈 직후에 예약하세요. 운영사 2025년 2월 27일 공지와 공식 티켓 페이지("2주 후 날짜까지 판매") 기준, ${dateLabel("2026-11-20", LOCALE)} 확인.`,
   },
   {
     q: "시부야 스카이 티켓 가격은 얼마인가요?",
     a: `성인(중학생 이상) 온라인 예매는 10:00~14:59 입장이 ¥2,700, 15:00~21:20 입장이 ¥3,400입니다. 현장(14층 창구) 구매는 각각 ¥3,000, ¥3,700으로 ¥300 비쌉니다. 초등학생은 당일 창구에서만 ¥1,200에 판매하고, 만 5세 이하는 무료입니다. 2025년 4월 1일 입장분부터 적용된 가격이며, ${TODAY_CHECKED}에 도쿄도 공식 관광 사이트에서 다시 확인했습니다.`,
   },
   {
-    q: "시부야 스카이 당일권도 살 수 있나요?",
-    a: "살 수 있습니다. 14층 창구에서 당일 판매하지만 온라인보다 ¥300 비싸고(¥3,000・¥3,700), 성인 티켓이 온라인에서 매진되면 현장(14층) 매표소에서도 구매할 수 없습니다. 그래서 선셋처럼 인기 있는 시간대는 당일에 남아 있지 않은 경우가 많습니다. 원하는 시간이 정해져 있다면 공식 사이트나 클룩으로 미리 예약하세요. 초등학생 티켓만은 반대로 당일 창구에서만 판매합니다.",
+    q: "시부야 스카이 현장 구매 가능한가요?",
+    a: "가능합니다. 14층 창구에서 당일 판매하지만 온라인보다 ¥300 비싸고(¥3,000・¥3,700), 성인 티켓이 온라인에서 매진되면 현장(14층) 매표소에서도 구매할 수 없습니다. 그래서 선셋처럼 인기 있는 시간대는 당일에 남아 있지 않은 경우가 많습니다. 원하는 시간이 정해져 있다면 공식 사이트나 클룩으로 미리 예약하세요. 초등학생 티켓만은 반대로 당일 창구에서만 판매합니다.",
   },
   {
-    q: "시부야 스카이 선셋 시간 예약 팁은?",
-    a: "일몰 30~60분 전 입장 시간대를, 판매가 열리는 2주 전 0시에 바로 예약하는 것입니다. 2026년 도쿄 일몰(각 월 15일, 일본 국립천문대)은 11월 16:35, 12월 16:29, 1월 16:50, 2월 17:22이므로, 11월은 15:35~16:05, 12월은 15:29~15:59, 1월은 15:50~16:20, 2월은 16:22~16:52 입장이 기준입니다. 모두 ¥3,400 시간대이고, 체류 시간 제한이 없어 그대로 야경까지 볼 수 있습니다. 선셋 시간대가 매진됐다면 늦은 시간대로 야경을 보는 것이 대안입니다.",
+    q: "시부야 스카이 일몰 시간 티켓은 언제 매진되나요?",
+    a: "운영사는 매진 시각을 공개하지 않습니다. 다만 일몰 시간대는 도쿄도 공식 관광 사이트도 '인기 시간대'로 안내하는 시간이라 가장 먼저 매진되므로, 일몰 30~60분 전 입장 시간대를 판매가 열리는 2주 전 0시에 바로 예약하세요. 2026년 도쿄 일몰(각 월 15일, 일본 국립천문대)은 11월 16:35, 12월 16:29, 1월 16:50, 2월 17:22이므로, 11월은 15:35~16:05, 12월은 15:29~15:59, 1월은 15:50~16:20, 2월은 16:22~16:52 입장이 기준입니다. 모두 ¥3,400 시간대이고, 체류 시간 제한이 없어 그대로 야경까지 볼 수 있습니다. 선셋 시간대가 매진됐다면 늦은 시간대로 야경을 보는 것이 대안입니다.",
   },
   {
     q: "Klook과 공식 사이트 중 어디서 시부야 스카이를 예약하는 게 좋나요?",
@@ -438,14 +449,13 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
         {/* Lead paragraph */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>시부야 스카이 티켓 가격은 공식 온라인 예매 기준 성인(중・고등학생 포함)은 15시 전 입장 시 ¥2,700, 15시부터는
-            ¥3,400이며, 현장 구매는 각각 ¥3,000・¥3,700입니다</strong>. 초등학생(어린이)은 당일 창구에서만 ¥1,200,
-            만 5세 이하 유아는 무료입니다({TODAY_CHECKED} 도쿄도 공식 관광 사이트에서 확인). 시부야 스카이 예약은{" "}
-            <strong>입장일 2주 전 0시(한국 시간과 같음)</strong>에 열리고, 11월이라면 일몰 16:35에 맞춘 15:35~16:05 입장 같은
-            선셋 시간대가 가장 먼저 매진되며, 성인 티켓이 온라인에서 매진되면 현장(14층) 매표소에서도 구매할 수 없습니다.
+            <strong>시부야 스카이 예약은 입장일 2주 전 0시(일본 시간 = 한국 시간)에 열립니다.</strong> 성인(중학생 이상) 티켓은
+            웹 예매가 15시 전 입장 ¥2,700・15시부터 ¥3,400이고, 당일 현장(14층 창구) 구매는 ¥3,000・¥3,700으로 ¥300
+            비쌉니다. 11월이라면 일몰 16:35에 맞춘 15:35~16:05 입장 같은 일몰 시간대가 가장 먼저 매진되며, 성인 티켓이
+            온라인에서 매진되면 현장 매표소에서도 살 수 없습니다({TODAY_CHECKED} 도쿄도 공식 관광 사이트에서 확인).
           </p>
           <p className={styles.bodyText}>
-            시부야 스카이는 10:00~22:30 운영(마지막 입장 21:20)이며, 입장 후 체류 시간 제한이 없고 대부분의
+            초등학생(어린이)은 당일 창구에서만 ¥1,200, 만 5세 이하 유아는 무료입니다. 시부야 스카이는 10:00~22:30 운영(마지막 입장 21:20)이며, 입장 후 체류 시간 제한이 없고 대부분의
             방문객은 약 90분 머뭅니다. 운영사 공식 사이트나
             클룩 같은 예약 플랫폼에서 살 수 있습니다 — 공식 사이트에서는 2024년 7월부터 해외 발급 카드로 결제할 때
             승인이 거절되는 경우가 많습니다. 가격은 시부야 스크램블 스퀘어가 2025년 2월 27일에 발표한 입장권 요금 개정 내용을 기준으로 했으며
@@ -553,7 +563,7 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             에 정리되어 있으며, 항목마다 확인 날짜가 붙어 있습니다.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "0.5rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            <strong>Last checked: 2026-11-20</strong> · 출처:{" "}
+            <strong>Last checked: 2026-11-28</strong> · 출처:{" "}
             <a href={OFFICIAL_URL} target="_blank" rel="noopener" style={linkStyle}>shibuya-scramble-square.com/sky/ticket/</a>
             {" "}(운영사),{" "}
             <a href={GOTOKYO_JP_URL} target="_blank" rel="noopener" style={linkStyle}>gotokyo.org</a>
@@ -575,9 +585,12 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>당일권</span>
-          <h2 className={styles.sectionTitle}>시부야 스카이 당일권도 살 수 있나요?</h2>
+          <h2 className={styles.sectionTitle}>시부야 스카이 현장 구매 가능한가요?</h2>
           <p className={styles.bodyText}>
-            살 수 있지만 온라인보다 ¥300 비싸고, 성인 티켓이 온라인에서 매진되면 현장(14층) 매표소에서도 구매할 수 없습니다. 그래서 선셋처럼
+            가능하지만 14층 창구 가격은 ¥3,000・¥3,700으로 온라인보다 ¥300 비싸고, 성인 티켓이 온라인에서 매진되면 현장 매표소에서도 살 수 없습니다.
+          </p>
+          <p className={styles.bodyText}>
+            당일권은 살 수 있지만 온라인보다 ¥300 비싸고, 성인 티켓이 온라인에서 매진되면 현장(14층) 매표소에서도 구매할 수 없습니다. 그래서 선셋처럼
             인기 있는 시간대는 당일 현장에서 살 수 없는 경우가 많습니다. 반대로 초등학생 티켓은 창구에서만 팝니다 —
             가족이라면 성인은 온라인으로 예약하고, 초등학생은 당일 창구에서 결제하세요.
           </p>
@@ -622,7 +635,7 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            <strong>Last checked: 2026-11-20</strong> · 운영 시간과 마지막 입장:{" "}
+            <strong>Last checked: 2026-11-28</strong> · 운영 시간과 마지막 입장:{" "}
             <a href="https://www.shibuya-scramble-square.com/en/" target="_blank" rel="noopener" style={linkStyle}>shibuya-scramble-square.com</a>
             {" "}(운영사). 체류 시간 제한, 평균 체류 시간, 가는 법, 1월 1일 휴무:{" "}
             <a href={GOTOKYO_URL} target="_blank" rel="noopener" style={linkStyle}>gotokyo.org</a>
@@ -671,7 +684,7 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: "1.25rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            <strong>Last checked: 2026-11-20</strong> · 출처:{" "}
+            <strong>Last checked: 2026-11-28</strong> · 출처:{" "}
             <a href={RELEASE_URL} target="_blank" rel="noopener" style={linkStyle}>운영사 공지(2025년 2월 27일, PDF)</a>
             {" "}— 2주 전 0시 판매 시작, 20분 단위 일시 지정권.{" "}
             <a href={OFFICIAL_URL} target="_blank" rel="noopener" style={linkStyle}>공식 티켓 페이지</a>
@@ -730,7 +743,7 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            <strong>Last checked: 2026-11-20</strong> · 공식 가격・판매 시작・취소:{" "}
+            <strong>Last checked: 2026-11-28</strong> · 공식 가격・판매 시작・취소:{" "}
             <a href={RELEASE_URL} target="_blank" rel="noopener" style={linkStyle}>운영사 공지(PDF)</a>,{" "}
             <a href={GOTOKYO_JP_URL} target="_blank" rel="noopener" style={linkStyle}>gotokyo.org</a>. 클룩 가격은 날짜에 따라
             달라지므로 적지 않았습니다 — 상품 페이지에서 확인하세요.
@@ -741,6 +754,31 @@ export default function KoShibuyaSkyTicketsPage({ updated }: { updated: PageUpda
             </KlookLink>
             <GygCompareButton slug={GYG_SLUG} listing={gygShibuyaSky} />
           </div>
+        </section>
+
+        {/* R04: the two question H2s the Korean top results answer — sunset sell-out and how to get there. */}
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>일몰 매진</span>
+          <h2 className={styles.sectionTitle}>시부야 스카이 일몰 시간 티켓은 언제 매진되나요?</h2>
+          <p className={styles.bodyText}>
+            운영사는 매진 시각을 공개하지 않지만, 일몰 시간대는 판매가 열리는 입장일 2주 전 0시부터 가장 먼저 매진되는 시간대입니다.
+            도쿄도 공식 관광 사이트도 일몰 30분 전쯤을 추천하면서 &ldquo;인기 시간대이므로 여유 있게&rdquo;라고 안내하므로, 일몰이
+            목적이라면 오픈 직후에 예약하세요. 매진됐다면 같은 ¥3,400인 늦은 시간대로 야경을 보거나 클룩의 잔여 시간대를 확인하세요.
+          </p>
+        </section>
+
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>가는 법</span>
+          <h2 className={styles.sectionTitle}>시부야 스카이 가는 법은?</h2>
+          <p className={styles.bodyText}>
+            시부야 스카이가 있는 시부야 스크램블 스퀘어는 시부야역과 바로 연결되어 있고, 입구는 14층입니다. 도큐 도요코선・덴엔토시선과
+            도쿄메트로 후쿠토신선・한조몬선에서는 지하 2층, JR선・게이오 이노카시라선・도쿄메트로 긴자선에서는 1층 또는 3층으로 이어집니다.
+          </p>
+          <p className={styles.bodyText} style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            <strong>Last checked: 2026-11-28</strong> · 출처:{" "}
+            <a href={GOTOKYO_JP_URL} target="_blank" rel="noopener" style={linkStyle}>gotokyo.org</a>
+            {" "}(도쿄도 공식 관광 사이트 — 액세스・추천 시간대).
+          </p>
         </section>
 
         {/* Q4 — which slot */}
