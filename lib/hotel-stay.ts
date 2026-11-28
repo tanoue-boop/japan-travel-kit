@@ -21,6 +21,7 @@
  * (lines, stations, which bus goes where) — nothing here is a first-hand review.
  */
 import { klookLink } from "./klook-links";
+import type { TripcomCity } from "./tripcom-links";
 import type { Locale } from "./i18n";
 
 /** English is required; a missing translation falls back to it. */
@@ -627,6 +628,55 @@ export const HOTEL_AREA_MAP: Record<HotelAreaKey, string> = {
   tenjin: "Tenjin, Fukuoka, Japan",
   beppu: "Beppu, Oita, Japan",
   yufuin: "Yufuin, Oita, Japan",
+};
+
+/**
+ * The Trip.com city whose hotel list sits next to each area's Klook button (task
+ * jtk-20261128-A36). Trip.com lists by municipality, so the Tokyo areas share Tokyo,
+ * Miyajima is Hatsukaichi, Niseko is Kutchan and Arima is Kobe. Ids: lib/tripcom-links.ts.
+ */
+export const HOTEL_AREA_TRIPCOM: Record<HotelAreaKey, TripcomCity> = {
+  shinjuku: "tokyo",
+  tokyoStation: "tokyo",
+  ueno: "tokyo",
+  shibuya: "tokyo",
+  ginza: "tokyo",
+  odaiba: "tokyo",
+  roppongi: "tokyo",
+  disneyResort: "urayasu",
+  maihama: "urayasu",
+  hakone: "hakone",
+  hakoneOnsen: "hakone",
+  lakeAshi: "hakone",
+  kawaguchikoStation: "fujikawaguchiko",
+  lakeKawaguchi: "fujikawaguchiko",
+  fujiQ: "fujiyoshida",
+  kyotoStation: "kyoto",
+  karasumaOike: "kyoto",
+  gion: "kyoto",
+  umeda: "osaka",
+  namba: "osaka",
+  tennoji: "osaka",
+  hiroshimaStation: "hiroshima",
+  peacePark: "hiroshima",
+  miyajima: "hatsukaichi",
+  kanazawa: "kanazawa",
+  kenrokuen: "kanazawa",
+  higashiChaya: "kanazawa",
+  sapporoStation: "sapporo",
+  susukino: "sapporo",
+  niseko: "kutchan",
+  hakuba: "hakuba",
+  nozawa: "nozawaonsen",
+  nagano: "nagano",
+  yuzawa: "yuzawa",
+  gala: "yuzawa",
+  arima: "kobe",
+  kobe: "kobe",
+  hakata: "fukuoka",
+  tenjin: "fukuoka",
+  beppu: "beppu",
+  yufuin: "yufu",
 };
 
 // ---------------------------------------------------------------------------

@@ -34,6 +34,8 @@ const AFFILIATE_PARTNERS: { partner: string; hosts: string[] }[] = [
   // Stay22 (A30): links its script rewrites go through stay22.com. Clicks inside the
   // map iframes cannot be seen from here; Stay22's own report counts those.
   { partner: "stay22", hosts: ["stay22.com"] },
+  // Trip.com (A36): hotel lists from components/HotelStayBlock.tsx, see lib/tripcom-links.ts.
+  { partner: "tripcom", hosts: ["trip.com"] },
 ];
 
 const resolvePartner = (hostname: string): string | null => {
@@ -56,6 +58,7 @@ const resolveProductType = (partner: string, url: URL, anchor: Element): Affilia
   if (anchor.closest(HOTEL_BLOCK_SELECTOR)) return "hotel";
   // Stay22 itself, or a hotel site its script swapped in (booking, expedia, agoda, …).
   if (partner === "stay22" || (url.hostname.includes("stay22.com") && partner !== "getyourguide")) return "hotel";
+  if (partner === "tripcom" && url.pathname.startsWith("/hotels")) return "hotel";
   if (partner === "klook") {
     // Klook のリンクは affiliate.klook.com/redirect?k_site=<商品URL>。商品URL（無ければリンク自体）に esim を含めば eSIM 商品。
     const product = (url.searchParams.get("k_site") ?? url.href).toLowerCase();

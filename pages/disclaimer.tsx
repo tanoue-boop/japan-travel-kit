@@ -4,7 +4,7 @@ import styles from "../styles/LegalPage.module.css";
 import PartnerPick, { PartnerTextLink } from "../components/PartnerPick";
 import { klookEsim } from "../lib/klook-links";
 
-const UPDATED = "April 20, 2026";
+const UPDATED = "November 28, 2026";
 
 const affiliateNetworks = [
   {
@@ -27,6 +27,10 @@ const affiliateNetworks = [
     name: "Simbye",
     desc: "eSIM provider. We earn a commission on purchases made through our Simbye links, and our readers get a discount code.",
   },
+  {
+    name: "Trip.com",
+    desc: "Hotel and travel booking site. Commissions are earned on hotel bookings made via our Trip.com links.",
+  },
 ];
 
 export default function DisclaimerPage() {
@@ -34,7 +38,7 @@ export default function DisclaimerPage() {
     <>
       <Head>
         <title>Affiliate Disclaimer | Japan Travel Kit</title>
-        <meta name="description" content="Affiliate disclosure and disclaimer for Japan Travel Kit. Learn about our affiliate relationships with Airalo, Klook, IIJmio, Sakura Mobile and Simbye." />
+        <meta name="description" content="Affiliate disclosure and disclaimer for Japan Travel Kit: our affiliate relationships with Airalo, Klook, IIJmio, Sakura Mobile, Simbye and Trip.com." />
         <meta name="robots" content="noindex" />
       </Head>
 
