@@ -146,6 +146,7 @@ export default function MtFujiShizuokaAreaPassPage({ updated }: { updated: PageU
           <Link href="/guides/transport/mt-fuji-pass" style={linkStyle}>Mt. Fuji Pass</Link>{" "}
           is Fujikyu&apos;s own pass.
           {" "}On the Izu coast, the <Link href="/guides/attractions/atagawa-tropical-alligator-garden-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Atagawa Tropical and Alligator Garden</Link> by Izu-Atagawa Station is ¥2,000 for adults.
+          {" "}Near Mishima, the <Link href="/guides/attractions/mishima-skywalk-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Mishima Skywalk</Link> costs from ¥1,100 for adults, and in Izu Kogen the <Link href="/guides/attractions/izu-teddy-bear-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Izu Teddy Bear Museum</Link> is ¥1,800.
         </p>
       }
       faq={[

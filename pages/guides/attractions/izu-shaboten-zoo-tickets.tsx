@@ -108,6 +108,7 @@ export default function IzuShabotenZooTicketsPage({ updated }: { updated: PageUp
           <Link href="/guides/attractions/tokyo-itinerary-with-kids" style={linkStyle}>Tokyo with kids</Link>. For more animal parks, see
           <Link href="/guides/attractions/nasu-safari-park-tickets" style={linkStyle}>Nasu Safari Park</Link> and <Link href="/guides/attractions/mother-farm-tickets" style={linkStyle}>Mother Farm</Link>.
           {" "}Further down the Izukyu line, the <Link href="/guides/attractions/atagawa-tropical-alligator-garden-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Atagawa Tropical and Alligator Garden</Link> is ¥2,000 for adults, a minute from Izu-Atagawa Station.
+          {" "}Nearby in Izu Kogen, the <Link href="/guides/attractions/izu-teddy-bear-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Izu Teddy Bear Museum</Link> is ¥1,800 for adults, 9:30–17:00.
         </p>
       }
       faq={[

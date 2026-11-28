@@ -856,6 +856,11 @@ export default function Kanazawa2DayItineraryPage({ updated }: { updated: PageUp
             For Shirakawa-go on your own, the <Link href="/guides/transport/shirakawa-go-bus" style={{ color: "var(--red)", fontWeight: 600 }}>Shirakawa-go bus</Link> to Kanazawa is ¥2,900 one way from 1 December 2026.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Entry to <Link href="/guides/attractions/kenrokuen-garden-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kenrokuen</Link> is ¥320 for adults, 8:00–17:00 from mid-October to February, with free early-morning entry.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -184,6 +184,7 @@ export default function JrWestAllAreaPassPage({ updated }: { updated: PageUpdate
           <Link href="/guides/transport/sanyo-sanin-area-pass" style={linkStyle}>Sanyo-San&apos;in Area Pass</Link>{" "}
           or the{" "}
           <Link href="/guides/transport/kansai-hokuriku-area-pass" style={linkStyle}>Kansai-Hokuriku Area Pass</Link>.
+          {" "}Along the way, <Link href="/guides/attractions/matsue-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Matsue Castle</Link> is ¥1,200 for adults and <Link href="/guides/attractions/okayama-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Okayama Castle</Link> ¥500 (¥800 with Korakuen Garden).
         </p>
       }
       faq={[

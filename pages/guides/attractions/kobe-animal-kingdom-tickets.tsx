@@ -119,6 +119,7 @@ export default function KobeAnimalKingdomTicketsPage({ updated }: { updated: Pag
           <Link href="/guides/attractions/osaka-3-day-itinerary" style={linkStyle}>Osaka 3-day itinerary</Link>.
           {" "}Another Kobe ticket: the <Link href="/guides/attractions/kobe-nunobiki-herb-gardens-ropeway" style={{ color: "var(--red)", fontWeight: 600 }}>Nunobiki Herb Gardens & Ropeway</Link> above Shin-Kobe (¥2,500 round trip for adults).
           {" "}For orcas, <Link href="/guides/attractions/kobe-suma-seaworld-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kobe Suma Sea World</Link> costs ¥2,900–3,700 for adults by season and ¥1,700–1,800 for children.
+          {" "}For a drive-through safari, <Link href="/guides/attractions/himeji-central-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Himeji Central Park</Link> near Himeji is ¥4,200–4,600 for adults, ¥7,000–7,400 with unlimited rides.
         </p>
       }
       faq={[

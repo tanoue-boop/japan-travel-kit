@@ -926,6 +926,11 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
             On Kouri Island, the <Link href="/guides/attractions/kouri-ocean-tower-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kouri Ocean Tower</Link> is ¥1,000 for ages 16 and over, about 25 minutes by car from Churaumi.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In Naha, <Link href="/guides/attractions/shuri-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shuri Castle</Link> is ¥1,000 for adults from 23 November 2026, when the rebuilt Seiden opened inside on timed tickets.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

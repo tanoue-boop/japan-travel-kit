@@ -984,3 +984,76 @@ export const rindoLakeFamilyRanchTicket: KlookTour = {
   desc: "A one-day direct-entry admission to the lakeside ranch and amusement park in Nasu Kogen",
   url: klookLink("https://www.klook.com/en-US/activity/87214-1-day-nasu-kogen-rindo-lake-family-ranch-direct-entry-admission/"),
 };
+
+// Day 14 (task jtk-20261210-A35, run 28 Nov 2026). Activity ids from the www.klook.com search index;
+// prices on the pages are the operators' own, read 28 Nov 2026.
+
+/** Nijo Castle (Kyoto) — admission with Ninomaru Palace. */
+export const nijoCastleTicket: KlookTour = {
+  title: "Nijo Castle and Ninomaru Palace ticket",
+  desc: "Entry to Nijo Castle with the Ninomaru Palace, shown as a QR voucher at the gate",
+  url: klookLink("https://www.klook.com/en-US/activity/20913-nijo-castle-ninomaru-palace-ticket-kyoto/"),
+};
+
+/** Shurijo Castle Park (Naha) — paid area admission. */
+export const shurijoCastleTicket: KlookTour = {
+  title: "Shurijo Castle Park paid area admission",
+  desc: "Admission to the paid area of Shurijo Castle Park in Naha, scanned by staff from the voucher on your phone",
+  url: klookLink("https://www.klook.com/en-US/activity/87083-shurijo-castle-park-paid-area-admission-admission-naha/"),
+};
+
+/** Kumamoto Castle — dated admission, with a Wakuwakuza combo option. */
+export const kumamotoCastleTicket: KlookTour = {
+  title: "Kumamoto Castle ticket",
+  desc: "Dated admission to Kumamoto Castle, with an option that adds the Wakuwakuza museum at Sakuranobaba Josaien",
+  url: klookLink("https://www.klook.com/en-US/activity/149422-kumamoto-castle-ticket/"),
+};
+
+/** Himeji Central Park (Hyogo) — park admission (safari and amusement park). */
+export const himejiCentralParkTicket: KlookTour = {
+  title: "Himeji Central Park ticket",
+  desc: "Admission to Safari Resort Himeji Central Park, the drive-through safari and amusement park outside Himeji",
+  url: klookLink("https://www.klook.com/en-US/activity/37518-himeji-central-park-ticket-hyogo/"),
+};
+
+/** Mishima Skywalk (Shizuoka) — bridge ticket, with a zip line and Forest Adventure set option. */
+export const mishimaSkywalkTicket: KlookTour = {
+  title: "Mishima Skywalk ticket",
+  desc: "Entry to the 400 m Mishima Skywalk suspension bridge facing Mt Fuji, shown as an e-ticket at the gate",
+  url: klookLink("https://www.klook.com/en-US/activity/22903-fuji-zip-line-mishima-skywalk-forest-adventure/"),
+};
+
+/** Matsue Castle (Shimane) — keep admission. */
+export const matsueCastleTicket: KlookTour = {
+  title: "Matsue Castle admission ticket",
+  desc: "Admission to the keep of Matsue Castle, one of Japan's twelve original castle keeps",
+  url: klookLink("https://www.klook.com/en-US/activity/105389-matsue-castle-admission-shimane/"),
+};
+
+/** Izu Teddy Bear Museum (Izu Kogen) — admission. */
+export const izuTeddyBearMuseumTicket: KlookTour = {
+  title: "Izu Teddy Bear Museum admission",
+  desc: "Admission to the teddy bear museum in Izu Kogen, a short walk from Izu-Kogen Station",
+  url: klookLink("https://www.klook.com/en-US/activity/51646-izu-teddy-bear-museum-shizuoka/"),
+};
+
+/** Glover Garden (Nagasaki) — admission. */
+export const gloverGardenTicket: KlookTour = {
+  title: "Glover Garden admission ticket",
+  desc: "Admission to Glover Garden and its western-style houses on the Minamiyamate hillside in Nagasaki",
+  url: klookLink("https://www.klook.com/en-US/activity/96420-glover-garden/"),
+};
+
+/** Okayama Castle — keep admission. */
+export const okayamaCastleTicket: KlookTour = {
+  title: "Okayama Castle ticket",
+  desc: "Admission to the keep of Okayama Castle, shown as a QR voucher at the ticket counter",
+  url: klookLink("https://www.klook.com/en-US/activity/82515-okayama-castle-admission-ticket/"),
+};
+
+/** Kenrokuen Garden (Kanazawa) — admission. */
+export const kenrokuenGardenTicket: KlookTour = {
+  title: "Kenrokuen Garden admission ticket",
+  desc: "Admission to Kenrokuen, the landscape garden next to Kanazawa Castle Park",
+  url: klookLink("https://www.klook.com/en-US/activity/205683-kenrokuen-garden-admission-ticket/"),
+};

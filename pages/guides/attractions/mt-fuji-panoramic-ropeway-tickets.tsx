@@ -114,6 +114,7 @@ export default function MtFujiPanoramicRopewayTicketsPage({ updated }: { updated
           the <Link href="/guides/attractions/mt-fuji-day-trip-tokyo" style={linkStyle}>Mt. Fuji day trip from Tokyo</Link> and the
           <Link href="/guides/transport/mt-fuji-pass" style={linkStyle}>Mt. Fuji Pass</Link>. For rides nearby, see
           <Link href="/guides/attractions/fuji-q-highland-tickets" style={linkStyle}>Fuji-Q Highland tickets</Link>.
+          {" "}For another Fuji view, the <Link href="/guides/attractions/mishima-skywalk-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Mishima Skywalk</Link> costs from ¥1,100 for adults and opens every day.
         </p>
       }
       faq={[

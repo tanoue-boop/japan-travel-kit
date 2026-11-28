@@ -171,6 +171,7 @@ export default function KansaiSaninAreaPassPage({ updated }: { updated: PageUpda
           a shorter, cheaper pass the{" "}
           <Link href="/guides/transport/kansai-wide-area-pass" style={linkStyle}>Kansai WIDE Area Pass</Link>. Adding Hiroshima? Read the{" "}
           <Link href="/guides/transport/sanyo-sanin-area-pass" style={linkStyle}>Sanyo-San&apos;in Area Pass</Link>.
+          {" "}In Matsue, the keep of <Link href="/guides/attractions/matsue-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Matsue Castle</Link> is ¥1,200 for adults and free for school-age children since July 2026.
         </p>
       }
       faq={[

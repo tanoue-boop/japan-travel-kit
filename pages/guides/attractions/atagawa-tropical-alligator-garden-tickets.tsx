@@ -107,6 +107,7 @@ export default function AtagawaAlligatorGardenTicketsPage({ updated }: { updated
           On the same coast, see <Link href="/guides/attractions/izu-shaboten-zoo-tickets" style={linkStyle}>Izu Shaboten Zoo</Link>. For the way there, see the
           <Link href="/guides/attractions/hakone-2-day-itinerary" style={linkStyle}>Hakone 2-day itinerary</Link> and the
           <Link href="/guides/transport/mt-fuji-shizuoka-area-pass" style={linkStyle}>Mt. Fuji-Shizuoka Area Pass</Link>.
+          {" "}Up the Izukyu line at Izu-Kogen, the <Link href="/guides/attractions/izu-teddy-bear-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Izu Teddy Bear Museum</Link> is ¥1,800 for adults and ¥1,000 for elementary school children.
         </p>
       }
       faq={[

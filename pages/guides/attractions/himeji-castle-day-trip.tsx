@@ -746,6 +746,11 @@ export default function HimejiCastleDayTripPage({ updated }: { updated: PageUpda
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            With children, <Link href="/guides/attractions/himeji-central-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Himeji Central Park</Link> is a bus ride from Himeji Station: entry ¥4,200–4,600 for adults by date.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -110,6 +110,7 @@ export default function KyotoMangaMuseumTicketsPage({ updated }: { updated: Page
           <Link href="/guides/attractions/kyoto-2-day-itinerary" style={linkStyle}>Kyoto 2-day itinerary</Link> and the
           <Link href="/guides/attractions/kyoto-3-day-itinerary" style={linkStyle}>Kyoto 3-day itinerary</Link>. For anime in Tokyo, see the
           <Link href="/guides/attractions/akihabara-anime-tour" style={linkStyle}>Akihabara anime tour</Link>.
+          {" "}A short walk away, <Link href="/guides/attractions/nijo-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nijo Castle</Link> is ¥1,300 for adults with the Ninomaru Palace, entry 8:45–16:00.
         </p>
       }
       faq={[

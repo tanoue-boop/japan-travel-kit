@@ -694,6 +694,11 @@ export default function TokyoToKanazawaPage({ updated }: { updated: PageUpdated 
             From Kanazawa, the <Link href="/guides/transport/shirakawa-go-bus" style={{ color: "var(--red)", fontWeight: 600 }}>Shirakawa-go bus</Link> is ¥2,900 one way from 1 December 2026.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In Kanazawa, <Link href="/guides/attractions/kenrokuen-garden-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kenrokuen</Link> is ¥320 for adults and open every day.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

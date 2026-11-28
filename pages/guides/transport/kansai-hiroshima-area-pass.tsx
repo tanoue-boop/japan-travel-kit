@@ -537,6 +537,11 @@ export default function KansaiHiroshimaAreaPassPage({ updated }: { updated: Page
             A stop in Okayama on the pass: the <Link href="/guides/attractions/betty-smith-jeans-making-experience" style={{ color: "var(--red)", fontWeight: 600 }}>Betty Smith jeans-making experience</Link> in Kurashiki, from ¥11,000.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            At Okayama, <Link href="/guides/attractions/okayama-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Okayama Castle</Link> is ¥500 for ages 15 and over and free for younger children.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

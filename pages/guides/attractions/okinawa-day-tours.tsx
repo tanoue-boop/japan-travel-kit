@@ -752,6 +752,11 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
             By car on your own, the <Link href="/guides/attractions/kouri-ocean-tower-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kouri Ocean Tower</Link> costs ¥1,000 for ages 16 and over, last entry 17:30.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On your own in Naha, <Link href="/guides/attractions/shuri-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shuri Castle</Link> is ¥1,000 for adults from 23 November 2026.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

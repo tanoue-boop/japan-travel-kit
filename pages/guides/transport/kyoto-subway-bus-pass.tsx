@@ -549,6 +549,11 @@ export default function KyotoSubwayBusPassPage({ updated }: { updated: PageUpdat
           </KlookLink>
         </section>
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            With a subway one-day ticket, adult entry to <Link href="/guides/attractions/nijo-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nijo Castle</Link> is ¥700 instead of ¥800 at the castle ticket office.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

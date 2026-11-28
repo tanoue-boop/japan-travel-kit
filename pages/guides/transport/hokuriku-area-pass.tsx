@@ -159,6 +159,7 @@ export default function HokurikuAreaPassPage({ updated }: { updated: PageUpdated
           <Link href="/guides/transport/kansai-hokuriku-area-pass" style={linkStyle}>Kansai-Hokuriku Area Pass</Link>{" "}
           and the{" "}
           <Link href="/guides/transport/hokuriku-arch-pass" style={linkStyle}>Hokuriku Arch Pass</Link>.
+          {" "}In Kanazawa, <Link href="/guides/attractions/kenrokuen-garden-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kenrokuen</Link> costs ¥320 for adults and ¥100 for ages 6–17.
         </p>
       }
       faq={[

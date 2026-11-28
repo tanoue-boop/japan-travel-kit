@@ -855,6 +855,11 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
             For getting around, the <Link href="/guides/transport/fukuoka-tourist-city-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Fukuoka Tourist City Pass</Link> is ¥2,500 a day (¥2,800 with Dazaifu); for Dazaifu plus the Yanagawa boat, Nishitetsu&apos;s <Link href="/guides/transport/dazaifu-yanagawa-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Dazaifu & Yanagawa pass</Link> is ¥3,620 digital.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a day further south, <Link href="/guides/attractions/kumamoto-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kumamoto Castle</Link> is ¥800 for adults, open 9:00–17:00.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

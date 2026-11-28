@@ -175,6 +175,7 @@ export default function OkayamaHiroshimaYamaguchiAreaPassPage({ updated }: { upd
           <Link href="/guides/transport/hiroshima-yamaguchi-area-pass" style={linkStyle}>Hiroshima-Yamaguchi Area Pass</Link>{" "}
           is the smaller pass; crossing to Shikoku, see the{" "}
           <Link href="/guides/transport/all-shikoku-rail-pass" style={linkStyle}>ALL SHIKOKU Rail Pass</Link>.
+          {" "}In Okayama, <Link href="/guides/attractions/okayama-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Okayama Castle</Link> is ¥500 for adults, or ¥800 with Korakuen Garden.
         </p>
       }
       faq={[

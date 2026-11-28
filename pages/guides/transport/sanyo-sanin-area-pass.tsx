@@ -178,6 +178,7 @@ export default function SanyoSaninAreaPassPage({ updated }: { updated: PageUpdat
           starts at Kojima. For five days in the west only, the{" "}
           <Link href="/guides/transport/okayama-hiroshima-yamaguchi-area-pass" style={linkStyle}>Okayama-Hiroshima-Yamaguchi Area Pass</Link>{" "}
           is the smaller pass.
+          {" "}In Matsue, <Link href="/guides/attractions/matsue-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Matsue Castle</Link> costs ¥1,200 for adults, open 8:30–17:00 from October to March.
         </p>
       }
       faq={[

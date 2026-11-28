@@ -1066,6 +1066,11 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             Indoors and central, the <Link href="/guides/attractions/kyoto-international-manga-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto International Manga Museum</Link> is ¥1,200 for adults, 2 minutes from Karasuma-Oike Station.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In central Kyoto, <Link href="/guides/attractions/nijo-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nijo Castle</Link> is ¥1,300 for adults with the Ninomaru Palace; last entry is at 16:00.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

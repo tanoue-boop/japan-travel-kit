@@ -601,6 +601,11 @@ export default function ShirakawagoWinterLightUpPage({ updated }: { updated: Pag
             For a winter view of the Northern Alps, the <Link href="/guides/attractions/shinhotaka-ropeway-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shinhotaka Ropeway</Link> runs all year: ¥3,800 return for adults.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Back in Kanazawa, <Link href="/guides/attractions/kenrokuen-garden-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kenrokuen</Link> is ¥320 for adults, open 8:00–17:00 in winter.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

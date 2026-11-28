@@ -762,6 +762,11 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
             For manga fans, the <Link href="/guides/attractions/kyoto-international-manga-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto International Manga Museum</Link> opens 10:00–17:00 except Wednesdays (¥1,200 for adults).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For the shogun&apos;s castle, <Link href="/guides/attractions/nijo-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nijo Castle</Link> costs ¥1,300 for adults with the Ninomaru Palace, which closes on Tuesdays in December and January.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

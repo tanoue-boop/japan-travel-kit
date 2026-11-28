@@ -141,6 +141,7 @@ export default function BettySmithJeansMakingPage({ updated }: { updated: PageUp
           <Link href="/guides/transport/kansai-hiroshima-area-pass" style={linkStyle}>Kansai-Hiroshima Area Pass</Link>,{" "}
           <Link href="/guides/transport/sanyo-sanin-area-pass" style={linkStyle}>Sanyo-San&apos;in Area Pass</Link> and{" "}
           <Link href="/guides/transport/okayama-hiroshima-yamaguchi-area-pass" style={linkStyle}>Okayama-Hiroshima-Yamaguchi Area Pass</Link>.
+          {" "}Back in Okayama city, <Link href="/guides/attractions/okayama-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Okayama Castle</Link> is ¥500 for adults, 9:00–17:30.
         </p>
       }
       faq={[

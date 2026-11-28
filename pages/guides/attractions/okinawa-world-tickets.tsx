@@ -119,6 +119,7 @@ export default function OkinawaWorldTicketsPage({ updated }: { updated: PageUpda
           <Link href="/guides/attractions/dmm-kariyushi-aquarium-tickets" style={linkStyle}>DMM Kariyushi Aquarium</Link>.
           {" "}For a full day in the north instead, see <Link href="/guides/attractions/junglia-okinawa-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>JUNGLIA Okinawa tickets</Link> (from ¥8,800 for adults; closed most Mondays from January 2027).
           {" "}For old Okinawa further north, <Link href="/guides/attractions/ryukyu-mura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Ryukyu Mura</Link> in Onna is ¥2,000 for adults; in Okinawa City, <Link href="/guides/attractions/southeast-botanical-gardens-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Southeast Botanical Gardens</Link> has a night illumination ticket at ¥2,500.
+          {" "}In Naha, <Link href="/guides/attractions/shuri-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shuri Castle</Link> charges ¥1,000 for adults from 23 November 2026; seeing inside the new Seiden needs a timed reservation.
         </p>
       }
       faq={[

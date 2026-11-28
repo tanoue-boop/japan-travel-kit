@@ -138,6 +138,7 @@ export default function HuisTenBoschTicketsPage({ updated }: { updated: PageUpda
           Nagasaki itself, the{" "}
           <Link href="/guides/attractions/gunkanjima-tour" style={linkStyle}>Gunkanjima (Battleship Island) tour</Link>{" "}
           is the other ticket to book ahead.
+          {" "}In Nagasaki city, <Link href="/guides/attractions/glover-garden-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Glover Garden</Link> costs ¥1,300 for adults and ¥650 for school-age children.
         </p>
       }
       faq={[

@@ -600,6 +600,11 @@ export default function HakoneDayTripFromTokyoPage({ updated }: { updated: PageU
             On the bus to Lake Ashi, the <Link href="/guides/attractions/hakone-glass-forest-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hakone Glass Forest</Link> in Sengokuhara is ¥1,800 for adults, 10:00–17:30.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On the way to Mishima, the <Link href="/guides/attractions/mishima-skywalk-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Mishima Skywalk</Link> bridge faces Mt Fuji and costs from ¥1,100 for adults, 9:00–17:00 daily.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

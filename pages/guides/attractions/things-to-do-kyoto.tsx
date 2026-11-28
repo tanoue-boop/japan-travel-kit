@@ -455,6 +455,11 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
             For a rainy afternoon, the <Link href="/guides/attractions/kyoto-international-manga-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kyoto International Manga Museum</Link> at Karasuma-Oike is ¥1,200 for adults (closed on Wednesdays).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <Link href="/guides/attractions/nijo-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nijo Castle</Link> is ¥1,300 for adults with the Ninomaru Palace, or ¥800 for the grounds only.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

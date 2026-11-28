@@ -113,6 +113,7 @@ export default function RyukyuMuraTicketsPage({ updated }: { updated: PageUpdate
           <Link href="/guides/attractions/dmm-kariyushi-aquarium-tickets" style={linkStyle}>DMM Kariyushi Aquarium</Link>{" "}
           and{" "}
           <Link href="/guides/attractions/okinawa-day-tours" style={linkStyle}>Okinawa day tours</Link>.
+          {" "}For the Ryukyu kings&apos; castle itself, <Link href="/guides/attractions/shuri-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shuri Castle</Link> is ¥1,000 for adults, open 8:30–18:00 from December to March.
         </p>
       }
       faq={[

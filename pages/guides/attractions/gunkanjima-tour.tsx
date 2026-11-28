@@ -135,6 +135,7 @@ export default function GunkanjimaTourPage({ updated }: { updated: PageUpdated }
           <Link href="/guides/transport/jr-kyushu-rail-pass" style={linkStyle}>JR Kyushu Rail Pass guide</Link>. The
           other big Nagasaki ticket is{" "}
           <Link href="/guides/attractions/huis-ten-bosch-tickets" style={linkStyle}>Huis Ten Bosch</Link>.
+          {" "}Up the hill from the harbour, <Link href="/guides/attractions/glover-garden-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Glover Garden</Link> is ¥1,300 for adults since April 2026, open 8:00–18:00.
         </p>
       }
       faq={[

@@ -1018,6 +1018,11 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
             In Beppu, the <Link href="/guides/attractions/beppu-hells-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Hells of Beppu</Link> ticket is ¥2,400 for adults for all seven hells, valid on the day and the next, 8:00–17:00.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            <Link href="/guides/attractions/kumamoto-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kumamoto Castle</Link> is ¥800 for adults (¥850 with the Wakuwakuza museum), and in Nagasaki <Link href="/guides/attractions/glover-garden-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Glover Garden</Link> is ¥1,300 for adults since April 2026.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}
