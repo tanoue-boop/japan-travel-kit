@@ -550,7 +550,8 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
               <strong>Day 1</strong> is the castle and Minami: the main tower from its{" "}
               <strong>9:00</strong> opening ({CASTLE_ADULT} adult), the Nishinomaru Garden (¥300), lunch at{" "}
               <strong>Kuromon Ichiba Market</strong>, the covered Shinsaibashi arcade, the{" "}
-              <strong>{CRUISE_ADULT}</strong> 20-minute <strong>Tombori River Cruise</strong>, then Dotonbori
+              <strong>{CRUISE_ADULT}</strong> 20-minute{" "}
+              <Link href="/guides/attractions/dotonbori-river-cruise"><strong>Tombori River Cruise</strong></Link>, then Dotonbori
               and Shinsekai after dark. <strong>Day 2</strong> is the bay and Umeda: the{" "}
               <strong>Osaka Aquarium Kaiyukan</strong> from opening (¥2,700–3,200 by date, about 2 hours, and
               no re-entry since 15 June 2026), Tempozan Harbor Village for lunch, then the{" "}

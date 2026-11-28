@@ -48,15 +48,15 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const LOCALE = "ko" as const;
 const ROUTE = "/ko/guides/transport/tokyo-to-nagoya-shinkansen";
-const TITLE = "도쿄 나고야 신칸센 2026: 가격, 소요 시간, 예매 방법";
-const H1 = "도쿄 나고야 신칸센 2026: 가격, 소요 시간, JR 패스";
+const TITLE = "도쿄 나고야 신칸센 93분·¥11,100｜가격 2026";
+const H1 = "도쿄 나고야 신칸센: 노조미 최단 93분, 지정석 ¥11,100";
 const DESC =
-  "도쿄 나고야 신칸센 가격: 노조미 지정석 ¥11,100, 최단 1시간 33분. JR 패스는 히카리 이용. 클룩 예매.";
+  "도쿄 나고야 신칸센은 노조미로 최단 93분, 지정석 편도 ¥11,100(2026년 11월 확인). JR 패스는 히카리로 1시간 41분부터.";
 
 const OWN_ISO = "2026-10-28";
 const OWN = dateLabel(OWN_ISO, LOCALE);
 const PARKS = dateLabel("2026-10-26", LOCALE);
-const LAST_CHECKED = "2026-11-18";
+const LAST_CHECKED = "2026-11-28";
 const CHECKED = dateLabel(LAST_CHECKED, LOCALE);
 
 const tokyoNagoya = fares.segments.find((s) => s.id === "tokyo-nagoya")!;
@@ -76,6 +76,7 @@ const NOZOMI_RANGE = "1시간 33분~1시간 41분";
 const HIKARI_RANGE = "1시간 41분~1시간 59분";
 const KODAMA_RANGE = "2시간 36분~2시간 46분";
 const NOZOMI_PER_DAY = 119;
+const NOZOMI_FASTEST_MIN = "93분";
 
 const SHINKANSEN_URL = klookFor(shinkansenTokyoNagoya.url, LOCALE);
 const GHIBLI_TOUR_URL = klookFor(ghibliParkNagoyaBusTour.url, LOCALE);
@@ -279,8 +280,8 @@ const fromNagoyaRows = [
 
 const faqItems: FaqItem[] = [
   {
-    q: "도쿄에서 나고야까지 신칸센 소요 시간은 얼마나 걸리나요?",
-    a: `노조미로 최단 ${NOZOMI_FASTEST}이며 환승은 없습니다. ${CHECKED}에 확인한 JR 도카이 열차 운행 정보에서 도쿄를 출발해 나고야에 서는 노조미 ${NOZOMI_PER_DAY}편은 ${NOZOMI_RANGE}이었습니다. JAPAN RAIL PASS로 탈 수 있는 히카리는 ${HIKARI_RANGE}로 역시 환승이 없고, 모든 역에 서는 고다마는 ${KODAMA_RANGE}입니다.`,
+    q: "도쿄에서 나고야까지 신칸센은 몇 분 걸리나요?",
+    a: `노조미로 최단 ${NOZOMI_FASTEST_MIN}(${NOZOMI_FASTEST})이며 환승은 없습니다. ${CHECKED}에 확인한 JR 도카이 열차 운행 정보에서 도쿄를 출발해 나고야에 서는 노조미 ${NOZOMI_PER_DAY}편은 ${NOZOMI_RANGE}이었습니다. JAPAN RAIL PASS로 탈 수 있는 히카리는 ${HIKARI_RANGE}로 역시 환승이 없고, 모든 역에 서는 고다마는 ${KODAMA_RANGE}입니다.`,
   },
   {
     q: "도쿄에서 나고야까지 신칸센 가격은 얼마인가요?",
@@ -434,7 +435,7 @@ export default function KoTokyoToNagoyaShinkansenPage({ updated }: { updated: Pa
           <p className={styles.eyebrow}>{updatedLabel} 업데이트</p>
           <h1 className={styles.heroTitle}>{H1}</h1>
           <p className={styles.heroSubtitle}>
-            약 1시간 30분, 몇 분 간격으로 오는 노조미. 그리고 도카이도 신칸센에서 레일 패스로 가도 늘어나는 시간이 1시간 15분이
+            몇 분 간격으로 오는 환승 없는 노조미. 그리고 도카이도 신칸센에서 레일 패스로 가도 늘어나는 시간이 1시간 15분이
             아니라 몇 분뿐인 구간입니다.
           </p>
           <div className={styles.heroBadges}>
@@ -474,8 +475,8 @@ export default function KoTokyoToNagoyaShinkansenPage({ updated }: { updated: Pa
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>도쿄 나고야 신칸센</strong>은 환승 없는 노조미로 최단 <strong>{NOZOMI_FASTEST}</strong>(도쿄 출발 하루{" "}
-              {NOZOMI_PER_DAY}편 기준 {NOZOMI_RANGE})이 걸리고, 보통차 지정석은 JR의 smartEX 가격으로 편도{" "}
+              <strong>도쿄 나고야 신칸센</strong>은 환승 없는 노조미로 최단{" "}
+              <strong>{NOZOMI_FASTEST_MIN}({NOZOMI_FASTEST})</strong>이 걸리고, 보통차 지정석은 JR의 smartEX 가격으로 편도{" "}
               <strong>{SMART_EX_NOZOMI}</strong>입니다. JAPAN RAIL PASS로는 노조미를 탈 수 없지만, 패스로 탈 수 있는 히카리가
               환승 없이 <strong>{HIKARI_RANGE}</strong>에 가며 패스 없이 사면 {SMART_EX_HIKARI}입니다. JR 도카이와 smart-ex.jp에서{" "}
               {CHECKED}에 확인했습니다.
@@ -493,13 +494,13 @@ export default function KoTokyoToNagoyaShinkansenPage({ updated }: { updated: Pa
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>답</span>
-          <h2 className={styles.sectionTitle}>도쿄에서 나고야까지 신칸센 소요 시간은?</h2>
+          <h2 className={styles.sectionTitle}>도쿄에서 나고야까지 신칸센은 몇 분 걸리나요?</h2>
           <p className={styles.bodyText}>
-            최단 {NOZOMI_FASTEST}, 거의 모든 노조미가 {NOZOMI_RANGE}이며 환승은 없습니다. JR 도카이 시각표에서 {CHECKED}에 도쿄를
+            최단 {NOZOMI_FASTEST_MIN}({NOZOMI_FASTEST}), 거의 모든 노조미가 {NOZOMI_RANGE}이며 환승은 없습니다. JR 도카이 시각표에서 {CHECKED}에 도쿄를
             출발해 나고야에 서는 노조미는 {NOZOMI_PER_DAY}편이었고 첫차는 06:00였습니다. 히카리는 {HIKARI_RANGE}, 모든 역에 서는
             고다마는 {KODAMA_RANGE}입니다.
           </p>
-          <h2 className={styles.sectionTitle}>도쿄에서 나고야까지 신칸센 가격은?</h2>
+          <h2 className={styles.sectionTitle}>도쿄에서 나고야까지 신칸센 가격은 얼마인가요?</h2>
           <p className={styles.bodyText}>
             노조미 보통차 지정석은 편도 {SMART_EX_NOZOMI}, 히카리나 고다마의 같은 좌석은 {SMART_EX_HIKARI}이며, JR의 smartEX
             성인 1명 가격입니다. 노조미 왕복은 ¥22,200으로 7일 JAPAN RAIL PASS({JR_PASS_7})의 절반이 안 됩니다.

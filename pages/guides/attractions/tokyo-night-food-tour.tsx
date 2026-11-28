@@ -350,7 +350,7 @@ export default function TokyoNightFoodTourPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText}>
             One line on how this differs from our{" "}
             <Link href="/guides/attractions/tokyo-food-tour" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Tokyo food and izakaya tours guide
+              daytime Tokyo food tour guide (Tsukiji and Asakusa)
             </Link>
             : that page covers the daytime market graze and the general question of whether to take a food tour at
             all, while this one is only the evening — the alleys, the bars, the drinking age and which of the night

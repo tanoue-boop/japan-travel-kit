@@ -47,15 +47,18 @@ const SAME_DAY = dotonboriSameDayCards("zh-cn");
 const ROUTE = "/zh-cn/guides/attractions/dotonbori-river-cruise";
 // 20 Nov 2026 (task-jtk-20261120-C01): official name とんぼりリバークルーズ moved into the title;
 // fares, times and pier re-read on osaka-info.jp/en/spot/tombori-river-cruise/ the same day.
-const TITLE = "道顿堀游船（とんぼりリバークルーズ）2026：票价、时间与码头";
+// 28 Nov 2026 (CTR pass): price and duration moved into the title; fares, 約20分／便, 11:00–21:00
+// every :00/:30 and DOTON号 capacity 70 re-read on the operator's own page (OPERATOR_URL).
+const TITLE = "道顿堀游船 2026：¥2,000、约20分钟、班次时刻";
 const DESC =
-  "道顿堀游船（とんぼりリバークルーズ）票价：成人¥2,000、约20分钟，11:00–21:00每30分钟一班，太左卫门桥码头出发，大阪周游卡免费。";
+  "道顿堀游船（とんぼりリバークルーズ）成人 ¥2,000、儿童 ¥500，航程约 20 分钟，11:00–21:00 每 30 分钟一班，大阪周游卡免费。";
 
 const L = "zh-cn" as const;
-const CHECKED_ISO = "2026-11-27"; // re-read 27 Nov 2026 (task-jtk-20261127-04), unchanged
+const CHECKED_ISO = "2026-11-28"; // re-read 28 Nov 2026 on the operator's own page, unchanged
 const CHECKED = dateLabel(CHECKED_ISO, L);
 const ROOF_CHECKED = dateLabel("2026-11-01", L);
 const OSAKA_INFO_URL = "https://osaka-info.jp/en/spot/tombori-river-cruise/";
+const OPERATOR_URL = "https://www.ipponmatsu.co.jp/cruise/tombori.html";
 // The pass price is owned by lib/attraction-prices.ts, shared with the English pages.
 const PASS_1_DAY = priceLabel(PRICES.osakaAmazingPass.adult, L);
 
@@ -191,7 +194,7 @@ const steps = [
   },
   {
     title: "从头到尾预留约 40 分钟，不是 20 分钟",
-    desc: "游船航程是 20 分钟。换票排队、走到浮动码头以及登上可容纳二三十人的小船，还要再花约 20 分钟。如果想把乘船安排在已预订的晚餐和演出之间，请按 40 分钟来规划。",
+    desc: "游船航程是 20 分钟。换票排队、走到浮动码头以及登上最多可容纳 70 人的游船，还要再花约 20 分钟。如果想把乘船安排在已预订的晚餐和演出之间，请按 40 分钟来规划。",
   },
 ];
 
@@ -210,7 +213,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "道顿堀游船要坐多久？",
-    a: `航程约 20 分钟，沿着穿过南区核心地带的道顿堀川往返。以游船来说算短，但这个长度正合适：这段河道两岸只有几百米的霓虹店面，即使航程更长，也只是多绕一圈。算上换票、走到浮动码头和登船的时间，从头到尾请预留约 40 分钟。航程长度按大阪官方旅游网站与「水都大阪」游船门户网站，核查日 ${CHECKED}。`,
+    a: `航程约 20 分钟，从太左卫门桥码头出发，在日本桥与凑町河畔广场前各折返一次，穿过 9 座桥后回到原处。以游船来说算短，但这个长度正合适：这段河道两岸只有几百米的霓虹店面，即使航程更长，也只是多绕一圈。算上换票、走到浮动码头和登船的时间，从头到尾请预留约 40 分钟。航程长度与路线按运营方一本松海运官网与大阪官方旅游网站，核查日 ${CHECKED}。`,
   },
   {
     q: "一本松海运的 Tombori River Cruise 和道顿堀游船是同一种游船吗？",
@@ -276,7 +279,7 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
     <>
       <Head>
         {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems.slice(0, 5)) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -298,7 +301,7 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新于 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            道顿堀游船（とんぼりリバークルーズ）2026： <br />票价、开船时间与太左卫门桥码头
+            道顿堀游船（とんぼりリバークルーズ）2026： <br />¥2,000、约 20 分钟、开船时间与码头
           </h1>
           <p className={styles.heroSubtitle}>
             成人 ¥2,000、约 20 分钟，11:00 到 21:00 之间从太左卫门桥码头每半小时一班。持大阪周游卡可免费乘船，
@@ -322,7 +325,7 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
             <strong>道顿堀游船（とんぼりリバークルーズ）</strong>成人 <strong>¥2,000</strong>、学生{" "}
             <strong>¥1,000</strong>、儿童 <strong>¥500</strong>，航程<strong>约 20 分钟</strong>。从
             <strong>太左卫门桥码头</strong>出发，<strong>11:00–21:00 每 30 分钟一班</strong>；持大阪周游卡换成指定时间的船票后
-            <strong>免费</strong>。数据来自大阪官方观光网站，最后核对 {CHECKED_ISO}。
+            <strong>免费</strong>。数据来自运营方一本松海运的官方网站，最后核对 {CHECKED_ISO}。
           </p>
           <div className={styles.pickCtaRow} style={{ marginBottom: "0.5rem" }}>
             <KlookLink href={K.pass} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
@@ -444,11 +447,14 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             <strong>Last checked: {CHECKED_ISO}</strong> — 来源：{" "}
-            <a href={OSAKA_INFO_URL} target="_blank" rel="noopener">
-              大阪观光局官方网站，Tombori River Cruise
+            <a href={OPERATOR_URL} target="_blank" rel="noopener">
+              一本松海运 とんぼりリバークルーズ官方页面
             </a>
-            。票价来自大阪官方旅游网站与大阪周游卡运营方发布的免费设施清单，核查日 {CHECKED}，两者列出的是同样
-            三个价格。船公司官方网站在核查当天因维护无法访问，所以本页所有数字都来自上述两个来源。
+            （含税票价），并与{" "}
+            <a href={OSAKA_INFO_URL} target="_blank" rel="noopener">
+              大阪观光局官方网站
+            </a>
+            、大阪周游卡运营方发布的免费设施清单核对，核查日 {CHECKED}，三者列出的是同样三个价格。
             可能变动，付款前请确认。本站整理的日本其他景点门票（各自附核查日），请见{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={linkStyle}>
               日本景点门票价格总表（英文）
@@ -501,12 +507,12 @@ export default function CnDotonboriRiverCruisePage({ updated }: { updated: PageU
             而 <strong>21:00 的末班</strong>足够晚，无论哪个季节，都可以安排在晚餐后乘船。时刻核查日 {CHECKED}。
           </p>
 
-          <h3 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
-            Tombori River Cruise 要坐多久？
-          </h3>
+          <h2 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            道顿堀游船要坐多久？
+          </h2>
           <p className={styles.bodyText}>
-            <strong>在水上约 20 分钟。</strong>大阪官方旅游网站写 20 分钟，「水都大阪」游船门户网站写
-            「约 20 分钟」，核查日都是 {CHECKED}。实际请预留<strong>从头到尾约 40 分钟</strong>：换票、走到浮动码头以及登上可容纳二三十人的小船，还要再花约 20 分钟。20 分钟对这条航线来说正合适：这段河道
+            <strong>在水上约 20 分钟。</strong>从太左卫门桥码头出发，在日本桥与凑町河畔广场前各折返一次，穿过 9 座桥后回到原处；
+            运营方官网写「约 20 分钟／班」，核查日 {CHECKED}。实际请预留<strong>从头到尾约 40 分钟</strong>：换票、走到浮动码头以及登上最多可容纳 70 人的游船，还要再花约 20 分钟。20 分钟对这条航线来说正合适：这段河道
             两岸只有几百米的霓虹店面，即使航程更长，也只是多绕一圈。
           </p>
 

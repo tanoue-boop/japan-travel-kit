@@ -766,7 +766,7 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             If the Day 2 evening ends back at Kyoto Station, teamLab Biovortex Kyoto is seven minutes&apos; walk
             from the Hachijo East Gate and takes its last entry at 19:30 — adult tickets from ¥3,800, ¥200
             cheaper online than at the door. Slots, hours and closed days are in our{" "}
-            <Link href="/guides/attractions/teamlab-kyoto-tickets">teamLab Kyoto tickets guide</Link>.
+            <Link href="/guides/attractions/teamlab-kyoto-tickets">teamLab Biovortex Kyoto tickets</Link> guide.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={saganoHozugawaGuaranteedTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

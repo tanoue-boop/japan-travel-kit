@@ -47,6 +47,17 @@ const SOURCES = {
   tokyoMetroTapToRide: "https://www.tokyometro.jp/lang_en/ticket/index.html",
 } as const;
 
+/**
+ * 28 Nov 2026 (CTR pass): Tokyo Metro's 11-operator announcement (729 stations, 25 March 2026),
+ * Visa Japan's tap-to-ride operator list (as of May 2026) and the stera transit count
+ * (237 schemes, 46 prefectures, end of October 2026) were re-read on this date by node fetch.
+ */
+const TAP_CHECKED_ISO = "2026-11-28";
+const VISA_TRANSIT_URL = "https://www.visa.co.jp/pay-with-visa/featured-technologies/contactless/merchants-transit.html";
+const PAGE_TITLE = "Can You Tap to Pay in Japan? (2026) Which Cards Work Where";
+const PAGE_DESCRIPTION =
+  "Yes: Visa, Mastercard, JCB and Amex tap at konbini and open the gates at 729 stations of Tokyo Metro, Toei and 9 more Kanto lines, but not JR East.";
+
 /** The two questions searchers type word for word, re-checked on this date (task jtk-20261119-C01). */
 const QUESTIONS_CHECKED_ISO = "2026-11-19";
 
@@ -227,8 +238,12 @@ const suicaSteps = [
 
 const faqItems = [
   {
-    q: "Can I use contactless cards in Japan?",
-    a: `Yes. Convenience stores and large chains take contactless Visa, Mastercard, JCB and American Express — 7-Eleven's own payment page lists those four plus Diners Club and Discover, and Apple Pay and Google Pay for contactless. The gaps are transport and small places: a card opens ticket gates on Tokyo Metro, Toei and nine other Kanto operators but not on JR East, and JNTO notes that smaller shops may accept only yen in cash. Checked ${CHECKED_NOV}.`,
+    q: "Can you tap to pay in Japan?",
+    a: `Yes. Convenience stores and large chains take contactless Visa, Mastercard, JCB and American Express — 7-Eleven's own payment page lists those four plus Diners Club and Discover, and Apple Pay and Google Pay for contactless. On trains, the same card opens the ticket gates at 729 stations of Tokyo Metro, Toei and nine other Kanto operators (since 25 March 2026), and Visa Japan's tap-to-ride list also names Osaka Metro, Nankai, JR Kyushu and Fukuoka City Subway — but not JR East. JNTO notes that smaller shops may accept only yen in cash. Shops checked ${CHECKED_NOV}; railway lists checked ${TAP_CHECKED_ISO}.`,
+  },
+  {
+    q: "Which contactless card works best in Japan?",
+    a: `Any card with the contactless mark and no foreign-transaction fee. The brand matters less than the fee: 7-Eleven's payment page lists Visa, Mastercard, JCB, American Express, Diners Club and Discover (checked ${CHECKED_NOV}), and Tokyo Metro's Tap to Ride takes a credit, debit or prepaid card, or a smartphone with one registered (checked ${TAP_CHECKED_ISO}). Every tap is charged in yen, so a card that adds a currency margin adds it on every ride.`,
   },
   {
     q: "Can you buy a subway ticket with a credit card in Japan?",
@@ -242,12 +257,10 @@ const faqItems = [
     q: "Do I still need a Suica card?",
     a: `For JR East trains and most buses, yes — an IC card is the only tap accepted on every operator. Visitors can buy a Welcome Suica (¥1,000–¥10,000, valid 28 days including the day of purchase, no refunds, and JR East states it cannot be topped up by credit card) or a TOURIST PASMO (¥1,000–¥10,000 at Haneda, ¥2,000 at Narita, valid 28 days, no deposit, no refunds), or add Suica or PASMO to Apple Wallet. PASMO PASSPORT is no longer sold: PASMO lists its rules as abolished on 4 October 2024. Checked ${CHECKED_NOV}.`,
   },
-  {
-    q: "Which payments do temples and small restaurants accept?",
-    a: `Plan on cash. JNTO's FAQ says smaller shops and remote ryokan may accept only yen in cash, and its budget page puts most temple and shrine fees at a couple of hundred yen where one is charged. Some take IC cards, cards or QR payment, but there is no rule to rely on, so check at the gate or the counter. Checked ${CHECKED_NOV}.`,
-  },
   // 19 Nov 2026 (C01): "Does a contactless card work on trains outside Tokyo?" was folded
-  // into the Visa question above, to keep the FAQ at five.
+  // into the Visa question above, to keep the FAQ at five. 28 Nov 2026: "Which payments do
+  // temples and small restaurants accept?" left the FAQ (its H2 section still answers it) to
+  // make room for "Which contactless card works best in Japan?".
 ];
 
 const canonicalUrl = "https://www.japan-travel-kit.com/guides/money/contactless-payment-japan";
@@ -258,21 +271,18 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
   return (
     <>
       <Head>
-        <title>Contactless Payment in Japan 2026: Tap on Trains &amp; Shops</title>
-        <meta
-          name="description"
-          content="Contactless payment in Japan: tap Visa, Mastercard, JCB or Amex at konbini and on Tokyo Metro, Toei and 9 more Kanto lines (729 stations), not JR East."
-        />
+        <title>{PAGE_TITLE}</title>
+        <meta name="description" content={PAGE_DESCRIPTION} />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content="Contactless Payment in Japan 2026: Tap on Trains & Shops" />
+        <meta property="og:title" content={PAGE_TITLE} />
         <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:description" content="Contactless payment in Japan: tap Visa, Mastercard, JCB or Amex at konbini and on Tokyo Metro, Toei and 9 more Kanto lines (729 stations), not JR East." />
+        <meta property="og:description" content={PAGE_DESCRIPTION} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Japan Travel Kit" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contactless Payment in Japan 2026: Tap on Trains & Shops" />
-        <meta name="twitter:description" content="Contactless payment in Japan: tap Visa, Mastercard, JCB or Amex at konbini and on Tokyo Metro, Toei and 9 more Kanto lines (729 stations), not JR East." />
+        <meta name="twitter:title" content={PAGE_TITLE} />
+        <meta name="twitter:description" content={PAGE_DESCRIPTION} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -292,7 +302,7 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
           dangerouslySetInnerHTML={{
             __html: articleJsonLd({
               route: "/guides/money/contactless-payment-japan",
-              headline: "Contactless Payment in Japan 2026: Tap on Trains & Shops",
+              headline: PAGE_TITLE,
               updated,
             }),
           }}
@@ -340,11 +350,11 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Contactless Payment in Japan 2026: <br />Tap on Trains &amp; Shops
+            Can You Tap to Pay in Japan? <br />Which Cards Work on Trains &amp; in Shops (2026)
           </h1>
           <p className={styles.heroSubtitle}>
-            Cards, Suica, trains, temples — which tap works where, where you still
-            need yen, and what to book before you land.
+            Visa, Mastercard, JCB, Amex and Suica — which tap works at the konbini, which ticket gates
+            open to a credit card, and where you still need yen.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Operator by operator", "For Foreign Visitors"].map((t) => (
@@ -371,17 +381,17 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
 
         {/* Answer first */}
         <section className={styles.bodySection} style={{ marginBottom: "2.5rem" }}>
-          <h2 className={styles.sectionTitle}>Can I Use Contactless Cards in Japan?</h2>
+          <h2 className={styles.sectionTitle}>Can You Tap to Pay in Japan?</h2>
           <p className={styles.bodyText}>
             <strong>
-              Yes: contactless Visa, Mastercard, JCB and American Express work at Japan&apos;s convenience
-              stores and big chains, and they open the ticket gates at 729 stations of 11 Kanto railways,
-              including Tokyo Metro and Toei, since 25 March 2026 — but not on JR East.
+              Yes: you can tap to pay in Japan with a contactless Visa, Mastercard, JCB or American Express card
+              at convenience stores and big chains, and the same card opens the ticket gates at 729 stations of
+              11 Kanto railways, including Tokyo Metro and Toei, since 25 March 2026 — but not on JR East.
             </strong>{" "}
-            7-Eleven lists all four brands plus Apple Pay and Google Pay. For trains, an IC card (Suica or PASMO; visitors can buy a Welcome Suica or TOURIST PASMO, as PASMO
-            PASSPORT is no longer sold) works on every operator, while a contactless card opens the gates of 11
-            Kanto operators including Tokyo Metro and Toei — 729 stations from 25 March 2026 — but not JR East.
-            Cash still matters: JNTO notes that smaller shops may accept only yen in cash.
+            Visa Japan&apos;s tap-to-ride list (May 2026) also names Osaka Metro, Nankai, JR Kyushu and Fukuoka
+            City Subway, with no ticket to buy and nothing to top up. For JR East and most buses you still need
+            an IC card (Suica or PASMO; visitors can buy a Welcome Suica or TOURIST PASMO), and JNTO notes that
+            smaller shops may accept only yen in cash.
           </p>
           <p className={styles.bodyText}>
             So the working kit is a contactless card for shops and most of Tokyo&apos;s subway, an IC card for
@@ -427,7 +437,23 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
             <a href={SOURCES.touristPasmo} target="_blank" rel="noopener">TOURIST PASMO</a>,{" "}
             <a href={SOURCES.jntoFaq} target="_blank" rel="noopener">JNTO FAQ</a>,{" "}
             <a href={SOURCES.jntoBudget} target="_blank" rel="noopener">JNTO budget tips</a>. Station counts for
-            Osaka, Nankai and Fukuoka were read on {CHECKED}.
+            Osaka, Nankai and Fukuoka were read on {CHECKED}. The Tokyo Metro announcement and{" "}
+            <a href={VISA_TRANSIT_URL} target="_blank" rel="noopener">Visa Japan&apos;s tap-to-ride list</a> were
+            re-checked on {TAP_CHECKED_ISO}.
+          </p>
+
+          <h2 className={styles.sectionTitle} style={{ marginTop: "2rem" }}>Which Contactless Card Works Best in Japan?</h2>
+          <p className={styles.bodyText}>
+            <strong>
+              Any card with the contactless mark and no foreign-transaction fee — the brand matters less than the
+              fee, because Tokyo Metro&apos;s Tap to Ride takes credit, debit and prepaid cards that support tap
+              payment, or a smartphone with one registered.
+            </strong>{" "}
+            Every tap is charged in yen, so a card that adds a currency margin adds it on every ride; the{" "}
+            <Link href="/guides/money/best-travel-card-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              best travel card for Japan
+            </Link>{" "}
+            comparison lists the fees card by card.
           </p>
         </section>
 
@@ -486,7 +512,7 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
             </strong>{" "}
             Only adult fares can be paid this way and one card covers one passenger, so a child still needs an
             IC card. For every other railway, bus and ferry that takes a Visa tap, Sumitomo Mitsui Card&apos;s
-            stera transit list counts 236 schemes in 46 prefectures (end of September 2026). The operator-by-operator
+            stera transit list counts 237 schemes in 46 prefectures (end of October 2026). The operator-by-operator
             table further down has the detail; for the subway rides themselves, compare a tap per ride with the{" "}
             <Link href="/guides/attractions/tokyo-subway-ticket" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Tokyo Subway Ticket
@@ -556,11 +582,12 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
             {CHECKED}.
           </p>
           <p className={styles.bodyText} style={{ fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Last checked: {LAST_CHECKED_ISO} for the Kanto list (
+            Last checked: {TAP_CHECKED_ISO} for the Kanto list (
             <a href={SOURCES.tokyoMetro} target="_blank" rel="noopener">Tokyo Metro announcement</a>). For every
             other railway, bus and ferry that takes a Visa tap, the official list is Sumitomo Mitsui Card&apos;s{" "}
-            <a href={SOURCES.stera} target="_blank" rel="noopener">stera transit operator list</a> — 236
-            announced schemes in 46 prefectures at the end of September 2026, checked {LAST_CHECKED_ISO}.
+            <a href={SOURCES.stera} target="_blank" rel="noopener">stera transit operator list</a> — 237
+            announced schemes in 46 prefectures at the end of October 2026, checked {TAP_CHECKED_ISO} — and{" "}
+            <a href={VISA_TRANSIT_URL} target="_blank" rel="noopener">Visa Japan&apos;s tap-to-ride list</a>.
           </p>
         </section>
 

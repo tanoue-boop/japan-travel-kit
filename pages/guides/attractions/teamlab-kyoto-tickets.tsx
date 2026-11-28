@@ -107,7 +107,15 @@ const CHECKED = checkedLabel(CHECKED_ISO);
  * 19 Nov, 15 Dec, 19 Jan. Unchanged. Retitled the same day to lead with the official name,
  * teamLab Biovortex Kyoto.
  */
-const RECHECKED_ISO = "2026-11-20";
+/*
+ * Re-read 28 Nov 2026 (task-jtk-20261128-C01) from the __NEXT_DATA__ JSON embedded in
+ * www.teamlab.art/e/kyoto/ (node fetch, HTTP 200): fees 3800 (isFeeFluctuation true) / 2800 / 1800 /
+ * 0, disability 1900, Flexible Pass 12000, the JPY 200 venue fee, "9:00 - 21:00 ( Last entry: 19:30)",
+ * Sketch Factory 11:00 - 21:00, Teahouse in a Sea of Light 10:30-20:45 (L.O. 20:00), closed
+ * 17 Nov, 19 Nov, 15 Dec, 19 Jan, "7 min on foot from Hachijo East Gate of Kyoto Station" and
+ * 11 min from Shichijo. Unchanged except the teahouse row, which is new. Retitled for CTR the same day.
+ */
+const RECHECKED_ISO = "2026-11-28";
 const RECHECKED = checkedLabel(RECHECKED_ISO);
 const OFFICIAL_URL = "https://www.teamlab.art/e/kyoto/";
 const OFFICIAL_FAQ_URL = "https://www.teamlab.art/faq/kyoto/";
@@ -162,8 +170,13 @@ const hoursRows = [
   },
   {
     item: "Published closed days",
-    value: "Tue 17 Nov, Thu 19 Nov, Tue 15 Dec 2026; Tue 19 Jan 2027",
+    value: "Tue 15 Dec 2026; Tue 19 Jan 2027 (17 and 19 Nov have passed)",
     note: "Listed as individual dates and as subject to change, so check your own date rather than assuming a weekly pattern",
+  },
+  {
+    item: "Teahouse in a Sea of Light",
+    value: "10:30 – 20:45",
+    note: "Last order 20:00; the tea space inside the museum, on teamLab's published hours",
   },
   {
     item: "Sketch Factory (shop)",
@@ -262,19 +275,19 @@ const steps = [
 
 const faqItems = [
   {
-    q: "How much are teamLab Kyoto tickets?",
+    q: "How much are teamLab Biovortex Kyoto tickets?",
     a: `¥3,800 for an adult aged 18 or over, ¥2,800 for ages 13 to 17, ¥1,800 for ages 4 to 12 and free for children 3 and under, on teamLab's own published prices read on ${RECHECKED}. The adult figure is the one to treat carefully: teamLab states adult admission uses a variable pricing system, so it moves with the date and the admission time you choose, and ¥3,800 is a floor rather than a fare. There is also a Flexible Pass at ¥12,000 for an adult or a child, which specifies only the date and lets you enter any time during opening hours. Ages 13 to 17 need proof of ID at the entrance gate — bring a passport if that applies to anyone in the party.`,
   },
   {
     q: "What are teamLab Biovortex Kyoto's opening hours?",
-    a: `teamLab Kyoto is open 9:00 to 21:00, with last entry at 19:30 — teamLab's own published hours, read on ${RECHECKED} and stated there as subject to change. The official FAQ states there is no limit on how long you stay once admitted, and Klook's listing suggests 1 to 2 hours, so a 19:30 entry still leaves ninety minutes before closing. The published closed days are 17 November, 19 November and 15 December 2026 and 19 January 2027. Re-entry is not permitted, so plan the visit as one block.`,
+    a: `teamLab Kyoto is open 9:00 to 21:00, with last entry at 19:30 — teamLab's own published hours, read on ${RECHECKED} and stated there as subject to change. The official FAQ states there is no limit on how long you stay once admitted, and Klook's listing suggests 1 to 2 hours, so a 19:30 entry still leaves ninety minutes before closing. The remaining published closed days are 15 December 2026 and 19 January 2027. Inside, the Teahouse in a Sea of Light runs 10:30 to 20:45 (last order 20:00) and the Sketch Factory shop 11:00 to 21:00. Re-entry is not permitted, so plan the visit as one block.`,
   },
   {
     q: "Is it the same price online as at the door?",
     a: `No — online is ¥200 cheaper. teamLab states that for tickets purchased at the venue, a ¥200 fee is added to the online price, for the Entrance Pass and the ¥12,000 Flexible Pass alike. Online is also the only way to hold a slot in advance: on the day, the official ticket site and the museum's ticket machines sell tickets only if the slot has not sold out. Read on ${RECHECKED} on teamLab's own page for the museum.`,
   },
   {
-    q: "Do I need to book teamLab Kyoto in advance?",
+    q: "Do I need to book teamLab Biovortex Kyoto in advance?",
     a: `Yes, and for a different reason from most attractions: the standard Entrance Pass is bought for a specific date and admission time, so booking ahead is how you choose the slot rather than how you save money. teamLab reported more than a million visitors in the museum's first nine months, which is the context for treating a weekend or holiday slot as something to secure rather than assume. Booking early also costs you less flexibility here than elsewhere — a ticket bought on teamLab's own ticketing site can have its date changed up to three times, from the QR ticket itself. Read on ${CHECKED}.`,
   },
   {
@@ -283,9 +296,9 @@ const faqItems = [
   },
 ];
 
-const TITLE = "teamLab Biovortex Kyoto Tickets 2026: Price, Hours & Booking";
+const TITLE = "teamLab Biovortex Kyoto Tickets, Price & Hours (2026)";
 const DESCRIPTION =
-  "teamLab Biovortex Kyoto tickets: ¥3,800 adult, ¥200 less online. Open 9:00–21:00, last entry 19:30, 7 min walk from Kyoto Station. Book a slot on Klook.";
+  "teamLab Biovortex Kyoto tickets are ¥3,800 for adults (variable) and ¥1,800 ages 4–12. Open 9:00–21:00, last entry 19:30, 7 min from Kyoto Station.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/attractions/teamlab-kyoto-tickets") },
@@ -383,11 +396,11 @@ export default function TeamlabKyotoTicketsPage({ updated }: { updated: PageUpda
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            teamLab Biovortex Kyoto Tickets 2026: <br />Price, Hours &amp; Booking
+            teamLab Biovortex Kyoto Tickets: <br />Price &amp; Hours (2026)
           </h1>
           <p className={styles.heroSubtitle}>
-            teamLab Biovortex Kyoto is the largest of the four teamLab museums in Japan — and the only one you
-            can walk to from a shinkansen platform in seven minutes.
+            Official prices, opening hours and closed days, re-checked on 28 November 2026 — for teamLab&apos;s
+            largest museum in Japan, seven minutes on foot from Kyoto Station.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Official prices, checked", "9:00–21:00, last entry 19:30", "vs Planets & Borderless"].map((t) => (
@@ -416,9 +429,10 @@ export default function TeamlabKyotoTicketsPage({ updated }: { updated: PageUpda
             adult aged 18 or over, <strong>¥2,800</strong> for ages 13–17, <strong>¥1,800</strong> for ages 4–12
             and free for children 3 and under, and buying online is <strong>¥200</strong> cheaper than buying at
             the venue. It is open <strong>9:00–21:00</strong> with <strong>last entry at 19:30</strong>, a{" "}
-            <strong>7-minute walk from the Hachijo East Gate of Kyoto Station</strong>. The adult price moves with
-            the date and time slot, so ¥3,800 is a floor, and the <strong>¥12,000 Flexible Pass</strong> fixes
-            only the date. Official figures, last checked {RECHECKED_ISO}.
+            <strong>7-minute walk from the Hachijo East Gate of Kyoto Station</strong>, and the next published
+            closed days are 15 December 2026 and 19 January 2027. The adult price moves with the date and time
+            slot, so ¥3,800 is a floor, and the <strong>¥12,000 Flexible Pass</strong> fixes only the date —
+            official figures, last checked {RECHECKED_ISO}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginBottom: "1rem" }}>
             <KlookLink href={TEAMLAB_URL} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -486,7 +500,7 @@ export default function TeamlabKyotoTicketsPage({ updated }: { updated: PageUpda
         {/* Q1 — price */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Price</span>
-          <h2 className={styles.sectionTitle}>How Much Are teamLab Kyoto Tickets?</h2>
+          <h2 className={styles.sectionTitle}>How Much Are teamLab Biovortex Kyoto Tickets?</h2>
           <p className={styles.bodyText}>
             ¥3,800 for an adult, ¥1,800 for a child aged 4 to 12 — and the adult figure is variable, so it is a
             starting point rather than a price. Of the four teamLab venues in Japan this is the joint most
@@ -518,8 +532,7 @@ export default function TeamlabKyotoTicketsPage({ updated }: { updated: PageUpda
             <strong>Last checked: {RECHECKED_ISO}</strong> — source:{" "}
             <a href={OFFICIAL_URL} target="_blank" rel="noopener">teamLab Biovortex Kyoto, official page</a>,
             which states that adult admission is based on a variable pricing system and varies depending on
-            the date and time. The page is rendered in the browser, so it was read through teamLab&apos;s
-            search-indexed copy and its own server-rendered mirror of the same page. The checkout is the only
+            the date and time. The figures are the ones in the page&apos;s own embedded ticket data. The checkout is the only
             authority on what you will actually pay. For official prices at other attractions, see our{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={{ color: "var(--text)", fontWeight: 600 }}>
               Japan attraction ticket prices table
@@ -583,9 +596,9 @@ export default function TeamlabKyotoTicketsPage({ updated }: { updated: PageUpda
           <span className={styles.sectionLabel}>Hours</span>
           <h2 className={styles.sectionTitle}>What Are teamLab Biovortex Kyoto&apos;s Opening Hours?</h2>
           <p className={styles.bodyText}>
-            9:00 to 21:00, last entry 19:30 — and no limit on how long you stay once you are inside. The
-            planning constraint is the window rather than the visit, which is why the last-entry time is the
-            figure to build the evening around rather than the closing time.
+            teamLab Biovortex Kyoto is open 9:00 to 21:00, last entry 19:30, with no limit on how long you stay
+            once inside; the next published closed days are 15 December 2026 and 19 January 2027. The last-entry
+            time, not the closing time, is the figure to build the evening around.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

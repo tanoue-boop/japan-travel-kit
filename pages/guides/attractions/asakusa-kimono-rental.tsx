@@ -649,7 +649,7 @@ export default function AsakusaKimonoRentalPage({ updated }: { updated: PageUpda
             <Link href="/guides/attractions/samurai-ninja-experience-tokyo">samurai and ninja experience in Tokyo</Link>{" "}
             guide compares its sessions by length and minimum age; once the kimono is back, an Asakusa
             or Tsukiji walk from our{" "}
-            <Link href="/guides/attractions/tokyo-food-tour">Tokyo food tours comparison</Link>{" "}
+            <Link href="/guides/attractions/tokyo-food-tour">Tokyo food tour</Link> comparison{" "}
             fills the afternoon; and our{" "}
             <Link href="/guides/attractions/tokyo-3-day-itinerary">Tokyo 3 day itinerary</Link> puts
             the Asakusa half day where it belongs in a short trip.

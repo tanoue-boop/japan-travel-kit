@@ -1026,9 +1026,9 @@ export default function BestTravelCardJapanPage({ updated }: { updated: PageUpda
             same every time: press the yen button. The same applies to tapping a card at a contactless
             terminal — see{" "}
             <Link href="/guides/money/contactless-payment-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
-              contactless payment in Japan
+              tap to pay in Japan
             </Link>{" "}
-            for where tapping works.
+            for where tapping works, trains included.
           </p>
           <p className={styles.bodyText}>
             Paying in yen matters more on a shopping day from 1 November 2026, because{" "}

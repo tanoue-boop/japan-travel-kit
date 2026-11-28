@@ -747,8 +747,10 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText}>
             Tokyo is a city where the best food is often behind a door you would not push open on your own —
             the six-seat izakaya counters of Omoide Yokocho, the bars of Golden Gai. That is the actual
-            argument for a <Link href="/guides/attractions/tokyo-food-tour" style={linkStyle}>guided food tour</Link>:
-            not the food, which you could find, but the rooms. If you would rather take something home, a{" "}
+            argument for a <Link href="/guides/attractions/tokyo-night-food-tour" style={linkStyle}>guided night food tour</Link>:
+            not the food, which you could find, but the rooms. By day, a{" "}
+            <Link href="/guides/attractions/tokyo-food-tour" style={linkStyle}>Tokyo food tour</Link> of Tsukiji
+            Outer Market or Asakusa takes about 2 to 3 hours and suits all ages. If you would rather take something home, a{" "}
             <Link href="/guides/attractions/tokyo-cooking-class" style={linkStyle}>cooking class</Link> runs a
             couple of hours in English and sends you away able to repeat the dish.
           </p>

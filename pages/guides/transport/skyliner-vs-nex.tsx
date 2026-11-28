@@ -75,9 +75,17 @@ const CHECKED = checkedLabel(CHECKED_ISO);
  * multi/pass/nex.html (¥5,200 / ¥2,600, 14 days, foreign passports). All unchanged. Lead paragraph
  * added the same day with one destination per sentence; the Skyliner + JR Shibuya figure keeps 3 Nov.
  */
-const SKYLINER_CHECKED_ISO = "2026-11-20";
+/**
+ * 28 Nov 2026 re-read (task C01, CTR pass): keisei.co.jp jp/skyliner/ticket.php ([磁気]¥1,280 / [IC]¥1,267
+ * + ライナー料金 ¥1,300, child ¥640 + ¥650, 全車指定席, sales from one month out), us/tickets/coupon.php (¥2,580
+ * standard, ¥2,310 / ¥4,500 discount, ¥5,160 standard return, child ¥1,290, "as little as 36 minutes" to
+ * Nippori), us/skyliner/ ("Ueno to Narita Airport Terminal 2･3 in just 41 minutes", three services each hour).
+ * jreast.co.jp en/multi/nex/tickets/ (Tōkyō ¥3,140; Shinagawa/Shibuya/Shinjuku ¥3,330; Yokohama ¥4,480;
+ * Round Trip ¥5,200 within 14 days), multi/en/nex/ ("takes just 53 minutes" to Tōkyō). All unchanged.
+ */
+const SKYLINER_CHECKED_ISO = "2026-11-28";
 const SKYLINER_CHECKED = checkedLabel(SKYLINER_CHECKED_ISO);
-const NEX_CHECKED_ISO = "2026-11-20";
+const NEX_CHECKED_ISO = "2026-11-28";
 const NEX_CHECKED = checkedLabel(NEX_CHECKED_ISO);
 const KEISEI_TICKET_URL = "https://www.keisei.co.jp/keisei/tetudou/skyliner/jp/skyliner/ticket.php";
 const KEISEI_DISCOUNT_URL = "https://www.keisei.co.jp/keisei/tetudou/skyliner/us/tickets/coupon.php";
@@ -217,12 +225,16 @@ const FAQ_SCHEMA_COUNT = 5;
 
 const faqItems = [
   {
+    q: "Which is faster, Skyliner or N'EX?",
+    a: `The Skyliner, to its own stops: Keisei puts it at as little as 36 minutes from Narita Airport Terminal 2·3 to Nippori and 41 minutes to Keisei-Ueno, with three services an hour. JR East's fastest Narita Express (N'EX) takes 53 minutes from Narita Airport to Tokyo Station. For Tokyo Station, Shinjuku, Shibuya or Yokohama the N'EX arrives with no change, while the Skyliner needs a transfer to JR at Nippori, so the time saved can disappear in the change. Checked on keisei.co.jp and jreast.co.jp on ${NEX_CHECKED}.`,
+  },
+  {
     q: "Is the Skyliner or N'EX better from Narita?",
     a: `It depends on your station: the Skyliner for Ueno and Nippori, the N'EX for Tokyo Station, Shinjuku, Shibuya and Yokohama. To its own two stops the Skyliner is faster: Keisei puts it at 36 minutes from Narita Terminal 2·3 to Nippori and 41 minutes to Keisei-Ueno, against JR East's 53 minutes from Narita Airport to Tokyo Station on the Narita Express (N'EX, often typed NEX). For Tokyo Station, Shinjuku, Shibuya or Yokohama the N'EX arrives with no change, while the Skyliner needs a transfer to JR at Nippori — Keisei's own Skyliner + JR figure to Tokyo Station is 47 minutes, excluding the change. JR East publishes no single N'EX time to Shinjuku or Shibuya. The 36-, 41- and 53-minute figures checked on keisei.co.jp and jreast.co.jp on ${NEX_CHECKED}; the Skyliner + JR figure on Keisei's route page on ${CHECKED}.`,
   },
   {
     q: "Which is cheaper, Skyliner or N'EX?",
-    a: `One way, the Skyliner: ¥2,580 to Ueno or Nippori, or ¥2,310 with Keisei's online discount, against ¥3,140 for the N'EX to Tokyo Station and ¥3,330 to Shinjuku or Shibuya. For a round trip by a foreign passport holder the gap closes: Keisei's online return is ¥4,500, and JR East's N'EX TOKYO Round Trip Ticket is ¥5,200 for one ride in and one ride out within 14 days, to or from any JR station in its Tokyo area. If your hotel is on the west side, the Skyliner plus a JR or subway ride from Nippori adds a fare the N'EX ticket already includes. Read on ${CHECKED}.`,
+    a: `One way, the Skyliner: ¥2,580 to Ueno or Nippori, or ¥2,310 with Keisei's online discount, against ¥3,140 for the N'EX to Tokyo Station and ¥3,330 to Shinjuku or Shibuya. For a round trip by a foreign passport holder the gap closes: Keisei's online return is ¥4,500, and JR East's N'EX TOKYO Round Trip Ticket is ¥5,200 for one ride in and one ride out within 14 days, to or from any JR station in its Tokyo area. If your hotel is on the west side, the Skyliner plus a JR or subway ride from Nippori adds a fare the N'EX ticket already includes. Fares checked on keisei.co.jp and jreast.co.jp on ${NEX_CHECKED}.`,
   },
   {
     q: "Is the N'EX covered by the JR Pass?",
@@ -256,9 +268,9 @@ const faqItems = [
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
 
-const TITLE = "Skyliner vs N'EX (NEX) 2026: Which Is Faster & Cheaper?";
+const TITLE = "Skyliner vs N'EX (2026): Which Is Faster & Cheaper to Tokyo?";
 const DESC =
-  "Skyliner vs N'EX from Narita: Skyliner ¥2,580, 41 min to Ueno; N'EX ¥3,140, 53 min to Tokyo, ¥3,330 to Shinjuku/Shibuya. Pick by station, book on Klook.";
+  "Skyliner vs N'EX (NEX) from Narita: Skyliner ¥2,580, 41 min to Ueno; N'EX ¥3,140, 53 min to Tokyo Station, ¥3,330 to Shinjuku. Which train for your hotel.";
 
 export default function SkylinerVsNexPage({ updated }: { updated: PageUpdated }) {
   return (
@@ -338,7 +350,7 @@ export default function SkylinerVsNexPage({ updated }: { updated: PageUpdated })
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Skyliner vs N&apos;EX (Narita Express) 2026: <br />Which Is Faster and Cheaper to Tokyo?
+            Skyliner vs N&apos;EX (2026): <br />Which Is Faster and Cheaper to Tokyo?
           </h1>
           <p className={styles.heroSubtitle}>
             NEX vs Skyliner, settled by hotel area: one runs to Ueno, the other to Tokyo Station, Shinjuku, Shibuya and Yokohama. The
@@ -368,14 +380,13 @@ export default function SkylinerVsNexPage({ updated }: { updated: PageUpdated })
         {/* Lead — one destination per sentence, numbers first. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>To Ueno</strong>, take the Keisei Skyliner: 41 minutes from Narita Terminal 2·3
-            for ¥2,580 (¥2,310 bought online). <strong>To Tokyo Station</strong>, take the Narita
-            Express (N&apos;EX): 53 minutes with no change for ¥3,140. <strong>To Shinjuku</strong>,
-            take the N&apos;EX: ¥3,330 with no change, where the Skyliner needs a JR transfer at
-            Nippori. <strong>To Shibuya</strong>, take the N&apos;EX: also ¥3,330 with no change,
-            against Keisei&apos;s own 64-minute Skyliner + JR figure that excludes the change. Fares
-            and the 41- and 53-minute times from keisei.co.jp and jreast.co.jp, last checked{" "}
-            {NEX_CHECKED_ISO}.
+            <strong>The Keisei Skyliner is both faster and cheaper to its own stops: 41 minutes from
+            Narita Terminal 2·3 to Ueno for ¥2,580 (¥2,310 bought online), against 53 minutes and
+            ¥3,140 on the Narita Express (N&apos;EX) to Tokyo Station.</strong> Take the Skyliner if
+            your hotel is near Ueno or Nippori; take the N&apos;EX for Tokyo Station, Shinjuku or
+            Shibuya (¥3,330 with no change, where the Skyliner needs a JR transfer at Nippori),
+            Yokohama (¥4,480), or if you hold a JR Pass. Fares and times from keisei.co.jp and
+            jreast.co.jp, last checked {NEX_CHECKED_ISO}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginBottom: "0.5rem" }}>
             <KlookLink href={keiseiSkylinerUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -488,7 +499,12 @@ export default function SkylinerVsNexPage({ updated }: { updated: PageUpdated })
         {/* Head-to-head table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Head-to-head</span>
-          <h2 className={styles.sectionTitle}>Skyliner vs N&apos;EX at a Glance</h2>
+          <h2 className={styles.sectionTitle}>Skyliner vs N&apos;EX: Which Is Faster and Cheaper?</h2>
+          <p className={styles.bodyText}>
+            The Skyliner, on both counts, as far as Ueno: 41 minutes for ¥2,580 against the
+            N&apos;EX&apos;s 53 minutes for ¥3,140 to Tokyo Station. The N&apos;EX wins only where
+            the Skyliner does not go without a change — Tokyo Station, Shinjuku, Shibuya and Yokohama.
+          </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>

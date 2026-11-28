@@ -435,7 +435,7 @@ export default function Kansai5DayItineraryPage({ updated }: { updated: PageUpda
               <Link href="/guides/attractions/osaka-3-day-itinerary">Osaka 3 day itinerary</Link> or the{" "}
               <Link href="/guides/attractions/kyoto-3-day-itinerary">Kyoto 3 day itinerary</Link>; and five days
               with Tokyo is the{" "}
-              <Link href="/guides/attractions/japan-5-day-itinerary">Japan 5 day itinerary</Link>.
+              <Link href="/guides/attractions/japan-5-day-itinerary">5-day Japan itinerary</Link> for Tokyo and Kyoto.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={kansai5DayStayAreas[0].url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -486,7 +486,8 @@ export default function Kansai5DayItineraryPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText}>
             USJ takes the whole day and is the one dated, non-refundable booking on this plan: Studio Passes are
             sold for a fixed date about two months ahead, and Express Passes are priced on demand. If USJ is not on
-            your list, Day 2 is Osaka Castle at 9:00 ({CASTLE.adult} for the keep), the Tombori River Cruise in
+            your list, Day 2 is Osaka Castle at 9:00 ({CASTLE.adult} for the keep), the{" "}
+            <Link href="/guides/attractions/dotonbori-river-cruise">Tombori River Cruise</Link> in
             Dotonbori and the Umeda Sky Building at sunset ({UMEDA.adult}; hours and the rooftop rules in our{" "}
             <Link href="/guides/attractions/umeda-sky-building-tickets">Umeda Sky Building tickets</Link> guide) — a day the{" "}
             <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass</Link> ({AMAZING.adult})

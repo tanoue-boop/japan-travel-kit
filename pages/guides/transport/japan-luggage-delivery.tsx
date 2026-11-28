@@ -53,6 +53,18 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 const CHECKED_ISO = "2026-11-21";
 const CHECKED = checkedLabel(CHECKED_ISO);
 
+/**
+ * 28 Nov 2026 (CTR pass): re-read by node fetch on this date — Yamato's Airport TA-Q-BIN page
+ * (2 days before, 3 in some areas; sending deadline varies by counter; ¥660 fee; 30 kg), both
+ * calculator JSONs (services-calc06 / services-calc01, every Kanto figure below unchanged, plus
+ * the size-60 airport rate ¥1,600), the same-day page (¥5,780 / ¥3,470) and Narita's baggage
+ * page (Yamato same-day 06:30–10:30, 06:30–09:50 at T3; Sagawa orders 06:30–14:00).
+ * Haneda, Kansai Airport, JR Central and the Klook terms were not re-read and keep CHECKED_ISO.
+ */
+const YAMATO_CHECKED_ISO = "2026-11-28";
+const YAMATO_CHECKED = checkedLabel(YAMATO_CHECKED_ISO);
+const AIR_60 = "¥1,600";
+
 const YAMATO_AIRPORT_URL = "https://www.kuronekoyamato.co.jp/ytc/en/send/services/airport/";
 const YAMATO_RATES_URL = "https://www.kuronekoyamato.co.jp/ytc/en/send/services/takkyubin/";
 const YAMATO_SAMEDAY_URL = "https://www.kuronekoyamato.co.jp/ytc/en/send/services/same-day-delivery/";
@@ -117,6 +129,19 @@ const methodRows: ReactNode[][] = [
   ],
 ];
 
+// (1b) Price by size, Yamato's calculator JSON, cash, one way, tax in. Row 1 is the answer.
+const priceRows: ReactNode[][] = [
+  ["Short answer", `From ${AIR_60}; a size-160 suitcase is ${AIR_160}`, `From ¥1,060; a size-160 suitcase is ${TK_160}`],
+  ["Size 60 (60 cm, 2 kg)", AIR_60, "¥1,060"],
+  ["Size 80 (80 cm, 5 kg)", "¥1,890", "¥1,350"],
+  ["Size 100 (100 cm, 10 kg)", "¥2,190", "¥1,650"],
+  ["Size 120 (120 cm, 15 kg)", AIR_120, TK_120],
+  ["Size 140 (140 cm, 20 kg)", "¥2,850", "¥2,310"],
+  ["Size 160 (160 cm, 25 kg)", AIR_160, TK_160],
+  ["Size 180 (180 cm, 30 kg)", "¥3,720", "¥3,730"],
+  ["Size 200 (200 cm, 30 kg)", AIR_200, "¥4,390"],
+];
+
 // (2) Where you collect a bag you sent to the airport.
 const counterRows: ReactNode[][] = [
   ["Short answer", "Departure floor, before security — Yamato, JAL ABC or Sagawa, whichever the slip names", "Kansai Airport Terminal 2 has no counter: collect in Terminal 1"],
@@ -131,34 +156,25 @@ const counterRows: ReactNode[][] = [
   ["Kansai Airport T2", "No counter — collect on T1 4F", "—"],
 ];
 
+// 28 Nov 2026 (CTR pass): cut to five. "How does luggage delivery work", "Do hotels forward
+// luggage" and "What is takkyubin" left the FAQ; the first two keep their H2 sections and the
+// takkyubin definition moved into the first answer.
 const faqItems = [
   {
-    q: "How does luggage delivery work in Japan?",
-    a: `You hand the case to a courier — Yamato Transport's TA-Q-BIN (takkyubin), Sagawa or JAL ABC — at a hotel front desk, a convenience store or a courier counter, fill in a waybill with the address, and pay by size. To an airport, Yamato asks for the bag two days before your flight (three in some areas); it is at the airport the day before and you collect it at the counter on departure day. Rates from Tokyo to Narita or Haneda are ${AIR_120} for size 120, ${AIR_160} for 160 and ${AIR_200} for 200 in cash, ${AIRPORT_FEE} airport fee included. Checked ${CHECKED}.`,
-  },
-  {
-    q: "How much does it cost to send luggage to the airport?",
-    a: `With Yamato, from anywhere in the Tokyo area to Narita or Haneda: ${AIR_120} for a size-120 parcel (up to 120 cm added up and 15 kg), ${AIR_160} for size 160 (160 cm, 25 kg) and ${AIR_200} for size 200 (200 cm, 30 kg), cash, one way, tax and the ${AIRPORT_FEE} airport fee included. The same three prices apply from Kansai to Kansai Airport. Parcels over 30 kg are not accepted. Cashless payment is slightly cheaper. Checked on Yamato's own rate calculator ${CHECKED}.`,
+    q: "How much is luggage shipping in Japan?",
+    a: `With Yamato Transport's TA-Q-BIN (takkyubin), from the Tokyo area to Narita or Haneda it costs from ${AIR_60} for a size-60 parcel to ${AIR_200} for size 200; a typical size-160 suitcase is ${AIR_160} in cash, one way, tax and the ${AIRPORT_FEE} airport fee included. The same prices apply from Kansai to Kansai Airport. Hotel to hotel, Tokyo to Kyoto or Osaka is ${TK_120} for size 120 and ${TK_160} for size 160. Parcels over 30 kg are not accepted, and cashless payment is slightly cheaper. Checked on Yamato's own rate calculator ${YAMATO_CHECKED}.`,
   },
   {
     q: "How early should you send luggage to Narita or Haneda?",
-    a: "Two days before your departure date, or three in some areas, by the sending deadline of the counter you use — that is Yamato's rule for Airport TA-Q-BIN. A hotel can set an earlier cut-off of its own, so ask at the desk the day you arrive. If you are leaving tomorrow, the same-day hotel-to-airport services sold on Klook are the option: the Airporter listing needs the bag at the hotel by 9:00 and has it at the airport after 16:00.",
+    a: `Two days before your departure date, or three in some areas, by the sending deadline of the counter you use — that is Yamato's rule for Airport TA-Q-BIN, and Yamato states the deadline varies by drop-off counter (checked ${YAMATO_CHECKED}). A hotel can set an earlier cut-off of its own, so ask at the desk the day you arrive. If you are leaving tomorrow, the same-day hotel-to-airport services sold on Klook are the option: the Airporter listing needs the bag at the hotel by 9:00 and has it at the airport after 16:00.`,
   },
   {
     q: "Can you send luggage from Tokyo to Kyoto?",
     a: `Yes. Ordinary TA-Q-BIN from the Tokyo area to Kansai is ${TK_120} for size 120 and ${TK_160} for size 160 in cash, and it goes to the next hotel's front desk. The delivery date depends on the two addresses, so ask the counter and plan to be without the case for a night. For the same day, LuggAgent sells a Kanto-to-Kansai hotel-to-hotel service on Klook. Either way you skip the shinkansen rule for bags over 160 cm, which need a reserved seat with an oversized baggage area.`,
   },
   {
-    q: "Do hotels in Japan forward luggage?",
-    a: "It depends on the hotel, so ask at check-in. Where the front desk handles TA-Q-BIN or Sagawa, staff take the case, help with the waybill and hand it to the courier; it is the hotel's service, with the hotel's own cut-off. Where it does not, a convenience store or a Yamato sales office takes the same parcel at the same rate (Yamato issues waybills at both), and a booked service such as Airporter or LuggAgent collects from the hotel desk.",
-  },
-  {
     q: "Can I send luggage from the airport to my hotel on arrival?",
-    a: "Yes, from the arrivals-floor counters at Narita, Haneda and Kansai Airport. Same-day delivery has a morning window: at Narita, Yamato's same-day service runs 06:30–10:30 from Terminals 1 and 2 and Sagawa takes same-day orders 06:30–14:00 for 10 Tokyo wards and selected Urayasu hotels. Yamato's example price from Haneda to the 23 wards is ¥5,780 for a size-160 case. Later than that, the bag arrives the next day.",
-  },
-  {
-    q: "What is takkyubin?",
-    a: "Takkyubin (宅急便, TA-Q-BIN) is Yamato Transport's door-to-door parcel service, and the word Japanese travellers use for sending luggage ahead in general. The price is set by parcel size (length + width + height) and the distance between regions, not by the number of bags in a booking.",
+    a: `Yes, from the arrivals-floor counters at Narita, Haneda and Kansai Airport. Same-day delivery has a morning window: at Narita, Yamato's same-day service runs 06:30–10:30 from Terminals 1 and 2 (06:30–09:50 at T3) and Sagawa takes same-day orders 06:30–14:00 for 10 Tokyo wards and selected Urayasu hotels. Yamato's example price from Haneda to the 23 wards is ¥5,780 for a size-160 case. Later than that, the bag arrives the next day. Checked ${YAMATO_CHECKED}.`,
   },
   {
     q: "Where do I pick up luggage I sent to the airport?",
@@ -167,9 +183,10 @@ const faqItems = [
 ];
 
 // The primary query leads the title, H1 and description word for word.
-const TITLE = "Japan Luggage Delivery 2026: Takkyubin Prices & Deadlines";
+// 28 Nov 2026: was "Japan Luggage Delivery 2026: Takkyubin Prices & Deadlines".
+const TITLE = "Japan Luggage Delivery: TA-Q-BIN from ¥1,600 & Cut-off Times";
 const DESCRIPTION =
-  "Japan Luggage Delivery: luggage forwarding Japan by takkyubin from ¥2,510, how to send luggage to airport Tokyo 2 days ahead, and each airport's counter.";
+  "How much is luggage shipping in Japan? Yamato TA-Q-BIN to Narita or Haneda costs ¥1,600–¥4,380 by size; hand it in 2 days before your flight.";
 const ROUTE = "/guides/transport/japan-luggage-delivery";
 
 export const getStaticProps = () => ({ props: { updated: pageUpdated(ROUTE) } });
@@ -292,11 +309,11 @@ export default function JapanLuggageDeliveryPage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Japan Luggage Delivery (2026): <br />Takkyubin Prices, Deadlines &amp; Airport Counters
+            Japan Luggage Delivery (TA-Q-BIN) 2026: <br />Prices from {AIR_60} &amp; Cut-off Times
           </h1>
           <p className={styles.heroSubtitle}>
-            Luggage forwarding in Japan, from the couriers&apos; own rate tables: how to send luggage to the airport
-            in Tokyo or Osaka, how far ahead, what it costs by size, and where you pick it up.
+            Luggage shipping in Japan, from Yamato&apos;s own rate tables: what it costs by size, how far ahead to
+            send a case to Narita, Haneda or Kansai Airport, and where you pick it up.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Yamato's own rates", "Narita, Haneda & KIX counters"].map((t) => (
@@ -321,15 +338,16 @@ export default function JapanLuggageDeliveryPage({ updated }: { updated: PageUpd
         {/* The answer, before anything else on the page. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>Japan luggage delivery</strong> works like this: you hand your case to a courier —{" "}
-            <strong>Yamato&apos;s TA-Q-BIN (takkyubin)</strong>, Sagawa or JAL ABC — at the hotel front desk, a
-            convenience store or a courier counter, and collect it somewhere else. To send luggage to the airport,
-            Yamato needs it <strong>two days before your flight</strong> (three in some areas), and from anywhere
-            in the Tokyo area to Narita or Haneda it costs <strong>{AIR_120} for a size-120 case, {AIR_160} for size
-            160 and {AIR_200} for size 200</strong> in cash, the {AIRPORT_FEE} airport fee included; the price is
-            size × distance, so Kansai to Kansai Airport is the same. The flat per-bag services sold on Klook
-            (Airporter, LuggAgent) run <strong>the same day</strong> instead: bag at the Tokyo hotel by 9:00, ready
-            at the airport after 16:00. Yamato&apos;s figures were checked on its own rate tables on {CHECKED}.
+            <strong>
+              Japan luggage delivery with Yamato&apos;s TA-Q-BIN (takkyubin) costs from {AIR_60} to {AIR_200} by size
+              from the Tokyo area to Narita or Haneda — {AIR_160} for a typical size-160 suitcase, cash, the{" "}
+              {AIRPORT_FEE} airport fee included.
+            </strong>{" "}
+            The cut-off is <strong>two days before your flight</strong> (three in some areas), by the drop-off
+            counter&apos;s own sending deadline, and you collect the bag at the airport counter on departure day.
+            For the same day instead, Narita&apos;s Yamato arrival counters take hotel deliveries 06:30–10:30, and
+            the Airporter listing on Klook wants the bag at a Tokyo hotel by 9:00 (Yamato and Narita checked{" "}
+            {YAMATO_CHECKED}).
           </p>
           <p className={styles.bodyText}>
             Moving between cities rather than flying out? A case over 160 cm (length + width + height) needs a
@@ -401,12 +419,12 @@ export default function JapanLuggageDeliveryPage({ updated }: { updated: PageUpd
           </p>
           <Table head={["Method", "Deadline", "Price (Yamato, cash, one way)", "Where you collect it"]} rows={methodRows} />
           <p className={styles.bodyText} style={noteStyle}>
-            Last checked: {CHECKED_ISO} — <Source href={YAMATO_AIRPORT_URL}>Yamato Airport TA-Q-BIN</Source>,{" "}
+            Last checked: {YAMATO_CHECKED_ISO} — <Source href={YAMATO_AIRPORT_URL}>Yamato Airport TA-Q-BIN</Source>,{" "}
             <Source href={YAMATO_RATES_URL}>Yamato TA-Q-BIN rates</Source>,{" "}
             <Source href={YAMATO_SAMEDAY_URL}>Yamato Same-day Delivery Service</Source>. Size is length + width +
             height: size 120 is up to 120 cm and 15 kg, 160 up to 160 cm and 25 kg, 180 and 200 up to 30 kg; no side
             may exceed 170 cm. Cashless payment is a little cheaper than the cash prices shown. The Klook rows are
-            the listings&apos; own terms on the same day.
+            the listings&apos; own terms as read on {CHECKED_ISO}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={tokyoHotelAirportLuggageDelivery.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -421,13 +439,27 @@ export default function JapanLuggageDeliveryPage({ updated }: { updated: PageUpd
         {/* Cost */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Price</span>
-          <h2 className={styles.sectionTitle}>How Much Does It Cost to Send Luggage to the Airport?</h2>
+          <h2 className={styles.sectionTitle}>How Much Is Luggage Shipping in Japan?</h2>
           <p className={styles.bodyText}>
-            {AIR_160} for a typical large suitcase (size 160) from Tokyo to Narita or Haneda with Yamato, cash, one
-            way — {AIR_120} for a medium case (size 120) and {AIR_200} for the largest (size 200). Those prices
-            already include the {AIRPORT_FEE} airport fee, and the same three apply from Osaka or Kyoto to Kansai
-            Airport. Sending across regions costs more: a size-160 case from Tokyo to Kansai Airport is ¥3,290.
-            Each bag is priced on its own, so two cases are two fees.
+            <strong>
+              From {AIR_60} (size 60) to {AIR_200} (size 200) with Yamato from the Tokyo area to Narita or Haneda,
+              and {AIR_160} for a typical large suitcase (size 160), cash, one way.
+            </strong>{" "}
+            Those prices already include the {AIRPORT_FEE} airport fee, and the same apply from Osaka or Kyoto to
+            Kansai Airport. Sending across regions costs more: a size-160 case from Tokyo to Kansai Airport is
+            ¥3,290. Each bag is priced on its own, so two cases are two fees.
+          </p>
+          <div style={{ marginTop: "1rem" }}>
+            <Table
+              head={["Parcel size (L + W + H, weight)", "Tokyo area → Narita / Haneda (Airport TA-Q-BIN)", "Tokyo area → Kyoto / Osaka hotel (TA-Q-BIN)"]}
+              rows={priceRows}
+            />
+          </div>
+          <p className={styles.bodyText} style={noteStyle}>
+            Last checked: {YAMATO_CHECKED_ISO} — cash, one way, one parcel, tax included, from the calculators on{" "}
+            <Source href={YAMATO_AIRPORT_URL}>Yamato Airport TA-Q-BIN</Source> and{" "}
+            <Source href={YAMATO_RATES_URL}>Yamato TA-Q-BIN rates</Source>. Parcels over 30 kg are not accepted,
+            and some convenience stores refuse anything over size 180.
           </p>
           <p className={styles.bodyText}>
             A same-day service costs more than the two-day rate — Yamato&apos;s own same-day example, Haneda to a

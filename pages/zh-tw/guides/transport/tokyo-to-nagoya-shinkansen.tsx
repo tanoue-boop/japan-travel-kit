@@ -48,15 +48,15 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const LOCALE = "zh-tw" as const;
 const ROUTE = "/zh-tw/guides/transport/tokyo-to-nagoya-shinkansen";
-const TITLE = "東京到名古屋新幹線 2026：票價、車程時間與購票方式";
-const H1 = "東京到名古屋新幹線 2026：車程時間、票價與 JR Pass";
+const TITLE = "東京到名古屋新幹線：最快93分鐘、¥11,100（2026）";
+const H1 = "東京到名古屋新幹線：希望號最快 93 分鐘、指定席 ¥11,100";
 const DESC =
-  "東京到名古屋新幹線：希望號最快 1 小時 33 分直達，指定席 ¥11,100。JR Pass 可搭光號，透過 Klook 購票。";
+  "東京到名古屋新幹線搭希望號最快 93 分鐘直達，指定席單程 ¥11,100（2026 年 11 月查核）。JR Pass 可搭光號，1 小時 41 分起。";
 
 const OWN_ISO = "2026-10-28";
 const OWN = dateLabel(OWN_ISO, LOCALE);
 const PARKS = dateLabel("2026-10-26", LOCALE);
-const LAST_CHECKED = "2026-11-18";
+const LAST_CHECKED = "2026-11-28";
 const CHECKED = dateLabel(LAST_CHECKED, LOCALE);
 
 const tokyoNagoya = fares.segments.find((s) => s.id === "tokyo-nagoya")!;
@@ -76,6 +76,7 @@ const NOZOMI_RANGE = "1 小時 33 分至 1 小時 41 分";
 const HIKARI_RANGE = "1 小時 41 分至 1 小時 59 分";
 const KODAMA_RANGE = "2 小時 36 分至 2 小時 46 分";
 const NOZOMI_PER_DAY = 119;
+const NOZOMI_FASTEST_MIN = "93 分鐘";
 
 const SHINKANSEN_URL = klookFor(shinkansenTokyoNagoya.url, LOCALE);
 const GHIBLI_TOUR_URL = klookFor(ghibliParkNagoyaBusTour.url, LOCALE);
@@ -280,7 +281,7 @@ const fromNagoyaRows = [
 const faqItems: FaqItem[] = [
   {
     q: "東京到名古屋新幹線要多久？",
-    a: `搭希望號最快 ${NOZOMI_FASTEST}，直達不用轉車。依 ${CHECKED} 查核的 JR東海列車資訊，每天從東京出發前往名古屋的 ${NOZOMI_PER_DAY} 班希望號車程為 ${NOZOMI_RANGE}。JAPAN RAIL PASS 可搭的光號需 ${HIKARI_RANGE}，同樣不用轉車；每站皆停的回聲號需 ${KODAMA_RANGE}。`,
+    a: `搭希望號最快 ${NOZOMI_FASTEST_MIN}（${NOZOMI_FASTEST}），直達不用轉車。依 ${CHECKED} 查核的 JR東海列車資訊，每天從東京出發前往名古屋的 ${NOZOMI_PER_DAY} 班希望號車程為 ${NOZOMI_RANGE}。JAPAN RAIL PASS 可搭的光號需 ${HIKARI_RANGE}，同樣不用轉車；每站皆停的回聲號需 ${KODAMA_RANGE}。`,
   },
   {
     q: "東京到名古屋新幹線票價多少？",
@@ -434,7 +435,7 @@ export default function ZhTwTokyoToNagoyaShinkansenPage({ updated }: { updated: 
           <p className={styles.eyebrow}>{updatedLabel}更新</p>
           <h1 className={styles.heroTitle}>{H1}</h1>
           <p className={styles.heroSubtitle}>
-            約一個半小時，希望號每隔幾分鐘一班。這也是東海道新幹線上，持周遊卡只多花幾分鐘、而不是多花 1 小時 15 分的路段。
+            直達的希望號每隔幾分鐘一班。這也是東海道新幹線上，持周遊卡只多花幾分鐘、而不是多花 1 小時 15 分的路段。
           </p>
           <div className={styles.heroBadges}>
             {[`${updatedLabel}更新`, "smartEX 與 JR 集團官方票價（附查核日期）", "JR Pass 損益平衡", "從名古屋可以去哪裡"].map((t) => (
@@ -473,8 +474,8 @@ export default function ZhTwTokyoToNagoyaShinkansenPage({ updated }: { updated: 
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>東京到名古屋新幹線</strong>搭直達的希望號最快 <strong>{NOZOMI_FASTEST}</strong>（東京每天出發的{" "}
-              {NOZOMI_PER_DAY} 班為 {NOZOMI_RANGE}），普通車指定席以 JR 的 smartEX 價格計算單程 <strong>{SMART_EX_NOZOMI}</strong>。
+              <strong>東京到名古屋新幹線</strong>搭直達的希望號最快{" "}
+              <strong>{NOZOMI_FASTEST_MIN}（{NOZOMI_FASTEST}）</strong>，普通車指定席以 JR 的 smartEX 價格計算單程 <strong>{SMART_EX_NOZOMI}</strong>。
               JAPAN RAIL PASS 不能搭希望號，但可搭的光號同樣直達，車程 <strong>{HIKARI_RANGE}</strong>，不用周遊卡的話票價為{" "}
               {SMART_EX_HIKARI}。數字來自 JR東海與 smart-ex.jp，{CHECKED}查核。
             </p>
@@ -493,7 +494,7 @@ export default function ZhTwTokyoToNagoyaShinkansenPage({ updated }: { updated: 
           <span className={styles.sectionLabel}>答案</span>
           <h2 className={styles.sectionTitle}>東京到名古屋新幹線要多久？</h2>
           <p className={styles.bodyText}>
-            最快 {NOZOMI_FASTEST}，幾乎所有希望號都是 {NOZOMI_RANGE}，不用轉車。JR東海的時刻表顯示，{CHECKED}從東京出發、停靠名古屋的希望號共{" "}
+            最快 {NOZOMI_FASTEST_MIN}（{NOZOMI_FASTEST}），幾乎所有希望號都是 {NOZOMI_RANGE}，不用轉車。JR東海的時刻表顯示，{CHECKED}從東京出發、停靠名古屋的希望號共{" "}
             {NOZOMI_PER_DAY} 班，首班車 06:00。光號需 {HIKARI_RANGE}，每站皆停的回聲號需 {KODAMA_RANGE}。
           </p>
           <h2 className={styles.sectionTitle}>東京到名古屋新幹線票價多少？</h2>

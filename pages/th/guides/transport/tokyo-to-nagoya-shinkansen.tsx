@@ -48,15 +48,15 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 
 const LOCALE = "th" as const;
 const ROUTE = "/th/guides/transport/tokyo-to-nagoya-shinkansen";
-const TITLE = "ชินคันเซ็น โตเกียว นาโกย่า 2026: ราคา";
-const H1 = "ชินคันเซ็น โตเกียว นาโกย่า 2026: ราคา เวลาเดินทาง และ JR Pass";
+const TITLE = "ชินคันเซ็น โตเกียว นาโกย่า 93 นาที";
+const H1 = "ชินคันเซ็น โตเกียว นาโกย่า: โนโซมิเร็วสุด 93 นาที ที่นั่งจอง ¥11,100";
 const DESC =
-  "ชินคันเซ็น โตเกียว นาโกย่า: โนโซมิเร็วสุด 1 ชม. 33 นาที ที่นั่งจอง ¥11,100 จองผ่าน Klook";
+  "ชินคันเซ็น โตเกียว นาโกย่า โนโซมิเร็วสุด 93 นาที ที่นั่งจอง ¥11,100 เที่ยวเดียว JR Pass ใช้ฮิคาริได้";
 
 const OWN_ISO = "2026-10-28";
 const OWN = dateLabel(OWN_ISO, LOCALE);
 const PARKS = dateLabel("2026-10-26", LOCALE);
-const LAST_CHECKED = "2026-11-18";
+const LAST_CHECKED = "2026-11-28";
 const CHECKED = dateLabel(LAST_CHECKED, LOCALE);
 
 const tokyoNagoya = fares.segments.find((s) => s.id === "tokyo-nagoya")!;
@@ -76,6 +76,7 @@ const NOZOMI_RANGE = "1 ชม. 33 นาที ถึง 1 ชม. 41 นาท
 const HIKARI_RANGE = "1 ชม. 41 นาที ถึง 1 ชม. 59 นาที";
 const KODAMA_RANGE = "2 ชม. 36 นาที ถึง 2 ชม. 46 นาที";
 const NOZOMI_PER_DAY = 119;
+const NOZOMI_FASTEST_MIN = "93 นาที";
 
 const SHINKANSEN_URL = klookFor(shinkansenTokyoNagoya.url, LOCALE);
 const GHIBLI_TOUR_URL = klookFor(ghibliParkNagoyaBusTour.url, LOCALE);
@@ -279,8 +280,8 @@ const fromNagoyaRows = [
 
 const faqItems: FaqItem[] = [
   {
-    q: "ชินคันเซ็นจากโตเกียวไปนาโกย่าใช้เวลากี่ชั่วโมง",
-    a: `เร็วสุด ${NOZOMI_FASTEST} ด้วยโนโซมิ ไม่ต้องเปลี่ยนขบวน และ ${NOZOMI_RANGE} สำหรับโนโซมิ ${NOZOMI_PER_DAY} ขบวนที่ออกจากโตเกียวไปนาโกย่าในแต่ละวัน ตามข้อมูลการเดินรถของ JR Central ที่ตรวจสอบเมื่อ ${CHECKED} ฮิคาริซึ่งใช้ JAPAN RAIL PASS ได้ใช้เวลา ${HIKARI_RANGE} และไม่ต้องเปลี่ยนขบวนเช่นกัน ส่วนโคดามะที่จอดทุกสถานีใช้เวลา ${KODAMA_RANGE}`,
+    q: "ชินคันเซ็นจากโตเกียวไปนาโกย่าใช้เวลากี่นาที",
+    a: `เร็วสุด ${NOZOMI_FASTEST_MIN} (${NOZOMI_FASTEST}) ด้วยโนโซมิ ไม่ต้องเปลี่ยนขบวน และ ${NOZOMI_RANGE} สำหรับโนโซมิ ${NOZOMI_PER_DAY} ขบวนที่ออกจากโตเกียวไปนาโกย่าในแต่ละวัน ตามข้อมูลการเดินรถของ JR Central ที่ตรวจสอบเมื่อ ${CHECKED} ฮิคาริซึ่งใช้ JAPAN RAIL PASS ได้ใช้เวลา ${HIKARI_RANGE} และไม่ต้องเปลี่ยนขบวนเช่นกัน ส่วนโคดามะที่จอดทุกสถานีใช้เวลา ${KODAMA_RANGE}`,
   },
   {
     q: "ชินคันเซ็นโตเกียวไปนาโกย่าราคาเท่าไร",
@@ -434,7 +435,7 @@ export default function ThTokyoToNagoyaShinkansenPage({ updated }: { updated: Pa
           <p className={styles.eyebrow}>อัปเดต {updatedLabel}</p>
           <h1 className={styles.heroTitle}>{H1}</h1>
           <p className={styles.heroSubtitle}>
-            ประมาณชั่วโมงครึ่ง มีโนโซมิทุกไม่กี่นาที และเป็นช่วงเดียวบนเส้นทางโทไกโดที่ผู้ถือพาสเสียเวลาเพิ่มแค่ไม่กี่นาที ไม่ใช่ 1 ชม. 15 นาที
+            โนโซมิวิ่งตรงทุกไม่กี่นาที และเป็นช่วงเดียวบนเส้นทางโทไกโดที่ผู้ถือพาสเสียเวลาเพิ่มแค่ไม่กี่นาที ไม่ใช่ 1 ชม. 15 นาที
           </p>
           <div className={styles.heroBadges}>
             {[`อัปเดต ${updatedLabel}`, "ราคาทางการจาก smartEX และ JR Group พร้อมวันที่ตรวจสอบ", "จุดคุ้มทุนของ JR Pass", "เที่ยวต่อจากนาโกย่า"].map((t) => (
@@ -473,8 +474,7 @@ export default function ThTokyoToNagoyaShinkansenPage({ updated }: { updated: Pa
               </div>
             </div>
             <p className={styles.verdictText}>
-              <strong>ชินคันเซ็น โตเกียว นาโกย่า</strong> ใช้เวลาเร็วสุด <strong>{NOZOMI_FASTEST}</strong> ด้วยโนโซมิที่วิ่งตรง ({NOZOMI_RANGE}{" "}
-              สำหรับ {NOZOMI_PER_DAY} ขบวนต่อวันจากโตเกียว) ตู้ธรรมดาที่นั่งจองราคา <strong>{SMART_EX_NOZOMI}</strong> เที่ยวเดียวตามราคา smartEX
+              <strong>ชินคันเซ็น โตเกียว นาโกย่า</strong> ใช้เวลาเร็วสุด <strong>{NOZOMI_FASTEST_MIN} ({NOZOMI_FASTEST})</strong> ด้วยโนโซมิที่วิ่งตรง ตู้ธรรมดาที่นั่งจองราคา <strong>{SMART_EX_NOZOMI}</strong> เที่ยวเดียวตามราคา smartEX
               ของ JR JAPAN RAIL PASS ใช้กับโนโซมิไม่ได้ แต่ฮิคาริที่ใช้พาสได้ก็วิ่งตรงเช่นกัน ใช้เวลา <strong>{HIKARI_RANGE}</strong> และราคา{" "}
               {SMART_EX_HIKARI} ถ้าไม่มีพาส ตัวเลขจาก JR Central และ smart-ex.jp ตรวจสอบเมื่อ {CHECKED}
             </p>
@@ -491,9 +491,9 @@ export default function ThTokyoToNagoyaShinkansenPage({ updated }: { updated: Pa
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>คำตอบ</span>
-          <h2 className={styles.sectionTitle}>ชินคันเซ็นจากโตเกียวไปนาโกย่าใช้เวลากี่ชั่วโมง</h2>
+          <h2 className={styles.sectionTitle}>ชินคันเซ็นจากโตเกียวไปนาโกย่าใช้เวลากี่นาที</h2>
           <p className={styles.bodyText}>
-            เร็วสุด {NOZOMI_FASTEST} และโนโซมิเกือบทุกขบวนใช้เวลา {NOZOMI_RANGE} ไม่ต้องเปลี่ยนขบวน ตารางเวลาของ JR Central แสดงโนโซมิ{" "}
+            เร็วสุด {NOZOMI_FASTEST_MIN} ({NOZOMI_FASTEST}) และโนโซมิเกือบทุกขบวนใช้เวลา {NOZOMI_RANGE} ไม่ต้องเปลี่ยนขบวน ตารางเวลาของ JR Central แสดงโนโซมิ{" "}
             {NOZOMI_PER_DAY} ขบวนที่ออกจากโตเกียวและจอดนาโกย่าในวันที่ {CHECKED} ขบวนแรก 06:00 น. ฮิคาริใช้เวลา {HIKARI_RANGE} และโคดามะที่จอดทุกสถานีใช้เวลา{" "}
             {KODAMA_RANGE}
           </p>

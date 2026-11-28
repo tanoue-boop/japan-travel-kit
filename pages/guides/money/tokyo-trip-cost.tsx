@@ -540,8 +540,10 @@ export default function TokyoTripCostPage({ updated }: { updated: PageUpdated })
           </div>
           <p className={styles.bodyText} style={{ marginTop: "0.75rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             Per person, one night counted per day, from the per-day table above. Add the airport both ways from the
-            fixed-cost table further down: ¥5,160 on the Skyliner from Narita, or ¥660 on Keikyu from Haneda. No
-            dollar figure is printed, because the exchange rate moves daily.
+            fixed-cost table further down: ¥5,160 on the Skyliner from Narita, or ¥660 on Keikyu from Haneda (staying
+            near Shinjuku or Tokyo Station? see{" "}
+            <Link href="/guides/transport/skyliner-vs-nex">Skyliner vs N&apos;EX</Link>). No dollar figure is printed,
+            because the exchange rate moves daily.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             For the days themselves, our{" "}

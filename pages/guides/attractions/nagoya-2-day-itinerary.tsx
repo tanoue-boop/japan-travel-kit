@@ -816,7 +816,7 @@ export default function Nagoya2DayItineraryPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText}>
             Yes, as a stop on the Tokyo–Kyoto line rather than a detour: Nagoya is from 1h33m from Tokyo on a NOZOMI
             (JR Central&apos;s timetable, 18 Nov 2026) and 33 minutes from Kyoto on the fastest NOZOMI — our{" "}
-            <Link href="/guides/transport/tokyo-to-nagoya-shinkansen">Tokyo to Nagoya Shinkansen</Link> guide has
+            <Link href="/guides/transport/tokyo-to-nagoya-shinkansen">bullet train from Tokyo to Nagoya</Link> guide has
             every train type and the ¥11,100 smartEX fare. It has Ghibli Park and LEGOLAND Japan, the country&apos;s only LEGOLAND resort, and a castle
             whose palace you can go into. If you get off here, buy separate tickets for each leg — Tokyo to Nagoya,
             then Nagoya to Kyoto or Shin-Osaka.

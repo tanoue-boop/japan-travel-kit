@@ -47,14 +47,17 @@ const SAME_DAY = dotonboriSameDayCards("th");
 const ROUTE = "/th/guides/attractions/dotonbori-river-cruise";
 // 20 Nov 2026 (task-jtk-20261120-C01): official name Tombori River Cruise moved into the title;
 // fares, times and pier re-read on osaka-info.jp/en/spot/tombori-river-cruise/ the same day.
-const TITLE = "ล่องเรือโดทงโบริ (Tombori) 2026: ราคา";
+// 28 Nov 2026 (CTR pass): price and duration moved into the title; fares, 約20分／便, 11:00–21:00
+// every :00/:30 and DOTON号 capacity 70 re-read on the operator's own page (OPERATOR_URL).
+const TITLE = "ล่องเรือโดทงโบริ ¥2,000 20 นาที";
 const DESC =
   "Tombori ล่องเรือโดทงโบริ ¥2,000 20 นาที ทุก 30 นาที 11:00–21:00 ฟรีด้วย Amazing Pass";
 
-const CHECKED_ISO = "2026-11-27"; // re-read 27 Nov 2026 (task-jtk-20261127-04), unchanged
+const CHECKED_ISO = "2026-11-28"; // re-read 28 Nov 2026 on the operator's own page, unchanged
 const CHECKED = dateLabel(CHECKED_ISO, "th");
 const ROOF_CHECKED = dateLabel("2026-11-01", "th");
 const OSAKA_INFO_URL = "https://osaka-info.jp/en/spot/tombori-river-cruise/";
+const OPERATOR_URL = "https://www.ipponmatsu.co.jp/cruise/tombori.html";
 // The pass price is owned by lib/attraction-prices.ts, shared with the English pages.
 const PASS_1_DAY = priceLabel(PRICES.osakaAmazingPass.adult, "th");
 
@@ -188,7 +191,7 @@ const steps = [
   },
   {
     title: "เผื่อเวลาราว 40 นาทีรวมทั้งหมด ไม่ใช่ 20 นาที",
-    desc: "ล่องเรือ 20 นาที คิวที่เคาน์เตอร์ต้อนรับ การเดินลงไปที่ทุ่นลอย และการขึ้นเรือที่จุคนได้ราวยี่สิบกว่าคน ใช้เวลาเพิ่มอีกราว 20 นาที ถ้าจะแทรกไว้ระหว่างร้านอาหารที่จองไว้กับการแสดง ควรเผื่อเวลาไว้ 40 นาที",
+    desc: "ล่องเรือ 20 นาที คิวที่เคาน์เตอร์ต้อนรับ การเดินลงไปที่ทุ่นลอย และการขึ้นเรือที่จุคนได้สูงสุด 70 คน ใช้เวลาเพิ่มอีกราว 20 นาที ถ้าจะแทรกไว้ระหว่างร้านอาหารที่จองไว้กับการแสดง ควรเผื่อเวลาไว้ 40 นาที",
   },
 ];
 
@@ -211,7 +214,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "ล่องเรือโดทงโบริใช้เวลานานเท่าไร?",
-    a: `อยู่บนน้ำราว 20 นาที วิ่งตามคลองโดทงโบริผ่านใจกลางย่านมินามิแล้วกลับ นับว่าสั้นสำหรับการล่องเรือ และเป็นความยาวที่พอดี เพราะช่วงแม่น้ำที่ผ่านมีแค่หน้าตึกนีออนไม่กี่ร้อยเมตร หากนานกว่านี้ ก็ต้องแล่นวนเส้นทางเดิมอีกครั้ง เมื่อนับคิวที่เคาน์เตอร์ การเดินไปทุ่นลอย และการขึ้นเรือ ให้เผื่อใกล้ 40 นาทีรวมทั้งหมด ระยะเวลาตามที่เว็บไซต์ท่องเที่ยวทางการของโอซาก้าและพอร์ทัลล่องเรือ Aqua Metropolis Osaka ประกาศไว้ อ่านเมื่อ ${CHECKED}`,
+    a: `อยู่บนน้ำราว 20 นาที เรือออกจากท่าทาซาเอมงบาชิ กลับลำที่นิปปงบาชิและหน้า Minatomachi River Place แล้วลอดใต้สะพาน 9 แห่งกลับมาที่เดิม นับว่าสั้นสำหรับการล่องเรือ และเป็นความยาวที่พอดี เพราะช่วงแม่น้ำที่ผ่านมีแค่หน้าตึกนีออนไม่กี่ร้อยเมตร หากนานกว่านี้ ก็ต้องแล่นวนเส้นทางเดิมอีกครั้ง เมื่อนับคิวที่เคาน์เตอร์ การเดินไปทุ่นลอย และการขึ้นเรือ ให้เผื่อใกล้ 40 นาทีรวมทั้งหมด ระยะเวลาและเส้นทางตามที่เว็บไซต์ทางการของผู้ให้บริการ Ipponmatsu Kaiun และเว็บไซต์ท่องเที่ยวทางการของโอซาก้าประกาศไว้ อ่านเมื่อ ${CHECKED}`,
   },
   {
     q: "เรือรอบสุดท้ายของล่องเรือโดทงโบริคือกี่โมง?",
@@ -273,7 +276,7 @@ export default function ThDotonboriRiverCruisePage({ updated }: { updated: PageU
     <>
       <Head>
         {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems.slice(0, 5)) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -295,7 +298,7 @@ export default function ThDotonboriRiverCruisePage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>อัปเดต {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            ล่องเรือโดทงโบริ (Tombori River Cruise) 2026: <br />ราคา เวลาออกเรือ และท่าเรือทาซาเอมงบาชิ
+            ล่องเรือโดทงโบริ (Tombori River Cruise) 2026: <br />ราคา ¥2,000 ใช้เวลา 20 นาที และเวลาออกเรือ
           </h1>
           <p className={styles.heroSubtitle}>
             ผู้ใหญ่ ¥2,000 ราว 20 นาที และออกจากท่าทาซาเอมงบาชิทุกครึ่งชั่วโมงระหว่าง 11:00 ถึง 21:00 —
@@ -319,7 +322,7 @@ export default function ThDotonboriRiverCruisePage({ updated }: { updated: PageU
             <strong>Tombori River Cruise</strong> (ล่องเรือโดทงโบริ) ผู้ใหญ่ <strong>¥2,000</strong> นักเรียน{" "}
             <strong>¥1,000</strong> เด็ก <strong>¥500</strong> ใช้เวลา<strong>ราว 20 นาที</strong>{" "}
             ออกจาก<strong>ท่าทาซาเอมงบาชิ</strong>ทุก 30 นาที <strong>11:00–21:00</strong> และ
-            <strong>ขึ้นฟรีด้วย Osaka Amazing Pass</strong> หลังจากแลกเป็นตั๋วที่ระบุเวลาออกเรือแล้ว ตัวเลขจากเว็บไซต์ท่องเที่ยวทางการของโอซาก้า
+            <strong>ขึ้นฟรีด้วย Osaka Amazing Pass</strong> หลังจากแลกเป็นตั๋วที่ระบุเวลาออกเรือแล้ว ตัวเลขจากเว็บไซต์ทางการของผู้ให้บริการเรือ Ipponmatsu Kaiun
             ตรวจสอบล่าสุด {CHECKED_ISO}
           </p>
           <div className={styles.pickCtaRow} style={{ marginBottom: "0.5rem" }}>
@@ -445,12 +448,14 @@ export default function ThDotonboriRiverCruisePage({ updated }: { updated: PageU
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             <strong>Last checked: {CHECKED_ISO}</strong> — แหล่งที่มา:{" "}
-            <a href={OSAKA_INFO_URL} target="_blank" rel="noopener">
-              เว็บไซต์ท่องเที่ยวทางการของโอซาก้า, Tombori River Cruise
+            <a href={OPERATOR_URL} target="_blank" rel="noopener">
+              เว็บไซต์ทางการของ Ipponmatsu Kaiun, Tombori River Cruise
             </a>{" "}
-            ราคาอ่านเมื่อ {CHECKED} จากเว็บไซต์ท่องเที่ยวทางการของโอซาก้าและรายการสถานที่เข้าฟรีของ
-            ผู้ให้บริการ Osaka Amazing Pass ซึ่งพิมพ์ตัวเลขสามตัวเดียวกัน เว็บไซต์ของบริษัทผู้ให้บริการเรือปิดปรับปรุงในวันที่ตรวจสอบ
-            ตัวเลขทั้งหมดในหน้านี้จึงอ้างอิงจากสองแหล่งดังกล่าว อาจเปลี่ยนแปลง —
+            (ราคารวมภาษี) ราคาอ่านเมื่อ {CHECKED} และตรวจเทียบกับ{" "}
+            <a href={OSAKA_INFO_URL} target="_blank" rel="noopener">
+              เว็บไซต์ท่องเที่ยวทางการของโอซาก้า
+            </a>{" "}
+            และรายการสถานที่เข้าฟรีของผู้ให้บริการ Osaka Amazing Pass ซึ่งพิมพ์ตัวเลขสามตัวเดียวกัน อาจเปลี่ยนแปลง —
             ควรยืนยันก่อนจ่ายเงิน สำหรับค่าเข้าสถานที่อื่น ๆ ทั่วญี่ปุ่นที่เว็บไซต์นี้รวบรวมไว้ พร้อมวันที่ตรวจสอบ
             ของแต่ละรายการ ดูได้ที่{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={LINK_STYLE}>
@@ -502,14 +507,15 @@ export default function ThDotonboriRiverCruisePage({ updated }: { updated: PageU
             การที่มีเรือออกวันละ 21 รอบช่วยให้วางแผนได้ง่ายขึ้น หมายความว่าคุณสามารถแทรกการล่องเรือไว้ในแผนเที่ยวช่วงค่ำได้ โดยไม่ต้องจัดตารางทั้งคืนตามกิจกรรมนี้ และ <strong>เรือรอบสุดท้าย 21:00</strong> ก็ยังขึ้นได้หลังมื้อเย็นในทุกฤดู ตารางอ่านเมื่อ {CHECKED}
           </p>
 
-          <h3 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
-            Tombori River Cruise ใช้เวลานานเท่าไร?
-          </h3>
+          <h2 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            ล่องเรือโดทงโบริใช้เวลานานเท่าไร?
+          </h2>
           <p className={styles.bodyText}>
-            <strong>อยู่บนน้ำราว 20 นาที</strong> เว็บไซต์ท่องเที่ยวทางการของโอซาก้าพิมพ์ไว้ 20 นาที
-            และพอร์ทัลล่องเรือ Aqua Metropolis Osaka พิมพ์ว่า &ldquo;ประมาณ 20 นาที&rdquo; ทั้งคู่อ่านเมื่อ{" "}
+            <strong>อยู่บนน้ำราว 20 นาที</strong> เรือออกจากท่าทาซาเอมงบาชิ กลับลำที่นิปปงบาชิและหน้า
+            Minatomachi River Place แล้วลอดใต้สะพาน 9 แห่งกลับมาที่เดิม เว็บไซต์ทางการของผู้ให้บริการพิมพ์ว่า
+            &ldquo;ประมาณ 20 นาทีต่อเที่ยว&rdquo; อ่านเมื่อ{" "}
             {CHECKED} แต่ควรเผื่อเวลารวมไว้ <strong>ราว 40 นาที</strong> เพราะการติดต่อเคาน์เตอร์
-            การเดินลงไปที่ทุ่นลอย และการขึ้นเรือที่จุคนได้ราวยี่สิบกว่าคน ใช้เวลาเพิ่มอีกราว 20 นาที ระยะเวลา 20 นาทีเหมาะกับเส้นทางนี้
+            การเดินลงไปที่ทุ่นลอย และการขึ้นเรือที่จุคนได้สูงสุด 70 คน ใช้เวลาเพิ่มอีกราว 20 นาที ระยะเวลา 20 นาทีเหมาะกับเส้นทางนี้
             — ช่วงแม่น้ำมีแค่หน้าตึกนีออนไม่กี่ร้อยเมตร หากนานกว่านี้ ก็ต้องแล่นวนเส้นทางเดิมอีกครั้ง
           </p>
 

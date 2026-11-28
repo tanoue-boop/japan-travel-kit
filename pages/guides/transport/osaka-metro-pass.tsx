@@ -27,10 +27,20 @@ const EARLIER_CHECK = "20 October 2026";
  */
 const PRICE_CHECKED = "20 November 2026";
 const PRICE_CHECKED_ISO = "2026-11-20";
+/**
+ * Re-read on 28 Nov 2026: Enjoy Eco Card adult ¥820 (¥20) / Sat, Sun & holidays ¥620 (¥20), child ¥310,
+ * all Osaka Metro except Yumeshima Station plus Osaka City Bus except IKEA Tsuruhama and other named routes,
+ * ¥220 refund fee (en/guide/page/enjoy-eco.php); Yoh-okoshi 30h Pass ¥1,200 / ¥600, Yumeshima included, no
+ * buses (digital_joshaken.php); Amazing Pass ¥3,500 / ¥5,000 (osaka-amazing-pass.com/en/). The zone fares and
+ * the route-search legs were not re-read (the English fare page's table is not in its text), so they keep
+ * PRICE_CHECKED.
+ */
+const ECO_CHECKED = "28 November 2026";
+const ECO_CHECKED_ISO = "2026-11-28";
 
-const TITLE = "Osaka Metro Pass 2026: 1-Day Pass Price & Is It Worth It?";
+const TITLE = "Osaka Metro Day Pass 2026 (Enjoy Eco Card): ¥820, Worth It?";
 const DESCRIPTION =
-  "Osaka Metro pass 2026: the 1-day pass (Enjoy Eco Card) is ¥820 weekdays, ¥620 weekends. Osaka subway pass vs Amazing Pass and ICOCA, with a day that pays.";
+  "Osaka Metro day pass (Enjoy Eco Card): ¥820 weekdays, ¥620 weekends, child ¥310. What the one-day pass covers, when it pays off, and vs the Amazing Pass.";
 
 const OFFICIAL_ECO_URL = "https://subway.osakametro.co.jp/en/guide/page/enjoy-eco.php";
 const OFFICIAL_AMAZING_URL = "https://osaka-amazing-pass.com/en/";
@@ -49,8 +59,7 @@ const ECO_CHILD = 310;
 const AMAZING_1_DAY = 3500;
 const AMAZING_2_DAY = 5000;
 
-/** The cheapest adult single fare (1-ku) and the fare for most central hops (2-ku). */
-const FARE_1KU = 190;
+/** The fare for most central hops (2-ku); the cheapest, 1-ku, is ¥190 (fareRows). */
 const FARE_2KU = 240;
 
 const yen = (n: number) => `¥${n.toLocaleString("en-US")}`;
@@ -247,8 +256,12 @@ const passPoints = [
 
 const faqItems = [
   {
-    q: "How much is the Osaka Metro 1-day pass?",
-    a: "The Osaka Metro 1-day pass, the Enjoy Eco Card, costs ¥820 for adults on weekdays and ¥620 on Saturdays, Sundays and public holidays, and ¥310 for children on any day. The adult prices include a ¥20 station barrier-free fee, and the QR-code version in the e METRO app costs the same. Osaka Metro ended sales of the old 26-hour (¥1,000) and 48-hour (¥1,800) tickets on 30 September 2026; the nearest longer option is the Yoh-okoshi 30h Pass at ¥1,200. Prices checked 20 November 2026 on subway.osakametro.co.jp.",
+    q: "How much is the Osaka Metro day pass in 2026?",
+    a: "The Osaka Metro day pass, the Enjoy Eco Card, costs ¥820 for adults on weekdays and ¥620 on Saturdays, Sundays and public holidays, and ¥310 for children on any day. The adult prices include a ¥20 station barrier-free fee, and the QR-code version in the e METRO app costs the same. Osaka Metro ended sales of the old 26-hour (¥1,000) and 48-hour (¥1,800) tickets on 30 September 2026; the nearest longer option is the Yoh-okoshi 30h Pass at ¥1,200. Prices checked 28 November 2026 on subway.osakametro.co.jp.",
+  },
+  {
+    q: "What does the Osaka Metro one-day pass cover?",
+    a: "Unlimited rides for one calendar day on every Osaka Metro line except Yumeshima Station, and on Osaka City Bus except buses bound for IKEA Tsuruhama and other routes named in the bus regulations. It does not cover JR (the Osaka Loop Line or the train to Universal Studios Japan) or the Hankyu, Kita-Osaka Kyuko and Kintetsu trains that run through onto the subway beyond the Osaka Metro section. It also gives admission discounts at about 20 sights in Osaka City on the day of use. Checked 28 November 2026 on subway.osakametro.co.jp.",
   },
   {
     q: "Is the Osaka Metro pass worth it?",
@@ -256,11 +269,7 @@ const faqItems = [
   },
   {
     q: "Enjoy Eco Card vs Osaka Amazing Pass: which should I buy?",
-    a: "Buy the Enjoy Eco Card if the day is mostly rides, and the Osaka Amazing Pass only if the paid sights you will enter add up to more than the difference. The Amazing Pass is ¥3,500 for one day and ¥5,000 for two, with about 40 attractions included and no child price, so it costs ¥2,680 more than a weekday Enjoy Eco Card. It also covers Hankyu, Hanshin, Keihan, Kintetsu and Nankai trains mainly within Osaka City, which the Enjoy Eco Card does not. Checked 20 November 2026 on osaka-amazing-pass.com.",
-  },
-  {
-    q: "Can I use the Osaka subway pass on JR lines?",
-    a: "No. The Enjoy Eco Card covers Osaka Metro (except Yumeshima Station) and Osaka City Bus only, and JR is not among the Osaka Amazing Pass's participating lines either. JR trips such as the Osaka Loop Line or the ride to Universal City Station for Universal Studios Japan need a separate ticket or an ICOCA, and trains that run through from Hankyu, Kita-Osaka Kyuko or Kintetsu are charged beyond the Osaka Metro section. Checked 20 November 2026 on subway.osakametro.co.jp and osaka-amazing-pass.com.",
+    a: "Buy the Enjoy Eco Card if the day is mostly rides, and the Osaka Amazing Pass only if the paid sights you will enter add up to more than the difference. The Amazing Pass is ¥3,500 for one day and ¥5,000 for two, with about 40 attractions included and no child price, so it costs ¥2,680 more than a weekday Enjoy Eco Card. It also covers Hankyu, Hanshin, Keihan, Kintetsu and Nankai trains mainly within Osaka City, which the Enjoy Eco Card does not. Prices checked 28 November 2026 on osaka-amazing-pass.com.",
   },
   {
     q: "Where do I buy the Osaka Metro pass?",
@@ -354,11 +363,12 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Osaka Metro Pass 2026: 1-Day Pass Price &amp; Is It Worth It? <br />Enjoy Eco Card vs Amazing Pass, the Osaka Subway Pass Options Compared
+            Osaka Metro Day Pass 2026 (Enjoy Eco Card): <br />¥820 Price, Coverage &amp; Is It Worth It?
           </h1>
           <p className={styles.heroSubtitle}>
-            The Osaka subway pass for one day is the Enjoy Eco Card. Here is what it costs, how many rides it
-            takes to pay off, and when the Osaka Amazing Pass, the 30-hour pass or an ICOCA is the better buy.
+            The Osaka Metro day pass, often called the Osaka subway pass, is the Enjoy Eco Card. What it costs, what it
+            covers, how many rides it takes to pay off, and when the Amazing Pass, the 30-hour pass or an ICOCA is the
+            better buy.
           </p>
           <div className={styles.heroBadges}>
             {[`Prices checked ${PRICE_CHECKED}`, "Official Sources", "Break-Even Maths"].map((t) => (
@@ -373,18 +383,16 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
       <div className={styles.content}>
         {/* The answer, before anything else */}
         <p className={styles.bodyText}>
-          The Osaka Metro 1-day pass, the Enjoy Eco Card, costs <strong>{yen(ECO_WEEKDAY)} for adults on weekdays and{" "}
-          {yen(ECO_WEEKEND)} on Saturdays, Sundays and holidays</strong>, with children at {yen(ECO_CHILD)} (Osaka
-          Metro&apos;s official prices, checked {PRICE_CHECKED}). With the cheapest single fare at {yen(FARE_1KU)}, the
-          pass pays for itself on the {ridesToBeat(ECO_WEEKDAY, FARE_1KU)}th ride on a weekday or the{" "}
-          {ridesToBeat(ECO_WEEKEND, FARE_1KU)}th at the weekend, and at the {yen(FARE_2KU)} fare most central hops cost,
-          such as Umeda to Namba, on the {ridesToBeat(ECO_WEEKDAY, FARE_2KU)}th or {ridesToBeat(ECO_WEEKEND, FARE_2KU)}rd.
-          Choose the{" "}
+          The Osaka Metro day pass, the Enjoy Eco Card, costs <strong>{yen(ECO_WEEKDAY)} for adults on weekdays and{" "}
+          {yen(ECO_WEEKEND)} on Saturdays, Sundays and holidays</strong> (children {yen(ECO_CHILD)}) and covers every
+          Osaka Metro line except Yumeshima Station, plus Osaka City Bus, for one calendar day (Osaka Metro&apos;s
+          official page, checked {ECO_CHECKED}). It pays for itself on the {ridesToBeat(ECO_WEEKDAY, FARE_2KU)}th{" "}
+          {yen(FARE_2KU)} ride on a weekday or the {ridesToBeat(ECO_WEEKEND, FARE_2KU)}rd at the weekend, so a day of
+          Namba, Osaka Castle, Umeda and Tennoji ({yen(routeRows[0].total)} in single fares) saves{" "}
+          {yen(routeRows[0].total - ECO_WEEKDAY)} on a weekday. Choose the{" "}
           <Link href="/guides/attractions/osaka-attractions-pass" style={{ fontWeight: 600 }}>Osaka Amazing Pass</Link>{" "}
-          ({yen(AMAZING_1_DAY)} for one day, {yen(AMAZING_2_DAY)} for two, about 40
-          attractions included) only if the sights you will pay to enter that day cost more than the{" "}
-          {yen(AMAZING_1_DAY - ECO_WEEKDAY)} it adds over a weekday card; for two or three rides, an ICOCA is cheaper
-          than either.
+          ({yen(AMAZING_1_DAY)} for one day, {yen(AMAZING_2_DAY)} for two) only if your paid admissions that day exceed
+          the {yen(AMAZING_1_DAY - ECO_WEEKDAY)} it adds, and an ICOCA for just two or three rides.
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", margin: "0.25rem 0 1.5rem" }}>
           <KlookLink href={METRO_URL} className={styles.verdictBtn} target="_blank" rel="sponsored nofollow noopener">
@@ -556,9 +564,9 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
         {/* Price table */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Price</span>
-          <h2 className={styles.sectionTitle}>How Much Is the Osaka Metro 1-Day Pass?</h2>
+          <h2 className={styles.sectionTitle}>How Much Is the Osaka Metro Day Pass?</h2>
           <p className={styles.bodyText}>
-            The 1-day pass, the Enjoy Eco Card, is ¥820 for adults on weekdays, ¥620 on Saturdays, Sundays and holidays,
+            The Osaka Metro day pass, the Enjoy Eco Card, is ¥820 for adults on weekdays, ¥620 on Saturdays, Sundays and holidays,
             and ¥310 for children. The QR-code version costs the same, and the cheapest step up to two days is the
             ¥1,200 Yoh-okoshi 30h Pass.
             &quot;Osaka Metro Pass&quot; is a label travellers use rather than a product name, so these are the tickets
@@ -569,7 +577,7 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
             <div className={styles.tableScroll}>
               <table className={styles.table}>
                 <caption style={{ captionSide: "bottom", padding: "0.6rem 0.75rem", fontSize: "0.82rem", color: "var(--text-muted)", textAlign: "left" }}>
-                  Official Osaka Metro prices for the Enjoy Eco Card, the digital 1-day pass and the 30h Pass, checked {PRICE_CHECKED}.
+                  Official Osaka Metro prices for the Enjoy Eco Card, the digital 1-day pass and the 30h Pass, checked {ECO_CHECKED}.
                 </caption>
                 <thead>
                   <tr>
@@ -598,9 +606,13 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.88rem", color: "var(--text-muted)" }}>
-            Last checked: {PRICE_CHECKED_ISO}. Source:{" "}
+            Last checked: {ECO_CHECKED_ISO}. Sources:{" "}
             <a href={OFFICIAL_ECO_URL} target="_blank" rel="noopener" style={{ fontWeight: 600 }}>
               Osaka Metro&apos;s Enjoy Eco Card page
+            </a>{" "}
+            and{" "}
+            <a href={OFFICIAL_DIGITAL_URL} target="_blank" rel="noopener" style={{ fontWeight: 600 }}>
+              digital tickets page (30h Pass, in Japanese)
             </a>
             . Weekend pricing follows the calendar, not the train timetable.
           </p>
@@ -614,7 +626,8 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
           <span className={styles.sectionLabel}>Break-even</span>
           <h2 className={styles.sectionTitle}>Is the Osaka Metro Pass Worth It?</h2>
           <p className={styles.bodyText}>
-            Yes, once you take four ¥240 rides on a weekday or three at the weekend. Fares go by distance, so the table
+            Yes, once you take four ¥240 rides on a weekday (¥960 against the ¥820 pass) or three at the weekend (¥720
+            against ¥620). Fares go by distance, so the table
             shows the ride on which the pass beats paying each time.
           </p>
           <div className={styles.tableWrap}>
@@ -861,14 +874,19 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
         {/* What it does not cover */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Coverage</span>
-          <h2 className={styles.sectionTitle}>What Does the Osaka Subway Pass Cover?</h2>
+          <h2 className={styles.sectionTitle}>What Does the Osaka Metro One-Day Pass Cover?</h2>
           <p className={styles.bodyText}>
-            The 1-day pass covers every Osaka Metro line except Yumeshima Station, plus Osaka City Bus apart from a few
-            named routes. For the coverage map, use{" "}
+            The Osaka Metro one-day pass covers unlimited rides on every Osaka Metro line except Yumeshima Station, plus
+            Osaka City Bus apart from buses bound for IKEA Tsuruhama and a few other named routes, for one calendar day.
+            It does not cover JR or the private railways. Checked {ECO_CHECKED} on{" "}
+            <a href={OFFICIAL_ECO_URL} target="_blank" rel="noopener" style={{ fontWeight: 600 }}>
+              Osaka Metro&apos;s Enjoy Eco Card page
+            </a>
+            ; for the coverage map, use{" "}
             <a href={OFFICIAL_MAP_URL} target="_blank" rel="noopener" style={{ fontWeight: 600 }}>
               Osaka Metro&apos;s official route map
             </a>
-            , which has a PDF download. Checked {CHECKED}.
+            , which has a PDF download.
           </p>
           <p className={styles.bodyText}>
             Osaka Tourism Bureau lists the excluded buses as those bound for{" "}

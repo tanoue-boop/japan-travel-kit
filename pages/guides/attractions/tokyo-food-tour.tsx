@@ -57,9 +57,9 @@ const OMOIDE_URL = "https://www.gotokyo.org/en/spot/63/index.html";
  * descriptions (lib/klook-links.ts); the Asakusa listing was confirmed in the www.klook.com
  * search index on 20 Nov 2026. No Klook price is quoted.
  */
-const TITLE = "Tokyo Food Tours 2026: Best Tours Compared by Area & Time";
+const TITLE = "Tokyo Food Tour 2026: Tsukiji & Asakusa Daytime Street Food";
 const DESC =
-  "Tokyo food tours compared: 2-hour daytime Tsukiji market walks, Shibuya and Asakusa food walks, and a 3-hour Shinjuku evening (20+). Pick by area on Klook.";
+  "Tokyo food tour by day: a 2-hour Tsukiji Outer Market street-food walk (skewers, tamagoyaki, sushi, wagyu), a 3-hour Tsukiji walk and Asakusa wagyu walk.";
 
 /** Which tour to book — the first row is the default answer. */
 const compareRows = [
@@ -206,24 +206,12 @@ const faqItems = [
     a: "If you are comparing food tour operators, the same areas are sold on Klook and GetYourGuide by different local guides: a roughly 2-hour daytime Tsukiji street-food walk, a 3-hour Tsukiji food and culture walk, a Shibuya half-day food walk, an Asakusa culture and food walk built around a wagyu meal, and a 3-hour Shinjuku izakaya evening for over-20s. Compare them on the number of stops, which food and drinks are included, the group size and the meeting point, then open the listing for the price on your date.",
   },
   {
-    q: "Is there a Golden Gai food tour?",
-    a: "Yes. Klook lists a three-hour Golden Gai food tasting built around yakitori and a bowl of ramen that ends with a drink inside Golden Gai, and a Golden Gai bar-hopping experience with no meal attached. Most Shinjuku izakaya tours also finish in Golden Gai. Golden Gai bars typically open around 20:00 and many seat only five or six people, which is why a guide who knows which doors welcome visitors is useful. GO TOKYO also notes photography is not allowed without permission. Read on 11 November 2026.",
+    q: "Can you do a Tsukiji and Asakusa food tour on the same day?",
+    a: "Yes. Book Tsukiji for the morning — the 2-hour street-food walk, or the 3-hour food and culture walk with its 08:30 start — and an Asakusa walk afterwards, checking its start time on the listing. The Toei Asakusa Line from Higashi-ginza, a short walk from Tsukiji Outer Market, runs straight to Asakusa. Formats as each Klook listing describes them.",
   },
   {
-    q: "Is there a yakitori and izakaya food tour in Tokyo?",
-    a: "Yes: the Shinjuku izakaya tours start in Omoide Yokocho, an alley of yakitori stalls serving skewers and beer. A typical evening tour gathers a small group and an English-speaking guide, then moves between several izakaya and tiny bars — often in Shinjuku's Omoide Yokocho and Golden Gai — sampling dishes like yakitori, gyoza, and fried tofu with sake or beer along the way. Tours usually last around three hours and include the food and drinks, so you taste a range of places in one night.",
-  },
-  {
-    q: "Is there an age limit for izakaya bar-hopping tours?",
-    a: "Yes. Because izakaya and bar-hopping tours include alcoholic drinks, they're generally limited to ages 20 and over, in line with Japan's legal drinking age. If you're travelling with younger members of your group, look instead at a daytime market food tour (such as Tsukiji), which is family-friendly and lighter on alcohol.",
-  },
-  {
-    q: "What food will I try on a Tokyo izakaya tour?",
-    a: "Expect izakaya staples: yakitori (grilled chicken skewers), gyoza (dumplings), and fried tofu, typically paired with sake or beer. Exact dishes depend on the venues and the season, and many tours adapt to the group. If you have dietary needs, flag them when booking — smaller bars have limited menus, so advance notice helps.",
-  },
-  {
-    q: "Should I do a food tour or explore on my own?",
-    a: "If you read some Japanese and feel comfortable wandering into tiny, cash-only bars, exploring solo is part of the fun. But a guided tour is worth it for a first night out: the guide handles ordering and etiquette, gets you into places you might walk past, and shares the stories behind the food. It's an efficient, low-stress way to taste a lot in one evening.",
+    q: "Is there a Golden Gai or Shinjuku izakaya food tour?",
+    a: "Yes, but they are evening tours for ages 20 and over, covered in our Tokyo night food tour guide. Klook lists a three-hour Golden Gai food tasting built around yakitori and ramen, a Golden Gai bar-hopping experience with no meal, and a 3-hour Shinjuku izakaya crawl from Omoide Yokocho to Golden Gai. GO TOKYO says most Golden Gai bars open around 20:00 and many seat only five or six. Read on 11 November 2026.",
   },
 ];
 
@@ -280,7 +268,7 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
                 { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
                 { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
                 { "@type": "ListItem", position: 3, name: "Things to Do", item: "https://www.japan-travel-kit.com/guides/attractions" },
-                { "@type": "ListItem", position: 4, name: "Tokyo Food & Izakaya Tours", item: "https://www.japan-travel-kit.com/guides/attractions/tokyo-food-tour" },
+                { "@type": "ListItem", position: 4, name: "Tokyo Food Tour", item: "https://www.japan-travel-kit.com/guides/attractions/tokyo-food-tour" },
               ],
             }),
           }}
@@ -302,7 +290,7 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg><span className="sr-only"> / </span>
-          <span className={styles.breadCurrent}>Tokyo Food &amp; Izakaya Tours</span>
+          <span className={styles.breadCurrent}>Tokyo Food Tour</span>
         </div>
       </div>
 
@@ -313,11 +301,11 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
             Updated {updated.label}
           </p>
           <h1 className={styles.heroTitle}>
-            Tokyo Food Tours 2026: <br />Best Tours Compared by Area &amp; Time
+            Tokyo Food Tour 2026: <br />Tsukiji &amp; Asakusa Daytime Street Food
           </h1>
           <p className={styles.heroSubtitle}>
-            Which tour to book by area, time of day and length — Tsukiji, Shibuya and Asakusa by day,
-            and the 3-hour Shinjuku izakaya evening for over-20s.
+            Daytime market and street-food walks compared — the 2-hour Tsukiji walk, the 3-hour Tsukiji
+            food and culture walk, Asakusa and Shibuya — with the after-dark tours handed to their own guide.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Tsukiji · Shibuya · Asakusa", "Small-Group Tours"].map((t) => (
@@ -342,12 +330,15 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
         {/* Lead — the answer in the first body paragraph, with numbers. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            <strong>For a first Tokyo food tour, book a daytime Tsukiji Outer Market walk</strong>: about{" "}
-            <strong>2 hours</strong> in a small group from Tsukiji Hongwanji, tasting skewers, tamagoyaki,
-            sushi and wagyu, open to all ages. The <strong>Shibuya</strong> half-day walk adds four dishes
-            and two drinks around Nonbei Yokocho and Miyashita Park, and an <strong>Asakusa</strong> walk is
-            built around a wagyu meal; the <strong>3-hour Shinjuku izakaya evening</strong> is the 20-and-over
-            option. Formats as each Klook listing describes them, checked 2026-11-20 for Shibuya and Asakusa.
+            <strong>For a first Tokyo food tour, book the daytime Tsukiji Outer Market street-food walk</strong>:
+            about <strong>2 hours</strong> in a small group from Tsukiji Hongwanji, tasting skewers, tamagoyaki,
+            sushi and wagyu, open to all ages. For longer, the <strong>3-hour Tsukiji food and culture walk</strong>{" "}
+            starts at 08:30 or 11:00, and an <strong>Asakusa</strong> walk is built around a wagyu beef meal.
+            Looking for yakitori, Golden Gai and drinks after dark instead? That is a{" "}
+            <Link href="/guides/attractions/tokyo-night-food-tour" style={{ color: "var(--red)", fontWeight: 600 }}>
+              Shinjuku izakaya food tour
+            </Link>
+            , compared in its own guide.
           </p>
           <div className={styles.pickCtaRow} style={{ marginBottom: "0.5rem" }}>
             <KlookLink href={tsukijiStreetFoodTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -419,11 +410,16 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
         {/* Intro */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Overview</span>
-          <h2 className={styles.sectionTitle}>Why Take a Food Tour in Tokyo?</h2>
+          <h2 className={styles.sectionTitle}>What Do You Eat on a Tsukiji or Asakusa Food Tour?</h2>
+          <p className={styles.bodyText}>
+            <strong>At Tsukiji, seafood-market street food</strong>: the 2-hour walk lists skewers, tamagoyaki,
+            sushi and wagyu in the Outer Market. In Asakusa the Klook walk is built around local food and a wagyu
+            beef meal, and the Shibuya half-day walk includes four dishes and two drinks.
+          </p>
           <p className={styles.bodyText}>
             Tokyo has more restaurants than any city on earth, and some of its best are the hardest to walk into:
             counter-only izakaya, six-seat bars, and smoky yakitori stalls where the menus are in Japanese and the
-            etiquette is unwritten. A food tour cuts straight through that. In a single evening you taste a string
+            etiquette is unwritten. A food tour cuts straight through that. In a few hours you taste a string
             of places with a guide who orders for you, explains what you&apos;re eating, and gets you past the
             doorways you&apos;d otherwise hesitate at.
           </p>
@@ -510,6 +506,15 @@ export default function TokyoFoodTourPage({ updated }: { updated: PageUpdated })
             included, the group size, and the length — about 2 hours at Tsukiji, about 3 on the Shinjuku
             evening. Golden Gai bars set their own cover charges, so an evening tour that stops there can carry
             costs on top; a daytime market walk usually does not.
+          </p>
+
+          <h2 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            Can You Do a Tsukiji and Asakusa Food Tour on the Same Day?
+          </h2>
+          <p className={styles.bodyText}>
+            <strong>Yes — Tsukiji in the morning, Asakusa after.</strong> Take the 2-hour Tsukiji walk or the
+            08:30 start of the 3-hour walk, then an Asakusa walk whose start time on the listing leaves you room;
+            the Toei Asakusa Line from Higashi-ginza, a short walk from the Outer Market, runs straight to Asakusa.
           </p>
 
           <h2 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>

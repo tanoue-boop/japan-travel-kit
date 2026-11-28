@@ -578,7 +578,7 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
             <Link href="/guides/transport/tokyo-to-osaka-shinkansen">Tokyo to Osaka shinkansen guide</Link>,{" "}
 <Link href="/guides/transport/kyoto-to-tokyo-shinkansen">Kyoto to Tokyo train</Link> guide,{" "}
             <Link href="/guides/transport/tokyo-to-hiroshima-shinkansen">Tokyo to Hiroshima shinkansen guide</Link>,{" "}
-            <Link href="/guides/transport/tokyo-to-nagoya-shinkansen">Tokyo to Nagoya shinkansen guide</Link>,{" "}
+            <Link href="/guides/transport/tokyo-to-nagoya-shinkansen">Tokyo to Nagoya bullet train guide</Link>,{" "}
             <Link href="/guides/transport/tokyo-to-kanazawa">Tokyo to Kanazawa guide</Link> and{" "}
             <Link href="/guides/transport/osaka-to-hiroshima-shinkansen">Osaka to Hiroshima shinkansen guide</Link>.
             A non-reserved seat Tokyo–Kyoto is ¥13,320 on smartEX.
@@ -593,11 +593,11 @@ export default function ShinkansenGuidePage({ updated }: { updated: PageUpdated 
             Yes, if your suitcase measures 161 to 250 cm in length + width + height: on the Tokaido, Sanyo and
             Kyushu Shinkansen you must reserve a seat with an oversized baggage area. It costs nothing extra, but
             board without one and JR charges ¥1,000, and when those seats are gone the answer is another train — or
-            sending the case ahead by courier, which our{" "}
+            sending the case ahead by courier, which our guide to{" "}
             <Link href="/guides/transport/japan-luggage-delivery" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Japan luggage delivery
+              luggage delivery in Japan
             </Link>{" "}
-            guide prices by size.
+            prices by size.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

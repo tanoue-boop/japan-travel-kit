@@ -474,7 +474,7 @@ export default function WhereToStayInKyotoPage({ updated }: { updated: PageUpdat
             there, and the Nara Line to Fushimi Inari and the Sagano Line to Arashiyama leave from the same
             building. teamLab Biovortex Kyoto is a 7-minute walk from the station&apos;s Hachijo East Gate on
             teamLab&apos;s own figure, with last entry at 19:30 — our{" "}
-            <Link href="/guides/attractions/teamlab-kyoto-tickets">teamLab Kyoto tickets guide</Link> has the
+            <Link href="/guides/attractions/teamlab-kyoto-tickets">teamLab Biovortex Kyoto tickets</Link> guide has the
             price and hours.
           </p>
           <p className={styles.bodyText}>

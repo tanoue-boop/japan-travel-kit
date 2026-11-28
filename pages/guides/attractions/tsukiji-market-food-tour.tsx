@@ -400,8 +400,9 @@ export default function TsukijiMarketFoodTourPage({ updated }: { updated: PageUp
           <p className={styles.bodyText}>
             This guide is about that one market and the tours of it. If you want the evening version
             of a Tokyo food day — izakaya counters, Golden Gai, bar hopping in Shinjuku — that is our{" "}
-            <Link href="/guides/attractions/tokyo-food-tour">Tokyo food and izakaya tours guide</Link>,
-            and if you want to cook rather than eat,{" "}
+            <Link href="/guides/attractions/tokyo-night-food-tour">Tokyo night food tour guide</Link>; to
+            set Tsukiji against the Asakusa and Shibuya day walks, see the{" "}
+            <Link href="/guides/attractions/tokyo-food-tour">Tokyo food tour</Link> comparison; and if you want to cook rather than eat,{" "}
             <Link href="/guides/attractions/tokyo-cooking-class">Tokyo cooking classes</Link> covers the
             sushi and ramen formats. The three are a morning, an evening and an afternoon, and they do
             not overlap.

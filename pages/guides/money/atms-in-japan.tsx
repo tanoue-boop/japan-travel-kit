@@ -482,7 +482,7 @@ export default function AtmsInJapanPage({ updated }: { updated: PageUpdated }) {
             The fewer withdrawals you make, the fewer times that second fee repeats — and a tap of the same
             card now settles most chain-store bills and, on Tokyo Metro and Toei, the fare at the gate.{" "}
             <Link href="/guides/money/contactless-payment-japan" style={{ color: "var(--red)", fontWeight: 600 }}>
-              Where contactless payment works in Japan
+              Where you can tap to pay in Japan
             </Link>{" "}
             shows which places still need the cash you withdraw here, and{" "}
             <Link href="/guides/money/cash-vs-card-japan" style={{ color: "var(--red)", fontWeight: 600 }}>

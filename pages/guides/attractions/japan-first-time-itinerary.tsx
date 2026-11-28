@@ -468,7 +468,7 @@ export default function JapanFirstTimeItineraryPage({ updated }: { updated: Page
             A good <strong>first time Japan itinerary</strong> takes <strong>9 days</strong>: three nights in
             Tokyo with a day trip to Hakone or Nikko, three in Kyoto with a day trip to Nara, and two in Osaka,
             flying home from Kansai or Haneda. Unlike our{" "}
-            <Link href="/guides/attractions/japan-5-day-itinerary">5-day plan</Link> (Tokyo and Kyoto only) or{" "}
+            <Link href="/guides/attractions/japan-5-day-itinerary">5-day Japan itinerary</Link> (Tokyo and Kyoto only) or{" "}
             <Link href="/guides/attractions/tokyo-kyoto-osaka-7-day-itinerary">7-day plan</Link> (three cities, no
             day trips), the two extra days go to Hakone or Nikko and to Nara. The long trains are short: about 2 hours from Tokyo to Kyoto on
             the shinkansen and about 30 minutes from Kyoto to Osaka. Skip the JR Pass on this route, because

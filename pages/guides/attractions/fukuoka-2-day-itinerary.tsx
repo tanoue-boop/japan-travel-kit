@@ -895,7 +895,7 @@ export default function Fukuoka2DayItineraryPage({ updated }: { updated: PageUpd
             {[
               { href: "/guides/attractions/yufuin-beppu-tour-from-fukuoka", title: "Yufuin and Beppu Tour from Fukuoka: Tours, Trains and Onsen Time" },
               { href: "/guides/attractions/teamlab-fukuoka-tickets", title: "teamLab Fukuoka Tickets 2026: Price, Hours & Booking" },
-              { href: "/guides/attractions/kyushu-5-day-itinerary", title: "Kyushu 5 Day Itinerary (2026): Fukuoka, Beppu, Kumamoto and Takachiho" },
+              { href: "/guides/attractions/kyushu-5-day-itinerary", title: "Kyushu 5-Day Itinerary 2026: Fukuoka, Beppu & Nagasaki by JR" },
               { href: "/guides/transport/jr-kyushu-rail-pass", title: "JR Kyushu Rail Pass 2026: Prices, New Oct 1 Pass & Worth It?" },
               { href: "/guides/attractions/hiroshima-2-day-itinerary", title: "2 Days in Hiroshima: Day-by-Day Itinerary (2026)" },
               { href: "/guides/attractions/kyoto-2-day-itinerary", title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book" },

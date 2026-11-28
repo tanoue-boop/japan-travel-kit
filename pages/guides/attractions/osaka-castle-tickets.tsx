@@ -686,8 +686,8 @@ export default function OsakaCastleTicketsPage({ updated }: { updated: PageUpdat
             from Osaka&apos;s official tourism site the same day. Our{" "}
             <Link href="/guides/transport/osaka-transportation">getting around Osaka guide</Link>{" "}
             explains how the Chuo and Tanimachi lines fit the rest of the network, and the{" "}
-            <Link href="/guides/transport/osaka-metro-pass">Osaka Metro pass guide</Link> works out
-            whether a plain day pass beats tapping an IC card if you are not buying the Amazing Pass.
+            <Link href="/guides/transport/osaka-metro-pass">Osaka Metro day pass</Link> guide works out
+            whether the ¥820 Enjoy Eco Card beats tapping an IC card if you are not buying the Amazing Pass.
           </p>
         </section>
 

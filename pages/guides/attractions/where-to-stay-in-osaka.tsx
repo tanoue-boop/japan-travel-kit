@@ -548,8 +548,8 @@ export default function WhereToStayInOsakaPage({ updated }: { updated: PageUpdat
             Tokyo. Our{" "}
             <Link href="/guides/transport/osaka-transportation">getting around Osaka guide</Link> covers the
             lines that make that true, and our{" "}
-            <Link href="/guides/transport/osaka-metro-pass">Osaka Metro pass</Link> guide works out whether a
-            day pass from either base beats paying per ride.
+            <Link href="/guides/transport/osaka-metro-pass">Osaka Metro day pass</Link> guide works out whether
+            the ¥820 pass from either base beats paying per ride.
           </p>
           <p className={styles.bodyText}>
             How many nights you have changes the answer less than you would expect. On a short stay, our{" "}

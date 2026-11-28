@@ -501,7 +501,7 @@ const days: Day[] = [
         <br />
         <strong>If Studio Ghibli matters more than the mountains,</strong> the same westbound
         Tokaido Shinkansen stops at Nagoya, the gateway to Ghibli Park — our{" "}
-        <Link href="/guides/transport/tokyo-to-nagoya-shinkansen">Tokyo to Nagoya shinkansen guide</Link>{" "}
+        <Link href="/guides/transport/tokyo-to-nagoya-shinkansen">bullet train from Tokyo to Nagoya guide</Link>{" "}
         covers the train, and our{" "}
         <Link href="/guides/attractions/ghibli-park-tickets">Ghibli Park tickets guide</Link> covers the
         pass, which goes on sale two months ahead and is never sold at the gate. The park is closed on
@@ -1574,7 +1574,7 @@ export default function Japan10DayItineraryPage({ updated }: { updated: PageUpda
               drops the fourth Tokyo day, Hakone and Nara, and our{" "}
               <Link href="/guides/attractions/japan-14-day-itinerary">14-day Japan itinerary</Link> adds a
               mountain night and Hiroshima. For a five-day version, see the{" "}
-              <Link href="/guides/attractions/japan-5-day-itinerary">Japan 5 day itinerary</Link>.
+              <Link href="/guides/attractions/japan-5-day-itinerary">5-day Japan itinerary</Link> for Tokyo and Kyoto.
             </p>
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>

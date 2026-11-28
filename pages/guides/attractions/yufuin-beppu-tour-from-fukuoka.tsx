@@ -267,7 +267,7 @@ const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 const relatedGuides = [
   { href: "/guides/transport/jr-kyushu-rail-pass", title: "JR Kyushu Rail Pass 2026: Prices, New Oct 1 Pass & Worth It?" },
   { href: "/guides/attractions/fukuoka-2-day-itinerary", title: "Fukuoka 2 Day Itinerary (2026): Dazaifu, Yanagawa or Yufuin" },
-  { href: "/guides/attractions/kyushu-5-day-itinerary", title: "Kyushu 5 Day Itinerary (2026): Fukuoka, Beppu, Kumamoto and Takachiho" },
+  { href: "/guides/attractions/kyushu-5-day-itinerary", title: "Kyushu 5-Day Itinerary 2026: Fukuoka, Beppu & Nagasaki by JR" },
   { href: "/guides/attractions/teamlab-fukuoka-tickets", title: "teamLab Fukuoka Tickets 2026: Price, Hours & Booking" },
   { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day" },
   { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days: Tokyo, Kyoto, Osaka & Hakone (2026)" },
@@ -576,7 +576,11 @@ export default function YufuinBeppuTourFromFukuokaPage({ updated }: { updated: P
             <Link href="/guides/transport/jr-kyushu-rail-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
               JR Kyushu Rail Pass guide
             </Link>
-            .
+            , and our{" "}
+            <Link href="/guides/attractions/kyushu-5-day-itinerary" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Kyushu 5-day itinerary
+            </Link>{" "}
+            fits this day in with Kumamoto, Takachiho and Nagasaki.
           </p>
         </section>
 

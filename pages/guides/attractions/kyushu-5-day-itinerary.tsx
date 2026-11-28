@@ -387,14 +387,21 @@ const prepRows = [
   },
 ];
 
+/** The first FAQ_SCHEMA_COUNT questions (the search-query ones) go into FAQPage; the rest stay visible only. */
+const FAQ_SCHEMA_COUNT = 5;
+
 const faqItems = [
+  {
+    q: "What is the best 5-day Kyushu itinerary?",
+    a: "Base yourself in Fukuoka. Day 1 Hakata and Tenjin with the yatai stalls, Day 2 Yufuin and the Beppu hells by tour (10 to 10.5 hours) or the Yufuin no Mori, Day 3 Kumamoto Castle (shinkansen from 32 minutes) with a night in Kumamoto, Day 4 Aso and Takachiho by tour (9.5 to 10.5 hours), and Day 5 Nagasaki or, if you fly home that day, Dazaifu on the way to the airport.",
+  },
   {
     q: "Is 5 days enough for Kyushu?",
     a: `Yes, for the northern half: Fukuoka, Beppu, Yufuin, Kumamoto, Aso, Takachiho and either Nagasaki or Dazaifu. It is not enough to add Kagoshima or Miyazaki at a sensible pace. Two of the five days are coach days of about 10 hours, so expect a full trip rather than a slow one.`,
   },
   {
     q: "Is the JR Kyushu Rail Pass worth it for 5 days?",
-    a: `It depends on how many days you ride. The Northern Kyushu 5-day pass is ¥17,000. If tours cover Days 2 and 4, you only ride to Kumamoto and perhaps Nagasaki, and single tickets of ¥7,800 to ¥14,600 at the cheapest online fares win or come close. If you take the train to Yufuin as well, the pass wins. Prices read ${OWN} from JR Kyushu.`,
+    a: `It depends on how many days you ride. The Northern Kyushu 5-day pass is ¥17,000. If tours cover Days 2 and 4, you only ride to Kumamoto and perhaps Nagasaki, and single tickets of ¥7,800 to ¥14,600 at the cheapest online fares win or come close. If you take the train to Yufuin as well, the pass wins. Pass prices re-checked 2026-11-28 on JR Kyushu's site; fares read ${OWN}.`,
   },
   {
     q: "Should I take a tour or the train to Yufuin and Beppu?",
@@ -434,10 +441,10 @@ const faqItems = [
   },
 ];
 
-const TITLE = "Kyushu 5 Day Itinerary (2026): Route, Rail Pass & Tours";
-const H1_LINE = "Kyushu 5 Day Itinerary (2026):";
+const TITLE = "Kyushu 5-Day Itinerary 2026: Fukuoka, Beppu & Nagasaki by JR";
+const H1_LINE = "Kyushu 5-Day Itinerary (2026):";
 const DESCRIPTION =
-  "Kyushu 5 Day Itinerary: Fukuoka, Beppu, Kumamoto and Takachiho. This Kyushu itinerary 5 days plan has day tables, rail pass maths, hotels and sale dates.";
+  "Kyushu 5-day itinerary from Fukuoka: Beppu and Yufuin, Kumamoto Castle, Aso and Takachiho, then Nagasaki or Dazaifu, and when the ¥17,000 JR pass pays.";
 
 const ROUTE = "/guides/attractions/kyushu-5-day-itinerary";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
@@ -478,7 +485,7 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: faqItems.map((item) => ({
+              mainEntity: faqItems.slice(0, FAQ_SCHEMA_COUNT).map((item) => ({
                 "@type": "Question",
                 name: item.q,
                 acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -533,11 +540,11 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            {H1_LINE} <br />Fukuoka, Beppu, Kumamoto and Takachiho
+            {H1_LINE} <br />Fukuoka, Beppu, Kumamoto &amp; Nagasaki by JR Pass
           </h1>
           <p className={styles.heroSubtitle}>
-            Northern Kyushu from one main base, with one night away. The real choices are which days go by tour,
-            and whether the rail pass then pays.
+            Five days in northern Kyushu from a Hakata base, with one night in Kumamoto — day by day, with the
+            tour-or-train choice and the JR Kyushu Rail Pass maths for each.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Official fares & times, dated", "Rail pass worked out", "What to book first"].map((t) => (
@@ -562,12 +569,12 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
         {/* Lead paragraph: the whole answer, in the body rather than the hero. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
-            A <strong>Kyushu 5 Day Itinerary</strong> works best from Fukuoka: Hakata and Tenjin on Day 1, Beppu and
+            A <strong>Kyushu 5-day itinerary</strong> works best from Fukuoka: Hakata and Tenjin on Day 1, Beppu and
             Yufuin on Day 2 (<strong>10 to 10.5 hours</strong> by tour), Kumamoto Castle on Day 3 (as little as{" "}
             <strong>32 minutes</strong> by shinkansen), Aso and Takachiho on Day 4, and Nagasaki or Dazaifu on Day 5.
-            The JR Kyushu Northern pass costs <strong>¥17,000 for 5 days</strong>. It pays if you ride to Yufuin and
-            Kumamoto by train, and not if tours cover Days 2 and 4. Takachiho has too few buses for a day trip on your
-            own, so a tour is the realistic way there. Read {OWN} from JR Kyushu and the official sites named below.
+            The JR Kyushu Northern pass costs <strong>¥17,000 for 5 days</strong> (re-checked 2026-11-28): it pays
+            if you ride to Yufuin and Kumamoto by train, and not if tours cover Days 2 and 4. Times read {OWN} from
+            JR Kyushu and the official sites named below.
           </p>
         </section>
 
@@ -611,6 +618,80 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
         </div>
 
         <EsimCtaTop />
+
+        {/* The landing query, answered day by day right under the heading. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>Day by day</span>
+          <h2 className={styles.sectionTitle}>What Is the Best 5-Day Kyushu Itinerary?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            <strong>Fukuoka, Beppu and Yufuin, Kumamoto, Aso and Takachiho, then Nagasaki or Dazaifu</strong> — three
+            nights in Hakata, one in Kumamoto, and tours on the two days that are hard by train.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Day", "Where", "How", "Sleep"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>Day 1</td>
+                    <td style={{ fontSize: "0.86rem" }}>Hakata and Tenjin, yatai stalls from 18:00</td>
+                    <td style={{ fontSize: "0.86rem" }}>Subway from the airport</td>
+                    <td style={{ fontSize: "0.86rem" }}>Hakata</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>Day 2</td>
+                    <td style={{ fontSize: "0.86rem" }}>
+                      Yufuin and the{" "}
+                      <Link href="/guides/attractions/beppu-hells-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Beppu hells</Link>{" "}
+                      (¥2,400 common ticket)
+                    </td>
+                    <td style={{ fontSize: "0.86rem" }}>Tour of 10 to 10.5 hours, or the Yufuin no Mori</td>
+                    <td style={{ fontSize: "0.86rem" }}>Hakata</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>Day 3</td>
+                    <td style={{ fontSize: "0.86rem" }}>
+                      <Link href="/guides/attractions/kumamoto-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kumamoto Castle</Link>{" "}
+                      (¥800, last admission 16:00)
+                    </td>
+                    <td style={{ fontSize: "0.86rem" }}>Kyushu Shinkansen, shortest 32 minutes</td>
+                    <td style={{ fontSize: "0.86rem" }}>Kumamoto</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>Day 4</td>
+                    <td style={{ fontSize: "0.86rem" }}>Aso grasslands and Takachiho Gorge</td>
+                    <td style={{ fontSize: "0.86rem" }}>Tour of 9.5 to 10.5 hours, then the shinkansen back</td>
+                    <td style={{ fontSize: "0.86rem" }}>Hakata</td>
+                  </tr>
+                  <tr>
+                    <td className={styles.tdProvider} style={{ fontSize: "0.88rem" }}>Day 5</td>
+                    <td style={{ fontSize: "0.86rem" }}>
+                      Nagasaki and{" "}
+                      <Link href="/guides/attractions/glover-garden-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Glover Garden</Link>
+                      , or Dazaifu on the way to the airport
+                    </td>
+                    <td style={{ fontSize: "0.86rem" }}>
+                      Train, shortest 1 hour 20 minutes, or the{" "}
+                      <Link href="/guides/transport/dazaifu-yanagawa-pass" style={{ color: "var(--red)", fontWeight: 600 }}>Dazaifu &amp; Yanagawa pass</Link>
+                    </td>
+                    <td style={{ fontSize: "0.86rem" }}>Fly home, or a night in Nagasaki</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={smallNote}>
+            Each day is worked out below with times and what to book. Riding buses rather than trains? Compare the{" "}
+            <Link href="/guides/transport/sunq-pass" style={{ color: "var(--red)", fontWeight: 600 }}>SUNQ Pass</Link>{" "}
+            for the Fukuoka–Yufuin and Fukuoka–Nagasaki legs.
+          </p>
+        </section>
 
         {/* Enough time */}
         <section className={styles.bodySection}>
@@ -871,6 +952,11 @@ export default function Kyushu5DayItineraryPage({ updated }: { updated: PageUpda
               </table>
             </div>
           </div>
+          <p className={styles.bodyText} style={smallNote}>
+            <strong>Last checked: 2026-11-28</strong> for the Northern Kyushu (¥15,000 / ¥17,000) and All Kyushu
+            (¥22,000 / ¥24,000 / ¥26,000) adult prices —{" "}
+            <a href="https://www.jrkyushu.co.jp/english/railpass/railpass.html" target="_blank" rel="noopener">JR Kyushu Rail Pass</a>.
+          </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>Before you buy:</strong> the days must be consecutive, and the pass is for non-Japanese visitors on
             a temporary visitor stamp. Children aged 6 to 11 pay half. Free seat reservations are made at JR ticket offices

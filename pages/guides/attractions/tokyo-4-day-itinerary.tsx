@@ -664,7 +664,9 @@ export default function Tokyo4DayItineraryPage({ updated }: { updated: PageUpdat
             Shinjuku, in one hotel for all four nights — Day 2 ends there and the Kawaguchiko bus leaves from
             Busta Shinjuku on Day 3. Ueno or Asakusa suits a Nikko day trip and a Skyliner arrival from Narita;
             Tokyo Station suits a Narita Express departure and puts Ginza and Tsukiji close for Day 4. The full
-            comparison is in <Link href="/guides/attractions/where-to-stay-in-tokyo">where to stay in Tokyo</Link>.
+            comparison is in <Link href="/guides/attractions/where-to-stay-in-tokyo">where to stay in Tokyo</Link>,
+            and <Link href="/guides/transport/skyliner-vs-nex">Skyliner vs N&apos;EX</Link> matches the two Narita
+            trains to each area.
           </p>
         </section>
 

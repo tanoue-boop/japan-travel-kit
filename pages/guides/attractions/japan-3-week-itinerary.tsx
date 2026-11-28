@@ -618,7 +618,8 @@ export default function Japan3WeekItineraryPage({ updated }: { updated: PageUpda
           </p>
           <p className={styles.bodyText}>
             <strong>Osaka, Days 15–17:</strong> Dotonbori on arrival, Universal Studios Japan on Day 16, and
-            the castle and Tombori cruise on Day 17 on the {PRICES.osakaAmazingPass.adult} Amazing Pass — see
+            the castle and the{" "}
+            <Link href="/guides/attractions/dotonbori-river-cruise">Tombori River Cruise</Link> on Day 17 on the {PRICES.osakaAmazingPass.adult} Amazing Pass — see
             the <Link href="/guides/attractions/osaka-3-day-itinerary">Osaka 3 day itinerary</Link>.
           </p>
           <p className={styles.bodyText}>

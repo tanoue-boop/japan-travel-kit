@@ -45,12 +45,16 @@ const SAME_DAY = dotonboriSameDayCards("zh-tw");
 const ROUTE = "/zh-tw/guides/attractions/dotonbori-river-cruise";
 // 20 Nov 2026 (task-jtk-20261120-C01): official name とんぼりリバークルーズ moved into the title;
 // fares, times and pier re-read on osaka-info.jp/en/spot/tombori-river-cruise/ the same day.
-const TITLE = "道頓堀遊船（とんぼりリバークルーズ）2026：票價、時刻與碼頭";
+// 28 Nov 2026 (CTR pass): price and duration moved into the title; fares, 約20分／便, 11:00–21:00
+// every :00/:30 and DOTON号 capacity 70 re-read on the operator's own page (OPERATOR_URL).
+const TITLE = "道頓堀遊船 2026：¥2,000、約20分鐘、班次時刻";
 const DESC =
-  "道頓堀遊船（とんぼりリバークルーズ）票價：成人 ¥2,000、約 20 分鐘，11:00–21:00 每 30 分鐘一班，從太左衛門橋碼頭出發，大阪周遊卡免費。";
+  "道頓堀遊船（とんぼりリバークルーズ）成人 ¥2,000、兒童 ¥500，航程約 20 分鐘，11:00–21:00 每 30 分鐘一班，大阪周遊卡免費。";
 
 const L = "zh-tw" as const;
-const CHECKED = dateLabel("2026-11-01", L);
+const CHECKED_ISO = "2026-11-28";
+const CHECKED = dateLabel(CHECKED_ISO, L);
+const OPERATOR_URL = "https://www.ipponmatsu.co.jp/cruise/tombori.html";
 // The pass price is owned by lib/attraction-prices.ts, shared with the English pages.
 const PASS_1_DAY = priceLabel(PRICES.osakaAmazingPass.adult, L);
 
@@ -186,7 +190,7 @@ const steps = [
   },
   {
     title: "從頭到尾預留約 40 分鐘，不是 20 分鐘",
-    desc: "遊船是 20 分鐘。接待櫃台排隊、走下浮動碼頭、以及一艘二、三十人的船登船，是另外那一半。如果你要把它塞在晚餐訂位與表演之間，請預留 40 分鐘。",
+    desc: "遊船是 20 分鐘。服務櫃檯排隊、走到浮動碼頭，以及登上最多可搭載 70 人的船，占去另外那一半時間。如果你要把它塞在晚餐訂位與表演之間，請預留 40 分鐘。",
   },
 ];
 
@@ -196,8 +200,8 @@ const faqItems: FaqItem[] = [
     a: `成人 ¥2,000。とんぼり遊船——業者從太左衛門橋碼頭開出的那一艘——成人 ¥2,000、國中以上學生 ¥1,000、小學生兒童 ¥500，每位付費成人可帶一位學齡前兒童免費。大阪官方觀光機構與大阪周遊卡業者自己的設施清單，印的是同樣這三個數字。它在大阪周遊卡與大阪 e-Pass 都免費，兩種情況都要先在接待櫃台換成指定時間的票。這條河上其他的船各自定價——日本橋碼頭的 Wonder Cruise 20 分鐘道頓堀航線是 ¥1,000，Klook 上販售的幾艘則在各自的商品頁標價。全部查核日 ${CHECKED}。`,
   },
   {
-    q: "とんぼり遊船要搭多久？",
-    a: `在水上約 20 分鐘，沿著穿過南區核心的道頓堀川來回。以遊船來說算短，但這樣的航程長度剛好：它涵蓋的河段只有幾百公尺的霓虹店面，再長一點也只是再繞一圈。把接待櫃台、走到浮動碼頭與登船算進去，從頭到尾請預留接近 40 分鐘。航程長度依大阪官方觀光網站與「水都大阪」遊船入口網站，查核日 ${CHECKED}。`,
+    q: "道頓堀遊船要搭多久？",
+    a: `航程約 20 分鐘，從太左衛門橋碼頭出發，在日本橋與湊町河畔廣場前各折返一次，穿過 9 座橋後回到原處。以遊船來說算短，但這樣的航程長度剛好：它涵蓋的河段只有幾百公尺的霓虹店面，再長一點也只是再繞一圈。把服務櫃檯、走到浮動碼頭與登船算進去，從頭到尾請預留接近 40 分鐘。航程長度與路線依營運業者一本松海運的官網與大阪官方觀光網站，查核日 ${CHECKED}。`,
   },
   {
     q: "道頓堀遊船幾點開船？",
@@ -233,7 +237,7 @@ const faqItems: FaqItem[] = [
   },
   {
     q: "下雨還會開船嗎？",
-    a: `通常會，但請帶件外套和帽子：這艘船在「水都大阪」遊船入口網站上被列為沒有屋頂（查核日 ${CHECKED}），正是這點讓它能從道頓堀那些低矮的橋下通過。公告的停航條件並不是雨本身——周遊卡業者的設施清單寫的是可能因河川狀況或船隻維修停止營運。請把大雨與水位上升當成風險，而不是一陣雨；天氣不穩的話，同樣幾條街裡淋不到雨的替代方案是美食散步，而不是搭船。`,
+    a: `通常會，但請帶件外套和帽子：營運業者官網寫明這是開放式、沒有屋頂的船，雨天備有簡易雨衣（查核日 ${CHECKED}），正是這點讓它能從道頓堀那些低矮的橋下通過。公告的停航條件並不是雨本身——周遊卡業者的設施清單寫的是可能因河川狀況或船隻維修停止營運。請把大雨與水位上升當成風險，而不是一陣雨；天氣不穩的話，同樣幾條街裡淋不到雨的替代方案是美食散步，而不是搭船。`,
   },
   {
     q: "道頓堀的遊船該選哪一艘？",
@@ -271,7 +275,7 @@ export default function ZhDotonboriRiverCruisePage({ updated }: { updated: PageU
     <>
       <Head>
         {seoTags({ route: ROUTE, title: TITLE, desc: DESC })}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqItems.slice(0, 5)) }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -293,7 +297,7 @@ export default function ZhDotonboriRiverCruisePage({ updated }: { updated: PageU
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>更新於 {updatedLabel}</p>
           <h1 className={styles.heroTitle}>
-            道頓堀遊船（2026）： <br />票價、班次時間與とんぼり那一艘
+            道頓堀遊船（とんぼりリバークルーズ）2026： <br />¥2,000、約 20 分鐘、航班時刻與碼頭
           </h1>
           <p className={styles.heroSubtitle}>
             成人 ¥2,000、約 20 分鐘，11:00 到 21:00 之間從太左衛門橋碼頭每半小時一班——持大阪周遊卡可免費搭乘，但須趁傍晚班次額滿前先換好船票。
@@ -316,7 +320,7 @@ export default function ZhDotonboriRiverCruisePage({ updated }: { updated: PageU
             <strong>道頓堀遊船（とんぼりリバークルーズ）</strong>成人 <strong>¥2,000</strong>、學生{" "}
             <strong>¥1,000</strong>、兒童 <strong>¥500</strong>，航程<strong>約 20 分鐘</strong>。從
             <strong>太左衛門橋碼頭</strong>出發，<strong>11:00–21:00 每 30 分鐘一班</strong>；持大阪周遊卡換成指定時間的船票後
-            <strong>免費</strong>。數據來自大阪官方觀光網站，最後查核 2026-11-27。
+            <strong>免費</strong>。數據來自營運業者一本松海運的官方網站，最後查核 {CHECKED_ISO}。
           </p>
           <div className={styles.pickCtaRow} style={{ marginBottom: "0.5rem" }}>
             <KlookLink href={K.pass} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
@@ -438,7 +442,9 @@ export default function ZhDotonboriRiverCruisePage({ updated }: { updated: PageU
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            票價讀自大阪官方觀光網站與大阪周遊卡業者自己的免費設施清單，查核日 {CHECKED}，兩個來源列出的三項票價一致。船公司的官方網站在查核當天因維修無法連線，所以本頁每一個數字的來源都是上面那兩個。
+            <strong>最後查核：{CHECKED_ISO}</strong>——來源：{" "}
+            <a href={OPERATOR_URL} target="_blank" rel="noopener">一本松海運 とんぼりリバークルーズ官方頁面</a>
+            （含稅票價），並與大阪官方觀光網站、大阪周遊卡業者的免費設施清單核對，三個來源列出的三項票價一致。
             可能變動——付款前請確認。本站整理的日本其他景點門票（各自附查核日），請見{" "}
             <Link href="/guides/attractions/japan-attraction-ticket-prices" style={linkStyle}>
               日本景點門票價格總表（英文）
@@ -480,13 +486,13 @@ export default function ZhDotonboriRiverCruisePage({ updated }: { updated: PageU
             而<strong>末班船到 21:00</strong>，不論哪個季節，都還能安排在晚餐後搭乘。時刻查核日 {CHECKED}。
           </p>
 
-          <h3 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
-            とんぼり遊船要搭多久？
-          </h3>
+          <h2 className={styles.pickName} style={{ marginTop: "1.75rem", marginBottom: "0.6rem" }}>
+            道頓堀遊船要搭多久？
+          </h2>
           <p className={styles.bodyText}>
-            <strong>在水上約 20 分鐘。</strong>大阪官方觀光網站寫 20 分鐘，「水都大阪」遊船入口網站寫
-            「約 20 分鐘」，查核日都是 {CHECKED}。實際請預留<strong>從頭到尾約 40 分鐘</strong>：接待櫃台、
-            走下浮動碼頭，以及一艘二、三十人的船登船，是另外那一半。這條路線搭 20 分鐘剛剛好——這段河
+            <strong>航程約 20 分鐘。</strong>從太左衛門橋碼頭出發，在日本橋與湊町河畔廣場前各折返一次，穿過 9 座橋後回到原處；
+            營運業者官網寫「約 20 分鐘／班」，查核日 {CHECKED}。實際安排時，從報到到下船請預留<strong>約 40 分鐘</strong>：到服務櫃檯報到、
+            走到浮動碼頭，以及登上最多可搭載 70 人的船，占去另外那一半時間。這條路線搭 20 分鐘剛剛好——這段河
             只有幾百公尺的霓虹店面，再長一點也只是再繞一圈。
           </p>
 

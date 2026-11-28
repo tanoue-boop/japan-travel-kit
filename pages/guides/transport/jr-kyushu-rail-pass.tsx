@@ -897,7 +897,7 @@ export default function JrKyushuRailPassPage({ updated }: { updated: PageUpdated
           <h2 className={styles.sectionTitle}>Keep Reading</h2>
           <div className={styles.relatedGrid}>
             {[
-              { href: "/guides/attractions/kyushu-5-day-itinerary", title: "Kyushu 5 Day Itinerary (2026): Fukuoka, Beppu, Kumamoto and Takachiho" },
+              { href: "/guides/attractions/kyushu-5-day-itinerary", title: "Kyushu 5-Day Itinerary 2026: Fukuoka, Beppu & Nagasaki by JR" },
               { href: "/guides/attractions/fukuoka-2-day-itinerary", title: "Fukuoka 2 Day Itinerary (2026): Dazaifu, Yanagawa or Yufuin" },
               { href: "/guides/attractions/yufuin-beppu-tour-from-fukuoka", title: "Yufuin and Beppu Tour from Fukuoka (2026): Tours vs Train" },
               { href: "/guides/attractions/teamlab-fukuoka-tickets", title: "teamLab Fukuoka Tickets 2026: Price, Hours & Booking" },

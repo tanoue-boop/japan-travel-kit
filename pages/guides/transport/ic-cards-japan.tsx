@@ -955,11 +955,11 @@ export default function IcCardsJapanPage({ updated }: { updated: PageUpdated }) 
             Beyond the gates, the cards pay at shops showing the IC mark. 7-Eleven lists transit IC money alongside credit
             and code payments, Coca-Cola&apos;s multi-money vending machines list all ten cards, and km Taxi in Tokyo lists
             ten IC brands of its own — though the company is clear that what a given machine accepts differs machine by
-            machine. Our{" "}
+            machine. Where a credit card does the same job, and where it does not, is in our guide to whether you can{" "}
             <Link href="/guides/money/contactless-payment-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
-              contactless payment guide
-            </Link>{" "}
-            has the place-by-place detail.
+              tap to pay in Japan
+            </Link>
+            , place by place.
           </p>
         </section>
 

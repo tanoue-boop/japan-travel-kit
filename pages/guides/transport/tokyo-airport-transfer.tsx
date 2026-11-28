@@ -997,7 +997,11 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             Haneda is 15–20 km from central Tokyo and the transfer is a city journey rather than an expedition:
             ¥330 and 11 minutes puts you at Shinagawa on the Yamanote loop. The question at Haneda is almost never
-            speed — it is luggage, and the hour your flight lands.
+            speed — it is luggage, and the hour your flight lands. If the case is the problem,{" "}
+            <Link href="/guides/transport/japan-luggage-delivery" style={{ color: "var(--red)", fontWeight: 600 }}>
+              luggage delivery in Japan
+            </Link>{" "}
+            sends it from the arrivals-floor counter to your hotel.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
