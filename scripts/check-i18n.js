@@ -286,6 +286,14 @@ const SEARCH_TERMS = {
     ko: "후지큐 하이랜드 티켓",
     th: "ตั๋วฟูจิคิว ไฮแลนด์",
   },
+  // Added 2026-11-28 (TR03): the airport-to-city trip as Korean, Taiwan / Hong Kong, Simplified
+  // Chinese and Thai results write it.
+  "/guides/transport/new-chitose-airport-to-sapporo": {
+    "zh-tw": "新千歲機場到札幌",
+    "zh-cn": "新千岁机场到札幌",
+    ko: "신치토세 공항 삿포로 가는 법",
+    th: "สนามบินนิวชิโตเสะ ไปซัปโปโร",
+  },
 };
 
 /** Klook's own locale path each edition must link. */

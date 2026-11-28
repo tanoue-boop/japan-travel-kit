@@ -114,9 +114,10 @@ const groups: CnHubGroup[] = [
   {
     key: "prep",
     label: "行前准备",
-    desc: "抵达日本当天就需要用到的交通与上网：机场到市区、东京与名古屋、大阪、京都之间的新干线，以及日本 eSIM。",
+    desc: "抵达日本当天就需要用到的交通与上网：东京与新千岁机场到市区、东京与名古屋、大阪、京都之间的新干线，以及日本 eSIM。",
     routes: [
       "/zh-cn/guides/transport/tokyo-airport-transfer",
+      "/zh-cn/guides/transport/new-chitose-airport-to-sapporo",
       "/zh-cn/guides/transport/tokyo-to-osaka-shinkansen",
       "/zh-cn/guides/transport/tokyo-to-nagoya-shinkansen",
       "/zh-cn/guides/transport/kyoto-to-tokyo-shinkansen",
@@ -165,6 +166,8 @@ const BLURBS: Record<string, string> = {
     "东京街头卡丁车：Street Kart 官方价目表每人 ¥5,000–¥25,000，比较涩谷、秋叶原、东京湾等路线。需要 1949 年日内瓦公约国际驾照、本国驾照和护照原件。",
   "/zh-cn/guides/transport/tokyo-airport-transfer":
     "从成田机场和羽田机场前往市区的各种交通方式，比较价格、所需时间和便利程度，附 2026 年票价与按酒店位置的建议。",
+  "/zh-cn/guides/transport/new-chitose-airport-to-sapporo":
+    "新千岁机场到札幌：JR 快速 Airport 37 分钟 ¥1,230、末班车 23:21，机场巴士约 70 分钟 ¥1,500、停靠薄野与大通。12 月 11 日起的巴士新线路、千岁出租车的冬季与夜间加价，以及 JR Pass 与北海道铁路周游券是否划算。",
   "/zh-cn/guides/transport/tokyo-to-osaka-shinkansen":
     "东京到大阪新干线：希望号最快 2 小时 21 分，指定席车站 ¥14,720、smartEX ¥14,520，自由席 ¥13,870。JR Pass 乘希望号另付 ¥4,960，smartEX、Klook 与车站购票比较，以及 2027 年涨价。",
   "/zh-cn/guides/transport/tokyo-to-nagoya-shinkansen":

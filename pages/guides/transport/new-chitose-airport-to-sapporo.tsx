@@ -16,6 +16,7 @@ import {
   newChitoseSapporoTripPrep,
 } from "../../../lib/klook-links";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
+import { hreflangLinks } from "../../../components/Hreflang";
 
 /**
  * New Chitose Airport to Sapporo, added 28 Nov 2026 (task-jtk-20261128-02).
@@ -202,6 +203,7 @@ export default function NewChitoseAirportToSapporoPage({ updated }: { updated: P
         <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href={URL} />
+        {hreflangLinks(ROUTE)}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:url" content={URL} />

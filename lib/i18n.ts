@@ -736,6 +736,26 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     thTitle: "ตั๋วฟูจิคิว ไฮแลนด์ 2026: ราคา",
     thLabel: "ตั๋วฟูจิคิว ไฮแลนด์",
   },
+  // Added 2026-11-28 (task jtk-20261128-TR03): New Chitose Airport to Sapporo, the arrival page
+  // for a winter Hokkaido trip. Titles lead with the trip as each market searches it:
+  // 신치토세 공항 삿포로 가는 법 (sapporo.travel/ko, jeepe.jp/ko), 新千歲機場到札幌 (livejapan.com/zh-tw,
+  // funliday.com), 新千岁机场到札幌 (sapporo.travel/zh, hokkaido-airports.com/zh-CHS) and
+  // สนามบินนิวชิโตเสะ ไปซัปโปโร (sapporo.travel/th, japan.travel/th).
+  {
+    en: "/guides/transport/new-chitose-airport-to-sapporo",
+    zhTw: "/zh-tw/guides/transport/new-chitose-airport-to-sapporo",
+    zhTitle: "新千歲機場到札幌 2026：JR 快速 Airport、巴士票價與時間",
+    zhLabel: "新千歲機場到札幌",
+    zhCn: "/zh-cn/guides/transport/new-chitose-airport-to-sapporo",
+    zhCnTitle: "新千岁机场到札幌 2026：JR 快速 Airport、巴士票价",
+    zhCnLabel: "新千岁机场到札幌",
+    ko: "/ko/guides/transport/new-chitose-airport-to-sapporo",
+    koTitle: "신치토세 공항 삿포로 가는 법 2026: 쾌속 에어포트",
+    koLabel: "신치토세 공항 삿포로 가는 법",
+    th: "/th/guides/transport/new-chitose-airport-to-sapporo",
+    thTitle: "สนามบินนิวชิโตเสะ ไปซัปโปโร 2026",
+    thLabel: "สนามบินนิวชิโตเสะ ไปซัปโปโร",
+  },
   {
     en: "/guides/attractions",
     zhTw: "/zh-tw/guides/attractions",

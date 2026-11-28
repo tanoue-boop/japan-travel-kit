@@ -182,9 +182,10 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "prep",
         label: "行前準備",
-        desc: "抵達日本當天就會用到的交通與手機上網：機場到市區、東京與名古屋、大阪、京都之間的新幹線，以及日本 eSIM。",
+        desc: "抵達日本當天就會用到的交通與手機上網：東京與新千歲機場到市區、東京與名古屋、大阪、京都之間的新幹線，以及日本 eSIM。",
         routes: [
           "/zh-tw/guides/transport/tokyo-airport-transfer",
+          "/zh-tw/guides/transport/new-chitose-airport-to-sapporo",
           "/zh-tw/guides/transport/tokyo-to-osaka-shinkansen",
           "/zh-tw/guides/transport/tokyo-to-nagoya-shinkansen",
           "/zh-tw/guides/transport/kyoto-to-tokyo-shinkansen",
@@ -247,6 +248,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "繁體中文版的景點門票總覽：官方票價、預約方式與一日遊，依類別整理。",
       "/zh-tw/guides/transport/tokyo-airport-transfer":
         "從成田與羽田機場進市區的所有交通方式，比價格、時間與方便度，附 2026 年車資。",
+      "/zh-tw/guides/transport/new-chitose-airport-to-sapporo":
+        "JR 快速 Airport 到札幌 37 分鐘 ¥1,230、末班車 23:21，機場巴士約 70 分鐘 ¥1,500。12 月 11 日起的巴士新路線、計程車冬季加成，以及下雪天怎麼選。",
       "/zh-tw/guides/transport/tokyo-to-osaka-shinkansen":
         "希望號最快 2 小時 21 分。指定席 ¥14,720（smartEX ¥14,520）、自由席 ¥13,870，JR Pass 搭希望號另付 ¥4,960。smartEX、Klook 與車站購票比較，以及 2027 年漲價。",
       "/zh-tw/guides/transport/tokyo-to-nagoya-shinkansen":
@@ -350,9 +353,10 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "prep",
         label: "行前准备",
-        desc: "抵达日本当天就会用到的交通与上网：机场到市区、东京与名古屋、大阪、京都之间的新干线，以及日本 eSIM。",
+        desc: "抵达日本当天就会用到的交通与上网：东京与新千岁机场到市区、东京与名古屋、大阪、京都之间的新干线，以及日本 eSIM。",
         routes: [
           "/zh-cn/guides/transport/tokyo-airport-transfer",
+          "/zh-cn/guides/transport/new-chitose-airport-to-sapporo",
           "/zh-cn/guides/transport/tokyo-to-osaka-shinkansen",
           "/zh-cn/guides/transport/tokyo-to-nagoya-shinkansen",
           "/zh-cn/guides/transport/kyoto-to-tokyo-shinkansen",
@@ -415,6 +419,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "简体中文版的景点门票总览：官方票价、预约方式与一日游，按类别整理。",
       "/zh-cn/guides/transport/tokyo-airport-transfer":
         "从成田机场和羽田机场前往市区的各种交通方式，比较价格、时间与便利程度，附 2026 年票价。",
+      "/zh-cn/guides/transport/new-chitose-airport-to-sapporo":
+        "JR 快速 Airport 到札幌 37 分钟 ¥1,230、末班车 23:21，机场巴士约 70 分钟 ¥1,500。12 月 11 日起的巴士新线路、出租车冬季加价，以及下雪天怎么选。",
       "/zh-cn/guides/transport/tokyo-to-osaka-shinkansen":
         "希望号最快 2 小时 21 分。指定席 ¥14,720（smartEX ¥14,520）、自由席 ¥13,870，JR Pass 乘希望号另付 ¥4,960。smartEX、Klook 与车站购票比较，以及 2027 年涨价。",
       "/zh-cn/guides/transport/tokyo-to-nagoya-shinkansen":
@@ -516,9 +522,10 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "prep",
         label: "여행 준비",
-        desc: "도착해서 가장 먼저 쓰는 모바일 데이터와 도쿄, 나고야, 오사카, 교토를 잇는 신칸센.",
+        desc: "도착해서 가장 먼저 쓰는 모바일 데이터, 신치토세 공항에서 삿포로 시내까지 가는 법, 도쿄, 나고야, 오사카, 교토를 잇는 신칸센.",
         routes: [
           "/ko/guides/esim/best-esim-japan",
+          "/ko/guides/transport/new-chitose-airport-to-sapporo",
           "/ko/guides/transport/tokyo-to-osaka-shinkansen",
           "/ko/guides/transport/tokyo-to-nagoya-shinkansen",
           "/ko/guides/transport/kyoto-to-tokyo-shinkansen",
@@ -536,6 +543,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "노조미 최단 2시간 21분. 지정석 ¥14,720(smartEX ¥14,520), 자유석 ¥13,870, JR 패스는 노조미 ¥4,960 추가. smartEX, 클룩, 역 구매 비교와 2027년 요금 인상.",
       "/ko/guides/transport/tokyo-to-nagoya-shinkansen":
         "노조미 최단 1시간 33분, 환승 없음. smartEX 지정석 ¥11,100, JR 패스는 히카리(1시간 41분~) 이용. 나고야에서 지브리 파크, 레고랜드, 시라카와고, 이세 가는 법.",
+      "/ko/guides/transport/new-chitose-airport-to-sapporo":
+        "JR 쾌속 에어포트로 삿포로까지 37분 ¥1,230, 막차 23:21. 공항버스는 약 70분 ¥1,500이며, 12월 11일부터 바뀌는 버스 노선, 택시 겨울 할증, 눈 오는 날 고르는 법도 정리했습니다.",
       "/ko/guides/transport/kyoto-to-tokyo-shinkansen":
         "노조미 2시간 12분, 1시간에 8~12편. smartEX 지정석 ¥13,970, 자유석 ¥13,320, JR 패스는 노조미 ¥4,960 추가. 교토역 11, 12번 선과 도쿄, 시나가와, 신요코하마 중 내릴 역.",
       "/ko/guides/attractions/shirakawago-winter-light-up":
@@ -666,9 +675,10 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "prep",
         label: "เตรียมทริป",
-        desc: "อินเทอร์เน็ตมือถือที่ได้ใช้ทันทีเมื่อเดินทางถึงญี่ปุ่น และชินคันเซ็นระหว่างโตเกียว นาโกย่า โอซาก้า และเกียวโต",
+        desc: "อินเทอร์เน็ตมือถือที่ได้ใช้ทันทีเมื่อเดินทางถึงญี่ปุ่น การเดินทางจากสนามบินนิวชิโตเสะเข้าซัปโปโร และชินคันเซ็นระหว่างโตเกียว นาโกย่า โอซาก้า และเกียวโต",
         routes: [
           "/th/guides/esim/best-esim-japan",
+          "/th/guides/transport/new-chitose-airport-to-sapporo",
           "/th/guides/transport/tokyo-to-osaka-shinkansen",
           "/th/guides/transport/tokyo-to-nagoya-shinkansen",
           "/th/guides/transport/kyoto-to-tokyo-shinkansen",
@@ -686,6 +696,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "โนโซมิเร็วสุด 2 ชม. 21 นาที ที่นั่งจอง ¥14,720 (smartEX ¥14,520) ที่นั่งไม่จอง ¥13,870 JR Pass ขึ้นโนโซมิจ่ายเพิ่ม ¥4,960 เทียบการจองผ่าน smartEX, Klook และสถานี พร้อมการขึ้นราคาปี 2027",
       "/th/guides/transport/tokyo-to-nagoya-shinkansen":
         "โนโซมิเร็วสุด 1 ชม. 33 นาที ไม่ต้องเปลี่ยนขบวน smartEX ที่นั่งจอง ¥11,100 JR Pass ใช้กับฮิคาริได้ (1 ชม. 41 นาทีขึ้นไป) และการเดินทางจากนาโกย่าไป Ghibli Park, LEGOLAND, ชิราคาวาโกะ และอิเสะ",
+      "/th/guides/transport/new-chitose-airport-to-sapporo":
+        "รถไฟ JR Rapid Airport ถึงซัปโปโร 37 นาที ¥1,230 ขบวนสุดท้าย 23:21 น. รถบัสสนามบินราว 70 นาที ¥1,500 พร้อมเส้นทางรถบัสใหม่ตั้งแต่ 11 ธ.ค. ค่าธรรมเนียมเพิ่มแท็กซี่ฤดูหนาว และควรเลือกแบบไหนวันหิมะตก",
       "/th/guides/transport/kyoto-to-tokyo-shinkansen":
         "โนโซมิ 2 ชม. 12 นาที ชั่วโมงละ 8–12 ขบวน smartEX ที่นั่งจอง ¥13,970 ที่นั่งไม่จอง ¥13,320 JR Pass ขึ้นโนโซมิจ่ายเพิ่ม ¥4,960 ชานชาลา 11 และ 12 ที่สถานีเกียวโต และควรลงที่โตเกียว ชินางาวะ หรือชินโยโกฮาม่า",
       "/th/guides/attractions/shirakawago-winter-light-up":
