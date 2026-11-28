@@ -623,6 +623,11 @@ export default function Hakone2DayItineraryPage({ updated }: { updated: PageUpda
             To continue down the Izu Peninsula, <Link href="/guides/attractions/izu-shaboten-zoo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Izu Shaboten Zoo</Link> in Ito is ¥2,800 for adults on weekdays and ¥3,000 on weekends, open every day.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On the Izu coast, the <Link href="/guides/attractions/atagawa-tropical-alligator-garden-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Atagawa Tropical and Alligator Garden</Link> is ¥2,000 for adults and ¥1,000 for children, 9:00–17:00 every day.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

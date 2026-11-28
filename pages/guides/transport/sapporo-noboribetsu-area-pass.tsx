@@ -154,6 +154,7 @@ export default function SapporoNoboribetsuAreaPassPage({ updated }: { updated: P
           <Link href="/guides/transport/hokkaido-rail-pass" style={linkStyle}>Hokkaido Rail Pass guide</Link>.
           {" "}Near JR Noboribetsu Station, <Link href="/guides/attractions/noboribetsu-date-jidaimura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Noboribetsu Date Jidaimura</Link> costs ¥3,300 for adults; winter entry ends at 15:00.
           {" "}At Noboribetsu Onsen, <Link href="/guides/attractions/noboribetsu-bear-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Noboribetsu Bear Park</Link> is ¥3,200 for adults (ropeway included); in Sapporo, <Link href="/guides/attractions/shiroi-koibito-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shiroi Koibito Park</Link> is ¥1,200.
+          {" "}At Noboribetsu, <Link href="/guides/attractions/noboribetsu-marine-park-nixe-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Noboribetsu Marine Park Nixe</Link> is ¥3,200 for adults and ¥1,600 for ages 4–12.
         </p>
       }
       faq={[

@@ -469,6 +469,11 @@ export default function TokyoCookingClassPage({ updated }: { updated: PageUpdate
           listings={[gygTokyoCookingClasses, gygTokyoRamenClasses]}
         />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            To taste regional ramen instead of making it, the <Link href="/guides/attractions/shin-yokohama-ramen-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shin-Yokohama Ramen Museum</Link> in Yokohama is ¥450 for adults to enter.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

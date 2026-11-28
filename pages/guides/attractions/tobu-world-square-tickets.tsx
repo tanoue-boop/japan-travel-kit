@@ -115,6 +115,7 @@ export default function TobuWorldSquareTicketsPage({ updated }: { updated: PageU
           Tochigi,{" "}
           <Link href="/guides/attractions/nasu-safari-park-tickets" style={linkStyle}>Nasu Safari Park</Link> is a
           drive-through safari.
+          {" "}For a family day in Nasu, <Link href="/guides/attractions/nasu-highland-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nasu Highland Park</Link> and <Link href="/guides/attractions/rindo-lake-family-ranch-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Rindo Lake Family Ranch</Link> each charge ¥1,600 for adult entry.
         </p>
       }
       faq={[

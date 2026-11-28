@@ -803,6 +803,11 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
             In Sendai, the <Link href="/guides/attractions/sendai-umino-mori-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Sendai Umino-Mori Aquarium</Link> is ¥2,400 for adults, open 10:00–17:00 until 19 March.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            In Omiya, the <Link href="/guides/attractions/railway-museum-saitama-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Railway Museum in Saitama</Link> is ¥1,500 for adults if bought by the day before, ¥1,600 on the day.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

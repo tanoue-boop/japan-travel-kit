@@ -440,6 +440,11 @@ export default function NikkoDayTripPage({ updated }: { updated: PageUpdated }) 
             Near Kinugawa, <Link href="/guides/attractions/tobu-world-square-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tobu World Square</Link> (¥2,800, 9:30–16:00 in December) has its own station; in the north of Tochigi, <Link href="/guides/attractions/nasu-safari-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nasu Safari Park</Link> is ¥3,200 plus ¥1,200 for the Lion Bus. On the way up the Tobu line, <Link href="/guides/attractions/tobu-zoo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tobu Zoo</Link> is 10 minutes from Tobu-Dobutsu-Koen Station.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Further north in Nasu, <Link href="/guides/attractions/nasu-highland-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nasu Highland Park</Link> and <Link href="/guides/attractions/rindo-lake-family-ranch-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Rindo Lake Family Ranch</Link> are ¥1,600 each for adult entry, with ride passes on top.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

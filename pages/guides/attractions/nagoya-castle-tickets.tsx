@@ -652,6 +652,11 @@ export default function NagoyaCastleTicketsPage({ updated }: { updated: PageUpda
             For Meiji-era buildings rather than a castle keep, see <Link href="/guides/attractions/meiji-mura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Meiji Mura</Link> (¥2,500 for adults, near Inuyama).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On the subway east, <Link href="/guides/attractions/higashiyama-zoo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Higashiyama Zoo</Link> is ¥500 for adults, or ¥640 with the Sky Tower.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

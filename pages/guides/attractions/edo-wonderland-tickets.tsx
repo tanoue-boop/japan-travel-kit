@@ -138,6 +138,7 @@ export default function EdoWonderlandTicketsPage({ updated }: { updated: PageUpd
           <Link href="/guides/attractions/things-to-do-tokyo" style={linkStyle}>things to do in Tokyo</Link>.
           {" "}In Hokkaido, <Link href="/guides/attractions/noboribetsu-date-jidaimura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Noboribetsu Date Jidaimura</Link> is a similar Edo-period village near the onsen town.
           {" "}In the same Kinugawa area, <Link href="/guides/attractions/tobu-world-square-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Tobu World Square</Link> shows 102 world landmarks at 1:25 scale (¥2,800 for adults); further north, <Link href="/guides/attractions/nasu-safari-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nasu Safari Park</Link> is a drive-through safari.
+          {" "}For rides in Nasu, <Link href="/guides/attractions/nasu-highland-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nasu Highland Park</Link> is ¥6,100 for adults with unlimited rides and <Link href="/guides/attractions/rindo-lake-family-ranch-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Rindo Lake Family Ranch</Link> ¥4,900 with its Enjoy Pass.
         </p>
       }
       faq={[

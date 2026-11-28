@@ -677,6 +677,11 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
             On the drive north, <Link href="/guides/attractions/busena-marine-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Busena Marine Park</Link> in Nago is ¥2,100 for adults for the underwater observatory and glass-bottom boat.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            About 25 minutes away by car, the <Link href="/guides/attractions/kouri-ocean-tower-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kouri Ocean Tower</Link> is ¥1,000 for adults and open to 18:00 every day.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

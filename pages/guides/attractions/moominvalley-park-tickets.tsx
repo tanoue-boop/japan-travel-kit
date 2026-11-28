@@ -114,6 +114,7 @@ export default function MoominvalleyParkTicketsPage({ updated }: { updated: Page
           <Link href="/guides/attractions/tokyo-itinerary-with-kids" style={linkStyle}>Tokyo itinerary with kids</Link>. For other character parks, see
           <Link href="/guides/attractions/sanrio-puroland-tickets" style={linkStyle}>Sanrio Puroland tickets</Link> and the
           <Link href="/guides/attractions/ghibli-museum-tickets" style={linkStyle}>Ghibli Museum</Link>.
+          {" "}For another day in Saitama, the <Link href="/guides/attractions/railway-museum-saitama-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Railway Museum in Saitama</Link> is ¥1,500 in advance for adults and ¥500 for school-age children.
         </p>
       }
       faq={[

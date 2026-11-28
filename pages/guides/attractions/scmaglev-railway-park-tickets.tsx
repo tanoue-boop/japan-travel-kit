@@ -125,6 +125,7 @@ export default function ScmaglevRailwayParkTicketsPage({ updated }: { updated: P
           is the other big family stop by the port, and the{" "}
           <Link href="/guides/attractions/nagoya-castle-tickets" style={linkStyle}>Nagoya Castle tickets</Link> guide
           covers the city centre.
+          {" "}In the Tokyo area, the <Link href="/guides/attractions/railway-museum-saitama-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Railway Museum in Saitama</Link> is ¥1,500 in advance or ¥1,600 on the day for adults.
         </p>
       }
       faq={[

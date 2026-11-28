@@ -546,6 +546,11 @@ export default function KawagoeDayTripPage({ updated }: { updated: PageUpdated }
             From Kawagoe Station, a free direct bus (reservation needed) runs to <Link href="/guides/attractions/moominvalley-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Moominvalley Park</Link>, where a one-day pass is ¥3,900 in advance.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On the way from Tokyo, the <Link href="/guides/attractions/railway-museum-saitama-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Railway Museum in Saitama</Link> in Omiya is ¥1,500 for adults if bought by the day before, closed on Tuesdays.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

@@ -921,6 +921,11 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
             In Nago, <Link href="/guides/attractions/busena-marine-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Busena Marine Park</Link> has an underwater observatory (¥1,050) and a glass-bottom boat (¥1,560), or ¥2,100 for both.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            On Kouri Island, the <Link href="/guides/attractions/kouri-ocean-tower-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kouri Ocean Tower</Link> is ¥1,000 for ages 16 and over, about 25 minutes by car from Churaumi.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

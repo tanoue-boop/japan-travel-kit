@@ -586,6 +586,11 @@ export default function YokohamaDayTripPage({ updated }: { updated: PageUpdated 
             With small children, the <Link href="/guides/attractions/yokohama-anpanman-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Yokohama Anpanman Children&apos;s Museum</Link> in Minatomirai is ¥2,200–2,800 for everyone aged 1 and over, by dated web ticket.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For lunch, the <Link href="/guides/attractions/shin-yokohama-ramen-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shin-Yokohama Ramen Museum</Link> is ¥450 for adults to enter, open 11:00–21:00 on weekdays and from 10:30 on weekends.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

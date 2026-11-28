@@ -113,6 +113,7 @@ export default function NoboribetsuBearParkTicketsPage({ updated }: { updated: P
           <Link href="/guides/attractions/hokkaido-7-day-itinerary" style={linkStyle}>Hokkaido 7-day itinerary</Link> and the
           <Link href="/guides/attractions/hokkaido-winter-tours" style={linkStyle}>Hokkaido winter tours</Link>. Nearby, see
           <Link href="/guides/attractions/noboribetsu-date-jidaimura-tickets" style={linkStyle}>Noboribetsu Date Jidaimura</Link>.
+          {" "}For an aquarium at Noboribetsu, <Link href="/guides/attractions/noboribetsu-marine-park-nixe-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Noboribetsu Marine Park Nixe</Link> is ¥3,200 for adults and ¥1,600 for ages 4–12, open 9:00–17:00.
         </p>
       }
       faq={[

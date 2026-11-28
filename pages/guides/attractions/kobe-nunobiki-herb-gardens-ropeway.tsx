@@ -125,6 +125,7 @@ export default function KobeNunobikiHerbGardensRopewayPage({ updated }: { update
           <Link href="/guides/attractions/kobe-animal-kingdom-tickets" style={linkStyle}>Kobe Animal Kingdom</Link> is on
           Port Island.
           {" "}Over the mountain in Arima, <Link href="/guides/attractions/arima-onsen-taiko-no-yu" style={{ color: "var(--red)", fontWeight: 600 }}>Taiko no Yu</Link> is ¥2,750 for adults on weekdays (next closed 6 January 2027).
+          {" "}For an aquarium day in Kobe, <Link href="/guides/attractions/kobe-suma-seaworld-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kobe Suma Sea World</Link> is ¥2,900 for adults in winter and ¥3,100 in the regular season.
         </p>
       }
       faq={[

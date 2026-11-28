@@ -529,6 +529,11 @@ export default function LegolandJapanTicketsPage({ updated }: { updated: PageUpd
             For another family park near Nagoya, the <Link href="/guides/attractions/suzuka-circuit-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Suzuka Circuit Park</Link> passport with unlimited rides is from ¥4,800 online for adults.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For a shorter indoor visit in Osaka, <Link href="/guides/attractions/legoland-discovery-center-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>LEGOLAND Discovery Center Osaka</Link> costs ¥2,900–3,300 online.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

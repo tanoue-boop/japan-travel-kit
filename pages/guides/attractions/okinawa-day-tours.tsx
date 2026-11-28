@@ -747,6 +747,11 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
             To add a stop on your own, <Link href="/guides/attractions/busena-marine-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Busena Marine Park</Link> is ¥1,050 for the underwater observatory and ¥1,560 for the glass-bottom boat; closed on six December 2026 dates.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            By car on your own, the <Link href="/guides/attractions/kouri-ocean-tower-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kouri Ocean Tower</Link> costs ¥1,000 for ages 16 and over, last entry 17:30.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         <section className={styles.faqSection}>

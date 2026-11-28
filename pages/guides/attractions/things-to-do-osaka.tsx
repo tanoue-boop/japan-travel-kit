@@ -353,6 +353,11 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
             For an onsen evening by Osaka Bay, <Link href="/guides/attractions/solaniwa-onsen-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Solaniwa Onsen</Link> is ¥2,310–3,630 for adults depending on the date, open to 11 p.m.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            With children, <Link href="/guides/attractions/legoland-discovery-center-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>LEGOLAND Discovery Center Osaka</Link> at Tempozan is ¥2,900–3,300 online per person aged 3 and over; adults need a child with them.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* Related articles */}

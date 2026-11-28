@@ -123,6 +123,7 @@ export default function NasuSafariParkTicketsPage({ updated }: { updated: PageUp
           <Link href="/guides/transport/jr-east-pass" style={linkStyle}>JR East Pass</Link> guide covers the rail
           passes for the Tohoku line.
           {" "}For capybaras, <Link href="/guides/attractions/izu-shaboten-zoo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Izu Shaboten Zoo</Link> in Izu is ¥2,800 for adults on weekdays and ¥3,000 on weekends.
+          {" "}Nearby in Nasu, <Link href="/guides/attractions/nasu-highland-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nasu Highland Park</Link> is ¥1,600 for adults to enter (¥6,100 with unlimited rides) and <Link href="/guides/attractions/rindo-lake-family-ranch-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Rindo Lake Family Ranch</Link> ¥1,600 (¥4,900 with rides); both open on fewer days in winter.
         </p>
       }
       faq={[

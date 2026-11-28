@@ -891,6 +891,11 @@ export default function Nagoya2DayItineraryPage({ updated }: { updated: PageUpda
             With children, <Link href="/guides/attractions/suzuka-circuit-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Suzuka Circuit Park</Link> in Mie has a ride passport from ¥4,800 online for adults and ¥3,400 for children.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            For animals, <Link href="/guides/attractions/higashiyama-zoo-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Higashiyama Zoo</Link> and Botanical Gardens is ¥500 for adults and free for junior high and younger; closed Mondays.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

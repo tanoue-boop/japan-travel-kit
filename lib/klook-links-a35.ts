@@ -911,3 +911,76 @@ export const takamatsuCharterCarTour: KlookTour = {
   desc: "An 8-hour private car tour from Takamatsu that can include Kotohira-gu, Takaya Shrine, the Naruto whirlpools and the Shikoku Aquarium",
   url: klookLink("https://www.klook.com/en-US/activity/90937-takamatsu-departure-1-day-customize-charter-car-tour/"),
 };
+
+// Day 13 (task jtk-20261209-A35, run 28 Nov 2026). Activity ids from the www.klook.com search index;
+// prices on the pages are the operators' own, read 28 Nov 2026.
+
+/** Shin-Yokohama Ramen Museum — admission voucher. */
+export const shinYokohamaRamenMuseumTicket: KlookTour = {
+  title: "Shin-Yokohama Ramen Museum admission",
+  desc: "Entry to the Shin-Yokohama Ramen Museum; the voucher is scanned at the entrance and exchanged for a printed ticket",
+  url: klookLink("https://www.klook.com/en-US/activity/135117-shin-yokohama-ramen-museum/"),
+};
+
+/** The Railway Museum (Omiya, Saitama) — dated advance admission ticket. */
+export const railwayMuseumSaitamaTicket: KlookTour = {
+  title: "The Railway Museum (Saitama) admission ticket",
+  desc: "A dated, timed advance ticket for JR East's Railway Museum in Omiya, entered by QR code",
+  url: klookLink("https://www.klook.com/en-US/activity/95382-railway-museum-admission-ticket-saitama/"),
+};
+
+/** Kobe Suma Sea World — admission ticket. */
+export const kobeSumaSeaworldTicket: KlookTour = {
+  title: "Kobe Suma Sea World ticket",
+  desc: "Admission to Kobe Suma Sea World, the orca aquarium on Suma beach in Kobe",
+  url: klookLink("https://www.klook.com/en-US/activity/151011-kobe-suma-seaworld/"),
+};
+
+/** Kouri Ocean Tower (Nakijin, Okinawa) — observation deck ticket. */
+export const kouriOceanTowerTicket: KlookTour = {
+  title: "Kouri Ocean Tower observation deck ticket",
+  desc: "Entry to the Kouri Ocean Tower on Kouri Island, with the observation deck and the shell museum",
+  url: klookLink("https://www.klook.com/en-US/activity/29033-kouri-ocean-tower-observation-deck-ticket-okinawa/"),
+};
+
+/** Noboribetsu Marine Park Nixe (Hokkaido) — admission ticket. */
+export const nixeMarineParkTicket: KlookTour = {
+  title: "Noboribetsu Marine Park Nixe ticket",
+  desc: "Admission to the aquarium castle at Noboribetsu, a few minutes on foot from JR Noboribetsu Station; the voucher is exchanged at the ticket office",
+  url: klookLink("https://www.klook.com/en-US/activity/14723-noboribetsu-marine-park-nixe-admission-ticket-hokkaido/"),
+};
+
+/** Nasu Highland Park (Tochigi) — admission ticket. */
+export const nasuHighlandParkTicket: KlookTour = {
+  title: "Nasu Highland Park admission",
+  desc: "Admission to Nasu Highland Park, the amusement park on the Nasu plateau",
+  url: klookLink("https://www.klook.com/en-US/activity/88851-nasu-highland-park-admission-nasu-tochigi/"),
+};
+
+/** Atagawa Tropical & Alligator Garden (Higashi-Izu) — e-ticket. */
+export const atagawaAlligatorGardenTicket: KlookTour = {
+  title: "Atagawa Tropical & Alligator Garden ticket",
+  desc: "An e-ticket for the alligator, tropical plant and fruit gardens by Izu-Atagawa Station, shown to the staff at the gate",
+  url: klookLink("https://www.klook.com/en-US/activity/46218-atagawa-tropical-alligator-garden-shizuoka/"),
+};
+
+/** LEGOLAND Discovery Center Osaka (Tempozan) — dated ticket. */
+export const legolandDiscoveryOsakaTicket: KlookTour = {
+  title: "LEGOLAND Discovery Center Osaka ticket",
+  desc: "A dated ticket for the indoor LEGO attraction in Tempozan Marketplace, Osaka Bay",
+  url: klookLink("https://www.klook.com/en-US/activity/9612-legoland-discovery-center-ticket-osaka/"),
+};
+
+/** Nagoya Higashiyama Zoo and Botanical Gardens — admission, Sky Tower or both. */
+export const higashiyamaZooTicket: KlookTour = {
+  title: "Higashiyama Zoo and Botanical Gardens ticket",
+  desc: "Admission to Nagoya's Higashiyama Zoo and Botanical Gardens, with options for the Sky Tower",
+  url: klookLink("https://www.klook.com/en-US/activity/134600-nagoya-city-higashiyama-zoo-and-botanical-gardens/"),
+};
+
+/** Nasu Kogen Rindo Lake Family Ranch — 1-day admission (direct entry). */
+export const rindoLakeFamilyRanchTicket: KlookTour = {
+  title: "Rindo Lake Family Ranch admission",
+  desc: "A one-day direct-entry admission to the lakeside ranch and amusement park in Nasu Kogen",
+  url: klookLink("https://www.klook.com/en-US/activity/87214-1-day-nasu-kogen-rindo-lake-family-ranch-direct-entry-admission/"),
+};

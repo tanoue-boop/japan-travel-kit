@@ -110,6 +110,7 @@ export default function BusenaMarineParkTicketsPage({ updated }: { updated: Page
           For a trip plan, see the <Link href="/guides/attractions/okinawa-3-day-itinerary" style={linkStyle}>Okinawa 3-day itinerary</Link> and
           <Link href="/guides/attractions/okinawa-day-tours" style={linkStyle}>Okinawa day tours</Link>. Nearby in the north: <Link href="/guides/attractions/okinawa-churaumi-aquarium-tickets" style={linkStyle}>Churaumi Aquarium</Link>
           and <Link href="/guides/attractions/nago-pineapple-park-tickets" style={linkStyle}>Nago Pineapple Park</Link>.
+          {" "}On the same drive, the <Link href="/guides/attractions/kouri-ocean-tower-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kouri Ocean Tower</Link> is ¥1,000 for adults, 10:00–18:00 every day.
         </p>
       }
       faq={[

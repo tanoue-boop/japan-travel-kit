@@ -119,6 +119,7 @@ export default function NagoPineappleParkTicketsPage({ updated }: { updated: Pag
           <Link href="/guides/attractions/okinawa-day-tours" style={linkStyle}>Okinawa day tours</Link> if you are
           not driving.
           {" "}Nearby in Nago, <Link href="/guides/attractions/busena-marine-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Busena Marine Park</Link> is ¥2,100 for adults for the underwater observatory and the glass-bottom boat.
+          {" "}Further north, the <Link href="/guides/attractions/kouri-ocean-tower-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kouri Ocean Tower</Link> on Kouri Island is ¥1,000 for ages 16 and over and ¥500 for ages 6–15.
         </p>
       }
       faq={[

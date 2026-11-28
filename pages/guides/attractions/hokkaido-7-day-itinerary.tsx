@@ -1307,6 +1307,11 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
             For a ski day, <Link href="/guides/attractions/rusutsu-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Rusutsu</Link> is ¥13,200 online from 19 December, and <Link href="/guides/attractions/furano-lift-ticket" style={{ color: "var(--red)", fontWeight: 600 }}>Furano Ski Resort</Link> is ¥9,000 a day with free lift tickets for children up to elementary school age.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            At Noboribetsu, <Link href="/guides/attractions/noboribetsu-marine-park-nixe-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Noboribetsu Marine Park Nixe</Link> is ¥3,200 for adults, 9:00–17:00 every day.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

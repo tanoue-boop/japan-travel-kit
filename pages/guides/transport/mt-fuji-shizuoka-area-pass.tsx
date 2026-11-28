@@ -145,6 +145,7 @@ export default function MtFujiShizuokaAreaPassPage({ updated }: { updated: PageU
           bus and train, the{" "}
           <Link href="/guides/transport/mt-fuji-pass" style={linkStyle}>Mt. Fuji Pass</Link>{" "}
           is Fujikyu&apos;s own pass.
+          {" "}On the Izu coast, the <Link href="/guides/attractions/atagawa-tropical-alligator-garden-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Atagawa Tropical and Alligator Garden</Link> by Izu-Atagawa Station is ¥2,000 for adults.
         </p>
       }
       faq={[

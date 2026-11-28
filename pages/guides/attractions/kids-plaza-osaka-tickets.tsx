@@ -115,6 +115,7 @@ export default function KidsPlazaOsakaTicketsPage({ updated }: { updated: PageUp
           <Link href="/guides/attractions/things-to-do-osaka" style={linkStyle}>things to do in Osaka</Link> and
           <Link href="/guides/attractions/osaka-castle-tickets" style={linkStyle}>Osaka Castle tickets</Link>. For rides, see
           <Link href="/guides/attractions/hirakata-park-tickets" style={linkStyle}>Hirakata Park</Link>.
+          {" "}For another indoor day, <Link href="/guides/attractions/legoland-discovery-center-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>LEGOLAND Discovery Center Osaka</Link> at Tempozan has dated tickets from ¥2,900 for everyone aged 3 and over.
         </p>
       }
       faq={[

@@ -118,6 +118,7 @@ export default function LegolandDiscoveryCenterTokyoTicketsPage({ updated }: { u
           another miniature world, and the{" "}
           <Link href="/guides/attractions/tokyo-bay-cruise" style={linkStyle}>Tokyo Bay cruise</Link> guide covers
           boats to Odaiba.
+          {" "}In Osaka, <Link href="/guides/attractions/legoland-discovery-center-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>LEGOLAND Discovery Center Osaka</Link> at Tempozan is ¥2,900–3,300 online for ages 3 and over.
         </p>
       }
       faq={[

@@ -836,6 +836,11 @@ export default function KobeDayTripFromOsakaPage({ updated }: { updated: PageUpd
             To add Arima Onsen, <Link href="/guides/attractions/arima-onsen-taiko-no-yu" style={{ color: "var(--red)", fontWeight: 600 }}>Taiko no Yu</Link> is about 30 minutes from Sannomiya by subway and Kobe Electric Railway (¥2,750 weekdays).
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            West of the centre, <Link href="/guides/attractions/kobe-suma-seaworld-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kobe Suma Sea World</Link> is ¥2,900 for adults on most days from December to March, closed 16–17 December 2026.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

@@ -112,6 +112,7 @@ export default function YokohamaAnpanmanMuseumTicketsPage({ updated }: { updated
           For the rest of the day, see the <Link href="/guides/attractions/yokohama-day-trip" style={linkStyle}>Yokohama day trip from Tokyo</Link> and
           <Link href="/guides/attractions/tokyo-itinerary-with-kids" style={linkStyle}>Tokyo with kids</Link>. For another family day, see
           <Link href="/guides/attractions/hakkeijima-sea-paradise-tickets" style={linkStyle}>Hakkeijima Sea Paradise</Link> and <Link href="/guides/attractions/sanrio-puroland-tickets" style={linkStyle}>Sanrio Puroland</Link>.
+          {" "}For a ramen lunch, the <Link href="/guides/attractions/shin-yokohama-ramen-museum-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shin-Yokohama Ramen Museum</Link> is ¥450 for adults and ¥100 for children, free under school age.
         </p>
       }
       faq={[

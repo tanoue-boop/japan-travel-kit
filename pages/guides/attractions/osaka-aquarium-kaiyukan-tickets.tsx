@@ -1028,6 +1028,11 @@ export default function OsakaAquariumKaiyukanTicketsPage({ updated }: { updated:
             In Shikoku, the <Link href="/guides/attractions/shikoku-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shikoku Aquarium</Link> in Kagawa is ¥2,600 for adults, ¥1,400 for elementary and junior high.
           </p>
         </section>
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Next door in Tempozan Marketplace, <Link href="/guides/attractions/legoland-discovery-center-osaka-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>LEGOLAND Discovery Center Osaka</Link> is ¥2,900–3,300 online for ages 3 and over.
+          </p>
+        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}

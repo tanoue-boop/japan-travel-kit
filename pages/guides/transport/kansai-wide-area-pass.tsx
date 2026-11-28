@@ -176,6 +176,7 @@ export default function KansaiWideAreaPassPage({ updated }: { updated: PageUpdat
           for a five-day plan the pass can carry. Going on round Shikoku? The{" "}
           <Link href="/guides/transport/all-shikoku-rail-pass" style={linkStyle}>ALL SHIKOKU Rail Pass</Link>{" "}
           covers JR Shikoku and the island&apos;s private lines; its prices change for passes sold from 1 December 2026.
+          {" "}In Kobe, <Link href="/guides/attractions/kobe-suma-seaworld-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kobe Suma Sea World</Link> is ¥2,900–3,700 for adults by season, usually 10:00–18:00.
         </p>
       }
       faq={[
