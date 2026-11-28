@@ -1521,6 +1521,10 @@ export default function TokyoAirportTransferPage({ updated }: { updated: PageUpd
             Haneda Terminal 3&apos;s 2nd floor, with a passport check. The{" "}
             <Link href="/guides/attractions/tokyo-subway-ticket">Tokyo Subway Ticket</Link> is ¥1,000 / ¥1,500 /
             ¥2,000 for 24 / 48 / 72 hours since 14 March 2026, and does not cover the airport train itself.
+            Paying for it on a card also avoids the arrivals-hall exchange counter, which paid ¥154.86 per US
+            dollar at GPA&apos;s Narita stores on 27 November 2026 against a ¥159.5 mid-market rate — the
+            airport, city and ATM options are compared in{" "}
+            <Link href="/guides/money/currency-exchange-japan">currency exchange in Japan</Link>.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             <strong>Three things to settle before you pay.</strong> First, whether the ticket is an e-ticket or a

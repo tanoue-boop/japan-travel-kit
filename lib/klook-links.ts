@@ -1937,45 +1937,36 @@ export const bestTravelInsuranceTripPrep: KlookTripPrepItem[] = [
 ];
 
 /**
- * Currency Exchange — the reader is deciding where to change money, so each line is
- * a cost that can be settled in their own currency instead of out of the yen they
- * exchange on arrival. Hotels were added 22 Oct 2026: the room is the largest line
- * item of the trip and the one most clearly removable from the exchange question.
+ * Currency Exchange — "Pay before you land" directly under the first answer (task
+ * jtk-20261128-03): Klook eSIM (20%), airport access and the Tokyo Subway Ticket (5%), one
+ * day tour (6.5%). Each line is a cost that would otherwise come out of yen changed at a
+ * counter margin (2.6–6.4% under mid-market on 27 Nov 2026). No new products: existing
+ * tracking links. Replaces currencyExchangeTripPrep, which sat under the options table.
  */
-export const currencyExchangeTripPrep: KlookTripPrepItem[] = [
-  // Reordered 10 Nov 2026: the eSIM now sits above this list as the BookingEsimCard,
-  // so the order runs airport access (5%) → passes (5%) → tour (6.5%) → hotel.
+export const currencyExchangePayBeforeLand: KlookTripPrepItem[] = [
+  {
+    ...tripPrepProducts.esim,
+    why: "Finding the nearest 7-Eleven ATM, checking the rate on the board and opening the Wise or Revolut app all need data from the arrivals gate.",
+  },
   {
     ...tripPrepProducts.naritaExpress,
-    why: "The airport train is the first thing most people would otherwise pay for out of an arrival-hall exchange; a round trip booked ahead takes it off the yen you need on landing.",
+    why: "Landing at Narita: the first fare of the trip, paid in your own currency instead of out of yen changed at the arrivals-hall counter.",
   },
   {
     ...tripPrepProducts.skyliner,
-    why: "If you only want to change a small float at the airport, book the train out in advance — the Skyliner reaches Nippori in 36 minutes and Keisei Ueno in about 41.",
+    why: "The other Narita line, to Nippori and Ueno on a reserved seat — also settled on the card before you fly.",
   },
   {
-    ...tripPrepProducts.naritaLimousine,
-    why: "The coach alternative to the train, which drops at central Tokyo hotels and stations; paid ahead, it is another fare that does not come out of the cash you change.",
-  },
-  {
-    ...tripPrepProducts.rapit,
-    why: "The Kansai Airport version: a reserved seat from KIX to Namba, booked in your own currency instead of at the ticket counter after the exchange desk.",
+    ...tripPrepProducts.haruka,
+    why: "Landing at Kansai Airport: the JR Haruka to Kyoto, Shin-Osaka and Tennoji, bought ahead rather than at the JR counter after the exchange desk.",
   },
   {
     ...tripPrepProducts.subway,
-    why: "A subway ticket bought before you fly is one fare you do not have to cover out of the yen you exchange on arrival.",
-  },
-  {
-    ...tripPrepProducts.osakaPass,
-    why: "The Osaka counterpart: the pass covers the city's subway lines and a set of admissions, all paid before you land rather than in cash at each gate.",
+    why: "Unlimited Tokyo Metro and Toei rides for 24, 48 or 72 hours, paid once on your card — fewer IC card top-ups to fund from cash.",
   },
   {
     ...tripPrepProducts.fujiHakoneTour,
-    why: "A day tour is one of the larger single spends of a Tokyo trip, and booking it ahead keeps it on a card rather than in the cash budget.",
-  },
-  {
-    ...tripPrepProducts.hotelTokyoStation,
-    why: "The room is usually the biggest single bill of the trip; prepaying it in your own currency takes it out of the exchange-rate question entirely, and this is the arrival-day base the Narita trains reach without a transfer.",
+    why: "A day tour is one of the larger single spends of a Tokyo trip; booked ahead, it stays on the card and out of the cash you change.",
   },
 ];
 

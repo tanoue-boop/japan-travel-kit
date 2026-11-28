@@ -669,7 +669,12 @@ export default function ContactlessPaymentJapanPage({ updated }: { updated: Page
             <Link href="/guides/money/atms-in-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               ATMs in Japan
             </Link>{" "}
-            covers where the same card withdraws the yen you still need. For the Wise card on its own — its free
+            covers where the same card withdraws the yen you still need — cheaper than a counter, as the
+            same-day airport and city rates in{" "}
+            <Link href="/guides/money/currency-exchange-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              currency exchange in Japan
+            </Link>{" "}
+            show. For the Wise card on its own — its free
             ATM allowance, conversion fee and where it is accepted — see{" "}
             <Link href="/guides/money/wise-card-japan" style={{ color: "var(--accent)", fontWeight: 600 }}>
               Wise card in Japan: fees and where it works
