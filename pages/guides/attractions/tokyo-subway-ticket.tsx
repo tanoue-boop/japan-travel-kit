@@ -679,7 +679,11 @@ export default function TokyoSubwayTicketPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
             For days inside Tokyo on the subway, the Tokyo Subway Ticket: ¥2,000 covers three days of Metro and
             Toei, while Suica or PASMO wins on days of two or three rides or days built around the JR Yamanote Line.
-            The ¥16,000 JR TOKYO Wide Pass is a different tool, for JR day trips such as Nikko or Karuizawa, and it
+            The ¥16,000{" "}
+            <Link href="/guides/transport/tokyo-wide-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
+              JR Tokyo Wide Pass
+            </Link>{" "}
+            is a different tool, for JR day trips such as Nikko or Karuizawa, and it
             does not cover Tokyo Metro or Toei at all.
           </p>
           <div className={styles.tableWrap}>

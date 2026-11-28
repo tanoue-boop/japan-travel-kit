@@ -423,6 +423,13 @@ export default function NikkoDayTripPage({ updated }: { updated: PageUpdated }) 
             <Link href="/guides/transport/tokyo-transportation">getting around Tokyo</Link> covers the IC
             card and the ride out to Asakusa.
           </p>
+          <p className={styles.bodyText}>
+            The one rail pass that does reach Tobu-Nikko is the{" "}
+            <Link href="/guides/transport/tokyo-wide-pass">JR Tokyo Wide Pass</Link> (¥16,000 for three
+            consecutive days, JR East): it covers the Nikko, Kinugawa and SPACIA Kinugawa limited expresses that run
+            through from JR Shinjuku onto Tobu, reserved seat included, but not a limited express that starts at a
+            Tobu station such as Asakusa.
+          </p>
         </section>
 
         <section className={styles.bodySection}>

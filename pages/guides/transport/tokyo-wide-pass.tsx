@@ -15,6 +15,7 @@ import {
   naritaExpressRoundTripUrl,
   nikkoCulturalDayTourUrl,
 } from "../../../lib/klook-links";
+import { karuizawaPrinceLiftTicket } from "../../../lib/klook-links-a35";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
@@ -92,6 +93,18 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  * Nikko stays inside JR East's ¥21,500 GALA + Nikko example.
  * Pass price, validity and the Hayabusa / Komachi / Tokaido exclusions re-read
  * on 19 Nov 2026 through the jreast.co.jp search index (pass page and terms).
+ *
+ * Rank fix, 28 Nov 2026 (task-jtk-20261128-R06). Re-checked that day: pass
+ * price ¥16,000 / ¥8,000 (jreast.co.jp search index, pass page and the 28 Jan
+ * 2026 press release), Fujikyu's Fuji Kaiyu page (¥4,200 = ¥2,580 + ¥1,620,
+ * fastest 1 hr 53 min, node fetch) and the eki-net Joetsu / Hokuriku e-ticket
+ * tables (same ¥3,180 / ¥3,280 charges as on 19 Nov). Tokyo–Nikko still has no
+ * printed fare: Tobu's JR-through fare sheet (tobu.co.jp/pdf/transit_fare/
+ * spacia_JR.pdf) prints its destination-station labels as artwork, so which
+ * column is Tobu-Nikko could not be read and no figure is taken from it.
+ * The map table became the "which day trips pay it back" table, with the
+ * Klook pass and a same-day block straight under it; a winter ski section
+ * (GALA Yuzawa + Karuizawa Prince) was added.
  * ---------------------------------------------------------------------------
  */
 
@@ -111,10 +124,13 @@ const MODEL_ROUTE = "¥21,500";
 /** Shinkansen e-ticket fares and the pass price/terms — read 19 Nov 2026. */
 const FARE_CHECKED_ISO = "2026-11-19";
 const FARE_CHECKED = checkedLabel(FARE_CHECKED_ISO);
+/** Pass price, Fuji Excursion and the eki-net shinkansen tables — re-read 28 Nov 2026 (R06). */
+const TODAY_ISO = "2026-11-28";
+const TODAY = checkedLabel(TODAY_ISO);
 
 const TITLE = "JR Tokyo Wide Pass 2026: Price, Map & Is It Worth It?";
 const DESCRIPTION =
-  "JR Tokyo Wide Pass price 2026: ¥16,000 adult, ¥8,000 child for 3 days. Map of Fuji, Nikko, Karuizawa and GALA Yuzawa, and the round-trip fares it beats.";
+  "JR Tokyo Wide Pass 2026: ¥16,000 for 3 days. Kawaguchiko ¥8,400 + Karuizawa ¥11,860 return = ¥20,260, so two day trips pay it back. Shinkansen, Nikko, ski.";
 
 /**
  * The map table: each named destination, its line, and the round trip it
@@ -123,17 +139,17 @@ const DESCRIPTION =
 const destinationRows = [
   {
     dest: "Bottom line",
-    line: "Any two of the four priced day-trip round trips below (Kawaguchiko, Karuizawa, Echigo-Yuzawa, GALA Yuzawa)",
+    line: "Any two of the four day trips — Kawaguchiko, Karuizawa, Nikko, Echigo-Yuzawa / GALA Yuzawa",
     rt: "¥20,260 or more",
-    vs: "✓ Beats ¥16,000",
-    note: "The cheapest pair — Kawaguchiko ¥8,400 + Karuizawa ¥11,860 — is ¥4,260 over the pass. No single round trip on its own reaches ¥16,000; the dearest, GALA Yuzawa, is ¥14,260.",
+    vs: "✓ Buy the pass",
+    note: "The cheapest priced pair — Kawaguchiko ¥8,400 + Karuizawa ¥11,860 — is ¥4,260 over the ¥16,000 3-day pass. One round trip on its own never reaches ¥16,000; the dearest, GALA Yuzawa, is ¥14,260.",
   },
   {
     dest: "Kawaguchiko (Mt Fuji)",
-    line: "Fuji Excursion, Shinjuku ⇄ Kawaguchiko (JR + Fujikyu)",
+    line: "Fuji Excursion, Shinjuku ⇄ Kawaguchiko — JR plus Fujikyu, both on the pass",
     rt: "¥8,400",
     vs: "53% of the pass",
-    note: "¥4,200 each way on Fujikyu's fares, 1 hr 53 min at the fastest. No non-reserved car, so reserve first.",
+    note: "¥4,200 each way on Fujikyu's fares (¥2,580 + ¥1,620), 1 hr 53 min at the fastest. No non-reserved car, so reserve first.",
   },
   {
     dest: "Karuizawa",
@@ -141,6 +157,13 @@ const destinationRows = [
     rt: "¥11,860",
     vs: "74% of the pass",
     note: "¥5,930 one way: ¥2,750 fare + ¥3,180 limited express charge, reserved seat, regular season.",
+  },
+  {
+    dest: "Nikko",
+    line: "JR–Tobu through limited express (Nikko, Kinugawa, SPACIA Kinugawa), JR Shinjuku ⇄ Tobu-Nikko",
+    rt: "Not printed",
+    vs: `Inside JR East's ${MODEL_ROUTE} example`,
+    note: "Covered only on the trains that run through from JR onto Tobu; a Tobu limited express from Asakusa is not on the pass. No single official fare could be read, so Nikko is priced only inside JR East's GALA Yuzawa + Nikko example.",
   },
   {
     dest: "Echigo-Yuzawa",
@@ -157,11 +180,25 @@ const destinationRows = [
     note: "¥7,130 one way: ¥3,850 + ¥3,280. GALA Yuzawa station opens in winter and spring only.",
   },
   {
-    dest: "Nikko",
-    line: "JR–Tobu through limited express, Shinjuku ⇄ Tobu-Nikko",
-    rt: "Not printed",
-    vs: `Inside JR East's ${MODEL_ROUTE} example`,
-    note: "No single official fare could be read. JR East prices its GALA Yuzawa + Nikko pair, reserved, at about ¥21,500.",
+    dest: "Two trips: Kawaguchiko + Karuizawa",
+    line: "Fuji Excursion return + Hokuriku Shinkansen return",
+    rt: "¥20,260",
+    vs: "+¥4,260 vs the pass",
+    note: "The cheapest pair that clears ¥16,000.",
+  },
+  {
+    dest: "Two trips: Kawaguchiko + GALA Yuzawa",
+    line: "Fuji Excursion return + Joetsu Shinkansen return (winter)",
+    rt: "¥22,660",
+    vs: "+¥6,660 vs the pass",
+    note: "A Fuji day and a ski day in the same three days.",
+  },
+  {
+    dest: "Two trips: GALA Yuzawa + Nikko",
+    line: "JR East's own worked example, reserved seats",
+    rt: `About ${MODEL_ROUTE}`,
+    vs: "About +¥5,500 vs the pass",
+    note: "The comparison JR East itself publishes for this pass.",
   },
   {
     dest: "Narita Airport",
@@ -269,6 +306,11 @@ const coverageRows = [
     service: "Tokyo Metro, Toei subway and city buses",
     allowed: "✗ Not covered",
     note: "This is a JR East product and it stops at JR gates. Inside Tokyo you still want an IC card or the Tokyo Subway Ticket on top.",
+  },
+  {
+    service: "Other private railways — Odakyu (Hakone), Keio, Keisei, Seibu, Tobu from Asakusa",
+    allowed: "✗ Not covered",
+    note: "JR East's conditions list every non-JR line the pass includes (Fujikyu, Izu Kyuko, Tokyo Monorail, Rinkai, Joshin Dentetsu, the New Shuttle and the JR–Tobu through section). A line not on that list is a separate fare.",
   },
 ];
 
@@ -464,6 +506,44 @@ const itineraryRows = [
   },
 ];
 
+/**
+ * Winter: ski days on the pass (R06). Train fares as in destinationRows; lift prices carried
+ * from karuizawa-prince-ski-lift-ticket.tsx (princehotels.co.jp, 28 Nov 2026) and
+ * gala-yuzawa-ski-day-trip-from-tokyo.tsx (gala.co.jp window price).
+ */
+const skiRows = [
+  {
+    plan: "Bottom line: GALA Yuzawa day + Karuizawa day",
+    train: "¥26,120",
+    vs: "✓ +¥10,120 — buy the pass",
+    lift: "Paid separately at each resort",
+  },
+  {
+    plan: "GALA Yuzawa ski day only",
+    train: "¥14,260",
+    vs: "✗ −¥1,740 — buy the shinkansen tickets",
+    lift: "GALA ¥8,000 (¥7,500 online)",
+  },
+  {
+    plan: "Karuizawa Prince ski day only",
+    train: "¥11,860",
+    vs: "✗ −¥4,140 — buy the shinkansen tickets",
+    lift: "¥10,000 from 19 Dec 2026 (¥8,000 to 18 Dec), ¥500 less online",
+  },
+  {
+    plan: "GALA Yuzawa ski day + Kawaguchiko day",
+    train: "¥22,660",
+    vs: "✓ +¥6,660 — buy the pass",
+    lift: "GALA ¥8,000 (¥7,500 online)",
+  },
+  {
+    plan: "Karuizawa Prince ski day + Kawaguchiko day",
+    train: "¥20,260",
+    vs: "✓ +¥4,260 — buy the pass",
+    lift: "Karuizawa Prince ¥10,000 main season",
+  },
+];
+
 /** Plan B — the trips where the pass loses, and what to buy instead. */
 const planBRows = [
   {
@@ -525,19 +605,19 @@ const buySteps = [
 const faqItems = [
   {
     q: "How much is the JR Tokyo Wide Pass in 2026?",
-    a: "¥16,000 for an adult aged 12 or over and ¥8,000 for a child aged 6 to 11, for three consecutive days. JR East has charged that since 14 March 2026, when the pass went up from ¥15,000 and ¥7,500, so a page quoting ¥15,000 for 2026 travel is out of date. Children aged 0 to 5 need no ticket unless they occupy a separate seat. The price was re-checked on JR East's pass page on 19 November 2026.",
+    a: "¥16,000 for an adult aged 12 or over and ¥8,000 for a child aged 6 to 11, for three consecutive days. JR East has charged that since 14 March 2026, when the pass went up from ¥15,000 and ¥7,500, so a page quoting ¥15,000 for 2026 travel is out of date. Children aged 0 to 5 need no ticket unless they occupy a separate seat. The price was re-checked on JR East's pass page on 28 November 2026.",
   },
   {
     q: "Is the JR Tokyo Wide Pass worth it?",
-    a: "Yes, if your three consecutive days hold two long day trips; no, if they hold one. On JR East's and Fujikyu's own fares, the round trips from Tokyo are ¥8,400 to Kawaguchiko on the Fuji Excursion, ¥11,860 to Karuizawa, ¥13,400 to Echigo-Yuzawa and ¥14,260 to GALA Yuzawa (shinkansen e-ticket, reserved seat, regular season). The cheapest pair, Kawaguchiko plus Karuizawa, is ¥20,260 — ¥4,260 more than the ¥16,000 pass — while no single round trip reaches ¥16,000. The pass covers no Tokyo Metro, Toei subway or city bus, so it does nothing for days spent inside Tokyo. Fares checked 19 November 2026.",
+    a: "Yes, if your three consecutive days hold two long day trips; no, if they hold one. On JR East's and Fujikyu's own fares, the round trips from Tokyo are ¥8,400 to Kawaguchiko on the Fuji Excursion, ¥11,860 to Karuizawa, ¥13,400 to Echigo-Yuzawa and ¥14,260 to GALA Yuzawa (shinkansen e-ticket, reserved seat, regular season). The cheapest pair, Kawaguchiko plus Karuizawa, is ¥20,260 — ¥4,260 more than the ¥16,000 pass — while no single round trip reaches ¥16,000. The pass covers no Tokyo Metro, Toei subway or city bus, so it does nothing for days spent inside Tokyo. Fares checked 28 November 2026.",
   },
   {
     q: "Does the Tokyo Wide Pass cover Mt Fuji / Kawaguchiko?",
     a: "Yes, as far as Kawaguchiko station. The whole Fujikyu Railway is on the pass, so the Fuji Excursion limited express from Shinjuku through to Kawaguchiko is covered in a reserved ordinary-car seat; bought separately it is ¥4,200 each way on Fujikyu's fares (¥2,580 basic fare plus ¥1,620 limited express ticket), fastest 1 hour 53 minutes. The Fuji Excursion has no non-reserved car, so get the seat ticket issued before boarding. The pass does not cover the buses up to the Fifth Station, and reserved seats on the Fujisan Express, Fujisan View Express and Fuji Tozan Densha carry an extra fee. Fujikyu fares checked 10 November 2026.",
   },
   {
-    q: "Can I use it for Gala Yuzawa skiing?",
-    a: "Yes, for the train. JR East names GALA Yuzawa among the pass's destinations, and the Joetsu Shinkansen from Tokyo to GALA Yuzawa is covered in a reserved ordinary-car seat — a journey that costs ¥7,130 each way, ¥14,260 return, as a shinkansen e-ticket in the regular season. GALA Yuzawa station opens only in winter and spring, and a single ski day still falls ¥1,740 short of the ¥16,000 pass, so it pays when the same three days include a second trip such as Kawaguchiko or Nikko. Lift tickets and rental are not part of the pass. Fares checked 19 November 2026.",
+    q: "Does the JR Tokyo Wide Pass cover the Shinkansen?",
+    a: "Yes, the JR East shinkansen inside the pass area, in ordinary cars with reserved seats at no extra charge: the Hokuriku Shinkansen to Karuizawa (¥11,860 return without the pass), the Joetsu Shinkansen to Echigo-Yuzawa and GALA Yuzawa (¥13,400 and ¥14,260 return) and the Tohoku Shinkansen north to the edge of the area map. It never covers the Tokaido Shinkansen to Kyoto or Osaka, and the Hayabusa and Komachi need the limited express charge paid separately. Green Car and GranClass cost extra. Fares checked 28 November 2026.",
   },
   {
     q: "Where can I buy the JR Tokyo Wide Pass?",
@@ -687,7 +767,7 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
             {/* Answer-first: this is the article's first body paragraph, not the hero line. */}
             <p className={styles.verdictText}>
               The <strong>JR Tokyo Wide Pass</strong> costs <strong>{ADULT}</strong> for an adult and {CHILD} for a
-              child aged 6 to 11 in 2026 (JR East, checked {FARE_CHECKED}), and it is valid for <strong>three
+              child aged 6 to 11 in 2026 (JR East, checked {TODAY}), and it is valid for <strong>three
               consecutive days</strong>. It covers JR East trains around Tokyo, shinkansen included, out to
               <strong> Mt Fuji and Kawaguchiko</strong> (Fujikyu Railway), <strong>Nikko</strong>,{" "}
               <strong>Karuizawa</strong>, <strong>Echigo-Yuzawa and GALA Yuzawa</strong>, Izu, and both{" "}
@@ -759,12 +839,16 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
         {/* Map + fare vs pass — added 19 Nov 2026 */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Map &amp; fares</span>
-          <h2 className={styles.sectionTitle}>Where Does the JR Tokyo Wide Pass Go, and What Does Each Trip Cost Without It?</h2>
+          <h2 className={styles.sectionTitle}>Which Day Trips Make the JR Tokyo Wide Pass Pay for Itself?</h2>
+          <p className={styles.bodyText}>
+            Any two of Kawaguchiko, Karuizawa, Nikko and Echigo-Yuzawa / GALA Yuzawa in the same three days: the
+            cheapest pair, Kawaguchiko (¥8,400) plus Karuizawa (¥11,860), is ¥20,260 in single tickets against the{" "}
+            {ADULT} 3-day pass. One of them on its own never reaches {ADULT}.
+          </p>
           <p className={styles.bodyText}>
             The pass map runs from Tokyo out to Kawaguchiko in the west, Nikko in the north, Karuizawa and GALA Yuzawa
-            in the north-west, Izu in the south and both airports. Each row below is a destination JR East names for
-            the pass, with the round trip you would otherwise pay for. Any two day-trip returns beat {ADULT}; any one
-            on its own does not.
+            in the north-west, Izu in the south and both airports. Each row is the adult round trip from Tokyo in
+            single tickets, on the operators&apos; own fares.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -791,7 +875,19 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Last checked: {FARE_CHECKED_ISO}. Shinkansen fares are JR East&apos;s Shinkansen e-ticket price for a
+            Last checked: {TODAY_ISO} —{" "}
+            <a href="https://www.jreast.co.jp/en/multi/pass/tokyowidepass.html" target="_blank" rel="noopener noreferrer">
+              jreast.co.jp/en/multi/pass/tokyowidepass.html
+            </a>{" "}
+            (pass price),{" "}
+            <a href="https://www.fujikyu-railway.jp/fujikaiyuu/" target="_blank" rel="noopener noreferrer">
+              fujikyu-railway.jp/fujikaiyuu/
+            </a>{" "}
+            (Fuji Excursion) and{" "}
+            <a href="https://www.eki-net.com/top/e-ticket/pdf/hokuriku_normal.pdf" target="_blank" rel="noopener noreferrer">
+              eki-net Hokuriku Shinkansen fare table
+            </a>
+            . Shinkansen fares are JR East&apos;s Shinkansen e-ticket price for a
             reserved ordinary seat in the regular season (the charge is ¥200 more in peak season and ¥200 less in the
             off-peak), using the basic fares in force since the 14 March 2026 fare revision — sources:{" "}
             <a href="https://www.eki-net.com/top/e-ticket/pdf_pr/joetsu_normal.pdf" target="_blank" rel="noopener noreferrer">
@@ -820,6 +916,33 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
             </Link>{" "}
             guides.
           </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+              Book the JR Tokyo Wide Pass on Klook →
+            </KlookLink>
+          </div>
+          <div className={styles.verdictBox} style={{ marginTop: "1.25rem" }}>
+            <div className={styles.verdictHeader}>
+              <span className={styles.verdictLabel}>Book on the same day</span>
+            </div>
+            <div className={styles.verdictBody}>
+              <p className={styles.verdictText}>
+                The pass is the train only. If one of your three days is Kawaguchiko or Nikko, a day tour books the buses
+                and the sights at the other end; and the seat reservations need data the moment you land.
+              </p>
+              <div className={styles.pickCtaRow} style={{ marginTop: "0.75rem" }}>
+                <KlookLink href={kawaguchikoYamanakakoBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+                  Kawaguchiko Day Tour from Tokyo →
+                </KlookLink>
+                <KlookLink href={nikkoCulturalDayTourUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+                  Nikko Day Tour from Tokyo →
+                </KlookLink>
+                <KlookLink href={klookEsim.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
+                  {klookEsim.ctaLabel}
+                </KlookLink>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* A29 (27 Nov 2026): the next step right under the answer — this page sent 0 affiliate_click
@@ -858,11 +981,11 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Last checked: {FARE_CHECKED_ISO} —{" "}
+            Last checked: {TODAY_ISO} —{" "}
             <a href="https://www.jreast.co.jp/en/multi/pass/tokyowidepass.html" target="_blank" rel="noopener noreferrer">
               jreast.co.jp/en/multi/pass/tokyowidepass.html
             </a>
-            . Prices re-checked on JR East&apos;s own pass page on {FARE_CHECKED}; validity and eligibility read on {CHECKED}; the ¥15,000 to{" "}
+            . Prices re-checked on JR East&apos;s own pass page on {TODAY}; validity and eligibility read on {CHECKED}; the ¥15,000 to{" "}
             {ADULT} change comes from its 28 January 2026 press release on new and revised passes. The under-six rule is
             as Klook&apos;s listing states it. For the nationwide pass, its October 2026 price rise and its break-even calculator, see our{" "}
             <Link href="/guides/transport/jr-pass-guide" style={{ color: "var(--text)", fontWeight: 600 }}>
@@ -1206,10 +1329,10 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
         {/* Shinkansen */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Shinkansen</span>
-          <h2 className={styles.sectionTitle}>Does the Tokyo Wide Pass Cover the Shinkansen?</h2>
+          <h2 className={styles.sectionTitle}>Does the JR Tokyo Wide Pass Cover the Shinkansen?</h2>
           <p className={styles.bodyText}>
-            It covers the JR East shinkansen inside the valid area, in an ordinary car, with reserved seats included at
-            no extra charge. That is what turns a three-day Tokyo stay into something wider: the Hokuriku Shinkansen
+            Yes — the JR East shinkansen inside the valid area, in an ordinary car, with reserved seats included at no
+            extra charge; not the Tokaido Shinkansen, and not the Hayabusa or Komachi. That is what turns a three-day Tokyo stay into something wider: the Hokuriku Shinkansen
             takes you to <strong>Karuizawa</strong>, the Joetsu Shinkansen to <strong>GALA Yuzawa</strong> — a station
             JR East notes is open only in winter and spring — and the Tohoku Shinkansen runs north to the edge of the
             map.
@@ -1253,9 +1376,56 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
         {/* GALA Yuzawa — added 19 Nov 2026 */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>Ski</span>
-          <h2 className={styles.sectionTitle}>Can I Use the JR Tokyo Wide Pass for GALA Yuzawa Skiing?</h2>
+          <h2 className={styles.sectionTitle}>Can I Use the JR Tokyo Wide Pass for a Ski Trip from Tokyo?</h2>
           <p className={styles.bodyText}>
-            Yes — the Joetsu Shinkansen from Tokyo to GALA Yuzawa is on the pass, and that round trip is{" "}
+            Yes — two ski days on the pass, GALA Yuzawa (¥14,260 return) and Karuizawa (¥11,860 return), add up to
+            ¥26,120 in shinkansen tickets, ¥10,120 more than the {ADULT} pass. One ski day alone is not enough; the lift
+            tickets are always separate.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["Winter plan in 3 days", "Train in single tickets", `vs the ${ADULT} pass`, "Lift ticket (adult, 1 day, window)"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {skiRows.map((row) => (
+                    <tr key={row.plan}>
+                      <td className={styles.tdProvider}>{row.plan}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.88rem", whiteSpace: "nowrap" }}>{row.train}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.vs}</td>
+                      <td style={{ fontSize: "0.85rem" }}>{row.lift}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {TODAY_ISO} —{" "}
+            <a href="https://www.eki-net.com/top/e-ticket/pdf_pr/joetsu_normal.pdf" target="_blank" rel="noopener noreferrer">
+              eki-net Joetsu Shinkansen fare table
+            </a>{" "}
+            and{" "}
+            <a href="https://www.princehotels.co.jp/ski/karuizawa/winter/lift/" target="_blank" rel="noopener noreferrer">
+              Karuizawa Prince Hotel Ski Resort lift prices
+            </a>
+            . Karuizawa Prince is beside Karuizawa Station; season-by-season prices are in our{" "}
+            <Link href="/guides/attractions/karuizawa-prince-ski-lift-ticket" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Karuizawa Prince lift ticket
+            </Link>{" "}
+            guide, and GALA&apos;s own 2026-27 prices in the{" "}
+            <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" style={{ color: "var(--text)", fontWeight: 600 }}>
+              GALA Yuzawa day trip from Tokyo
+            </Link>{" "}
+            guide.
+          </p>
+          <p className={styles.bodyText}>
+            For GALA Yuzawa specifically: the Joetsu Shinkansen from Tokyo is on the pass, and that round trip is{" "}
             <strong>¥14,260</strong> as a shinkansen e-ticket in the regular season (checked {FARE_CHECKED}). On its own
             that is ¥1,740 short of the {ADULT} pass, so the pass pays only when the same three days include a second
             trip — Kawaguchiko, Karuizawa or Nikko. GALA Yuzawa station opens in winter and spring only, and the lift
@@ -1274,6 +1444,15 @@ export default function TokyoWidePassPage({ updated }: { updated: PageUpdated })
             style={{ marginTop: "0.5rem", display: "inline-block" }}
           >
             Compare a GALA Yuzawa ski day trip on Klook →
+          </KlookLink>{" "}
+          <KlookLink
+            href={karuizawaPrinceLiftTicket.url}
+            className={styles.pickCta}
+            target="_blank"
+            rel="sponsored nofollow noopener"
+            style={{ marginTop: "0.5rem", display: "inline-block" }}
+          >
+            Karuizawa Prince lift ticket on Klook →
           </KlookLink>
         </section>
 

@@ -763,8 +763,11 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
           <span className={styles.sectionLabel}>Day trips</span>
           <h2 className={styles.sectionTitle}>Pass or Tour for GALA Yuzawa and Karuizawa?</h2>
           <p className={styles.bodyText}>
-            Both are on the JR East Pass, but if they are your only trips out of Tokyo, the ¥16,000 Tokyo Wide Pass
-            or a booked day tour costs less. Our{" "}
+            Both are on the JR East Pass, but if they are your only trips out of Tokyo, the ¥16,000{" "}
+            <Link href="/guides/transport/tokyo-wide-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
+              JR Tokyo Wide Pass
+            </Link>{" "}
+            (3 days; Karuizawa ¥11,860 and GALA Yuzawa ¥14,260 return without it) or a booked day tour costs less. Our{" "}
             <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" style={{ color: "var(--red)", fontWeight: 600 }}>
               how to get to Gala Yuzawa from Tokyo
             </Link>
@@ -911,8 +914,11 @@ export default function JrEastPassPage({ updated }: { updated: PageUpdated }) {
           <div className={styles.ctaBannerInner}>
             <h2 className={styles.ctaBannerTitle}>One pass for Tohoku, Niigata and Nagano</h2>
             <p className={styles.ctaBannerDesc}>
-              {PASS_5} for 5 days or {PASS_10} for 10, shinkansen seats included. Only doing day trips from Tokyo? The
-              Tokyo Wide Pass is less than half the price.
+              {PASS_5} for 5 days or {PASS_10} for 10, shinkansen seats included. Only doing day trips from Tokyo? The{" "}
+              <Link href="/guides/transport/tokyo-wide-pass" style={{ color: "inherit", fontWeight: 700 }}>
+                JR Tokyo Wide Pass
+              </Link>{" "}
+              is less than half the price.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
               <KlookLink href={jrEastPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.ctaBannerBtn}>

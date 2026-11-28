@@ -452,7 +452,12 @@ export default function KusatsuOnsenDayTripPage({ updated }: { updated: PageUpda
           <p className={styles.bodyText}>
             Only on the Karuizawa route, and only if Kusatsu is one of several JR days. JR East sells the pass at
             ¥16,000 for three days; the Klook listing names Karuizawa among what it reaches. The bus from Karuizawa to
-            Kusatsu is not JR, and the highway bus is not covered at all.
+            Kusatsu is not JR, and the highway bus is not covered at all. Which other day trips make up the
+            difference is worked out in our{" "}
+            <Link href="/guides/transport/tokyo-wide-pass" style={{ color: "var(--red)", fontWeight: 600 }}>
+              JR Tokyo Wide Pass
+            </Link>{" "}
+            guide.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={jrTokyoWidePass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
