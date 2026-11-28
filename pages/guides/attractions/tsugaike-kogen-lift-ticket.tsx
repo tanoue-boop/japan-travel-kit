@@ -112,9 +112,10 @@ export default function TsugaikeKogenLiftTicketPage({ updated }: { updated: Page
       }}
       links={
         <p className={styles.bodyText}>
-          For access from Tokyo and the other resorts, see <Link href="/guides/attractions/hakuba-ski-tours" style={linkStyle}>Hakuba ski tours</Link> and the
-          <Link href="/guides/attractions/japan-ski-trip-itinerary" style={linkStyle}>Japan ski trip itinerary</Link>. For another Nagano resort, see
-          <Link href="/guides/attractions/nozawa-onsen-ski" style={linkStyle}>Nozawa Onsen ski</Link>.
+          For access from Tokyo and the other resorts, see <Link href="/guides/attractions/hakuba-ski-tours" style={linkStyle}>Hakuba ski tours</Link> and the{" "}
+          <Link href="/guides/attractions/japan-ski-trip-itinerary" style={linkStyle}>Japan ski trip itinerary</Link>. For another Nagano resort, see{" "}
+          <Link href="/guides/attractions/nozawa-onsen-ski" style={linkStyle}>Nozawa Onsen ski</Link>. Before you go, see{" "}
+          <Link href="/guides/money/japan-ski-travel-insurance" style={linkStyle}>ski travel insurance for Japan</Link>.
         </p>
       }
       faq={[

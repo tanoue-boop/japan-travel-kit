@@ -10,11 +10,16 @@ import {
   hakubaSkiResortDayTourTokyo,
   hakubaSkiSnowboardRental,
   karuizawaSkiSnowDayTour,
+  klookEsim,
   nisekoHirafuLiftPassBusTour,
+  nisekoLiftTicketGearDelivery,
+  nisekoResortShuttleBus,
   nisekoSkiSnowboardRental,
   spicyHakubaSkiRental,
   teineAllInclusiveSkiDayTrip,
+  type KlookSameDayCard,
 } from "../../../lib/klook-links";
+import KlookSameDayCards from "../../../components/KlookSameDayCards";
 import { checkedLabel } from "../../../lib/attraction-prices";
 import { articleJsonLd } from "../../../lib/structured-data";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
@@ -31,6 +36,16 @@ const SPONSORED_REL = "sponsored nofollow noopener noreferrer";
 // they are the thing a reader books immediately after settling the insurance.
 const DAY_TRIP_URL = hakubaSkiResortDayTourTokyo.url;
 const RENTAL_URL = nisekoSkiSnowboardRental.url;
+
+// R03 (28 Nov 2026): the same-day block under the comparison table — lift + rental and transfer (6.5% / 5%)
+// and Klook eSIM (20%). Card wording is the English text of the same products in WinterSkiSameDayCards,
+// which was confirmed on the Klook listings; no prices.
+const SAME_DAY_CARDS: KlookSameDayCard[] = [
+  { kind: "Lift + rental", label: nisekoLiftTicketGearDelivery.title, ctaLabel: "Check Niseko lift + rental →", why: "A Hirafu and Hanazono lift ticket with a ski or snowboard set; the shop brings the gear to your Niseko hotel after a call the day before.", url: nisekoLiftTicketGearDelivery.url },
+  { kind: "Bus + lift + rental", label: "Hakuba Happo-one: bus from Tokyo + lift + rental", ctaLabel: "Check the Happo-one package →", why: "The round-trip coach from Tokyo, Happo-one's lift ticket and a ski or snowboard set in one checkout.", url: hakubaHapponeBusLiftRental.url },
+  { kind: "Airport transfer", label: "Niseko shuttle bus from New Chitose", ctaLabel: "Check the Niseko shuttle →", why: "A direct coach between New Chitose Airport and Niseko, with ski equipment and one piece of luggage per person in the booking.", url: nisekoResortShuttleBus.url },
+  { kind: "eSIM", label: "Klook Japan eSIM", ctaLabel: "See eSIM options on Klook →", why: "Lift holds for wind, held trains and pick-up changes all reach your phone on the morning itself.", url: klookEsim.url },
+];
 
 // Retitled 6 Nov 2026 (task jtk-20261106-A24) for the searches this page should own: "best
 // travel insurance for skiing in japan", "travel insurance for snowboarding in japan" and
@@ -66,8 +81,19 @@ const CHECKED = checkedLabel("2026-10-25");
 // the US$62.72 / US$177.50 prices, the off-piste wording, the "doesn't cover search and rescue"
 // answer, the helicopter exclusion, Complete's ski-resort rescue, the US$10 add-on, the luggage
 // limits and the child rule are all unchanged, so SW_CHECKED moves to that date.
-const SW_CHECKED = checkedLabel("2026-11-20");
-const LAST_CHECKED = "2026-11-20";
+// Re-read 28 Nov 2026 (task jtk-20261128-R03) by node fetch: safetywing.com/nomad-insurance/faq and /policy
+// (prices, the skiing/snowboarding off-piste wording, the helicopter search-and-rescue exclusion, Complete's
+// ski-resort rescue, the add-on list, "subscription plans (as opposed to fixed-date plans)", and the new line
+// "We are not able to add or remove add-ons for policies that are already active"); niseko.ne.jp/en/niseko-rules/
+// (¥100,000 minimum, children rule); pref.saitama.lg.jp (¥8,000 per 5 min, from 1 Apr 2024); and JNTO's
+// www.jnto.go.jp/emergency/eng/mi_guide.html (119 / 110, Japan Visitor Hotline 050-3816-2787 24/7 in English,
+// Chinese and Korean, the medical-institution search with language and "Emergency room 24 hours" filters,
+// cash-only clinics, and the two Tokio Marine International Assistance cost cases of ¥7.5m and ¥10m).
+// The home-country and resort-rule tables were not re-read that day and keep R04_CHECKED.
+const SW_CHECKED = checkedLabel("2026-11-28");
+const LAST_CHECKED = "2026-11-28";
+const R04_CHECKED = "2026-11-20";
+const JNTO_MEDICAL_URL = "https://www.jnto.go.jp/emergency/eng/mi_guide.html";
 
 // The cover-item table: one row per thing a ski trip in Japan actually claims for.
 // Only values read on SafetyWing's own policy wording and FAQ; anything those pages do
@@ -82,10 +108,28 @@ const coverRows = [
     other: "Is skiing named, where is the off-piste line drawn, and is rescue a separate benefit?",
   },
   {
+    item: "Medical treatment and evacuation in Japan",
+    essential: "Covered for skiing and snowboarding on marked runs. Evacuation to the nearest adequate hospital up to US$100,000 lifetime.",
+    complete: "Covered, with search and rescue at a recognised ski resort added under the evacuation benefit.",
+    other: "Is there a cashless (direct billing) service? JNTO notes clinics are generally cash only, and without cover you may be charged the full amount.",
+  },
+  {
     item: "On-piste skiing and snowboarding",
     essential: "Covered. Both are in the covered-activities list. Safety equipment such as a helmet must be worn as the sport requires.",
     complete: "Covered. Sports are included without an add-on; professional and high-risk activities are excepted.",
     other: "Included as standard, or a paid winter-sports add-on? Many home-country policies sell it as an add-on (see the next table).",
+  },
+  {
+    item: "Snowboard park: jumps and acrobatics",
+    essential: "Only with the US$10 per 28 days Adventure Sports Add-On, which names ski/snowboard jumping, ski-flying and skiing/snowboarding acrobatics. Subscription plans only, not fixed-date plans.",
+    complete: "Sports covered without an add-on; professional and high-risk activities are excepted.",
+    other: "Are jumps, rails and terrain parks named, or only \"recreational\" riding?",
+  },
+  {
+    item: "Adding ski cover after you buy",
+    essential: "Not possible: add-ons cannot be added to or removed from an active policy. Stop it and buy a new one with the add-on.",
+    complete: "No add-on needed for sports.",
+    other: "Must winter sports be chosen at quote? Several Australian and UK policies say yes (see the next table).",
   },
   {
     item: "Off-piste inside the resort boundary",
@@ -339,6 +383,50 @@ const japanRows = [
   },
 ];
 
+// R03 (28 Nov 2026): emergency contacts and medical-cost cases, all from JNTO's medical guide.
+const medicalRows = [
+  {
+    what: "Bottom line",
+    figure: "119 for an ambulance",
+    note: "Ambulance and fire is 119, police is 110; a visitor without insurance may be charged the full medical bill.",
+  },
+  {
+    what: "Ambulance and fire",
+    figure: "119",
+    note: "When someone is seriously sick or injured. You cannot choose which hospital you are taken to.",
+  },
+  {
+    what: "Police",
+    figure: "110",
+    note: "Traffic accidents and crimes such as robbery or assault.",
+  },
+  {
+    what: "Japan Visitor Hotline (JNTO)",
+    figure: "050-3816-2787, 24 hours, 365 days",
+    note: "English, Chinese and Korean. Emergencies such as illness, and introductions to medical institutions where consultations can be done in foreign languages.",
+  },
+  {
+    what: "Finding an English-speaking hospital",
+    figure: "JNTO medical-institution search",
+    note: "Filter by prefecture (Hokkaido, Nagano, Niigata and the rest), language, department such as orthopedic surgery, and 24-hour emergency rooms. Call ahead where possible.",
+  },
+  {
+    what: "Paying the bill",
+    figure: "Cash at most clinics",
+    note: "Credit cards are accepted only at major hospitals; with travel insurance that includes a cashless service there is no need to pay on the spot.",
+  },
+  {
+    what: "Example: fractured ribs after a bicycle collision",
+    figure: "¥7.5 million",
+    note: "Surgery, a 19-day hospital stay, an attending physician and a business-class flight home to the US.",
+  },
+  {
+    what: "Example: heart attack",
+    figure: "¥10 million",
+    note: "Surgery, a 45-day hospital stay, an attending physician and a business-class flight home to Singapore.",
+  },
+];
+
 // R04 (20 Nov 2026): the five questions the GSC queries ask, in the task's order.
 const faqItems = [
   {
@@ -351,11 +439,11 @@ const faqItems = [
   },
   {
     q: "What is the best travel insurance for a family ski trip to Hokkaido?",
-    a: `For a family skiing marked runs, SafetyWing Nomad Insurance Essential. One child aged 14 days to 9 years per adult, up to two per group, is added at no extra cost; older children pay their own age price, and group members can only be added at purchase. It covers on-piste skiing and snowboarding but not search and rescue or off-piste, and the Niseko Rules bar elementary-school children from backcountry areas unless accompanied. Read on ${SW_CHECKED}.`,
+    a: `For a family skiing marked runs, SafetyWing Nomad Insurance Essential. One child aged 14 days to 9 years per adult, up to two per group, is added at no extra cost; older children pay their own age price, and group members can only be added at purchase. It covers on-piste skiing and snowboarding but not search and rescue or off-piste, and the Niseko Rules bar elementary-school children from backcountry areas unless accompanied. In an emergency call 119; JNTO's Japan Visitor Hotline (050-3816-2787, 24 hours) and its medical-institution search, filterable by Hokkaido and English, find a hospital that takes foreign patients. Read on ${SW_CHECKED}.`,
   },
   {
-    q: "Is snowboarding covered by standard travel insurance?",
-    a: `Often, but not always as standard. SafetyWing Nomad Insurance lists snowboarding as a covered activity on the same terms as skiing — not off-piste, not against local advice, and with safety equipment such as a helmet worn as the sport requires; jumping and acrobatics need its US$10 per 28 days Adventure Sports Add-On, on subscriptions only. Many policies sold in Australia, Singapore and the UK put skiing and snowboarding in a separate winter-sports add-on, so check the activity list before you buy. Read on ${SW_CHECKED}.`,
+    q: "Does travel insurance cover snowboarding in Japan?",
+    a: `On marked runs, usually yes if the policy names it, but not always as standard. SafetyWing Nomad Insurance lists snowboarding as a covered activity on the same terms as skiing — not off-piste, not against local advice, and with safety equipment such as a helmet worn as the sport requires; jumping and acrobatics need its US$10 per 28 days Adventure Sports Add-On, on subscriptions only. Many policies sold in Australia, Singapore and the UK put skiing and snowboarding in a separate winter-sports add-on, so check the activity list before you buy. Read on ${SW_CHECKED}.`,
   },
   {
     q: "How much does ski rescue cost in Japan?",
@@ -368,9 +456,12 @@ const faqItems = [
 // Retitled 20 Nov 2026 (R04): "Japan ski travel insurance" head term first, with skiing and
 // snowboarding; the description keeps "travel insurance for skiing in Japan" and adds the rescue
 // bill an AI answer does not give.
-const TITLE = "Japan Ski Travel Insurance 2026: Skiing & Snowboarding Cover";
+// Retitled 28 Nov 2026 (R03 of that day): "Ski & Snowboard" up front for the snowboarding queries (33rd and
+// 27th position), brand dropped to stay under 60 characters; the description now names a family ski trip to
+// Hokkaido (95 impressions at position 1.3 with no clicks).
+const TITLE = "Ski & Snowboard Travel Insurance for Japan (2026)";
 const DESCRIPTION =
-  "Travel insurance for skiing in Japan: snowboarding, off-piste and rescue cover by plan, Niseko's ¥100,000 rescue minimum, and the best family ski pick.";
+  "Ski & snowboard travel insurance for Japan: off-piste, helicopter rescue, gear and lift-pass cover, 119 and hospitals, and a family ski trip to Hokkaido.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated("/guides/money/japan-ski-travel-insurance") },
@@ -463,7 +554,7 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Japan Ski Travel Insurance 2026: Travel Insurance for Skiing &amp; Snowboarding in Japan
+            Ski &amp; Snowboard Travel Insurance for Japan (2026): What Skiing in Japan Needs Covered
           </h1>
           <p className={styles.heroSubtitle}>
             On-piste skiing is standard cover almost everywhere. One gate at Niseko or Hakuba moves you
@@ -499,18 +590,17 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
             <span className={styles.verdictLabel}>Quick Answer</span>
           </div>
           <div className={styles.verdictBody}>
-            {/* Answer-first (R04, 20 Nov 2026): cover needed + what a rescue can cost, in 3 sentences. */}
+            {/* Answer-first (R03, 28 Nov 2026): three sentences, each complete with its subject and number. */}
             <p className={styles.verdictText} style={{ marginTop: 0, marginBottom: "1rem" }}>
-              <strong>Travel insurance for skiing in Japan</strong> needs four things: medical treatment and
-              evacuation, search and rescue off the mountain, cover for skis, board or rental gear, and a clear
-              line on <strong>off-piste</strong> riding, which most standard policies exclude.{" "}
-              A rescue can be billed to you: the Niseko resorts charge a <strong>minimum of ¥100,000</strong>{" "}
-              for search and rescue outside their boundaries, Hakuba&apos;s Happo-one lists patrol rescue at{" "}
-              <strong>¥20,000 per rescuer per hour</strong>, and Saitama Prefecture charges{" "}
-              <strong>¥8,000 per 5 minutes</strong> of helicopter flight in designated mountain areas.
-              <strong>SafetyWing Nomad Insurance Essential</strong> (<strong>US$62.72 per 4 weeks</strong>,
-              ages 10–39) covers on-piste skiing and snowboarding but not off-piste or search and rescue,
-              including by helicopter (SafetyWing, resort and prefecture pages read on {SW_CHECKED}).
+              <strong>Ski and snowboard travel insurance for Japan</strong> has to name both sports and cover
+              medical evacuation, and it should say where its <strong>off-piste</strong> line and its search and
+              rescue cover stop, because most standard policies exclude both.{" "}
+              <strong>SafetyWing Nomad Insurance Essential</strong> costs <strong>US$62.72 per 4 weeks</strong>{" "}
+              (ages 10–39) and covers on-piste skiing and snowboarding, but not off-piste riding or search and
+              rescue, including by helicopter.{" "}
+              A rescue outside the Niseko boundaries is billed at a <strong>minimum of ¥100,000</strong>, and
+              Saitama Prefecture charges <strong>¥8,000 per 5 minutes</strong> of rescue-helicopter flight
+              (SafetyWing, Niseko and Saitama pages read on {SW_CHECKED}).
             </p>
             <div className={styles.verdictGrid} style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
               <div className={styles.verdictStat}>
@@ -554,16 +644,15 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
           </div>
         </div>
 
-        <EsimCtaTop />
-
-        {/* Cover table (R03): what a ski trip actually claims for, item by item. */}
+        {/* Cover checklist (R03 13 Nov; moved directly under the answer and extended 28 Nov 2026). */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>Cover checklist</span>
-          <h2 className={styles.sectionTitle}>What Does Ski Travel Insurance Cover in Japan?</h2>
+          <h2 className={styles.sectionTitle}>What Does Ski Travel Insurance Need to Cover in Japan?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            On-piste skiing and snowboarding is covered on SafetyWing; off-piste, backcountry and helicopter
-            search and rescue are not on its Essential plan. Lift-pass refunds and weather closures are not
-            listed in its description of cover, so check the wording of any policy before you rely on them.
+            It needs to cover medical treatment and evacuation for skiing and snowboarding, and to state its rules
+            for off-piste riding, helicopter rescue, gear and lift passes. SafetyWing Essential covers the first on
+            marked runs and excludes off-piste and search and rescue; lift-pass refunds and weather closures are
+            not listed in its description of cover, so check them on any policy before you rely on them.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -601,6 +690,8 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
           </div>
         </section>
 
+        <EsimCtaTop />
+
         {/* R04: departure-country notes — what home-country policies do with skiing. */}
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>By home country</span>
@@ -634,7 +725,7 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Last checked: {LAST_CHECKED}. Sources: allianz.com.au/travel-insurance/ski-snow-cover.html;
+            Last checked: {R04_CHECKED}. Sources: allianz.com.au/travel-insurance/ski-snow-cover.html;
             fastcover.com.au/travel-insurance-for-skiing-and-snowboarding and its Snow Sports PDS page;
             MSIG TravelEasy Flex policy wording (msig.com.sg/sites/msig_sg/files/downloads/traveleasy_flex_policy.pdf);
             postoffice.co.uk/travel-insurance/ski-winter-sports; Staysure Signature policy wording (July 2026,
@@ -735,6 +826,25 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
             and by the version of the policy you are sold, so the document attached to your quote is the one
             that counts.
           </p>
+          {/* R03 (28 Nov 2026): insurance CTA directly under the comparison, then the same-day ski bookings. */}
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <a href={SAFETYWING_URL} target="_blank" rel={SPONSORED_REL} className={styles.verdictBtn}>
+              Get a SafetyWing ski quote →
+            </a>
+          </div>
+          <KlookSameDayCards
+            heading="Insured? Book the Lift, Rental and Transfer for the Same Days"
+            cards={SAME_DAY_CARDS}
+            adPlacement="ski-same-day"
+            footnote={
+              <>
+                Lift prices by resort are on the{" "}
+                <Link href="/guides/attractions/niseko-lift-ticket">Niseko</Link>,{" "}
+                <Link href="/guides/attractions/rusutsu-lift-ticket">Rusutsu</Link> and{" "}
+                <Link href="/guides/attractions/hakuba-happo-one-lift-ticket">Hakuba Happo-one</Link> lift ticket pages.
+              </>
+            }
+          />
         </section>
 
         {/* Off-piste */}
@@ -795,8 +905,11 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
             children per group, is included at no extra cost. On-piste skiing and snowboarding are covered for
             every member, and it does not cover search and rescue or off-piste. Read on {SW_CHECKED}.
           </p>
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.15rem", marginTop: "1.25rem" }}>
+            Family ski trip to Hokkaido: what to check
+          </h3>
           <p className={styles.bodyText}>
-            Four things to check for children and companions before you pay:
+            Five things to check for children and companions before you pay:
           </p>
           <ul className={styles.bodyText} style={{ paddingLeft: "1.25rem" }}>
             <li>
@@ -816,20 +929,64 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
               home for your children if you are hospitalised. The Niseko Rules also bar elementary-school
               children from backcountry areas unless accompanied by an older companion.
             </li>
+            <li>
+              <strong>Where the nearest hospital is.</strong> JNTO&apos;s medical-institution search can be filtered by
+              Hokkaido, by language (English among them), by department such as orthopedic surgery or pediatrics,
+              and by 24-hour emergency rooms. Note the result for your resort before the first ski day.
+            </li>
           </ul>
           <p className={styles.bodyText}>
             Plan the trip with our{" "}
             <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours</Link>,{" "}
             <Link href="/guides/attractions/sapporo-ski-day-trip">Sapporo ski day trip</Link> and{" "}
             <Link href="/guides/attractions/hokkaido-7-day-itinerary">7-day Hokkaido itinerary</Link> guides.
-            Source: SafetyWing FAQ (https://safetywing.com/nomad-insurance/faq) and Niseko Rules
-            (https://www.niseko.ne.jp/en/niseko-rules/). Last checked: {LAST_CHECKED}.
+            Source: SafetyWing FAQ (https://safetywing.com/nomad-insurance/faq), Niseko Rules
+            (https://www.niseko.ne.jp/en/niseko-rules/) and JNTO ({JNTO_MEDICAL_URL}). Last checked: {LAST_CHECKED}.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <a href={SAFETYWING_URL} target="_blank" rel={SPONSORED_REL} className={styles.verdictBtn}>
               Check SafetyWing for a family trip →
             </a>
           </div>
+        </section>
+
+        {/* R03 (28 Nov 2026): medical bills and emergency numbers, from JNTO's own medical guide. */}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>If you get hurt</span>
+          <h2 className={styles.sectionTitle}>What Does Hospital Treatment Cost in Japan, and Who Do You Call?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            Call 119 for an ambulance; JNTO gives ¥7.5 million and ¥10 million as two cases of surgery, hospital
+            stay and a flight home for visitors. Clinics generally take cash only, and a visitor without
+            travel insurance may be charged the full amount.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["What", "Number or figure", "What JNTO says"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {medicalRows.map((row) => (
+                    <tr key={row.what}>
+                      <td className={styles.tdProvider}>{row.what}</td>
+                      <td className={styles.tdPrice} style={{ fontSize: "0.88rem" }}>{row.figure}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            Last checked: {LAST_CHECKED}. Source: JNTO, &quot;For safe travels in Japan — Guide for when you are
+            feeling ill&quot; ({JNTO_MEDICAL_URL}); the two cost cases are attributed there to Tokio Marine
+            International Assistance. These are examples, not price lists; the bill depends on the injury and the
+            hospital.
+          </p>
         </section>
 
         {/* Niseko: the resort the backcountry exclusion bites hardest at. */}
@@ -914,7 +1071,7 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            Last checked: {LAST_CHECKED}. Sources: https://www.niseko.ne.jp/en/niseko-rules/;
+            Last checked: {R04_CHECKED} (Niseko Rules re-read {LAST_CHECKED}). Sources: https://www.niseko.ne.jp/en/niseko-rules/;
             https://www.hakubavalley.com/en/safetytips_en/backcountry/ and https://www.hakubavalley.com/info_en/5863/;
             Happo-one terms (happo-one.jp, effective 21 Nov 2020);
             https://en.nozawaski.com/the-mountain/moutain-info/to-all-back-country-skiers-and-snowborders/;
@@ -974,8 +1131,8 @@ export default function JapanSkiTravelInsurancePage({ updated }: { updated: Page
             Saitama&apos;s ¥8,000-per-5-minutes helicopter fee and the one-hour average from Saitama
             Prefecture&apos;s own page on the ordinance, which also records the rise from ¥5,000 on 1 April
             2024. Nagano&apos;s position on not billing individuals from the prefecture&apos;s own published
-            answer of 20 January 2026. Last checked: {LAST_CHECKED} on https://www.niseko.ne.jp/en/niseko-rules/,
-            https://www.pref.saitama.lg.jp/a0404/herizyourei/herizyourei.html and
+            answer of 20 January 2026. Last checked: {LAST_CHECKED} on https://www.niseko.ne.jp/en/niseko-rules/ and
+            https://www.pref.saitama.lg.jp/a0404/herizyourei/herizyourei.html; {R04_CHECKED} on
             https://www.pref.nagano.lg.jp/koho/kensei/koho/hotline/202601/hot_2601-17.html.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>

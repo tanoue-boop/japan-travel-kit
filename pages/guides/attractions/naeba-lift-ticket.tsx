@@ -113,9 +113,9 @@ export default function NaebaLiftTicketPage({ updated }: { updated: PageUpdated 
       }}
       links={
         <p className={styles.bodyText}>
-          For a day trip by shinkansen, see <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" style={linkStyle}>GALA Yuzawa ski day trip from Tokyo</Link> and
-          <Link href="/guides/attractions/tokyo-snow-day-trip" style={linkStyle}>snow day trips from Tokyo</Link>. For a longer trip, see the
-          <Link href="/guides/attractions/japan-ski-trip-itinerary" style={linkStyle}>Japan ski trip itinerary</Link> and
+          For a day trip by shinkansen, see <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" style={linkStyle}>GALA Yuzawa ski day trip from Tokyo</Link> and{" "}
+          <Link href="/guides/attractions/tokyo-snow-day-trip" style={linkStyle}>snow day trips from Tokyo</Link>. For a longer trip, see the{" "}
+          <Link href="/guides/attractions/japan-ski-trip-itinerary" style={linkStyle}>Japan ski trip itinerary</Link> and{" "}
           <Link href="/guides/money/japan-ski-travel-insurance" style={linkStyle}>ski travel insurance for Japan</Link>.
         </p>
       }

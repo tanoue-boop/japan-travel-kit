@@ -114,9 +114,9 @@ export default function FujitenLiftTicketPage({ updated }: { updated: PageUpdate
       }}
       links={
         <p className={styles.bodyText}>
-          For the lakes below, see the <Link href="/guides/attractions/kawaguchiko-day-trip-from-tokyo" style={linkStyle}>Lake Kawaguchi day trip from Tokyo</Link> and the
-          <Link href="/guides/attractions/mt-fuji-day-trip-tokyo" style={linkStyle}>Mt. Fuji day trip from Tokyo</Link>. For other ski days, see
-          <Link href="/guides/attractions/tokyo-snow-day-trip" style={linkStyle}>snow day trips from Tokyo</Link>; for transport around the lakes, see the
+          For the lakes below, see the <Link href="/guides/attractions/kawaguchiko-day-trip-from-tokyo" style={linkStyle}>Lake Kawaguchi day trip from Tokyo</Link> and the{" "}
+          <Link href="/guides/attractions/mt-fuji-day-trip-tokyo" style={linkStyle}>Mt. Fuji day trip from Tokyo</Link>. For other ski days, see{" "}
+          <Link href="/guides/attractions/tokyo-snow-day-trip" style={linkStyle}>snow day trips from Tokyo</Link>; for transport around the lakes, see the{" "}
           <Link href="/guides/transport/mt-fuji-pass" style={linkStyle}>Mt. Fuji Pass</Link>.
         </p>
       }

@@ -112,7 +112,7 @@ export default function KaruizawaPrinceSkiLiftTicketPage({ updated }: { updated:
       links={
         <p className={styles.bodyText}>
           For the rest of the day in town, see the <Link href="/guides/attractions/karuizawa-day-trip-from-tokyo" style={linkStyle}>Karuizawa day trip from Tokyo</Link>. For other
-          ski days near Tokyo, see <Link href="/guides/attractions/tokyo-snow-day-trip" style={linkStyle}>snow day trips from Tokyo</Link> and the
+          ski days near Tokyo, see <Link href="/guides/attractions/tokyo-snow-day-trip" style={linkStyle}>snow day trips from Tokyo</Link> and the{" "}
           <Link href="/guides/attractions/japan-ski-trip-itinerary" style={linkStyle}>Japan ski trip itinerary</Link>.
         </p>
       }

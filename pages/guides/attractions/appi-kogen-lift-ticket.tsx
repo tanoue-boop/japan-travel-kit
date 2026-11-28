@@ -116,8 +116,8 @@ export default function AppiKogenLiftTicketPage({ updated }: { updated: PageUpda
       links={
         <p className={styles.bodyText}>
           For the rail pass that reaches Iwate, see the <Link href="/guides/transport/jr-east-pass" style={linkStyle}>JR East Pass</Link>. For other winter days in
-          the north, see <Link href="/guides/attractions/zao-snow-monsters-tour" style={linkStyle}>Zao snow monster tours</Link>, the
-          <Link href="/guides/attractions/japan-winter-itinerary" style={linkStyle}>Japan winter itinerary</Link> and the
+          the north, see <Link href="/guides/attractions/zao-snow-monsters-tour" style={linkStyle}>Zao snow monster tours</Link>, the{" "}
+          <Link href="/guides/attractions/japan-winter-itinerary" style={linkStyle}>Japan winter itinerary</Link> and the{" "}
           <Link href="/guides/attractions/japan-ski-trip-itinerary" style={linkStyle}>Japan ski trip itinerary</Link>.
         </p>
       }

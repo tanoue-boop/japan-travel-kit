@@ -114,9 +114,10 @@ export default function SapporoTeineLiftTicketPage({ updated }: { updated: PageU
       links={
         <p className={styles.bodyText}>
           For the other resorts within reach of the city, see <Link href="/guides/attractions/sapporo-ski-day-trip" style={linkStyle}>ski day trips from Sapporo</Link>.
-          For the rest of the stay, see the <Link href="/guides/attractions/sapporo-3-day-itinerary" style={linkStyle}>Sapporo 3-day itinerary</Link>,
-          <Link href="/guides/attractions/sapporo-snow-festival-tours" style={linkStyle}>Sapporo Snow Festival tours</Link> and
-          <Link href="/guides/attractions/hokkaido-winter-tours" style={linkStyle}>Hokkaido winter tours</Link>.
+          For the rest of the stay, see the <Link href="/guides/attractions/sapporo-3-day-itinerary" style={linkStyle}>Sapporo 3-day itinerary</Link>,{" "}
+          <Link href="/guides/attractions/sapporo-snow-festival-tours" style={linkStyle}>Sapporo Snow Festival tours</Link> and{" "}
+          <Link href="/guides/attractions/hokkaido-winter-tours" style={linkStyle}>Hokkaido winter tours</Link>. Before you go, see{" "}
+          <Link href="/guides/money/japan-ski-travel-insurance" style={linkStyle}>ski travel insurance for Japan</Link>.
         </p>
       }
       faq={[

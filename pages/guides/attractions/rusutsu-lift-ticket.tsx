@@ -116,10 +116,11 @@ export default function RusutsuLiftTicketPage({ updated }: { updated: PageUpdate
       }}
       links={
         <p className={styles.bodyText}>
-          For the neighbouring resort, see <Link href="/guides/attractions/niseko-ski-tours" style={linkStyle}>Niseko ski tours</Link>. For days out from the city, see
-          <Link href="/guides/attractions/sapporo-ski-day-trip" style={linkStyle}>ski day trips from Sapporo</Link>; for a longer trip, see the
-          <Link href="/guides/attractions/japan-ski-trip-itinerary" style={linkStyle}>Japan ski trip itinerary</Link> and the
-          <Link href="/guides/attractions/hokkaido-7-day-itinerary" style={linkStyle}>Hokkaido 7-day itinerary</Link>.
+          For the neighbouring resort, see <Link href="/guides/attractions/niseko-ski-tours" style={linkStyle}>Niseko ski tours</Link>. For days out from the city, see{" "}
+          <Link href="/guides/attractions/sapporo-ski-day-trip" style={linkStyle}>ski day trips from Sapporo</Link>; for a longer trip, see the{" "}
+          <Link href="/guides/attractions/japan-ski-trip-itinerary" style={linkStyle}>Japan ski trip itinerary</Link> and the{" "}
+          <Link href="/guides/attractions/hokkaido-7-day-itinerary" style={linkStyle}>Hokkaido 7-day itinerary</Link>. Before you go, see{" "}
+          <Link href="/guides/money/japan-ski-travel-insurance" style={linkStyle}>ski travel insurance for Japan</Link>.
         </p>
       }
       faq={[

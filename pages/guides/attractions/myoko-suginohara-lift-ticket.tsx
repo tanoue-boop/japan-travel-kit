@@ -110,9 +110,9 @@ export default function MyokoSuginoharaLiftTicketPage({ updated }: { updated: Pa
       }}
       links={
         <p className={styles.bodyText}>
-          For the snow monkeys and Nozawa nearby, see the <Link href="/guides/attractions/jigokudani-snow-monkey-tour" style={linkStyle}>Jigokudani snow monkey tour</Link> and
-          <Link href="/guides/attractions/nozawa-onsen-ski" style={linkStyle}>skiing Nozawa Onsen</Link>. For Hakuba and a full trip plan, see
-          <Link href="/guides/attractions/hakuba-ski-tours" style={linkStyle}>Hakuba ski tours</Link> and the
+          For the snow monkeys and Nozawa nearby, see the <Link href="/guides/attractions/jigokudani-snow-monkey-tour" style={linkStyle}>Jigokudani snow monkey tour</Link> and{" "}
+          <Link href="/guides/attractions/nozawa-onsen-ski" style={linkStyle}>skiing Nozawa Onsen</Link>. For Hakuba and a full trip plan, see{" "}
+          <Link href="/guides/attractions/hakuba-ski-tours" style={linkStyle}>Hakuba ski tours</Link> and the{" "}
           <Link href="/guides/attractions/japan-ski-trip-itinerary" style={linkStyle}>Japan ski trip itinerary</Link>.
         </p>
       }

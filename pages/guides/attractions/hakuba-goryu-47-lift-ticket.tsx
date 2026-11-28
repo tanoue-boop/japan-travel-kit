@@ -111,8 +111,8 @@ export default function HakubaGoryu47LiftTicketPage({ updated }: { updated: Page
       }}
       links={
         <p className={styles.bodyText}>
-          For access from Tokyo and the other resorts, see <Link href="/guides/attractions/hakuba-ski-tours" style={linkStyle}>Hakuba ski tours</Link> and the
-          <Link href="/guides/attractions/japan-ski-trip-itinerary" style={linkStyle}>Japan ski trip itinerary</Link>. Before you go, see
+          For access from Tokyo and the other resorts, see <Link href="/guides/attractions/hakuba-ski-tours" style={linkStyle}>Hakuba ski tours</Link> and the{" "}
+          <Link href="/guides/attractions/japan-ski-trip-itinerary" style={linkStyle}>Japan ski trip itinerary</Link>. Before you go, see{" "}
           <Link href="/guides/money/japan-ski-travel-insurance" style={linkStyle}>ski travel insurance for Japan</Link>.
         </p>
       }

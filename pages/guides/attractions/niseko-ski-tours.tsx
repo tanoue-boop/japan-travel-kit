@@ -937,7 +937,7 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             </KlookLink>{" "}
             Our <Link href="/guides/esim/best-esim-japan">best eSIM for Japan guide</Link> compares it
             against the alternatives, and our{" "}
-            <Link href="/guides/money/japan-ski-travel-insurance">Japan ski travel insurance</Link>{" "}
+            <Link href="/guides/money/japan-ski-travel-insurance">ski travel insurance for Japan</Link>{" "}
             guide covers the other thing to sort before a lift ticket: whether your policy covers snowsports,
             and on what conditions.
           </p>

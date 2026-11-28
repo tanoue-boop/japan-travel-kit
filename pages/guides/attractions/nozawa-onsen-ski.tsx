@@ -427,7 +427,7 @@ export default function NozawaOnsenSkiPage({ updated }: { updated: PageUpdated }
             SafetyWing
           </a>{" "}
           is one option; our{" "}
-          <Link href="/guides/money/japan-ski-travel-insurance">Japan ski travel insurance guide</Link>{" "}
+          <Link href="/guides/money/japan-ski-travel-insurance">ski travel insurance for Japan</Link> guide{" "}
           sets out what each policy covers on and off the marked runs.
         </p>
 

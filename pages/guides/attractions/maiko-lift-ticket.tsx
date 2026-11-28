@@ -112,9 +112,9 @@ export default function MaikoLiftTicketPage({ updated }: { updated: PageUpdated 
       }}
       links={
         <p className={styles.bodyText}>
-          For a day trip from Tokyo by shinkansen, see <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" style={linkStyle}>GALA Yuzawa ski day trip from Tokyo</Link> and
-          <Link href="/guides/attractions/tokyo-snow-day-trip" style={linkStyle}>snow day trips from Tokyo</Link>. For the rail pass, see the
-          <Link href="/guides/transport/tokyo-wide-pass" style={linkStyle}>JR Tokyo Wide Pass</Link>; for a longer plan, the
+          For a day trip from Tokyo by shinkansen, see <Link href="/guides/attractions/gala-yuzawa-ski-day-trip-from-tokyo" style={linkStyle}>GALA Yuzawa ski day trip from Tokyo</Link> and{" "}
+          <Link href="/guides/attractions/tokyo-snow-day-trip" style={linkStyle}>snow day trips from Tokyo</Link>. For the rail pass, see the{" "}
+          <Link href="/guides/transport/tokyo-wide-pass" style={linkStyle}>JR Tokyo Wide Pass</Link>; for a longer plan, the{" "}
           <Link href="/guides/attractions/japan-ski-trip-itinerary" style={linkStyle}>Japan ski trip itinerary</Link>.
         </p>
       }

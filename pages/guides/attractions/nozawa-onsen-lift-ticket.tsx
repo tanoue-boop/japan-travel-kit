@@ -114,9 +114,10 @@ export default function NozawaOnsenLiftTicketPage({ updated }: { updated: PageUp
       links={
         <p className={styles.bodyText}>
           For the trains, the village and the onsen, see <Link href="/guides/attractions/nozawa-onsen-ski" style={linkStyle}>Nozawa Onsen ski</Link>. For more of
-          Nagano, see the <Link href="/guides/attractions/jigokudani-snow-monkey-tour" style={linkStyle}>snow monkey tour</Link>,
-          <Link href="/guides/attractions/hakuba-ski-tours" style={linkStyle}>Hakuba ski tours</Link> and the
-          <Link href="/guides/attractions/japan-ski-trip-itinerary" style={linkStyle}>Japan ski trip itinerary</Link>.
+          Nagano, see the <Link href="/guides/attractions/jigokudani-snow-monkey-tour" style={linkStyle}>snow monkey tour</Link>,{" "}
+          <Link href="/guides/attractions/hakuba-ski-tours" style={linkStyle}>Hakuba ski tours</Link> and the{" "}
+          <Link href="/guides/attractions/japan-ski-trip-itinerary" style={linkStyle}>Japan ski trip itinerary</Link>. Before you go, see{" "}
+          <Link href="/guides/money/japan-ski-travel-insurance" style={linkStyle}>ski travel insurance for Japan</Link>.
         </p>
       }
       faq={[

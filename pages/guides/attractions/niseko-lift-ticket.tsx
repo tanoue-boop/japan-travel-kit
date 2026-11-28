@@ -116,10 +116,11 @@ export default function NisekoLiftTicketPage({ updated }: { updated: PageUpdated
       }}
       links={
         <p className={styles.bodyText}>
-          For transfers, lessons and the four areas, see <Link href="/guides/attractions/niseko-ski-tours" style={linkStyle}>Niseko ski tours</Link> and the
-          <Link href="/guides/attractions/japan-ski-trip-itinerary" style={linkStyle}>Japan ski trip itinerary</Link>. For other winter days in Hokkaido, see
-          <Link href="/guides/attractions/hokkaido-winter-tours" style={linkStyle}>Hokkaido winter tours</Link> and
-          <Link href="/guides/attractions/sapporo-ski-day-trip" style={linkStyle}>ski day trips from Sapporo</Link>.
+          For transfers, lessons and the four areas, see <Link href="/guides/attractions/niseko-ski-tours" style={linkStyle}>Niseko ski tours</Link> and the{" "}
+          <Link href="/guides/attractions/japan-ski-trip-itinerary" style={linkStyle}>Japan ski trip itinerary</Link>. For other winter days in Hokkaido, see{" "}
+          <Link href="/guides/attractions/hokkaido-winter-tours" style={linkStyle}>Hokkaido winter tours</Link> and{" "}
+          <Link href="/guides/attractions/sapporo-ski-day-trip" style={linkStyle}>ski day trips from Sapporo</Link>. Before you go, see{" "}
+          <Link href="/guides/money/japan-ski-travel-insurance" style={linkStyle}>ski travel insurance for Japan</Link>.
         </p>
       }
       faq={[

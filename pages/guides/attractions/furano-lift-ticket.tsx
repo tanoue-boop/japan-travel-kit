@@ -114,10 +114,11 @@ export default function FuranoLiftTicketPage({ updated }: { updated: PageUpdated
       }}
       links={
         <p className={styles.bodyText}>
-          For the area, see the <Link href="/guides/attractions/furano-biei-tour" style={linkStyle}>Furano and Biei tour guide</Link> and the
-          <Link href="/guides/transport/sapporo-furano-area-pass" style={linkStyle}>Sapporo–Furano Area Pass</Link>. For a longer winter trip, see
-          <Link href="/guides/attractions/hokkaido-winter-tours" style={linkStyle}>Hokkaido winter tours</Link> and the
-          <Link href="/guides/attractions/hokkaido-7-day-itinerary" style={linkStyle}>Hokkaido 7-day itinerary</Link>.
+          For the area, see the <Link href="/guides/attractions/furano-biei-tour" style={linkStyle}>Furano and Biei tour guide</Link> and the{" "}
+          <Link href="/guides/transport/sapporo-furano-area-pass" style={linkStyle}>Sapporo–Furano Area Pass</Link>. For a longer winter trip, see{" "}
+          <Link href="/guides/attractions/hokkaido-winter-tours" style={linkStyle}>Hokkaido winter tours</Link> and the{" "}
+          <Link href="/guides/attractions/hokkaido-7-day-itinerary" style={linkStyle}>Hokkaido 7-day itinerary</Link>. Before you go, see{" "}
+          <Link href="/guides/money/japan-ski-travel-insurance" style={linkStyle}>ski travel insurance for Japan</Link>.
         </p>
       }
       faq={[
