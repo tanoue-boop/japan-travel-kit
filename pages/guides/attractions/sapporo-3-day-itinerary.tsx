@@ -575,7 +575,9 @@ export default function Sapporo3DayItineraryPage({ updated }: { updated: PageUpd
           <p className={styles.bodyText}>
             Not usually: the Rapid Airport runs six times an hour in the daytime and takes 37 minutes. A booked
             transfer earns its place with ski bags, small children or a late arrival in snow, because it ends at the
-            hotel door. The shared transfer listing asks for a buffer after landing, so book it before you fly.
+            hotel door. The shared transfer listing asks for a buffer after landing, so book it before you fly. The
+            train, the ¥1,500 airport bus and the last departures side by side are in{" "}
+            <Link href="/guides/transport/new-chitose-airport-to-sapporo">New Chitose Airport to Sapporo</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={newChitoseSapporoSharedTransfer.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

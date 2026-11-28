@@ -1171,7 +1171,11 @@ export default function Hokkaido7DayItineraryPage({ updated }: { updated: PageUp
             but not Toya. And the national <strong>JR Pass</strong> — ¥53,000 for seven days, ¥84,000 for
             fourteen and ¥105,000 for twenty-one after the 1 October 2026 revision — has no place on an
             island-only trip; our{" "}
-            <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link> explains when it does.
+            <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link> explains when it does. For
+            the arrival day itself — train, airport bus, taxi or a booked car, with the last departures — see{" "}
+            <Link href="/guides/transport/new-chitose-airport-to-sapporo">New Chitose Airport to Sapporo</Link>; the
+            ski version of the week starts with the{" "}
+            <Link href="/guides/transport/sapporo-to-niseko-transfer">Niseko transfer</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={jrHokkaidoRailPass.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

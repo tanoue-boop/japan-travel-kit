@@ -636,6 +636,11 @@ export default function NisekoSkiToursPage({ updated }: { updated: PageUpdated }
             — the resort shuttle listing states one piece plus equipment, which is the detail that makes
             it a different product from the train.
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "0.75rem" }}>
+            The 2026–27 bus times, operating dates and the no-booking Chuo Bus from Sapporo are laid out in{" "}
+            <Link href="/guides/transport/sapporo-to-niseko-transfer">Sapporo to Niseko in winter</Link>; the first
+            leg into the city is <Link href="/guides/transport/new-chitose-airport-to-sapporo">New Chitose Airport to Sapporo</Link>.
+          </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={nisekoResortShuttleBus.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Niseko resort shuttle →

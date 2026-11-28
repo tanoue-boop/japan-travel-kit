@@ -652,6 +652,12 @@ export default function JapanSkiTripItineraryPage({ updated }: { updated: PageUp
             are Shinkansen e-Tickets, reserved seat, regular season (tickets.jr-odekake.net) and the Alpico and
             Liner fares, read {SISTER}; GALA&apos;s 71 minutes from gala.co.jp (read 15 November 2026).
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            For Niseko, the 2026–27 ski bus times from the airport and Sapporo, the no-booking Chuo Bus and the train
+            via Otaru are in <Link href="/guides/transport/sapporo-to-niseko-transfer">Sapporo to Niseko transfer</Link>;
+            a night in the city first starts with{" "}
+            <Link href="/guides/transport/new-chitose-airport-to-sapporo">New Chitose Airport to Sapporo</Link>.
+          </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shinkansenTokyoNagano.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
               Tokyo → Nagano shinkansen →

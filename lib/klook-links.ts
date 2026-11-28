@@ -12727,3 +12727,90 @@ export const kyotoOneDaySameDayCards: KlookSameDayCard[] = [
     why: "The QR ticket, the seat number and the bus route between stops are on your phone.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// New Chitose Airport to Sapporo and Sapporo to Niseko — added 28 Nov 2026
+// (task-jtk-20261128-02). No ad ids: spare is empty, so both pages are left out
+// of data/klook-adids.json pages and fall back to ?aid=119070.
+//
+// Confirmed as live pages through the www.klook.com search index on 28 Nov 2026:
+//   cts-new-chitose-airport  airport-transfer service page (private car)     5%
+//   82391   Niseko ski resort shuttle bus (New Chitose & Sapporo)            5%
+//   147120  Hokkaido private car charter to Niseko (already declared)         5%
+//   3067    JR Hokkaido Rail Pass                                            5%
+//   109393  Klook Japan eSIM                                                 20%
+//   hotels  Sapporo Station, Susukino and Niseko destination hotel searches  6.5%
+// No price from Klook appears on either page.
+// ---------------------------------------------------------------------------
+
+/** Where to sleep after the airport run: the two stops the train and the bus end at. */
+export const newChitoseSapporoStayAreas: KlookStayArea[] = [
+  {
+    area: "Sapporo Station",
+    why: "The Rapid Airport ends here and the airport bus stops at Sapporo Station-mae, so a room by the station means no second leg with the cases.",
+    url: japanWinterStayAreas[6].url,
+  },
+  {
+    area: "Susukino",
+    why: "The airport bus calls at Minami 3-jo Susukino before Odori and the station, and from 11 Dec 2026 a Susukino-to-airport direct bus takes about 62 minutes on the way back.",
+    url: sapporoSnowFestivalStayAreas[1].url,
+  },
+];
+
+/** "Book before you land" for New Chitose Airport to Sapporo: 6.5% and 20% first, then the 5% transfer and pass. */
+export const newChitoseSapporoTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels around Sapporo Station",
+    ctaLabel: "Check Sapporo Station hotels →",
+    url: japanWinterStayAreas[6].url,
+    why: "The Rapid Airport's last stop for most trains and a stop on the airport bus — the shortest walk from either with a suitcase on snow.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Train times, the bus platform numbers and the walk to the hotel all need data the moment you clear arrivals at New Chitose.",
+  },
+  {
+    label: newChitoseAirportTransfers.title,
+    ctaLabel: "Check New Chitose transfers →",
+    url: newChitoseAirportTransfers.url,
+    why: "A car priced per vehicle to the hotel door — the option for ski bags, a family, or a landing after the last train at 23:21.",
+  },
+  {
+    label: jrHokkaidoRailPass.title,
+    ctaLabel: "Price the JR Hokkaido pass →",
+    url: jrHokkaidoRailPass.url,
+    why: "Covers the Rapid Airport, but at ¥1,230 a ride the pass only pays once Otaru, Asahikawa, Hakodate or a Niseko train day are on the same trip.",
+  },
+];
+
+/** "Book before you fly" for Sapporo to Niseko: 6.5% and 20% first, then the 5% transfers. */
+export const nisekoTransferTripPrep: KlookTripPrepItem[] = [
+  {
+    label: "Hotels in Niseko",
+    ctaLabel: "Check Niseko hotels →",
+    url: japanWinterStayAreas[7].url,
+    why: "Every ski bus drops at named Niseko hotels and stops, so the bed decides which bus and which stop you book.",
+  },
+  {
+    label: nisekoHirafuLiftPassBusTour.title,
+    ctaLabel: "Check the Hirafu lift pass + bus →",
+    url: nisekoHirafuLiftPassBusTour.url,
+    why: "For a Sapporo-based trip rather than a Niseko stay: the coach there and back with a 6-hour Grand Hirafu lift pass in one booking.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Bus confirmations, snow and road notices and the hotel shuttle numbers all arrive on your phone between December and March.",
+  },
+  {
+    label: nisekoResortShuttleBus.title,
+    ctaLabel: "Check the Niseko shuttle →",
+    url: nisekoResortShuttleBus.url,
+    why: "A booked coach seat from New Chitose or Sapporo with ski equipment and one piece of luggage per person in the trunk.",
+  },
+  {
+    label: hokkaidoPrivateCarCharterNiseko.title,
+    ctaLabel: "Check the private car →",
+    url: hokkaidoPrivateCarCharterNiseko.url,
+    why: "A 7- to 14-seater on your own departure time — the transfer that suits a group with board bags or a flight outside the bus times.",
+  },
+];

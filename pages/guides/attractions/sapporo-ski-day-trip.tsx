@@ -375,7 +375,9 @@ export default function SapporoSkiDayTripPage({ updated }: { updated: PageUpdate
           <p className={styles.bodyText}>
             A <strong>Niseko</strong> day from Sapporo exists as a lift-and-bus package too, but it is a longer
             ride. For nights at the resort, lessons and the four Niseko areas, see the{" "}
-            <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours guide</Link>.
+            <Link href="/guides/attractions/niseko-ski-tours">Niseko ski tours guide</Link>; the ski buses and the
+            Chuo Bus with their winter times are in{" "}
+            <Link href="/guides/transport/sapporo-to-niseko-transfer">Sapporo to Niseko transfer</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={nisekoHirafuLiftPassBusTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

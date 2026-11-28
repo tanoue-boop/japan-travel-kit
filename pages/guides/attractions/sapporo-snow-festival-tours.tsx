@@ -869,7 +869,8 @@ export default function SapporoSnowFestivalToursPage({ updated }: { updated: Pag
             is about ¥2,460 of fares, so the pass is a decision about Otaru, Asahikawa and Noboribetsu rather
             than about the airport. Price it against your own legs. Fares read {OWN}; our{" "}
             <Link href="/guides/transport/jr-pass-guide">JR Pass guide</Link> uses the same method for the
-            national pass.
+            national pass. The ¥1,500 airport bus to Susukino and the last train and bus times are compared in{" "}
+            <Link href="/guides/transport/new-chitose-airport-to-sapporo">New Chitose Airport to Sapporo</Link>.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={newChitoseAirportTransfers.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

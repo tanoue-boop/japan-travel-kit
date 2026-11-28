@@ -363,6 +363,22 @@ export const transportArticles: GuideArticle[] = [
     city: "kyoto",
   },
   {
+    href: "/guides/transport/new-chitose-airport-to-sapporo",
+    badge: "Guide",
+    title: "New Chitose Airport to Sapporo 2026: Train vs Bus & Fares",
+    desc: "New Chitose Airport to Sapporo: the JR Rapid Airport in 37 minutes for ¥1,230 until 23:21, the airport bus in about 70 minutes for ¥1,500, and the taxi meter rules in winter.",
+    group: "airports",
+    city: "other",
+  },
+  {
+    href: "/guides/transport/sapporo-to-niseko-transfer",
+    badge: "Guide",
+    title: "Sapporo to Niseko in Winter 2026: Ski Bus, Train & Transfer",
+    desc: "Sapporo or New Chitose to Niseko in winter: ¥6,000 booked ski buses in about 2.5–3.5 hours, Chuo Bus to Kutchan for ¥2,320 with no booking, JR via Otaru, and private cars.",
+    group: "airports",
+    city: "other",
+  },
+  {
     href: "/guides/transport/haruka-vs-nankai-rapit",
     badge: "Comparison",
     title: "Haruka vs Rapi:t 2026: Which Kansai Airport Train?",
