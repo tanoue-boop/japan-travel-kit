@@ -519,7 +519,11 @@ export default function Tokyo7DayItineraryPage({ updated }: { updated: PageUpdat
             four hours indoors, 20 minutes from Shinjuku on the Toei Oedo Line. It sells dated, timed slots only, so
             book{" "}
             <Link href="/guides/attractions/warner-bros-studio-tour-tokyo-tickets">Harry Potter Studio Tour Tokyo tickets</Link>{" "}
-            before you settle which day gives way.
+            before you settle which day gives way. The other indoor swap is Hello Kitty&apos;s park at Tama Center,
+            about 30 minutes from Shinjuku on the Keio Line: an adult Day Passport is ¥3,900 to ¥6,900 at the gate
+            by date, and our{" "}
+            <Link href="/guides/attractions/sanrio-puroland-tickets">Sanrio Puroland tickets</Link> guide compares
+            the gate price with the official e-Passport and lists the opening hours.
           </p>
           <p className={styles.bodyText}>
             The hour-by-hour version of these days, with every admission dated, is in the{" "}

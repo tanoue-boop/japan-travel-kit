@@ -75,7 +75,10 @@ export default function YomiurilandTicketsPage({ updated }: { updated: PageUpdat
           body: (
             <p className={styles.bodyText} style={{ marginBottom: "1.25rem" }}>
               Each ticket has a gate price and a lower official online price. &quot;Elementary&quot; also covers
-              seniors 65 and over.
+              seniors 65 and over. Sanrio Puroland, a few stops further along the Keio Sagamihara Line at Keio
+              Tama Center, also sells its official e-Passport below the gate price; see our{" "}
+              <Link href="/guides/attractions/sanrio-puroland-tickets" style={linkStyle}>Sanrio Puroland tickets</Link>{" "}
+              guide.
             </p>
           ),
           table: {

@@ -457,7 +457,12 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText}>
             For an adult, an observation deck or teamLab museum starts at ¥1,500 to ¥3,800, and a theme park or
             studio day starts at ¥3,900 to ¥8,900. Several of these change with the date, so a &quot;from&quot;
-            price is the published minimum.
+            price is the published minimum. Sanrio Puroland&apos;s adult Day Passport is ¥3,900 at the gate on its
+            cheapest dates, and its official e-Passport is ¥100 below the gate price (our{" "}
+            <Link href="/guides/attractions/sanrio-puroland-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Sanrio Puroland tickets
+            </Link>{" "}
+            guide has the online vs gate table and the opening hours).
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -1111,7 +1116,7 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Sanrio Puroland Tickets 2026: Price, Skip-the-Line &amp; Booking</p>
+                <p className={styles.relatedTitle}>Sanrio Puroland Tickets 2026: Online vs Gate Price &amp; Hours</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

@@ -884,7 +884,12 @@ export default function TokyoDisneyTicketsPage({ updated }: { updated: PageUpdat
             ours sits on day four of our{" "}
             <Link href="/guides/attractions/tokyo-5-day-itinerary" style={{ color: "var(--text)", fontWeight: 600 }}>
               five-day Tokyo itinerary
-            </Link>.
+            </Link>. If a full park day is too long for small children, the indoor alternative is Hello Kitty&apos;s
+            park at Tama Center, from ¥3,900 for an adult at the gate; our{" "}
+            <Link href="/guides/attractions/sanrio-puroland-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Sanrio Puroland tickets
+            </Link>{" "}
+            guide has the opening hours and the online vs gate prices.
           </p>
         </section>
 

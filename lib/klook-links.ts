@@ -8547,6 +8547,21 @@ export const sanrioPurolandAnswerCards: KlookSameDayCard[] = [
   },
 ];
 
+/**
+ * sanrio-puroland-tickets, directly under the "online vs at the gate" table
+ * (task-jtk-20261128-R08): Shinjuku hotels (6.5%), the Tokyo Subway Ticket (5%) for the
+ * other Tokyo days, and the Klook eSIM (20%).
+ */
+export const sanrioPurolandCompareCards: KlookSameDayCard[] = [
+  sanrioPurolandAnswerCards[0],
+  {
+    ...tripPrepProducts.subway,
+    kind: "Subway pass",
+    why: "Not for the Puroland day itself (the Keio and Odakyu lines to Tama Center are outside it), but for the city days either side: Tokyo Metro and Toei lines for 24, 48 or 72 hours.",
+  },
+  sanrioPurolandAnswerCards[1],
+];
+
 /** Osaka Castle — an admission that takes about half a day, between Umeda and Namba. */
 export const osakaCastleTripPrep: KlookTripPrepItem[] = [
   {

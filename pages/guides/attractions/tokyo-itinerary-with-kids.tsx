@@ -931,7 +931,11 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             (read {CHECKED}). The pinch points on this route are elsewhere: Sanrio Puroland bans strollers on its
             first two floors on busy days, Disney&apos;s own rental is listed as suspended on some of its pages, and
             Kamakura&apos;s temples and the Hakone transfers involve steps. A lightweight folding stroller and a
-            carrier between them cover every day here.
+            carrier between them cover every day here. For the Puroland day, our{" "}
+            <Link href="/guides/attractions/sanrio-puroland-tickets" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Sanrio Puroland tickets
+            </Link>{" "}
+            guide lists the opening hours and closed days, and the child price (ages 3–17) from ¥2,800 at the gate.
           </p>
         </section>
 
@@ -1049,7 +1053,7 @@ export default function TokyoItineraryWithKidsPage({ updated }: { updated: PageU
             {[
               { href: "/guides/attractions/tokyo-disney-tickets", title: "Tokyo Disneyland Tickets 2026: Prices, Dates & How to Buy" },
               { href: "/guides/attractions/tokyo-disney-hotels", title: "Tokyo Disney Hotels (2026): Closest, Official & Budget" },
-              { href: "/guides/attractions/sanrio-puroland-tickets", title: "Sanrio Puroland Tickets 2026: Price, Skip-the-Line & Booking" },
+              { href: "/guides/attractions/sanrio-puroland-tickets", title: "Sanrio Puroland Tickets 2026: Online vs Gate Price & Hours" },
               { href: "/guides/attractions/where-to-stay-in-tokyo", title: "Where to Stay in Tokyo (2026): Best Areas, Compared by Line and Airport" },
               { href: "/guides/attractions/tokyo-5-day-itinerary", title: "Tokyo 5-Day Itinerary (2026): 5 Days in Tokyo, Day by Day" },
               { href: "/guides/attractions/tokyo-3-day-itinerary", title: "Tokyo 3 Day Itinerary (2026): What to Book, and in What Order" },
