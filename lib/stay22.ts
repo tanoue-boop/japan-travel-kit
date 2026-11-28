@@ -22,8 +22,15 @@ import type { Locale } from "./i18n";
 export const STAY22_AID = "japantravelkit";
 export const STAY22_LMA_ID = "6b08d1e509085d34c5ec537f";
 
-/** The inline loader from the Stay22 dashboard, unchanged apart from the lmaID constant. */
-export const STAY22_LMA_SNIPPET = `(function (s, t, a, y, twenty, two) { s.Stay22 = s.Stay22 || {}; s.Stay22.params = { lmaID: '${STAY22_LMA_ID}' }; twenty = t.createElement(a); two = t.getElementsByTagName(a)[0]; twenty.async = 1; twenty.src = y; two.parentNode.insertBefore(twenty, two); })(window, document, 'script', 'https://lma.stay22.com/letmeallez.js');`;
+/**
+ * The inline loader from the Stay22 dashboard, unchanged apart from the lmaID constant
+ * and `excludes`. `excludes: ['trip']` (task jtk-20261128-A36): without it the script
+ * rewrote the Trip.com buttons in HotelStayBlock to stay22.com/allez/trip and dropped our
+ * own Trip.com Allianceid/SID (seen on production 28 Nov 2026). "trip" is the script's own
+ * partner key for trip.com; the script unions this array with the dashboard's excludes,
+ * so the dashboard's list (viator) still applies.
+ */
+export const STAY22_LMA_SNIPPET = `(function (s, t, a, y, twenty, two) { s.Stay22 = s.Stay22 || {}; s.Stay22.params = { lmaID: '${STAY22_LMA_ID}', excludes: ['trip'] }; twenty = t.createElement(a); two = t.getElementsByTagName(a)[0]; twenty.async = 1; twenty.src = y; two.parentNode.insertBefore(twenty, two); })(window, document, 'script', 'https://lma.stay22.com/letmeallez.js');`;
 
 /**
  * Map addresses for the area names used by the where-to-stay pages' KlookStayAreas
