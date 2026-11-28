@@ -38,6 +38,7 @@ import { articleJsonLd } from "../../../../lib/structured-data";
 import { KLOOK_ESIM_FACTS } from "../../../../lib/klook-esim-facts";
 import { JSONLD_LANG, dateLabel } from "../../../../lib/i18n";
 import { EsimCtaTop } from "../../../../components/EsimCta";
+import EsimVerdictBox from "../../../../components/EsimVerdictBox";
 import BookingEsimCard from "../../../../components/BookingEsimCard";
 
 /**
@@ -701,6 +702,9 @@ export default function ZhBestEsimJapanPage({ updated }: { updated: PageUpdated 
 
       <div className={styles.content}>
         <Disclosure />
+
+        {/* P01 (28 Nov 2026): the one conclusion box, Simbye first, as on the English page (A31). */}
+        <EsimVerdictBox route={ROUTE} locale="zh-tw" />
 
         {/* The answer first (23 Nov 2026, R02): the price by trip length at 1 GB a day, then Klook and the unlimited and phone-number cases. */}
         <section className={styles.bodySection}>

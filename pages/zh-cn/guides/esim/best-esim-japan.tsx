@@ -37,7 +37,7 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { KLOOK_ESIM_FACTS } from "../../../../lib/klook-esim-facts";
 import { JSONLD_LANG, dateLabel } from "../../../../lib/i18n";
-import { EsimCtaTop } from "../../../../components/EsimCta";
+import EsimVerdictBox from "../../../../components/EsimVerdictBox";
 import BookingEsimCard from "../../../../components/BookingEsimCard";
 
 /**
@@ -582,6 +582,9 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
       <div className={styles.content}>
         <Disclosure />
 
+        {/* P01 (28 Nov 2026): the one conclusion box, Simbye first, as on the English page (A31). */}
+        <EsimVerdictBox route={ROUTE} locale="zh-cn" />
+
         {/* The answer first: one sentence per use, with the price and the date in it (14 Nov 2026). */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
@@ -599,7 +602,6 @@ export default function CnBestEsimJapanPage({ updated }: { updated: PageUpdated 
 
         <BookingEsimCard lead="选好了吗？出发前先安装 eSIM。" />
 
-        <EsimCtaTop />
 
         {/* Japan eSIM comparison — the conclusion in the first row. */}
         <section className={styles.comparisonSection}>

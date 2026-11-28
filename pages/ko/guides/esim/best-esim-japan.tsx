@@ -41,7 +41,7 @@ import { pageUpdated, type PageUpdated } from "../../../../lib/page-dates";
 import { articleJsonLd } from "../../../../lib/structured-data";
 import { KLOOK_ESIM_FACTS } from "../../../../lib/klook-esim-facts";
 import { JSONLD_LANG, dateLabel, monthLabel } from "../../../../lib/i18n";
-import { EsimCtaTop } from "../../../../components/EsimCta";
+import EsimVerdictBox from "../../../../components/EsimVerdictBox";
 
 /**
  * Korean edition of /guides/esim/best-esim-japan. Mirrors the English page block by
@@ -599,6 +599,9 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
       <div className={styles.content}>
         <Disclosure />
 
+        {/* P01 (28 Nov 2026): the one conclusion box, Simbye first, as on the English page (A31). */}
+        <EsimVerdictBox route={ROUTE} locale="ko" />
+
         {/* The answer in two sentences, before any table. The price date lives here rather than in the hero. */}
         <section className={styles.bodySection}>
           <p className={styles.bodyText}>
@@ -639,7 +642,6 @@ export default function KoBestEsimJapanPage({ updated }: { updated: PageUpdated 
           </p>
         </section>
 
-        <EsimCtaTop />
 
         {/* Quick Comparison Table */}
         <section className={styles.comparisonSection}>
