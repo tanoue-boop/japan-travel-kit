@@ -270,6 +270,14 @@ const SEARCH_TERMS = {
     ko: "도쿄 나고야 신칸센",
     th: "ชินคันเซ็น โตเกียว นาโกย่า",
   },
+  // Added 2026-11-28 (TR01): the aquarium's name as Korean, Taiwan / Hong Kong, Simplified
+  // Chinese and Thai results write it.
+  "/guides/attractions/osaka-aquarium-kaiyukan-tickets": {
+    "zh-tw": "海遊館門票",
+    "zh-cn": "海游馆门票",
+    ko: "가이유칸 입장권",
+    th: "พิพิธภัณฑ์สัตว์น้ำไคยูคัง",
+  },
 };
 
 /** Klook's own locale path each edition must link. */

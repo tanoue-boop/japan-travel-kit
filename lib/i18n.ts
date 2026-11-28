@@ -696,6 +696,26 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     thTitle: "ชินคันเซ็น โตเกียว นาโกย่า 2026: ราคา",
     thLabel: "ชินคันเซ็น โตเกียว นาโกย่า",
   },
+  // Added 2026-11-28 (task jtk-20261128-TR01): Osaka Aquarium Kaiyukan tickets (Klook 30 days:
+  // 7 tickets, 48 clicks on ad id 1528111). Titles lead with the aquarium's name as each market
+  // searches it: 가이유칸 입장권 (livejapan.com/ko, trvlogue, enjoy-osaka-kyoto-kobe.com/ko),
+  // 海遊館門票 / 海游馆门票 (Taiwan / Hong Kong and Simplified results) and
+  // พิพิธภัณฑ์สัตว์น้ำไคยูคัง (kintetsu.co.jp/thai, gltjp.com/th).
+  {
+    en: "/guides/attractions/osaka-aquarium-kaiyukan-tickets",
+    zhTw: "/zh-tw/guides/attractions/osaka-aquarium-kaiyukan-tickets",
+    zhTitle: "大阪海遊館門票 2026：票價、入場時段與最佳時間",
+    zhLabel: "大阪海遊館門票",
+    zhCn: "/zh-cn/guides/attractions/osaka-aquarium-kaiyukan-tickets",
+    zhCnTitle: "大阪海游馆门票 2026：票价、入场时段与最佳时间",
+    zhCnLabel: "大阪海游馆门票",
+    ko: "/ko/guides/attractions/osaka-aquarium-kaiyukan-tickets",
+    koTitle: "오사카 가이유칸 입장권 2026: 요금, 예매, 추천 시간",
+    koLabel: "가이유칸 입장권",
+    th: "/th/guides/attractions/osaka-aquarium-kaiyukan-tickets",
+    thTitle: "ตั๋วพิพิธภัณฑ์สัตว์น้ำไคยูคัง 2026: ราคา",
+    thLabel: "ตั๋วพิพิธภัณฑ์สัตว์น้ำไคยูคัง",
+  },
   {
     en: "/guides/attractions",
     zhTw: "/zh-tw/guides/attractions",

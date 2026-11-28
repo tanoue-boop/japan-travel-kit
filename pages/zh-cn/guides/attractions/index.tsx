@@ -76,6 +76,7 @@ const groups: CnHubGroup[] = [
       "/zh-cn/guides/attractions/teamlab-borderless-tickets",
       "/zh-cn/guides/attractions/umeda-sky-building-tickets",
       "/zh-cn/guides/attractions/osaka-castle-tickets",
+      "/zh-cn/guides/attractions/osaka-aquarium-kaiyukan-tickets",
     ],
   },
   {
@@ -125,6 +126,8 @@ const groups: CnHubGroup[] = [
 
 /** Short Chinese blurb per page — one line on what it answers. */
 const BLURBS: Record<string, string> = {
+  "/zh-cn/guides/attractions/osaka-aquarium-kaiyukan-tickets":
+    "大阪海游馆门票：成人按日期 ¥2,700–3,200、小学生与初中生 ¥1,400–1,650、3 岁以上 ¥700–800，电子票约 30 天前开售并指定入场时段。再入馆已于 2026 年 6 月 15 日停止，大阪周游卡不适用，以及圣玛丽亚号、天保山大摩天轮与 Captain Line 渡轮。",
   "/zh-cn/guides/attractions/osaka-castle-tickets":
     "大阪城天守阁门票：成人 ¥1,200、大学生与高中生 ¥600、初中生及以下免费，9:00–18:00 开放，最后入场 17:30。城内西之丸庭园、大阪城御座船等 5 项收费设施合计 ¥5,200，持大阪周游卡全部免费。",
   "/zh-cn/guides/attractions/tokyo-joypolis-tickets":

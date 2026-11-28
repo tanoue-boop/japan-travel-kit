@@ -77,6 +77,7 @@ const groups: ZhHubGroup[] = [
       "/zh-tw/guides/attractions/tokyo-skytree-tickets",
       "/zh-tw/guides/attractions/umeda-sky-building-tickets",
       "/zh-tw/guides/attractions/osaka-castle-tickets",
+      "/zh-tw/guides/attractions/osaka-aquarium-kaiyukan-tickets",
     ],
   },
   {
@@ -126,6 +127,8 @@ const groups: ZhHubGroup[] = [
 
 /** Short Chinese blurb per page — one line on what it answers. */
 const BLURBS: Record<string, string> = {
+  "/zh-tw/guides/attractions/osaka-aquarium-kaiyukan-tickets":
+    "大阪海遊館門票：成人依日期 ¥2,700–3,200、國小與國中學生 ¥1,400–1,650、3 歲以上 ¥700–800，電子票約 30 天前開賣並指定入場時段。再入館已於 2026 年 6 月 15 日停止，大阪周遊卡不適用，以及聖瑪麗亞號、天保山大摩天輪與 Captain Line 渡輪。",
   "/zh-tw/guides/attractions/osaka-castle-tickets":
     "大阪城天守閣門票：成人 ¥1,200、大學生與高中生 ¥600、國中生以下免費，9:00–18:00 開放、最後入場 17:30。城內西之丸庭園、大阪城御座船等 5 項收費設施合計 ¥5,200，持大阪周遊卡全部免費。",
   "/zh-tw/guides/attractions/tokyo-joypolis-tickets":
