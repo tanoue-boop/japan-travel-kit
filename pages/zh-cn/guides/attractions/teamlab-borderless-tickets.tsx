@@ -38,22 +38,25 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 // sale window, same-day sales, payment, ticket delivery, queueing and stay rules off
 // teamlab.art/faq/Tokyo/ — so prices, booking steps, the slot table and the FAQ carry that
 // date. The hours / closed-day rows were not re-read and keep 13 Nov 2026. Nothing beyond
-// the English page's figures was added for this edition.
+// the English page's figures was added for this edition. On 28 November 2026
+// (task-jtk-20261128-R02) the same sources were read again, hours and closed days included,
+// and nothing had changed; the page now mirrors the English one as of that date (numbered
+// booking steps under the answer, sold-out and at-the-door questions).
 
 const ROUTE = "/zh-cn/guides/attractions/teamlab-borderless-tickets";
-// Search term first: "teamLab 无界 门票", then 指定时段预约 (the "timed entry" query).
-const TITLE = "teamLab 无界 门票 2026：指定时段预约与价格";
+// Search term first: "teamLab 无界 门票 2026", then the timed-entry booking words (28 Nov 2026).
+const TITLE = "teamLab 无界 门票 2026：指定时段预约方法与价格";
 const H1 = "teamLab 无界 门票 2026：指定时段怎么预约与价格";
 const DESC =
-  "teamLab 无界门票：在官网或 Klook 预约指定时段，成人 ¥3,400 起，约提前 2 个月的 1 日前后开售。附预约步骤与当天票规则。";
+  "teamLab 无界门票 2026：官网 5 步、Klook 4 步预约指定时段。成人 ¥3,400 起，约提前 2 个月的 1 日前后开售。";
 
 const BORDERLESS_URL = cnTeamlabBorderless.url;
 const GYG_SLUG = "zh-cn-teamlab-borderless-tickets";
 
 const P = PRICES.teamlabBorderless;
-const CHECKED_ISO = "2026-11-20";
+const CHECKED_ISO = "2026-11-28";
 const CHECKED = dateLabel(CHECKED_ISO, "zh-cn");
-const HOURS_CHECKED_ISO = "2026-11-13";
+const HOURS_CHECKED_ISO = "2026-11-28";
 const HOURS_CHECKED = dateLabel(HOURS_CHECKED_ISO, "zh-cn");
 const OFFICIAL_URL = "https://www.teamlab.art/e/tokyo/";
 const FAQ_URL = "https://www.teamlab.art/faq/tokyo/";
@@ -176,6 +179,11 @@ const hoursRows = [
     detail: "还有名额时在馆内销售，成人 +¥200",
     source: `teamlab.art，${CHECKED}`,
   },
+  {
+    item: "拥挤与繁忙时段",
+    detail: "因为是分时段入场，多数情况下不用排队，但繁忙时期可能需要在馆外等候；teamLab 未公布最拥挤的时段",
+    source: `teamlab.art 常见问题，${CHECKED}`,
+  },
 ];
 
 const vsPlanetsRows = [
@@ -288,34 +296,21 @@ const whoFor = [
   },
 ];
 
-// How to book on the two official sales sites (teamLab's own site and Klook), verdict in row
-// one — mirrors the English bookingRows.
-const bookingRows = [
-  {
-    step: "选哪个",
-    official: "基础票价，最多可改期 3 次——信用卡能顺利支付就选官网",
-    klook: "买到同样的门票，可用熟悉的货币结账，并在同一个 App 中管理订单；适用该套餐自己的改期条款",
-  },
-  {
-    step: "1. 打开日历",
-    official: "teamlab.art/e/tokyo → 购票日历。约在参观日期前两个月的 1 日前后开放",
-    klook: "打开 Klook 上的 teamLab 无界商品页（表格下方的按钮）",
-  },
-  {
-    step: "2. 选日期与票种",
-    official: "查看当天的成人票价，再选 Entrance Pass（指定时段）或 Flexible Pass（¥12,000，不指定入场时间）",
-    klook: "选日期，以及商品页上列出的票种套餐",
-  },
-  {
-    step: "3. 选时间并付款",
-    official: "选入场时间；可用信用卡或 PayPay 付款",
-    klook: "如果所选套餐要求，就选择入场时段；看清改期与取消条款后付款",
-  },
-  {
-    step: "4. 入场",
-    official: "从确认邮件中的链接打开门票，在入口出示；参观日 24 小时前会出现打印按钮",
-    klook: "订单保存在你的 Klook 账户中；按凭证上的入场说明操作",
-  },
+// How to book, as two numbered lists (official 5 steps, Klook 4). Mirrors officialSteps /
+// klookSteps on the English page (28 Nov 2026).
+const officialSteps = [
+  { name: "打开官方购票日历", text: "在 teamlab.art/e/tokyo 打开购票日历。约在参观日期前两个月的 1 日前后开售。" },
+  { name: "选日期并查看票价", text: "成人票价随日期与时段浮动，¥3,400 起；13～17 岁 ¥2,800，4～12 岁 ¥1,500，未满 4 岁免费。" },
+  { name: "选票种与入场时间", text: "Entrance Pass 指定日期和入场时间；¥12,000 的 Flexible Pass 只指定日期，最后入场前都可入馆。" },
+  { name: "付款", text: "用信用卡或 PayPay 付款。门票不能取消，但官网购买的门票最多可改期 3 次。" },
+  { name: "在入口出示门票", text: "从确认邮件中的链接打开门票，在入口出示画面；参观日 24 小时前会出现打印按钮。" },
+];
+
+const klookSteps = [
+  { name: "打开 Klook 上的 teamLab 无界商品页", text: "Klook 是 teamLab 列出的另一个官方销售渠道；请用下方按钮。" },
+  { name: "选日期与票种套餐", text: "选择商品页上列出的日期与套餐；价格以你熟悉的货币显示。" },
+  { name: "选时间并看清条款", text: "如果套餐要求就选入场时间，付款前看清该套餐的改期与取消条款。" },
+  { name: "付款并保存凭证", text: "付款后订单保存在你的 Klook 账户中；按凭证上的入场说明操作。" },
 ];
 
 // Time slots, queues and selling out — only what teamLab itself says (mirrors English slotRows).
@@ -362,12 +357,12 @@ const slotRows = [
   },
 ];
 
-// The five questions mirror the English page (Search Console queries, 28 days to 18 Nov
-// 2026). Time needed and children are answered in the body.
+// The five questions mirror the English page (Search Console queries, 28 days to 25 Nov
+// 2026). Time needed, children and Klook vs official are answered in the body.
 const faqItems: FaqItem[] = [
   {
     q: "teamLab 无界指定时段门票怎么预约？",
-    a: `在官方售票日历（teamlab.art/e/tokyo）或 Klook 上选日期——Klook 是 teamLab 列出的另一个官方销售渠道——确认当天的成人票价，然后为 Entrance Pass 选一个入场时间；也可以选不指定入场时间的 Flexible Pass（¥12,000）。用信用卡付款（官网也支持 PayPay），门票会以链接形式发到确认邮件里，入场时用手机出示即可。票价与规定按官方网站 ${CHECKED} 的公告。`,
+    a: `官网共 5 步：在 teamlab.art/e/tokyo 打开购票日历，选日期并查看成人票价（¥3,400 起），选带入场时间的 Entrance Pass（或不指定时间的 ¥12,000 Flexible Pass），用信用卡或 PayPay 付款，在入口出示确认邮件里的门票。在另一个官方销售渠道 Klook 上是 4 步：打开商品页、选日期与套餐、选时间并看清条款、付款。票价与规定按官方网站 ${CHECKED} 的公告。`,
   },
   {
     q: "teamLab Borderless 门票什么时候开售？",
@@ -378,12 +373,12 @@ const faqItems: FaqItem[] = [
     a: `官方售票网站（核查日期 ${CHECKED}）：成人（18 岁以上）${ADULT}，13～17 岁 ¥2,800，4～12 岁 ${CHILD}，3 岁以下免费，残障人士 ¥1,700 起（一位陪同人员同价）。成人票与残障人士票随日期与入场时段变动，所以 ¥3,400 是最低价。Flexible Pass 为 ¥12,000；成人现场购票需多付 ¥200。`,
   },
   {
-    q: "当天可以买 teamLab 无界门票吗？",
-    a: `可以，但要还有余票。teamLab 常见问题（${CHECKED} 查阅）写明：未售罄时可在官方售票网站购买当天票，现场在还有名额时也有售，但价格不同（成人多 ¥200）。门票可能售罄，所以当天购票只能当备选，不宜当作计划。`,
+    q: "teamLab 无界门票可以在现场买吗？",
+    a: `还有名额就可以。teamLab 常见问题（${CHECKED} 查阅）写明：未售罄时可在官方售票网站购买当天票，现场也有售，但价格不同（成人多 ¥200）。门票可能售罄，所以现场购票只能当备选，不宜当作计划。`,
   },
   {
-    q: "teamLab 无界门票在 Klook 买还是官网买更好？",
-    a: `两边买到的是同样的入场资格：teamLab 列出的官方销售渠道就是自己的售票网站和 Klook（${CHECKED} 查阅）。想要基础票价和最多三次改期（须在预约时段 2 小时前办理）就选官网；想用熟悉的货币结账、把订单和其他行程放在同一个 App 里就选 Klook——这时适用该 Klook 套餐自己的改期与取消条款。`,
+    q: "teamLab 无界门票售罄了怎么办？",
+    a: `在官方日历上找其他日期或入场时间，并查看 teamLab 列出的另一个官方销售渠道 Klook。teamLab 常见问题（${CHECKED} 查阅）写明：当天票只有在还有余票时才在网上或现场销售；新日期或时段已售罄时，官网门票也无法改期。`,
   },
 ];
 
@@ -471,18 +466,56 @@ export default function CnTeamLabBorderlessPage({ updated }: { updated: PageUpda
         <Disclosure />
 
         <p className={styles.bodyText}>
-          预约 <strong>teamLab 无界门票</strong>，要在 teamlab.art 官方售票网站或 Klook 这两个官方销售渠道上选好日期和
-          <strong>入场时段</strong>；门票在<strong>参观日期前两个月的 1 日前后开售</strong>，2027 年 1 月参观约在
-          2026 年 11 月 1 日开放购买。成人 <strong>¥3,400 起</strong>（官网，核查日期 {CHECKED}），13～17 岁 ¥2,800，
-          4～12 岁 ¥1,500，未满 4 岁免费；成人票价随日期与时段浮动。当天票只有在还有余票时才能在网上买到，成人现场购票需多付
-          ¥200——入馆后没有时间限制，时段只决定你几点入场，不决定能待多久。
+          预约 <strong>teamLab 无界门票</strong>，要在官方销售渠道 teamlab.art 或 Klook 上选好日期和<strong>入场时段（指定时段入场）</strong>并在线付款；门票在<strong>参观日期前两个月的 1 日前后开售</strong>。成人按日期与时段 <strong>¥3,400 起</strong>，13～17 岁 ¥2,800，4～12 岁 ¥1,500，未满 4 岁免费（官网，核查日期 {CHECKED}）。当天票只有在还有余票时才在网上或现场（成人 +¥200）销售。
         </p>
         <p className={styles.bodyText}>
-          以上数字均来自 teamLab 官方网站及其常见问题，核查日期 {CHECKED}。还没决定去哪一座？请看{" "}
+          还没决定去哪一座？请看{" "}
           <Link href="/zh-cn/guides/attractions/teamlab-tokyo-tickets">teamLab Planets 与 Borderless 对比</Link>；
           本页专门讲怎么预订 Borderless（无界）。其他要先订的东京景点门票，整理在{" "}
           <Link href="/zh-cn/guides/attractions/things-to-do-tokyo">东京必去景点与东京景点门票价格</Link>。
         </p>
+
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>预订步骤<span className="sr-only">：</span></span>
+          <h2 className={styles.sectionTitle}>teamLab 无界指定时段门票怎么预约？</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            官网 5 步，Klook 4 步：选日期、查看当天票价、选入场时间、付款，再用手机出示门票。会影响票价的只有日期和时段。
+          </p>
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.2rem", marginTop: "1.25rem" }}>
+            官方网站（teamlab.art）：5 步
+          </h3>
+          <ol className={styles.bodyList}>
+            {officialSteps.map((s) => (
+              <li key={s.name}><strong>{s.name}。</strong>{s.text}</li>
+            ))}
+          </ol>
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.2rem", marginTop: "1.25rem" }}>
+            Klook：4 步
+          </h3>
+          <ol className={styles.bodyList}>
+            {klookSteps.map((s) => (
+              <li key={s.name}><strong>{s.name}。</strong>{s.text}</li>
+            ))}
+          </ol>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            最后核查：{CHECKED_ISO}——
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer">teamlab.art/e/tokyo</a>（票种、票价、付款方式、官方销售渠道）与{" "}
+            <a href={FAQ_URL} target="_blank" rel="noopener noreferrer">teamlab.art/faq/tokyo</a>（开售时间、门票发送、打印、改期）。想要基础票价和最多 3 次改期就选官网；想用熟悉的货币结账就选 Klook，适用该套餐自己的改期条款。
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={BORDERLESS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+              在 Klook 预约 teamLab 无界指定时段门票 →
+            </KlookLink>
+          </div>
+        </section>
+
+        <KlookTripPrep
+          label="同一天可以一起预订的"
+          heading="去 teamLab 无界那天，还要订什么？"
+          headingLevel={3}
+          intro="选好入场时段，也就确定了几点要到场。以下几项可以用同一个 Klook 账号和门票一起预订：白天时段之后的东京夜游、覆盖麻布台之丘两个车站（神谷町与六本木一丁目）的地铁通票、查看电子门票所需的移动数据，以及六本木一带的住宿。"
+          items={tripPrep}
+        />
 
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -526,56 +559,6 @@ export default function CnTeamLabBorderlessPage({ updated }: { updated: PageUpda
             </p>
           </div>
         </div>
-
-        <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>预订步骤<span className="sr-only">：</span></span>
-          <h2 className={styles.sectionTitle}>teamLab 无界指定时段门票怎么预约？</h2>
-          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            先选日期、查看当天的成人票价，再为 Entrance Pass 选一个入场时间（或选不指定时间的 Flexible Pass，¥12,000），
-            然后付款——在官网买，或在 teamLab 列出的另一个官方销售渠道 Klook 买。两种渠道的购票流程都是四步；会影响票价的只有日期和时段。
-          </p>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["", "官方网站（teamlab.art）", "Klook"].map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {bookingRows.map((row) => (
-                    <tr key={row.step}>
-                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.step}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.official}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.klook}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            最后核查：{CHECKED_ISO}——
-            <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer">teamlab.art/e/tokyo</a>（票种、付款方式、官方销售渠道）与{" "}
-            <a href={FAQ_URL} target="_blank" rel="noopener noreferrer">teamlab.art/faq/tokyo</a>（开售时间、门票发送、打印）。
-            teamLab 没有公布每个时段的长度：按时间入场后，想待多久都可以。
-          </p>
-          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={BORDERLESS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
-              在 Klook 预约 teamLab 无界指定时段门票 →
-            </KlookLink>
-          </div>
-        </section>
-
-        <KlookTripPrep
-          label="同一天可以一起预订的"
-          heading="去 teamLab 无界那天，还要订什么？"
-          headingLevel={3}
-          intro="选好入场时段，也就确定了几点要到场。以下几项可以用同一个 Klook 账号和门票一起预订：白天时段之后的东京夜游、覆盖麻布台之丘两个车站（神谷町与六本木一丁目）的地铁通票、查看电子门票所需的移动数据，以及六本木一带的住宿。"
-          items={tripPrep}
-        />
 
         <EsimCtaTop />
 
@@ -759,11 +742,24 @@ export default function CnTeamLabBorderlessPage({ updated }: { updated: PageUpda
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>售罄<span className="sr-only">：</span></span>
+          <h2 className={styles.sectionTitle}>teamLab 无界门票售罄了怎么办？</h2>
+          <p className={styles.bodyText}>
+            在官方日历上找其他日期或入场时间，并查看另一个官方销售渠道 Klook；当天票只有在还有余票时才在网上或现场销售。teamLab 没有公布候补名单，也没有公布时段多久会售罄（常见问题，{CHECKED}）。
+          </p>
+          <ul className={styles.bodyList}>
+            <li><strong>不只换日期，也换时间：</strong>查看同一天的其他入场时间，或不指定入场时间的 Flexible Pass（¥12,000）。</li>
+            <li><strong>盯住开售日：</strong>之后的日期约在参观日期前两个月的 1 日前后开售。</li>
+            <li><strong>已经有票的话：</strong>新日期或时段已售罄时，官网门票无法改期。</li>
+          </ul>
+        </section>
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>入场时段<span className="sr-only">：</span></span>
-          <h2 className={styles.sectionTitle}>当天可以买 teamLab 无界门票吗？</h2>
+          <h2 className={styles.sectionTitle}>teamLab 无界门票可以在现场买吗？</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            可以，但要还有余票：未售罄时可在官方售票网站买当天票，现场在还有名额时也有售，但价格不同（成人 +¥200）。
+            还有名额就可以：未售罄时可在官方售票网站买当天票，现场也有售，但价格不同（成人 +¥200）。
             teamLab 没有说哪些时段最先售罄，只说任何日期与时段都可能售罄——下表就是官方关于时段、排队与人流的全部说明。
           </p>
           <div className={styles.tableWrap}>

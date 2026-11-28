@@ -498,7 +498,10 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText} style={{ marginTop: "1.25rem" }}>
             Official adult prices and terms, read on the operator&apos;s site on the date shown. Klook sets its
             own price and cancellation terms, so open the listing for your date. Go kart prices are per person
-            across Street Kart&apos;s own price tables.
+            across Street Kart&apos;s own price tables. Borderless dates go on sale around the 1st of the month,
+            two months ahead; the{" "}
+            <Link href="/guides/attractions/teamlab-borderless-tickets" style={linkStyle}>teamLab Borderless tickets</Link>{" "}
+            guide walks through booking a timed entry on the official site or Klook, step by step.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={PRICES.teamlabBorderless.klook.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -982,7 +985,7 @@ export default function ThingsToDoTokyoPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>teamLab Borderless Tickets (2026): Price, How to Book and Time Slots</p>
+                <p className={styles.relatedTitle}>teamLab Borderless Tickets 2026: How to Book Timed Entry &amp; Price</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

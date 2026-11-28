@@ -38,24 +38,28 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 // Klook), same-day / time-slot table, and the five FAQ questions. Ticket segments, purchase
 // notes, the sale window, same-day sales, payment, ticket delivery, queueing and stay rules
 // were re-read on 20 November 2026 (teamlab.art/e/borderless-azabudai/ and
-// teamlab.art/faq/Tokyo/); the hours / closed-day rows keep 13 November 2026.
-// The adult and child figures still come from lib/attraction-prices.ts.
+// teamlab.art/faq/Tokyo/). On 28 November 2026 (task-jtk-20261128-R02) the same sources
+// were read again, hours and closed days included, and nothing had changed; the page now
+// mirrors the English one as of that date (numbered booking steps under the answer,
+// sold-out and at-the-door questions). The adult and child figures still come from
+// lib/attraction-prices.ts.
 
 const ROUTE = "/th/guides/attractions/teamlab-borderless-tickets";
-// The Thai search term "ตั๋ว teamLab Borderless" stays first in the title, H1 and description,
-// followed by "วิธีจองรอบเวลา" (how to book timed entry), as in the English R02 title.
-const TITLE = "ตั๋ว teamLab Borderless: จองรอบเวลา";
+// The English title leads with "teamLab Borderless Tickets 2026" and then "How to Book
+// Timed Entry" (28 Nov 2026), so this one leads with "ตั๋ว teamLab Borderless 2026" and
+// then "วิธีจองรอบเวลา" (how to book timed entry).
+const TITLE = "ตั๋ว teamLab Borderless 2026 จองรอบ";
 const H1 = "ตั๋ว teamLab Borderless 2026: วิธีจองรอบเวลาและราคา";
 const DESC =
-  "ตั๋ว teamLab Borderless จองรอบเวลาที่เว็บทางการ/Klook ผู้ใหญ่ ¥3,400+ เปิดขายก่อน 2 เดือน";
+  "จองรอบเวลา teamLab Borderless ทางการ 5 ขั้น Klook 4 ขั้น ผู้ใหญ่ ¥3,400+ ขายก่อน 2 เดือน";
 
 const BORDERLESS_URL = thTeamlabBorderless.url;
 const GYG_SLUG = "th-teamlab-borderless-tickets";
 
 const P = PRICES.teamlabBorderless;
-const CHECKED_ISO = "2026-11-20";
+const CHECKED_ISO = "2026-11-28";
 const CHECKED = dateLabel(CHECKED_ISO, "th");
-const HOURS_CHECKED_ISO = "2026-11-13";
+const HOURS_CHECKED_ISO = "2026-11-28";
 const HOURS_CHECKED = dateLabel(HOURS_CHECKED_ISO, "th");
 const OFFICIAL_URL = "https://www.teamlab.art/e/tokyo/";
 const FAQ_URL = "https://www.teamlab.art/faq/tokyo/";
@@ -179,6 +183,11 @@ const hoursRows = [
     detail: "ขายที่พิพิธภัณฑ์เมื่อยังเหลือรอบ ผู้ใหญ่แพงกว่า ¥200",
     source: `teamlab.art, ${CHECKED}`,
   },
+  {
+    item: "ความหนาแน่นและช่วงเวลาคนเยอะ",
+    detail: "ตั๋วระบุรอบเวลา ส่วนใหญ่จึงเข้าได้โดยไม่ต้องต่อคิว แต่ช่วงคนเยอะอาจต้องรอด้านนอก teamLab ไม่ได้ประกาศว่าช่วงไหนคนเยอะที่สุด",
+    source: `teamlab.art FAQ, ${CHECKED}`,
+  },
 ];
 
 const vsPlanetsRows = [
@@ -289,35 +298,21 @@ const whoFor = [
   },
 ];
 
-// How to book, side by side for the two official sales sites (teamLab names only its own
-// ticket site and Klook). Row one is the verdict. Official column: teamLab FAQ and ticket
-// notes (20 Nov 2026); the Klook column sends option-specific terms back to the listing.
-const bookingRows = [
-  {
-    step: "ควรใช้ช่องทางไหน",
-    official: "ราคาพื้นฐาน และเปลี่ยนวันได้สูงสุด 3 ครั้ง — เหมาะหากบัตรของคุณใช้ชำระเงินได้",
-    klook: "ได้สิทธิ์เข้าชมเหมือนกัน และชำระด้วยสกุลเงินของคุณผ่านแอปเดียว ใช้เงื่อนไขเปลี่ยนวันของแพ็กเกจนั้น",
-  },
-  {
-    step: "1. เปิดปฏิทิน",
-    official: "teamlab.art/e/tokyo → ปฏิทินตั๋ว วันเข้าชมเปิดขายราววันที่ 1 ของเดือน ล่วงหน้าสองเดือน",
-    klook: "เปิดหน้า teamLab Borderless บน Klook (ปุ่มใต้ตาราง)",
-  },
-  {
-    step: "2. เลือกวันและประเภทตั๋ว",
-    official: "ดูราคาผู้ใหญ่ของวันนั้น แล้วเลือก Entrance Pass (ระบุเวลา) หรือ Flexible Pass (¥12,000 ไม่ระบุเวลา)",
-    klook: "เลือกวันและแพ็กเกจตั๋วที่แสดงบนหน้าสินค้า",
-  },
-  {
-    step: "3. เลือกเวลาและชำระเงิน",
-    official: "เลือกเวลาเข้าชม ชำระด้วยบัตรเครดิตหรือ PayPay",
-    klook: "เลือกเวลาถ้าแพ็กเกจให้เลือก อ่านเงื่อนไขเปลี่ยนวันและยกเลิก แล้วชำระเงิน",
-  },
-  {
-    step: "4. เข้าชม",
-    official: "เปิดตั๋วจาก URL ในอีเมลยืนยันแล้วแสดงที่ทางเข้า ปุ่มพิมพ์ตั๋วจะแสดง 24 ชั่วโมงก่อนวันที่จองเข้าชม",
-    klook: "การจองอยู่ในบัญชี Klook ของคุณ ทำตามคำแนะนำการเข้าชมที่ระบุในเวาเชอร์",
-  },
+// How to book, as two numbered lists (official 5 steps, Klook 4). Mirrors officialSteps /
+// klookSteps on the English page (28 Nov 2026).
+const officialSteps = [
+  { name: "เปิดปฏิทินตั๋วทางการ", text: "เข้า teamlab.art/e/tokyo แล้วเปิดปฏิทินตั๋ว ตั๋วเปิดขายราววันที่ 1 ของเดือน ล่วงหน้าสองเดือนก่อนวันเข้าชม" },
+  { name: "เลือกวันและดูราคาของวันนั้น", text: "ราคาผู้ใหญ่เปลี่ยนตามวันและรอบ เริ่มต้น ¥3,400 อายุ 13–17 ปี ¥2,800 อายุ 4–12 ปี ¥1,500 และเด็กอายุต่ำกว่า 4 ปีเข้าฟรี" },
+  { name: "เลือกประเภทตั๋วและเวลาเข้าชม", text: "Entrance Pass ระบุทั้งวันและเวลาเข้า ส่วน Flexible Pass ราคา ¥12,000 ระบุแค่วัน เข้าได้จนถึงรอบเข้าสุดท้าย" },
+  { name: "ชำระเงิน", text: "ชำระด้วยบัตรเครดิตหรือ PayPay ตั๋วยกเลิกไม่ได้ แต่ตั๋วจากเว็บไซต์ทางการเปลี่ยนวันได้สูงสุด 3 ครั้ง" },
+  { name: "แสดงตั๋วที่ทางเข้า", text: "เปิดตั๋วจาก URL ในอีเมลยืนยันแล้วแสดงหน้าจอที่ทางเข้า ปุ่มพิมพ์ตั๋วจะแสดง 24 ชั่วโมงก่อนวันที่จอง" },
+];
+
+const klookSteps = [
+  { name: "เปิดหน้า teamLab Borderless บน Klook", text: "Klook คือช่องทางขายทางการอีกแห่งที่ teamLab ระบุไว้ ใช้ปุ่มใต้ขั้นตอนเหล่านี้" },
+  { name: "เลือกวันและแพ็กเกจตั๋ว", text: "เลือกวันและแพ็กเกจที่แสดงบนหน้าสินค้า ราคาแสดงเป็นสกุลเงินของคุณ" },
+  { name: "เลือกเวลาและอ่านเงื่อนไข", text: "เลือกเวลาเข้าชมถ้าแพ็กเกจให้เลือก และอ่านเงื่อนไขเปลี่ยนวันและยกเลิกของแพ็กเกจนั้นก่อนชำระเงิน" },
+  { name: "ชำระเงินและเก็บเวาเชอร์", text: "ชำระเงินแล้วการจองจะอยู่ในบัญชี Klook ของคุณ ทำตามคำแนะนำการเข้าชมในเวาเชอร์" },
 ];
 
 // Time slots, queues and selling out — only what teamLab itself says. It publishes no
@@ -394,11 +389,11 @@ const tripPrep: KlookTripPrepItem[] = [
   },
 ];
 
-// Five questions, matching the English page.
+// Five questions, matching the English page (28 Nov 2026).
 const faqItems: FaqItem[] = [
   {
     q: "จองตั๋ว teamLab Borderless แบบระบุรอบเวลาอย่างไร?",
-    a: `เลือกวันบนปฏิทินตั๋วทางการ (teamlab.art/e/tokyo) หรือบน Klook ซึ่ง teamLab ระบุว่าเป็นช่องทางจำหน่ายตั๋วอย่างเป็นทางการอีกแห่ง ดูราคาผู้ใหญ่ของวันนั้น แล้วเลือกเวลาเข้าชมสำหรับ Entrance Pass — หรือเลือก Flexible Pass ราคา ¥12,000 ที่ไม่กำหนดเวลาเข้า ชำระด้วยบัตรเครดิต (เว็บไซต์ทางการรับ PayPay ด้วย) แล้วตั๋วจะมาเป็นลิงก์ในอีเมลยืนยัน ใช้แสดงบนมือถือที่ทางเข้า ราคาและเงื่อนไขตามเว็บไซต์ทางการเมื่อ ${CHECKED}`,
+    a: `บนเว็บไซต์ทางการมี 5 ขั้นตอน: เปิดปฏิทินตั๋วที่ teamlab.art/e/tokyo เลือกวันและดูราคาผู้ใหญ่ (เริ่มต้น ¥3,400) เลือก Entrance Pass พร้อมเวลาเข้าชม (หรือ Flexible Pass ราคา ¥12,000 ที่ไม่กำหนดเวลา) ชำระด้วยบัตรหรือ PayPay แล้วแสดงตั๋วจากอีเมลยืนยันที่ทางเข้า บน Klook ซึ่งเป็นช่องทางขายทางการอีกแห่งมี 4 ขั้นตอน: เปิดหน้าสินค้า เลือกวันและแพ็กเกจ เลือกเวลาและอ่านเงื่อนไข แล้วชำระเงิน ราคาและเงื่อนไขตามเว็บไซต์ทางการเมื่อ ${CHECKED}`,
   },
   {
     q: "ตั๋ว teamLab Borderless เปิดขายเมื่อไร?",
@@ -409,12 +404,12 @@ const faqItems: FaqItem[] = [
     a: `บนเว็บไซต์ขายตั๋วทางการ ตรวจสอบเมื่อ ${CHECKED}: ผู้ใหญ่ (18 ปีขึ้นไป) เริ่มต้น ¥3,400 อายุ 13–17 ปี ¥2,800 อายุ 4–12 ปี ¥1,500 เด็กอายุไม่เกิน 3 ปีเข้าฟรี และผู้พิการเริ่มต้น ¥1,700 (ผู้ติดตามหนึ่งคนได้ราคาเดียวกัน) ราคาผู้ใหญ่และผู้พิการเปลี่ยนตามวันและรอบเวลา ¥3,400 จึงเป็นราคาเริ่มต้น Flexible Pass ราคา ¥12,000 และถ้าซื้อหน้างาน ผู้ใหญ่จ่ายแพงกว่า ¥200`,
   },
   {
-    q: "ซื้อตั๋ว teamLab Borderless วันเดียวกันได้ไหม?",
-    a: `ได้ ถ้ายังเหลือ FAQ ของ teamLab (อ่านเมื่อ ${CHECKED}) ระบุว่าตั๋ววันเดียวกันซื้อได้บนเว็บไซต์ขายตั๋วทางการถ้ายังไม่หมด และซื้อหน้างานได้เมื่อยังเหลือรอบในราคาที่ต่างออกไป (ผู้ใหญ่แพงกว่า ¥200) ตั๋วขายหมดได้ การซื้อวันเดียวกันจึงเป็นแผนสำรอง ไม่ใช่แผนหลัก`,
+    q: "ซื้อตั๋ว teamLab Borderless หน้างานได้ไหม?",
+    a: `ได้ ถ้ายังเหลือรอบ FAQ ของ teamLab (อ่านเมื่อ ${CHECKED}) ระบุว่าตั๋ววันเดียวกันซื้อได้บนเว็บไซต์ขายตั๋วทางการถ้ายังไม่หมด และซื้อหน้างานได้ในราคาที่ต่างออกไป (ผู้ใหญ่แพงกว่า ¥200) ตั๋วขายหมดได้ การซื้อหน้างานจึงเป็นแผนสำรอง ไม่ใช่แผนหลัก`,
   },
   {
-    q: "ซื้อตั๋ว teamLab Borderless ที่ Klook หรือเว็บไซต์ทางการดีกว่า?",
-    a: `สิทธิ์เข้าชมเหมือนกันทั้งสองทาง: teamLab ระบุว่าเว็บไซต์ขายตั๋วของตัวเองและ Klook คือช่องทางขายทางการ (${CHECKED}) ซื้อจากเว็บไซต์ทางการถ้าอยากได้ราคาพื้นฐานและเปลี่ยนวันได้สูงสุดสามครั้ง (อย่างช้า 2 ชั่วโมงก่อนรอบ) ซื้อผ่าน Klook ถ้าอยากชำระด้วยสกุลเงินของตัวเองและเก็บการจองไว้ในแอปเดียวกับแผนอื่น — ในกรณีนั้นใช้เงื่อนไขเปลี่ยนวันและยกเลิกของแพ็กเกจ Klook แทน`,
+    q: "ถ้าตั๋ว teamLab Borderless ขายหมดควรทำอย่างไร?",
+    a: `ดูวันหรือเวลาเข้าชมอื่นในปฏิทินทางการ และเช็ก Klook ซึ่งเป็นช่องทางขายทางการอีกแห่งที่ teamLab ระบุไว้ FAQ ของ teamLab (${CHECKED}) ระบุว่าตั๋ววันเดียวกันขายออนไลน์หรือหน้างานเฉพาะเมื่อยังเหลือ และตั๋วทางการเปลี่ยนวันไม่ได้ถ้าวันหรือเวลาใหม่ขายหมดแล้ว`,
   },
 ];
 
@@ -469,19 +464,51 @@ export default function ThTeamLabBorderlessPage({ updated }: { updated: PageUpda
         <Disclosure />
 
         <p className={styles.bodyText}>
-          การจอง<strong>ตั๋ว teamLab Borderless</strong> ให้เลือกวันและ<strong>เวลาเข้าชม (รอบเวลา)</strong>{" "}
-          บนเว็บไซต์ขายตั๋วทางการที่ teamlab.art หรือบน Klook ซึ่งทั้งสองแห่งเป็นช่องทางจำหน่ายตั๋วอย่างเป็นทางการ ตั๋ว
-          <strong>เปิดขายราววันที่ 1 ของเดือน ล่วงหน้าสองเดือน</strong>ก่อนวันเข้าชม — ไปเดือนมกราคม 2027
-          ตั๋วจะเปิดขายราว 1 พฤศจิกายน 2026 ผู้ใหญ่<strong>เริ่มต้น ¥3,400</strong> (เว็บไซต์ทางการ ตรวจสอบเมื่อ{" "}
-          {CHECKED}) อายุ 13–17 ปี ¥2,800 อายุ 4–12 ปี ¥1,500 และเด็กอายุต่ำกว่า 4 ปีเข้าฟรี โดยราคาตั๋วผู้ใหญ่เปลี่ยนตามวันและรอบเวลา
-          ตั๋ววันเดียวกันซื้อออนไลน์ได้เฉพาะเมื่อยังเหลือ และซื้อหน้างานได้ในราคาผู้ใหญ่แพงกว่า ¥200 — เมื่อเข้าไปแล้วชมได้โดยไม่จำกัดเวลา
-          รอบเวลาจึงกำหนดแค่เวลาเข้า ไม่ได้กำหนดว่าอยู่ได้นานแค่ไหน
+          การจอง<strong>ตั๋ว teamLab Borderless</strong> ให้เลือกวันและ<strong>เวลาเข้าชม (รอบเวลา)</strong>บน teamlab.art หรือ Klook ซึ่งเป็นช่องทางขายทางการทั้งสองแห่ง แล้วชำระเงินออนไลน์ ตั๋ว<strong>เปิดขายราววันที่ 1 ของเดือน ล่วงหน้าสองเดือน</strong>ก่อนวันเข้าชม ผู้ใหญ่<strong>เริ่มต้น ¥3,400</strong>ตามวันและรอบ อายุ 13–17 ปี ¥2,800 อายุ 4–12 ปี ¥1,500 และเด็กอายุต่ำกว่า 4 ปีเข้าฟรี (เว็บไซต์ทางการ ตรวจสอบเมื่อ {CHECKED}) ตั๋ววันเดียวกันขายออนไลน์หรือหน้างาน (ผู้ใหญ่ +¥200) เฉพาะเมื่อยังเหลือรอบ
         </p>
         <p className={styles.bodyText}>
-          ตัวเลขทั้งหมดอ่านจากเว็บไซต์ทางการของ teamLab และหน้า FAQ เมื่อ {CHECKED} ถ้ายังเลือกไม่ได้ว่าจะไปแห่งไหน ลองดู{" "}
-          <Link href="/th/guides/attractions/teamlab-tokyo-tickets">การเปรียบเทียบ teamLab Planets กับ Borderless</Link>{" "}
-          ส่วนหน้านี้ว่าด้วยการจองตั๋ว Borderless โดยเฉพาะ
+          ถ้ายังเลือกไม่ได้ว่าจะไปแห่งไหน ลองดู{" "}<Link href="/th/guides/attractions/teamlab-tokyo-tickets">การเปรียบเทียบ teamLab Planets กับ Borderless</Link>{" "}ส่วนหน้านี้ว่าด้วยการจองตั๋ว Borderless โดยเฉพาะ
         </p>
+
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>ทีละขั้นตอน</span>
+          <h2 className={styles.sectionTitle}>จองตั๋ว teamLab Borderless แบบระบุรอบเวลาอย่างไร?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            เว็บไซต์ทางการมี 5 ขั้นตอน Klook มี 4 ขั้นตอน: เลือกวัน ดูราคาของวันนั้น เลือกเวลาเข้าชม ชำระเงิน แล้วแสดงตั๋วบนมือถือ มีเพียงวันกับรอบเวลาที่ทำให้ราคาที่ต้องจ่ายต่างกัน
+          </p>
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.2rem", marginTop: "1.25rem" }}>
+            บนเว็บไซต์ทางการ (teamlab.art): 5 ขั้นตอน
+          </h3>
+          <ol className={styles.bodyList}>
+            {officialSteps.map((s) => (
+              <li key={s.name}><strong>{s.name}</strong> {s.text}</li>
+            ))}
+          </ol>
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.2rem", marginTop: "1.25rem" }}>
+            บน Klook: 4 ขั้นตอน
+          </h3>
+          <ol className={styles.bodyList}>
+            {klookSteps.map((s) => (
+              <li key={s.name}><strong>{s.name}</strong> {s.text}</li>
+            ))}
+          </ol>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            ตรวจสอบล่าสุด: {CHECKED_ISO} —{" "}<a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer">teamlab.art/e/tokyo</a> (ประเภทตั๋ว ราคา การชำระเงิน ช่องทางขายทางการ) และ{" "}<a href={FAQ_URL} target="_blank" rel="noopener noreferrer">teamlab.art/faq/tokyo</a> (วันเปิดขาย การรับตั๋ว การพิมพ์ตั๋ว การเปลี่ยนวัน) ซื้อจากเว็บไซต์ทางการถ้าต้องการราคาพื้นฐานและเปลี่ยนวันได้สูงสุด 3 ครั้ง ซื้อผ่าน Klook ถ้าต้องการชำระด้วยสกุลเงินของตัวเอง โดยใช้เงื่อนไขเปลี่ยนวันของแพ็กเกจนั้น
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={BORDERLESS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+              จองตั๋ว teamLab Borderless แบบระบุรอบเวลาบน Klook →
+            </KlookLink>
+          </div>
+        </section>
+
+        <KlookTripPrep
+          label="จองไว้สำหรับวันเดียวกัน"
+          heading="วันไป teamLab Borderless ควรจองอะไรอีก?"
+          headingLevel={3}
+          intro="รอบเวลาที่จองไว้กำหนดว่าคุณต้องอยู่ที่ไหนและเมื่อไร รายการเหล่านี้จองได้ในบัญชี Klook เดียวกับตั๋ว: ทัวร์ช่วงค่ำหลังเข้าชมรอบกลางวัน ตั๋วรถไฟใต้ดินที่ครอบคลุมทั้งสองสถานีของอาซาบุไดฮิลส์ (คามิยะโจและร็อปปงหงิอิตโจเมะ) อินเทอร์เน็ตสำหรับตั๋วอิเล็กทรอนิกส์ และที่พักใกล้ร็อปปงหงิ"
+          items={tripPrep}
+        />
 
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -526,58 +553,6 @@ export default function ThTeamLabBorderlessPage({ updated }: { updated: PageUpda
             </p>
           </div>
         </div>
-
-        <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>ทีละขั้นตอน</span>
-          <h2 className={styles.sectionTitle}>จองตั๋ว teamLab Borderless แบบระบุรอบเวลาอย่างไร?</h2>
-          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            เลือกวันก่อน ตรวจสอบราคาผู้ใหญ่ของวันนั้น เลือกเวลาเข้าชมของ Entrance Pass (หรือ Flexible Pass ราคา ¥12,000
-            ที่ไม่กำหนดเวลา) แล้วชำระเงิน — บนเว็บไซต์ทางการ หรือบน Klook ซึ่ง teamLab ระบุว่าเป็นช่องทางจำหน่ายตั๋วอย่างเป็นทางการอีกแห่ง
-            ทั้งสองช่องทางมีสี่ขั้นตอน และมีเพียงวันกับรอบเวลาที่ทำให้ราคาที่ต้องจ่ายต่างกัน
-          </p>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["", "เว็บไซต์ทางการ (teamlab.art)", "Klook"].map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {bookingRows.map((row) => (
-                    <tr key={row.step}>
-                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.step}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.official}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.klook}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            ตรวจสอบล่าสุด: {CHECKED_ISO} —{" "}
-            <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer">teamlab.art/e/tokyo</a> (ประเภทตั๋ว
-            การชำระเงิน ช่องทางขายทางการ) และ{" "}
-            <a href={FAQ_URL} target="_blank" rel="noopener noreferrer">teamlab.art/faq/tokyo</a> (วันเปิดขาย
-            การรับตั๋ว การพิมพ์ตั๋ว) teamLab ไม่ได้ประกาศระยะเวลาของแต่ละรอบ: เข้าตามเวลาของคุณแล้วอยู่ได้นานเท่าที่ต้องการ
-          </p>
-          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={BORDERLESS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
-              จองตั๋ว teamLab Borderless แบบระบุรอบเวลาบน Klook →
-            </KlookLink>
-          </div>
-        </section>
-
-        <KlookTripPrep
-          label="จองไว้สำหรับวันเดียวกัน"
-          heading="วันไป teamLab Borderless ควรจองอะไรอีก?"
-          headingLevel={3}
-          intro="รอบเวลาที่จองไว้กำหนดว่าคุณต้องอยู่ที่ไหนและเมื่อไร รายการเหล่านี้จองได้ในบัญชี Klook เดียวกับตั๋ว: ทัวร์ช่วงค่ำหลังเข้าชมรอบกลางวัน ตั๋วรถไฟใต้ดินที่ครอบคลุมทั้งสองสถานีของอาซาบุไดฮิลส์ (คามิยะโจและร็อปปงหงิอิตโจเมะ) อินเทอร์เน็ตสำหรับตั๋วอิเล็กทรอนิกส์ และที่พักใกล้ร็อปปงหงิ"
-          items={tripPrep}
-        />
 
         <EsimCtaTop />
 
@@ -769,13 +744,24 @@ export default function ThTeamLabBorderlessPage({ updated }: { updated: PageUpda
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>ขายหมด</span>
+          <h2 className={styles.sectionTitle}>ถ้าตั๋ว teamLab Borderless ขายหมดควรทำอย่างไร?</h2>
+          <p className={styles.bodyText}>
+            ดูวันหรือเวลาเข้าชมอื่นในปฏิทินทางการ และเช็ก Klook ซึ่งเป็นช่องทางขายทางการอีกแห่ง ตั๋ววันเดียวกันขายออนไลน์หรือหน้างานเฉพาะเมื่อยังเหลือรอบ teamLab ไม่ได้ประกาศรายชื่อรอคิวหรือว่ารอบจะหมดเมื่อไร (FAQ, {CHECKED})
+          </p>
+          <ul className={styles.bodyList}>
+            <li><strong>เปลี่ยนเวลา ไม่ใช่แค่เปลี่ยนวัน:</strong> ลองเวลาเข้าชมอื่นในวันเดียวกัน หรือ Flexible Pass (¥12,000) ที่ไม่กำหนดเวลาเข้า</li>
+            <li><strong>รอวันเปิดขาย:</strong> วันเข้าชมชุดถัดไปเปิดขายราววันที่ 1 ของเดือน ล่วงหน้าสองเดือน</li>
+            <li><strong>มีตั๋วอยู่แล้ว?</strong> ตั๋วทางการเปลี่ยนวันไม่ได้ถ้าวันหรือเวลาใหม่ขายหมดแล้ว</li>
+          </ul>
+        </section>
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>รอบเวลา</span>
-          <h2 className={styles.sectionTitle}>ซื้อตั๋ว teamLab Borderless วันเดียวกันได้ไหม?</h2>
+          <h2 className={styles.sectionTitle}>ซื้อตั๋ว teamLab Borderless หน้างานได้ไหม?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            ได้ ถ้ายังเหลือ: ตั๋ววันเดียวกันขายบนเว็บไซต์ขายตั๋วทางการเมื่อรอบยังไม่หมด และขายหน้างานเมื่อยังเหลือรอบ
-            ในราคาที่ต่างออกไป (ผู้ใหญ่ +¥200) teamLab ไม่ได้บอกว่ารอบไหนหมดก่อน — บอกเพียงว่าทุกวันและทุกรอบหมดได้
-            ตารางด้านล่างจึงรวมทุกอย่างที่ teamLab ระบุเรื่องรอบ คิว และความหนาแน่น
+            ได้ ถ้ายังเหลือรอบ: ตั๋ววันเดียวกันขายบนเว็บไซต์ขายตั๋วทางการเมื่อรอบยังไม่หมด และขายหน้างานในราคาที่ต่างออกไป (ผู้ใหญ่ +¥200) teamLab ไม่ได้บอกว่ารอบไหนหมดก่อน — บอกเพียงว่าทุกวันและทุกรอบหมดได้ ตารางด้านล่างจึงรวมทุกอย่างที่ teamLab ระบุเรื่องรอบ คิว และความหนาแน่น
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

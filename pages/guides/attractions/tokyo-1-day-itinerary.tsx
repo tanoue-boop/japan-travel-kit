@@ -394,7 +394,11 @@ export default function Tokyo1DayItineraryPage({ updated }: { updated: PageUpdat
             Route A is the safest first day: old Tokyo in the morning, the tallest deck at midday and Tokyo Tower lit up
             at night, all on the Ginza, Toei Asakusa and Hibiya lines. Only Skytree is worth booking — our{" "}
             <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree tickets</Link> guide compares the
-            350 m and 450 m decks.
+            350 m and 450 m decks. Kamiyacho, the stop for Tokyo Tower, is also 2 minutes from teamLab
+            Borderless in Azabudai Hills, usually open until 21:00 with last entry at 20:00 — swap it in for the
+            deck on a wet evening with{" "}
+            <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless tickets</Link> booked
+            for a timed slot.
           </p>
           <SimpleTable head={stopHead} rows={stopRows(routeA)} />
           <p className={styles.bodyText} style={note}>
@@ -521,7 +525,10 @@ export default function Tokyo1DayItineraryPage({ updated }: { updated: PageUpdat
             per ticket booked ahead. Senso-ji, Meiji Jingu, Tsukiji, the Shinjuku decks and the Tokyo Tower Main Deck
             need no booking. Not sure Planets is the right teamLab for the day? The{" "}
             <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Tokyo tickets</Link> comparison sets Planets
-            and Borderless side by side on price, time and water.
+            and Borderless side by side on price, time and water. Borderless dates go on sale around the 1st of
+            the month, two months ahead, and are also sold at the door at ¥200 more while slots remain — the{" "}
+            <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless tickets</Link> guide
+            has the booking steps.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

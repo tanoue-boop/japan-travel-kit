@@ -38,25 +38,27 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../../components/EsimCta";
 // lib/attraction-prices.ts. On 20 November 2026 the ticket segments and purchase notes were
 // re-read off the __NEXT_DATA__ of teamlab.art/e/borderless-azabudai/, and the sale window,
 // same-day sales, payment, ticket delivery, queueing and stay rules off teamlab.art/faq/Tokyo/
-// — so prices, booking steps, the slot table and the FAQ carry that date. The hours /
-// closed-day rows were not re-read and keep 13 Nov 2026.
+// — so prices, booking steps, the slot table and the FAQ carry that date. On 28 November
+// 2026 (task-jtk-20261128-R02) the same sources were read again, hours and closed days
+// included, and nothing had changed; the page now mirrors the English one as of that date
+// (numbered booking steps under the answer, sold-out and at-the-door questions).
 
 const ROUTE = "/ko/guides/attractions/teamlab-borderless-tickets";
-// Korean searchers type "팀랩 보더리스 예약" / "팀랩 보더리스 티켓", so both lead the title,
-// the H1 and the description, followed by "시간 지정" for the timed-entry query (R02).
-// "Planets or Borderless?" belongs to teamlab-tokyo-tickets.
-const TITLE = "팀랩 보더리스 티켓 예약 2026: 시간 지정 입장·가격";
-const H1 = "팀랩 보더리스 티켓 예약 2026: 시간 지정 입장 방법과 가격";
+// The English title leads with "teamLab Borderless Tickets 2026" and then "How to Book
+// Timed Entry" (28 Nov 2026), so this one leads with "팀랩 보더리스 티켓 2026" and then the
+// timed-entry booking words. "Planets or Borderless?" belongs to teamlab-tokyo-tickets.
+const TITLE = "팀랩 보더리스 티켓 2026: 시간 지정 입장 예약 방법·가격";
+const H1 = "팀랩 보더리스 티켓 2026: 시간 지정 입장 예약 방법과 가격";
 const DESC =
-  "팀랩 보더리스 티켓 예약: 공식 사이트·클룩에서 시간 지정 입장권 구매. 성인 ¥3,400부터, 2개월 전 1일경 판매 시작.";
+  "팀랩 보더리스 티켓 2026: 공식 사이트 5단계·클룩 4단계로 시간 지정 입장 예약. 성인 ¥3,400부터, 2개월 전 1일경 판매 시작.";
 
 const BORDERLESS_URL = koTeamlabBorderless.url;
 const GYG_SLUG = "ko-teamlab-borderless-tickets";
 
 const P = PRICES.teamlabBorderless;
-const CHECKED_ISO = "2026-11-20";
+const CHECKED_ISO = "2026-11-28";
 const CHECKED = dateLabel(CHECKED_ISO, "ko");
-const HOURS_CHECKED_ISO = "2026-11-13";
+const HOURS_CHECKED_ISO = "2026-11-28";
 const HOURS_CHECKED = dateLabel(HOURS_CHECKED_ISO, "ko");
 const OFFICIAL_URL = "https://www.teamlab.art/e/tokyo/";
 const FAQ_URL = "https://www.teamlab.art/faq/tokyo/";
@@ -180,6 +182,11 @@ const hoursRows = [
     detail: "남은 자리가 있을 때만 미술관에서 판매, 성인 +¥200",
     source: `teamlab.art, ${CHECKED}`,
   },
+  {
+    item: "혼잡・붐비는 시간대",
+    detail: "시간 지정 티켓이라 대부분 줄 없이 들어가지만 붐비는 시기에는 밖에서 기다릴 수 있습니다. 가장 붐비는 시간대는 공개되지 않습니다",
+    source: `teamlab.art FAQ, ${CHECKED}`,
+  },
 ];
 
 const vsPlanetsRows = [
@@ -290,34 +297,21 @@ const whoFor = [
   },
 ];
 
-// How to book, side by side for the two official sales sites (teamLab names only its own
-// ticket site and Klook). Row one is the verdict. Mirrors bookingRows on the English page.
-const bookingRows = [
-  {
-    step: "어디서 구매할까",
-    official: "기본 요금과 최대 3회 날짜 변경 — 카드 결제가 된다면 이쪽",
-    klook: "같은 입장권을 자국 통화로 결제하고 앱에서 관리할 수 있습니다. 옵션별 변경 조건이 적용됩니다",
-  },
-  {
-    step: "1. 달력 열기",
-    official: "teamlab.art/e/tokyo → 티켓 달력. 입장일 2개월 전 매월 1일경에 날짜가 열립니다",
-    klook: "클룩의 팀랩 보더리스 상품 페이지를 엽니다(표 아래 버튼)",
-  },
-  {
-    step: "2. 날짜와 티켓 고르기",
-    official: "그날의 성인 요금을 확인하고 Entrance Pass(시간 지정) 또는 Flexible Pass(¥12,000, 시간 지정 없음)를 고릅니다",
-    klook: "상품 페이지에 나오는 날짜와 티켓 옵션을 고릅니다",
-  },
-  {
-    step: "3. 시간 고르고 결제",
-    official: "입장 시간을 고르고 신용카드나 PayPay로 결제합니다",
-    klook: "옵션이 요구하면 시간을 고르고, 변경・취소 조건을 읽은 뒤 결제합니다",
-  },
-  {
-    step: "4. 입장",
-    official: "확인 메일의 URL로 티켓을 열어 입구에서 보여 줍니다. 인쇄 버튼은 24시간 전에 나타납니다",
-    klook: "예약 내역은 클룩 계정에서 확인할 수 있습니다. 바우처의 입장 안내를 따르세요",
-  },
+// How to book, as two numbered lists (official 5 steps, Klook 4). Mirrors officialSteps /
+// klookSteps on the English page (28 Nov 2026).
+const officialSteps = [
+  { name: "공식 티켓 달력 열기", text: "teamlab.art/e/tokyo에서 티켓 달력을 엽니다. 입장일 2개월 전, 매월 1일경에 판매가 시작됩니다." },
+  { name: "날짜를 고르고 요금 확인", text: "성인 요금은 날짜와 회차에 따라 ¥3,400부터 달라집니다. 만 13~17세 ¥2,800, 만 4~12세 ¥1,500, 만 4세 미만 무료." },
+  { name: "티켓 종류와 입장 시간 고르기", text: "Entrance Pass는 날짜와 입장 시간을 지정하고, ¥12,000 Flexible Pass는 날짜만 지정해 마지막 입장 전까지 들어갈 수 있습니다." },
+  { name: "결제", text: "신용카드나 PayPay로 결제합니다. 취소는 안 되지만 공식 티켓은 최대 3회 날짜를 바꿀 수 있습니다." },
+  { name: "입구에서 티켓 보여 주기", text: "확인 메일의 URL로 티켓을 열어 입구에서 화면을 보여 줍니다. 인쇄 버튼은 24시간 전에 나타납니다." },
+];
+
+const klookSteps = [
+  { name: "클룩의 팀랩 보더리스 상품 페이지 열기", text: "클룩은 팀랩이 안내하는 또 하나의 공식 판매처입니다. 아래 버튼을 이용하세요." },
+  { name: "날짜와 티켓 옵션 고르기", text: "상품 페이지에 나오는 날짜와 옵션을 고릅니다. 요금은 자국 통화로 표시됩니다." },
+  { name: "시간을 고르고 조건 읽기", text: "옵션이 요구하면 입장 시간을 고르고, 결제 전에 해당 옵션의 변경・취소 조건을 읽으세요." },
+  { name: "결제하고 바우처 보관", text: "결제하면 예약이 클룩 계정에 남습니다. 바우처의 입장 안내를 따르세요." },
 ];
 
 // Time slots, queues and selling out — only what teamLab itself says. Mirrors slotRows.
@@ -393,12 +387,12 @@ const tripPrep: KlookTripPrepItem[] = [
   },
 ];
 
-// The five questions mirror the English page (Search Console queries, 28 days to 18 Nov
-// 2026). Time needed and children are answered in the body.
+// The five questions mirror the English page (Search Console queries, 28 days to 25 Nov
+// 2026). Time needed, children and Klook vs official are answered in the body.
 const faqItems: FaqItem[] = [
   {
     q: "팀랩 보더리스 시간 지정 티켓은 어떻게 예약하나요?",
-    a: `공식 티켓 달력(teamlab.art/e/tokyo)이나, 팀랩이 또 하나의 공식 판매처로 안내하는 클룩에서 날짜를 고르고 그날의 성인 요금을 확인한 다음, Entrance Pass라면 입장 시간을 고르세요. 입장 시간 지정이 없는 Flexible Pass(¥12,000)도 있습니다. 결제는 카드로 하고(공식 사이트는 PayPay도 가능), 티켓은 확인 메일의 링크로 받아 입구에서 휴대폰으로 보여 주면 됩니다. 요금과 규정은 ${CHECKED} 공식 사이트 기준입니다.`,
+    a: `공식 사이트에서는 5단계입니다. teamlab.art/e/tokyo에서 티켓 달력을 열고, 날짜를 골라 성인 요금(¥3,400부터)을 확인하고, 입장 시간이 있는 Entrance Pass(또는 시간 지정이 없는 ¥12,000 Flexible Pass)를 고르고, 카드나 PayPay로 결제한 뒤, 확인 메일의 티켓을 입구에서 보여 줍니다. 또 하나의 공식 판매처인 클룩에서는 상품 페이지 열기, 날짜・옵션 선택, 시간 선택과 조건 확인, 결제의 4단계입니다. 요금과 규정은 ${CHECKED} 공식 사이트 기준입니다.`,
   },
   {
     q: "팀랩 보더리스 티켓은 언제부터 예매할 수 있나요?",
@@ -409,12 +403,12 @@ const faqItems: FaqItem[] = [
     a: `${CHECKED}에 확인한 공식 티켓 사이트 기준으로 성인(만 18세 이상) ¥3,400부터, 만 13~17세 ¥2,800, 만 4~12세 ¥1,500, 만 3세 이하 무료, 장애인 ¥1,700부터(동반 1명 같은 요금)입니다. 성인과 장애인 요금은 날짜와 시간대에 따라 바뀌므로 ¥3,400은 최저 금액입니다. Flexible Pass는 ¥12,000이고, 현장에서 사면 성인은 ¥200이 더 붙습니다.`,
   },
   {
-    q: "팀랩 보더리스 티켓을 당일에도 살 수 있나요?",
-    a: `남아 있다면 살 수 있습니다. ${CHECKED}에 확인한 팀랩 FAQ에 따르면 당일 티켓은 매진되지 않았을 때 공식 티켓 사이트에서 팔고, 현장에서도 남은 자리가 있을 때 다른 요금(성인 ¥200 추가)으로 팝니다. 티켓은 매진될 수 있으므로 당일 구매는 계획이 아니라 대안입니다.`,
+    q: "팀랩 보더리스 티켓을 현장에서 살 수 있나요?",
+    a: `남은 자리가 있으면 살 수 있습니다. ${CHECKED}에 확인한 팀랩 FAQ에 따르면 당일 티켓은 매진되지 않았을 때 공식 티켓 사이트에서 팔고, 현장에서도 다른 요금(성인 ¥200 추가)으로 팝니다. 티켓은 매진될 수 있으므로 현장 구매는 계획이 아니라 대안입니다.`,
   },
   {
-    q: "팀랩 보더리스는 클룩과 공식 사이트 중 어디서 사는 게 좋나요?",
-    a: `어디서 사든 같은 입장권입니다. 팀랩은 자체 티켓 사이트와 클룩을 공식 판매처로 안내합니다(${CHECKED}). 기본 요금으로 구매하고 날짜를 최대 3회(입장 시간 2시간 전까지) 변경하려면 공식 사이트, 자국 통화 결제와 다른 예약과 같은 앱 관리를 원하면 클룩입니다. 클룩에서 사면 해당 옵션의 변경・취소 조건이 대신 적용됩니다.`,
+    q: "팀랩 보더리스가 매진이면 어떻게 하나요?",
+    a: `공식 달력에서 다른 날짜나 입장 시간을 찾고, 팀랩이 안내하는 또 하나의 공식 판매처인 클룩도 확인하세요. ${CHECKED}에 확인한 팀랩 FAQ에 따르면 당일 티켓은 남아 있을 때만 온라인이나 현장에서 팔고, 공식 티켓의 날짜 변경은 새 날짜・시간이 매진이면 할 수 없습니다.`,
   },
 ];
 
@@ -469,20 +463,63 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
         <Disclosure />
 
         <p className={styles.bodyText}>
-          <strong>팀랩 보더리스 티켓</strong>은 공식 티켓 사이트(teamlab.art)와 클룩, 두 곳의 공식 판매처에서 날짜와{" "}
-          <strong>입장 시간(시간 지정 입장)</strong>을 골라 예약합니다. 판매는{" "}
-          <strong>입장일 2개월 전, 매월 1일경</strong>에 시작되므로 2027년 1월 방문이라면 2026년 11월 1일경에
-          열립니다. 성인은 <strong>¥3,400부터</strong>(공식 사이트, {CHECKED} 확인), 만 13~17세 ¥2,800, 만 4~12세
-          ¥1,500이고 만 4세 미만은 무료이며, 성인 요금은 날짜와 회차에 따라 달라집니다. 당일 티켓은 잔여분이 있을 때만
-          온라인에서 구매할 수 있으며, 현장 구매 시 성인 요금에 ¥200이 추가됩니다. 입장 후에는 시간 제한이 없어, 예약한
-          시간대는 입장 시간만 정할 뿐 관람 시간을 제한하지 않습니다.
+          <strong>팀랩 보더리스 티켓</strong>은 공식 판매처인 teamlab.art나 클룩에서 날짜와{" "}
+          <strong>입장 시간(시간 지정 입장)</strong>을 골라 온라인으로 결제하며, 판매는{" "}
+          <strong>입장일 2개월 전, 매월 1일경</strong>에 시작됩니다. 성인은 날짜와 회차에 따라{" "}
+          <strong>¥3,400부터</strong>, 만 13~17세 ¥2,800, 만 4~12세 ¥1,500이고 만 4세 미만은 무료입니다(공식 사이트,{" "}
+          {CHECKED} 확인). 당일 티켓은 남은 자리가 있을 때만 온라인이나 현장(성인 +¥200)에서 팝니다.
         </p>
         <p className={styles.bodyText}>
-          모든 수치는 {CHECKED}에 팀랩 공식 사이트와 FAQ에서 확인했습니다. 어느 미술관으로 갈지 아직
-          고민 중이라면{" "}
+          어느 미술관으로 갈지 아직 고민 중이라면{" "}
           <Link href="/ko/guides/attractions/teamlab-tokyo-tickets">팀랩 플래닛 vs 보더리스 비교</Link>를
           먼저 보세요. 이 페이지는 팀랩 보더리스 예약 자체를 다룹니다.
         </p>
+
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>예약 절차</span>
+          <h2 className={styles.sectionTitle}>팀랩 보더리스 시간 지정 티켓은 어떻게 예약하나요?</h2>
+          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
+            공식 사이트는 5단계, 클룩은 4단계입니다. 날짜를 고르고, 그 날짜의 요금을 확인하고, 입장 시간을 고른 뒤
+            결제하고, 휴대폰으로 티켓을 보여 주면 됩니다. 결제 금액은 날짜와 입장 시간대에 따라서만 달라집니다.
+          </p>
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.2rem", marginTop: "1.25rem" }}>
+            공식 사이트(teamlab.art): 5단계
+          </h3>
+          <ol className={styles.bodyList}>
+            {officialSteps.map((s) => (
+              <li key={s.name}><strong>{s.name}.</strong> {s.text}</li>
+            ))}
+          </ol>
+          <h3 className={styles.sectionTitle} style={{ fontSize: "1.2rem", marginTop: "1.25rem" }}>
+            클룩: 4단계
+          </h3>
+          <ol className={styles.bodyList}>
+            {klookSteps.map((s) => (
+              <li key={s.name}><strong>{s.name}.</strong> {s.text}</li>
+            ))}
+          </ol>
+          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+            최종 확인: {CHECKED_ISO} —{" "}
+            <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer">teamlab.art/e/tokyo</a>(티켓 종류,
+            요금, 결제, 공식 판매처)와{" "}
+            <a href={FAQ_URL} target="_blank" rel="noopener noreferrer">teamlab.art/faq/tokyo</a>(판매 시작,
+            티켓 수령, 인쇄, 날짜 변경). 기본 요금과 최대 3회 날짜 변경을 원하면 공식 사이트, 자국 통화 결제를
+            원하면 클룩이며 클룩에서는 옵션별 변경 조건이 적용됩니다.
+          </p>
+          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
+            <KlookLink href={BORDERLESS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
+              클룩에서 팀랩 보더리스 시간 지정 티켓 예약 →
+            </KlookLink>
+          </div>
+        </section>
+
+        <KlookTripPrep
+          label="같은 날 예약할 것"
+          heading="팀랩 보더리스 가는 날, 그 밖에 무엇을 예약할까?"
+          headingLevel={3}
+          intro="시간 지정 티켓을 예약하면 정해진 시간에 미술관에 도착해야 합니다. 아래는 티켓과 같은 클룩 계정으로 예약할 수 있습니다. 낮 회차 뒤의 저녁 투어, 아자부다이힐스의 두 역(가미야초・롯폰기잇초메)을 모두 이용할 수 있는 지하철 패스, 전자 티켓을 확인하는 데 필요한 모바일 데이터, 그리고 롯폰기 주변 숙소입니다."
+          items={tripPrep}
+        />
 
         <div className={styles.verdictBox}>
           <div className={styles.verdictHeader}>
@@ -527,58 +564,6 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
             </p>
           </div>
         </div>
-
-        <section className={styles.comparisonSection}>
-          <span className={styles.sectionLabel}>예약 절차</span>
-          <h2 className={styles.sectionTitle}>팀랩 보더리스 시간 지정 티켓은 어떻게 예약하나요?</h2>
-          <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            날짜를 먼저 고르고, 그 날짜의 성인 요금을 확인하고, Entrance Pass의 입장 시간을 고른(또는 시간 지정이
-            없는 ¥12,000 Flexible Pass를 고른) 다음 결제합니다. 구매처는 공식 사이트, 또는 팀랩이 또 하나의 공식
-            판매처로 안내하는 클룩입니다. 어느 쪽이든 네 단계이고, 결제 금액은 날짜와 입장 시간대에 따라서만 달라집니다.
-          </p>
-          <div className={styles.tableWrap}>
-            <div className={styles.tableScroll}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    {["", "공식 사이트(teamlab.art)", "클룩"].map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {bookingRows.map((row) => (
-                    <tr key={row.step}>
-                      <td className={styles.tdProvider} style={{ whiteSpace: "nowrap" }}>{row.step}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.official}</td>
-                      <td style={{ fontSize: "0.88rem" }}>{row.klook}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
-            최종 확인: {CHECKED_ISO} —{" "}
-            <a href={OFFICIAL_URL} target="_blank" rel="noopener noreferrer">teamlab.art/e/tokyo</a>(티켓 종류,
-            결제, 공식 판매처)와{" "}
-            <a href={FAQ_URL} target="_blank" rel="noopener noreferrer">teamlab.art/faq/tokyo</a>(판매 시작,
-            티켓 수령, 인쇄). 팀랩은 회차의 길이를 공개하지 않습니다. 정해진 시간에 입장해 원하는 만큼 머물 수 있습니다.
-          </p>
-          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <KlookLink href={BORDERLESS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
-              클룩에서 팀랩 보더리스 시간 지정 티켓 예약 →
-            </KlookLink>
-          </div>
-        </section>
-
-        <KlookTripPrep
-          label="같은 날 예약할 것"
-          heading="팀랩 보더리스 가는 날, 그 밖에 무엇을 예약할까?"
-          headingLevel={3}
-          intro="시간 지정 티켓을 예약하면 정해진 시간에 미술관에 도착해야 합니다. 아래는 티켓과 같은 클룩 계정으로 예약할 수 있습니다. 낮 회차 뒤의 저녁 투어, 아자부다이힐스의 두 역(가미야초・롯폰기잇초메)을 모두 이용할 수 있는 지하철 패스, 전자 티켓을 확인하는 데 필요한 모바일 데이터, 그리고 롯폰기 주변 숙소입니다."
-          items={tripPrep}
-        />
 
         <EsimCtaTop />
 
@@ -775,12 +760,27 @@ export default function KoTeamLabBorderlessPage({ updated }: { updated: PageUpda
           </p>
         </section>
 
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>매진</span>
+          <h2 className={styles.sectionTitle}>팀랩 보더리스가 매진이면 어떻게 하나요?</h2>
+          <p className={styles.bodyText}>
+            공식 달력에서 다른 날짜나 입장 시간을 찾고, 또 하나의 공식 판매처인 클룩도 확인하세요. 당일 티켓은 남은
+            자리가 있을 때만 온라인이나 현장에서 팝니다. 팀랩은 대기 명단도, 회차가 언제 마감되는지도 공개하지 않습니다(FAQ,{" "}
+            {CHECKED}).
+          </p>
+          <ul className={styles.bodyList}>
+            <li><strong>날짜만이 아니라 시간도 바꿔 보세요:</strong> 같은 날의 다른 입장 시간이나, 입장 시간 지정이 없는 Flexible Pass(¥12,000)를 확인하세요.</li>
+            <li><strong>판매 시작일을 노리세요:</strong> 다음 날짜들은 입장 2개월 전, 매월 1일경에 판매가 시작됩니다.</li>
+            <li><strong>이미 티켓이 있다면:</strong> 새 날짜・시간이 매진이면 공식 티켓의 날짜 변경은 할 수 없습니다.</li>
+          </ul>
+        </section>
+
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>회차</span>
-          <h2 className={styles.sectionTitle}>당일에도 팀랩 보더리스 티켓을 살 수 있나요?</h2>
+          <h2 className={styles.sectionTitle}>팀랩 보더리스 티켓을 현장에서 살 수 있나요?</h2>
           <p className={styles.bodyText} style={{ marginBottom: "1rem" }}>
-            남아 있다면 살 수 있습니다. 당일 티켓은 매진되지 않은 회차에 한해 공식 티켓 사이트에서 팔고, 현장에서도
-            남은 자리가 있을 때 다른 요금(성인 +¥200)으로 팝니다. 팀랩은 어느 시간대가 먼저 매진되는지는 밝히지 않고
+            남은 자리가 있으면 살 수 있습니다. 당일 티켓은 매진되지 않은 회차에 한해 공식 티켓 사이트에서 팔고, 현장에서도
+            다른 요금(성인 +¥200)으로 팝니다. 팀랩은 어느 시간대가 먼저 매진되는지는 밝히지 않고
             어느 날짜・회차든 매진될 수 있다고만 안내하므로, 아래 표가 회차・대기・혼잡에 대해 팀랩이 밝힌 전부입니다.
           </p>
           <div className={styles.tableWrap}>

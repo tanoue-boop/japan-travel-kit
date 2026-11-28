@@ -598,7 +598,11 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
             window is 30 minutes, there is no counter at the museum, and the popular slots go weeks
             ahead. Our{" "}
             <Link href="/guides/attractions/teamlab-planets-tickets">teamLab Planets tickets guide</Link>{" "}
-            also covers what to wear, because parts of it are walked barefoot through water. Skytree is
+            also covers what to wear, because parts of it are walked barefoot through water. If the Planets
+            slot you wanted has gone, Borderless in Azabudai Hills is the shoes-on alternative and also sells
+            at the door while slots remain — see{" "}
+            <Link href="/guides/attractions/teamlab-borderless-tickets">teamLab Borderless tickets</Link>{" "}
+            for its timed-entry booking steps. Skytree is
             worth booking for a different reason: the same-day counter adds a service fee per ticket, so
             buying ahead is cheaper rather than safer — the detail is in our{" "}
             <Link href="/guides/attractions/tokyo-skytree-tickets">Tokyo Skytree tickets guide</Link>.
@@ -1137,7 +1141,7 @@ export default function Tokyo3DayItineraryPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>teamLab Borderless Tickets (2026): Price, How to Book and Time Slots</p>
+                <p className={styles.relatedTitle}>teamLab Borderless Tickets 2026: How to Book Timed Entry &amp; Price</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

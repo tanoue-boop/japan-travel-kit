@@ -240,7 +240,9 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
               Pick <strong>Planets</strong> to walk barefoot through water, <strong>Borderless</strong> to roam
               shoes-on art at your own pace. Prices by date and booking steps for{" "}
               <Link href="/guides/attractions/teamlab-planets-tickets" style={BTN_LINK}>teamLab Planets tickets</Link>{" "}
-              have their own guide.
+              have their own guide, and the step-by-step booking of timed entry for{" "}
+              <Link href="/guides/attractions/teamlab-borderless-tickets" style={BTN_LINK}>teamLab Borderless tickets</Link>{" "}
+              — official site or Klook, sale dates and sold-out slots — has its own too.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={teamlabPlanetsTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -429,7 +431,7 @@ export default function TeamLabTokyoTicketsPage({ updated }: { updated: PageUpda
           <div className={styles.relatedGrid}>
             {[
               { href: "/guides/attractions/teamlab-planets-tickets", title: "teamLab Planets Tickets (2026): Price, Hours and How to Book" },
-              { href: "/guides/attractions/teamlab-borderless-tickets", title: "teamLab Borderless Tickets (2026): Price, How to Book and Time Slots" },
+              { href: "/guides/attractions/teamlab-borderless-tickets", title: "teamLab Borderless Tickets 2026: How to Book Timed Entry & Price" },
               { href: "/guides/attractions", title: "Japan Attraction Tickets 2026: What to Book in Advance, When" },
               { href: "/guides/attractions/teamlab-kyoto-tickets", title: "teamLab Kyoto Tickets: Prices, Hours & Booking" },
               { href: "/guides/attractions/teamlab-fukuoka-tickets", title: "teamLab Fukuoka Tickets 2026: Price, Hours & Booking" },
