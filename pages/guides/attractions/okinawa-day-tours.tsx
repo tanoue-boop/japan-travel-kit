@@ -345,7 +345,7 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText}>
             Shuri Castle is sold separately, as a half-day walk or a Shuri Castle and Okinawa World bus course. To
             fit one tour into three days with Naha and the Kerama Islands, see our{" "}
-            <Link href="/guides/attractions/okinawa-3-day-itinerary" style={linkStyle}>Okinawa 3 day itinerary</Link>.
+            <Link href="/guides/attractions/okinawa-3-day-itinerary" style={linkStyle}>Okinawa 3-day itinerary</Link>.
             In winter, a half-day whale boat from Naha fits beside a land tour — our{" "}
             <Link href="/guides/attractions/okinawa-whale-watching" style={linkStyle}>Okinawa whale watching guide</Link>{" "}
             has the season and the refund window. If Okinawa is one stop on a longer trip, our{" "}
@@ -789,7 +789,7 @@ export default function OkinawaDayToursPage({ updated }: { updated: PageUpdated 
           <div className={styles.relatedGrid}>
             {[
               { href: "/guides/attractions/okinawa-churaumi-aquarium-tickets", title: "Churaumi Aquarium Tickets 2026: Price, Hours & JUNGLIA Combo" },
-              { href: "/guides/attractions/okinawa-3-day-itinerary", title: "Okinawa 3 Day Itinerary (2026): Naha, Churaumi and Kerama" },
+              { href: "/guides/attractions/okinawa-3-day-itinerary", title: "Okinawa 3-Day Itinerary (2026): Naha, Churaumi & Kouri" },
               { href: "/guides/attractions/okinawa-whale-watching", title: "Okinawa Whale Watching 2027: Season, Kerama & Naha Tours" },
               { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day" },
               { href: "/guides/attractions/japan-10-day-itinerary", title: "Japan Itinerary 10 Days: Tokyo, Kyoto, Osaka & Hakone (2026)" },

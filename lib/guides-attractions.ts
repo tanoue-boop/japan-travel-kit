@@ -679,8 +679,8 @@ export const attractionArticles: GuideArticle[] = [
   {
     href: "/guides/attractions/okinawa-3-day-itinerary",
     badge: "Itinerary",
-    title: "Okinawa 3 Day Itinerary (2026): Naha, Churaumi and Kerama",
-    desc: "Naha, Kokusai-dori and Shuri Castle (¥1,000 from 23 Nov 2026) on Day 1; Churaumi Aquarium and Kouri Island by tour or car on Day 2; the Kerama Islands by 40-minute fast boat or the south on Day 3 — with the typhoon months and what to book.",
+    title: "Okinawa 3-Day Itinerary (2026): Naha, Churaumi & Kouri",
+    desc: "Naha, Kokusai-dori and Shuri Castle (¥1,000 from 23 Nov 2026) on Day 1; Churaumi Aquarium (¥2,180) and Kouri Island, about 2 hours north by rental car or a day tour, on Day 2; the Kerama Islands by 40-minute fast boat or the south on Day 3 — with the typhoon months and what to book.",
     group: "cities",
     // Okinawa sits outside the three city hubs, same call as okinawa-day-tours.
     city: "other",

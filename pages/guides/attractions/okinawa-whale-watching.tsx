@@ -492,7 +492,7 @@ export default function OkinawaWhaleWatchingPage({ updated }: { updated: PageUpd
             Churaumi Aquarium. Our{" "}
             <Link href="/guides/attractions/okinawa-day-tours">Okinawa day tours guide</Link> compares the north and
             south days out of Naha, and the{" "}
-            <Link href="/guides/attractions/okinawa-3-day-itinerary">Okinawa 3 day itinerary</Link> puts the Kerama
+            <Link href="/guides/attractions/okinawa-3-day-itinerary">Okinawa 3-day itinerary</Link> puts the Kerama
             Islands on Day 3 — in winter, swap the snorkel for a whale boat. The{" "}
             <Link href="/guides/attractions/okinawa-churaumi-aquarium-tickets">Churaumi Aquarium tickets guide</Link>{" "}
             has prices and hours.
@@ -560,7 +560,7 @@ export default function OkinawaWhaleWatchingPage({ updated }: { updated: PageUpd
           <div className={styles.relatedGrid}>
             {[
               { href: "/guides/attractions/okinawa-day-tours", title: "Okinawa Day Tours from Naha: North vs South Compared (2026)" },
-              { href: "/guides/attractions/okinawa-3-day-itinerary", title: "Okinawa 3 Day Itinerary (2026): Naha, Churaumi and Kerama" },
+              { href: "/guides/attractions/okinawa-3-day-itinerary", title: "Okinawa 3-Day Itinerary (2026): Naha, Churaumi & Kouri" },
               { href: "/guides/attractions/okinawa-churaumi-aquarium-tickets", title: "Churaumi Aquarium Tickets 2026: Price, Hours & JUNGLIA Combo" },
               { href: "/guides/attractions/japan-14-day-itinerary", title: "Japan 14-Day Itinerary (2026): 2 Weeks in Japan, Day by Day" },
               { href: "/guides/attractions", title: "More Things to Do in Japan →" },

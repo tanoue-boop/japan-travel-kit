@@ -1537,6 +1537,12 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
             its temperature suggests, and the hours you will be outdoors on this itinerary are mostly
             after dark, which is nearer the daily minimum than the mean.
           </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            <strong>Want a warm end to a winter trip?</strong> Okinawa is far milder than the cities
+            above in January: Naha averages 17.3°C (JMA 1991–2020 normal), and our{" "}
+            <Link href="/guides/attractions/okinawa-3-day-itinerary" style={{ color: "var(--red)", fontWeight: 600 }}>Okinawa 3-day itinerary</Link>{" "}
+            fits Shuri Castle, Churaumi Aquarium and the Kerama Islands from one Naha hotel.
+          </p>
         </section>
 
         {/* Snow */}
@@ -1995,7 +2001,7 @@ export default function JapanWinterItineraryPage({ updated }: { updated: PageUpd
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Okinawa 3 Day Itinerary (2026): Naha, Churaumi and Kerama</p>
+                <p className={styles.relatedTitle}>Okinawa 3-Day Itinerary (2026): Naha, Churaumi &amp; Kouri</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

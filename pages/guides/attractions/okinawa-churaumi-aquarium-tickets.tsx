@@ -589,8 +589,8 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
           <p className={styles.bodyText}>
             Two to three and a half hours inside; day tours allot about 3 to 3.5. Arrive at 8:30 and you are ahead of
             the coaches that leave Naha after breakfast. For a full trip plan, the{" "}
-            <Link href="/guides/attractions/okinawa-3-day-itinerary" style={linkStyle}>Okinawa 3 day itinerary</Link> puts
-            the aquarium on Day 2.
+            <Link href="/guides/attractions/okinawa-3-day-itinerary" style={linkStyle}>Okinawa 3-day itinerary</Link> puts
+            the aquarium and Kouri Island on Day 2, by car or tour.
           </p>
           <h2 className={styles.sectionTitle} style={{ marginTop: "1.5rem" }}>What Time Is the Whale Shark Feeding?</h2>
           <p className={styles.bodyText}>
@@ -710,7 +710,7 @@ export default function OkinawaChuraumiAquariumTicketsPage({ updated }: { update
           <div className={styles.relatedGrid}>
             {[
               { href: "/guides/attractions/okinawa-day-tours", title: "Okinawa Day Tours from Naha: North vs South Compared (2026)" },
-              { href: "/guides/attractions/okinawa-3-day-itinerary", title: "Okinawa 3 Day Itinerary (2026): Naha, Churaumi and Kerama" },
+              { href: "/guides/attractions/okinawa-3-day-itinerary", title: "Okinawa 3-Day Itinerary (2026): Naha, Churaumi & Kouri" },
               { href: "/guides/attractions/okinawa-whale-watching", title: "Okinawa Whale Watching 2027: Season, Kerama & Naha Tours" },
               { href: "/guides/attractions/osaka-aquarium-kaiyukan-tickets", title: "Osaka Aquarium Kaiyukan Tickets (2026): Prices, Hours and Time Slots" },
               { href: "/guides/attractions/japan-attraction-ticket-prices", title: "Japan Attraction Ticket Prices 2026: Official Prices and Booking Rules" },

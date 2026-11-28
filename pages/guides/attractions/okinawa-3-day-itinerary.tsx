@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import KlookTourPicks from "../../../components/KlookTourPicks";
 import KlookStayAreas from "../../../components/KlookStayAreas";
 import KlookTripPrep from "../../../components/KlookTripPrep";
@@ -73,6 +74,15 @@ import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
  *   data.jma.go.jp Naha normals       Jan 17.3°C mean (19.8 / 14.9), Feb 17.5 (20.2 / 15.1), Nov
  *                                     22.5 (25.0 / 20.4), Dec 19.0 (21.5 / 16.8).
  *
+ * Re-read on 28 Nov 2026 (task-jtk-20261128-I01, the "indexed but no impressions" check):
+ * oki-park.jp/shurijo info/14, info/15 and ticket_guide (¥1,000 / ¥760 / ¥370; 8:30–18:00 Dec–Mar;
+ * Nov 2026 – Jan 2027 slots on sale, Feb 2027 from 13:00 on 1 Dec 2026), churaumi.okinawa info and
+ * hour (¥2,180; 8:30–18:30, last 17:30), vill.tokashiki (Marine Liner ¥3,300, 9:00 → 9:40, back 17:00
+ * Oct–Feb / 17:30 Mar–Sep; Ferry ¥2,200) and vill.zamami (¥3,950 / ¥2,900) — all unchanged. The Yui
+ * Rail fare page renders its table in script, so the monorail figures keep their 14 Nov date.
+ * The title now leads with "Okinawa 3-Day Itinerary" and leaves single tickets to the one-product
+ * pages, which each day links to in context.
+ *
  * Carried with their own dates: Emerald Beach swimming 1 Apr – 31 Oct 2026 (oki-park.jp,
  * 3 Nov 2026, read for okinawa-churaumi-aquarium-tickets), and the Klook tour durations
  * (5 Nov 2026, read for okinawa-day-tours).
@@ -85,6 +95,10 @@ const ROUTE = "/guides/attractions/okinawa-3-day-itinerary";
 const URL = `https://www.japan-travel-kit.com${ROUTE}`;
 
 const OWN = checkedLabel("2026-11-14");
+/** Shuri Castle, Churaumi and the Kerama boats, re-read on the official sites. */
+const NOW = checkedLabel("2026-11-28");
+const LAST_CHECKED = "Last checked: 2026-11-28";
+const linkStyle = { color: "var(--red)", fontWeight: 600 } as const;
 const BEACH = checkedLabel("2026-11-03");
 const TOURS = checkedLabel("2026-11-05");
 
@@ -125,7 +139,7 @@ const overviewRows: Row[] = [
   },
 ];
 
-type Stop = { time: string; place: string; allow: string; getting: string; booking: string };
+type Stop = { time: string; place: ReactNode; allow: string; getting: string; booking: string };
 
 const day1: Stop[] = [
   {
@@ -137,7 +151,12 @@ const day1: Stop[] = [
   },
   {
     time: "Midday",
-    place: "Shuri Castle Park — 12:00–14:00 is the quieter window on the park's own forecast",
+    place: (
+      <>
+        <Link href="/guides/attractions/shuri-castle-tickets" style={linkStyle}>Shuri Castle</Link> Park —
+        12:00–14:00 is the quieter window on the park&apos;s own forecast
+      </>
+    ),
     allow: "90–120 minutes including the Seiden (the park's figure)",
     getting: "Yui Rail to Shuri (27 min from the airport), then about 20 min on foot to the Suimui-kan entrance",
     booking: "Yes, for the Seiden interior from 23 Nov 2026 — a timed ticket; the paid area alone needs no slot",
@@ -175,16 +194,26 @@ const day2: Stop[] = [
   },
   {
     time: "Midday–afternoon",
-    place: "Churaumi Aquarium (opens 8:30) in Ocean Expo Park",
+    place: (
+      <>
+        <Link href="/guides/attractions/okinawa-churaumi-aquarium-tickets" style={linkStyle}>Churaumi Aquarium</Link>{" "}
+        (opens 8:30) in Ocean Expo Park
+      </>
+    ),
     allow: "About 3–3.5 hours on Klook's northern tour",
     getting: "About 2 hours from Naha Airport by car; about 3 hours by express bus",
     booking: `Ticket (${CHURAUMI} adult) — check whether the tour includes it`,
   },
   {
     time: "Late afternoon",
-    place: "Kouri Island and its bridge",
+    place: (
+      <>
+        Kouri Island and its bridge; by car, the{" "}
+        <Link href="/guides/attractions/kouri-ocean-tower-tickets" style={linkStyle}>Kouri Ocean Tower</Link> (¥1,000)
+      </>
+    ),
     allow: "1 hour",
-    getting: "Coach or car",
+    getting: "Coach, or about 25 min by car from Churaumi (the tower's figure)",
     booking: "No",
   },
   {
@@ -213,7 +242,12 @@ const day3: Stop[] = [
   },
   {
     time: "Day",
-    place: "Option C: southern Okinawa — Cape Chinen and the Nirai Kanai Bridge",
+    place: (
+      <>
+        Option C: southern Okinawa — Cape Chinen and the Nirai Kanai Bridge; by car, add{" "}
+        <Link href="/guides/attractions/okinawa-world-tickets" style={linkStyle}>Okinawa World and Gyokusendo Cave</Link>
+      </>
+    ),
     allow: "About 8 hours from a 9:30 departure on Klook's listing",
     getting: "Day trip from Naha, or a car",
     booking: "Tour or car",
@@ -248,14 +282,14 @@ const transportRows = [
     time: "About 2 h by car (expressway); about 3 h by express bus",
     fare: "Bus fares vary by operator — not printed here",
     book: "Car or tour; the aquarium's car parks are free",
-    source: `churaumi.okinawa, ${OWN}`,
+    source: `churaumi.okinawa, ${NOW}`,
   },
   {
     route: "Tomari Port → Tokashiki (Marine Liner Tokashiki)",
     time: "About 40 min",
     fare: `${MARINE_LINER} adult, ¥1,650 child one way + ¥100 tax`,
     book: "Buy 30 min before departure. 9:00 out; 17:00 back in winter",
-    source: `vill.tokashiki.okinawa.jp, ${OWN}`,
+    source: `vill.tokashiki.okinawa.jp, ${NOW}`,
   },
   {
     route: "Tomari Port → Tokashiki (Ferry Tokashiki)",
@@ -279,7 +313,7 @@ const ticketRows = [
     stop: "Shuri Castle Park (paid area) — from 23 Nov 2026",
     price: `${SHURI_NEW} adult, ¥760 high school, ¥370 elementary & junior high, under 6 free`,
     hours: "8:30–19:00 Apr–Nov (last 18:30); 8:30–18:00 Dec–Mar (last 17:30)",
-    note: `Until 21 Nov 2026: ${SHURI_OLD} adult. Closed all day 22 Nov; paid area from 12:00 on 23 Nov. Seiden interior needs a timed slot, no extra charge`,
+    note: `${SHURI_OLD} adult until 21 Nov 2026. The rebuilt Seiden opened inside on 23 Nov 2026; the interior needs a timed slot, no extra charge`,
   },
   {
     stop: "Okinawa Churaumi Aquarium",
@@ -293,7 +327,7 @@ const ticketRows = [
 const bookingRows = [
   {
     what: "Shuri Castle Seiden time slot",
-    when: "For entry from 1 Jan 2027: from 13:00 on the 1st of the month two months before",
+    when: "Nov 2026 – Jan 2027 on sale now; Feb 2027 from 13:00 on 1 Dec 2026 (13:00 on the 1st, two months ahead)",
     why: "The interior is by timed reservation; same-day slots are sold only if any are left",
   },
   {
@@ -326,7 +360,7 @@ const bookingRows = [
 const faqItems = [
   {
     q: "How should I spend 3 days in Okinawa?",
-    a: `Day 1 in Naha — Shuri Castle and Kokusai-dori by monorail; Day 2 in the north — Churaumi Aquarium and Kouri Island by day tour or rental car (about 2 hours each way by car); Day 3 in the Kerama Islands, 40 minutes by fast boat from Tomari Port, or in the south. Stay in Naha all three nights. Figures read on official sites ${OWN}.`,
+    a: `Day 1 in Naha — Shuri Castle (${SHURI_NEW}) and Kokusai-dori by monorail; Day 2 in the north — Churaumi Aquarium (${CHURAUMI}) and Kouri Island by rental car (about 2 hours each way) or a 10-hour day tour; Day 3 in the Kerama Islands, 40 minutes by fast boat from Tomari Port (${MARINE_LINER} one way), or in the south. Stay in Naha all three nights. Figures read on official sites ${NOW}.`,
   },
   {
     q: "Do I need a car in Okinawa?",
@@ -337,10 +371,6 @@ const faqItems = [
     a: `Yes. Northern day tours from Naha or Chatan run about 10 hours with about 3 to 3.5 hours at the aquarium, plus Kouri Island and Cape Manzamo. By car it is about 2 hours each way. Admission is ${CHURAUMI} for an adult; check whether your tour option includes it.`,
   },
   {
-    q: "How much is Shuri Castle?",
-    a: `${SHURI_NEW} for an adult from 23 November 2026, when the rebuilt Seiden opens inside; ${SHURI_OLD} until 21 November. The park is closed all day on 22 November. Seeing inside the Seiden needs a timed ticket at no extra charge. Read on oki-park.jp ${OWN}.`,
-  },
-  {
     q: "How do I get to the Kerama Islands from Naha?",
     a: `From Tomari Port. To Tokashiki: the Marine Liner takes about 40 minutes (${MARINE_LINER} adult one way) and Ferry Tokashiki about 70 (${FERRY_TOKASHIKI}). To Zamami: Queen Zamami 50–70 minutes (${QUEEN_ZAMAMI}) or Ferry Zamami 90–120 (${FERRY_ZAMAMI}). Queen Zamami is out of service from 20 October to 3 December 2026.`,
   },
@@ -348,19 +378,11 @@ const faqItems = [
     q: "Is Okinawa worth visiting in winter?",
     a: "For sightseeing, yes: Naha's January average is 17.3°C (JMA 1991–2020), Shuri Castle and the aquarium are open, and the normals show no typhoon approaches from January to April. It is not beach season — the Ocean Expo Park's swimming beach ran 1 April to 31 October in 2026.",
   },
-  {
-    q: "When is typhoon season in Okinawa?",
-    a: "July to October carries most of it: the Okinawa region averages 1.5 approaches in July, 2.2 in August, 1.9 in September and 1.1 in October (JMA normals, 1991–2020). Boats to the Kerama Islands and day tours stop in a typhoon, and the aquarium may close.",
-  },
-  {
-    q: "Where should I stay in Okinawa for 3 days?",
-    a: "In Naha, near a monorail station on Kokusai-dori (Makishi, Miebashi or Kencho-mae). One hotel covers all three days: the monorail to the airport and Shuri, tour pick-ups in Naha and Tomari Port for the Kerama boats.",
-  },
 ];
 
-const TITLE = "Okinawa 3 Day Itinerary (2026): Naha, Churaumi and Kerama";
+const TITLE = "Okinawa 3-Day Itinerary (2026): Naha, Churaumi & Kouri";
 const DESCRIPTION =
-  "Okinawa 3 day itinerary: Naha and Shuri Castle, Churaumi and Kouri Island, then Kerama. An Okinawa itinerary for 3 days in Okinawa, and what to book.";
+  "Okinawa 3-day itinerary from one Naha hotel: Shuri Castle by monorail, Churaumi and Kouri Island 2 h north by car or tour, then Kerama by 40-min boat.";
 
 export const getStaticProps = () => ({
   props: { updated: pageUpdated(ROUTE) },
@@ -383,7 +405,7 @@ function StopTable({ rows }: { rows: Stop[] }) {
           </thead>
           <tbody>
             {rows.map((row) => (
-              <tr key={row.place}>
+              <tr key={row.time}>
                 <td className={styles.tdProvider} style={thStyle}>{row.time}</td>
                 <td style={thStyle}>{row.place}</td>
                 <td style={thStyle}>{row.allow}</td>
@@ -444,7 +466,7 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
                 { "@type": "ListItem", position: 1, name: "Home", item: "https://www.japan-travel-kit.com" },
                 { "@type": "ListItem", position: 2, name: "Guides", item: "https://www.japan-travel-kit.com/guides" },
                 { "@type": "ListItem", position: 3, name: "Things to Do", item: "https://www.japan-travel-kit.com/guides/attractions" },
-                { "@type": "ListItem", position: 4, name: "Okinawa 3 Day Itinerary", item: URL },
+                { "@type": "ListItem", position: 4, name: "Okinawa 3-Day Itinerary", item: URL },
               ],
             }),
           }}
@@ -466,7 +488,7 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
           <svg className={styles.breadSep} width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg><span className="sr-only"> / </span>
-          <span className={styles.breadCurrent}>Okinawa 3 Day Itinerary</span>
+          <span className={styles.breadCurrent}>Okinawa 3-Day Itinerary</span>
         </div>
       </div>
 
@@ -475,11 +497,11 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
         <div className={styles.heroInner}>
           <p className={styles.eyebrow}>Updated {updated.label}</p>
           <h1 className={styles.heroTitle}>
-            Okinawa 3 Day Itinerary (2026): <br />3 Days in Okinawa — Naha, Churaumi and Kerama
+            Okinawa 3-Day Itinerary (2026): <br />Naha, Churaumi &amp; Kouri by Car or Tour
           </h1>
           <p className={styles.heroSubtitle}>
-            One Naha hotel, three different days: the castle and the main street, the aquarium in the north, and
-            the islands across the water. The northern day and the boat are the parts to book.
+            One Naha hotel, three different days: the castle and the main street, the aquarium and Kouri Island
+            in the north, and the Kerama Islands across the water.
           </p>
           <div className={styles.heroBadges}>
             {[`Updated ${updated.label}`, "Official prices & boat times, dated", "A table for each day", "Typhoon months from JMA"].map((t) => (
@@ -527,13 +549,13 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
             </div>
             {/* Answer-first: the first body paragraph, not the hero line. */}
             <p className={styles.verdictText}>
-              An <strong>Okinawa 3 day itinerary</strong> works best from one hotel in Naha. On{" "}
-              <strong>Day 1</strong>, take the monorail to Shuri Castle and spend the afternoon on Kokusai-dori. On{" "}
-              <strong>Day 2</strong>, go north to Churaumi Aquarium and Kouri Island — about{" "}
-              <strong>2 hours by car</strong> from Naha Airport, so a day tour or a rental car beats the 3-hour bus.
-              On <strong>Day 3</strong>, take the fast boat from Tomari Port to Tokashiki in the Kerama Islands (about{" "}
-              <strong>40 minutes</strong>, {MARINE_LINER} one way) or tour the south. Shuri Castle is{" "}
-              <strong>{SHURI_NEW}</strong> from 23 November 2026. Figures read on official sites {OWN}.
+              An <strong>Okinawa 3-day itinerary</strong> runs from one Naha hotel: <strong>Day 1</strong> is Shuri
+              Castle ({SHURI_NEW}) and Kokusai-dori by Yui Rail monorail, 27 minutes from the airport to Shuri.{" "}
+              <strong>Day 2</strong> is Churaumi Aquarium ({CHURAUMI}) and Kouri Island, about{" "}
+              <strong>2 hours north by rental car</strong> or on a day tour of about 10 hours from Naha — the
+              express bus takes about 3. <strong>Day 3</strong> is Tokashiki in the Kerama Islands by the{" "}
+              <strong>40-minute</strong> fast boat from Tomari Port ({MARINE_LINER} one way), or a southern tour if
+              the sea is rough. Figures read on official sites {NOW}.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
@@ -585,11 +607,12 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={noteStyle}>
-            Last checked {OWN}:{" "}
+            {LAST_CHECKED}:{" "}
             <a href="https://oki-park.jp/shurijo/info/14/" target="_blank" rel="noopener">oki-park.jp/shurijo</a>,{" "}
-            <a href="https://www.yui-rail.co.jp/" target="_blank" rel="noopener">yui-rail.co.jp</a>,{" "}
             <a href="https://churaumi.okinawa/en/guide/access/" target="_blank" rel="noopener">churaumi.okinawa</a>,{" "}
-            <a href="https://www.vill.tokashiki.okinawa.jp/soshiki/sitekanri/5/2/1365.html" target="_blank" rel="noopener">vill.tokashiki.okinawa.jp</a>.
+            <a href="https://www.vill.tokashiki.okinawa.jp/soshiki/sitekanri/5/2/1365.html" target="_blank" rel="noopener">vill.tokashiki.okinawa.jp</a>;
+            monorail times from{" "}
+            <a href="https://www.yui-rail.co.jp/" target="_blank" rel="noopener">yui-rail.co.jp</a>, {OWN}.
           </p>
         </section>
 
@@ -604,8 +627,17 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
           </p>
           <StopTable rows={day1} />
           <p className={styles.bodyText} style={noteStyle}>
-            Monorail times and fares from yui-rail.co.jp, castle times from oki-park.jp/shurijo, both {OWN}.
-            &ldquo;Time to allow&rdquo; is a planning allowance unless marked as the operator&apos;s figure.
+            {LAST_CHECKED} for the castle times on{" "}
+            <a href="https://oki-park.jp/shurijo/ticket_guide/" target="_blank" rel="noopener">oki-park.jp/shurijo/ticket_guide</a>;
+            monorail times and fares from yui-rail.co.jp, {OWN}. &ldquo;Time to allow&rdquo; is a planning
+            allowance unless marked as the operator&apos;s figure.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            <strong>Near the airport on arrival day:</strong>{" "}
+            <Link href="/guides/attractions/dmm-kariyushi-aquarium-tickets" style={linkStyle}>DMM Kariyushi Aquarium</Link>{" "}
+            in Tomigusuku is an indoor alternative if the flight lands late or it rains. For prices, hours and the
+            Seiden slots in full, see{" "}
+            <Link href="/guides/attractions/shuri-castle-tickets" style={linkStyle}>Shuri Castle tickets</Link>.
           </p>
           <h3 className={styles.sectionTitle} style={{ fontSize: "1.1rem", marginTop: "1.25rem" }}>
             Do I Need to Book Shuri Castle?
@@ -645,8 +677,21 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
           </p>
           <StopTable rows={day2} />
           <p className={styles.bodyText} style={noteStyle}>
-            Access and opening time from churaumi.okinawa, {OWN}; tour lengths and time at the aquarium from
-            Klook&apos;s listings, read {TOURS}. Times at Cape Manzamo and Kouri Island are planning allowances.
+            {LAST_CHECKED} for admission and opening time on{" "}
+            <a href="https://churaumi.okinawa/en/guide/hour/" target="_blank" rel="noopener">churaumi.okinawa</a>; tour
+            lengths and time at the aquarium from Klook&apos;s listings, read {TOURS}. Times at Cape Manzamo and
+            Kouri Island are planning allowances.
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            <strong>With a car, swap or add a stop on Day 2:</strong>{" "}
+            <Link href="/guides/attractions/junglia-okinawa-tickets" style={linkStyle}>JUNGLIA Okinawa</Link> is a
+            theme-park day in the north instead of the aquarium (1 Day Ticket from ¥8,800 for adults);{" "}
+            <Link href="/guides/attractions/nago-pineapple-park-tickets" style={linkStyle}>Nago Pineapple Park</Link>{" "}
+            (¥1,500) and the underwater observatory at{" "}
+            <Link href="/guides/attractions/busena-marine-park-tickets" style={linkStyle}>Busena Marine Park</Link>{" "}
+            (¥1,050) are in Nago on the way back; and{" "}
+            <Link href="/guides/attractions/ryukyu-mura-tickets" style={linkStyle}>Ryukyu Mura</Link> (¥2,000) is on
+            Route 58 in Onna, about 60 minutes from Naha.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={churaumiKouriNorthernDayTour.url} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>
@@ -694,8 +739,16 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
           </p>
           <StopTable rows={day3} />
           <p className={styles.bodyText} style={noteStyle}>
-            Boat times and fares from vill.tokashiki.okinawa.jp, {OWN}. Tour lengths from Klook&apos;s listings ({TOURS} for
-            the southern trip, {OWN} for the snorkel).
+            {LAST_CHECKED} for boat times and fares on{" "}
+            <a href="https://www.vill.tokashiki.okinawa.jp/soshiki/sitekanri/5/2/1365.html" target="_blank" rel="noopener">vill.tokashiki.okinawa.jp</a>.
+            Tour lengths from Klook&apos;s listings ({TOURS} for the southern trip, {OWN} for the snorkel).
+          </p>
+          <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
+            <strong>For a southern Day 3 by car:</strong>{" "}
+            <Link href="/guides/attractions/okinawa-world-tickets" style={linkStyle}>Okinawa World and Gyokusendo Cave</Link>{" "}
+            (¥2,000) is in Nanjo; on the way back to an evening in Chatan,{" "}
+            <Link href="/guides/attractions/southeast-botanical-gardens-tickets" style={linkStyle}>Southeast Botanical Gardens</Link>{" "}
+            in Okinawa City is lit 17:00–22:00 from late October to late May.
           </p>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
             <strong>Boat or tour?</strong> The boat is the cheaper way to a beach day on Tokashiki. The tour is the
@@ -755,11 +808,12 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={noteStyle}>
-            Last checked {OWN}:{" "}
-            <a href="https://www.yui-rail.co.jp/routemap/nahakuko/?t=fare" target="_blank" rel="noopener">Yui Rail fares</a>,{" "}
+            {LAST_CHECKED}:{" "}
             <a href="https://churaumi.okinawa/en/guide/access/" target="_blank" rel="noopener">Churaumi access</a>,{" "}
             <a href="https://www.vill.tokashiki.okinawa.jp/soshiki/sitekanri/5/2/1365.html" target="_blank" rel="noopener">Tokashiki boats</a>,{" "}
-            <a href="https://www.vill.zamami.okinawa.jp/sempaku/ryokin_jikoku/" target="_blank" rel="noopener">Zamami boats</a>. Tokashiki
+            <a href="https://www.vill.zamami.okinawa.jp/sempaku/ryokin_jikoku/" target="_blank" rel="noopener">Zamami boats</a>;{" "}
+            <a href="https://www.yui-rail.co.jp/routemap/nahakuko/?t=fare" target="_blank" rel="noopener">Yui Rail fares</a>{" "}
+            and the Ferry Tokashiki and Queen Zamami timetables, {OWN}. Tokashiki
             fares are those from 1 October 2026. The Marine Liner boards at Tomari Port&apos;s north pier; the
             ferries leave from in front of the Tomarin terminal.
           </p>
@@ -799,7 +853,7 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={noteStyle}>
-            Last checked {OWN}:{" "}
+            {LAST_CHECKED}:{" "}
             <a href="https://oki-park.jp/shurijo/info/14/" target="_blank" rel="noopener">Shuri Castle fees</a>,{" "}
             <a href="https://oki-park.jp/shurijo/info/15/" target="_blank" rel="noopener">Shuri Castle hours</a>,{" "}
             <a href="https://churaumi.okinawa/en/guide/info/" target="_blank" rel="noopener">Churaumi Aquarium fees</a>. No
@@ -886,8 +940,9 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
             </div>
           </div>
           <p className={styles.bodyText} style={noteStyle}>
-            Last checked {OWN}:{" "}
-            <a href="https://oki-park.jp/shurijo/ticket_guide/" target="_blank" rel="noopener">oki-park.jp/shurijo/ticket_guide</a>,{" "}
+            {LAST_CHECKED}:{" "}
+            <a href="https://oki-park.jp/shurijo/ticket_guide/" target="_blank" rel="noopener">oki-park.jp/shurijo/ticket_guide</a>;
+            {" "}{OWN}:{" "}
             <a href="https://www.vill.zamami.okinawa.jp/ship/" target="_blank" rel="noopener">vill.zamami.okinawa.jp</a>,{" "}
             <a href="https://www.data.jma.go.jp/stats/etrn/view/nml_sfc_ym.php?prec_no=91&amp;block_no=47936" target="_blank" rel="noopener">JMA Naha normals</a>.
             Beach season from oki-park.jp, {BEACH}.
@@ -901,36 +956,6 @@ export default function Okinawa3DayItineraryPage({ updated }: { updated: PageUpd
           </p>
         </section>
 
-        <section className={styles.bodySection}>
-          <p className={styles.bodyText}>
-            In the south of the island, <Link href="/guides/attractions/okinawa-world-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Okinawa World and Gyokusendo Cave</Link> (¥2,000) and, near the airport, <Link href="/guides/attractions/dmm-kariyushi-aquarium-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>DMM Kariyushi Aquarium</Link>.
-          </p>
-        </section>
-        <section className={styles.bodySection}>
-          <p className={styles.bodyText}>
-            For a theme-park day in the north, see <Link href="/guides/attractions/junglia-okinawa-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>JUNGLIA Okinawa tickets</Link>: the 1 Day Ticket is from ¥8,800 for adults, and a ¥4,950 afternoon ticket starts in December 2026.
-          </p>
-        </section>
-        <section className={styles.bodySection}>
-          <p className={styles.bodyText}>
-            More single tickets: <Link href="/guides/attractions/nago-pineapple-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Nago Pineapple Park</Link> in Nago (¥1,500), <Link href="/guides/attractions/ryukyu-mura-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Ryukyu Mura</Link> on Route 58 in Onna (¥2,000, about 60 minutes from Naha) and <Link href="/guides/attractions/southeast-botanical-gardens-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Southeast Botanical Gardens</Link> in Okinawa City, lit 17:00–22:00 from late October to late May.
-          </p>
-        </section>
-        <section className={styles.bodySection}>
-          <p className={styles.bodyText}>
-            In Nago, <Link href="/guides/attractions/busena-marine-park-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Busena Marine Park</Link> has an underwater observatory (¥1,050) and a glass-bottom boat (¥1,560), or ¥2,100 for both.
-          </p>
-        </section>
-        <section className={styles.bodySection}>
-          <p className={styles.bodyText}>
-            On Kouri Island, the <Link href="/guides/attractions/kouri-ocean-tower-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Kouri Ocean Tower</Link> is ¥1,000 for ages 16 and over, about 25 minutes by car from Churaumi.
-          </p>
-        </section>
-        <section className={styles.bodySection}>
-          <p className={styles.bodyText}>
-            In Naha, <Link href="/guides/attractions/shuri-castle-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>Shuri Castle</Link> is ¥1,000 for adults from 23 November 2026, when the rebuilt Seiden opened inside on timed tickets.
-          </p>
-        </section>
         <EsimCtaBottom />
 
         {/* FAQ */}
