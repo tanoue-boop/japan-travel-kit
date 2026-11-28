@@ -12647,3 +12647,83 @@ export const dotonboriCruiseSameDayCards: KlookSameDayCard[] = [
     why: "The Osaka Amazing Pass is a smartphone pass, so you need data from the arrivals hall.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Kyoto 1 day itinerary, added 28 Nov 2026 (task-jtk-20261128-01).
+//
+// No new Klook listing: every product reuses a constant above (Fushimi Inari walk
+// 88010, Aiwafuku Kiyomizu kimono, Sagano train & Hozugawa boat day 112332, JR West
+// Kansai Area Pass 3276 — 1107 showed "not currently available" on 23 Nov — the HARUKA
+// 18400, the Gion night walk 87999, the Kyoto Station hotel search and the eSIM). The
+// page has no ad id (spare is empty), so links fall back to ?aid=119070 until one is
+// added to data/klook-adids.json. No price appears.
+// ---------------------------------------------------------------------------
+
+/** Before-the-day block: 6.5% tours and kimono, 5% pass and airport train, 20% data. */
+export const kyotoOneDayTripPrep: KlookTripPrepItem[] = [
+  {
+    label: kyotoFushimiInariWalkingTour.title,
+    ctaLabel: "Check the Fushimi Inari walk →",
+    url: kyotoFushimiInariWalkingTour.url,
+    why: "Route C starts at the Senbon Torii; a guide sets the start time and knows where to turn back on the mountain.",
+    guide: { href: "/guides/attractions/fushimi-inari-tour", label: "Compare the walks →" },
+  },
+  {
+    label: kyotoKimonoAiwafukuKiyomizu.title,
+    ctaLabel: "Check Kiyomizu kimono rental →",
+    url: kyotoKimonoAiwafukuKiyomizu.url,
+    why: "Route A walks from Kiyomizu-dera to Gion and back past the same lanes, which suits a dressing slot and a same-day return.",
+    guide: { href: "/guides/attractions/kyoto-kimono-rental", label: "Kimono prices compared →" },
+  },
+  {
+    label: saganoHozugawaGuaranteedTour.title,
+    ctaLabel: "Check the Sagano train & boat day →",
+    url: saganoHozugawaGuaranteedTour.url,
+    why: "Route B's torokko seat and the river boat back as one booking. The train does not run from 30 December 2026 to 28 February 2027.",
+  },
+  {
+    label: jrKansaiAreaPass3276.title,
+    ctaLabel: "Check the Kansai Area Pass →",
+    url: jrKansaiAreaPass3276.url,
+    why: "For a Kyoto day from Osaka or Kansai Airport: it covers the JR Special Rapid, the Nara and Sagano lines and the HARUKA, not the city buses.",
+    guide: { href: "/guides/attractions/kansai-area-pass", label: "Does it pay? →" },
+  },
+  {
+    ...tripPrepProducts.haruka,
+    why: "Straight from Kansai Airport to Kyoto Station with no change, if the Kyoto day is your first day.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    why: "Bus stops, the Keihan transfer and the train back to Osaka or Tokyo are all on your phone.",
+  },
+];
+
+/** Under the 2% tickets (torokko seat, Nijo Castle, day pass): 6.5% tour and hotel, 5% pass, 20% data. */
+export const kyotoOneDaySameDayCards: KlookSameDayCard[] = [
+  {
+    label: kyotoGionNightWalkingTour.title,
+    kind: "Evening tour",
+    ctaLabel: "Check the Gion night walk →",
+    url: kyotoGionNightWalkingTour.url,
+    why: "Routes A and C both end in Gion; a guide walks the backstreets and Hanamikoji after dark.",
+  },
+  {
+    label: "Hotels around Kyoto Station",
+    kind: "Hotel",
+    ctaLabel: "Check Kyoto Station hotels on Klook →",
+    url: kyotoStayAreas[0].url,
+    why: "If the day ends late in Gion, a night by the station puts the shinkansen and the HARUKA under the hotel.",
+  },
+  {
+    label: jrKansaiAreaPass3276.title,
+    kind: "Pass",
+    ctaLabel: "Check the Kansai Area Pass →",
+    url: jrKansaiAreaPass3276.url,
+    why: "Covers the Special Rapid from Osaka and the JR legs to Inari and Saga-Arashiyama on the same day.",
+  },
+  {
+    ...tripPrepProducts.esim,
+    kind: "Data",
+    why: "The QR ticket, the seat number and the bus route between stops are on your phone.",
+  },
+];

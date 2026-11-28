@@ -633,6 +633,14 @@ export const attractionArticles: GuideArticle[] = [
     city: "other",
   },
   {
+    href: "/guides/attractions/kyoto-1-day-itinerary",
+    badge: "Itinerary",
+    title: "One Day in Kyoto: 1 Day Itinerary, 3 Routes & Costs",
+    desc: "Three timed one-day routes — Kiyomizu-dera to Gion, Arashiyama with the Sagano train, Fushimi Inari first — with the ¥230 bus and ¥1,100 day pass, and which route still fits when you arrive from Osaka (29 min) or Tokyo.",
+    group: "cities",
+    city: "kyoto",
+  },
+  {
     href: "/guides/attractions/kyoto-2-day-itinerary",
     badge: "Itinerary",
     title: "Kyoto 2 Day Itinerary (2026): Day by Day, and What to Book",

@@ -558,7 +558,9 @@ export default function KyotoDayTripFromTokyoPage({ updated }: { updated: PageUp
             </div>
           </div>
           <p className={styles.bodyText} style={{ marginTop: "1rem" }}>
-            For more choices, see <Link href="/guides/attractions/things-to-do-kyoto" style={LINK}>things to do
+            For three timed routes and which one still fits each arrival train, see the{" "}
+            <Link href="/guides/attractions/kyoto-1-day-itinerary" style={LINK}>Kyoto 1 day itinerary</Link>. For more
+            choices, see <Link href="/guides/attractions/things-to-do-kyoto" style={LINK}>things to do
             in Kyoto</Link>. An evening return also leaves room for a{" "}
             <Link href="/guides/attractions/gion-night-walking-tour" style={LINK}>Gion walking tour</Link>.
           </p>

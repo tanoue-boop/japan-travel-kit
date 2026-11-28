@@ -376,7 +376,10 @@ export default function ThingsToDoKyotoPage({ updated }: { updated: PageUpdated 
             <Link href="/guides/attractions/nara-day-trip" style={linkStyle}>Nara day trip guide</Link> covers
             the train and what the admission actually buys, and our{" "}
             <Link href="/guides/attractions/kyoto-nara-day-tour-from-osaka" style={linkStyle}>Kyoto and Nara day tour comparison</Link>{" "}
-            sorts the guided itineraries if you would rather have both in one booking.
+            sorts the guided itineraries if you would rather have both in one booking. Coming the other way, as a
+            Kyoto day trip from Osaka, the{" "}
+            <Link href="/guides/attractions/kyoto-1-day-itinerary" style={linkStyle}>one day in Kyoto</Link> plan
+            gives three timed routes and the Special Rapid times that decide which one fits.
           </p>
           <p className={styles.bodyText}>
             Kyoto&apos;s temple gates are walk-up, but several went up in 2026. On the temples&apos; own sites,

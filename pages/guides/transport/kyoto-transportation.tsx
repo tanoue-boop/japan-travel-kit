@@ -553,6 +553,7 @@ export default function KyotoTransportationPage({ updated }: { updated: PageUpda
               the best things to do in Kyoto
             </Link>
             , or follow them in order in the{" "}
+            <Link href="/guides/attractions/kyoto-1-day-itinerary" style={{ fontWeight: 600 }}>Kyoto 1 day itinerary</Link>, the{" "}
             <Link href="/guides/attractions/kyoto-2-day-itinerary" style={{ fontWeight: 600 }}>Kyoto 2-day itinerary</Link>{" "}
             and the{" "}
             <Link href="/guides/attractions/kyoto-3-day-itinerary" style={{ fontWeight: 600 }}>Kyoto 3-day itinerary</Link>.

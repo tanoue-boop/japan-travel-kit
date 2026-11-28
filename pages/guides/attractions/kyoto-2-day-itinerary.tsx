@@ -642,7 +642,8 @@ export default function Kyoto2DayItineraryPage({ updated }: { updated: PageUpdat
             <Link href="/guides/attractions/where-to-stay-in-kyoto">where to stay in Kyoto guide</Link>{" "}
             compares the areas on the lines under them, and our{" "}
             <Link href="/guides/transport/kyoto-transportation">getting around Kyoto guide</Link> explains the
-            buses and the two subway lines. Here, each day carries its own table — time of day, where, how
+            buses and the two subway lines. With only one day — or a day trip from Osaka — use the{" "}
+            <Link href="/guides/attractions/kyoto-1-day-itinerary">Kyoto 1 day itinerary</Link> instead. Here, each day carries its own table — time of day, where, how
             long to allow, how you get there, and whether it needs booking — with the Klook listings for that
             day&apos;s bookings directly underneath it.
           </p>

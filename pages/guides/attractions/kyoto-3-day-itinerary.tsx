@@ -443,7 +443,9 @@ export default function Kyoto3DayItineraryPage({ updated }: { updated: PageUpdat
             Yes. Three days is enough for the main sights on each side of the city and one day trip, without
             moving hotels. This guide is for <strong>three nights in Kyoto only</strong>. If you have less time,
             our <Link href="/guides/attractions/kyoto-2-day-itinerary">Kyoto 2 day itinerary</Link> covers the
-            city without a day trip. If you are splitting the time between two cities, our{" "}
+            city without a day trip, and with a single day our{" "}
+            <Link href="/guides/attractions/kyoto-1-day-itinerary">one day in Kyoto</Link> plan gives three timed
+            routes. If you are splitting the time between two cities, our{" "}
             <Link href="/guides/attractions/osaka-kyoto-3-day-itinerary">Osaka Kyoto 3 day itinerary</Link> is
             the better fit, and five days with Nara, Himeji and Kobe are the{" "}
             <Link href="/guides/attractions/kansai-5-day-itinerary">Kansai 5 day itinerary</Link>. For the top five sights on their own, with prices and which need booking, see{" "}
