@@ -1006,9 +1006,9 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
             </Link>{" "}
             works out when the Kintetsu pass beats singles; for a day inside Osaka, the{" "}
             <Link href="/guides/attractions/osaka-attractions-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
-              Osaka Amazing Pass guide
+              Osaka Amazing Pass
             </Link>{" "}
-            covers the city pass the Kansai Area Pass does not replace. For Kinosaki Onsen, the Kansai Area
+            guide covers the city pass the Kansai Area Pass does not replace. For Kinosaki Onsen, the Kansai Area
             Pass cannot be used on the Konotori limited express, while the WIDE pass includes its reserved
             seats; our{" "}
             <Link href="/guides/attractions/kinosaki-onsen-day-trip" style={{ color: "var(--text)", fontWeight: 600 }}>
@@ -1161,7 +1161,11 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
             <Link href="/guides/transport/osaka-metro-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
               Osaka Metro Pass (the Enjoy Eco Card)
             </Link>{" "}
-            covers the subway and city buses for one calendar day instead. On a five-day trip with one Osaka
+            covers the subway and city buses for one calendar day instead, and the ¥3,500{" "}
+            <Link href="/guides/attractions/osaka-attractions-pass" style={{ color: "var(--text)", fontWeight: 600 }}>
+              Osaka Amazing Pass
+            </Link>{" "}
+            adds about 40 free admissions once the day has more than ¥2,680 of them. On a five-day trip with one Osaka
             day, the 3-day pass for the last three days beats the 4-day one — the day-by-day sums are in the{" "}
             <Link href="/guides/attractions/kansai-5-day-itinerary">Kansai 5 day itinerary</Link>.
           </p>
@@ -1472,7 +1476,7 @@ export default function KansaiAreaPassPage({ updated }: { updated: PageUpdated }
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: ¥3,500, Worth It? + 1-Day Plan</p>
+                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: Price, Itinerary & Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

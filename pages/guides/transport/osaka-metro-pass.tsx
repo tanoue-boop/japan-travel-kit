@@ -379,7 +379,9 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
           pass pays for itself on the {ridesToBeat(ECO_WEEKDAY, FARE_1KU)}th ride on a weekday or the{" "}
           {ridesToBeat(ECO_WEEKEND, FARE_1KU)}th at the weekend, and at the {yen(FARE_2KU)} fare most central hops cost,
           such as Umeda to Namba, on the {ridesToBeat(ECO_WEEKDAY, FARE_2KU)}th or {ridesToBeat(ECO_WEEKEND, FARE_2KU)}rd.
-          Choose the Osaka Amazing Pass ({yen(AMAZING_1_DAY)} for one day, {yen(AMAZING_2_DAY)} for two, about 40
+          Choose the{" "}
+          <Link href="/guides/attractions/osaka-attractions-pass" style={{ fontWeight: 600 }}>Osaka Amazing Pass</Link>{" "}
+          ({yen(AMAZING_1_DAY)} for one day, {yen(AMAZING_2_DAY)} for two, about 40
           attractions included) only if the sights you will pay to enter that day cost more than the{" "}
           {yen(AMAZING_1_DAY - ECO_WEEKDAY)} it adds over a weekday card; for two or three rides, an ICOCA is cheaper
           than either.
@@ -723,7 +725,10 @@ export default function OsakaMetroPassPage({ updated }: { updated: PageUpdated }
           <p className={styles.bodyText}>
             Buy the Enjoy Eco Card for rides alone, and the Osaka Amazing Pass only if you will enter enough paid sights
             to cover the difference. The Amazing Pass is now {yen(AMAZING_1_DAY)} for one day and {yen(AMAZING_2_DAY)} for
-            two, on sale until 31 March 2027. Older pages quoting ¥2,500 and ¥3,300 are out of date.
+            two, on sale until 31 March 2027. Older pages quoting ¥2,500 and ¥3,300 are out of date. The timed 1-day and
+            2-day routes, the full 2026 attraction list and the sums for each are in the{" "}
+            <Link href="/guides/attractions/osaka-attractions-pass" style={{ fontWeight: 600 }}>Osaka Amazing Pass</Link>{" "}
+            guide; this table compares only what each pass covers.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>

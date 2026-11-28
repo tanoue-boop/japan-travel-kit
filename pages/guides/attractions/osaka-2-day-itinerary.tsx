@@ -358,8 +358,8 @@ const faqItems = [
     a: `Day 1 the castle and Minami: the main tower from 9:00 (${CASTLE_ADULT} adult), the Nishinomaru Garden, lunch at Kuromon Ichiba Market, the Shinsaibashi arcade, the ${CRUISE_ADULT} Tombori River Cruise, then Dotonbori in the evening and kushikatsu in Shinsekai. Day 2 the bay and Umeda: the Kaiyukan from opening, Tempozan Harbor Village for lunch, the Umeda Sky Building's Kuchu Teien Observatory (${UMEDA_ADULT}) in the early afternoon, then Umeda or Tennoji. That order is deliberate: Day 1's only timed ticket is cheap and frequent, so a missed booking is recoverable, while Day 2 opens with the one attraction that has a fixed entry slot.`,
   },
   {
-    q: "Is the Osaka Amazing Pass worth it for 2 days?",
-    a: `For this itinerary, on Day 1, yes — and the 2-day version is the one to think twice about. The pass is ${PASS_1_DAY} for one day and ${PASS_2_DAY} for two, read on ${PASS_CHECKED}. Day 1 alone puts the castle tower (${CASTLE_ADULT}), the Nishinomaru Garden (¥300) and the Tombori cruise (${CRUISE_ADULT}) on it, which is ¥3,500 of gate prices — exactly the ${PASS_1_DAY} pass, so the day's subway rides are what puts it ahead. Day 2 is the problem: the Kaiyukan is not an Amazing Pass facility at all, and the Umeda deck is only free before 15:00. If Day 2 is the aquarium, buy a 1-day pass for Day 1 and an ${ECO_CARD_WEEKDAY} Enjoy Eco Card — ${ECO_CARD_WEEKEND} at the weekend — for Day 2, which is transport only and was read off Osaka Metro's own site on ${OWN}.`,
+    q: "Which pass should I buy for this 2-day Osaka itinerary?",
+    a: `A 1-day Osaka Amazing Pass (${PASS_1_DAY}, read on ${PASS_CHECKED}) for Day 1 and an ${ECO_CARD_WEEKDAY} Enjoy Eco Card (${ECO_CARD_WEEKEND} at the weekend, read on ${OWN}) for Day 2. Day 1's castle tower, Nishinomaru Garden and Tombori cruise are ¥3,500 of gate prices on their own, so the subway rides put the pass ahead; Day 2's Kaiyukan is not on the pass at all.`,
   },
   {
     q: "Where should I stay in Osaka for 2 days?",
@@ -820,7 +820,7 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
         {/* The pass question */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The pass</span>
-          <h2 className={styles.sectionTitle}>Is the Osaka Amazing Pass Worth It for 2 Days?</h2>
+          <h2 className={styles.sectionTitle}>Which Pass Fits This 2-Day Osaka Plan?</h2>
           <p className={styles.bodyText}>
             For Day 1, yes, narrowly. For Day 2, usually not — and that asymmetry is the most useful thing on
             this page. The pass is <strong>{PASS_1_DAY} for one day</strong> and{" "}
@@ -844,11 +844,9 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
           <p className={styles.bodyText}>
             So the arithmetic that works for most two-day trips is a <strong>1-day Amazing Pass for Day 1</strong>{" "}
             and an Enjoy Eco Card or an IC card for Day 2 — not the {PASS_2_DAY} two-day pass. The
-            exception is a second day that stays inside the pass&apos;s own facility list: the HEP FIVE
-            Ferris wheel, Tsutenkaku, the Santa Maria harbour cruise and the Umeda deck before 15:00 are all
-            on it, and a day built from those does justify the longer version. Our{" "}
-            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass price and break-even table</Link> runs the
-            break-even across the whole city, and our{" "}
+            exception is a second day that stays inside the pass&apos;s own facility list, such as the bay
+            and Umeda: the timed 2-day route, the 2026 attraction list and the break-even sums are in our{" "}
+            <Link href="/guides/attractions/osaka-attractions-pass">Osaka Amazing Pass</Link> guide, and our{" "}
             <Link href="/guides/transport/osaka-metro-pass">Osaka Metro pass guide</Link> compares the
             transport-only options.
           </p>
@@ -1225,7 +1223,7 @@ export default function Osaka2DayItineraryPage({ updated }: { updated: PageUpdat
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: ¥3,500, Worth It? + 1-Day Plan</p>
+                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: Price, Itinerary & Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>

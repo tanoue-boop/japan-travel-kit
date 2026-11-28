@@ -394,7 +394,7 @@ const crumbSep = (
 const related = [
   { href: "/guides/attractions/osaka-2-day-itinerary", title: "Osaka 2 Day Itinerary (2026): Day by Day, and What to Book" },
   { href: "/guides/attractions/osaka-kyoto-3-day-itinerary", title: "Osaka Kyoto 3 Day Itinerary (2026): Day by Day & Bookings" },
-  { href: "/guides/attractions/osaka-attractions-pass", title: "Osaka Amazing Pass 2026: ¥3,500, Worth It? + 1-Day Plan" },
+  { href: "/guides/attractions/osaka-attractions-pass", title: "Osaka Amazing Pass 2026: Price, Itinerary & Is It Worth It?" },
   { href: "/guides/attractions/usj-tickets-express-pass", title: "Universal Studios Japan Express Pass 2026: Types & Prices" },
   { href: "/guides/attractions/usj-hotels", title: "USJ Hotels (2026): Official Hotels Near Universal Studios Japan" },
   { href: "/guides/attractions/osaka-aquarium-kaiyukan-tickets", title: "Osaka Aquarium Kaiyukan Tickets" },
@@ -528,7 +528,8 @@ export default function Osaka3DayItineraryPage({ updated }: { updated: PageUpdat
               and Minami (Kuromon Market, the Tombori cruise, Dotonbori, Shinsekai and Tsutenkaku),{" "}
               <strong>Day 2</strong> at <strong>Universal Studios Japan</strong>, and <strong>Day 3</strong>{" "}
               at the Kaiyukan and Umeda — or on a day trip to <strong>Nara</strong> or{" "}
-              <strong>Kobe</strong>. Use the <strong>Osaka Amazing Pass</strong> ({PASS_1_DAY} for 1 day,
+              <strong>Kobe</strong>. Use the{" "}
+              <Link href="/guides/attractions/osaka-attractions-pass"><strong>Osaka Amazing Pass</strong></Link> ({PASS_1_DAY} for 1 day,
               official price checked {PASS_CHECKED}) on Day 1 only, when three paid stops are on it; do not
               use it on the USJ day. Stay in <strong>Namba</strong> or <strong>Umeda</strong>. Book the USJ
               ticket first and the Kaiyukan slot second; nothing else needs booking ahead.

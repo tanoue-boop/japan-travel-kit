@@ -23,7 +23,7 @@ const linkStyle = { color: "var(--red)", fontWeight: 600 } as const;
 const faqItems = [
   {
     q: "Is the Osaka Amazing Pass worth it?",
-    a: `For a day of city sightseeing, usually yes — Osaka rewards a pass more than most Japanese cities, because its attractions are cheap individually and spread across a subway network you will use heavily. The pass is ¥3,500 for one day and ¥5,000 for two, and it bundles unlimited Osaka Metro, city buses and the private railways within the city with free admission to about 40 facilities, including Osaka Castle, the Umeda Sky Building observatory, Tsutenkaku and the Tombori River Cruise. Three paid stops in a day clear it — Osaka Castle (¥1,200), the Umeda deck before 15:00 (¥2,000) and the cruise (¥2,000) come to ¥5,200 — while one or two usually do not. Prices read off the official site on ${CHECKED}.`,
+    a: `For a day of city sightseeing, usually yes. The pass is ¥3,500 for one day and ¥5,000 for two, with unlimited city trains and buses and free entry to about 40 facilities; three paid stops such as Osaka Castle (¥1,200), the Umeda deck before 15:00 (¥2,000) and the Tombori cruise (¥2,000) clear it. Prices read off the official site on ${CHECKED}; the timed itineraries and the full list are in our Osaka Amazing Pass guide.`,
   },
   {
     q: "What does the Osaka Amazing Pass not cover?",
@@ -166,7 +166,8 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
           <p className={styles.bodyText}>
             Osaka is unusual among Japanese cities in that a sightseeing pass genuinely pays. Its attractions
             are individually cheap, there are a lot of them, and they are scattered across a subway network
-            you will ride all day — which is exactly the shape the Osaka Amazing Pass is built for. At ¥3,500
+            you will ride all day — which is exactly the shape the{" "}
+            <Link href="/guides/attractions/osaka-attractions-pass" style={linkStyle}>Osaka Amazing Pass</Link> is built for. At ¥3,500
             for one day (¥5,000 for two) it covers the transport plus free entry to about 40 facilities, and
             three paid stops gets you there. Prices checked {CHECKED} on the official site.
           </p>
@@ -613,7 +614,7 @@ export default function ThingsToDoOsakaPage({ updated }: { updated: PageUpdated 
                 </svg>
               </div>
               <div className={styles.relatedMeta}>
-                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: ¥3,500, Worth It? + 1-Day Plan</p>
+                <p className={styles.relatedTitle}>Osaka Amazing Pass 2026: Price, Itinerary & Is It Worth It?</p>
                 <span className={styles.relatedArrow}>Read guide →</span>
               </div>
             </Link>
