@@ -453,6 +453,17 @@ export default function SkylinerVsNexPage({ updated }: { updated: PageUpdated })
 
         <EsimCtaTop />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            Need data before the train? Every Narita terminal has a SIM vending machine, and most SIM counters are
+            open 07:00–21:00: see our{" "}
+            <Link href="/guides/esim/japan-airport-sim-cards" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Narita airport SIM card
+            </Link>{" "}
+            guide for each terminal.
+          </p>
+        </section>
+
         {/* Is the Skyliner or N'EX better? */}
         <section className={styles.bodySection}>
           <span className={styles.sectionLabel}>The decision</span>

@@ -997,6 +997,17 @@ export default function TokyoAirportLimousineBusPage({ updated }: { updated: Pag
         />
         <BookingEsimCard lead="Bus departure times, your stop and the QR code are easiest to check on your phone at the airport." />
 
+        <section className={styles.bodySection}>
+          <p className={styles.bodyText}>
+            No data when you reach the bus counter? Narita and Haneda both sell SIMs in the arrivals areas, from
+            counters and vending machines; our{" "}
+            <Link href="/guides/esim/japan-airport-sim-cards" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              Narita and Haneda airport SIM card
+            </Link>{" "}
+            guide lists each terminal&apos;s locations, hours and prices.
+          </p>
+        </section>
+
         {/* Related articles */}
         <section className={styles.relatedSection}>
           <span className={styles.sectionLabel}>Related guides</span>

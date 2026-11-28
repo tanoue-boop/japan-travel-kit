@@ -482,6 +482,14 @@ export default function JapanLuggageDeliveryPage({ updated }: { updated: PageUpd
             airport asks you to contact your delivery company in advance. JAL ABC at Kansai Airport asks for a phone
             reservation three or four days before departure.
           </p>
+          <p className={styles.bodyText} style={noteStyle}>
+            Sending bags out on arrival? The SIM counters and vending machines are on the same arrivals floor:
+            terminal by terminal, with hours, in our{" "}
+            <Link href="/guides/esim/japan-airport-sim-cards" style={{ color: "var(--accent)", fontWeight: 600 }}>
+              airport SIM card guide for Narita, Haneda and Kansai
+            </Link>
+            .
+          </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={osakaKyotoHotelLuggageDelivery.url} target="_blank" rel="sponsored nofollow noopener" className={styles.verdictBtn}>
               Osaka / Kyoto hotel → Kansai Airport →
