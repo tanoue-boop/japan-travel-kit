@@ -716,6 +716,26 @@ export const TRANSLATED_PAGES: TranslatedPage[] = [
     thTitle: "ตั๋วพิพิธภัณฑ์สัตว์น้ำไคยูคัง 2026: ราคา",
     thLabel: "ตั๋วพิพิธภัณฑ์สัตว์น้ำไคยูคัง",
   },
+  // Added 2026-11-28 (task jtk-20261128-TR02): Fuji-Q Highland tickets (Klook 7 days: 9 clicks on
+  // ad id 1528089; GSC 28 days: 299 impressions, 5 clicks). Titles use the park's name and pass
+  // name as each market searches them: 후지큐 하이랜드 티켓 / 자유이용권 (livejapan.com/ko, jeepe.jp/ko,
+  // WAUG), 富士急樂園門票 / 一日券 (funtime.com.tw, colatour.com.tw, tw.trip.com), 富士急乐园门票 /
+  // 一日通票 (livejapan.com/zh-cn, jeepe.jp/zh) and ตั๋วฟูจิคิว ไฮแลนด์ ราคา (trvlogue.com/th, jeepe.jp/th).
+  {
+    en: "/guides/attractions/fuji-q-highland-tickets",
+    zhTw: "/zh-tw/guides/attractions/fuji-q-highland-tickets",
+    zhTitle: "富士急樂園門票 2026：一日券價格、免費入園與優先券",
+    zhLabel: "富士急樂園門票",
+    zhCn: "/zh-cn/guides/attractions/fuji-q-highland-tickets",
+    zhCnTitle: "富士急乐园门票 2026：一日通票价格、免费入园与优先券",
+    zhCnLabel: "富士急乐园门票",
+    ko: "/ko/guides/attractions/fuji-q-highland-tickets",
+    koTitle: "후지큐 하이랜드 티켓 2026: 자유이용권 가격, 무료 입장",
+    koLabel: "후지큐 하이랜드 티켓",
+    th: "/th/guides/attractions/fuji-q-highland-tickets",
+    thTitle: "ตั๋วฟูจิคิว ไฮแลนด์ 2026: ราคา",
+    thLabel: "ตั๋วฟูจิคิว ไฮแลนด์",
+  },
   {
     en: "/guides/attractions",
     zhTw: "/zh-tw/guides/attractions",

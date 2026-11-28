@@ -234,7 +234,7 @@ export const HOTEL_AREAS = {
     path: "destination/p50143802-lake-kawaguchi/3-hotel/",
   },
   fujiQ: {
-    name: { en: "Fuji-Q Highland / Fujiyoshida", ko: "후지큐 하이랜드・후지요시다", "zh-tw": "富士急樂園・富士吉田", "zh-cn": "富士急乐园・富士吉田", th: "ฟูจิคิว ไฮแลนด์ / ฟูจิโยชิดะ" },
+    name: { en: "Fuji-Q Highland / Fujiyoshida", ko: "후지큐 하이랜드·후지요시다", "zh-tw": "富士急樂園、富士吉田", "zh-cn": "富士急乐园、富士吉田", th: "ฟูจิคิว ไฮแลนด์ / ฟูจิโยชิดะ" },
     station: { en: "Fujikyu Highland Station", ko: "후지큐 하이랜드역", "zh-tw": "富士急樂園站", "zh-cn": "富士急乐园站", th: "สถานี Fujikyu Highland" },
     feature: {
       en: "One stop before Kawaguchiko, with the park gate next to the station — the base for an opening-time start on the coasters.",

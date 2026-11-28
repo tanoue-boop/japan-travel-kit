@@ -77,6 +77,7 @@ const groups: CnHubGroup[] = [
       "/zh-cn/guides/attractions/umeda-sky-building-tickets",
       "/zh-cn/guides/attractions/osaka-castle-tickets",
       "/zh-cn/guides/attractions/osaka-aquarium-kaiyukan-tickets",
+      "/zh-cn/guides/attractions/fuji-q-highland-tickets",
     ],
   },
   {
@@ -126,6 +127,8 @@ const groups: CnHubGroup[] = [
 
 /** Short Chinese blurb per page — one line on what it answers. */
 const BLURBS: Record<string, string> = {
+  "/zh-cn/guides/attractions/fuji-q-highland-tickets":
+    "富士急乐园门票：免费入园，一日通票成人按日期 ¥6,000–7,900、初高中生 ¥5,500–7,400、小学生 ¥4,400–5,100，大型过山车每次 ¥2,000，玩 4 项以上买一日通票更划算。另有新宿出发含往返巴士的 Super Toku-Q Pack（成人 ¥11,100）、优先券与 12 月的营业时间。",
   "/zh-cn/guides/attractions/osaka-aquarium-kaiyukan-tickets":
     "大阪海游馆门票：成人按日期 ¥2,700–3,200、小学生与初中生 ¥1,400–1,650、3 岁以上 ¥700–800，电子票约 30 天前开售并指定入场时段。再入馆已于 2026 年 6 月 15 日停止，大阪周游卡不适用，以及圣玛丽亚号、天保山大摩天轮与 Captain Line 渡轮。",
   "/zh-cn/guides/attractions/osaka-castle-tickets":

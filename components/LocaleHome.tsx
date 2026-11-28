@@ -135,7 +135,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "tickets",
         label: "門票與景點",
-        desc: "單一場館的入場券——東京的美術館與展望台，以及大阪的道頓堀遊船、梅田藍天大廈、大阪城天守閣與海遊館。",
+        desc: "單一場館的入場券——東京的美術館與展望台，以及大阪的道頓堀遊船、梅田藍天大廈、大阪城天守閣與海遊館，以及富士山腳下的富士急樂園。",
         routes: [
           "/zh-tw/guides/attractions/shibuya-sky-tickets",
           "/zh-tw/guides/attractions/tokyo-skytree-tickets",
@@ -145,6 +145,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/zh-tw/guides/attractions/umeda-sky-building-tickets",
           "/zh-tw/guides/attractions/osaka-castle-tickets",
           "/zh-tw/guides/attractions/osaka-aquarium-kaiyukan-tickets",
+          "/zh-tw/guides/attractions/fuji-q-highland-tickets",
         ],
       },
       {
@@ -218,6 +219,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "天守閣成人 ¥1,200，9:00–18:00 開放、最後入場 17:30。城內另有御座船等 4 項收費設施，5 項合計 ¥5,200，持大阪周遊卡全部免費。",
       "/zh-tw/guides/attractions/osaka-aquarium-kaiyukan-tickets":
         "成人依日期 ¥2,700–3,200，電子票約 30 天前開賣、指定入場時段。再入館已於 2026 年 6 月停止，大阪周遊卡不適用，以及天保山的摩天輪與聖瑪麗亞號。",
+      "/zh-tw/guides/attractions/fuji-q-highland-tickets":
+        "免費入園，一日券成人依日期 ¥6,000–7,900，大型雲霄飛車每次 ¥2,000，搭 4 項以上買一日券較划算。另有含新宿來回巴士的 Toku-Q Pack 與優先券。",
       "/zh-tw/guides/attractions/teamlab-planets-tickets":
         "豐洲 Planets 的票價、30 分鐘入場時段、涉水區適合穿什麼，以及和無界的比較。",
       "/zh-tw/guides/attractions/teamlab-borderless-tickets":
@@ -300,7 +303,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "tickets",
         label: "门票与景点",
-        desc: "单个场馆的门票——东京的美术馆与观景台，以及大阪的道顿堀游船、梅田蓝天大厦、大阪城天守阁与海游馆。",
+        desc: "单个场馆的门票——东京的美术馆与观景台，以及大阪的道顿堀游船、梅田蓝天大厦、大阪城天守阁与海游馆，以及富士山脚下的富士急乐园。",
         routes: [
           "/zh-cn/guides/attractions/shibuya-sky-tickets",
           "/zh-cn/guides/attractions/tokyo-skytree-tickets",
@@ -310,6 +313,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/zh-cn/guides/attractions/umeda-sky-building-tickets",
           "/zh-cn/guides/attractions/osaka-castle-tickets",
           "/zh-cn/guides/attractions/osaka-aquarium-kaiyukan-tickets",
+          "/zh-cn/guides/attractions/fuji-q-highland-tickets",
         ],
       },
       {
@@ -383,6 +387,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "天守阁成人 ¥1,200，9:00–18:00 开放，最后入场 17:30。城内还有御座船等 4 项收费设施，5 项合计 ¥5,200，持大阪周游卡全部免费。",
       "/zh-cn/guides/attractions/osaka-aquarium-kaiyukan-tickets":
         "成人按日期 ¥2,700–3,200，电子票约 30 天前开售、指定入场时段。再入馆已于 2026 年 6 月停止，大阪周游卡不适用，以及天保山的摩天轮与圣玛丽亚号。",
+      "/zh-cn/guides/attractions/fuji-q-highland-tickets":
+        "免费入园，一日通票成人按日期 ¥6,000–7,900，大型过山车每次 ¥2,000，玩 4 项以上买一日通票更划算。另有含新宿往返巴士的 Toku-Q Pack 与优先券。",
       "/zh-cn/guides/attractions/teamlab-planets-tickets":
         "丰洲 Planets 的票价、30 分钟入场时段、进入涉水区该穿什么，以及与 teamLab Borderless（无界美术馆）的比较。",
       "/zh-cn/guides/attractions/teamlab-borderless-tickets":
@@ -472,7 +478,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
       {
         key: "tickets",
         label: "입장권",
-        desc: "도쿄의 전망대, 미술관, 고카트, 그리고 오사카의 도톤보리 리버크루즈, 우메다 스카이빌딩, 오사카성 천수각, 가이유칸 — 공식 요금과 예약 방법.",
+        desc: "도쿄의 전망대, 미술관, 고카트, 그리고 오사카의 도톤보리 리버크루즈, 우메다 스카이빌딩, 오사카성 천수각, 가이유칸, 후지산 기슭의 후지큐 하이랜드 — 공식 요금과 예약 방법.",
         routes: [
           "/ko/guides/attractions/shibuya-sky-tickets",
           "/ko/guides/attractions/tokyo-skytree-tickets",
@@ -484,6 +490,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/ko/guides/attractions/umeda-sky-building-tickets",
           "/ko/guides/attractions/osaka-castle-tickets",
           "/ko/guides/attractions/osaka-aquarium-kaiyukan-tickets",
+          "/ko/guides/attractions/fuji-q-highland-tickets",
         ],
       },
       {
@@ -557,6 +564,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "천수각 입장료는 성인 ¥1,200, 9:00~18:00 운영하고 입장 마감은 17:30입니다. 고자부네 놀잇배 등 성 안의 유료 시설 5곳은 합계 ¥5,200이고, 오사카 주유패스로는 모두 무료입니다.",
       "/ko/guides/attractions/osaka-aquarium-kaiyukan-tickets":
         "성인 입장료는 날짜에 따라 ¥2,700~3,200이고, 시간 지정 전자 티켓은 약 30일 전부터 판매합니다. 2026년 6월 재입장 종료, 주유패스 적용 안 됨, 덴포잔 대관람차와 산타마리아호도 정리했습니다.",
+      "/ko/guides/attractions/fuji-q-highland-tickets":
+        "입장은 무료이고, 1일 자유이용권은 날짜에 따라 성인 ¥6,000~7,900, 대형 코스터는 1회 ¥2,000입니다. 4개 이상 타면 자유이용권이 더 저렴하고, 신주쿠 왕복 버스가 포함된 Toku-Q Pack과 우선 탑승권도 정리했습니다.",
       "/ko/guides/attractions/tokyo-disney-tickets":
         "디즈니랜드·디즈니씨 입장권 가격과 예약 방법. 날짜 지정, 현장 판매 없음, 2개월 전 예약 시작.",
       "/ko/guides/attractions/usj-tickets-express-pass":
@@ -631,6 +640,7 @@ const COPY: Record<TranslatedLocale, Copy> = {
           "/th/guides/attractions/umeda-sky-building-tickets",
           "/th/guides/attractions/osaka-castle-tickets",
           "/th/guides/attractions/osaka-aquarium-kaiyukan-tickets",
+          "/th/guides/attractions/fuji-q-highland-tickets",
         ],
       },
       {
@@ -702,6 +712,8 @@ const COPY: Record<TranslatedLocale, Copy> = {
         "หอหลักผู้ใหญ่ ¥1,200 เปิด 9:00–18:00 น. เข้าได้ถึง 17:30 น. ในเขตปราสาทมีจุดเสียเงินรวม 5 แห่ง รวม ¥5,200 และเข้าฟรีทั้งหมดด้วย Osaka Amazing Pass",
       "/th/guides/attractions/osaka-aquarium-kaiyukan-tickets":
         "ผู้ใหญ่ ¥2,700–3,200 ตามวันที่ ตั๋วออนไลน์ระบุรอบเปิดขายล่วงหน้าประมาณ 30 วัน ยกเลิกการกลับเข้าชมซ้ำตั้งแต่มิถุนายน 2026 ใช้ Osaka Amazing Pass ไม่ได้ พร้อมชิงช้าสวรรค์และเรือซานตามาเรียที่เท็มโปซัน",
+      "/th/guides/attractions/fuji-q-highland-tickets":
+        "เข้าสวนฟรี One Day Pass ผู้ใหญ่ ¥6,000–7,900 ตามวันที่ รถไฟเหาะใหญ่รอบละ ¥2,000 เล่น 4 เครื่องขึ้นไปซื้อพาสคุ้มกว่า พร้อม Toku-Q Pack ที่รวมรถบัสไป-กลับจากชินจูกุ และ Priority Ticket",
       "/th/guides/attractions/tokyo-disney-tickets":
         "บัตรทุกใบระบุวัน และไม่มีขายที่ประตู วิธีซื้อ และเลือกระหว่างแลนด์กับซี",
       "/th/guides/attractions/usj-tickets-express-pass":

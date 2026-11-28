@@ -22,6 +22,7 @@ import { articleJsonLd } from "../../../lib/structured-data";
 import { checkedLabel, PRICES } from "../../../lib/attraction-prices";
 import { EsimCtaBottom, EsimCtaTop } from "../../../components/EsimCta";
 import HotelStayBlock from "../../../components/HotelStayBlock";
+import { hreflangLinks } from "../../../components/Hreflang";
 
 // Pass price bands, the free-entry rule, the coaster names and the rail/bus access
 // below were first read off fujiq.jp (/en/, /en/ticket/ and /en/access/) on 20 Oct 2026.
@@ -279,6 +280,7 @@ export default function FujiQHighlandTicketsPage({ updated }: { updated: PageUpd
         <title>{TITLE}</title>
         <meta name="description" content={DESCRIPTION} />
         <link rel="canonical" href="https://www.japan-travel-kit.com/guides/attractions/fuji-q-highland-tickets" />
+        {hreflangLinks("/guides/attractions/fuji-q-highland-tickets")}
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content={TITLE} />
         <meta property="og:url" content="https://www.japan-travel-kit.com/guides/attractions/fuji-q-highland-tickets" />

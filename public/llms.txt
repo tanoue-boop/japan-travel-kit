@@ -414,7 +414,7 @@ Whole days out of Tokyo, Kyoto and Osaka, where the decision is which itinerary 
 
 ## 繁體中文 (Traditional Chinese edition)
 
-A trial edition of 31 guides in Taiwanese Traditional Chinese, under /zh-tw/, with its own entry page at https://www.japan-travel-kit.com/zh-tw. Each guide is a translation of the English page listed beside it, carrying the same prices, the same operator sources and the same check dates — no figure appears in Chinese that is not also in English. They are written for readers in Taiwan and Hong Kong; both regions are served by the same pages (hreflang zh-Hant-TW and zh-Hant-HK).
+A trial edition of 32 guides in Taiwanese Traditional Chinese, under /zh-tw/, with its own entry page at https://www.japan-travel-kit.com/zh-tw. Each guide is a translation of the English page listed beside it, carrying the same prices, the same operator sources and the same check dates — no figure appears in Chinese that is not also in English. They are written for readers in Taiwan and Hong Kong; both regions are served by the same pages (hreflang zh-Hant-TW and zh-Hant-HK).
 
 - [日本旅遊實用指南（2026）：門票、交通、網卡](https://www.japan-travel-kit.com/zh-tw): the 繁體中文 edition's entry page — every page it has, grouped by category. 繁體中文 counterpart of https://www.japan-travel-kit.com/
 - [澀谷SKY 門票（2026）：票價、最佳時段與預約方式](https://www.japan-travel-kit.com/zh-tw/guides/attractions/shibuya-sky-tickets): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets
@@ -447,11 +447,12 @@ A trial edition of 31 guides in Taiwanese Traditional Chinese, under /zh-tw/, wi
 - [東京到大阪新幹線 2026：票價、車程時間與購票方式](https://www.japan-travel-kit.com/zh-tw/guides/transport/tokyo-to-osaka-shinkansen): 繁體中文 version of https://www.japan-travel-kit.com/guides/transport/tokyo-to-osaka-shinkansen
 - [東京到名古屋新幹線 2026：票價、車程時間與購票方式](https://www.japan-travel-kit.com/zh-tw/guides/transport/tokyo-to-nagoya-shinkansen): 繁體中文 version of https://www.japan-travel-kit.com/guides/transport/tokyo-to-nagoya-shinkansen
 - [大阪海遊館門票 2026：票價、入場時段與最佳時間](https://www.japan-travel-kit.com/zh-tw/guides/attractions/osaka-aquarium-kaiyukan-tickets): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/osaka-aquarium-kaiyukan-tickets
+- [富士急樂園門票 2026：一日券價格、免費入園與優先券](https://www.japan-travel-kit.com/zh-tw/guides/attractions/fuji-q-highland-tickets): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions/fuji-q-highland-tickets
 - [日本景點門票攻略（2026）：官方票價、預約方式與一日遊](https://www.japan-travel-kit.com/zh-tw/guides/attractions): 繁體中文 version of https://www.japan-travel-kit.com/guides/attractions
 
 ## 简体中文 (Simplified Chinese edition)
 
-The same 31 guides in Simplified Chinese, under /zh-cn/, with its own entry page at https://www.japan-travel-kit.com/zh-cn. Written for the Chinese communities of Singapore and Malaysia and for Chinese speakers living outside mainland China (hreflang zh-Hans and zh-Hans-SG). Not a character conversion of the /zh-tw/ pages: the vocabulary is the one these readers use (流量卡 / eSIM rather than 網卡, 一日游 rather than 一日遊, 快速通行证 rather than 快速通關) and the Klook links point at Klook's zh-CN locale. Every price, operator source and check date is identical to the English and Traditional pages.
+The same 32 guides in Simplified Chinese, under /zh-cn/, with its own entry page at https://www.japan-travel-kit.com/zh-cn. Written for the Chinese communities of Singapore and Malaysia and for Chinese speakers living outside mainland China (hreflang zh-Hans and zh-Hans-SG). Not a character conversion of the /zh-tw/ pages: the vocabulary is the one these readers use (流量卡 / eSIM rather than 網卡, 一日游 rather than 一日遊, 快速通行证 rather than 快速通關) and the Klook links point at Klook's zh-CN locale. Every price, operator source and check date is identical to the English and Traditional pages.
 
 - [日本旅游实用指南（2026）：门票、交通、流量卡](https://www.japan-travel-kit.com/zh-cn): the 简体中文 edition's entry page — every page it has, grouped by category. 简体中文 counterpart of https://www.japan-travel-kit.com/
 - [SHIBUYA SKY（涩谷天空）门票（2026）：票价、最佳时段与预约方式](https://www.japan-travel-kit.com/zh-cn/guides/attractions/shibuya-sky-tickets): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets
@@ -484,11 +485,12 @@ The same 31 guides in Simplified Chinese, under /zh-cn/, with its own entry page
 - [东京到大阪新干线 2026：票价、车程时间与购票方式](https://www.japan-travel-kit.com/zh-cn/guides/transport/tokyo-to-osaka-shinkansen): 简体中文 version of https://www.japan-travel-kit.com/guides/transport/tokyo-to-osaka-shinkansen
 - [东京到名古屋新干线 2026：票价、车程时间与购票方式](https://www.japan-travel-kit.com/zh-cn/guides/transport/tokyo-to-nagoya-shinkansen): 简体中文 version of https://www.japan-travel-kit.com/guides/transport/tokyo-to-nagoya-shinkansen
 - [大阪海游馆门票 2026：票价、入场时段与最佳时间](https://www.japan-travel-kit.com/zh-cn/guides/attractions/osaka-aquarium-kaiyukan-tickets): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/osaka-aquarium-kaiyukan-tickets
+- [富士急乐园门票 2026：一日通票价格、免费入园与优先券](https://www.japan-travel-kit.com/zh-cn/guides/attractions/fuji-q-highland-tickets): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions/fuji-q-highland-tickets
 - [日本景点门票攻略（2026）：官方票价、预约方式与一日游](https://www.japan-travel-kit.com/zh-cn/guides/attractions): 简体中文 version of https://www.japan-travel-kit.com/guides/attractions
 
 ## 한국어 (Korean edition)
 
-A trial edition of 27 guides in Korean, under /ko/ (hreflang ko-KR), with its own entry page at https://www.japan-travel-kit.com/ko. Korea is Japan's largest inbound market and these are the five pages its visitors book from: Shibuya Sky, teamLab Planets, Tokyo Disney, Universal Studios Japan and the eSIM comparison. Each one is a translation of the English page listed beside it, carrying the same prices, the same operator sources and the same check dates — no figure appears in Korean that is not also in English. The Klook links point at Klook's ko storefront. The rest of the site is English only, and the Korean pages label those links as English.
+A trial edition of 28 guides in Korean, under /ko/ (hreflang ko-KR), with its own entry page at https://www.japan-travel-kit.com/ko. Korea is Japan's largest inbound market and these are the five pages its visitors book from: Shibuya Sky, teamLab Planets, Tokyo Disney, Universal Studios Japan and the eSIM comparison. Each one is a translation of the English page listed beside it, carrying the same prices, the same operator sources and the same check dates — no figure appears in Korean that is not also in English. The Klook links point at Klook's ko storefront. The rest of the site is English only, and the Korean pages label those links as English.
 
 - [일본 여행 준비 가이드(2026): 티켓, 교통, eSIM](https://www.japan-travel-kit.com/ko): the 한국어 edition's entry page — every page it has, grouped by category. 한국어 counterpart of https://www.japan-travel-kit.com/
 - [시부야 스카이 예약(2026): 티켓 가격, 추천 시간대, 예약 방법](https://www.japan-travel-kit.com/ko/guides/attractions/shibuya-sky-tickets): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets
@@ -518,10 +520,11 @@ A trial edition of 27 guides in Korean, under /ko/ (hreflang ko-KR), with its ow
 - [도쿄 오사카 신칸센 2026: 가격, 소요 시간, 예매 방법](https://www.japan-travel-kit.com/ko/guides/transport/tokyo-to-osaka-shinkansen): 한국어 version of https://www.japan-travel-kit.com/guides/transport/tokyo-to-osaka-shinkansen
 - [도쿄 나고야 신칸센 2026: 가격, 소요 시간, 예매 방법](https://www.japan-travel-kit.com/ko/guides/transport/tokyo-to-nagoya-shinkansen): 한국어 version of https://www.japan-travel-kit.com/guides/transport/tokyo-to-nagoya-shinkansen
 - [오사카 가이유칸 입장권 2026: 요금, 예매, 추천 시간](https://www.japan-travel-kit.com/ko/guides/attractions/osaka-aquarium-kaiyukan-tickets): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/osaka-aquarium-kaiyukan-tickets
+- [후지큐 하이랜드 티켓 2026: 자유이용권 가격, 무료 입장](https://www.japan-travel-kit.com/ko/guides/attractions/fuji-q-highland-tickets): 한국어 version of https://www.japan-travel-kit.com/guides/attractions/fuji-q-highland-tickets
 
 ## ไทย (Thai edition)
 
-The same 27 guides in Thai, under /th/ (hreflang th-TH), with its own entry page at https://www.japan-travel-kit.com/th. Thailand is one of Japan's four largest inbound markets, and Thai readers book these attractions through the same platforms. Not a translation of the Korean pages: each is written from the English original, with the search terms Thai readers actually use (ตั๋ว Shibuya Sky, Express Pass USJ, eSIM ญี่ปุ่น) and Klook links pointing at Klook's th storefront. Every price, operator source and check date is identical to the English pages.
+The same 28 guides in Thai, under /th/ (hreflang th-TH), with its own entry page at https://www.japan-travel-kit.com/th. Thailand is one of Japan's four largest inbound markets, and Thai readers book these attractions through the same platforms. Not a translation of the Korean pages: each is written from the English original, with the search terms Thai readers actually use (ตั๋ว Shibuya Sky, Express Pass USJ, eSIM ญี่ปุ่น) and Klook links pointing at Klook's th storefront. Every price, operator source and check date is identical to the English pages.
 
 - [ไกด์เที่ยวญี่ปุ่น 2026: ตั๋ว การเดินทาง eSIM](https://www.japan-travel-kit.com/th): the ไทย edition's entry page — every page it has, grouped by category. ไทย counterpart of https://www.japan-travel-kit.com/
 - [ตั๋ว Shibuya Sky (2026): ราคา รอบเวลาที่ควรไป และวิธีจอง](https://www.japan-travel-kit.com/th/guides/attractions/shibuya-sky-tickets): ไทย version of https://www.japan-travel-kit.com/guides/attractions/shibuya-sky-tickets
@@ -551,6 +554,7 @@ The same 27 guides in Thai, under /th/ (hreflang th-TH), with its own entry page
 - [ชินคันเซ็น โตเกียว โอซาก้า 2026: ราคา](https://www.japan-travel-kit.com/th/guides/transport/tokyo-to-osaka-shinkansen): ไทย version of https://www.japan-travel-kit.com/guides/transport/tokyo-to-osaka-shinkansen
 - [ชินคันเซ็น โตเกียว นาโกย่า 2026: ราคา](https://www.japan-travel-kit.com/th/guides/transport/tokyo-to-nagoya-shinkansen): ไทย version of https://www.japan-travel-kit.com/guides/transport/tokyo-to-nagoya-shinkansen
 - [ตั๋วพิพิธภัณฑ์สัตว์น้ำไคยูคัง 2026: ราคา](https://www.japan-travel-kit.com/th/guides/attractions/osaka-aquarium-kaiyukan-tickets): ไทย version of https://www.japan-travel-kit.com/guides/attractions/osaka-aquarium-kaiyukan-tickets
+- [ตั๋วฟูจิคิว ไฮแลนด์ 2026: ราคา](https://www.japan-travel-kit.com/th/guides/attractions/fuji-q-highland-tickets): ไทย version of https://www.japan-travel-kit.com/guides/attractions/fuji-q-highland-tickets
 
 ## Site information
 

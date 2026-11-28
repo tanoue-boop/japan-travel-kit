@@ -278,6 +278,14 @@ const SEARCH_TERMS = {
     ko: "가이유칸 입장권",
     th: "พิพิธภัณฑ์สัตว์น้ำไคยูคัง",
   },
+  // Added 2026-11-28 (TR02): the park's name as Korean, Taiwan / Hong Kong, Simplified Chinese
+  // and Thai results write it.
+  "/guides/attractions/fuji-q-highland-tickets": {
+    "zh-tw": "富士急樂園門票",
+    "zh-cn": "富士急乐园门票",
+    ko: "후지큐 하이랜드 티켓",
+    th: "ตั๋วฟูจิคิว ไฮแลนด์",
+  },
 };
 
 /** Klook's own locale path each edition must link. */
