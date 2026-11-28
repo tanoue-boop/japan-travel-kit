@@ -1,9 +1,11 @@
 // Thai edition of /guides/attractions/teamlab-tokyo-tickets. Since 6 Nov 2026 (task
 // jtk-20261106-A24) this page answers one question: which of Tokyo's two teamLab museums to
-// book. Since 20 Nov 2026 (task jtk-20261120-R01) it mirrors the English page's order: a
-// numbers-first answer, one comparison table with the verdict in row one, the Klook buttons and
-// same-day block under it, short Planets-only / Borderless-only sections that hand over to their
-// own guides, and the same five FAQ questions. Official figures re-read on teamlab.art 20 Nov 2026.
+// book. Since 28 Nov 2026 (task jtk-20261128-R01) it mirrors the English page's order: a
+// three-sentence answer with both price floors, the visit length and the booking rule; one
+// comparison table with the verdict in row one (where, station, price, time, what to wear, when
+// booking opens, tickets on the day); the two Klook buttons and a same-day block (Tokyo day tour,
+// Subway Ticket, Klook eSIM) under it; question H2s — how much, on the day, both in one day — and
+// the same five FAQ questions. Official figures re-read on 28 Nov 2026.
 import Head from "next/head";
 import Link from "next/link";
 import BookingEsimCard from "../../../../components/BookingEsimCard";
@@ -24,7 +26,7 @@ import {
 import KlookLink from "../../../../components/KlookLink";
 import NextBookingBlock from "../../../../components/NextBookingBlock";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
-import { fujiDayTour, klookEsim, tokyoSightseeingBusTour, tokyoSubwayTicket } from "../../../../lib/klook-links";
+import { fujiDayTour, klookEsim, tokyoSightseeingBusTour, tokyoSubwayTicket, type KlookTour } from "../../../../lib/klook-links";
 import { thTeamlabBorderless, thTeamlabPlanets } from "../../../../lib/klook-links-th";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import KlookAddOnLine from "../../../../components/KlookAddOnLine";
@@ -42,65 +44,60 @@ const SAME_DAY = teamlabSameDayCards("tokyo", "th");
 
 const P = PRICES.teamlabPlanets;
 const B = PRICES.teamlabBorderless;
-const CHECKED_ISO = "2026-11-20";
+const CHECKED_ISO = "2026-11-28";
 const CHECKED = dateLabel(CHECKED_ISO, "th");
 const P_ADULT = priceLabel(P.adult, "th");
 const B_ADULT = priceLabel(B.adult, "th");
 const CHILD = priceLabel(P.child, "th");
+const SOURCE_NOTE = { marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" } as const;
 
 const ROUTE = "/th/guides/attractions/teamlab-tokyo-tickets";
 const TITLE = "teamLab Planets หรือ Borderless";
 const DESC =
-  "teamLab Planets หรือ Borderless? ผู้ใหญ่ ¥3,800/¥3,400 ขึ้นไป มีเด็กเลือก Planets";
+  "teamLab Planets หรือ Borderless? ผู้ใหญ่ ¥3,800/¥3,400 ขึ้นไป ลุยน้ำเลือก Planets";
 
 const PLANETS_URL = thTeamlabPlanets.url;
 const BORDERLESS_URL = thTeamlabBorderless.url;
 
 // แถวแรกคือคำตอบ
 const compareRows = [
-  { factor: "เหมาะกับ", planets: "มากับเด็ก หรืออยากเดินเท้าเปล่าลุยน้ำ", borderless: "ไปครั้งแรกโดยไม่มีเด็ก หรืออยากใส่รองเท้าเดินชมงานศิลปะแบบไม่เร่งรีบ" },
-  { factor: "ผู้ใหญ่ (18 ปีขึ้นไป)", planets: `${P_ADULT} ราคาสูงขึ้นในวันและรอบเวลาที่มีผู้เข้าชมมาก`, borderless: `${B_ADULT} ราคาสูงขึ้นในวันและรอบเวลาที่มีผู้เข้าชมมาก` },
-  { factor: "อายุ 13–17 ปี", planets: "¥2,800", borderless: "¥2,800" },
-  { factor: "เด็ก (4–12 ปี)", planets: `${CHILD} อายุ 3 ปีลงไปฟรี`, borderless: `${CHILD} อายุ 3 ปีลงไปฟรี` },
-  { factor: "ต้องลุยน้ำไหม", planets: "ใช่ เดินเท้าเปล่า น้ำลึกถึงระดับเข่าผู้ใหญ่", borderless: "ไม่ต้อง ใส่รองเท้าเดินชมได้" },
-  { factor: "เวลาที่ใช้", planets: "ทางการไม่ได้ระบุ เผื่อไว้ 1.5–2 ชั่วโมง", borderless: "ประมาณ 1.5–2 ชั่วโมง (FAQ ทางการ) โดยไม่จำกัดเวลาเมื่อเข้าไปแล้ว" },
-  { factor: "ตั๋วขายหมดไหม", planets: "ต้องจองรอบเวลาเข้าชมทางออนไลน์ล่วงหน้า ไม่มีจำหน่ายตั๋วหน้างาน", borderless: "เว็บไซต์ทางการระบุว่าตั๋วอาจขายหมด เปิดขายราววันที่ 1 ของเดือน ล่วงหน้า 2 เดือน" },
-  { factor: "ตั๋วหน้างาน", planets: "ไม่มีขายหน้างาน", borderless: "ซื้อหน้างานได้ถ้ายังมีรอบว่าง แพงกว่า ¥200" },
+  { factor: "เหมาะกับ", planets: "อยากเดินเท้าเปล่าลุยน้ำ (มากับเด็กเลือกแห่งนี้)", borderless: "อยากใส่รองเท้าเดินชมงานศิลปะอย่างอิสระ ไม่มีเส้นทางตายตัว" },
+  { factor: "ที่ตั้ง", planets: "โทโยสุ (เขตโคโต)", borderless: "อาซาบุไดฮิลส์ (เขตมินาโตะ)" },
   { factor: "สถานีใกล้สุด", planets: "สถานีชินโทโยสุ (สายยูริคาโมเมะ) ทางออก 1A เดิน 3 นาที", borderless: "สถานีคามิยะโจ (สายฮิบิยะ) ทางออก 5 เดิน 2 นาที" },
-  { factor: "เวลาเปิด", planets: "08:00–22:00 (31 ธ.ค.–2 ม.ค. เปิด 08:00–20:00)", borderless: "08:30–21:00 บางวันต่างออกไป" },
+  { factor: "ผู้ใหญ่ (18 ปีขึ้นไป)", planets: `${P_ADULT} ราคาสูงขึ้นในวันและรอบเวลาที่มีผู้เข้าชมมาก`, borderless: `${B_ADULT} ราคาสูงขึ้นในวันและรอบเวลาที่มีผู้เข้าชมมาก` },
+  { factor: "อายุ 13–17 / 4–12 ปี", planets: `¥2,800 / ${CHILD} อายุ 3 ปีลงไปฟรี`, borderless: `¥2,800 / ${CHILD} อายุ 3 ปีลงไปฟรี` },
+  { factor: "เวลาที่ใช้", planets: "ทางการไม่ได้ระบุ เผื่อไว้ 1.5–2 ชั่วโมง", borderless: "ประมาณ 1.5–2 ชั่วโมง (FAQ ทางการ) โดยไม่จำกัดเวลาเมื่อเข้าไปแล้ว" },
+  { factor: "การแต่งกาย", planets: "เท้าเปล่า น้ำลึกถึงระดับเข่าผู้ใหญ่ ยืมกางเกงขาสั้นได้ฟรี", borderless: "ใส่รองเท้าเดินชม ไม่มีน้ำ" },
+  { factor: "เปิดจอง", planets: "ไม่ได้ประกาศวันเปิดขาย ขายตั๋วระบุรอบเวลาทางออนไลน์", borderless: "ราววันที่ 1 ของเดือน ล่วงหน้า 2 เดือน" },
+  { factor: "ซื้อตั๋ววันเดียวกัน", planets: "ไม่มีขายหน้างาน ต้องซื้อออนไลน์ก่อนไป", borderless: "ซื้อออนไลน์ในวันนั้นได้ถ้ายังไม่หมด หรือซื้อหน้างานแพงกว่า ¥200" },
+  { factor: "เวลาเปิด", planets: "08:00–22:00 (31 ธ.ค.–2 ม.ค. เปิด 08:00–20:30)", borderless: "08:30–21:00 บางวันต่างออกไป" },
   { factor: "ระยะเวลาจัดแสดง", planets: "ถึงสิ้นปี 2027", borderless: "ถาวร" },
 ];
 
-const whoFor = [
-  {
-    title: "เลือก Planets ถ้า…",
-    desc: "คุณมากับเด็กและอยากทำกิจกรรมที่ได้เคลื่อนไหวร่างกาย และไม่กังวลว่าเท้าจะเปียก คุณจะได้เดินเท้าเปล่าลุยน้ำที่ลึกถึงระดับเข่าของผู้ใหญ่",
-  },
-  {
-    title: "เลือก Borderless ถ้า…",
-    desc: "คุณอยากเดินชมงานศิลปะมากกว่าเดินลุยน้ำ ที่นี่ไม่มีเส้นทางตายตัว ผลงานศิลปะเคลื่อนจากห้องหนึ่งไปอีกห้องหนึ่ง และคุณเดินได้ตามจังหวะของตัวเอง",
-  },
-  {
-    title: "ไปทั้งสองแห่ง ถ้า…",
-    desc: "คุณชอบ teamLab และมีเวลาว่างครึ่งวันสองช่วง ทั้งสองแห่งอยู่คนละย่านและต้องจองตั๋วระบุเวลาแยกกัน จึงควรเว้นเวลาระหว่างสองแห่งให้เพียงพอ",
-  },
+const costRows = [
+  { who: "ผู้ใหญ่ (18 ปีขึ้นไป)", planets: P_ADULT, borderless: B_ADULT, both: "¥7,200 ขึ้นไป" },
+  { who: "อายุ 13–17 ปี", planets: "¥2,800", borderless: "¥2,800", both: "¥5,600" },
+  { who: "อายุ 4–12 ปี", planets: CHILD, borderless: CHILD, both: "¥3,000" },
+  { who: "อายุ 3 ปีลงไป", planets: "ฟรี", borderless: "ฟรี", both: "ฟรี" },
+  { who: "ผู้พิการ", planets: "¥1,900 ขึ้นไป", borderless: "¥1,700 ขึ้นไป", both: "¥3,600 ขึ้นไป" },
+  { who: "ซื้อหน้างาน", planets: "ไม่มีขาย", borderless: "ผู้ใหญ่ +¥200", both: "—" },
 ];
 
 const faqItems: FaqItem[] = [
   {
-    q: "teamLab Planets กับ Borderless แห่งไหนดีกว่า?",
-    a: "ไม่มีแห่งไหนดีกว่าในทุกด้าน Planets ต้องเดินเท้าเปล่าลุยน้ำที่ลึกถึงระดับเข่าผู้ใหญ่ จึงเหมาะกับคนที่มากับเด็ก ส่วน Borderless ไม่มีแผนที่นำชมและไม่มีเส้นทางตายตัว ใส่รองเท้าเดินชมงานศิลปะได้ตามจังหวะตัวเอง ถ้ามากับเด็กให้เลือก Planets ถ้าไปครั้งแรกโดยไม่มีเด็กให้เลือก Borderless",
+    q: "teamLab ในโตเกียว Planets กับ Borderless แห่งไหนดีกว่า?",
+    a: "ไม่มีแห่งไหนดีกว่าในทุกด้าน Planets ต้องเดินเท้าเปล่าลุยน้ำที่ลึกถึงระดับเข่าผู้ใหญ่ จึงเหมาะกับคนที่มากับเด็ก ส่วน Borderless ไม่มีแผนที่นำชมและไม่มีเส้นทางตายตัว ใส่รองเท้าเดินชมงานศิลปะได้อย่างอิสระ",
   },
   {
     q: "ตั๋ว teamLab ในโตเกียวปี 2026 ราคาเท่าไร?",
     a: `ตั๋วผู้ใหญ่ของ Planets ${P_ADULT} และของ Borderless ${B_ADULT} ราคาสูงขึ้นในวันและรอบเวลาที่มีผู้เข้าชมมาก (ตรวจสอบจาก teamlab.art เมื่อ ${CHECKED}) อายุ 13–17 ปี ¥2,800 อายุ 4–12 ปี ${CHILD} ทั้งสองแห่ง และอายุ 3 ปีลงไปเข้าฟรี ถ้าไปทั้งสองแห่ง ผู้ใหญ่ต้องจ่ายตั้งแต่ ¥7,200`,
   },
   {
-    q: "ตั๋ว teamLab ขายหมดไหม?",
-    a: "ขายหมดได้ เว็บไซต์ทางการของ Borderless ระบุว่าตั๋วเป็นแบบระบุวันและเวลาและอาจขายหมด จึงแนะนำให้ซื้อทันทีที่กำหนดวันได้ ตั๋วเปิดขายราววันที่ 1 ของเดือน ล่วงหน้า 2 เดือนก่อนวันเข้าชม ส่วน Planets ไม่มีขายตั๋วหน้างานเลย ต้องจองออนไลน์ก่อนไป",
+    q: "ซื้อตั๋ว teamLab ในวันเดียวกันได้ไหม?",
+    a: "ได้เฉพาะ Borderless ถ้าตั๋วยังไม่หมดก็ซื้อในวันนั้นผ่านเว็บไซต์ขายตั๋วทางการได้ และซื้อหน้างานได้โดยผู้ใหญ่แพงกว่า ¥200 ส่วน Planets ไม่มีขายตั๋วหน้างานเลย ต้องซื้อออนไลน์ก่อนไป",
   },
   {
-    q: "ไป Planets และ Borderless ในวันเดียวกันได้ไหม?",
+    q: "ไป Planets และ Borderless ในวันเดียวได้ไหม?",
     a: "ได้ เพราะตั๋วแต่ละแห่งระบุวันและเวลาแยกกัน แต่ทั้งสองแห่งอยู่คนละย่าน คือโทโยสุและอาซาบุไดฮิลส์ และ teamLab ระบุว่า Borderless ใช้เวลาประมาณ 1.5–2 ชั่วโมง ควรเว้นเวลาระหว่างสองรอบอย่างน้อยเท่าระยะเวลาเข้าชมดังกล่าว บวกเวลาเดินทาง หรือแบ่งไปแห่งละครึ่งวัน",
   },
   {
@@ -109,20 +106,22 @@ const faqItems: FaqItem[] = [
   },
 ];
 
-const subwayTour = withKlookLocale(tokyoSubwayTicket, "th", {
-  title: "Tokyo Subway Ticket (24 / 48 / 72 ชั่วโมง)",
-  desc: "นั่งได้ไม่จำกัดทุกสายของ Tokyo Metro และ Toei Subway รับตั๋วเมื่อเดินทางมาถึงได้โดยไม่ต้องต่อคิวซื้อ",
-});
-const tripTours = [
+// ใต้ตารางเปรียบเทียบ: ทัวร์โตเกียว 1 วัน・Tokyo Subway Ticket・Klook eSIM
+const sameDayBookings: KlookTour[] = [
   withKlookLocale(tokyoSightseeingBusTour, "th", {
     title: "ทัวร์รถบัสเที่ยวโตเกียว 1 วัน",
     desc: "ทัวร์พร้อมไกด์พาชมสวนพระราชวังอิมพีเรียล อาซากุสะ และโตเกียวสกายทรี พร้อมระบบบรรยายเสียงหลายภาษา",
   }),
-  withKlookLocale(fujiDayTour, "th", {
-    title: "ทัวร์ภูเขาไฟฟูจิ 1 วันจากโตเกียว",
-    desc: "นั่งรถบัสเที่ยวตลอดวันไปยังสถานีที่ 5 ของภูเขาไฟฟูจิ ทะเลสาบคาวากุจิ และโอชิโนะฮักไก กลับถึงโตเกียวในช่วงเย็นของวันเดียวกัน",
+  withKlookLocale(tokyoSubwayTicket, "th", {
+    title: "Tokyo Subway Ticket (24 / 48 / 72 ชั่วโมง)",
+    desc: "นั่งได้ไม่จำกัดทุกสายของ Tokyo Metro และ Toei Subway รับตั๋วเมื่อเดินทางมาถึงได้โดยไม่ต้องต่อคิวซื้อ",
   }),
+  { title: "eSIM ญี่ปุ่นของ Klook", desc: "ทั้งสองแห่งสแกนตั๋วบนมือถือที่ทางเข้า จึงควรเตรียมอินเทอร์เน็ตไว้ก่อนวันเข้าชม", url: klookFor(klookEsim.url, "th") },
 ];
+const fujiTour = withKlookLocale(fujiDayTour, "th", {
+  title: "ทัวร์ภูเขาไฟฟูจิ 1 วันจากโตเกียว",
+  desc: "นั่งรถบัสเที่ยวตลอดวันไปยังสถานีที่ 5 ของภูเขาไฟฟูจิ ทะเลสาบคาวากุจิ และโอชิโนะฮักไก กลับถึงโตเกียวในช่วงเย็นของวันเดียวกัน",
+});
 
 const trail: Crumb[] = [...TRAIL_BASE.th, { label: "teamLab Planets หรือ Borderless" }];
 
@@ -181,11 +180,11 @@ export default function ThTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           </div>
           <div className={styles.verdictBody}>
             <p className={styles.verdictText}>
-              <strong>ตั๋ว teamLab</strong> ทั้งสองแห่งในโตเกียวจำหน่ายแยกกัน ผู้ใหญ่ที่ <strong>teamLab Planets (โทโยสุ) {P_ADULT}</strong> และที่{" "}
-              <strong>teamLab Borderless (อาซาบุไดฮิลส์) {B_ADULT}</strong> เด็กอายุ 4–12 ปี {CHILD} ทั้งสองแห่ง (ตรวจสอบจากเว็บไซต์ทางการเมื่อ{" "}
-              {CHECKED}) teamLab ระบุว่า Borderless ใช้เวลาประมาณ 1.5–2 ชั่วโมง ส่วน Planets ไม่ได้ระบุระยะเวลาไว้ จึงเผื่อไว้ 1.5–2
-              ชั่วโมงเช่นกัน ถ้ามากับเด็ก <strong>จอง Planets</strong> ที่เดินเท้าเปล่าลุยน้ำลึกถึงระดับเข่า ถ้าไปครั้งแรกโดยไม่มีเด็ก{" "}
-              <strong>จอง Borderless</strong> ที่ใส่รองเท้าเดินชมและซื้อตั๋วหน้างานได้ถ้ายังมีรอบว่าง
+              <strong>ตั๋ว teamLab ในโตเกียว</strong>สำหรับผู้ใหญ่ราคา <strong>{P_ADULT} ที่ teamLab Planets (โทโยสุ)</strong> และ <strong>{B_ADULT} ที่ teamLab Borderless (อาซาบุไดฮิลส์)</strong> และราคาสูงขึ้นในวันและรอบเวลาที่มีผู้เข้าชมมาก (ตรวจสอบจากเว็บไซต์ทางการเมื่อ {CHECKED}) teamLab ระบุว่า Borderless ใช้เวลาประมาณ 1.5–2 ชั่วโมง ส่วน Planets ไม่ได้ระบุไว้ จึงเผื่อไว้ 1.5–2 ชั่วโมงเช่นกัน ทั้งสองแห่งขายตั๋วระบุรอบเวลาทางออนไลน์ และมีเพียง Borderless ที่ซื้อหน้างานได้ (แพงกว่า ¥200)
+            </p>
+            <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0 }}>
+              อยากเดินเท้าเปล่าลุยน้ำ <strong>เลือก Planets</strong> อยากเดินชมงานศิลปะอย่างอิสระ <strong>เลือก Borderless</strong> ดูราคาตามวันและขั้นตอนจองได้ในคู่มือ{" "}
+              <Link href="/th/guides/attractions/teamlab-planets-tickets">ตั๋ว teamLab Planets</Link>
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={PLANETS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
@@ -210,8 +209,8 @@ export default function ThTeamLabTokyoPage({ updated }: { updated: PageUpdated }
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>เปรียบเทียบแบบเคียงข้างกัน</span>
-          <h2 className={styles.sectionTitle}>teamLab Planets หรือ Borderless: ควรจองแห่งไหน?</h2>
-          <p className={styles.bodyText}>หากมากับเด็กให้เลือก Planets ส่วนผู้ใหญ่ที่ไปครั้งแรกให้เลือก Borderless ดูเหตุผลประกอบได้จากตารางด้านล่าง</p>
+          <h2 className={styles.sectionTitle}>teamLab ในโตเกียว Planets หรือ Borderless แห่งไหนดีกว่า?</h2>
+          <p className={styles.bodyText}>อยากเดินลุยน้ำให้เลือก Planets (มากับเด็กก็เลือกแห่งนี้) อยากใส่รองเท้าเดินชมอย่างอิสระให้เลือก Borderless ดูความแตกต่างอื่น ๆ ได้จากตารางด้านล่าง</p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
               <table className={styles.table}>
@@ -234,14 +233,14 @@ export default function ThTeamLabTokyoPage({ updated }: { updated: PageUpdated }
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+          <p className={styles.bodyText} style={SOURCE_NOTE}>
             ตรวจสอบล่าสุด: {CHECKED_ISO} แหล่งข้อมูล:{" "}
             <a href="https://www.teamlab.art/e/planets/" target="_blank" rel="noopener noreferrer">teamlab.art/e/planets</a>,{" "}
+            <a href="https://teamlabplanets.dmm.com/en/ticket" target="_blank" rel="noopener noreferrer">teamlabplanets.dmm.com/en/ticket</a>,{" "}
             <a href="https://www.teamlab.art/e/borderless-azabudai/" target="_blank" rel="noopener noreferrer">teamlab.art/e/borderless-azabudai</a>{" "}
             และ FAQ ของ Borderless{" "}
             <a href="https://www.teamlab.art/faq/Tokyo/" target="_blank" rel="noopener noreferrer">teamlab.art/faq/Tokyo</a>{" "}
-            ตั๋วผู้ใหญ่ของทั้งสองแห่งเปลี่ยนราคาตามวันและเวลา และประกาศเฉพาะราคาต่ำสุด จึงควรตรวจสอบราคาของวันที่คุณจะไป
-            เวลาที่ใช้ใน Planets เป็นตัวเลขสำหรับวางแผน teamLab ไม่ได้ประกาศไว้
+            ตั๋วผู้ใหญ่ของทั้งสองแห่งเปลี่ยนราคาตามวันและเวลา และประกาศเฉพาะราคาต่ำสุด จึงควรตรวจสอบราคาของวันที่คุณจะไป เวลาที่ใช้ใน Planets เป็นตัวเลขสำหรับวางแผน teamLab ไม่ได้ประกาศไว้
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={PLANETS_URL} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
@@ -253,71 +252,83 @@ export default function ThTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           </div>
         </section>
 
-        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
-
         <KlookTourPicks
-          heading="เดินทางระหว่างโทโยสุกับอาซาบุไดฮิลส์"
-          intro="สถานีคามิยะโจที่อยู่ใกล้ Borderless อยู่บนสายฮิบิยะของ Tokyo Metro และ Tokyo Subway Ticket ใช้เดินทางได้ทุกสายของ Tokyo Metro และ Toei ภายใน 24, 48 หรือ 72 ชั่วโมง ส่วนสถานีชินโทโยสุที่อยู่ใกล้ Planets เป็นสายยูริคาโมเมะ ซึ่งตั๋วนี้ใช้ไม่ได้ หากใช้ตั๋วนี้ ให้ใช้สถานีโทโยสุของสายยูราคุโจแทน"
-          tours={[subwayTour]}
+          heading="จองไว้สำหรับวันเดียวกับ teamLab"
+          intro="ทัวร์โตเกียว 1 วันพร้อมไกด์ บัตรรถไฟใต้ดิน และอินเทอร์เน็ตสำหรับตั๋วบนมือถือ Tokyo Subway Ticket ใช้ไปสถานีคามิยะโจของ Borderless ได้ ส่วน Planets ใช้ไปสถานีโทโยสุของสายยูราคุโจ (เดิน 10 นาที) ได้ แต่ใช้กับสายยูริคาโมเมะไปสถานีชินโทโยสุไม่ได้ ราคาของ Klook เปลี่ยนตามวันที่ จึงควรเปิดหน้าสินค้าเพื่อดูราคาในวันของคุณ"
+          tours={sameDayBookings}
         />
 
-        <BookingEsimCard />
-
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>ไป Planets อย่างเดียว</span>
-          <h2 className={styles.sectionTitle}>ตัดสินใจไป teamLab Planets แล้วใช่ไหม?</h2>
-          <p className={styles.bodyText}>
-            teamLab Planets ที่โทโยสุขายเฉพาะตั๋วระบุรอบเวลา ผู้ใหญ่ {P_ADULT} และไม่มีขายหน้างาน การจองจึงต้องเลือกวันและรอบเวลาเข้าชมทางออนไลน์
-            ดูราคาตามวัน Premium Pass การแต่งกายสำหรับโซนน้ำ และเส้นทางจากสถานีชินโทโยสุหรือโทโยสุได้ในคู่มือตั๋ว Planets
-          </p>
-          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <Link href="/th/guides/attractions/teamlab-planets-tickets" className={styles.verdictBtn}>
-              อ่านคู่มือตั๋ว teamLab Planets ฉบับเต็ม →
-            </Link>
-          </div>
-        </section>
-
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>ไป Borderless อย่างเดียว</span>
-          <h2 className={styles.sectionTitle}>ตัดสินใจไป teamLab Borderless แล้วใช่ไหม?</h2>
-          <p className={styles.bodyText}>
-            teamLab Borderless ที่อาซาบุไดฮิลส์ขายตั๋วระบุรอบเวลา ผู้ใหญ่ {B_ADULT} และ Flexible Pass ที่ไม่ระบุเวลาเข้า
-            ตั๋วเปิดขายราววันที่ 1 ของเดือน ล่วงหน้า 2 เดือน ดูวันเปิดขาย Flexible Pass เวลาปิดที่เปลี่ยนไป และการซื้อหน้างาน
-            ได้ในคู่มือตั๋ว Borderless
-          </p>
-          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <Link href="/th/guides/attractions/teamlab-borderless-tickets" className={styles.verdictBtn}>
-              อ่านคู่มือตั๋ว teamLab Borderless ฉบับเต็ม →
-            </Link>
-          </div>
-        </section>
+        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
 
         {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
         <HotelStayBlock city="tokyo" areas={["ginza", "odaiba", "roppongi", "tokyoStation"]} />
 
         <EsimCtaTop />
 
-        <section className={styles.whoForSection}>
-          <span className={styles.sectionLabel}>ที่ไหนเหมาะกับคุณ</span>
-          <h2 className={styles.sectionTitle}>ควรเลือก teamLab แห่งไหน?</h2>
-          <div className={styles.whoForGrid}>
-            {whoFor.map((item) => (
-              <div key={item.title} className={styles.whoForCard}>
-                <p className={styles.whoForTitle}>{item.title}</p>
-                <p className={styles.whoForDesc}>{item.desc}</p>
-              </div>
-            ))}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>ราคา</span>
+          <h2 className={styles.sectionTitle}>ตั๋ว teamLab ในโตเกียวราคาเท่าไร?</h2>
+          <p className={styles.bodyText}>ผู้ใหญ่ Planets {P_ADULT} และ Borderless {B_ADULT} เนื่องจากต้องซื้อตั๋วแยกกัน ถ้าไปทั้งสองแห่ง ผู้ใหญ่ตั้งแต่ ¥7,200 และเด็กอายุ 4–12 ปี ¥3,000</p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["ตั๋ว", "teamLab Planets", "teamLab Borderless", "ทั้งสองแห่ง"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {costRows.map((row) => (
+                    <tr key={row.who}>
+                      <td className={styles.tdProvider}>{row.who}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.planets}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.borderless}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.both}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
+          <p className={styles.bodyText} style={SOURCE_NOTE}>
+            ตรวจสอบล่าสุด: {CHECKED_ISO} จาก{" "}
+            <a href="https://www.teamlab.art/e/planets/" target="_blank" rel="noopener noreferrer">teamlab.art/e/planets</a>{" "}
+            และ{" "}
+            <a href="https://www.teamlab.art/e/borderless-azabudai/" target="_blank" rel="noopener noreferrer">teamlab.art/e/borderless-azabudai</a>{" "}
+            ราคาผู้ใหญ่และผู้พิการเป็นราคาต่ำสุดที่สูงขึ้นในบางวัน ช่อง &quot;ทั้งสองแห่ง&quot; คือผลรวมของราคาต่ำสุดทั้งสอง
+          </p>
         </section>
+
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>ซื้อวันเดียวกัน</span>
+          <h2 className={styles.sectionTitle}>ซื้อตั๋ว teamLab ในวันเดียวกันได้ไหม?</h2>
+          <p className={styles.bodyText}>ได้เฉพาะ Borderless ถ้าตั๋วยังไม่หมดก็ซื้อในวันนั้นผ่านเว็บไซต์ขายตั๋วทางการได้ และซื้อหน้างานได้โดยผู้ใหญ่แพงกว่า ¥200 ส่วน Planets ไม่มีขายหน้างาน ต้องซื้อออนไลน์ก่อนไป</p>
+          <p className={styles.bodyText}>
+            ตั๋ว Borderless เปิดขายราววันที่ 1 ของเดือน ล่วงหน้า 2 เดือน และ teamLab แจ้งว่าอาจขายหมด ส่วน Planets ไม่ได้ประกาศวันเปิดขาย ดูวันเปิดขาย Flexible Pass และการซื้อหน้างานได้ในคู่มือ{" "}
+            <Link href="/th/guides/attractions/teamlab-borderless-tickets">ตั๋ว teamLab Borderless</Link> และดูราคาตามวัน Premium Pass และการแต่งกายสำหรับโซนน้ำได้ในคู่มือ{" "}
+            <Link href="/th/guides/attractions/teamlab-planets-tickets">ตั๋ว teamLab Planets</Link>
+          </p>
+        </section>
+
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>ไปทั้งสองแห่ง</span>
+          <h2 className={styles.sectionTitle}>ไปทั้งสองแห่งในวันเดียวได้ไหม?</h2>
+          <p className={styles.bodyText}>ได้ ถ้ามีตั๋วระบุรอบเวลาสองใบและเว้นช่วงให้พอ เผื่อเวลาแห่งละ 1.5–2 ชั่วโมงบวกเวลาเดินทางระหว่างโทโยสุกับอาซาบุไดฮิลส์ หรือแบ่งไปแห่งละครึ่งวัน</p>
+          <p className={styles.bodyText}>ไปทั้งสองแห่ง ผู้ใหญ่ตั้งแต่ ¥7,200 สถานีคามิยะโจของ Borderless อยู่บนสายฮิบิยะของ Tokyo Metro ส่วน Planets เดิน 10 นาทีจากสถานีโทโยสุ (สายยูราคุโจ) หรือ 3 นาทีจากสถานีชินโทโยสุ (สายยูริคาโมเมะ)</p>
+        </section>
+
+        <BookingEsimCard />
 
         <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 
         <KlookTourPicks
-          heading="จองไว้สำหรับทริปเดียวกัน"
-          intro="ไม่ว่าจะเลือกแห่งไหน การเข้าชมใช้เวลาเพียงส่วนหนึ่งของวันในโตเกียว ตัวเลือกเหล่านี้มีทั้งทัวร์ชมเมืองพร้อมไกด์ และทัวร์ 1 วันนอกเมือง ราคาของ Klook เปลี่ยนตามวันที่ จึงควรเปิดหน้าสินค้าเพื่อดูราคาในวันของคุณ"
-          tours={tripTours}
+          heading="ทัวร์ 1 วันออกนอกโตเกียว"
+          intro="ไม่ว่าจะเลือกแห่งไหน การเข้าชมใช้เวลาเพียงส่วนหนึ่งของวันในโตเกียว ถ้าอยากออกนอกเมืองทั้งวัน มีทัวร์ภูเขาไฟฟูจิ ราคาของ Klook เปลี่ยนตามวันที่ จึงควรเปิดหน้าสินค้าเพื่อดูราคาในวันของคุณ"
+          tours={[fujiTour]}
         />
 
         <Related

@@ -519,7 +519,9 @@ export default function Tokyo1DayItineraryPage({ updated }: { updated: PageUpdat
             Only the timed tickets. SHIBUYA SKY sells each date from 00:00 Japan time two weeks ahead, and only the
             sunset slots sell out; teamLab Planets sells 30-minute slots and nothing on site; Skytree is ¥500 cheaper
             per ticket booked ahead. Senso-ji, Meiji Jingu, Tsukiji, the Shinjuku decks and the Tokyo Tower Main Deck
-            need no booking.
+            need no booking. Not sure Planets is the right teamLab for the day? The{" "}
+            <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Tokyo tickets</Link> comparison sets Planets
+            and Borderless side by side on price, time and water.
           </p>
           <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
             <KlookLink href={shibuyaSkyTicketUrl} target="_blank" rel="sponsored nofollow noopener" className={styles.pickCta}>

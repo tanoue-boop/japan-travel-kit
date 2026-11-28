@@ -513,7 +513,7 @@ export default function TeamLabBorderlessTicketsPage({ updated }: { updated: Pag
         <p className={styles.bodyText}>
           All figures were read from the official teamLab site and its FAQ on {CHECKED}. Still choosing which
           museum to book? The{" "}
-          <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Planets vs Borderless comparison</Link>{" "}
+          <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Tokyo tickets comparison</Link>{" "}
           answers that; this page is about booking Borderless itself.
         </p>
 

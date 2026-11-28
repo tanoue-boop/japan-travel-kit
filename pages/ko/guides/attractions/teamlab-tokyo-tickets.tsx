@@ -1,8 +1,10 @@
 // Korean edition of /guides/attractions/teamlab-tokyo-tickets. Mirrors the English comparison
-// page: since 20 Nov 2026 (task jtk-20261120-R01) the same order — a numbers-first answer, one
-// comparison table with the verdict in row one, the Klook buttons and same-day block under it,
-// short Planets-only / Borderless-only sections that hand over to their own guides, and the
-// same five FAQ questions. Official figures were re-read on teamlab.art on 20 Nov 2026.
+// page. Since 28 Nov 2026 (task jtk-20261128-R01) the same order as English: a three-sentence
+// answer with both price floors, the visit length and the booking rule; one comparison table
+// with the verdict in row one (where, station, price, time, what to wear, when booking opens,
+// tickets on the day); the two Klook buttons and a same-day block (Tokyo day tour, Subway
+// Ticket, Klook eSIM) under it; then question H2s — how much, on the day, both in one day —
+// and the same five FAQ questions. Official figures were re-read on 28 Nov 2026.
 import Head from "next/head";
 import Link from "next/link";
 import BookingEsimCard from "../../../../components/BookingEsimCard";
@@ -23,7 +25,7 @@ import {
 import KlookLink from "../../../../components/KlookLink";
 import NextBookingBlock from "../../../../components/NextBookingBlock";
 import KlookTourPicks from "../../../../components/KlookTourPicks";
-import { fujiDayTour, klookEsim, tokyoSightseeingBusTour, tokyoSubwayTicket } from "../../../../lib/klook-links";
+import { fujiDayTour, klookEsim, tokyoSightseeingBusTour, tokyoSubwayTicket, type KlookTour } from "../../../../lib/klook-links";
 import { koTeamlabBorderless, koTeamlabPlanets } from "../../../../lib/klook-links-ko";
 import { klookFor, withKlookLocale } from "../../../../lib/klook-locale";
 import KlookAddOnLine from "../../../../components/KlookAddOnLine";
@@ -42,62 +44,58 @@ const SAME_DAY = teamlabSameDayCards("tokyo", "ko");
 const ROUTE = "/ko/guides/attractions/teamlab-tokyo-tickets";
 const TITLE = "팀랩 플래닛 보더리스 비교 2026: 가격·어디로 갈까";
 const DESC =
-  "도쿄 팀랩 티켓은 두 곳 따로. 성인 플래닛 ¥3,800~, 보더리스 ¥3,400~. 아이와 함께면 플래닛, 성인 첫 방문은 보더리스.";
+  "도쿄 팀랩 티켓은 두 곳 따로. 성인 플래닛 ¥3,800~, 보더리스 ¥3,400~. 물속을 걷고 싶으면 플래닛, 자유롭게 돌아보려면 보더리스.";
 
 const P = PRICES.teamlabPlanets;
 const B = PRICES.teamlabBorderless;
-const CHECKED_ISO = "2026-11-20";
+const CHECKED_ISO = "2026-11-28";
 const CHECKED = dateLabel(CHECKED_ISO, "ko");
 const P_ADULT = priceLabel(P.adult, "ko");
 const B_ADULT = priceLabel(B.adult, "ko");
 const P_CHILD = priceLabel(P.child, "ko");
 const B_CHILD = priceLabel(B.child, "ko");
+const LINK = { color: "var(--red)", fontWeight: 600 } as const;
+const SOURCE_NOTE = { marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" } as const;
 
 // 1행이 결론입니다.
 const compareRows = [
-  { factor: "이런 분께", planets: "아이와 함께, 또는 맨발로 물속을 걷고 싶은 분", borderless: "아이 없이 처음 가는 분, 신발을 신은 채 천천히 작품을 보고 싶은 분" },
-  { factor: "성인(18세 이상)", planets: `${P_ADULT}, 붐비는 날짜·시간대는 더 비쌈`, borderless: `${B_ADULT}, 붐비는 날짜·시간대는 더 비쌈` },
-  { factor: "13~17세", planets: "¥2,800", borderless: "¥2,800" },
-  { factor: "어린이(4~12세)", planets: `${P_CHILD}, 3세 이하 무료`, borderless: `${B_CHILD}, 3세 이하 무료` },
-  { factor: "물에 들어가나요", planets: "예. 맨발, 성인 무릎 높이까지", borderless: "아니요. 신발을 신고 관람" },
-  { factor: "관람 시간", planets: "공식 안내 없음. 1.5~2시간 잡으세요", borderless: "약 1.5~2시간(공식 FAQ), 관람 시간 제한 없음" },
-  { factor: "매진되나요", planets: "시간 지정제이며 현장 판매가 없으므로 온라인으로 미리 예약", borderless: "공식 사이트에서 매진될 수 있다고 안내. 방문 2개월 전 1일 무렵 판매 시작" },
-  { factor: "현장 구매", planets: "현장 판매 없음", borderless: "남은 회차가 있으면 현장 구매 가능(¥200 추가)" },
+  { factor: "이런 분께", planets: "맨발로 물속을 걷고 싶은 분(아이와 함께라면 이쪽)", borderless: "정해진 경로 없이 신발을 신은 채 자유롭게 돌아보고 싶은 분" },
+  { factor: "위치", planets: "도요스(고토구)", borderless: "아자부다이힐스(미나토구)" },
   { factor: "가까운 역", planets: "신토요스역(유리카모메) 1A 출구 도보 3분", borderless: "가미야초역(히비야선) 5번 출구 도보 2분" },
-  { factor: "운영 시간", planets: "08:00–22:00(12/31~1/2는 08:00–20:00)", borderless: "08:30–21:00, 날짜에 따라 다름" },
+  { factor: "성인(18세 이상)", planets: `${P_ADULT}, 붐비는 날짜·시간대는 더 비쌈`, borderless: `${B_ADULT}, 붐비는 날짜·시간대는 더 비쌈` },
+  { factor: "13~17세 / 4~12세", planets: `¥2,800 / ${P_CHILD}, 3세 이하 무료`, borderless: `¥2,800 / ${B_CHILD}, 3세 이하 무료` },
+  { factor: "관람 시간", planets: "공식 안내 없음. 1.5~2시간 잡으세요", borderless: "약 1.5~2시간(공식 FAQ), 관람 시간 제한 없음" },
+  { factor: "복장", planets: "맨발, 성인 무릎 높이까지 물, 반바지 무료 대여", borderless: "신발을 신고 관람, 물 없음" },
+  { factor: "예약 시작", planets: "판매 시작일 공개 없음. 시간 지정권을 온라인 판매", borderless: "방문 2개월 전 1일 무렵" },
+  { factor: "당일 구매", planets: "현장 판매 없음. 가기 전에 온라인 구매", borderless: "매진되지 않았다면 당일 온라인 구매 가능, 현장 구매는 ¥200 추가" },
+  { factor: "운영 시간", planets: "08:00–22:00(12/31~1/2는 08:00–20:30)", borderless: "08:30–21:00, 날짜에 따라 다름" },
   { factor: "운영 기간", planets: "2027년 말까지", borderless: "상설" },
 ];
 
-const whoFor = [
-  {
-    title: "플래닛을 고른다면",
-    desc: "아이와 함께이거나, 몸을 쓰는 체험을 원하고 발이 젖어도 괜찮은 경우입니다. 성인 무릎 높이까지 차오르는 물속을 맨발로 걷습니다.",
-  },
-  {
-    title: "보더리스를 고른다면",
-    desc: "물속을 걷기보다 작품을 보고 싶은 경우입니다. 정해진 경로가 없고, 작품이 방 사이를 옮겨 다니며, 자신의 속도에 맞춰 자유롭게 관람합니다.",
-  },
-  {
-    title: "둘 다 간다면",
-    desc: "반나절씩 두 번 시간을 낼 수 있고 팀랩을 좋아하는 경우입니다. 도쿄의 서로 다른 지역에 있고 시간 지정 티켓도 따로 필요하니 방문 날짜를 나누세요.",
-  },
+const costRows = [
+  { who: "성인(18세 이상)", planets: P_ADULT, borderless: B_ADULT, both: "¥7,200~" },
+  { who: "13~17세", planets: "¥2,800", borderless: "¥2,800", both: "¥5,600" },
+  { who: "4~12세", planets: P_CHILD, borderless: B_CHILD, both: "¥3,000" },
+  { who: "3세 이하", planets: "무료", borderless: "무료", both: "무료" },
+  { who: "장애인", planets: "¥1,900~", borderless: "¥1,700~", both: "¥3,600~" },
+  { who: "현장 구매", planets: "판매 없음", borderless: "성인 ¥200 추가", both: "—" },
 ];
 
 const faqItems: FaqItem[] = [
   {
-    q: "팀랩 플래닛과 보더리스 중 어디가 더 좋나요?",
-    a: "어느 한쪽이 더 낫다고 할 수는 없습니다. 플래닛은 성인 무릎 높이까지 오는 물속을 맨발로 걷는 체험형이라 아이와 함께 가기에 맞고, 보더리스는 지도도 정해진 경로도 없이 신발을 신은 채 천천히 작품을 보는 곳입니다. 아이와 함께라면 플래닛, 아이 없이 처음 간다면 보더리스를 고르세요.",
+    q: "도쿄 팀랩, 플래닛과 보더리스 중 어디가 더 좋나요?",
+    a: "어느 한쪽이 더 낫다고 할 수는 없습니다. 플래닛은 성인 무릎 높이까지 오는 물속을 맨발로 걷는 곳이라 아이와 함께 가기에 맞고, 보더리스는 지도도 정해진 경로도 없이 신발을 신은 채 자유롭게 돌아보는 곳입니다.",
   },
   {
     q: "2026년 도쿄 팀랩 티켓 가격은 얼마인가요?",
     a: `성인 티켓은 플래닛 ${P_ADULT}, 보더리스 ${B_ADULT}이며 붐비는 날짜와 시간대에는 더 비쌉니다(${CHECKED} teamlab.art 확인). 13~17세는 ¥2,800, 4~12세는 두 곳 모두 ${P_CHILD}, 3세 이하는 무료입니다. 두 곳 모두 가면 성인 1인 ¥7,200부터입니다.`,
   },
   {
-    q: "팀랩 티켓은 매진되나요?",
-    a: "매진될 수 있습니다. 보더리스 공식 사이트는 티켓이 날짜·시간 지정이라 매진될 수 있다며 일정이 정해지면 바로 구매하라고 안내하고, 티켓은 방문 2개월 전 1일 무렵 판매를 시작합니다. 플래닛은 현장에서 티켓을 팔지 않으므로 반드시 온라인으로 미리 예약해야 합니다.",
+    q: "팀랩 티켓은 당일에 살 수 있나요?",
+    a: "보더리스만 가능합니다. 팀랩 보더리스는 매진되지 않았다면 당일에도 공식 티켓 사이트에서 살 수 있고, 현장 구매는 성인 ¥200이 더 비쌉니다. 팀랩 플래닛은 현장에서 티켓을 팔지 않으므로 가기 전에 온라인으로 구매해야 합니다.",
   },
   {
-    q: "플래닛과 보더리스를 같은 날 갈 수 있나요?",
+    q: "플래닛과 보더리스를 하루에 갈 수 있나요?",
     a: "티켓이 각각 날짜와 시간을 지정하므로 갈 수는 있습니다. 다만 두 곳은 도요스와 아자부다이힐스로 떨어져 있고, 보더리스 관람에 약 1.5~2시간이 걸린다고 teamLab이 안내합니다. 두 입장 시간 사이에 관람 시간과 이동 시간을 충분히 비워 두거나, 반나절씩 나누세요.",
   },
   {
@@ -106,21 +104,22 @@ const faqItems: FaqItem[] = [
   },
 ];
 
-// 영어판과 같은 상품을 클룩 한국어 경로로 연결합니다.
-const subwayTour = withKlookLocale(tokyoSubwayTicket, "ko", {
-  title: "도쿄 서브웨이 티켓(24 / 48 / 72시간)",
-  desc: "도쿄메트로와 도에이 지하철 전 노선 무제한 승차. 현장에서 줄 서서 구매할 필요 없이 도착 후 수령",
-});
-const tours = [
+// 영어판과 같은 상품을 클룩 한국어 경로로 연결합니다. 비교표 바로 아래: 도쿄 1일 투어 · 서브웨이 티켓 · 클룩 eSIM.
+const sameDayBookings: KlookTour[] = [
   withKlookLocale(tokyoSightseeingBusTour, "ko", {
     title: "도쿄 관광버스 1일 투어",
     desc: "고쿄 정원, 아사쿠사, 도쿄 스카이트리를 둘러보는 가이드 투어, 다국어 오디오 안내가 포함됩니다",
   }),
-  withKlookLocale(fujiDayTour, "ko", {
-    title: "도쿄 출발 후지산 당일 투어",
-    desc: "후지산 5합목, 가와구치호, 오시노핫카이를 둘러보는 종일 버스 투어로, 당일 저녁 도쿄로 돌아옵니다",
+  withKlookLocale(tokyoSubwayTicket, "ko", {
+    title: "도쿄 서브웨이 티켓(24 / 48 / 72시간)",
+    desc: "도쿄메트로와 도에이 지하철 전 노선 무제한 승차. 현장에서 줄 서서 구매할 필요 없이 도착 후 수령",
   }),
+  { title: "클룩 일본 eSIM", desc: "두 미술관 모두 입구에서 휴대폰 티켓을 보여 주므로 방문 전에 데이터를 준비하세요", url: klookFor(klookEsim.url, "ko") },
 ];
+const fujiTour = withKlookLocale(fujiDayTour, "ko", {
+  title: "도쿄 출발 후지산 당일 투어",
+  desc: "후지산 5합목, 가와구치호, 오시노핫카이를 둘러보는 종일 버스 투어로, 당일 저녁 도쿄로 돌아옵니다",
+});
 
 const trail: Crumb[] = [...TRAIL_BASE.ko, { label: "팀랩 플래닛 보더리스 비교" }];
 
@@ -180,11 +179,16 @@ export default function KoTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           </div>
           <div className={styles.verdictBody}>
             <p className={styles.verdictText}>
-              <strong>도쿄의 두 팀랩 미술관</strong>은 티켓을 각각 따로 판매합니다. 성인 기준 도요스의 <strong>팀랩 플래닛은 {P_ADULT}</strong>,
-              아자부다이힐스의 <strong>팀랩 보더리스는 {B_ADULT}</strong>이고, 4~12세는 두 곳 모두 {P_CHILD}입니다({CHECKED}{" "}
-              공식 사이트 확인). 보더리스 관람은 약 1.5~2시간이라고 teamLab이 안내하며, 플래닛은 공식 관람 시간 안내가 없으므로
-              마찬가지로 1.5~2시간을 예상하세요. 아이와 함께라면 무릎 높이 물속을 맨발로 걷는 <strong>플래닛</strong>, 아이 없이 처음
-              간다면 신발을 신은 채 관람하는 <strong>보더리스</strong>를 예약하세요.
+              <strong>도쿄 팀랩 티켓</strong>은 성인 기준 도요스의 <strong>팀랩 플래닛 {P_ADULT}</strong>, 아자부다이힐스의{" "}
+              <strong>팀랩 보더리스 {B_ADULT}</strong>이며, 두 곳 모두 붐비는 날짜·시간대에는 더 비쌉니다({CHECKED} 공식
+              사이트 확인). 보더리스 관람은 약 1.5~2시간이라고 teamLab이 안내하며, 플래닛은 공식 안내가 없으므로 마찬가지로
+              1.5~2시간을 잡으세요. 두 곳 모두 시간 지정 티켓을 온라인으로 팔고, 현장 구매는 보더리스만 가능합니다(¥200 추가).
+            </p>
+            <p className={styles.bodyText} style={{ marginTop: "0.75rem", marginBottom: 0 }}>
+              물속을 맨발로 걷고 싶다면 <strong>플래닛</strong>, 자유롭게 작품 사이를 돌아보려면 <strong>보더리스</strong>입니다.
+              날짜별 가격과 예약 방법은{" "}
+              <Link href="/ko/guides/attractions/teamlab-planets-tickets" style={LINK}>팀랩 플래닛 예약</Link> 가이드에
+              정리했습니다.
             </p>
             <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
               <KlookLink href={koTeamlabPlanets.url} target="_blank" rel={KLOOK_REL} className={styles.verdictBtn}>
@@ -209,9 +213,10 @@ export default function KoTeamLabTokyoPage({ updated }: { updated: PageUpdated }
 
         <section className={styles.comparisonSection}>
           <span className={styles.sectionLabel}>나란히 비교</span>
-          <h2 className={styles.sectionTitle}>팀랩 플래닛과 보더리스, 어디를 예약할까?</h2>
+          <h2 className={styles.sectionTitle}>도쿄 팀랩, 플래닛과 보더리스 중 어디가 더 좋을까?</h2>
           <p className={styles.bodyText}>
-            아이와 함께라면 플래닛, 성인끼리 처음이라면 보더리스입니다. 이유는 아래 표에 항목별로 정리했습니다.
+            물속을 걷는 체험은 플래닛(아이와 함께라면 이쪽), 신발을 신고 자유롭게 돌아보는 관람은 보더리스가 낫습니다. 나머지는
+            아래 표에 정리했습니다.
           </p>
           <div className={styles.tableWrap}>
             <div className={styles.tableScroll}>
@@ -235,9 +240,10 @@ export default function KoTeamLabTokyoPage({ updated }: { updated: PageUpdated }
               </table>
             </div>
           </div>
-          <p className={styles.bodyText} style={{ marginTop: "1rem", fontSize: "0.82rem", color: "var(--text-muted)" }}>
+          <p className={styles.bodyText} style={SOURCE_NOTE}>
             최종 확인: {CHECKED_ISO}. 출처:{" "}
             <a href="https://www.teamlab.art/e/planets/" target="_blank" rel="noopener noreferrer">teamlab.art/e/planets</a>,{" "}
+            <a href="https://teamlabplanets.dmm.com/en/ticket" target="_blank" rel="noopener noreferrer">teamlabplanets.dmm.com/en/ticket</a>,{" "}
             <a href="https://www.teamlab.art/e/borderless-azabudai/" target="_blank" rel="noopener noreferrer">teamlab.art/e/borderless-azabudai</a>,
             보더리스 FAQ{" "}
             <a href="https://www.teamlab.art/faq/Tokyo/" target="_blank" rel="noopener noreferrer">teamlab.art/faq/Tokyo</a>.
@@ -254,81 +260,98 @@ export default function KoTeamLabTokyoPage({ updated }: { updated: PageUpdated }
           </div>
         </section>
 
-        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
-
         <KlookTourPicks
-          heading="도요스와 아자부다이힐스 사이 이동"
-          intro="보더리스에서 가까운 가미야초역은 도쿄메트로 히비야선 역이고, 서브웨이 티켓으로 도쿄메트로와 도에이 지하철 전 노선을 24·48·72시간 동안 이용할 수 있습니다. 플래닛에서 가까운 신토요스역은 유리카모메 역이라 이 티켓으로 이용할 수 없으니, 유라쿠초선 도요스역을 이용하세요."
-          tours={[subwayTour]}
+          heading="팀랩 티켓과 같은 날 예약할 것"
+          intro="가이드 동반 도쿄 1일 투어, 지하철 패스, 휴대폰 티켓용 데이터입니다. 서브웨이 티켓으로 보더리스의 가미야초역에 갈 수 있고, 플래닛은 유라쿠초선 도요스역(도보 10분)까지 갈 수 있지만 신토요스역의 유리카모메는 포함되지 않습니다. 클룩 가격은 날짜에 따라 달라지니 상품 페이지에서 본인 날짜의 금액을 확인하세요."
+          tours={sameDayBookings}
         />
 
-        <BookingEsimCard />
-
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>플래닛만 간다면</span>
-          <h2 className={styles.sectionTitle}>팀랩 플래닛에 가기로 정했나요?</h2>
-          <p className={styles.bodyText}>
-            도요스의 팀랩 플래닛은 성인 {P_ADULT}의 시간 지정 티켓만 팔고 현장 판매는 없으므로, 온라인에서 날짜와 입장 시간을
-            선택해 예약해야 합니다. 날짜별 가격, 프리미엄 패스, 물에 들어갈 때의 복장, 신토요스역·도요스역에서 가는 길은
-            플래닛 가이드에 정리했습니다. 같은 도쿄 일정에 일몰 시간대의 전망대 방문을 넣는다면{" "}
-            <Link href="/ko/guides/attractions/shibuya-sky-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
-              시부야 스카이 예약
-            </Link>
-            도 입장 2주 전 0시에 열리는 시간 지정권이라 팀랩과 함께 미리 잡아 두는 편이 좋습니다. 디즈니랜드·디즈니씨도
-            날짜 지정이고 현장 판매가 없으며 방문 2개월 전에 예약이 시작되므로, 같은 여행이라면{" "}
-            <Link href="/ko/guides/attractions/tokyo-disney-tickets" style={{ color: "var(--red)", fontWeight: 600 }}>
-              도쿄 디즈니 티켓
-            </Link>{" "}
-            가이드에서 가격과 예약 방법을 먼저 확인하세요.
-          </p>
-          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <Link href="/ko/guides/attractions/teamlab-planets-tickets" className={styles.verdictBtn}>
-              팀랩 플래닛 예약 가이드 전체 보기 →
-            </Link>
-          </div>
-        </section>
-
-        <section className={styles.bodySection}>
-          <span className={styles.sectionLabel}>보더리스만 간다면</span>
-          <h2 className={styles.sectionTitle}>팀랩 보더리스에 가기로 정했나요?</h2>
-          <p className={styles.bodyText}>
-            아자부다이힐스의 팀랩 보더리스는 성인 {B_ADULT}의 시간 지정 티켓과 입장 시간을 정하지 않는 Flexible Pass를 팔며,
-            방문 2개월 전 1일 무렵 판매를 시작합니다. 판매 시작일, Flexible Pass, 폐관 시간 변경, 현장 구매는 보더리스
-            가이드에서 확인하세요.
-          </p>
-          <div className={styles.pickCtaRow} style={{ marginTop: "1rem" }}>
-            <Link href="/ko/guides/attractions/teamlab-borderless-tickets" className={styles.verdictBtn}>
-              팀랩 보더리스 티켓 가이드 전체 보기 →
-            </Link>
-          </div>
-        </section>
+        <KlookSameDayCards heading={SAME_DAY.heading} cards={SAME_DAY.cards} />
 
         {/* A28: Klook hotel search by area (6.5%) — components/HotelStayBlock.tsx */}
         <HotelStayBlock city="tokyo" areas={["ginza", "odaiba", "roppongi", "tokyoStation"]} />
 
         <EsimCtaTop />
 
-        <section className={styles.whoForSection}>
-          <span className={styles.sectionLabel}>어디가 나에게 맞을까</span>
-          <h2 className={styles.sectionTitle}>두 팀랩 미술관 중 어디를 고를까?</h2>
-          <div className={styles.whoForGrid}>
-            {whoFor.map((item) => (
-              <div key={item.title} className={styles.whoForCard}>
-                <p className={styles.whoForTitle}>{item.title}</p>
-                <p className={styles.whoForDesc}>{item.desc}</p>
-              </div>
-            ))}
+        <section className={styles.comparisonSection}>
+          <span className={styles.sectionLabel}>가격</span>
+          <h2 className={styles.sectionTitle}>도쿄 팀랩 티켓은 얼마인가요?</h2>
+          <p className={styles.bodyText}>
+            성인은 플래닛 {P_ADULT}, 보더리스 {B_ADULT}이며, 티켓이 따로라 두 곳 모두 가면 성인 ¥7,200부터, 4~12세 ¥3,000입니다.
+          </p>
+          <div className={styles.tableWrap}>
+            <div className={styles.tableScroll}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    {["티켓", "팀랩 플래닛", "팀랩 보더리스", "두 곳 모두"].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {costRows.map((row) => (
+                    <tr key={row.who}>
+                      <td className={styles.tdProvider}>{row.who}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.planets}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.borderless}</td>
+                      <td style={{ fontSize: "0.88rem" }}>{row.both}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
+          <p className={styles.bodyText} style={SOURCE_NOTE}>
+            최종 확인: {CHECKED_ISO},{" "}
+            <a href="https://www.teamlab.art/e/planets/" target="_blank" rel="noopener noreferrer">teamlab.art/e/planets</a>,{" "}
+            <a href="https://www.teamlab.art/e/borderless-azabudai/" target="_blank" rel="noopener noreferrer">teamlab.art/e/borderless-azabudai</a>.
+            성인·장애인 요금은 최저가이며 날짜에 따라 오릅니다. &quot;두 곳 모두&quot;는 두 최저가를 더한 금액입니다.
+          </p>
         </section>
+
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>당일 구매</span>
+          <h2 className={styles.sectionTitle}>팀랩 티켓은 당일에 살 수 있나요?</h2>
+          <p className={styles.bodyText}>
+            보더리스만 가능합니다. 매진되지 않았다면 당일에도 공식 티켓 사이트에서 살 수 있고, 현장 구매는 성인 ¥200이 더
+            비쌉니다. 플래닛은 현장 판매가 없으므로 가기 전에 온라인으로 구매해야 합니다.
+          </p>
+          <p className={styles.bodyText}>
+            보더리스 티켓은 방문 2개월 전 1일 무렵 판매를 시작하며 매진될 수 있다고 teamLab이 안내합니다. 플래닛은 판매 시작일을
+            공개하지 않습니다. 판매 시작일, Flexible Pass, 현장 구매는{" "}
+            <Link href="/ko/guides/attractions/teamlab-borderless-tickets" style={LINK}>팀랩 보더리스 티켓</Link> 가이드에서,
+            날짜별 가격, 프리미엄 패스, 물에 들어갈 때의 복장은{" "}
+            <Link href="/ko/guides/attractions/teamlab-planets-tickets" style={LINK}>팀랩 플래닛 예약</Link> 가이드에서 확인하세요.
+          </p>
+        </section>
+
+        <section className={styles.bodySection}>
+          <span className={styles.sectionLabel}>두 곳 모두</span>
+          <h2 className={styles.sectionTitle}>하루에 두 곳 모두 갈 수 있나요?</h2>
+          <p className={styles.bodyText}>
+            시간 지정 티켓 두 장과 충분한 간격이 있으면 가능합니다. 미술관마다 1.5~2시간에 도요스와 아자부다이힐스 사이 이동 시간을
+            더해 두거나, 반나절씩 나누세요.
+          </p>
+          <p className={styles.bodyText}>
+            두 곳 모두 가면 성인 ¥7,200부터입니다. 보더리스의 가미야초역은 도쿄메트로 히비야선이고, 플래닛은 유라쿠초선 도요스역에서
+            도보 10분, 유리카모메 신토요스역에서 도보 3분입니다. 같은 도쿄 일정에 일몰 시간대의 전망대를 넣는다면{" "}
+            <Link href="/ko/guides/attractions/shibuya-sky-tickets" style={LINK}>시부야 스카이 예약</Link>도 입장 2주 전 0시에
+            열리는 시간 지정권이라 팀랩과 함께 미리 잡아 두는 편이 좋습니다. 디즈니랜드·디즈니씨도 날짜 지정이고 현장 판매가 없으니{" "}
+            <Link href="/ko/guides/attractions/tokyo-disney-tickets" style={LINK}>도쿄 디즈니 티켓</Link> 가이드도 확인하세요.
+          </p>
+        </section>
+
+        <BookingEsimCard />
 
         <EsimCtaBottom />
 
         <FaqList items={faqItems} />
 
         <KlookTourPicks
-          heading="도쿄 여행에서 함께 예약하기"
-          intro="두 미술관 모두 관람에 하루를 다 쓰지는 않습니다. 가이드 동반 시내 관광과 당일치기 여행을 준비했습니다. 클룩 가격은 날짜에 따라 달라지니, 본인 날짜의 금액은 상품 페이지를 열어 확인하세요."
-          tours={tours}
+          heading="도쿄에서 당일치기 여행"
+          intro="두 미술관 모두 관람에 하루를 다 쓰지는 않습니다. 도쿄 밖으로 하루 나간다면 후지산 투어가 있습니다. 클룩 가격은 날짜에 따라 달라지니, 본인 날짜의 금액은 상품 페이지를 열어 확인하세요."
+          tours={[fujiTour]}
         />
 
         <Related

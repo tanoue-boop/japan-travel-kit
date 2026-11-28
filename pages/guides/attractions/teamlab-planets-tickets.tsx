@@ -326,7 +326,7 @@ export default function TeamLabPlanetsTicketsPage({ updated }: { updated: PageUp
           <p className={styles.bodyText}>
             Not sure Planets is the right one? Tokyo&apos;s other teamLab museum, Borderless at Azabudai Hills, keeps
             your shoes on and sells tickets at the door — see{" "}
-            <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Planets vs Borderless</Link> to choose.
+            <Link href="/guides/attractions/teamlab-tokyo-tickets">teamLab Tokyo tickets: Planets vs Borderless</Link> to choose.
           </p>
         </section>
 
